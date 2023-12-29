@@ -21,6 +21,172 @@ const (
 	LinuxUpdateClassesOther        = LinuxUpdateClasses("Other")
 )
 
+func (LinuxUpdateClasses) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxUpdateClasses)(nil)).Elem()
+}
+
+func (e LinuxUpdateClasses) ToLinuxUpdateClassesOutput() LinuxUpdateClassesOutput {
+	return pulumi.ToOutput(e).(LinuxUpdateClassesOutput)
+}
+
+func (e LinuxUpdateClasses) ToLinuxUpdateClassesOutputWithContext(ctx context.Context) LinuxUpdateClassesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LinuxUpdateClassesOutput)
+}
+
+func (e LinuxUpdateClasses) ToLinuxUpdateClassesPtrOutput() LinuxUpdateClassesPtrOutput {
+	return e.ToLinuxUpdateClassesPtrOutputWithContext(context.Background())
+}
+
+func (e LinuxUpdateClasses) ToLinuxUpdateClassesPtrOutputWithContext(ctx context.Context) LinuxUpdateClassesPtrOutput {
+	return LinuxUpdateClasses(e).ToLinuxUpdateClassesOutputWithContext(ctx).ToLinuxUpdateClassesPtrOutputWithContext(ctx)
+}
+
+func (e LinuxUpdateClasses) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LinuxUpdateClasses) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LinuxUpdateClasses) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LinuxUpdateClasses) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LinuxUpdateClassesOutput struct{ *pulumi.OutputState }
+
+func (LinuxUpdateClassesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxUpdateClasses)(nil)).Elem()
+}
+
+func (o LinuxUpdateClassesOutput) ToLinuxUpdateClassesOutput() LinuxUpdateClassesOutput {
+	return o
+}
+
+func (o LinuxUpdateClassesOutput) ToLinuxUpdateClassesOutputWithContext(ctx context.Context) LinuxUpdateClassesOutput {
+	return o
+}
+
+func (o LinuxUpdateClassesOutput) ToLinuxUpdateClassesPtrOutput() LinuxUpdateClassesPtrOutput {
+	return o.ToLinuxUpdateClassesPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxUpdateClassesOutput) ToLinuxUpdateClassesPtrOutputWithContext(ctx context.Context) LinuxUpdateClassesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxUpdateClasses) *LinuxUpdateClasses {
+		return &v
+	}).(LinuxUpdateClassesPtrOutput)
+}
+
+func (o LinuxUpdateClassesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LinuxUpdateClassesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LinuxUpdateClasses) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LinuxUpdateClassesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxUpdateClassesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LinuxUpdateClasses) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LinuxUpdateClassesPtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxUpdateClassesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxUpdateClasses)(nil)).Elem()
+}
+
+func (o LinuxUpdateClassesPtrOutput) ToLinuxUpdateClassesPtrOutput() LinuxUpdateClassesPtrOutput {
+	return o
+}
+
+func (o LinuxUpdateClassesPtrOutput) ToLinuxUpdateClassesPtrOutputWithContext(ctx context.Context) LinuxUpdateClassesPtrOutput {
+	return o
+}
+
+func (o LinuxUpdateClassesPtrOutput) Elem() LinuxUpdateClassesOutput {
+	return o.ApplyT(func(v *LinuxUpdateClasses) LinuxUpdateClasses {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxUpdateClasses
+		return ret
+	}).(LinuxUpdateClassesOutput)
+}
+
+func (o LinuxUpdateClassesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxUpdateClassesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LinuxUpdateClasses) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LinuxUpdateClassesInput is an input type that accepts values of the LinuxUpdateClasses enum
+// A concrete instance of `LinuxUpdateClassesInput` can be one of the following:
+//
+//	LinuxUpdateClassesUnclassified
+//	LinuxUpdateClassesCritical
+//	LinuxUpdateClassesSecurity
+//	LinuxUpdateClassesOther
+type LinuxUpdateClassesInput interface {
+	pulumi.Input
+
+	ToLinuxUpdateClassesOutput() LinuxUpdateClassesOutput
+	ToLinuxUpdateClassesOutputWithContext(context.Context) LinuxUpdateClassesOutput
+}
+
+var linuxUpdateClassesPtrType = reflect.TypeOf((**LinuxUpdateClasses)(nil)).Elem()
+
+type LinuxUpdateClassesPtrInput interface {
+	pulumi.Input
+
+	ToLinuxUpdateClassesPtrOutput() LinuxUpdateClassesPtrOutput
+	ToLinuxUpdateClassesPtrOutputWithContext(context.Context) LinuxUpdateClassesPtrOutput
+}
+
+type linuxUpdateClassesPtr string
+
+func LinuxUpdateClassesPtr(v string) LinuxUpdateClassesPtrInput {
+	return (*linuxUpdateClassesPtr)(&v)
+}
+
+func (*linuxUpdateClassesPtr) ElementType() reflect.Type {
+	return linuxUpdateClassesPtrType
+}
+
+func (in *linuxUpdateClassesPtr) ToLinuxUpdateClassesPtrOutput() LinuxUpdateClassesPtrOutput {
+	return pulumi.ToOutput(in).(LinuxUpdateClassesPtrOutput)
+}
+
+func (in *linuxUpdateClassesPtr) ToLinuxUpdateClassesPtrOutputWithContext(ctx context.Context) LinuxUpdateClassesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LinuxUpdateClassesPtrOutput)
+}
+
+func (in *linuxUpdateClassesPtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxUpdateClasses] {
+	return pulumix.Output[*LinuxUpdateClasses]{
+		OutputState: in.ToLinuxUpdateClassesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // operating system of target machines
 type OperatingSystemType string
 
@@ -148,10 +314,11 @@ func (o OperatingSystemTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// OperatingSystemTypeInput is an input type that accepts OperatingSystemTypeArgs and OperatingSystemTypeOutput values.
-// You can construct a concrete instance of `OperatingSystemTypeInput` via:
+// OperatingSystemTypeInput is an input type that accepts values of the OperatingSystemType enum
+// A concrete instance of `OperatingSystemTypeInput` can be one of the following:
 //
-//	OperatingSystemTypeArgs{...}
+//	OperatingSystemTypeWindows
+//	OperatingSystemTypeLinux
 type OperatingSystemTypeInput interface {
 	pulumi.Input
 
@@ -205,6 +372,175 @@ const (
 	ScheduleDaySunday    = ScheduleDay("Sunday")
 )
 
+func (ScheduleDay) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleDay)(nil)).Elem()
+}
+
+func (e ScheduleDay) ToScheduleDayOutput() ScheduleDayOutput {
+	return pulumi.ToOutput(e).(ScheduleDayOutput)
+}
+
+func (e ScheduleDay) ToScheduleDayOutputWithContext(ctx context.Context) ScheduleDayOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScheduleDayOutput)
+}
+
+func (e ScheduleDay) ToScheduleDayPtrOutput() ScheduleDayPtrOutput {
+	return e.ToScheduleDayPtrOutputWithContext(context.Background())
+}
+
+func (e ScheduleDay) ToScheduleDayPtrOutputWithContext(ctx context.Context) ScheduleDayPtrOutput {
+	return ScheduleDay(e).ToScheduleDayOutputWithContext(ctx).ToScheduleDayPtrOutputWithContext(ctx)
+}
+
+func (e ScheduleDay) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScheduleDay) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScheduleDay) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScheduleDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScheduleDayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleDay)(nil)).Elem()
+}
+
+func (o ScheduleDayOutput) ToScheduleDayOutput() ScheduleDayOutput {
+	return o
+}
+
+func (o ScheduleDayOutput) ToScheduleDayOutputWithContext(ctx context.Context) ScheduleDayOutput {
+	return o
+}
+
+func (o ScheduleDayOutput) ToScheduleDayPtrOutput() ScheduleDayPtrOutput {
+	return o.ToScheduleDayPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleDayOutput) ToScheduleDayPtrOutputWithContext(ctx context.Context) ScheduleDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleDay) *ScheduleDay {
+		return &v
+	}).(ScheduleDayPtrOutput)
+}
+
+func (o ScheduleDayOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScheduleDayOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScheduleDay) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScheduleDayOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleDayOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScheduleDay) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleDayPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleDayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleDay)(nil)).Elem()
+}
+
+func (o ScheduleDayPtrOutput) ToScheduleDayPtrOutput() ScheduleDayPtrOutput {
+	return o
+}
+
+func (o ScheduleDayPtrOutput) ToScheduleDayPtrOutputWithContext(ctx context.Context) ScheduleDayPtrOutput {
+	return o
+}
+
+func (o ScheduleDayPtrOutput) Elem() ScheduleDayOutput {
+	return o.ApplyT(func(v *ScheduleDay) ScheduleDay {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleDay
+		return ret
+	}).(ScheduleDayOutput)
+}
+
+func (o ScheduleDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScheduleDay) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScheduleDayInput is an input type that accepts values of the ScheduleDay enum
+// A concrete instance of `ScheduleDayInput` can be one of the following:
+//
+//	ScheduleDayMonday
+//	ScheduleDayTuesday
+//	ScheduleDayWednesday
+//	ScheduleDayThursday
+//	ScheduleDayFriday
+//	ScheduleDaySaturday
+//	ScheduleDaySunday
+type ScheduleDayInput interface {
+	pulumi.Input
+
+	ToScheduleDayOutput() ScheduleDayOutput
+	ToScheduleDayOutputWithContext(context.Context) ScheduleDayOutput
+}
+
+var scheduleDayPtrType = reflect.TypeOf((**ScheduleDay)(nil)).Elem()
+
+type ScheduleDayPtrInput interface {
+	pulumi.Input
+
+	ToScheduleDayPtrOutput() ScheduleDayPtrOutput
+	ToScheduleDayPtrOutputWithContext(context.Context) ScheduleDayPtrOutput
+}
+
+type scheduleDayPtr string
+
+func ScheduleDayPtr(v string) ScheduleDayPtrInput {
+	return (*scheduleDayPtr)(&v)
+}
+
+func (*scheduleDayPtr) ElementType() reflect.Type {
+	return scheduleDayPtrType
+}
+
+func (in *scheduleDayPtr) ToScheduleDayPtrOutput() ScheduleDayPtrOutput {
+	return pulumi.ToOutput(in).(ScheduleDayPtrOutput)
+}
+
+func (in *scheduleDayPtr) ToScheduleDayPtrOutputWithContext(ctx context.Context) ScheduleDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScheduleDayPtrOutput)
+}
+
+func (in *scheduleDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleDay] {
+	return pulumix.Output[*ScheduleDay]{
+		OutputState: in.ToScheduleDayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Gets or sets the frequency of the schedule.
 type ScheduleFrequency string
 
@@ -217,6 +553,174 @@ const (
 	// The minimum allowed interval for Minute schedules is 15 minutes.
 	ScheduleFrequencyMinute = ScheduleFrequency("Minute")
 )
+
+func (ScheduleFrequency) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleFrequency)(nil)).Elem()
+}
+
+func (e ScheduleFrequency) ToScheduleFrequencyOutput() ScheduleFrequencyOutput {
+	return pulumi.ToOutput(e).(ScheduleFrequencyOutput)
+}
+
+func (e ScheduleFrequency) ToScheduleFrequencyOutputWithContext(ctx context.Context) ScheduleFrequencyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScheduleFrequencyOutput)
+}
+
+func (e ScheduleFrequency) ToScheduleFrequencyPtrOutput() ScheduleFrequencyPtrOutput {
+	return e.ToScheduleFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (e ScheduleFrequency) ToScheduleFrequencyPtrOutputWithContext(ctx context.Context) ScheduleFrequencyPtrOutput {
+	return ScheduleFrequency(e).ToScheduleFrequencyOutputWithContext(ctx).ToScheduleFrequencyPtrOutputWithContext(ctx)
+}
+
+func (e ScheduleFrequency) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScheduleFrequency) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScheduleFrequency) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScheduleFrequency) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScheduleFrequencyOutput struct{ *pulumi.OutputState }
+
+func (ScheduleFrequencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleFrequency)(nil)).Elem()
+}
+
+func (o ScheduleFrequencyOutput) ToScheduleFrequencyOutput() ScheduleFrequencyOutput {
+	return o
+}
+
+func (o ScheduleFrequencyOutput) ToScheduleFrequencyOutputWithContext(ctx context.Context) ScheduleFrequencyOutput {
+	return o
+}
+
+func (o ScheduleFrequencyOutput) ToScheduleFrequencyPtrOutput() ScheduleFrequencyPtrOutput {
+	return o.ToScheduleFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleFrequencyOutput) ToScheduleFrequencyPtrOutputWithContext(ctx context.Context) ScheduleFrequencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleFrequency) *ScheduleFrequency {
+		return &v
+	}).(ScheduleFrequencyPtrOutput)
+}
+
+func (o ScheduleFrequencyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScheduleFrequencyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScheduleFrequency) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScheduleFrequencyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleFrequencyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScheduleFrequency) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleFrequencyPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleFrequencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleFrequency)(nil)).Elem()
+}
+
+func (o ScheduleFrequencyPtrOutput) ToScheduleFrequencyPtrOutput() ScheduleFrequencyPtrOutput {
+	return o
+}
+
+func (o ScheduleFrequencyPtrOutput) ToScheduleFrequencyPtrOutputWithContext(ctx context.Context) ScheduleFrequencyPtrOutput {
+	return o
+}
+
+func (o ScheduleFrequencyPtrOutput) Elem() ScheduleFrequencyOutput {
+	return o.ApplyT(func(v *ScheduleFrequency) ScheduleFrequency {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleFrequency
+		return ret
+	}).(ScheduleFrequencyOutput)
+}
+
+func (o ScheduleFrequencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScheduleFrequency) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScheduleFrequencyInput is an input type that accepts values of the ScheduleFrequency enum
+// A concrete instance of `ScheduleFrequencyInput` can be one of the following:
+//
+//	ScheduleFrequencyOneTime
+//	ScheduleFrequencyDay
+//	ScheduleFrequencyHour
+//	ScheduleFrequencyWeek
+//	ScheduleFrequencyMonth
+//	ScheduleFrequencyMinute
+type ScheduleFrequencyInput interface {
+	pulumi.Input
+
+	ToScheduleFrequencyOutput() ScheduleFrequencyOutput
+	ToScheduleFrequencyOutputWithContext(context.Context) ScheduleFrequencyOutput
+}
+
+var scheduleFrequencyPtrType = reflect.TypeOf((**ScheduleFrequency)(nil)).Elem()
+
+type ScheduleFrequencyPtrInput interface {
+	pulumi.Input
+
+	ToScheduleFrequencyPtrOutput() ScheduleFrequencyPtrOutput
+	ToScheduleFrequencyPtrOutputWithContext(context.Context) ScheduleFrequencyPtrOutput
+}
+
+type scheduleFrequencyPtr string
+
+func ScheduleFrequencyPtr(v string) ScheduleFrequencyPtrInput {
+	return (*scheduleFrequencyPtr)(&v)
+}
+
+func (*scheduleFrequencyPtr) ElementType() reflect.Type {
+	return scheduleFrequencyPtrType
+}
+
+func (in *scheduleFrequencyPtr) ToScheduleFrequencyPtrOutput() ScheduleFrequencyPtrOutput {
+	return pulumi.ToOutput(in).(ScheduleFrequencyPtrOutput)
+}
+
+func (in *scheduleFrequencyPtr) ToScheduleFrequencyPtrOutputWithContext(ctx context.Context) ScheduleFrequencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScheduleFrequencyPtrOutput)
+}
+
+func (in *scheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleFrequency] {
+	return pulumix.Output[*ScheduleFrequency]{
+		OutputState: in.ToScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Filter VMs by Any or All specified tags.
 type TagOperators string
@@ -345,10 +849,11 @@ func (o TagOperatorsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// TagOperatorsInput is an input type that accepts TagOperatorsArgs and TagOperatorsOutput values.
-// You can construct a concrete instance of `TagOperatorsInput` via:
+// TagOperatorsInput is an input type that accepts values of the TagOperators enum
+// A concrete instance of `TagOperatorsInput` can be one of the following:
 //
-//	TagOperatorsArgs{...}
+//	TagOperatorsAll
+//	TagOperatorsAny
 type TagOperatorsInput interface {
 	pulumi.Input
 
@@ -404,9 +909,188 @@ const (
 	WindowsUpdateClassesUpdates      = WindowsUpdateClasses("Updates")
 )
 
+func (WindowsUpdateClasses) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsUpdateClasses)(nil)).Elem()
+}
+
+func (e WindowsUpdateClasses) ToWindowsUpdateClassesOutput() WindowsUpdateClassesOutput {
+	return pulumi.ToOutput(e).(WindowsUpdateClassesOutput)
+}
+
+func (e WindowsUpdateClasses) ToWindowsUpdateClassesOutputWithContext(ctx context.Context) WindowsUpdateClassesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WindowsUpdateClassesOutput)
+}
+
+func (e WindowsUpdateClasses) ToWindowsUpdateClassesPtrOutput() WindowsUpdateClassesPtrOutput {
+	return e.ToWindowsUpdateClassesPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsUpdateClasses) ToWindowsUpdateClassesPtrOutputWithContext(ctx context.Context) WindowsUpdateClassesPtrOutput {
+	return WindowsUpdateClasses(e).ToWindowsUpdateClassesOutputWithContext(ctx).ToWindowsUpdateClassesPtrOutputWithContext(ctx)
+}
+
+func (e WindowsUpdateClasses) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WindowsUpdateClasses) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WindowsUpdateClasses) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsUpdateClasses) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WindowsUpdateClassesOutput struct{ *pulumi.OutputState }
+
+func (WindowsUpdateClassesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsUpdateClasses)(nil)).Elem()
+}
+
+func (o WindowsUpdateClassesOutput) ToWindowsUpdateClassesOutput() WindowsUpdateClassesOutput {
+	return o
+}
+
+func (o WindowsUpdateClassesOutput) ToWindowsUpdateClassesOutputWithContext(ctx context.Context) WindowsUpdateClassesOutput {
+	return o
+}
+
+func (o WindowsUpdateClassesOutput) ToWindowsUpdateClassesPtrOutput() WindowsUpdateClassesPtrOutput {
+	return o.ToWindowsUpdateClassesPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateClassesOutput) ToWindowsUpdateClassesPtrOutputWithContext(ctx context.Context) WindowsUpdateClassesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateClasses) *WindowsUpdateClasses {
+		return &v
+	}).(WindowsUpdateClassesPtrOutput)
+}
+
+func (o WindowsUpdateClassesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateClassesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsUpdateClasses) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WindowsUpdateClassesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateClassesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsUpdateClasses) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WindowsUpdateClassesPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsUpdateClassesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsUpdateClasses)(nil)).Elem()
+}
+
+func (o WindowsUpdateClassesPtrOutput) ToWindowsUpdateClassesPtrOutput() WindowsUpdateClassesPtrOutput {
+	return o
+}
+
+func (o WindowsUpdateClassesPtrOutput) ToWindowsUpdateClassesPtrOutputWithContext(ctx context.Context) WindowsUpdateClassesPtrOutput {
+	return o
+}
+
+func (o WindowsUpdateClassesPtrOutput) Elem() WindowsUpdateClassesOutput {
+	return o.ApplyT(func(v *WindowsUpdateClasses) WindowsUpdateClasses {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsUpdateClasses
+		return ret
+	}).(WindowsUpdateClassesOutput)
+}
+
+func (o WindowsUpdateClassesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateClassesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WindowsUpdateClasses) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WindowsUpdateClassesInput is an input type that accepts values of the WindowsUpdateClasses enum
+// A concrete instance of `WindowsUpdateClassesInput` can be one of the following:
+//
+//	WindowsUpdateClassesUnclassified
+//	WindowsUpdateClassesCritical
+//	WindowsUpdateClassesSecurity
+//	WindowsUpdateClassesUpdateRollup
+//	WindowsUpdateClassesFeaturePack
+//	WindowsUpdateClassesServicePack
+//	WindowsUpdateClassesDefinition
+//	WindowsUpdateClassesTools
+//	WindowsUpdateClassesUpdates
+type WindowsUpdateClassesInput interface {
+	pulumi.Input
+
+	ToWindowsUpdateClassesOutput() WindowsUpdateClassesOutput
+	ToWindowsUpdateClassesOutputWithContext(context.Context) WindowsUpdateClassesOutput
+}
+
+var windowsUpdateClassesPtrType = reflect.TypeOf((**WindowsUpdateClasses)(nil)).Elem()
+
+type WindowsUpdateClassesPtrInput interface {
+	pulumi.Input
+
+	ToWindowsUpdateClassesPtrOutput() WindowsUpdateClassesPtrOutput
+	ToWindowsUpdateClassesPtrOutputWithContext(context.Context) WindowsUpdateClassesPtrOutput
+}
+
+type windowsUpdateClassesPtr string
+
+func WindowsUpdateClassesPtr(v string) WindowsUpdateClassesPtrInput {
+	return (*windowsUpdateClassesPtr)(&v)
+}
+
+func (*windowsUpdateClassesPtr) ElementType() reflect.Type {
+	return windowsUpdateClassesPtrType
+}
+
+func (in *windowsUpdateClassesPtr) ToWindowsUpdateClassesPtrOutput() WindowsUpdateClassesPtrOutput {
+	return pulumi.ToOutput(in).(WindowsUpdateClassesPtrOutput)
+}
+
+func (in *windowsUpdateClassesPtr) ToWindowsUpdateClassesPtrOutputWithContext(ctx context.Context) WindowsUpdateClassesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateClassesPtrOutput)
+}
+
+func (in *windowsUpdateClassesPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateClasses] {
+	return pulumix.Output[*WindowsUpdateClasses]{
+		OutputState: in.ToWindowsUpdateClassesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(LinuxUpdateClassesOutput{})
+	pulumi.RegisterOutputType(LinuxUpdateClassesPtrOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypeOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypePtrOutput{})
+	pulumi.RegisterOutputType(ScheduleDayOutput{})
+	pulumi.RegisterOutputType(ScheduleDayPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleFrequencyOutput{})
+	pulumi.RegisterOutputType(ScheduleFrequencyPtrOutput{})
 	pulumi.RegisterOutputType(TagOperatorsOutput{})
 	pulumi.RegisterOutputType(TagOperatorsPtrOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateClassesOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateClassesPtrOutput{})
 }

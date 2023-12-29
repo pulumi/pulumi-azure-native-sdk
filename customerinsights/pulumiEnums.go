@@ -141,10 +141,14 @@ func (o CalculationWindowTypesPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// CalculationWindowTypesInput is an input type that accepts CalculationWindowTypesArgs and CalculationWindowTypesOutput values.
-// You can construct a concrete instance of `CalculationWindowTypesInput` via:
+// CalculationWindowTypesInput is an input type that accepts values of the CalculationWindowTypes enum
+// A concrete instance of `CalculationWindowTypesInput` can be one of the following:
 //
-//	CalculationWindowTypesArgs{...}
+//	CalculationWindowTypesLifetime
+//	CalculationWindowTypesHour
+//	CalculationWindowTypesDay
+//	CalculationWindowTypesWeek
+//	CalculationWindowTypesMonth
 type CalculationWindowTypesInput interface {
 	pulumi.Input
 
@@ -313,10 +317,12 @@ func (o CardinalityTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// CardinalityTypesInput is an input type that accepts CardinalityTypesArgs and CardinalityTypesOutput values.
-// You can construct a concrete instance of `CardinalityTypesInput` via:
+// CardinalityTypesInput is an input type that accepts values of the CardinalityTypes enum
+// A concrete instance of `CardinalityTypesInput` can be one of the following:
 //
-//	CardinalityTypesArgs{...}
+//	CardinalityTypesOneToOne
+//	CardinalityTypesOneToMany
+//	CardinalityTypesManyToMany
 type CardinalityTypesInput interface {
 	pulumi.Input
 
@@ -485,10 +491,12 @@ func (o CompletionOperationTypesPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// CompletionOperationTypesInput is an input type that accepts CompletionOperationTypesArgs and CompletionOperationTypesOutput values.
-// You can construct a concrete instance of `CompletionOperationTypesInput` via:
+// CompletionOperationTypesInput is an input type that accepts values of the CompletionOperationTypes enum
+// A concrete instance of `CompletionOperationTypesInput` can be one of the following:
 //
-//	CompletionOperationTypesArgs{...}
+//	CompletionOperationTypesDoNothing
+//	CompletionOperationTypesDeleteFile
+//	CompletionOperationTypesMoveFile
 type CompletionOperationTypesInput interface {
 	pulumi.Input
 
@@ -540,6 +548,174 @@ const (
 	ConnectorTypesExchangeOnline = ConnectorTypes("ExchangeOnline")
 	ConnectorTypesOutbound       = ConnectorTypes("Outbound")
 )
+
+func (ConnectorTypes) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorTypes)(nil)).Elem()
+}
+
+func (e ConnectorTypes) ToConnectorTypesOutput() ConnectorTypesOutput {
+	return pulumi.ToOutput(e).(ConnectorTypesOutput)
+}
+
+func (e ConnectorTypes) ToConnectorTypesOutputWithContext(ctx context.Context) ConnectorTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConnectorTypesOutput)
+}
+
+func (e ConnectorTypes) ToConnectorTypesPtrOutput() ConnectorTypesPtrOutput {
+	return e.ToConnectorTypesPtrOutputWithContext(context.Background())
+}
+
+func (e ConnectorTypes) ToConnectorTypesPtrOutputWithContext(ctx context.Context) ConnectorTypesPtrOutput {
+	return ConnectorTypes(e).ToConnectorTypesOutputWithContext(ctx).ToConnectorTypesPtrOutputWithContext(ctx)
+}
+
+func (e ConnectorTypes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConnectorTypes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConnectorTypes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConnectorTypes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConnectorTypesOutput struct{ *pulumi.OutputState }
+
+func (ConnectorTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorTypes)(nil)).Elem()
+}
+
+func (o ConnectorTypesOutput) ToConnectorTypesOutput() ConnectorTypesOutput {
+	return o
+}
+
+func (o ConnectorTypesOutput) ToConnectorTypesOutputWithContext(ctx context.Context) ConnectorTypesOutput {
+	return o
+}
+
+func (o ConnectorTypesOutput) ToConnectorTypesPtrOutput() ConnectorTypesPtrOutput {
+	return o.ToConnectorTypesPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorTypesOutput) ToConnectorTypesPtrOutputWithContext(ctx context.Context) ConnectorTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorTypes) *ConnectorTypes {
+		return &v
+	}).(ConnectorTypesPtrOutput)
+}
+
+func (o ConnectorTypesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConnectorTypesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectorTypes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConnectorTypesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorTypesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectorTypes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorTypes)(nil)).Elem()
+}
+
+func (o ConnectorTypesPtrOutput) ToConnectorTypesPtrOutput() ConnectorTypesPtrOutput {
+	return o
+}
+
+func (o ConnectorTypesPtrOutput) ToConnectorTypesPtrOutputWithContext(ctx context.Context) ConnectorTypesPtrOutput {
+	return o
+}
+
+func (o ConnectorTypesPtrOutput) Elem() ConnectorTypesOutput {
+	return o.ApplyT(func(v *ConnectorTypes) ConnectorTypes {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorTypes
+		return ret
+	}).(ConnectorTypesOutput)
+}
+
+func (o ConnectorTypesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConnectorTypes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConnectorTypesInput is an input type that accepts values of the ConnectorTypes enum
+// A concrete instance of `ConnectorTypesInput` can be one of the following:
+//
+//	ConnectorTypesNone
+//	ConnectorTypesCRM
+//	ConnectorTypesAzureBlob
+//	ConnectorTypesSalesforce
+//	ConnectorTypesExchangeOnline
+//	ConnectorTypesOutbound
+type ConnectorTypesInput interface {
+	pulumi.Input
+
+	ToConnectorTypesOutput() ConnectorTypesOutput
+	ToConnectorTypesOutputWithContext(context.Context) ConnectorTypesOutput
+}
+
+var connectorTypesPtrType = reflect.TypeOf((**ConnectorTypes)(nil)).Elem()
+
+type ConnectorTypesPtrInput interface {
+	pulumi.Input
+
+	ToConnectorTypesPtrOutput() ConnectorTypesPtrOutput
+	ToConnectorTypesPtrOutputWithContext(context.Context) ConnectorTypesPtrOutput
+}
+
+type connectorTypesPtr string
+
+func ConnectorTypesPtr(v string) ConnectorTypesPtrInput {
+	return (*connectorTypesPtr)(&v)
+}
+
+func (*connectorTypesPtr) ElementType() reflect.Type {
+	return connectorTypesPtrType
+}
+
+func (in *connectorTypesPtr) ToConnectorTypesPtrOutput() ConnectorTypesPtrOutput {
+	return pulumi.ToOutput(in).(ConnectorTypesPtrOutput)
+}
+
+func (in *connectorTypesPtr) ToConnectorTypesPtrOutputWithContext(ctx context.Context) ConnectorTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConnectorTypesPtrOutput)
+}
+
+func (in *connectorTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectorTypes] {
+	return pulumix.Output[*ConnectorTypes]{
+		OutputState: in.ToConnectorTypesPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Type of target entity.
 type EntityType string
@@ -670,10 +846,13 @@ func (o EntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntityTypeInput is an input type that accepts EntityTypeArgs and EntityTypeOutput values.
-// You can construct a concrete instance of `EntityTypeInput` via:
+// EntityTypeInput is an input type that accepts values of the EntityType enum
+// A concrete instance of `EntityTypeInput` can be one of the following:
 //
-//	EntityTypeArgs{...}
+//	EntityTypeNone
+//	EntityTypeProfile
+//	EntityTypeInteraction
+//	EntityTypeRelationship
 type EntityTypeInput interface {
 	pulumi.Input
 
@@ -843,10 +1022,13 @@ func (o EntityTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntityTypesInput is an input type that accepts EntityTypesArgs and EntityTypesOutput values.
-// You can construct a concrete instance of `EntityTypesInput` via:
+// EntityTypesInput is an input type that accepts values of the EntityTypes enum
+// A concrete instance of `EntityTypesInput` can be one of the following:
 //
-//	EntityTypesArgs{...}
+//	EntityTypesNone
+//	EntityTypesProfile
+//	EntityTypesInteraction
+//	EntityTypesRelationship
 type EntityTypesInput interface {
 	pulumi.Input
 
@@ -1015,10 +1197,12 @@ func (o ErrorManagementTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ErrorManagementTypesInput is an input type that accepts ErrorManagementTypesArgs and ErrorManagementTypesOutput values.
-// You can construct a concrete instance of `ErrorManagementTypesInput` via:
+// ErrorManagementTypesInput is an input type that accepts values of the ErrorManagementTypes enum
+// A concrete instance of `ErrorManagementTypesInput` can be one of the following:
 //
-//	ErrorManagementTypesArgs{...}
+//	ErrorManagementTypesRejectAndContinue
+//	ErrorManagementTypesStopImport
+//	ErrorManagementTypesRejectUntilLimit
 type ErrorManagementTypesInput interface {
 	pulumi.Input
 
@@ -1185,10 +1369,10 @@ func (o FormatTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// FormatTypesInput is an input type that accepts FormatTypesArgs and FormatTypesOutput values.
-// You can construct a concrete instance of `FormatTypesInput` via:
+// FormatTypesInput is an input type that accepts values of the FormatTypes enum
+// A concrete instance of `FormatTypesInput` can be one of the following:
 //
-//	FormatTypesArgs{...}
+//	FormatTypesTextFormat
 type FormatTypesInput interface {
 	pulumi.Input
 
@@ -1359,10 +1543,14 @@ func (o FrequencyTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// FrequencyTypesInput is an input type that accepts FrequencyTypesArgs and FrequencyTypesOutput values.
-// You can construct a concrete instance of `FrequencyTypesInput` via:
+// FrequencyTypesInput is an input type that accepts values of the FrequencyTypes enum
+// A concrete instance of `FrequencyTypesInput` can be one of the following:
 //
-//	FrequencyTypesArgs{...}
+//	FrequencyTypesMinute
+//	FrequencyTypesHour
+//	FrequencyTypesDay
+//	FrequencyTypesWeek
+//	FrequencyTypesMonth
 type FrequencyTypesInput interface {
 	pulumi.Input
 
@@ -1530,10 +1718,11 @@ func (o InstanceOperationTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// InstanceOperationTypeInput is an input type that accepts InstanceOperationTypeArgs and InstanceOperationTypeOutput values.
-// You can construct a concrete instance of `InstanceOperationTypeInput` via:
+// InstanceOperationTypeInput is an input type that accepts values of the InstanceOperationType enum
+// A concrete instance of `InstanceOperationTypeInput` can be one of the following:
 //
-//	InstanceOperationTypeArgs{...}
+//	InstanceOperationTypeUpsert
+//	InstanceOperationTypeDelete
 type InstanceOperationTypeInput interface {
 	pulumi.Input
 
@@ -1707,10 +1896,17 @@ func (o KpiFunctionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// KpiFunctionsInput is an input type that accepts KpiFunctionsArgs and KpiFunctionsOutput values.
-// You can construct a concrete instance of `KpiFunctionsInput` via:
+// KpiFunctionsInput is an input type that accepts values of the KpiFunctions enum
+// A concrete instance of `KpiFunctionsInput` can be one of the following:
 //
-//	KpiFunctionsArgs{...}
+//	KpiFunctionsSum
+//	KpiFunctionsAvg
+//	KpiFunctionsMin
+//	KpiFunctionsMax
+//	KpiFunctionsLast
+//	KpiFunctionsCount
+//	KpiFunctionsNone
+//	KpiFunctionsCountDistinct
 type KpiFunctionsInput interface {
 	pulumi.Input
 
@@ -1878,10 +2074,11 @@ func (o LinkTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// LinkTypesInput is an input type that accepts LinkTypesArgs and LinkTypesOutput values.
-// You can construct a concrete instance of `LinkTypesInput` via:
+// LinkTypesInput is an input type that accepts values of the LinkTypes enum
+// A concrete instance of `LinkTypesInput` can be one of the following:
 //
-//	LinkTypesArgs{...}
+//	LinkTypesUpdateAlways
+//	LinkTypesCopyIfNull
 type LinkTypesInput interface {
 	pulumi.Input
 
@@ -2053,10 +2250,15 @@ func (o RoleTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// RoleTypesInput is an input type that accepts RoleTypesArgs and RoleTypesOutput values.
-// You can construct a concrete instance of `RoleTypesInput` via:
+// RoleTypesInput is an input type that accepts values of the RoleTypes enum
+// A concrete instance of `RoleTypesInput` can be one of the following:
 //
-//	RoleTypesArgs{...}
+//	RoleTypesAdmin
+//	RoleTypesReader
+//	RoleTypesManageAdmin
+//	RoleTypesManageReader
+//	RoleTypesDataAdmin
+//	RoleTypesDataReader
 type RoleTypesInput interface {
 	pulumi.Input
 
@@ -2104,6 +2306,8 @@ func init() {
 	pulumi.RegisterOutputType(CardinalityTypesPtrOutput{})
 	pulumi.RegisterOutputType(CompletionOperationTypesOutput{})
 	pulumi.RegisterOutputType(CompletionOperationTypesPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorTypesOutput{})
+	pulumi.RegisterOutputType(ConnectorTypesPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeOutput{})
 	pulumi.RegisterOutputType(EntityTypePtrOutput{})
 	pulumi.RegisterOutputType(EntityTypesOutput{})

@@ -114,6 +114,9 @@ func NewSqlResourceSqlRoleDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230915preview:SqlResourceSqlRoleDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20231115preview:SqlResourceSqlRoleDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

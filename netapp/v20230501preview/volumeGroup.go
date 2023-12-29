@@ -74,6 +74,9 @@ func NewVolumeGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20230501:VolumeGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230701:VolumeGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -23,6 +23,176 @@ type ApplicationServerConfiguration struct {
 	VirtualMachineConfiguration VirtualMachineConfiguration `pulumi:"virtualMachineConfiguration"`
 }
 
+// ApplicationServerConfigurationInput is an input type that accepts ApplicationServerConfigurationArgs and ApplicationServerConfigurationOutput values.
+// You can construct a concrete instance of `ApplicationServerConfigurationInput` via:
+//
+//	ApplicationServerConfigurationArgs{...}
+type ApplicationServerConfigurationInput interface {
+	pulumi.Input
+
+	ToApplicationServerConfigurationOutput() ApplicationServerConfigurationOutput
+	ToApplicationServerConfigurationOutputWithContext(context.Context) ApplicationServerConfigurationOutput
+}
+
+// Gets or sets the application server configuration.
+type ApplicationServerConfigurationArgs struct {
+	// The number of app server instances.
+	InstanceCount pulumi.Float64Input `pulumi:"instanceCount"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Gets or sets the virtual machine configuration.
+	VirtualMachineConfiguration VirtualMachineConfigurationInput `pulumi:"virtualMachineConfiguration"`
+}
+
+func (ApplicationServerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerConfiguration)(nil)).Elem()
+}
+
+func (i ApplicationServerConfigurationArgs) ToApplicationServerConfigurationOutput() ApplicationServerConfigurationOutput {
+	return i.ToApplicationServerConfigurationOutputWithContext(context.Background())
+}
+
+func (i ApplicationServerConfigurationArgs) ToApplicationServerConfigurationOutputWithContext(ctx context.Context) ApplicationServerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServerConfigurationOutput)
+}
+
+func (i ApplicationServerConfigurationArgs) ToApplicationServerConfigurationPtrOutput() ApplicationServerConfigurationPtrOutput {
+	return i.ToApplicationServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationServerConfigurationArgs) ToApplicationServerConfigurationPtrOutputWithContext(ctx context.Context) ApplicationServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServerConfigurationOutput).ToApplicationServerConfigurationPtrOutputWithContext(ctx)
+}
+
+// ApplicationServerConfigurationPtrInput is an input type that accepts ApplicationServerConfigurationArgs, ApplicationServerConfigurationPtr and ApplicationServerConfigurationPtrOutput values.
+// You can construct a concrete instance of `ApplicationServerConfigurationPtrInput` via:
+//
+//	        ApplicationServerConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationServerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToApplicationServerConfigurationPtrOutput() ApplicationServerConfigurationPtrOutput
+	ToApplicationServerConfigurationPtrOutputWithContext(context.Context) ApplicationServerConfigurationPtrOutput
+}
+
+type applicationServerConfigurationPtrType ApplicationServerConfigurationArgs
+
+func ApplicationServerConfigurationPtr(v *ApplicationServerConfigurationArgs) ApplicationServerConfigurationPtrInput {
+	return (*applicationServerConfigurationPtrType)(v)
+}
+
+func (*applicationServerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServerConfiguration)(nil)).Elem()
+}
+
+func (i *applicationServerConfigurationPtrType) ToApplicationServerConfigurationPtrOutput() ApplicationServerConfigurationPtrOutput {
+	return i.ToApplicationServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationServerConfigurationPtrType) ToApplicationServerConfigurationPtrOutputWithContext(ctx context.Context) ApplicationServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServerConfigurationPtrOutput)
+}
+
+// Gets or sets the application server configuration.
+type ApplicationServerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerConfiguration)(nil)).Elem()
+}
+
+func (o ApplicationServerConfigurationOutput) ToApplicationServerConfigurationOutput() ApplicationServerConfigurationOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationOutput) ToApplicationServerConfigurationOutputWithContext(ctx context.Context) ApplicationServerConfigurationOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationOutput) ToApplicationServerConfigurationPtrOutput() ApplicationServerConfigurationPtrOutput {
+	return o.ToApplicationServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationServerConfigurationOutput) ToApplicationServerConfigurationPtrOutputWithContext(ctx context.Context) ApplicationServerConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationServerConfiguration) *ApplicationServerConfiguration {
+		return &v
+	}).(ApplicationServerConfigurationPtrOutput)
+}
+
+// The number of app server instances.
+func (o ApplicationServerConfigurationOutput) InstanceCount() pulumi.Float64Output {
+	return o.ApplyT(func(v ApplicationServerConfiguration) float64 { return v.InstanceCount }).(pulumi.Float64Output)
+}
+
+// The subnet id.
+func (o ApplicationServerConfigurationOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationServerConfiguration) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o ApplicationServerConfigurationOutput) VirtualMachineConfiguration() VirtualMachineConfigurationOutput {
+	return o.ApplyT(func(v ApplicationServerConfiguration) VirtualMachineConfiguration {
+		return v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationOutput)
+}
+
+type ApplicationServerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServerConfiguration)(nil)).Elem()
+}
+
+func (o ApplicationServerConfigurationPtrOutput) ToApplicationServerConfigurationPtrOutput() ApplicationServerConfigurationPtrOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationPtrOutput) ToApplicationServerConfigurationPtrOutputWithContext(ctx context.Context) ApplicationServerConfigurationPtrOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationPtrOutput) Elem() ApplicationServerConfigurationOutput {
+	return o.ApplyT(func(v *ApplicationServerConfiguration) ApplicationServerConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationServerConfiguration
+		return ret
+	}).(ApplicationServerConfigurationOutput)
+}
+
+// The number of app server instances.
+func (o ApplicationServerConfigurationPtrOutput) InstanceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ApplicationServerConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The subnet id.
+func (o ApplicationServerConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o ApplicationServerConfigurationPtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationPtrOutput {
+	return o.ApplyT(func(v *ApplicationServerConfiguration) *VirtualMachineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationPtrOutput)
+}
+
 // Gets or sets the application server configuration.
 type ApplicationServerConfigurationResponse struct {
 	// The number of app server instances.
@@ -33,6 +203,92 @@ type ApplicationServerConfigurationResponse struct {
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
+// Gets or sets the application server configuration.
+type ApplicationServerConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerConfigurationResponse)(nil)).Elem()
+}
+
+func (o ApplicationServerConfigurationResponseOutput) ToApplicationServerConfigurationResponseOutput() ApplicationServerConfigurationResponseOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationResponseOutput) ToApplicationServerConfigurationResponseOutputWithContext(ctx context.Context) ApplicationServerConfigurationResponseOutput {
+	return o
+}
+
+// The number of app server instances.
+func (o ApplicationServerConfigurationResponseOutput) InstanceCount() pulumi.Float64Output {
+	return o.ApplyT(func(v ApplicationServerConfigurationResponse) float64 { return v.InstanceCount }).(pulumi.Float64Output)
+}
+
+// The subnet id.
+func (o ApplicationServerConfigurationResponseOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationServerConfigurationResponse) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o ApplicationServerConfigurationResponseOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponseOutput {
+	return o.ApplyT(func(v ApplicationServerConfigurationResponse) VirtualMachineConfigurationResponse {
+		return v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponseOutput)
+}
+
+type ApplicationServerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServerConfigurationResponse)(nil)).Elem()
+}
+
+func (o ApplicationServerConfigurationResponsePtrOutput) ToApplicationServerConfigurationResponsePtrOutput() ApplicationServerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationResponsePtrOutput) ToApplicationServerConfigurationResponsePtrOutputWithContext(ctx context.Context) ApplicationServerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationServerConfigurationResponsePtrOutput) Elem() ApplicationServerConfigurationResponseOutput {
+	return o.ApplyT(func(v *ApplicationServerConfigurationResponse) ApplicationServerConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationServerConfigurationResponse
+		return ret
+	}).(ApplicationServerConfigurationResponseOutput)
+}
+
+// The number of app server instances.
+func (o ApplicationServerConfigurationResponsePtrOutput) InstanceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ApplicationServerConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The subnet id.
+func (o ApplicationServerConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationServerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o ApplicationServerConfigurationResponsePtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ApplicationServerConfigurationResponse) *VirtualMachineConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponsePtrOutput)
+}
+
 // The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
 type ApplicationServerFullResourceNames struct {
 	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
@@ -41,12 +297,234 @@ type ApplicationServerFullResourceNames struct {
 	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
 }
 
+// ApplicationServerFullResourceNamesInput is an input type that accepts ApplicationServerFullResourceNamesArgs and ApplicationServerFullResourceNamesOutput values.
+// You can construct a concrete instance of `ApplicationServerFullResourceNamesInput` via:
+//
+//	ApplicationServerFullResourceNamesArgs{...}
+type ApplicationServerFullResourceNamesInput interface {
+	pulumi.Input
+
+	ToApplicationServerFullResourceNamesOutput() ApplicationServerFullResourceNamesOutput
+	ToApplicationServerFullResourceNamesOutputWithContext(context.Context) ApplicationServerFullResourceNamesOutput
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNamesArgs struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+	AvailabilitySetName pulumi.StringPtrInput `pulumi:"availabilitySetName"`
+	// The list of virtual machine naming details.
+	VirtualMachines VirtualMachineResourceNamesArrayInput `pulumi:"virtualMachines"`
+}
+
+func (ApplicationServerFullResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerFullResourceNames)(nil)).Elem()
+}
+
+func (i ApplicationServerFullResourceNamesArgs) ToApplicationServerFullResourceNamesOutput() ApplicationServerFullResourceNamesOutput {
+	return i.ToApplicationServerFullResourceNamesOutputWithContext(context.Background())
+}
+
+func (i ApplicationServerFullResourceNamesArgs) ToApplicationServerFullResourceNamesOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServerFullResourceNamesOutput)
+}
+
+func (i ApplicationServerFullResourceNamesArgs) ToApplicationServerFullResourceNamesPtrOutput() ApplicationServerFullResourceNamesPtrOutput {
+	return i.ToApplicationServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationServerFullResourceNamesArgs) ToApplicationServerFullResourceNamesPtrOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServerFullResourceNamesOutput).ToApplicationServerFullResourceNamesPtrOutputWithContext(ctx)
+}
+
+// ApplicationServerFullResourceNamesPtrInput is an input type that accepts ApplicationServerFullResourceNamesArgs, ApplicationServerFullResourceNamesPtr and ApplicationServerFullResourceNamesPtrOutput values.
+// You can construct a concrete instance of `ApplicationServerFullResourceNamesPtrInput` via:
+//
+//	        ApplicationServerFullResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationServerFullResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToApplicationServerFullResourceNamesPtrOutput() ApplicationServerFullResourceNamesPtrOutput
+	ToApplicationServerFullResourceNamesPtrOutputWithContext(context.Context) ApplicationServerFullResourceNamesPtrOutput
+}
+
+type applicationServerFullResourceNamesPtrType ApplicationServerFullResourceNamesArgs
+
+func ApplicationServerFullResourceNamesPtr(v *ApplicationServerFullResourceNamesArgs) ApplicationServerFullResourceNamesPtrInput {
+	return (*applicationServerFullResourceNamesPtrType)(v)
+}
+
+func (*applicationServerFullResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServerFullResourceNames)(nil)).Elem()
+}
+
+func (i *applicationServerFullResourceNamesPtrType) ToApplicationServerFullResourceNamesPtrOutput() ApplicationServerFullResourceNamesPtrOutput {
+	return i.ToApplicationServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationServerFullResourceNamesPtrType) ToApplicationServerFullResourceNamesPtrOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerFullResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerFullResourceNames)(nil)).Elem()
+}
+
+func (o ApplicationServerFullResourceNamesOutput) ToApplicationServerFullResourceNamesOutput() ApplicationServerFullResourceNamesOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesOutput) ToApplicationServerFullResourceNamesOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesOutput) ToApplicationServerFullResourceNamesPtrOutput() ApplicationServerFullResourceNamesPtrOutput {
+	return o.ToApplicationServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationServerFullResourceNamesOutput) ToApplicationServerFullResourceNamesPtrOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationServerFullResourceNames) *ApplicationServerFullResourceNames {
+		return &v
+	}).(ApplicationServerFullResourceNamesPtrOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+func (o ApplicationServerFullResourceNamesOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationServerFullResourceNames) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o ApplicationServerFullResourceNamesOutput) VirtualMachines() VirtualMachineResourceNamesArrayOutput {
+	return o.ApplyT(func(v ApplicationServerFullResourceNames) []VirtualMachineResourceNames { return v.VirtualMachines }).(VirtualMachineResourceNamesArrayOutput)
+}
+
+type ApplicationServerFullResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerFullResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServerFullResourceNames)(nil)).Elem()
+}
+
+func (o ApplicationServerFullResourceNamesPtrOutput) ToApplicationServerFullResourceNamesPtrOutput() ApplicationServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesPtrOutput) ToApplicationServerFullResourceNamesPtrOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesPtrOutput) Elem() ApplicationServerFullResourceNamesOutput {
+	return o.ApplyT(func(v *ApplicationServerFullResourceNames) ApplicationServerFullResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationServerFullResourceNames
+		return ret
+	}).(ApplicationServerFullResourceNamesOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+func (o ApplicationServerFullResourceNamesPtrOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationServerFullResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilitySetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o ApplicationServerFullResourceNamesPtrOutput) VirtualMachines() VirtualMachineResourceNamesArrayOutput {
+	return o.ApplyT(func(v *ApplicationServerFullResourceNames) []VirtualMachineResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesArrayOutput)
+}
+
 // The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
 type ApplicationServerFullResourceNamesResponse struct {
 	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
 	AvailabilitySetName *string `pulumi:"availabilitySetName"`
 	// The list of virtual machine naming details.
 	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+type ApplicationServerFullResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerFullResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o ApplicationServerFullResourceNamesResponseOutput) ToApplicationServerFullResourceNamesResponseOutput() ApplicationServerFullResourceNamesResponseOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesResponseOutput) ToApplicationServerFullResourceNamesResponseOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesResponseOutput {
+	return o
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+func (o ApplicationServerFullResourceNamesResponseOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationServerFullResourceNamesResponse) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o ApplicationServerFullResourceNamesResponseOutput) VirtualMachines() VirtualMachineResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v ApplicationServerFullResourceNamesResponse) []VirtualMachineResourceNamesResponse {
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesResponseArrayOutput)
+}
+
+type ApplicationServerFullResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationServerFullResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o ApplicationServerFullResourceNamesResponsePtrOutput) ToApplicationServerFullResourceNamesResponsePtrOutput() ApplicationServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesResponsePtrOutput) ToApplicationServerFullResourceNamesResponsePtrOutputWithContext(ctx context.Context) ApplicationServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o ApplicationServerFullResourceNamesResponsePtrOutput) Elem() ApplicationServerFullResourceNamesResponseOutput {
+	return o.ApplyT(func(v *ApplicationServerFullResourceNamesResponse) ApplicationServerFullResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationServerFullResourceNamesResponse
+		return ret
+	}).(ApplicationServerFullResourceNamesResponseOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-App-AvSet.
+func (o ApplicationServerFullResourceNamesResponsePtrOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationServerFullResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilitySetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o ApplicationServerFullResourceNamesResponsePtrOutput) VirtualMachines() VirtualMachineResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v *ApplicationServerFullResourceNamesResponse) []VirtualMachineResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesResponseArrayOutput)
 }
 
 // The Application Server VM Details.
@@ -117,6 +595,174 @@ type CentralServerConfiguration struct {
 	VirtualMachineConfiguration VirtualMachineConfiguration `pulumi:"virtualMachineConfiguration"`
 }
 
+// CentralServerConfigurationInput is an input type that accepts CentralServerConfigurationArgs and CentralServerConfigurationOutput values.
+// You can construct a concrete instance of `CentralServerConfigurationInput` via:
+//
+//	CentralServerConfigurationArgs{...}
+type CentralServerConfigurationInput interface {
+	pulumi.Input
+
+	ToCentralServerConfigurationOutput() CentralServerConfigurationOutput
+	ToCentralServerConfigurationOutputWithContext(context.Context) CentralServerConfigurationOutput
+}
+
+// Gets or sets the central server configuration.
+type CentralServerConfigurationArgs struct {
+	// The number of central server VMs.
+	InstanceCount pulumi.Float64Input `pulumi:"instanceCount"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Gets or sets the virtual machine configuration.
+	VirtualMachineConfiguration VirtualMachineConfigurationInput `pulumi:"virtualMachineConfiguration"`
+}
+
+func (CentralServerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CentralServerConfiguration)(nil)).Elem()
+}
+
+func (i CentralServerConfigurationArgs) ToCentralServerConfigurationOutput() CentralServerConfigurationOutput {
+	return i.ToCentralServerConfigurationOutputWithContext(context.Background())
+}
+
+func (i CentralServerConfigurationArgs) ToCentralServerConfigurationOutputWithContext(ctx context.Context) CentralServerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CentralServerConfigurationOutput)
+}
+
+func (i CentralServerConfigurationArgs) ToCentralServerConfigurationPtrOutput() CentralServerConfigurationPtrOutput {
+	return i.ToCentralServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CentralServerConfigurationArgs) ToCentralServerConfigurationPtrOutputWithContext(ctx context.Context) CentralServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CentralServerConfigurationOutput).ToCentralServerConfigurationPtrOutputWithContext(ctx)
+}
+
+// CentralServerConfigurationPtrInput is an input type that accepts CentralServerConfigurationArgs, CentralServerConfigurationPtr and CentralServerConfigurationPtrOutput values.
+// You can construct a concrete instance of `CentralServerConfigurationPtrInput` via:
+//
+//	        CentralServerConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CentralServerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCentralServerConfigurationPtrOutput() CentralServerConfigurationPtrOutput
+	ToCentralServerConfigurationPtrOutputWithContext(context.Context) CentralServerConfigurationPtrOutput
+}
+
+type centralServerConfigurationPtrType CentralServerConfigurationArgs
+
+func CentralServerConfigurationPtr(v *CentralServerConfigurationArgs) CentralServerConfigurationPtrInput {
+	return (*centralServerConfigurationPtrType)(v)
+}
+
+func (*centralServerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CentralServerConfiguration)(nil)).Elem()
+}
+
+func (i *centralServerConfigurationPtrType) ToCentralServerConfigurationPtrOutput() CentralServerConfigurationPtrOutput {
+	return i.ToCentralServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *centralServerConfigurationPtrType) ToCentralServerConfigurationPtrOutputWithContext(ctx context.Context) CentralServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CentralServerConfigurationPtrOutput)
+}
+
+// Gets or sets the central server configuration.
+type CentralServerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CentralServerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CentralServerConfiguration)(nil)).Elem()
+}
+
+func (o CentralServerConfigurationOutput) ToCentralServerConfigurationOutput() CentralServerConfigurationOutput {
+	return o
+}
+
+func (o CentralServerConfigurationOutput) ToCentralServerConfigurationOutputWithContext(ctx context.Context) CentralServerConfigurationOutput {
+	return o
+}
+
+func (o CentralServerConfigurationOutput) ToCentralServerConfigurationPtrOutput() CentralServerConfigurationPtrOutput {
+	return o.ToCentralServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CentralServerConfigurationOutput) ToCentralServerConfigurationPtrOutputWithContext(ctx context.Context) CentralServerConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CentralServerConfiguration) *CentralServerConfiguration {
+		return &v
+	}).(CentralServerConfigurationPtrOutput)
+}
+
+// The number of central server VMs.
+func (o CentralServerConfigurationOutput) InstanceCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CentralServerConfiguration) float64 { return v.InstanceCount }).(pulumi.Float64Output)
+}
+
+// The subnet id.
+func (o CentralServerConfigurationOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v CentralServerConfiguration) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o CentralServerConfigurationOutput) VirtualMachineConfiguration() VirtualMachineConfigurationOutput {
+	return o.ApplyT(func(v CentralServerConfiguration) VirtualMachineConfiguration { return v.VirtualMachineConfiguration }).(VirtualMachineConfigurationOutput)
+}
+
+type CentralServerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CentralServerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CentralServerConfiguration)(nil)).Elem()
+}
+
+func (o CentralServerConfigurationPtrOutput) ToCentralServerConfigurationPtrOutput() CentralServerConfigurationPtrOutput {
+	return o
+}
+
+func (o CentralServerConfigurationPtrOutput) ToCentralServerConfigurationPtrOutputWithContext(ctx context.Context) CentralServerConfigurationPtrOutput {
+	return o
+}
+
+func (o CentralServerConfigurationPtrOutput) Elem() CentralServerConfigurationOutput {
+	return o.ApplyT(func(v *CentralServerConfiguration) CentralServerConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CentralServerConfiguration
+		return ret
+	}).(CentralServerConfigurationOutput)
+}
+
+// The number of central server VMs.
+func (o CentralServerConfigurationPtrOutput) InstanceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CentralServerConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The subnet id.
+func (o CentralServerConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o CentralServerConfigurationPtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationPtrOutput {
+	return o.ApplyT(func(v *CentralServerConfiguration) *VirtualMachineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationPtrOutput)
+}
+
 // Gets or sets the central server configuration.
 type CentralServerConfigurationResponse struct {
 	// The number of central server VMs.
@@ -125,6 +771,92 @@ type CentralServerConfigurationResponse struct {
 	SubnetId string `pulumi:"subnetId"`
 	// Gets or sets the virtual machine configuration.
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
+}
+
+// Gets or sets the central server configuration.
+type CentralServerConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CentralServerConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CentralServerConfigurationResponse)(nil)).Elem()
+}
+
+func (o CentralServerConfigurationResponseOutput) ToCentralServerConfigurationResponseOutput() CentralServerConfigurationResponseOutput {
+	return o
+}
+
+func (o CentralServerConfigurationResponseOutput) ToCentralServerConfigurationResponseOutputWithContext(ctx context.Context) CentralServerConfigurationResponseOutput {
+	return o
+}
+
+// The number of central server VMs.
+func (o CentralServerConfigurationResponseOutput) InstanceCount() pulumi.Float64Output {
+	return o.ApplyT(func(v CentralServerConfigurationResponse) float64 { return v.InstanceCount }).(pulumi.Float64Output)
+}
+
+// The subnet id.
+func (o CentralServerConfigurationResponseOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v CentralServerConfigurationResponse) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o CentralServerConfigurationResponseOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponseOutput {
+	return o.ApplyT(func(v CentralServerConfigurationResponse) VirtualMachineConfigurationResponse {
+		return v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponseOutput)
+}
+
+type CentralServerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CentralServerConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CentralServerConfigurationResponse)(nil)).Elem()
+}
+
+func (o CentralServerConfigurationResponsePtrOutput) ToCentralServerConfigurationResponsePtrOutput() CentralServerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CentralServerConfigurationResponsePtrOutput) ToCentralServerConfigurationResponsePtrOutputWithContext(ctx context.Context) CentralServerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CentralServerConfigurationResponsePtrOutput) Elem() CentralServerConfigurationResponseOutput {
+	return o.ApplyT(func(v *CentralServerConfigurationResponse) CentralServerConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CentralServerConfigurationResponse
+		return ret
+	}).(CentralServerConfigurationResponseOutput)
+}
+
+// The number of central server VMs.
+func (o CentralServerConfigurationResponsePtrOutput) InstanceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CentralServerConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The subnet id.
+func (o CentralServerConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralServerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o CentralServerConfigurationResponsePtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *CentralServerConfigurationResponse) *VirtualMachineConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponsePtrOutput)
 }
 
 // The full resource names object for central server layer resources.
@@ -137,6 +869,174 @@ type CentralServerFullResourceNames struct {
 	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
 }
 
+// CentralServerFullResourceNamesInput is an input type that accepts CentralServerFullResourceNamesArgs and CentralServerFullResourceNamesOutput values.
+// You can construct a concrete instance of `CentralServerFullResourceNamesInput` via:
+//
+//	CentralServerFullResourceNamesArgs{...}
+type CentralServerFullResourceNamesInput interface {
+	pulumi.Input
+
+	ToCentralServerFullResourceNamesOutput() CentralServerFullResourceNamesOutput
+	ToCentralServerFullResourceNamesOutputWithContext(context.Context) CentralServerFullResourceNamesOutput
+}
+
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNamesArgs struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+	AvailabilitySetName pulumi.StringPtrInput `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer LoadBalancerResourceNamesPtrInput `pulumi:"loadBalancer"`
+	// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+	VirtualMachines VirtualMachineResourceNamesArrayInput `pulumi:"virtualMachines"`
+}
+
+func (CentralServerFullResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CentralServerFullResourceNames)(nil)).Elem()
+}
+
+func (i CentralServerFullResourceNamesArgs) ToCentralServerFullResourceNamesOutput() CentralServerFullResourceNamesOutput {
+	return i.ToCentralServerFullResourceNamesOutputWithContext(context.Background())
+}
+
+func (i CentralServerFullResourceNamesArgs) ToCentralServerFullResourceNamesOutputWithContext(ctx context.Context) CentralServerFullResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CentralServerFullResourceNamesOutput)
+}
+
+func (i CentralServerFullResourceNamesArgs) ToCentralServerFullResourceNamesPtrOutput() CentralServerFullResourceNamesPtrOutput {
+	return i.ToCentralServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i CentralServerFullResourceNamesArgs) ToCentralServerFullResourceNamesPtrOutputWithContext(ctx context.Context) CentralServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CentralServerFullResourceNamesOutput).ToCentralServerFullResourceNamesPtrOutputWithContext(ctx)
+}
+
+// CentralServerFullResourceNamesPtrInput is an input type that accepts CentralServerFullResourceNamesArgs, CentralServerFullResourceNamesPtr and CentralServerFullResourceNamesPtrOutput values.
+// You can construct a concrete instance of `CentralServerFullResourceNamesPtrInput` via:
+//
+//	        CentralServerFullResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CentralServerFullResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToCentralServerFullResourceNamesPtrOutput() CentralServerFullResourceNamesPtrOutput
+	ToCentralServerFullResourceNamesPtrOutputWithContext(context.Context) CentralServerFullResourceNamesPtrOutput
+}
+
+type centralServerFullResourceNamesPtrType CentralServerFullResourceNamesArgs
+
+func CentralServerFullResourceNamesPtr(v *CentralServerFullResourceNamesArgs) CentralServerFullResourceNamesPtrInput {
+	return (*centralServerFullResourceNamesPtrType)(v)
+}
+
+func (*centralServerFullResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CentralServerFullResourceNames)(nil)).Elem()
+}
+
+func (i *centralServerFullResourceNamesPtrType) ToCentralServerFullResourceNamesPtrOutput() CentralServerFullResourceNamesPtrOutput {
+	return i.ToCentralServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *centralServerFullResourceNamesPtrType) ToCentralServerFullResourceNamesPtrOutputWithContext(ctx context.Context) CentralServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CentralServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (CentralServerFullResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CentralServerFullResourceNames)(nil)).Elem()
+}
+
+func (o CentralServerFullResourceNamesOutput) ToCentralServerFullResourceNamesOutput() CentralServerFullResourceNamesOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesOutput) ToCentralServerFullResourceNamesOutputWithContext(ctx context.Context) CentralServerFullResourceNamesOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesOutput) ToCentralServerFullResourceNamesPtrOutput() CentralServerFullResourceNamesPtrOutput {
+	return o.ToCentralServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o CentralServerFullResourceNamesOutput) ToCentralServerFullResourceNamesPtrOutputWithContext(ctx context.Context) CentralServerFullResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CentralServerFullResourceNames) *CentralServerFullResourceNames {
+		return &v
+	}).(CentralServerFullResourceNamesPtrOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+func (o CentralServerFullResourceNamesOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CentralServerFullResourceNames) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o CentralServerFullResourceNamesOutput) LoadBalancer() LoadBalancerResourceNamesPtrOutput {
+	return o.ApplyT(func(v CentralServerFullResourceNames) *LoadBalancerResourceNames { return v.LoadBalancer }).(LoadBalancerResourceNamesPtrOutput)
+}
+
+// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+func (o CentralServerFullResourceNamesOutput) VirtualMachines() VirtualMachineResourceNamesArrayOutput {
+	return o.ApplyT(func(v CentralServerFullResourceNames) []VirtualMachineResourceNames { return v.VirtualMachines }).(VirtualMachineResourceNamesArrayOutput)
+}
+
+type CentralServerFullResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (CentralServerFullResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CentralServerFullResourceNames)(nil)).Elem()
+}
+
+func (o CentralServerFullResourceNamesPtrOutput) ToCentralServerFullResourceNamesPtrOutput() CentralServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesPtrOutput) ToCentralServerFullResourceNamesPtrOutputWithContext(ctx context.Context) CentralServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesPtrOutput) Elem() CentralServerFullResourceNamesOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNames) CentralServerFullResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret CentralServerFullResourceNames
+		return ret
+	}).(CentralServerFullResourceNamesOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+func (o CentralServerFullResourceNamesPtrOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilitySetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o CentralServerFullResourceNamesPtrOutput) LoadBalancer() LoadBalancerResourceNamesPtrOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNames) *LoadBalancerResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancer
+	}).(LoadBalancerResourceNamesPtrOutput)
+}
+
+// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+func (o CentralServerFullResourceNamesPtrOutput) VirtualMachines() VirtualMachineResourceNamesArrayOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNames) []VirtualMachineResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesArrayOutput)
+}
+
 // The full resource names object for central server layer resources.
 type CentralServerFullResourceNamesResponse struct {
 	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
@@ -145,6 +1045,94 @@ type CentralServerFullResourceNamesResponse struct {
 	LoadBalancer *LoadBalancerResourceNamesResponse `pulumi:"loadBalancer"`
 	// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
 	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for central server layer resources.
+type CentralServerFullResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (CentralServerFullResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CentralServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o CentralServerFullResourceNamesResponseOutput) ToCentralServerFullResourceNamesResponseOutput() CentralServerFullResourceNamesResponseOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesResponseOutput) ToCentralServerFullResourceNamesResponseOutputWithContext(ctx context.Context) CentralServerFullResourceNamesResponseOutput {
+	return o
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+func (o CentralServerFullResourceNamesResponseOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CentralServerFullResourceNamesResponse) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o CentralServerFullResourceNamesResponseOutput) LoadBalancer() LoadBalancerResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v CentralServerFullResourceNamesResponse) *LoadBalancerResourceNamesResponse {
+		return v.LoadBalancer
+	}).(LoadBalancerResourceNamesResponsePtrOutput)
+}
+
+// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+func (o CentralServerFullResourceNamesResponseOutput) VirtualMachines() VirtualMachineResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v CentralServerFullResourceNamesResponse) []VirtualMachineResourceNamesResponse {
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesResponseArrayOutput)
+}
+
+type CentralServerFullResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CentralServerFullResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CentralServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o CentralServerFullResourceNamesResponsePtrOutput) ToCentralServerFullResourceNamesResponsePtrOutput() CentralServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesResponsePtrOutput) ToCentralServerFullResourceNamesResponsePtrOutputWithContext(ctx context.Context) CentralServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o CentralServerFullResourceNamesResponsePtrOutput) Elem() CentralServerFullResourceNamesResponseOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNamesResponse) CentralServerFullResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CentralServerFullResourceNamesResponse
+		return ret
+	}).(CentralServerFullResourceNamesResponseOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-ASCS-AvSet.
+func (o CentralServerFullResourceNamesResponsePtrOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilitySetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o CentralServerFullResourceNamesResponsePtrOutput) LoadBalancer() LoadBalancerResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNamesResponse) *LoadBalancerResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancer
+	}).(LoadBalancerResourceNamesResponsePtrOutput)
+}
+
+// The list of names for all ASCS virtual machines to be deployed. The number of entries in this list should be equal to the number VMs to be created for ASCS layer. At maximum, there can be two virtual machines at this layer: ASCS and ERS.
+func (o CentralServerFullResourceNamesResponsePtrOutput) VirtualMachines() VirtualMachineResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v *CentralServerFullResourceNamesResponse) []VirtualMachineResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesResponseArrayOutput)
 }
 
 // The SAP Central Services Instance VM details.
@@ -216,6 +1204,177 @@ type CreateAndMountFileShareConfiguration struct {
 	StorageAccountName *string `pulumi:"storageAccountName"`
 }
 
+// CreateAndMountFileShareConfigurationInput is an input type that accepts CreateAndMountFileShareConfigurationArgs and CreateAndMountFileShareConfigurationOutput values.
+// You can construct a concrete instance of `CreateAndMountFileShareConfigurationInput` via:
+//
+//	CreateAndMountFileShareConfigurationArgs{...}
+type CreateAndMountFileShareConfigurationInput interface {
+	pulumi.Input
+
+	ToCreateAndMountFileShareConfigurationOutput() CreateAndMountFileShareConfigurationOutput
+	ToCreateAndMountFileShareConfigurationOutputWithContext(context.Context) CreateAndMountFileShareConfigurationOutput
+}
+
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+type CreateAndMountFileShareConfigurationArgs struct {
+	// The type of file share config.
+	// Expected value is 'CreateAndMount'.
+	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
+	// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// The name of file share storage account name . A custom name is used in case of missing input.
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+}
+
+func (CreateAndMountFileShareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateAndMountFileShareConfiguration)(nil)).Elem()
+}
+
+func (i CreateAndMountFileShareConfigurationArgs) ToCreateAndMountFileShareConfigurationOutput() CreateAndMountFileShareConfigurationOutput {
+	return i.ToCreateAndMountFileShareConfigurationOutputWithContext(context.Background())
+}
+
+func (i CreateAndMountFileShareConfigurationArgs) ToCreateAndMountFileShareConfigurationOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateAndMountFileShareConfigurationOutput)
+}
+
+func (i CreateAndMountFileShareConfigurationArgs) ToCreateAndMountFileShareConfigurationPtrOutput() CreateAndMountFileShareConfigurationPtrOutput {
+	return i.ToCreateAndMountFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CreateAndMountFileShareConfigurationArgs) ToCreateAndMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateAndMountFileShareConfigurationOutput).ToCreateAndMountFileShareConfigurationPtrOutputWithContext(ctx)
+}
+
+// CreateAndMountFileShareConfigurationPtrInput is an input type that accepts CreateAndMountFileShareConfigurationArgs, CreateAndMountFileShareConfigurationPtr and CreateAndMountFileShareConfigurationPtrOutput values.
+// You can construct a concrete instance of `CreateAndMountFileShareConfigurationPtrInput` via:
+//
+//	        CreateAndMountFileShareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CreateAndMountFileShareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCreateAndMountFileShareConfigurationPtrOutput() CreateAndMountFileShareConfigurationPtrOutput
+	ToCreateAndMountFileShareConfigurationPtrOutputWithContext(context.Context) CreateAndMountFileShareConfigurationPtrOutput
+}
+
+type createAndMountFileShareConfigurationPtrType CreateAndMountFileShareConfigurationArgs
+
+func CreateAndMountFileShareConfigurationPtr(v *CreateAndMountFileShareConfigurationArgs) CreateAndMountFileShareConfigurationPtrInput {
+	return (*createAndMountFileShareConfigurationPtrType)(v)
+}
+
+func (*createAndMountFileShareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateAndMountFileShareConfiguration)(nil)).Elem()
+}
+
+func (i *createAndMountFileShareConfigurationPtrType) ToCreateAndMountFileShareConfigurationPtrOutput() CreateAndMountFileShareConfigurationPtrOutput {
+	return i.ToCreateAndMountFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *createAndMountFileShareConfigurationPtrType) ToCreateAndMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreateAndMountFileShareConfigurationPtrOutput)
+}
+
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+type CreateAndMountFileShareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CreateAndMountFileShareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateAndMountFileShareConfiguration)(nil)).Elem()
+}
+
+func (o CreateAndMountFileShareConfigurationOutput) ToCreateAndMountFileShareConfigurationOutput() CreateAndMountFileShareConfigurationOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationOutput) ToCreateAndMountFileShareConfigurationOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationOutput) ToCreateAndMountFileShareConfigurationPtrOutput() CreateAndMountFileShareConfigurationPtrOutput {
+	return o.ToCreateAndMountFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CreateAndMountFileShareConfigurationOutput) ToCreateAndMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreateAndMountFileShareConfiguration) *CreateAndMountFileShareConfiguration {
+		return &v
+	}).(CreateAndMountFileShareConfigurationPtrOutput)
+}
+
+// The type of file share config.
+// Expected value is 'CreateAndMount'.
+func (o CreateAndMountFileShareConfigurationOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateAndMountFileShareConfiguration) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateAndMountFileShareConfiguration) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// The name of file share storage account name . A custom name is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateAndMountFileShareConfiguration) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+type CreateAndMountFileShareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CreateAndMountFileShareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateAndMountFileShareConfiguration)(nil)).Elem()
+}
+
+func (o CreateAndMountFileShareConfigurationPtrOutput) ToCreateAndMountFileShareConfigurationPtrOutput() CreateAndMountFileShareConfigurationPtrOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationPtrOutput) ToCreateAndMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationPtrOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationPtrOutput) Elem() CreateAndMountFileShareConfigurationOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfiguration) CreateAndMountFileShareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CreateAndMountFileShareConfiguration
+		return ret
+	}).(CreateAndMountFileShareConfigurationOutput)
+}
+
+// The type of file share config.
+// Expected value is 'CreateAndMount'.
+func (o CreateAndMountFileShareConfigurationPtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of file share storage account name . A custom name is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
 type CreateAndMountFileShareConfigurationResponse struct {
 	// The type of file share config.
@@ -225,6 +1384,92 @@ type CreateAndMountFileShareConfigurationResponse struct {
 	ResourceGroup *string `pulumi:"resourceGroup"`
 	// The name of file share storage account name . A custom name is used in case of missing input.
 	StorageAccountName *string `pulumi:"storageAccountName"`
+}
+
+// Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
+type CreateAndMountFileShareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CreateAndMountFileShareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateAndMountFileShareConfigurationResponse)(nil)).Elem()
+}
+
+func (o CreateAndMountFileShareConfigurationResponseOutput) ToCreateAndMountFileShareConfigurationResponseOutput() CreateAndMountFileShareConfigurationResponseOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationResponseOutput) ToCreateAndMountFileShareConfigurationResponseOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationResponseOutput {
+	return o
+}
+
+// The type of file share config.
+// Expected value is 'CreateAndMount'.
+func (o CreateAndMountFileShareConfigurationResponseOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v CreateAndMountFileShareConfigurationResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateAndMountFileShareConfigurationResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// The name of file share storage account name . A custom name is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreateAndMountFileShareConfigurationResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+type CreateAndMountFileShareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreateAndMountFileShareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateAndMountFileShareConfigurationResponse)(nil)).Elem()
+}
+
+func (o CreateAndMountFileShareConfigurationResponsePtrOutput) ToCreateAndMountFileShareConfigurationResponsePtrOutput() CreateAndMountFileShareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationResponsePtrOutput) ToCreateAndMountFileShareConfigurationResponsePtrOutputWithContext(ctx context.Context) CreateAndMountFileShareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CreateAndMountFileShareConfigurationResponsePtrOutput) Elem() CreateAndMountFileShareConfigurationResponseOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfigurationResponse) CreateAndMountFileShareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreateAndMountFileShareConfigurationResponse
+		return ret
+	}).(CreateAndMountFileShareConfigurationResponseOutput)
+}
+
+// The type of file share config.
+// Expected value is 'CreateAndMount'.
+func (o CreateAndMountFileShareConfigurationResponsePtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationResponsePtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of file share storage account name . A custom name is used in case of missing input.
+func (o CreateAndMountFileShareConfigurationResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreateAndMountFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the DB2 provider properties.
@@ -252,6 +1497,296 @@ type DB2ProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// DB2ProviderInstancePropertiesInput is an input type that accepts DB2ProviderInstancePropertiesArgs and DB2ProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `DB2ProviderInstancePropertiesInput` via:
+//
+//	DB2ProviderInstancePropertiesArgs{...}
+type DB2ProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToDB2ProviderInstancePropertiesOutput() DB2ProviderInstancePropertiesOutput
+	ToDB2ProviderInstancePropertiesOutputWithContext(context.Context) DB2ProviderInstancePropertiesOutput
+}
+
+// Gets or sets the DB2 provider properties.
+type DB2ProviderInstancePropertiesArgs struct {
+	// Gets or sets the db2 database name.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// Gets or sets the db2 database password.
+	DbPassword pulumi.StringPtrInput `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri pulumi.StringPtrInput `pulumi:"dbPasswordUri"`
+	// Gets or sets the db2 database sql port.
+	DbPort pulumi.StringPtrInput `pulumi:"dbPort"`
+	// Gets or sets the db2 database user name.
+	DbUsername pulumi.StringPtrInput `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'Db2'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (DB2ProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DB2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesOutput() DB2ProviderInstancePropertiesOutput {
+	return i.ToDB2ProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DB2ProviderInstancePropertiesOutput)
+}
+
+func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
+	return i.ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DB2ProviderInstancePropertiesArgs) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DB2ProviderInstancePropertiesOutput).ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// DB2ProviderInstancePropertiesPtrInput is an input type that accepts DB2ProviderInstancePropertiesArgs, DB2ProviderInstancePropertiesPtr and DB2ProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `DB2ProviderInstancePropertiesPtrInput` via:
+//
+//	        DB2ProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DB2ProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput
+	ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Context) DB2ProviderInstancePropertiesPtrOutput
+}
+
+type db2providerInstancePropertiesPtrType DB2ProviderInstancePropertiesArgs
+
+func DB2ProviderInstancePropertiesPtr(v *DB2ProviderInstancePropertiesArgs) DB2ProviderInstancePropertiesPtrInput {
+	return (*db2providerInstancePropertiesPtrType)(v)
+}
+
+func (*db2providerInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DB2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *db2providerInstancePropertiesPtrType) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
+	return i.ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *db2providerInstancePropertiesPtrType) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DB2ProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the DB2 provider properties.
+type DB2ProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (DB2ProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DB2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesOutput() DB2ProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
+	return o.ToDB2ProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DB2ProviderInstancePropertiesOutput) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DB2ProviderInstanceProperties) *DB2ProviderInstanceProperties {
+		return &v
+	}).(DB2ProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the db2 database name.
+func (o DB2ProviderInstancePropertiesOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o DB2ProviderInstancePropertiesOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o DB2ProviderInstancePropertiesOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o DB2ProviderInstancePropertiesOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o DB2ProviderInstancePropertiesOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o DB2ProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o DB2ProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o DB2ProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o DB2ProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o DB2ProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type DB2ProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DB2ProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DB2ProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o DB2ProviderInstancePropertiesPtrOutput) ToDB2ProviderInstancePropertiesPtrOutput() DB2ProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesPtrOutput) ToDB2ProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesPtrOutput) Elem() DB2ProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) DB2ProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DB2ProviderInstanceProperties
+		return ret
+	}).(DB2ProviderInstancePropertiesOutput)
+}
+
+// Gets or sets the db2 database name.
+func (o DB2ProviderInstancePropertiesPtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o DB2ProviderInstancePropertiesPtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o DB2ProviderInstancePropertiesPtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o DB2ProviderInstancePropertiesPtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o DB2ProviderInstancePropertiesPtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o DB2ProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o DB2ProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o DB2ProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o DB2ProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o DB2ProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the DB2 provider properties.
 type DB2ProviderInstancePropertiesResponse struct {
 	// Gets or sets the db2 database name.
@@ -277,6 +1812,197 @@ type DB2ProviderInstancePropertiesResponse struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// Gets or sets the DB2 provider properties.
+type DB2ProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DB2ProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DB2ProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o DB2ProviderInstancePropertiesResponseOutput) ToDB2ProviderInstancePropertiesResponseOutput() DB2ProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesResponseOutput) ToDB2ProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the db2 database name.
+func (o DB2ProviderInstancePropertiesResponseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o DB2ProviderInstancePropertiesResponseOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o DB2ProviderInstancePropertiesResponseOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o DB2ProviderInstancePropertiesResponseOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o DB2ProviderInstancePropertiesResponseOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o DB2ProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o DB2ProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o DB2ProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o DB2ProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o DB2ProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DB2ProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type DB2ProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DB2ProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DB2ProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) ToDB2ProviderInstancePropertiesResponsePtrOutput() DB2ProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) ToDB2ProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) DB2ProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) Elem() DB2ProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) DB2ProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DB2ProviderInstancePropertiesResponse
+		return ret
+	}).(DB2ProviderInstancePropertiesResponseOutput)
+}
+
+// Gets or sets the db2 database name.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database password.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database sql port.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the db2 database user name.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine name.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'Db2'.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB2 Database.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o DB2ProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DB2ProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the database configuration.
 type DatabaseConfiguration struct {
 	// The database type.
@@ -289,6 +2015,208 @@ type DatabaseConfiguration struct {
 	SubnetId string `pulumi:"subnetId"`
 	// Gets or sets the virtual machine configuration.
 	VirtualMachineConfiguration VirtualMachineConfiguration `pulumi:"virtualMachineConfiguration"`
+}
+
+// DatabaseConfigurationInput is an input type that accepts DatabaseConfigurationArgs and DatabaseConfigurationOutput values.
+// You can construct a concrete instance of `DatabaseConfigurationInput` via:
+//
+//	DatabaseConfigurationArgs{...}
+type DatabaseConfigurationInput interface {
+	pulumi.Input
+
+	ToDatabaseConfigurationOutput() DatabaseConfigurationOutput
+	ToDatabaseConfigurationOutputWithContext(context.Context) DatabaseConfigurationOutput
+}
+
+// Gets or sets the database configuration.
+type DatabaseConfigurationArgs struct {
+	// The database type.
+	DatabaseType pulumi.StringPtrInput `pulumi:"databaseType"`
+	// Gets or sets the disk configuration.
+	DiskConfiguration DiskConfigurationPtrInput `pulumi:"diskConfiguration"`
+	// The number of database VMs.
+	InstanceCount pulumi.Float64Input `pulumi:"instanceCount"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Gets or sets the virtual machine configuration.
+	VirtualMachineConfiguration VirtualMachineConfigurationInput `pulumi:"virtualMachineConfiguration"`
+}
+
+func (DatabaseConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConfiguration)(nil)).Elem()
+}
+
+func (i DatabaseConfigurationArgs) ToDatabaseConfigurationOutput() DatabaseConfigurationOutput {
+	return i.ToDatabaseConfigurationOutputWithContext(context.Background())
+}
+
+func (i DatabaseConfigurationArgs) ToDatabaseConfigurationOutputWithContext(ctx context.Context) DatabaseConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigurationOutput)
+}
+
+func (i DatabaseConfigurationArgs) ToDatabaseConfigurationPtrOutput() DatabaseConfigurationPtrOutput {
+	return i.ToDatabaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseConfigurationArgs) ToDatabaseConfigurationPtrOutputWithContext(ctx context.Context) DatabaseConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigurationOutput).ToDatabaseConfigurationPtrOutputWithContext(ctx)
+}
+
+// DatabaseConfigurationPtrInput is an input type that accepts DatabaseConfigurationArgs, DatabaseConfigurationPtr and DatabaseConfigurationPtrOutput values.
+// You can construct a concrete instance of `DatabaseConfigurationPtrInput` via:
+//
+//	        DatabaseConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseConfigurationPtrOutput() DatabaseConfigurationPtrOutput
+	ToDatabaseConfigurationPtrOutputWithContext(context.Context) DatabaseConfigurationPtrOutput
+}
+
+type databaseConfigurationPtrType DatabaseConfigurationArgs
+
+func DatabaseConfigurationPtr(v *DatabaseConfigurationArgs) DatabaseConfigurationPtrInput {
+	return (*databaseConfigurationPtrType)(v)
+}
+
+func (*databaseConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConfiguration)(nil)).Elem()
+}
+
+func (i *databaseConfigurationPtrType) ToDatabaseConfigurationPtrOutput() DatabaseConfigurationPtrOutput {
+	return i.ToDatabaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseConfigurationPtrType) ToDatabaseConfigurationPtrOutputWithContext(ctx context.Context) DatabaseConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigurationPtrOutput)
+}
+
+// Gets or sets the database configuration.
+type DatabaseConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConfiguration)(nil)).Elem()
+}
+
+func (o DatabaseConfigurationOutput) ToDatabaseConfigurationOutput() DatabaseConfigurationOutput {
+	return o
+}
+
+func (o DatabaseConfigurationOutput) ToDatabaseConfigurationOutputWithContext(ctx context.Context) DatabaseConfigurationOutput {
+	return o
+}
+
+func (o DatabaseConfigurationOutput) ToDatabaseConfigurationPtrOutput() DatabaseConfigurationPtrOutput {
+	return o.ToDatabaseConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseConfigurationOutput) ToDatabaseConfigurationPtrOutputWithContext(ctx context.Context) DatabaseConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseConfiguration) *DatabaseConfiguration {
+		return &v
+	}).(DatabaseConfigurationPtrOutput)
+}
+
+// The database type.
+func (o DatabaseConfigurationOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseConfiguration) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o DatabaseConfigurationOutput) DiskConfiguration() DiskConfigurationPtrOutput {
+	return o.ApplyT(func(v DatabaseConfiguration) *DiskConfiguration { return v.DiskConfiguration }).(DiskConfigurationPtrOutput)
+}
+
+// The number of database VMs.
+func (o DatabaseConfigurationOutput) InstanceCount() pulumi.Float64Output {
+	return o.ApplyT(func(v DatabaseConfiguration) float64 { return v.InstanceCount }).(pulumi.Float64Output)
+}
+
+// The subnet id.
+func (o DatabaseConfigurationOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseConfiguration) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o DatabaseConfigurationOutput) VirtualMachineConfiguration() VirtualMachineConfigurationOutput {
+	return o.ApplyT(func(v DatabaseConfiguration) VirtualMachineConfiguration { return v.VirtualMachineConfiguration }).(VirtualMachineConfigurationOutput)
+}
+
+type DatabaseConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConfiguration)(nil)).Elem()
+}
+
+func (o DatabaseConfigurationPtrOutput) ToDatabaseConfigurationPtrOutput() DatabaseConfigurationPtrOutput {
+	return o
+}
+
+func (o DatabaseConfigurationPtrOutput) ToDatabaseConfigurationPtrOutputWithContext(ctx context.Context) DatabaseConfigurationPtrOutput {
+	return o
+}
+
+func (o DatabaseConfigurationPtrOutput) Elem() DatabaseConfigurationOutput {
+	return o.ApplyT(func(v *DatabaseConfiguration) DatabaseConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseConfiguration
+		return ret
+	}).(DatabaseConfigurationOutput)
+}
+
+// The database type.
+func (o DatabaseConfigurationPtrOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o DatabaseConfigurationPtrOutput) DiskConfiguration() DiskConfigurationPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfiguration) *DiskConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DiskConfiguration
+	}).(DiskConfigurationPtrOutput)
+}
+
+// The number of database VMs.
+func (o DatabaseConfigurationPtrOutput) InstanceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DatabaseConfiguration) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The subnet id.
+func (o DatabaseConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o DatabaseConfigurationPtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfiguration) *VirtualMachineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationPtrOutput)
 }
 
 // Gets or sets the database configuration.
@@ -305,6 +2233,122 @@ type DatabaseConfigurationResponse struct {
 	VirtualMachineConfiguration VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
+// Gets or sets the database configuration.
+type DatabaseConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseConfigurationResponse)(nil)).Elem()
+}
+
+func (o DatabaseConfigurationResponseOutput) ToDatabaseConfigurationResponseOutput() DatabaseConfigurationResponseOutput {
+	return o
+}
+
+func (o DatabaseConfigurationResponseOutput) ToDatabaseConfigurationResponseOutputWithContext(ctx context.Context) DatabaseConfigurationResponseOutput {
+	return o
+}
+
+// The database type.
+func (o DatabaseConfigurationResponseOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseConfigurationResponse) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o DatabaseConfigurationResponseOutput) DiskConfiguration() DiskConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseConfigurationResponse) *DiskConfigurationResponse { return v.DiskConfiguration }).(DiskConfigurationResponsePtrOutput)
+}
+
+// The number of database VMs.
+func (o DatabaseConfigurationResponseOutput) InstanceCount() pulumi.Float64Output {
+	return o.ApplyT(func(v DatabaseConfigurationResponse) float64 { return v.InstanceCount }).(pulumi.Float64Output)
+}
+
+// The subnet id.
+func (o DatabaseConfigurationResponseOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseConfigurationResponse) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o DatabaseConfigurationResponseOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponseOutput {
+	return o.ApplyT(func(v DatabaseConfigurationResponse) VirtualMachineConfigurationResponse {
+		return v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponseOutput)
+}
+
+type DatabaseConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseConfigurationResponse)(nil)).Elem()
+}
+
+func (o DatabaseConfigurationResponsePtrOutput) ToDatabaseConfigurationResponsePtrOutput() DatabaseConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DatabaseConfigurationResponsePtrOutput) ToDatabaseConfigurationResponsePtrOutputWithContext(ctx context.Context) DatabaseConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DatabaseConfigurationResponsePtrOutput) Elem() DatabaseConfigurationResponseOutput {
+	return o.ApplyT(func(v *DatabaseConfigurationResponse) DatabaseConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseConfigurationResponse
+		return ret
+	}).(DatabaseConfigurationResponseOutput)
+}
+
+// The database type.
+func (o DatabaseConfigurationResponsePtrOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o DatabaseConfigurationResponsePtrOutput) DiskConfiguration() DiskConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DatabaseConfigurationResponse) *DiskConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DiskConfiguration
+	}).(DiskConfigurationResponsePtrOutput)
+}
+
+// The number of database VMs.
+func (o DatabaseConfigurationResponsePtrOutput) InstanceCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DatabaseConfigurationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The subnet id.
+func (o DatabaseConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o DatabaseConfigurationResponsePtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *DatabaseConfigurationResponse) *VirtualMachineConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponsePtrOutput)
+}
+
 // The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
 type DatabaseServerFullResourceNames struct {
 	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
@@ -315,6 +2359,174 @@ type DatabaseServerFullResourceNames struct {
 	VirtualMachines []VirtualMachineResourceNames `pulumi:"virtualMachines"`
 }
 
+// DatabaseServerFullResourceNamesInput is an input type that accepts DatabaseServerFullResourceNamesArgs and DatabaseServerFullResourceNamesOutput values.
+// You can construct a concrete instance of `DatabaseServerFullResourceNamesInput` via:
+//
+//	DatabaseServerFullResourceNamesArgs{...}
+type DatabaseServerFullResourceNamesInput interface {
+	pulumi.Input
+
+	ToDatabaseServerFullResourceNamesOutput() DatabaseServerFullResourceNamesOutput
+	ToDatabaseServerFullResourceNamesOutputWithContext(context.Context) DatabaseServerFullResourceNamesOutput
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNamesArgs struct {
+	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+	AvailabilitySetName pulumi.StringPtrInput `pulumi:"availabilitySetName"`
+	// The resource names object for load balancer and related resources.
+	LoadBalancer LoadBalancerResourceNamesPtrInput `pulumi:"loadBalancer"`
+	// The list of virtual machine naming details.
+	VirtualMachines VirtualMachineResourceNamesArrayInput `pulumi:"virtualMachines"`
+}
+
+func (DatabaseServerFullResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseServerFullResourceNames)(nil)).Elem()
+}
+
+func (i DatabaseServerFullResourceNamesArgs) ToDatabaseServerFullResourceNamesOutput() DatabaseServerFullResourceNamesOutput {
+	return i.ToDatabaseServerFullResourceNamesOutputWithContext(context.Background())
+}
+
+func (i DatabaseServerFullResourceNamesArgs) ToDatabaseServerFullResourceNamesOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseServerFullResourceNamesOutput)
+}
+
+func (i DatabaseServerFullResourceNamesArgs) ToDatabaseServerFullResourceNamesPtrOutput() DatabaseServerFullResourceNamesPtrOutput {
+	return i.ToDatabaseServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseServerFullResourceNamesArgs) ToDatabaseServerFullResourceNamesPtrOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseServerFullResourceNamesOutput).ToDatabaseServerFullResourceNamesPtrOutputWithContext(ctx)
+}
+
+// DatabaseServerFullResourceNamesPtrInput is an input type that accepts DatabaseServerFullResourceNamesArgs, DatabaseServerFullResourceNamesPtr and DatabaseServerFullResourceNamesPtrOutput values.
+// You can construct a concrete instance of `DatabaseServerFullResourceNamesPtrInput` via:
+//
+//	        DatabaseServerFullResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseServerFullResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseServerFullResourceNamesPtrOutput() DatabaseServerFullResourceNamesPtrOutput
+	ToDatabaseServerFullResourceNamesPtrOutputWithContext(context.Context) DatabaseServerFullResourceNamesPtrOutput
+}
+
+type databaseServerFullResourceNamesPtrType DatabaseServerFullResourceNamesArgs
+
+func DatabaseServerFullResourceNamesPtr(v *DatabaseServerFullResourceNamesArgs) DatabaseServerFullResourceNamesPtrInput {
+	return (*databaseServerFullResourceNamesPtrType)(v)
+}
+
+func (*databaseServerFullResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseServerFullResourceNames)(nil)).Elem()
+}
+
+func (i *databaseServerFullResourceNamesPtrType) ToDatabaseServerFullResourceNamesPtrOutput() DatabaseServerFullResourceNamesPtrOutput {
+	return i.ToDatabaseServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseServerFullResourceNamesPtrType) ToDatabaseServerFullResourceNamesPtrOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (DatabaseServerFullResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseServerFullResourceNames)(nil)).Elem()
+}
+
+func (o DatabaseServerFullResourceNamesOutput) ToDatabaseServerFullResourceNamesOutput() DatabaseServerFullResourceNamesOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesOutput) ToDatabaseServerFullResourceNamesOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesOutput) ToDatabaseServerFullResourceNamesPtrOutput() DatabaseServerFullResourceNamesPtrOutput {
+	return o.ToDatabaseServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseServerFullResourceNamesOutput) ToDatabaseServerFullResourceNamesPtrOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseServerFullResourceNames) *DatabaseServerFullResourceNames {
+		return &v
+	}).(DatabaseServerFullResourceNamesPtrOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+func (o DatabaseServerFullResourceNamesOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseServerFullResourceNames) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o DatabaseServerFullResourceNamesOutput) LoadBalancer() LoadBalancerResourceNamesPtrOutput {
+	return o.ApplyT(func(v DatabaseServerFullResourceNames) *LoadBalancerResourceNames { return v.LoadBalancer }).(LoadBalancerResourceNamesPtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o DatabaseServerFullResourceNamesOutput) VirtualMachines() VirtualMachineResourceNamesArrayOutput {
+	return o.ApplyT(func(v DatabaseServerFullResourceNames) []VirtualMachineResourceNames { return v.VirtualMachines }).(VirtualMachineResourceNamesArrayOutput)
+}
+
+type DatabaseServerFullResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseServerFullResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseServerFullResourceNames)(nil)).Elem()
+}
+
+func (o DatabaseServerFullResourceNamesPtrOutput) ToDatabaseServerFullResourceNamesPtrOutput() DatabaseServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesPtrOutput) ToDatabaseServerFullResourceNamesPtrOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesPtrOutput) Elem() DatabaseServerFullResourceNamesOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNames) DatabaseServerFullResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseServerFullResourceNames
+		return ret
+	}).(DatabaseServerFullResourceNamesOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+func (o DatabaseServerFullResourceNamesPtrOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilitySetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o DatabaseServerFullResourceNamesPtrOutput) LoadBalancer() LoadBalancerResourceNamesPtrOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNames) *LoadBalancerResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancer
+	}).(LoadBalancerResourceNamesPtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o DatabaseServerFullResourceNamesPtrOutput) VirtualMachines() VirtualMachineResourceNamesArrayOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNames) []VirtualMachineResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesArrayOutput)
+}
+
 // The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
 type DatabaseServerFullResourceNamesResponse struct {
 	// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
@@ -323,6 +2535,94 @@ type DatabaseServerFullResourceNamesResponse struct {
 	LoadBalancer *LoadBalancerResourceNamesResponse `pulumi:"loadBalancer"`
 	// The list of virtual machine naming details.
 	VirtualMachines []VirtualMachineResourceNamesResponse `pulumi:"virtualMachines"`
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+type DatabaseServerFullResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseServerFullResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o DatabaseServerFullResourceNamesResponseOutput) ToDatabaseServerFullResourceNamesResponseOutput() DatabaseServerFullResourceNamesResponseOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesResponseOutput) ToDatabaseServerFullResourceNamesResponseOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesResponseOutput {
+	return o
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+func (o DatabaseServerFullResourceNamesResponseOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseServerFullResourceNamesResponse) *string { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o DatabaseServerFullResourceNamesResponseOutput) LoadBalancer() LoadBalancerResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v DatabaseServerFullResourceNamesResponse) *LoadBalancerResourceNamesResponse {
+		return v.LoadBalancer
+	}).(LoadBalancerResourceNamesResponsePtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o DatabaseServerFullResourceNamesResponseOutput) VirtualMachines() VirtualMachineResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v DatabaseServerFullResourceNamesResponse) []VirtualMachineResourceNamesResponse {
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesResponseArrayOutput)
+}
+
+type DatabaseServerFullResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseServerFullResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o DatabaseServerFullResourceNamesResponsePtrOutput) ToDatabaseServerFullResourceNamesResponsePtrOutput() DatabaseServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesResponsePtrOutput) ToDatabaseServerFullResourceNamesResponsePtrOutputWithContext(ctx context.Context) DatabaseServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o DatabaseServerFullResourceNamesResponsePtrOutput) Elem() DatabaseServerFullResourceNamesResponseOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNamesResponse) DatabaseServerFullResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseServerFullResourceNamesResponse
+		return ret
+	}).(DatabaseServerFullResourceNamesResponseOutput)
+}
+
+// The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
+func (o DatabaseServerFullResourceNamesResponsePtrOutput) AvailabilitySetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilitySetName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+func (o DatabaseServerFullResourceNamesResponsePtrOutput) LoadBalancer() LoadBalancerResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNamesResponse) *LoadBalancerResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancer
+	}).(LoadBalancerResourceNamesResponsePtrOutput)
+}
+
+// The list of virtual machine naming details.
+func (o DatabaseServerFullResourceNamesResponsePtrOutput) VirtualMachines() VirtualMachineResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v *DatabaseServerFullResourceNamesResponse) []VirtualMachineResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachines
+	}).(VirtualMachineResourceNamesResponseArrayOutput)
 }
 
 // Database VM details.
@@ -391,12 +2691,232 @@ type DeployerVmPackages struct {
 	Url *string `pulumi:"url"`
 }
 
+// DeployerVmPackagesInput is an input type that accepts DeployerVmPackagesArgs and DeployerVmPackagesOutput values.
+// You can construct a concrete instance of `DeployerVmPackagesInput` via:
+//
+//	DeployerVmPackagesArgs{...}
+type DeployerVmPackagesInput interface {
+	pulumi.Input
+
+	ToDeployerVmPackagesOutput() DeployerVmPackagesOutput
+	ToDeployerVmPackagesOutputWithContext(context.Context) DeployerVmPackagesOutput
+}
+
+// Defines the url and storage account ID where deployer VM packages are uploaded
+type DeployerVmPackagesArgs struct {
+	// The deployer VM packages storage account id
+	StorageAccountId pulumi.StringPtrInput `pulumi:"storageAccountId"`
+	// The URL to the deployer VM packages file.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (DeployerVmPackagesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployerVmPackages)(nil)).Elem()
+}
+
+func (i DeployerVmPackagesArgs) ToDeployerVmPackagesOutput() DeployerVmPackagesOutput {
+	return i.ToDeployerVmPackagesOutputWithContext(context.Background())
+}
+
+func (i DeployerVmPackagesArgs) ToDeployerVmPackagesOutputWithContext(ctx context.Context) DeployerVmPackagesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployerVmPackagesOutput)
+}
+
+func (i DeployerVmPackagesArgs) ToDeployerVmPackagesPtrOutput() DeployerVmPackagesPtrOutput {
+	return i.ToDeployerVmPackagesPtrOutputWithContext(context.Background())
+}
+
+func (i DeployerVmPackagesArgs) ToDeployerVmPackagesPtrOutputWithContext(ctx context.Context) DeployerVmPackagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployerVmPackagesOutput).ToDeployerVmPackagesPtrOutputWithContext(ctx)
+}
+
+// DeployerVmPackagesPtrInput is an input type that accepts DeployerVmPackagesArgs, DeployerVmPackagesPtr and DeployerVmPackagesPtrOutput values.
+// You can construct a concrete instance of `DeployerVmPackagesPtrInput` via:
+//
+//	        DeployerVmPackagesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeployerVmPackagesPtrInput interface {
+	pulumi.Input
+
+	ToDeployerVmPackagesPtrOutput() DeployerVmPackagesPtrOutput
+	ToDeployerVmPackagesPtrOutputWithContext(context.Context) DeployerVmPackagesPtrOutput
+}
+
+type deployerVmPackagesPtrType DeployerVmPackagesArgs
+
+func DeployerVmPackagesPtr(v *DeployerVmPackagesArgs) DeployerVmPackagesPtrInput {
+	return (*deployerVmPackagesPtrType)(v)
+}
+
+func (*deployerVmPackagesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployerVmPackages)(nil)).Elem()
+}
+
+func (i *deployerVmPackagesPtrType) ToDeployerVmPackagesPtrOutput() DeployerVmPackagesPtrOutput {
+	return i.ToDeployerVmPackagesPtrOutputWithContext(context.Background())
+}
+
+func (i *deployerVmPackagesPtrType) ToDeployerVmPackagesPtrOutputWithContext(ctx context.Context) DeployerVmPackagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeployerVmPackagesPtrOutput)
+}
+
+// Defines the url and storage account ID where deployer VM packages are uploaded
+type DeployerVmPackagesOutput struct{ *pulumi.OutputState }
+
+func (DeployerVmPackagesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployerVmPackages)(nil)).Elem()
+}
+
+func (o DeployerVmPackagesOutput) ToDeployerVmPackagesOutput() DeployerVmPackagesOutput {
+	return o
+}
+
+func (o DeployerVmPackagesOutput) ToDeployerVmPackagesOutputWithContext(ctx context.Context) DeployerVmPackagesOutput {
+	return o
+}
+
+func (o DeployerVmPackagesOutput) ToDeployerVmPackagesPtrOutput() DeployerVmPackagesPtrOutput {
+	return o.ToDeployerVmPackagesPtrOutputWithContext(context.Background())
+}
+
+func (o DeployerVmPackagesOutput) ToDeployerVmPackagesPtrOutputWithContext(ctx context.Context) DeployerVmPackagesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeployerVmPackages) *DeployerVmPackages {
+		return &v
+	}).(DeployerVmPackagesPtrOutput)
+}
+
+// The deployer VM packages storage account id
+func (o DeployerVmPackagesOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeployerVmPackages) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the deployer VM packages file.
+func (o DeployerVmPackagesOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeployerVmPackages) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type DeployerVmPackagesPtrOutput struct{ *pulumi.OutputState }
+
+func (DeployerVmPackagesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployerVmPackages)(nil)).Elem()
+}
+
+func (o DeployerVmPackagesPtrOutput) ToDeployerVmPackagesPtrOutput() DeployerVmPackagesPtrOutput {
+	return o
+}
+
+func (o DeployerVmPackagesPtrOutput) ToDeployerVmPackagesPtrOutputWithContext(ctx context.Context) DeployerVmPackagesPtrOutput {
+	return o
+}
+
+func (o DeployerVmPackagesPtrOutput) Elem() DeployerVmPackagesOutput {
+	return o.ApplyT(func(v *DeployerVmPackages) DeployerVmPackages {
+		if v != nil {
+			return *v
+		}
+		var ret DeployerVmPackages
+		return ret
+	}).(DeployerVmPackagesOutput)
+}
+
+// The deployer VM packages storage account id
+func (o DeployerVmPackagesPtrOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployerVmPackages) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL to the deployer VM packages file.
+func (o DeployerVmPackagesPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployerVmPackages) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the url and storage account ID where deployer VM packages are uploaded
 type DeployerVmPackagesResponse struct {
 	// The deployer VM packages storage account id
 	StorageAccountId *string `pulumi:"storageAccountId"`
 	// The URL to the deployer VM packages file.
 	Url *string `pulumi:"url"`
+}
+
+// Defines the url and storage account ID where deployer VM packages are uploaded
+type DeployerVmPackagesResponseOutput struct{ *pulumi.OutputState }
+
+func (DeployerVmPackagesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeployerVmPackagesResponse)(nil)).Elem()
+}
+
+func (o DeployerVmPackagesResponseOutput) ToDeployerVmPackagesResponseOutput() DeployerVmPackagesResponseOutput {
+	return o
+}
+
+func (o DeployerVmPackagesResponseOutput) ToDeployerVmPackagesResponseOutputWithContext(ctx context.Context) DeployerVmPackagesResponseOutput {
+	return o
+}
+
+// The deployer VM packages storage account id
+func (o DeployerVmPackagesResponseOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeployerVmPackagesResponse) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// The URL to the deployer VM packages file.
+func (o DeployerVmPackagesResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeployerVmPackagesResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type DeployerVmPackagesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeployerVmPackagesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeployerVmPackagesResponse)(nil)).Elem()
+}
+
+func (o DeployerVmPackagesResponsePtrOutput) ToDeployerVmPackagesResponsePtrOutput() DeployerVmPackagesResponsePtrOutput {
+	return o
+}
+
+func (o DeployerVmPackagesResponsePtrOutput) ToDeployerVmPackagesResponsePtrOutputWithContext(ctx context.Context) DeployerVmPackagesResponsePtrOutput {
+	return o
+}
+
+func (o DeployerVmPackagesResponsePtrOutput) Elem() DeployerVmPackagesResponseOutput {
+	return o.ApplyT(func(v *DeployerVmPackagesResponse) DeployerVmPackagesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeployerVmPackagesResponse
+		return ret
+	}).(DeployerVmPackagesResponseOutput)
+}
+
+// The deployer VM packages storage account id
+func (o DeployerVmPackagesResponsePtrOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployerVmPackagesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL to the deployer VM packages file.
+func (o DeployerVmPackagesResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeployerVmPackagesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 // Deployment Configuration.
@@ -412,6 +2932,78 @@ type DeploymentConfiguration struct {
 	SoftwareConfiguration interface{} `pulumi:"softwareConfiguration"`
 }
 
+// DeploymentConfigurationInput is an input type that accepts DeploymentConfigurationArgs and DeploymentConfigurationOutput values.
+// You can construct a concrete instance of `DeploymentConfigurationInput` via:
+//
+//	DeploymentConfigurationArgs{...}
+type DeploymentConfigurationInput interface {
+	pulumi.Input
+
+	ToDeploymentConfigurationOutput() DeploymentConfigurationOutput
+	ToDeploymentConfigurationOutputWithContext(context.Context) DeploymentConfigurationOutput
+}
+
+// Deployment Configuration.
+type DeploymentConfigurationArgs struct {
+	// The geo-location where the SAP system is to be created.
+	AppLocation pulumi.StringPtrInput `pulumi:"appLocation"`
+	// The configuration Type.
+	// Expected value is 'Deployment'.
+	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
+	// The infrastructure configuration.
+	InfrastructureConfiguration pulumi.Input `pulumi:"infrastructureConfiguration"`
+	// The software configuration.
+	SoftwareConfiguration pulumi.Input `pulumi:"softwareConfiguration"`
+}
+
+func (DeploymentConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConfiguration)(nil)).Elem()
+}
+
+func (i DeploymentConfigurationArgs) ToDeploymentConfigurationOutput() DeploymentConfigurationOutput {
+	return i.ToDeploymentConfigurationOutputWithContext(context.Background())
+}
+
+func (i DeploymentConfigurationArgs) ToDeploymentConfigurationOutputWithContext(ctx context.Context) DeploymentConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigurationOutput)
+}
+
+// Deployment Configuration.
+type DeploymentConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DeploymentConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConfiguration)(nil)).Elem()
+}
+
+func (o DeploymentConfigurationOutput) ToDeploymentConfigurationOutput() DeploymentConfigurationOutput {
+	return o
+}
+
+func (o DeploymentConfigurationOutput) ToDeploymentConfigurationOutputWithContext(ctx context.Context) DeploymentConfigurationOutput {
+	return o
+}
+
+// The geo-location where the SAP system is to be created.
+func (o DeploymentConfigurationOutput) AppLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConfiguration) *string { return v.AppLocation }).(pulumi.StringPtrOutput)
+}
+
+// The configuration Type.
+// Expected value is 'Deployment'.
+func (o DeploymentConfigurationOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentConfiguration) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The infrastructure configuration.
+func (o DeploymentConfigurationOutput) InfrastructureConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentConfiguration) interface{} { return v.InfrastructureConfiguration }).(pulumi.AnyOutput)
+}
+
+// The software configuration.
+func (o DeploymentConfigurationOutput) SoftwareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentConfiguration) interface{} { return v.SoftwareConfiguration }).(pulumi.AnyOutput)
+}
+
 // Deployment Configuration.
 type DeploymentConfigurationResponse struct {
 	// The geo-location where the SAP system is to be created.
@@ -423,6 +3015,42 @@ type DeploymentConfigurationResponse struct {
 	InfrastructureConfiguration interface{} `pulumi:"infrastructureConfiguration"`
 	// The software configuration.
 	SoftwareConfiguration interface{} `pulumi:"softwareConfiguration"`
+}
+
+// Deployment Configuration.
+type DeploymentConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentConfigurationResponse)(nil)).Elem()
+}
+
+func (o DeploymentConfigurationResponseOutput) ToDeploymentConfigurationResponseOutput() DeploymentConfigurationResponseOutput {
+	return o
+}
+
+func (o DeploymentConfigurationResponseOutput) ToDeploymentConfigurationResponseOutputWithContext(ctx context.Context) DeploymentConfigurationResponseOutput {
+	return o
+}
+
+// The geo-location where the SAP system is to be created.
+func (o DeploymentConfigurationResponseOutput) AppLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentConfigurationResponse) *string { return v.AppLocation }).(pulumi.StringPtrOutput)
+}
+
+// The configuration Type.
+// Expected value is 'Deployment'.
+func (o DeploymentConfigurationResponseOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentConfigurationResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The infrastructure configuration.
+func (o DeploymentConfigurationResponseOutput) InfrastructureConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentConfigurationResponse) interface{} { return v.InfrastructureConfiguration }).(pulumi.AnyOutput)
+}
+
+// The software configuration.
+func (o DeploymentConfigurationResponseOutput) SoftwareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentConfigurationResponse) interface{} { return v.SoftwareConfiguration }).(pulumi.AnyOutput)
 }
 
 // Deployment along with OS Configuration.
@@ -440,6 +3068,85 @@ type DeploymentWithOSConfiguration struct {
 	SoftwareConfiguration interface{} `pulumi:"softwareConfiguration"`
 }
 
+// DeploymentWithOSConfigurationInput is an input type that accepts DeploymentWithOSConfigurationArgs and DeploymentWithOSConfigurationOutput values.
+// You can construct a concrete instance of `DeploymentWithOSConfigurationInput` via:
+//
+//	DeploymentWithOSConfigurationArgs{...}
+type DeploymentWithOSConfigurationInput interface {
+	pulumi.Input
+
+	ToDeploymentWithOSConfigurationOutput() DeploymentWithOSConfigurationOutput
+	ToDeploymentWithOSConfigurationOutputWithContext(context.Context) DeploymentWithOSConfigurationOutput
+}
+
+// Deployment along with OS Configuration.
+type DeploymentWithOSConfigurationArgs struct {
+	// The geo-location where the SAP system is to be created.
+	AppLocation pulumi.StringPtrInput `pulumi:"appLocation"`
+	// The configuration Type.
+	// Expected value is 'DeploymentWithOSConfig'.
+	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
+	// The infrastructure configuration.
+	InfrastructureConfiguration pulumi.Input `pulumi:"infrastructureConfiguration"`
+	// The OS and SAP configuration.
+	OsSapConfiguration OsSapConfigurationPtrInput `pulumi:"osSapConfiguration"`
+	// The software configuration.
+	SoftwareConfiguration pulumi.Input `pulumi:"softwareConfiguration"`
+}
+
+func (DeploymentWithOSConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWithOSConfiguration)(nil)).Elem()
+}
+
+func (i DeploymentWithOSConfigurationArgs) ToDeploymentWithOSConfigurationOutput() DeploymentWithOSConfigurationOutput {
+	return i.ToDeploymentWithOSConfigurationOutputWithContext(context.Background())
+}
+
+func (i DeploymentWithOSConfigurationArgs) ToDeploymentWithOSConfigurationOutputWithContext(ctx context.Context) DeploymentWithOSConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWithOSConfigurationOutput)
+}
+
+// Deployment along with OS Configuration.
+type DeploymentWithOSConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWithOSConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWithOSConfiguration)(nil)).Elem()
+}
+
+func (o DeploymentWithOSConfigurationOutput) ToDeploymentWithOSConfigurationOutput() DeploymentWithOSConfigurationOutput {
+	return o
+}
+
+func (o DeploymentWithOSConfigurationOutput) ToDeploymentWithOSConfigurationOutputWithContext(ctx context.Context) DeploymentWithOSConfigurationOutput {
+	return o
+}
+
+// The geo-location where the SAP system is to be created.
+func (o DeploymentWithOSConfigurationOutput) AppLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfiguration) *string { return v.AppLocation }).(pulumi.StringPtrOutput)
+}
+
+// The configuration Type.
+// Expected value is 'DeploymentWithOSConfig'.
+func (o DeploymentWithOSConfigurationOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfiguration) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The infrastructure configuration.
+func (o DeploymentWithOSConfigurationOutput) InfrastructureConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfiguration) interface{} { return v.InfrastructureConfiguration }).(pulumi.AnyOutput)
+}
+
+// The OS and SAP configuration.
+func (o DeploymentWithOSConfigurationOutput) OsSapConfiguration() OsSapConfigurationPtrOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfiguration) *OsSapConfiguration { return v.OsSapConfiguration }).(OsSapConfigurationPtrOutput)
+}
+
+// The software configuration.
+func (o DeploymentWithOSConfigurationOutput) SoftwareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfiguration) interface{} { return v.SoftwareConfiguration }).(pulumi.AnyOutput)
+}
+
 // Deployment along with OS Configuration.
 type DeploymentWithOSConfigurationResponse struct {
 	// The geo-location where the SAP system is to be created.
@@ -455,6 +3162,47 @@ type DeploymentWithOSConfigurationResponse struct {
 	SoftwareConfiguration interface{} `pulumi:"softwareConfiguration"`
 }
 
+// Deployment along with OS Configuration.
+type DeploymentWithOSConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWithOSConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWithOSConfigurationResponse)(nil)).Elem()
+}
+
+func (o DeploymentWithOSConfigurationResponseOutput) ToDeploymentWithOSConfigurationResponseOutput() DeploymentWithOSConfigurationResponseOutput {
+	return o
+}
+
+func (o DeploymentWithOSConfigurationResponseOutput) ToDeploymentWithOSConfigurationResponseOutputWithContext(ctx context.Context) DeploymentWithOSConfigurationResponseOutput {
+	return o
+}
+
+// The geo-location where the SAP system is to be created.
+func (o DeploymentWithOSConfigurationResponseOutput) AppLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfigurationResponse) *string { return v.AppLocation }).(pulumi.StringPtrOutput)
+}
+
+// The configuration Type.
+// Expected value is 'DeploymentWithOSConfig'.
+func (o DeploymentWithOSConfigurationResponseOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfigurationResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The infrastructure configuration.
+func (o DeploymentWithOSConfigurationResponseOutput) InfrastructureConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfigurationResponse) interface{} { return v.InfrastructureConfiguration }).(pulumi.AnyOutput)
+}
+
+// The OS and SAP configuration.
+func (o DeploymentWithOSConfigurationResponseOutput) OsSapConfiguration() OsSapConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfigurationResponse) *OsSapConfigurationResponse { return v.OsSapConfiguration }).(OsSapConfigurationResponsePtrOutput)
+}
+
+// The software configuration.
+func (o DeploymentWithOSConfigurationResponseOutput) SoftwareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentWithOSConfigurationResponse) interface{} { return v.SoftwareConfiguration }).(pulumi.AnyOutput)
+}
+
 // Discovery Details.
 type DiscoveryConfiguration struct {
 	// The virtual machine ID of the Central Server.
@@ -464,6 +3212,71 @@ type DiscoveryConfiguration struct {
 	ConfigurationType string `pulumi:"configurationType"`
 	// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
 	ManagedRgStorageAccountName *string `pulumi:"managedRgStorageAccountName"`
+}
+
+// DiscoveryConfigurationInput is an input type that accepts DiscoveryConfigurationArgs and DiscoveryConfigurationOutput values.
+// You can construct a concrete instance of `DiscoveryConfigurationInput` via:
+//
+//	DiscoveryConfigurationArgs{...}
+type DiscoveryConfigurationInput interface {
+	pulumi.Input
+
+	ToDiscoveryConfigurationOutput() DiscoveryConfigurationOutput
+	ToDiscoveryConfigurationOutputWithContext(context.Context) DiscoveryConfigurationOutput
+}
+
+// Discovery Details.
+type DiscoveryConfigurationArgs struct {
+	// The virtual machine ID of the Central Server.
+	CentralServerVmId pulumi.StringPtrInput `pulumi:"centralServerVmId"`
+	// The configuration Type.
+	// Expected value is 'Discovery'.
+	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
+	// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+	ManagedRgStorageAccountName pulumi.StringPtrInput `pulumi:"managedRgStorageAccountName"`
+}
+
+func (DiscoveryConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryConfiguration)(nil)).Elem()
+}
+
+func (i DiscoveryConfigurationArgs) ToDiscoveryConfigurationOutput() DiscoveryConfigurationOutput {
+	return i.ToDiscoveryConfigurationOutputWithContext(context.Background())
+}
+
+func (i DiscoveryConfigurationArgs) ToDiscoveryConfigurationOutputWithContext(ctx context.Context) DiscoveryConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscoveryConfigurationOutput)
+}
+
+// Discovery Details.
+type DiscoveryConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryConfiguration)(nil)).Elem()
+}
+
+func (o DiscoveryConfigurationOutput) ToDiscoveryConfigurationOutput() DiscoveryConfigurationOutput {
+	return o
+}
+
+func (o DiscoveryConfigurationOutput) ToDiscoveryConfigurationOutputWithContext(ctx context.Context) DiscoveryConfigurationOutput {
+	return o
+}
+
+// The virtual machine ID of the Central Server.
+func (o DiscoveryConfigurationOutput) CentralServerVmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryConfiguration) *string { return v.CentralServerVmId }).(pulumi.StringPtrOutput)
+}
+
+// The configuration Type.
+// Expected value is 'Discovery'.
+func (o DiscoveryConfigurationOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryConfiguration) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+func (o DiscoveryConfigurationOutput) ManagedRgStorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryConfiguration) *string { return v.ManagedRgStorageAccountName }).(pulumi.StringPtrOutput)
 }
 
 // Discovery Details.
@@ -479,16 +3292,242 @@ type DiscoveryConfigurationResponse struct {
 	ManagedRgStorageAccountName *string `pulumi:"managedRgStorageAccountName"`
 }
 
+// Discovery Details.
+type DiscoveryConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscoveryConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoveryConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiscoveryConfigurationResponseOutput) ToDiscoveryConfigurationResponseOutput() DiscoveryConfigurationResponseOutput {
+	return o
+}
+
+func (o DiscoveryConfigurationResponseOutput) ToDiscoveryConfigurationResponseOutputWithContext(ctx context.Context) DiscoveryConfigurationResponseOutput {
+	return o
+}
+
+// The geo-location where the SAP system exists.
+func (o DiscoveryConfigurationResponseOutput) AppLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryConfigurationResponse) string { return v.AppLocation }).(pulumi.StringOutput)
+}
+
+// The virtual machine ID of the Central Server.
+func (o DiscoveryConfigurationResponseOutput) CentralServerVmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryConfigurationResponse) *string { return v.CentralServerVmId }).(pulumi.StringPtrOutput)
+}
+
+// The configuration Type.
+// Expected value is 'Discovery'.
+func (o DiscoveryConfigurationResponseOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveryConfigurationResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.<br><br>Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).<br><br>If not provided, the service will create the storage account with a random name.
+func (o DiscoveryConfigurationResponseOutput) ManagedRgStorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscoveryConfigurationResponse) *string { return v.ManagedRgStorageAccountName }).(pulumi.StringPtrOutput)
+}
+
 // The Disk Configuration Details.
 type DiskConfiguration struct {
 	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
 	DiskVolumeConfigurations map[string]DiskVolumeConfiguration `pulumi:"diskVolumeConfigurations"`
 }
 
+// DiskConfigurationInput is an input type that accepts DiskConfigurationArgs and DiskConfigurationOutput values.
+// You can construct a concrete instance of `DiskConfigurationInput` via:
+//
+//	DiskConfigurationArgs{...}
+type DiskConfigurationInput interface {
+	pulumi.Input
+
+	ToDiskConfigurationOutput() DiskConfigurationOutput
+	ToDiskConfigurationOutputWithContext(context.Context) DiskConfigurationOutput
+}
+
+// The Disk Configuration Details.
+type DiskConfigurationArgs struct {
+	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+	DiskVolumeConfigurations DiskVolumeConfigurationMapInput `pulumi:"diskVolumeConfigurations"`
+}
+
+func (DiskConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskConfiguration)(nil)).Elem()
+}
+
+func (i DiskConfigurationArgs) ToDiskConfigurationOutput() DiskConfigurationOutput {
+	return i.ToDiskConfigurationOutputWithContext(context.Background())
+}
+
+func (i DiskConfigurationArgs) ToDiskConfigurationOutputWithContext(ctx context.Context) DiskConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskConfigurationOutput)
+}
+
+func (i DiskConfigurationArgs) ToDiskConfigurationPtrOutput() DiskConfigurationPtrOutput {
+	return i.ToDiskConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DiskConfigurationArgs) ToDiskConfigurationPtrOutputWithContext(ctx context.Context) DiskConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskConfigurationOutput).ToDiskConfigurationPtrOutputWithContext(ctx)
+}
+
+// DiskConfigurationPtrInput is an input type that accepts DiskConfigurationArgs, DiskConfigurationPtr and DiskConfigurationPtrOutput values.
+// You can construct a concrete instance of `DiskConfigurationPtrInput` via:
+//
+//	        DiskConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDiskConfigurationPtrOutput() DiskConfigurationPtrOutput
+	ToDiskConfigurationPtrOutputWithContext(context.Context) DiskConfigurationPtrOutput
+}
+
+type diskConfigurationPtrType DiskConfigurationArgs
+
+func DiskConfigurationPtr(v *DiskConfigurationArgs) DiskConfigurationPtrInput {
+	return (*diskConfigurationPtrType)(v)
+}
+
+func (*diskConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskConfiguration)(nil)).Elem()
+}
+
+func (i *diskConfigurationPtrType) ToDiskConfigurationPtrOutput() DiskConfigurationPtrOutput {
+	return i.ToDiskConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *diskConfigurationPtrType) ToDiskConfigurationPtrOutputWithContext(ctx context.Context) DiskConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskConfigurationPtrOutput)
+}
+
+// The Disk Configuration Details.
+type DiskConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DiskConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskConfiguration)(nil)).Elem()
+}
+
+func (o DiskConfigurationOutput) ToDiskConfigurationOutput() DiskConfigurationOutput {
+	return o
+}
+
+func (o DiskConfigurationOutput) ToDiskConfigurationOutputWithContext(ctx context.Context) DiskConfigurationOutput {
+	return o
+}
+
+func (o DiskConfigurationOutput) ToDiskConfigurationPtrOutput() DiskConfigurationPtrOutput {
+	return o.ToDiskConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DiskConfigurationOutput) ToDiskConfigurationPtrOutputWithContext(ctx context.Context) DiskConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskConfiguration) *DiskConfiguration {
+		return &v
+	}).(DiskConfigurationPtrOutput)
+}
+
+// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+func (o DiskConfigurationOutput) DiskVolumeConfigurations() DiskVolumeConfigurationMapOutput {
+	return o.ApplyT(func(v DiskConfiguration) map[string]DiskVolumeConfiguration { return v.DiskVolumeConfigurations }).(DiskVolumeConfigurationMapOutput)
+}
+
+type DiskConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskConfiguration)(nil)).Elem()
+}
+
+func (o DiskConfigurationPtrOutput) ToDiskConfigurationPtrOutput() DiskConfigurationPtrOutput {
+	return o
+}
+
+func (o DiskConfigurationPtrOutput) ToDiskConfigurationPtrOutputWithContext(ctx context.Context) DiskConfigurationPtrOutput {
+	return o
+}
+
+func (o DiskConfigurationPtrOutput) Elem() DiskConfigurationOutput {
+	return o.ApplyT(func(v *DiskConfiguration) DiskConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DiskConfiguration
+		return ret
+	}).(DiskConfigurationOutput)
+}
+
+// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+func (o DiskConfigurationPtrOutput) DiskVolumeConfigurations() DiskVolumeConfigurationMapOutput {
+	return o.ApplyT(func(v *DiskConfiguration) map[string]DiskVolumeConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DiskVolumeConfigurations
+	}).(DiskVolumeConfigurationMapOutput)
+}
+
 // The Disk Configuration Details.
 type DiskConfigurationResponse struct {
 	// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
 	DiskVolumeConfigurations map[string]DiskVolumeConfigurationResponse `pulumi:"diskVolumeConfigurations"`
+}
+
+// The Disk Configuration Details.
+type DiskConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskConfigurationResponseOutput) ToDiskConfigurationResponseOutput() DiskConfigurationResponseOutput {
+	return o
+}
+
+func (o DiskConfigurationResponseOutput) ToDiskConfigurationResponseOutputWithContext(ctx context.Context) DiskConfigurationResponseOutput {
+	return o
+}
+
+// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+func (o DiskConfigurationResponseOutput) DiskVolumeConfigurations() DiskVolumeConfigurationResponseMapOutput {
+	return o.ApplyT(func(v DiskConfigurationResponse) map[string]DiskVolumeConfigurationResponse {
+		return v.DiskVolumeConfigurations
+	}).(DiskVolumeConfigurationResponseMapOutput)
+}
+
+type DiskConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskConfigurationResponsePtrOutput) ToDiskConfigurationResponsePtrOutput() DiskConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskConfigurationResponsePtrOutput) ToDiskConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DiskConfigurationResponsePtrOutput) Elem() DiskConfigurationResponseOutput {
+	return o.ApplyT(func(v *DiskConfigurationResponse) DiskConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskConfigurationResponse
+		return ret
+	}).(DiskConfigurationResponseOutput)
+}
+
+// The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
+func (o DiskConfigurationResponsePtrOutput) DiskVolumeConfigurations() DiskVolumeConfigurationResponseMapOutput {
+	return o.ApplyT(func(v *DiskConfigurationResponse) map[string]DiskVolumeConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DiskVolumeConfigurations
+	}).(DiskVolumeConfigurationResponseMapOutput)
 }
 
 // The supported disk size details for a disk type.
@@ -585,6 +3624,140 @@ type DiskSku struct {
 	Name *string `pulumi:"name"`
 }
 
+// DiskSkuInput is an input type that accepts DiskSkuArgs and DiskSkuOutput values.
+// You can construct a concrete instance of `DiskSkuInput` via:
+//
+//	DiskSkuArgs{...}
+type DiskSkuInput interface {
+	pulumi.Input
+
+	ToDiskSkuOutput() DiskSkuOutput
+	ToDiskSkuOutputWithContext(context.Context) DiskSkuOutput
+}
+
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+type DiskSkuArgs struct {
+	// Defines the disk sku name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (DiskSkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskSku)(nil)).Elem()
+}
+
+func (i DiskSkuArgs) ToDiskSkuOutput() DiskSkuOutput {
+	return i.ToDiskSkuOutputWithContext(context.Background())
+}
+
+func (i DiskSkuArgs) ToDiskSkuOutputWithContext(ctx context.Context) DiskSkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskSkuOutput)
+}
+
+func (i DiskSkuArgs) ToDiskSkuPtrOutput() DiskSkuPtrOutput {
+	return i.ToDiskSkuPtrOutputWithContext(context.Background())
+}
+
+func (i DiskSkuArgs) ToDiskSkuPtrOutputWithContext(ctx context.Context) DiskSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskSkuOutput).ToDiskSkuPtrOutputWithContext(ctx)
+}
+
+// DiskSkuPtrInput is an input type that accepts DiskSkuArgs, DiskSkuPtr and DiskSkuPtrOutput values.
+// You can construct a concrete instance of `DiskSkuPtrInput` via:
+//
+//	        DiskSkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskSkuPtrInput interface {
+	pulumi.Input
+
+	ToDiskSkuPtrOutput() DiskSkuPtrOutput
+	ToDiskSkuPtrOutputWithContext(context.Context) DiskSkuPtrOutput
+}
+
+type diskSkuPtrType DiskSkuArgs
+
+func DiskSkuPtr(v *DiskSkuArgs) DiskSkuPtrInput {
+	return (*diskSkuPtrType)(v)
+}
+
+func (*diskSkuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskSku)(nil)).Elem()
+}
+
+func (i *diskSkuPtrType) ToDiskSkuPtrOutput() DiskSkuPtrOutput {
+	return i.ToDiskSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *diskSkuPtrType) ToDiskSkuPtrOutputWithContext(ctx context.Context) DiskSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskSkuPtrOutput)
+}
+
+// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
+type DiskSkuOutput struct{ *pulumi.OutputState }
+
+func (DiskSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskSku)(nil)).Elem()
+}
+
+func (o DiskSkuOutput) ToDiskSkuOutput() DiskSkuOutput {
+	return o
+}
+
+func (o DiskSkuOutput) ToDiskSkuOutputWithContext(ctx context.Context) DiskSkuOutput {
+	return o
+}
+
+func (o DiskSkuOutput) ToDiskSkuPtrOutput() DiskSkuPtrOutput {
+	return o.ToDiskSkuPtrOutputWithContext(context.Background())
+}
+
+func (o DiskSkuOutput) ToDiskSkuPtrOutputWithContext(ctx context.Context) DiskSkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskSku) *DiskSku {
+		return &v
+	}).(DiskSkuPtrOutput)
+}
+
+// Defines the disk sku name.
+func (o DiskSkuOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskSku) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DiskSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskSku)(nil)).Elem()
+}
+
+func (o DiskSkuPtrOutput) ToDiskSkuPtrOutput() DiskSkuPtrOutput {
+	return o
+}
+
+func (o DiskSkuPtrOutput) ToDiskSkuPtrOutputWithContext(ctx context.Context) DiskSkuPtrOutput {
+	return o
+}
+
+func (o DiskSkuPtrOutput) Elem() DiskSkuOutput {
+	return o.ApplyT(func(v *DiskSku) DiskSku {
+		if v != nil {
+			return *v
+		}
+		var ret DiskSku
+		return ret
+	}).(DiskSkuOutput)
+}
+
+// Defines the disk sku name.
+func (o DiskSkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 type DiskSkuResponse struct {
 	// Defines the disk sku name.
@@ -653,6 +3826,114 @@ type DiskVolumeConfiguration struct {
 	SizeGB *float64 `pulumi:"sizeGB"`
 	// The disk SKU details.
 	Sku *DiskSku `pulumi:"sku"`
+}
+
+// DiskVolumeConfigurationInput is an input type that accepts DiskVolumeConfigurationArgs and DiskVolumeConfigurationOutput values.
+// You can construct a concrete instance of `DiskVolumeConfigurationInput` via:
+//
+//	DiskVolumeConfigurationArgs{...}
+type DiskVolumeConfigurationInput interface {
+	pulumi.Input
+
+	ToDiskVolumeConfigurationOutput() DiskVolumeConfigurationOutput
+	ToDiskVolumeConfigurationOutputWithContext(context.Context) DiskVolumeConfigurationOutput
+}
+
+// The disk configuration required for the selected volume.
+type DiskVolumeConfigurationArgs struct {
+	// The total number of disks required for the concerned volume.
+	Count pulumi.Float64PtrInput `pulumi:"count"`
+	// The disk size in GB.
+	SizeGB pulumi.Float64PtrInput `pulumi:"sizeGB"`
+	// The disk SKU details.
+	Sku DiskSkuPtrInput `pulumi:"sku"`
+}
+
+func (DiskVolumeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskVolumeConfiguration)(nil)).Elem()
+}
+
+func (i DiskVolumeConfigurationArgs) ToDiskVolumeConfigurationOutput() DiskVolumeConfigurationOutput {
+	return i.ToDiskVolumeConfigurationOutputWithContext(context.Background())
+}
+
+func (i DiskVolumeConfigurationArgs) ToDiskVolumeConfigurationOutputWithContext(ctx context.Context) DiskVolumeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskVolumeConfigurationOutput)
+}
+
+// DiskVolumeConfigurationMapInput is an input type that accepts DiskVolumeConfigurationMap and DiskVolumeConfigurationMapOutput values.
+// You can construct a concrete instance of `DiskVolumeConfigurationMapInput` via:
+//
+//	DiskVolumeConfigurationMap{ "key": DiskVolumeConfigurationArgs{...} }
+type DiskVolumeConfigurationMapInput interface {
+	pulumi.Input
+
+	ToDiskVolumeConfigurationMapOutput() DiskVolumeConfigurationMapOutput
+	ToDiskVolumeConfigurationMapOutputWithContext(context.Context) DiskVolumeConfigurationMapOutput
+}
+
+type DiskVolumeConfigurationMap map[string]DiskVolumeConfigurationInput
+
+func (DiskVolumeConfigurationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskVolumeConfiguration)(nil)).Elem()
+}
+
+func (i DiskVolumeConfigurationMap) ToDiskVolumeConfigurationMapOutput() DiskVolumeConfigurationMapOutput {
+	return i.ToDiskVolumeConfigurationMapOutputWithContext(context.Background())
+}
+
+func (i DiskVolumeConfigurationMap) ToDiskVolumeConfigurationMapOutputWithContext(ctx context.Context) DiskVolumeConfigurationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskVolumeConfigurationMapOutput)
+}
+
+// The disk configuration required for the selected volume.
+type DiskVolumeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskVolumeConfiguration)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationOutput) ToDiskVolumeConfigurationOutput() DiskVolumeConfigurationOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationOutput) ToDiskVolumeConfigurationOutputWithContext(ctx context.Context) DiskVolumeConfigurationOutput {
+	return o
+}
+
+// The total number of disks required for the concerned volume.
+func (o DiskVolumeConfigurationOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfiguration) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The disk size in GB.
+func (o DiskVolumeConfigurationOutput) SizeGB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfiguration) *float64 { return v.SizeGB }).(pulumi.Float64PtrOutput)
+}
+
+// The disk SKU details.
+func (o DiskVolumeConfigurationOutput) Sku() DiskSkuPtrOutput {
+	return o.ApplyT(func(v DiskVolumeConfiguration) *DiskSku { return v.Sku }).(DiskSkuPtrOutput)
+}
+
+type DiskVolumeConfigurationMapOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskVolumeConfiguration)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationMapOutput) ToDiskVolumeConfigurationMapOutput() DiskVolumeConfigurationMapOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationMapOutput) ToDiskVolumeConfigurationMapOutputWithContext(ctx context.Context) DiskVolumeConfigurationMapOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationMapOutput) MapIndex(k pulumi.StringInput) DiskVolumeConfigurationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskVolumeConfiguration {
+		return vs[0].(map[string]DiskVolumeConfiguration)[vs[1].(string)]
+	}).(DiskVolumeConfigurationOutput)
 }
 
 // The disk configuration required for the selected volume.
@@ -747,6 +4028,26 @@ func (o DiskVolumeConfigurationResponsePtrOutput) Sku() DiskSkuResponsePtrOutput
 		}
 		return v.Sku
 	}).(DiskSkuResponsePtrOutput)
+}
+
+type DiskVolumeConfigurationResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DiskVolumeConfigurationResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskVolumeConfigurationResponse)(nil)).Elem()
+}
+
+func (o DiskVolumeConfigurationResponseMapOutput) ToDiskVolumeConfigurationResponseMapOutput() DiskVolumeConfigurationResponseMapOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponseMapOutput) ToDiskVolumeConfigurationResponseMapOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponseMapOutput {
+	return o
+}
+
+func (o DiskVolumeConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) DiskVolumeConfigurationResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskVolumeConfigurationResponse {
+		return vs[0].(map[string]DiskVolumeConfigurationResponse)[vs[1].(string)]
+	}).(DiskVolumeConfigurationResponseOutput)
 }
 
 // Defines the SAP Enqueue Replication Server (ERS) properties.
@@ -1353,6 +4654,160 @@ type ExternalInstallationSoftwareConfiguration struct {
 	SoftwareInstallationType string `pulumi:"softwareInstallationType"`
 }
 
+// ExternalInstallationSoftwareConfigurationInput is an input type that accepts ExternalInstallationSoftwareConfigurationArgs and ExternalInstallationSoftwareConfigurationOutput values.
+// You can construct a concrete instance of `ExternalInstallationSoftwareConfigurationInput` via:
+//
+//	ExternalInstallationSoftwareConfigurationArgs{...}
+type ExternalInstallationSoftwareConfigurationInput interface {
+	pulumi.Input
+
+	ToExternalInstallationSoftwareConfigurationOutput() ExternalInstallationSoftwareConfigurationOutput
+	ToExternalInstallationSoftwareConfigurationOutputWithContext(context.Context) ExternalInstallationSoftwareConfigurationOutput
+}
+
+// The SAP Software configuration Input when the software is installed externally outside the service.
+type ExternalInstallationSoftwareConfigurationArgs struct {
+	// The resource ID of the virtual machine containing the central server instance.
+	CentralServerVmId pulumi.StringPtrInput `pulumi:"centralServerVmId"`
+	// The SAP software installation Type.
+	// Expected value is 'External'.
+	SoftwareInstallationType pulumi.StringInput `pulumi:"softwareInstallationType"`
+}
+
+func (ExternalInstallationSoftwareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalInstallationSoftwareConfiguration)(nil)).Elem()
+}
+
+func (i ExternalInstallationSoftwareConfigurationArgs) ToExternalInstallationSoftwareConfigurationOutput() ExternalInstallationSoftwareConfigurationOutput {
+	return i.ToExternalInstallationSoftwareConfigurationOutputWithContext(context.Background())
+}
+
+func (i ExternalInstallationSoftwareConfigurationArgs) ToExternalInstallationSoftwareConfigurationOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalInstallationSoftwareConfigurationOutput)
+}
+
+func (i ExternalInstallationSoftwareConfigurationArgs) ToExternalInstallationSoftwareConfigurationPtrOutput() ExternalInstallationSoftwareConfigurationPtrOutput {
+	return i.ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ExternalInstallationSoftwareConfigurationArgs) ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalInstallationSoftwareConfigurationOutput).ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(ctx)
+}
+
+// ExternalInstallationSoftwareConfigurationPtrInput is an input type that accepts ExternalInstallationSoftwareConfigurationArgs, ExternalInstallationSoftwareConfigurationPtr and ExternalInstallationSoftwareConfigurationPtrOutput values.
+// You can construct a concrete instance of `ExternalInstallationSoftwareConfigurationPtrInput` via:
+//
+//	        ExternalInstallationSoftwareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExternalInstallationSoftwareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToExternalInstallationSoftwareConfigurationPtrOutput() ExternalInstallationSoftwareConfigurationPtrOutput
+	ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(context.Context) ExternalInstallationSoftwareConfigurationPtrOutput
+}
+
+type externalInstallationSoftwareConfigurationPtrType ExternalInstallationSoftwareConfigurationArgs
+
+func ExternalInstallationSoftwareConfigurationPtr(v *ExternalInstallationSoftwareConfigurationArgs) ExternalInstallationSoftwareConfigurationPtrInput {
+	return (*externalInstallationSoftwareConfigurationPtrType)(v)
+}
+
+func (*externalInstallationSoftwareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalInstallationSoftwareConfiguration)(nil)).Elem()
+}
+
+func (i *externalInstallationSoftwareConfigurationPtrType) ToExternalInstallationSoftwareConfigurationPtrOutput() ExternalInstallationSoftwareConfigurationPtrOutput {
+	return i.ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *externalInstallationSoftwareConfigurationPtrType) ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalInstallationSoftwareConfigurationPtrOutput)
+}
+
+// The SAP Software configuration Input when the software is installed externally outside the service.
+type ExternalInstallationSoftwareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ExternalInstallationSoftwareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalInstallationSoftwareConfiguration)(nil)).Elem()
+}
+
+func (o ExternalInstallationSoftwareConfigurationOutput) ToExternalInstallationSoftwareConfigurationOutput() ExternalInstallationSoftwareConfigurationOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationOutput) ToExternalInstallationSoftwareConfigurationOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationOutput) ToExternalInstallationSoftwareConfigurationPtrOutput() ExternalInstallationSoftwareConfigurationPtrOutput {
+	return o.ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalInstallationSoftwareConfigurationOutput) ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalInstallationSoftwareConfiguration) *ExternalInstallationSoftwareConfiguration {
+		return &v
+	}).(ExternalInstallationSoftwareConfigurationPtrOutput)
+}
+
+// The resource ID of the virtual machine containing the central server instance.
+func (o ExternalInstallationSoftwareConfigurationOutput) CentralServerVmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalInstallationSoftwareConfiguration) *string { return v.CentralServerVmId }).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'External'.
+func (o ExternalInstallationSoftwareConfigurationOutput) SoftwareInstallationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalInstallationSoftwareConfiguration) string { return v.SoftwareInstallationType }).(pulumi.StringOutput)
+}
+
+type ExternalInstallationSoftwareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalInstallationSoftwareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalInstallationSoftwareConfiguration)(nil)).Elem()
+}
+
+func (o ExternalInstallationSoftwareConfigurationPtrOutput) ToExternalInstallationSoftwareConfigurationPtrOutput() ExternalInstallationSoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationPtrOutput) ToExternalInstallationSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationPtrOutput) Elem() ExternalInstallationSoftwareConfigurationOutput {
+	return o.ApplyT(func(v *ExternalInstallationSoftwareConfiguration) ExternalInstallationSoftwareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalInstallationSoftwareConfiguration
+		return ret
+	}).(ExternalInstallationSoftwareConfigurationOutput)
+}
+
+// The resource ID of the virtual machine containing the central server instance.
+func (o ExternalInstallationSoftwareConfigurationPtrOutput) CentralServerVmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalInstallationSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CentralServerVmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'External'.
+func (o ExternalInstallationSoftwareConfigurationPtrOutput) SoftwareInstallationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalInstallationSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareInstallationType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The SAP Software configuration Input when the software is installed externally outside the service.
 type ExternalInstallationSoftwareConfigurationResponse struct {
 	// The resource ID of the virtual machine containing the central server instance.
@@ -1360,6 +4815,77 @@ type ExternalInstallationSoftwareConfigurationResponse struct {
 	// The SAP software installation Type.
 	// Expected value is 'External'.
 	SoftwareInstallationType string `pulumi:"softwareInstallationType"`
+}
+
+// The SAP Software configuration Input when the software is installed externally outside the service.
+type ExternalInstallationSoftwareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExternalInstallationSoftwareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalInstallationSoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o ExternalInstallationSoftwareConfigurationResponseOutput) ToExternalInstallationSoftwareConfigurationResponseOutput() ExternalInstallationSoftwareConfigurationResponseOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationResponseOutput) ToExternalInstallationSoftwareConfigurationResponseOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationResponseOutput {
+	return o
+}
+
+// The resource ID of the virtual machine containing the central server instance.
+func (o ExternalInstallationSoftwareConfigurationResponseOutput) CentralServerVmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalInstallationSoftwareConfigurationResponse) *string { return v.CentralServerVmId }).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'External'.
+func (o ExternalInstallationSoftwareConfigurationResponseOutput) SoftwareInstallationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalInstallationSoftwareConfigurationResponse) string { return v.SoftwareInstallationType }).(pulumi.StringOutput)
+}
+
+type ExternalInstallationSoftwareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExternalInstallationSoftwareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalInstallationSoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o ExternalInstallationSoftwareConfigurationResponsePtrOutput) ToExternalInstallationSoftwareConfigurationResponsePtrOutput() ExternalInstallationSoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationResponsePtrOutput) ToExternalInstallationSoftwareConfigurationResponsePtrOutputWithContext(ctx context.Context) ExternalInstallationSoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ExternalInstallationSoftwareConfigurationResponsePtrOutput) Elem() ExternalInstallationSoftwareConfigurationResponseOutput {
+	return o.ApplyT(func(v *ExternalInstallationSoftwareConfigurationResponse) ExternalInstallationSoftwareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalInstallationSoftwareConfigurationResponse
+		return ret
+	}).(ExternalInstallationSoftwareConfigurationResponseOutput)
+}
+
+// The resource ID of the virtual machine containing the central server instance.
+func (o ExternalInstallationSoftwareConfigurationResponsePtrOutput) CentralServerVmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalInstallationSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CentralServerVmId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'External'.
+func (o ExternalInstallationSoftwareConfigurationResponsePtrOutput) SoftwareInstallationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalInstallationSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareInstallationType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the SAP Gateway Server properties.
@@ -1468,6 +4994,330 @@ type HanaDbProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// HanaDbProviderInstancePropertiesInput is an input type that accepts HanaDbProviderInstancePropertiesArgs and HanaDbProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `HanaDbProviderInstancePropertiesInput` via:
+//
+//	HanaDbProviderInstancePropertiesArgs{...}
+type HanaDbProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToHanaDbProviderInstancePropertiesOutput() HanaDbProviderInstancePropertiesOutput
+	ToHanaDbProviderInstancePropertiesOutputWithContext(context.Context) HanaDbProviderInstancePropertiesOutput
+}
+
+// Gets or sets the provider properties.
+type HanaDbProviderInstancePropertiesArgs struct {
+	// Gets or sets the hana database name.
+	DbName pulumi.StringPtrInput `pulumi:"dbName"`
+	// Gets or sets the database password.
+	DbPassword pulumi.StringPtrInput `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri pulumi.StringPtrInput `pulumi:"dbPasswordUri"`
+	// Gets or sets the database user name.
+	DbUsername pulumi.StringPtrInput `pulumi:"dbUsername"`
+	// Gets or sets the target virtual machine size.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Gets or sets the database instance number.
+	InstanceNumber pulumi.StringPtrInput `pulumi:"instanceNumber"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'SapHana'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier.
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the database sql port.
+	SqlPort pulumi.StringPtrInput `pulumi:"sqlPort"`
+	// Gets or sets the blob URI to SSL certificate for the DB.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets the hostname(s) in the SSL certificate.
+	SslHostNameInCertificate pulumi.StringPtrInput `pulumi:"sslHostNameInCertificate"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (HanaDbProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HanaDbProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i HanaDbProviderInstancePropertiesArgs) ToHanaDbProviderInstancePropertiesOutput() HanaDbProviderInstancePropertiesOutput {
+	return i.ToHanaDbProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i HanaDbProviderInstancePropertiesArgs) ToHanaDbProviderInstancePropertiesOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HanaDbProviderInstancePropertiesOutput)
+}
+
+func (i HanaDbProviderInstancePropertiesArgs) ToHanaDbProviderInstancePropertiesPtrOutput() HanaDbProviderInstancePropertiesPtrOutput {
+	return i.ToHanaDbProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i HanaDbProviderInstancePropertiesArgs) ToHanaDbProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HanaDbProviderInstancePropertiesOutput).ToHanaDbProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// HanaDbProviderInstancePropertiesPtrInput is an input type that accepts HanaDbProviderInstancePropertiesArgs, HanaDbProviderInstancePropertiesPtr and HanaDbProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `HanaDbProviderInstancePropertiesPtrInput` via:
+//
+//	        HanaDbProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type HanaDbProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToHanaDbProviderInstancePropertiesPtrOutput() HanaDbProviderInstancePropertiesPtrOutput
+	ToHanaDbProviderInstancePropertiesPtrOutputWithContext(context.Context) HanaDbProviderInstancePropertiesPtrOutput
+}
+
+type hanaDbProviderInstancePropertiesPtrType HanaDbProviderInstancePropertiesArgs
+
+func HanaDbProviderInstancePropertiesPtr(v *HanaDbProviderInstancePropertiesArgs) HanaDbProviderInstancePropertiesPtrInput {
+	return (*hanaDbProviderInstancePropertiesPtrType)(v)
+}
+
+func (*hanaDbProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HanaDbProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *hanaDbProviderInstancePropertiesPtrType) ToHanaDbProviderInstancePropertiesPtrOutput() HanaDbProviderInstancePropertiesPtrOutput {
+	return i.ToHanaDbProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *hanaDbProviderInstancePropertiesPtrType) ToHanaDbProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HanaDbProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the provider properties.
+type HanaDbProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (HanaDbProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HanaDbProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o HanaDbProviderInstancePropertiesOutput) ToHanaDbProviderInstancePropertiesOutput() HanaDbProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesOutput) ToHanaDbProviderInstancePropertiesOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesOutput) ToHanaDbProviderInstancePropertiesPtrOutput() HanaDbProviderInstancePropertiesPtrOutput {
+	return o.ToHanaDbProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o HanaDbProviderInstancePropertiesOutput) ToHanaDbProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HanaDbProviderInstanceProperties) *HanaDbProviderInstanceProperties {
+		return &v
+	}).(HanaDbProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the hana database name.
+func (o HanaDbProviderInstancePropertiesOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database password.
+func (o HanaDbProviderInstancePropertiesOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o HanaDbProviderInstancePropertiesOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o HanaDbProviderInstancePropertiesOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o HanaDbProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database instance number.
+func (o HanaDbProviderInstancePropertiesOutput) InstanceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.InstanceNumber }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapHana'.
+func (o HanaDbProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier.
+func (o HanaDbProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o HanaDbProviderInstancePropertiesOutput) SqlPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.SqlPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB.
+func (o HanaDbProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the hostname(s) in the SSL certificate.
+func (o HanaDbProviderInstancePropertiesOutput) SslHostNameInCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.SslHostNameInCertificate }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o HanaDbProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type HanaDbProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (HanaDbProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HanaDbProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o HanaDbProviderInstancePropertiesPtrOutput) ToHanaDbProviderInstancePropertiesPtrOutput() HanaDbProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesPtrOutput) ToHanaDbProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesPtrOutput) Elem() HanaDbProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) HanaDbProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret HanaDbProviderInstanceProperties
+		return ret
+	}).(HanaDbProviderInstancePropertiesOutput)
+}
+
+// Gets or sets the hana database name.
+func (o HanaDbProviderInstancePropertiesPtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database password.
+func (o HanaDbProviderInstancePropertiesPtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o HanaDbProviderInstancePropertiesPtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o HanaDbProviderInstancePropertiesPtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o HanaDbProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database instance number.
+func (o HanaDbProviderInstancePropertiesPtrOutput) InstanceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapHana'.
+func (o HanaDbProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier.
+func (o HanaDbProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o HanaDbProviderInstancePropertiesPtrOutput) SqlPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB.
+func (o HanaDbProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the hostname(s) in the SSL certificate.
+func (o HanaDbProviderInstancePropertiesPtrOutput) SslHostNameInCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslHostNameInCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o HanaDbProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the provider properties.
 type HanaDbProviderInstancePropertiesResponse struct {
 	// Gets or sets the hana database name.
@@ -1497,16 +5347,425 @@ type HanaDbProviderInstancePropertiesResponse struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// Gets or sets the provider properties.
+type HanaDbProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HanaDbProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HanaDbProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o HanaDbProviderInstancePropertiesResponseOutput) ToHanaDbProviderInstancePropertiesResponseOutput() HanaDbProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesResponseOutput) ToHanaDbProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the hana database name.
+func (o HanaDbProviderInstancePropertiesResponseOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.DbName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database password.
+func (o HanaDbProviderInstancePropertiesResponseOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o HanaDbProviderInstancePropertiesResponseOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o HanaDbProviderInstancePropertiesResponseOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o HanaDbProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database instance number.
+func (o HanaDbProviderInstancePropertiesResponseOutput) InstanceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.InstanceNumber }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapHana'.
+func (o HanaDbProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier.
+func (o HanaDbProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o HanaDbProviderInstancePropertiesResponseOutput) SqlPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.SqlPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB.
+func (o HanaDbProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the hostname(s) in the SSL certificate.
+func (o HanaDbProviderInstancePropertiesResponseOutput) SslHostNameInCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.SslHostNameInCertificate }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o HanaDbProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HanaDbProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type HanaDbProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HanaDbProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HanaDbProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) ToHanaDbProviderInstancePropertiesResponsePtrOutput() HanaDbProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) ToHanaDbProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) HanaDbProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) Elem() HanaDbProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) HanaDbProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HanaDbProviderInstancePropertiesResponse
+		return ret
+	}).(HanaDbProviderInstancePropertiesResponseOutput)
+}
+
+// Gets or sets the hana database name.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) DbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database password.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database instance number.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) InstanceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapHana'.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) SqlPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the DB.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the hostname(s) in the SSL certificate.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) SslHostNameInCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslHostNameInCertificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o HanaDbProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HanaDbProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the high availability configuration.
 type HighAvailabilityConfiguration struct {
 	// The high availability type.
 	HighAvailabilityType string `pulumi:"highAvailabilityType"`
 }
 
+// HighAvailabilityConfigurationInput is an input type that accepts HighAvailabilityConfigurationArgs and HighAvailabilityConfigurationOutput values.
+// You can construct a concrete instance of `HighAvailabilityConfigurationInput` via:
+//
+//	HighAvailabilityConfigurationArgs{...}
+type HighAvailabilityConfigurationInput interface {
+	pulumi.Input
+
+	ToHighAvailabilityConfigurationOutput() HighAvailabilityConfigurationOutput
+	ToHighAvailabilityConfigurationOutputWithContext(context.Context) HighAvailabilityConfigurationOutput
+}
+
+// Gets or sets the high availability configuration.
+type HighAvailabilityConfigurationArgs struct {
+	// The high availability type.
+	HighAvailabilityType pulumi.StringInput `pulumi:"highAvailabilityType"`
+}
+
+func (HighAvailabilityConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailabilityConfiguration)(nil)).Elem()
+}
+
+func (i HighAvailabilityConfigurationArgs) ToHighAvailabilityConfigurationOutput() HighAvailabilityConfigurationOutput {
+	return i.ToHighAvailabilityConfigurationOutputWithContext(context.Background())
+}
+
+func (i HighAvailabilityConfigurationArgs) ToHighAvailabilityConfigurationOutputWithContext(ctx context.Context) HighAvailabilityConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilityConfigurationOutput)
+}
+
+func (i HighAvailabilityConfigurationArgs) ToHighAvailabilityConfigurationPtrOutput() HighAvailabilityConfigurationPtrOutput {
+	return i.ToHighAvailabilityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i HighAvailabilityConfigurationArgs) ToHighAvailabilityConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilityConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilityConfigurationOutput).ToHighAvailabilityConfigurationPtrOutputWithContext(ctx)
+}
+
+// HighAvailabilityConfigurationPtrInput is an input type that accepts HighAvailabilityConfigurationArgs, HighAvailabilityConfigurationPtr and HighAvailabilityConfigurationPtrOutput values.
+// You can construct a concrete instance of `HighAvailabilityConfigurationPtrInput` via:
+//
+//	        HighAvailabilityConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HighAvailabilityConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToHighAvailabilityConfigurationPtrOutput() HighAvailabilityConfigurationPtrOutput
+	ToHighAvailabilityConfigurationPtrOutputWithContext(context.Context) HighAvailabilityConfigurationPtrOutput
+}
+
+type highAvailabilityConfigurationPtrType HighAvailabilityConfigurationArgs
+
+func HighAvailabilityConfigurationPtr(v *HighAvailabilityConfigurationArgs) HighAvailabilityConfigurationPtrInput {
+	return (*highAvailabilityConfigurationPtrType)(v)
+}
+
+func (*highAvailabilityConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailabilityConfiguration)(nil)).Elem()
+}
+
+func (i *highAvailabilityConfigurationPtrType) ToHighAvailabilityConfigurationPtrOutput() HighAvailabilityConfigurationPtrOutput {
+	return i.ToHighAvailabilityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *highAvailabilityConfigurationPtrType) ToHighAvailabilityConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilityConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilityConfigurationPtrOutput)
+}
+
+// Gets or sets the high availability configuration.
+type HighAvailabilityConfigurationOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilityConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailabilityConfiguration)(nil)).Elem()
+}
+
+func (o HighAvailabilityConfigurationOutput) ToHighAvailabilityConfigurationOutput() HighAvailabilityConfigurationOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationOutput) ToHighAvailabilityConfigurationOutputWithContext(ctx context.Context) HighAvailabilityConfigurationOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationOutput) ToHighAvailabilityConfigurationPtrOutput() HighAvailabilityConfigurationPtrOutput {
+	return o.ToHighAvailabilityConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o HighAvailabilityConfigurationOutput) ToHighAvailabilityConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilityConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HighAvailabilityConfiguration) *HighAvailabilityConfiguration {
+		return &v
+	}).(HighAvailabilityConfigurationPtrOutput)
+}
+
+// The high availability type.
+func (o HighAvailabilityConfigurationOutput) HighAvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v HighAvailabilityConfiguration) string { return v.HighAvailabilityType }).(pulumi.StringOutput)
+}
+
+type HighAvailabilityConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilityConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailabilityConfiguration)(nil)).Elem()
+}
+
+func (o HighAvailabilityConfigurationPtrOutput) ToHighAvailabilityConfigurationPtrOutput() HighAvailabilityConfigurationPtrOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationPtrOutput) ToHighAvailabilityConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilityConfigurationPtrOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationPtrOutput) Elem() HighAvailabilityConfigurationOutput {
+	return o.ApplyT(func(v *HighAvailabilityConfiguration) HighAvailabilityConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret HighAvailabilityConfiguration
+		return ret
+	}).(HighAvailabilityConfigurationOutput)
+}
+
+// The high availability type.
+func (o HighAvailabilityConfigurationPtrOutput) HighAvailabilityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HighAvailabilityConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HighAvailabilityType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the high availability configuration.
 type HighAvailabilityConfigurationResponse struct {
 	// The high availability type.
 	HighAvailabilityType string `pulumi:"highAvailabilityType"`
+}
+
+// Gets or sets the high availability configuration.
+type HighAvailabilityConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilityConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailabilityConfigurationResponse)(nil)).Elem()
+}
+
+func (o HighAvailabilityConfigurationResponseOutput) ToHighAvailabilityConfigurationResponseOutput() HighAvailabilityConfigurationResponseOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationResponseOutput) ToHighAvailabilityConfigurationResponseOutputWithContext(ctx context.Context) HighAvailabilityConfigurationResponseOutput {
+	return o
+}
+
+// The high availability type.
+func (o HighAvailabilityConfigurationResponseOutput) HighAvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v HighAvailabilityConfigurationResponse) string { return v.HighAvailabilityType }).(pulumi.StringOutput)
+}
+
+type HighAvailabilityConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilityConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailabilityConfigurationResponse)(nil)).Elem()
+}
+
+func (o HighAvailabilityConfigurationResponsePtrOutput) ToHighAvailabilityConfigurationResponsePtrOutput() HighAvailabilityConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationResponsePtrOutput) ToHighAvailabilityConfigurationResponsePtrOutputWithContext(ctx context.Context) HighAvailabilityConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o HighAvailabilityConfigurationResponsePtrOutput) Elem() HighAvailabilityConfigurationResponseOutput {
+	return o.ApplyT(func(v *HighAvailabilityConfigurationResponse) HighAvailabilityConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HighAvailabilityConfigurationResponse
+		return ret
+	}).(HighAvailabilityConfigurationResponseOutput)
+}
+
+// The high availability type.
+func (o HighAvailabilityConfigurationResponsePtrOutput) HighAvailabilityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HighAvailabilityConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HighAvailabilityType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the HA software configuration.
@@ -1517,12 +5776,232 @@ type HighAvailabilitySoftwareConfiguration struct {
 	FencingClientPassword string `pulumi:"fencingClientPassword"`
 }
 
+// HighAvailabilitySoftwareConfigurationInput is an input type that accepts HighAvailabilitySoftwareConfigurationArgs and HighAvailabilitySoftwareConfigurationOutput values.
+// You can construct a concrete instance of `HighAvailabilitySoftwareConfigurationInput` via:
+//
+//	HighAvailabilitySoftwareConfigurationArgs{...}
+type HighAvailabilitySoftwareConfigurationInput interface {
+	pulumi.Input
+
+	ToHighAvailabilitySoftwareConfigurationOutput() HighAvailabilitySoftwareConfigurationOutput
+	ToHighAvailabilitySoftwareConfigurationOutputWithContext(context.Context) HighAvailabilitySoftwareConfigurationOutput
+}
+
+// Gets or sets the HA software configuration.
+type HighAvailabilitySoftwareConfigurationArgs struct {
+	// The fencing client id.
+	FencingClientId pulumi.StringInput `pulumi:"fencingClientId"`
+	// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
+	FencingClientPassword pulumi.StringInput `pulumi:"fencingClientPassword"`
+}
+
+func (HighAvailabilitySoftwareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailabilitySoftwareConfiguration)(nil)).Elem()
+}
+
+func (i HighAvailabilitySoftwareConfigurationArgs) ToHighAvailabilitySoftwareConfigurationOutput() HighAvailabilitySoftwareConfigurationOutput {
+	return i.ToHighAvailabilitySoftwareConfigurationOutputWithContext(context.Background())
+}
+
+func (i HighAvailabilitySoftwareConfigurationArgs) ToHighAvailabilitySoftwareConfigurationOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilitySoftwareConfigurationOutput)
+}
+
+func (i HighAvailabilitySoftwareConfigurationArgs) ToHighAvailabilitySoftwareConfigurationPtrOutput() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return i.ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i HighAvailabilitySoftwareConfigurationArgs) ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilitySoftwareConfigurationOutput).ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(ctx)
+}
+
+// HighAvailabilitySoftwareConfigurationPtrInput is an input type that accepts HighAvailabilitySoftwareConfigurationArgs, HighAvailabilitySoftwareConfigurationPtr and HighAvailabilitySoftwareConfigurationPtrOutput values.
+// You can construct a concrete instance of `HighAvailabilitySoftwareConfigurationPtrInput` via:
+//
+//	        HighAvailabilitySoftwareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HighAvailabilitySoftwareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToHighAvailabilitySoftwareConfigurationPtrOutput() HighAvailabilitySoftwareConfigurationPtrOutput
+	ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(context.Context) HighAvailabilitySoftwareConfigurationPtrOutput
+}
+
+type highAvailabilitySoftwareConfigurationPtrType HighAvailabilitySoftwareConfigurationArgs
+
+func HighAvailabilitySoftwareConfigurationPtr(v *HighAvailabilitySoftwareConfigurationArgs) HighAvailabilitySoftwareConfigurationPtrInput {
+	return (*highAvailabilitySoftwareConfigurationPtrType)(v)
+}
+
+func (*highAvailabilitySoftwareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailabilitySoftwareConfiguration)(nil)).Elem()
+}
+
+func (i *highAvailabilitySoftwareConfigurationPtrType) ToHighAvailabilitySoftwareConfigurationPtrOutput() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return i.ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *highAvailabilitySoftwareConfigurationPtrType) ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighAvailabilitySoftwareConfigurationPtrOutput)
+}
+
+// Gets or sets the HA software configuration.
+type HighAvailabilitySoftwareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilitySoftwareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailabilitySoftwareConfiguration)(nil)).Elem()
+}
+
+func (o HighAvailabilitySoftwareConfigurationOutput) ToHighAvailabilitySoftwareConfigurationOutput() HighAvailabilitySoftwareConfigurationOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationOutput) ToHighAvailabilitySoftwareConfigurationOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationOutput) ToHighAvailabilitySoftwareConfigurationPtrOutput() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o.ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o HighAvailabilitySoftwareConfigurationOutput) ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HighAvailabilitySoftwareConfiguration) *HighAvailabilitySoftwareConfiguration {
+		return &v
+	}).(HighAvailabilitySoftwareConfigurationPtrOutput)
+}
+
+// The fencing client id.
+func (o HighAvailabilitySoftwareConfigurationOutput) FencingClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v HighAvailabilitySoftwareConfiguration) string { return v.FencingClientId }).(pulumi.StringOutput)
+}
+
+// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
+func (o HighAvailabilitySoftwareConfigurationOutput) FencingClientPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v HighAvailabilitySoftwareConfiguration) string { return v.FencingClientPassword }).(pulumi.StringOutput)
+}
+
+type HighAvailabilitySoftwareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilitySoftwareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailabilitySoftwareConfiguration)(nil)).Elem()
+}
+
+func (o HighAvailabilitySoftwareConfigurationPtrOutput) ToHighAvailabilitySoftwareConfigurationPtrOutput() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationPtrOutput) ToHighAvailabilitySoftwareConfigurationPtrOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationPtrOutput) Elem() HighAvailabilitySoftwareConfigurationOutput {
+	return o.ApplyT(func(v *HighAvailabilitySoftwareConfiguration) HighAvailabilitySoftwareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret HighAvailabilitySoftwareConfiguration
+		return ret
+	}).(HighAvailabilitySoftwareConfigurationOutput)
+}
+
+// The fencing client id.
+func (o HighAvailabilitySoftwareConfigurationPtrOutput) FencingClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HighAvailabilitySoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FencingClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
+func (o HighAvailabilitySoftwareConfigurationPtrOutput) FencingClientPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HighAvailabilitySoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FencingClientPassword
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the HA software configuration.
 type HighAvailabilitySoftwareConfigurationResponse struct {
 	// The fencing client id.
 	FencingClientId string `pulumi:"fencingClientId"`
 	// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
 	FencingClientPassword string `pulumi:"fencingClientPassword"`
+}
+
+// Gets or sets the HA software configuration.
+type HighAvailabilitySoftwareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilitySoftwareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighAvailabilitySoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o HighAvailabilitySoftwareConfigurationResponseOutput) ToHighAvailabilitySoftwareConfigurationResponseOutput() HighAvailabilitySoftwareConfigurationResponseOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationResponseOutput) ToHighAvailabilitySoftwareConfigurationResponseOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationResponseOutput {
+	return o
+}
+
+// The fencing client id.
+func (o HighAvailabilitySoftwareConfigurationResponseOutput) FencingClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v HighAvailabilitySoftwareConfigurationResponse) string { return v.FencingClientId }).(pulumi.StringOutput)
+}
+
+// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
+func (o HighAvailabilitySoftwareConfigurationResponseOutput) FencingClientPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v HighAvailabilitySoftwareConfigurationResponse) string { return v.FencingClientPassword }).(pulumi.StringOutput)
+}
+
+type HighAvailabilitySoftwareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HighAvailabilitySoftwareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HighAvailabilitySoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o HighAvailabilitySoftwareConfigurationResponsePtrOutput) ToHighAvailabilitySoftwareConfigurationResponsePtrOutput() HighAvailabilitySoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationResponsePtrOutput) ToHighAvailabilitySoftwareConfigurationResponsePtrOutputWithContext(ctx context.Context) HighAvailabilitySoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o HighAvailabilitySoftwareConfigurationResponsePtrOutput) Elem() HighAvailabilitySoftwareConfigurationResponseOutput {
+	return o.ApplyT(func(v *HighAvailabilitySoftwareConfigurationResponse) HighAvailabilitySoftwareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HighAvailabilitySoftwareConfigurationResponse
+		return ret
+	}).(HighAvailabilitySoftwareConfigurationResponseOutput)
+}
+
+// The fencing client id.
+func (o HighAvailabilitySoftwareConfigurationResponsePtrOutput) FencingClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HighAvailabilitySoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FencingClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fencing client id secret/password. The secret should never expire. This will be used pacemaker to start/stop the cluster VMs.
+func (o HighAvailabilitySoftwareConfigurationResponsePtrOutput) FencingClientPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HighAvailabilitySoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FencingClientPassword
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
@@ -1537,6 +6016,191 @@ type ImageReference struct {
 	Version *string `pulumi:"version"`
 }
 
+// ImageReferenceInput is an input type that accepts ImageReferenceArgs and ImageReferenceOutput values.
+// You can construct a concrete instance of `ImageReferenceInput` via:
+//
+//	ImageReferenceArgs{...}
+type ImageReferenceInput interface {
+	pulumi.Input
+
+	ToImageReferenceOutput() ImageReferenceOutput
+	ToImageReferenceOutputWithContext(context.Context) ImageReferenceOutput
+}
+
+// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+type ImageReferenceArgs struct {
+	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+	Offer pulumi.StringPtrInput `pulumi:"offer"`
+	// The image publisher.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// The image SKU.
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ImageReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageReference)(nil)).Elem()
+}
+
+func (i ImageReferenceArgs) ToImageReferenceOutput() ImageReferenceOutput {
+	return i.ToImageReferenceOutputWithContext(context.Background())
+}
+
+func (i ImageReferenceArgs) ToImageReferenceOutputWithContext(ctx context.Context) ImageReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageReferenceOutput)
+}
+
+func (i ImageReferenceArgs) ToImageReferencePtrOutput() ImageReferencePtrOutput {
+	return i.ToImageReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ImageReferenceArgs) ToImageReferencePtrOutputWithContext(ctx context.Context) ImageReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageReferenceOutput).ToImageReferencePtrOutputWithContext(ctx)
+}
+
+// ImageReferencePtrInput is an input type that accepts ImageReferenceArgs, ImageReferencePtr and ImageReferencePtrOutput values.
+// You can construct a concrete instance of `ImageReferencePtrInput` via:
+//
+//	        ImageReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageReferencePtrInput interface {
+	pulumi.Input
+
+	ToImageReferencePtrOutput() ImageReferencePtrOutput
+	ToImageReferencePtrOutputWithContext(context.Context) ImageReferencePtrOutput
+}
+
+type imageReferencePtrType ImageReferenceArgs
+
+func ImageReferencePtr(v *ImageReferenceArgs) ImageReferencePtrInput {
+	return (*imageReferencePtrType)(v)
+}
+
+func (*imageReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageReference)(nil)).Elem()
+}
+
+func (i *imageReferencePtrType) ToImageReferencePtrOutput() ImageReferencePtrOutput {
+	return i.ToImageReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *imageReferencePtrType) ToImageReferencePtrOutputWithContext(ctx context.Context) ImageReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageReferencePtrOutput)
+}
+
+// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+type ImageReferenceOutput struct{ *pulumi.OutputState }
+
+func (ImageReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageReference)(nil)).Elem()
+}
+
+func (o ImageReferenceOutput) ToImageReferenceOutput() ImageReferenceOutput {
+	return o
+}
+
+func (o ImageReferenceOutput) ToImageReferenceOutputWithContext(ctx context.Context) ImageReferenceOutput {
+	return o
+}
+
+func (o ImageReferenceOutput) ToImageReferencePtrOutput() ImageReferencePtrOutput {
+	return o.ToImageReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ImageReferenceOutput) ToImageReferencePtrOutputWithContext(ctx context.Context) ImageReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageReference) *ImageReference {
+		return &v
+	}).(ImageReferencePtrOutput)
+}
+
+// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+func (o ImageReferenceOutput) Offer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.Offer }).(pulumi.StringPtrOutput)
+}
+
+// The image publisher.
+func (o ImageReferenceOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// The image SKU.
+func (o ImageReferenceOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+func (o ImageReferenceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ImageReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageReference)(nil)).Elem()
+}
+
+func (o ImageReferencePtrOutput) ToImageReferencePtrOutput() ImageReferencePtrOutput {
+	return o
+}
+
+func (o ImageReferencePtrOutput) ToImageReferencePtrOutputWithContext(ctx context.Context) ImageReferencePtrOutput {
+	return o
+}
+
+func (o ImageReferencePtrOutput) Elem() ImageReferenceOutput {
+	return o.ApplyT(func(v *ImageReference) ImageReference {
+		if v != nil {
+			return *v
+		}
+		var ret ImageReference
+		return ret
+	}).(ImageReferenceOutput)
+}
+
+// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+func (o ImageReferencePtrOutput) Offer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offer
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image publisher.
+func (o ImageReferencePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image SKU.
+func (o ImageReferencePtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+func (o ImageReferencePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceResponse struct {
 	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
@@ -1547,6 +6211,105 @@ type ImageReferenceResponse struct {
 	Sku *string `pulumi:"sku"`
 	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
 	Version *string `pulumi:"version"`
+}
+
+// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+type ImageReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageReferenceResponse)(nil)).Elem()
+}
+
+func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutput() ImageReferenceResponseOutput {
+	return o
+}
+
+func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutputWithContext(ctx context.Context) ImageReferenceResponseOutput {
+	return o
+}
+
+// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+func (o ImageReferenceResponseOutput) Offer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Offer }).(pulumi.StringPtrOutput)
+}
+
+// The image publisher.
+func (o ImageReferenceResponseOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// The image SKU.
+func (o ImageReferenceResponseOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+func (o ImageReferenceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ImageReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageReferenceResponse)(nil)).Elem()
+}
+
+func (o ImageReferenceResponsePtrOutput) ToImageReferenceResponsePtrOutput() ImageReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ImageReferenceResponsePtrOutput) ToImageReferenceResponsePtrOutputWithContext(ctx context.Context) ImageReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ImageReferenceResponsePtrOutput) Elem() ImageReferenceResponseOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) ImageReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImageReferenceResponse
+		return ret
+	}).(ImageReferenceResponseOutput)
+}
+
+// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+func (o ImageReferenceResponsePtrOutput) Offer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Offer
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image publisher.
+func (o ImageReferenceResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image SKU.
+func (o ImageReferenceResponsePtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
+func (o ImageReferenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
@@ -1562,6 +6325,194 @@ type LinuxConfiguration struct {
 	SshKeyPair *SshKeyPair `pulumi:"sshKeyPair"`
 }
 
+// LinuxConfigurationInput is an input type that accepts LinuxConfigurationArgs and LinuxConfigurationOutput values.
+// You can construct a concrete instance of `LinuxConfigurationInput` via:
+//
+//	LinuxConfigurationArgs{...}
+type LinuxConfigurationInput interface {
+	pulumi.Input
+
+	ToLinuxConfigurationOutput() LinuxConfigurationOutput
+	ToLinuxConfigurationOutputWithContext(context.Context) LinuxConfigurationOutput
+}
+
+// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+type LinuxConfigurationArgs struct {
+	// Specifies whether password authentication should be disabled.
+	DisablePasswordAuthentication pulumi.BoolPtrInput `pulumi:"disablePasswordAuthentication"`
+	// The OS Type
+	// Expected value is 'Linux'.
+	OsType pulumi.StringInput `pulumi:"osType"`
+	// Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
+	Ssh SshConfigurationPtrInput `pulumi:"ssh"`
+	// The SSH Key-pair used to authenticate with the VM's.
+	SshKeyPair SshKeyPairPtrInput `pulumi:"sshKeyPair"`
+}
+
+func (LinuxConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxConfiguration)(nil)).Elem()
+}
+
+func (i LinuxConfigurationArgs) ToLinuxConfigurationOutput() LinuxConfigurationOutput {
+	return i.ToLinuxConfigurationOutputWithContext(context.Background())
+}
+
+func (i LinuxConfigurationArgs) ToLinuxConfigurationOutputWithContext(ctx context.Context) LinuxConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxConfigurationOutput)
+}
+
+func (i LinuxConfigurationArgs) ToLinuxConfigurationPtrOutput() LinuxConfigurationPtrOutput {
+	return i.ToLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i LinuxConfigurationArgs) ToLinuxConfigurationPtrOutputWithContext(ctx context.Context) LinuxConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxConfigurationOutput).ToLinuxConfigurationPtrOutputWithContext(ctx)
+}
+
+// LinuxConfigurationPtrInput is an input type that accepts LinuxConfigurationArgs, LinuxConfigurationPtr and LinuxConfigurationPtrOutput values.
+// You can construct a concrete instance of `LinuxConfigurationPtrInput` via:
+//
+//	        LinuxConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinuxConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToLinuxConfigurationPtrOutput() LinuxConfigurationPtrOutput
+	ToLinuxConfigurationPtrOutputWithContext(context.Context) LinuxConfigurationPtrOutput
+}
+
+type linuxConfigurationPtrType LinuxConfigurationArgs
+
+func LinuxConfigurationPtr(v *LinuxConfigurationArgs) LinuxConfigurationPtrInput {
+	return (*linuxConfigurationPtrType)(v)
+}
+
+func (*linuxConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxConfiguration)(nil)).Elem()
+}
+
+func (i *linuxConfigurationPtrType) ToLinuxConfigurationPtrOutput() LinuxConfigurationPtrOutput {
+	return i.ToLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *linuxConfigurationPtrType) ToLinuxConfigurationPtrOutputWithContext(ctx context.Context) LinuxConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxConfigurationPtrOutput)
+}
+
+// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+type LinuxConfigurationOutput struct{ *pulumi.OutputState }
+
+func (LinuxConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxConfiguration)(nil)).Elem()
+}
+
+func (o LinuxConfigurationOutput) ToLinuxConfigurationOutput() LinuxConfigurationOutput {
+	return o
+}
+
+func (o LinuxConfigurationOutput) ToLinuxConfigurationOutputWithContext(ctx context.Context) LinuxConfigurationOutput {
+	return o
+}
+
+func (o LinuxConfigurationOutput) ToLinuxConfigurationPtrOutput() LinuxConfigurationPtrOutput {
+	return o.ToLinuxConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxConfigurationOutput) ToLinuxConfigurationPtrOutputWithContext(ctx context.Context) LinuxConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxConfiguration) *LinuxConfiguration {
+		return &v
+	}).(LinuxConfigurationPtrOutput)
+}
+
+// Specifies whether password authentication should be disabled.
+func (o LinuxConfigurationOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LinuxConfiguration) *bool { return v.DisablePasswordAuthentication }).(pulumi.BoolPtrOutput)
+}
+
+// The OS Type
+// Expected value is 'Linux'.
+func (o LinuxConfigurationOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v LinuxConfiguration) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
+func (o LinuxConfigurationOutput) Ssh() SshConfigurationPtrOutput {
+	return o.ApplyT(func(v LinuxConfiguration) *SshConfiguration { return v.Ssh }).(SshConfigurationPtrOutput)
+}
+
+// The SSH Key-pair used to authenticate with the VM's.
+func (o LinuxConfigurationOutput) SshKeyPair() SshKeyPairPtrOutput {
+	return o.ApplyT(func(v LinuxConfiguration) *SshKeyPair { return v.SshKeyPair }).(SshKeyPairPtrOutput)
+}
+
+type LinuxConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxConfiguration)(nil)).Elem()
+}
+
+func (o LinuxConfigurationPtrOutput) ToLinuxConfigurationPtrOutput() LinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o LinuxConfigurationPtrOutput) ToLinuxConfigurationPtrOutputWithContext(ctx context.Context) LinuxConfigurationPtrOutput {
+	return o
+}
+
+func (o LinuxConfigurationPtrOutput) Elem() LinuxConfigurationOutput {
+	return o.ApplyT(func(v *LinuxConfiguration) LinuxConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxConfiguration
+		return ret
+	}).(LinuxConfigurationOutput)
+}
+
+// Specifies whether password authentication should be disabled.
+func (o LinuxConfigurationPtrOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LinuxConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePasswordAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OS Type
+// Expected value is 'Linux'.
+func (o LinuxConfigurationPtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinuxConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
+func (o LinuxConfigurationPtrOutput) Ssh() SshConfigurationPtrOutput {
+	return o.ApplyT(func(v *LinuxConfiguration) *SshConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(SshConfigurationPtrOutput)
+}
+
+// The SSH Key-pair used to authenticate with the VM's.
+func (o LinuxConfigurationPtrOutput) SshKeyPair() SshKeyPairPtrOutput {
+	return o.ApplyT(func(v *LinuxConfiguration) *SshKeyPair {
+		if v == nil {
+			return nil
+		}
+		return v.SshKeyPair
+	}).(SshKeyPairPtrOutput)
+}
+
 // Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponse struct {
 	// Specifies whether password authentication should be disabled.
@@ -1573,6 +6524,107 @@ type LinuxConfigurationResponse struct {
 	Ssh *SshConfigurationResponse `pulumi:"ssh"`
 	// The SSH Key-pair used to authenticate with the VM's.
 	SshKeyPair *SshKeyPairResponse `pulumi:"sshKeyPair"`
+}
+
+// Specifies the Linux operating system settings on the virtual machine. <br><br>For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+type LinuxConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (LinuxConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxConfigurationResponse)(nil)).Elem()
+}
+
+func (o LinuxConfigurationResponseOutput) ToLinuxConfigurationResponseOutput() LinuxConfigurationResponseOutput {
+	return o
+}
+
+func (o LinuxConfigurationResponseOutput) ToLinuxConfigurationResponseOutputWithContext(ctx context.Context) LinuxConfigurationResponseOutput {
+	return o
+}
+
+// Specifies whether password authentication should be disabled.
+func (o LinuxConfigurationResponseOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LinuxConfigurationResponse) *bool { return v.DisablePasswordAuthentication }).(pulumi.BoolPtrOutput)
+}
+
+// The OS Type
+// Expected value is 'Linux'.
+func (o LinuxConfigurationResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v LinuxConfigurationResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
+func (o LinuxConfigurationResponseOutput) Ssh() SshConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LinuxConfigurationResponse) *SshConfigurationResponse { return v.Ssh }).(SshConfigurationResponsePtrOutput)
+}
+
+// The SSH Key-pair used to authenticate with the VM's.
+func (o LinuxConfigurationResponseOutput) SshKeyPair() SshKeyPairResponsePtrOutput {
+	return o.ApplyT(func(v LinuxConfigurationResponse) *SshKeyPairResponse { return v.SshKeyPair }).(SshKeyPairResponsePtrOutput)
+}
+
+type LinuxConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxConfigurationResponse)(nil)).Elem()
+}
+
+func (o LinuxConfigurationResponsePtrOutput) ToLinuxConfigurationResponsePtrOutput() LinuxConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LinuxConfigurationResponsePtrOutput) ToLinuxConfigurationResponsePtrOutputWithContext(ctx context.Context) LinuxConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o LinuxConfigurationResponsePtrOutput) Elem() LinuxConfigurationResponseOutput {
+	return o.ApplyT(func(v *LinuxConfigurationResponse) LinuxConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxConfigurationResponse
+		return ret
+	}).(LinuxConfigurationResponseOutput)
+}
+
+// Specifies whether password authentication should be disabled.
+func (o LinuxConfigurationResponsePtrOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LinuxConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePasswordAuthentication
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The OS Type
+// Expected value is 'Linux'.
+func (o LinuxConfigurationResponsePtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinuxConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
+func (o LinuxConfigurationResponsePtrOutput) Ssh() SshConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *LinuxConfigurationResponse) *SshConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ssh
+	}).(SshConfigurationResponsePtrOutput)
+}
+
+// The SSH Key-pair used to authenticate with the VM's.
+func (o LinuxConfigurationResponsePtrOutput) SshKeyPair() SshKeyPairResponsePtrOutput {
+	return o.ApplyT(func(v *LinuxConfigurationResponse) *SshKeyPairResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SshKeyPair
+	}).(SshKeyPairResponsePtrOutput)
 }
 
 // The Load Balancer details such as Load Balancer ID.
@@ -1611,6 +6663,191 @@ type LoadBalancerResourceNames struct {
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
 }
 
+// LoadBalancerResourceNamesInput is an input type that accepts LoadBalancerResourceNamesArgs and LoadBalancerResourceNamesOutput values.
+// You can construct a concrete instance of `LoadBalancerResourceNamesInput` via:
+//
+//	LoadBalancerResourceNamesArgs{...}
+type LoadBalancerResourceNamesInput interface {
+	pulumi.Input
+
+	ToLoadBalancerResourceNamesOutput() LoadBalancerResourceNamesOutput
+	ToLoadBalancerResourceNamesOutputWithContext(context.Context) LoadBalancerResourceNamesOutput
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNamesArgs struct {
+	// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+	BackendPoolNames pulumi.StringArrayInput `pulumi:"backendPoolNames"`
+	// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	FrontendIpConfigurationNames pulumi.StringArrayInput `pulumi:"frontendIpConfigurationNames"`
+	// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+	HealthProbeNames pulumi.StringArrayInput `pulumi:"healthProbeNames"`
+	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+	LoadBalancerName pulumi.StringPtrInput `pulumi:"loadBalancerName"`
+}
+
+func (LoadBalancerResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResourceNames)(nil)).Elem()
+}
+
+func (i LoadBalancerResourceNamesArgs) ToLoadBalancerResourceNamesOutput() LoadBalancerResourceNamesOutput {
+	return i.ToLoadBalancerResourceNamesOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerResourceNamesArgs) ToLoadBalancerResourceNamesOutputWithContext(ctx context.Context) LoadBalancerResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerResourceNamesOutput)
+}
+
+func (i LoadBalancerResourceNamesArgs) ToLoadBalancerResourceNamesPtrOutput() LoadBalancerResourceNamesPtrOutput {
+	return i.ToLoadBalancerResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerResourceNamesArgs) ToLoadBalancerResourceNamesPtrOutputWithContext(ctx context.Context) LoadBalancerResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerResourceNamesOutput).ToLoadBalancerResourceNamesPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerResourceNamesPtrInput is an input type that accepts LoadBalancerResourceNamesArgs, LoadBalancerResourceNamesPtr and LoadBalancerResourceNamesPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerResourceNamesPtrInput` via:
+//
+//	        LoadBalancerResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerResourceNamesPtrOutput() LoadBalancerResourceNamesPtrOutput
+	ToLoadBalancerResourceNamesPtrOutputWithContext(context.Context) LoadBalancerResourceNamesPtrOutput
+}
+
+type loadBalancerResourceNamesPtrType LoadBalancerResourceNamesArgs
+
+func LoadBalancerResourceNamesPtr(v *LoadBalancerResourceNamesArgs) LoadBalancerResourceNamesPtrInput {
+	return (*loadBalancerResourceNamesPtrType)(v)
+}
+
+func (*loadBalancerResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResourceNames)(nil)).Elem()
+}
+
+func (i *loadBalancerResourceNamesPtrType) ToLoadBalancerResourceNamesPtrOutput() LoadBalancerResourceNamesPtrOutput {
+	return i.ToLoadBalancerResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerResourceNamesPtrType) ToLoadBalancerResourceNamesPtrOutputWithContext(ctx context.Context) LoadBalancerResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerResourceNamesPtrOutput)
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResourceNames)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceNamesOutput) ToLoadBalancerResourceNamesOutput() LoadBalancerResourceNamesOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesOutput) ToLoadBalancerResourceNamesOutputWithContext(ctx context.Context) LoadBalancerResourceNamesOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesOutput) ToLoadBalancerResourceNamesPtrOutput() LoadBalancerResourceNamesPtrOutput {
+	return o.ToLoadBalancerResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerResourceNamesOutput) ToLoadBalancerResourceNamesPtrOutputWithContext(ctx context.Context) LoadBalancerResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerResourceNames) *LoadBalancerResourceNames {
+		return &v
+	}).(LoadBalancerResourceNamesPtrOutput)
+}
+
+// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+func (o LoadBalancerResourceNamesOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNames) []string { return v.BackendPoolNames }).(pulumi.StringArrayOutput)
+}
+
+// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesOutput) FrontendIpConfigurationNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNames) []string { return v.FrontendIpConfigurationNames }).(pulumi.StringArrayOutput)
+}
+
+// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesOutput) HealthProbeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNames) []string { return v.HealthProbeNames }).(pulumi.StringArrayOutput)
+}
+
+// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+func (o LoadBalancerResourceNamesOutput) LoadBalancerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNames) *string { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResourceNames)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceNamesPtrOutput) ToLoadBalancerResourceNamesPtrOutput() LoadBalancerResourceNamesPtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesPtrOutput) ToLoadBalancerResourceNamesPtrOutputWithContext(ctx context.Context) LoadBalancerResourceNamesPtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesPtrOutput) Elem() LoadBalancerResourceNamesOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNames) LoadBalancerResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerResourceNames
+		return ret
+	}).(LoadBalancerResourceNamesOutput)
+}
+
+// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+func (o LoadBalancerResourceNamesPtrOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNames) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BackendPoolNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesPtrOutput) FrontendIpConfigurationNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNames) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FrontendIpConfigurationNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesPtrOutput) HealthProbeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNames) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthProbeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+func (o LoadBalancerResourceNamesPtrOutput) LoadBalancerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource names object for load balancer and related resources.
 type LoadBalancerResourceNamesResponse struct {
 	// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
@@ -1621,6 +6858,105 @@ type LoadBalancerResourceNamesResponse struct {
 	HealthProbeNames []string `pulumi:"healthProbeNames"`
 	// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
+}
+
+// The resource names object for load balancer and related resources.
+type LoadBalancerResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResourceNamesResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceNamesResponseOutput) ToLoadBalancerResourceNamesResponseOutput() LoadBalancerResourceNamesResponseOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesResponseOutput) ToLoadBalancerResourceNamesResponseOutputWithContext(ctx context.Context) LoadBalancerResourceNamesResponseOutput {
+	return o
+}
+
+// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+func (o LoadBalancerResourceNamesResponseOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNamesResponse) []string { return v.BackendPoolNames }).(pulumi.StringArrayOutput)
+}
+
+// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesResponseOutput) FrontendIpConfigurationNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNamesResponse) []string { return v.FrontendIpConfigurationNames }).(pulumi.StringArrayOutput)
+}
+
+// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesResponseOutput) HealthProbeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNamesResponse) []string { return v.HealthProbeNames }).(pulumi.StringArrayOutput)
+}
+
+// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+func (o LoadBalancerResourceNamesResponseOutput) LoadBalancerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceNamesResponse) *string { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResourceNamesResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceNamesResponsePtrOutput) ToLoadBalancerResourceNamesResponsePtrOutput() LoadBalancerResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesResponsePtrOutput) ToLoadBalancerResourceNamesResponsePtrOutputWithContext(ctx context.Context) LoadBalancerResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceNamesResponsePtrOutput) Elem() LoadBalancerResourceNamesResponseOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNamesResponse) LoadBalancerResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerResourceNamesResponse
+		return ret
+	}).(LoadBalancerResourceNamesResponseOutput)
+}
+
+// The list of backend pool names. Currently, ACSS deploys only one backend pool and hence, size of this list should be 1
+func (o LoadBalancerResourceNamesResponsePtrOutput) BackendPoolNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNamesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BackendPoolNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of frontend IP configuration names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesResponsePtrOutput) FrontendIpConfigurationNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNamesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FrontendIpConfigurationNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of health probe names. If provided as input, size of this list should be 2 for cs layer and should be 1 for database layer.
+func (o LoadBalancerResourceNamesResponsePtrOutput) HealthProbeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNamesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthProbeNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
+func (o LoadBalancerResourceNamesResponsePtrOutput) LoadBalancerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Managed resource group configuration
@@ -2050,6 +7386,177 @@ type MountFileShareConfiguration struct {
 	PrivateEndpointId string `pulumi:"privateEndpointId"`
 }
 
+// MountFileShareConfigurationInput is an input type that accepts MountFileShareConfigurationArgs and MountFileShareConfigurationOutput values.
+// You can construct a concrete instance of `MountFileShareConfigurationInput` via:
+//
+//	MountFileShareConfigurationArgs{...}
+type MountFileShareConfigurationInput interface {
+	pulumi.Input
+
+	ToMountFileShareConfigurationOutput() MountFileShareConfigurationOutput
+	ToMountFileShareConfigurationOutputWithContext(context.Context) MountFileShareConfigurationOutput
+}
+
+// Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
+type MountFileShareConfigurationArgs struct {
+	// The type of file share config.
+	// Expected value is 'Mount'.
+	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
+	// The fileshare resource ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// The private endpoint resource ID
+	PrivateEndpointId pulumi.StringInput `pulumi:"privateEndpointId"`
+}
+
+func (MountFileShareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountFileShareConfiguration)(nil)).Elem()
+}
+
+func (i MountFileShareConfigurationArgs) ToMountFileShareConfigurationOutput() MountFileShareConfigurationOutput {
+	return i.ToMountFileShareConfigurationOutputWithContext(context.Background())
+}
+
+func (i MountFileShareConfigurationArgs) ToMountFileShareConfigurationOutputWithContext(ctx context.Context) MountFileShareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountFileShareConfigurationOutput)
+}
+
+func (i MountFileShareConfigurationArgs) ToMountFileShareConfigurationPtrOutput() MountFileShareConfigurationPtrOutput {
+	return i.ToMountFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i MountFileShareConfigurationArgs) ToMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) MountFileShareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountFileShareConfigurationOutput).ToMountFileShareConfigurationPtrOutputWithContext(ctx)
+}
+
+// MountFileShareConfigurationPtrInput is an input type that accepts MountFileShareConfigurationArgs, MountFileShareConfigurationPtr and MountFileShareConfigurationPtrOutput values.
+// You can construct a concrete instance of `MountFileShareConfigurationPtrInput` via:
+//
+//	        MountFileShareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type MountFileShareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToMountFileShareConfigurationPtrOutput() MountFileShareConfigurationPtrOutput
+	ToMountFileShareConfigurationPtrOutputWithContext(context.Context) MountFileShareConfigurationPtrOutput
+}
+
+type mountFileShareConfigurationPtrType MountFileShareConfigurationArgs
+
+func MountFileShareConfigurationPtr(v *MountFileShareConfigurationArgs) MountFileShareConfigurationPtrInput {
+	return (*mountFileShareConfigurationPtrType)(v)
+}
+
+func (*mountFileShareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountFileShareConfiguration)(nil)).Elem()
+}
+
+func (i *mountFileShareConfigurationPtrType) ToMountFileShareConfigurationPtrOutput() MountFileShareConfigurationPtrOutput {
+	return i.ToMountFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *mountFileShareConfigurationPtrType) ToMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) MountFileShareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MountFileShareConfigurationPtrOutput)
+}
+
+// Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
+type MountFileShareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (MountFileShareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountFileShareConfiguration)(nil)).Elem()
+}
+
+func (o MountFileShareConfigurationOutput) ToMountFileShareConfigurationOutput() MountFileShareConfigurationOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationOutput) ToMountFileShareConfigurationOutputWithContext(ctx context.Context) MountFileShareConfigurationOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationOutput) ToMountFileShareConfigurationPtrOutput() MountFileShareConfigurationPtrOutput {
+	return o.ToMountFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o MountFileShareConfigurationOutput) ToMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) MountFileShareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MountFileShareConfiguration) *MountFileShareConfiguration {
+		return &v
+	}).(MountFileShareConfigurationPtrOutput)
+}
+
+// The type of file share config.
+// Expected value is 'Mount'.
+func (o MountFileShareConfigurationOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v MountFileShareConfiguration) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The fileshare resource ID
+func (o MountFileShareConfigurationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v MountFileShareConfiguration) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The private endpoint resource ID
+func (o MountFileShareConfigurationOutput) PrivateEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v MountFileShareConfiguration) string { return v.PrivateEndpointId }).(pulumi.StringOutput)
+}
+
+type MountFileShareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (MountFileShareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountFileShareConfiguration)(nil)).Elem()
+}
+
+func (o MountFileShareConfigurationPtrOutput) ToMountFileShareConfigurationPtrOutput() MountFileShareConfigurationPtrOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationPtrOutput) ToMountFileShareConfigurationPtrOutputWithContext(ctx context.Context) MountFileShareConfigurationPtrOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationPtrOutput) Elem() MountFileShareConfigurationOutput {
+	return o.ApplyT(func(v *MountFileShareConfiguration) MountFileShareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret MountFileShareConfiguration
+		return ret
+	}).(MountFileShareConfigurationOutput)
+}
+
+// The type of file share config.
+// Expected value is 'Mount'.
+func (o MountFileShareConfigurationPtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fileshare resource ID
+func (o MountFileShareConfigurationPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private endpoint resource ID
+func (o MountFileShareConfigurationPtrOutput) PrivateEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateEndpointId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
 type MountFileShareConfigurationResponse struct {
 	// The type of file share config.
@@ -2059,6 +7566,92 @@ type MountFileShareConfigurationResponse struct {
 	Id string `pulumi:"id"`
 	// The private endpoint resource ID
 	PrivateEndpointId string `pulumi:"privateEndpointId"`
+}
+
+// Gets or sets the file share configuration where the transport directory fileshare already exists, and user wishes to mount the fileshare as a part of the create infra flow.
+type MountFileShareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (MountFileShareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MountFileShareConfigurationResponse)(nil)).Elem()
+}
+
+func (o MountFileShareConfigurationResponseOutput) ToMountFileShareConfigurationResponseOutput() MountFileShareConfigurationResponseOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationResponseOutput) ToMountFileShareConfigurationResponseOutputWithContext(ctx context.Context) MountFileShareConfigurationResponseOutput {
+	return o
+}
+
+// The type of file share config.
+// Expected value is 'Mount'.
+func (o MountFileShareConfigurationResponseOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v MountFileShareConfigurationResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+// The fileshare resource ID
+func (o MountFileShareConfigurationResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v MountFileShareConfigurationResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The private endpoint resource ID
+func (o MountFileShareConfigurationResponseOutput) PrivateEndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v MountFileShareConfigurationResponse) string { return v.PrivateEndpointId }).(pulumi.StringOutput)
+}
+
+type MountFileShareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MountFileShareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MountFileShareConfigurationResponse)(nil)).Elem()
+}
+
+func (o MountFileShareConfigurationResponsePtrOutput) ToMountFileShareConfigurationResponsePtrOutput() MountFileShareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationResponsePtrOutput) ToMountFileShareConfigurationResponsePtrOutputWithContext(ctx context.Context) MountFileShareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o MountFileShareConfigurationResponsePtrOutput) Elem() MountFileShareConfigurationResponseOutput {
+	return o.ApplyT(func(v *MountFileShareConfigurationResponse) MountFileShareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MountFileShareConfigurationResponse
+		return ret
+	}).(MountFileShareConfigurationResponseOutput)
+}
+
+// The type of file share config.
+// Expected value is 'Mount'.
+func (o MountFileShareConfigurationResponsePtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fileshare resource ID
+func (o MountFileShareConfigurationResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private endpoint resource ID
+func (o MountFileShareConfigurationResponsePtrOutput) PrivateEndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MountFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateEndpointId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the SQL server provider properties.
@@ -2084,6 +7677,279 @@ type MsSqlServerProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// MsSqlServerProviderInstancePropertiesInput is an input type that accepts MsSqlServerProviderInstancePropertiesArgs and MsSqlServerProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `MsSqlServerProviderInstancePropertiesInput` via:
+//
+//	MsSqlServerProviderInstancePropertiesArgs{...}
+type MsSqlServerProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToMsSqlServerProviderInstancePropertiesOutput() MsSqlServerProviderInstancePropertiesOutput
+	ToMsSqlServerProviderInstancePropertiesOutputWithContext(context.Context) MsSqlServerProviderInstancePropertiesOutput
+}
+
+// Gets or sets the SQL server provider properties.
+type MsSqlServerProviderInstancePropertiesArgs struct {
+	// Gets or sets the database password.
+	DbPassword pulumi.StringPtrInput `pulumi:"dbPassword"`
+	// Gets or sets the key vault URI to secret with the database password.
+	DbPasswordUri pulumi.StringPtrInput `pulumi:"dbPasswordUri"`
+	// Gets or sets the database sql port.
+	DbPort pulumi.StringPtrInput `pulumi:"dbPort"`
+	// Gets or sets the database user name.
+	DbUsername pulumi.StringPtrInput `pulumi:"dbUsername"`
+	// Gets or sets the SQL server host name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'MsSqlServer'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the SQL Database.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (MsSqlServerProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MsSqlServerProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i MsSqlServerProviderInstancePropertiesArgs) ToMsSqlServerProviderInstancePropertiesOutput() MsSqlServerProviderInstancePropertiesOutput {
+	return i.ToMsSqlServerProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i MsSqlServerProviderInstancePropertiesArgs) ToMsSqlServerProviderInstancePropertiesOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MsSqlServerProviderInstancePropertiesOutput)
+}
+
+func (i MsSqlServerProviderInstancePropertiesArgs) ToMsSqlServerProviderInstancePropertiesPtrOutput() MsSqlServerProviderInstancePropertiesPtrOutput {
+	return i.ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MsSqlServerProviderInstancePropertiesArgs) ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MsSqlServerProviderInstancePropertiesOutput).ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// MsSqlServerProviderInstancePropertiesPtrInput is an input type that accepts MsSqlServerProviderInstancePropertiesArgs, MsSqlServerProviderInstancePropertiesPtr and MsSqlServerProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `MsSqlServerProviderInstancePropertiesPtrInput` via:
+//
+//	        MsSqlServerProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MsSqlServerProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMsSqlServerProviderInstancePropertiesPtrOutput() MsSqlServerProviderInstancePropertiesPtrOutput
+	ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(context.Context) MsSqlServerProviderInstancePropertiesPtrOutput
+}
+
+type msSqlServerProviderInstancePropertiesPtrType MsSqlServerProviderInstancePropertiesArgs
+
+func MsSqlServerProviderInstancePropertiesPtr(v *MsSqlServerProviderInstancePropertiesArgs) MsSqlServerProviderInstancePropertiesPtrInput {
+	return (*msSqlServerProviderInstancePropertiesPtrType)(v)
+}
+
+func (*msSqlServerProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MsSqlServerProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *msSqlServerProviderInstancePropertiesPtrType) ToMsSqlServerProviderInstancePropertiesPtrOutput() MsSqlServerProviderInstancePropertiesPtrOutput {
+	return i.ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *msSqlServerProviderInstancePropertiesPtrType) ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MsSqlServerProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the SQL server provider properties.
+type MsSqlServerProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (MsSqlServerProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MsSqlServerProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o MsSqlServerProviderInstancePropertiesOutput) ToMsSqlServerProviderInstancePropertiesOutput() MsSqlServerProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesOutput) ToMsSqlServerProviderInstancePropertiesOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesOutput) ToMsSqlServerProviderInstancePropertiesPtrOutput() MsSqlServerProviderInstancePropertiesPtrOutput {
+	return o.ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MsSqlServerProviderInstancePropertiesOutput) ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MsSqlServerProviderInstanceProperties) *MsSqlServerProviderInstanceProperties {
+		return &v
+	}).(MsSqlServerProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the database password.
+func (o MsSqlServerProviderInstancePropertiesOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o MsSqlServerProviderInstancePropertiesOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o MsSqlServerProviderInstancePropertiesOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o MsSqlServerProviderInstancePropertiesOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SQL server host name.
+func (o MsSqlServerProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'MsSqlServer'.
+func (o MsSqlServerProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o MsSqlServerProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SQL Database.
+func (o MsSqlServerProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o MsSqlServerProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type MsSqlServerProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MsSqlServerProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MsSqlServerProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) ToMsSqlServerProviderInstancePropertiesPtrOutput() MsSqlServerProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) ToMsSqlServerProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) Elem() MsSqlServerProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) MsSqlServerProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MsSqlServerProviderInstanceProperties
+		return ret
+	}).(MsSqlServerProviderInstancePropertiesOutput)
+}
+
+// Gets or sets the database password.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SQL server host name.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'MsSqlServer'.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SQL Database.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o MsSqlServerProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the SQL server provider properties.
 type MsSqlServerProviderInstancePropertiesResponse struct {
 	// Gets or sets the database password.
@@ -2107,6 +7973,182 @@ type MsSqlServerProviderInstancePropertiesResponse struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// Gets or sets the SQL server provider properties.
+type MsSqlServerProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MsSqlServerProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MsSqlServerProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) ToMsSqlServerProviderInstancePropertiesResponseOutput() MsSqlServerProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) ToMsSqlServerProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the database password.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.DbPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.DbPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.DbPort }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.DbUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SQL server host name.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'MsSqlServer'.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SQL Database.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o MsSqlServerProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MsSqlServerProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type MsSqlServerProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MsSqlServerProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MsSqlServerProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) ToMsSqlServerProviderInstancePropertiesResponsePtrOutput() MsSqlServerProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) ToMsSqlServerProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) MsSqlServerProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) Elem() MsSqlServerProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) MsSqlServerProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MsSqlServerProviderInstancePropertiesResponse
+		return ret
+	}).(MsSqlServerProviderInstancePropertiesResponseOutput)
+}
+
+// Gets or sets the database password.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) DbPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the database password.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) DbPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database sql port.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) DbPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbPort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the database user name.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) DbUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DbUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SQL server host name.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'MsSqlServer'.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SQL Database.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MsSqlServerProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the network configuration type for SAP system infrastructure that is being deployed
 type NetworkConfiguration struct {
 	// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
@@ -2124,6 +8166,151 @@ func (val *NetworkConfiguration) Defaults() *NetworkConfiguration {
 		tmp.IsSecondaryIpEnabled = &isSecondaryIpEnabled_
 	}
 	return &tmp
+}
+
+// NetworkConfigurationInput is an input type that accepts NetworkConfigurationArgs and NetworkConfigurationOutput values.
+// You can construct a concrete instance of `NetworkConfigurationInput` via:
+//
+//	NetworkConfigurationArgs{...}
+type NetworkConfigurationInput interface {
+	pulumi.Input
+
+	ToNetworkConfigurationOutput() NetworkConfigurationOutput
+	ToNetworkConfigurationOutputWithContext(context.Context) NetworkConfigurationOutput
+}
+
+// Defines the network configuration type for SAP system infrastructure that is being deployed
+type NetworkConfigurationArgs struct {
+	// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
+	IsSecondaryIpEnabled pulumi.BoolPtrInput `pulumi:"isSecondaryIpEnabled"`
+}
+
+// Defaults sets the appropriate defaults for NetworkConfigurationArgs
+func (val *NetworkConfigurationArgs) Defaults() *NetworkConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsSecondaryIpEnabled == nil {
+		tmp.IsSecondaryIpEnabled = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (NetworkConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfiguration)(nil)).Elem()
+}
+
+func (i NetworkConfigurationArgs) ToNetworkConfigurationOutput() NetworkConfigurationOutput {
+	return i.ToNetworkConfigurationOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigurationArgs) ToNetworkConfigurationOutputWithContext(ctx context.Context) NetworkConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigurationOutput)
+}
+
+func (i NetworkConfigurationArgs) ToNetworkConfigurationPtrOutput() NetworkConfigurationPtrOutput {
+	return i.ToNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkConfigurationArgs) ToNetworkConfigurationPtrOutputWithContext(ctx context.Context) NetworkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigurationOutput).ToNetworkConfigurationPtrOutputWithContext(ctx)
+}
+
+// NetworkConfigurationPtrInput is an input type that accepts NetworkConfigurationArgs, NetworkConfigurationPtr and NetworkConfigurationPtrOutput values.
+// You can construct a concrete instance of `NetworkConfigurationPtrInput` via:
+//
+//	        NetworkConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigurationPtrOutput() NetworkConfigurationPtrOutput
+	ToNetworkConfigurationPtrOutputWithContext(context.Context) NetworkConfigurationPtrOutput
+}
+
+type networkConfigurationPtrType NetworkConfigurationArgs
+
+func NetworkConfigurationPtr(v *NetworkConfigurationArgs) NetworkConfigurationPtrInput {
+	return (*networkConfigurationPtrType)(v)
+}
+
+func (*networkConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfiguration)(nil)).Elem()
+}
+
+func (i *networkConfigurationPtrType) ToNetworkConfigurationPtrOutput() NetworkConfigurationPtrOutput {
+	return i.ToNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *networkConfigurationPtrType) ToNetworkConfigurationPtrOutputWithContext(ctx context.Context) NetworkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkConfigurationPtrOutput)
+}
+
+// Defines the network configuration type for SAP system infrastructure that is being deployed
+type NetworkConfigurationOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfiguration)(nil)).Elem()
+}
+
+func (o NetworkConfigurationOutput) ToNetworkConfigurationOutput() NetworkConfigurationOutput {
+	return o
+}
+
+func (o NetworkConfigurationOutput) ToNetworkConfigurationOutputWithContext(ctx context.Context) NetworkConfigurationOutput {
+	return o
+}
+
+func (o NetworkConfigurationOutput) ToNetworkConfigurationPtrOutput() NetworkConfigurationPtrOutput {
+	return o.ToNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigurationOutput) ToNetworkConfigurationPtrOutputWithContext(ctx context.Context) NetworkConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfiguration) *NetworkConfiguration {
+		return &v
+	}).(NetworkConfigurationPtrOutput)
+}
+
+// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
+func (o NetworkConfigurationOutput) IsSecondaryIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfiguration) *bool { return v.IsSecondaryIpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type NetworkConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfiguration)(nil)).Elem()
+}
+
+func (o NetworkConfigurationPtrOutput) ToNetworkConfigurationPtrOutput() NetworkConfigurationPtrOutput {
+	return o
+}
+
+func (o NetworkConfigurationPtrOutput) ToNetworkConfigurationPtrOutputWithContext(ctx context.Context) NetworkConfigurationPtrOutput {
+	return o
+}
+
+func (o NetworkConfigurationPtrOutput) Elem() NetworkConfigurationOutput {
+	return o.ApplyT(func(v *NetworkConfiguration) NetworkConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfiguration
+		return ret
+	}).(NetworkConfigurationOutput)
+}
+
+// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
+func (o NetworkConfigurationPtrOutput) IsSecondaryIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsSecondaryIpEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Defines the network configuration type for SAP system infrastructure that is being deployed
@@ -2145,16 +8332,204 @@ func (val *NetworkConfigurationResponse) Defaults() *NetworkConfigurationRespons
 	return &tmp
 }
 
+// Defines the network configuration type for SAP system infrastructure that is being deployed
+type NetworkConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkConfigurationResponseOutput) ToNetworkConfigurationResponseOutput() NetworkConfigurationResponseOutput {
+	return o
+}
+
+func (o NetworkConfigurationResponseOutput) ToNetworkConfigurationResponseOutputWithContext(ctx context.Context) NetworkConfigurationResponseOutput {
+	return o
+}
+
+// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
+func (o NetworkConfigurationResponseOutput) IsSecondaryIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfigurationResponse) *bool { return v.IsSecondaryIpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type NetworkConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o NetworkConfigurationResponsePtrOutput) ToNetworkConfigurationResponsePtrOutput() NetworkConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o NetworkConfigurationResponsePtrOutput) ToNetworkConfigurationResponsePtrOutputWithContext(ctx context.Context) NetworkConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o NetworkConfigurationResponsePtrOutput) Elem() NetworkConfigurationResponseOutput {
+	return o.ApplyT(func(v *NetworkConfigurationResponse) NetworkConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkConfigurationResponse
+		return ret
+	}).(NetworkConfigurationResponseOutput)
+}
+
+// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
+func (o NetworkConfigurationResponsePtrOutput) IsSecondaryIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsSecondaryIpEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The resource names object for network interface and related resources.
 type NetworkInterfaceResourceNames struct {
 	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
 }
 
+// NetworkInterfaceResourceNamesInput is an input type that accepts NetworkInterfaceResourceNamesArgs and NetworkInterfaceResourceNamesOutput values.
+// You can construct a concrete instance of `NetworkInterfaceResourceNamesInput` via:
+//
+//	NetworkInterfaceResourceNamesArgs{...}
+type NetworkInterfaceResourceNamesInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceResourceNamesOutput() NetworkInterfaceResourceNamesOutput
+	ToNetworkInterfaceResourceNamesOutputWithContext(context.Context) NetworkInterfaceResourceNamesOutput
+}
+
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNamesArgs struct {
+	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+	NetworkInterfaceName pulumi.StringPtrInput `pulumi:"networkInterfaceName"`
+}
+
+func (NetworkInterfaceResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceResourceNames)(nil)).Elem()
+}
+
+func (i NetworkInterfaceResourceNamesArgs) ToNetworkInterfaceResourceNamesOutput() NetworkInterfaceResourceNamesOutput {
+	return i.ToNetworkInterfaceResourceNamesOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceResourceNamesArgs) ToNetworkInterfaceResourceNamesOutputWithContext(ctx context.Context) NetworkInterfaceResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResourceNamesOutput)
+}
+
+// NetworkInterfaceResourceNamesArrayInput is an input type that accepts NetworkInterfaceResourceNamesArray and NetworkInterfaceResourceNamesArrayOutput values.
+// You can construct a concrete instance of `NetworkInterfaceResourceNamesArrayInput` via:
+//
+//	NetworkInterfaceResourceNamesArray{ NetworkInterfaceResourceNamesArgs{...} }
+type NetworkInterfaceResourceNamesArrayInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceResourceNamesArrayOutput() NetworkInterfaceResourceNamesArrayOutput
+	ToNetworkInterfaceResourceNamesArrayOutputWithContext(context.Context) NetworkInterfaceResourceNamesArrayOutput
+}
+
+type NetworkInterfaceResourceNamesArray []NetworkInterfaceResourceNamesInput
+
+func (NetworkInterfaceResourceNamesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInterfaceResourceNames)(nil)).Elem()
+}
+
+func (i NetworkInterfaceResourceNamesArray) ToNetworkInterfaceResourceNamesArrayOutput() NetworkInterfaceResourceNamesArrayOutput {
+	return i.ToNetworkInterfaceResourceNamesArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceResourceNamesArray) ToNetworkInterfaceResourceNamesArrayOutputWithContext(ctx context.Context) NetworkInterfaceResourceNamesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResourceNamesArrayOutput)
+}
+
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceResourceNames)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceNamesOutput) ToNetworkInterfaceResourceNamesOutput() NetworkInterfaceResourceNamesOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceNamesOutput) ToNetworkInterfaceResourceNamesOutputWithContext(ctx context.Context) NetworkInterfaceResourceNamesOutput {
+	return o
+}
+
+// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+func (o NetworkInterfaceResourceNamesOutput) NetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceNames) *string { return v.NetworkInterfaceName }).(pulumi.StringPtrOutput)
+}
+
+type NetworkInterfaceResourceNamesArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceNamesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInterfaceResourceNames)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceNamesArrayOutput) ToNetworkInterfaceResourceNamesArrayOutput() NetworkInterfaceResourceNamesArrayOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceNamesArrayOutput) ToNetworkInterfaceResourceNamesArrayOutputWithContext(ctx context.Context) NetworkInterfaceResourceNamesArrayOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceNamesArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceResourceNamesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInterfaceResourceNames {
+		return vs[0].([]NetworkInterfaceResourceNames)[vs[1].(int)]
+	}).(NetworkInterfaceResourceNamesOutput)
+}
+
 // The resource names object for network interface and related resources.
 type NetworkInterfaceResourceNamesResponse struct {
 	// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+}
+
+// The resource names object for network interface and related resources.
+type NetworkInterfaceResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceResourceNamesResponse)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceNamesResponseOutput) ToNetworkInterfaceResourceNamesResponseOutput() NetworkInterfaceResourceNamesResponseOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceNamesResponseOutput) ToNetworkInterfaceResourceNamesResponseOutputWithContext(ctx context.Context) NetworkInterfaceResourceNamesResponseOutput {
+	return o
+}
+
+// The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
+func (o NetworkInterfaceResourceNamesResponseOutput) NetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceNamesResponse) *string { return v.NetworkInterfaceName }).(pulumi.StringPtrOutput)
+}
+
+type NetworkInterfaceResourceNamesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceNamesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInterfaceResourceNamesResponse)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceNamesResponseArrayOutput) ToNetworkInterfaceResourceNamesResponseArrayOutput() NetworkInterfaceResourceNamesResponseArrayOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceNamesResponseArrayOutput) ToNetworkInterfaceResourceNamesResponseArrayOutputWithContext(ctx context.Context) NetworkInterfaceResourceNamesResponseArrayOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceNamesResponseArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceResourceNamesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInterfaceResourceNamesResponse {
+		return vs[0].([]NetworkInterfaceResourceNamesResponse)[vs[1].(int)]
+	}).(NetworkInterfaceResourceNamesResponseOutput)
 }
 
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
@@ -2167,6 +8542,174 @@ type OSProfile struct {
 	OsConfiguration interface{} `pulumi:"osConfiguration"`
 }
 
+// OSProfileInput is an input type that accepts OSProfileArgs and OSProfileOutput values.
+// You can construct a concrete instance of `OSProfileInput` via:
+//
+//	OSProfileArgs{...}
+type OSProfileInput interface {
+	pulumi.Input
+
+	ToOSProfileOutput() OSProfileOutput
+	ToOSProfileOutputWithContext(context.Context) OSProfileOutput
+}
+
+// Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
+type OSProfileArgs struct {
+	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
+	// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
+	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
+	// Specifies Windows operating system settings on the virtual machine.
+	OsConfiguration pulumi.Input `pulumi:"osConfiguration"`
+}
+
+func (OSProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSProfile)(nil)).Elem()
+}
+
+func (i OSProfileArgs) ToOSProfileOutput() OSProfileOutput {
+	return i.ToOSProfileOutputWithContext(context.Background())
+}
+
+func (i OSProfileArgs) ToOSProfileOutputWithContext(ctx context.Context) OSProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OSProfileOutput)
+}
+
+func (i OSProfileArgs) ToOSProfilePtrOutput() OSProfilePtrOutput {
+	return i.ToOSProfilePtrOutputWithContext(context.Background())
+}
+
+func (i OSProfileArgs) ToOSProfilePtrOutputWithContext(ctx context.Context) OSProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OSProfileOutput).ToOSProfilePtrOutputWithContext(ctx)
+}
+
+// OSProfilePtrInput is an input type that accepts OSProfileArgs, OSProfilePtr and OSProfilePtrOutput values.
+// You can construct a concrete instance of `OSProfilePtrInput` via:
+//
+//	        OSProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type OSProfilePtrInput interface {
+	pulumi.Input
+
+	ToOSProfilePtrOutput() OSProfilePtrOutput
+	ToOSProfilePtrOutputWithContext(context.Context) OSProfilePtrOutput
+}
+
+type osprofilePtrType OSProfileArgs
+
+func OSProfilePtr(v *OSProfileArgs) OSProfilePtrInput {
+	return (*osprofilePtrType)(v)
+}
+
+func (*osprofilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OSProfile)(nil)).Elem()
+}
+
+func (i *osprofilePtrType) ToOSProfilePtrOutput() OSProfilePtrOutput {
+	return i.ToOSProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *osprofilePtrType) ToOSProfilePtrOutputWithContext(ctx context.Context) OSProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OSProfilePtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
+type OSProfileOutput struct{ *pulumi.OutputState }
+
+func (OSProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSProfile)(nil)).Elem()
+}
+
+func (o OSProfileOutput) ToOSProfileOutput() OSProfileOutput {
+	return o
+}
+
+func (o OSProfileOutput) ToOSProfileOutputWithContext(ctx context.Context) OSProfileOutput {
+	return o
+}
+
+func (o OSProfileOutput) ToOSProfilePtrOutput() OSProfilePtrOutput {
+	return o.ToOSProfilePtrOutputWithContext(context.Background())
+}
+
+func (o OSProfileOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OSProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSProfile) *OSProfile {
+		return &v
+	}).(OSProfilePtrOutput)
+}
+
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+func (o OSProfileOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSProfile) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
+func (o OSProfileOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSProfile) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// Specifies Windows operating system settings on the virtual machine.
+func (o OSProfileOutput) OsConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v OSProfile) interface{} { return v.OsConfiguration }).(pulumi.AnyOutput)
+}
+
+type OSProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (OSProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OSProfile)(nil)).Elem()
+}
+
+func (o OSProfilePtrOutput) ToOSProfilePtrOutput() OSProfilePtrOutput {
+	return o
+}
+
+func (o OSProfilePtrOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OSProfilePtrOutput {
+	return o
+}
+
+func (o OSProfilePtrOutput) Elem() OSProfileOutput {
+	return o.ApplyT(func(v *OSProfile) OSProfile {
+		if v != nil {
+			return *v
+		}
+		var ret OSProfile
+		return ret
+	}).(OSProfileOutput)
+}
+
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+func (o OSProfilePtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
+func (o OSProfilePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies Windows operating system settings on the virtual machine.
+func (o OSProfilePtrOutput) OsConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *OSProfile) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.OsConfiguration
+	}).(pulumi.AnyOutput)
+}
+
 // Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
 type OSProfileResponse struct {
 	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
@@ -2177,6 +8720,90 @@ type OSProfileResponse struct {
 	OsConfiguration interface{} `pulumi:"osConfiguration"`
 }
 
+// Specifies the operating system settings for the virtual machine. Some of the settings cannot be changed once VM is provisioned.
+type OSProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (OSProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSProfileResponse)(nil)).Elem()
+}
+
+func (o OSProfileResponseOutput) ToOSProfileResponseOutput() OSProfileResponseOutput {
+	return o
+}
+
+func (o OSProfileResponseOutput) ToOSProfileResponseOutputWithContext(ctx context.Context) OSProfileResponseOutput {
+	return o
+}
+
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+func (o OSProfileResponseOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSProfileResponse) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
+func (o OSProfileResponseOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSProfileResponse) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
+}
+
+// Specifies Windows operating system settings on the virtual machine.
+func (o OSProfileResponseOutput) OsConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v OSProfileResponse) interface{} { return v.OsConfiguration }).(pulumi.AnyOutput)
+}
+
+type OSProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OSProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OSProfileResponse)(nil)).Elem()
+}
+
+func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutput() OSProfileResponsePtrOutput {
+	return o
+}
+
+func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutputWithContext(ctx context.Context) OSProfileResponsePtrOutput {
+	return o
+}
+
+func (o OSProfileResponsePtrOutput) Elem() OSProfileResponseOutput {
+	return o.ApplyT(func(v *OSProfileResponse) OSProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OSProfileResponse
+		return ret
+	}).(OSProfileResponseOutput)
+}
+
+// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+func (o OSProfileResponsePtrOutput) AdminPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the name of the administrator account. <br><br> This property cannot be updated after the VM is created. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters.
+func (o OSProfileResponsePtrOutput) AdminUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies Windows operating system settings on the virtual machine.
+func (o OSProfileResponsePtrOutput) OsConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *OSProfileResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.OsConfiguration
+	}).(pulumi.AnyOutput)
+}
+
 // Defines the OS and SAP Configurations for Deployment
 type OsSapConfiguration struct {
 	// The url and storage account ID where deployer VM packages are uploaded
@@ -2185,12 +8812,232 @@ type OsSapConfiguration struct {
 	SapFqdn *string `pulumi:"sapFqdn"`
 }
 
+// OsSapConfigurationInput is an input type that accepts OsSapConfigurationArgs and OsSapConfigurationOutput values.
+// You can construct a concrete instance of `OsSapConfigurationInput` via:
+//
+//	OsSapConfigurationArgs{...}
+type OsSapConfigurationInput interface {
+	pulumi.Input
+
+	ToOsSapConfigurationOutput() OsSapConfigurationOutput
+	ToOsSapConfigurationOutputWithContext(context.Context) OsSapConfigurationOutput
+}
+
+// Defines the OS and SAP Configurations for Deployment
+type OsSapConfigurationArgs struct {
+	// The url and storage account ID where deployer VM packages are uploaded
+	DeployerVmPackages DeployerVmPackagesPtrInput `pulumi:"deployerVmPackages"`
+	// The FQDN to set for the SAP system
+	SapFqdn pulumi.StringPtrInput `pulumi:"sapFqdn"`
+}
+
+func (OsSapConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsSapConfiguration)(nil)).Elem()
+}
+
+func (i OsSapConfigurationArgs) ToOsSapConfigurationOutput() OsSapConfigurationOutput {
+	return i.ToOsSapConfigurationOutputWithContext(context.Background())
+}
+
+func (i OsSapConfigurationArgs) ToOsSapConfigurationOutputWithContext(ctx context.Context) OsSapConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsSapConfigurationOutput)
+}
+
+func (i OsSapConfigurationArgs) ToOsSapConfigurationPtrOutput() OsSapConfigurationPtrOutput {
+	return i.ToOsSapConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i OsSapConfigurationArgs) ToOsSapConfigurationPtrOutputWithContext(ctx context.Context) OsSapConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsSapConfigurationOutput).ToOsSapConfigurationPtrOutputWithContext(ctx)
+}
+
+// OsSapConfigurationPtrInput is an input type that accepts OsSapConfigurationArgs, OsSapConfigurationPtr and OsSapConfigurationPtrOutput values.
+// You can construct a concrete instance of `OsSapConfigurationPtrInput` via:
+//
+//	        OsSapConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type OsSapConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToOsSapConfigurationPtrOutput() OsSapConfigurationPtrOutput
+	ToOsSapConfigurationPtrOutputWithContext(context.Context) OsSapConfigurationPtrOutput
+}
+
+type osSapConfigurationPtrType OsSapConfigurationArgs
+
+func OsSapConfigurationPtr(v *OsSapConfigurationArgs) OsSapConfigurationPtrInput {
+	return (*osSapConfigurationPtrType)(v)
+}
+
+func (*osSapConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsSapConfiguration)(nil)).Elem()
+}
+
+func (i *osSapConfigurationPtrType) ToOsSapConfigurationPtrOutput() OsSapConfigurationPtrOutput {
+	return i.ToOsSapConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *osSapConfigurationPtrType) ToOsSapConfigurationPtrOutputWithContext(ctx context.Context) OsSapConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsSapConfigurationPtrOutput)
+}
+
+// Defines the OS and SAP Configurations for Deployment
+type OsSapConfigurationOutput struct{ *pulumi.OutputState }
+
+func (OsSapConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsSapConfiguration)(nil)).Elem()
+}
+
+func (o OsSapConfigurationOutput) ToOsSapConfigurationOutput() OsSapConfigurationOutput {
+	return o
+}
+
+func (o OsSapConfigurationOutput) ToOsSapConfigurationOutputWithContext(ctx context.Context) OsSapConfigurationOutput {
+	return o
+}
+
+func (o OsSapConfigurationOutput) ToOsSapConfigurationPtrOutput() OsSapConfigurationPtrOutput {
+	return o.ToOsSapConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o OsSapConfigurationOutput) ToOsSapConfigurationPtrOutputWithContext(ctx context.Context) OsSapConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsSapConfiguration) *OsSapConfiguration {
+		return &v
+	}).(OsSapConfigurationPtrOutput)
+}
+
+// The url and storage account ID where deployer VM packages are uploaded
+func (o OsSapConfigurationOutput) DeployerVmPackages() DeployerVmPackagesPtrOutput {
+	return o.ApplyT(func(v OsSapConfiguration) *DeployerVmPackages { return v.DeployerVmPackages }).(DeployerVmPackagesPtrOutput)
+}
+
+// The FQDN to set for the SAP system
+func (o OsSapConfigurationOutput) SapFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsSapConfiguration) *string { return v.SapFqdn }).(pulumi.StringPtrOutput)
+}
+
+type OsSapConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (OsSapConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsSapConfiguration)(nil)).Elem()
+}
+
+func (o OsSapConfigurationPtrOutput) ToOsSapConfigurationPtrOutput() OsSapConfigurationPtrOutput {
+	return o
+}
+
+func (o OsSapConfigurationPtrOutput) ToOsSapConfigurationPtrOutputWithContext(ctx context.Context) OsSapConfigurationPtrOutput {
+	return o
+}
+
+func (o OsSapConfigurationPtrOutput) Elem() OsSapConfigurationOutput {
+	return o.ApplyT(func(v *OsSapConfiguration) OsSapConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret OsSapConfiguration
+		return ret
+	}).(OsSapConfigurationOutput)
+}
+
+// The url and storage account ID where deployer VM packages are uploaded
+func (o OsSapConfigurationPtrOutput) DeployerVmPackages() DeployerVmPackagesPtrOutput {
+	return o.ApplyT(func(v *OsSapConfiguration) *DeployerVmPackages {
+		if v == nil {
+			return nil
+		}
+		return v.DeployerVmPackages
+	}).(DeployerVmPackagesPtrOutput)
+}
+
+// The FQDN to set for the SAP system
+func (o OsSapConfigurationPtrOutput) SapFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsSapConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapFqdn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the OS and SAP Configurations for Deployment
 type OsSapConfigurationResponse struct {
 	// The url and storage account ID where deployer VM packages are uploaded
 	DeployerVmPackages *DeployerVmPackagesResponse `pulumi:"deployerVmPackages"`
 	// The FQDN to set for the SAP system
 	SapFqdn *string `pulumi:"sapFqdn"`
+}
+
+// Defines the OS and SAP Configurations for Deployment
+type OsSapConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (OsSapConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsSapConfigurationResponse)(nil)).Elem()
+}
+
+func (o OsSapConfigurationResponseOutput) ToOsSapConfigurationResponseOutput() OsSapConfigurationResponseOutput {
+	return o
+}
+
+func (o OsSapConfigurationResponseOutput) ToOsSapConfigurationResponseOutputWithContext(ctx context.Context) OsSapConfigurationResponseOutput {
+	return o
+}
+
+// The url and storage account ID where deployer VM packages are uploaded
+func (o OsSapConfigurationResponseOutput) DeployerVmPackages() DeployerVmPackagesResponsePtrOutput {
+	return o.ApplyT(func(v OsSapConfigurationResponse) *DeployerVmPackagesResponse { return v.DeployerVmPackages }).(DeployerVmPackagesResponsePtrOutput)
+}
+
+// The FQDN to set for the SAP system
+func (o OsSapConfigurationResponseOutput) SapFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsSapConfigurationResponse) *string { return v.SapFqdn }).(pulumi.StringPtrOutput)
+}
+
+type OsSapConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OsSapConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsSapConfigurationResponse)(nil)).Elem()
+}
+
+func (o OsSapConfigurationResponsePtrOutput) ToOsSapConfigurationResponsePtrOutput() OsSapConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OsSapConfigurationResponsePtrOutput) ToOsSapConfigurationResponsePtrOutputWithContext(ctx context.Context) OsSapConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o OsSapConfigurationResponsePtrOutput) Elem() OsSapConfigurationResponseOutput {
+	return o.ApplyT(func(v *OsSapConfigurationResponse) OsSapConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OsSapConfigurationResponse
+		return ret
+	}).(OsSapConfigurationResponseOutput)
+}
+
+// The url and storage account ID where deployer VM packages are uploaded
+func (o OsSapConfigurationResponsePtrOutput) DeployerVmPackages() DeployerVmPackagesResponsePtrOutput {
+	return o.ApplyT(func(v *OsSapConfigurationResponse) *DeployerVmPackagesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DeployerVmPackages
+	}).(DeployerVmPackagesResponsePtrOutput)
+}
+
+// The FQDN to set for the SAP system
+func (o OsSapConfigurationResponsePtrOutput) SapFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsSapConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapFqdn
+	}).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the PrometheusHaCluster provider properties.
@@ -2212,6 +9059,245 @@ type PrometheusHaClusterProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// PrometheusHaClusterProviderInstancePropertiesInput is an input type that accepts PrometheusHaClusterProviderInstancePropertiesArgs and PrometheusHaClusterProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `PrometheusHaClusterProviderInstancePropertiesInput` via:
+//
+//	PrometheusHaClusterProviderInstancePropertiesArgs{...}
+type PrometheusHaClusterProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToPrometheusHaClusterProviderInstancePropertiesOutput() PrometheusHaClusterProviderInstancePropertiesOutput
+	ToPrometheusHaClusterProviderInstancePropertiesOutputWithContext(context.Context) PrometheusHaClusterProviderInstancePropertiesOutput
+}
+
+// Gets or sets the PrometheusHaCluster provider properties.
+type PrometheusHaClusterProviderInstancePropertiesArgs struct {
+	// Gets or sets the clusterName.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// Gets or sets the target machine name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// URL of the Node Exporter endpoint.
+	PrometheusUrl pulumi.StringPtrInput `pulumi:"prometheusUrl"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'PrometheusHaCluster'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the cluster sid.
+	Sid pulumi.StringPtrInput `pulumi:"sid"`
+	// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (PrometheusHaClusterProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusHaClusterProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i PrometheusHaClusterProviderInstancePropertiesArgs) ToPrometheusHaClusterProviderInstancePropertiesOutput() PrometheusHaClusterProviderInstancePropertiesOutput {
+	return i.ToPrometheusHaClusterProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i PrometheusHaClusterProviderInstancePropertiesArgs) ToPrometheusHaClusterProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusHaClusterProviderInstancePropertiesOutput)
+}
+
+func (i PrometheusHaClusterProviderInstancePropertiesArgs) ToPrometheusHaClusterProviderInstancePropertiesPtrOutput() PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return i.ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PrometheusHaClusterProviderInstancePropertiesArgs) ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusHaClusterProviderInstancePropertiesOutput).ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// PrometheusHaClusterProviderInstancePropertiesPtrInput is an input type that accepts PrometheusHaClusterProviderInstancePropertiesArgs, PrometheusHaClusterProviderInstancePropertiesPtr and PrometheusHaClusterProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `PrometheusHaClusterProviderInstancePropertiesPtrInput` via:
+//
+//	        PrometheusHaClusterProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrometheusHaClusterProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPrometheusHaClusterProviderInstancePropertiesPtrOutput() PrometheusHaClusterProviderInstancePropertiesPtrOutput
+	ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(context.Context) PrometheusHaClusterProviderInstancePropertiesPtrOutput
+}
+
+type prometheusHaClusterProviderInstancePropertiesPtrType PrometheusHaClusterProviderInstancePropertiesArgs
+
+func PrometheusHaClusterProviderInstancePropertiesPtr(v *PrometheusHaClusterProviderInstancePropertiesArgs) PrometheusHaClusterProviderInstancePropertiesPtrInput {
+	return (*prometheusHaClusterProviderInstancePropertiesPtrType)(v)
+}
+
+func (*prometheusHaClusterProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusHaClusterProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *prometheusHaClusterProviderInstancePropertiesPtrType) ToPrometheusHaClusterProviderInstancePropertiesPtrOutput() PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return i.ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *prometheusHaClusterProviderInstancePropertiesPtrType) ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusHaClusterProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the PrometheusHaCluster provider properties.
+type PrometheusHaClusterProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (PrometheusHaClusterProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusHaClusterProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) ToPrometheusHaClusterProviderInstancePropertiesOutput() PrometheusHaClusterProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) ToPrometheusHaClusterProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) ToPrometheusHaClusterProviderInstancePropertiesPtrOutput() PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return o.ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusHaClusterProviderInstanceProperties) *PrometheusHaClusterProviderInstanceProperties {
+		return &v
+	}).(PrometheusHaClusterProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the clusterName.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target machine name.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// URL of the Node Exporter endpoint.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusHaCluster'.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the cluster sid.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) *string { return v.Sid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusHaClusterProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusHaClusterProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PrometheusHaClusterProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusHaClusterProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) ToPrometheusHaClusterProviderInstancePropertiesPtrOutput() PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) ToPrometheusHaClusterProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) Elem() PrometheusHaClusterProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) PrometheusHaClusterProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusHaClusterProviderInstanceProperties
+		return ret
+	}).(PrometheusHaClusterProviderInstancePropertiesOutput)
+}
+
+// Gets or sets the clusterName.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target machine name.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the Node Exporter endpoint.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrometheusUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusHaCluster'.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the cluster sid.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusHaClusterProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the PrometheusHaCluster provider properties.
 type PrometheusHaClusterProviderInstancePropertiesResponse struct {
 	// Gets or sets the clusterName.
@@ -2231,6 +9317,152 @@ type PrometheusHaClusterProviderInstancePropertiesResponse struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// Gets or sets the PrometheusHaCluster provider properties.
+type PrometheusHaClusterProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrometheusHaClusterProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusHaClusterProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) ToPrometheusHaClusterProviderInstancePropertiesResponseOutput() PrometheusHaClusterProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) ToPrometheusHaClusterProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the clusterName.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target machine name.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// URL of the Node Exporter endpoint.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusHaCluster'.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the cluster sid.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) *string { return v.Sid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusHaClusterProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusHaClusterProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusHaClusterProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) ToPrometheusHaClusterProviderInstancePropertiesResponsePtrOutput() PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) ToPrometheusHaClusterProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) Elem() PrometheusHaClusterProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) PrometheusHaClusterProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusHaClusterProviderInstancePropertiesResponse
+		return ret
+	}).(PrometheusHaClusterProviderInstancePropertiesResponseOutput)
+}
+
+// Gets or sets the clusterName.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target machine name.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of the Node Exporter endpoint.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrometheusUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusHaCluster'.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the cluster sid.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusHaClusterProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the PrometheusOS provider properties.
 type PrometheusOSProviderInstanceProperties struct {
 	// URL of the Node Exporter endpoint
@@ -2246,6 +9478,211 @@ type PrometheusOSProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// PrometheusOSProviderInstancePropertiesInput is an input type that accepts PrometheusOSProviderInstancePropertiesArgs and PrometheusOSProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `PrometheusOSProviderInstancePropertiesInput` via:
+//
+//	PrometheusOSProviderInstancePropertiesArgs{...}
+type PrometheusOSProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToPrometheusOSProviderInstancePropertiesOutput() PrometheusOSProviderInstancePropertiesOutput
+	ToPrometheusOSProviderInstancePropertiesOutputWithContext(context.Context) PrometheusOSProviderInstancePropertiesOutput
+}
+
+// Gets or sets the PrometheusOS provider properties.
+type PrometheusOSProviderInstancePropertiesArgs struct {
+	// URL of the Node Exporter endpoint
+	PrometheusUrl pulumi.StringPtrInput `pulumi:"prometheusUrl"`
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'PrometheusOS'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP System Identifier
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (PrometheusOSProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusOSProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesOutput() PrometheusOSProviderInstancePropertiesOutput {
+	return i.ToPrometheusOSProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOSProviderInstancePropertiesOutput)
+}
+
+func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
+	return i.ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PrometheusOSProviderInstancePropertiesArgs) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOSProviderInstancePropertiesOutput).ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// PrometheusOSProviderInstancePropertiesPtrInput is an input type that accepts PrometheusOSProviderInstancePropertiesArgs, PrometheusOSProviderInstancePropertiesPtr and PrometheusOSProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `PrometheusOSProviderInstancePropertiesPtrInput` via:
+//
+//	        PrometheusOSProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrometheusOSProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput
+	ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Context) PrometheusOSProviderInstancePropertiesPtrOutput
+}
+
+type prometheusOSProviderInstancePropertiesPtrType PrometheusOSProviderInstancePropertiesArgs
+
+func PrometheusOSProviderInstancePropertiesPtr(v *PrometheusOSProviderInstancePropertiesArgs) PrometheusOSProviderInstancePropertiesPtrInput {
+	return (*prometheusOSProviderInstancePropertiesPtrType)(v)
+}
+
+func (*prometheusOSProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusOSProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *prometheusOSProviderInstancePropertiesPtrType) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
+	return i.ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *prometheusOSProviderInstancePropertiesPtrType) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrometheusOSProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the PrometheusOS provider properties.
+type PrometheusOSProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (PrometheusOSProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusOSProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesOutput() PrometheusOSProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
+	return o.ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PrometheusOSProviderInstancePropertiesOutput) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrometheusOSProviderInstanceProperties) *PrometheusOSProviderInstanceProperties {
+		return &v
+	}).(PrometheusOSProviderInstancePropertiesPtrOutput)
+}
+
+// URL of the Node Exporter endpoint
+func (o PrometheusOSProviderInstancePropertiesOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusOS'.
+func (o PrometheusOSProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o PrometheusOSProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+func (o PrometheusOSProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusOSProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusOSProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PrometheusOSProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusOSProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) ToPrometheusOSProviderInstancePropertiesPtrOutput() PrometheusOSProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) ToPrometheusOSProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) Elem() PrometheusOSProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) PrometheusOSProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusOSProviderInstanceProperties
+		return ret
+	}).(PrometheusOSProviderInstancePropertiesOutput)
+}
+
+// URL of the Node Exporter endpoint
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrometheusUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusOS'.
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusOSProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the PrometheusOS provider properties.
 type PrometheusOSProviderInstancePropertiesResponse struct {
 	// URL of the Node Exporter endpoint
@@ -2259,6 +9696,122 @@ type PrometheusOSProviderInstancePropertiesResponse struct {
 	SslCertificateUri *string `pulumi:"sslCertificateUri"`
 	// Gets or sets certificate preference if secure communication is enabled.
 	SslPreference *string `pulumi:"sslPreference"`
+}
+
+// Gets or sets the PrometheusOS provider properties.
+type PrometheusOSProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrometheusOSProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrometheusOSProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) ToPrometheusOSProviderInstancePropertiesResponseOutput() PrometheusOSProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) ToPrometheusOSProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// URL of the Node Exporter endpoint
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.PrometheusUrl }).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusOS'.
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusOSProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrometheusOSProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type PrometheusOSProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrometheusOSProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrometheusOSProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ToPrometheusOSProviderInstancePropertiesResponsePtrOutput() PrometheusOSProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ToPrometheusOSProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) PrometheusOSProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) Elem() PrometheusOSProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) PrometheusOSProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrometheusOSProviderInstancePropertiesResponse
+		return ret
+	}).(PrometheusOSProviderInstancePropertiesResponseOutput)
+}
+
+// URL of the Node Exporter endpoint
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) PrometheusUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrometheusUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'PrometheusOS'.
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o PrometheusOSProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrometheusOSProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the provider instance errors.
@@ -2438,6 +9991,213 @@ type SAPInstallWithoutOSConfigSoftwareConfiguration struct {
 	SoftwareVersion string `pulumi:"softwareVersion"`
 }
 
+// SAPInstallWithoutOSConfigSoftwareConfigurationInput is an input type that accepts SAPInstallWithoutOSConfigSoftwareConfigurationArgs and SAPInstallWithoutOSConfigSoftwareConfigurationOutput values.
+// You can construct a concrete instance of `SAPInstallWithoutOSConfigSoftwareConfigurationInput` via:
+//
+//	SAPInstallWithoutOSConfigSoftwareConfigurationArgs{...}
+type SAPInstallWithoutOSConfigSoftwareConfigurationInput interface {
+	pulumi.Input
+
+	ToSAPInstallWithoutOSConfigSoftwareConfigurationOutput() SAPInstallWithoutOSConfigSoftwareConfigurationOutput
+	ToSAPInstallWithoutOSConfigSoftwareConfigurationOutputWithContext(context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationOutput
+}
+
+// The SAP Software configuration Input when the software is to be installed by service without OS Configurations
+type SAPInstallWithoutOSConfigSoftwareConfigurationArgs struct {
+	// The URL to the SAP Build of Materials(BOM) file.
+	BomUrl pulumi.StringInput `pulumi:"bomUrl"`
+	// Gets or sets the HA software configuration.
+	HighAvailabilitySoftwareConfiguration HighAvailabilitySoftwareConfigurationPtrInput `pulumi:"highAvailabilitySoftwareConfiguration"`
+	// The SAP bits storage account id.
+	SapBitsStorageAccountId pulumi.StringInput `pulumi:"sapBitsStorageAccountId"`
+	// The SAP software installation Type.
+	// Expected value is 'SAPInstallWithoutOSConfig'.
+	SoftwareInstallationType pulumi.StringInput `pulumi:"softwareInstallationType"`
+	// The software version to install.
+	SoftwareVersion pulumi.StringInput `pulumi:"softwareVersion"`
+}
+
+func (SAPInstallWithoutOSConfigSoftwareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPInstallWithoutOSConfigSoftwareConfiguration)(nil)).Elem()
+}
+
+func (i SAPInstallWithoutOSConfigSoftwareConfigurationArgs) ToSAPInstallWithoutOSConfigSoftwareConfigurationOutput() SAPInstallWithoutOSConfigSoftwareConfigurationOutput {
+	return i.ToSAPInstallWithoutOSConfigSoftwareConfigurationOutputWithContext(context.Background())
+}
+
+func (i SAPInstallWithoutOSConfigSoftwareConfigurationArgs) ToSAPInstallWithoutOSConfigSoftwareConfigurationOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SAPInstallWithoutOSConfigSoftwareConfigurationOutput)
+}
+
+func (i SAPInstallWithoutOSConfigSoftwareConfigurationArgs) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput() SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return i.ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SAPInstallWithoutOSConfigSoftwareConfigurationArgs) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SAPInstallWithoutOSConfigSoftwareConfigurationOutput).ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(ctx)
+}
+
+// SAPInstallWithoutOSConfigSoftwareConfigurationPtrInput is an input type that accepts SAPInstallWithoutOSConfigSoftwareConfigurationArgs, SAPInstallWithoutOSConfigSoftwareConfigurationPtr and SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput values.
+// You can construct a concrete instance of `SAPInstallWithoutOSConfigSoftwareConfigurationPtrInput` via:
+//
+//	        SAPInstallWithoutOSConfigSoftwareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SAPInstallWithoutOSConfigSoftwareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput() SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput
+	ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput
+}
+
+type sapinstallWithoutOSConfigSoftwareConfigurationPtrType SAPInstallWithoutOSConfigSoftwareConfigurationArgs
+
+func SAPInstallWithoutOSConfigSoftwareConfigurationPtr(v *SAPInstallWithoutOSConfigSoftwareConfigurationArgs) SAPInstallWithoutOSConfigSoftwareConfigurationPtrInput {
+	return (*sapinstallWithoutOSConfigSoftwareConfigurationPtrType)(v)
+}
+
+func (*sapinstallWithoutOSConfigSoftwareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPInstallWithoutOSConfigSoftwareConfiguration)(nil)).Elem()
+}
+
+func (i *sapinstallWithoutOSConfigSoftwareConfigurationPtrType) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput() SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return i.ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sapinstallWithoutOSConfigSoftwareConfigurationPtrType) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput)
+}
+
+// The SAP Software configuration Input when the software is to be installed by service without OS Configurations
+type SAPInstallWithoutOSConfigSoftwareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SAPInstallWithoutOSConfigSoftwareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPInstallWithoutOSConfigSoftwareConfiguration)(nil)).Elem()
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationOutput() SAPInstallWithoutOSConfigSoftwareConfigurationOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput() SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return o.ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SAPInstallWithoutOSConfigSoftwareConfiguration) *SAPInstallWithoutOSConfigSoftwareConfiguration {
+		return &v
+	}).(SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput)
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) BomUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfiguration) string { return v.BomUrl }).(pulumi.StringOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfiguration) *HighAvailabilitySoftwareConfiguration {
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationPtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) SapBitsStorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfiguration) string { return v.SapBitsStorageAccountId }).(pulumi.StringOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'SAPInstallWithoutOSConfig'.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) SoftwareInstallationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfiguration) string { return v.SoftwareInstallationType }).(pulumi.StringOutput)
+}
+
+// The software version to install.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationOutput) SoftwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfiguration) string { return v.SoftwareVersion }).(pulumi.StringOutput)
+}
+
+type SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPInstallWithoutOSConfigSoftwareConfiguration)(nil)).Elem()
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput() SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationPtrOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) Elem() SAPInstallWithoutOSConfigSoftwareConfigurationOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfiguration) SAPInstallWithoutOSConfigSoftwareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SAPInstallWithoutOSConfigSoftwareConfiguration
+		return ret
+	}).(SAPInstallWithoutOSConfigSoftwareConfigurationOutput)
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) BomUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BomUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfiguration) *HighAvailabilitySoftwareConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationPtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) SapBitsStorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SapBitsStorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'SAPInstallWithoutOSConfig'.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) SoftwareInstallationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareInstallationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The software version to install.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput) SoftwareVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // The SAP Software configuration Input when the software is to be installed by service without OS Configurations
 type SAPInstallWithoutOSConfigSoftwareConfigurationResponse struct {
 	// The URL to the SAP Build of Materials(BOM) file.
@@ -2451,6 +10211,128 @@ type SAPInstallWithoutOSConfigSoftwareConfigurationResponse struct {
 	SoftwareInstallationType string `pulumi:"softwareInstallationType"`
 	// The software version to install.
 	SoftwareVersion string `pulumi:"softwareVersion"`
+}
+
+// The SAP Software configuration Input when the software is to be installed by service without OS Configurations
+type SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPInstallWithoutOSConfigSoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput() SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationResponseOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput {
+	return o
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) BomUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfigurationResponse) string { return v.BomUrl }).(pulumi.StringOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfigurationResponse) *HighAvailabilitySoftwareConfigurationResponse {
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationResponsePtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) SapBitsStorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfigurationResponse) string {
+		return v.SapBitsStorageAccountId
+	}).(pulumi.StringOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'SAPInstallWithoutOSConfig'.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) SoftwareInstallationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfigurationResponse) string {
+		return v.SoftwareInstallationType
+	}).(pulumi.StringOutput)
+}
+
+// The software version to install.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput) SoftwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPInstallWithoutOSConfigSoftwareConfigurationResponse) string { return v.SoftwareVersion }).(pulumi.StringOutput)
+}
+
+type SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPInstallWithoutOSConfigSoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput() SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) ToSAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutputWithContext(ctx context.Context) SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) Elem() SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfigurationResponse) SAPInstallWithoutOSConfigSoftwareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SAPInstallWithoutOSConfigSoftwareConfigurationResponse
+		return ret
+	}).(SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput)
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) BomUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BomUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfigurationResponse) *HighAvailabilitySoftwareConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationResponsePtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) SapBitsStorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SapBitsStorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'SAPInstallWithoutOSConfig'.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) SoftwareInstallationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareInstallationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The software version to install.
+func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) SoftwareVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SAPInstallWithoutOSConfigSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 // The SAP supported SKU.
@@ -3164,6 +11046,330 @@ type SapNetWeaverProviderInstanceProperties struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// SapNetWeaverProviderInstancePropertiesInput is an input type that accepts SapNetWeaverProviderInstancePropertiesArgs and SapNetWeaverProviderInstancePropertiesOutput values.
+// You can construct a concrete instance of `SapNetWeaverProviderInstancePropertiesInput` via:
+//
+//	SapNetWeaverProviderInstancePropertiesArgs{...}
+type SapNetWeaverProviderInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToSapNetWeaverProviderInstancePropertiesOutput() SapNetWeaverProviderInstancePropertiesOutput
+	ToSapNetWeaverProviderInstancePropertiesOutputWithContext(context.Context) SapNetWeaverProviderInstancePropertiesOutput
+}
+
+// Gets or sets the provider properties.
+type SapNetWeaverProviderInstancePropertiesArgs struct {
+	// The provider type. For example, the value can be SapHana.
+	// Expected value is 'SapNetWeaver'.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+	// Gets or sets the SAP Client ID.
+	SapClientId pulumi.StringPtrInput `pulumi:"sapClientId"`
+	// Gets or sets the list of HostFile Entries
+	SapHostFileEntries pulumi.StringArrayInput `pulumi:"sapHostFileEntries"`
+	// Gets or sets the target virtual machine IP Address/FQDN.
+	SapHostname pulumi.StringPtrInput `pulumi:"sapHostname"`
+	// Gets or sets the instance number of SAP NetWeaver.
+	SapInstanceNr pulumi.StringPtrInput `pulumi:"sapInstanceNr"`
+	// Sets the SAP password.
+	SapPassword pulumi.StringPtrInput `pulumi:"sapPassword"`
+	// Gets or sets the key vault URI to secret with the SAP password.
+	SapPasswordUri pulumi.StringPtrInput `pulumi:"sapPasswordUri"`
+	// Gets or sets the SAP HTTP port number.
+	SapPortNumber pulumi.StringPtrInput `pulumi:"sapPortNumber"`
+	// Gets or sets the SAP System Identifier
+	SapSid pulumi.StringPtrInput `pulumi:"sapSid"`
+	// Gets or sets the SAP user name.
+	SapUsername pulumi.StringPtrInput `pulumi:"sapUsername"`
+	// Gets or sets the blob URI to SSL certificate for the SAP system.
+	SslCertificateUri pulumi.StringPtrInput `pulumi:"sslCertificateUri"`
+	// Gets or sets certificate preference if secure communication is enabled.
+	SslPreference pulumi.StringPtrInput `pulumi:"sslPreference"`
+}
+
+func (SapNetWeaverProviderInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapNetWeaverProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i SapNetWeaverProviderInstancePropertiesArgs) ToSapNetWeaverProviderInstancePropertiesOutput() SapNetWeaverProviderInstancePropertiesOutput {
+	return i.ToSapNetWeaverProviderInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i SapNetWeaverProviderInstancePropertiesArgs) ToSapNetWeaverProviderInstancePropertiesOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapNetWeaverProviderInstancePropertiesOutput)
+}
+
+func (i SapNetWeaverProviderInstancePropertiesArgs) ToSapNetWeaverProviderInstancePropertiesPtrOutput() SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return i.ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SapNetWeaverProviderInstancePropertiesArgs) ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapNetWeaverProviderInstancePropertiesOutput).ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// SapNetWeaverProviderInstancePropertiesPtrInput is an input type that accepts SapNetWeaverProviderInstancePropertiesArgs, SapNetWeaverProviderInstancePropertiesPtr and SapNetWeaverProviderInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `SapNetWeaverProviderInstancePropertiesPtrInput` via:
+//
+//	        SapNetWeaverProviderInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SapNetWeaverProviderInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSapNetWeaverProviderInstancePropertiesPtrOutput() SapNetWeaverProviderInstancePropertiesPtrOutput
+	ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(context.Context) SapNetWeaverProviderInstancePropertiesPtrOutput
+}
+
+type sapNetWeaverProviderInstancePropertiesPtrType SapNetWeaverProviderInstancePropertiesArgs
+
+func SapNetWeaverProviderInstancePropertiesPtr(v *SapNetWeaverProviderInstancePropertiesArgs) SapNetWeaverProviderInstancePropertiesPtrInput {
+	return (*sapNetWeaverProviderInstancePropertiesPtrType)(v)
+}
+
+func (*sapNetWeaverProviderInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapNetWeaverProviderInstanceProperties)(nil)).Elem()
+}
+
+func (i *sapNetWeaverProviderInstancePropertiesPtrType) ToSapNetWeaverProviderInstancePropertiesPtrOutput() SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return i.ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sapNetWeaverProviderInstancePropertiesPtrType) ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapNetWeaverProviderInstancePropertiesPtrOutput)
+}
+
+// Gets or sets the provider properties.
+type SapNetWeaverProviderInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SapNetWeaverProviderInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapNetWeaverProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o SapNetWeaverProviderInstancePropertiesOutput) ToSapNetWeaverProviderInstancePropertiesOutput() SapNetWeaverProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesOutput) ToSapNetWeaverProviderInstancePropertiesOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesOutput) ToSapNetWeaverProviderInstancePropertiesPtrOutput() SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return o.ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SapNetWeaverProviderInstancePropertiesOutput) ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SapNetWeaverProviderInstanceProperties) *SapNetWeaverProviderInstanceProperties {
+		return &v
+	}).(SapNetWeaverProviderInstancePropertiesPtrOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapNetWeaver'.
+func (o SapNetWeaverProviderInstancePropertiesOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP Client ID.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapClientId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of HostFile Entries
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapHostFileEntries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) []string { return v.SapHostFileEntries }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the target virtual machine IP Address/FQDN.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapHostname }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instance number of SAP NetWeaver.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapInstanceNr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapInstanceNr }).(pulumi.StringPtrOutput)
+}
+
+// Sets the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP HTTP port number.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapPortNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapPortNumber }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP user name.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SapUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SapUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SAP system.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o SapNetWeaverProviderInstancePropertiesOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstanceProperties) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type SapNetWeaverProviderInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SapNetWeaverProviderInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapNetWeaverProviderInstanceProperties)(nil)).Elem()
+}
+
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) ToSapNetWeaverProviderInstancePropertiesPtrOutput() SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) ToSapNetWeaverProviderInstancePropertiesPtrOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) Elem() SapNetWeaverProviderInstancePropertiesOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) SapNetWeaverProviderInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SapNetWeaverProviderInstanceProperties
+		return ret
+	}).(SapNetWeaverProviderInstancePropertiesOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapNetWeaver'.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP Client ID.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of HostFile Entries
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapHostFileEntries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SapHostFileEntries
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the target virtual machine IP Address/FQDN.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapHostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instance number of SAP NetWeaver.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapInstanceNr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapInstanceNr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP HTTP port number.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapPortNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapPortNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP user name.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SapUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SAP system.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o SapNetWeaverProviderInstancePropertiesPtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the provider properties.
 type SapNetWeaverProviderInstancePropertiesResponse struct {
 	// The provider type. For example, the value can be SapHana.
@@ -3193,6 +11399,227 @@ type SapNetWeaverProviderInstancePropertiesResponse struct {
 	SslPreference *string `pulumi:"sslPreference"`
 }
 
+// Gets or sets the provider properties.
+type SapNetWeaverProviderInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SapNetWeaverProviderInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapNetWeaverProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) ToSapNetWeaverProviderInstancePropertiesResponseOutput() SapNetWeaverProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) ToSapNetWeaverProviderInstancePropertiesResponseOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesResponseOutput {
+	return o
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapNetWeaver'.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the SAP Client ID.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapClientId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of HostFile Entries
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapHostFileEntries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) []string { return v.SapHostFileEntries }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the target virtual machine IP Address/FQDN.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapHostname }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instance number of SAP NetWeaver.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapInstanceNr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapInstanceNr }).(pulumi.StringPtrOutput)
+}
+
+// Sets the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapPassword }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapPasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP HTTP port number.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapPortNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapPortNumber }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapSid }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP user name.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SapUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SapUsername }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SAP system.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SslCertificateUri }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o SapNetWeaverProviderInstancePropertiesResponseOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapNetWeaverProviderInstancePropertiesResponse) *string { return v.SslPreference }).(pulumi.StringPtrOutput)
+}
+
+type SapNetWeaverProviderInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SapNetWeaverProviderInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapNetWeaverProviderInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) ToSapNetWeaverProviderInstancePropertiesResponsePtrOutput() SapNetWeaverProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) ToSapNetWeaverProviderInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) SapNetWeaverProviderInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) Elem() SapNetWeaverProviderInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) SapNetWeaverProviderInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SapNetWeaverProviderInstancePropertiesResponse
+		return ret
+	}).(SapNetWeaverProviderInstancePropertiesResponseOutput)
+}
+
+// The provider type. For example, the value can be SapHana.
+// Expected value is 'SapNetWeaver'.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) ProviderType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProviderType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP Client ID.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the list of HostFile Entries
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapHostFileEntries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SapHostFileEntries
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the target virtual machine IP Address/FQDN.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapHostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the instance number of SAP NetWeaver.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapInstanceNr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapInstanceNr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the key vault URI to secret with the SAP password.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapPasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapPasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP HTTP port number.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapPortNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapPortNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP System Identifier
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapSid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapSid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the SAP user name.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SapUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SapUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the blob URI to SSL certificate for the SAP system.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SslCertificateUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCertificateUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets certificate preference if secure communication is enabled.
+func (o SapNetWeaverProviderInstancePropertiesResponsePtrOutput) SslPreference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SapNetWeaverProviderInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslPreference
+	}).(pulumi.StringPtrOutput)
+}
+
 // The SAP Software configuration Input when the software is to be installed by service.
 type ServiceInitiatedSoftwareConfiguration struct {
 	// The URL to the SAP Build of Materials(BOM) file.
@@ -3210,6 +11637,247 @@ type ServiceInitiatedSoftwareConfiguration struct {
 	SoftwareVersion string `pulumi:"softwareVersion"`
 	// The SSH private key.
 	SshPrivateKey string `pulumi:"sshPrivateKey"`
+}
+
+// ServiceInitiatedSoftwareConfigurationInput is an input type that accepts ServiceInitiatedSoftwareConfigurationArgs and ServiceInitiatedSoftwareConfigurationOutput values.
+// You can construct a concrete instance of `ServiceInitiatedSoftwareConfigurationInput` via:
+//
+//	ServiceInitiatedSoftwareConfigurationArgs{...}
+type ServiceInitiatedSoftwareConfigurationInput interface {
+	pulumi.Input
+
+	ToServiceInitiatedSoftwareConfigurationOutput() ServiceInitiatedSoftwareConfigurationOutput
+	ToServiceInitiatedSoftwareConfigurationOutputWithContext(context.Context) ServiceInitiatedSoftwareConfigurationOutput
+}
+
+// The SAP Software configuration Input when the software is to be installed by service.
+type ServiceInitiatedSoftwareConfigurationArgs struct {
+	// The URL to the SAP Build of Materials(BOM) file.
+	BomUrl pulumi.StringInput `pulumi:"bomUrl"`
+	// Gets or sets the HA software configuration.
+	HighAvailabilitySoftwareConfiguration HighAvailabilitySoftwareConfigurationPtrInput `pulumi:"highAvailabilitySoftwareConfiguration"`
+	// The SAP bits storage account id.
+	SapBitsStorageAccountId pulumi.StringInput `pulumi:"sapBitsStorageAccountId"`
+	// The FQDN to set for the SAP system during install.
+	SapFqdn pulumi.StringInput `pulumi:"sapFqdn"`
+	// The SAP software installation Type.
+	// Expected value is 'ServiceInitiated'.
+	SoftwareInstallationType pulumi.StringInput `pulumi:"softwareInstallationType"`
+	// The software version to install.
+	SoftwareVersion pulumi.StringInput `pulumi:"softwareVersion"`
+	// The SSH private key.
+	SshPrivateKey pulumi.StringInput `pulumi:"sshPrivateKey"`
+}
+
+func (ServiceInitiatedSoftwareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceInitiatedSoftwareConfiguration)(nil)).Elem()
+}
+
+func (i ServiceInitiatedSoftwareConfigurationArgs) ToServiceInitiatedSoftwareConfigurationOutput() ServiceInitiatedSoftwareConfigurationOutput {
+	return i.ToServiceInitiatedSoftwareConfigurationOutputWithContext(context.Background())
+}
+
+func (i ServiceInitiatedSoftwareConfigurationArgs) ToServiceInitiatedSoftwareConfigurationOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceInitiatedSoftwareConfigurationOutput)
+}
+
+func (i ServiceInitiatedSoftwareConfigurationArgs) ToServiceInitiatedSoftwareConfigurationPtrOutput() ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return i.ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceInitiatedSoftwareConfigurationArgs) ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceInitiatedSoftwareConfigurationOutput).ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(ctx)
+}
+
+// ServiceInitiatedSoftwareConfigurationPtrInput is an input type that accepts ServiceInitiatedSoftwareConfigurationArgs, ServiceInitiatedSoftwareConfigurationPtr and ServiceInitiatedSoftwareConfigurationPtrOutput values.
+// You can construct a concrete instance of `ServiceInitiatedSoftwareConfigurationPtrInput` via:
+//
+//	        ServiceInitiatedSoftwareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceInitiatedSoftwareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToServiceInitiatedSoftwareConfigurationPtrOutput() ServiceInitiatedSoftwareConfigurationPtrOutput
+	ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(context.Context) ServiceInitiatedSoftwareConfigurationPtrOutput
+}
+
+type serviceInitiatedSoftwareConfigurationPtrType ServiceInitiatedSoftwareConfigurationArgs
+
+func ServiceInitiatedSoftwareConfigurationPtr(v *ServiceInitiatedSoftwareConfigurationArgs) ServiceInitiatedSoftwareConfigurationPtrInput {
+	return (*serviceInitiatedSoftwareConfigurationPtrType)(v)
+}
+
+func (*serviceInitiatedSoftwareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceInitiatedSoftwareConfiguration)(nil)).Elem()
+}
+
+func (i *serviceInitiatedSoftwareConfigurationPtrType) ToServiceInitiatedSoftwareConfigurationPtrOutput() ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return i.ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceInitiatedSoftwareConfigurationPtrType) ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceInitiatedSoftwareConfigurationPtrOutput)
+}
+
+// The SAP Software configuration Input when the software is to be installed by service.
+type ServiceInitiatedSoftwareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ServiceInitiatedSoftwareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceInitiatedSoftwareConfiguration)(nil)).Elem()
+}
+
+func (o ServiceInitiatedSoftwareConfigurationOutput) ToServiceInitiatedSoftwareConfigurationOutput() ServiceInitiatedSoftwareConfigurationOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationOutput) ToServiceInitiatedSoftwareConfigurationOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationOutput) ToServiceInitiatedSoftwareConfigurationPtrOutput() ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return o.ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceInitiatedSoftwareConfigurationOutput) ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceInitiatedSoftwareConfiguration) *ServiceInitiatedSoftwareConfiguration {
+		return &v
+	}).(ServiceInitiatedSoftwareConfigurationPtrOutput)
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o ServiceInitiatedSoftwareConfigurationOutput) BomUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) string { return v.BomUrl }).(pulumi.StringOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o ServiceInitiatedSoftwareConfigurationOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) *HighAvailabilitySoftwareConfiguration {
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationPtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o ServiceInitiatedSoftwareConfigurationOutput) SapBitsStorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) string { return v.SapBitsStorageAccountId }).(pulumi.StringOutput)
+}
+
+// The FQDN to set for the SAP system during install.
+func (o ServiceInitiatedSoftwareConfigurationOutput) SapFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) string { return v.SapFqdn }).(pulumi.StringOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'ServiceInitiated'.
+func (o ServiceInitiatedSoftwareConfigurationOutput) SoftwareInstallationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) string { return v.SoftwareInstallationType }).(pulumi.StringOutput)
+}
+
+// The software version to install.
+func (o ServiceInitiatedSoftwareConfigurationOutput) SoftwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) string { return v.SoftwareVersion }).(pulumi.StringOutput)
+}
+
+// The SSH private key.
+func (o ServiceInitiatedSoftwareConfigurationOutput) SshPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfiguration) string { return v.SshPrivateKey }).(pulumi.StringOutput)
+}
+
+type ServiceInitiatedSoftwareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceInitiatedSoftwareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceInitiatedSoftwareConfiguration)(nil)).Elem()
+}
+
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) ToServiceInitiatedSoftwareConfigurationPtrOutput() ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) ToServiceInitiatedSoftwareConfigurationPtrOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationPtrOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) Elem() ServiceInitiatedSoftwareConfigurationOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) ServiceInitiatedSoftwareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceInitiatedSoftwareConfiguration
+		return ret
+	}).(ServiceInitiatedSoftwareConfigurationOutput)
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) BomUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BomUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *HighAvailabilitySoftwareConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationPtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) SapBitsStorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SapBitsStorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The FQDN to set for the SAP system during install.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) SapFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SapFqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'ServiceInitiated'.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) SoftwareInstallationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareInstallationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The software version to install.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) SoftwareVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH private key.
+func (o ServiceInitiatedSoftwareConfigurationPtrOutput) SshPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshPrivateKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // The SAP Software configuration Input when the software is to be installed by service.
@@ -3231,6 +11899,154 @@ type ServiceInitiatedSoftwareConfigurationResponse struct {
 	SshPrivateKey string `pulumi:"sshPrivateKey"`
 }
 
+// The SAP Software configuration Input when the software is to be installed by service.
+type ServiceInitiatedSoftwareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceInitiatedSoftwareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceInitiatedSoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) ToServiceInitiatedSoftwareConfigurationResponseOutput() ServiceInitiatedSoftwareConfigurationResponseOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) ToServiceInitiatedSoftwareConfigurationResponseOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationResponseOutput {
+	return o
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) BomUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) string { return v.BomUrl }).(pulumi.StringOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) *HighAvailabilitySoftwareConfigurationResponse {
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationResponsePtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) SapBitsStorageAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) string { return v.SapBitsStorageAccountId }).(pulumi.StringOutput)
+}
+
+// The FQDN to set for the SAP system during install.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) SapFqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) string { return v.SapFqdn }).(pulumi.StringOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'ServiceInitiated'.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) SoftwareInstallationType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) string { return v.SoftwareInstallationType }).(pulumi.StringOutput)
+}
+
+// The software version to install.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) SoftwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) string { return v.SoftwareVersion }).(pulumi.StringOutput)
+}
+
+// The SSH private key.
+func (o ServiceInitiatedSoftwareConfigurationResponseOutput) SshPrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceInitiatedSoftwareConfigurationResponse) string { return v.SshPrivateKey }).(pulumi.StringOutput)
+}
+
+type ServiceInitiatedSoftwareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceInitiatedSoftwareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceInitiatedSoftwareConfigurationResponse)(nil)).Elem()
+}
+
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) ToServiceInitiatedSoftwareConfigurationResponsePtrOutput() ServiceInitiatedSoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) ToServiceInitiatedSoftwareConfigurationResponsePtrOutputWithContext(ctx context.Context) ServiceInitiatedSoftwareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) Elem() ServiceInitiatedSoftwareConfigurationResponseOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) ServiceInitiatedSoftwareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceInitiatedSoftwareConfigurationResponse
+		return ret
+	}).(ServiceInitiatedSoftwareConfigurationResponseOutput)
+}
+
+// The URL to the SAP Build of Materials(BOM) file.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) BomUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BomUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the HA software configuration.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) HighAvailabilitySoftwareConfiguration() HighAvailabilitySoftwareConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *HighAvailabilitySoftwareConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailabilitySoftwareConfiguration
+	}).(HighAvailabilitySoftwareConfigurationResponsePtrOutput)
+}
+
+// The SAP bits storage account id.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) SapBitsStorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SapBitsStorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The FQDN to set for the SAP system during install.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) SapFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SapFqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAP software installation Type.
+// Expected value is 'ServiceInitiated'.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) SoftwareInstallationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareInstallationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The software version to install.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) SoftwareVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SoftwareVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH private key.
+func (o ServiceInitiatedSoftwareConfigurationResponsePtrOutput) SshPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceInitiatedSoftwareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshPrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource names object for shared storage.
 type SharedStorageResourceNames struct {
 	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
@@ -3239,12 +12055,232 @@ type SharedStorageResourceNames struct {
 	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
 }
 
+// SharedStorageResourceNamesInput is an input type that accepts SharedStorageResourceNamesArgs and SharedStorageResourceNamesOutput values.
+// You can construct a concrete instance of `SharedStorageResourceNamesInput` via:
+//
+//	SharedStorageResourceNamesArgs{...}
+type SharedStorageResourceNamesInput interface {
+	pulumi.Input
+
+	ToSharedStorageResourceNamesOutput() SharedStorageResourceNamesOutput
+	ToSharedStorageResourceNamesOutputWithContext(context.Context) SharedStorageResourceNamesOutput
+}
+
+// The resource names object for shared storage.
+type SharedStorageResourceNamesArgs struct {
+	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+	SharedStorageAccountName pulumi.StringPtrInput `pulumi:"sharedStorageAccountName"`
+	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+	SharedStorageAccountPrivateEndPointName pulumi.StringPtrInput `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+func (SharedStorageResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedStorageResourceNames)(nil)).Elem()
+}
+
+func (i SharedStorageResourceNamesArgs) ToSharedStorageResourceNamesOutput() SharedStorageResourceNamesOutput {
+	return i.ToSharedStorageResourceNamesOutputWithContext(context.Background())
+}
+
+func (i SharedStorageResourceNamesArgs) ToSharedStorageResourceNamesOutputWithContext(ctx context.Context) SharedStorageResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedStorageResourceNamesOutput)
+}
+
+func (i SharedStorageResourceNamesArgs) ToSharedStorageResourceNamesPtrOutput() SharedStorageResourceNamesPtrOutput {
+	return i.ToSharedStorageResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i SharedStorageResourceNamesArgs) ToSharedStorageResourceNamesPtrOutputWithContext(ctx context.Context) SharedStorageResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedStorageResourceNamesOutput).ToSharedStorageResourceNamesPtrOutputWithContext(ctx)
+}
+
+// SharedStorageResourceNamesPtrInput is an input type that accepts SharedStorageResourceNamesArgs, SharedStorageResourceNamesPtr and SharedStorageResourceNamesPtrOutput values.
+// You can construct a concrete instance of `SharedStorageResourceNamesPtrInput` via:
+//
+//	        SharedStorageResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SharedStorageResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToSharedStorageResourceNamesPtrOutput() SharedStorageResourceNamesPtrOutput
+	ToSharedStorageResourceNamesPtrOutputWithContext(context.Context) SharedStorageResourceNamesPtrOutput
+}
+
+type sharedStorageResourceNamesPtrType SharedStorageResourceNamesArgs
+
+func SharedStorageResourceNamesPtr(v *SharedStorageResourceNamesArgs) SharedStorageResourceNamesPtrInput {
+	return (*sharedStorageResourceNamesPtrType)(v)
+}
+
+func (*sharedStorageResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedStorageResourceNames)(nil)).Elem()
+}
+
+func (i *sharedStorageResourceNamesPtrType) ToSharedStorageResourceNamesPtrOutput() SharedStorageResourceNamesPtrOutput {
+	return i.ToSharedStorageResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *sharedStorageResourceNamesPtrType) ToSharedStorageResourceNamesPtrOutputWithContext(ctx context.Context) SharedStorageResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedStorageResourceNamesPtrOutput)
+}
+
+// The resource names object for shared storage.
+type SharedStorageResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (SharedStorageResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedStorageResourceNames)(nil)).Elem()
+}
+
+func (o SharedStorageResourceNamesOutput) ToSharedStorageResourceNamesOutput() SharedStorageResourceNamesOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesOutput) ToSharedStorageResourceNamesOutputWithContext(ctx context.Context) SharedStorageResourceNamesOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesOutput) ToSharedStorageResourceNamesPtrOutput() SharedStorageResourceNamesPtrOutput {
+	return o.ToSharedStorageResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o SharedStorageResourceNamesOutput) ToSharedStorageResourceNamesPtrOutputWithContext(ctx context.Context) SharedStorageResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedStorageResourceNames) *SharedStorageResourceNames {
+		return &v
+	}).(SharedStorageResourceNamesPtrOutput)
+}
+
+// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+func (o SharedStorageResourceNamesOutput) SharedStorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedStorageResourceNames) *string { return v.SharedStorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+func (o SharedStorageResourceNamesOutput) SharedStorageAccountPrivateEndPointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedStorageResourceNames) *string { return v.SharedStorageAccountPrivateEndPointName }).(pulumi.StringPtrOutput)
+}
+
+type SharedStorageResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (SharedStorageResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedStorageResourceNames)(nil)).Elem()
+}
+
+func (o SharedStorageResourceNamesPtrOutput) ToSharedStorageResourceNamesPtrOutput() SharedStorageResourceNamesPtrOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesPtrOutput) ToSharedStorageResourceNamesPtrOutputWithContext(ctx context.Context) SharedStorageResourceNamesPtrOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesPtrOutput) Elem() SharedStorageResourceNamesOutput {
+	return o.ApplyT(func(v *SharedStorageResourceNames) SharedStorageResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret SharedStorageResourceNames
+		return ret
+	}).(SharedStorageResourceNamesOutput)
+}
+
+// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+func (o SharedStorageResourceNamesPtrOutput) SharedStorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedStorageResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedStorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+func (o SharedStorageResourceNamesPtrOutput) SharedStorageAccountPrivateEndPointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedStorageResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedStorageAccountPrivateEndPointName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource names object for shared storage.
 type SharedStorageResourceNamesResponse struct {
 	// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
 	SharedStorageAccountName *string `pulumi:"sharedStorageAccountName"`
 	// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
 	SharedStorageAccountPrivateEndPointName *string `pulumi:"sharedStorageAccountPrivateEndPointName"`
+}
+
+// The resource names object for shared storage.
+type SharedStorageResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (SharedStorageResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedStorageResourceNamesResponse)(nil)).Elem()
+}
+
+func (o SharedStorageResourceNamesResponseOutput) ToSharedStorageResourceNamesResponseOutput() SharedStorageResourceNamesResponseOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesResponseOutput) ToSharedStorageResourceNamesResponseOutputWithContext(ctx context.Context) SharedStorageResourceNamesResponseOutput {
+	return o
+}
+
+// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+func (o SharedStorageResourceNamesResponseOutput) SharedStorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedStorageResourceNamesResponse) *string { return v.SharedStorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+func (o SharedStorageResourceNamesResponseOutput) SharedStorageAccountPrivateEndPointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedStorageResourceNamesResponse) *string { return v.SharedStorageAccountPrivateEndPointName }).(pulumi.StringPtrOutput)
+}
+
+type SharedStorageResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SharedStorageResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedStorageResourceNamesResponse)(nil)).Elem()
+}
+
+func (o SharedStorageResourceNamesResponsePtrOutput) ToSharedStorageResourceNamesResponsePtrOutput() SharedStorageResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesResponsePtrOutput) ToSharedStorageResourceNamesResponsePtrOutputWithContext(ctx context.Context) SharedStorageResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o SharedStorageResourceNamesResponsePtrOutput) Elem() SharedStorageResourceNamesResponseOutput {
+	return o.ApplyT(func(v *SharedStorageResourceNamesResponse) SharedStorageResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SharedStorageResourceNamesResponse
+		return ret
+	}).(SharedStorageResourceNamesResponseOutput)
+}
+
+// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
+func (o SharedStorageResourceNamesResponsePtrOutput) SharedStorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedStorageResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedStorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
+func (o SharedStorageResourceNamesResponsePtrOutput) SharedStorageAccountPrivateEndPointName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedStorageResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedStorageAccountPrivateEndPointName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
@@ -3279,6 +12315,271 @@ func (val *SingleServerConfiguration) Defaults() *SingleServerConfiguration {
 	return &tmp
 }
 
+// SingleServerConfigurationInput is an input type that accepts SingleServerConfigurationArgs and SingleServerConfigurationOutput values.
+// You can construct a concrete instance of `SingleServerConfigurationInput` via:
+//
+//	SingleServerConfigurationArgs{...}
+type SingleServerConfigurationInput interface {
+	pulumi.Input
+
+	ToSingleServerConfigurationOutput() SingleServerConfigurationOutput
+	ToSingleServerConfigurationOutputWithContext(context.Context) SingleServerConfigurationOutput
+}
+
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+type SingleServerConfigurationArgs struct {
+	// The application resource group where SAP system resources will be deployed.
+	AppResourceGroup pulumi.StringInput `pulumi:"appResourceGroup"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames SingleServerFullResourceNamesPtrInput `pulumi:"customResourceNames"`
+	// The database type.
+	DatabaseType pulumi.StringPtrInput `pulumi:"databaseType"`
+	// Gets or sets the disk configuration.
+	DbDiskConfiguration DiskConfigurationPtrInput `pulumi:"dbDiskConfiguration"`
+	// The type of SAP deployment, single server or Three tier.
+	// Expected value is 'SingleServer'.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// Network configuration for the server
+	NetworkConfiguration NetworkConfigurationPtrInput `pulumi:"networkConfiguration"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Gets or sets the virtual machine configuration.
+	VirtualMachineConfiguration VirtualMachineConfigurationInput `pulumi:"virtualMachineConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for SingleServerConfigurationArgs
+func (val *SingleServerConfigurationArgs) Defaults() *SingleServerConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (SingleServerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleServerConfiguration)(nil)).Elem()
+}
+
+func (i SingleServerConfigurationArgs) ToSingleServerConfigurationOutput() SingleServerConfigurationOutput {
+	return i.ToSingleServerConfigurationOutputWithContext(context.Background())
+}
+
+func (i SingleServerConfigurationArgs) ToSingleServerConfigurationOutputWithContext(ctx context.Context) SingleServerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleServerConfigurationOutput)
+}
+
+func (i SingleServerConfigurationArgs) ToSingleServerConfigurationPtrOutput() SingleServerConfigurationPtrOutput {
+	return i.ToSingleServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SingleServerConfigurationArgs) ToSingleServerConfigurationPtrOutputWithContext(ctx context.Context) SingleServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleServerConfigurationOutput).ToSingleServerConfigurationPtrOutputWithContext(ctx)
+}
+
+// SingleServerConfigurationPtrInput is an input type that accepts SingleServerConfigurationArgs, SingleServerConfigurationPtr and SingleServerConfigurationPtrOutput values.
+// You can construct a concrete instance of `SingleServerConfigurationPtrInput` via:
+//
+//	        SingleServerConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingleServerConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSingleServerConfigurationPtrOutput() SingleServerConfigurationPtrOutput
+	ToSingleServerConfigurationPtrOutputWithContext(context.Context) SingleServerConfigurationPtrOutput
+}
+
+type singleServerConfigurationPtrType SingleServerConfigurationArgs
+
+func SingleServerConfigurationPtr(v *SingleServerConfigurationArgs) SingleServerConfigurationPtrInput {
+	return (*singleServerConfigurationPtrType)(v)
+}
+
+func (*singleServerConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleServerConfiguration)(nil)).Elem()
+}
+
+func (i *singleServerConfigurationPtrType) ToSingleServerConfigurationPtrOutput() SingleServerConfigurationPtrOutput {
+	return i.ToSingleServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *singleServerConfigurationPtrType) ToSingleServerConfigurationPtrOutputWithContext(ctx context.Context) SingleServerConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleServerConfigurationPtrOutput)
+}
+
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+type SingleServerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SingleServerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleServerConfiguration)(nil)).Elem()
+}
+
+func (o SingleServerConfigurationOutput) ToSingleServerConfigurationOutput() SingleServerConfigurationOutput {
+	return o
+}
+
+func (o SingleServerConfigurationOutput) ToSingleServerConfigurationOutputWithContext(ctx context.Context) SingleServerConfigurationOutput {
+	return o
+}
+
+func (o SingleServerConfigurationOutput) ToSingleServerConfigurationPtrOutput() SingleServerConfigurationPtrOutput {
+	return o.ToSingleServerConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SingleServerConfigurationOutput) ToSingleServerConfigurationPtrOutputWithContext(ctx context.Context) SingleServerConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleServerConfiguration) *SingleServerConfiguration {
+		return &v
+	}).(SingleServerConfigurationPtrOutput)
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o SingleServerConfigurationOutput) AppResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) string { return v.AppResourceGroup }).(pulumi.StringOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o SingleServerConfigurationOutput) CustomResourceNames() SingleServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) *SingleServerFullResourceNames { return v.CustomResourceNames }).(SingleServerFullResourceNamesPtrOutput)
+}
+
+// The database type.
+func (o SingleServerConfigurationOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o SingleServerConfigurationOutput) DbDiskConfiguration() DiskConfigurationPtrOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) *DiskConfiguration { return v.DbDiskConfiguration }).(DiskConfigurationPtrOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'SingleServer'.
+func (o SingleServerConfigurationOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// Network configuration for the server
+func (o SingleServerConfigurationOutput) NetworkConfiguration() NetworkConfigurationPtrOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) *NetworkConfiguration { return v.NetworkConfiguration }).(NetworkConfigurationPtrOutput)
+}
+
+// The subnet id.
+func (o SingleServerConfigurationOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o SingleServerConfigurationOutput) VirtualMachineConfiguration() VirtualMachineConfigurationOutput {
+	return o.ApplyT(func(v SingleServerConfiguration) VirtualMachineConfiguration { return v.VirtualMachineConfiguration }).(VirtualMachineConfigurationOutput)
+}
+
+type SingleServerConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SingleServerConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleServerConfiguration)(nil)).Elem()
+}
+
+func (o SingleServerConfigurationPtrOutput) ToSingleServerConfigurationPtrOutput() SingleServerConfigurationPtrOutput {
+	return o
+}
+
+func (o SingleServerConfigurationPtrOutput) ToSingleServerConfigurationPtrOutputWithContext(ctx context.Context) SingleServerConfigurationPtrOutput {
+	return o
+}
+
+func (o SingleServerConfigurationPtrOutput) Elem() SingleServerConfigurationOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) SingleServerConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SingleServerConfiguration
+		return ret
+	}).(SingleServerConfigurationOutput)
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o SingleServerConfigurationPtrOutput) AppResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o SingleServerConfigurationPtrOutput) CustomResourceNames() SingleServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *SingleServerFullResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.CustomResourceNames
+	}).(SingleServerFullResourceNamesPtrOutput)
+}
+
+// The database type.
+func (o SingleServerConfigurationPtrOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o SingleServerConfigurationPtrOutput) DbDiskConfiguration() DiskConfigurationPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *DiskConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.DbDiskConfiguration
+	}).(DiskConfigurationPtrOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'SingleServer'.
+func (o SingleServerConfigurationPtrOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network configuration for the server
+func (o SingleServerConfigurationPtrOutput) NetworkConfiguration() NetworkConfigurationPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *NetworkConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfiguration
+	}).(NetworkConfigurationPtrOutput)
+}
+
+// The subnet id.
+func (o SingleServerConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o SingleServerConfigurationPtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfiguration) *VirtualMachineConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationPtrOutput)
+}
+
 // Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type SingleServerConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
@@ -3311,6 +12612,171 @@ func (val *SingleServerConfigurationResponse) Defaults() *SingleServerConfigurat
 	return &tmp
 }
 
+// Gets or sets the single server configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+type SingleServerConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleServerConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleServerConfigurationResponse)(nil)).Elem()
+}
+
+func (o SingleServerConfigurationResponseOutput) ToSingleServerConfigurationResponseOutput() SingleServerConfigurationResponseOutput {
+	return o
+}
+
+func (o SingleServerConfigurationResponseOutput) ToSingleServerConfigurationResponseOutputWithContext(ctx context.Context) SingleServerConfigurationResponseOutput {
+	return o
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o SingleServerConfigurationResponseOutput) AppResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) string { return v.AppResourceGroup }).(pulumi.StringOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o SingleServerConfigurationResponseOutput) CustomResourceNames() SingleServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) *SingleServerFullResourceNamesResponse {
+		return v.CustomResourceNames
+	}).(SingleServerFullResourceNamesResponsePtrOutput)
+}
+
+// The database type.
+func (o SingleServerConfigurationResponseOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o SingleServerConfigurationResponseOutput) DbDiskConfiguration() DiskConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) *DiskConfigurationResponse { return v.DbDiskConfiguration }).(DiskConfigurationResponsePtrOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'SingleServer'.
+func (o SingleServerConfigurationResponseOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// Network configuration for the server
+func (o SingleServerConfigurationResponseOutput) NetworkConfiguration() NetworkConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) *NetworkConfigurationResponse { return v.NetworkConfiguration }).(NetworkConfigurationResponsePtrOutput)
+}
+
+// The subnet id.
+func (o SingleServerConfigurationResponseOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o SingleServerConfigurationResponseOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponseOutput {
+	return o.ApplyT(func(v SingleServerConfigurationResponse) VirtualMachineConfigurationResponse {
+		return v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponseOutput)
+}
+
+type SingleServerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SingleServerConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleServerConfigurationResponse)(nil)).Elem()
+}
+
+func (o SingleServerConfigurationResponsePtrOutput) ToSingleServerConfigurationResponsePtrOutput() SingleServerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SingleServerConfigurationResponsePtrOutput) ToSingleServerConfigurationResponsePtrOutputWithContext(ctx context.Context) SingleServerConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SingleServerConfigurationResponsePtrOutput) Elem() SingleServerConfigurationResponseOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) SingleServerConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SingleServerConfigurationResponse
+		return ret
+	}).(SingleServerConfigurationResponseOutput)
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o SingleServerConfigurationResponsePtrOutput) AppResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o SingleServerConfigurationResponsePtrOutput) CustomResourceNames() SingleServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *SingleServerFullResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomResourceNames
+	}).(SingleServerFullResourceNamesResponsePtrOutput)
+}
+
+// The database type.
+func (o SingleServerConfigurationResponsePtrOutput) DatabaseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the disk configuration.
+func (o SingleServerConfigurationResponsePtrOutput) DbDiskConfiguration() DiskConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *DiskConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DbDiskConfiguration
+	}).(DiskConfigurationResponsePtrOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'SingleServer'.
+func (o SingleServerConfigurationResponsePtrOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network configuration for the server
+func (o SingleServerConfigurationResponsePtrOutput) NetworkConfiguration() NetworkConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *NetworkConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfiguration
+	}).(NetworkConfigurationResponsePtrOutput)
+}
+
+// The subnet id.
+func (o SingleServerConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the virtual machine configuration.
+func (o SingleServerConfigurationResponsePtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *SingleServerConfigurationResponse) *VirtualMachineConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualMachineConfiguration
+	}).(VirtualMachineConfigurationResponsePtrOutput)
+}
+
 // The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
 type SingleServerFullResourceNames struct {
 	// The pattern type to be used for resource naming.
@@ -3318,6 +12784,160 @@ type SingleServerFullResourceNames struct {
 	NamingPatternType string `pulumi:"namingPatternType"`
 	// The resource names object for virtual machine and related resources.
 	VirtualMachine *VirtualMachineResourceNames `pulumi:"virtualMachine"`
+}
+
+// SingleServerFullResourceNamesInput is an input type that accepts SingleServerFullResourceNamesArgs and SingleServerFullResourceNamesOutput values.
+// You can construct a concrete instance of `SingleServerFullResourceNamesInput` via:
+//
+//	SingleServerFullResourceNamesArgs{...}
+type SingleServerFullResourceNamesInput interface {
+	pulumi.Input
+
+	ToSingleServerFullResourceNamesOutput() SingleServerFullResourceNamesOutput
+	ToSingleServerFullResourceNamesOutputWithContext(context.Context) SingleServerFullResourceNamesOutput
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNamesArgs struct {
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType pulumi.StringInput `pulumi:"namingPatternType"`
+	// The resource names object for virtual machine and related resources.
+	VirtualMachine VirtualMachineResourceNamesPtrInput `pulumi:"virtualMachine"`
+}
+
+func (SingleServerFullResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleServerFullResourceNames)(nil)).Elem()
+}
+
+func (i SingleServerFullResourceNamesArgs) ToSingleServerFullResourceNamesOutput() SingleServerFullResourceNamesOutput {
+	return i.ToSingleServerFullResourceNamesOutputWithContext(context.Background())
+}
+
+func (i SingleServerFullResourceNamesArgs) ToSingleServerFullResourceNamesOutputWithContext(ctx context.Context) SingleServerFullResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleServerFullResourceNamesOutput)
+}
+
+func (i SingleServerFullResourceNamesArgs) ToSingleServerFullResourceNamesPtrOutput() SingleServerFullResourceNamesPtrOutput {
+	return i.ToSingleServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i SingleServerFullResourceNamesArgs) ToSingleServerFullResourceNamesPtrOutputWithContext(ctx context.Context) SingleServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleServerFullResourceNamesOutput).ToSingleServerFullResourceNamesPtrOutputWithContext(ctx)
+}
+
+// SingleServerFullResourceNamesPtrInput is an input type that accepts SingleServerFullResourceNamesArgs, SingleServerFullResourceNamesPtr and SingleServerFullResourceNamesPtrOutput values.
+// You can construct a concrete instance of `SingleServerFullResourceNamesPtrInput` via:
+//
+//	        SingleServerFullResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingleServerFullResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToSingleServerFullResourceNamesPtrOutput() SingleServerFullResourceNamesPtrOutput
+	ToSingleServerFullResourceNamesPtrOutputWithContext(context.Context) SingleServerFullResourceNamesPtrOutput
+}
+
+type singleServerFullResourceNamesPtrType SingleServerFullResourceNamesArgs
+
+func SingleServerFullResourceNamesPtr(v *SingleServerFullResourceNamesArgs) SingleServerFullResourceNamesPtrInput {
+	return (*singleServerFullResourceNamesPtrType)(v)
+}
+
+func (*singleServerFullResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleServerFullResourceNames)(nil)).Elem()
+}
+
+func (i *singleServerFullResourceNamesPtrType) ToSingleServerFullResourceNamesPtrOutput() SingleServerFullResourceNamesPtrOutput {
+	return i.ToSingleServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *singleServerFullResourceNamesPtrType) ToSingleServerFullResourceNamesPtrOutputWithContext(ctx context.Context) SingleServerFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleServerFullResourceNamesPtrOutput)
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (SingleServerFullResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleServerFullResourceNames)(nil)).Elem()
+}
+
+func (o SingleServerFullResourceNamesOutput) ToSingleServerFullResourceNamesOutput() SingleServerFullResourceNamesOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesOutput) ToSingleServerFullResourceNamesOutputWithContext(ctx context.Context) SingleServerFullResourceNamesOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesOutput) ToSingleServerFullResourceNamesPtrOutput() SingleServerFullResourceNamesPtrOutput {
+	return o.ToSingleServerFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o SingleServerFullResourceNamesOutput) ToSingleServerFullResourceNamesPtrOutputWithContext(ctx context.Context) SingleServerFullResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleServerFullResourceNames) *SingleServerFullResourceNames {
+		return &v
+	}).(SingleServerFullResourceNamesPtrOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o SingleServerFullResourceNamesOutput) NamingPatternType() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerFullResourceNames) string { return v.NamingPatternType }).(pulumi.StringOutput)
+}
+
+// The resource names object for virtual machine and related resources.
+func (o SingleServerFullResourceNamesOutput) VirtualMachine() VirtualMachineResourceNamesPtrOutput {
+	return o.ApplyT(func(v SingleServerFullResourceNames) *VirtualMachineResourceNames { return v.VirtualMachine }).(VirtualMachineResourceNamesPtrOutput)
+}
+
+type SingleServerFullResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (SingleServerFullResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleServerFullResourceNames)(nil)).Elem()
+}
+
+func (o SingleServerFullResourceNamesPtrOutput) ToSingleServerFullResourceNamesPtrOutput() SingleServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesPtrOutput) ToSingleServerFullResourceNamesPtrOutputWithContext(ctx context.Context) SingleServerFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesPtrOutput) Elem() SingleServerFullResourceNamesOutput {
+	return o.ApplyT(func(v *SingleServerFullResourceNames) SingleServerFullResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret SingleServerFullResourceNames
+		return ret
+	}).(SingleServerFullResourceNamesOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o SingleServerFullResourceNamesPtrOutput) NamingPatternType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerFullResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamingPatternType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for virtual machine and related resources.
+func (o SingleServerFullResourceNamesPtrOutput) VirtualMachine() VirtualMachineResourceNamesPtrOutput {
+	return o.ApplyT(func(v *SingleServerFullResourceNames) *VirtualMachineResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachine
+	}).(VirtualMachineResourceNamesPtrOutput)
 }
 
 // The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
@@ -3329,11 +12949,221 @@ type SingleServerFullResourceNamesResponse struct {
 	VirtualMachine *VirtualMachineResourceNamesResponse `pulumi:"virtualMachine"`
 }
 
+// The resource name object where the specified values will be full resource names of the corresponding resources in a single server SAP system.
+type SingleServerFullResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleServerFullResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o SingleServerFullResourceNamesResponseOutput) ToSingleServerFullResourceNamesResponseOutput() SingleServerFullResourceNamesResponseOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesResponseOutput) ToSingleServerFullResourceNamesResponseOutputWithContext(ctx context.Context) SingleServerFullResourceNamesResponseOutput {
+	return o
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o SingleServerFullResourceNamesResponseOutput) NamingPatternType() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleServerFullResourceNamesResponse) string { return v.NamingPatternType }).(pulumi.StringOutput)
+}
+
+// The resource names object for virtual machine and related resources.
+func (o SingleServerFullResourceNamesResponseOutput) VirtualMachine() VirtualMachineResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v SingleServerFullResourceNamesResponse) *VirtualMachineResourceNamesResponse {
+		return v.VirtualMachine
+	}).(VirtualMachineResourceNamesResponsePtrOutput)
+}
+
+type SingleServerFullResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SingleServerFullResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleServerFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o SingleServerFullResourceNamesResponsePtrOutput) ToSingleServerFullResourceNamesResponsePtrOutput() SingleServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesResponsePtrOutput) ToSingleServerFullResourceNamesResponsePtrOutputWithContext(ctx context.Context) SingleServerFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o SingleServerFullResourceNamesResponsePtrOutput) Elem() SingleServerFullResourceNamesResponseOutput {
+	return o.ApplyT(func(v *SingleServerFullResourceNamesResponse) SingleServerFullResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SingleServerFullResourceNamesResponse
+		return ret
+	}).(SingleServerFullResourceNamesResponseOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o SingleServerFullResourceNamesResponsePtrOutput) NamingPatternType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleServerFullResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamingPatternType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for virtual machine and related resources.
+func (o SingleServerFullResourceNamesResponsePtrOutput) VirtualMachine() VirtualMachineResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *SingleServerFullResourceNamesResponse) *VirtualMachineResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachine
+	}).(VirtualMachineResourceNamesResponsePtrOutput)
+}
+
 // Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
 type SkipFileShareConfiguration struct {
 	// The type of file share config.
 	// Expected value is 'Skip'.
 	ConfigurationType string `pulumi:"configurationType"`
+}
+
+// SkipFileShareConfigurationInput is an input type that accepts SkipFileShareConfigurationArgs and SkipFileShareConfigurationOutput values.
+// You can construct a concrete instance of `SkipFileShareConfigurationInput` via:
+//
+//	SkipFileShareConfigurationArgs{...}
+type SkipFileShareConfigurationInput interface {
+	pulumi.Input
+
+	ToSkipFileShareConfigurationOutput() SkipFileShareConfigurationOutput
+	ToSkipFileShareConfigurationOutputWithContext(context.Context) SkipFileShareConfigurationOutput
+}
+
+// Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
+type SkipFileShareConfigurationArgs struct {
+	// The type of file share config.
+	// Expected value is 'Skip'.
+	ConfigurationType pulumi.StringInput `pulumi:"configurationType"`
+}
+
+func (SkipFileShareConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkipFileShareConfiguration)(nil)).Elem()
+}
+
+func (i SkipFileShareConfigurationArgs) ToSkipFileShareConfigurationOutput() SkipFileShareConfigurationOutput {
+	return i.ToSkipFileShareConfigurationOutputWithContext(context.Background())
+}
+
+func (i SkipFileShareConfigurationArgs) ToSkipFileShareConfigurationOutputWithContext(ctx context.Context) SkipFileShareConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkipFileShareConfigurationOutput)
+}
+
+func (i SkipFileShareConfigurationArgs) ToSkipFileShareConfigurationPtrOutput() SkipFileShareConfigurationPtrOutput {
+	return i.ToSkipFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SkipFileShareConfigurationArgs) ToSkipFileShareConfigurationPtrOutputWithContext(ctx context.Context) SkipFileShareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkipFileShareConfigurationOutput).ToSkipFileShareConfigurationPtrOutputWithContext(ctx)
+}
+
+// SkipFileShareConfigurationPtrInput is an input type that accepts SkipFileShareConfigurationArgs, SkipFileShareConfigurationPtr and SkipFileShareConfigurationPtrOutput values.
+// You can construct a concrete instance of `SkipFileShareConfigurationPtrInput` via:
+//
+//	        SkipFileShareConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkipFileShareConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSkipFileShareConfigurationPtrOutput() SkipFileShareConfigurationPtrOutput
+	ToSkipFileShareConfigurationPtrOutputWithContext(context.Context) SkipFileShareConfigurationPtrOutput
+}
+
+type skipFileShareConfigurationPtrType SkipFileShareConfigurationArgs
+
+func SkipFileShareConfigurationPtr(v *SkipFileShareConfigurationArgs) SkipFileShareConfigurationPtrInput {
+	return (*skipFileShareConfigurationPtrType)(v)
+}
+
+func (*skipFileShareConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkipFileShareConfiguration)(nil)).Elem()
+}
+
+func (i *skipFileShareConfigurationPtrType) ToSkipFileShareConfigurationPtrOutput() SkipFileShareConfigurationPtrOutput {
+	return i.ToSkipFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *skipFileShareConfigurationPtrType) ToSkipFileShareConfigurationPtrOutputWithContext(ctx context.Context) SkipFileShareConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkipFileShareConfigurationPtrOutput)
+}
+
+// Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
+type SkipFileShareConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SkipFileShareConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkipFileShareConfiguration)(nil)).Elem()
+}
+
+func (o SkipFileShareConfigurationOutput) ToSkipFileShareConfigurationOutput() SkipFileShareConfigurationOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationOutput) ToSkipFileShareConfigurationOutputWithContext(ctx context.Context) SkipFileShareConfigurationOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationOutput) ToSkipFileShareConfigurationPtrOutput() SkipFileShareConfigurationPtrOutput {
+	return o.ToSkipFileShareConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SkipFileShareConfigurationOutput) ToSkipFileShareConfigurationPtrOutputWithContext(ctx context.Context) SkipFileShareConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkipFileShareConfiguration) *SkipFileShareConfiguration {
+		return &v
+	}).(SkipFileShareConfigurationPtrOutput)
+}
+
+// The type of file share config.
+// Expected value is 'Skip'.
+func (o SkipFileShareConfigurationOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SkipFileShareConfiguration) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+type SkipFileShareConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SkipFileShareConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkipFileShareConfiguration)(nil)).Elem()
+}
+
+func (o SkipFileShareConfigurationPtrOutput) ToSkipFileShareConfigurationPtrOutput() SkipFileShareConfigurationPtrOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationPtrOutput) ToSkipFileShareConfigurationPtrOutputWithContext(ctx context.Context) SkipFileShareConfigurationPtrOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationPtrOutput) Elem() SkipFileShareConfigurationOutput {
+	return o.ApplyT(func(v *SkipFileShareConfiguration) SkipFileShareConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SkipFileShareConfiguration
+		return ret
+	}).(SkipFileShareConfigurationOutput)
+}
+
+// The type of file share config.
+// Expected value is 'Skip'.
+func (o SkipFileShareConfigurationPtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkipFileShareConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
@@ -3343,16 +13173,260 @@ type SkipFileShareConfigurationResponse struct {
 	ConfigurationType string `pulumi:"configurationType"`
 }
 
+// Gets or sets the file share configuration for scenarios where transport directory fileshare is not created or required.
+type SkipFileShareConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SkipFileShareConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkipFileShareConfigurationResponse)(nil)).Elem()
+}
+
+func (o SkipFileShareConfigurationResponseOutput) ToSkipFileShareConfigurationResponseOutput() SkipFileShareConfigurationResponseOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationResponseOutput) ToSkipFileShareConfigurationResponseOutputWithContext(ctx context.Context) SkipFileShareConfigurationResponseOutput {
+	return o
+}
+
+// The type of file share config.
+// Expected value is 'Skip'.
+func (o SkipFileShareConfigurationResponseOutput) ConfigurationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SkipFileShareConfigurationResponse) string { return v.ConfigurationType }).(pulumi.StringOutput)
+}
+
+type SkipFileShareConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkipFileShareConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkipFileShareConfigurationResponse)(nil)).Elem()
+}
+
+func (o SkipFileShareConfigurationResponsePtrOutput) ToSkipFileShareConfigurationResponsePtrOutput() SkipFileShareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationResponsePtrOutput) ToSkipFileShareConfigurationResponsePtrOutputWithContext(ctx context.Context) SkipFileShareConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SkipFileShareConfigurationResponsePtrOutput) Elem() SkipFileShareConfigurationResponseOutput {
+	return o.ApplyT(func(v *SkipFileShareConfigurationResponse) SkipFileShareConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkipFileShareConfigurationResponse
+		return ret
+	}).(SkipFileShareConfigurationResponseOutput)
+}
+
+// The type of file share config.
+// Expected value is 'Skip'.
+func (o SkipFileShareConfigurationResponsePtrOutput) ConfigurationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkipFileShareConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigurationType
+	}).(pulumi.StringPtrOutput)
+}
+
 // SSH configuration for Linux based VMs running on Azure
 type SshConfiguration struct {
 	// The list of SSH public keys used to authenticate with linux based VMs.
 	PublicKeys []SshPublicKey `pulumi:"publicKeys"`
 }
 
+// SshConfigurationInput is an input type that accepts SshConfigurationArgs and SshConfigurationOutput values.
+// You can construct a concrete instance of `SshConfigurationInput` via:
+//
+//	SshConfigurationArgs{...}
+type SshConfigurationInput interface {
+	pulumi.Input
+
+	ToSshConfigurationOutput() SshConfigurationOutput
+	ToSshConfigurationOutputWithContext(context.Context) SshConfigurationOutput
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationArgs struct {
+	// The list of SSH public keys used to authenticate with linux based VMs.
+	PublicKeys SshPublicKeyArrayInput `pulumi:"publicKeys"`
+}
+
+func (SshConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshConfiguration)(nil)).Elem()
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationOutput() SshConfigurationOutput {
+	return i.ToSshConfigurationOutputWithContext(context.Background())
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationOutputWithContext(ctx context.Context) SshConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationOutput)
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return i.ToSshConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SshConfigurationArgs) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationOutput).ToSshConfigurationPtrOutputWithContext(ctx)
+}
+
+// SshConfigurationPtrInput is an input type that accepts SshConfigurationArgs, SshConfigurationPtr and SshConfigurationPtrOutput values.
+// You can construct a concrete instance of `SshConfigurationPtrInput` via:
+//
+//	        SshConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SshConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSshConfigurationPtrOutput() SshConfigurationPtrOutput
+	ToSshConfigurationPtrOutputWithContext(context.Context) SshConfigurationPtrOutput
+}
+
+type sshConfigurationPtrType SshConfigurationArgs
+
+func SshConfigurationPtr(v *SshConfigurationArgs) SshConfigurationPtrInput {
+	return (*sshConfigurationPtrType)(v)
+}
+
+func (*sshConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshConfiguration)(nil)).Elem()
+}
+
+func (i *sshConfigurationPtrType) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return i.ToSshConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sshConfigurationPtrType) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshConfigurationPtrOutput)
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshConfiguration)(nil)).Elem()
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationOutput() SshConfigurationOutput {
+	return o
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationOutputWithContext(ctx context.Context) SshConfigurationOutput {
+	return o
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return o.ToSshConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SshConfigurationOutput) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshConfiguration) *SshConfiguration {
+		return &v
+	}).(SshConfigurationPtrOutput)
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationOutput) PublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v SshConfiguration) []SshPublicKey { return v.PublicKeys }).(SshPublicKeyArrayOutput)
+}
+
+type SshConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshConfiguration)(nil)).Elem()
+}
+
+func (o SshConfigurationPtrOutput) ToSshConfigurationPtrOutput() SshConfigurationPtrOutput {
+	return o
+}
+
+func (o SshConfigurationPtrOutput) ToSshConfigurationPtrOutputWithContext(ctx context.Context) SshConfigurationPtrOutput {
+	return o
+}
+
+func (o SshConfigurationPtrOutput) Elem() SshConfigurationOutput {
+	return o.ApplyT(func(v *SshConfiguration) SshConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SshConfiguration
+		return ret
+	}).(SshConfigurationOutput)
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationPtrOutput) PublicKeys() SshPublicKeyArrayOutput {
+	return o.ApplyT(func(v *SshConfiguration) []SshPublicKey {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeys
+	}).(SshPublicKeyArrayOutput)
+}
+
 // SSH configuration for Linux based VMs running on Azure
 type SshConfigurationResponse struct {
 	// The list of SSH public keys used to authenticate with linux based VMs.
 	PublicKeys []SshPublicKeyResponse `pulumi:"publicKeys"`
+}
+
+// SSH configuration for Linux based VMs running on Azure
+type SshConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshConfigurationResponse)(nil)).Elem()
+}
+
+func (o SshConfigurationResponseOutput) ToSshConfigurationResponseOutput() SshConfigurationResponseOutput {
+	return o
+}
+
+func (o SshConfigurationResponseOutput) ToSshConfigurationResponseOutputWithContext(ctx context.Context) SshConfigurationResponseOutput {
+	return o
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationResponseOutput) PublicKeys() SshPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v SshConfigurationResponse) []SshPublicKeyResponse { return v.PublicKeys }).(SshPublicKeyResponseArrayOutput)
+}
+
+type SshConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SshConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshConfigurationResponse)(nil)).Elem()
+}
+
+func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutput() SshConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutputWithContext(ctx context.Context) SshConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SshConfigurationResponsePtrOutput) Elem() SshConfigurationResponseOutput {
+	return o.ApplyT(func(v *SshConfigurationResponse) SshConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SshConfigurationResponse
+		return ret
+	}).(SshConfigurationResponseOutput)
+}
+
+// The list of SSH public keys used to authenticate with linux based VMs.
+func (o SshConfigurationResponsePtrOutput) PublicKeys() SshPublicKeyResponseArrayOutput {
+	return o.ApplyT(func(v *SshConfigurationResponse) []SshPublicKeyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeys
+	}).(SshPublicKeyResponseArrayOutput)
 }
 
 // The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
@@ -3363,6 +13437,157 @@ type SshKeyPair struct {
 	PublicKey *string `pulumi:"publicKey"`
 }
 
+// SshKeyPairInput is an input type that accepts SshKeyPairArgs and SshKeyPairOutput values.
+// You can construct a concrete instance of `SshKeyPairInput` via:
+//
+//	SshKeyPairArgs{...}
+type SshKeyPairInput interface {
+	pulumi.Input
+
+	ToSshKeyPairOutput() SshKeyPairOutput
+	ToSshKeyPairOutputWithContext(context.Context) SshKeyPairOutput
+}
+
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+type SshKeyPairArgs struct {
+	// SSH private key.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// SSH public key
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+}
+
+func (SshKeyPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshKeyPair)(nil)).Elem()
+}
+
+func (i SshKeyPairArgs) ToSshKeyPairOutput() SshKeyPairOutput {
+	return i.ToSshKeyPairOutputWithContext(context.Background())
+}
+
+func (i SshKeyPairArgs) ToSshKeyPairOutputWithContext(ctx context.Context) SshKeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshKeyPairOutput)
+}
+
+func (i SshKeyPairArgs) ToSshKeyPairPtrOutput() SshKeyPairPtrOutput {
+	return i.ToSshKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (i SshKeyPairArgs) ToSshKeyPairPtrOutputWithContext(ctx context.Context) SshKeyPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshKeyPairOutput).ToSshKeyPairPtrOutputWithContext(ctx)
+}
+
+// SshKeyPairPtrInput is an input type that accepts SshKeyPairArgs, SshKeyPairPtr and SshKeyPairPtrOutput values.
+// You can construct a concrete instance of `SshKeyPairPtrInput` via:
+//
+//	        SshKeyPairArgs{...}
+//
+//	or:
+//
+//	        nil
+type SshKeyPairPtrInput interface {
+	pulumi.Input
+
+	ToSshKeyPairPtrOutput() SshKeyPairPtrOutput
+	ToSshKeyPairPtrOutputWithContext(context.Context) SshKeyPairPtrOutput
+}
+
+type sshKeyPairPtrType SshKeyPairArgs
+
+func SshKeyPairPtr(v *SshKeyPairArgs) SshKeyPairPtrInput {
+	return (*sshKeyPairPtrType)(v)
+}
+
+func (*sshKeyPairPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshKeyPair)(nil)).Elem()
+}
+
+func (i *sshKeyPairPtrType) ToSshKeyPairPtrOutput() SshKeyPairPtrOutput {
+	return i.ToSshKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (i *sshKeyPairPtrType) ToSshKeyPairPtrOutputWithContext(ctx context.Context) SshKeyPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshKeyPairPtrOutput)
+}
+
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+type SshKeyPairOutput struct{ *pulumi.OutputState }
+
+func (SshKeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshKeyPair)(nil)).Elem()
+}
+
+func (o SshKeyPairOutput) ToSshKeyPairOutput() SshKeyPairOutput {
+	return o
+}
+
+func (o SshKeyPairOutput) ToSshKeyPairOutputWithContext(ctx context.Context) SshKeyPairOutput {
+	return o
+}
+
+func (o SshKeyPairOutput) ToSshKeyPairPtrOutput() SshKeyPairPtrOutput {
+	return o.ToSshKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (o SshKeyPairOutput) ToSshKeyPairPtrOutputWithContext(ctx context.Context) SshKeyPairPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SshKeyPair) *SshKeyPair {
+		return &v
+	}).(SshKeyPairPtrOutput)
+}
+
+// SSH private key.
+func (o SshKeyPairOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshKeyPair) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// SSH public key
+func (o SshKeyPairOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshKeyPair) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+type SshKeyPairPtrOutput struct{ *pulumi.OutputState }
+
+func (SshKeyPairPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshKeyPair)(nil)).Elem()
+}
+
+func (o SshKeyPairPtrOutput) ToSshKeyPairPtrOutput() SshKeyPairPtrOutput {
+	return o
+}
+
+func (o SshKeyPairPtrOutput) ToSshKeyPairPtrOutputWithContext(ctx context.Context) SshKeyPairPtrOutput {
+	return o
+}
+
+func (o SshKeyPairPtrOutput) Elem() SshKeyPairOutput {
+	return o.ApplyT(func(v *SshKeyPair) SshKeyPair {
+		if v != nil {
+			return *v
+		}
+		var ret SshKeyPair
+		return ret
+	}).(SshKeyPairOutput)
+}
+
+// SSH private key.
+func (o SshKeyPairPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH public key
+func (o SshKeyPairPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 type SshKeyPairResponse struct {
 	// SSH private key.
@@ -3371,10 +13596,173 @@ type SshKeyPairResponse struct {
 	PublicKey *string `pulumi:"publicKey"`
 }
 
+// The SSH Key-pair used to authenticate with the VM. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+type SshKeyPairResponseOutput struct{ *pulumi.OutputState }
+
+func (SshKeyPairResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshKeyPairResponse)(nil)).Elem()
+}
+
+func (o SshKeyPairResponseOutput) ToSshKeyPairResponseOutput() SshKeyPairResponseOutput {
+	return o
+}
+
+func (o SshKeyPairResponseOutput) ToSshKeyPairResponseOutputWithContext(ctx context.Context) SshKeyPairResponseOutput {
+	return o
+}
+
+// SSH private key.
+func (o SshKeyPairResponseOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshKeyPairResponse) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// SSH public key
+func (o SshKeyPairResponseOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshKeyPairResponse) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+type SshKeyPairResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SshKeyPairResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshKeyPairResponse)(nil)).Elem()
+}
+
+func (o SshKeyPairResponsePtrOutput) ToSshKeyPairResponsePtrOutput() SshKeyPairResponsePtrOutput {
+	return o
+}
+
+func (o SshKeyPairResponsePtrOutput) ToSshKeyPairResponsePtrOutputWithContext(ctx context.Context) SshKeyPairResponsePtrOutput {
+	return o
+}
+
+func (o SshKeyPairResponsePtrOutput) Elem() SshKeyPairResponseOutput {
+	return o.ApplyT(func(v *SshKeyPairResponse) SshKeyPairResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SshKeyPairResponse
+		return ret
+	}).(SshKeyPairResponseOutput)
+}
+
+// SSH private key.
+func (o SshKeyPairResponsePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshKeyPairResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH public key
+func (o SshKeyPairResponsePtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SshKeyPairResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
 type SshPublicKey struct {
 	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
+}
+
+// SshPublicKeyInput is an input type that accepts SshPublicKeyArgs and SshPublicKeyOutput values.
+// You can construct a concrete instance of `SshPublicKeyInput` via:
+//
+//	SshPublicKeyArgs{...}
+type SshPublicKeyInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyOutput() SshPublicKeyOutput
+	ToSshPublicKeyOutputWithContext(context.Context) SshPublicKeyOutput
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyArgs struct {
+	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
+}
+
+func (SshPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
+}
+
+func (i SshPublicKeyArgs) ToSshPublicKeyOutput() SshPublicKeyOutput {
+	return i.ToSshPublicKeyOutputWithContext(context.Background())
+}
+
+func (i SshPublicKeyArgs) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
+}
+
+// SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
+// You can construct a concrete instance of `SshPublicKeyArrayInput` via:
+//
+//	SshPublicKeyArray{ SshPublicKeyArgs{...} }
+type SshPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput
+	ToSshPublicKeyArrayOutputWithContext(context.Context) SshPublicKeyArrayOutput
+}
+
+type SshPublicKeyArray []SshPublicKeyInput
+
+func (SshPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil)).Elem()
+}
+
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return i.ToSshPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyArrayOutput)
+}
+
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
+}
+
+func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {
+	return o
+}
+
+func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
+	return o
+}
+
+// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+func (o SshPublicKeyOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+}
+
+type SshPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil)).Elem()
+}
+
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKey {
+		return vs[0].([]SshPublicKey)[vs[1].(int)]
+	}).(SshPublicKeyOutput)
 }
 
 // Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
@@ -3383,16 +13771,244 @@ type SshPublicKeyResponse struct {
 	KeyData *string `pulumi:"keyData"`
 }
 
+// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+type SshPublicKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKeyResponse)(nil)).Elem()
+}
+
+func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutput() SshPublicKeyResponseOutput {
+	return o
+}
+
+func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx context.Context) SshPublicKeyResponseOutput {
+	return o
+}
+
+// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
+}
+
+type SshPublicKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKeyResponse)(nil)).Elem()
+}
+
+func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutput() SshPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutputWithContext(ctx context.Context) SshPublicKeyResponseArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKeyResponse {
+		return vs[0].([]SshPublicKeyResponse)[vs[1].(int)]
+	}).(SshPublicKeyResponseOutput)
+}
+
 // Gets or sets the storage configuration.
 type StorageConfiguration struct {
 	// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
 	TransportFileShareConfiguration interface{} `pulumi:"transportFileShareConfiguration"`
 }
 
+// StorageConfigurationInput is an input type that accepts StorageConfigurationArgs and StorageConfigurationOutput values.
+// You can construct a concrete instance of `StorageConfigurationInput` via:
+//
+//	StorageConfigurationArgs{...}
+type StorageConfigurationInput interface {
+	pulumi.Input
+
+	ToStorageConfigurationOutput() StorageConfigurationOutput
+	ToStorageConfigurationOutputWithContext(context.Context) StorageConfigurationOutput
+}
+
+// Gets or sets the storage configuration.
+type StorageConfigurationArgs struct {
+	// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+	TransportFileShareConfiguration pulumi.Input `pulumi:"transportFileShareConfiguration"`
+}
+
+func (StorageConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfiguration)(nil)).Elem()
+}
+
+func (i StorageConfigurationArgs) ToStorageConfigurationOutput() StorageConfigurationOutput {
+	return i.ToStorageConfigurationOutputWithContext(context.Background())
+}
+
+func (i StorageConfigurationArgs) ToStorageConfigurationOutputWithContext(ctx context.Context) StorageConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationOutput)
+}
+
+func (i StorageConfigurationArgs) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
+	return i.ToStorageConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i StorageConfigurationArgs) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationOutput).ToStorageConfigurationPtrOutputWithContext(ctx)
+}
+
+// StorageConfigurationPtrInput is an input type that accepts StorageConfigurationArgs, StorageConfigurationPtr and StorageConfigurationPtrOutput values.
+// You can construct a concrete instance of `StorageConfigurationPtrInput` via:
+//
+//	        StorageConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput
+	ToStorageConfigurationPtrOutputWithContext(context.Context) StorageConfigurationPtrOutput
+}
+
+type storageConfigurationPtrType StorageConfigurationArgs
+
+func StorageConfigurationPtr(v *StorageConfigurationArgs) StorageConfigurationPtrInput {
+	return (*storageConfigurationPtrType)(v)
+}
+
+func (*storageConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfiguration)(nil)).Elem()
+}
+
+func (i *storageConfigurationPtrType) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
+	return i.ToStorageConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *storageConfigurationPtrType) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationPtrOutput)
+}
+
+// Gets or sets the storage configuration.
+type StorageConfigurationOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfiguration)(nil)).Elem()
+}
+
+func (o StorageConfigurationOutput) ToStorageConfigurationOutput() StorageConfigurationOutput {
+	return o
+}
+
+func (o StorageConfigurationOutput) ToStorageConfigurationOutputWithContext(ctx context.Context) StorageConfigurationOutput {
+	return o
+}
+
+func (o StorageConfigurationOutput) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
+	return o.ToStorageConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o StorageConfigurationOutput) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageConfiguration) *StorageConfiguration {
+		return &v
+	}).(StorageConfigurationPtrOutput)
+}
+
+// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+func (o StorageConfigurationOutput) TransportFileShareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v StorageConfiguration) interface{} { return v.TransportFileShareConfiguration }).(pulumi.AnyOutput)
+}
+
+type StorageConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfiguration)(nil)).Elem()
+}
+
+func (o StorageConfigurationPtrOutput) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
+	return o
+}
+
+func (o StorageConfigurationPtrOutput) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
+	return o
+}
+
+func (o StorageConfigurationPtrOutput) Elem() StorageConfigurationOutput {
+	return o.ApplyT(func(v *StorageConfiguration) StorageConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret StorageConfiguration
+		return ret
+	}).(StorageConfigurationOutput)
+}
+
+// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+func (o StorageConfigurationPtrOutput) TransportFileShareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *StorageConfiguration) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TransportFileShareConfiguration
+	}).(pulumi.AnyOutput)
+}
+
 // Gets or sets the storage configuration.
 type StorageConfigurationResponse struct {
 	// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
 	TransportFileShareConfiguration interface{} `pulumi:"transportFileShareConfiguration"`
+}
+
+// Gets or sets the storage configuration.
+type StorageConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageConfigurationResponse)(nil)).Elem()
+}
+
+func (o StorageConfigurationResponseOutput) ToStorageConfigurationResponseOutput() StorageConfigurationResponseOutput {
+	return o
+}
+
+func (o StorageConfigurationResponseOutput) ToStorageConfigurationResponseOutputWithContext(ctx context.Context) StorageConfigurationResponseOutput {
+	return o
+}
+
+// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+func (o StorageConfigurationResponseOutput) TransportFileShareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v StorageConfigurationResponse) interface{} { return v.TransportFileShareConfiguration }).(pulumi.AnyOutput)
+}
+
+type StorageConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageConfigurationResponse)(nil)).Elem()
+}
+
+func (o StorageConfigurationResponsePtrOutput) ToStorageConfigurationResponsePtrOutput() StorageConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StorageConfigurationResponsePtrOutput) ToStorageConfigurationResponsePtrOutputWithContext(ctx context.Context) StorageConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o StorageConfigurationResponsePtrOutput) Elem() StorageConfigurationResponseOutput {
+	return o.ApplyT(func(v *StorageConfigurationResponse) StorageConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageConfigurationResponse
+		return ret
+	}).(StorageConfigurationResponseOutput)
+}
+
+// The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
+func (o StorageConfigurationResponsePtrOutput) TransportFileShareConfiguration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *StorageConfigurationResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.TransportFileShareConfiguration
+	}).(pulumi.AnyOutput)
 }
 
 // Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage.
@@ -3534,6 +14150,288 @@ func (val *ThreeTierConfiguration) Defaults() *ThreeTierConfiguration {
 	return &tmp
 }
 
+// ThreeTierConfigurationInput is an input type that accepts ThreeTierConfigurationArgs and ThreeTierConfigurationOutput values.
+// You can construct a concrete instance of `ThreeTierConfigurationInput` via:
+//
+//	ThreeTierConfigurationArgs{...}
+type ThreeTierConfigurationInput interface {
+	pulumi.Input
+
+	ToThreeTierConfigurationOutput() ThreeTierConfigurationOutput
+	ToThreeTierConfigurationOutputWithContext(context.Context) ThreeTierConfigurationOutput
+}
+
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+type ThreeTierConfigurationArgs struct {
+	// The application resource group where SAP system resources will be deployed.
+	AppResourceGroup pulumi.StringInput `pulumi:"appResourceGroup"`
+	// The application server configuration.
+	ApplicationServer ApplicationServerConfigurationInput `pulumi:"applicationServer"`
+	// The central server configuration.
+	CentralServer CentralServerConfigurationInput `pulumi:"centralServer"`
+	// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+	CustomResourceNames ThreeTierFullResourceNamesPtrInput `pulumi:"customResourceNames"`
+	// The database configuration.
+	DatabaseServer DatabaseConfigurationInput `pulumi:"databaseServer"`
+	// The type of SAP deployment, single server or Three tier.
+	// Expected value is 'ThreeTier'.
+	DeploymentType pulumi.StringInput `pulumi:"deploymentType"`
+	// The high availability configuration.
+	HighAvailabilityConfig HighAvailabilityConfigurationPtrInput `pulumi:"highAvailabilityConfig"`
+	// Network configuration common to all servers
+	NetworkConfiguration NetworkConfigurationPtrInput `pulumi:"networkConfiguration"`
+	// The storage configuration.
+	StorageConfiguration StorageConfigurationPtrInput `pulumi:"storageConfiguration"`
+}
+
+// Defaults sets the appropriate defaults for ThreeTierConfigurationArgs
+func (val *ThreeTierConfigurationArgs) Defaults() *ThreeTierConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (ThreeTierConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreeTierConfiguration)(nil)).Elem()
+}
+
+func (i ThreeTierConfigurationArgs) ToThreeTierConfigurationOutput() ThreeTierConfigurationOutput {
+	return i.ToThreeTierConfigurationOutputWithContext(context.Background())
+}
+
+func (i ThreeTierConfigurationArgs) ToThreeTierConfigurationOutputWithContext(ctx context.Context) ThreeTierConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierConfigurationOutput)
+}
+
+func (i ThreeTierConfigurationArgs) ToThreeTierConfigurationPtrOutput() ThreeTierConfigurationPtrOutput {
+	return i.ToThreeTierConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ThreeTierConfigurationArgs) ToThreeTierConfigurationPtrOutputWithContext(ctx context.Context) ThreeTierConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierConfigurationOutput).ToThreeTierConfigurationPtrOutputWithContext(ctx)
+}
+
+// ThreeTierConfigurationPtrInput is an input type that accepts ThreeTierConfigurationArgs, ThreeTierConfigurationPtr and ThreeTierConfigurationPtrOutput values.
+// You can construct a concrete instance of `ThreeTierConfigurationPtrInput` via:
+//
+//	        ThreeTierConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ThreeTierConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToThreeTierConfigurationPtrOutput() ThreeTierConfigurationPtrOutput
+	ToThreeTierConfigurationPtrOutputWithContext(context.Context) ThreeTierConfigurationPtrOutput
+}
+
+type threeTierConfigurationPtrType ThreeTierConfigurationArgs
+
+func ThreeTierConfigurationPtr(v *ThreeTierConfigurationArgs) ThreeTierConfigurationPtrInput {
+	return (*threeTierConfigurationPtrType)(v)
+}
+
+func (*threeTierConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreeTierConfiguration)(nil)).Elem()
+}
+
+func (i *threeTierConfigurationPtrType) ToThreeTierConfigurationPtrOutput() ThreeTierConfigurationPtrOutput {
+	return i.ToThreeTierConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *threeTierConfigurationPtrType) ToThreeTierConfigurationPtrOutputWithContext(ctx context.Context) ThreeTierConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierConfigurationPtrOutput)
+}
+
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+type ThreeTierConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreeTierConfiguration)(nil)).Elem()
+}
+
+func (o ThreeTierConfigurationOutput) ToThreeTierConfigurationOutput() ThreeTierConfigurationOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationOutput) ToThreeTierConfigurationOutputWithContext(ctx context.Context) ThreeTierConfigurationOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationOutput) ToThreeTierConfigurationPtrOutput() ThreeTierConfigurationPtrOutput {
+	return o.ToThreeTierConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ThreeTierConfigurationOutput) ToThreeTierConfigurationPtrOutputWithContext(ctx context.Context) ThreeTierConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThreeTierConfiguration) *ThreeTierConfiguration {
+		return &v
+	}).(ThreeTierConfigurationPtrOutput)
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o ThreeTierConfigurationOutput) AppResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) string { return v.AppResourceGroup }).(pulumi.StringOutput)
+}
+
+// The application server configuration.
+func (o ThreeTierConfigurationOutput) ApplicationServer() ApplicationServerConfigurationOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) ApplicationServerConfiguration { return v.ApplicationServer }).(ApplicationServerConfigurationOutput)
+}
+
+// The central server configuration.
+func (o ThreeTierConfigurationOutput) CentralServer() CentralServerConfigurationOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) CentralServerConfiguration { return v.CentralServer }).(CentralServerConfigurationOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o ThreeTierConfigurationOutput) CustomResourceNames() ThreeTierFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) *ThreeTierFullResourceNames { return v.CustomResourceNames }).(ThreeTierFullResourceNamesPtrOutput)
+}
+
+// The database configuration.
+func (o ThreeTierConfigurationOutput) DatabaseServer() DatabaseConfigurationOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) DatabaseConfiguration { return v.DatabaseServer }).(DatabaseConfigurationOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'ThreeTier'.
+func (o ThreeTierConfigurationOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The high availability configuration.
+func (o ThreeTierConfigurationOutput) HighAvailabilityConfig() HighAvailabilityConfigurationPtrOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) *HighAvailabilityConfiguration { return v.HighAvailabilityConfig }).(HighAvailabilityConfigurationPtrOutput)
+}
+
+// Network configuration common to all servers
+func (o ThreeTierConfigurationOutput) NetworkConfiguration() NetworkConfigurationPtrOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) *NetworkConfiguration { return v.NetworkConfiguration }).(NetworkConfigurationPtrOutput)
+}
+
+// The storage configuration.
+func (o ThreeTierConfigurationOutput) StorageConfiguration() StorageConfigurationPtrOutput {
+	return o.ApplyT(func(v ThreeTierConfiguration) *StorageConfiguration { return v.StorageConfiguration }).(StorageConfigurationPtrOutput)
+}
+
+type ThreeTierConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreeTierConfiguration)(nil)).Elem()
+}
+
+func (o ThreeTierConfigurationPtrOutput) ToThreeTierConfigurationPtrOutput() ThreeTierConfigurationPtrOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationPtrOutput) ToThreeTierConfigurationPtrOutputWithContext(ctx context.Context) ThreeTierConfigurationPtrOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationPtrOutput) Elem() ThreeTierConfigurationOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) ThreeTierConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ThreeTierConfiguration
+		return ret
+	}).(ThreeTierConfigurationOutput)
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o ThreeTierConfigurationPtrOutput) AppResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The application server configuration.
+func (o ThreeTierConfigurationPtrOutput) ApplicationServer() ApplicationServerConfigurationPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *ApplicationServerConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationServer
+	}).(ApplicationServerConfigurationPtrOutput)
+}
+
+// The central server configuration.
+func (o ThreeTierConfigurationPtrOutput) CentralServer() CentralServerConfigurationPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *CentralServerConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.CentralServer
+	}).(CentralServerConfigurationPtrOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o ThreeTierConfigurationPtrOutput) CustomResourceNames() ThreeTierFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *ThreeTierFullResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.CustomResourceNames
+	}).(ThreeTierFullResourceNamesPtrOutput)
+}
+
+// The database configuration.
+func (o ThreeTierConfigurationPtrOutput) DatabaseServer() DatabaseConfigurationPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *DatabaseConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseServer
+	}).(DatabaseConfigurationPtrOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'ThreeTier'.
+func (o ThreeTierConfigurationPtrOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The high availability configuration.
+func (o ThreeTierConfigurationPtrOutput) HighAvailabilityConfig() HighAvailabilityConfigurationPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *HighAvailabilityConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailabilityConfig
+	}).(HighAvailabilityConfigurationPtrOutput)
+}
+
+// Network configuration common to all servers
+func (o ThreeTierConfigurationPtrOutput) NetworkConfiguration() NetworkConfigurationPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *NetworkConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfiguration
+	}).(NetworkConfigurationPtrOutput)
+}
+
+// The storage configuration.
+func (o ThreeTierConfigurationPtrOutput) StorageConfiguration() StorageConfigurationPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfiguration) *StorageConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.StorageConfiguration
+	}).(StorageConfigurationPtrOutput)
+}
+
 // Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
 type ThreeTierConfigurationResponse struct {
 	// The application resource group where SAP system resources will be deployed.
@@ -3568,6 +14466,188 @@ func (val *ThreeTierConfigurationResponse) Defaults() *ThreeTierConfigurationRes
 	return &tmp
 }
 
+// Gets or sets the three tier SAP configuration. For prerequisites for creating the infrastructure, please see [here](https://go.microsoft.com/fwlink/?linkid=2212611&clcid=0x409)
+type ThreeTierConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreeTierConfigurationResponse)(nil)).Elem()
+}
+
+func (o ThreeTierConfigurationResponseOutput) ToThreeTierConfigurationResponseOutput() ThreeTierConfigurationResponseOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationResponseOutput) ToThreeTierConfigurationResponseOutputWithContext(ctx context.Context) ThreeTierConfigurationResponseOutput {
+	return o
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o ThreeTierConfigurationResponseOutput) AppResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) string { return v.AppResourceGroup }).(pulumi.StringOutput)
+}
+
+// The application server configuration.
+func (o ThreeTierConfigurationResponseOutput) ApplicationServer() ApplicationServerConfigurationResponseOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) ApplicationServerConfigurationResponse {
+		return v.ApplicationServer
+	}).(ApplicationServerConfigurationResponseOutput)
+}
+
+// The central server configuration.
+func (o ThreeTierConfigurationResponseOutput) CentralServer() CentralServerConfigurationResponseOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) CentralServerConfigurationResponse { return v.CentralServer }).(CentralServerConfigurationResponseOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o ThreeTierConfigurationResponseOutput) CustomResourceNames() ThreeTierFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) *ThreeTierFullResourceNamesResponse {
+		return v.CustomResourceNames
+	}).(ThreeTierFullResourceNamesResponsePtrOutput)
+}
+
+// The database configuration.
+func (o ThreeTierConfigurationResponseOutput) DatabaseServer() DatabaseConfigurationResponseOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) DatabaseConfigurationResponse { return v.DatabaseServer }).(DatabaseConfigurationResponseOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'ThreeTier'.
+func (o ThreeTierConfigurationResponseOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) string { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// The high availability configuration.
+func (o ThreeTierConfigurationResponseOutput) HighAvailabilityConfig() HighAvailabilityConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) *HighAvailabilityConfigurationResponse {
+		return v.HighAvailabilityConfig
+	}).(HighAvailabilityConfigurationResponsePtrOutput)
+}
+
+// Network configuration common to all servers
+func (o ThreeTierConfigurationResponseOutput) NetworkConfiguration() NetworkConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) *NetworkConfigurationResponse { return v.NetworkConfiguration }).(NetworkConfigurationResponsePtrOutput)
+}
+
+// The storage configuration.
+func (o ThreeTierConfigurationResponseOutput) StorageConfiguration() StorageConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierConfigurationResponse) *StorageConfigurationResponse { return v.StorageConfiguration }).(StorageConfigurationResponsePtrOutput)
+}
+
+type ThreeTierConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreeTierConfigurationResponse)(nil)).Elem()
+}
+
+func (o ThreeTierConfigurationResponsePtrOutput) ToThreeTierConfigurationResponsePtrOutput() ThreeTierConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationResponsePtrOutput) ToThreeTierConfigurationResponsePtrOutputWithContext(ctx context.Context) ThreeTierConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ThreeTierConfigurationResponsePtrOutput) Elem() ThreeTierConfigurationResponseOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) ThreeTierConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ThreeTierConfigurationResponse
+		return ret
+	}).(ThreeTierConfigurationResponseOutput)
+}
+
+// The application resource group where SAP system resources will be deployed.
+func (o ThreeTierConfigurationResponsePtrOutput) AppResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The application server configuration.
+func (o ThreeTierConfigurationResponsePtrOutput) ApplicationServer() ApplicationServerConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *ApplicationServerConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationServer
+	}).(ApplicationServerConfigurationResponsePtrOutput)
+}
+
+// The central server configuration.
+func (o ThreeTierConfigurationResponsePtrOutput) CentralServer() CentralServerConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *CentralServerConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CentralServer
+	}).(CentralServerConfigurationResponsePtrOutput)
+}
+
+// The set of custom names to be used for underlying azure resources that are part of the SAP system.
+func (o ThreeTierConfigurationResponsePtrOutput) CustomResourceNames() ThreeTierFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *ThreeTierFullResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomResourceNames
+	}).(ThreeTierFullResourceNamesResponsePtrOutput)
+}
+
+// The database configuration.
+func (o ThreeTierConfigurationResponsePtrOutput) DatabaseServer() DatabaseConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *DatabaseConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseServer
+	}).(DatabaseConfigurationResponsePtrOutput)
+}
+
+// The type of SAP deployment, single server or Three tier.
+// Expected value is 'ThreeTier'.
+func (o ThreeTierConfigurationResponsePtrOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The high availability configuration.
+func (o ThreeTierConfigurationResponsePtrOutput) HighAvailabilityConfig() HighAvailabilityConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *HighAvailabilityConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HighAvailabilityConfig
+	}).(HighAvailabilityConfigurationResponsePtrOutput)
+}
+
+// Network configuration common to all servers
+func (o ThreeTierConfigurationResponsePtrOutput) NetworkConfiguration() NetworkConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *NetworkConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfiguration
+	}).(NetworkConfigurationResponsePtrOutput)
+}
+
+// The storage configuration.
+func (o ThreeTierConfigurationResponsePtrOutput) StorageConfiguration() StorageConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierConfigurationResponse) *StorageConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StorageConfiguration
+	}).(StorageConfigurationResponsePtrOutput)
+}
+
 // The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
 type ThreeTierFullResourceNames struct {
 	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
@@ -3583,6 +14663,211 @@ type ThreeTierFullResourceNames struct {
 	SharedStorage *SharedStorageResourceNames `pulumi:"sharedStorage"`
 }
 
+// ThreeTierFullResourceNamesInput is an input type that accepts ThreeTierFullResourceNamesArgs and ThreeTierFullResourceNamesOutput values.
+// You can construct a concrete instance of `ThreeTierFullResourceNamesInput` via:
+//
+//	ThreeTierFullResourceNamesArgs{...}
+type ThreeTierFullResourceNamesInput interface {
+	pulumi.Input
+
+	ToThreeTierFullResourceNamesOutput() ThreeTierFullResourceNamesOutput
+	ToThreeTierFullResourceNamesOutputWithContext(context.Context) ThreeTierFullResourceNamesOutput
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNamesArgs struct {
+	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+	ApplicationServer ApplicationServerFullResourceNamesPtrInput `pulumi:"applicationServer"`
+	// The full resource names object for central server layer resources.
+	CentralServer CentralServerFullResourceNamesPtrInput `pulumi:"centralServer"`
+	// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+	DatabaseServer DatabaseServerFullResourceNamesPtrInput `pulumi:"databaseServer"`
+	// The pattern type to be used for resource naming.
+	// Expected value is 'FullResourceName'.
+	NamingPatternType pulumi.StringInput `pulumi:"namingPatternType"`
+	// The resource names object for shared storage.
+	SharedStorage SharedStorageResourceNamesPtrInput `pulumi:"sharedStorage"`
+}
+
+func (ThreeTierFullResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreeTierFullResourceNames)(nil)).Elem()
+}
+
+func (i ThreeTierFullResourceNamesArgs) ToThreeTierFullResourceNamesOutput() ThreeTierFullResourceNamesOutput {
+	return i.ToThreeTierFullResourceNamesOutputWithContext(context.Background())
+}
+
+func (i ThreeTierFullResourceNamesArgs) ToThreeTierFullResourceNamesOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierFullResourceNamesOutput)
+}
+
+func (i ThreeTierFullResourceNamesArgs) ToThreeTierFullResourceNamesPtrOutput() ThreeTierFullResourceNamesPtrOutput {
+	return i.ToThreeTierFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i ThreeTierFullResourceNamesArgs) ToThreeTierFullResourceNamesPtrOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierFullResourceNamesOutput).ToThreeTierFullResourceNamesPtrOutputWithContext(ctx)
+}
+
+// ThreeTierFullResourceNamesPtrInput is an input type that accepts ThreeTierFullResourceNamesArgs, ThreeTierFullResourceNamesPtr and ThreeTierFullResourceNamesPtrOutput values.
+// You can construct a concrete instance of `ThreeTierFullResourceNamesPtrInput` via:
+//
+//	        ThreeTierFullResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ThreeTierFullResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToThreeTierFullResourceNamesPtrOutput() ThreeTierFullResourceNamesPtrOutput
+	ToThreeTierFullResourceNamesPtrOutputWithContext(context.Context) ThreeTierFullResourceNamesPtrOutput
+}
+
+type threeTierFullResourceNamesPtrType ThreeTierFullResourceNamesArgs
+
+func ThreeTierFullResourceNamesPtr(v *ThreeTierFullResourceNamesArgs) ThreeTierFullResourceNamesPtrInput {
+	return (*threeTierFullResourceNamesPtrType)(v)
+}
+
+func (*threeTierFullResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreeTierFullResourceNames)(nil)).Elem()
+}
+
+func (i *threeTierFullResourceNamesPtrType) ToThreeTierFullResourceNamesPtrOutput() ThreeTierFullResourceNamesPtrOutput {
+	return i.ToThreeTierFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *threeTierFullResourceNamesPtrType) ToThreeTierFullResourceNamesPtrOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThreeTierFullResourceNamesPtrOutput)
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierFullResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreeTierFullResourceNames)(nil)).Elem()
+}
+
+func (o ThreeTierFullResourceNamesOutput) ToThreeTierFullResourceNamesOutput() ThreeTierFullResourceNamesOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesOutput) ToThreeTierFullResourceNamesOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesOutput) ToThreeTierFullResourceNamesPtrOutput() ThreeTierFullResourceNamesPtrOutput {
+	return o.ToThreeTierFullResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o ThreeTierFullResourceNamesOutput) ToThreeTierFullResourceNamesPtrOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThreeTierFullResourceNames) *ThreeTierFullResourceNames {
+		return &v
+	}).(ThreeTierFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+func (o ThreeTierFullResourceNamesOutput) ApplicationServer() ApplicationServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNames) *ApplicationServerFullResourceNames { return v.ApplicationServer }).(ApplicationServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for central server layer resources.
+func (o ThreeTierFullResourceNamesOutput) CentralServer() CentralServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNames) *CentralServerFullResourceNames { return v.CentralServer }).(CentralServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+func (o ThreeTierFullResourceNamesOutput) DatabaseServer() DatabaseServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNames) *DatabaseServerFullResourceNames { return v.DatabaseServer }).(DatabaseServerFullResourceNamesPtrOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o ThreeTierFullResourceNamesOutput) NamingPatternType() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNames) string { return v.NamingPatternType }).(pulumi.StringOutput)
+}
+
+// The resource names object for shared storage.
+func (o ThreeTierFullResourceNamesOutput) SharedStorage() SharedStorageResourceNamesPtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNames) *SharedStorageResourceNames { return v.SharedStorage }).(SharedStorageResourceNamesPtrOutput)
+}
+
+type ThreeTierFullResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierFullResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreeTierFullResourceNames)(nil)).Elem()
+}
+
+func (o ThreeTierFullResourceNamesPtrOutput) ToThreeTierFullResourceNamesPtrOutput() ThreeTierFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesPtrOutput) ToThreeTierFullResourceNamesPtrOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesPtrOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesPtrOutput) Elem() ThreeTierFullResourceNamesOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNames) ThreeTierFullResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret ThreeTierFullResourceNames
+		return ret
+	}).(ThreeTierFullResourceNamesOutput)
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+func (o ThreeTierFullResourceNamesPtrOutput) ApplicationServer() ApplicationServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNames) *ApplicationServerFullResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationServer
+	}).(ApplicationServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for central server layer resources.
+func (o ThreeTierFullResourceNamesPtrOutput) CentralServer() CentralServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNames) *CentralServerFullResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.CentralServer
+	}).(CentralServerFullResourceNamesPtrOutput)
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+func (o ThreeTierFullResourceNamesPtrOutput) DatabaseServer() DatabaseServerFullResourceNamesPtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNames) *DatabaseServerFullResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseServer
+	}).(DatabaseServerFullResourceNamesPtrOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o ThreeTierFullResourceNamesPtrOutput) NamingPatternType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamingPatternType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for shared storage.
+func (o ThreeTierFullResourceNamesPtrOutput) SharedStorage() SharedStorageResourceNamesPtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNames) *SharedStorageResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.SharedStorage
+	}).(SharedStorageResourceNamesPtrOutput)
+}
+
 // The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
 type ThreeTierFullResourceNamesResponse struct {
 	// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
@@ -3596,6 +14881,128 @@ type ThreeTierFullResourceNamesResponse struct {
 	NamingPatternType string `pulumi:"namingPatternType"`
 	// The resource names object for shared storage.
 	SharedStorage *SharedStorageResourceNamesResponse `pulumi:"sharedStorage"`
+}
+
+// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
+type ThreeTierFullResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierFullResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThreeTierFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o ThreeTierFullResourceNamesResponseOutput) ToThreeTierFullResourceNamesResponseOutput() ThreeTierFullResourceNamesResponseOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesResponseOutput) ToThreeTierFullResourceNamesResponseOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesResponseOutput {
+	return o
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+func (o ThreeTierFullResourceNamesResponseOutput) ApplicationServer() ApplicationServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNamesResponse) *ApplicationServerFullResourceNamesResponse {
+		return v.ApplicationServer
+	}).(ApplicationServerFullResourceNamesResponsePtrOutput)
+}
+
+// The full resource names object for central server layer resources.
+func (o ThreeTierFullResourceNamesResponseOutput) CentralServer() CentralServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNamesResponse) *CentralServerFullResourceNamesResponse {
+		return v.CentralServer
+	}).(CentralServerFullResourceNamesResponsePtrOutput)
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+func (o ThreeTierFullResourceNamesResponseOutput) DatabaseServer() DatabaseServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNamesResponse) *DatabaseServerFullResourceNamesResponse {
+		return v.DatabaseServer
+	}).(DatabaseServerFullResourceNamesResponsePtrOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o ThreeTierFullResourceNamesResponseOutput) NamingPatternType() pulumi.StringOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNamesResponse) string { return v.NamingPatternType }).(pulumi.StringOutput)
+}
+
+// The resource names object for shared storage.
+func (o ThreeTierFullResourceNamesResponseOutput) SharedStorage() SharedStorageResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v ThreeTierFullResourceNamesResponse) *SharedStorageResourceNamesResponse { return v.SharedStorage }).(SharedStorageResourceNamesResponsePtrOutput)
+}
+
+type ThreeTierFullResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ThreeTierFullResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ThreeTierFullResourceNamesResponse)(nil)).Elem()
+}
+
+func (o ThreeTierFullResourceNamesResponsePtrOutput) ToThreeTierFullResourceNamesResponsePtrOutput() ThreeTierFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesResponsePtrOutput) ToThreeTierFullResourceNamesResponsePtrOutputWithContext(ctx context.Context) ThreeTierFullResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o ThreeTierFullResourceNamesResponsePtrOutput) Elem() ThreeTierFullResourceNamesResponseOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNamesResponse) ThreeTierFullResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ThreeTierFullResourceNamesResponse
+		return ret
+	}).(ThreeTierFullResourceNamesResponseOutput)
+}
+
+// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
+func (o ThreeTierFullResourceNamesResponsePtrOutput) ApplicationServer() ApplicationServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNamesResponse) *ApplicationServerFullResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationServer
+	}).(ApplicationServerFullResourceNamesResponsePtrOutput)
+}
+
+// The full resource names object for central server layer resources.
+func (o ThreeTierFullResourceNamesResponsePtrOutput) CentralServer() CentralServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNamesResponse) *CentralServerFullResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CentralServer
+	}).(CentralServerFullResourceNamesResponsePtrOutput)
+}
+
+// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
+func (o ThreeTierFullResourceNamesResponsePtrOutput) DatabaseServer() DatabaseServerFullResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNamesResponse) *DatabaseServerFullResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseServer
+	}).(DatabaseServerFullResourceNamesResponsePtrOutput)
+}
+
+// The pattern type to be used for resource naming.
+// Expected value is 'FullResourceName'.
+func (o ThreeTierFullResourceNamesResponsePtrOutput) NamingPatternType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NamingPatternType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource names object for shared storage.
+func (o ThreeTierFullResourceNamesResponsePtrOutput) SharedStorage() SharedStorageResourceNamesResponsePtrOutput {
+	return o.ApplyT(func(v *ThreeTierFullResourceNamesResponse) *SharedStorageResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SharedStorage
+	}).(SharedStorageResourceNamesResponsePtrOutput)
 }
 
 // User assigned identity properties
@@ -3899,6 +15306,174 @@ type VirtualMachineConfiguration struct {
 	VmSize string `pulumi:"vmSize"`
 }
 
+// VirtualMachineConfigurationInput is an input type that accepts VirtualMachineConfigurationArgs and VirtualMachineConfigurationOutput values.
+// You can construct a concrete instance of `VirtualMachineConfigurationInput` via:
+//
+//	VirtualMachineConfigurationArgs{...}
+type VirtualMachineConfigurationInput interface {
+	pulumi.Input
+
+	ToVirtualMachineConfigurationOutput() VirtualMachineConfigurationOutput
+	ToVirtualMachineConfigurationOutputWithContext(context.Context) VirtualMachineConfigurationOutput
+}
+
+// Defines the virtual machine configuration.
+type VirtualMachineConfigurationArgs struct {
+	// The image reference.
+	ImageReference ImageReferenceInput `pulumi:"imageReference"`
+	// The OS profile.
+	OsProfile OSProfileInput `pulumi:"osProfile"`
+	// The virtual machine size.
+	VmSize pulumi.StringInput `pulumi:"vmSize"`
+}
+
+func (VirtualMachineConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineConfiguration)(nil)).Elem()
+}
+
+func (i VirtualMachineConfigurationArgs) ToVirtualMachineConfigurationOutput() VirtualMachineConfigurationOutput {
+	return i.ToVirtualMachineConfigurationOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineConfigurationArgs) ToVirtualMachineConfigurationOutputWithContext(ctx context.Context) VirtualMachineConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineConfigurationOutput)
+}
+
+func (i VirtualMachineConfigurationArgs) ToVirtualMachineConfigurationPtrOutput() VirtualMachineConfigurationPtrOutput {
+	return i.ToVirtualMachineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineConfigurationArgs) ToVirtualMachineConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineConfigurationOutput).ToVirtualMachineConfigurationPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineConfigurationPtrInput is an input type that accepts VirtualMachineConfigurationArgs, VirtualMachineConfigurationPtr and VirtualMachineConfigurationPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineConfigurationPtrInput` via:
+//
+//	        VirtualMachineConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineConfigurationPtrOutput() VirtualMachineConfigurationPtrOutput
+	ToVirtualMachineConfigurationPtrOutputWithContext(context.Context) VirtualMachineConfigurationPtrOutput
+}
+
+type virtualMachineConfigurationPtrType VirtualMachineConfigurationArgs
+
+func VirtualMachineConfigurationPtr(v *VirtualMachineConfigurationArgs) VirtualMachineConfigurationPtrInput {
+	return (*virtualMachineConfigurationPtrType)(v)
+}
+
+func (*virtualMachineConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineConfiguration)(nil)).Elem()
+}
+
+func (i *virtualMachineConfigurationPtrType) ToVirtualMachineConfigurationPtrOutput() VirtualMachineConfigurationPtrOutput {
+	return i.ToVirtualMachineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineConfigurationPtrType) ToVirtualMachineConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineConfigurationPtrOutput)
+}
+
+// Defines the virtual machine configuration.
+type VirtualMachineConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineConfigurationOutput) ToVirtualMachineConfigurationOutput() VirtualMachineConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationOutput) ToVirtualMachineConfigurationOutputWithContext(ctx context.Context) VirtualMachineConfigurationOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationOutput) ToVirtualMachineConfigurationPtrOutput() VirtualMachineConfigurationPtrOutput {
+	return o.ToVirtualMachineConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineConfigurationOutput) ToVirtualMachineConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineConfiguration) *VirtualMachineConfiguration {
+		return &v
+	}).(VirtualMachineConfigurationPtrOutput)
+}
+
+// The image reference.
+func (o VirtualMachineConfigurationOutput) ImageReference() ImageReferenceOutput {
+	return o.ApplyT(func(v VirtualMachineConfiguration) ImageReference { return v.ImageReference }).(ImageReferenceOutput)
+}
+
+// The OS profile.
+func (o VirtualMachineConfigurationOutput) OsProfile() OSProfileOutput {
+	return o.ApplyT(func(v VirtualMachineConfiguration) OSProfile { return v.OsProfile }).(OSProfileOutput)
+}
+
+// The virtual machine size.
+func (o VirtualMachineConfigurationOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineConfiguration) string { return v.VmSize }).(pulumi.StringOutput)
+}
+
+type VirtualMachineConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineConfiguration)(nil)).Elem()
+}
+
+func (o VirtualMachineConfigurationPtrOutput) ToVirtualMachineConfigurationPtrOutput() VirtualMachineConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationPtrOutput) ToVirtualMachineConfigurationPtrOutputWithContext(ctx context.Context) VirtualMachineConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationPtrOutput) Elem() VirtualMachineConfigurationOutput {
+	return o.ApplyT(func(v *VirtualMachineConfiguration) VirtualMachineConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineConfiguration
+		return ret
+	}).(VirtualMachineConfigurationOutput)
+}
+
+// The image reference.
+func (o VirtualMachineConfigurationPtrOutput) ImageReference() ImageReferencePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfiguration) *ImageReference {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageReference
+	}).(ImageReferencePtrOutput)
+}
+
+// The OS profile.
+func (o VirtualMachineConfigurationPtrOutput) OsProfile() OSProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfiguration) *OSProfile {
+		if v == nil {
+			return nil
+		}
+		return &v.OsProfile
+	}).(OSProfilePtrOutput)
+}
+
+// The virtual machine size.
+func (o VirtualMachineConfigurationPtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the virtual machine configuration.
 type VirtualMachineConfigurationResponse struct {
 	// The image reference.
@@ -3907,6 +15482,90 @@ type VirtualMachineConfigurationResponse struct {
 	OsProfile OSProfileResponse `pulumi:"osProfile"`
 	// The virtual machine size.
 	VmSize string `pulumi:"vmSize"`
+}
+
+// Defines the virtual machine configuration.
+type VirtualMachineConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineConfigurationResponseOutput) ToVirtualMachineConfigurationResponseOutput() VirtualMachineConfigurationResponseOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationResponseOutput) ToVirtualMachineConfigurationResponseOutputWithContext(ctx context.Context) VirtualMachineConfigurationResponseOutput {
+	return o
+}
+
+// The image reference.
+func (o VirtualMachineConfigurationResponseOutput) ImageReference() ImageReferenceResponseOutput {
+	return o.ApplyT(func(v VirtualMachineConfigurationResponse) ImageReferenceResponse { return v.ImageReference }).(ImageReferenceResponseOutput)
+}
+
+// The OS profile.
+func (o VirtualMachineConfigurationResponseOutput) OsProfile() OSProfileResponseOutput {
+	return o.ApplyT(func(v VirtualMachineConfigurationResponse) OSProfileResponse { return v.OsProfile }).(OSProfileResponseOutput)
+}
+
+// The virtual machine size.
+func (o VirtualMachineConfigurationResponseOutput) VmSize() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineConfigurationResponse) string { return v.VmSize }).(pulumi.StringOutput)
+}
+
+type VirtualMachineConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineConfigurationResponsePtrOutput) ToVirtualMachineConfigurationResponsePtrOutput() VirtualMachineConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationResponsePtrOutput) ToVirtualMachineConfigurationResponsePtrOutputWithContext(ctx context.Context) VirtualMachineConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineConfigurationResponsePtrOutput) Elem() VirtualMachineConfigurationResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) VirtualMachineConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineConfigurationResponse
+		return ret
+	}).(VirtualMachineConfigurationResponseOutput)
+}
+
+// The image reference.
+func (o VirtualMachineConfigurationResponsePtrOutput) ImageReference() ImageReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *ImageReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageReference
+	}).(ImageReferenceResponsePtrOutput)
+}
+
+// The OS profile.
+func (o VirtualMachineConfigurationResponsePtrOutput) OsProfile() OSProfileResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *OSProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.OsProfile
+	}).(OSProfileResponsePtrOutput)
+}
+
+// The virtual machine size.
+func (o VirtualMachineConfigurationResponsePtrOutput) VmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmSize
+	}).(pulumi.StringPtrOutput)
 }
 
 // The resource names object for virtual machine and related resources.
@@ -3923,6 +15582,253 @@ type VirtualMachineResourceNames struct {
 	VmName *string `pulumi:"vmName"`
 }
 
+// VirtualMachineResourceNamesInput is an input type that accepts VirtualMachineResourceNamesArgs and VirtualMachineResourceNamesOutput values.
+// You can construct a concrete instance of `VirtualMachineResourceNamesInput` via:
+//
+//	VirtualMachineResourceNamesArgs{...}
+type VirtualMachineResourceNamesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineResourceNamesOutput() VirtualMachineResourceNamesOutput
+	ToVirtualMachineResourceNamesOutputWithContext(context.Context) VirtualMachineResourceNamesOutput
+}
+
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNamesArgs struct {
+	// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+	DataDiskNames pulumi.StringArrayMapInput `pulumi:"dataDiskNames"`
+	// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+	HostName pulumi.StringPtrInput `pulumi:"hostName"`
+	// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+	NetworkInterfaces NetworkInterfaceResourceNamesArrayInput `pulumi:"networkInterfaces"`
+	// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+	OsDiskName pulumi.StringPtrInput `pulumi:"osDiskName"`
+	// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+	VmName pulumi.StringPtrInput `pulumi:"vmName"`
+}
+
+func (VirtualMachineResourceNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResourceNames)(nil)).Elem()
+}
+
+func (i VirtualMachineResourceNamesArgs) ToVirtualMachineResourceNamesOutput() VirtualMachineResourceNamesOutput {
+	return i.ToVirtualMachineResourceNamesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineResourceNamesArgs) ToVirtualMachineResourceNamesOutputWithContext(ctx context.Context) VirtualMachineResourceNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceNamesOutput)
+}
+
+func (i VirtualMachineResourceNamesArgs) ToVirtualMachineResourceNamesPtrOutput() VirtualMachineResourceNamesPtrOutput {
+	return i.ToVirtualMachineResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineResourceNamesArgs) ToVirtualMachineResourceNamesPtrOutputWithContext(ctx context.Context) VirtualMachineResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceNamesOutput).ToVirtualMachineResourceNamesPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineResourceNamesPtrInput is an input type that accepts VirtualMachineResourceNamesArgs, VirtualMachineResourceNamesPtr and VirtualMachineResourceNamesPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineResourceNamesPtrInput` via:
+//
+//	        VirtualMachineResourceNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineResourceNamesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineResourceNamesPtrOutput() VirtualMachineResourceNamesPtrOutput
+	ToVirtualMachineResourceNamesPtrOutputWithContext(context.Context) VirtualMachineResourceNamesPtrOutput
+}
+
+type virtualMachineResourceNamesPtrType VirtualMachineResourceNamesArgs
+
+func VirtualMachineResourceNamesPtr(v *VirtualMachineResourceNamesArgs) VirtualMachineResourceNamesPtrInput {
+	return (*virtualMachineResourceNamesPtrType)(v)
+}
+
+func (*virtualMachineResourceNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineResourceNames)(nil)).Elem()
+}
+
+func (i *virtualMachineResourceNamesPtrType) ToVirtualMachineResourceNamesPtrOutput() VirtualMachineResourceNamesPtrOutput {
+	return i.ToVirtualMachineResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineResourceNamesPtrType) ToVirtualMachineResourceNamesPtrOutputWithContext(ctx context.Context) VirtualMachineResourceNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceNamesPtrOutput)
+}
+
+// VirtualMachineResourceNamesArrayInput is an input type that accepts VirtualMachineResourceNamesArray and VirtualMachineResourceNamesArrayOutput values.
+// You can construct a concrete instance of `VirtualMachineResourceNamesArrayInput` via:
+//
+//	VirtualMachineResourceNamesArray{ VirtualMachineResourceNamesArgs{...} }
+type VirtualMachineResourceNamesArrayInput interface {
+	pulumi.Input
+
+	ToVirtualMachineResourceNamesArrayOutput() VirtualMachineResourceNamesArrayOutput
+	ToVirtualMachineResourceNamesArrayOutputWithContext(context.Context) VirtualMachineResourceNamesArrayOutput
+}
+
+type VirtualMachineResourceNamesArray []VirtualMachineResourceNamesInput
+
+func (VirtualMachineResourceNamesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineResourceNames)(nil)).Elem()
+}
+
+func (i VirtualMachineResourceNamesArray) ToVirtualMachineResourceNamesArrayOutput() VirtualMachineResourceNamesArrayOutput {
+	return i.ToVirtualMachineResourceNamesArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineResourceNamesArray) ToVirtualMachineResourceNamesArrayOutputWithContext(ctx context.Context) VirtualMachineResourceNamesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceNamesArrayOutput)
+}
+
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNamesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResourceNames)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceNamesOutput) ToVirtualMachineResourceNamesOutput() VirtualMachineResourceNamesOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesOutput) ToVirtualMachineResourceNamesOutputWithContext(ctx context.Context) VirtualMachineResourceNamesOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesOutput) ToVirtualMachineResourceNamesPtrOutput() VirtualMachineResourceNamesPtrOutput {
+	return o.ToVirtualMachineResourceNamesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineResourceNamesOutput) ToVirtualMachineResourceNamesPtrOutputWithContext(ctx context.Context) VirtualMachineResourceNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineResourceNames) *VirtualMachineResourceNames {
+		return &v
+	}).(VirtualMachineResourceNamesPtrOutput)
+}
+
+// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+func (o VirtualMachineResourceNamesOutput) DataDiskNames() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNames) map[string][]string { return v.DataDiskNames }).(pulumi.StringArrayMapOutput)
+}
+
+// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+func (o VirtualMachineResourceNamesOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNames) *string { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+func (o VirtualMachineResourceNamesOutput) NetworkInterfaces() NetworkInterfaceResourceNamesArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNames) []NetworkInterfaceResourceNames { return v.NetworkInterfaces }).(NetworkInterfaceResourceNamesArrayOutput)
+}
+
+// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+func (o VirtualMachineResourceNamesOutput) OsDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNames) *string { return v.OsDiskName }).(pulumi.StringPtrOutput)
+}
+
+// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+func (o VirtualMachineResourceNamesOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNames) *string { return v.VmName }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineResourceNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineResourceNames)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceNamesPtrOutput) ToVirtualMachineResourceNamesPtrOutput() VirtualMachineResourceNamesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesPtrOutput) ToVirtualMachineResourceNamesPtrOutputWithContext(ctx context.Context) VirtualMachineResourceNamesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesPtrOutput) Elem() VirtualMachineResourceNamesOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNames) VirtualMachineResourceNames {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineResourceNames
+		return ret
+	}).(VirtualMachineResourceNamesOutput)
+}
+
+// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+func (o VirtualMachineResourceNamesPtrOutput) DataDiskNames() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNames) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskNames
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+func (o VirtualMachineResourceNamesPtrOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+func (o VirtualMachineResourceNamesPtrOutput) NetworkInterfaces() NetworkInterfaceResourceNamesArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNames) []NetworkInterfaceResourceNames {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceResourceNamesArrayOutput)
+}
+
+// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+func (o VirtualMachineResourceNamesPtrOutput) OsDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsDiskName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+func (o VirtualMachineResourceNamesPtrOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmName
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineResourceNamesArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceNamesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineResourceNames)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceNamesArrayOutput) ToVirtualMachineResourceNamesArrayOutput() VirtualMachineResourceNamesArrayOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesArrayOutput) ToVirtualMachineResourceNamesArrayOutputWithContext(ctx context.Context) VirtualMachineResourceNamesArrayOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesArrayOutput) Index(i pulumi.IntInput) VirtualMachineResourceNamesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineResourceNames {
+		return vs[0].([]VirtualMachineResourceNames)[vs[1].(int)]
+	}).(VirtualMachineResourceNamesOutput)
+}
+
 // The resource names object for virtual machine and related resources.
 type VirtualMachineResourceNamesResponse struct {
 	// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
@@ -3937,11 +15843,284 @@ type VirtualMachineResourceNamesResponse struct {
 	VmName *string `pulumi:"vmName"`
 }
 
+// The resource names object for virtual machine and related resources.
+type VirtualMachineResourceNamesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceNamesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResourceNamesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceNamesResponseOutput) ToVirtualMachineResourceNamesResponseOutput() VirtualMachineResourceNamesResponseOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesResponseOutput) ToVirtualMachineResourceNamesResponseOutputWithContext(ctx context.Context) VirtualMachineResourceNamesResponseOutput {
+	return o
+}
+
+// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+func (o VirtualMachineResourceNamesResponseOutput) DataDiskNames() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNamesResponse) map[string][]string { return v.DataDiskNames }).(pulumi.StringArrayMapOutput)
+}
+
+// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+func (o VirtualMachineResourceNamesResponseOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNamesResponse) *string { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+func (o VirtualMachineResourceNamesResponseOutput) NetworkInterfaces() NetworkInterfaceResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNamesResponse) []NetworkInterfaceResourceNamesResponse {
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceResourceNamesResponseArrayOutput)
+}
+
+// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+func (o VirtualMachineResourceNamesResponseOutput) OsDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNamesResponse) *string { return v.OsDiskName }).(pulumi.StringPtrOutput)
+}
+
+// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+func (o VirtualMachineResourceNamesResponseOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceNamesResponse) *string { return v.VmName }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineResourceNamesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceNamesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineResourceNamesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceNamesResponsePtrOutput) ToVirtualMachineResourceNamesResponsePtrOutput() VirtualMachineResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesResponsePtrOutput) ToVirtualMachineResourceNamesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineResourceNamesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesResponsePtrOutput) Elem() VirtualMachineResourceNamesResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNamesResponse) VirtualMachineResourceNamesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineResourceNamesResponse
+		return ret
+	}).(VirtualMachineResourceNamesResponseOutput)
+}
+
+// The full resource names for virtual machine data disks. This is a dictionary containing list of names of data disks per volume. Currently supported volumes for database layer are ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os', 'backup']. For application and cs layers, only 'default' volume is supported
+func (o VirtualMachineResourceNamesResponsePtrOutput) DataDiskNames() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNamesResponse) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.DataDiskNames
+	}).(pulumi.StringArrayMapOutput)
+}
+
+// The full name for virtual-machine's host (computer name). Currently, ACSS only supports host names which are less than or equal to 13 characters long. If this value is not provided, vmName will be used as host name.
+func (o VirtualMachineResourceNamesResponsePtrOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
+func (o VirtualMachineResourceNamesResponsePtrOutput) NetworkInterfaces() NetworkInterfaceResourceNamesResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNamesResponse) []NetworkInterfaceResourceNamesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceResourceNamesResponseArrayOutput)
+}
+
+// The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
+func (o VirtualMachineResourceNamesResponsePtrOutput) OsDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsDiskName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
+func (o VirtualMachineResourceNamesResponsePtrOutput) VmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceNamesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmName
+	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineResourceNamesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceNamesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualMachineResourceNamesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceNamesResponseArrayOutput) ToVirtualMachineResourceNamesResponseArrayOutput() VirtualMachineResourceNamesResponseArrayOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesResponseArrayOutput) ToVirtualMachineResourceNamesResponseArrayOutputWithContext(ctx context.Context) VirtualMachineResourceNamesResponseArrayOutput {
+	return o
+}
+
+func (o VirtualMachineResourceNamesResponseArrayOutput) Index(i pulumi.IntInput) VirtualMachineResourceNamesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineResourceNamesResponse {
+		return vs[0].([]VirtualMachineResourceNamesResponse)[vs[1].(int)]
+	}).(VirtualMachineResourceNamesResponseOutput)
+}
+
 // Specifies Windows operating system settings on the virtual machine.
 type WindowsConfiguration struct {
 	// The OS Type
 	// Expected value is 'Windows'.
 	OsType string `pulumi:"osType"`
+}
+
+// WindowsConfigurationInput is an input type that accepts WindowsConfigurationArgs and WindowsConfigurationOutput values.
+// You can construct a concrete instance of `WindowsConfigurationInput` via:
+//
+//	WindowsConfigurationArgs{...}
+type WindowsConfigurationInput interface {
+	pulumi.Input
+
+	ToWindowsConfigurationOutput() WindowsConfigurationOutput
+	ToWindowsConfigurationOutputWithContext(context.Context) WindowsConfigurationOutput
+}
+
+// Specifies Windows operating system settings on the virtual machine.
+type WindowsConfigurationArgs struct {
+	// The OS Type
+	// Expected value is 'Windows'.
+	OsType pulumi.StringInput `pulumi:"osType"`
+}
+
+func (WindowsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsConfiguration)(nil)).Elem()
+}
+
+func (i WindowsConfigurationArgs) ToWindowsConfigurationOutput() WindowsConfigurationOutput {
+	return i.ToWindowsConfigurationOutputWithContext(context.Background())
+}
+
+func (i WindowsConfigurationArgs) ToWindowsConfigurationOutputWithContext(ctx context.Context) WindowsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationOutput)
+}
+
+func (i WindowsConfigurationArgs) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
+	return i.ToWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i WindowsConfigurationArgs) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationOutput).ToWindowsConfigurationPtrOutputWithContext(ctx)
+}
+
+// WindowsConfigurationPtrInput is an input type that accepts WindowsConfigurationArgs, WindowsConfigurationPtr and WindowsConfigurationPtrOutput values.
+// You can construct a concrete instance of `WindowsConfigurationPtrInput` via:
+//
+//	        WindowsConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type WindowsConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput
+	ToWindowsConfigurationPtrOutputWithContext(context.Context) WindowsConfigurationPtrOutput
+}
+
+type windowsConfigurationPtrType WindowsConfigurationArgs
+
+func WindowsConfigurationPtr(v *WindowsConfigurationArgs) WindowsConfigurationPtrInput {
+	return (*windowsConfigurationPtrType)(v)
+}
+
+func (*windowsConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsConfiguration)(nil)).Elem()
+}
+
+func (i *windowsConfigurationPtrType) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
+	return i.ToWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *windowsConfigurationPtrType) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationPtrOutput)
+}
+
+// Specifies Windows operating system settings on the virtual machine.
+type WindowsConfigurationOutput struct{ *pulumi.OutputState }
+
+func (WindowsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsConfiguration)(nil)).Elem()
+}
+
+func (o WindowsConfigurationOutput) ToWindowsConfigurationOutput() WindowsConfigurationOutput {
+	return o
+}
+
+func (o WindowsConfigurationOutput) ToWindowsConfigurationOutputWithContext(ctx context.Context) WindowsConfigurationOutput {
+	return o
+}
+
+func (o WindowsConfigurationOutput) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
+	return o.ToWindowsConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsConfigurationOutput) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsConfiguration) *WindowsConfiguration {
+		return &v
+	}).(WindowsConfigurationPtrOutput)
+}
+
+// The OS Type
+// Expected value is 'Windows'.
+func (o WindowsConfigurationOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsConfiguration) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+type WindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsConfiguration)(nil)).Elem()
+}
+
+func (o WindowsConfigurationPtrOutput) ToWindowsConfigurationPtrOutput() WindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o WindowsConfigurationPtrOutput) ToWindowsConfigurationPtrOutputWithContext(ctx context.Context) WindowsConfigurationPtrOutput {
+	return o
+}
+
+func (o WindowsConfigurationPtrOutput) Elem() WindowsConfigurationOutput {
+	return o.ApplyT(func(v *WindowsConfiguration) WindowsConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsConfiguration
+		return ret
+	}).(WindowsConfigurationOutput)
+}
+
+// The OS Type
+// Expected value is 'Windows'.
+func (o WindowsConfigurationPtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WindowsConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies Windows operating system settings on the virtual machine.
@@ -3951,19 +16130,126 @@ type WindowsConfigurationResponse struct {
 	OsType string `pulumi:"osType"`
 }
 
+// Specifies Windows operating system settings on the virtual machine.
+type WindowsConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (WindowsConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsConfigurationResponse)(nil)).Elem()
+}
+
+func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutput() WindowsConfigurationResponseOutput {
+	return o
+}
+
+func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutputWithContext(ctx context.Context) WindowsConfigurationResponseOutput {
+	return o
+}
+
+// The OS Type
+// Expected value is 'Windows'.
+func (o WindowsConfigurationResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsConfigurationResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+type WindowsConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsConfigurationResponse)(nil)).Elem()
+}
+
+func (o WindowsConfigurationResponsePtrOutput) ToWindowsConfigurationResponsePtrOutput() WindowsConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o WindowsConfigurationResponsePtrOutput) ToWindowsConfigurationResponsePtrOutputWithContext(ctx context.Context) WindowsConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o WindowsConfigurationResponsePtrOutput) Elem() WindowsConfigurationResponseOutput {
+	return o.ApplyT(func(v *WindowsConfigurationResponse) WindowsConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsConfigurationResponse
+		return ret
+	}).(WindowsConfigurationResponseOutput)
+}
+
+// The OS Type
+// Expected value is 'Windows'.
+func (o WindowsConfigurationResponsePtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OsType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ApplicationServerConfigurationOutput{})
+	pulumi.RegisterOutputType(ApplicationServerConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationServerConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationServerConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationServerFullResourceNamesOutput{})
+	pulumi.RegisterOutputType(ApplicationServerFullResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationServerFullResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(ApplicationServerFullResourceNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ApplicationServerVmDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(CentralServerConfigurationOutput{})
+	pulumi.RegisterOutputType(CentralServerConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CentralServerConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CentralServerConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(CentralServerFullResourceNamesOutput{})
+	pulumi.RegisterOutputType(CentralServerFullResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(CentralServerFullResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(CentralServerFullResourceNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationOutput{})
+	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DB2ProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseConfigurationOutput{})
+	pulumi.RegisterOutputType(DatabaseConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseServerFullResourceNamesOutput{})
+	pulumi.RegisterOutputType(DatabaseServerFullResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseServerFullResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseServerFullResourceNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVmDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeployerVmPackagesOutput{})
+	pulumi.RegisterOutputType(DeployerVmPackagesPtrOutput{})
+	pulumi.RegisterOutputType(DeployerVmPackagesResponseOutput{})
+	pulumi.RegisterOutputType(DeployerVmPackagesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentConfigurationOutput{})
+	pulumi.RegisterOutputType(DeploymentConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentWithOSConfigurationOutput{})
+	pulumi.RegisterOutputType(DeploymentWithOSConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiscoveryConfigurationOutput{})
+	pulumi.RegisterOutputType(DiscoveryConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiskConfigurationOutput{})
+	pulumi.RegisterOutputType(DiskConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DiskConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DiskConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(DiskDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskSkuOutput{})
+	pulumi.RegisterOutputType(DiskSkuPtrOutput{})
 	pulumi.RegisterOutputType(DiskSkuResponseOutput{})
 	pulumi.RegisterOutputType(DiskSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationMapOutput{})
 	pulumi.RegisterOutputType(DiskVolumeConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DiskVolumeConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiskVolumeConfigurationResponseMapOutput{})
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EnqueueReplicationServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnqueueServerPropertiesResponseOutput{})
@@ -3976,9 +16262,37 @@ func init() {
 	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorResponseInnerErrorOutput{})
 	pulumi.RegisterOutputType(ErrorResponseInnerErrorPtrOutput{})
+	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationOutput{})
+	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GatewayServerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HanaDbProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(HighAvailabilityConfigurationOutput{})
+	pulumi.RegisterOutputType(HighAvailabilityConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(HighAvailabilityConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(HighAvailabilityConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(HighAvailabilitySoftwareConfigurationOutput{})
+	pulumi.RegisterOutputType(HighAvailabilitySoftwareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(HighAvailabilitySoftwareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(HighAvailabilitySoftwareConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ImageReferenceOutput{})
+	pulumi.RegisterOutputType(ImageReferencePtrOutput{})
+	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ImageReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinuxConfigurationOutput{})
+	pulumi.RegisterOutputType(LinuxConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(LinuxConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(LinuxConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerDetailsResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceNamesOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRGConfigurationResponseOutput{})
@@ -3986,11 +16300,47 @@ func init() {
 	pulumi.RegisterOutputType(MessageServerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MessageServerPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MonitorPropertiesResponseErrorsOutput{})
+	pulumi.RegisterOutputType(MountFileShareConfigurationOutput{})
+	pulumi.RegisterOutputType(MountFileShareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(MountFileShareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(MountFileShareConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigurationOutput{})
+	pulumi.RegisterOutputType(NetworkConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(NetworkConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceNamesOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceNamesArrayOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceNamesResponseArrayOutput{})
+	pulumi.RegisterOutputType(OSProfileOutput{})
+	pulumi.RegisterOutputType(OSProfilePtrOutput{})
+	pulumi.RegisterOutputType(OSProfileResponseOutput{})
+	pulumi.RegisterOutputType(OSProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OsSapConfigurationOutput{})
+	pulumi.RegisterOutputType(OsSapConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(OsSapConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(OsSapConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrometheusHaClusterProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrometheusOSProviderInstancePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProviderInstancePropertiesResponseErrorsOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseOutput{})
 	pulumi.RegisterOutputType(SAPAvailabilityZonePairResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPDiskConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SAPDiskConfigurationResponseMapOutput{})
+	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationOutput{})
+	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})
@@ -4006,13 +16356,75 @@ func init() {
 	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingArrayOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseOutput{})
 	pulumi.RegisterOutputType(SapLandscapeMonitorSidMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(SapNetWeaverProviderInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(SapNetWeaverProviderInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SapNetWeaverProviderInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SapNetWeaverProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceInitiatedSoftwareConfigurationOutput{})
+	pulumi.RegisterOutputType(ServiceInitiatedSoftwareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceInitiatedSoftwareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceInitiatedSoftwareConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SharedStorageResourceNamesOutput{})
+	pulumi.RegisterOutputType(SharedStorageResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(SharedStorageResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(SharedStorageResourceNamesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SingleServerConfigurationOutput{})
+	pulumi.RegisterOutputType(SingleServerConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SingleServerConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SingleServerConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SingleServerFullResourceNamesOutput{})
+	pulumi.RegisterOutputType(SingleServerFullResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(SingleServerFullResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(SingleServerFullResourceNamesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkipFileShareConfigurationOutput{})
+	pulumi.RegisterOutputType(SkipFileShareConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SkipFileShareConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SkipFileShareConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SshConfigurationOutput{})
+	pulumi.RegisterOutputType(SshConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SshConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SshConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SshKeyPairOutput{})
+	pulumi.RegisterOutputType(SshKeyPairPtrOutput{})
+	pulumi.RegisterOutputType(SshKeyPairResponseOutput{})
+	pulumi.RegisterOutputType(SshKeyPairResponsePtrOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyResponseOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageConfigurationOutput{})
+	pulumi.RegisterOutputType(StorageConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(StorageConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(StorageConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageInformationResponseOutput{})
 	pulumi.RegisterOutputType(StorageInformationResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(ThreeTierConfigurationOutput{})
+	pulumi.RegisterOutputType(ThreeTierConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ThreeTierConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ThreeTierConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ThreeTierFullResourceNamesOutput{})
+	pulumi.RegisterOutputType(ThreeTierFullResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(ThreeTierFullResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(ThreeTierFullResourceNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualMachineConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceNamesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceNamesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceNamesArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceNamesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceNamesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceNamesResponseArrayOutput{})
+	pulumi.RegisterOutputType(WindowsConfigurationOutput{})
+	pulumi.RegisterOutputType(WindowsConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(WindowsConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(WindowsConfigurationResponsePtrOutput{})
 }

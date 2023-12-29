@@ -22,6 +22,160 @@ type AccessKeyInfoBase struct {
 	Permissions []string `pulumi:"permissions"`
 }
 
+// AccessKeyInfoBaseInput is an input type that accepts AccessKeyInfoBaseArgs and AccessKeyInfoBaseOutput values.
+// You can construct a concrete instance of `AccessKeyInfoBaseInput` via:
+//
+//	AccessKeyInfoBaseArgs{...}
+type AccessKeyInfoBaseInput interface {
+	pulumi.Input
+
+	ToAccessKeyInfoBaseOutput() AccessKeyInfoBaseOutput
+	ToAccessKeyInfoBaseOutputWithContext(context.Context) AccessKeyInfoBaseOutput
+}
+
+// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
+type AccessKeyInfoBaseArgs struct {
+	// The authentication type.
+	// Expected value is 'accessKey'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+}
+
+func (AccessKeyInfoBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyInfoBase)(nil)).Elem()
+}
+
+func (i AccessKeyInfoBaseArgs) ToAccessKeyInfoBaseOutput() AccessKeyInfoBaseOutput {
+	return i.ToAccessKeyInfoBaseOutputWithContext(context.Background())
+}
+
+func (i AccessKeyInfoBaseArgs) ToAccessKeyInfoBaseOutputWithContext(ctx context.Context) AccessKeyInfoBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyInfoBaseOutput)
+}
+
+func (i AccessKeyInfoBaseArgs) ToAccessKeyInfoBasePtrOutput() AccessKeyInfoBasePtrOutput {
+	return i.ToAccessKeyInfoBasePtrOutputWithContext(context.Background())
+}
+
+func (i AccessKeyInfoBaseArgs) ToAccessKeyInfoBasePtrOutputWithContext(ctx context.Context) AccessKeyInfoBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyInfoBaseOutput).ToAccessKeyInfoBasePtrOutputWithContext(ctx)
+}
+
+// AccessKeyInfoBasePtrInput is an input type that accepts AccessKeyInfoBaseArgs, AccessKeyInfoBasePtr and AccessKeyInfoBasePtrOutput values.
+// You can construct a concrete instance of `AccessKeyInfoBasePtrInput` via:
+//
+//	        AccessKeyInfoBaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessKeyInfoBasePtrInput interface {
+	pulumi.Input
+
+	ToAccessKeyInfoBasePtrOutput() AccessKeyInfoBasePtrOutput
+	ToAccessKeyInfoBasePtrOutputWithContext(context.Context) AccessKeyInfoBasePtrOutput
+}
+
+type accessKeyInfoBasePtrType AccessKeyInfoBaseArgs
+
+func AccessKeyInfoBasePtr(v *AccessKeyInfoBaseArgs) AccessKeyInfoBasePtrInput {
+	return (*accessKeyInfoBasePtrType)(v)
+}
+
+func (*accessKeyInfoBasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKeyInfoBase)(nil)).Elem()
+}
+
+func (i *accessKeyInfoBasePtrType) ToAccessKeyInfoBasePtrOutput() AccessKeyInfoBasePtrOutput {
+	return i.ToAccessKeyInfoBasePtrOutputWithContext(context.Background())
+}
+
+func (i *accessKeyInfoBasePtrType) ToAccessKeyInfoBasePtrOutputWithContext(ctx context.Context) AccessKeyInfoBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyInfoBasePtrOutput)
+}
+
+// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
+type AccessKeyInfoBaseOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyInfoBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyInfoBase)(nil)).Elem()
+}
+
+func (o AccessKeyInfoBaseOutput) ToAccessKeyInfoBaseOutput() AccessKeyInfoBaseOutput {
+	return o
+}
+
+func (o AccessKeyInfoBaseOutput) ToAccessKeyInfoBaseOutputWithContext(ctx context.Context) AccessKeyInfoBaseOutput {
+	return o
+}
+
+func (o AccessKeyInfoBaseOutput) ToAccessKeyInfoBasePtrOutput() AccessKeyInfoBasePtrOutput {
+	return o.ToAccessKeyInfoBasePtrOutputWithContext(context.Background())
+}
+
+func (o AccessKeyInfoBaseOutput) ToAccessKeyInfoBasePtrOutputWithContext(ctx context.Context) AccessKeyInfoBasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessKeyInfoBase) *AccessKeyInfoBase {
+		return &v
+	}).(AccessKeyInfoBasePtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'accessKey'.
+func (o AccessKeyInfoBaseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyInfoBase) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+func (o AccessKeyInfoBaseOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessKeyInfoBase) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+type AccessKeyInfoBasePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyInfoBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKeyInfoBase)(nil)).Elem()
+}
+
+func (o AccessKeyInfoBasePtrOutput) ToAccessKeyInfoBasePtrOutput() AccessKeyInfoBasePtrOutput {
+	return o
+}
+
+func (o AccessKeyInfoBasePtrOutput) ToAccessKeyInfoBasePtrOutputWithContext(ctx context.Context) AccessKeyInfoBasePtrOutput {
+	return o
+}
+
+func (o AccessKeyInfoBasePtrOutput) Elem() AccessKeyInfoBaseOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBase) AccessKeyInfoBase {
+		if v != nil {
+			return *v
+		}
+		var ret AccessKeyInfoBase
+		return ret
+	}).(AccessKeyInfoBaseOutput)
+}
+
+// The authentication type.
+// Expected value is 'accessKey'.
+func (o AccessKeyInfoBasePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBase) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+func (o AccessKeyInfoBasePtrOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBase) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(pulumi.StringArrayOutput)
+}
+
 // The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
 type AccessKeyInfoBaseResponse struct {
 	// The authentication type.
@@ -29,6 +183,77 @@ type AccessKeyInfoBaseResponse struct {
 	AuthType string `pulumi:"authType"`
 	// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
 	Permissions []string `pulumi:"permissions"`
+}
+
+// The access key directly from target resource properties, which target service is Azure Resource, such as Microsoft.Storage
+type AccessKeyInfoBaseResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyInfoBaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyInfoBaseResponse)(nil)).Elem()
+}
+
+func (o AccessKeyInfoBaseResponseOutput) ToAccessKeyInfoBaseResponseOutput() AccessKeyInfoBaseResponseOutput {
+	return o
+}
+
+func (o AccessKeyInfoBaseResponseOutput) ToAccessKeyInfoBaseResponseOutputWithContext(ctx context.Context) AccessKeyInfoBaseResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'accessKey'.
+func (o AccessKeyInfoBaseResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyInfoBaseResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+func (o AccessKeyInfoBaseResponseOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessKeyInfoBaseResponse) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+type AccessKeyInfoBaseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyInfoBaseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKeyInfoBaseResponse)(nil)).Elem()
+}
+
+func (o AccessKeyInfoBaseResponsePtrOutput) ToAccessKeyInfoBaseResponsePtrOutput() AccessKeyInfoBaseResponsePtrOutput {
+	return o
+}
+
+func (o AccessKeyInfoBaseResponsePtrOutput) ToAccessKeyInfoBaseResponsePtrOutputWithContext(ctx context.Context) AccessKeyInfoBaseResponsePtrOutput {
+	return o
+}
+
+func (o AccessKeyInfoBaseResponsePtrOutput) Elem() AccessKeyInfoBaseResponseOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBaseResponse) AccessKeyInfoBaseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccessKeyInfoBaseResponse
+		return ret
+	}).(AccessKeyInfoBaseResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'accessKey'.
+func (o AccessKeyInfoBaseResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
+func (o AccessKeyInfoBaseResponsePtrOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessKeyInfoBaseResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(pulumi.StringArrayOutput)
 }
 
 // The resource properties when type is Azure Key Vault
@@ -40,6 +265,160 @@ type AzureKeyVaultProperties struct {
 	Type string `pulumi:"type"`
 }
 
+// AzureKeyVaultPropertiesInput is an input type that accepts AzureKeyVaultPropertiesArgs and AzureKeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `AzureKeyVaultPropertiesInput` via:
+//
+//	AzureKeyVaultPropertiesArgs{...}
+type AzureKeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToAzureKeyVaultPropertiesOutput() AzureKeyVaultPropertiesOutput
+	ToAzureKeyVaultPropertiesOutputWithContext(context.Context) AzureKeyVaultPropertiesOutput
+}
+
+// The resource properties when type is Azure Key Vault
+type AzureKeyVaultPropertiesArgs struct {
+	// True if connect via Kubernetes CSI Driver.
+	ConnectAsKubernetesCsiDriver pulumi.BoolPtrInput `pulumi:"connectAsKubernetesCsiDriver"`
+	// The azure resource type.
+	// Expected value is 'KeyVault'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AzureKeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureKeyVaultProperties)(nil)).Elem()
+}
+
+func (i AzureKeyVaultPropertiesArgs) ToAzureKeyVaultPropertiesOutput() AzureKeyVaultPropertiesOutput {
+	return i.ToAzureKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i AzureKeyVaultPropertiesArgs) ToAzureKeyVaultPropertiesOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultPropertiesOutput)
+}
+
+func (i AzureKeyVaultPropertiesArgs) ToAzureKeyVaultPropertiesPtrOutput() AzureKeyVaultPropertiesPtrOutput {
+	return i.ToAzureKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i AzureKeyVaultPropertiesArgs) ToAzureKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultPropertiesOutput).ToAzureKeyVaultPropertiesPtrOutputWithContext(ctx)
+}
+
+// AzureKeyVaultPropertiesPtrInput is an input type that accepts AzureKeyVaultPropertiesArgs, AzureKeyVaultPropertiesPtr and AzureKeyVaultPropertiesPtrOutput values.
+// You can construct a concrete instance of `AzureKeyVaultPropertiesPtrInput` via:
+//
+//	        AzureKeyVaultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureKeyVaultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToAzureKeyVaultPropertiesPtrOutput() AzureKeyVaultPropertiesPtrOutput
+	ToAzureKeyVaultPropertiesPtrOutputWithContext(context.Context) AzureKeyVaultPropertiesPtrOutput
+}
+
+type azureKeyVaultPropertiesPtrType AzureKeyVaultPropertiesArgs
+
+func AzureKeyVaultPropertiesPtr(v *AzureKeyVaultPropertiesArgs) AzureKeyVaultPropertiesPtrInput {
+	return (*azureKeyVaultPropertiesPtrType)(v)
+}
+
+func (*azureKeyVaultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureKeyVaultProperties)(nil)).Elem()
+}
+
+func (i *azureKeyVaultPropertiesPtrType) ToAzureKeyVaultPropertiesPtrOutput() AzureKeyVaultPropertiesPtrOutput {
+	return i.ToAzureKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *azureKeyVaultPropertiesPtrType) ToAzureKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultPropertiesPtrOutput)
+}
+
+// The resource properties when type is Azure Key Vault
+type AzureKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureKeyVaultProperties)(nil)).Elem()
+}
+
+func (o AzureKeyVaultPropertiesOutput) ToAzureKeyVaultPropertiesOutput() AzureKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesOutput) ToAzureKeyVaultPropertiesOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesOutput) ToAzureKeyVaultPropertiesPtrOutput() AzureKeyVaultPropertiesPtrOutput {
+	return o.ToAzureKeyVaultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o AzureKeyVaultPropertiesOutput) ToAzureKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureKeyVaultProperties) *AzureKeyVaultProperties {
+		return &v
+	}).(AzureKeyVaultPropertiesPtrOutput)
+}
+
+// True if connect via Kubernetes CSI Driver.
+func (o AzureKeyVaultPropertiesOutput) ConnectAsKubernetesCsiDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureKeyVaultProperties) *bool { return v.ConnectAsKubernetesCsiDriver }).(pulumi.BoolPtrOutput)
+}
+
+// The azure resource type.
+// Expected value is 'KeyVault'.
+func (o AzureKeyVaultPropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureKeyVaultProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AzureKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureKeyVaultProperties)(nil)).Elem()
+}
+
+func (o AzureKeyVaultPropertiesPtrOutput) ToAzureKeyVaultPropertiesPtrOutput() AzureKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesPtrOutput) ToAzureKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesPtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesPtrOutput) Elem() AzureKeyVaultPropertiesOutput {
+	return o.ApplyT(func(v *AzureKeyVaultProperties) AzureKeyVaultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret AzureKeyVaultProperties
+		return ret
+	}).(AzureKeyVaultPropertiesOutput)
+}
+
+// True if connect via Kubernetes CSI Driver.
+func (o AzureKeyVaultPropertiesPtrOutput) ConnectAsKubernetesCsiDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectAsKubernetesCsiDriver
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The azure resource type.
+// Expected value is 'KeyVault'.
+func (o AzureKeyVaultPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource properties when type is Azure Key Vault
 type AzureKeyVaultPropertiesResponse struct {
 	// True if connect via Kubernetes CSI Driver.
@@ -47,6 +426,77 @@ type AzureKeyVaultPropertiesResponse struct {
 	// The azure resource type.
 	// Expected value is 'KeyVault'.
 	Type string `pulumi:"type"`
+}
+
+// The resource properties when type is Azure Key Vault
+type AzureKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzureKeyVaultPropertiesResponseOutput) ToAzureKeyVaultPropertiesResponseOutput() AzureKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesResponseOutput) ToAzureKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// True if connect via Kubernetes CSI Driver.
+func (o AzureKeyVaultPropertiesResponseOutput) ConnectAsKubernetesCsiDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AzureKeyVaultPropertiesResponse) *bool { return v.ConnectAsKubernetesCsiDriver }).(pulumi.BoolPtrOutput)
+}
+
+// The azure resource type.
+// Expected value is 'KeyVault'.
+func (o AzureKeyVaultPropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureKeyVaultPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AzureKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzureKeyVaultPropertiesResponsePtrOutput) ToAzureKeyVaultPropertiesResponsePtrOutput() AzureKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesResponsePtrOutput) ToAzureKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) AzureKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultPropertiesResponsePtrOutput) Elem() AzureKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *AzureKeyVaultPropertiesResponse) AzureKeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureKeyVaultPropertiesResponse
+		return ret
+	}).(AzureKeyVaultPropertiesResponseOutput)
+}
+
+// True if connect via Kubernetes CSI Driver.
+func (o AzureKeyVaultPropertiesResponsePtrOutput) ConnectAsKubernetesCsiDriver() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectAsKubernetesCsiDriver
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The azure resource type.
+// Expected value is 'KeyVault'.
+func (o AzureKeyVaultPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The azure resource info when target service type is AzureResource
@@ -60,6 +510,177 @@ type AzureResource struct {
 	Type string `pulumi:"type"`
 }
 
+// AzureResourceInput is an input type that accepts AzureResourceArgs and AzureResourceOutput values.
+// You can construct a concrete instance of `AzureResourceInput` via:
+//
+//	AzureResourceArgs{...}
+type AzureResourceInput interface {
+	pulumi.Input
+
+	ToAzureResourceOutput() AzureResourceOutput
+	ToAzureResourceOutputWithContext(context.Context) AzureResourceOutput
+}
+
+// The azure resource info when target service type is AzureResource
+type AzureResourceArgs struct {
+	// The Id of azure resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The azure resource connection related properties.
+	ResourceProperties AzureKeyVaultPropertiesPtrInput `pulumi:"resourceProperties"`
+	// The target service type.
+	// Expected value is 'AzureResource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AzureResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureResource)(nil)).Elem()
+}
+
+func (i AzureResourceArgs) ToAzureResourceOutput() AzureResourceOutput {
+	return i.ToAzureResourceOutputWithContext(context.Background())
+}
+
+func (i AzureResourceArgs) ToAzureResourceOutputWithContext(ctx context.Context) AzureResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureResourceOutput)
+}
+
+func (i AzureResourceArgs) ToAzureResourcePtrOutput() AzureResourcePtrOutput {
+	return i.ToAzureResourcePtrOutputWithContext(context.Background())
+}
+
+func (i AzureResourceArgs) ToAzureResourcePtrOutputWithContext(ctx context.Context) AzureResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureResourceOutput).ToAzureResourcePtrOutputWithContext(ctx)
+}
+
+// AzureResourcePtrInput is an input type that accepts AzureResourceArgs, AzureResourcePtr and AzureResourcePtrOutput values.
+// You can construct a concrete instance of `AzureResourcePtrInput` via:
+//
+//	        AzureResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureResourcePtrInput interface {
+	pulumi.Input
+
+	ToAzureResourcePtrOutput() AzureResourcePtrOutput
+	ToAzureResourcePtrOutputWithContext(context.Context) AzureResourcePtrOutput
+}
+
+type azureResourcePtrType AzureResourceArgs
+
+func AzureResourcePtr(v *AzureResourceArgs) AzureResourcePtrInput {
+	return (*azureResourcePtrType)(v)
+}
+
+func (*azureResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureResource)(nil)).Elem()
+}
+
+func (i *azureResourcePtrType) ToAzureResourcePtrOutput() AzureResourcePtrOutput {
+	return i.ToAzureResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *azureResourcePtrType) ToAzureResourcePtrOutputWithContext(ctx context.Context) AzureResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureResourcePtrOutput)
+}
+
+// The azure resource info when target service type is AzureResource
+type AzureResourceOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureResource)(nil)).Elem()
+}
+
+func (o AzureResourceOutput) ToAzureResourceOutput() AzureResourceOutput {
+	return o
+}
+
+func (o AzureResourceOutput) ToAzureResourceOutputWithContext(ctx context.Context) AzureResourceOutput {
+	return o
+}
+
+func (o AzureResourceOutput) ToAzureResourcePtrOutput() AzureResourcePtrOutput {
+	return o.ToAzureResourcePtrOutputWithContext(context.Background())
+}
+
+func (o AzureResourceOutput) ToAzureResourcePtrOutputWithContext(ctx context.Context) AzureResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureResource) *AzureResource {
+		return &v
+	}).(AzureResourcePtrOutput)
+}
+
+// The Id of azure resource.
+func (o AzureResourceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureResource) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The azure resource connection related properties.
+func (o AzureResourceOutput) ResourceProperties() AzureKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v AzureResource) *AzureKeyVaultProperties { return v.ResourceProperties }).(AzureKeyVaultPropertiesPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'AzureResource'.
+func (o AzureResourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureResource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AzureResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureResource)(nil)).Elem()
+}
+
+func (o AzureResourcePtrOutput) ToAzureResourcePtrOutput() AzureResourcePtrOutput {
+	return o
+}
+
+func (o AzureResourcePtrOutput) ToAzureResourcePtrOutputWithContext(ctx context.Context) AzureResourcePtrOutput {
+	return o
+}
+
+func (o AzureResourcePtrOutput) Elem() AzureResourceOutput {
+	return o.ApplyT(func(v *AzureResource) AzureResource {
+		if v != nil {
+			return *v
+		}
+		var ret AzureResource
+		return ret
+	}).(AzureResourceOutput)
+}
+
+// The Id of azure resource.
+func (o AzureResourcePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The azure resource connection related properties.
+func (o AzureResourcePtrOutput) ResourceProperties() AzureKeyVaultPropertiesPtrOutput {
+	return o.ApplyT(func(v *AzureResource) *AzureKeyVaultProperties {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProperties
+	}).(AzureKeyVaultPropertiesPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'AzureResource'.
+func (o AzureResourcePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The azure resource info when target service type is AzureResource
 type AzureResourceResponse struct {
 	// The Id of azure resource.
@@ -71,6 +692,92 @@ type AzureResourceResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// The azure resource info when target service type is AzureResource
+type AzureResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureResourceResponse)(nil)).Elem()
+}
+
+func (o AzureResourceResponseOutput) ToAzureResourceResponseOutput() AzureResourceResponseOutput {
+	return o
+}
+
+func (o AzureResourceResponseOutput) ToAzureResourceResponseOutputWithContext(ctx context.Context) AzureResourceResponseOutput {
+	return o
+}
+
+// The Id of azure resource.
+func (o AzureResourceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The azure resource connection related properties.
+func (o AzureResourceResponseOutput) ResourceProperties() AzureKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v AzureResourceResponse) *AzureKeyVaultPropertiesResponse { return v.ResourceProperties }).(AzureKeyVaultPropertiesResponsePtrOutput)
+}
+
+// The target service type.
+// Expected value is 'AzureResource'.
+func (o AzureResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AzureResourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureResourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureResourceResponse)(nil)).Elem()
+}
+
+func (o AzureResourceResponsePtrOutput) ToAzureResourceResponsePtrOutput() AzureResourceResponsePtrOutput {
+	return o
+}
+
+func (o AzureResourceResponsePtrOutput) ToAzureResourceResponsePtrOutputWithContext(ctx context.Context) AzureResourceResponsePtrOutput {
+	return o
+}
+
+func (o AzureResourceResponsePtrOutput) Elem() AzureResourceResponseOutput {
+	return o.ApplyT(func(v *AzureResourceResponse) AzureResourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureResourceResponse
+		return ret
+	}).(AzureResourceResponseOutput)
+}
+
+// The Id of azure resource.
+func (o AzureResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The azure resource connection related properties.
+func (o AzureResourceResponsePtrOutput) ResourceProperties() AzureKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *AzureResourceResponse) *AzureKeyVaultPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProperties
+	}).(AzureKeyVaultPropertiesResponsePtrOutput)
+}
+
+// The target service type.
+// Expected value is 'AzureResource'.
+func (o AzureResourceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureResourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The represent of basic error
 type BasicErrorDryrunPrerequisiteResultResponse struct {
 	// The error code.
@@ -80,6 +787,37 @@ type BasicErrorDryrunPrerequisiteResultResponse struct {
 	// The type of dryrun result.
 	// Expected value is 'basicError'.
 	Type string `pulumi:"type"`
+}
+
+// The represent of basic error
+type BasicErrorDryrunPrerequisiteResultResponseOutput struct{ *pulumi.OutputState }
+
+func (BasicErrorDryrunPrerequisiteResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BasicErrorDryrunPrerequisiteResultResponse)(nil)).Elem()
+}
+
+func (o BasicErrorDryrunPrerequisiteResultResponseOutput) ToBasicErrorDryrunPrerequisiteResultResponseOutput() BasicErrorDryrunPrerequisiteResultResponseOutput {
+	return o
+}
+
+func (o BasicErrorDryrunPrerequisiteResultResponseOutput) ToBasicErrorDryrunPrerequisiteResultResponseOutputWithContext(ctx context.Context) BasicErrorDryrunPrerequisiteResultResponseOutput {
+	return o
+}
+
+// The error code.
+func (o BasicErrorDryrunPrerequisiteResultResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BasicErrorDryrunPrerequisiteResultResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The error message.
+func (o BasicErrorDryrunPrerequisiteResultResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BasicErrorDryrunPrerequisiteResultResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The type of dryrun result.
+// Expected value is 'basicError'.
+func (o BasicErrorDryrunPrerequisiteResultResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicErrorDryrunPrerequisiteResultResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The configuration information, used to generate configurations or save to applications
@@ -435,6 +1173,160 @@ type ConfluentBootstrapServer struct {
 	Type string `pulumi:"type"`
 }
 
+// ConfluentBootstrapServerInput is an input type that accepts ConfluentBootstrapServerArgs and ConfluentBootstrapServerOutput values.
+// You can construct a concrete instance of `ConfluentBootstrapServerInput` via:
+//
+//	ConfluentBootstrapServerArgs{...}
+type ConfluentBootstrapServerInput interface {
+	pulumi.Input
+
+	ToConfluentBootstrapServerOutput() ConfluentBootstrapServerOutput
+	ToConfluentBootstrapServerOutputWithContext(context.Context) ConfluentBootstrapServerOutput
+}
+
+// The service properties when target service type is ConfluentBootstrapServer
+type ConfluentBootstrapServerArgs struct {
+	// The endpoint of service.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'ConfluentBootstrapServer'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ConfluentBootstrapServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfluentBootstrapServer)(nil)).Elem()
+}
+
+func (i ConfluentBootstrapServerArgs) ToConfluentBootstrapServerOutput() ConfluentBootstrapServerOutput {
+	return i.ToConfluentBootstrapServerOutputWithContext(context.Background())
+}
+
+func (i ConfluentBootstrapServerArgs) ToConfluentBootstrapServerOutputWithContext(ctx context.Context) ConfluentBootstrapServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfluentBootstrapServerOutput)
+}
+
+func (i ConfluentBootstrapServerArgs) ToConfluentBootstrapServerPtrOutput() ConfluentBootstrapServerPtrOutput {
+	return i.ToConfluentBootstrapServerPtrOutputWithContext(context.Background())
+}
+
+func (i ConfluentBootstrapServerArgs) ToConfluentBootstrapServerPtrOutputWithContext(ctx context.Context) ConfluentBootstrapServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfluentBootstrapServerOutput).ToConfluentBootstrapServerPtrOutputWithContext(ctx)
+}
+
+// ConfluentBootstrapServerPtrInput is an input type that accepts ConfluentBootstrapServerArgs, ConfluentBootstrapServerPtr and ConfluentBootstrapServerPtrOutput values.
+// You can construct a concrete instance of `ConfluentBootstrapServerPtrInput` via:
+//
+//	        ConfluentBootstrapServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfluentBootstrapServerPtrInput interface {
+	pulumi.Input
+
+	ToConfluentBootstrapServerPtrOutput() ConfluentBootstrapServerPtrOutput
+	ToConfluentBootstrapServerPtrOutputWithContext(context.Context) ConfluentBootstrapServerPtrOutput
+}
+
+type confluentBootstrapServerPtrType ConfluentBootstrapServerArgs
+
+func ConfluentBootstrapServerPtr(v *ConfluentBootstrapServerArgs) ConfluentBootstrapServerPtrInput {
+	return (*confluentBootstrapServerPtrType)(v)
+}
+
+func (*confluentBootstrapServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfluentBootstrapServer)(nil)).Elem()
+}
+
+func (i *confluentBootstrapServerPtrType) ToConfluentBootstrapServerPtrOutput() ConfluentBootstrapServerPtrOutput {
+	return i.ToConfluentBootstrapServerPtrOutputWithContext(context.Background())
+}
+
+func (i *confluentBootstrapServerPtrType) ToConfluentBootstrapServerPtrOutputWithContext(ctx context.Context) ConfluentBootstrapServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfluentBootstrapServerPtrOutput)
+}
+
+// The service properties when target service type is ConfluentBootstrapServer
+type ConfluentBootstrapServerOutput struct{ *pulumi.OutputState }
+
+func (ConfluentBootstrapServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfluentBootstrapServer)(nil)).Elem()
+}
+
+func (o ConfluentBootstrapServerOutput) ToConfluentBootstrapServerOutput() ConfluentBootstrapServerOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerOutput) ToConfluentBootstrapServerOutputWithContext(ctx context.Context) ConfluentBootstrapServerOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerOutput) ToConfluentBootstrapServerPtrOutput() ConfluentBootstrapServerPtrOutput {
+	return o.ToConfluentBootstrapServerPtrOutputWithContext(context.Background())
+}
+
+func (o ConfluentBootstrapServerOutput) ToConfluentBootstrapServerPtrOutputWithContext(ctx context.Context) ConfluentBootstrapServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfluentBootstrapServer) *ConfluentBootstrapServer {
+		return &v
+	}).(ConfluentBootstrapServerPtrOutput)
+}
+
+// The endpoint of service.
+func (o ConfluentBootstrapServerOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfluentBootstrapServer) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentBootstrapServer'.
+func (o ConfluentBootstrapServerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfluentBootstrapServer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ConfluentBootstrapServerPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfluentBootstrapServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfluentBootstrapServer)(nil)).Elem()
+}
+
+func (o ConfluentBootstrapServerPtrOutput) ToConfluentBootstrapServerPtrOutput() ConfluentBootstrapServerPtrOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerPtrOutput) ToConfluentBootstrapServerPtrOutputWithContext(ctx context.Context) ConfluentBootstrapServerPtrOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerPtrOutput) Elem() ConfluentBootstrapServerOutput {
+	return o.ApplyT(func(v *ConfluentBootstrapServer) ConfluentBootstrapServer {
+		if v != nil {
+			return *v
+		}
+		var ret ConfluentBootstrapServer
+		return ret
+	}).(ConfluentBootstrapServerOutput)
+}
+
+// The endpoint of service.
+func (o ConfluentBootstrapServerPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentBootstrapServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentBootstrapServer'.
+func (o ConfluentBootstrapServerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentBootstrapServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The service properties when target service type is ConfluentBootstrapServer
 type ConfluentBootstrapServerResponse struct {
 	// The endpoint of service.
@@ -442,6 +1334,77 @@ type ConfluentBootstrapServerResponse struct {
 	// The target service type.
 	// Expected value is 'ConfluentBootstrapServer'.
 	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is ConfluentBootstrapServer
+type ConfluentBootstrapServerResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfluentBootstrapServerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfluentBootstrapServerResponse)(nil)).Elem()
+}
+
+func (o ConfluentBootstrapServerResponseOutput) ToConfluentBootstrapServerResponseOutput() ConfluentBootstrapServerResponseOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerResponseOutput) ToConfluentBootstrapServerResponseOutputWithContext(ctx context.Context) ConfluentBootstrapServerResponseOutput {
+	return o
+}
+
+// The endpoint of service.
+func (o ConfluentBootstrapServerResponseOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfluentBootstrapServerResponse) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentBootstrapServer'.
+func (o ConfluentBootstrapServerResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfluentBootstrapServerResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ConfluentBootstrapServerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfluentBootstrapServerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfluentBootstrapServerResponse)(nil)).Elem()
+}
+
+func (o ConfluentBootstrapServerResponsePtrOutput) ToConfluentBootstrapServerResponsePtrOutput() ConfluentBootstrapServerResponsePtrOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerResponsePtrOutput) ToConfluentBootstrapServerResponsePtrOutputWithContext(ctx context.Context) ConfluentBootstrapServerResponsePtrOutput {
+	return o
+}
+
+func (o ConfluentBootstrapServerResponsePtrOutput) Elem() ConfluentBootstrapServerResponseOutput {
+	return o.ApplyT(func(v *ConfluentBootstrapServerResponse) ConfluentBootstrapServerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfluentBootstrapServerResponse
+		return ret
+	}).(ConfluentBootstrapServerResponseOutput)
+}
+
+// The endpoint of service.
+func (o ConfluentBootstrapServerResponsePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentBootstrapServerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentBootstrapServer'.
+func (o ConfluentBootstrapServerResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentBootstrapServerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The service properties when target service type is ConfluentSchemaRegistry
@@ -453,6 +1416,160 @@ type ConfluentSchemaRegistry struct {
 	Type string `pulumi:"type"`
 }
 
+// ConfluentSchemaRegistryInput is an input type that accepts ConfluentSchemaRegistryArgs and ConfluentSchemaRegistryOutput values.
+// You can construct a concrete instance of `ConfluentSchemaRegistryInput` via:
+//
+//	ConfluentSchemaRegistryArgs{...}
+type ConfluentSchemaRegistryInput interface {
+	pulumi.Input
+
+	ToConfluentSchemaRegistryOutput() ConfluentSchemaRegistryOutput
+	ToConfluentSchemaRegistryOutputWithContext(context.Context) ConfluentSchemaRegistryOutput
+}
+
+// The service properties when target service type is ConfluentSchemaRegistry
+type ConfluentSchemaRegistryArgs struct {
+	// The endpoint of service.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'ConfluentSchemaRegistry'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ConfluentSchemaRegistryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfluentSchemaRegistry)(nil)).Elem()
+}
+
+func (i ConfluentSchemaRegistryArgs) ToConfluentSchemaRegistryOutput() ConfluentSchemaRegistryOutput {
+	return i.ToConfluentSchemaRegistryOutputWithContext(context.Background())
+}
+
+func (i ConfluentSchemaRegistryArgs) ToConfluentSchemaRegistryOutputWithContext(ctx context.Context) ConfluentSchemaRegistryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfluentSchemaRegistryOutput)
+}
+
+func (i ConfluentSchemaRegistryArgs) ToConfluentSchemaRegistryPtrOutput() ConfluentSchemaRegistryPtrOutput {
+	return i.ToConfluentSchemaRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i ConfluentSchemaRegistryArgs) ToConfluentSchemaRegistryPtrOutputWithContext(ctx context.Context) ConfluentSchemaRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfluentSchemaRegistryOutput).ToConfluentSchemaRegistryPtrOutputWithContext(ctx)
+}
+
+// ConfluentSchemaRegistryPtrInput is an input type that accepts ConfluentSchemaRegistryArgs, ConfluentSchemaRegistryPtr and ConfluentSchemaRegistryPtrOutput values.
+// You can construct a concrete instance of `ConfluentSchemaRegistryPtrInput` via:
+//
+//	        ConfluentSchemaRegistryArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfluentSchemaRegistryPtrInput interface {
+	pulumi.Input
+
+	ToConfluentSchemaRegistryPtrOutput() ConfluentSchemaRegistryPtrOutput
+	ToConfluentSchemaRegistryPtrOutputWithContext(context.Context) ConfluentSchemaRegistryPtrOutput
+}
+
+type confluentSchemaRegistryPtrType ConfluentSchemaRegistryArgs
+
+func ConfluentSchemaRegistryPtr(v *ConfluentSchemaRegistryArgs) ConfluentSchemaRegistryPtrInput {
+	return (*confluentSchemaRegistryPtrType)(v)
+}
+
+func (*confluentSchemaRegistryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfluentSchemaRegistry)(nil)).Elem()
+}
+
+func (i *confluentSchemaRegistryPtrType) ToConfluentSchemaRegistryPtrOutput() ConfluentSchemaRegistryPtrOutput {
+	return i.ToConfluentSchemaRegistryPtrOutputWithContext(context.Background())
+}
+
+func (i *confluentSchemaRegistryPtrType) ToConfluentSchemaRegistryPtrOutputWithContext(ctx context.Context) ConfluentSchemaRegistryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfluentSchemaRegistryPtrOutput)
+}
+
+// The service properties when target service type is ConfluentSchemaRegistry
+type ConfluentSchemaRegistryOutput struct{ *pulumi.OutputState }
+
+func (ConfluentSchemaRegistryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfluentSchemaRegistry)(nil)).Elem()
+}
+
+func (o ConfluentSchemaRegistryOutput) ToConfluentSchemaRegistryOutput() ConfluentSchemaRegistryOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryOutput) ToConfluentSchemaRegistryOutputWithContext(ctx context.Context) ConfluentSchemaRegistryOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryOutput) ToConfluentSchemaRegistryPtrOutput() ConfluentSchemaRegistryPtrOutput {
+	return o.ToConfluentSchemaRegistryPtrOutputWithContext(context.Background())
+}
+
+func (o ConfluentSchemaRegistryOutput) ToConfluentSchemaRegistryPtrOutputWithContext(ctx context.Context) ConfluentSchemaRegistryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfluentSchemaRegistry) *ConfluentSchemaRegistry {
+		return &v
+	}).(ConfluentSchemaRegistryPtrOutput)
+}
+
+// The endpoint of service.
+func (o ConfluentSchemaRegistryOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfluentSchemaRegistry) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentSchemaRegistry'.
+func (o ConfluentSchemaRegistryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfluentSchemaRegistry) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ConfluentSchemaRegistryPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfluentSchemaRegistryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfluentSchemaRegistry)(nil)).Elem()
+}
+
+func (o ConfluentSchemaRegistryPtrOutput) ToConfluentSchemaRegistryPtrOutput() ConfluentSchemaRegistryPtrOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryPtrOutput) ToConfluentSchemaRegistryPtrOutputWithContext(ctx context.Context) ConfluentSchemaRegistryPtrOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryPtrOutput) Elem() ConfluentSchemaRegistryOutput {
+	return o.ApplyT(func(v *ConfluentSchemaRegistry) ConfluentSchemaRegistry {
+		if v != nil {
+			return *v
+		}
+		var ret ConfluentSchemaRegistry
+		return ret
+	}).(ConfluentSchemaRegistryOutput)
+}
+
+// The endpoint of service.
+func (o ConfluentSchemaRegistryPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentSchemaRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentSchemaRegistry'.
+func (o ConfluentSchemaRegistryPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentSchemaRegistry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The service properties when target service type is ConfluentSchemaRegistry
 type ConfluentSchemaRegistryResponse struct {
 	// The endpoint of service.
@@ -460,6 +1577,77 @@ type ConfluentSchemaRegistryResponse struct {
 	// The target service type.
 	// Expected value is 'ConfluentSchemaRegistry'.
 	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is ConfluentSchemaRegistry
+type ConfluentSchemaRegistryResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfluentSchemaRegistryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfluentSchemaRegistryResponse)(nil)).Elem()
+}
+
+func (o ConfluentSchemaRegistryResponseOutput) ToConfluentSchemaRegistryResponseOutput() ConfluentSchemaRegistryResponseOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryResponseOutput) ToConfluentSchemaRegistryResponseOutputWithContext(ctx context.Context) ConfluentSchemaRegistryResponseOutput {
+	return o
+}
+
+// The endpoint of service.
+func (o ConfluentSchemaRegistryResponseOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfluentSchemaRegistryResponse) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentSchemaRegistry'.
+func (o ConfluentSchemaRegistryResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfluentSchemaRegistryResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ConfluentSchemaRegistryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfluentSchemaRegistryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfluentSchemaRegistryResponse)(nil)).Elem()
+}
+
+func (o ConfluentSchemaRegistryResponsePtrOutput) ToConfluentSchemaRegistryResponsePtrOutput() ConfluentSchemaRegistryResponsePtrOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryResponsePtrOutput) ToConfluentSchemaRegistryResponsePtrOutputWithContext(ctx context.Context) ConfluentSchemaRegistryResponsePtrOutput {
+	return o
+}
+
+func (o ConfluentSchemaRegistryResponsePtrOutput) Elem() ConfluentSchemaRegistryResponseOutput {
+	return o.ApplyT(func(v *ConfluentSchemaRegistryResponse) ConfluentSchemaRegistryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfluentSchemaRegistryResponse
+		return ret
+	}).(ConfluentSchemaRegistryResponseOutput)
+}
+
+// The endpoint of service.
+func (o ConfluentSchemaRegistryResponsePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentSchemaRegistryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'ConfluentSchemaRegistry'.
+func (o ConfluentSchemaRegistryResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfluentSchemaRegistryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The dryrun parameters for creation or update a linker
@@ -1855,6 +3043,177 @@ type KeyVaultSecretReferenceSecretInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// KeyVaultSecretReferenceSecretInfoInput is an input type that accepts KeyVaultSecretReferenceSecretInfoArgs and KeyVaultSecretReferenceSecretInfoOutput values.
+// You can construct a concrete instance of `KeyVaultSecretReferenceSecretInfoInput` via:
+//
+//	KeyVaultSecretReferenceSecretInfoArgs{...}
+type KeyVaultSecretReferenceSecretInfoInput interface {
+	pulumi.Input
+
+	ToKeyVaultSecretReferenceSecretInfoOutput() KeyVaultSecretReferenceSecretInfoOutput
+	ToKeyVaultSecretReferenceSecretInfoOutputWithContext(context.Context) KeyVaultSecretReferenceSecretInfoOutput
+}
+
+// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
+type KeyVaultSecretReferenceSecretInfoArgs struct {
+	// Name of the Key Vault secret.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The secret type.
+	// Expected value is 'keyVaultSecretReference'.
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// Version of the Key Vault secret.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (KeyVaultSecretReferenceSecretInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSecretReferenceSecretInfo)(nil)).Elem()
+}
+
+func (i KeyVaultSecretReferenceSecretInfoArgs) ToKeyVaultSecretReferenceSecretInfoOutput() KeyVaultSecretReferenceSecretInfoOutput {
+	return i.ToKeyVaultSecretReferenceSecretInfoOutputWithContext(context.Background())
+}
+
+func (i KeyVaultSecretReferenceSecretInfoArgs) ToKeyVaultSecretReferenceSecretInfoOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretReferenceSecretInfoOutput)
+}
+
+func (i KeyVaultSecretReferenceSecretInfoArgs) ToKeyVaultSecretReferenceSecretInfoPtrOutput() KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return i.ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultSecretReferenceSecretInfoArgs) ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretReferenceSecretInfoOutput).ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(ctx)
+}
+
+// KeyVaultSecretReferenceSecretInfoPtrInput is an input type that accepts KeyVaultSecretReferenceSecretInfoArgs, KeyVaultSecretReferenceSecretInfoPtr and KeyVaultSecretReferenceSecretInfoPtrOutput values.
+// You can construct a concrete instance of `KeyVaultSecretReferenceSecretInfoPtrInput` via:
+//
+//	        KeyVaultSecretReferenceSecretInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultSecretReferenceSecretInfoPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultSecretReferenceSecretInfoPtrOutput() KeyVaultSecretReferenceSecretInfoPtrOutput
+	ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(context.Context) KeyVaultSecretReferenceSecretInfoPtrOutput
+}
+
+type keyVaultSecretReferenceSecretInfoPtrType KeyVaultSecretReferenceSecretInfoArgs
+
+func KeyVaultSecretReferenceSecretInfoPtr(v *KeyVaultSecretReferenceSecretInfoArgs) KeyVaultSecretReferenceSecretInfoPtrInput {
+	return (*keyVaultSecretReferenceSecretInfoPtrType)(v)
+}
+
+func (*keyVaultSecretReferenceSecretInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSecretReferenceSecretInfo)(nil)).Elem()
+}
+
+func (i *keyVaultSecretReferenceSecretInfoPtrType) ToKeyVaultSecretReferenceSecretInfoPtrOutput() KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return i.ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultSecretReferenceSecretInfoPtrType) ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretReferenceSecretInfoPtrOutput)
+}
+
+// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
+type KeyVaultSecretReferenceSecretInfoOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretReferenceSecretInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSecretReferenceSecretInfo)(nil)).Elem()
+}
+
+func (o KeyVaultSecretReferenceSecretInfoOutput) ToKeyVaultSecretReferenceSecretInfoOutput() KeyVaultSecretReferenceSecretInfoOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoOutput) ToKeyVaultSecretReferenceSecretInfoOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoOutput) ToKeyVaultSecretReferenceSecretInfoPtrOutput() KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return o.ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultSecretReferenceSecretInfoOutput) ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultSecretReferenceSecretInfo) *KeyVaultSecretReferenceSecretInfo {
+		return &v
+	}).(KeyVaultSecretReferenceSecretInfoPtrOutput)
+}
+
+// Name of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultSecretReferenceSecretInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretReference'.
+func (o KeyVaultSecretReferenceSecretInfoOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultSecretReferenceSecretInfo) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// Version of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultSecretReferenceSecretInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultSecretReferenceSecretInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretReferenceSecretInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSecretReferenceSecretInfo)(nil)).Elem()
+}
+
+func (o KeyVaultSecretReferenceSecretInfoPtrOutput) ToKeyVaultSecretReferenceSecretInfoPtrOutput() KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoPtrOutput) ToKeyVaultSecretReferenceSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoPtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoPtrOutput) Elem() KeyVaultSecretReferenceSecretInfoOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfo) KeyVaultSecretReferenceSecretInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultSecretReferenceSecretInfo
+		return ret
+	}).(KeyVaultSecretReferenceSecretInfoOutput)
+}
+
+// Name of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretReference'.
+func (o KeyVaultSecretReferenceSecretInfoPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
 type KeyVaultSecretReferenceSecretInfoResponse struct {
 	// Name of the Key Vault secret.
@@ -1866,6 +3225,92 @@ type KeyVaultSecretReferenceSecretInfoResponse struct {
 	Version *string `pulumi:"version"`
 }
 
+// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
+type KeyVaultSecretReferenceSecretInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretReferenceSecretInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSecretReferenceSecretInfoResponse)(nil)).Elem()
+}
+
+func (o KeyVaultSecretReferenceSecretInfoResponseOutput) ToKeyVaultSecretReferenceSecretInfoResponseOutput() KeyVaultSecretReferenceSecretInfoResponseOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoResponseOutput) ToKeyVaultSecretReferenceSecretInfoResponseOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoResponseOutput {
+	return o
+}
+
+// Name of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultSecretReferenceSecretInfoResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretReference'.
+func (o KeyVaultSecretReferenceSecretInfoResponseOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultSecretReferenceSecretInfoResponse) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// Version of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultSecretReferenceSecretInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultSecretReferenceSecretInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretReferenceSecretInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSecretReferenceSecretInfoResponse)(nil)).Elem()
+}
+
+func (o KeyVaultSecretReferenceSecretInfoResponsePtrOutput) ToKeyVaultSecretReferenceSecretInfoResponsePtrOutput() KeyVaultSecretReferenceSecretInfoResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoResponsePtrOutput) ToKeyVaultSecretReferenceSecretInfoResponsePtrOutputWithContext(ctx context.Context) KeyVaultSecretReferenceSecretInfoResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretReferenceSecretInfoResponsePtrOutput) Elem() KeyVaultSecretReferenceSecretInfoResponseOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfoResponse) KeyVaultSecretReferenceSecretInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultSecretReferenceSecretInfoResponse
+		return ret
+	}).(KeyVaultSecretReferenceSecretInfoResponseOutput)
+}
+
+// Name of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretReference'.
+func (o KeyVaultSecretReferenceSecretInfoResponsePtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the Key Vault secret.
+func (o KeyVaultSecretReferenceSecretInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretReferenceSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
 type KeyVaultSecretUriSecretInfo struct {
 	// The secret type.
@@ -1875,6 +3320,160 @@ type KeyVaultSecretUriSecretInfo struct {
 	Value *string `pulumi:"value"`
 }
 
+// KeyVaultSecretUriSecretInfoInput is an input type that accepts KeyVaultSecretUriSecretInfoArgs and KeyVaultSecretUriSecretInfoOutput values.
+// You can construct a concrete instance of `KeyVaultSecretUriSecretInfoInput` via:
+//
+//	KeyVaultSecretUriSecretInfoArgs{...}
+type KeyVaultSecretUriSecretInfoInput interface {
+	pulumi.Input
+
+	ToKeyVaultSecretUriSecretInfoOutput() KeyVaultSecretUriSecretInfoOutput
+	ToKeyVaultSecretUriSecretInfoOutputWithContext(context.Context) KeyVaultSecretUriSecretInfoOutput
+}
+
+// The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
+type KeyVaultSecretUriSecretInfoArgs struct {
+	// The secret type.
+	// Expected value is 'keyVaultSecretUri'.
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// URI to the keyvault secret
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (KeyVaultSecretUriSecretInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSecretUriSecretInfo)(nil)).Elem()
+}
+
+func (i KeyVaultSecretUriSecretInfoArgs) ToKeyVaultSecretUriSecretInfoOutput() KeyVaultSecretUriSecretInfoOutput {
+	return i.ToKeyVaultSecretUriSecretInfoOutputWithContext(context.Background())
+}
+
+func (i KeyVaultSecretUriSecretInfoArgs) ToKeyVaultSecretUriSecretInfoOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretUriSecretInfoOutput)
+}
+
+func (i KeyVaultSecretUriSecretInfoArgs) ToKeyVaultSecretUriSecretInfoPtrOutput() KeyVaultSecretUriSecretInfoPtrOutput {
+	return i.ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultSecretUriSecretInfoArgs) ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretUriSecretInfoOutput).ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(ctx)
+}
+
+// KeyVaultSecretUriSecretInfoPtrInput is an input type that accepts KeyVaultSecretUriSecretInfoArgs, KeyVaultSecretUriSecretInfoPtr and KeyVaultSecretUriSecretInfoPtrOutput values.
+// You can construct a concrete instance of `KeyVaultSecretUriSecretInfoPtrInput` via:
+//
+//	        KeyVaultSecretUriSecretInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultSecretUriSecretInfoPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultSecretUriSecretInfoPtrOutput() KeyVaultSecretUriSecretInfoPtrOutput
+	ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(context.Context) KeyVaultSecretUriSecretInfoPtrOutput
+}
+
+type keyVaultSecretUriSecretInfoPtrType KeyVaultSecretUriSecretInfoArgs
+
+func KeyVaultSecretUriSecretInfoPtr(v *KeyVaultSecretUriSecretInfoArgs) KeyVaultSecretUriSecretInfoPtrInput {
+	return (*keyVaultSecretUriSecretInfoPtrType)(v)
+}
+
+func (*keyVaultSecretUriSecretInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSecretUriSecretInfo)(nil)).Elem()
+}
+
+func (i *keyVaultSecretUriSecretInfoPtrType) ToKeyVaultSecretUriSecretInfoPtrOutput() KeyVaultSecretUriSecretInfoPtrOutput {
+	return i.ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultSecretUriSecretInfoPtrType) ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretUriSecretInfoPtrOutput)
+}
+
+// The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
+type KeyVaultSecretUriSecretInfoOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretUriSecretInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSecretUriSecretInfo)(nil)).Elem()
+}
+
+func (o KeyVaultSecretUriSecretInfoOutput) ToKeyVaultSecretUriSecretInfoOutput() KeyVaultSecretUriSecretInfoOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoOutput) ToKeyVaultSecretUriSecretInfoOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoOutput) ToKeyVaultSecretUriSecretInfoPtrOutput() KeyVaultSecretUriSecretInfoPtrOutput {
+	return o.ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultSecretUriSecretInfoOutput) ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultSecretUriSecretInfo) *KeyVaultSecretUriSecretInfo {
+		return &v
+	}).(KeyVaultSecretUriSecretInfoPtrOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretUri'.
+func (o KeyVaultSecretUriSecretInfoOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultSecretUriSecretInfo) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// URI to the keyvault secret
+func (o KeyVaultSecretUriSecretInfoOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultSecretUriSecretInfo) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultSecretUriSecretInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretUriSecretInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSecretUriSecretInfo)(nil)).Elem()
+}
+
+func (o KeyVaultSecretUriSecretInfoPtrOutput) ToKeyVaultSecretUriSecretInfoPtrOutput() KeyVaultSecretUriSecretInfoPtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoPtrOutput) ToKeyVaultSecretUriSecretInfoPtrOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoPtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoPtrOutput) Elem() KeyVaultSecretUriSecretInfoOutput {
+	return o.ApplyT(func(v *KeyVaultSecretUriSecretInfo) KeyVaultSecretUriSecretInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultSecretUriSecretInfo
+		return ret
+	}).(KeyVaultSecretUriSecretInfoOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretUri'.
+func (o KeyVaultSecretUriSecretInfoPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretUriSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI to the keyvault secret
+func (o KeyVaultSecretUriSecretInfoPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretUriSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 // The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
 type KeyVaultSecretUriSecretInfoResponse struct {
 	// The secret type.
@@ -1882,6 +3481,77 @@ type KeyVaultSecretUriSecretInfoResponse struct {
 	SecretType string `pulumi:"secretType"`
 	// URI to the keyvault secret
 	Value *string `pulumi:"value"`
+}
+
+// The secret info when type is keyVaultSecretUri. It's for scenario that user provides a secret stored in user's keyvault and source is Web App, Spring Cloud or Container App.
+type KeyVaultSecretUriSecretInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretUriSecretInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultSecretUriSecretInfoResponse)(nil)).Elem()
+}
+
+func (o KeyVaultSecretUriSecretInfoResponseOutput) ToKeyVaultSecretUriSecretInfoResponseOutput() KeyVaultSecretUriSecretInfoResponseOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoResponseOutput) ToKeyVaultSecretUriSecretInfoResponseOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoResponseOutput {
+	return o
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretUri'.
+func (o KeyVaultSecretUriSecretInfoResponseOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultSecretUriSecretInfoResponse) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// URI to the keyvault secret
+func (o KeyVaultSecretUriSecretInfoResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultSecretUriSecretInfoResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultSecretUriSecretInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultSecretUriSecretInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultSecretUriSecretInfoResponse)(nil)).Elem()
+}
+
+func (o KeyVaultSecretUriSecretInfoResponsePtrOutput) ToKeyVaultSecretUriSecretInfoResponsePtrOutput() KeyVaultSecretUriSecretInfoResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoResponsePtrOutput) ToKeyVaultSecretUriSecretInfoResponsePtrOutputWithContext(ctx context.Context) KeyVaultSecretUriSecretInfoResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultSecretUriSecretInfoResponsePtrOutput) Elem() KeyVaultSecretUriSecretInfoResponseOutput {
+	return o.ApplyT(func(v *KeyVaultSecretUriSecretInfoResponse) KeyVaultSecretUriSecretInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultSecretUriSecretInfoResponse
+		return ret
+	}).(KeyVaultSecretUriSecretInfoResponseOutput)
+}
+
+// The secret type.
+// Expected value is 'keyVaultSecretUri'.
+func (o KeyVaultSecretUriSecretInfoResponsePtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretUriSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI to the keyvault secret
+func (o KeyVaultSecretUriSecretInfoResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultSecretUriSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 // The represent of missing permissions
@@ -1895,6 +3565,42 @@ type PermissionsMissingDryrunPrerequisiteResultResponse struct {
 	// The type of dryrun result.
 	// Expected value is 'permissionsMissing'.
 	Type string `pulumi:"type"`
+}
+
+// The represent of missing permissions
+type PermissionsMissingDryrunPrerequisiteResultResponseOutput struct{ *pulumi.OutputState }
+
+func (PermissionsMissingDryrunPrerequisiteResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionsMissingDryrunPrerequisiteResultResponse)(nil)).Elem()
+}
+
+func (o PermissionsMissingDryrunPrerequisiteResultResponseOutput) ToPermissionsMissingDryrunPrerequisiteResultResponseOutput() PermissionsMissingDryrunPrerequisiteResultResponseOutput {
+	return o
+}
+
+func (o PermissionsMissingDryrunPrerequisiteResultResponseOutput) ToPermissionsMissingDryrunPrerequisiteResultResponseOutputWithContext(ctx context.Context) PermissionsMissingDryrunPrerequisiteResultResponseOutput {
+	return o
+}
+
+// The permission list
+func (o PermissionsMissingDryrunPrerequisiteResultResponseOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionsMissingDryrunPrerequisiteResultResponse) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// The recommended role to resolve permissions missing
+func (o PermissionsMissingDryrunPrerequisiteResultResponseOutput) RecommendedRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PermissionsMissingDryrunPrerequisiteResultResponse) *string { return v.RecommendedRole }).(pulumi.StringPtrOutput)
+}
+
+// The permission scope
+func (o PermissionsMissingDryrunPrerequisiteResultResponseOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PermissionsMissingDryrunPrerequisiteResultResponse) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The type of dryrun result.
+// Expected value is 'permissionsMissing'.
+func (o PermissionsMissingDryrunPrerequisiteResultResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PermissionsMissingDryrunPrerequisiteResultResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Indicates public network solution, include firewall rules
@@ -2180,6 +3886,177 @@ type SecretAuthInfo struct {
 	SecretInfo interface{} `pulumi:"secretInfo"`
 }
 
+// SecretAuthInfoInput is an input type that accepts SecretAuthInfoArgs and SecretAuthInfoOutput values.
+// You can construct a concrete instance of `SecretAuthInfoInput` via:
+//
+//	SecretAuthInfoArgs{...}
+type SecretAuthInfoInput interface {
+	pulumi.Input
+
+	ToSecretAuthInfoOutput() SecretAuthInfoOutput
+	ToSecretAuthInfoOutputWithContext(context.Context) SecretAuthInfoOutput
+}
+
+// The authentication info when authType is secret
+type SecretAuthInfoArgs struct {
+	// The authentication type.
+	// Expected value is 'secret'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Username or account name for secret auth.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Password or key vault secret for secret auth.
+	SecretInfo pulumi.Input `pulumi:"secretInfo"`
+}
+
+func (SecretAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretAuthInfo)(nil)).Elem()
+}
+
+func (i SecretAuthInfoArgs) ToSecretAuthInfoOutput() SecretAuthInfoOutput {
+	return i.ToSecretAuthInfoOutputWithContext(context.Background())
+}
+
+func (i SecretAuthInfoArgs) ToSecretAuthInfoOutputWithContext(ctx context.Context) SecretAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretAuthInfoOutput)
+}
+
+func (i SecretAuthInfoArgs) ToSecretAuthInfoPtrOutput() SecretAuthInfoPtrOutput {
+	return i.ToSecretAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SecretAuthInfoArgs) ToSecretAuthInfoPtrOutputWithContext(ctx context.Context) SecretAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretAuthInfoOutput).ToSecretAuthInfoPtrOutputWithContext(ctx)
+}
+
+// SecretAuthInfoPtrInput is an input type that accepts SecretAuthInfoArgs, SecretAuthInfoPtr and SecretAuthInfoPtrOutput values.
+// You can construct a concrete instance of `SecretAuthInfoPtrInput` via:
+//
+//	        SecretAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToSecretAuthInfoPtrOutput() SecretAuthInfoPtrOutput
+	ToSecretAuthInfoPtrOutputWithContext(context.Context) SecretAuthInfoPtrOutput
+}
+
+type secretAuthInfoPtrType SecretAuthInfoArgs
+
+func SecretAuthInfoPtr(v *SecretAuthInfoArgs) SecretAuthInfoPtrInput {
+	return (*secretAuthInfoPtrType)(v)
+}
+
+func (*secretAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretAuthInfo)(nil)).Elem()
+}
+
+func (i *secretAuthInfoPtrType) ToSecretAuthInfoPtrOutput() SecretAuthInfoPtrOutput {
+	return i.ToSecretAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *secretAuthInfoPtrType) ToSecretAuthInfoPtrOutputWithContext(ctx context.Context) SecretAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is secret
+type SecretAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (SecretAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretAuthInfo)(nil)).Elem()
+}
+
+func (o SecretAuthInfoOutput) ToSecretAuthInfoOutput() SecretAuthInfoOutput {
+	return o
+}
+
+func (o SecretAuthInfoOutput) ToSecretAuthInfoOutputWithContext(ctx context.Context) SecretAuthInfoOutput {
+	return o
+}
+
+func (o SecretAuthInfoOutput) ToSecretAuthInfoPtrOutput() SecretAuthInfoPtrOutput {
+	return o.ToSecretAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SecretAuthInfoOutput) ToSecretAuthInfoPtrOutputWithContext(ctx context.Context) SecretAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretAuthInfo) *SecretAuthInfo {
+		return &v
+	}).(SecretAuthInfoPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'secret'.
+func (o SecretAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Username or account name for secret auth.
+func (o SecretAuthInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretAuthInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Password or key vault secret for secret auth.
+func (o SecretAuthInfoOutput) SecretInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v SecretAuthInfo) interface{} { return v.SecretInfo }).(pulumi.AnyOutput)
+}
+
+type SecretAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretAuthInfo)(nil)).Elem()
+}
+
+func (o SecretAuthInfoPtrOutput) ToSecretAuthInfoPtrOutput() SecretAuthInfoPtrOutput {
+	return o
+}
+
+func (o SecretAuthInfoPtrOutput) ToSecretAuthInfoPtrOutputWithContext(ctx context.Context) SecretAuthInfoPtrOutput {
+	return o
+}
+
+func (o SecretAuthInfoPtrOutput) Elem() SecretAuthInfoOutput {
+	return o.ApplyT(func(v *SecretAuthInfo) SecretAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SecretAuthInfo
+		return ret
+	}).(SecretAuthInfoOutput)
+}
+
+// The authentication type.
+// Expected value is 'secret'.
+func (o SecretAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username or account name for secret auth.
+func (o SecretAuthInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password or key vault secret for secret auth.
+func (o SecretAuthInfoPtrOutput) SecretInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SecretAuthInfo) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SecretInfo
+	}).(pulumi.AnyOutput)
+}
+
 // The authentication info when authType is secret
 type SecretAuthInfoResponse struct {
 	// The authentication type.
@@ -2189,6 +4066,92 @@ type SecretAuthInfoResponse struct {
 	Name *string `pulumi:"name"`
 	// Password or key vault secret for secret auth.
 	SecretInfo interface{} `pulumi:"secretInfo"`
+}
+
+// The authentication info when authType is secret
+type SecretAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretAuthInfoResponse)(nil)).Elem()
+}
+
+func (o SecretAuthInfoResponseOutput) ToSecretAuthInfoResponseOutput() SecretAuthInfoResponseOutput {
+	return o
+}
+
+func (o SecretAuthInfoResponseOutput) ToSecretAuthInfoResponseOutputWithContext(ctx context.Context) SecretAuthInfoResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'secret'.
+func (o SecretAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Username or account name for secret auth.
+func (o SecretAuthInfoResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretAuthInfoResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Password or key vault secret for secret auth.
+func (o SecretAuthInfoResponseOutput) SecretInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v SecretAuthInfoResponse) interface{} { return v.SecretInfo }).(pulumi.AnyOutput)
+}
+
+type SecretAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretAuthInfoResponse)(nil)).Elem()
+}
+
+func (o SecretAuthInfoResponsePtrOutput) ToSecretAuthInfoResponsePtrOutput() SecretAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o SecretAuthInfoResponsePtrOutput) ToSecretAuthInfoResponsePtrOutputWithContext(ctx context.Context) SecretAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o SecretAuthInfoResponsePtrOutput) Elem() SecretAuthInfoResponseOutput {
+	return o.ApplyT(func(v *SecretAuthInfoResponse) SecretAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecretAuthInfoResponse
+		return ret
+	}).(SecretAuthInfoResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'secret'.
+func (o SecretAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username or account name for secret auth.
+func (o SecretAuthInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password or key vault secret for secret auth.
+func (o SecretAuthInfoResponsePtrOutput) SecretInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SecretAuthInfoResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.SecretInfo
+	}).(pulumi.AnyOutput)
 }
 
 // An option to store secret value in secure place
@@ -2436,6 +4399,160 @@ type SelfHostedServer struct {
 	Type string `pulumi:"type"`
 }
 
+// SelfHostedServerInput is an input type that accepts SelfHostedServerArgs and SelfHostedServerOutput values.
+// You can construct a concrete instance of `SelfHostedServerInput` via:
+//
+//	SelfHostedServerArgs{...}
+type SelfHostedServerInput interface {
+	pulumi.Input
+
+	ToSelfHostedServerOutput() SelfHostedServerOutput
+	ToSelfHostedServerOutputWithContext(context.Context) SelfHostedServerOutput
+}
+
+// The service properties when target service type is SelfHostedServer
+type SelfHostedServerArgs struct {
+	// The endpoint of service.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The target service type.
+	// Expected value is 'SelfHostedServer'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SelfHostedServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedServer)(nil)).Elem()
+}
+
+func (i SelfHostedServerArgs) ToSelfHostedServerOutput() SelfHostedServerOutput {
+	return i.ToSelfHostedServerOutputWithContext(context.Background())
+}
+
+func (i SelfHostedServerArgs) ToSelfHostedServerOutputWithContext(ctx context.Context) SelfHostedServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfHostedServerOutput)
+}
+
+func (i SelfHostedServerArgs) ToSelfHostedServerPtrOutput() SelfHostedServerPtrOutput {
+	return i.ToSelfHostedServerPtrOutputWithContext(context.Background())
+}
+
+func (i SelfHostedServerArgs) ToSelfHostedServerPtrOutputWithContext(ctx context.Context) SelfHostedServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfHostedServerOutput).ToSelfHostedServerPtrOutputWithContext(ctx)
+}
+
+// SelfHostedServerPtrInput is an input type that accepts SelfHostedServerArgs, SelfHostedServerPtr and SelfHostedServerPtrOutput values.
+// You can construct a concrete instance of `SelfHostedServerPtrInput` via:
+//
+//	        SelfHostedServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type SelfHostedServerPtrInput interface {
+	pulumi.Input
+
+	ToSelfHostedServerPtrOutput() SelfHostedServerPtrOutput
+	ToSelfHostedServerPtrOutputWithContext(context.Context) SelfHostedServerPtrOutput
+}
+
+type selfHostedServerPtrType SelfHostedServerArgs
+
+func SelfHostedServerPtr(v *SelfHostedServerArgs) SelfHostedServerPtrInput {
+	return (*selfHostedServerPtrType)(v)
+}
+
+func (*selfHostedServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfHostedServer)(nil)).Elem()
+}
+
+func (i *selfHostedServerPtrType) ToSelfHostedServerPtrOutput() SelfHostedServerPtrOutput {
+	return i.ToSelfHostedServerPtrOutputWithContext(context.Background())
+}
+
+func (i *selfHostedServerPtrType) ToSelfHostedServerPtrOutputWithContext(ctx context.Context) SelfHostedServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfHostedServerPtrOutput)
+}
+
+// The service properties when target service type is SelfHostedServer
+type SelfHostedServerOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedServer)(nil)).Elem()
+}
+
+func (o SelfHostedServerOutput) ToSelfHostedServerOutput() SelfHostedServerOutput {
+	return o
+}
+
+func (o SelfHostedServerOutput) ToSelfHostedServerOutputWithContext(ctx context.Context) SelfHostedServerOutput {
+	return o
+}
+
+func (o SelfHostedServerOutput) ToSelfHostedServerPtrOutput() SelfHostedServerPtrOutput {
+	return o.ToSelfHostedServerPtrOutputWithContext(context.Background())
+}
+
+func (o SelfHostedServerOutput) ToSelfHostedServerPtrOutputWithContext(ctx context.Context) SelfHostedServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SelfHostedServer) *SelfHostedServer {
+		return &v
+	}).(SelfHostedServerPtrOutput)
+}
+
+// The endpoint of service.
+func (o SelfHostedServerOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfHostedServer) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'SelfHostedServer'.
+func (o SelfHostedServerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedServer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SelfHostedServerPtrOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfHostedServer)(nil)).Elem()
+}
+
+func (o SelfHostedServerPtrOutput) ToSelfHostedServerPtrOutput() SelfHostedServerPtrOutput {
+	return o
+}
+
+func (o SelfHostedServerPtrOutput) ToSelfHostedServerPtrOutputWithContext(ctx context.Context) SelfHostedServerPtrOutput {
+	return o
+}
+
+func (o SelfHostedServerPtrOutput) Elem() SelfHostedServerOutput {
+	return o.ApplyT(func(v *SelfHostedServer) SelfHostedServer {
+		if v != nil {
+			return *v
+		}
+		var ret SelfHostedServer
+		return ret
+	}).(SelfHostedServerOutput)
+}
+
+// The endpoint of service.
+func (o SelfHostedServerPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfHostedServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'SelfHostedServer'.
+func (o SelfHostedServerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfHostedServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The service properties when target service type is SelfHostedServer
 type SelfHostedServerResponse struct {
 	// The endpoint of service.
@@ -2443,6 +4560,77 @@ type SelfHostedServerResponse struct {
 	// The target service type.
 	// Expected value is 'SelfHostedServer'.
 	Type string `pulumi:"type"`
+}
+
+// The service properties when target service type is SelfHostedServer
+type SelfHostedServerResponseOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedServerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedServerResponse)(nil)).Elem()
+}
+
+func (o SelfHostedServerResponseOutput) ToSelfHostedServerResponseOutput() SelfHostedServerResponseOutput {
+	return o
+}
+
+func (o SelfHostedServerResponseOutput) ToSelfHostedServerResponseOutputWithContext(ctx context.Context) SelfHostedServerResponseOutput {
+	return o
+}
+
+// The endpoint of service.
+func (o SelfHostedServerResponseOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfHostedServerResponse) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'SelfHostedServer'.
+func (o SelfHostedServerResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedServerResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SelfHostedServerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedServerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SelfHostedServerResponse)(nil)).Elem()
+}
+
+func (o SelfHostedServerResponsePtrOutput) ToSelfHostedServerResponsePtrOutput() SelfHostedServerResponsePtrOutput {
+	return o
+}
+
+func (o SelfHostedServerResponsePtrOutput) ToSelfHostedServerResponsePtrOutputWithContext(ctx context.Context) SelfHostedServerResponsePtrOutput {
+	return o
+}
+
+func (o SelfHostedServerResponsePtrOutput) Elem() SelfHostedServerResponseOutput {
+	return o.ApplyT(func(v *SelfHostedServerResponse) SelfHostedServerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SelfHostedServerResponse
+		return ret
+	}).(SelfHostedServerResponseOutput)
+}
+
+// The endpoint of service.
+func (o SelfHostedServerResponsePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfHostedServerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target service type.
+// Expected value is 'SelfHostedServer'.
+func (o SelfHostedServerResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SelfHostedServerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication info when authType is servicePrincipal certificate
@@ -2462,6 +4650,228 @@ type ServicePrincipalCertificateAuthInfo struct {
 	Roles []string `pulumi:"roles"`
 }
 
+// ServicePrincipalCertificateAuthInfoInput is an input type that accepts ServicePrincipalCertificateAuthInfoArgs and ServicePrincipalCertificateAuthInfoOutput values.
+// You can construct a concrete instance of `ServicePrincipalCertificateAuthInfoInput` via:
+//
+//	ServicePrincipalCertificateAuthInfoArgs{...}
+type ServicePrincipalCertificateAuthInfoInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCertificateAuthInfoOutput() ServicePrincipalCertificateAuthInfoOutput
+	ToServicePrincipalCertificateAuthInfoOutputWithContext(context.Context) ServicePrincipalCertificateAuthInfoOutput
+}
+
+// The authentication info when authType is servicePrincipal certificate
+type ServicePrincipalCertificateAuthInfoArgs struct {
+	// The authentication type.
+	// Expected value is 'servicePrincipalCertificate'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// ServicePrincipal certificate for servicePrincipal auth.
+	Certificate pulumi.StringInput `pulumi:"certificate"`
+	// Application clientId for servicePrincipal auth.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Principal Id for servicePrincipal auth.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+}
+
+func (ServicePrincipalCertificateAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCertificateAuthInfo)(nil)).Elem()
+}
+
+func (i ServicePrincipalCertificateAuthInfoArgs) ToServicePrincipalCertificateAuthInfoOutput() ServicePrincipalCertificateAuthInfoOutput {
+	return i.ToServicePrincipalCertificateAuthInfoOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalCertificateAuthInfoArgs) ToServicePrincipalCertificateAuthInfoOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateAuthInfoOutput)
+}
+
+func (i ServicePrincipalCertificateAuthInfoArgs) ToServicePrincipalCertificateAuthInfoPtrOutput() ServicePrincipalCertificateAuthInfoPtrOutput {
+	return i.ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalCertificateAuthInfoArgs) ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateAuthInfoOutput).ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(ctx)
+}
+
+// ServicePrincipalCertificateAuthInfoPtrInput is an input type that accepts ServicePrincipalCertificateAuthInfoArgs, ServicePrincipalCertificateAuthInfoPtr and ServicePrincipalCertificateAuthInfoPtrOutput values.
+// You can construct a concrete instance of `ServicePrincipalCertificateAuthInfoPtrInput` via:
+//
+//	        ServicePrincipalCertificateAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePrincipalCertificateAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCertificateAuthInfoPtrOutput() ServicePrincipalCertificateAuthInfoPtrOutput
+	ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(context.Context) ServicePrincipalCertificateAuthInfoPtrOutput
+}
+
+type servicePrincipalCertificateAuthInfoPtrType ServicePrincipalCertificateAuthInfoArgs
+
+func ServicePrincipalCertificateAuthInfoPtr(v *ServicePrincipalCertificateAuthInfoArgs) ServicePrincipalCertificateAuthInfoPtrInput {
+	return (*servicePrincipalCertificateAuthInfoPtrType)(v)
+}
+
+func (*servicePrincipalCertificateAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalCertificateAuthInfo)(nil)).Elem()
+}
+
+func (i *servicePrincipalCertificateAuthInfoPtrType) ToServicePrincipalCertificateAuthInfoPtrOutput() ServicePrincipalCertificateAuthInfoPtrOutput {
+	return i.ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalCertificateAuthInfoPtrType) ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is servicePrincipal certificate
+type ServicePrincipalCertificateAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCertificateAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCertificateAuthInfo)(nil)).Elem()
+}
+
+func (o ServicePrincipalCertificateAuthInfoOutput) ToServicePrincipalCertificateAuthInfoOutput() ServicePrincipalCertificateAuthInfoOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoOutput) ToServicePrincipalCertificateAuthInfoOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoOutput) ToServicePrincipalCertificateAuthInfoPtrOutput() ServicePrincipalCertificateAuthInfoPtrOutput {
+	return o.ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalCertificateAuthInfoOutput) ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipalCertificateAuthInfo) *ServicePrincipalCertificateAuthInfo {
+		return &v
+	}).(ServicePrincipalCertificateAuthInfoPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalCertificate'.
+func (o ServicePrincipalCertificateAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// ServicePrincipal certificate for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Application clientId for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalCertificateAuthInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalCertificateAuthInfoOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+type ServicePrincipalCertificateAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCertificateAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalCertificateAuthInfo)(nil)).Elem()
+}
+
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) ToServicePrincipalCertificateAuthInfoPtrOutput() ServicePrincipalCertificateAuthInfoPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) ToServicePrincipalCertificateAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) Elem() ServicePrincipalCertificateAuthInfoOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) ServicePrincipalCertificateAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalCertificateAuthInfo
+		return ret
+	}).(ServicePrincipalCertificateAuthInfoOutput)
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalCertificate'.
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServicePrincipal certificate for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application clientId for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalCertificateAuthInfoPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
 // The authentication info when authType is servicePrincipal certificate
 type ServicePrincipalCertificateAuthInfoResponse struct {
 	// The authentication type.
@@ -2477,6 +4887,137 @@ type ServicePrincipalCertificateAuthInfoResponse struct {
 	PrincipalId string `pulumi:"principalId"`
 	// Optional, this value specifies the Azure roles to be assigned. Automatically
 	Roles []string `pulumi:"roles"`
+}
+
+// The authentication info when authType is servicePrincipal certificate
+type ServicePrincipalCertificateAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCertificateAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCertificateAuthInfoResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) ToServicePrincipalCertificateAuthInfoResponseOutput() ServicePrincipalCertificateAuthInfoResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) ToServicePrincipalCertificateAuthInfoResponseOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalCertificate'.
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// ServicePrincipal certificate for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) string { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Application clientId for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalCertificateAuthInfoResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificateAuthInfoResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+type ServicePrincipalCertificateAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCertificateAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalCertificateAuthInfoResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) ToServicePrincipalCertificateAuthInfoResponsePtrOutput() ServicePrincipalCertificateAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) ToServicePrincipalCertificateAuthInfoResponsePtrOutputWithContext(ctx context.Context) ServicePrincipalCertificateAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) Elem() ServicePrincipalCertificateAuthInfoResponseOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) ServicePrincipalCertificateAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalCertificateAuthInfoResponse
+		return ret
+	}).(ServicePrincipalCertificateAuthInfoResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalCertificate'.
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServicePrincipal certificate for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Application clientId for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalCertificateAuthInfoResponsePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificateAuthInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
 }
 
 // The authentication info when authType is servicePrincipal secret
@@ -2498,6 +5039,245 @@ type ServicePrincipalSecretAuthInfo struct {
 	UserName *string `pulumi:"userName"`
 }
 
+// ServicePrincipalSecretAuthInfoInput is an input type that accepts ServicePrincipalSecretAuthInfoArgs and ServicePrincipalSecretAuthInfoOutput values.
+// You can construct a concrete instance of `ServicePrincipalSecretAuthInfoInput` via:
+//
+//	ServicePrincipalSecretAuthInfoArgs{...}
+type ServicePrincipalSecretAuthInfoInput interface {
+	pulumi.Input
+
+	ToServicePrincipalSecretAuthInfoOutput() ServicePrincipalSecretAuthInfoOutput
+	ToServicePrincipalSecretAuthInfoOutputWithContext(context.Context) ServicePrincipalSecretAuthInfoOutput
+}
+
+// The authentication info when authType is servicePrincipal secret
+type ServicePrincipalSecretAuthInfoArgs struct {
+	// The authentication type.
+	// Expected value is 'servicePrincipalSecret'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// ServicePrincipal application clientId for servicePrincipal auth.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Principal Id for servicePrincipal auth.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// Secret for servicePrincipal auth.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (ServicePrincipalSecretAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalSecretAuthInfo)(nil)).Elem()
+}
+
+func (i ServicePrincipalSecretAuthInfoArgs) ToServicePrincipalSecretAuthInfoOutput() ServicePrincipalSecretAuthInfoOutput {
+	return i.ToServicePrincipalSecretAuthInfoOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalSecretAuthInfoArgs) ToServicePrincipalSecretAuthInfoOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSecretAuthInfoOutput)
+}
+
+func (i ServicePrincipalSecretAuthInfoArgs) ToServicePrincipalSecretAuthInfoPtrOutput() ServicePrincipalSecretAuthInfoPtrOutput {
+	return i.ToServicePrincipalSecretAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalSecretAuthInfoArgs) ToServicePrincipalSecretAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSecretAuthInfoOutput).ToServicePrincipalSecretAuthInfoPtrOutputWithContext(ctx)
+}
+
+// ServicePrincipalSecretAuthInfoPtrInput is an input type that accepts ServicePrincipalSecretAuthInfoArgs, ServicePrincipalSecretAuthInfoPtr and ServicePrincipalSecretAuthInfoPtrOutput values.
+// You can construct a concrete instance of `ServicePrincipalSecretAuthInfoPtrInput` via:
+//
+//	        ServicePrincipalSecretAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePrincipalSecretAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalSecretAuthInfoPtrOutput() ServicePrincipalSecretAuthInfoPtrOutput
+	ToServicePrincipalSecretAuthInfoPtrOutputWithContext(context.Context) ServicePrincipalSecretAuthInfoPtrOutput
+}
+
+type servicePrincipalSecretAuthInfoPtrType ServicePrincipalSecretAuthInfoArgs
+
+func ServicePrincipalSecretAuthInfoPtr(v *ServicePrincipalSecretAuthInfoArgs) ServicePrincipalSecretAuthInfoPtrInput {
+	return (*servicePrincipalSecretAuthInfoPtrType)(v)
+}
+
+func (*servicePrincipalSecretAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalSecretAuthInfo)(nil)).Elem()
+}
+
+func (i *servicePrincipalSecretAuthInfoPtrType) ToServicePrincipalSecretAuthInfoPtrOutput() ServicePrincipalSecretAuthInfoPtrOutput {
+	return i.ToServicePrincipalSecretAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalSecretAuthInfoPtrType) ToServicePrincipalSecretAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSecretAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is servicePrincipal secret
+type ServicePrincipalSecretAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalSecretAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalSecretAuthInfo)(nil)).Elem()
+}
+
+func (o ServicePrincipalSecretAuthInfoOutput) ToServicePrincipalSecretAuthInfoOutput() ServicePrincipalSecretAuthInfoOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoOutput) ToServicePrincipalSecretAuthInfoOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoOutput) ToServicePrincipalSecretAuthInfoPtrOutput() ServicePrincipalSecretAuthInfoPtrOutput {
+	return o.ToServicePrincipalSecretAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalSecretAuthInfoOutput) ToServicePrincipalSecretAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipalSecretAuthInfo) *ServicePrincipalSecretAuthInfo {
+		return &v
+	}).(ServicePrincipalSecretAuthInfoPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalSecret'.
+func (o ServicePrincipalSecretAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// ServicePrincipal application clientId for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalSecretAuthInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalSecretAuthInfoOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Secret for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o ServicePrincipalSecretAuthInfoOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfo) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type ServicePrincipalSecretAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalSecretAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalSecretAuthInfo)(nil)).Elem()
+}
+
+func (o ServicePrincipalSecretAuthInfoPtrOutput) ToServicePrincipalSecretAuthInfoPtrOutput() ServicePrincipalSecretAuthInfoPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoPtrOutput) ToServicePrincipalSecretAuthInfoPtrOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoPtrOutput) Elem() ServicePrincipalSecretAuthInfoOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) ServicePrincipalSecretAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalSecretAuthInfo
+		return ret
+	}).(ServicePrincipalSecretAuthInfoOutput)
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalSecret'.
+func (o ServicePrincipalSecretAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServicePrincipal application clientId for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalSecretAuthInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoPtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalSecretAuthInfoPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Secret for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o ServicePrincipalSecretAuthInfoPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication info when authType is servicePrincipal secret
 type ServicePrincipalSecretAuthInfoResponse struct {
 	// The authentication type.
@@ -2515,6 +5295,152 @@ type ServicePrincipalSecretAuthInfoResponse struct {
 	Secret string `pulumi:"secret"`
 	// Username created in the database which is mapped to a user in AAD.
 	UserName *string `pulumi:"userName"`
+}
+
+// The authentication info when authType is servicePrincipal secret
+type ServicePrincipalSecretAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalSecretAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalSecretAuthInfoResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalSecretAuthInfoResponseOutput) ToServicePrincipalSecretAuthInfoResponseOutput() ServicePrincipalSecretAuthInfoResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoResponseOutput) ToServicePrincipalSecretAuthInfoResponseOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalSecret'.
+func (o ServicePrincipalSecretAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// ServicePrincipal application clientId for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalSecretAuthInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalSecretAuthInfoResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Secret for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoResponseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o ServicePrincipalSecretAuthInfoResponseOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSecretAuthInfoResponse) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type ServicePrincipalSecretAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalSecretAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalSecretAuthInfoResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) ToServicePrincipalSecretAuthInfoResponsePtrOutput() ServicePrincipalSecretAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) ToServicePrincipalSecretAuthInfoResponsePtrOutputWithContext(ctx context.Context) ServicePrincipalSecretAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) Elem() ServicePrincipalSecretAuthInfoResponseOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) ServicePrincipalSecretAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalSecretAuthInfoResponse
+		return ret
+	}).(ServicePrincipalSecretAuthInfoResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'servicePrincipalSecret'.
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServicePrincipal application clientId for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Secret for servicePrincipal auth.
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o ServicePrincipalSecretAuthInfoResponsePtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecretAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
 }
 
 // A configuration item for source resource
@@ -2583,6 +5509,194 @@ type SystemAssignedIdentityAuthInfo struct {
 	UserName *string `pulumi:"userName"`
 }
 
+// SystemAssignedIdentityAuthInfoInput is an input type that accepts SystemAssignedIdentityAuthInfoArgs and SystemAssignedIdentityAuthInfoOutput values.
+// You can construct a concrete instance of `SystemAssignedIdentityAuthInfoInput` via:
+//
+//	SystemAssignedIdentityAuthInfoArgs{...}
+type SystemAssignedIdentityAuthInfoInput interface {
+	pulumi.Input
+
+	ToSystemAssignedIdentityAuthInfoOutput() SystemAssignedIdentityAuthInfoOutput
+	ToSystemAssignedIdentityAuthInfoOutputWithContext(context.Context) SystemAssignedIdentityAuthInfoOutput
+}
+
+// The authentication info when authType is systemAssignedIdentity
+type SystemAssignedIdentityAuthInfoArgs struct {
+	// The authentication type.
+	// Expected value is 'systemAssignedIdentity'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Optional, this value specifies the Azure role to be assigned
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (SystemAssignedIdentityAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (i SystemAssignedIdentityAuthInfoArgs) ToSystemAssignedIdentityAuthInfoOutput() SystemAssignedIdentityAuthInfoOutput {
+	return i.ToSystemAssignedIdentityAuthInfoOutputWithContext(context.Background())
+}
+
+func (i SystemAssignedIdentityAuthInfoArgs) ToSystemAssignedIdentityAuthInfoOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedIdentityAuthInfoOutput)
+}
+
+func (i SystemAssignedIdentityAuthInfoArgs) ToSystemAssignedIdentityAuthInfoPtrOutput() SystemAssignedIdentityAuthInfoPtrOutput {
+	return i.ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SystemAssignedIdentityAuthInfoArgs) ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedIdentityAuthInfoOutput).ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(ctx)
+}
+
+// SystemAssignedIdentityAuthInfoPtrInput is an input type that accepts SystemAssignedIdentityAuthInfoArgs, SystemAssignedIdentityAuthInfoPtr and SystemAssignedIdentityAuthInfoPtrOutput values.
+// You can construct a concrete instance of `SystemAssignedIdentityAuthInfoPtrInput` via:
+//
+//	        SystemAssignedIdentityAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemAssignedIdentityAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToSystemAssignedIdentityAuthInfoPtrOutput() SystemAssignedIdentityAuthInfoPtrOutput
+	ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(context.Context) SystemAssignedIdentityAuthInfoPtrOutput
+}
+
+type systemAssignedIdentityAuthInfoPtrType SystemAssignedIdentityAuthInfoArgs
+
+func SystemAssignedIdentityAuthInfoPtr(v *SystemAssignedIdentityAuthInfoArgs) SystemAssignedIdentityAuthInfoPtrInput {
+	return (*systemAssignedIdentityAuthInfoPtrType)(v)
+}
+
+func (*systemAssignedIdentityAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (i *systemAssignedIdentityAuthInfoPtrType) ToSystemAssignedIdentityAuthInfoPtrOutput() SystemAssignedIdentityAuthInfoPtrOutput {
+	return i.ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *systemAssignedIdentityAuthInfoPtrType) ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedIdentityAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is systemAssignedIdentity
+type SystemAssignedIdentityAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedIdentityAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (o SystemAssignedIdentityAuthInfoOutput) ToSystemAssignedIdentityAuthInfoOutput() SystemAssignedIdentityAuthInfoOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoOutput) ToSystemAssignedIdentityAuthInfoOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoOutput) ToSystemAssignedIdentityAuthInfoPtrOutput() SystemAssignedIdentityAuthInfoPtrOutput {
+	return o.ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SystemAssignedIdentityAuthInfoOutput) ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemAssignedIdentityAuthInfo) *SystemAssignedIdentityAuthInfo {
+		return &v
+	}).(SystemAssignedIdentityAuthInfoPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'systemAssignedIdentity'.
+func (o SystemAssignedIdentityAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o SystemAssignedIdentityAuthInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o SystemAssignedIdentityAuthInfoOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o SystemAssignedIdentityAuthInfoOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfo) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type SystemAssignedIdentityAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedIdentityAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (o SystemAssignedIdentityAuthInfoPtrOutput) ToSystemAssignedIdentityAuthInfoPtrOutput() SystemAssignedIdentityAuthInfoPtrOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoPtrOutput) ToSystemAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoPtrOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoPtrOutput) Elem() SystemAssignedIdentityAuthInfoOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfo) SystemAssignedIdentityAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SystemAssignedIdentityAuthInfo
+		return ret
+	}).(SystemAssignedIdentityAuthInfoOutput)
+}
+
+// The authentication type.
+// Expected value is 'systemAssignedIdentity'.
+func (o SystemAssignedIdentityAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o SystemAssignedIdentityAuthInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o SystemAssignedIdentityAuthInfoPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o SystemAssignedIdentityAuthInfoPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication info when authType is systemAssignedIdentity
 type SystemAssignedIdentityAuthInfoResponse struct {
 	// The authentication type.
@@ -2594,6 +5708,107 @@ type SystemAssignedIdentityAuthInfoResponse struct {
 	Roles []string `pulumi:"roles"`
 	// Username created in the database which is mapped to a user in AAD.
 	UserName *string `pulumi:"userName"`
+}
+
+// The authentication info when authType is systemAssignedIdentity
+type SystemAssignedIdentityAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedIdentityAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedIdentityAuthInfoResponse)(nil)).Elem()
+}
+
+func (o SystemAssignedIdentityAuthInfoResponseOutput) ToSystemAssignedIdentityAuthInfoResponseOutput() SystemAssignedIdentityAuthInfoResponseOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoResponseOutput) ToSystemAssignedIdentityAuthInfoResponseOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'systemAssignedIdentity'.
+func (o SystemAssignedIdentityAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o SystemAssignedIdentityAuthInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o SystemAssignedIdentityAuthInfoResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfoResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o SystemAssignedIdentityAuthInfoResponseOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedIdentityAuthInfoResponse) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type SystemAssignedIdentityAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedIdentityAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedIdentityAuthInfoResponse)(nil)).Elem()
+}
+
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) ToSystemAssignedIdentityAuthInfoResponsePtrOutput() SystemAssignedIdentityAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) ToSystemAssignedIdentityAuthInfoResponsePtrOutputWithContext(ctx context.Context) SystemAssignedIdentityAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) Elem() SystemAssignedIdentityAuthInfoResponseOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfoResponse) SystemAssignedIdentityAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemAssignedIdentityAuthInfoResponse
+		return ret
+	}).(SystemAssignedIdentityAuthInfoResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'systemAssignedIdentity'.
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o SystemAssignedIdentityAuthInfoResponsePtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2672,6 +5887,211 @@ type UserAccountAuthInfo struct {
 	UserName *string `pulumi:"userName"`
 }
 
+// UserAccountAuthInfoInput is an input type that accepts UserAccountAuthInfoArgs and UserAccountAuthInfoOutput values.
+// You can construct a concrete instance of `UserAccountAuthInfoInput` via:
+//
+//	UserAccountAuthInfoArgs{...}
+type UserAccountAuthInfoInput interface {
+	pulumi.Input
+
+	ToUserAccountAuthInfoOutput() UserAccountAuthInfoOutput
+	ToUserAccountAuthInfoOutputWithContext(context.Context) UserAccountAuthInfoOutput
+}
+
+// The authentication info when authType is user account
+type UserAccountAuthInfoArgs struct {
+	// The authentication type.
+	// Expected value is 'userAccount'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Principal Id for user account.
+	PrincipalId pulumi.StringPtrInput `pulumi:"principalId"`
+	// Optional, this value specifies the Azure roles to be assigned. Automatically
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (UserAccountAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAccountAuthInfo)(nil)).Elem()
+}
+
+func (i UserAccountAuthInfoArgs) ToUserAccountAuthInfoOutput() UserAccountAuthInfoOutput {
+	return i.ToUserAccountAuthInfoOutputWithContext(context.Background())
+}
+
+func (i UserAccountAuthInfoArgs) ToUserAccountAuthInfoOutputWithContext(ctx context.Context) UserAccountAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAccountAuthInfoOutput)
+}
+
+func (i UserAccountAuthInfoArgs) ToUserAccountAuthInfoPtrOutput() UserAccountAuthInfoPtrOutput {
+	return i.ToUserAccountAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i UserAccountAuthInfoArgs) ToUserAccountAuthInfoPtrOutputWithContext(ctx context.Context) UserAccountAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAccountAuthInfoOutput).ToUserAccountAuthInfoPtrOutputWithContext(ctx)
+}
+
+// UserAccountAuthInfoPtrInput is an input type that accepts UserAccountAuthInfoArgs, UserAccountAuthInfoPtr and UserAccountAuthInfoPtrOutput values.
+// You can construct a concrete instance of `UserAccountAuthInfoPtrInput` via:
+//
+//	        UserAccountAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAccountAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToUserAccountAuthInfoPtrOutput() UserAccountAuthInfoPtrOutput
+	ToUserAccountAuthInfoPtrOutputWithContext(context.Context) UserAccountAuthInfoPtrOutput
+}
+
+type userAccountAuthInfoPtrType UserAccountAuthInfoArgs
+
+func UserAccountAuthInfoPtr(v *UserAccountAuthInfoArgs) UserAccountAuthInfoPtrInput {
+	return (*userAccountAuthInfoPtrType)(v)
+}
+
+func (*userAccountAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAccountAuthInfo)(nil)).Elem()
+}
+
+func (i *userAccountAuthInfoPtrType) ToUserAccountAuthInfoPtrOutput() UserAccountAuthInfoPtrOutput {
+	return i.ToUserAccountAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *userAccountAuthInfoPtrType) ToUserAccountAuthInfoPtrOutputWithContext(ctx context.Context) UserAccountAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAccountAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is user account
+type UserAccountAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (UserAccountAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAccountAuthInfo)(nil)).Elem()
+}
+
+func (o UserAccountAuthInfoOutput) ToUserAccountAuthInfoOutput() UserAccountAuthInfoOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoOutput) ToUserAccountAuthInfoOutputWithContext(ctx context.Context) UserAccountAuthInfoOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoOutput) ToUserAccountAuthInfoPtrOutput() UserAccountAuthInfoPtrOutput {
+	return o.ToUserAccountAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o UserAccountAuthInfoOutput) ToUserAccountAuthInfoPtrOutputWithContext(ctx context.Context) UserAccountAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAccountAuthInfo) *UserAccountAuthInfo {
+		return &v
+	}).(UserAccountAuthInfoPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'userAccount'.
+func (o UserAccountAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAccountAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAccountAuthInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for user account.
+func (o UserAccountAuthInfoOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfo) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o UserAccountAuthInfoOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAccountAuthInfo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAccountAuthInfoOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfo) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type UserAccountAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAccountAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAccountAuthInfo)(nil)).Elem()
+}
+
+func (o UserAccountAuthInfoPtrOutput) ToUserAccountAuthInfoPtrOutput() UserAccountAuthInfoPtrOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoPtrOutput) ToUserAccountAuthInfoPtrOutputWithContext(ctx context.Context) UserAccountAuthInfoPtrOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoPtrOutput) Elem() UserAccountAuthInfoOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) UserAccountAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret UserAccountAuthInfo
+		return ret
+	}).(UserAccountAuthInfoOutput)
+}
+
+// The authentication type.
+// Expected value is 'userAccount'.
+func (o UserAccountAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAccountAuthInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for user account.
+func (o UserAccountAuthInfoPtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o UserAccountAuthInfoPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAccountAuthInfoPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication info when authType is user account
 type UserAccountAuthInfoResponse struct {
 	// The authentication type.
@@ -2685,6 +6105,122 @@ type UserAccountAuthInfoResponse struct {
 	Roles []string `pulumi:"roles"`
 	// Username created in the database which is mapped to a user in AAD.
 	UserName *string `pulumi:"userName"`
+}
+
+// The authentication info when authType is user account
+type UserAccountAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAccountAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAccountAuthInfoResponse)(nil)).Elem()
+}
+
+func (o UserAccountAuthInfoResponseOutput) ToUserAccountAuthInfoResponseOutput() UserAccountAuthInfoResponseOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoResponseOutput) ToUserAccountAuthInfoResponseOutputWithContext(ctx context.Context) UserAccountAuthInfoResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'userAccount'.
+func (o UserAccountAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAccountAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAccountAuthInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for user account.
+func (o UserAccountAuthInfoResponseOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfoResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o UserAccountAuthInfoResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAccountAuthInfoResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAccountAuthInfoResponseOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountAuthInfoResponse) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type UserAccountAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserAccountAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAccountAuthInfoResponse)(nil)).Elem()
+}
+
+func (o UserAccountAuthInfoResponsePtrOutput) ToUserAccountAuthInfoResponsePtrOutput() UserAccountAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoResponsePtrOutput) ToUserAccountAuthInfoResponsePtrOutputWithContext(ctx context.Context) UserAccountAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserAccountAuthInfoResponsePtrOutput) Elem() UserAccountAuthInfoResponseOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) UserAccountAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserAccountAuthInfoResponse
+		return ret
+	}).(UserAccountAuthInfoResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'userAccount'.
+func (o UserAccountAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAccountAuthInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Principal Id for user account.
+func (o UserAccountAuthInfoResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure roles to be assigned. Automatically
+func (o UserAccountAuthInfoResponsePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAccountAuthInfoResponsePtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The authentication info when authType is userAssignedIdentity
@@ -2704,6 +6240,228 @@ type UserAssignedIdentityAuthInfo struct {
 	UserName *string `pulumi:"userName"`
 }
 
+// UserAssignedIdentityAuthInfoInput is an input type that accepts UserAssignedIdentityAuthInfoArgs and UserAssignedIdentityAuthInfoOutput values.
+// You can construct a concrete instance of `UserAssignedIdentityAuthInfoInput` via:
+//
+//	UserAssignedIdentityAuthInfoArgs{...}
+type UserAssignedIdentityAuthInfoInput interface {
+	pulumi.Input
+
+	ToUserAssignedIdentityAuthInfoOutput() UserAssignedIdentityAuthInfoOutput
+	ToUserAssignedIdentityAuthInfoOutputWithContext(context.Context) UserAssignedIdentityAuthInfoOutput
+}
+
+// The authentication info when authType is userAssignedIdentity
+type UserAssignedIdentityAuthInfoArgs struct {
+	// The authentication type.
+	// Expected value is 'userAssignedIdentity'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Client Id for userAssignedIdentity.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Indicates whether to clean up previous operation when Linker is updating or deleting
+	DeleteOrUpdateBehavior pulumi.StringPtrInput `pulumi:"deleteOrUpdateBehavior"`
+	// Optional, this value specifies the Azure role to be assigned
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// Subscription id for userAssignedIdentity.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Username created in the database which is mapped to a user in AAD.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (UserAssignedIdentityAuthInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (i UserAssignedIdentityAuthInfoArgs) ToUserAssignedIdentityAuthInfoOutput() UserAssignedIdentityAuthInfoOutput {
+	return i.ToUserAssignedIdentityAuthInfoOutputWithContext(context.Background())
+}
+
+func (i UserAssignedIdentityAuthInfoArgs) ToUserAssignedIdentityAuthInfoOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityAuthInfoOutput)
+}
+
+func (i UserAssignedIdentityAuthInfoArgs) ToUserAssignedIdentityAuthInfoPtrOutput() UserAssignedIdentityAuthInfoPtrOutput {
+	return i.ToUserAssignedIdentityAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i UserAssignedIdentityAuthInfoArgs) ToUserAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityAuthInfoOutput).ToUserAssignedIdentityAuthInfoPtrOutputWithContext(ctx)
+}
+
+// UserAssignedIdentityAuthInfoPtrInput is an input type that accepts UserAssignedIdentityAuthInfoArgs, UserAssignedIdentityAuthInfoPtr and UserAssignedIdentityAuthInfoPtrOutput values.
+// You can construct a concrete instance of `UserAssignedIdentityAuthInfoPtrInput` via:
+//
+//	        UserAssignedIdentityAuthInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAssignedIdentityAuthInfoPtrInput interface {
+	pulumi.Input
+
+	ToUserAssignedIdentityAuthInfoPtrOutput() UserAssignedIdentityAuthInfoPtrOutput
+	ToUserAssignedIdentityAuthInfoPtrOutputWithContext(context.Context) UserAssignedIdentityAuthInfoPtrOutput
+}
+
+type userAssignedIdentityAuthInfoPtrType UserAssignedIdentityAuthInfoArgs
+
+func UserAssignedIdentityAuthInfoPtr(v *UserAssignedIdentityAuthInfoArgs) UserAssignedIdentityAuthInfoPtrInput {
+	return (*userAssignedIdentityAuthInfoPtrType)(v)
+}
+
+func (*userAssignedIdentityAuthInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (i *userAssignedIdentityAuthInfoPtrType) ToUserAssignedIdentityAuthInfoPtrOutput() UserAssignedIdentityAuthInfoPtrOutput {
+	return i.ToUserAssignedIdentityAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *userAssignedIdentityAuthInfoPtrType) ToUserAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityAuthInfoPtrOutput)
+}
+
+// The authentication info when authType is userAssignedIdentity
+type UserAssignedIdentityAuthInfoOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityAuthInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityAuthInfoOutput) ToUserAssignedIdentityAuthInfoOutput() UserAssignedIdentityAuthInfoOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoOutput) ToUserAssignedIdentityAuthInfoOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoOutput) ToUserAssignedIdentityAuthInfoPtrOutput() UserAssignedIdentityAuthInfoPtrOutput {
+	return o.ToUserAssignedIdentityAuthInfoPtrOutputWithContext(context.Background())
+}
+
+func (o UserAssignedIdentityAuthInfoOutput) ToUserAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAssignedIdentityAuthInfo) *UserAssignedIdentityAuthInfo {
+		return &v
+	}).(UserAssignedIdentityAuthInfoPtrOutput)
+}
+
+// The authentication type.
+// Expected value is 'userAssignedIdentity'.
+func (o UserAssignedIdentityAuthInfoOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Client Id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAssignedIdentityAuthInfoOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o UserAssignedIdentityAuthInfoOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Subscription id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAssignedIdentityAuthInfoOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfo) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type UserAssignedIdentityAuthInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityAuthInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAssignedIdentityAuthInfo)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityAuthInfoPtrOutput) ToUserAssignedIdentityAuthInfoPtrOutput() UserAssignedIdentityAuthInfoPtrOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoPtrOutput) ToUserAssignedIdentityAuthInfoPtrOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoPtrOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoPtrOutput) Elem() UserAssignedIdentityAuthInfoOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) UserAssignedIdentityAuthInfo {
+		if v != nil {
+			return *v
+		}
+		var ret UserAssignedIdentityAuthInfo
+		return ret
+	}).(UserAssignedIdentityAuthInfoOutput)
+}
+
+// The authentication type.
+// Expected value is 'userAssignedIdentity'.
+func (o UserAssignedIdentityAuthInfoPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAssignedIdentityAuthInfoPtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o UserAssignedIdentityAuthInfoPtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Subscription id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAssignedIdentityAuthInfoPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
 // The authentication info when authType is userAssignedIdentity
 type UserAssignedIdentityAuthInfoResponse struct {
 	// The authentication type.
@@ -2719,6 +6477,137 @@ type UserAssignedIdentityAuthInfoResponse struct {
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Username created in the database which is mapped to a user in AAD.
 	UserName *string `pulumi:"userName"`
+}
+
+// The authentication info when authType is userAssignedIdentity
+type UserAssignedIdentityAuthInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityAuthInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityAuthInfoResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityAuthInfoResponseOutput) ToUserAssignedIdentityAuthInfoResponseOutput() UserAssignedIdentityAuthInfoResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoResponseOutput) ToUserAssignedIdentityAuthInfoResponseOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoResponseOutput {
+	return o
+}
+
+// The authentication type.
+// Expected value is 'userAssignedIdentity'.
+func (o UserAssignedIdentityAuthInfoResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Client Id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAssignedIdentityAuthInfoResponseOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) *string { return v.DeleteOrUpdateBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o UserAssignedIdentityAuthInfoResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Subscription id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAssignedIdentityAuthInfoResponseOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityAuthInfoResponse) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type UserAssignedIdentityAuthInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityAuthInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAssignedIdentityAuthInfoResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) ToUserAssignedIdentityAuthInfoResponsePtrOutput() UserAssignedIdentityAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) ToUserAssignedIdentityAuthInfoResponsePtrOutputWithContext(ctx context.Context) UserAssignedIdentityAuthInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) Elem() UserAssignedIdentityAuthInfoResponseOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) UserAssignedIdentityAuthInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserAssignedIdentityAuthInfoResponse
+		return ret
+	}).(UserAssignedIdentityAuthInfoResponseOutput)
+}
+
+// The authentication type.
+// Expected value is 'userAssignedIdentity'.
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client Id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to clean up previous operation when Linker is updating or deleting
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) DeleteOrUpdateBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOrUpdateBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, this value specifies the Azure role to be assigned
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Roles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Subscription id for userAssignedIdentity.
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username created in the database which is mapped to a user in AAD.
+func (o UserAssignedIdentityAuthInfoResponsePtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAssignedIdentityAuthInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The VNet solution for linker
@@ -2966,6 +6855,160 @@ type ValueSecretInfo struct {
 	Value *string `pulumi:"value"`
 }
 
+// ValueSecretInfoInput is an input type that accepts ValueSecretInfoArgs and ValueSecretInfoOutput values.
+// You can construct a concrete instance of `ValueSecretInfoInput` via:
+//
+//	ValueSecretInfoArgs{...}
+type ValueSecretInfoInput interface {
+	pulumi.Input
+
+	ToValueSecretInfoOutput() ValueSecretInfoOutput
+	ToValueSecretInfoOutputWithContext(context.Context) ValueSecretInfoOutput
+}
+
+// The secret info when type is rawValue. It's for scenarios that user input the secret.
+type ValueSecretInfoArgs struct {
+	// The secret type.
+	// Expected value is 'rawValue'.
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// The actual value of the secret.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ValueSecretInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueSecretInfo)(nil)).Elem()
+}
+
+func (i ValueSecretInfoArgs) ToValueSecretInfoOutput() ValueSecretInfoOutput {
+	return i.ToValueSecretInfoOutputWithContext(context.Background())
+}
+
+func (i ValueSecretInfoArgs) ToValueSecretInfoOutputWithContext(ctx context.Context) ValueSecretInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueSecretInfoOutput)
+}
+
+func (i ValueSecretInfoArgs) ToValueSecretInfoPtrOutput() ValueSecretInfoPtrOutput {
+	return i.ToValueSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ValueSecretInfoArgs) ToValueSecretInfoPtrOutputWithContext(ctx context.Context) ValueSecretInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueSecretInfoOutput).ToValueSecretInfoPtrOutputWithContext(ctx)
+}
+
+// ValueSecretInfoPtrInput is an input type that accepts ValueSecretInfoArgs, ValueSecretInfoPtr and ValueSecretInfoPtrOutput values.
+// You can construct a concrete instance of `ValueSecretInfoPtrInput` via:
+//
+//	        ValueSecretInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ValueSecretInfoPtrInput interface {
+	pulumi.Input
+
+	ToValueSecretInfoPtrOutput() ValueSecretInfoPtrOutput
+	ToValueSecretInfoPtrOutputWithContext(context.Context) ValueSecretInfoPtrOutput
+}
+
+type valueSecretInfoPtrType ValueSecretInfoArgs
+
+func ValueSecretInfoPtr(v *ValueSecretInfoArgs) ValueSecretInfoPtrInput {
+	return (*valueSecretInfoPtrType)(v)
+}
+
+func (*valueSecretInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueSecretInfo)(nil)).Elem()
+}
+
+func (i *valueSecretInfoPtrType) ToValueSecretInfoPtrOutput() ValueSecretInfoPtrOutput {
+	return i.ToValueSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *valueSecretInfoPtrType) ToValueSecretInfoPtrOutputWithContext(ctx context.Context) ValueSecretInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValueSecretInfoPtrOutput)
+}
+
+// The secret info when type is rawValue. It's for scenarios that user input the secret.
+type ValueSecretInfoOutput struct{ *pulumi.OutputState }
+
+func (ValueSecretInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueSecretInfo)(nil)).Elem()
+}
+
+func (o ValueSecretInfoOutput) ToValueSecretInfoOutput() ValueSecretInfoOutput {
+	return o
+}
+
+func (o ValueSecretInfoOutput) ToValueSecretInfoOutputWithContext(ctx context.Context) ValueSecretInfoOutput {
+	return o
+}
+
+func (o ValueSecretInfoOutput) ToValueSecretInfoPtrOutput() ValueSecretInfoPtrOutput {
+	return o.ToValueSecretInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ValueSecretInfoOutput) ToValueSecretInfoPtrOutputWithContext(ctx context.Context) ValueSecretInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValueSecretInfo) *ValueSecretInfo {
+		return &v
+	}).(ValueSecretInfoPtrOutput)
+}
+
+// The secret type.
+// Expected value is 'rawValue'.
+func (o ValueSecretInfoOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v ValueSecretInfo) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The actual value of the secret.
+func (o ValueSecretInfoOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueSecretInfo) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ValueSecretInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ValueSecretInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueSecretInfo)(nil)).Elem()
+}
+
+func (o ValueSecretInfoPtrOutput) ToValueSecretInfoPtrOutput() ValueSecretInfoPtrOutput {
+	return o
+}
+
+func (o ValueSecretInfoPtrOutput) ToValueSecretInfoPtrOutputWithContext(ctx context.Context) ValueSecretInfoPtrOutput {
+	return o
+}
+
+func (o ValueSecretInfoPtrOutput) Elem() ValueSecretInfoOutput {
+	return o.ApplyT(func(v *ValueSecretInfo) ValueSecretInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ValueSecretInfo
+		return ret
+	}).(ValueSecretInfoOutput)
+}
+
+// The secret type.
+// Expected value is 'rawValue'.
+func (o ValueSecretInfoPtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValueSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The actual value of the secret.
+func (o ValueSecretInfoPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValueSecretInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 // The secret info when type is rawValue. It's for scenarios that user input the secret.
 type ValueSecretInfoResponse struct {
 	// The secret type.
@@ -2975,11 +7018,103 @@ type ValueSecretInfoResponse struct {
 	Value *string `pulumi:"value"`
 }
 
+// The secret info when type is rawValue. It's for scenarios that user input the secret.
+type ValueSecretInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ValueSecretInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValueSecretInfoResponse)(nil)).Elem()
+}
+
+func (o ValueSecretInfoResponseOutput) ToValueSecretInfoResponseOutput() ValueSecretInfoResponseOutput {
+	return o
+}
+
+func (o ValueSecretInfoResponseOutput) ToValueSecretInfoResponseOutputWithContext(ctx context.Context) ValueSecretInfoResponseOutput {
+	return o
+}
+
+// The secret type.
+// Expected value is 'rawValue'.
+func (o ValueSecretInfoResponseOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v ValueSecretInfoResponse) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The actual value of the secret.
+func (o ValueSecretInfoResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValueSecretInfoResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ValueSecretInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ValueSecretInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValueSecretInfoResponse)(nil)).Elem()
+}
+
+func (o ValueSecretInfoResponsePtrOutput) ToValueSecretInfoResponsePtrOutput() ValueSecretInfoResponsePtrOutput {
+	return o
+}
+
+func (o ValueSecretInfoResponsePtrOutput) ToValueSecretInfoResponsePtrOutputWithContext(ctx context.Context) ValueSecretInfoResponsePtrOutput {
+	return o
+}
+
+func (o ValueSecretInfoResponsePtrOutput) Elem() ValueSecretInfoResponseOutput {
+	return o.ApplyT(func(v *ValueSecretInfoResponse) ValueSecretInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ValueSecretInfoResponse
+		return ret
+	}).(ValueSecretInfoResponseOutput)
+}
+
+// The secret type.
+// Expected value is 'rawValue'.
+func (o ValueSecretInfoResponsePtrOutput) SecretType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValueSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The actual value of the secret.
+func (o ValueSecretInfoResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValueSecretInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AccessKeyInfoBaseOutput{})
+	pulumi.RegisterOutputType(AccessKeyInfoBasePtrOutput{})
+	pulumi.RegisterOutputType(AccessKeyInfoBaseResponseOutput{})
+	pulumi.RegisterOutputType(AccessKeyInfoBaseResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureResourceOutput{})
+	pulumi.RegisterOutputType(AzureResourcePtrOutput{})
+	pulumi.RegisterOutputType(AzureResourceResponseOutput{})
+	pulumi.RegisterOutputType(AzureResourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(BasicErrorDryrunPrerequisiteResultResponseOutput{})
 	pulumi.RegisterOutputType(ConfigurationInfoOutput{})
 	pulumi.RegisterOutputType(ConfigurationInfoPtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationInfoResponseOutput{})
 	pulumi.RegisterOutputType(ConfigurationInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfluentBootstrapServerOutput{})
+	pulumi.RegisterOutputType(ConfluentBootstrapServerPtrOutput{})
+	pulumi.RegisterOutputType(ConfluentBootstrapServerResponseOutput{})
+	pulumi.RegisterOutputType(ConfluentBootstrapServerResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfluentSchemaRegistryOutput{})
+	pulumi.RegisterOutputType(ConfluentSchemaRegistryPtrOutput{})
+	pulumi.RegisterOutputType(ConfluentSchemaRegistryResponseOutput{})
+	pulumi.RegisterOutputType(ConfluentSchemaRegistryResponsePtrOutput{})
 	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersOutput{})
 	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersPtrOutput{})
 	pulumi.RegisterOutputType(CreateOrUpdateDryrunParametersResponseOutput{})
@@ -2998,19 +7133,60 @@ func init() {
 	pulumi.RegisterOutputType(FirewallRulesPtrOutput{})
 	pulumi.RegisterOutputType(FirewallRulesResponseOutput{})
 	pulumi.RegisterOutputType(FirewallRulesResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretReferenceSecretInfoOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretReferenceSecretInfoPtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretReferenceSecretInfoResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretReferenceSecretInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretUriSecretInfoOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretUriSecretInfoPtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretUriSecretInfoResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultSecretUriSecretInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(PermissionsMissingDryrunPrerequisiteResultResponseOutput{})
 	pulumi.RegisterOutputType(PublicNetworkSolutionOutput{})
 	pulumi.RegisterOutputType(PublicNetworkSolutionPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkSolutionResponseOutput{})
 	pulumi.RegisterOutputType(PublicNetworkSolutionResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecretAuthInfoOutput{})
+	pulumi.RegisterOutputType(SecretAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(SecretAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(SecretAuthInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreOutput{})
 	pulumi.RegisterOutputType(SecretStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreResponseOutput{})
 	pulumi.RegisterOutputType(SecretStoreResponsePtrOutput{})
+	pulumi.RegisterOutputType(SelfHostedServerOutput{})
+	pulumi.RegisterOutputType(SelfHostedServerPtrOutput{})
+	pulumi.RegisterOutputType(SelfHostedServerResponseOutput{})
+	pulumi.RegisterOutputType(SelfHostedServerResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificateAuthInfoOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificateAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificateAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificateAuthInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalSecretAuthInfoOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalSecretAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalSecretAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalSecretAuthInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SourceConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemAssignedIdentityAuthInfoOutput{})
+	pulumi.RegisterOutputType(SystemAssignedIdentityAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(SystemAssignedIdentityAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(SystemAssignedIdentityAuthInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAccountAuthInfoOutput{})
+	pulumi.RegisterOutputType(UserAccountAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(UserAccountAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(UserAccountAuthInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityAuthInfoOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityAuthInfoPtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityAuthInfoResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityAuthInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(VNetSolutionOutput{})
 	pulumi.RegisterOutputType(VNetSolutionPtrOutput{})
 	pulumi.RegisterOutputType(VNetSolutionResponseOutput{})
 	pulumi.RegisterOutputType(VNetSolutionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ValueSecretInfoOutput{})
+	pulumi.RegisterOutputType(ValueSecretInfoPtrOutput{})
+	pulumi.RegisterOutputType(ValueSecretInfoResponseOutput{})
+	pulumi.RegisterOutputType(ValueSecretInfoResponsePtrOutput{})
 }

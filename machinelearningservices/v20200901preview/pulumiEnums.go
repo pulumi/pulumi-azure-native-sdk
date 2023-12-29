@@ -19,6 +19,170 @@ const (
 	EncryptionStatusDisabled = EncryptionStatus("Disabled")
 )
 
+func (EncryptionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionStatus)(nil)).Elem()
+}
+
+func (e EncryptionStatus) ToEncryptionStatusOutput() EncryptionStatusOutput {
+	return pulumi.ToOutput(e).(EncryptionStatusOutput)
+}
+
+func (e EncryptionStatus) ToEncryptionStatusOutputWithContext(ctx context.Context) EncryptionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EncryptionStatusOutput)
+}
+
+func (e EncryptionStatus) ToEncryptionStatusPtrOutput() EncryptionStatusPtrOutput {
+	return e.ToEncryptionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e EncryptionStatus) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
+	return EncryptionStatus(e).ToEncryptionStatusOutputWithContext(ctx).ToEncryptionStatusPtrOutputWithContext(ctx)
+}
+
+func (e EncryptionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EncryptionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EncryptionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EncryptionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EncryptionStatusOutput struct{ *pulumi.OutputState }
+
+func (EncryptionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionStatus)(nil)).Elem()
+}
+
+func (o EncryptionStatusOutput) ToEncryptionStatusOutput() EncryptionStatusOutput {
+	return o
+}
+
+func (o EncryptionStatusOutput) ToEncryptionStatusOutputWithContext(ctx context.Context) EncryptionStatusOutput {
+	return o
+}
+
+func (o EncryptionStatusOutput) ToEncryptionStatusPtrOutput() EncryptionStatusPtrOutput {
+	return o.ToEncryptionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionStatusOutput) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionStatus) *EncryptionStatus {
+		return &v
+	}).(EncryptionStatusPtrOutput)
+}
+
+func (o EncryptionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EncryptionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EncryptionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EncryptionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EncryptionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EncryptionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionStatus)(nil)).Elem()
+}
+
+func (o EncryptionStatusPtrOutput) ToEncryptionStatusPtrOutput() EncryptionStatusPtrOutput {
+	return o
+}
+
+func (o EncryptionStatusPtrOutput) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
+	return o
+}
+
+func (o EncryptionStatusPtrOutput) Elem() EncryptionStatusOutput {
+	return o.ApplyT(func(v *EncryptionStatus) EncryptionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionStatus
+		return ret
+	}).(EncryptionStatusOutput)
+}
+
+func (o EncryptionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EncryptionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EncryptionStatusInput is an input type that accepts values of the EncryptionStatus enum
+// A concrete instance of `EncryptionStatusInput` can be one of the following:
+//
+//	EncryptionStatusEnabled
+//	EncryptionStatusDisabled
+type EncryptionStatusInput interface {
+	pulumi.Input
+
+	ToEncryptionStatusOutput() EncryptionStatusOutput
+	ToEncryptionStatusOutputWithContext(context.Context) EncryptionStatusOutput
+}
+
+var encryptionStatusPtrType = reflect.TypeOf((**EncryptionStatus)(nil)).Elem()
+
+type EncryptionStatusPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionStatusPtrOutput() EncryptionStatusPtrOutput
+	ToEncryptionStatusPtrOutputWithContext(context.Context) EncryptionStatusPtrOutput
+}
+
+type encryptionStatusPtr string
+
+func EncryptionStatusPtr(v string) EncryptionStatusPtrInput {
+	return (*encryptionStatusPtr)(&v)
+}
+
+func (*encryptionStatusPtr) ElementType() reflect.Type {
+	return encryptionStatusPtrType
+}
+
+func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutput() EncryptionStatusPtrOutput {
+	return pulumi.ToOutput(in).(EncryptionStatusPtrOutput)
+}
+
+func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatusPtrOutput)
+}
+
+func (in *encryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionStatus] {
+	return pulumix.Output[*EncryptionStatus]{
+		OutputState: in.ToEncryptionStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Annotation type of image labeling tasks.
 type ImageAnnotationType string
 
@@ -27,6 +191,171 @@ const (
 	ImageAnnotationTypeBoundingBox          = ImageAnnotationType("BoundingBox")
 	ImageAnnotationTypeInstanceSegmentation = ImageAnnotationType("InstanceSegmentation")
 )
+
+func (ImageAnnotationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAnnotationType)(nil)).Elem()
+}
+
+func (e ImageAnnotationType) ToImageAnnotationTypeOutput() ImageAnnotationTypeOutput {
+	return pulumi.ToOutput(e).(ImageAnnotationTypeOutput)
+}
+
+func (e ImageAnnotationType) ToImageAnnotationTypeOutputWithContext(ctx context.Context) ImageAnnotationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImageAnnotationTypeOutput)
+}
+
+func (e ImageAnnotationType) ToImageAnnotationTypePtrOutput() ImageAnnotationTypePtrOutput {
+	return e.ToImageAnnotationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ImageAnnotationType) ToImageAnnotationTypePtrOutputWithContext(ctx context.Context) ImageAnnotationTypePtrOutput {
+	return ImageAnnotationType(e).ToImageAnnotationTypeOutputWithContext(ctx).ToImageAnnotationTypePtrOutputWithContext(ctx)
+}
+
+func (e ImageAnnotationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageAnnotationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImageAnnotationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImageAnnotationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImageAnnotationTypeOutput struct{ *pulumi.OutputState }
+
+func (ImageAnnotationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageAnnotationType)(nil)).Elem()
+}
+
+func (o ImageAnnotationTypeOutput) ToImageAnnotationTypeOutput() ImageAnnotationTypeOutput {
+	return o
+}
+
+func (o ImageAnnotationTypeOutput) ToImageAnnotationTypeOutputWithContext(ctx context.Context) ImageAnnotationTypeOutput {
+	return o
+}
+
+func (o ImageAnnotationTypeOutput) ToImageAnnotationTypePtrOutput() ImageAnnotationTypePtrOutput {
+	return o.ToImageAnnotationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ImageAnnotationTypeOutput) ToImageAnnotationTypePtrOutputWithContext(ctx context.Context) ImageAnnotationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageAnnotationType) *ImageAnnotationType {
+		return &v
+	}).(ImageAnnotationTypePtrOutput)
+}
+
+func (o ImageAnnotationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImageAnnotationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageAnnotationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImageAnnotationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageAnnotationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImageAnnotationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageAnnotationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageAnnotationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageAnnotationType)(nil)).Elem()
+}
+
+func (o ImageAnnotationTypePtrOutput) ToImageAnnotationTypePtrOutput() ImageAnnotationTypePtrOutput {
+	return o
+}
+
+func (o ImageAnnotationTypePtrOutput) ToImageAnnotationTypePtrOutputWithContext(ctx context.Context) ImageAnnotationTypePtrOutput {
+	return o
+}
+
+func (o ImageAnnotationTypePtrOutput) Elem() ImageAnnotationTypeOutput {
+	return o.ApplyT(func(v *ImageAnnotationType) ImageAnnotationType {
+		if v != nil {
+			return *v
+		}
+		var ret ImageAnnotationType
+		return ret
+	}).(ImageAnnotationTypeOutput)
+}
+
+func (o ImageAnnotationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImageAnnotationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImageAnnotationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImageAnnotationTypeInput is an input type that accepts values of the ImageAnnotationType enum
+// A concrete instance of `ImageAnnotationTypeInput` can be one of the following:
+//
+//	ImageAnnotationTypeClassification
+//	ImageAnnotationTypeBoundingBox
+//	ImageAnnotationTypeInstanceSegmentation
+type ImageAnnotationTypeInput interface {
+	pulumi.Input
+
+	ToImageAnnotationTypeOutput() ImageAnnotationTypeOutput
+	ToImageAnnotationTypeOutputWithContext(context.Context) ImageAnnotationTypeOutput
+}
+
+var imageAnnotationTypePtrType = reflect.TypeOf((**ImageAnnotationType)(nil)).Elem()
+
+type ImageAnnotationTypePtrInput interface {
+	pulumi.Input
+
+	ToImageAnnotationTypePtrOutput() ImageAnnotationTypePtrOutput
+	ToImageAnnotationTypePtrOutputWithContext(context.Context) ImageAnnotationTypePtrOutput
+}
+
+type imageAnnotationTypePtr string
+
+func ImageAnnotationTypePtr(v string) ImageAnnotationTypePtrInput {
+	return (*imageAnnotationTypePtr)(&v)
+}
+
+func (*imageAnnotationTypePtr) ElementType() reflect.Type {
+	return imageAnnotationTypePtrType
+}
+
+func (in *imageAnnotationTypePtr) ToImageAnnotationTypePtrOutput() ImageAnnotationTypePtrOutput {
+	return pulumi.ToOutput(in).(ImageAnnotationTypePtrOutput)
+}
+
+func (in *imageAnnotationTypePtr) ToImageAnnotationTypePtrOutputWithContext(ctx context.Context) ImageAnnotationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImageAnnotationTypePtrOutput)
+}
+
+func (in *imageAnnotationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageAnnotationType] {
+	return pulumix.Output[*ImageAnnotationType]{
+		OutputState: in.ToImageAnnotationTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Type of the link target.
 type LinkedServiceLinkType string
@@ -154,10 +483,10 @@ func (o LinkedServiceLinkTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// LinkedServiceLinkTypeInput is an input type that accepts LinkedServiceLinkTypeArgs and LinkedServiceLinkTypeOutput values.
-// You can construct a concrete instance of `LinkedServiceLinkTypeInput` via:
+// LinkedServiceLinkTypeInput is an input type that accepts values of the LinkedServiceLinkType enum
+// A concrete instance of `LinkedServiceLinkTypeInput` can be one of the following:
 //
-//	LinkedServiceLinkTypeArgs{...}
+//	LinkedServiceLinkTypeSynapse
 type LinkedServiceLinkTypeInput interface {
 	pulumi.Input
 
@@ -206,6 +535,170 @@ const (
 	MediaTypeText  = MediaType("Text")
 )
 
+func (MediaType) ElementType() reflect.Type {
+	return reflect.TypeOf((*MediaType)(nil)).Elem()
+}
+
+func (e MediaType) ToMediaTypeOutput() MediaTypeOutput {
+	return pulumi.ToOutput(e).(MediaTypeOutput)
+}
+
+func (e MediaType) ToMediaTypeOutputWithContext(ctx context.Context) MediaTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MediaTypeOutput)
+}
+
+func (e MediaType) ToMediaTypePtrOutput() MediaTypePtrOutput {
+	return e.ToMediaTypePtrOutputWithContext(context.Background())
+}
+
+func (e MediaType) ToMediaTypePtrOutputWithContext(ctx context.Context) MediaTypePtrOutput {
+	return MediaType(e).ToMediaTypeOutputWithContext(ctx).ToMediaTypePtrOutputWithContext(ctx)
+}
+
+func (e MediaType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MediaType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MediaType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MediaType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MediaTypeOutput struct{ *pulumi.OutputState }
+
+func (MediaTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MediaType)(nil)).Elem()
+}
+
+func (o MediaTypeOutput) ToMediaTypeOutput() MediaTypeOutput {
+	return o
+}
+
+func (o MediaTypeOutput) ToMediaTypeOutputWithContext(ctx context.Context) MediaTypeOutput {
+	return o
+}
+
+func (o MediaTypeOutput) ToMediaTypePtrOutput() MediaTypePtrOutput {
+	return o.ToMediaTypePtrOutputWithContext(context.Background())
+}
+
+func (o MediaTypeOutput) ToMediaTypePtrOutputWithContext(ctx context.Context) MediaTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MediaType) *MediaType {
+		return &v
+	}).(MediaTypePtrOutput)
+}
+
+func (o MediaTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MediaTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MediaType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MediaTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MediaTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MediaType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MediaTypePtrOutput struct{ *pulumi.OutputState }
+
+func (MediaTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MediaType)(nil)).Elem()
+}
+
+func (o MediaTypePtrOutput) ToMediaTypePtrOutput() MediaTypePtrOutput {
+	return o
+}
+
+func (o MediaTypePtrOutput) ToMediaTypePtrOutputWithContext(ctx context.Context) MediaTypePtrOutput {
+	return o
+}
+
+func (o MediaTypePtrOutput) Elem() MediaTypeOutput {
+	return o.ApplyT(func(v *MediaType) MediaType {
+		if v != nil {
+			return *v
+		}
+		var ret MediaType
+		return ret
+	}).(MediaTypeOutput)
+}
+
+func (o MediaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MediaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MediaType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MediaTypeInput is an input type that accepts values of the MediaType enum
+// A concrete instance of `MediaTypeInput` can be one of the following:
+//
+//	MediaTypeImage
+//	MediaTypeText
+type MediaTypeInput interface {
+	pulumi.Input
+
+	ToMediaTypeOutput() MediaTypeOutput
+	ToMediaTypeOutputWithContext(context.Context) MediaTypeOutput
+}
+
+var mediaTypePtrType = reflect.TypeOf((**MediaType)(nil)).Elem()
+
+type MediaTypePtrInput interface {
+	pulumi.Input
+
+	ToMediaTypePtrOutput() MediaTypePtrOutput
+	ToMediaTypePtrOutputWithContext(context.Context) MediaTypePtrOutput
+}
+
+type mediaTypePtr string
+
+func MediaTypePtr(v string) MediaTypePtrInput {
+	return (*mediaTypePtr)(&v)
+}
+
+func (*mediaTypePtr) ElementType() reflect.Type {
+	return mediaTypePtrType
+}
+
+func (in *mediaTypePtr) ToMediaTypePtrOutput() MediaTypePtrOutput {
+	return pulumi.ToOutput(in).(MediaTypePtrOutput)
+}
+
+func (in *mediaTypePtr) ToMediaTypePtrOutputWithContext(ctx context.Context) MediaTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MediaTypePtrOutput)
+}
+
+func (in *mediaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MediaType] {
+	return pulumix.Output[*MediaType]{
+		OutputState: in.ToMediaTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -216,6 +709,173 @@ const (
 	PrivateEndpointServiceConnectionStatusDisconnected = PrivateEndpointServiceConnectionStatus("Disconnected")
 	PrivateEndpointServiceConnectionStatusTimeout      = PrivateEndpointServiceConnectionStatus("Timeout")
 )
+
+func (PrivateEndpointServiceConnectionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
+	return pulumi.ToOutput(e).(PrivateEndpointServiceConnectionStatusOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrivateEndpointServiceConnectionStatusOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return e.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return PrivateEndpointServiceConnectionStatus(e).ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx).ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrivateEndpointServiceConnectionStatusOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointServiceConnectionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointServiceConnectionStatus) *PrivateEndpointServiceConnectionStatus {
+		return &v
+	}).(PrivateEndpointServiceConnectionStatusPtrOutput)
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointServiceConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointServiceConnectionStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) Elem() PrivateEndpointServiceConnectionStatusOutput {
+	return o.ApplyT(func(v *PrivateEndpointServiceConnectionStatus) PrivateEndpointServiceConnectionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointServiceConnectionStatus
+		return ret
+	}).(PrivateEndpointServiceConnectionStatusOutput)
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateEndpointServiceConnectionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrivateEndpointServiceConnectionStatusInput is an input type that accepts values of the PrivateEndpointServiceConnectionStatus enum
+// A concrete instance of `PrivateEndpointServiceConnectionStatusInput` can be one of the following:
+//
+//	PrivateEndpointServiceConnectionStatusPending
+//	PrivateEndpointServiceConnectionStatusApproved
+//	PrivateEndpointServiceConnectionStatusRejected
+//	PrivateEndpointServiceConnectionStatusDisconnected
+//	PrivateEndpointServiceConnectionStatusTimeout
+type PrivateEndpointServiceConnectionStatusInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput
+	ToPrivateEndpointServiceConnectionStatusOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusOutput
+}
+
+var privateEndpointServiceConnectionStatusPtrType = reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+
+type PrivateEndpointServiceConnectionStatusPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput
+	ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusPtrOutput
+}
+
+type privateEndpointServiceConnectionStatusPtr string
+
+func PrivateEndpointServiceConnectionStatusPtr(v string) PrivateEndpointServiceConnectionStatusPtrInput {
+	return (*privateEndpointServiceConnectionStatusPtr)(&v)
+}
+
+func (*privateEndpointServiceConnectionStatusPtr) ElementType() reflect.Type {
+	return privateEndpointServiceConnectionStatusPtrType
+}
+
+func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+	return pulumi.ToOutput(in).(PrivateEndpointServiceConnectionStatusPtrOutput)
+}
+
+func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
+}
+
+func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
+	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
+		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The identity type.
 type ResourceIdentityType string
@@ -346,10 +1006,13 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityType_SystemAssigned_UserAssigned
+//	ResourceIdentityTypeUserAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -391,8 +1054,16 @@ func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 }
 
 func init() {
+	pulumi.RegisterOutputType(EncryptionStatusOutput{})
+	pulumi.RegisterOutputType(EncryptionStatusPtrOutput{})
+	pulumi.RegisterOutputType(ImageAnnotationTypeOutput{})
+	pulumi.RegisterOutputType(ImageAnnotationTypePtrOutput{})
 	pulumi.RegisterOutputType(LinkedServiceLinkTypeOutput{})
 	pulumi.RegisterOutputType(LinkedServiceLinkTypePtrOutput{})
+	pulumi.RegisterOutputType(MediaTypeOutput{})
+	pulumi.RegisterOutputType(MediaTypePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 }

@@ -29,6 +29,172 @@ const (
 	CreateModeRestore            = CreateMode("Restore")
 )
 
+func (CreateMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateMode)(nil)).Elem()
+}
+
+func (e CreateMode) ToCreateModeOutput() CreateModeOutput {
+	return pulumi.ToOutput(e).(CreateModeOutput)
+}
+
+func (e CreateMode) ToCreateModeOutputWithContext(ctx context.Context) CreateModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CreateModeOutput)
+}
+
+func (e CreateMode) ToCreateModePtrOutput() CreateModePtrOutput {
+	return e.ToCreateModePtrOutputWithContext(context.Background())
+}
+
+func (e CreateMode) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
+	return CreateMode(e).ToCreateModeOutputWithContext(ctx).ToCreateModePtrOutputWithContext(ctx)
+}
+
+func (e CreateMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreateMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CreateMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CreateMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CreateModeOutput struct{ *pulumi.OutputState }
+
+func (CreateModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateMode)(nil)).Elem()
+}
+
+func (o CreateModeOutput) ToCreateModeOutput() CreateModeOutput {
+	return o
+}
+
+func (o CreateModeOutput) ToCreateModeOutputWithContext(ctx context.Context) CreateModeOutput {
+	return o
+}
+
+func (o CreateModeOutput) ToCreateModePtrOutput() CreateModePtrOutput {
+	return o.ToCreateModePtrOutputWithContext(context.Background())
+}
+
+func (o CreateModeOutput) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreateMode) *CreateMode {
+		return &v
+	}).(CreateModePtrOutput)
+}
+
+func (o CreateModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CreateModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreateMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CreateModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreateModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CreateMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CreateModePtrOutput struct{ *pulumi.OutputState }
+
+func (CreateModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreateMode)(nil)).Elem()
+}
+
+func (o CreateModePtrOutput) ToCreateModePtrOutput() CreateModePtrOutput {
+	return o
+}
+
+func (o CreateModePtrOutput) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
+	return o
+}
+
+func (o CreateModePtrOutput) Elem() CreateModeOutput {
+	return o.ApplyT(func(v *CreateMode) CreateMode {
+		if v != nil {
+			return *v
+		}
+		var ret CreateMode
+		return ret
+	}).(CreateModeOutput)
+}
+
+func (o CreateModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CreateModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CreateMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CreateModeInput is an input type that accepts values of the CreateMode enum
+// A concrete instance of `CreateModeInput` can be one of the following:
+//
+//	CreateModeDefault
+//	CreateModePointInTimeRestore
+//	CreateModeRecovery
+//	CreateModeRestore
+type CreateModeInput interface {
+	pulumi.Input
+
+	ToCreateModeOutput() CreateModeOutput
+	ToCreateModeOutputWithContext(context.Context) CreateModeOutput
+}
+
+var createModePtrType = reflect.TypeOf((**CreateMode)(nil)).Elem()
+
+type CreateModePtrInput interface {
+	pulumi.Input
+
+	ToCreateModePtrOutput() CreateModePtrOutput
+	ToCreateModePtrOutputWithContext(context.Context) CreateModePtrOutput
+}
+
+type createModePtr string
+
+func CreateModePtr(v string) CreateModePtrInput {
+	return (*createModePtr)(&v)
+}
+
+func (*createModePtr) ElementType() reflect.Type {
+	return createModePtrType
+}
+
+func (in *createModePtr) ToCreateModePtrOutput() CreateModePtrOutput {
+	return pulumi.ToOutput(in).(CreateModePtrOutput)
+}
+
+func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
+}
+
+func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
+	return pulumix.Output[*CreateMode]{
+		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The level of compute power that each node in the Big Data pool has.
 type NodeSize string
 
@@ -42,6 +208,175 @@ const (
 	NodeSizeXXXLarge = NodeSize("XXXLarge")
 )
 
+func (NodeSize) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSize)(nil)).Elem()
+}
+
+func (e NodeSize) ToNodeSizeOutput() NodeSizeOutput {
+	return pulumi.ToOutput(e).(NodeSizeOutput)
+}
+
+func (e NodeSize) ToNodeSizeOutputWithContext(ctx context.Context) NodeSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NodeSizeOutput)
+}
+
+func (e NodeSize) ToNodeSizePtrOutput() NodeSizePtrOutput {
+	return e.ToNodeSizePtrOutputWithContext(context.Background())
+}
+
+func (e NodeSize) ToNodeSizePtrOutputWithContext(ctx context.Context) NodeSizePtrOutput {
+	return NodeSize(e).ToNodeSizeOutputWithContext(ctx).ToNodeSizePtrOutputWithContext(ctx)
+}
+
+func (e NodeSize) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeSize) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeSize) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NodeSize) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NodeSizeOutput struct{ *pulumi.OutputState }
+
+func (NodeSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSize)(nil)).Elem()
+}
+
+func (o NodeSizeOutput) ToNodeSizeOutput() NodeSizeOutput {
+	return o
+}
+
+func (o NodeSizeOutput) ToNodeSizeOutputWithContext(ctx context.Context) NodeSizeOutput {
+	return o
+}
+
+func (o NodeSizeOutput) ToNodeSizePtrOutput() NodeSizePtrOutput {
+	return o.ToNodeSizePtrOutputWithContext(context.Background())
+}
+
+func (o NodeSizeOutput) ToNodeSizePtrOutputWithContext(ctx context.Context) NodeSizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeSize) *NodeSize {
+		return &v
+	}).(NodeSizePtrOutput)
+}
+
+func (o NodeSizeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NodeSizeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeSize) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NodeSizeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeSizeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeSize) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodeSizePtrOutput struct{ *pulumi.OutputState }
+
+func (NodeSizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeSize)(nil)).Elem()
+}
+
+func (o NodeSizePtrOutput) ToNodeSizePtrOutput() NodeSizePtrOutput {
+	return o
+}
+
+func (o NodeSizePtrOutput) ToNodeSizePtrOutputWithContext(ctx context.Context) NodeSizePtrOutput {
+	return o
+}
+
+func (o NodeSizePtrOutput) Elem() NodeSizeOutput {
+	return o.ApplyT(func(v *NodeSize) NodeSize {
+		if v != nil {
+			return *v
+		}
+		var ret NodeSize
+		return ret
+	}).(NodeSizeOutput)
+}
+
+func (o NodeSizePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeSizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodeSize) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NodeSizeInput is an input type that accepts values of the NodeSize enum
+// A concrete instance of `NodeSizeInput` can be one of the following:
+//
+//	NodeSizeNone
+//	NodeSizeSmall
+//	NodeSizeMedium
+//	NodeSizeLarge
+//	NodeSizeXLarge
+//	NodeSizeXXLarge
+//	NodeSizeXXXLarge
+type NodeSizeInput interface {
+	pulumi.Input
+
+	ToNodeSizeOutput() NodeSizeOutput
+	ToNodeSizeOutputWithContext(context.Context) NodeSizeOutput
+}
+
+var nodeSizePtrType = reflect.TypeOf((**NodeSize)(nil)).Elem()
+
+type NodeSizePtrInput interface {
+	pulumi.Input
+
+	ToNodeSizePtrOutput() NodeSizePtrOutput
+	ToNodeSizePtrOutputWithContext(context.Context) NodeSizePtrOutput
+}
+
+type nodeSizePtr string
+
+func NodeSizePtr(v string) NodeSizePtrInput {
+	return (*nodeSizePtr)(&v)
+}
+
+func (*nodeSizePtr) ElementType() reflect.Type {
+	return nodeSizePtrType
+}
+
+func (in *nodeSizePtr) ToNodeSizePtrOutput() NodeSizePtrOutput {
+	return pulumi.ToOutput(in).(NodeSizePtrOutput)
+}
+
+func (in *nodeSizePtr) ToNodeSizePtrOutputWithContext(ctx context.Context) NodeSizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NodeSizePtrOutput)
+}
+
+func (in *nodeSizePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeSize] {
+	return pulumix.Output[*NodeSize]{
+		OutputState: in.ToNodeSizePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The kind of nodes that the Big Data pool provides.
 type NodeSizeFamily string
 
@@ -51,6 +386,172 @@ const (
 	NodeSizeFamilyHardwareAcceleratedFPGA = NodeSizeFamily("HardwareAcceleratedFPGA")
 	NodeSizeFamilyHardwareAcceleratedGPU  = NodeSizeFamily("HardwareAcceleratedGPU")
 )
+
+func (NodeSizeFamily) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSizeFamily)(nil)).Elem()
+}
+
+func (e NodeSizeFamily) ToNodeSizeFamilyOutput() NodeSizeFamilyOutput {
+	return pulumi.ToOutput(e).(NodeSizeFamilyOutput)
+}
+
+func (e NodeSizeFamily) ToNodeSizeFamilyOutputWithContext(ctx context.Context) NodeSizeFamilyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NodeSizeFamilyOutput)
+}
+
+func (e NodeSizeFamily) ToNodeSizeFamilyPtrOutput() NodeSizeFamilyPtrOutput {
+	return e.ToNodeSizeFamilyPtrOutputWithContext(context.Background())
+}
+
+func (e NodeSizeFamily) ToNodeSizeFamilyPtrOutputWithContext(ctx context.Context) NodeSizeFamilyPtrOutput {
+	return NodeSizeFamily(e).ToNodeSizeFamilyOutputWithContext(ctx).ToNodeSizeFamilyPtrOutputWithContext(ctx)
+}
+
+func (e NodeSizeFamily) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeSizeFamily) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeSizeFamily) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NodeSizeFamily) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NodeSizeFamilyOutput struct{ *pulumi.OutputState }
+
+func (NodeSizeFamilyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSizeFamily)(nil)).Elem()
+}
+
+func (o NodeSizeFamilyOutput) ToNodeSizeFamilyOutput() NodeSizeFamilyOutput {
+	return o
+}
+
+func (o NodeSizeFamilyOutput) ToNodeSizeFamilyOutputWithContext(ctx context.Context) NodeSizeFamilyOutput {
+	return o
+}
+
+func (o NodeSizeFamilyOutput) ToNodeSizeFamilyPtrOutput() NodeSizeFamilyPtrOutput {
+	return o.ToNodeSizeFamilyPtrOutputWithContext(context.Background())
+}
+
+func (o NodeSizeFamilyOutput) ToNodeSizeFamilyPtrOutputWithContext(ctx context.Context) NodeSizeFamilyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeSizeFamily) *NodeSizeFamily {
+		return &v
+	}).(NodeSizeFamilyPtrOutput)
+}
+
+func (o NodeSizeFamilyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NodeSizeFamilyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeSizeFamily) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NodeSizeFamilyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeSizeFamilyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeSizeFamily) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodeSizeFamilyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeSizeFamilyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeSizeFamily)(nil)).Elem()
+}
+
+func (o NodeSizeFamilyPtrOutput) ToNodeSizeFamilyPtrOutput() NodeSizeFamilyPtrOutput {
+	return o
+}
+
+func (o NodeSizeFamilyPtrOutput) ToNodeSizeFamilyPtrOutputWithContext(ctx context.Context) NodeSizeFamilyPtrOutput {
+	return o
+}
+
+func (o NodeSizeFamilyPtrOutput) Elem() NodeSizeFamilyOutput {
+	return o.ApplyT(func(v *NodeSizeFamily) NodeSizeFamily {
+		if v != nil {
+			return *v
+		}
+		var ret NodeSizeFamily
+		return ret
+	}).(NodeSizeFamilyOutput)
+}
+
+func (o NodeSizeFamilyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeSizeFamilyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodeSizeFamily) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NodeSizeFamilyInput is an input type that accepts values of the NodeSizeFamily enum
+// A concrete instance of `NodeSizeFamilyInput` can be one of the following:
+//
+//	NodeSizeFamilyNone
+//	NodeSizeFamilyMemoryOptimized
+//	NodeSizeFamilyHardwareAcceleratedFPGA
+//	NodeSizeFamilyHardwareAcceleratedGPU
+type NodeSizeFamilyInput interface {
+	pulumi.Input
+
+	ToNodeSizeFamilyOutput() NodeSizeFamilyOutput
+	ToNodeSizeFamilyOutputWithContext(context.Context) NodeSizeFamilyOutput
+}
+
+var nodeSizeFamilyPtrType = reflect.TypeOf((**NodeSizeFamily)(nil)).Elem()
+
+type NodeSizeFamilyPtrInput interface {
+	pulumi.Input
+
+	ToNodeSizeFamilyPtrOutput() NodeSizeFamilyPtrOutput
+	ToNodeSizeFamilyPtrOutputWithContext(context.Context) NodeSizeFamilyPtrOutput
+}
+
+type nodeSizeFamilyPtr string
+
+func NodeSizeFamilyPtr(v string) NodeSizeFamilyPtrInput {
+	return (*nodeSizeFamilyPtr)(&v)
+}
+
+func (*nodeSizeFamilyPtr) ElementType() reflect.Type {
+	return nodeSizeFamilyPtrType
+}
+
+func (in *nodeSizeFamilyPtr) ToNodeSizeFamilyPtrOutput() NodeSizeFamilyPtrOutput {
+	return pulumi.ToOutput(in).(NodeSizeFamilyPtrOutput)
+}
+
+func (in *nodeSizeFamilyPtr) ToNodeSizeFamilyPtrOutputWithContext(ctx context.Context) NodeSizeFamilyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NodeSizeFamilyPtrOutput)
+}
+
+func (in *nodeSizeFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeSizeFamily] {
+	return pulumix.Output[*NodeSizeFamily]{
+		OutputState: in.ToNodeSizeFamilyPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The type of managed identity for the workspace
 type ResourceIdentityType string
@@ -180,10 +681,12 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeNone
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityType_SystemAssigned_UserAssigned
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -233,6 +736,171 @@ const (
 	StorageAccountTypeZRS = StorageAccountType("ZRS")
 )
 
+func (StorageAccountType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageAccountType)(nil)).Elem()
+}
+
+func (e StorageAccountType) ToStorageAccountTypeOutput() StorageAccountTypeOutput {
+	return pulumi.ToOutput(e).(StorageAccountTypeOutput)
+}
+
+func (e StorageAccountType) ToStorageAccountTypeOutputWithContext(ctx context.Context) StorageAccountTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StorageAccountTypeOutput)
+}
+
+func (e StorageAccountType) ToStorageAccountTypePtrOutput() StorageAccountTypePtrOutput {
+	return e.ToStorageAccountTypePtrOutputWithContext(context.Background())
+}
+
+func (e StorageAccountType) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
+	return StorageAccountType(e).ToStorageAccountTypeOutputWithContext(ctx).ToStorageAccountTypePtrOutputWithContext(ctx)
+}
+
+func (e StorageAccountType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageAccountType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageAccountType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StorageAccountType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StorageAccountTypeOutput struct{ *pulumi.OutputState }
+
+func (StorageAccountTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageAccountType)(nil)).Elem()
+}
+
+func (o StorageAccountTypeOutput) ToStorageAccountTypeOutput() StorageAccountTypeOutput {
+	return o
+}
+
+func (o StorageAccountTypeOutput) ToStorageAccountTypeOutputWithContext(ctx context.Context) StorageAccountTypeOutput {
+	return o
+}
+
+func (o StorageAccountTypeOutput) ToStorageAccountTypePtrOutput() StorageAccountTypePtrOutput {
+	return o.ToStorageAccountTypePtrOutputWithContext(context.Background())
+}
+
+func (o StorageAccountTypeOutput) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageAccountType) *StorageAccountType {
+		return &v
+	}).(StorageAccountTypePtrOutput)
+}
+
+func (o StorageAccountTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StorageAccountTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageAccountType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StorageAccountTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageAccountTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageAccountType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageAccountTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageAccountTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageAccountType)(nil)).Elem()
+}
+
+func (o StorageAccountTypePtrOutput) ToStorageAccountTypePtrOutput() StorageAccountTypePtrOutput {
+	return o
+}
+
+func (o StorageAccountTypePtrOutput) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
+	return o
+}
+
+func (o StorageAccountTypePtrOutput) Elem() StorageAccountTypeOutput {
+	return o.ApplyT(func(v *StorageAccountType) StorageAccountType {
+		if v != nil {
+			return *v
+		}
+		var ret StorageAccountType
+		return ret
+	}).(StorageAccountTypeOutput)
+}
+
+func (o StorageAccountTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageAccountTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StorageAccountType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageAccountTypeInput is an input type that accepts values of the StorageAccountType enum
+// A concrete instance of `StorageAccountTypeInput` can be one of the following:
+//
+//	StorageAccountTypeGRS
+//	StorageAccountTypeLRS
+//	StorageAccountTypeZRS
+type StorageAccountTypeInput interface {
+	pulumi.Input
+
+	ToStorageAccountTypeOutput() StorageAccountTypeOutput
+	ToStorageAccountTypeOutputWithContext(context.Context) StorageAccountTypeOutput
+}
+
+var storageAccountTypePtrType = reflect.TypeOf((**StorageAccountType)(nil)).Elem()
+
+type StorageAccountTypePtrInput interface {
+	pulumi.Input
+
+	ToStorageAccountTypePtrOutput() StorageAccountTypePtrOutput
+	ToStorageAccountTypePtrOutputWithContext(context.Context) StorageAccountTypePtrOutput
+}
+
+type storageAccountTypePtr string
+
+func StorageAccountTypePtr(v string) StorageAccountTypePtrInput {
+	return (*storageAccountTypePtr)(&v)
+}
+
+func (*storageAccountTypePtr) ElementType() reflect.Type {
+	return storageAccountTypePtrType
+}
+
+func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutput() StorageAccountTypePtrOutput {
+	return pulumi.ToOutput(in).(StorageAccountTypePtrOutput)
+}
+
+func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
+}
+
+func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
+	return pulumix.Output[*StorageAccountType]{
+		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Enable or Disable public network access to workspace
 type WorkspacePublicNetworkAccess string
 
@@ -241,7 +909,181 @@ const (
 	WorkspacePublicNetworkAccessDisabled = WorkspacePublicNetworkAccess("Disabled")
 )
 
+func (WorkspacePublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspacePublicNetworkAccess)(nil)).Elem()
+}
+
+func (e WorkspacePublicNetworkAccess) ToWorkspacePublicNetworkAccessOutput() WorkspacePublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(WorkspacePublicNetworkAccessOutput)
+}
+
+func (e WorkspacePublicNetworkAccess) ToWorkspacePublicNetworkAccessOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WorkspacePublicNetworkAccessOutput)
+}
+
+func (e WorkspacePublicNetworkAccess) ToWorkspacePublicNetworkAccessPtrOutput() WorkspacePublicNetworkAccessPtrOutput {
+	return e.ToWorkspacePublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e WorkspacePublicNetworkAccess) ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessPtrOutput {
+	return WorkspacePublicNetworkAccess(e).ToWorkspacePublicNetworkAccessOutputWithContext(ctx).ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e WorkspacePublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkspacePublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WorkspacePublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WorkspacePublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WorkspacePublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (WorkspacePublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspacePublicNetworkAccess)(nil)).Elem()
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToWorkspacePublicNetworkAccessOutput() WorkspacePublicNetworkAccessOutput {
+	return o
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToWorkspacePublicNetworkAccessOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessOutput {
+	return o
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToWorkspacePublicNetworkAccessPtrOutput() WorkspacePublicNetworkAccessPtrOutput {
+	return o.ToWorkspacePublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspacePublicNetworkAccess) *WorkspacePublicNetworkAccess {
+		return &v
+	}).(WorkspacePublicNetworkAccessPtrOutput)
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkspacePublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspacePublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkspacePublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkspacePublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspacePublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspacePublicNetworkAccess)(nil)).Elem()
+}
+
+func (o WorkspacePublicNetworkAccessPtrOutput) ToWorkspacePublicNetworkAccessPtrOutput() WorkspacePublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o WorkspacePublicNetworkAccessPtrOutput) ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o WorkspacePublicNetworkAccessPtrOutput) Elem() WorkspacePublicNetworkAccessOutput {
+	return o.ApplyT(func(v *WorkspacePublicNetworkAccess) WorkspacePublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspacePublicNetworkAccess
+		return ret
+	}).(WorkspacePublicNetworkAccessOutput)
+}
+
+func (o WorkspacePublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspacePublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WorkspacePublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WorkspacePublicNetworkAccessInput is an input type that accepts values of the WorkspacePublicNetworkAccess enum
+// A concrete instance of `WorkspacePublicNetworkAccessInput` can be one of the following:
+//
+//	WorkspacePublicNetworkAccessEnabled
+//	WorkspacePublicNetworkAccessDisabled
+type WorkspacePublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToWorkspacePublicNetworkAccessOutput() WorkspacePublicNetworkAccessOutput
+	ToWorkspacePublicNetworkAccessOutputWithContext(context.Context) WorkspacePublicNetworkAccessOutput
+}
+
+var workspacePublicNetworkAccessPtrType = reflect.TypeOf((**WorkspacePublicNetworkAccess)(nil)).Elem()
+
+type WorkspacePublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToWorkspacePublicNetworkAccessPtrOutput() WorkspacePublicNetworkAccessPtrOutput
+	ToWorkspacePublicNetworkAccessPtrOutputWithContext(context.Context) WorkspacePublicNetworkAccessPtrOutput
+}
+
+type workspacePublicNetworkAccessPtr string
+
+func WorkspacePublicNetworkAccessPtr(v string) WorkspacePublicNetworkAccessPtrInput {
+	return (*workspacePublicNetworkAccessPtr)(&v)
+}
+
+func (*workspacePublicNetworkAccessPtr) ElementType() reflect.Type {
+	return workspacePublicNetworkAccessPtrType
+}
+
+func (in *workspacePublicNetworkAccessPtr) ToWorkspacePublicNetworkAccessPtrOutput() WorkspacePublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(WorkspacePublicNetworkAccessPtrOutput)
+}
+
+func (in *workspacePublicNetworkAccessPtr) ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WorkspacePublicNetworkAccessPtrOutput)
+}
+
+func (in *workspacePublicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePublicNetworkAccess] {
+	return pulumix.Output[*WorkspacePublicNetworkAccess]{
+		OutputState: in.ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(CreateModeOutput{})
+	pulumi.RegisterOutputType(CreateModePtrOutput{})
+	pulumi.RegisterOutputType(NodeSizeOutput{})
+	pulumi.RegisterOutputType(NodeSizePtrOutput{})
+	pulumi.RegisterOutputType(NodeSizeFamilyOutput{})
+	pulumi.RegisterOutputType(NodeSizeFamilyPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(StorageAccountTypeOutput{})
+	pulumi.RegisterOutputType(StorageAccountTypePtrOutput{})
+	pulumi.RegisterOutputType(WorkspacePublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(WorkspacePublicNetworkAccessPtrOutput{})
 }

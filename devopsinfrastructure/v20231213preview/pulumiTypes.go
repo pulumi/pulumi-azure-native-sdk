@@ -24,6 +24,71 @@ type AzureDevOpsOrganizationProfile struct {
 	PermissionProfile *AzureDevOpsPermissionProfile `pulumi:"permissionProfile"`
 }
 
+// AzureDevOpsOrganizationProfileInput is an input type that accepts AzureDevOpsOrganizationProfileArgs and AzureDevOpsOrganizationProfileOutput values.
+// You can construct a concrete instance of `AzureDevOpsOrganizationProfileInput` via:
+//
+//	AzureDevOpsOrganizationProfileArgs{...}
+type AzureDevOpsOrganizationProfileInput interface {
+	pulumi.Input
+
+	ToAzureDevOpsOrganizationProfileOutput() AzureDevOpsOrganizationProfileOutput
+	ToAzureDevOpsOrganizationProfileOutputWithContext(context.Context) AzureDevOpsOrganizationProfileOutput
+}
+
+// Azure DevOps organization profile
+type AzureDevOpsOrganizationProfileArgs struct {
+	// Discriminator property for OrganizationProfile.
+	// Expected value is 'AzureDevOps'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The list of Azure DevOps organizations the pool should be present in.
+	Organizations OrganizationArrayInput `pulumi:"organizations"`
+	// The type of permission which determines which accounts are admins on the Azure DevOps pool.
+	PermissionProfile AzureDevOpsPermissionProfilePtrInput `pulumi:"permissionProfile"`
+}
+
+func (AzureDevOpsOrganizationProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsOrganizationProfile)(nil)).Elem()
+}
+
+func (i AzureDevOpsOrganizationProfileArgs) ToAzureDevOpsOrganizationProfileOutput() AzureDevOpsOrganizationProfileOutput {
+	return i.ToAzureDevOpsOrganizationProfileOutputWithContext(context.Background())
+}
+
+func (i AzureDevOpsOrganizationProfileArgs) ToAzureDevOpsOrganizationProfileOutputWithContext(ctx context.Context) AzureDevOpsOrganizationProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsOrganizationProfileOutput)
+}
+
+// Azure DevOps organization profile
+type AzureDevOpsOrganizationProfileOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsOrganizationProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsOrganizationProfile)(nil)).Elem()
+}
+
+func (o AzureDevOpsOrganizationProfileOutput) ToAzureDevOpsOrganizationProfileOutput() AzureDevOpsOrganizationProfileOutput {
+	return o
+}
+
+func (o AzureDevOpsOrganizationProfileOutput) ToAzureDevOpsOrganizationProfileOutputWithContext(ctx context.Context) AzureDevOpsOrganizationProfileOutput {
+	return o
+}
+
+// Discriminator property for OrganizationProfile.
+// Expected value is 'AzureDevOps'.
+func (o AzureDevOpsOrganizationProfileOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDevOpsOrganizationProfile) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The list of Azure DevOps organizations the pool should be present in.
+func (o AzureDevOpsOrganizationProfileOutput) Organizations() OrganizationArrayOutput {
+	return o.ApplyT(func(v AzureDevOpsOrganizationProfile) []Organization { return v.Organizations }).(OrganizationArrayOutput)
+}
+
+// The type of permission which determines which accounts are admins on the Azure DevOps pool.
+func (o AzureDevOpsOrganizationProfileOutput) PermissionProfile() AzureDevOpsPermissionProfilePtrOutput {
+	return o.ApplyT(func(v AzureDevOpsOrganizationProfile) *AzureDevOpsPermissionProfile { return v.PermissionProfile }).(AzureDevOpsPermissionProfilePtrOutput)
+}
+
 // Azure DevOps organization profile
 type AzureDevOpsOrganizationProfileResponse struct {
 	// Discriminator property for OrganizationProfile.
@@ -33,6 +98,39 @@ type AzureDevOpsOrganizationProfileResponse struct {
 	Organizations []OrganizationResponse `pulumi:"organizations"`
 	// The type of permission which determines which accounts are admins on the Azure DevOps pool.
 	PermissionProfile *AzureDevOpsPermissionProfileResponse `pulumi:"permissionProfile"`
+}
+
+// Azure DevOps organization profile
+type AzureDevOpsOrganizationProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsOrganizationProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsOrganizationProfileResponse)(nil)).Elem()
+}
+
+func (o AzureDevOpsOrganizationProfileResponseOutput) ToAzureDevOpsOrganizationProfileResponseOutput() AzureDevOpsOrganizationProfileResponseOutput {
+	return o
+}
+
+func (o AzureDevOpsOrganizationProfileResponseOutput) ToAzureDevOpsOrganizationProfileResponseOutputWithContext(ctx context.Context) AzureDevOpsOrganizationProfileResponseOutput {
+	return o
+}
+
+// Discriminator property for OrganizationProfile.
+// Expected value is 'AzureDevOps'.
+func (o AzureDevOpsOrganizationProfileResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDevOpsOrganizationProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The list of Azure DevOps organizations the pool should be present in.
+func (o AzureDevOpsOrganizationProfileResponseOutput) Organizations() OrganizationResponseArrayOutput {
+	return o.ApplyT(func(v AzureDevOpsOrganizationProfileResponse) []OrganizationResponse { return v.Organizations }).(OrganizationResponseArrayOutput)
+}
+
+// The type of permission which determines which accounts are admins on the Azure DevOps pool.
+func (o AzureDevOpsOrganizationProfileResponseOutput) PermissionProfile() AzureDevOpsPermissionProfileResponsePtrOutput {
+	return o.ApplyT(func(v AzureDevOpsOrganizationProfileResponse) *AzureDevOpsPermissionProfileResponse {
+		return v.PermissionProfile
+	}).(AzureDevOpsPermissionProfileResponsePtrOutput)
 }
 
 // Defines the type of Azure DevOps pool permission.
@@ -45,6 +143,174 @@ type AzureDevOpsPermissionProfile struct {
 	Users []string `pulumi:"users"`
 }
 
+// AzureDevOpsPermissionProfileInput is an input type that accepts AzureDevOpsPermissionProfileArgs and AzureDevOpsPermissionProfileOutput values.
+// You can construct a concrete instance of `AzureDevOpsPermissionProfileInput` via:
+//
+//	AzureDevOpsPermissionProfileArgs{...}
+type AzureDevOpsPermissionProfileInput interface {
+	pulumi.Input
+
+	ToAzureDevOpsPermissionProfileOutput() AzureDevOpsPermissionProfileOutput
+	ToAzureDevOpsPermissionProfileOutputWithContext(context.Context) AzureDevOpsPermissionProfileOutput
+}
+
+// Defines the type of Azure DevOps pool permission.
+type AzureDevOpsPermissionProfileArgs struct {
+	// Group email addresses
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// Determines who has admin permissions to the Azure DevOps pool.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// User email addresses
+	Users pulumi.StringArrayInput `pulumi:"users"`
+}
+
+func (AzureDevOpsPermissionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsPermissionProfile)(nil)).Elem()
+}
+
+func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfileOutput() AzureDevOpsPermissionProfileOutput {
+	return i.ToAzureDevOpsPermissionProfileOutputWithContext(context.Background())
+}
+
+func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfileOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsPermissionProfileOutput)
+}
+
+func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
+	return i.ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i AzureDevOpsPermissionProfileArgs) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsPermissionProfileOutput).ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx)
+}
+
+// AzureDevOpsPermissionProfilePtrInput is an input type that accepts AzureDevOpsPermissionProfileArgs, AzureDevOpsPermissionProfilePtr and AzureDevOpsPermissionProfilePtrOutput values.
+// You can construct a concrete instance of `AzureDevOpsPermissionProfilePtrInput` via:
+//
+//	        AzureDevOpsPermissionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureDevOpsPermissionProfilePtrInput interface {
+	pulumi.Input
+
+	ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput
+	ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Context) AzureDevOpsPermissionProfilePtrOutput
+}
+
+type azureDevOpsPermissionProfilePtrType AzureDevOpsPermissionProfileArgs
+
+func AzureDevOpsPermissionProfilePtr(v *AzureDevOpsPermissionProfileArgs) AzureDevOpsPermissionProfilePtrInput {
+	return (*azureDevOpsPermissionProfilePtrType)(v)
+}
+
+func (*azureDevOpsPermissionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureDevOpsPermissionProfile)(nil)).Elem()
+}
+
+func (i *azureDevOpsPermissionProfilePtrType) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
+	return i.ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *azureDevOpsPermissionProfilePtrType) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsPermissionProfilePtrOutput)
+}
+
+// Defines the type of Azure DevOps pool permission.
+type AzureDevOpsPermissionProfileOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsPermissionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsPermissionProfile)(nil)).Elem()
+}
+
+func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfileOutput() AzureDevOpsPermissionProfileOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfileOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
+	return o.ToAzureDevOpsPermissionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o AzureDevOpsPermissionProfileOutput) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureDevOpsPermissionProfile) *AzureDevOpsPermissionProfile {
+		return &v
+	}).(AzureDevOpsPermissionProfilePtrOutput)
+}
+
+// Group email addresses
+func (o AzureDevOpsPermissionProfileOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureDevOpsPermissionProfile) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// Determines who has admin permissions to the Azure DevOps pool.
+func (o AzureDevOpsPermissionProfileOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDevOpsPermissionProfile) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User email addresses
+func (o AzureDevOpsPermissionProfileOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureDevOpsPermissionProfile) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type AzureDevOpsPermissionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsPermissionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureDevOpsPermissionProfile)(nil)).Elem()
+}
+
+func (o AzureDevOpsPermissionProfilePtrOutput) ToAzureDevOpsPermissionProfilePtrOutput() AzureDevOpsPermissionProfilePtrOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfilePtrOutput) ToAzureDevOpsPermissionProfilePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfilePtrOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfilePtrOutput) Elem() AzureDevOpsPermissionProfileOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) AzureDevOpsPermissionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret AzureDevOpsPermissionProfile
+		return ret
+	}).(AzureDevOpsPermissionProfileOutput)
+}
+
+// Group email addresses
+func (o AzureDevOpsPermissionProfilePtrOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Groups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines who has admin permissions to the Azure DevOps pool.
+func (o AzureDevOpsPermissionProfilePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// User email addresses
+func (o AzureDevOpsPermissionProfilePtrOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfile) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
+}
+
 // Defines the type of Azure DevOps pool permission.
 type AzureDevOpsPermissionProfileResponse struct {
 	// Group email addresses
@@ -53,6 +319,90 @@ type AzureDevOpsPermissionProfileResponse struct {
 	Kind string `pulumi:"kind"`
 	// User email addresses
 	Users []string `pulumi:"users"`
+}
+
+// Defines the type of Azure DevOps pool permission.
+type AzureDevOpsPermissionProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsPermissionProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureDevOpsPermissionProfileResponse)(nil)).Elem()
+}
+
+func (o AzureDevOpsPermissionProfileResponseOutput) ToAzureDevOpsPermissionProfileResponseOutput() AzureDevOpsPermissionProfileResponseOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfileResponseOutput) ToAzureDevOpsPermissionProfileResponseOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileResponseOutput {
+	return o
+}
+
+// Group email addresses
+func (o AzureDevOpsPermissionProfileResponseOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureDevOpsPermissionProfileResponse) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// Determines who has admin permissions to the Azure DevOps pool.
+func (o AzureDevOpsPermissionProfileResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureDevOpsPermissionProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User email addresses
+func (o AzureDevOpsPermissionProfileResponseOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzureDevOpsPermissionProfileResponse) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type AzureDevOpsPermissionProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureDevOpsPermissionProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureDevOpsPermissionProfileResponse)(nil)).Elem()
+}
+
+func (o AzureDevOpsPermissionProfileResponsePtrOutput) ToAzureDevOpsPermissionProfileResponsePtrOutput() AzureDevOpsPermissionProfileResponsePtrOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfileResponsePtrOutput) ToAzureDevOpsPermissionProfileResponsePtrOutputWithContext(ctx context.Context) AzureDevOpsPermissionProfileResponsePtrOutput {
+	return o
+}
+
+func (o AzureDevOpsPermissionProfileResponsePtrOutput) Elem() AzureDevOpsPermissionProfileResponseOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) AzureDevOpsPermissionProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureDevOpsPermissionProfileResponse
+		return ret
+	}).(AzureDevOpsPermissionProfileResponseOutput)
+}
+
+// Group email addresses
+func (o AzureDevOpsPermissionProfileResponsePtrOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Groups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines who has admin permissions to the Azure DevOps pool.
+func (o AzureDevOpsPermissionProfileResponsePtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// User email addresses
+func (o AzureDevOpsPermissionProfileResponsePtrOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AzureDevOpsPermissionProfileResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(pulumi.StringArrayOutput)
 }
 
 // The Azure SKU of the machines in the pool.
@@ -144,6 +494,107 @@ type GitHubOrganization struct {
 	Url string `pulumi:"url"`
 }
 
+// GitHubOrganizationInput is an input type that accepts GitHubOrganizationArgs and GitHubOrganizationOutput values.
+// You can construct a concrete instance of `GitHubOrganizationInput` via:
+//
+//	GitHubOrganizationArgs{...}
+type GitHubOrganizationInput interface {
+	pulumi.Input
+
+	ToGitHubOrganizationOutput() GitHubOrganizationOutput
+	ToGitHubOrganizationOutputWithContext(context.Context) GitHubOrganizationOutput
+}
+
+// Defines a GitHub organization
+type GitHubOrganizationArgs struct {
+	// Optional list of repositories in which the pool should be created.
+	Repositories pulumi.StringArrayInput `pulumi:"repositories"`
+	// The GitHub organization URL in which the pool should be created.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GitHubOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubOrganization)(nil)).Elem()
+}
+
+func (i GitHubOrganizationArgs) ToGitHubOrganizationOutput() GitHubOrganizationOutput {
+	return i.ToGitHubOrganizationOutputWithContext(context.Background())
+}
+
+func (i GitHubOrganizationArgs) ToGitHubOrganizationOutputWithContext(ctx context.Context) GitHubOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubOrganizationOutput)
+}
+
+// GitHubOrganizationArrayInput is an input type that accepts GitHubOrganizationArray and GitHubOrganizationArrayOutput values.
+// You can construct a concrete instance of `GitHubOrganizationArrayInput` via:
+//
+//	GitHubOrganizationArray{ GitHubOrganizationArgs{...} }
+type GitHubOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGitHubOrganizationArrayOutput() GitHubOrganizationArrayOutput
+	ToGitHubOrganizationArrayOutputWithContext(context.Context) GitHubOrganizationArrayOutput
+}
+
+type GitHubOrganizationArray []GitHubOrganizationInput
+
+func (GitHubOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitHubOrganization)(nil)).Elem()
+}
+
+func (i GitHubOrganizationArray) ToGitHubOrganizationArrayOutput() GitHubOrganizationArrayOutput {
+	return i.ToGitHubOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GitHubOrganizationArray) ToGitHubOrganizationArrayOutputWithContext(ctx context.Context) GitHubOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubOrganizationArrayOutput)
+}
+
+// Defines a GitHub organization
+type GitHubOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GitHubOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubOrganization)(nil)).Elem()
+}
+
+func (o GitHubOrganizationOutput) ToGitHubOrganizationOutput() GitHubOrganizationOutput {
+	return o
+}
+
+func (o GitHubOrganizationOutput) ToGitHubOrganizationOutputWithContext(ctx context.Context) GitHubOrganizationOutput {
+	return o
+}
+
+// Optional list of repositories in which the pool should be created.
+func (o GitHubOrganizationOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitHubOrganization) []string { return v.Repositories }).(pulumi.StringArrayOutput)
+}
+
+// The GitHub organization URL in which the pool should be created.
+func (o GitHubOrganizationOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubOrganization) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GitHubOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GitHubOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitHubOrganization)(nil)).Elem()
+}
+
+func (o GitHubOrganizationArrayOutput) ToGitHubOrganizationArrayOutput() GitHubOrganizationArrayOutput {
+	return o
+}
+
+func (o GitHubOrganizationArrayOutput) ToGitHubOrganizationArrayOutputWithContext(ctx context.Context) GitHubOrganizationArrayOutput {
+	return o
+}
+
+func (o GitHubOrganizationArrayOutput) Index(i pulumi.IntInput) GitHubOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitHubOrganization {
+		return vs[0].([]GitHubOrganization)[vs[1].(int)]
+	}).(GitHubOrganizationOutput)
+}
+
 // GitHub organization profile
 type GitHubOrganizationProfile struct {
 	// Discriminator property for OrganizationProfile.
@@ -151,6 +602,64 @@ type GitHubOrganizationProfile struct {
 	Kind string `pulumi:"kind"`
 	// The list of GitHub organizations/repositories the pool should be present in.
 	Organizations []GitHubOrganization `pulumi:"organizations"`
+}
+
+// GitHubOrganizationProfileInput is an input type that accepts GitHubOrganizationProfileArgs and GitHubOrganizationProfileOutput values.
+// You can construct a concrete instance of `GitHubOrganizationProfileInput` via:
+//
+//	GitHubOrganizationProfileArgs{...}
+type GitHubOrganizationProfileInput interface {
+	pulumi.Input
+
+	ToGitHubOrganizationProfileOutput() GitHubOrganizationProfileOutput
+	ToGitHubOrganizationProfileOutputWithContext(context.Context) GitHubOrganizationProfileOutput
+}
+
+// GitHub organization profile
+type GitHubOrganizationProfileArgs struct {
+	// Discriminator property for OrganizationProfile.
+	// Expected value is 'GitHub'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The list of GitHub organizations/repositories the pool should be present in.
+	Organizations GitHubOrganizationArrayInput `pulumi:"organizations"`
+}
+
+func (GitHubOrganizationProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubOrganizationProfile)(nil)).Elem()
+}
+
+func (i GitHubOrganizationProfileArgs) ToGitHubOrganizationProfileOutput() GitHubOrganizationProfileOutput {
+	return i.ToGitHubOrganizationProfileOutputWithContext(context.Background())
+}
+
+func (i GitHubOrganizationProfileArgs) ToGitHubOrganizationProfileOutputWithContext(ctx context.Context) GitHubOrganizationProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitHubOrganizationProfileOutput)
+}
+
+// GitHub organization profile
+type GitHubOrganizationProfileOutput struct{ *pulumi.OutputState }
+
+func (GitHubOrganizationProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubOrganizationProfile)(nil)).Elem()
+}
+
+func (o GitHubOrganizationProfileOutput) ToGitHubOrganizationProfileOutput() GitHubOrganizationProfileOutput {
+	return o
+}
+
+func (o GitHubOrganizationProfileOutput) ToGitHubOrganizationProfileOutputWithContext(ctx context.Context) GitHubOrganizationProfileOutput {
+	return o
+}
+
+// Discriminator property for OrganizationProfile.
+// Expected value is 'GitHub'.
+func (o GitHubOrganizationProfileOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubOrganizationProfile) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The list of GitHub organizations/repositories the pool should be present in.
+func (o GitHubOrganizationProfileOutput) Organizations() GitHubOrganizationArrayOutput {
+	return o.ApplyT(func(v GitHubOrganizationProfile) []GitHubOrganization { return v.Organizations }).(GitHubOrganizationArrayOutput)
 }
 
 // GitHub organization profile
@@ -162,12 +671,83 @@ type GitHubOrganizationProfileResponse struct {
 	Organizations []GitHubOrganizationResponse `pulumi:"organizations"`
 }
 
+// GitHub organization profile
+type GitHubOrganizationProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (GitHubOrganizationProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubOrganizationProfileResponse)(nil)).Elem()
+}
+
+func (o GitHubOrganizationProfileResponseOutput) ToGitHubOrganizationProfileResponseOutput() GitHubOrganizationProfileResponseOutput {
+	return o
+}
+
+func (o GitHubOrganizationProfileResponseOutput) ToGitHubOrganizationProfileResponseOutputWithContext(ctx context.Context) GitHubOrganizationProfileResponseOutput {
+	return o
+}
+
+// Discriminator property for OrganizationProfile.
+// Expected value is 'GitHub'.
+func (o GitHubOrganizationProfileResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubOrganizationProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The list of GitHub organizations/repositories the pool should be present in.
+func (o GitHubOrganizationProfileResponseOutput) Organizations() GitHubOrganizationResponseArrayOutput {
+	return o.ApplyT(func(v GitHubOrganizationProfileResponse) []GitHubOrganizationResponse { return v.Organizations }).(GitHubOrganizationResponseArrayOutput)
+}
+
 // Defines a GitHub organization
 type GitHubOrganizationResponse struct {
 	// Optional list of repositories in which the pool should be created.
 	Repositories []string `pulumi:"repositories"`
 	// The GitHub organization URL in which the pool should be created.
 	Url string `pulumi:"url"`
+}
+
+// Defines a GitHub organization
+type GitHubOrganizationResponseOutput struct{ *pulumi.OutputState }
+
+func (GitHubOrganizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitHubOrganizationResponse)(nil)).Elem()
+}
+
+func (o GitHubOrganizationResponseOutput) ToGitHubOrganizationResponseOutput() GitHubOrganizationResponseOutput {
+	return o
+}
+
+func (o GitHubOrganizationResponseOutput) ToGitHubOrganizationResponseOutputWithContext(ctx context.Context) GitHubOrganizationResponseOutput {
+	return o
+}
+
+// Optional list of repositories in which the pool should be created.
+func (o GitHubOrganizationResponseOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitHubOrganizationResponse) []string { return v.Repositories }).(pulumi.StringArrayOutput)
+}
+
+// The GitHub organization URL in which the pool should be created.
+func (o GitHubOrganizationResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GitHubOrganizationResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GitHubOrganizationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GitHubOrganizationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitHubOrganizationResponse)(nil)).Elem()
+}
+
+func (o GitHubOrganizationResponseArrayOutput) ToGitHubOrganizationResponseArrayOutput() GitHubOrganizationResponseArrayOutput {
+	return o
+}
+
+func (o GitHubOrganizationResponseArrayOutput) ToGitHubOrganizationResponseArrayOutputWithContext(ctx context.Context) GitHubOrganizationResponseArrayOutput {
+	return o
+}
+
+func (o GitHubOrganizationResponseArrayOutput) Index(i pulumi.IntInput) GitHubOrganizationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitHubOrganizationResponse {
+		return vs[0].([]GitHubOrganizationResponse)[vs[1].(int)]
+	}).(GitHubOrganizationResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -652,6 +1232,114 @@ type Organization struct {
 	Url string `pulumi:"url"`
 }
 
+// OrganizationInput is an input type that accepts OrganizationArgs and OrganizationOutput values.
+// You can construct a concrete instance of `OrganizationInput` via:
+//
+//	OrganizationArgs{...}
+type OrganizationInput interface {
+	pulumi.Input
+
+	ToOrganizationOutput() OrganizationOutput
+	ToOrganizationOutputWithContext(context.Context) OrganizationOutput
+}
+
+// Defines an Azure DevOps organization.
+type OrganizationArgs struct {
+	// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
+	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
+	// Optional list of projects in which the pool should be created.
+	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// The Azure DevOps organization URL in which the pool should be created.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (OrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Organization)(nil)).Elem()
+}
+
+func (i OrganizationArgs) ToOrganizationOutput() OrganizationOutput {
+	return i.ToOrganizationOutputWithContext(context.Background())
+}
+
+func (i OrganizationArgs) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationOutput)
+}
+
+// OrganizationArrayInput is an input type that accepts OrganizationArray and OrganizationArrayOutput values.
+// You can construct a concrete instance of `OrganizationArrayInput` via:
+//
+//	OrganizationArray{ OrganizationArgs{...} }
+type OrganizationArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationArrayOutput() OrganizationArrayOutput
+	ToOrganizationArrayOutputWithContext(context.Context) OrganizationArrayOutput
+}
+
+type OrganizationArray []OrganizationInput
+
+func (OrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Organization)(nil)).Elem()
+}
+
+func (i OrganizationArray) ToOrganizationArrayOutput() OrganizationArrayOutput {
+	return i.ToOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationArray) ToOrganizationArrayOutputWithContext(ctx context.Context) OrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationArrayOutput)
+}
+
+// Defines an Azure DevOps organization.
+type OrganizationOutput struct{ *pulumi.OutputState }
+
+func (OrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Organization)(nil)).Elem()
+}
+
+func (o OrganizationOutput) ToOrganizationOutput() OrganizationOutput {
+	return o
+}
+
+func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context) OrganizationOutput {
+	return o
+}
+
+// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
+func (o OrganizationOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Organization) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// Optional list of projects in which the pool should be created.
+func (o OrganizationOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Organization) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// The Azure DevOps organization URL in which the pool should be created.
+func (o OrganizationOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v Organization) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type OrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Organization)(nil)).Elem()
+}
+
+func (o OrganizationArrayOutput) ToOrganizationArrayOutput() OrganizationArrayOutput {
+	return o
+}
+
+func (o OrganizationArrayOutput) ToOrganizationArrayOutputWithContext(ctx context.Context) OrganizationArrayOutput {
+	return o
+}
+
+func (o OrganizationArrayOutput) Index(i pulumi.IntInput) OrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Organization {
+		return vs[0].([]Organization)[vs[1].(int)]
+	}).(OrganizationOutput)
+}
+
 // Defines an Azure DevOps organization.
 type OrganizationResponse struct {
 	// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
@@ -660,6 +1348,56 @@ type OrganizationResponse struct {
 	Projects []string `pulumi:"projects"`
 	// The Azure DevOps organization URL in which the pool should be created.
 	Url string `pulumi:"url"`
+}
+
+// Defines an Azure DevOps organization.
+type OrganizationResponseOutput struct{ *pulumi.OutputState }
+
+func (OrganizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationResponse)(nil)).Elem()
+}
+
+func (o OrganizationResponseOutput) ToOrganizationResponseOutput() OrganizationResponseOutput {
+	return o
+}
+
+func (o OrganizationResponseOutput) ToOrganizationResponseOutputWithContext(ctx context.Context) OrganizationResponseOutput {
+	return o
+}
+
+// How many machines can be created at maximum in this organization out of the maximumConcurrency of the pool.
+func (o OrganizationResponseOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OrganizationResponse) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// Optional list of projects in which the pool should be created.
+func (o OrganizationResponseOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OrganizationResponse) []string { return v.Projects }).(pulumi.StringArrayOutput)
+}
+
+// The Azure DevOps organization URL in which the pool should be created.
+func (o OrganizationResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type OrganizationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationResponse)(nil)).Elem()
+}
+
+func (o OrganizationResponseArrayOutput) ToOrganizationResponseArrayOutput() OrganizationResponseArrayOutput {
+	return o
+}
+
+func (o OrganizationResponseArrayOutput) ToOrganizationResponseArrayOutputWithContext(ctx context.Context) OrganizationResponseArrayOutput {
+	return o
+}
+
+func (o OrganizationResponseArrayOutput) Index(i pulumi.IntInput) OrganizationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationResponse {
+		return vs[0].([]OrganizationResponse)[vs[1].(int)]
+	}).(OrganizationResponseOutput)
 }
 
 // The OS profile of the machines in the pool.
@@ -1396,6 +2134,71 @@ type Stateful struct {
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
 }
 
+// StatefulInput is an input type that accepts StatefulArgs and StatefulOutput values.
+// You can construct a concrete instance of `StatefulInput` via:
+//
+//	StatefulArgs{...}
+type StatefulInput interface {
+	pulumi.Input
+
+	ToStatefulOutput() StatefulOutput
+	ToStatefulOutputWithContext(context.Context) StatefulOutput
+}
+
+// Stateful profile meaning that the machines will be returned to the pool after running a job.
+type StatefulArgs struct {
+	// Discriminator property for AgentProfile.
+	// Expected value is 'Stateful'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// How long should stateful machines be kept around. The maximum is one week.
+	MaxAgentLifetime pulumi.StringInput `pulumi:"maxAgentLifetime"`
+	// Defines pool buffer.
+	ResourcePredictions pulumi.Input `pulumi:"resourcePredictions"`
+}
+
+func (StatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Stateful)(nil)).Elem()
+}
+
+func (i StatefulArgs) ToStatefulOutput() StatefulOutput {
+	return i.ToStatefulOutputWithContext(context.Background())
+}
+
+func (i StatefulArgs) ToStatefulOutputWithContext(ctx context.Context) StatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulOutput)
+}
+
+// Stateful profile meaning that the machines will be returned to the pool after running a job.
+type StatefulOutput struct{ *pulumi.OutputState }
+
+func (StatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Stateful)(nil)).Elem()
+}
+
+func (o StatefulOutput) ToStatefulOutput() StatefulOutput {
+	return o
+}
+
+func (o StatefulOutput) ToStatefulOutputWithContext(ctx context.Context) StatefulOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateful'.
+func (o StatefulOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v Stateful) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// How long should stateful machines be kept around. The maximum is one week.
+func (o StatefulOutput) MaxAgentLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v Stateful) string { return v.MaxAgentLifetime }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatefulOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v Stateful) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
+}
+
 // Stateful profile meaning that the machines will be returned to the pool after running a job.
 type StatefulResponse struct {
 	// Discriminator property for AgentProfile.
@@ -1407,6 +2210,37 @@ type StatefulResponse struct {
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
 }
 
+// Stateful profile meaning that the machines will be returned to the pool after running a job.
+type StatefulResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulResponse)(nil)).Elem()
+}
+
+func (o StatefulResponseOutput) ToStatefulResponseOutput() StatefulResponseOutput {
+	return o
+}
+
+func (o StatefulResponseOutput) ToStatefulResponseOutputWithContext(ctx context.Context) StatefulResponseOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateful'.
+func (o StatefulResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// How long should stateful machines be kept around. The maximum is one week.
+func (o StatefulResponseOutput) MaxAgentLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulResponse) string { return v.MaxAgentLifetime }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatefulResponseOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatefulResponse) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
+}
+
 // Stateless profile meaning that the machines will be cleaned up after running a job.
 type StatelessAgentProfile struct {
 	// Discriminator property for AgentProfile.
@@ -1416,6 +2250,64 @@ type StatelessAgentProfile struct {
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
 }
 
+// StatelessAgentProfileInput is an input type that accepts StatelessAgentProfileArgs and StatelessAgentProfileOutput values.
+// You can construct a concrete instance of `StatelessAgentProfileInput` via:
+//
+//	StatelessAgentProfileArgs{...}
+type StatelessAgentProfileInput interface {
+	pulumi.Input
+
+	ToStatelessAgentProfileOutput() StatelessAgentProfileOutput
+	ToStatelessAgentProfileOutputWithContext(context.Context) StatelessAgentProfileOutput
+}
+
+// Stateless profile meaning that the machines will be cleaned up after running a job.
+type StatelessAgentProfileArgs struct {
+	// Discriminator property for AgentProfile.
+	// Expected value is 'Stateless'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Defines pool buffer.
+	ResourcePredictions pulumi.Input `pulumi:"resourcePredictions"`
+}
+
+func (StatelessAgentProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessAgentProfile)(nil)).Elem()
+}
+
+func (i StatelessAgentProfileArgs) ToStatelessAgentProfileOutput() StatelessAgentProfileOutput {
+	return i.ToStatelessAgentProfileOutputWithContext(context.Background())
+}
+
+func (i StatelessAgentProfileArgs) ToStatelessAgentProfileOutputWithContext(ctx context.Context) StatelessAgentProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatelessAgentProfileOutput)
+}
+
+// Stateless profile meaning that the machines will be cleaned up after running a job.
+type StatelessAgentProfileOutput struct{ *pulumi.OutputState }
+
+func (StatelessAgentProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessAgentProfile)(nil)).Elem()
+}
+
+func (o StatelessAgentProfileOutput) ToStatelessAgentProfileOutput() StatelessAgentProfileOutput {
+	return o
+}
+
+func (o StatelessAgentProfileOutput) ToStatelessAgentProfileOutputWithContext(ctx context.Context) StatelessAgentProfileOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateless'.
+func (o StatelessAgentProfileOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessAgentProfile) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatelessAgentProfileOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatelessAgentProfile) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
+}
+
 // Stateless profile meaning that the machines will be cleaned up after running a job.
 type StatelessAgentProfileResponse struct {
 	// Discriminator property for AgentProfile.
@@ -1423,6 +2315,32 @@ type StatelessAgentProfileResponse struct {
 	Kind string `pulumi:"kind"`
 	// Defines pool buffer.
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
+}
+
+// Stateless profile meaning that the machines will be cleaned up after running a job.
+type StatelessAgentProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (StatelessAgentProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessAgentProfileResponse)(nil)).Elem()
+}
+
+func (o StatelessAgentProfileResponseOutput) ToStatelessAgentProfileResponseOutput() StatelessAgentProfileResponseOutput {
+	return o
+}
+
+func (o StatelessAgentProfileResponseOutput) ToStatelessAgentProfileResponseOutputWithContext(ctx context.Context) StatelessAgentProfileResponseOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateless'.
+func (o StatelessAgentProfileResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessAgentProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatelessAgentProfileResponseOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatelessAgentProfileResponse) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
 }
 
 // The storage profile of the VMSS.
@@ -1906,8 +2824,20 @@ func (o VmssFabricProfileResponseOutput) StorageProfile() StorageProfileResponse
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzureDevOpsOrganizationProfileOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsOrganizationProfileResponseOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsPermissionProfileOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsPermissionProfilePtrOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsPermissionProfileResponseOutput{})
+	pulumi.RegisterOutputType(AzureDevOpsPermissionProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(DevOpsAzureSkuOutput{})
 	pulumi.RegisterOutputType(DevOpsAzureSkuResponseOutput{})
+	pulumi.RegisterOutputType(GitHubOrganizationOutput{})
+	pulumi.RegisterOutputType(GitHubOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GitHubOrganizationProfileOutput{})
+	pulumi.RegisterOutputType(GitHubOrganizationProfileResponseOutput{})
+	pulumi.RegisterOutputType(GitHubOrganizationResponseOutput{})
+	pulumi.RegisterOutputType(GitHubOrganizationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -1916,6 +2846,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationOutput{})
+	pulumi.RegisterOutputType(OrganizationArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationResponseOutput{})
+	pulumi.RegisterOutputType(OrganizationResponseArrayOutput{})
 	pulumi.RegisterOutputType(OsProfileOutput{})
 	pulumi.RegisterOutputType(OsProfilePtrOutput{})
 	pulumi.RegisterOutputType(OsProfileResponseOutput{})
@@ -1928,6 +2862,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretsManagementSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecretsManagementSettingsResponseOutput{})
 	pulumi.RegisterOutputType(SecretsManagementSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(StatefulOutput{})
+	pulumi.RegisterOutputType(StatefulResponseOutput{})
+	pulumi.RegisterOutputType(StatelessAgentProfileOutput{})
+	pulumi.RegisterOutputType(StatelessAgentProfileResponseOutput{})
 	pulumi.RegisterOutputType(StorageProfileOutput{})
 	pulumi.RegisterOutputType(StorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})

@@ -73,6 +73,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlResourceSqlUserDefinedFunction{}
 	case "azure-native:documentdb:TableResourceTable":
 		r = &TableResourceTable{}
+	case "azure-native:documentdb:ThroughputPool":
+		r = &ThroughputPool{}
+	case "azure-native:documentdb:ThroughputPoolAccount":
+		r = &ThroughputPoolAccount{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

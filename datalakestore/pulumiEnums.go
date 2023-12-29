@@ -138,10 +138,11 @@ func (o EncryptionConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// EncryptionConfigTypeInput is an input type that accepts EncryptionConfigTypeArgs and EncryptionConfigTypeOutput values.
-// You can construct a concrete instance of `EncryptionConfigTypeInput` via:
+// EncryptionConfigTypeInput is an input type that accepts values of the EncryptionConfigType enum
+// A concrete instance of `EncryptionConfigTypeInput` can be one of the following:
 //
-//	EncryptionConfigTypeArgs{...}
+//	EncryptionConfigTypeUserManaged
+//	EncryptionConfigTypeServiceManaged
 type EncryptionConfigTypeInput interface {
 	pulumi.Input
 
@@ -308,10 +309,10 @@ func (o EncryptionIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// EncryptionIdentityTypeInput is an input type that accepts EncryptionIdentityTypeArgs and EncryptionIdentityTypeOutput values.
-// You can construct a concrete instance of `EncryptionIdentityTypeInput` via:
+// EncryptionIdentityTypeInput is an input type that accepts values of the EncryptionIdentityType enum
+// A concrete instance of `EncryptionIdentityTypeInput` can be one of the following:
 //
-//	EncryptionIdentityTypeArgs{...}
+//	EncryptionIdentityTypeSystemAssigned
 type EncryptionIdentityTypeInput interface {
 	pulumi.Input
 
@@ -479,10 +480,11 @@ func (o EncryptionStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// EncryptionStateInput is an input type that accepts EncryptionStateArgs and EncryptionStateOutput values.
-// You can construct a concrete instance of `EncryptionStateInput` via:
+// EncryptionStateInput is an input type that accepts values of the EncryptionState enum
+// A concrete instance of `EncryptionStateInput` can be one of the following:
 //
-//	EncryptionStateArgs{...}
+//	EncryptionStateEnabled
+//	EncryptionStateDisabled
 type EncryptionStateInput interface {
 	pulumi.Input
 
@@ -650,10 +652,11 @@ func (o FirewallAllowAzureIpsStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// FirewallAllowAzureIpsStateInput is an input type that accepts FirewallAllowAzureIpsStateArgs and FirewallAllowAzureIpsStateOutput values.
-// You can construct a concrete instance of `FirewallAllowAzureIpsStateInput` via:
+// FirewallAllowAzureIpsStateInput is an input type that accepts values of the FirewallAllowAzureIpsState enum
+// A concrete instance of `FirewallAllowAzureIpsStateInput` can be one of the following:
 //
-//	FirewallAllowAzureIpsStateArgs{...}
+//	FirewallAllowAzureIpsStateEnabled
+//	FirewallAllowAzureIpsStateDisabled
 type FirewallAllowAzureIpsStateInput interface {
 	pulumi.Input
 
@@ -821,10 +824,11 @@ func (o FirewallStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// FirewallStateInput is an input type that accepts FirewallStateArgs and FirewallStateOutput values.
-// You can construct a concrete instance of `FirewallStateInput` via:
+// FirewallStateInput is an input type that accepts values of the FirewallState enum
+// A concrete instance of `FirewallStateInput` can be one of the following:
 //
-//	FirewallStateArgs{...}
+//	FirewallStateEnabled
+//	FirewallStateDisabled
 type FirewallStateInput interface {
 	pulumi.Input
 
@@ -997,10 +1001,16 @@ func (o TierTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// TierTypeInput is an input type that accepts TierTypeArgs and TierTypeOutput values.
-// You can construct a concrete instance of `TierTypeInput` via:
+// TierTypeInput is an input type that accepts values of the TierType enum
+// A concrete instance of `TierTypeInput` can be one of the following:
 //
-//	TierTypeArgs{...}
+//	TierTypeConsumption
+//	TierType_Commitment_1TB
+//	TierType_Commitment_10TB
+//	TierType_Commitment_100TB
+//	TierType_Commitment_500TB
+//	TierType_Commitment_1PB
+//	TierType_Commitment_5PB
 type TierTypeInput interface {
 	pulumi.Input
 
@@ -1168,10 +1178,11 @@ func (o TrustedIdProviderStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// TrustedIdProviderStateEnumInput is an input type that accepts TrustedIdProviderStateEnumArgs and TrustedIdProviderStateEnumOutput values.
-// You can construct a concrete instance of `TrustedIdProviderStateEnumInput` via:
+// TrustedIdProviderStateEnumInput is an input type that accepts values of the TrustedIdProviderStateEnum enum
+// A concrete instance of `TrustedIdProviderStateEnumInput` can be one of the following:
 //
-//	TrustedIdProviderStateEnumArgs{...}
+//	TrustedIdProviderStateEnumEnabled
+//	TrustedIdProviderStateEnumDisabled
 type TrustedIdProviderStateEnumInput interface {
 	pulumi.Input
 

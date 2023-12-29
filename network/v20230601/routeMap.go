@@ -70,6 +70,9 @@ func NewRouteMap(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:RouteMap"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230901:RouteMap"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -34,6 +34,62 @@ type ActivityTimelineItemResponse struct {
 	Title string `pulumi:"title"`
 }
 
+// Represents Activity timeline item.
+type ActivityTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (ActivityTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActivityTimelineItemResponse)(nil)).Elem()
+}
+
+func (o ActivityTimelineItemResponseOutput) ToActivityTimelineItemResponseOutput() ActivityTimelineItemResponseOutput {
+	return o
+}
+
+func (o ActivityTimelineItemResponseOutput) ToActivityTimelineItemResponseOutputWithContext(ctx context.Context) ActivityTimelineItemResponseOutput {
+	return o
+}
+
+// The grouping bucket end time.
+func (o ActivityTimelineItemResponseOutput) BucketEndTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.BucketEndTimeUTC }).(pulumi.StringOutput)
+}
+
+// The grouping bucket start time.
+func (o ActivityTimelineItemResponseOutput) BucketStartTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.BucketStartTimeUTC }).(pulumi.StringOutput)
+}
+
+// The activity timeline content.
+func (o ActivityTimelineItemResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The time of the first activity in the grouping bucket.
+func (o ActivityTimelineItemResponseOutput) FirstActivityTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.FirstActivityTimeUTC }).(pulumi.StringOutput)
+}
+
+// The entity query kind
+// Expected value is 'Activity'.
+func (o ActivityTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The time of the last activity in the grouping bucket.
+func (o ActivityTimelineItemResponseOutput) LastActivityTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.LastActivityTimeUTC }).(pulumi.StringOutput)
+}
+
+// The activity query id.
+func (o ActivityTimelineItemResponseOutput) QueryId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.QueryId }).(pulumi.StringOutput)
+}
+
+// The activity timeline title.
+func (o ActivityTimelineItemResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // Describes an automation rule action to modify an object's properties
 type AutomationRuleModifyPropertiesAction struct {
 	// The configuration of the modify properties automation rule action
@@ -43,6 +99,73 @@ type AutomationRuleModifyPropertiesAction struct {
 	ActionType string `pulumi:"actionType"`
 	// The order of execution of the automation rule action
 	Order int `pulumi:"order"`
+}
+
+// AutomationRuleModifyPropertiesActionInput is an input type that accepts AutomationRuleModifyPropertiesActionArgs and AutomationRuleModifyPropertiesActionOutput values.
+// You can construct a concrete instance of `AutomationRuleModifyPropertiesActionInput` via:
+//
+//	AutomationRuleModifyPropertiesActionArgs{...}
+type AutomationRuleModifyPropertiesActionInput interface {
+	pulumi.Input
+
+	ToAutomationRuleModifyPropertiesActionOutput() AutomationRuleModifyPropertiesActionOutput
+	ToAutomationRuleModifyPropertiesActionOutputWithContext(context.Context) AutomationRuleModifyPropertiesActionOutput
+}
+
+// Describes an automation rule action to modify an object's properties
+type AutomationRuleModifyPropertiesActionArgs struct {
+	// The configuration of the modify properties automation rule action
+	ActionConfiguration AutomationRuleModifyPropertiesActionActionConfigurationInput `pulumi:"actionConfiguration"`
+	// The type of the automation rule action
+	// Expected value is 'ModifyProperties'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	// The order of execution of the automation rule action
+	Order pulumi.IntInput `pulumi:"order"`
+}
+
+func (AutomationRuleModifyPropertiesActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleModifyPropertiesAction)(nil)).Elem()
+}
+
+func (i AutomationRuleModifyPropertiesActionArgs) ToAutomationRuleModifyPropertiesActionOutput() AutomationRuleModifyPropertiesActionOutput {
+	return i.ToAutomationRuleModifyPropertiesActionOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleModifyPropertiesActionArgs) ToAutomationRuleModifyPropertiesActionOutputWithContext(ctx context.Context) AutomationRuleModifyPropertiesActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleModifyPropertiesActionOutput)
+}
+
+// Describes an automation rule action to modify an object's properties
+type AutomationRuleModifyPropertiesActionOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleModifyPropertiesActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleModifyPropertiesAction)(nil)).Elem()
+}
+
+func (o AutomationRuleModifyPropertiesActionOutput) ToAutomationRuleModifyPropertiesActionOutput() AutomationRuleModifyPropertiesActionOutput {
+	return o
+}
+
+func (o AutomationRuleModifyPropertiesActionOutput) ToAutomationRuleModifyPropertiesActionOutputWithContext(ctx context.Context) AutomationRuleModifyPropertiesActionOutput {
+	return o
+}
+
+// The configuration of the modify properties automation rule action
+func (o AutomationRuleModifyPropertiesActionOutput) ActionConfiguration() AutomationRuleModifyPropertiesActionActionConfigurationOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesAction) AutomationRuleModifyPropertiesActionActionConfiguration {
+		return v.ActionConfiguration
+	}).(AutomationRuleModifyPropertiesActionActionConfigurationOutput)
+}
+
+// The type of the automation rule action
+// Expected value is 'ModifyProperties'.
+func (o AutomationRuleModifyPropertiesActionOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesAction) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The order of execution of the automation rule action
+func (o AutomationRuleModifyPropertiesActionOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesAction) int { return v.Order }).(pulumi.IntOutput)
 }
 
 // The configuration of the modify properties automation rule action
@@ -63,6 +186,99 @@ type AutomationRuleModifyPropertiesActionActionConfiguration struct {
 	Status *string `pulumi:"status"`
 }
 
+// AutomationRuleModifyPropertiesActionActionConfigurationInput is an input type that accepts AutomationRuleModifyPropertiesActionActionConfigurationArgs and AutomationRuleModifyPropertiesActionActionConfigurationOutput values.
+// You can construct a concrete instance of `AutomationRuleModifyPropertiesActionActionConfigurationInput` via:
+//
+//	AutomationRuleModifyPropertiesActionActionConfigurationArgs{...}
+type AutomationRuleModifyPropertiesActionActionConfigurationInput interface {
+	pulumi.Input
+
+	ToAutomationRuleModifyPropertiesActionActionConfigurationOutput() AutomationRuleModifyPropertiesActionActionConfigurationOutput
+	ToAutomationRuleModifyPropertiesActionActionConfigurationOutputWithContext(context.Context) AutomationRuleModifyPropertiesActionActionConfigurationOutput
+}
+
+// The configuration of the modify properties automation rule action
+type AutomationRuleModifyPropertiesActionActionConfigurationArgs struct {
+	// The reason the incident was closed
+	Classification pulumi.StringPtrInput `pulumi:"classification"`
+	// Describes the reason the incident was closed
+	ClassificationComment pulumi.StringPtrInput `pulumi:"classificationComment"`
+	// The classification reason to close the incident with
+	ClassificationReason pulumi.StringPtrInput `pulumi:"classificationReason"`
+	// List of labels to add to the incident
+	Labels IncidentLabelArrayInput `pulumi:"labels"`
+	// Describes a user that the incident is assigned to
+	Owner IncidentOwnerInfoPtrInput `pulumi:"owner"`
+	// The severity of the incident
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// The status of the incident
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (AutomationRuleModifyPropertiesActionActionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleModifyPropertiesActionActionConfiguration)(nil)).Elem()
+}
+
+func (i AutomationRuleModifyPropertiesActionActionConfigurationArgs) ToAutomationRuleModifyPropertiesActionActionConfigurationOutput() AutomationRuleModifyPropertiesActionActionConfigurationOutput {
+	return i.ToAutomationRuleModifyPropertiesActionActionConfigurationOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleModifyPropertiesActionActionConfigurationArgs) ToAutomationRuleModifyPropertiesActionActionConfigurationOutputWithContext(ctx context.Context) AutomationRuleModifyPropertiesActionActionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleModifyPropertiesActionActionConfigurationOutput)
+}
+
+// The configuration of the modify properties automation rule action
+type AutomationRuleModifyPropertiesActionActionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleModifyPropertiesActionActionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleModifyPropertiesActionActionConfiguration)(nil)).Elem()
+}
+
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) ToAutomationRuleModifyPropertiesActionActionConfigurationOutput() AutomationRuleModifyPropertiesActionActionConfigurationOutput {
+	return o
+}
+
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) ToAutomationRuleModifyPropertiesActionActionConfigurationOutputWithContext(ctx context.Context) AutomationRuleModifyPropertiesActionActionConfigurationOutput {
+	return o
+}
+
+// The reason the incident was closed
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) Classification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) *string { return v.Classification }).(pulumi.StringPtrOutput)
+}
+
+// Describes the reason the incident was closed
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) ClassificationComment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) *string {
+		return v.ClassificationComment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The classification reason to close the incident with
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) ClassificationReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) *string { return v.ClassificationReason }).(pulumi.StringPtrOutput)
+}
+
+// List of labels to add to the incident
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) Labels() IncidentLabelArrayOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) []IncidentLabel { return v.Labels }).(IncidentLabelArrayOutput)
+}
+
+// Describes a user that the incident is assigned to
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) Owner() IncidentOwnerInfoPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) *IncidentOwnerInfo { return v.Owner }).(IncidentOwnerInfoPtrOutput)
+}
+
+// The severity of the incident
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// The status of the incident
+func (o AutomationRuleModifyPropertiesActionActionConfigurationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionActionConfiguration) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
 // Describes an automation rule action to modify an object's properties
 type AutomationRuleModifyPropertiesActionResponse struct {
 	// The configuration of the modify properties automation rule action
@@ -72,6 +288,39 @@ type AutomationRuleModifyPropertiesActionResponse struct {
 	ActionType string `pulumi:"actionType"`
 	// The order of execution of the automation rule action
 	Order int `pulumi:"order"`
+}
+
+// Describes an automation rule action to modify an object's properties
+type AutomationRuleModifyPropertiesActionResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleModifyPropertiesActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleModifyPropertiesActionResponse)(nil)).Elem()
+}
+
+func (o AutomationRuleModifyPropertiesActionResponseOutput) ToAutomationRuleModifyPropertiesActionResponseOutput() AutomationRuleModifyPropertiesActionResponseOutput {
+	return o
+}
+
+func (o AutomationRuleModifyPropertiesActionResponseOutput) ToAutomationRuleModifyPropertiesActionResponseOutputWithContext(ctx context.Context) AutomationRuleModifyPropertiesActionResponseOutput {
+	return o
+}
+
+// The configuration of the modify properties automation rule action
+func (o AutomationRuleModifyPropertiesActionResponseOutput) ActionConfiguration() AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponse) AutomationRuleModifyPropertiesActionResponseActionConfiguration {
+		return v.ActionConfiguration
+	}).(AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput)
+}
+
+// The type of the automation rule action
+// Expected value is 'ModifyProperties'.
+func (o AutomationRuleModifyPropertiesActionResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The order of execution of the automation rule action
+func (o AutomationRuleModifyPropertiesActionResponseOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponse) int { return v.Order }).(pulumi.IntOutput)
 }
 
 // The configuration of the modify properties automation rule action
@@ -90,6 +339,66 @@ type AutomationRuleModifyPropertiesActionResponseActionConfiguration struct {
 	Severity *string `pulumi:"severity"`
 	// The status of the incident
 	Status *string `pulumi:"status"`
+}
+
+// The configuration of the modify properties automation rule action
+type AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleModifyPropertiesActionResponseActionConfiguration)(nil)).Elem()
+}
+
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) ToAutomationRuleModifyPropertiesActionResponseActionConfigurationOutput() AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput {
+	return o
+}
+
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) ToAutomationRuleModifyPropertiesActionResponseActionConfigurationOutputWithContext(ctx context.Context) AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput {
+	return o
+}
+
+// The reason the incident was closed
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) Classification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) *string {
+		return v.Classification
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the reason the incident was closed
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) ClassificationComment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) *string {
+		return v.ClassificationComment
+	}).(pulumi.StringPtrOutput)
+}
+
+// The classification reason to close the incident with
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) ClassificationReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) *string {
+		return v.ClassificationReason
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of labels to add to the incident
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) Labels() IncidentLabelResponseArrayOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) []IncidentLabelResponse {
+		return v.Labels
+	}).(IncidentLabelResponseArrayOutput)
+}
+
+// Describes a user that the incident is assigned to
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) Owner() IncidentOwnerInfoResponsePtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) *IncidentOwnerInfoResponse {
+		return v.Owner
+	}).(IncidentOwnerInfoResponsePtrOutput)
+}
+
+// The severity of the incident
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// The status of the incident
+func (o AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleModifyPropertiesActionResponseActionConfiguration) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // Describes an automation rule condition that evaluates a property's value
@@ -391,12 +700,135 @@ type AutomationRuleRunPlaybookAction struct {
 	Order int `pulumi:"order"`
 }
 
+// AutomationRuleRunPlaybookActionInput is an input type that accepts AutomationRuleRunPlaybookActionArgs and AutomationRuleRunPlaybookActionOutput values.
+// You can construct a concrete instance of `AutomationRuleRunPlaybookActionInput` via:
+//
+//	AutomationRuleRunPlaybookActionArgs{...}
+type AutomationRuleRunPlaybookActionInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRunPlaybookActionOutput() AutomationRuleRunPlaybookActionOutput
+	ToAutomationRuleRunPlaybookActionOutputWithContext(context.Context) AutomationRuleRunPlaybookActionOutput
+}
+
+// Describes an automation rule action to run a playbook
+type AutomationRuleRunPlaybookActionArgs struct {
+	// The configuration of the run playbook automation rule action
+	ActionConfiguration AutomationRuleRunPlaybookActionActionConfigurationInput `pulumi:"actionConfiguration"`
+	// The type of the automation rule action
+	// Expected value is 'RunPlaybook'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	// The order of execution of the automation rule action
+	Order pulumi.IntInput `pulumi:"order"`
+}
+
+func (AutomationRuleRunPlaybookActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRunPlaybookAction)(nil)).Elem()
+}
+
+func (i AutomationRuleRunPlaybookActionArgs) ToAutomationRuleRunPlaybookActionOutput() AutomationRuleRunPlaybookActionOutput {
+	return i.ToAutomationRuleRunPlaybookActionOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRunPlaybookActionArgs) ToAutomationRuleRunPlaybookActionOutputWithContext(ctx context.Context) AutomationRuleRunPlaybookActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRunPlaybookActionOutput)
+}
+
+// Describes an automation rule action to run a playbook
+type AutomationRuleRunPlaybookActionOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRunPlaybookActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRunPlaybookAction)(nil)).Elem()
+}
+
+func (o AutomationRuleRunPlaybookActionOutput) ToAutomationRuleRunPlaybookActionOutput() AutomationRuleRunPlaybookActionOutput {
+	return o
+}
+
+func (o AutomationRuleRunPlaybookActionOutput) ToAutomationRuleRunPlaybookActionOutputWithContext(ctx context.Context) AutomationRuleRunPlaybookActionOutput {
+	return o
+}
+
+// The configuration of the run playbook automation rule action
+func (o AutomationRuleRunPlaybookActionOutput) ActionConfiguration() AutomationRuleRunPlaybookActionActionConfigurationOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookAction) AutomationRuleRunPlaybookActionActionConfiguration {
+		return v.ActionConfiguration
+	}).(AutomationRuleRunPlaybookActionActionConfigurationOutput)
+}
+
+// The type of the automation rule action
+// Expected value is 'RunPlaybook'.
+func (o AutomationRuleRunPlaybookActionOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookAction) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The order of execution of the automation rule action
+func (o AutomationRuleRunPlaybookActionOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookAction) int { return v.Order }).(pulumi.IntOutput)
+}
+
 // The configuration of the run playbook automation rule action
 type AutomationRuleRunPlaybookActionActionConfiguration struct {
 	// The resource id of the playbook resource
 	LogicAppResourceId *string `pulumi:"logicAppResourceId"`
 	// The tenant id of the playbook resource
 	TenantId *string `pulumi:"tenantId"`
+}
+
+// AutomationRuleRunPlaybookActionActionConfigurationInput is an input type that accepts AutomationRuleRunPlaybookActionActionConfigurationArgs and AutomationRuleRunPlaybookActionActionConfigurationOutput values.
+// You can construct a concrete instance of `AutomationRuleRunPlaybookActionActionConfigurationInput` via:
+//
+//	AutomationRuleRunPlaybookActionActionConfigurationArgs{...}
+type AutomationRuleRunPlaybookActionActionConfigurationInput interface {
+	pulumi.Input
+
+	ToAutomationRuleRunPlaybookActionActionConfigurationOutput() AutomationRuleRunPlaybookActionActionConfigurationOutput
+	ToAutomationRuleRunPlaybookActionActionConfigurationOutputWithContext(context.Context) AutomationRuleRunPlaybookActionActionConfigurationOutput
+}
+
+// The configuration of the run playbook automation rule action
+type AutomationRuleRunPlaybookActionActionConfigurationArgs struct {
+	// The resource id of the playbook resource
+	LogicAppResourceId pulumi.StringPtrInput `pulumi:"logicAppResourceId"`
+	// The tenant id of the playbook resource
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (AutomationRuleRunPlaybookActionActionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRunPlaybookActionActionConfiguration)(nil)).Elem()
+}
+
+func (i AutomationRuleRunPlaybookActionActionConfigurationArgs) ToAutomationRuleRunPlaybookActionActionConfigurationOutput() AutomationRuleRunPlaybookActionActionConfigurationOutput {
+	return i.ToAutomationRuleRunPlaybookActionActionConfigurationOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleRunPlaybookActionActionConfigurationArgs) ToAutomationRuleRunPlaybookActionActionConfigurationOutputWithContext(ctx context.Context) AutomationRuleRunPlaybookActionActionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleRunPlaybookActionActionConfigurationOutput)
+}
+
+// The configuration of the run playbook automation rule action
+type AutomationRuleRunPlaybookActionActionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRunPlaybookActionActionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRunPlaybookActionActionConfiguration)(nil)).Elem()
+}
+
+func (o AutomationRuleRunPlaybookActionActionConfigurationOutput) ToAutomationRuleRunPlaybookActionActionConfigurationOutput() AutomationRuleRunPlaybookActionActionConfigurationOutput {
+	return o
+}
+
+func (o AutomationRuleRunPlaybookActionActionConfigurationOutput) ToAutomationRuleRunPlaybookActionActionConfigurationOutputWithContext(ctx context.Context) AutomationRuleRunPlaybookActionActionConfigurationOutput {
+	return o
+}
+
+// The resource id of the playbook resource
+func (o AutomationRuleRunPlaybookActionActionConfigurationOutput) LogicAppResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionActionConfiguration) *string { return v.LogicAppResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The tenant id of the playbook resource
+func (o AutomationRuleRunPlaybookActionActionConfigurationOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionActionConfiguration) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // Describes an automation rule action to run a playbook
@@ -410,12 +842,72 @@ type AutomationRuleRunPlaybookActionResponse struct {
 	Order int `pulumi:"order"`
 }
 
+// Describes an automation rule action to run a playbook
+type AutomationRuleRunPlaybookActionResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRunPlaybookActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRunPlaybookActionResponse)(nil)).Elem()
+}
+
+func (o AutomationRuleRunPlaybookActionResponseOutput) ToAutomationRuleRunPlaybookActionResponseOutput() AutomationRuleRunPlaybookActionResponseOutput {
+	return o
+}
+
+func (o AutomationRuleRunPlaybookActionResponseOutput) ToAutomationRuleRunPlaybookActionResponseOutputWithContext(ctx context.Context) AutomationRuleRunPlaybookActionResponseOutput {
+	return o
+}
+
+// The configuration of the run playbook automation rule action
+func (o AutomationRuleRunPlaybookActionResponseOutput) ActionConfiguration() AutomationRuleRunPlaybookActionResponseActionConfigurationOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionResponse) AutomationRuleRunPlaybookActionResponseActionConfiguration {
+		return v.ActionConfiguration
+	}).(AutomationRuleRunPlaybookActionResponseActionConfigurationOutput)
+}
+
+// The type of the automation rule action
+// Expected value is 'RunPlaybook'.
+func (o AutomationRuleRunPlaybookActionResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The order of execution of the automation rule action
+func (o AutomationRuleRunPlaybookActionResponseOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionResponse) int { return v.Order }).(pulumi.IntOutput)
+}
+
 // The configuration of the run playbook automation rule action
 type AutomationRuleRunPlaybookActionResponseActionConfiguration struct {
 	// The resource id of the playbook resource
 	LogicAppResourceId *string `pulumi:"logicAppResourceId"`
 	// The tenant id of the playbook resource
 	TenantId *string `pulumi:"tenantId"`
+}
+
+// The configuration of the run playbook automation rule action
+type AutomationRuleRunPlaybookActionResponseActionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleRunPlaybookActionResponseActionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleRunPlaybookActionResponseActionConfiguration)(nil)).Elem()
+}
+
+func (o AutomationRuleRunPlaybookActionResponseActionConfigurationOutput) ToAutomationRuleRunPlaybookActionResponseActionConfigurationOutput() AutomationRuleRunPlaybookActionResponseActionConfigurationOutput {
+	return o
+}
+
+func (o AutomationRuleRunPlaybookActionResponseActionConfigurationOutput) ToAutomationRuleRunPlaybookActionResponseActionConfigurationOutputWithContext(ctx context.Context) AutomationRuleRunPlaybookActionResponseActionConfigurationOutput {
+	return o
+}
+
+// The resource id of the playbook resource
+func (o AutomationRuleRunPlaybookActionResponseActionConfigurationOutput) LogicAppResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionResponseActionConfiguration) *string {
+		return v.LogicAppResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant id of the playbook resource
+func (o AutomationRuleRunPlaybookActionResponseActionConfigurationOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleRunPlaybookActionResponseActionConfiguration) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // Describes automation rule triggering logic
@@ -586,6 +1078,67 @@ type BookmarkTimelineItemResponse struct {
 	Notes *string `pulumi:"notes"`
 	// The bookmark start time.
 	StartTimeUtc *string `pulumi:"startTimeUtc"`
+}
+
+// Represents bookmark timeline item.
+type BookmarkTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (BookmarkTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BookmarkTimelineItemResponse)(nil)).Elem()
+}
+
+func (o BookmarkTimelineItemResponseOutput) ToBookmarkTimelineItemResponseOutput() BookmarkTimelineItemResponseOutput {
+	return o
+}
+
+func (o BookmarkTimelineItemResponseOutput) ToBookmarkTimelineItemResponseOutputWithContext(ctx context.Context) BookmarkTimelineItemResponseOutput {
+	return o
+}
+
+// The bookmark azure resource id.
+func (o BookmarkTimelineItemResponseOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// Describes a user that created the bookmark
+func (o BookmarkTimelineItemResponseOutput) CreatedBy() UserInfoResponsePtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *UserInfoResponse { return v.CreatedBy }).(UserInfoResponsePtrOutput)
+}
+
+// The bookmark display name.
+func (o BookmarkTimelineItemResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The bookmark end time.
+func (o BookmarkTimelineItemResponseOutput) EndTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.EndTimeUtc }).(pulumi.StringPtrOutput)
+}
+
+// The bookmark event time.
+func (o BookmarkTimelineItemResponseOutput) EventTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.EventTime }).(pulumi.StringPtrOutput)
+}
+
+// The entity query kind
+// Expected value is 'Bookmark'.
+func (o BookmarkTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// List of labels relevant to this bookmark
+func (o BookmarkTimelineItemResponseOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+// The notes of the bookmark
+func (o BookmarkTimelineItemResponseOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// The bookmark start time.
+func (o BookmarkTimelineItemResponseOutput) StartTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.StartTimeUtc }).(pulumi.StringPtrOutput)
 }
 
 // Information on the client (user or application) that made some action
@@ -1232,12 +1785,151 @@ type IncidentLabel struct {
 	LabelName string `pulumi:"labelName"`
 }
 
+// IncidentLabelInput is an input type that accepts IncidentLabelArgs and IncidentLabelOutput values.
+// You can construct a concrete instance of `IncidentLabelInput` via:
+//
+//	IncidentLabelArgs{...}
+type IncidentLabelInput interface {
+	pulumi.Input
+
+	ToIncidentLabelOutput() IncidentLabelOutput
+	ToIncidentLabelOutputWithContext(context.Context) IncidentLabelOutput
+}
+
+// Represents an incident label
+type IncidentLabelArgs struct {
+	// The name of the label
+	LabelName pulumi.StringInput `pulumi:"labelName"`
+}
+
+func (IncidentLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentLabel)(nil)).Elem()
+}
+
+func (i IncidentLabelArgs) ToIncidentLabelOutput() IncidentLabelOutput {
+	return i.ToIncidentLabelOutputWithContext(context.Background())
+}
+
+func (i IncidentLabelArgs) ToIncidentLabelOutputWithContext(ctx context.Context) IncidentLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentLabelOutput)
+}
+
+// IncidentLabelArrayInput is an input type that accepts IncidentLabelArray and IncidentLabelArrayOutput values.
+// You can construct a concrete instance of `IncidentLabelArrayInput` via:
+//
+//	IncidentLabelArray{ IncidentLabelArgs{...} }
+type IncidentLabelArrayInput interface {
+	pulumi.Input
+
+	ToIncidentLabelArrayOutput() IncidentLabelArrayOutput
+	ToIncidentLabelArrayOutputWithContext(context.Context) IncidentLabelArrayOutput
+}
+
+type IncidentLabelArray []IncidentLabelInput
+
+func (IncidentLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IncidentLabel)(nil)).Elem()
+}
+
+func (i IncidentLabelArray) ToIncidentLabelArrayOutput() IncidentLabelArrayOutput {
+	return i.ToIncidentLabelArrayOutputWithContext(context.Background())
+}
+
+func (i IncidentLabelArray) ToIncidentLabelArrayOutputWithContext(ctx context.Context) IncidentLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentLabelArrayOutput)
+}
+
+// Represents an incident label
+type IncidentLabelOutput struct{ *pulumi.OutputState }
+
+func (IncidentLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentLabel)(nil)).Elem()
+}
+
+func (o IncidentLabelOutput) ToIncidentLabelOutput() IncidentLabelOutput {
+	return o
+}
+
+func (o IncidentLabelOutput) ToIncidentLabelOutputWithContext(ctx context.Context) IncidentLabelOutput {
+	return o
+}
+
+// The name of the label
+func (o IncidentLabelOutput) LabelName() pulumi.StringOutput {
+	return o.ApplyT(func(v IncidentLabel) string { return v.LabelName }).(pulumi.StringOutput)
+}
+
+type IncidentLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (IncidentLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IncidentLabel)(nil)).Elem()
+}
+
+func (o IncidentLabelArrayOutput) ToIncidentLabelArrayOutput() IncidentLabelArrayOutput {
+	return o
+}
+
+func (o IncidentLabelArrayOutput) ToIncidentLabelArrayOutputWithContext(ctx context.Context) IncidentLabelArrayOutput {
+	return o
+}
+
+func (o IncidentLabelArrayOutput) Index(i pulumi.IntInput) IncidentLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IncidentLabel {
+		return vs[0].([]IncidentLabel)[vs[1].(int)]
+	}).(IncidentLabelOutput)
+}
+
 // Represents an incident label
 type IncidentLabelResponse struct {
 	// The name of the label
 	LabelName string `pulumi:"labelName"`
 	// The type of the label
 	LabelType string `pulumi:"labelType"`
+}
+
+// Represents an incident label
+type IncidentLabelResponseOutput struct{ *pulumi.OutputState }
+
+func (IncidentLabelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentLabelResponse)(nil)).Elem()
+}
+
+func (o IncidentLabelResponseOutput) ToIncidentLabelResponseOutput() IncidentLabelResponseOutput {
+	return o
+}
+
+func (o IncidentLabelResponseOutput) ToIncidentLabelResponseOutputWithContext(ctx context.Context) IncidentLabelResponseOutput {
+	return o
+}
+
+// The name of the label
+func (o IncidentLabelResponseOutput) LabelName() pulumi.StringOutput {
+	return o.ApplyT(func(v IncidentLabelResponse) string { return v.LabelName }).(pulumi.StringOutput)
+}
+
+// The type of the label
+func (o IncidentLabelResponseOutput) LabelType() pulumi.StringOutput {
+	return o.ApplyT(func(v IncidentLabelResponse) string { return v.LabelType }).(pulumi.StringOutput)
+}
+
+type IncidentLabelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IncidentLabelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IncidentLabelResponse)(nil)).Elem()
+}
+
+func (o IncidentLabelResponseArrayOutput) ToIncidentLabelResponseArrayOutput() IncidentLabelResponseArrayOutput {
+	return o
+}
+
+func (o IncidentLabelResponseArrayOutput) ToIncidentLabelResponseArrayOutputWithContext(ctx context.Context) IncidentLabelResponseArrayOutput {
+	return o
+}
+
+func (o IncidentLabelResponseArrayOutput) Index(i pulumi.IntInput) IncidentLabelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IncidentLabelResponse {
+		return vs[0].([]IncidentLabelResponse)[vs[1].(int)]
+	}).(IncidentLabelResponseOutput)
 }
 
 // Information on the user an incident is assigned to
@@ -1252,6 +1944,191 @@ type IncidentOwnerInfo struct {
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
+// IncidentOwnerInfoInput is an input type that accepts IncidentOwnerInfoArgs and IncidentOwnerInfoOutput values.
+// You can construct a concrete instance of `IncidentOwnerInfoInput` via:
+//
+//	IncidentOwnerInfoArgs{...}
+type IncidentOwnerInfoInput interface {
+	pulumi.Input
+
+	ToIncidentOwnerInfoOutput() IncidentOwnerInfoOutput
+	ToIncidentOwnerInfoOutputWithContext(context.Context) IncidentOwnerInfoOutput
+}
+
+// Information on the user an incident is assigned to
+type IncidentOwnerInfoArgs struct {
+	// The name of the user the incident is assigned to.
+	AssignedTo pulumi.StringPtrInput `pulumi:"assignedTo"`
+	// The email of the user the incident is assigned to.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// The object id of the user the incident is assigned to.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// The user principal name of the user the incident is assigned to.
+	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
+}
+
+func (IncidentOwnerInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentOwnerInfo)(nil)).Elem()
+}
+
+func (i IncidentOwnerInfoArgs) ToIncidentOwnerInfoOutput() IncidentOwnerInfoOutput {
+	return i.ToIncidentOwnerInfoOutputWithContext(context.Background())
+}
+
+func (i IncidentOwnerInfoArgs) ToIncidentOwnerInfoOutputWithContext(ctx context.Context) IncidentOwnerInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentOwnerInfoOutput)
+}
+
+func (i IncidentOwnerInfoArgs) ToIncidentOwnerInfoPtrOutput() IncidentOwnerInfoPtrOutput {
+	return i.ToIncidentOwnerInfoPtrOutputWithContext(context.Background())
+}
+
+func (i IncidentOwnerInfoArgs) ToIncidentOwnerInfoPtrOutputWithContext(ctx context.Context) IncidentOwnerInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentOwnerInfoOutput).ToIncidentOwnerInfoPtrOutputWithContext(ctx)
+}
+
+// IncidentOwnerInfoPtrInput is an input type that accepts IncidentOwnerInfoArgs, IncidentOwnerInfoPtr and IncidentOwnerInfoPtrOutput values.
+// You can construct a concrete instance of `IncidentOwnerInfoPtrInput` via:
+//
+//	        IncidentOwnerInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type IncidentOwnerInfoPtrInput interface {
+	pulumi.Input
+
+	ToIncidentOwnerInfoPtrOutput() IncidentOwnerInfoPtrOutput
+	ToIncidentOwnerInfoPtrOutputWithContext(context.Context) IncidentOwnerInfoPtrOutput
+}
+
+type incidentOwnerInfoPtrType IncidentOwnerInfoArgs
+
+func IncidentOwnerInfoPtr(v *IncidentOwnerInfoArgs) IncidentOwnerInfoPtrInput {
+	return (*incidentOwnerInfoPtrType)(v)
+}
+
+func (*incidentOwnerInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentOwnerInfo)(nil)).Elem()
+}
+
+func (i *incidentOwnerInfoPtrType) ToIncidentOwnerInfoPtrOutput() IncidentOwnerInfoPtrOutput {
+	return i.ToIncidentOwnerInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *incidentOwnerInfoPtrType) ToIncidentOwnerInfoPtrOutputWithContext(ctx context.Context) IncidentOwnerInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentOwnerInfoPtrOutput)
+}
+
+// Information on the user an incident is assigned to
+type IncidentOwnerInfoOutput struct{ *pulumi.OutputState }
+
+func (IncidentOwnerInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentOwnerInfo)(nil)).Elem()
+}
+
+func (o IncidentOwnerInfoOutput) ToIncidentOwnerInfoOutput() IncidentOwnerInfoOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoOutput) ToIncidentOwnerInfoOutputWithContext(ctx context.Context) IncidentOwnerInfoOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoOutput) ToIncidentOwnerInfoPtrOutput() IncidentOwnerInfoPtrOutput {
+	return o.ToIncidentOwnerInfoPtrOutputWithContext(context.Background())
+}
+
+func (o IncidentOwnerInfoOutput) ToIncidentOwnerInfoPtrOutputWithContext(ctx context.Context) IncidentOwnerInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IncidentOwnerInfo) *IncidentOwnerInfo {
+		return &v
+	}).(IncidentOwnerInfoPtrOutput)
+}
+
+// The name of the user the incident is assigned to.
+func (o IncidentOwnerInfoOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.AssignedTo }).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the incident is assigned to.
+func (o IncidentOwnerInfoOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the incident is assigned to.
+func (o IncidentOwnerInfoOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the incident is assigned to.
+func (o IncidentOwnerInfoOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfo) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
+type IncidentOwnerInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (IncidentOwnerInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentOwnerInfo)(nil)).Elem()
+}
+
+func (o IncidentOwnerInfoPtrOutput) ToIncidentOwnerInfoPtrOutput() IncidentOwnerInfoPtrOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoPtrOutput) ToIncidentOwnerInfoPtrOutputWithContext(ctx context.Context) IncidentOwnerInfoPtrOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoPtrOutput) Elem() IncidentOwnerInfoOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfo) IncidentOwnerInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IncidentOwnerInfo
+		return ret
+	}).(IncidentOwnerInfoOutput)
+}
+
+// The name of the user the incident is assigned to.
+func (o IncidentOwnerInfoPtrOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the incident is assigned to.
+func (o IncidentOwnerInfoPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the incident is assigned to.
+func (o IncidentOwnerInfoPtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the incident is assigned to.
+func (o IncidentOwnerInfoPtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrincipalName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information on the user an incident is assigned to
 type IncidentOwnerInfoResponse struct {
 	// The name of the user the incident is assigned to.
@@ -1262,6 +2139,105 @@ type IncidentOwnerInfoResponse struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The user principal name of the user the incident is assigned to.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
+}
+
+// Information on the user an incident is assigned to
+type IncidentOwnerInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (IncidentOwnerInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentOwnerInfoResponse)(nil)).Elem()
+}
+
+func (o IncidentOwnerInfoResponseOutput) ToIncidentOwnerInfoResponseOutput() IncidentOwnerInfoResponseOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoResponseOutput) ToIncidentOwnerInfoResponseOutputWithContext(ctx context.Context) IncidentOwnerInfoResponseOutput {
+	return o
+}
+
+// The name of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponseOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfoResponse) *string { return v.AssignedTo }).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponseOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfoResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponseOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfoResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponseOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentOwnerInfoResponse) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
+type IncidentOwnerInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IncidentOwnerInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IncidentOwnerInfoResponse)(nil)).Elem()
+}
+
+func (o IncidentOwnerInfoResponsePtrOutput) ToIncidentOwnerInfoResponsePtrOutput() IncidentOwnerInfoResponsePtrOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoResponsePtrOutput) ToIncidentOwnerInfoResponsePtrOutputWithContext(ctx context.Context) IncidentOwnerInfoResponsePtrOutput {
+	return o
+}
+
+func (o IncidentOwnerInfoResponsePtrOutput) Elem() IncidentOwnerInfoResponseOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfoResponse) IncidentOwnerInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IncidentOwnerInfoResponse
+		return ret
+	}).(IncidentOwnerInfoResponseOutput)
+}
+
+// The name of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponsePtrOutput) AssignedTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user principal name of the user the incident is assigned to.
+func (o IncidentOwnerInfoResponsePtrOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IncidentOwnerInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrincipalName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Query results for table insights query.
@@ -1435,6 +2411,72 @@ type SecurityAlertTimelineItemResponse struct {
 	StartTimeUtc string `pulumi:"startTimeUtc"`
 	// The alert generated time.
 	TimeGenerated string `pulumi:"timeGenerated"`
+}
+
+// Represents security alert timeline item.
+type SecurityAlertTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityAlertTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityAlertTimelineItemResponse)(nil)).Elem()
+}
+
+func (o SecurityAlertTimelineItemResponseOutput) ToSecurityAlertTimelineItemResponseOutput() SecurityAlertTimelineItemResponseOutput {
+	return o
+}
+
+func (o SecurityAlertTimelineItemResponseOutput) ToSecurityAlertTimelineItemResponseOutputWithContext(ctx context.Context) SecurityAlertTimelineItemResponseOutput {
+	return o
+}
+
+// The name of the alert type.
+func (o SecurityAlertTimelineItemResponseOutput) AlertType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.AlertType }).(pulumi.StringOutput)
+}
+
+// The alert azure resource id.
+func (o SecurityAlertTimelineItemResponseOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// The alert description.
+func (o SecurityAlertTimelineItemResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The alert name.
+func (o SecurityAlertTimelineItemResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The alert end time.
+func (o SecurityAlertTimelineItemResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// The entity query kind
+// Expected value is 'SecurityAlert'.
+func (o SecurityAlertTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The alert product name.
+func (o SecurityAlertTimelineItemResponseOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) *string { return v.ProductName }).(pulumi.StringPtrOutput)
+}
+
+// The alert severity.
+func (o SecurityAlertTimelineItemResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The alert start time.
+func (o SecurityAlertTimelineItemResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// The alert generated time.
+func (o SecurityAlertTimelineItemResponseOutput) TimeGenerated() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.TimeGenerated }).(pulumi.StringOutput)
 }
 
 // timeline aggregation information per kind
@@ -2113,14 +3155,24 @@ func (o WatchlistUserInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ActivityTimelineItemResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleModifyPropertiesActionOutput{})
+	pulumi.RegisterOutputType(AutomationRuleModifyPropertiesActionActionConfigurationOutput{})
+	pulumi.RegisterOutputType(AutomationRuleModifyPropertiesActionResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleModifyPropertiesActionResponseActionConfigurationOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionArrayOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionConditionPropertiesOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionResponseOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutomationRulePropertyValuesConditionResponseConditionPropertiesOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRunPlaybookActionOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRunPlaybookActionActionConfigurationOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRunPlaybookActionResponseOutput{})
+	pulumi.RegisterOutputType(AutomationRuleRunPlaybookActionResponseActionConfigurationOutput{})
 	pulumi.RegisterOutputType(AutomationRuleTriggeringLogicOutput{})
 	pulumi.RegisterOutputType(AutomationRuleTriggeringLogicResponseOutput{})
+	pulumi.RegisterOutputType(BookmarkTimelineItemResponseOutput{})
 	pulumi.RegisterOutputType(ClientInfoResponseOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseArrayOutput{})
@@ -2134,11 +3186,20 @@ func init() {
 	pulumi.RegisterOutputType(IncidentInfoPtrOutput{})
 	pulumi.RegisterOutputType(IncidentInfoResponseOutput{})
 	pulumi.RegisterOutputType(IncidentInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(IncidentLabelOutput{})
+	pulumi.RegisterOutputType(IncidentLabelArrayOutput{})
+	pulumi.RegisterOutputType(IncidentLabelResponseOutput{})
+	pulumi.RegisterOutputType(IncidentLabelResponseArrayOutput{})
+	pulumi.RegisterOutputType(IncidentOwnerInfoOutput{})
+	pulumi.RegisterOutputType(IncidentOwnerInfoPtrOutput{})
+	pulumi.RegisterOutputType(IncidentOwnerInfoResponseOutput{})
+	pulumi.RegisterOutputType(IncidentOwnerInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponseOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponsePtrOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponseColumnsOutput{})
 	pulumi.RegisterOutputType(InsightsTableResultResponseColumnsArrayOutput{})
+	pulumi.RegisterOutputType(SecurityAlertTimelineItemResponseOutput{})
 	pulumi.RegisterOutputType(TimelineAggregationResponseOutput{})
 	pulumi.RegisterOutputType(TimelineAggregationResponseArrayOutput{})
 	pulumi.RegisterOutputType(TimelineErrorResponseOutput{})

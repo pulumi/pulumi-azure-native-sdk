@@ -74,6 +74,9 @@ func NewManagementGroupNetworkManagerConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230601:ManagementGroupNetworkManagerConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230901:ManagementGroupNetworkManagerConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

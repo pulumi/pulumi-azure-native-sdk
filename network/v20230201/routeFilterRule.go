@@ -187,6 +187,9 @@ func NewRouteFilterRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230601:RouteFilterRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230901:RouteFilterRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

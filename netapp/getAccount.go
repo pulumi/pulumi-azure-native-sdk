@@ -14,7 +14,7 @@ import (
 // Get the NetApp account
 // Azure REST API version: 2022-11-01.
 //
-// Other available API versions: 2019-07-01, 2022-05-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview.
+// Other available API versions: 2019-07-01, 2022-05-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

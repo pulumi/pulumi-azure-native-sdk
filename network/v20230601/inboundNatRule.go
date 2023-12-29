@@ -188,6 +188,9 @@ func NewInboundNatRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:InboundNatRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230901:InboundNatRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -138,10 +138,11 @@ func (o AKSIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// AKSIdentityTypeInput is an input type that accepts AKSIdentityTypeArgs and AKSIdentityTypeOutput values.
-// You can construct a concrete instance of `AKSIdentityTypeInput` via:
+// AKSIdentityTypeInput is an input type that accepts values of the AKSIdentityType enum
+// A concrete instance of `AKSIdentityTypeInput` can be one of the following:
 //
-//	AKSIdentityTypeArgs{...}
+//	AKSIdentityTypeSystemAssigned
+//	AKSIdentityTypeUserAssigned
 type AKSIdentityTypeInput interface {
 	pulumi.Input
 
@@ -190,6 +191,171 @@ const (
 	LevelTypeWarning     = LevelType("Warning")
 	LevelTypeInformation = LevelType("Information")
 )
+
+func (LevelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LevelType)(nil)).Elem()
+}
+
+func (e LevelType) ToLevelTypeOutput() LevelTypeOutput {
+	return pulumi.ToOutput(e).(LevelTypeOutput)
+}
+
+func (e LevelType) ToLevelTypeOutputWithContext(ctx context.Context) LevelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LevelTypeOutput)
+}
+
+func (e LevelType) ToLevelTypePtrOutput() LevelTypePtrOutput {
+	return e.ToLevelTypePtrOutputWithContext(context.Background())
+}
+
+func (e LevelType) ToLevelTypePtrOutputWithContext(ctx context.Context) LevelTypePtrOutput {
+	return LevelType(e).ToLevelTypeOutputWithContext(ctx).ToLevelTypePtrOutputWithContext(ctx)
+}
+
+func (e LevelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LevelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LevelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LevelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LevelTypeOutput struct{ *pulumi.OutputState }
+
+func (LevelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LevelType)(nil)).Elem()
+}
+
+func (o LevelTypeOutput) ToLevelTypeOutput() LevelTypeOutput {
+	return o
+}
+
+func (o LevelTypeOutput) ToLevelTypeOutputWithContext(ctx context.Context) LevelTypeOutput {
+	return o
+}
+
+func (o LevelTypeOutput) ToLevelTypePtrOutput() LevelTypePtrOutput {
+	return o.ToLevelTypePtrOutputWithContext(context.Background())
+}
+
+func (o LevelTypeOutput) ToLevelTypePtrOutputWithContext(ctx context.Context) LevelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LevelType) *LevelType {
+		return &v
+	}).(LevelTypePtrOutput)
+}
+
+func (o LevelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LevelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LevelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LevelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LevelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LevelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LevelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LevelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LevelType)(nil)).Elem()
+}
+
+func (o LevelTypePtrOutput) ToLevelTypePtrOutput() LevelTypePtrOutput {
+	return o
+}
+
+func (o LevelTypePtrOutput) ToLevelTypePtrOutputWithContext(ctx context.Context) LevelTypePtrOutput {
+	return o
+}
+
+func (o LevelTypePtrOutput) Elem() LevelTypeOutput {
+	return o.ApplyT(func(v *LevelType) LevelType {
+		if v != nil {
+			return *v
+		}
+		var ret LevelType
+		return ret
+	}).(LevelTypeOutput)
+}
+
+func (o LevelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LevelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LevelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LevelTypeInput is an input type that accepts values of the LevelType enum
+// A concrete instance of `LevelTypeInput` can be one of the following:
+//
+//	LevelTypeError
+//	LevelTypeWarning
+//	LevelTypeInformation
+type LevelTypeInput interface {
+	pulumi.Input
+
+	ToLevelTypeOutput() LevelTypeOutput
+	ToLevelTypeOutputWithContext(context.Context) LevelTypeOutput
+}
+
+var levelTypePtrType = reflect.TypeOf((**LevelType)(nil)).Elem()
+
+type LevelTypePtrInput interface {
+	pulumi.Input
+
+	ToLevelTypePtrOutput() LevelTypePtrOutput
+	ToLevelTypePtrOutputWithContext(context.Context) LevelTypePtrOutput
+}
+
+type levelTypePtr string
+
+func LevelTypePtr(v string) LevelTypePtrInput {
+	return (*levelTypePtr)(&v)
+}
+
+func (*levelTypePtr) ElementType() reflect.Type {
+	return levelTypePtrType
+}
+
+func (in *levelTypePtr) ToLevelTypePtrOutput() LevelTypePtrOutput {
+	return pulumi.ToOutput(in).(LevelTypePtrOutput)
+}
+
+func (in *levelTypePtr) ToLevelTypePtrOutputWithContext(ctx context.Context) LevelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LevelTypePtrOutput)
+}
+
+func (in *levelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LevelType] {
+	return pulumix.Output[*LevelType]{
+		OutputState: in.ToLevelTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The identity type.
 type ResourceIdentityType string
@@ -317,10 +483,10 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -364,6 +530,8 @@ func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 func init() {
 	pulumi.RegisterOutputType(AKSIdentityTypeOutput{})
 	pulumi.RegisterOutputType(AKSIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(LevelTypeOutput{})
+	pulumi.RegisterOutputType(LevelTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 }

@@ -23,6 +23,171 @@ const (
 	HostPoolTypeBYODesktop = HostPoolType("BYODesktop")
 )
 
+func (HostPoolType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPoolType)(nil)).Elem()
+}
+
+func (e HostPoolType) ToHostPoolTypeOutput() HostPoolTypeOutput {
+	return pulumi.ToOutput(e).(HostPoolTypeOutput)
+}
+
+func (e HostPoolType) ToHostPoolTypeOutputWithContext(ctx context.Context) HostPoolTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HostPoolTypeOutput)
+}
+
+func (e HostPoolType) ToHostPoolTypePtrOutput() HostPoolTypePtrOutput {
+	return e.ToHostPoolTypePtrOutputWithContext(context.Background())
+}
+
+func (e HostPoolType) ToHostPoolTypePtrOutputWithContext(ctx context.Context) HostPoolTypePtrOutput {
+	return HostPoolType(e).ToHostPoolTypeOutputWithContext(ctx).ToHostPoolTypePtrOutputWithContext(ctx)
+}
+
+func (e HostPoolType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HostPoolType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HostPoolType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HostPoolType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HostPoolTypeOutput struct{ *pulumi.OutputState }
+
+func (HostPoolTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostPoolType)(nil)).Elem()
+}
+
+func (o HostPoolTypeOutput) ToHostPoolTypeOutput() HostPoolTypeOutput {
+	return o
+}
+
+func (o HostPoolTypeOutput) ToHostPoolTypeOutputWithContext(ctx context.Context) HostPoolTypeOutput {
+	return o
+}
+
+func (o HostPoolTypeOutput) ToHostPoolTypePtrOutput() HostPoolTypePtrOutput {
+	return o.ToHostPoolTypePtrOutputWithContext(context.Background())
+}
+
+func (o HostPoolTypeOutput) ToHostPoolTypePtrOutputWithContext(ctx context.Context) HostPoolTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HostPoolType) *HostPoolType {
+		return &v
+	}).(HostPoolTypePtrOutput)
+}
+
+func (o HostPoolTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HostPoolTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HostPoolType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HostPoolTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HostPoolTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HostPoolType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HostPoolTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HostPoolTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HostPoolType)(nil)).Elem()
+}
+
+func (o HostPoolTypePtrOutput) ToHostPoolTypePtrOutput() HostPoolTypePtrOutput {
+	return o
+}
+
+func (o HostPoolTypePtrOutput) ToHostPoolTypePtrOutputWithContext(ctx context.Context) HostPoolTypePtrOutput {
+	return o
+}
+
+func (o HostPoolTypePtrOutput) Elem() HostPoolTypeOutput {
+	return o.ApplyT(func(v *HostPoolType) HostPoolType {
+		if v != nil {
+			return *v
+		}
+		var ret HostPoolType
+		return ret
+	}).(HostPoolTypeOutput)
+}
+
+func (o HostPoolTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HostPoolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HostPoolType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HostPoolTypeInput is an input type that accepts values of the HostPoolType enum
+// A concrete instance of `HostPoolTypeInput` can be one of the following:
+//
+//	HostPoolTypePersonal
+//	HostPoolTypePooled
+//	HostPoolTypeBYODesktop
+type HostPoolTypeInput interface {
+	pulumi.Input
+
+	ToHostPoolTypeOutput() HostPoolTypeOutput
+	ToHostPoolTypeOutputWithContext(context.Context) HostPoolTypeOutput
+}
+
+var hostPoolTypePtrType = reflect.TypeOf((**HostPoolType)(nil)).Elem()
+
+type HostPoolTypePtrInput interface {
+	pulumi.Input
+
+	ToHostPoolTypePtrOutput() HostPoolTypePtrOutput
+	ToHostPoolTypePtrOutputWithContext(context.Context) HostPoolTypePtrOutput
+}
+
+type hostPoolTypePtr string
+
+func HostPoolTypePtr(v string) HostPoolTypePtrInput {
+	return (*hostPoolTypePtr)(&v)
+}
+
+func (*hostPoolTypePtr) ElementType() reflect.Type {
+	return hostPoolTypePtrType
+}
+
+func (in *hostPoolTypePtr) ToHostPoolTypePtrOutput() HostPoolTypePtrOutput {
+	return pulumi.ToOutput(in).(HostPoolTypePtrOutput)
+}
+
+func (in *hostPoolTypePtr) ToHostPoolTypePtrOutputWithContext(ctx context.Context) HostPoolTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HostPoolTypePtrOutput)
+}
+
+func (in *hostPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostPoolType] {
+	return pulumix.Output[*HostPoolType]{
+		OutputState: in.ToHostPoolTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The identity type.
 type ResourceIdentityType string
 
@@ -149,10 +314,10 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -200,6 +365,170 @@ const (
 	SessionHostLoadBalancingAlgorithmBreadthFirst = SessionHostLoadBalancingAlgorithm("BreadthFirst")
 	SessionHostLoadBalancingAlgorithmDepthFirst   = SessionHostLoadBalancingAlgorithm("DepthFirst")
 )
+
+func (SessionHostLoadBalancingAlgorithm) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionHostLoadBalancingAlgorithm)(nil)).Elem()
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToSessionHostLoadBalancingAlgorithmOutput() SessionHostLoadBalancingAlgorithmOutput {
+	return pulumi.ToOutput(e).(SessionHostLoadBalancingAlgorithmOutput)
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToSessionHostLoadBalancingAlgorithmOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SessionHostLoadBalancingAlgorithmOutput)
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToSessionHostLoadBalancingAlgorithmPtrOutput() SessionHostLoadBalancingAlgorithmPtrOutput {
+	return e.ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmPtrOutput {
+	return SessionHostLoadBalancingAlgorithm(e).ToSessionHostLoadBalancingAlgorithmOutputWithContext(ctx).ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx)
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SessionHostLoadBalancingAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SessionHostLoadBalancingAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (SessionHostLoadBalancingAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionHostLoadBalancingAlgorithm)(nil)).Elem()
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToSessionHostLoadBalancingAlgorithmOutput() SessionHostLoadBalancingAlgorithmOutput {
+	return o
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToSessionHostLoadBalancingAlgorithmOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmOutput {
+	return o
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToSessionHostLoadBalancingAlgorithmPtrOutput() SessionHostLoadBalancingAlgorithmPtrOutput {
+	return o.ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionHostLoadBalancingAlgorithm) *SessionHostLoadBalancingAlgorithm {
+		return &v
+	}).(SessionHostLoadBalancingAlgorithmPtrOutput)
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SessionHostLoadBalancingAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SessionHostLoadBalancingAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SessionHostLoadBalancingAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionHostLoadBalancingAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionHostLoadBalancingAlgorithmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionHostLoadBalancingAlgorithm)(nil)).Elem()
+}
+
+func (o SessionHostLoadBalancingAlgorithmPtrOutput) ToSessionHostLoadBalancingAlgorithmPtrOutput() SessionHostLoadBalancingAlgorithmPtrOutput {
+	return o
+}
+
+func (o SessionHostLoadBalancingAlgorithmPtrOutput) ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmPtrOutput {
+	return o
+}
+
+func (o SessionHostLoadBalancingAlgorithmPtrOutput) Elem() SessionHostLoadBalancingAlgorithmOutput {
+	return o.ApplyT(func(v *SessionHostLoadBalancingAlgorithm) SessionHostLoadBalancingAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret SessionHostLoadBalancingAlgorithm
+		return ret
+	}).(SessionHostLoadBalancingAlgorithmOutput)
+}
+
+func (o SessionHostLoadBalancingAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SessionHostLoadBalancingAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SessionHostLoadBalancingAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SessionHostLoadBalancingAlgorithmInput is an input type that accepts values of the SessionHostLoadBalancingAlgorithm enum
+// A concrete instance of `SessionHostLoadBalancingAlgorithmInput` can be one of the following:
+//
+//	SessionHostLoadBalancingAlgorithmBreadthFirst
+//	SessionHostLoadBalancingAlgorithmDepthFirst
+type SessionHostLoadBalancingAlgorithmInput interface {
+	pulumi.Input
+
+	ToSessionHostLoadBalancingAlgorithmOutput() SessionHostLoadBalancingAlgorithmOutput
+	ToSessionHostLoadBalancingAlgorithmOutputWithContext(context.Context) SessionHostLoadBalancingAlgorithmOutput
+}
+
+var sessionHostLoadBalancingAlgorithmPtrType = reflect.TypeOf((**SessionHostLoadBalancingAlgorithm)(nil)).Elem()
+
+type SessionHostLoadBalancingAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToSessionHostLoadBalancingAlgorithmPtrOutput() SessionHostLoadBalancingAlgorithmPtrOutput
+	ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(context.Context) SessionHostLoadBalancingAlgorithmPtrOutput
+}
+
+type sessionHostLoadBalancingAlgorithmPtr string
+
+func SessionHostLoadBalancingAlgorithmPtr(v string) SessionHostLoadBalancingAlgorithmPtrInput {
+	return (*sessionHostLoadBalancingAlgorithmPtr)(&v)
+}
+
+func (*sessionHostLoadBalancingAlgorithmPtr) ElementType() reflect.Type {
+	return sessionHostLoadBalancingAlgorithmPtrType
+}
+
+func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgorithmPtrOutput() SessionHostLoadBalancingAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(SessionHostLoadBalancingAlgorithmPtrOutput)
+}
+
+func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SessionHostLoadBalancingAlgorithmPtrOutput)
+}
+
+func (in *sessionHostLoadBalancingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SessionHostLoadBalancingAlgorithm] {
+	return pulumix.Output[*SessionHostLoadBalancingAlgorithm]{
+		OutputState: in.ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 type SkuTier string
@@ -330,10 +659,13 @@ func (o SkuTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuTierInput is an input type that accepts SkuTierArgs and SkuTierOutput values.
-// You can construct a concrete instance of `SkuTierInput` via:
+// SkuTierInput is an input type that accepts values of the SkuTier enum
+// A concrete instance of `SkuTierInput` can be one of the following:
 //
-//	SkuTierArgs{...}
+//	SkuTierFree
+//	SkuTierBasic
+//	SkuTierStandard
+//	SkuTierPremium
 type SkuTierInput interface {
 	pulumi.Input
 
@@ -382,9 +714,179 @@ const (
 	StopHostsWhenZeroActiveSessions = StopHostsWhen("ZeroActiveSessions")
 )
 
+func (StopHostsWhen) ElementType() reflect.Type {
+	return reflect.TypeOf((*StopHostsWhen)(nil)).Elem()
+}
+
+func (e StopHostsWhen) ToStopHostsWhenOutput() StopHostsWhenOutput {
+	return pulumi.ToOutput(e).(StopHostsWhenOutput)
+}
+
+func (e StopHostsWhen) ToStopHostsWhenOutputWithContext(ctx context.Context) StopHostsWhenOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StopHostsWhenOutput)
+}
+
+func (e StopHostsWhen) ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput {
+	return e.ToStopHostsWhenPtrOutputWithContext(context.Background())
+}
+
+func (e StopHostsWhen) ToStopHostsWhenPtrOutputWithContext(ctx context.Context) StopHostsWhenPtrOutput {
+	return StopHostsWhen(e).ToStopHostsWhenOutputWithContext(ctx).ToStopHostsWhenPtrOutputWithContext(ctx)
+}
+
+func (e StopHostsWhen) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StopHostsWhen) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StopHostsWhen) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StopHostsWhen) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StopHostsWhenOutput struct{ *pulumi.OutputState }
+
+func (StopHostsWhenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StopHostsWhen)(nil)).Elem()
+}
+
+func (o StopHostsWhenOutput) ToStopHostsWhenOutput() StopHostsWhenOutput {
+	return o
+}
+
+func (o StopHostsWhenOutput) ToStopHostsWhenOutputWithContext(ctx context.Context) StopHostsWhenOutput {
+	return o
+}
+
+func (o StopHostsWhenOutput) ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput {
+	return o.ToStopHostsWhenPtrOutputWithContext(context.Background())
+}
+
+func (o StopHostsWhenOutput) ToStopHostsWhenPtrOutputWithContext(ctx context.Context) StopHostsWhenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StopHostsWhen) *StopHostsWhen {
+		return &v
+	}).(StopHostsWhenPtrOutput)
+}
+
+func (o StopHostsWhenOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StopHostsWhenOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StopHostsWhen) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StopHostsWhenOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StopHostsWhenOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StopHostsWhen) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StopHostsWhenPtrOutput struct{ *pulumi.OutputState }
+
+func (StopHostsWhenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StopHostsWhen)(nil)).Elem()
+}
+
+func (o StopHostsWhenPtrOutput) ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput {
+	return o
+}
+
+func (o StopHostsWhenPtrOutput) ToStopHostsWhenPtrOutputWithContext(ctx context.Context) StopHostsWhenPtrOutput {
+	return o
+}
+
+func (o StopHostsWhenPtrOutput) Elem() StopHostsWhenOutput {
+	return o.ApplyT(func(v *StopHostsWhen) StopHostsWhen {
+		if v != nil {
+			return *v
+		}
+		var ret StopHostsWhen
+		return ret
+	}).(StopHostsWhenOutput)
+}
+
+func (o StopHostsWhenPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StopHostsWhenPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StopHostsWhen) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StopHostsWhenInput is an input type that accepts values of the StopHostsWhen enum
+// A concrete instance of `StopHostsWhenInput` can be one of the following:
+//
+//	StopHostsWhenZeroSessions
+//	StopHostsWhenZeroActiveSessions
+type StopHostsWhenInput interface {
+	pulumi.Input
+
+	ToStopHostsWhenOutput() StopHostsWhenOutput
+	ToStopHostsWhenOutputWithContext(context.Context) StopHostsWhenOutput
+}
+
+var stopHostsWhenPtrType = reflect.TypeOf((**StopHostsWhen)(nil)).Elem()
+
+type StopHostsWhenPtrInput interface {
+	pulumi.Input
+
+	ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput
+	ToStopHostsWhenPtrOutputWithContext(context.Context) StopHostsWhenPtrOutput
+}
+
+type stopHostsWhenPtr string
+
+func StopHostsWhenPtr(v string) StopHostsWhenPtrInput {
+	return (*stopHostsWhenPtr)(&v)
+}
+
+func (*stopHostsWhenPtr) ElementType() reflect.Type {
+	return stopHostsWhenPtrType
+}
+
+func (in *stopHostsWhenPtr) ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput {
+	return pulumi.ToOutput(in).(StopHostsWhenPtrOutput)
+}
+
+func (in *stopHostsWhenPtr) ToStopHostsWhenPtrOutputWithContext(ctx context.Context) StopHostsWhenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StopHostsWhenPtrOutput)
+}
+
+func (in *stopHostsWhenPtr) ToOutput(ctx context.Context) pulumix.Output[*StopHostsWhen] {
+	return pulumix.Output[*StopHostsWhen]{
+		OutputState: in.ToStopHostsWhenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(HostPoolTypeOutput{})
+	pulumi.RegisterOutputType(HostPoolTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(SessionHostLoadBalancingAlgorithmOutput{})
+	pulumi.RegisterOutputType(SessionHostLoadBalancingAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})
 	pulumi.RegisterOutputType(SkuTierPtrOutput{})
+	pulumi.RegisterOutputType(StopHostsWhenOutput{})
+	pulumi.RegisterOutputType(StopHostsWhenPtrOutput{})
 }

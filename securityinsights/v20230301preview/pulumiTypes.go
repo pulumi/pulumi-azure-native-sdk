@@ -34,6 +34,62 @@ type ActivityTimelineItemResponse struct {
 	Title string `pulumi:"title"`
 }
 
+// Represents Activity timeline item.
+type ActivityTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (ActivityTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActivityTimelineItemResponse)(nil)).Elem()
+}
+
+func (o ActivityTimelineItemResponseOutput) ToActivityTimelineItemResponseOutput() ActivityTimelineItemResponseOutput {
+	return o
+}
+
+func (o ActivityTimelineItemResponseOutput) ToActivityTimelineItemResponseOutputWithContext(ctx context.Context) ActivityTimelineItemResponseOutput {
+	return o
+}
+
+// The grouping bucket end time.
+func (o ActivityTimelineItemResponseOutput) BucketEndTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.BucketEndTimeUTC }).(pulumi.StringOutput)
+}
+
+// The grouping bucket start time.
+func (o ActivityTimelineItemResponseOutput) BucketStartTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.BucketStartTimeUTC }).(pulumi.StringOutput)
+}
+
+// The activity timeline content.
+func (o ActivityTimelineItemResponseOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The time of the first activity in the grouping bucket.
+func (o ActivityTimelineItemResponseOutput) FirstActivityTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.FirstActivityTimeUTC }).(pulumi.StringOutput)
+}
+
+// The entity query kind
+// Expected value is 'Activity'.
+func (o ActivityTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The time of the last activity in the grouping bucket.
+func (o ActivityTimelineItemResponseOutput) LastActivityTimeUTC() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.LastActivityTimeUTC }).(pulumi.StringOutput)
+}
+
+// The activity query id.
+func (o ActivityTimelineItemResponseOutput) QueryId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.QueryId }).(pulumi.StringOutput)
+}
+
+// The activity timeline title.
+func (o ActivityTimelineItemResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ActivityTimelineItemResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
 // Represents anomaly timeline item.
 type AnomalyTimelineItemResponse struct {
 	// The anomaly azure resource id.
@@ -63,6 +119,82 @@ type AnomalyTimelineItemResponse struct {
 	Vendor *string `pulumi:"vendor"`
 }
 
+// Represents anomaly timeline item.
+type AnomalyTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (AnomalyTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnomalyTimelineItemResponse)(nil)).Elem()
+}
+
+func (o AnomalyTimelineItemResponseOutput) ToAnomalyTimelineItemResponseOutput() AnomalyTimelineItemResponseOutput {
+	return o
+}
+
+func (o AnomalyTimelineItemResponseOutput) ToAnomalyTimelineItemResponseOutputWithContext(ctx context.Context) AnomalyTimelineItemResponseOutput {
+	return o
+}
+
+// The anomaly azure resource id.
+func (o AnomalyTimelineItemResponseOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// The anomaly description.
+func (o AnomalyTimelineItemResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The anomaly name.
+func (o AnomalyTimelineItemResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The anomaly end time.
+func (o AnomalyTimelineItemResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// The intent of the anomaly.
+func (o AnomalyTimelineItemResponseOutput) Intent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) *string { return v.Intent }).(pulumi.StringPtrOutput)
+}
+
+// The entity query kind
+// Expected value is 'Anomaly'.
+func (o AnomalyTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The anomaly product name.
+func (o AnomalyTimelineItemResponseOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) *string { return v.ProductName }).(pulumi.StringPtrOutput)
+}
+
+// The reasons that cause the anomaly.
+func (o AnomalyTimelineItemResponseOutput) Reasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) []string { return v.Reasons }).(pulumi.StringArrayOutput)
+}
+
+// The anomaly start time.
+func (o AnomalyTimelineItemResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// The techniques of the anomaly.
+func (o AnomalyTimelineItemResponseOutput) Techniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) []string { return v.Techniques }).(pulumi.StringArrayOutput)
+}
+
+// The anomaly generated time.
+func (o AnomalyTimelineItemResponseOutput) TimeGenerated() pulumi.StringOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) string { return v.TimeGenerated }).(pulumi.StringOutput)
+}
+
+// The name of the anomaly vendor.
+func (o AnomalyTimelineItemResponseOutput) Vendor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnomalyTimelineItemResponse) *string { return v.Vendor }).(pulumi.StringPtrOutput)
+}
+
 // Represents bookmark timeline item.
 type BookmarkTimelineItemResponse struct {
 	// The bookmark azure resource id.
@@ -84,6 +216,67 @@ type BookmarkTimelineItemResponse struct {
 	Notes *string `pulumi:"notes"`
 	// The bookmark start time.
 	StartTimeUtc *string `pulumi:"startTimeUtc"`
+}
+
+// Represents bookmark timeline item.
+type BookmarkTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (BookmarkTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BookmarkTimelineItemResponse)(nil)).Elem()
+}
+
+func (o BookmarkTimelineItemResponseOutput) ToBookmarkTimelineItemResponseOutput() BookmarkTimelineItemResponseOutput {
+	return o
+}
+
+func (o BookmarkTimelineItemResponseOutput) ToBookmarkTimelineItemResponseOutputWithContext(ctx context.Context) BookmarkTimelineItemResponseOutput {
+	return o
+}
+
+// The bookmark azure resource id.
+func (o BookmarkTimelineItemResponseOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// Describes a user that created the bookmark
+func (o BookmarkTimelineItemResponseOutput) CreatedBy() UserInfoResponsePtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *UserInfoResponse { return v.CreatedBy }).(UserInfoResponsePtrOutput)
+}
+
+// The bookmark display name.
+func (o BookmarkTimelineItemResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The bookmark end time.
+func (o BookmarkTimelineItemResponseOutput) EndTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.EndTimeUtc }).(pulumi.StringPtrOutput)
+}
+
+// The bookmark event time.
+func (o BookmarkTimelineItemResponseOutput) EventTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.EventTime }).(pulumi.StringPtrOutput)
+}
+
+// The entity query kind
+// Expected value is 'Bookmark'.
+func (o BookmarkTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// List of labels relevant to this bookmark
+func (o BookmarkTimelineItemResponseOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) []string { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+// The notes of the bookmark
+func (o BookmarkTimelineItemResponseOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// The bookmark start time.
+func (o BookmarkTimelineItemResponseOutput) StartTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BookmarkTimelineItemResponse) *string { return v.StartTimeUtc }).(pulumi.StringPtrOutput)
 }
 
 // Entity insight Item.
@@ -1171,6 +1364,82 @@ type SecurityAlertTimelineItemResponse struct {
 	TimeGenerated string `pulumi:"timeGenerated"`
 }
 
+// Represents security alert timeline item.
+type SecurityAlertTimelineItemResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityAlertTimelineItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityAlertTimelineItemResponse)(nil)).Elem()
+}
+
+func (o SecurityAlertTimelineItemResponseOutput) ToSecurityAlertTimelineItemResponseOutput() SecurityAlertTimelineItemResponseOutput {
+	return o
+}
+
+func (o SecurityAlertTimelineItemResponseOutput) ToSecurityAlertTimelineItemResponseOutputWithContext(ctx context.Context) SecurityAlertTimelineItemResponseOutput {
+	return o
+}
+
+// The name of the alert type.
+func (o SecurityAlertTimelineItemResponseOutput) AlertType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.AlertType }).(pulumi.StringOutput)
+}
+
+// The alert azure resource id.
+func (o SecurityAlertTimelineItemResponseOutput) AzureResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.AzureResourceId }).(pulumi.StringOutput)
+}
+
+// The alert description.
+func (o SecurityAlertTimelineItemResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The alert name.
+func (o SecurityAlertTimelineItemResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The alert end time.
+func (o SecurityAlertTimelineItemResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// The intent of the alert.
+func (o SecurityAlertTimelineItemResponseOutput) Intent() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.Intent }).(pulumi.StringOutput)
+}
+
+// The entity query kind
+// Expected value is 'SecurityAlert'.
+func (o SecurityAlertTimelineItemResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The alert product name.
+func (o SecurityAlertTimelineItemResponseOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) *string { return v.ProductName }).(pulumi.StringPtrOutput)
+}
+
+// The alert severity.
+func (o SecurityAlertTimelineItemResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The alert start time.
+func (o SecurityAlertTimelineItemResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// The techniques of the alert.
+func (o SecurityAlertTimelineItemResponseOutput) Techniques() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) []string { return v.Techniques }).(pulumi.StringArrayOutput)
+}
+
+// The alert generated time.
+func (o SecurityAlertTimelineItemResponseOutput) TimeGenerated() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityAlertTimelineItemResponse) string { return v.TimeGenerated }).(pulumi.StringOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1577,7 +1846,94 @@ type UserInfoResponse struct {
 	ObjectId *string `pulumi:"objectId"`
 }
 
+// User information that made some action
+type UserInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UserInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserInfoResponse)(nil)).Elem()
+}
+
+func (o UserInfoResponseOutput) ToUserInfoResponseOutput() UserInfoResponseOutput {
+	return o
+}
+
+func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.Context) UserInfoResponseOutput {
+	return o
+}
+
+// The email of the user.
+func (o UserInfoResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v UserInfoResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The name of the user.
+func (o UserInfoResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UserInfoResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The object id of the user.
+func (o UserInfoResponseOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserInfoResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+type UserInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserInfoResponse)(nil)).Elem()
+}
+
+func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
+	return o
+}
+
+func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {
+	return o.ApplyT(func(v *UserInfoResponse) UserInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserInfoResponse
+		return ret
+	}).(UserInfoResponseOutput)
+}
+
+// The email of the user.
+func (o UserInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the user.
+func (o UserInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user.
+func (o UserInfoResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ActivityTimelineItemResponseOutput{})
+	pulumi.RegisterOutputType(AnomalyTimelineItemResponseOutput{})
+	pulumi.RegisterOutputType(BookmarkTimelineItemResponseOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseQueryTimeIntervalOutput{})
@@ -1602,6 +1958,7 @@ func init() {
 	pulumi.RegisterOutputType(InsightsTableResultResponseColumnsArrayOutput{})
 	pulumi.RegisterOutputType(RepoResponseOutput{})
 	pulumi.RegisterOutputType(RepoResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityAlertTimelineItemResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TeamInformationResponseOutput{})
 	pulumi.RegisterOutputType(TeamInformationResponsePtrOutput{})
@@ -1611,4 +1968,6 @@ func init() {
 	pulumi.RegisterOutputType(TimelineErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(TimelineResultsMetadataResponseOutput{})
 	pulumi.RegisterOutputType(TimelineResultsMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserInfoResponseOutput{})
+	pulumi.RegisterOutputType(UserInfoResponsePtrOutput{})
 }

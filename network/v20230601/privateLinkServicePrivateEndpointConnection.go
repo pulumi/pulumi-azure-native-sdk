@@ -117,6 +117,9 @@ func NewPrivateLinkServicePrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:PrivateLinkServicePrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230901:PrivateLinkServicePrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

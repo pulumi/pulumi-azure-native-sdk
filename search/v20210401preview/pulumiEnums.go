@@ -140,10 +140,11 @@ func (o AadAuthFailureModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AadAuthFailureModeInput is an input type that accepts AadAuthFailureModeArgs and AadAuthFailureModeOutput values.
-// You can construct a concrete instance of `AadAuthFailureModeInput` via:
+// AadAuthFailureModeInput is an input type that accepts values of the AadAuthFailureMode enum
+// A concrete instance of `AadAuthFailureModeInput` can be one of the following:
 //
-//	AadAuthFailureModeArgs{...}
+//	AadAuthFailureModeHttp403
+//	AadAuthFailureModeHttp401WithBearerChallenge
 type AadAuthFailureModeInput interface {
 	pulumi.Input
 
@@ -313,10 +314,11 @@ func (o HostingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// HostingModeInput is an input type that accepts HostingModeArgs and HostingModeOutput values.
-// You can construct a concrete instance of `HostingModeInput` via:
+// HostingModeInput is an input type that accepts values of the HostingMode enum
+// A concrete instance of `HostingModeInput` can be one of the following:
 //
-//	HostingModeArgs{...}
+//	HostingModeDefault
+//	HostingModeHighDensity
 type HostingModeInput interface {
 	pulumi.Input
 
@@ -371,6 +373,172 @@ const (
 	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned, UserAssigned")
 )
 
+func (IdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (e IdentityType) ToIdentityTypeOutput() IdentityTypeOutput {
+	return pulumi.ToOutput(e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return e.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return IdentityType(e).ToIdentityTypeOutputWithContext(ctx).ToIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e IdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutput() IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityType) *IdentityType {
+		return &v
+	}).(IdentityTypePtrOutput)
+}
+
+func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {
+	return o.ApplyT(func(v *IdentityType) IdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityType
+		return ret
+	}).(IdentityTypeOutput)
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IdentityTypeInput is an input type that accepts values of the IdentityType enum
+// A concrete instance of `IdentityTypeInput` can be one of the following:
+//
+//	IdentityTypeNone
+//	IdentityTypeSystemAssigned
+//	IdentityTypeUserAssigned
+//	IdentityType_SystemAssigned_UserAssigned
+type IdentityTypeInput interface {
+	pulumi.Input
+
+	ToIdentityTypeOutput() IdentityTypeOutput
+	ToIdentityTypeOutputWithContext(context.Context) IdentityTypeOutput
+}
+
+var identityTypePtrType = reflect.TypeOf((**IdentityType)(nil)).Elem()
+
+type IdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToIdentityTypePtrOutput() IdentityTypePtrOutput
+	ToIdentityTypePtrOutputWithContext(context.Context) IdentityTypePtrOutput
+}
+
+type identityTypePtr string
+
+func IdentityTypePtr(v string) IdentityTypePtrInput {
+	return (*identityTypePtr)(&v)
+}
+
+func (*identityTypePtr) ElementType() reflect.Type {
+	return identityTypePtrType
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(IdentityTypePtrOutput)
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
+}
+
+func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
+	return pulumix.Output[*IdentityType]{
+		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 type PublicNetworkAccess string
 
@@ -380,6 +548,170 @@ const (
 	// The search service is not accessible from traffic originating from the public internet. Access is only permitted over approved private endpoint connections.
 	PublicNetworkAccessDisabled = PublicNetworkAccess("disabled")
 )
+
+func (PublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return e.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return PublicNetworkAccess(e).ToPublicNetworkAccessOutputWithContext(ctx).ToPublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e PublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccess) *PublicNetworkAccess {
+		return &v
+	}).(PublicNetworkAccessPtrOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
+	return o.ApplyT(func(v *PublicNetworkAccess) PublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkAccess
+		return ret
+	}).(PublicNetworkAccessOutput)
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
+// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
+//
+//	PublicNetworkAccessEnabled
+//	PublicNetworkAccessDisabled
+type PublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessOutput() PublicNetworkAccessOutput
+	ToPublicNetworkAccessOutputWithContext(context.Context) PublicNetworkAccessOutput
+}
+
+var publicNetworkAccessPtrType = reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+
+type PublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput
+	ToPublicNetworkAccessPtrOutputWithContext(context.Context) PublicNetworkAccessPtrOutput
+}
+
+type publicNetworkAccessPtr string
+
+func PublicNetworkAccessPtr(v string) PublicNetworkAccessPtrInput {
+	return (*publicNetworkAccessPtr)(&v)
+}
+
+func (*publicNetworkAccessPtr) ElementType() reflect.Type {
+	return publicNetworkAccessPtrType
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessPtrOutput)
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
+}
+
+func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
+	return pulumix.Output[*PublicNetworkAccess]{
+		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.
 type SearchBypass string
@@ -391,6 +723,170 @@ const (
 	SearchBypassAzurePortal = SearchBypass("AzurePortal")
 )
 
+func (SearchBypass) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchBypass)(nil)).Elem()
+}
+
+func (e SearchBypass) ToSearchBypassOutput() SearchBypassOutput {
+	return pulumi.ToOutput(e).(SearchBypassOutput)
+}
+
+func (e SearchBypass) ToSearchBypassOutputWithContext(ctx context.Context) SearchBypassOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchBypassOutput)
+}
+
+func (e SearchBypass) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return e.ToSearchBypassPtrOutputWithContext(context.Background())
+}
+
+func (e SearchBypass) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return SearchBypass(e).ToSearchBypassOutputWithContext(ctx).ToSearchBypassPtrOutputWithContext(ctx)
+}
+
+func (e SearchBypass) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchBypass) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchBypass) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchBypass) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchBypassOutput struct{ *pulumi.OutputState }
+
+func (SearchBypassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchBypass)(nil)).Elem()
+}
+
+func (o SearchBypassOutput) ToSearchBypassOutput() SearchBypassOutput {
+	return o
+}
+
+func (o SearchBypassOutput) ToSearchBypassOutputWithContext(ctx context.Context) SearchBypassOutput {
+	return o
+}
+
+func (o SearchBypassOutput) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return o.ToSearchBypassPtrOutputWithContext(context.Background())
+}
+
+func (o SearchBypassOutput) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchBypass) *SearchBypass {
+		return &v
+	}).(SearchBypassPtrOutput)
+}
+
+func (o SearchBypassOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchBypassOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchBypass) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchBypassOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchBypassOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchBypass) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchBypassPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchBypassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchBypass)(nil)).Elem()
+}
+
+func (o SearchBypassPtrOutput) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return o
+}
+
+func (o SearchBypassPtrOutput) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return o
+}
+
+func (o SearchBypassPtrOutput) Elem() SearchBypassOutput {
+	return o.ApplyT(func(v *SearchBypass) SearchBypass {
+		if v != nil {
+			return *v
+		}
+		var ret SearchBypass
+		return ret
+	}).(SearchBypassOutput)
+}
+
+func (o SearchBypassPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchBypassPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchBypass) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchBypassInput is an input type that accepts values of the SearchBypass enum
+// A concrete instance of `SearchBypassInput` can be one of the following:
+//
+//	SearchBypassNone
+//	SearchBypassAzurePortal
+type SearchBypassInput interface {
+	pulumi.Input
+
+	ToSearchBypassOutput() SearchBypassOutput
+	ToSearchBypassOutputWithContext(context.Context) SearchBypassOutput
+}
+
+var searchBypassPtrType = reflect.TypeOf((**SearchBypass)(nil)).Elem()
+
+type SearchBypassPtrInput interface {
+	pulumi.Input
+
+	ToSearchBypassPtrOutput() SearchBypassPtrOutput
+	ToSearchBypassPtrOutputWithContext(context.Context) SearchBypassPtrOutput
+}
+
+type searchBypassPtr string
+
+func SearchBypassPtr(v string) SearchBypassPtrInput {
+	return (*searchBypassPtr)(&v)
+}
+
+func (*searchBypassPtr) ElementType() reflect.Type {
+	return searchBypassPtrType
+}
+
+func (in *searchBypassPtr) ToSearchBypassPtrOutput() SearchBypassPtrOutput {
+	return pulumi.ToOutput(in).(SearchBypassPtrOutput)
+}
+
+func (in *searchBypassPtr) ToSearchBypassPtrOutputWithContext(ctx context.Context) SearchBypassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchBypassPtrOutput)
+}
+
+func (in *searchBypassPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchBypass] {
+	return pulumix.Output[*SearchBypass]{
+		OutputState: in.ToSearchBypassPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // A specific data exfiltration scenario that is disabled for the service.
 type SearchDisabledDataExfiltrationOption string
 
@@ -398,6 +894,169 @@ const (
 	// Indicates that all data exfiltration scenarios are disabled.
 	SearchDisabledDataExfiltrationOptionAll = SearchDisabledDataExfiltrationOption("All")
 )
+
+func (SearchDisabledDataExfiltrationOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchDisabledDataExfiltrationOption)(nil)).Elem()
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToSearchDisabledDataExfiltrationOptionOutput() SearchDisabledDataExfiltrationOptionOutput {
+	return pulumi.ToOutput(e).(SearchDisabledDataExfiltrationOptionOutput)
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToSearchDisabledDataExfiltrationOptionOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchDisabledDataExfiltrationOptionOutput)
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToSearchDisabledDataExfiltrationOptionPtrOutput() SearchDisabledDataExfiltrationOptionPtrOutput {
+	return e.ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(context.Background())
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionPtrOutput {
+	return SearchDisabledDataExfiltrationOption(e).ToSearchDisabledDataExfiltrationOptionOutputWithContext(ctx).ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx)
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchDisabledDataExfiltrationOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchDisabledDataExfiltrationOptionOutput struct{ *pulumi.OutputState }
+
+func (SearchDisabledDataExfiltrationOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchDisabledDataExfiltrationOption)(nil)).Elem()
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToSearchDisabledDataExfiltrationOptionOutput() SearchDisabledDataExfiltrationOptionOutput {
+	return o
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToSearchDisabledDataExfiltrationOptionOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionOutput {
+	return o
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToSearchDisabledDataExfiltrationOptionPtrOutput() SearchDisabledDataExfiltrationOptionPtrOutput {
+	return o.ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(context.Background())
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchDisabledDataExfiltrationOption) *SearchDisabledDataExfiltrationOption {
+		return &v
+	}).(SearchDisabledDataExfiltrationOptionPtrOutput)
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchDisabledDataExfiltrationOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchDisabledDataExfiltrationOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchDisabledDataExfiltrationOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchDisabledDataExfiltrationOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchDisabledDataExfiltrationOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchDisabledDataExfiltrationOption)(nil)).Elem()
+}
+
+func (o SearchDisabledDataExfiltrationOptionPtrOutput) ToSearchDisabledDataExfiltrationOptionPtrOutput() SearchDisabledDataExfiltrationOptionPtrOutput {
+	return o
+}
+
+func (o SearchDisabledDataExfiltrationOptionPtrOutput) ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionPtrOutput {
+	return o
+}
+
+func (o SearchDisabledDataExfiltrationOptionPtrOutput) Elem() SearchDisabledDataExfiltrationOptionOutput {
+	return o.ApplyT(func(v *SearchDisabledDataExfiltrationOption) SearchDisabledDataExfiltrationOption {
+		if v != nil {
+			return *v
+		}
+		var ret SearchDisabledDataExfiltrationOption
+		return ret
+	}).(SearchDisabledDataExfiltrationOptionOutput)
+}
+
+func (o SearchDisabledDataExfiltrationOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchDisabledDataExfiltrationOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchDisabledDataExfiltrationOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchDisabledDataExfiltrationOptionInput is an input type that accepts values of the SearchDisabledDataExfiltrationOption enum
+// A concrete instance of `SearchDisabledDataExfiltrationOptionInput` can be one of the following:
+//
+//	SearchDisabledDataExfiltrationOptionAll
+type SearchDisabledDataExfiltrationOptionInput interface {
+	pulumi.Input
+
+	ToSearchDisabledDataExfiltrationOptionOutput() SearchDisabledDataExfiltrationOptionOutput
+	ToSearchDisabledDataExfiltrationOptionOutputWithContext(context.Context) SearchDisabledDataExfiltrationOptionOutput
+}
+
+var searchDisabledDataExfiltrationOptionPtrType = reflect.TypeOf((**SearchDisabledDataExfiltrationOption)(nil)).Elem()
+
+type SearchDisabledDataExfiltrationOptionPtrInput interface {
+	pulumi.Input
+
+	ToSearchDisabledDataExfiltrationOptionPtrOutput() SearchDisabledDataExfiltrationOptionPtrOutput
+	ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(context.Context) SearchDisabledDataExfiltrationOptionPtrOutput
+}
+
+type searchDisabledDataExfiltrationOptionPtr string
+
+func SearchDisabledDataExfiltrationOptionPtr(v string) SearchDisabledDataExfiltrationOptionPtrInput {
+	return (*searchDisabledDataExfiltrationOptionPtr)(&v)
+}
+
+func (*searchDisabledDataExfiltrationOptionPtr) ElementType() reflect.Type {
+	return searchDisabledDataExfiltrationOptionPtrType
+}
+
+func (in *searchDisabledDataExfiltrationOptionPtr) ToSearchDisabledDataExfiltrationOptionPtrOutput() SearchDisabledDataExfiltrationOptionPtrOutput {
+	return pulumi.ToOutput(in).(SearchDisabledDataExfiltrationOptionPtrOutput)
+}
+
+func (in *searchDisabledDataExfiltrationOptionPtr) ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchDisabledDataExfiltrationOptionPtrOutput)
+}
+
+func (in *searchDisabledDataExfiltrationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchDisabledDataExfiltrationOption] {
+	return pulumix.Output[*SearchDisabledDataExfiltrationOption]{
+		OutputState: in.ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Describes how a search service should enforce having one or more non customer encrypted resources.
 type SearchEncryptionWithCmk string
@@ -530,10 +1189,12 @@ func (o SearchEncryptionWithCmkPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SearchEncryptionWithCmkInput is an input type that accepts SearchEncryptionWithCmkArgs and SearchEncryptionWithCmkOutput values.
-// You can construct a concrete instance of `SearchEncryptionWithCmkInput` via:
+// SearchEncryptionWithCmkInput is an input type that accepts values of the SearchEncryptionWithCmk enum
+// A concrete instance of `SearchEncryptionWithCmkInput` can be one of the following:
 //
-//	SearchEncryptionWithCmkArgs{...}
+//	SearchEncryptionWithCmkDisabled
+//	SearchEncryptionWithCmkEnabled
+//	SearchEncryptionWithCmkUnspecified
 type SearchEncryptionWithCmkInput interface {
 	pulumi.Input
 
@@ -586,6 +1247,171 @@ const (
 	SearchSemanticSearchStandard = SearchSemanticSearch("standard")
 )
 
+func (SearchSemanticSearch) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchSemanticSearch)(nil)).Elem()
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchOutput() SearchSemanticSearchOutput {
+	return pulumi.ToOutput(e).(SearchSemanticSearchOutput)
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchOutputWithContext(ctx context.Context) SearchSemanticSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchSemanticSearchOutput)
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return e.ToSearchSemanticSearchPtrOutputWithContext(context.Background())
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return SearchSemanticSearch(e).ToSearchSemanticSearchOutputWithContext(ctx).ToSearchSemanticSearchPtrOutputWithContext(ctx)
+}
+
+func (e SearchSemanticSearch) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchSemanticSearch) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchSemanticSearch) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchSemanticSearch) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchSemanticSearchOutput struct{ *pulumi.OutputState }
+
+func (SearchSemanticSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchSemanticSearch)(nil)).Elem()
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchOutput() SearchSemanticSearchOutput {
+	return o
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchOutputWithContext(ctx context.Context) SearchSemanticSearchOutput {
+	return o
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return o.ToSearchSemanticSearchPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchSemanticSearch) *SearchSemanticSearch {
+		return &v
+	}).(SearchSemanticSearchPtrOutput)
+}
+
+func (o SearchSemanticSearchOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchSemanticSearch) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchSemanticSearchOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchSemanticSearch) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchSemanticSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchSemanticSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchSemanticSearch)(nil)).Elem()
+}
+
+func (o SearchSemanticSearchPtrOutput) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return o
+}
+
+func (o SearchSemanticSearchPtrOutput) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return o
+}
+
+func (o SearchSemanticSearchPtrOutput) Elem() SearchSemanticSearchOutput {
+	return o.ApplyT(func(v *SearchSemanticSearch) SearchSemanticSearch {
+		if v != nil {
+			return *v
+		}
+		var ret SearchSemanticSearch
+		return ret
+	}).(SearchSemanticSearchOutput)
+}
+
+func (o SearchSemanticSearchPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchSemanticSearch) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchSemanticSearchInput is an input type that accepts values of the SearchSemanticSearch enum
+// A concrete instance of `SearchSemanticSearchInput` can be one of the following:
+//
+//	SearchSemanticSearchDisabled
+//	SearchSemanticSearchFree
+//	SearchSemanticSearchStandard
+type SearchSemanticSearchInput interface {
+	pulumi.Input
+
+	ToSearchSemanticSearchOutput() SearchSemanticSearchOutput
+	ToSearchSemanticSearchOutputWithContext(context.Context) SearchSemanticSearchOutput
+}
+
+var searchSemanticSearchPtrType = reflect.TypeOf((**SearchSemanticSearch)(nil)).Elem()
+
+type SearchSemanticSearchPtrInput interface {
+	pulumi.Input
+
+	ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput
+	ToSearchSemanticSearchPtrOutputWithContext(context.Context) SearchSemanticSearchPtrOutput
+}
+
+type searchSemanticSearchPtr string
+
+func SearchSemanticSearchPtr(v string) SearchSemanticSearchPtrInput {
+	return (*searchSemanticSearchPtr)(&v)
+}
+
+func (*searchSemanticSearchPtr) ElementType() reflect.Type {
+	return searchSemanticSearchPtrType
+}
+
+func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return pulumi.ToOutput(in).(SearchSemanticSearchPtrOutput)
+}
+
+func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchSemanticSearchPtrOutput)
+}
+
+func (in *searchSemanticSearchPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchSemanticSearch] {
+	return pulumix.Output[*SearchSemanticSearch]{
+		OutputState: in.ToSearchSemanticSearchPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
 type SkuName string
 
@@ -606,11 +1432,192 @@ const (
 	SkuNameStorageOptimizedL2 = SkuName("storage_optimized_l2")
 )
 
+func (SkuName) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuName)(nil)).Elem()
+}
+
+func (e SkuName) ToSkuNameOutput() SkuNameOutput {
+	return pulumi.ToOutput(e).(SkuNameOutput)
+}
+
+func (e SkuName) ToSkuNameOutputWithContext(ctx context.Context) SkuNameOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SkuNameOutput)
+}
+
+func (e SkuName) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return e.ToSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (e SkuName) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return SkuName(e).ToSkuNameOutputWithContext(ctx).ToSkuNamePtrOutputWithContext(ctx)
+}
+
+func (e SkuName) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SkuName) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SkuName) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SkuName) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SkuNameOutput struct{ *pulumi.OutputState }
+
+func (SkuNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuName)(nil)).Elem()
+}
+
+func (o SkuNameOutput) ToSkuNameOutput() SkuNameOutput {
+	return o
+}
+
+func (o SkuNameOutput) ToSkuNameOutputWithContext(ctx context.Context) SkuNameOutput {
+	return o
+}
+
+func (o SkuNameOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return o.ToSkuNamePtrOutputWithContext(context.Background())
+}
+
+func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuName) *SkuName {
+		return &v
+	}).(SkuNamePtrOutput)
+}
+
+func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SkuNameOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SkuName) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SkuNameOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SkuNameOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SkuName) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SkuNamePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuName)(nil)).Elem()
+}
+
+func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return o
+}
+
+func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return o
+}
+
+func (o SkuNamePtrOutput) Elem() SkuNameOutput {
+	return o.ApplyT(func(v *SkuName) SkuName {
+		if v != nil {
+			return *v
+		}
+		var ret SkuName
+		return ret
+	}).(SkuNameOutput)
+}
+
+func (o SkuNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SkuName) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SkuNameInput is an input type that accepts values of the SkuName enum
+// A concrete instance of `SkuNameInput` can be one of the following:
+//
+//	SkuNameFree
+//	SkuNameBasic
+//	SkuNameStandard
+//	SkuNameStandard2
+//	SkuNameStandard3
+//	SkuNameStorageOptimizedL1
+//	SkuNameStorageOptimizedL2
+type SkuNameInput interface {
+	pulumi.Input
+
+	ToSkuNameOutput() SkuNameOutput
+	ToSkuNameOutputWithContext(context.Context) SkuNameOutput
+}
+
+var skuNamePtrType = reflect.TypeOf((**SkuName)(nil)).Elem()
+
+type SkuNamePtrInput interface {
+	pulumi.Input
+
+	ToSkuNamePtrOutput() SkuNamePtrOutput
+	ToSkuNamePtrOutputWithContext(context.Context) SkuNamePtrOutput
+}
+
+type skuNamePtr string
+
+func SkuNamePtr(v string) SkuNamePtrInput {
+	return (*skuNamePtr)(&v)
+}
+
+func (*skuNamePtr) ElementType() reflect.Type {
+	return skuNamePtrType
+}
+
+func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
+	return pulumi.ToOutput(in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
+}
+
+func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
+	return pulumix.Output[*SkuName]{
+		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterOutputType(AadAuthFailureModeOutput{})
 	pulumi.RegisterOutputType(AadAuthFailureModePtrOutput{})
 	pulumi.RegisterOutputType(HostingModeOutput{})
 	pulumi.RegisterOutputType(HostingModePtrOutput{})
+	pulumi.RegisterOutputType(IdentityTypeOutput{})
+	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(SearchBypassOutput{})
+	pulumi.RegisterOutputType(SearchBypassPtrOutput{})
+	pulumi.RegisterOutputType(SearchDisabledDataExfiltrationOptionOutput{})
+	pulumi.RegisterOutputType(SearchDisabledDataExfiltrationOptionPtrOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkPtrOutput{})
+	pulumi.RegisterOutputType(SearchSemanticSearchOutput{})
+	pulumi.RegisterOutputType(SearchSemanticSearchPtrOutput{})
+	pulumi.RegisterOutputType(SkuNameOutput{})
+	pulumi.RegisterOutputType(SkuNamePtrOutput{})
 }

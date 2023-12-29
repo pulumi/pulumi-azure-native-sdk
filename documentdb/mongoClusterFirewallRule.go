@@ -15,7 +15,7 @@ import (
 // Represents a mongo cluster firewall rule.
 // Azure REST API version: 2023-03-15-preview.
 //
-// Other available API versions: 2023-09-15-preview.
+// Other available API versions: 2023-09-15-preview, 2023-11-15-preview.
 type MongoClusterFirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewMongoClusterFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230915preview:MongoClusterFirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20231115preview:MongoClusterFirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)

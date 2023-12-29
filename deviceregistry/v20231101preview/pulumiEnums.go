@@ -3,6 +3,14 @@
 
 package v20231101preview
 
+import (
+	"context"
+	"reflect"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+)
+
 // An indication of how the data point should be mapped to OpenTelemetry.
 type DataPointsObservabilityMode string
 
@@ -14,6 +22,173 @@ const (
 	DataPointsObservabilityModeLog       = DataPointsObservabilityMode("log")
 )
 
+func (DataPointsObservabilityMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPointsObservabilityMode)(nil)).Elem()
+}
+
+func (e DataPointsObservabilityMode) ToDataPointsObservabilityModeOutput() DataPointsObservabilityModeOutput {
+	return pulumi.ToOutput(e).(DataPointsObservabilityModeOutput)
+}
+
+func (e DataPointsObservabilityMode) ToDataPointsObservabilityModeOutputWithContext(ctx context.Context) DataPointsObservabilityModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataPointsObservabilityModeOutput)
+}
+
+func (e DataPointsObservabilityMode) ToDataPointsObservabilityModePtrOutput() DataPointsObservabilityModePtrOutput {
+	return e.ToDataPointsObservabilityModePtrOutputWithContext(context.Background())
+}
+
+func (e DataPointsObservabilityMode) ToDataPointsObservabilityModePtrOutputWithContext(ctx context.Context) DataPointsObservabilityModePtrOutput {
+	return DataPointsObservabilityMode(e).ToDataPointsObservabilityModeOutputWithContext(ctx).ToDataPointsObservabilityModePtrOutputWithContext(ctx)
+}
+
+func (e DataPointsObservabilityMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataPointsObservabilityMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataPointsObservabilityMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataPointsObservabilityMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataPointsObservabilityModeOutput struct{ *pulumi.OutputState }
+
+func (DataPointsObservabilityModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPointsObservabilityMode)(nil)).Elem()
+}
+
+func (o DataPointsObservabilityModeOutput) ToDataPointsObservabilityModeOutput() DataPointsObservabilityModeOutput {
+	return o
+}
+
+func (o DataPointsObservabilityModeOutput) ToDataPointsObservabilityModeOutputWithContext(ctx context.Context) DataPointsObservabilityModeOutput {
+	return o
+}
+
+func (o DataPointsObservabilityModeOutput) ToDataPointsObservabilityModePtrOutput() DataPointsObservabilityModePtrOutput {
+	return o.ToDataPointsObservabilityModePtrOutputWithContext(context.Background())
+}
+
+func (o DataPointsObservabilityModeOutput) ToDataPointsObservabilityModePtrOutputWithContext(ctx context.Context) DataPointsObservabilityModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataPointsObservabilityMode) *DataPointsObservabilityMode {
+		return &v
+	}).(DataPointsObservabilityModePtrOutput)
+}
+
+func (o DataPointsObservabilityModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataPointsObservabilityModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataPointsObservabilityMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataPointsObservabilityModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataPointsObservabilityModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataPointsObservabilityMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataPointsObservabilityModePtrOutput struct{ *pulumi.OutputState }
+
+func (DataPointsObservabilityModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataPointsObservabilityMode)(nil)).Elem()
+}
+
+func (o DataPointsObservabilityModePtrOutput) ToDataPointsObservabilityModePtrOutput() DataPointsObservabilityModePtrOutput {
+	return o
+}
+
+func (o DataPointsObservabilityModePtrOutput) ToDataPointsObservabilityModePtrOutputWithContext(ctx context.Context) DataPointsObservabilityModePtrOutput {
+	return o
+}
+
+func (o DataPointsObservabilityModePtrOutput) Elem() DataPointsObservabilityModeOutput {
+	return o.ApplyT(func(v *DataPointsObservabilityMode) DataPointsObservabilityMode {
+		if v != nil {
+			return *v
+		}
+		var ret DataPointsObservabilityMode
+		return ret
+	}).(DataPointsObservabilityModeOutput)
+}
+
+func (o DataPointsObservabilityModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataPointsObservabilityModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataPointsObservabilityMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataPointsObservabilityModeInput is an input type that accepts values of the DataPointsObservabilityMode enum
+// A concrete instance of `DataPointsObservabilityModeInput` can be one of the following:
+//
+//	DataPointsObservabilityModeNone
+//	DataPointsObservabilityModeCounter
+//	DataPointsObservabilityModeGauge
+//	DataPointsObservabilityModeHistogram
+//	DataPointsObservabilityModeLog
+type DataPointsObservabilityModeInput interface {
+	pulumi.Input
+
+	ToDataPointsObservabilityModeOutput() DataPointsObservabilityModeOutput
+	ToDataPointsObservabilityModeOutputWithContext(context.Context) DataPointsObservabilityModeOutput
+}
+
+var dataPointsObservabilityModePtrType = reflect.TypeOf((**DataPointsObservabilityMode)(nil)).Elem()
+
+type DataPointsObservabilityModePtrInput interface {
+	pulumi.Input
+
+	ToDataPointsObservabilityModePtrOutput() DataPointsObservabilityModePtrOutput
+	ToDataPointsObservabilityModePtrOutputWithContext(context.Context) DataPointsObservabilityModePtrOutput
+}
+
+type dataPointsObservabilityModePtr string
+
+func DataPointsObservabilityModePtr(v string) DataPointsObservabilityModePtrInput {
+	return (*dataPointsObservabilityModePtr)(&v)
+}
+
+func (*dataPointsObservabilityModePtr) ElementType() reflect.Type {
+	return dataPointsObservabilityModePtrType
+}
+
+func (in *dataPointsObservabilityModePtr) ToDataPointsObservabilityModePtrOutput() DataPointsObservabilityModePtrOutput {
+	return pulumi.ToOutput(in).(DataPointsObservabilityModePtrOutput)
+}
+
+func (in *dataPointsObservabilityModePtr) ToDataPointsObservabilityModePtrOutputWithContext(ctx context.Context) DataPointsObservabilityModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataPointsObservabilityModePtrOutput)
+}
+
+func (in *dataPointsObservabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataPointsObservabilityMode] {
+	return pulumix.Output[*DataPointsObservabilityMode]{
+		OutputState: in.ToDataPointsObservabilityModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // An indication of how the event should be mapped to OpenTelemetry.
 type EventsObservabilityMode string
 
@@ -21,6 +196,170 @@ const (
 	EventsObservabilityModeNone = EventsObservabilityMode("none")
 	EventsObservabilityModeLog  = EventsObservabilityMode("log")
 )
+
+func (EventsObservabilityMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventsObservabilityMode)(nil)).Elem()
+}
+
+func (e EventsObservabilityMode) ToEventsObservabilityModeOutput() EventsObservabilityModeOutput {
+	return pulumi.ToOutput(e).(EventsObservabilityModeOutput)
+}
+
+func (e EventsObservabilityMode) ToEventsObservabilityModeOutputWithContext(ctx context.Context) EventsObservabilityModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EventsObservabilityModeOutput)
+}
+
+func (e EventsObservabilityMode) ToEventsObservabilityModePtrOutput() EventsObservabilityModePtrOutput {
+	return e.ToEventsObservabilityModePtrOutputWithContext(context.Background())
+}
+
+func (e EventsObservabilityMode) ToEventsObservabilityModePtrOutputWithContext(ctx context.Context) EventsObservabilityModePtrOutput {
+	return EventsObservabilityMode(e).ToEventsObservabilityModeOutputWithContext(ctx).ToEventsObservabilityModePtrOutputWithContext(ctx)
+}
+
+func (e EventsObservabilityMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EventsObservabilityMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EventsObservabilityMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EventsObservabilityMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EventsObservabilityModeOutput struct{ *pulumi.OutputState }
+
+func (EventsObservabilityModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventsObservabilityMode)(nil)).Elem()
+}
+
+func (o EventsObservabilityModeOutput) ToEventsObservabilityModeOutput() EventsObservabilityModeOutput {
+	return o
+}
+
+func (o EventsObservabilityModeOutput) ToEventsObservabilityModeOutputWithContext(ctx context.Context) EventsObservabilityModeOutput {
+	return o
+}
+
+func (o EventsObservabilityModeOutput) ToEventsObservabilityModePtrOutput() EventsObservabilityModePtrOutput {
+	return o.ToEventsObservabilityModePtrOutputWithContext(context.Background())
+}
+
+func (o EventsObservabilityModeOutput) ToEventsObservabilityModePtrOutputWithContext(ctx context.Context) EventsObservabilityModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventsObservabilityMode) *EventsObservabilityMode {
+		return &v
+	}).(EventsObservabilityModePtrOutput)
+}
+
+func (o EventsObservabilityModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EventsObservabilityModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EventsObservabilityMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EventsObservabilityModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EventsObservabilityModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EventsObservabilityMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EventsObservabilityModePtrOutput struct{ *pulumi.OutputState }
+
+func (EventsObservabilityModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventsObservabilityMode)(nil)).Elem()
+}
+
+func (o EventsObservabilityModePtrOutput) ToEventsObservabilityModePtrOutput() EventsObservabilityModePtrOutput {
+	return o
+}
+
+func (o EventsObservabilityModePtrOutput) ToEventsObservabilityModePtrOutputWithContext(ctx context.Context) EventsObservabilityModePtrOutput {
+	return o
+}
+
+func (o EventsObservabilityModePtrOutput) Elem() EventsObservabilityModeOutput {
+	return o.ApplyT(func(v *EventsObservabilityMode) EventsObservabilityMode {
+		if v != nil {
+			return *v
+		}
+		var ret EventsObservabilityMode
+		return ret
+	}).(EventsObservabilityModeOutput)
+}
+
+func (o EventsObservabilityModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EventsObservabilityModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EventsObservabilityMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EventsObservabilityModeInput is an input type that accepts values of the EventsObservabilityMode enum
+// A concrete instance of `EventsObservabilityModeInput` can be one of the following:
+//
+//	EventsObservabilityModeNone
+//	EventsObservabilityModeLog
+type EventsObservabilityModeInput interface {
+	pulumi.Input
+
+	ToEventsObservabilityModeOutput() EventsObservabilityModeOutput
+	ToEventsObservabilityModeOutputWithContext(context.Context) EventsObservabilityModeOutput
+}
+
+var eventsObservabilityModePtrType = reflect.TypeOf((**EventsObservabilityMode)(nil)).Elem()
+
+type EventsObservabilityModePtrInput interface {
+	pulumi.Input
+
+	ToEventsObservabilityModePtrOutput() EventsObservabilityModePtrOutput
+	ToEventsObservabilityModePtrOutputWithContext(context.Context) EventsObservabilityModePtrOutput
+}
+
+type eventsObservabilityModePtr string
+
+func EventsObservabilityModePtr(v string) EventsObservabilityModePtrInput {
+	return (*eventsObservabilityModePtr)(&v)
+}
+
+func (*eventsObservabilityModePtr) ElementType() reflect.Type {
+	return eventsObservabilityModePtrType
+}
+
+func (in *eventsObservabilityModePtr) ToEventsObservabilityModePtrOutput() EventsObservabilityModePtrOutput {
+	return pulumi.ToOutput(in).(EventsObservabilityModePtrOutput)
+}
+
+func (in *eventsObservabilityModePtr) ToEventsObservabilityModePtrOutputWithContext(ctx context.Context) EventsObservabilityModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EventsObservabilityModePtrOutput)
+}
+
+func (in *eventsObservabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*EventsObservabilityMode] {
+	return pulumix.Output[*EventsObservabilityMode]{
+		OutputState: in.ToEventsObservabilityModePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Defines the mode to authenticate the user of the client at the server.
 type Mode string
@@ -31,5 +370,176 @@ const (
 	ModeUsernamePassword = Mode("UsernamePassword")
 )
 
+func (Mode) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mode)(nil)).Elem()
+}
+
+func (e Mode) ToModeOutput() ModeOutput {
+	return pulumi.ToOutput(e).(ModeOutput)
+}
+
+func (e Mode) ToModeOutputWithContext(ctx context.Context) ModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ModeOutput)
+}
+
+func (e Mode) ToModePtrOutput() ModePtrOutput {
+	return e.ToModePtrOutputWithContext(context.Background())
+}
+
+func (e Mode) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return Mode(e).ToModeOutputWithContext(ctx).ToModePtrOutputWithContext(ctx)
+}
+
+func (e Mode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Mode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Mode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Mode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ModeOutput struct{ *pulumi.OutputState }
+
+func (ModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mode)(nil)).Elem()
+}
+
+func (o ModeOutput) ToModeOutput() ModeOutput {
+	return o
+}
+
+func (o ModeOutput) ToModeOutputWithContext(ctx context.Context) ModeOutput {
+	return o
+}
+
+func (o ModeOutput) ToModePtrOutput() ModePtrOutput {
+	return o.ToModePtrOutputWithContext(context.Background())
+}
+
+func (o ModeOutput) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Mode) *Mode {
+		return &v
+	}).(ModePtrOutput)
+}
+
+func (o ModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Mode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Mode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModePtrOutput struct{ *pulumi.OutputState }
+
+func (ModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Mode)(nil)).Elem()
+}
+
+func (o ModePtrOutput) ToModePtrOutput() ModePtrOutput {
+	return o
+}
+
+func (o ModePtrOutput) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return o
+}
+
+func (o ModePtrOutput) Elem() ModeOutput {
+	return o.ApplyT(func(v *Mode) Mode {
+		if v != nil {
+			return *v
+		}
+		var ret Mode
+		return ret
+	}).(ModeOutput)
+}
+
+func (o ModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Mode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ModeInput is an input type that accepts values of the Mode enum
+// A concrete instance of `ModeInput` can be one of the following:
+//
+//	ModeAnonymous
+//	ModeCertificate
+//	ModeUsernamePassword
+type ModeInput interface {
+	pulumi.Input
+
+	ToModeOutput() ModeOutput
+	ToModeOutputWithContext(context.Context) ModeOutput
+}
+
+var modePtrType = reflect.TypeOf((**Mode)(nil)).Elem()
+
+type ModePtrInput interface {
+	pulumi.Input
+
+	ToModePtrOutput() ModePtrOutput
+	ToModePtrOutputWithContext(context.Context) ModePtrOutput
+}
+
+type modePtr string
+
+func ModePtr(v string) ModePtrInput {
+	return (*modePtr)(&v)
+}
+
+func (*modePtr) ElementType() reflect.Type {
+	return modePtrType
+}
+
+func (in *modePtr) ToModePtrOutput() ModePtrOutput {
+	return pulumi.ToOutput(in).(ModePtrOutput)
+}
+
+func (in *modePtr) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ModePtrOutput)
+}
+
+func (in *modePtr) ToOutput(ctx context.Context) pulumix.Output[*Mode] {
+	return pulumix.Output[*Mode]{
+		OutputState: in.ToModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(DataPointsObservabilityModeOutput{})
+	pulumi.RegisterOutputType(DataPointsObservabilityModePtrOutput{})
+	pulumi.RegisterOutputType(EventsObservabilityModeOutput{})
+	pulumi.RegisterOutputType(EventsObservabilityModePtrOutput{})
+	pulumi.RegisterOutputType(ModeOutput{})
+	pulumi.RegisterOutputType(ModePtrOutput{})
 }

@@ -137,10 +137,10 @@ func (o AssociationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// AssociationTypeInput is an input type that accepts AssociationTypeArgs and AssociationTypeOutput values.
-// You can construct a concrete instance of `AssociationTypeInput` via:
+// AssociationTypeInput is an input type that accepts values of the AssociationType enum
+// A concrete instance of `AssociationTypeInput` can be one of the following:
 //
-//	AssociationTypeArgs{...}
+//	AssociationTypeSubnets
 type AssociationTypeInput interface {
 	pulumi.Input
 
@@ -308,10 +308,11 @@ func (o FrontendIPAddressVersionPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// FrontendIPAddressVersionInput is an input type that accepts FrontendIPAddressVersionArgs and FrontendIPAddressVersionOutput values.
-// You can construct a concrete instance of `FrontendIPAddressVersionInput` via:
+// FrontendIPAddressVersionInput is an input type that accepts values of the FrontendIPAddressVersion enum
+// A concrete instance of `FrontendIPAddressVersionInput` can be one of the following:
 //
-//	FrontendIPAddressVersionArgs{...}
+//	FrontendIPAddressVersionIPv4
+//	FrontendIPAddressVersionIPv6
 type FrontendIPAddressVersionInput interface {
 	pulumi.Input
 
@@ -478,10 +479,10 @@ func (o FrontendModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// FrontendModeInput is an input type that accepts FrontendModeArgs and FrontendModeOutput values.
-// You can construct a concrete instance of `FrontendModeInput` via:
+// FrontendModeInput is an input type that accepts values of the FrontendMode enum
+// A concrete instance of `FrontendModeInput` can be one of the following:
 //
-//	FrontendModeArgs{...}
+//	FrontendModePublic
 type FrontendModeInput interface {
 	pulumi.Input
 

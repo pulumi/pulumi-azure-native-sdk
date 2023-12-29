@@ -138,10 +138,11 @@ func (o DeploymentModePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// DeploymentModeInput is an input type that accepts DeploymentModeArgs and DeploymentModeOutput values.
-// You can construct a concrete instance of `DeploymentModeInput` via:
+// DeploymentModeInput is an input type that accepts values of the DeploymentMode enum
+// A concrete instance of `DeploymentModeInput` can be one of the following:
 //
-//	DeploymentModeArgs{...}
+//	DeploymentModeIncremental
+//	DeploymentModeComplete
 type DeploymentModeInput interface {
 	pulumi.Input
 
@@ -190,6 +191,170 @@ const (
 	RestAuthLocationHeader = RestAuthLocation("Header")
 )
 
+func (RestAuthLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestAuthLocation)(nil)).Elem()
+}
+
+func (e RestAuthLocation) ToRestAuthLocationOutput() RestAuthLocationOutput {
+	return pulumi.ToOutput(e).(RestAuthLocationOutput)
+}
+
+func (e RestAuthLocation) ToRestAuthLocationOutputWithContext(ctx context.Context) RestAuthLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RestAuthLocationOutput)
+}
+
+func (e RestAuthLocation) ToRestAuthLocationPtrOutput() RestAuthLocationPtrOutput {
+	return e.ToRestAuthLocationPtrOutputWithContext(context.Background())
+}
+
+func (e RestAuthLocation) ToRestAuthLocationPtrOutputWithContext(ctx context.Context) RestAuthLocationPtrOutput {
+	return RestAuthLocation(e).ToRestAuthLocationOutputWithContext(ctx).ToRestAuthLocationPtrOutputWithContext(ctx)
+}
+
+func (e RestAuthLocation) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RestAuthLocation) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RestAuthLocation) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RestAuthLocation) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RestAuthLocationOutput struct{ *pulumi.OutputState }
+
+func (RestAuthLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestAuthLocation)(nil)).Elem()
+}
+
+func (o RestAuthLocationOutput) ToRestAuthLocationOutput() RestAuthLocationOutput {
+	return o
+}
+
+func (o RestAuthLocationOutput) ToRestAuthLocationOutputWithContext(ctx context.Context) RestAuthLocationOutput {
+	return o
+}
+
+func (o RestAuthLocationOutput) ToRestAuthLocationPtrOutput() RestAuthLocationPtrOutput {
+	return o.ToRestAuthLocationPtrOutputWithContext(context.Background())
+}
+
+func (o RestAuthLocationOutput) ToRestAuthLocationPtrOutputWithContext(ctx context.Context) RestAuthLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestAuthLocation) *RestAuthLocation {
+		return &v
+	}).(RestAuthLocationPtrOutput)
+}
+
+func (o RestAuthLocationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RestAuthLocationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RestAuthLocation) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RestAuthLocationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RestAuthLocationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RestAuthLocation) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestAuthLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (RestAuthLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestAuthLocation)(nil)).Elem()
+}
+
+func (o RestAuthLocationPtrOutput) ToRestAuthLocationPtrOutput() RestAuthLocationPtrOutput {
+	return o
+}
+
+func (o RestAuthLocationPtrOutput) ToRestAuthLocationPtrOutputWithContext(ctx context.Context) RestAuthLocationPtrOutput {
+	return o
+}
+
+func (o RestAuthLocationPtrOutput) Elem() RestAuthLocationOutput {
+	return o.ApplyT(func(v *RestAuthLocation) RestAuthLocation {
+		if v != nil {
+			return *v
+		}
+		var ret RestAuthLocation
+		return ret
+	}).(RestAuthLocationOutput)
+}
+
+func (o RestAuthLocationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RestAuthLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RestAuthLocation) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RestAuthLocationInput is an input type that accepts values of the RestAuthLocation enum
+// A concrete instance of `RestAuthLocationInput` can be one of the following:
+//
+//	RestAuthLocationQuery
+//	RestAuthLocationHeader
+type RestAuthLocationInput interface {
+	pulumi.Input
+
+	ToRestAuthLocationOutput() RestAuthLocationOutput
+	ToRestAuthLocationOutputWithContext(context.Context) RestAuthLocationOutput
+}
+
+var restAuthLocationPtrType = reflect.TypeOf((**RestAuthLocation)(nil)).Elem()
+
+type RestAuthLocationPtrInput interface {
+	pulumi.Input
+
+	ToRestAuthLocationPtrOutput() RestAuthLocationPtrOutput
+	ToRestAuthLocationPtrOutputWithContext(context.Context) RestAuthLocationPtrOutput
+}
+
+type restAuthLocationPtr string
+
+func RestAuthLocationPtr(v string) RestAuthLocationPtrInput {
+	return (*restAuthLocationPtr)(&v)
+}
+
+func (*restAuthLocationPtr) ElementType() reflect.Type {
+	return restAuthLocationPtrType
+}
+
+func (in *restAuthLocationPtr) ToRestAuthLocationPtrOutput() RestAuthLocationPtrOutput {
+	return pulumi.ToOutput(in).(RestAuthLocationPtrOutput)
+}
+
+func (in *restAuthLocationPtr) ToRestAuthLocationPtrOutputWithContext(ctx context.Context) RestAuthLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RestAuthLocationPtrOutput)
+}
+
+func (in *restAuthLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*RestAuthLocation] {
+	return pulumix.Output[*RestAuthLocation]{
+		OutputState: in.ToRestAuthLocationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The authentication type.
 type RestAuthType string
 
@@ -206,6 +371,170 @@ const (
 	RestMatchQuantifierAny = RestMatchQuantifier("Any")
 )
 
+func (RestMatchQuantifier) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestMatchQuantifier)(nil)).Elem()
+}
+
+func (e RestMatchQuantifier) ToRestMatchQuantifierOutput() RestMatchQuantifierOutput {
+	return pulumi.ToOutput(e).(RestMatchQuantifierOutput)
+}
+
+func (e RestMatchQuantifier) ToRestMatchQuantifierOutputWithContext(ctx context.Context) RestMatchQuantifierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RestMatchQuantifierOutput)
+}
+
+func (e RestMatchQuantifier) ToRestMatchQuantifierPtrOutput() RestMatchQuantifierPtrOutput {
+	return e.ToRestMatchQuantifierPtrOutputWithContext(context.Background())
+}
+
+func (e RestMatchQuantifier) ToRestMatchQuantifierPtrOutputWithContext(ctx context.Context) RestMatchQuantifierPtrOutput {
+	return RestMatchQuantifier(e).ToRestMatchQuantifierOutputWithContext(ctx).ToRestMatchQuantifierPtrOutputWithContext(ctx)
+}
+
+func (e RestMatchQuantifier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RestMatchQuantifier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RestMatchQuantifier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RestMatchQuantifier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RestMatchQuantifierOutput struct{ *pulumi.OutputState }
+
+func (RestMatchQuantifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestMatchQuantifier)(nil)).Elem()
+}
+
+func (o RestMatchQuantifierOutput) ToRestMatchQuantifierOutput() RestMatchQuantifierOutput {
+	return o
+}
+
+func (o RestMatchQuantifierOutput) ToRestMatchQuantifierOutputWithContext(ctx context.Context) RestMatchQuantifierOutput {
+	return o
+}
+
+func (o RestMatchQuantifierOutput) ToRestMatchQuantifierPtrOutput() RestMatchQuantifierPtrOutput {
+	return o.ToRestMatchQuantifierPtrOutputWithContext(context.Background())
+}
+
+func (o RestMatchQuantifierOutput) ToRestMatchQuantifierPtrOutputWithContext(ctx context.Context) RestMatchQuantifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestMatchQuantifier) *RestMatchQuantifier {
+		return &v
+	}).(RestMatchQuantifierPtrOutput)
+}
+
+func (o RestMatchQuantifierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RestMatchQuantifierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RestMatchQuantifier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RestMatchQuantifierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RestMatchQuantifierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RestMatchQuantifier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestMatchQuantifierPtrOutput struct{ *pulumi.OutputState }
+
+func (RestMatchQuantifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestMatchQuantifier)(nil)).Elem()
+}
+
+func (o RestMatchQuantifierPtrOutput) ToRestMatchQuantifierPtrOutput() RestMatchQuantifierPtrOutput {
+	return o
+}
+
+func (o RestMatchQuantifierPtrOutput) ToRestMatchQuantifierPtrOutputWithContext(ctx context.Context) RestMatchQuantifierPtrOutput {
+	return o
+}
+
+func (o RestMatchQuantifierPtrOutput) Elem() RestMatchQuantifierOutput {
+	return o.ApplyT(func(v *RestMatchQuantifier) RestMatchQuantifier {
+		if v != nil {
+			return *v
+		}
+		var ret RestMatchQuantifier
+		return ret
+	}).(RestMatchQuantifierOutput)
+}
+
+func (o RestMatchQuantifierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RestMatchQuantifierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RestMatchQuantifier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RestMatchQuantifierInput is an input type that accepts values of the RestMatchQuantifier enum
+// A concrete instance of `RestMatchQuantifierInput` can be one of the following:
+//
+//	RestMatchQuantifierAll
+//	RestMatchQuantifierAny
+type RestMatchQuantifierInput interface {
+	pulumi.Input
+
+	ToRestMatchQuantifierOutput() RestMatchQuantifierOutput
+	ToRestMatchQuantifierOutputWithContext(context.Context) RestMatchQuantifierOutput
+}
+
+var restMatchQuantifierPtrType = reflect.TypeOf((**RestMatchQuantifier)(nil)).Elem()
+
+type RestMatchQuantifierPtrInput interface {
+	pulumi.Input
+
+	ToRestMatchQuantifierPtrOutput() RestMatchQuantifierPtrOutput
+	ToRestMatchQuantifierPtrOutputWithContext(context.Context) RestMatchQuantifierPtrOutput
+}
+
+type restMatchQuantifierPtr string
+
+func RestMatchQuantifierPtr(v string) RestMatchQuantifierPtrInput {
+	return (*restMatchQuantifierPtr)(&v)
+}
+
+func (*restMatchQuantifierPtr) ElementType() reflect.Type {
+	return restMatchQuantifierPtrType
+}
+
+func (in *restMatchQuantifierPtr) ToRestMatchQuantifierPtrOutput() RestMatchQuantifierPtrOutput {
+	return pulumi.ToOutput(in).(RestMatchQuantifierPtrOutput)
+}
+
+func (in *restMatchQuantifierPtr) ToRestMatchQuantifierPtrOutputWithContext(ctx context.Context) RestMatchQuantifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RestMatchQuantifierPtrOutput)
+}
+
+func (in *restMatchQuantifierPtr) ToOutput(ctx context.Context) pulumix.Output[*RestMatchQuantifier] {
+	return pulumix.Output[*RestMatchQuantifier]{
+		OutputState: in.ToRestMatchQuantifierPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The HTTP method to use for the request.
 type RestRequestMethod string
 
@@ -213,6 +542,170 @@ const (
 	RestRequestMethodGET  = RestRequestMethod("GET")
 	RestRequestMethodPOST = RestRequestMethod("POST")
 )
+
+func (RestRequestMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestRequestMethod)(nil)).Elem()
+}
+
+func (e RestRequestMethod) ToRestRequestMethodOutput() RestRequestMethodOutput {
+	return pulumi.ToOutput(e).(RestRequestMethodOutput)
+}
+
+func (e RestRequestMethod) ToRestRequestMethodOutputWithContext(ctx context.Context) RestRequestMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RestRequestMethodOutput)
+}
+
+func (e RestRequestMethod) ToRestRequestMethodPtrOutput() RestRequestMethodPtrOutput {
+	return e.ToRestRequestMethodPtrOutputWithContext(context.Background())
+}
+
+func (e RestRequestMethod) ToRestRequestMethodPtrOutputWithContext(ctx context.Context) RestRequestMethodPtrOutput {
+	return RestRequestMethod(e).ToRestRequestMethodOutputWithContext(ctx).ToRestRequestMethodPtrOutputWithContext(ctx)
+}
+
+func (e RestRequestMethod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RestRequestMethod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RestRequestMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RestRequestMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RestRequestMethodOutput struct{ *pulumi.OutputState }
+
+func (RestRequestMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RestRequestMethod)(nil)).Elem()
+}
+
+func (o RestRequestMethodOutput) ToRestRequestMethodOutput() RestRequestMethodOutput {
+	return o
+}
+
+func (o RestRequestMethodOutput) ToRestRequestMethodOutputWithContext(ctx context.Context) RestRequestMethodOutput {
+	return o
+}
+
+func (o RestRequestMethodOutput) ToRestRequestMethodPtrOutput() RestRequestMethodPtrOutput {
+	return o.ToRestRequestMethodPtrOutputWithContext(context.Background())
+}
+
+func (o RestRequestMethodOutput) ToRestRequestMethodPtrOutputWithContext(ctx context.Context) RestRequestMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RestRequestMethod) *RestRequestMethod {
+		return &v
+	}).(RestRequestMethodPtrOutput)
+}
+
+func (o RestRequestMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RestRequestMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RestRequestMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RestRequestMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RestRequestMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RestRequestMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RestRequestMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (RestRequestMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RestRequestMethod)(nil)).Elem()
+}
+
+func (o RestRequestMethodPtrOutput) ToRestRequestMethodPtrOutput() RestRequestMethodPtrOutput {
+	return o
+}
+
+func (o RestRequestMethodPtrOutput) ToRestRequestMethodPtrOutputWithContext(ctx context.Context) RestRequestMethodPtrOutput {
+	return o
+}
+
+func (o RestRequestMethodPtrOutput) Elem() RestRequestMethodOutput {
+	return o.ApplyT(func(v *RestRequestMethod) RestRequestMethod {
+		if v != nil {
+			return *v
+		}
+		var ret RestRequestMethod
+		return ret
+	}).(RestRequestMethodOutput)
+}
+
+func (o RestRequestMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RestRequestMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RestRequestMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RestRequestMethodInput is an input type that accepts values of the RestRequestMethod enum
+// A concrete instance of `RestRequestMethodInput` can be one of the following:
+//
+//	RestRequestMethodGET
+//	RestRequestMethodPOST
+type RestRequestMethodInput interface {
+	pulumi.Input
+
+	ToRestRequestMethodOutput() RestRequestMethodOutput
+	ToRestRequestMethodOutputWithContext(context.Context) RestRequestMethodOutput
+}
+
+var restRequestMethodPtrType = reflect.TypeOf((**RestRequestMethod)(nil)).Elem()
+
+type RestRequestMethodPtrInput interface {
+	pulumi.Input
+
+	ToRestRequestMethodPtrOutput() RestRequestMethodPtrOutput
+	ToRestRequestMethodPtrOutputWithContext(context.Context) RestRequestMethodPtrOutput
+}
+
+type restRequestMethodPtr string
+
+func RestRequestMethodPtr(v string) RestRequestMethodPtrInput {
+	return (*restRequestMethodPtr)(&v)
+}
+
+func (*restRequestMethodPtr) ElementType() reflect.Type {
+	return restRequestMethodPtrType
+}
+
+func (in *restRequestMethodPtr) ToRestRequestMethodPtrOutput() RestRequestMethodPtrOutput {
+	return pulumi.ToOutput(in).(RestRequestMethodPtrOutput)
+}
+
+func (in *restRequestMethodPtr) ToRestRequestMethodPtrOutputWithContext(ctx context.Context) RestRequestMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RestRequestMethodPtrOutput)
+}
+
+func (in *restRequestMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*RestRequestMethod] {
+	return pulumix.Output[*RestRequestMethod]{
+		OutputState: in.ToRestRequestMethodPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The type of step.
 type StepType string
@@ -225,4 +718,10 @@ const (
 func init() {
 	pulumi.RegisterOutputType(DeploymentModeOutput{})
 	pulumi.RegisterOutputType(DeploymentModePtrOutput{})
+	pulumi.RegisterOutputType(RestAuthLocationOutput{})
+	pulumi.RegisterOutputType(RestAuthLocationPtrOutput{})
+	pulumi.RegisterOutputType(RestMatchQuantifierOutput{})
+	pulumi.RegisterOutputType(RestMatchQuantifierPtrOutput{})
+	pulumi.RegisterOutputType(RestRequestMethodOutput{})
+	pulumi.RegisterOutputType(RestRequestMethodPtrOutput{})
 }

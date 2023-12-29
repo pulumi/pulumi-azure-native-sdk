@@ -142,10 +142,12 @@ func (o B2CResourceSKUNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// B2CResourceSKUNameInput is an input type that accepts B2CResourceSKUNameArgs and B2CResourceSKUNameOutput values.
-// You can construct a concrete instance of `B2CResourceSKUNameInput` via:
+// B2CResourceSKUNameInput is an input type that accepts values of the B2CResourceSKUName enum
+// A concrete instance of `B2CResourceSKUNameInput` can be one of the following:
 //
-//	B2CResourceSKUNameArgs{...}
+//	B2CResourceSKUNameStandard
+//	B2CResourceSKUNamePremiumP1
+//	B2CResourceSKUNamePremiumP2
 type B2CResourceSKUNameInput interface {
 	pulumi.Input
 
@@ -313,10 +315,10 @@ func (o B2CResourceSKUTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// B2CResourceSKUTierInput is an input type that accepts B2CResourceSKUTierArgs and B2CResourceSKUTierOutput values.
-// You can construct a concrete instance of `B2CResourceSKUTierInput` via:
+// B2CResourceSKUTierInput is an input type that accepts values of the B2CResourceSKUTier enum
+// A concrete instance of `B2CResourceSKUTierInput` can be one of the following:
 //
-//	B2CResourceSKUTierArgs{...}
+//	B2CResourceSKUTierA0
 type B2CResourceSKUTierInput interface {
 	pulumi.Input
 

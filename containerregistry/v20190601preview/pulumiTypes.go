@@ -236,6 +236,125 @@ func (val *Argument) Defaults() *Argument {
 	return &tmp
 }
 
+// ArgumentInput is an input type that accepts ArgumentArgs and ArgumentOutput values.
+// You can construct a concrete instance of `ArgumentInput` via:
+//
+//	ArgumentArgs{...}
+type ArgumentInput interface {
+	pulumi.Input
+
+	ToArgumentOutput() ArgumentOutput
+	ToArgumentOutputWithContext(context.Context) ArgumentOutput
+}
+
+// The properties of a run argument.
+type ArgumentArgs struct {
+	// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
+	IsSecret pulumi.BoolPtrInput `pulumi:"isSecret"`
+	// The name of the argument.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the argument.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+// Defaults sets the appropriate defaults for ArgumentArgs
+func (val *ArgumentArgs) Defaults() *ArgumentArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsSecret == nil {
+		tmp.IsSecret = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (ArgumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Argument)(nil)).Elem()
+}
+
+func (i ArgumentArgs) ToArgumentOutput() ArgumentOutput {
+	return i.ToArgumentOutputWithContext(context.Background())
+}
+
+func (i ArgumentArgs) ToArgumentOutputWithContext(ctx context.Context) ArgumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgumentOutput)
+}
+
+// ArgumentArrayInput is an input type that accepts ArgumentArray and ArgumentArrayOutput values.
+// You can construct a concrete instance of `ArgumentArrayInput` via:
+//
+//	ArgumentArray{ ArgumentArgs{...} }
+type ArgumentArrayInput interface {
+	pulumi.Input
+
+	ToArgumentArrayOutput() ArgumentArrayOutput
+	ToArgumentArrayOutputWithContext(context.Context) ArgumentArrayOutput
+}
+
+type ArgumentArray []ArgumentInput
+
+func (ArgumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Argument)(nil)).Elem()
+}
+
+func (i ArgumentArray) ToArgumentArrayOutput() ArgumentArrayOutput {
+	return i.ToArgumentArrayOutputWithContext(context.Background())
+}
+
+func (i ArgumentArray) ToArgumentArrayOutputWithContext(ctx context.Context) ArgumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgumentArrayOutput)
+}
+
+// The properties of a run argument.
+type ArgumentOutput struct{ *pulumi.OutputState }
+
+func (ArgumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Argument)(nil)).Elem()
+}
+
+func (o ArgumentOutput) ToArgumentOutput() ArgumentOutput {
+	return o
+}
+
+func (o ArgumentOutput) ToArgumentOutputWithContext(ctx context.Context) ArgumentOutput {
+	return o
+}
+
+// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
+func (o ArgumentOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Argument) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the argument.
+func (o ArgumentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Argument) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the argument.
+func (o ArgumentOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v Argument) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ArgumentArrayOutput struct{ *pulumi.OutputState }
+
+func (ArgumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Argument)(nil)).Elem()
+}
+
+func (o ArgumentArrayOutput) ToArgumentArrayOutput() ArgumentArrayOutput {
+	return o
+}
+
+func (o ArgumentArrayOutput) ToArgumentArrayOutputWithContext(ctx context.Context) ArgumentArrayOutput {
+	return o
+}
+
+func (o ArgumentArrayOutput) Index(i pulumi.IntInput) ArgumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Argument {
+		return vs[0].([]Argument)[vs[1].(int)]
+	}).(ArgumentOutput)
+}
+
 // The properties of a run argument.
 type ArgumentResponse struct {
 	// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
@@ -257,6 +376,56 @@ func (val *ArgumentResponse) Defaults() *ArgumentResponse {
 		tmp.IsSecret = &isSecret_
 	}
 	return &tmp
+}
+
+// The properties of a run argument.
+type ArgumentResponseOutput struct{ *pulumi.OutputState }
+
+func (ArgumentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArgumentResponse)(nil)).Elem()
+}
+
+func (o ArgumentResponseOutput) ToArgumentResponseOutput() ArgumentResponseOutput {
+	return o
+}
+
+func (o ArgumentResponseOutput) ToArgumentResponseOutputWithContext(ctx context.Context) ArgumentResponseOutput {
+	return o
+}
+
+// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
+func (o ArgumentResponseOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ArgumentResponse) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the argument.
+func (o ArgumentResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ArgumentResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the argument.
+func (o ArgumentResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ArgumentResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ArgumentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ArgumentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArgumentResponse)(nil)).Elem()
+}
+
+func (o ArgumentResponseArrayOutput) ToArgumentResponseArrayOutput() ArgumentResponseArrayOutput {
+	return o
+}
+
+func (o ArgumentResponseArrayOutput) ToArgumentResponseArrayOutputWithContext(ctx context.Context) ArgumentResponseArrayOutput {
+	return o
+}
+
+func (o ArgumentResponseArrayOutput) Index(i pulumi.IntInput) ArgumentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArgumentResponse {
+		return vs[0].([]ArgumentResponse)[vs[1].(int)]
+	}).(ArgumentResponseOutput)
 }
 
 // The authorization properties for accessing the source code repository.
@@ -615,6 +784,66 @@ type BaseImageDependencyResponse struct {
 	Tag *string `pulumi:"tag"`
 	// The type of the base image dependency.
 	Type *string `pulumi:"type"`
+}
+
+// Properties that describe a base image dependency.
+type BaseImageDependencyResponseOutput struct{ *pulumi.OutputState }
+
+func (BaseImageDependencyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseImageDependencyResponse)(nil)).Elem()
+}
+
+func (o BaseImageDependencyResponseOutput) ToBaseImageDependencyResponseOutput() BaseImageDependencyResponseOutput {
+	return o
+}
+
+func (o BaseImageDependencyResponseOutput) ToBaseImageDependencyResponseOutputWithContext(ctx context.Context) BaseImageDependencyResponseOutput {
+	return o
+}
+
+// The sha256-based digest of the image manifest.
+func (o BaseImageDependencyResponseOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// The registry login server.
+func (o BaseImageDependencyResponseOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+// The repository name.
+func (o BaseImageDependencyResponseOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+// The tag name.
+func (o BaseImageDependencyResponseOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The type of the base image dependency.
+func (o BaseImageDependencyResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type BaseImageDependencyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BaseImageDependencyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BaseImageDependencyResponse)(nil)).Elem()
+}
+
+func (o BaseImageDependencyResponseArrayOutput) ToBaseImageDependencyResponseArrayOutput() BaseImageDependencyResponseArrayOutput {
+	return o
+}
+
+func (o BaseImageDependencyResponseArrayOutput) ToBaseImageDependencyResponseArrayOutputWithContext(ctx context.Context) BaseImageDependencyResponseArrayOutput {
+	return o
+}
+
+func (o BaseImageDependencyResponseArrayOutput) Index(i pulumi.IntInput) BaseImageDependencyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BaseImageDependencyResponse {
+		return vs[0].([]BaseImageDependencyResponse)[vs[1].(int)]
+	}).(BaseImageDependencyResponseOutput)
 }
 
 // The trigger based on base image dependency.
@@ -1512,6 +1741,404 @@ func (val *DockerBuildRequest) Defaults() *DockerBuildRequest {
 	return &tmp
 }
 
+// DockerBuildRequestInput is an input type that accepts DockerBuildRequestArgs and DockerBuildRequestOutput values.
+// You can construct a concrete instance of `DockerBuildRequestInput` via:
+//
+//	DockerBuildRequestArgs{...}
+type DockerBuildRequestInput interface {
+	pulumi.Input
+
+	ToDockerBuildRequestOutput() DockerBuildRequestOutput
+	ToDockerBuildRequestOutputWithContext(context.Context) DockerBuildRequestOutput
+}
+
+// The parameters for a docker quick build.
+type DockerBuildRequestArgs struct {
+	// The machine configuration of the run agent.
+	AgentConfiguration AgentPropertiesPtrInput `pulumi:"agentConfiguration"`
+	// The dedicated agent pool for the run.
+	AgentPoolName pulumi.StringPtrInput `pulumi:"agentPoolName"`
+	// The collection of override arguments to be used when executing the run.
+	Arguments ArgumentArrayInput `pulumi:"arguments"`
+	// The properties that describes a set of credentials that will be used when this run is invoked.
+	Credentials CredentialsPtrInput `pulumi:"credentials"`
+	// The Docker file path relative to the source location.
+	DockerFilePath pulumi.StringInput `pulumi:"dockerFilePath"`
+	// The fully qualified image names including the repository and tag.
+	ImageNames pulumi.StringArrayInput `pulumi:"imageNames"`
+	// The value that indicates whether archiving is enabled for the run or not.
+	IsArchiveEnabled pulumi.BoolPtrInput `pulumi:"isArchiveEnabled"`
+	// The value of this property indicates whether the image built should be pushed to the registry or not.
+	IsPushEnabled pulumi.BoolPtrInput `pulumi:"isPushEnabled"`
+	// The template that describes the repository and tag information for run log artifact.
+	LogTemplate pulumi.StringPtrInput `pulumi:"logTemplate"`
+	// The value of this property indicates whether the image cache is enabled or not.
+	NoCache pulumi.BoolPtrInput `pulumi:"noCache"`
+	// The platform properties against which the run has to happen.
+	Platform PlatformPropertiesInput `pulumi:"platform"`
+	// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+	// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+	SourceLocation pulumi.StringPtrInput `pulumi:"sourceLocation"`
+	// The name of the target build stage for the docker build.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// Run timeout in seconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The type of the run request.
+	// Expected value is 'DockerBuildRequest'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for DockerBuildRequestArgs
+func (val *DockerBuildRequestArgs) Defaults() *DockerBuildRequestArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsArchiveEnabled == nil {
+		tmp.IsArchiveEnabled = pulumi.BoolPtr(false)
+	}
+	if tmp.IsPushEnabled == nil {
+		tmp.IsPushEnabled = pulumi.BoolPtr(true)
+	}
+	if tmp.NoCache == nil {
+		tmp.NoCache = pulumi.BoolPtr(false)
+	}
+	if tmp.Timeout == nil {
+		tmp.Timeout = pulumi.IntPtr(3600)
+	}
+	return &tmp
+}
+func (DockerBuildRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildRequest)(nil)).Elem()
+}
+
+func (i DockerBuildRequestArgs) ToDockerBuildRequestOutput() DockerBuildRequestOutput {
+	return i.ToDockerBuildRequestOutputWithContext(context.Background())
+}
+
+func (i DockerBuildRequestArgs) ToDockerBuildRequestOutputWithContext(ctx context.Context) DockerBuildRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildRequestOutput)
+}
+
+func (i DockerBuildRequestArgs) ToDockerBuildRequestPtrOutput() DockerBuildRequestPtrOutput {
+	return i.ToDockerBuildRequestPtrOutputWithContext(context.Background())
+}
+
+func (i DockerBuildRequestArgs) ToDockerBuildRequestPtrOutputWithContext(ctx context.Context) DockerBuildRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildRequestOutput).ToDockerBuildRequestPtrOutputWithContext(ctx)
+}
+
+// DockerBuildRequestPtrInput is an input type that accepts DockerBuildRequestArgs, DockerBuildRequestPtr and DockerBuildRequestPtrOutput values.
+// You can construct a concrete instance of `DockerBuildRequestPtrInput` via:
+//
+//	        DockerBuildRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type DockerBuildRequestPtrInput interface {
+	pulumi.Input
+
+	ToDockerBuildRequestPtrOutput() DockerBuildRequestPtrOutput
+	ToDockerBuildRequestPtrOutputWithContext(context.Context) DockerBuildRequestPtrOutput
+}
+
+type dockerBuildRequestPtrType DockerBuildRequestArgs
+
+func DockerBuildRequestPtr(v *DockerBuildRequestArgs) DockerBuildRequestPtrInput {
+	return (*dockerBuildRequestPtrType)(v)
+}
+
+func (*dockerBuildRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerBuildRequest)(nil)).Elem()
+}
+
+func (i *dockerBuildRequestPtrType) ToDockerBuildRequestPtrOutput() DockerBuildRequestPtrOutput {
+	return i.ToDockerBuildRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *dockerBuildRequestPtrType) ToDockerBuildRequestPtrOutputWithContext(ctx context.Context) DockerBuildRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildRequestPtrOutput)
+}
+
+// The parameters for a docker quick build.
+type DockerBuildRequestOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildRequest)(nil)).Elem()
+}
+
+func (o DockerBuildRequestOutput) ToDockerBuildRequestOutput() DockerBuildRequestOutput {
+	return o
+}
+
+func (o DockerBuildRequestOutput) ToDockerBuildRequestOutputWithContext(ctx context.Context) DockerBuildRequestOutput {
+	return o
+}
+
+func (o DockerBuildRequestOutput) ToDockerBuildRequestPtrOutput() DockerBuildRequestPtrOutput {
+	return o.ToDockerBuildRequestPtrOutputWithContext(context.Background())
+}
+
+func (o DockerBuildRequestOutput) ToDockerBuildRequestPtrOutputWithContext(ctx context.Context) DockerBuildRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerBuildRequest) *DockerBuildRequest {
+		return &v
+	}).(DockerBuildRequestPtrOutput)
+}
+
+// The machine configuration of the run agent.
+func (o DockerBuildRequestOutput) AgentConfiguration() AgentPropertiesPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *AgentProperties { return v.AgentConfiguration }).(AgentPropertiesPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o DockerBuildRequestOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The collection of override arguments to be used when executing the run.
+func (o DockerBuildRequestOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v DockerBuildRequest) []Argument { return v.Arguments }).(ArgumentArrayOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o DockerBuildRequestOutput) Credentials() CredentialsPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *Credentials { return v.Credentials }).(CredentialsPtrOutput)
+}
+
+// The Docker file path relative to the source location.
+func (o DockerBuildRequestOutput) DockerFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildRequest) string { return v.DockerFilePath }).(pulumi.StringOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildRequestOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DockerBuildRequest) []string { return v.ImageNames }).(pulumi.StringArrayOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o DockerBuildRequestOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildRequestOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *bool { return v.IsPushEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o DockerBuildRequestOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildRequestOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *bool { return v.NoCache }).(pulumi.BoolPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o DockerBuildRequestOutput) Platform() PlatformPropertiesOutput {
+	return o.ApplyT(func(v DockerBuildRequest) PlatformProperties { return v.Platform }).(PlatformPropertiesOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o DockerBuildRequestOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildRequestOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o DockerBuildRequestOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequest) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'DockerBuildRequest'.
+func (o DockerBuildRequestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildRequest) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DockerBuildRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerBuildRequest)(nil)).Elem()
+}
+
+func (o DockerBuildRequestPtrOutput) ToDockerBuildRequestPtrOutput() DockerBuildRequestPtrOutput {
+	return o
+}
+
+func (o DockerBuildRequestPtrOutput) ToDockerBuildRequestPtrOutputWithContext(ctx context.Context) DockerBuildRequestPtrOutput {
+	return o
+}
+
+func (o DockerBuildRequestPtrOutput) Elem() DockerBuildRequestOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) DockerBuildRequest {
+		if v != nil {
+			return *v
+		}
+		var ret DockerBuildRequest
+		return ret
+	}).(DockerBuildRequestOutput)
+}
+
+// The machine configuration of the run agent.
+func (o DockerBuildRequestPtrOutput) AgentConfiguration() AgentPropertiesPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *AgentProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfiguration
+	}).(AgentPropertiesPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o DockerBuildRequestPtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of override arguments to be used when executing the run.
+func (o DockerBuildRequestPtrOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) []Argument {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(ArgumentArrayOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o DockerBuildRequestPtrOutput) Credentials() CredentialsPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *Credentials {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CredentialsPtrOutput)
+}
+
+// The Docker file path relative to the source location.
+func (o DockerBuildRequestPtrOutput) DockerFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DockerFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildRequestPtrOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o DockerBuildRequestPtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildRequestPtrOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPushEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o DockerBuildRequestPtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildRequestPtrOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o DockerBuildRequestPtrOutput) Platform() PlatformPropertiesPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *PlatformProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(PlatformPropertiesPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o DockerBuildRequestPtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildRequestPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o DockerBuildRequestPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'DockerBuildRequest'.
+func (o DockerBuildRequestPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The parameters for a docker quick build.
 type DockerBuildRequestResponse struct {
 	// The machine configuration of the run agent.
@@ -1573,6 +2200,274 @@ func (val *DockerBuildRequestResponse) Defaults() *DockerBuildRequestResponse {
 	return &tmp
 }
 
+// The parameters for a docker quick build.
+type DockerBuildRequestResponseOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildRequestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildRequestResponse)(nil)).Elem()
+}
+
+func (o DockerBuildRequestResponseOutput) ToDockerBuildRequestResponseOutput() DockerBuildRequestResponseOutput {
+	return o
+}
+
+func (o DockerBuildRequestResponseOutput) ToDockerBuildRequestResponseOutputWithContext(ctx context.Context) DockerBuildRequestResponseOutput {
+	return o
+}
+
+// The machine configuration of the run agent.
+func (o DockerBuildRequestResponseOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *AgentPropertiesResponse { return v.AgentConfiguration }).(AgentPropertiesResponsePtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o DockerBuildRequestResponseOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The collection of override arguments to be used when executing the run.
+func (o DockerBuildRequestResponseOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) []ArgumentResponse { return v.Arguments }).(ArgumentResponseArrayOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o DockerBuildRequestResponseOutput) Credentials() CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *CredentialsResponse { return v.Credentials }).(CredentialsResponsePtrOutput)
+}
+
+// The Docker file path relative to the source location.
+func (o DockerBuildRequestResponseOutput) DockerFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) string { return v.DockerFilePath }).(pulumi.StringOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildRequestResponseOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) []string { return v.ImageNames }).(pulumi.StringArrayOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o DockerBuildRequestResponseOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildRequestResponseOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *bool { return v.IsPushEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o DockerBuildRequestResponseOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildRequestResponseOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *bool { return v.NoCache }).(pulumi.BoolPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o DockerBuildRequestResponseOutput) Platform() PlatformPropertiesResponseOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) PlatformPropertiesResponse { return v.Platform }).(PlatformPropertiesResponseOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o DockerBuildRequestResponseOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildRequestResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o DockerBuildRequestResponseOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'DockerBuildRequest'.
+func (o DockerBuildRequestResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildRequestResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DockerBuildRequestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildRequestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerBuildRequestResponse)(nil)).Elem()
+}
+
+func (o DockerBuildRequestResponsePtrOutput) ToDockerBuildRequestResponsePtrOutput() DockerBuildRequestResponsePtrOutput {
+	return o
+}
+
+func (o DockerBuildRequestResponsePtrOutput) ToDockerBuildRequestResponsePtrOutputWithContext(ctx context.Context) DockerBuildRequestResponsePtrOutput {
+	return o
+}
+
+func (o DockerBuildRequestResponsePtrOutput) Elem() DockerBuildRequestResponseOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) DockerBuildRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DockerBuildRequestResponse
+		return ret
+	}).(DockerBuildRequestResponseOutput)
+}
+
+// The machine configuration of the run agent.
+func (o DockerBuildRequestResponsePtrOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *AgentPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfiguration
+	}).(AgentPropertiesResponsePtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o DockerBuildRequestResponsePtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of override arguments to be used when executing the run.
+func (o DockerBuildRequestResponsePtrOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) []ArgumentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(ArgumentResponseArrayOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o DockerBuildRequestResponsePtrOutput) Credentials() CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *CredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CredentialsResponsePtrOutput)
+}
+
+// The Docker file path relative to the source location.
+func (o DockerBuildRequestResponsePtrOutput) DockerFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DockerFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildRequestResponsePtrOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o DockerBuildRequestResponsePtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildRequestResponsePtrOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPushEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o DockerBuildRequestResponsePtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildRequestResponsePtrOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o DockerBuildRequestResponsePtrOutput) Platform() PlatformPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *PlatformPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(PlatformPropertiesResponsePtrOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o DockerBuildRequestResponsePtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildRequestResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o DockerBuildRequestResponsePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'DockerBuildRequest'.
+func (o DockerBuildRequestResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Docker build step.
 type DockerBuildStep struct {
 	// The collection of override arguments to be used when executing this build step.
@@ -1611,6 +2506,293 @@ func (val *DockerBuildStep) Defaults() *DockerBuildStep {
 		tmp.NoCache = &noCache_
 	}
 	return &tmp
+}
+
+// DockerBuildStepInput is an input type that accepts DockerBuildStepArgs and DockerBuildStepOutput values.
+// You can construct a concrete instance of `DockerBuildStepInput` via:
+//
+//	DockerBuildStepArgs{...}
+type DockerBuildStepInput interface {
+	pulumi.Input
+
+	ToDockerBuildStepOutput() DockerBuildStepOutput
+	ToDockerBuildStepOutputWithContext(context.Context) DockerBuildStepOutput
+}
+
+// The Docker build step.
+type DockerBuildStepArgs struct {
+	// The collection of override arguments to be used when executing this build step.
+	Arguments ArgumentArrayInput `pulumi:"arguments"`
+	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+	ContextAccessToken pulumi.StringPtrInput `pulumi:"contextAccessToken"`
+	// The URL(absolute or relative) of the source context for the task step.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// The Docker file path relative to the source context.
+	DockerFilePath pulumi.StringInput `pulumi:"dockerFilePath"`
+	// The fully qualified image names including the repository and tag.
+	ImageNames pulumi.StringArrayInput `pulumi:"imageNames"`
+	// The value of this property indicates whether the image built should be pushed to the registry or not.
+	IsPushEnabled pulumi.BoolPtrInput `pulumi:"isPushEnabled"`
+	// The value of this property indicates whether the image cache is enabled or not.
+	NoCache pulumi.BoolPtrInput `pulumi:"noCache"`
+	// The name of the target build stage for the docker build.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// The type of the step.
+	// Expected value is 'Docker'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for DockerBuildStepArgs
+func (val *DockerBuildStepArgs) Defaults() *DockerBuildStepArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsPushEnabled == nil {
+		tmp.IsPushEnabled = pulumi.BoolPtr(true)
+	}
+	if tmp.NoCache == nil {
+		tmp.NoCache = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (DockerBuildStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildStep)(nil)).Elem()
+}
+
+func (i DockerBuildStepArgs) ToDockerBuildStepOutput() DockerBuildStepOutput {
+	return i.ToDockerBuildStepOutputWithContext(context.Background())
+}
+
+func (i DockerBuildStepArgs) ToDockerBuildStepOutputWithContext(ctx context.Context) DockerBuildStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildStepOutput)
+}
+
+func (i DockerBuildStepArgs) ToDockerBuildStepPtrOutput() DockerBuildStepPtrOutput {
+	return i.ToDockerBuildStepPtrOutputWithContext(context.Background())
+}
+
+func (i DockerBuildStepArgs) ToDockerBuildStepPtrOutputWithContext(ctx context.Context) DockerBuildStepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildStepOutput).ToDockerBuildStepPtrOutputWithContext(ctx)
+}
+
+// DockerBuildStepPtrInput is an input type that accepts DockerBuildStepArgs, DockerBuildStepPtr and DockerBuildStepPtrOutput values.
+// You can construct a concrete instance of `DockerBuildStepPtrInput` via:
+//
+//	        DockerBuildStepArgs{...}
+//
+//	or:
+//
+//	        nil
+type DockerBuildStepPtrInput interface {
+	pulumi.Input
+
+	ToDockerBuildStepPtrOutput() DockerBuildStepPtrOutput
+	ToDockerBuildStepPtrOutputWithContext(context.Context) DockerBuildStepPtrOutput
+}
+
+type dockerBuildStepPtrType DockerBuildStepArgs
+
+func DockerBuildStepPtr(v *DockerBuildStepArgs) DockerBuildStepPtrInput {
+	return (*dockerBuildStepPtrType)(v)
+}
+
+func (*dockerBuildStepPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerBuildStep)(nil)).Elem()
+}
+
+func (i *dockerBuildStepPtrType) ToDockerBuildStepPtrOutput() DockerBuildStepPtrOutput {
+	return i.ToDockerBuildStepPtrOutputWithContext(context.Background())
+}
+
+func (i *dockerBuildStepPtrType) ToDockerBuildStepPtrOutputWithContext(ctx context.Context) DockerBuildStepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildStepPtrOutput)
+}
+
+// The Docker build step.
+type DockerBuildStepOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildStep)(nil)).Elem()
+}
+
+func (o DockerBuildStepOutput) ToDockerBuildStepOutput() DockerBuildStepOutput {
+	return o
+}
+
+func (o DockerBuildStepOutput) ToDockerBuildStepOutputWithContext(ctx context.Context) DockerBuildStepOutput {
+	return o
+}
+
+func (o DockerBuildStepOutput) ToDockerBuildStepPtrOutput() DockerBuildStepPtrOutput {
+	return o.ToDockerBuildStepPtrOutputWithContext(context.Background())
+}
+
+func (o DockerBuildStepOutput) ToDockerBuildStepPtrOutputWithContext(ctx context.Context) DockerBuildStepPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerBuildStep) *DockerBuildStep {
+		return &v
+	}).(DockerBuildStepPtrOutput)
+}
+
+// The collection of override arguments to be used when executing this build step.
+func (o DockerBuildStepOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v DockerBuildStep) []Argument { return v.Arguments }).(ArgumentArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o DockerBuildStepOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o DockerBuildStepOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The Docker file path relative to the source context.
+func (o DockerBuildStepOutput) DockerFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStep) string { return v.DockerFilePath }).(pulumi.StringOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildStepOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DockerBuildStep) []string { return v.ImageNames }).(pulumi.StringArrayOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildStepOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *bool { return v.IsPushEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildStepOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *bool { return v.NoCache }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildStepOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'Docker'.
+func (o DockerBuildStepOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStep) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DockerBuildStepPtrOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildStepPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerBuildStep)(nil)).Elem()
+}
+
+func (o DockerBuildStepPtrOutput) ToDockerBuildStepPtrOutput() DockerBuildStepPtrOutput {
+	return o
+}
+
+func (o DockerBuildStepPtrOutput) ToDockerBuildStepPtrOutputWithContext(ctx context.Context) DockerBuildStepPtrOutput {
+	return o
+}
+
+func (o DockerBuildStepPtrOutput) Elem() DockerBuildStepOutput {
+	return o.ApplyT(func(v *DockerBuildStep) DockerBuildStep {
+		if v != nil {
+			return *v
+		}
+		var ret DockerBuildStep
+		return ret
+	}).(DockerBuildStepOutput)
+}
+
+// The collection of override arguments to be used when executing this build step.
+func (o DockerBuildStepPtrOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v *DockerBuildStep) []Argument {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(ArgumentArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o DockerBuildStepPtrOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o DockerBuildStepPtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Docker file path relative to the source context.
+func (o DockerBuildStepPtrOutput) DockerFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DockerFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildStepPtrOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DockerBuildStep) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildStepPtrOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPushEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildStepPtrOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildStepPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'Docker'.
+func (o DockerBuildStepPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStep) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The Docker build step.
@@ -1653,6 +2835,197 @@ func (val *DockerBuildStepResponse) Defaults() *DockerBuildStepResponse {
 		tmp.NoCache = &noCache_
 	}
 	return &tmp
+}
+
+// The Docker build step.
+type DockerBuildStepResponseOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildStepResponse)(nil)).Elem()
+}
+
+func (o DockerBuildStepResponseOutput) ToDockerBuildStepResponseOutput() DockerBuildStepResponseOutput {
+	return o
+}
+
+func (o DockerBuildStepResponseOutput) ToDockerBuildStepResponseOutputWithContext(ctx context.Context) DockerBuildStepResponseOutput {
+	return o
+}
+
+// The collection of override arguments to be used when executing this build step.
+func (o DockerBuildStepResponseOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) []ArgumentResponse { return v.Arguments }).(ArgumentResponseArrayOutput)
+}
+
+// List of base image dependencies for a step.
+func (o DockerBuildStepResponseOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) []BaseImageDependencyResponse { return v.BaseImageDependencies }).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o DockerBuildStepResponseOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o DockerBuildStepResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The Docker file path relative to the source context.
+func (o DockerBuildStepResponseOutput) DockerFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) string { return v.DockerFilePath }).(pulumi.StringOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildStepResponseOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) []string { return v.ImageNames }).(pulumi.StringArrayOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildStepResponseOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *bool { return v.IsPushEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildStepResponseOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *bool { return v.NoCache }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildStepResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'Docker'.
+func (o DockerBuildStepResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DockerBuildStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerBuildStepResponse)(nil)).Elem()
+}
+
+func (o DockerBuildStepResponsePtrOutput) ToDockerBuildStepResponsePtrOutput() DockerBuildStepResponsePtrOutput {
+	return o
+}
+
+func (o DockerBuildStepResponsePtrOutput) ToDockerBuildStepResponsePtrOutputWithContext(ctx context.Context) DockerBuildStepResponsePtrOutput {
+	return o
+}
+
+func (o DockerBuildStepResponsePtrOutput) Elem() DockerBuildStepResponseOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) DockerBuildStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DockerBuildStepResponse
+		return ret
+	}).(DockerBuildStepResponseOutput)
+}
+
+// The collection of override arguments to be used when executing this build step.
+func (o DockerBuildStepResponsePtrOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) []ArgumentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(ArgumentResponseArrayOutput)
+}
+
+// List of base image dependencies for a step.
+func (o DockerBuildStepResponsePtrOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) []BaseImageDependencyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BaseImageDependencies
+	}).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o DockerBuildStepResponsePtrOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o DockerBuildStepResponsePtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Docker file path relative to the source context.
+func (o DockerBuildStepResponsePtrOutput) DockerFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DockerFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildStepResponsePtrOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildStepResponsePtrOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPushEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildStepResponsePtrOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildStepResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'Docker'.
+func (o DockerBuildStepResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DockerBuildStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The parameters for a quick task run request.
@@ -1702,6 +3075,347 @@ func (val *EncodedTaskRunRequest) Defaults() *EncodedTaskRunRequest {
 	return &tmp
 }
 
+// EncodedTaskRunRequestInput is an input type that accepts EncodedTaskRunRequestArgs and EncodedTaskRunRequestOutput values.
+// You can construct a concrete instance of `EncodedTaskRunRequestInput` via:
+//
+//	EncodedTaskRunRequestArgs{...}
+type EncodedTaskRunRequestInput interface {
+	pulumi.Input
+
+	ToEncodedTaskRunRequestOutput() EncodedTaskRunRequestOutput
+	ToEncodedTaskRunRequestOutputWithContext(context.Context) EncodedTaskRunRequestOutput
+}
+
+// The parameters for a quick task run request.
+type EncodedTaskRunRequestArgs struct {
+	// The machine configuration of the run agent.
+	AgentConfiguration AgentPropertiesPtrInput `pulumi:"agentConfiguration"`
+	// The dedicated agent pool for the run.
+	AgentPoolName pulumi.StringPtrInput `pulumi:"agentPoolName"`
+	// The properties that describes a set of credentials that will be used when this run is invoked.
+	Credentials CredentialsPtrInput `pulumi:"credentials"`
+	// Base64 encoded value of the template/definition file content.
+	EncodedTaskContent pulumi.StringInput `pulumi:"encodedTaskContent"`
+	// Base64 encoded value of the parameters/values file content.
+	EncodedValuesContent pulumi.StringPtrInput `pulumi:"encodedValuesContent"`
+	// The value that indicates whether archiving is enabled for the run or not.
+	IsArchiveEnabled pulumi.BoolPtrInput `pulumi:"isArchiveEnabled"`
+	// The template that describes the repository and tag information for run log artifact.
+	LogTemplate pulumi.StringPtrInput `pulumi:"logTemplate"`
+	// The platform properties against which the run has to happen.
+	Platform PlatformPropertiesInput `pulumi:"platform"`
+	// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+	// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+	SourceLocation pulumi.StringPtrInput `pulumi:"sourceLocation"`
+	// Run timeout in seconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The type of the run request.
+	// Expected value is 'EncodedTaskRunRequest'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The collection of overridable values that can be passed when running a task.
+	Values SetValueArrayInput `pulumi:"values"`
+}
+
+// Defaults sets the appropriate defaults for EncodedTaskRunRequestArgs
+func (val *EncodedTaskRunRequestArgs) Defaults() *EncodedTaskRunRequestArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsArchiveEnabled == nil {
+		tmp.IsArchiveEnabled = pulumi.BoolPtr(false)
+	}
+	if tmp.Timeout == nil {
+		tmp.Timeout = pulumi.IntPtr(3600)
+	}
+	return &tmp
+}
+func (EncodedTaskRunRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskRunRequest)(nil)).Elem()
+}
+
+func (i EncodedTaskRunRequestArgs) ToEncodedTaskRunRequestOutput() EncodedTaskRunRequestOutput {
+	return i.ToEncodedTaskRunRequestOutputWithContext(context.Background())
+}
+
+func (i EncodedTaskRunRequestArgs) ToEncodedTaskRunRequestOutputWithContext(ctx context.Context) EncodedTaskRunRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskRunRequestOutput)
+}
+
+func (i EncodedTaskRunRequestArgs) ToEncodedTaskRunRequestPtrOutput() EncodedTaskRunRequestPtrOutput {
+	return i.ToEncodedTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (i EncodedTaskRunRequestArgs) ToEncodedTaskRunRequestPtrOutputWithContext(ctx context.Context) EncodedTaskRunRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskRunRequestOutput).ToEncodedTaskRunRequestPtrOutputWithContext(ctx)
+}
+
+// EncodedTaskRunRequestPtrInput is an input type that accepts EncodedTaskRunRequestArgs, EncodedTaskRunRequestPtr and EncodedTaskRunRequestPtrOutput values.
+// You can construct a concrete instance of `EncodedTaskRunRequestPtrInput` via:
+//
+//	        EncodedTaskRunRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncodedTaskRunRequestPtrInput interface {
+	pulumi.Input
+
+	ToEncodedTaskRunRequestPtrOutput() EncodedTaskRunRequestPtrOutput
+	ToEncodedTaskRunRequestPtrOutputWithContext(context.Context) EncodedTaskRunRequestPtrOutput
+}
+
+type encodedTaskRunRequestPtrType EncodedTaskRunRequestArgs
+
+func EncodedTaskRunRequestPtr(v *EncodedTaskRunRequestArgs) EncodedTaskRunRequestPtrInput {
+	return (*encodedTaskRunRequestPtrType)(v)
+}
+
+func (*encodedTaskRunRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncodedTaskRunRequest)(nil)).Elem()
+}
+
+func (i *encodedTaskRunRequestPtrType) ToEncodedTaskRunRequestPtrOutput() EncodedTaskRunRequestPtrOutput {
+	return i.ToEncodedTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *encodedTaskRunRequestPtrType) ToEncodedTaskRunRequestPtrOutputWithContext(ctx context.Context) EncodedTaskRunRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskRunRequestPtrOutput)
+}
+
+// The parameters for a quick task run request.
+type EncodedTaskRunRequestOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskRunRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskRunRequest)(nil)).Elem()
+}
+
+func (o EncodedTaskRunRequestOutput) ToEncodedTaskRunRequestOutput() EncodedTaskRunRequestOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestOutput) ToEncodedTaskRunRequestOutputWithContext(ctx context.Context) EncodedTaskRunRequestOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestOutput) ToEncodedTaskRunRequestPtrOutput() EncodedTaskRunRequestPtrOutput {
+	return o.ToEncodedTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (o EncodedTaskRunRequestOutput) ToEncodedTaskRunRequestPtrOutputWithContext(ctx context.Context) EncodedTaskRunRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncodedTaskRunRequest) *EncodedTaskRunRequest {
+		return &v
+	}).(EncodedTaskRunRequestPtrOutput)
+}
+
+// The machine configuration of the run agent.
+func (o EncodedTaskRunRequestOutput) AgentConfiguration() AgentPropertiesPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *AgentProperties { return v.AgentConfiguration }).(AgentPropertiesPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o EncodedTaskRunRequestOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o EncodedTaskRunRequestOutput) Credentials() CredentialsPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *Credentials { return v.Credentials }).(CredentialsPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskRunRequestOutput) EncodedTaskContent() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) string { return v.EncodedTaskContent }).(pulumi.StringOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskRunRequestOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *string { return v.EncodedValuesContent }).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o EncodedTaskRunRequestOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o EncodedTaskRunRequestOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o EncodedTaskRunRequestOutput) Platform() PlatformPropertiesOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) PlatformProperties { return v.Platform }).(PlatformPropertiesOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o EncodedTaskRunRequestOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o EncodedTaskRunRequestOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'EncodedTaskRunRequest'.
+func (o EncodedTaskRunRequestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskRunRequestOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequest) []SetValue { return v.Values }).(SetValueArrayOutput)
+}
+
+type EncodedTaskRunRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskRunRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncodedTaskRunRequest)(nil)).Elem()
+}
+
+func (o EncodedTaskRunRequestPtrOutput) ToEncodedTaskRunRequestPtrOutput() EncodedTaskRunRequestPtrOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestPtrOutput) ToEncodedTaskRunRequestPtrOutputWithContext(ctx context.Context) EncodedTaskRunRequestPtrOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestPtrOutput) Elem() EncodedTaskRunRequestOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) EncodedTaskRunRequest {
+		if v != nil {
+			return *v
+		}
+		var ret EncodedTaskRunRequest
+		return ret
+	}).(EncodedTaskRunRequestOutput)
+}
+
+// The machine configuration of the run agent.
+func (o EncodedTaskRunRequestPtrOutput) AgentConfiguration() AgentPropertiesPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *AgentProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfiguration
+	}).(AgentPropertiesPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o EncodedTaskRunRequestPtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o EncodedTaskRunRequestPtrOutput) Credentials() CredentialsPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *Credentials {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CredentialsPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskRunRequestPtrOutput) EncodedTaskContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncodedTaskContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskRunRequestPtrOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedValuesContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o EncodedTaskRunRequestPtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o EncodedTaskRunRequestPtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o EncodedTaskRunRequestPtrOutput) Platform() PlatformPropertiesPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *PlatformProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(PlatformPropertiesPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o EncodedTaskRunRequestPtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o EncodedTaskRunRequestPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'EncodedTaskRunRequest'.
+func (o EncodedTaskRunRequestPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskRunRequestPtrOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequest) []SetValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueArrayOutput)
+}
+
 // The parameters for a quick task run request.
 type EncodedTaskRunRequestResponse struct {
 	// The machine configuration of the run agent.
@@ -1749,6 +3463,229 @@ func (val *EncodedTaskRunRequestResponse) Defaults() *EncodedTaskRunRequestRespo
 	return &tmp
 }
 
+// The parameters for a quick task run request.
+type EncodedTaskRunRequestResponseOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskRunRequestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskRunRequestResponse)(nil)).Elem()
+}
+
+func (o EncodedTaskRunRequestResponseOutput) ToEncodedTaskRunRequestResponseOutput() EncodedTaskRunRequestResponseOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestResponseOutput) ToEncodedTaskRunRequestResponseOutputWithContext(ctx context.Context) EncodedTaskRunRequestResponseOutput {
+	return o
+}
+
+// The machine configuration of the run agent.
+func (o EncodedTaskRunRequestResponseOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *AgentPropertiesResponse { return v.AgentConfiguration }).(AgentPropertiesResponsePtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o EncodedTaskRunRequestResponseOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o EncodedTaskRunRequestResponseOutput) Credentials() CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *CredentialsResponse { return v.Credentials }).(CredentialsResponsePtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskRunRequestResponseOutput) EncodedTaskContent() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) string { return v.EncodedTaskContent }).(pulumi.StringOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskRunRequestResponseOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *string { return v.EncodedValuesContent }).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o EncodedTaskRunRequestResponseOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o EncodedTaskRunRequestResponseOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o EncodedTaskRunRequestResponseOutput) Platform() PlatformPropertiesResponseOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) PlatformPropertiesResponse { return v.Platform }).(PlatformPropertiesResponseOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o EncodedTaskRunRequestResponseOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o EncodedTaskRunRequestResponseOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'EncodedTaskRunRequest'.
+func (o EncodedTaskRunRequestResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskRunRequestResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v EncodedTaskRunRequestResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
+type EncodedTaskRunRequestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskRunRequestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncodedTaskRunRequestResponse)(nil)).Elem()
+}
+
+func (o EncodedTaskRunRequestResponsePtrOutput) ToEncodedTaskRunRequestResponsePtrOutput() EncodedTaskRunRequestResponsePtrOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestResponsePtrOutput) ToEncodedTaskRunRequestResponsePtrOutputWithContext(ctx context.Context) EncodedTaskRunRequestResponsePtrOutput {
+	return o
+}
+
+func (o EncodedTaskRunRequestResponsePtrOutput) Elem() EncodedTaskRunRequestResponseOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) EncodedTaskRunRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncodedTaskRunRequestResponse
+		return ret
+	}).(EncodedTaskRunRequestResponseOutput)
+}
+
+// The machine configuration of the run agent.
+func (o EncodedTaskRunRequestResponsePtrOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *AgentPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfiguration
+	}).(AgentPropertiesResponsePtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o EncodedTaskRunRequestResponsePtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o EncodedTaskRunRequestResponsePtrOutput) Credentials() CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *CredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CredentialsResponsePtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskRunRequestResponsePtrOutput) EncodedTaskContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncodedTaskContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskRunRequestResponsePtrOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedValuesContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o EncodedTaskRunRequestResponsePtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o EncodedTaskRunRequestResponsePtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o EncodedTaskRunRequestResponsePtrOutput) Platform() PlatformPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *PlatformPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(PlatformPropertiesResponsePtrOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o EncodedTaskRunRequestResponsePtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o EncodedTaskRunRequestResponsePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'EncodedTaskRunRequest'.
+func (o EncodedTaskRunRequestResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskRunRequestResponsePtrOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v *EncodedTaskRunRequestResponse) []SetValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueResponseArrayOutput)
+}
+
 // The properties of a encoded task step.
 type EncodedTaskStep struct {
 	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
@@ -1764,6 +3701,228 @@ type EncodedTaskStep struct {
 	Type string `pulumi:"type"`
 	// The collection of overridable values that can be passed when running a task.
 	Values []SetValue `pulumi:"values"`
+}
+
+// EncodedTaskStepInput is an input type that accepts EncodedTaskStepArgs and EncodedTaskStepOutput values.
+// You can construct a concrete instance of `EncodedTaskStepInput` via:
+//
+//	EncodedTaskStepArgs{...}
+type EncodedTaskStepInput interface {
+	pulumi.Input
+
+	ToEncodedTaskStepOutput() EncodedTaskStepOutput
+	ToEncodedTaskStepOutputWithContext(context.Context) EncodedTaskStepOutput
+}
+
+// The properties of a encoded task step.
+type EncodedTaskStepArgs struct {
+	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+	ContextAccessToken pulumi.StringPtrInput `pulumi:"contextAccessToken"`
+	// The URL(absolute or relative) of the source context for the task step.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// Base64 encoded value of the template/definition file content.
+	EncodedTaskContent pulumi.StringInput `pulumi:"encodedTaskContent"`
+	// Base64 encoded value of the parameters/values file content.
+	EncodedValuesContent pulumi.StringPtrInput `pulumi:"encodedValuesContent"`
+	// The type of the step.
+	// Expected value is 'EncodedTask'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The collection of overridable values that can be passed when running a task.
+	Values SetValueArrayInput `pulumi:"values"`
+}
+
+func (EncodedTaskStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskStep)(nil)).Elem()
+}
+
+func (i EncodedTaskStepArgs) ToEncodedTaskStepOutput() EncodedTaskStepOutput {
+	return i.ToEncodedTaskStepOutputWithContext(context.Background())
+}
+
+func (i EncodedTaskStepArgs) ToEncodedTaskStepOutputWithContext(ctx context.Context) EncodedTaskStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskStepOutput)
+}
+
+func (i EncodedTaskStepArgs) ToEncodedTaskStepPtrOutput() EncodedTaskStepPtrOutput {
+	return i.ToEncodedTaskStepPtrOutputWithContext(context.Background())
+}
+
+func (i EncodedTaskStepArgs) ToEncodedTaskStepPtrOutputWithContext(ctx context.Context) EncodedTaskStepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskStepOutput).ToEncodedTaskStepPtrOutputWithContext(ctx)
+}
+
+// EncodedTaskStepPtrInput is an input type that accepts EncodedTaskStepArgs, EncodedTaskStepPtr and EncodedTaskStepPtrOutput values.
+// You can construct a concrete instance of `EncodedTaskStepPtrInput` via:
+//
+//	        EncodedTaskStepArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncodedTaskStepPtrInput interface {
+	pulumi.Input
+
+	ToEncodedTaskStepPtrOutput() EncodedTaskStepPtrOutput
+	ToEncodedTaskStepPtrOutputWithContext(context.Context) EncodedTaskStepPtrOutput
+}
+
+type encodedTaskStepPtrType EncodedTaskStepArgs
+
+func EncodedTaskStepPtr(v *EncodedTaskStepArgs) EncodedTaskStepPtrInput {
+	return (*encodedTaskStepPtrType)(v)
+}
+
+func (*encodedTaskStepPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncodedTaskStep)(nil)).Elem()
+}
+
+func (i *encodedTaskStepPtrType) ToEncodedTaskStepPtrOutput() EncodedTaskStepPtrOutput {
+	return i.ToEncodedTaskStepPtrOutputWithContext(context.Background())
+}
+
+func (i *encodedTaskStepPtrType) ToEncodedTaskStepPtrOutputWithContext(ctx context.Context) EncodedTaskStepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskStepPtrOutput)
+}
+
+// The properties of a encoded task step.
+type EncodedTaskStepOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskStep)(nil)).Elem()
+}
+
+func (o EncodedTaskStepOutput) ToEncodedTaskStepOutput() EncodedTaskStepOutput {
+	return o
+}
+
+func (o EncodedTaskStepOutput) ToEncodedTaskStepOutputWithContext(ctx context.Context) EncodedTaskStepOutput {
+	return o
+}
+
+func (o EncodedTaskStepOutput) ToEncodedTaskStepPtrOutput() EncodedTaskStepPtrOutput {
+	return o.ToEncodedTaskStepPtrOutputWithContext(context.Background())
+}
+
+func (o EncodedTaskStepOutput) ToEncodedTaskStepPtrOutputWithContext(ctx context.Context) EncodedTaskStepPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncodedTaskStep) *EncodedTaskStep {
+		return &v
+	}).(EncodedTaskStepPtrOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o EncodedTaskStepOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStep) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o EncodedTaskStepOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStep) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskStepOutput) EncodedTaskContent() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStep) string { return v.EncodedTaskContent }).(pulumi.StringOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskStepOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStep) *string { return v.EncodedValuesContent }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'EncodedTask'.
+func (o EncodedTaskStepOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStep) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskStepOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v EncodedTaskStep) []SetValue { return v.Values }).(SetValueArrayOutput)
+}
+
+type EncodedTaskStepPtrOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskStepPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncodedTaskStep)(nil)).Elem()
+}
+
+func (o EncodedTaskStepPtrOutput) ToEncodedTaskStepPtrOutput() EncodedTaskStepPtrOutput {
+	return o
+}
+
+func (o EncodedTaskStepPtrOutput) ToEncodedTaskStepPtrOutputWithContext(ctx context.Context) EncodedTaskStepPtrOutput {
+	return o
+}
+
+func (o EncodedTaskStepPtrOutput) Elem() EncodedTaskStepOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) EncodedTaskStep {
+		if v != nil {
+			return *v
+		}
+		var ret EncodedTaskStep
+		return ret
+	}).(EncodedTaskStepOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o EncodedTaskStepPtrOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o EncodedTaskStepPtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskStepPtrOutput) EncodedTaskContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncodedTaskContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskStepPtrOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedValuesContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'EncodedTask'.
+func (o EncodedTaskStepPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskStepPtrOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v *EncodedTaskStep) []SetValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueArrayOutput)
 }
 
 // The properties of a encoded task step.
@@ -1783,6 +3942,152 @@ type EncodedTaskStepResponse struct {
 	Type string `pulumi:"type"`
 	// The collection of overridable values that can be passed when running a task.
 	Values []SetValueResponse `pulumi:"values"`
+}
+
+// The properties of a encoded task step.
+type EncodedTaskStepResponseOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskStepResponse)(nil)).Elem()
+}
+
+func (o EncodedTaskStepResponseOutput) ToEncodedTaskStepResponseOutput() EncodedTaskStepResponseOutput {
+	return o
+}
+
+func (o EncodedTaskStepResponseOutput) ToEncodedTaskStepResponseOutputWithContext(ctx context.Context) EncodedTaskStepResponseOutput {
+	return o
+}
+
+// List of base image dependencies for a step.
+func (o EncodedTaskStepResponseOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) []BaseImageDependencyResponse { return v.BaseImageDependencies }).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o EncodedTaskStepResponseOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o EncodedTaskStepResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskStepResponseOutput) EncodedTaskContent() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) string { return v.EncodedTaskContent }).(pulumi.StringOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskStepResponseOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) *string { return v.EncodedValuesContent }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'EncodedTask'.
+func (o EncodedTaskStepResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskStepResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
+type EncodedTaskStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncodedTaskStepResponse)(nil)).Elem()
+}
+
+func (o EncodedTaskStepResponsePtrOutput) ToEncodedTaskStepResponsePtrOutput() EncodedTaskStepResponsePtrOutput {
+	return o
+}
+
+func (o EncodedTaskStepResponsePtrOutput) ToEncodedTaskStepResponsePtrOutputWithContext(ctx context.Context) EncodedTaskStepResponsePtrOutput {
+	return o
+}
+
+func (o EncodedTaskStepResponsePtrOutput) Elem() EncodedTaskStepResponseOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) EncodedTaskStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncodedTaskStepResponse
+		return ret
+	}).(EncodedTaskStepResponseOutput)
+}
+
+// List of base image dependencies for a step.
+func (o EncodedTaskStepResponsePtrOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) []BaseImageDependencyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BaseImageDependencies
+	}).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o EncodedTaskStepResponsePtrOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o EncodedTaskStepResponsePtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskStepResponsePtrOutput) EncodedTaskContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncodedTaskContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskStepResponsePtrOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodedValuesContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'EncodedTask'.
+func (o EncodedTaskStepResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskStepResponsePtrOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v *EncodedTaskStepResponse) []SetValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueResponseArrayOutput)
 }
 
 // The request parameters for a scheduling run against a task file.
@@ -1832,6 +4137,347 @@ func (val *FileTaskRunRequest) Defaults() *FileTaskRunRequest {
 	return &tmp
 }
 
+// FileTaskRunRequestInput is an input type that accepts FileTaskRunRequestArgs and FileTaskRunRequestOutput values.
+// You can construct a concrete instance of `FileTaskRunRequestInput` via:
+//
+//	FileTaskRunRequestArgs{...}
+type FileTaskRunRequestInput interface {
+	pulumi.Input
+
+	ToFileTaskRunRequestOutput() FileTaskRunRequestOutput
+	ToFileTaskRunRequestOutputWithContext(context.Context) FileTaskRunRequestOutput
+}
+
+// The request parameters for a scheduling run against a task file.
+type FileTaskRunRequestArgs struct {
+	// The machine configuration of the run agent.
+	AgentConfiguration AgentPropertiesPtrInput `pulumi:"agentConfiguration"`
+	// The dedicated agent pool for the run.
+	AgentPoolName pulumi.StringPtrInput `pulumi:"agentPoolName"`
+	// The properties that describes a set of credentials that will be used when this run is invoked.
+	Credentials CredentialsPtrInput `pulumi:"credentials"`
+	// The value that indicates whether archiving is enabled for the run or not.
+	IsArchiveEnabled pulumi.BoolPtrInput `pulumi:"isArchiveEnabled"`
+	// The template that describes the repository and tag information for run log artifact.
+	LogTemplate pulumi.StringPtrInput `pulumi:"logTemplate"`
+	// The platform properties against which the run has to happen.
+	Platform PlatformPropertiesInput `pulumi:"platform"`
+	// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+	// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+	SourceLocation pulumi.StringPtrInput `pulumi:"sourceLocation"`
+	// The template/definition file path relative to the source.
+	TaskFilePath pulumi.StringInput `pulumi:"taskFilePath"`
+	// Run timeout in seconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The type of the run request.
+	// Expected value is 'FileTaskRunRequest'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The collection of overridable values that can be passed when running a task.
+	Values SetValueArrayInput `pulumi:"values"`
+	// The values/parameters file path relative to the source.
+	ValuesFilePath pulumi.StringPtrInput `pulumi:"valuesFilePath"`
+}
+
+// Defaults sets the appropriate defaults for FileTaskRunRequestArgs
+func (val *FileTaskRunRequestArgs) Defaults() *FileTaskRunRequestArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsArchiveEnabled == nil {
+		tmp.IsArchiveEnabled = pulumi.BoolPtr(false)
+	}
+	if tmp.Timeout == nil {
+		tmp.Timeout = pulumi.IntPtr(3600)
+	}
+	return &tmp
+}
+func (FileTaskRunRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskRunRequest)(nil)).Elem()
+}
+
+func (i FileTaskRunRequestArgs) ToFileTaskRunRequestOutput() FileTaskRunRequestOutput {
+	return i.ToFileTaskRunRequestOutputWithContext(context.Background())
+}
+
+func (i FileTaskRunRequestArgs) ToFileTaskRunRequestOutputWithContext(ctx context.Context) FileTaskRunRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskRunRequestOutput)
+}
+
+func (i FileTaskRunRequestArgs) ToFileTaskRunRequestPtrOutput() FileTaskRunRequestPtrOutput {
+	return i.ToFileTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (i FileTaskRunRequestArgs) ToFileTaskRunRequestPtrOutputWithContext(ctx context.Context) FileTaskRunRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskRunRequestOutput).ToFileTaskRunRequestPtrOutputWithContext(ctx)
+}
+
+// FileTaskRunRequestPtrInput is an input type that accepts FileTaskRunRequestArgs, FileTaskRunRequestPtr and FileTaskRunRequestPtrOutput values.
+// You can construct a concrete instance of `FileTaskRunRequestPtrInput` via:
+//
+//	        FileTaskRunRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileTaskRunRequestPtrInput interface {
+	pulumi.Input
+
+	ToFileTaskRunRequestPtrOutput() FileTaskRunRequestPtrOutput
+	ToFileTaskRunRequestPtrOutputWithContext(context.Context) FileTaskRunRequestPtrOutput
+}
+
+type fileTaskRunRequestPtrType FileTaskRunRequestArgs
+
+func FileTaskRunRequestPtr(v *FileTaskRunRequestArgs) FileTaskRunRequestPtrInput {
+	return (*fileTaskRunRequestPtrType)(v)
+}
+
+func (*fileTaskRunRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileTaskRunRequest)(nil)).Elem()
+}
+
+func (i *fileTaskRunRequestPtrType) ToFileTaskRunRequestPtrOutput() FileTaskRunRequestPtrOutput {
+	return i.ToFileTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *fileTaskRunRequestPtrType) ToFileTaskRunRequestPtrOutputWithContext(ctx context.Context) FileTaskRunRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskRunRequestPtrOutput)
+}
+
+// The request parameters for a scheduling run against a task file.
+type FileTaskRunRequestOutput struct{ *pulumi.OutputState }
+
+func (FileTaskRunRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskRunRequest)(nil)).Elem()
+}
+
+func (o FileTaskRunRequestOutput) ToFileTaskRunRequestOutput() FileTaskRunRequestOutput {
+	return o
+}
+
+func (o FileTaskRunRequestOutput) ToFileTaskRunRequestOutputWithContext(ctx context.Context) FileTaskRunRequestOutput {
+	return o
+}
+
+func (o FileTaskRunRequestOutput) ToFileTaskRunRequestPtrOutput() FileTaskRunRequestPtrOutput {
+	return o.ToFileTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (o FileTaskRunRequestOutput) ToFileTaskRunRequestPtrOutputWithContext(ctx context.Context) FileTaskRunRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileTaskRunRequest) *FileTaskRunRequest {
+		return &v
+	}).(FileTaskRunRequestPtrOutput)
+}
+
+// The machine configuration of the run agent.
+func (o FileTaskRunRequestOutput) AgentConfiguration() AgentPropertiesPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *AgentProperties { return v.AgentConfiguration }).(AgentPropertiesPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o FileTaskRunRequestOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o FileTaskRunRequestOutput) Credentials() CredentialsPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *Credentials { return v.Credentials }).(CredentialsPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o FileTaskRunRequestOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o FileTaskRunRequestOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o FileTaskRunRequestOutput) Platform() PlatformPropertiesOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) PlatformProperties { return v.Platform }).(PlatformPropertiesOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o FileTaskRunRequestOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// The template/definition file path relative to the source.
+func (o FileTaskRunRequestOutput) TaskFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) string { return v.TaskFilePath }).(pulumi.StringOutput)
+}
+
+// Run timeout in seconds.
+func (o FileTaskRunRequestOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'FileTaskRunRequest'.
+func (o FileTaskRunRequestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskRunRequestOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) []SetValue { return v.Values }).(SetValueArrayOutput)
+}
+
+// The values/parameters file path relative to the source.
+func (o FileTaskRunRequestOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequest) *string { return v.ValuesFilePath }).(pulumi.StringPtrOutput)
+}
+
+type FileTaskRunRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (FileTaskRunRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileTaskRunRequest)(nil)).Elem()
+}
+
+func (o FileTaskRunRequestPtrOutput) ToFileTaskRunRequestPtrOutput() FileTaskRunRequestPtrOutput {
+	return o
+}
+
+func (o FileTaskRunRequestPtrOutput) ToFileTaskRunRequestPtrOutputWithContext(ctx context.Context) FileTaskRunRequestPtrOutput {
+	return o
+}
+
+func (o FileTaskRunRequestPtrOutput) Elem() FileTaskRunRequestOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) FileTaskRunRequest {
+		if v != nil {
+			return *v
+		}
+		var ret FileTaskRunRequest
+		return ret
+	}).(FileTaskRunRequestOutput)
+}
+
+// The machine configuration of the run agent.
+func (o FileTaskRunRequestPtrOutput) AgentConfiguration() AgentPropertiesPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *AgentProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfiguration
+	}).(AgentPropertiesPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o FileTaskRunRequestPtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o FileTaskRunRequestPtrOutput) Credentials() CredentialsPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *Credentials {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CredentialsPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o FileTaskRunRequestPtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o FileTaskRunRequestPtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o FileTaskRunRequestPtrOutput) Platform() PlatformPropertiesPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *PlatformProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(PlatformPropertiesPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o FileTaskRunRequestPtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The template/definition file path relative to the source.
+func (o FileTaskRunRequestPtrOutput) TaskFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o FileTaskRunRequestPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'FileTaskRunRequest'.
+func (o FileTaskRunRequestPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskRunRequestPtrOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) []SetValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueArrayOutput)
+}
+
+// The values/parameters file path relative to the source.
+func (o FileTaskRunRequestPtrOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
 // The request parameters for a scheduling run against a task file.
 type FileTaskRunRequestResponse struct {
 	// The machine configuration of the run agent.
@@ -1879,6 +4525,229 @@ func (val *FileTaskRunRequestResponse) Defaults() *FileTaskRunRequestResponse {
 	return &tmp
 }
 
+// The request parameters for a scheduling run against a task file.
+type FileTaskRunRequestResponseOutput struct{ *pulumi.OutputState }
+
+func (FileTaskRunRequestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskRunRequestResponse)(nil)).Elem()
+}
+
+func (o FileTaskRunRequestResponseOutput) ToFileTaskRunRequestResponseOutput() FileTaskRunRequestResponseOutput {
+	return o
+}
+
+func (o FileTaskRunRequestResponseOutput) ToFileTaskRunRequestResponseOutputWithContext(ctx context.Context) FileTaskRunRequestResponseOutput {
+	return o
+}
+
+// The machine configuration of the run agent.
+func (o FileTaskRunRequestResponseOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *AgentPropertiesResponse { return v.AgentConfiguration }).(AgentPropertiesResponsePtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o FileTaskRunRequestResponseOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o FileTaskRunRequestResponseOutput) Credentials() CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *CredentialsResponse { return v.Credentials }).(CredentialsResponsePtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o FileTaskRunRequestResponseOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o FileTaskRunRequestResponseOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o FileTaskRunRequestResponseOutput) Platform() PlatformPropertiesResponseOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) PlatformPropertiesResponse { return v.Platform }).(PlatformPropertiesResponseOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o FileTaskRunRequestResponseOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// The template/definition file path relative to the source.
+func (o FileTaskRunRequestResponseOutput) TaskFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) string { return v.TaskFilePath }).(pulumi.StringOutput)
+}
+
+// Run timeout in seconds.
+func (o FileTaskRunRequestResponseOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'FileTaskRunRequest'.
+func (o FileTaskRunRequestResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskRunRequestResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
+// The values/parameters file path relative to the source.
+func (o FileTaskRunRequestResponseOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskRunRequestResponse) *string { return v.ValuesFilePath }).(pulumi.StringPtrOutput)
+}
+
+type FileTaskRunRequestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FileTaskRunRequestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileTaskRunRequestResponse)(nil)).Elem()
+}
+
+func (o FileTaskRunRequestResponsePtrOutput) ToFileTaskRunRequestResponsePtrOutput() FileTaskRunRequestResponsePtrOutput {
+	return o
+}
+
+func (o FileTaskRunRequestResponsePtrOutput) ToFileTaskRunRequestResponsePtrOutputWithContext(ctx context.Context) FileTaskRunRequestResponsePtrOutput {
+	return o
+}
+
+func (o FileTaskRunRequestResponsePtrOutput) Elem() FileTaskRunRequestResponseOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) FileTaskRunRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileTaskRunRequestResponse
+		return ret
+	}).(FileTaskRunRequestResponseOutput)
+}
+
+// The machine configuration of the run agent.
+func (o FileTaskRunRequestResponsePtrOutput) AgentConfiguration() AgentPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *AgentPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfiguration
+	}).(AgentPropertiesResponsePtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o FileTaskRunRequestResponsePtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties that describes a set of credentials that will be used when this run is invoked.
+func (o FileTaskRunRequestResponsePtrOutput) Credentials() CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *CredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CredentialsResponsePtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o FileTaskRunRequestResponsePtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o FileTaskRunRequestResponsePtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The platform properties against which the run has to happen.
+func (o FileTaskRunRequestResponsePtrOutput) Platform() PlatformPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *PlatformPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Platform
+	}).(PlatformPropertiesResponsePtrOutput)
+}
+
+// The URL(absolute or relative) of the source context. It can be an URL to a tar or git repository.
+// If it is relative URL, the relative path should be obtained from calling listBuildSourceUploadUrl API.
+func (o FileTaskRunRequestResponsePtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The template/definition file path relative to the source.
+func (o FileTaskRunRequestResponsePtrOutput) TaskFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Run timeout in seconds.
+func (o FileTaskRunRequestResponsePtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'FileTaskRunRequest'.
+func (o FileTaskRunRequestResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskRunRequestResponsePtrOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) []SetValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueResponseArrayOutput)
+}
+
+// The values/parameters file path relative to the source.
+func (o FileTaskRunRequestResponsePtrOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
 // The properties of a task step.
 type FileTaskStep struct {
 	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
@@ -1894,6 +4763,228 @@ type FileTaskStep struct {
 	Values []SetValue `pulumi:"values"`
 	// The task values/parameters file path relative to the source context.
 	ValuesFilePath *string `pulumi:"valuesFilePath"`
+}
+
+// FileTaskStepInput is an input type that accepts FileTaskStepArgs and FileTaskStepOutput values.
+// You can construct a concrete instance of `FileTaskStepInput` via:
+//
+//	FileTaskStepArgs{...}
+type FileTaskStepInput interface {
+	pulumi.Input
+
+	ToFileTaskStepOutput() FileTaskStepOutput
+	ToFileTaskStepOutputWithContext(context.Context) FileTaskStepOutput
+}
+
+// The properties of a task step.
+type FileTaskStepArgs struct {
+	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+	ContextAccessToken pulumi.StringPtrInput `pulumi:"contextAccessToken"`
+	// The URL(absolute or relative) of the source context for the task step.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// The task template/definition file path relative to the source context.
+	TaskFilePath pulumi.StringInput `pulumi:"taskFilePath"`
+	// The type of the step.
+	// Expected value is 'FileTask'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The collection of overridable values that can be passed when running a task.
+	Values SetValueArrayInput `pulumi:"values"`
+	// The task values/parameters file path relative to the source context.
+	ValuesFilePath pulumi.StringPtrInput `pulumi:"valuesFilePath"`
+}
+
+func (FileTaskStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskStep)(nil)).Elem()
+}
+
+func (i FileTaskStepArgs) ToFileTaskStepOutput() FileTaskStepOutput {
+	return i.ToFileTaskStepOutputWithContext(context.Background())
+}
+
+func (i FileTaskStepArgs) ToFileTaskStepOutputWithContext(ctx context.Context) FileTaskStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskStepOutput)
+}
+
+func (i FileTaskStepArgs) ToFileTaskStepPtrOutput() FileTaskStepPtrOutput {
+	return i.ToFileTaskStepPtrOutputWithContext(context.Background())
+}
+
+func (i FileTaskStepArgs) ToFileTaskStepPtrOutputWithContext(ctx context.Context) FileTaskStepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskStepOutput).ToFileTaskStepPtrOutputWithContext(ctx)
+}
+
+// FileTaskStepPtrInput is an input type that accepts FileTaskStepArgs, FileTaskStepPtr and FileTaskStepPtrOutput values.
+// You can construct a concrete instance of `FileTaskStepPtrInput` via:
+//
+//	        FileTaskStepArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileTaskStepPtrInput interface {
+	pulumi.Input
+
+	ToFileTaskStepPtrOutput() FileTaskStepPtrOutput
+	ToFileTaskStepPtrOutputWithContext(context.Context) FileTaskStepPtrOutput
+}
+
+type fileTaskStepPtrType FileTaskStepArgs
+
+func FileTaskStepPtr(v *FileTaskStepArgs) FileTaskStepPtrInput {
+	return (*fileTaskStepPtrType)(v)
+}
+
+func (*fileTaskStepPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileTaskStep)(nil)).Elem()
+}
+
+func (i *fileTaskStepPtrType) ToFileTaskStepPtrOutput() FileTaskStepPtrOutput {
+	return i.ToFileTaskStepPtrOutputWithContext(context.Background())
+}
+
+func (i *fileTaskStepPtrType) ToFileTaskStepPtrOutputWithContext(ctx context.Context) FileTaskStepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskStepPtrOutput)
+}
+
+// The properties of a task step.
+type FileTaskStepOutput struct{ *pulumi.OutputState }
+
+func (FileTaskStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskStep)(nil)).Elem()
+}
+
+func (o FileTaskStepOutput) ToFileTaskStepOutput() FileTaskStepOutput {
+	return o
+}
+
+func (o FileTaskStepOutput) ToFileTaskStepOutputWithContext(ctx context.Context) FileTaskStepOutput {
+	return o
+}
+
+func (o FileTaskStepOutput) ToFileTaskStepPtrOutput() FileTaskStepPtrOutput {
+	return o.ToFileTaskStepPtrOutputWithContext(context.Background())
+}
+
+func (o FileTaskStepOutput) ToFileTaskStepPtrOutputWithContext(ctx context.Context) FileTaskStepPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileTaskStep) *FileTaskStep {
+		return &v
+	}).(FileTaskStepPtrOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o FileTaskStepOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStep) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o FileTaskStepOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStep) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The task template/definition file path relative to the source context.
+func (o FileTaskStepOutput) TaskFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStep) string { return v.TaskFilePath }).(pulumi.StringOutput)
+}
+
+// The type of the step.
+// Expected value is 'FileTask'.
+func (o FileTaskStepOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStep) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskStepOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v FileTaskStep) []SetValue { return v.Values }).(SetValueArrayOutput)
+}
+
+// The task values/parameters file path relative to the source context.
+func (o FileTaskStepOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStep) *string { return v.ValuesFilePath }).(pulumi.StringPtrOutput)
+}
+
+type FileTaskStepPtrOutput struct{ *pulumi.OutputState }
+
+func (FileTaskStepPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileTaskStep)(nil)).Elem()
+}
+
+func (o FileTaskStepPtrOutput) ToFileTaskStepPtrOutput() FileTaskStepPtrOutput {
+	return o
+}
+
+func (o FileTaskStepPtrOutput) ToFileTaskStepPtrOutputWithContext(ctx context.Context) FileTaskStepPtrOutput {
+	return o
+}
+
+func (o FileTaskStepPtrOutput) Elem() FileTaskStepOutput {
+	return o.ApplyT(func(v *FileTaskStep) FileTaskStep {
+		if v != nil {
+			return *v
+		}
+		var ret FileTaskStep
+		return ret
+	}).(FileTaskStepOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o FileTaskStepPtrOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o FileTaskStepPtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The task template/definition file path relative to the source context.
+func (o FileTaskStepPtrOutput) TaskFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'FileTask'.
+func (o FileTaskStepPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskStepPtrOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v *FileTaskStep) []SetValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueArrayOutput)
+}
+
+// The task values/parameters file path relative to the source context.
+func (o FileTaskStepPtrOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesFilePath
+	}).(pulumi.StringPtrOutput)
 }
 
 // The properties of a task step.
@@ -1913,6 +5004,152 @@ type FileTaskStepResponse struct {
 	Values []SetValueResponse `pulumi:"values"`
 	// The task values/parameters file path relative to the source context.
 	ValuesFilePath *string `pulumi:"valuesFilePath"`
+}
+
+// The properties of a task step.
+type FileTaskStepResponseOutput struct{ *pulumi.OutputState }
+
+func (FileTaskStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskStepResponse)(nil)).Elem()
+}
+
+func (o FileTaskStepResponseOutput) ToFileTaskStepResponseOutput() FileTaskStepResponseOutput {
+	return o
+}
+
+func (o FileTaskStepResponseOutput) ToFileTaskStepResponseOutputWithContext(ctx context.Context) FileTaskStepResponseOutput {
+	return o
+}
+
+// List of base image dependencies for a step.
+func (o FileTaskStepResponseOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) []BaseImageDependencyResponse { return v.BaseImageDependencies }).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o FileTaskStepResponseOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o FileTaskStepResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The task template/definition file path relative to the source context.
+func (o FileTaskStepResponseOutput) TaskFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) string { return v.TaskFilePath }).(pulumi.StringOutput)
+}
+
+// The type of the step.
+// Expected value is 'FileTask'.
+func (o FileTaskStepResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskStepResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
+// The task values/parameters file path relative to the source context.
+func (o FileTaskStepResponseOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) *string { return v.ValuesFilePath }).(pulumi.StringPtrOutput)
+}
+
+type FileTaskStepResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FileTaskStepResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileTaskStepResponse)(nil)).Elem()
+}
+
+func (o FileTaskStepResponsePtrOutput) ToFileTaskStepResponsePtrOutput() FileTaskStepResponsePtrOutput {
+	return o
+}
+
+func (o FileTaskStepResponsePtrOutput) ToFileTaskStepResponsePtrOutputWithContext(ctx context.Context) FileTaskStepResponsePtrOutput {
+	return o
+}
+
+func (o FileTaskStepResponsePtrOutput) Elem() FileTaskStepResponseOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) FileTaskStepResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FileTaskStepResponse
+		return ret
+	}).(FileTaskStepResponseOutput)
+}
+
+// List of base image dependencies for a step.
+func (o FileTaskStepResponsePtrOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) []BaseImageDependencyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BaseImageDependencies
+	}).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o FileTaskStepResponsePtrOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextAccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o FileTaskStepResponsePtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The task template/definition file path relative to the source context.
+func (o FileTaskStepResponsePtrOutput) TaskFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'FileTask'.
+func (o FileTaskStepResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskStepResponsePtrOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) []SetValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueResponseArrayOutput)
+}
+
+// The task values/parameters file path relative to the source context.
+func (o FileTaskStepResponsePtrOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileTaskStepResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesFilePath
+	}).(pulumi.StringPtrOutput)
 }
 
 // Managed identity for the resource.
@@ -2427,6 +5664,226 @@ type OverrideTaskStepProperties struct {
 	Values []SetValue `pulumi:"values"`
 }
 
+// OverrideTaskStepPropertiesInput is an input type that accepts OverrideTaskStepPropertiesArgs and OverrideTaskStepPropertiesOutput values.
+// You can construct a concrete instance of `OverrideTaskStepPropertiesInput` via:
+//
+//	OverrideTaskStepPropertiesArgs{...}
+type OverrideTaskStepPropertiesInput interface {
+	pulumi.Input
+
+	ToOverrideTaskStepPropertiesOutput() OverrideTaskStepPropertiesOutput
+	ToOverrideTaskStepPropertiesOutputWithContext(context.Context) OverrideTaskStepPropertiesOutput
+}
+
+type OverrideTaskStepPropertiesArgs struct {
+	// Gets or sets the collection of override arguments to be used when
+	// executing a build step.
+	Arguments ArgumentArrayInput `pulumi:"arguments"`
+	// The source context against which run has to be queued.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// The file against which run has to be queued.
+	File pulumi.StringPtrInput `pulumi:"file"`
+	// The name of the target build stage for the docker build.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// Base64 encoded update trigger token that will be attached with the base image trigger webhook.
+	UpdateTriggerToken pulumi.StringPtrInput `pulumi:"updateTriggerToken"`
+	// The collection of overridable values that can be passed when running a Task.
+	Values SetValueArrayInput `pulumi:"values"`
+}
+
+func (OverrideTaskStepPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverrideTaskStepProperties)(nil)).Elem()
+}
+
+func (i OverrideTaskStepPropertiesArgs) ToOverrideTaskStepPropertiesOutput() OverrideTaskStepPropertiesOutput {
+	return i.ToOverrideTaskStepPropertiesOutputWithContext(context.Background())
+}
+
+func (i OverrideTaskStepPropertiesArgs) ToOverrideTaskStepPropertiesOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverrideTaskStepPropertiesOutput)
+}
+
+func (i OverrideTaskStepPropertiesArgs) ToOverrideTaskStepPropertiesPtrOutput() OverrideTaskStepPropertiesPtrOutput {
+	return i.ToOverrideTaskStepPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OverrideTaskStepPropertiesArgs) ToOverrideTaskStepPropertiesPtrOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverrideTaskStepPropertiesOutput).ToOverrideTaskStepPropertiesPtrOutputWithContext(ctx)
+}
+
+// OverrideTaskStepPropertiesPtrInput is an input type that accepts OverrideTaskStepPropertiesArgs, OverrideTaskStepPropertiesPtr and OverrideTaskStepPropertiesPtrOutput values.
+// You can construct a concrete instance of `OverrideTaskStepPropertiesPtrInput` via:
+//
+//	        OverrideTaskStepPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OverrideTaskStepPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOverrideTaskStepPropertiesPtrOutput() OverrideTaskStepPropertiesPtrOutput
+	ToOverrideTaskStepPropertiesPtrOutputWithContext(context.Context) OverrideTaskStepPropertiesPtrOutput
+}
+
+type overrideTaskStepPropertiesPtrType OverrideTaskStepPropertiesArgs
+
+func OverrideTaskStepPropertiesPtr(v *OverrideTaskStepPropertiesArgs) OverrideTaskStepPropertiesPtrInput {
+	return (*overrideTaskStepPropertiesPtrType)(v)
+}
+
+func (*overrideTaskStepPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverrideTaskStepProperties)(nil)).Elem()
+}
+
+func (i *overrideTaskStepPropertiesPtrType) ToOverrideTaskStepPropertiesPtrOutput() OverrideTaskStepPropertiesPtrOutput {
+	return i.ToOverrideTaskStepPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *overrideTaskStepPropertiesPtrType) ToOverrideTaskStepPropertiesPtrOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OverrideTaskStepPropertiesPtrOutput)
+}
+
+type OverrideTaskStepPropertiesOutput struct{ *pulumi.OutputState }
+
+func (OverrideTaskStepPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverrideTaskStepProperties)(nil)).Elem()
+}
+
+func (o OverrideTaskStepPropertiesOutput) ToOverrideTaskStepPropertiesOutput() OverrideTaskStepPropertiesOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesOutput) ToOverrideTaskStepPropertiesOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesOutput) ToOverrideTaskStepPropertiesPtrOutput() OverrideTaskStepPropertiesPtrOutput {
+	return o.ToOverrideTaskStepPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OverrideTaskStepPropertiesOutput) ToOverrideTaskStepPropertiesPtrOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OverrideTaskStepProperties) *OverrideTaskStepProperties {
+		return &v
+	}).(OverrideTaskStepPropertiesPtrOutput)
+}
+
+// Gets or sets the collection of override arguments to be used when
+// executing a build step.
+func (o OverrideTaskStepPropertiesOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v OverrideTaskStepProperties) []Argument { return v.Arguments }).(ArgumentArrayOutput)
+}
+
+// The source context against which run has to be queued.
+func (o OverrideTaskStepPropertiesOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepProperties) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The file against which run has to be queued.
+func (o OverrideTaskStepPropertiesOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepProperties) *string { return v.File }).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o OverrideTaskStepPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded update trigger token that will be attached with the base image trigger webhook.
+func (o OverrideTaskStepPropertiesOutput) UpdateTriggerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepProperties) *string { return v.UpdateTriggerToken }).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a Task.
+func (o OverrideTaskStepPropertiesOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v OverrideTaskStepProperties) []SetValue { return v.Values }).(SetValueArrayOutput)
+}
+
+type OverrideTaskStepPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OverrideTaskStepPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverrideTaskStepProperties)(nil)).Elem()
+}
+
+func (o OverrideTaskStepPropertiesPtrOutput) ToOverrideTaskStepPropertiesPtrOutput() OverrideTaskStepPropertiesPtrOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesPtrOutput) ToOverrideTaskStepPropertiesPtrOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesPtrOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesPtrOutput) Elem() OverrideTaskStepPropertiesOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) OverrideTaskStepProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OverrideTaskStepProperties
+		return ret
+	}).(OverrideTaskStepPropertiesOutput)
+}
+
+// Gets or sets the collection of override arguments to be used when
+// executing a build step.
+func (o OverrideTaskStepPropertiesPtrOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) []Argument {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(ArgumentArrayOutput)
+}
+
+// The source context against which run has to be queued.
+func (o OverrideTaskStepPropertiesPtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file against which run has to be queued.
+func (o OverrideTaskStepPropertiesPtrOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o OverrideTaskStepPropertiesPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded update trigger token that will be attached with the base image trigger webhook.
+func (o OverrideTaskStepPropertiesPtrOutput) UpdateTriggerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTriggerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a Task.
+func (o OverrideTaskStepPropertiesPtrOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v *OverrideTaskStepProperties) []SetValue {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueArrayOutput)
+}
+
 type OverrideTaskStepPropertiesResponse struct {
 	// Gets or sets the collection of override arguments to be used when
 	// executing a build step.
@@ -2441,6 +5898,136 @@ type OverrideTaskStepPropertiesResponse struct {
 	UpdateTriggerToken *string `pulumi:"updateTriggerToken"`
 	// The collection of overridable values that can be passed when running a Task.
 	Values []SetValueResponse `pulumi:"values"`
+}
+
+type OverrideTaskStepPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OverrideTaskStepPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OverrideTaskStepPropertiesResponse)(nil)).Elem()
+}
+
+func (o OverrideTaskStepPropertiesResponseOutput) ToOverrideTaskStepPropertiesResponseOutput() OverrideTaskStepPropertiesResponseOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesResponseOutput) ToOverrideTaskStepPropertiesResponseOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the collection of override arguments to be used when
+// executing a build step.
+func (o OverrideTaskStepPropertiesResponseOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v OverrideTaskStepPropertiesResponse) []ArgumentResponse { return v.Arguments }).(ArgumentResponseArrayOutput)
+}
+
+// The source context against which run has to be queued.
+func (o OverrideTaskStepPropertiesResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepPropertiesResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The file against which run has to be queued.
+func (o OverrideTaskStepPropertiesResponseOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepPropertiesResponse) *string { return v.File }).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o OverrideTaskStepPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded update trigger token that will be attached with the base image trigger webhook.
+func (o OverrideTaskStepPropertiesResponseOutput) UpdateTriggerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OverrideTaskStepPropertiesResponse) *string { return v.UpdateTriggerToken }).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a Task.
+func (o OverrideTaskStepPropertiesResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v OverrideTaskStepPropertiesResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
+type OverrideTaskStepPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OverrideTaskStepPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OverrideTaskStepPropertiesResponse)(nil)).Elem()
+}
+
+func (o OverrideTaskStepPropertiesResponsePtrOutput) ToOverrideTaskStepPropertiesResponsePtrOutput() OverrideTaskStepPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesResponsePtrOutput) ToOverrideTaskStepPropertiesResponsePtrOutputWithContext(ctx context.Context) OverrideTaskStepPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OverrideTaskStepPropertiesResponsePtrOutput) Elem() OverrideTaskStepPropertiesResponseOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) OverrideTaskStepPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OverrideTaskStepPropertiesResponse
+		return ret
+	}).(OverrideTaskStepPropertiesResponseOutput)
+}
+
+// Gets or sets the collection of override arguments to be used when
+// executing a build step.
+func (o OverrideTaskStepPropertiesResponsePtrOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) []ArgumentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Arguments
+	}).(ArgumentResponseArrayOutput)
+}
+
+// The source context against which run has to be queued.
+func (o OverrideTaskStepPropertiesResponsePtrOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContextPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file against which run has to be queued.
+func (o OverrideTaskStepPropertiesResponsePtrOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.File
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o OverrideTaskStepPropertiesResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded update trigger token that will be attached with the base image trigger webhook.
+func (o OverrideTaskStepPropertiesResponsePtrOutput) UpdateTriggerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTriggerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of overridable values that can be passed when running a Task.
+func (o OverrideTaskStepPropertiesResponsePtrOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v *OverrideTaskStepPropertiesResponse) []SetValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(SetValueResponseArrayOutput)
 }
 
 // The platform properties against which the run has to happen.
@@ -3209,6 +6796,125 @@ func (val *SetValue) Defaults() *SetValue {
 	return &tmp
 }
 
+// SetValueInput is an input type that accepts SetValueArgs and SetValueOutput values.
+// You can construct a concrete instance of `SetValueInput` via:
+//
+//	SetValueArgs{...}
+type SetValueInput interface {
+	pulumi.Input
+
+	ToSetValueOutput() SetValueOutput
+	ToSetValueOutputWithContext(context.Context) SetValueOutput
+}
+
+// The properties of a overridable value that can be passed to a task template.
+type SetValueArgs struct {
+	// Flag to indicate whether the value represents a secret or not.
+	IsSecret pulumi.BoolPtrInput `pulumi:"isSecret"`
+	// The name of the overridable value.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The overridable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+// Defaults sets the appropriate defaults for SetValueArgs
+func (val *SetValueArgs) Defaults() *SetValueArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsSecret == nil {
+		tmp.IsSecret = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (SetValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetValue)(nil)).Elem()
+}
+
+func (i SetValueArgs) ToSetValueOutput() SetValueOutput {
+	return i.ToSetValueOutputWithContext(context.Background())
+}
+
+func (i SetValueArgs) ToSetValueOutputWithContext(ctx context.Context) SetValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetValueOutput)
+}
+
+// SetValueArrayInput is an input type that accepts SetValueArray and SetValueArrayOutput values.
+// You can construct a concrete instance of `SetValueArrayInput` via:
+//
+//	SetValueArray{ SetValueArgs{...} }
+type SetValueArrayInput interface {
+	pulumi.Input
+
+	ToSetValueArrayOutput() SetValueArrayOutput
+	ToSetValueArrayOutputWithContext(context.Context) SetValueArrayOutput
+}
+
+type SetValueArray []SetValueInput
+
+func (SetValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SetValue)(nil)).Elem()
+}
+
+func (i SetValueArray) ToSetValueArrayOutput() SetValueArrayOutput {
+	return i.ToSetValueArrayOutputWithContext(context.Background())
+}
+
+func (i SetValueArray) ToSetValueArrayOutputWithContext(ctx context.Context) SetValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetValueArrayOutput)
+}
+
+// The properties of a overridable value that can be passed to a task template.
+type SetValueOutput struct{ *pulumi.OutputState }
+
+func (SetValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetValue)(nil)).Elem()
+}
+
+func (o SetValueOutput) ToSetValueOutput() SetValueOutput {
+	return o
+}
+
+func (o SetValueOutput) ToSetValueOutputWithContext(ctx context.Context) SetValueOutput {
+	return o
+}
+
+// Flag to indicate whether the value represents a secret or not.
+func (o SetValueOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SetValue) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the overridable value.
+func (o SetValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The overridable value.
+func (o SetValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SetValueArrayOutput struct{ *pulumi.OutputState }
+
+func (SetValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SetValue)(nil)).Elem()
+}
+
+func (o SetValueArrayOutput) ToSetValueArrayOutput() SetValueArrayOutput {
+	return o
+}
+
+func (o SetValueArrayOutput) ToSetValueArrayOutputWithContext(ctx context.Context) SetValueArrayOutput {
+	return o
+}
+
+func (o SetValueArrayOutput) Index(i pulumi.IntInput) SetValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SetValue {
+		return vs[0].([]SetValue)[vs[1].(int)]
+	}).(SetValueOutput)
+}
+
 // The properties of a overridable value that can be passed to a task template.
 type SetValueResponse struct {
 	// Flag to indicate whether the value represents a secret or not.
@@ -3230,6 +6936,56 @@ func (val *SetValueResponse) Defaults() *SetValueResponse {
 		tmp.IsSecret = &isSecret_
 	}
 	return &tmp
+}
+
+// The properties of a overridable value that can be passed to a task template.
+type SetValueResponseOutput struct{ *pulumi.OutputState }
+
+func (SetValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetValueResponse)(nil)).Elem()
+}
+
+func (o SetValueResponseOutput) ToSetValueResponseOutput() SetValueResponseOutput {
+	return o
+}
+
+func (o SetValueResponseOutput) ToSetValueResponseOutputWithContext(ctx context.Context) SetValueResponseOutput {
+	return o
+}
+
+// Flag to indicate whether the value represents a secret or not.
+func (o SetValueResponseOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SetValueResponse) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the overridable value.
+func (o SetValueResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValueResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The overridable value.
+func (o SetValueResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValueResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SetValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SetValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SetValueResponse)(nil)).Elem()
+}
+
+func (o SetValueResponseArrayOutput) ToSetValueResponseArrayOutput() SetValueResponseArrayOutput {
+	return o
+}
+
+func (o SetValueResponseArrayOutput) ToSetValueResponseArrayOutputWithContext(ctx context.Context) SetValueResponseArrayOutput {
+	return o
+}
+
+func (o SetValueResponseArrayOutput) Index(i pulumi.IntInput) SetValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SetValueResponse {
+		return vs[0].([]SetValueResponse)[vs[1].(int)]
+	}).(SetValueResponseOutput)
 }
 
 // The properties of the source code repository.
@@ -4064,6 +7820,239 @@ func (val *TaskRunRequest) Defaults() *TaskRunRequest {
 	return &tmp
 }
 
+// TaskRunRequestInput is an input type that accepts TaskRunRequestArgs and TaskRunRequestOutput values.
+// You can construct a concrete instance of `TaskRunRequestInput` via:
+//
+//	TaskRunRequestArgs{...}
+type TaskRunRequestInput interface {
+	pulumi.Input
+
+	ToTaskRunRequestOutput() TaskRunRequestOutput
+	ToTaskRunRequestOutputWithContext(context.Context) TaskRunRequestOutput
+}
+
+// The parameters for a task run request.
+type TaskRunRequestArgs struct {
+	// The dedicated agent pool for the run.
+	AgentPoolName pulumi.StringPtrInput `pulumi:"agentPoolName"`
+	// The value that indicates whether archiving is enabled for the run or not.
+	IsArchiveEnabled pulumi.BoolPtrInput `pulumi:"isArchiveEnabled"`
+	// The template that describes the repository and tag information for run log artifact.
+	LogTemplate pulumi.StringPtrInput `pulumi:"logTemplate"`
+	// Set of overridable parameters that can be passed when running a Task.
+	OverrideTaskStepProperties OverrideTaskStepPropertiesPtrInput `pulumi:"overrideTaskStepProperties"`
+	// The resource ID of task against which run has to be queued.
+	TaskId pulumi.StringInput `pulumi:"taskId"`
+	// The type of the run request.
+	// Expected value is 'TaskRunRequest'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for TaskRunRequestArgs
+func (val *TaskRunRequestArgs) Defaults() *TaskRunRequestArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsArchiveEnabled == nil {
+		tmp.IsArchiveEnabled = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (TaskRunRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskRunRequest)(nil)).Elem()
+}
+
+func (i TaskRunRequestArgs) ToTaskRunRequestOutput() TaskRunRequestOutput {
+	return i.ToTaskRunRequestOutputWithContext(context.Background())
+}
+
+func (i TaskRunRequestArgs) ToTaskRunRequestOutputWithContext(ctx context.Context) TaskRunRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskRunRequestOutput)
+}
+
+func (i TaskRunRequestArgs) ToTaskRunRequestPtrOutput() TaskRunRequestPtrOutput {
+	return i.ToTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (i TaskRunRequestArgs) ToTaskRunRequestPtrOutputWithContext(ctx context.Context) TaskRunRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskRunRequestOutput).ToTaskRunRequestPtrOutputWithContext(ctx)
+}
+
+// TaskRunRequestPtrInput is an input type that accepts TaskRunRequestArgs, TaskRunRequestPtr and TaskRunRequestPtrOutput values.
+// You can construct a concrete instance of `TaskRunRequestPtrInput` via:
+//
+//	        TaskRunRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskRunRequestPtrInput interface {
+	pulumi.Input
+
+	ToTaskRunRequestPtrOutput() TaskRunRequestPtrOutput
+	ToTaskRunRequestPtrOutputWithContext(context.Context) TaskRunRequestPtrOutput
+}
+
+type taskRunRequestPtrType TaskRunRequestArgs
+
+func TaskRunRequestPtr(v *TaskRunRequestArgs) TaskRunRequestPtrInput {
+	return (*taskRunRequestPtrType)(v)
+}
+
+func (*taskRunRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskRunRequest)(nil)).Elem()
+}
+
+func (i *taskRunRequestPtrType) ToTaskRunRequestPtrOutput() TaskRunRequestPtrOutput {
+	return i.ToTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *taskRunRequestPtrType) ToTaskRunRequestPtrOutputWithContext(ctx context.Context) TaskRunRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskRunRequestPtrOutput)
+}
+
+// The parameters for a task run request.
+type TaskRunRequestOutput struct{ *pulumi.OutputState }
+
+func (TaskRunRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskRunRequest)(nil)).Elem()
+}
+
+func (o TaskRunRequestOutput) ToTaskRunRequestOutput() TaskRunRequestOutput {
+	return o
+}
+
+func (o TaskRunRequestOutput) ToTaskRunRequestOutputWithContext(ctx context.Context) TaskRunRequestOutput {
+	return o
+}
+
+func (o TaskRunRequestOutput) ToTaskRunRequestPtrOutput() TaskRunRequestPtrOutput {
+	return o.ToTaskRunRequestPtrOutputWithContext(context.Background())
+}
+
+func (o TaskRunRequestOutput) ToTaskRunRequestPtrOutputWithContext(ctx context.Context) TaskRunRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskRunRequest) *TaskRunRequest {
+		return &v
+	}).(TaskRunRequestPtrOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o TaskRunRequestOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskRunRequest) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o TaskRunRequestOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskRunRequest) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o TaskRunRequestOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskRunRequest) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Set of overridable parameters that can be passed when running a Task.
+func (o TaskRunRequestOutput) OverrideTaskStepProperties() OverrideTaskStepPropertiesPtrOutput {
+	return o.ApplyT(func(v TaskRunRequest) *OverrideTaskStepProperties { return v.OverrideTaskStepProperties }).(OverrideTaskStepPropertiesPtrOutput)
+}
+
+// The resource ID of task against which run has to be queued.
+func (o TaskRunRequestOutput) TaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskRunRequest) string { return v.TaskId }).(pulumi.StringOutput)
+}
+
+// The type of the run request.
+// Expected value is 'TaskRunRequest'.
+func (o TaskRunRequestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskRunRequest) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TaskRunRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskRunRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskRunRequest)(nil)).Elem()
+}
+
+func (o TaskRunRequestPtrOutput) ToTaskRunRequestPtrOutput() TaskRunRequestPtrOutput {
+	return o
+}
+
+func (o TaskRunRequestPtrOutput) ToTaskRunRequestPtrOutputWithContext(ctx context.Context) TaskRunRequestPtrOutput {
+	return o
+}
+
+func (o TaskRunRequestPtrOutput) Elem() TaskRunRequestOutput {
+	return o.ApplyT(func(v *TaskRunRequest) TaskRunRequest {
+		if v != nil {
+			return *v
+		}
+		var ret TaskRunRequest
+		return ret
+	}).(TaskRunRequestOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o TaskRunRequestPtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o TaskRunRequestPtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequest) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o TaskRunRequestPtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set of overridable parameters that can be passed when running a Task.
+func (o TaskRunRequestPtrOutput) OverrideTaskStepProperties() OverrideTaskStepPropertiesPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequest) *OverrideTaskStepProperties {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideTaskStepProperties
+	}).(OverrideTaskStepPropertiesPtrOutput)
+}
+
+// The resource ID of task against which run has to be queued.
+func (o TaskRunRequestPtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'TaskRunRequest'.
+func (o TaskRunRequestPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The parameters for a task run request.
 type TaskRunRequestResponse struct {
 	// The dedicated agent pool for the run.
@@ -4092,6 +8081,139 @@ func (val *TaskRunRequestResponse) Defaults() *TaskRunRequestResponse {
 		tmp.IsArchiveEnabled = &isArchiveEnabled_
 	}
 	return &tmp
+}
+
+// The parameters for a task run request.
+type TaskRunRequestResponseOutput struct{ *pulumi.OutputState }
+
+func (TaskRunRequestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskRunRequestResponse)(nil)).Elem()
+}
+
+func (o TaskRunRequestResponseOutput) ToTaskRunRequestResponseOutput() TaskRunRequestResponseOutput {
+	return o
+}
+
+func (o TaskRunRequestResponseOutput) ToTaskRunRequestResponseOutputWithContext(ctx context.Context) TaskRunRequestResponseOutput {
+	return o
+}
+
+// The dedicated agent pool for the run.
+func (o TaskRunRequestResponseOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskRunRequestResponse) *string { return v.AgentPoolName }).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o TaskRunRequestResponseOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskRunRequestResponse) *bool { return v.IsArchiveEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o TaskRunRequestResponseOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskRunRequestResponse) *string { return v.LogTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Set of overridable parameters that can be passed when running a Task.
+func (o TaskRunRequestResponseOutput) OverrideTaskStepProperties() OverrideTaskStepPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v TaskRunRequestResponse) *OverrideTaskStepPropertiesResponse {
+		return v.OverrideTaskStepProperties
+	}).(OverrideTaskStepPropertiesResponsePtrOutput)
+}
+
+// The resource ID of task against which run has to be queued.
+func (o TaskRunRequestResponseOutput) TaskId() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskRunRequestResponse) string { return v.TaskId }).(pulumi.StringOutput)
+}
+
+// The type of the run request.
+// Expected value is 'TaskRunRequest'.
+func (o TaskRunRequestResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskRunRequestResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TaskRunRequestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TaskRunRequestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskRunRequestResponse)(nil)).Elem()
+}
+
+func (o TaskRunRequestResponsePtrOutput) ToTaskRunRequestResponsePtrOutput() TaskRunRequestResponsePtrOutput {
+	return o
+}
+
+func (o TaskRunRequestResponsePtrOutput) ToTaskRunRequestResponsePtrOutputWithContext(ctx context.Context) TaskRunRequestResponsePtrOutput {
+	return o
+}
+
+func (o TaskRunRequestResponsePtrOutput) Elem() TaskRunRequestResponseOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) TaskRunRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TaskRunRequestResponse
+		return ret
+	}).(TaskRunRequestResponseOutput)
+}
+
+// The dedicated agent pool for the run.
+func (o TaskRunRequestResponsePtrOutput) AgentPoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentPoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value that indicates whether archiving is enabled for the run or not.
+func (o TaskRunRequestResponsePtrOutput) IsArchiveEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsArchiveEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The template that describes the repository and tag information for run log artifact.
+func (o TaskRunRequestResponsePtrOutput) LogTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set of overridable parameters that can be passed when running a Task.
+func (o TaskRunRequestResponsePtrOutput) OverrideTaskStepProperties() OverrideTaskStepPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) *OverrideTaskStepPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideTaskStepProperties
+	}).(OverrideTaskStepPropertiesResponsePtrOutput)
+}
+
+// The resource ID of task against which run has to be queued.
+func (o TaskRunRequestResponsePtrOutput) TaskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TaskId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the run request.
+// Expected value is 'TaskRunRequest'.
+func (o TaskRunRequestResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskRunRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The properties of a timer trigger.
@@ -4849,10 +8971,16 @@ func init() {
 	pulumi.RegisterOutputType(AgentPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AgentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AgentPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ArgumentOutput{})
+	pulumi.RegisterOutputType(ArgumentArrayOutput{})
+	pulumi.RegisterOutputType(ArgumentResponseOutput{})
+	pulumi.RegisterOutputType(ArgumentResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthInfoOutput{})
 	pulumi.RegisterOutputType(AuthInfoPtrOutput{})
 	pulumi.RegisterOutputType(AuthInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuthInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(BaseImageDependencyResponseOutput{})
+	pulumi.RegisterOutputType(BaseImageDependencyResponseArrayOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerPtrOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerResponseOutput{})
@@ -4865,6 +8993,30 @@ func init() {
 	pulumi.RegisterOutputType(CustomRegistryCredentialsMapOutput{})
 	pulumi.RegisterOutputType(CustomRegistryCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(CustomRegistryCredentialsResponseMapOutput{})
+	pulumi.RegisterOutputType(DockerBuildRequestOutput{})
+	pulumi.RegisterOutputType(DockerBuildRequestPtrOutput{})
+	pulumi.RegisterOutputType(DockerBuildRequestResponseOutput{})
+	pulumi.RegisterOutputType(DockerBuildRequestResponsePtrOutput{})
+	pulumi.RegisterOutputType(DockerBuildStepOutput{})
+	pulumi.RegisterOutputType(DockerBuildStepPtrOutput{})
+	pulumi.RegisterOutputType(DockerBuildStepResponseOutput{})
+	pulumi.RegisterOutputType(DockerBuildStepResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncodedTaskRunRequestOutput{})
+	pulumi.RegisterOutputType(EncodedTaskRunRequestPtrOutput{})
+	pulumi.RegisterOutputType(EncodedTaskRunRequestResponseOutput{})
+	pulumi.RegisterOutputType(EncodedTaskRunRequestResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncodedTaskStepOutput{})
+	pulumi.RegisterOutputType(EncodedTaskStepPtrOutput{})
+	pulumi.RegisterOutputType(EncodedTaskStepResponseOutput{})
+	pulumi.RegisterOutputType(EncodedTaskStepResponsePtrOutput{})
+	pulumi.RegisterOutputType(FileTaskRunRequestOutput{})
+	pulumi.RegisterOutputType(FileTaskRunRequestPtrOutput{})
+	pulumi.RegisterOutputType(FileTaskRunRequestResponseOutput{})
+	pulumi.RegisterOutputType(FileTaskRunRequestResponsePtrOutput{})
+	pulumi.RegisterOutputType(FileTaskStepOutput{})
+	pulumi.RegisterOutputType(FileTaskStepPtrOutput{})
+	pulumi.RegisterOutputType(FileTaskStepResponseOutput{})
+	pulumi.RegisterOutputType(FileTaskStepResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesResponseOutput{})
@@ -4873,6 +9025,10 @@ func init() {
 	pulumi.RegisterOutputType(ImageDescriptorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ImageUpdateTriggerResponseOutput{})
 	pulumi.RegisterOutputType(ImageUpdateTriggerResponsePtrOutput{})
+	pulumi.RegisterOutputType(OverrideTaskStepPropertiesOutput{})
+	pulumi.RegisterOutputType(OverrideTaskStepPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OverrideTaskStepPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OverrideTaskStepPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PlatformPropertiesOutput{})
 	pulumi.RegisterOutputType(PlatformPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PlatformPropertiesResponseOutput{})
@@ -4882,6 +9038,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretObjectPtrOutput{})
 	pulumi.RegisterOutputType(SecretObjectResponseOutput{})
 	pulumi.RegisterOutputType(SecretObjectResponsePtrOutput{})
+	pulumi.RegisterOutputType(SetValueOutput{})
+	pulumi.RegisterOutputType(SetValueArrayOutput{})
+	pulumi.RegisterOutputType(SetValueResponseOutput{})
+	pulumi.RegisterOutputType(SetValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SourceRegistryCredentialsOutput{})
@@ -4895,6 +9055,10 @@ func init() {
 	pulumi.RegisterOutputType(SourceTriggerResponseOutput{})
 	pulumi.RegisterOutputType(SourceTriggerResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TaskRunRequestOutput{})
+	pulumi.RegisterOutputType(TaskRunRequestPtrOutput{})
+	pulumi.RegisterOutputType(TaskRunRequestResponseOutput{})
+	pulumi.RegisterOutputType(TaskRunRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(TimerTriggerOutput{})
 	pulumi.RegisterOutputType(TimerTriggerArrayOutput{})
 	pulumi.RegisterOutputType(TimerTriggerDescriptorResponseOutput{})
