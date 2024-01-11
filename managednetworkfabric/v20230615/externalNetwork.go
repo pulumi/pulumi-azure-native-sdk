@@ -32,8 +32,8 @@ type ExternalNetwork struct {
 	ImportRoutePolicyId pulumi.StringPtrOutput `pulumi:"importRoutePolicyId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets the networkToNetworkInterconnectId of the resource.
-	NetworkToNetworkInterconnectId pulumi.StringOutput `pulumi:"networkToNetworkInterconnectId"`
+	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+	NetworkToNetworkInterconnectId pulumi.StringPtrOutput `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties object
 	OptionAProperties ExternalNetworkPropertiesResponseOptionAPropertiesPtrOutput `pulumi:"optionAProperties"`
 	// option B properties object
@@ -125,6 +125,8 @@ type externalNetworkArgs struct {
 	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
 	// Name of the L3 Isolation Domain.
 	L3IsolationDomainName string `pulumi:"l3IsolationDomainName"`
+	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+	NetworkToNetworkInterconnectId *string `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties object
 	OptionAProperties *ExternalNetworkPropertiesOptionAProperties `pulumi:"optionAProperties"`
 	// option B properties object
@@ -151,6 +153,8 @@ type ExternalNetworkArgs struct {
 	ImportRoutePolicyId pulumi.StringPtrInput
 	// Name of the L3 Isolation Domain.
 	L3IsolationDomainName pulumi.StringInput
+	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+	NetworkToNetworkInterconnectId pulumi.StringPtrInput
 	// option A properties object
 	OptionAProperties ExternalNetworkPropertiesOptionAPropertiesPtrInput
 	// option B properties object
@@ -238,9 +242,9 @@ func (o ExternalNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the networkToNetworkInterconnectId of the resource.
-func (o ExternalNetworkOutput) NetworkToNetworkInterconnectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringOutput { return v.NetworkToNetworkInterconnectId }).(pulumi.StringOutput)
+// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+func (o ExternalNetworkOutput) NetworkToNetworkInterconnectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalNetwork) pulumi.StringPtrOutput { return v.NetworkToNetworkInterconnectId }).(pulumi.StringPtrOutput)
 }
 
 // option A properties object

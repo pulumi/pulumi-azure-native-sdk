@@ -52,6 +52,8 @@ type RecordSet struct {
 	TargetResource SubResourceResponsePtrOutput `pulumi:"targetResource"`
 	// The list of TLSA records in the record set.
 	TlsaRecords TlsaRecordResponseArrayOutput `pulumi:"tlsaRecords"`
+	// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
+	TrafficManagementProfile SubResourceResponsePtrOutput `pulumi:"trafficManagementProfile"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl pulumi.Float64PtrOutput `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -167,6 +169,8 @@ type recordSetArgs struct {
 	TargetResource *SubResource `pulumi:"targetResource"`
 	// The list of TLSA records in the record set.
 	TlsaRecords []TlsaRecord `pulumi:"tlsaRecords"`
+	// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
+	TrafficManagementProfile *SubResource `pulumi:"trafficManagementProfile"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl *float64 `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -211,6 +215,8 @@ type RecordSetArgs struct {
 	TargetResource SubResourcePtrInput
 	// The list of TLSA records in the record set.
 	TlsaRecords TlsaRecordArrayInput
+	// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
+	TrafficManagementProfile SubResourcePtrInput
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl pulumi.Float64PtrInput
 	// The list of TXT records in the record set.
@@ -344,6 +350,11 @@ func (o RecordSetOutput) TargetResource() SubResourceResponsePtrOutput {
 // The list of TLSA records in the record set.
 func (o RecordSetOutput) TlsaRecords() TlsaRecordResponseArrayOutput {
 	return o.ApplyT(func(v *RecordSet) TlsaRecordResponseArrayOutput { return v.TlsaRecords }).(TlsaRecordResponseArrayOutput)
+}
+
+// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
+func (o RecordSetOutput) TrafficManagementProfile() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *RecordSet) SubResourceResponsePtrOutput { return v.TrafficManagementProfile }).(SubResourceResponsePtrOutput)
 }
 
 // The TTL (time-to-live) of the records in the record set.

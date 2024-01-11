@@ -135,6 +135,9 @@ func NewIoTDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231001preview:IoTDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:IoTDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

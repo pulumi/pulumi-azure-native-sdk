@@ -148,6 +148,9 @@ func NewGCPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231001preview:GCPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:GCPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

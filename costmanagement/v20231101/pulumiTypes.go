@@ -7543,7 +7543,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 // The properties of the tag inheritance setting.
 type TagInheritanceProperties struct {
-	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -7560,7 +7560,7 @@ type TagInheritancePropertiesInput interface {
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesArgs struct {
-	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 	PreferContainerTags pulumi.BoolInput `pulumi:"preferContainerTags"`
 }
 
@@ -7642,7 +7642,7 @@ func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutputWithC
 	}).(TagInheritancePropertiesPtrOutput)
 }
 
-// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 func (o TagInheritancePropertiesOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritanceProperties) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
@@ -7671,7 +7671,7 @@ func (o TagInheritancePropertiesPtrOutput) Elem() TagInheritancePropertiesOutput
 	}).(TagInheritancePropertiesOutput)
 }
 
-// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagInheritanceProperties) *bool {
 		if v == nil {
@@ -7683,7 +7683,7 @@ func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrO
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesResponse struct {
-	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -7702,7 +7702,7 @@ func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesRespon
 	return o
 }
 
-// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 func (o TagInheritancePropertiesResponseOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritancePropertiesResponse) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }

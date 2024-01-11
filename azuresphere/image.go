@@ -14,6 +14,8 @@ import (
 
 // An image resource belonging to a catalog resource.
 // Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 type Image struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewImage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuresphere/v20220901preview:Image"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Image"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -101,7 +106,7 @@ type imageArgs struct {
 	Image *string `pulumi:"image"`
 	// Image ID
 	ImageId *string `pulumi:"imageId"`
-	// Image name. Use .default for image creation.
+	// Image name. Use an image GUID for GA versions of the API.
 	ImageName *string `pulumi:"imageName"`
 	// Regional data boundary for an image
 	RegionalDataBoundary *string `pulumi:"regionalDataBoundary"`
@@ -117,7 +122,7 @@ type ImageArgs struct {
 	Image pulumi.StringPtrInput
 	// Image ID
 	ImageId pulumi.StringPtrInput
-	// Image name. Use .default for image creation.
+	// Image name. Use an image GUID for GA versions of the API.
 	ImageName pulumi.StringPtrInput
 	// Regional data boundary for an image
 	RegionalDataBoundary pulumi.StringPtrInput

@@ -51,8 +51,8 @@ type LookupExternalNetworkResult struct {
 	ImportRoutePolicyId *string `pulumi:"importRoutePolicyId"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets the networkToNetworkInterconnectId of the resource.
-	NetworkToNetworkInterconnectId string `pulumi:"networkToNetworkInterconnectId"`
+	// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+	NetworkToNetworkInterconnectId *string `pulumi:"networkToNetworkInterconnectId"`
 	// option A properties object
 	OptionAProperties *ExternalNetworkPropertiesResponseOptionAProperties `pulumi:"optionAProperties"`
 	// option B properties object
@@ -164,9 +164,9 @@ func (o LookupExternalNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the networkToNetworkInterconnectId of the resource.
-func (o LookupExternalNetworkResultOutput) NetworkToNetworkInterconnectId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupExternalNetworkResult) string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringOutput)
+// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
+func (o LookupExternalNetworkResultOutput) NetworkToNetworkInterconnectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupExternalNetworkResult) *string { return v.NetworkToNetworkInterconnectId }).(pulumi.StringPtrOutput)
 }
 
 // option A properties object

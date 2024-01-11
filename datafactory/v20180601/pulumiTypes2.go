@@ -20810,6 +20810,1054 @@ func (o WaitActivityResponseOutput) WaitTimeInSeconds() pulumi.AnyOutput {
 	return o.ApplyT(func(v WaitActivityResponse) interface{} { return v.WaitTimeInSeconds }).(pulumi.AnyOutput)
 }
 
+// Microsoft Fabric Warehouse linked service.
+type WarehouseLinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+	ArtifactId interface{} `pulumi:"artifactId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+	Endpoint interface{} `pulumi:"endpoint"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
+	// Type of linked service.
+	// Expected value is 'Warehouse'.
+	Type string `pulumi:"type"`
+	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+	WorkspaceId interface{} `pulumi:"workspaceId"`
+}
+
+// WarehouseLinkedServiceInput is an input type that accepts WarehouseLinkedServiceArgs and WarehouseLinkedServiceOutput values.
+// You can construct a concrete instance of `WarehouseLinkedServiceInput` via:
+//
+//	WarehouseLinkedServiceArgs{...}
+type WarehouseLinkedServiceInput interface {
+	pulumi.Input
+
+	ToWarehouseLinkedServiceOutput() WarehouseLinkedServiceOutput
+	ToWarehouseLinkedServiceOutputWithContext(context.Context) WarehouseLinkedServiceOutput
+}
+
+// Microsoft Fabric Warehouse linked service.
+type WarehouseLinkedServiceArgs struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+	ArtifactId pulumi.Input `pulumi:"artifactId"`
+	// The integration runtime reference.
+	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// Linked service description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+	Endpoint pulumi.Input `pulumi:"endpoint"`
+	// Parameters for linked service.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential pulumi.Input `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
+	// The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
+	// The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+	ServicePrincipalKey pulumi.Input `pulumi:"servicePrincipalKey"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant pulumi.Input `pulumi:"tenant"`
+	// Type of linked service.
+	// Expected value is 'Warehouse'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+	WorkspaceId pulumi.Input `pulumi:"workspaceId"`
+}
+
+func (WarehouseLinkedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseLinkedService)(nil)).Elem()
+}
+
+func (i WarehouseLinkedServiceArgs) ToWarehouseLinkedServiceOutput() WarehouseLinkedServiceOutput {
+	return i.ToWarehouseLinkedServiceOutputWithContext(context.Background())
+}
+
+func (i WarehouseLinkedServiceArgs) ToWarehouseLinkedServiceOutputWithContext(ctx context.Context) WarehouseLinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarehouseLinkedServiceOutput)
+}
+
+// Microsoft Fabric Warehouse linked service.
+type WarehouseLinkedServiceOutput struct{ *pulumi.OutputState }
+
+func (WarehouseLinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseLinkedService)(nil)).Elem()
+}
+
+func (o WarehouseLinkedServiceOutput) ToWarehouseLinkedServiceOutput() WarehouseLinkedServiceOutput {
+	return o
+}
+
+func (o WarehouseLinkedServiceOutput) ToWarehouseLinkedServiceOutputWithContext(ctx context.Context) WarehouseLinkedServiceOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o WarehouseLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceOutput) ArtifactId() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o WarehouseLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// Linked service description.
+func (o WarehouseLinkedServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o WarehouseLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceOutput) Endpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.Endpoint }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o WarehouseLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o WarehouseLinkedServiceOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceOutput) ServicePrincipalId() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
+}
+
+// The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+func (o WarehouseLinkedServiceOutput) ServicePrincipalKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.ServicePrincipalKey }).(pulumi.AnyOutput)
+}
+
+// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceOutput) Tenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.Tenant }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'Warehouse'.
+func (o WarehouseLinkedServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceOutput) WorkspaceId() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedService) interface{} { return v.WorkspaceId }).(pulumi.AnyOutput)
+}
+
+// Microsoft Fabric Warehouse linked service.
+type WarehouseLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+	ArtifactId interface{} `pulumi:"artifactId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+	Endpoint interface{} `pulumi:"endpoint"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
+	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+	Tenant interface{} `pulumi:"tenant"`
+	// Type of linked service.
+	// Expected value is 'Warehouse'.
+	Type string `pulumi:"type"`
+	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+	WorkspaceId interface{} `pulumi:"workspaceId"`
+}
+
+// Microsoft Fabric Warehouse linked service.
+type WarehouseLinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (WarehouseLinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseLinkedServiceResponse)(nil)).Elem()
+}
+
+func (o WarehouseLinkedServiceResponseOutput) ToWarehouseLinkedServiceResponseOutput() WarehouseLinkedServiceResponseOutput {
+	return o
+}
+
+func (o WarehouseLinkedServiceResponseOutput) ToWarehouseLinkedServiceResponseOutputWithContext(ctx context.Context) WarehouseLinkedServiceResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o WarehouseLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceResponseOutput) ArtifactId() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ArtifactId }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o WarehouseLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// Linked service description.
+func (o WarehouseLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o WarehouseLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceResponseOutput) Endpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.Endpoint }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o WarehouseLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o WarehouseLinkedServiceResponseOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceResponseOutput) ServicePrincipalId() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
+}
+
+// The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+func (o WarehouseLinkedServiceResponseOutput) ServicePrincipalKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.ServicePrincipalKey }).(pulumi.AnyOutput)
+}
+
+// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.Tenant }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'Warehouse'.
+func (o WarehouseLinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+func (o WarehouseLinkedServiceResponseOutput) WorkspaceId() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseLinkedServiceResponse) interface{} { return v.WorkspaceId }).(pulumi.AnyOutput)
+}
+
+// A copy activity Microsoft Fabric Warehouse sink.
+type WarehouseSink struct {
+	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+	AllowCopyCommand interface{} `pulumi:"allowCopyCommand"`
+	// Specifies Copy Command related settings when allowCopyCommand is true.
+	CopyCommandSettings *DWCopyCommandSettings `pulumi:"copyCommandSettings"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption interface{} `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'WarehouseSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+	WriteBehavior interface{} `pulumi:"writeBehavior"`
+}
+
+// WarehouseSinkInput is an input type that accepts WarehouseSinkArgs and WarehouseSinkOutput values.
+// You can construct a concrete instance of `WarehouseSinkInput` via:
+//
+//	WarehouseSinkArgs{...}
+type WarehouseSinkInput interface {
+	pulumi.Input
+
+	ToWarehouseSinkOutput() WarehouseSinkOutput
+	ToWarehouseSinkOutputWithContext(context.Context) WarehouseSinkOutput
+}
+
+// A copy activity Microsoft Fabric Warehouse sink.
+type WarehouseSinkArgs struct {
+	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+	AllowCopyCommand pulumi.Input `pulumi:"allowCopyCommand"`
+	// Specifies Copy Command related settings when allowCopyCommand is true.
+	CopyCommandSettings DWCopyCommandSettingsPtrInput `pulumi:"copyCommandSettings"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript pulumi.Input `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount pulumi.Input `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait pulumi.Input `pulumi:"sinkRetryWait"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption pulumi.Input `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'WarehouseSink'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize pulumi.Input `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout pulumi.Input `pulumi:"writeBatchTimeout"`
+	// Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+	WriteBehavior pulumi.Input `pulumi:"writeBehavior"`
+}
+
+func (WarehouseSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseSink)(nil)).Elem()
+}
+
+func (i WarehouseSinkArgs) ToWarehouseSinkOutput() WarehouseSinkOutput {
+	return i.ToWarehouseSinkOutputWithContext(context.Background())
+}
+
+func (i WarehouseSinkArgs) ToWarehouseSinkOutputWithContext(ctx context.Context) WarehouseSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarehouseSinkOutput)
+}
+
+// A copy activity Microsoft Fabric Warehouse sink.
+type WarehouseSinkOutput struct{ *pulumi.OutputState }
+
+func (WarehouseSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseSink)(nil)).Elem()
+}
+
+func (o WarehouseSinkOutput) ToWarehouseSinkOutput() WarehouseSinkOutput {
+	return o
+}
+
+func (o WarehouseSinkOutput) ToWarehouseSinkOutputWithContext(ctx context.Context) WarehouseSinkOutput {
+	return o
+}
+
+// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+func (o WarehouseSinkOutput) AllowCopyCommand() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.AllowCopyCommand }).(pulumi.AnyOutput)
+}
+
+// Specifies Copy Command related settings when allowCopyCommand is true.
+func (o WarehouseSinkOutput) CopyCommandSettings() DWCopyCommandSettingsPtrOutput {
+	return o.ApplyT(func(v WarehouseSink) *DWCopyCommandSettings { return v.CopyCommandSettings }).(DWCopyCommandSettingsPtrOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o WarehouseSinkOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+func (o WarehouseSinkOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// SQL pre-copy script. Type: string (or Expression with resultType string).
+func (o WarehouseSinkOutput) PreCopyScript() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.PreCopyScript }).(pulumi.AnyOutput)
+}
+
+// Sink retry count. Type: integer (or Expression with resultType integer).
+func (o WarehouseSinkOutput) SinkRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.SinkRetryCount }).(pulumi.AnyOutput)
+}
+
+// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSinkOutput) SinkRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
+}
+
+// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+func (o WarehouseSinkOutput) TableOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.TableOption }).(pulumi.AnyOutput)
+}
+
+// Copy sink type.
+// Expected value is 'WarehouseSink'.
+func (o WarehouseSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseSink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+func (o WarehouseSinkOutput) WriteBatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
+}
+
+// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSinkOutput) WriteBatchTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
+}
+
+// Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+func (o WarehouseSinkOutput) WriteBehavior() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSink) interface{} { return v.WriteBehavior }).(pulumi.AnyOutput)
+}
+
+// A copy activity Microsoft Fabric Warehouse sink.
+type WarehouseSinkResponse struct {
+	// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+	AllowCopyCommand interface{} `pulumi:"allowCopyCommand"`
+	// Specifies Copy Command related settings when allowCopyCommand is true.
+	CopyCommandSettings *DWCopyCommandSettingsResponse `pulumi:"copyCommandSettings"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+	TableOption interface{} `pulumi:"tableOption"`
+	// Copy sink type.
+	// Expected value is 'WarehouseSink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+	// Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+	WriteBehavior interface{} `pulumi:"writeBehavior"`
+}
+
+// A copy activity Microsoft Fabric Warehouse sink.
+type WarehouseSinkResponseOutput struct{ *pulumi.OutputState }
+
+func (WarehouseSinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseSinkResponse)(nil)).Elem()
+}
+
+func (o WarehouseSinkResponseOutput) ToWarehouseSinkResponseOutput() WarehouseSinkResponseOutput {
+	return o
+}
+
+func (o WarehouseSinkResponseOutput) ToWarehouseSinkResponseOutputWithContext(ctx context.Context) WarehouseSinkResponseOutput {
+	return o
+}
+
+// Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+func (o WarehouseSinkResponseOutput) AllowCopyCommand() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.AllowCopyCommand }).(pulumi.AnyOutput)
+}
+
+// Specifies Copy Command related settings when allowCopyCommand is true.
+func (o WarehouseSinkResponseOutput) CopyCommandSettings() DWCopyCommandSettingsResponsePtrOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) *DWCopyCommandSettingsResponse { return v.CopyCommandSettings }).(DWCopyCommandSettingsResponsePtrOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o WarehouseSinkResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+func (o WarehouseSinkResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// SQL pre-copy script. Type: string (or Expression with resultType string).
+func (o WarehouseSinkResponseOutput) PreCopyScript() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.PreCopyScript }).(pulumi.AnyOutput)
+}
+
+// Sink retry count. Type: integer (or Expression with resultType integer).
+func (o WarehouseSinkResponseOutput) SinkRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.SinkRetryCount }).(pulumi.AnyOutput)
+}
+
+// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSinkResponseOutput) SinkRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
+}
+
+// The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+func (o WarehouseSinkResponseOutput) TableOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.TableOption }).(pulumi.AnyOutput)
+}
+
+// Copy sink type.
+// Expected value is 'WarehouseSink'.
+func (o WarehouseSinkResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+func (o WarehouseSinkResponseOutput) WriteBatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
+}
+
+// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSinkResponseOutput) WriteBatchTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
+}
+
+// Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+func (o WarehouseSinkResponseOutput) WriteBehavior() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSinkResponse) interface{} { return v.WriteBehavior }).(pulumi.AnyOutput)
+}
+
+// A copy activity Microsoft Fabric Warehouse source.
+type WarehouseSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// The settings that will be leveraged for Sql source partitioning.
+	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+	SqlReaderQuery interface{} `pulumi:"sqlReaderQuery"`
+	// Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
+	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
+	// Copy source type.
+	// Expected value is 'WarehouseSource'.
+	Type string `pulumi:"type"`
+}
+
+// WarehouseSourceInput is an input type that accepts WarehouseSourceArgs and WarehouseSourceOutput values.
+// You can construct a concrete instance of `WarehouseSourceInput` via:
+//
+//	WarehouseSourceArgs{...}
+type WarehouseSourceInput interface {
+	pulumi.Input
+
+	ToWarehouseSourceOutput() WarehouseSourceOutput
+	ToWarehouseSourceOutputWithContext(context.Context) WarehouseSourceOutput
+}
+
+// A copy activity Microsoft Fabric Warehouse source.
+type WarehouseSourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel pulumi.Input `pulumi:"isolationLevel"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	PartitionOption pulumi.Input `pulumi:"partitionOption"`
+	// The settings that will be leveraged for Sql source partitioning.
+	PartitionSettings SqlPartitionSettingsPtrInput `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+	SqlReaderQuery pulumi.Input `pulumi:"sqlReaderQuery"`
+	// Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+	SqlReaderStoredProcedureName pulumi.Input `pulumi:"sqlReaderStoredProcedureName"`
+	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+	StoredProcedureParameters pulumi.Input `pulumi:"storedProcedureParameters"`
+	// Copy source type.
+	// Expected value is 'WarehouseSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WarehouseSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseSource)(nil)).Elem()
+}
+
+func (i WarehouseSourceArgs) ToWarehouseSourceOutput() WarehouseSourceOutput {
+	return i.ToWarehouseSourceOutputWithContext(context.Background())
+}
+
+func (i WarehouseSourceArgs) ToWarehouseSourceOutputWithContext(ctx context.Context) WarehouseSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarehouseSourceOutput)
+}
+
+// A copy activity Microsoft Fabric Warehouse source.
+type WarehouseSourceOutput struct{ *pulumi.OutputState }
+
+func (WarehouseSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseSource)(nil)).Elem()
+}
+
+func (o WarehouseSourceOutput) ToWarehouseSourceOutput() WarehouseSourceOutput {
+	return o
+}
+
+func (o WarehouseSourceOutput) ToWarehouseSourceOutputWithContext(ctx context.Context) WarehouseSourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o WarehouseSourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o WarehouseSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+func (o WarehouseSourceOutput) IsolationLevel() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.IsolationLevel }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o WarehouseSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+func (o WarehouseSourceOutput) PartitionOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.PartitionOption }).(pulumi.AnyOutput)
+}
+
+// The settings that will be leveraged for Sql source partitioning.
+func (o WarehouseSourceOutput) PartitionSettings() SqlPartitionSettingsPtrOutput {
+	return o.ApplyT(func(v WarehouseSource) *SqlPartitionSettings { return v.PartitionSettings }).(SqlPartitionSettingsPtrOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o WarehouseSourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+func (o WarehouseSourceOutput) SqlReaderQuery() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.SqlReaderQuery }).(pulumi.AnyOutput)
+}
+
+// Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+func (o WarehouseSourceOutput) SqlReaderStoredProcedureName() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.SqlReaderStoredProcedureName }).(pulumi.AnyOutput)
+}
+
+// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+func (o WarehouseSourceOutput) StoredProcedureParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSource) interface{} { return v.StoredProcedureParameters }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'WarehouseSource'.
+func (o WarehouseSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity Microsoft Fabric Warehouse source.
+type WarehouseSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+	IsolationLevel interface{} `pulumi:"isolationLevel"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// The settings that will be leveraged for Sql source partitioning.
+	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+	SqlReaderQuery interface{} `pulumi:"sqlReaderQuery"`
+	// Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+	SqlReaderStoredProcedureName interface{} `pulumi:"sqlReaderStoredProcedureName"`
+	// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+	StoredProcedureParameters interface{} `pulumi:"storedProcedureParameters"`
+	// Copy source type.
+	// Expected value is 'WarehouseSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Microsoft Fabric Warehouse source.
+type WarehouseSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (WarehouseSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseSourceResponse)(nil)).Elem()
+}
+
+func (o WarehouseSourceResponseOutput) ToWarehouseSourceResponseOutput() WarehouseSourceResponseOutput {
+	return o
+}
+
+func (o WarehouseSourceResponseOutput) ToWarehouseSourceResponseOutputWithContext(ctx context.Context) WarehouseSourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o WarehouseSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o WarehouseSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+func (o WarehouseSourceResponseOutput) IsolationLevel() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.IsolationLevel }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o WarehouseSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+func (o WarehouseSourceResponseOutput) PartitionOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.PartitionOption }).(pulumi.AnyOutput)
+}
+
+// The settings that will be leveraged for Sql source partitioning.
+func (o WarehouseSourceResponseOutput) PartitionSettings() SqlPartitionSettingsResponsePtrOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) *SqlPartitionSettingsResponse { return v.PartitionSettings }).(SqlPartitionSettingsResponsePtrOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o WarehouseSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o WarehouseSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+func (o WarehouseSourceResponseOutput) SqlReaderQuery() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.SqlReaderQuery }).(pulumi.AnyOutput)
+}
+
+// Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+func (o WarehouseSourceResponseOutput) SqlReaderStoredProcedureName() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.SqlReaderStoredProcedureName }).(pulumi.AnyOutput)
+}
+
+// Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+func (o WarehouseSourceResponseOutput) StoredProcedureParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) interface{} { return v.StoredProcedureParameters }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'WarehouseSource'.
+func (o WarehouseSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Microsoft Fabric Warehouse dataset.
+type WarehouseTableDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'WarehouseTable'.
+	Type string `pulumi:"type"`
+}
+
+// WarehouseTableDatasetInput is an input type that accepts WarehouseTableDatasetArgs and WarehouseTableDatasetOutput values.
+// You can construct a concrete instance of `WarehouseTableDatasetInput` via:
+//
+//	WarehouseTableDatasetArgs{...}
+type WarehouseTableDatasetInput interface {
+	pulumi.Input
+
+	ToWarehouseTableDatasetOutput() WarehouseTableDatasetOutput
+	ToWarehouseTableDatasetOutputWithContext(context.Context) WarehouseTableDatasetOutput
+}
+
+// Microsoft Fabric Warehouse dataset.
+type WarehouseTableDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+	Table pulumi.Input `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'WarehouseTable'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WarehouseTableDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseTableDataset)(nil)).Elem()
+}
+
+func (i WarehouseTableDatasetArgs) ToWarehouseTableDatasetOutput() WarehouseTableDatasetOutput {
+	return i.ToWarehouseTableDatasetOutputWithContext(context.Background())
+}
+
+func (i WarehouseTableDatasetArgs) ToWarehouseTableDatasetOutputWithContext(ctx context.Context) WarehouseTableDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarehouseTableDatasetOutput)
+}
+
+// Microsoft Fabric Warehouse dataset.
+type WarehouseTableDatasetOutput struct{ *pulumi.OutputState }
+
+func (WarehouseTableDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseTableDataset)(nil)).Elem()
+}
+
+func (o WarehouseTableDatasetOutput) ToWarehouseTableDatasetOutput() WarehouseTableDatasetOutput {
+	return o
+}
+
+func (o WarehouseTableDatasetOutput) ToWarehouseTableDatasetOutputWithContext(ctx context.Context) WarehouseTableDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o WarehouseTableDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o WarehouseTableDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o WarehouseTableDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o WarehouseTableDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o WarehouseTableDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o WarehouseTableDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o WarehouseTableDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+func (o WarehouseTableDatasetOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'WarehouseTable'.
+func (o WarehouseTableDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseTableDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Microsoft Fabric Warehouse dataset.
+type WarehouseTableDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'WarehouseTable'.
+	Type string `pulumi:"type"`
+}
+
+// Microsoft Fabric Warehouse dataset.
+type WarehouseTableDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (WarehouseTableDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseTableDatasetResponse)(nil)).Elem()
+}
+
+func (o WarehouseTableDatasetResponseOutput) ToWarehouseTableDatasetResponseOutput() WarehouseTableDatasetResponseOutput {
+	return o
+}
+
+func (o WarehouseTableDatasetResponseOutput) ToWarehouseTableDatasetResponseOutputWithContext(ctx context.Context) WarehouseTableDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o WarehouseTableDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o WarehouseTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o WarehouseTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o WarehouseTableDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o WarehouseTableDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o WarehouseTableDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o WarehouseTableDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+func (o WarehouseTableDatasetResponseOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'WarehouseTable'.
+func (o WarehouseTableDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarehouseTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Web activity.
 type WebActivity struct {
 	// Authentication method used for calling the endpoint.
@@ -25967,6 +27015,14 @@ func init() {
 	pulumi.RegisterOutputType(VerticaTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(WaitActivityOutput{})
 	pulumi.RegisterOutputType(WaitActivityResponseOutput{})
+	pulumi.RegisterOutputType(WarehouseLinkedServiceOutput{})
+	pulumi.RegisterOutputType(WarehouseLinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(WarehouseSinkOutput{})
+	pulumi.RegisterOutputType(WarehouseSinkResponseOutput{})
+	pulumi.RegisterOutputType(WarehouseSourceOutput{})
+	pulumi.RegisterOutputType(WarehouseSourceResponseOutput{})
+	pulumi.RegisterOutputType(WarehouseTableDatasetOutput{})
+	pulumi.RegisterOutputType(WarehouseTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(WebActivityOutput{})
 	pulumi.RegisterOutputType(WebActivityAuthenticationOutput{})
 	pulumi.RegisterOutputType(WebActivityAuthenticationPtrOutput{})

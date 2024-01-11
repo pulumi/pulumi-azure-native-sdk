@@ -13,6 +13,8 @@ import (
 
 // Get a Catalog
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult

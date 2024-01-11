@@ -133,6 +133,9 @@ func NewCodelessUiDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:CodelessUiDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231101:CodelessUiDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

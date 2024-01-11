@@ -73,6 +73,8 @@ type LookupRecordSetResult struct {
 	TargetResource *SubResourceResponse `pulumi:"targetResource"`
 	// The list of TLSA records in the record set.
 	TlsaRecords []TlsaRecordResponse `pulumi:"tlsaRecords"`
+	// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
+	TrafficManagementProfile *SubResourceResponse `pulumi:"trafficManagementProfile"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl *float64 `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -217,6 +219,11 @@ func (o LookupRecordSetResultOutput) TargetResource() SubResourceResponsePtrOutp
 // The list of TLSA records in the record set.
 func (o LookupRecordSetResultOutput) TlsaRecords() TlsaRecordResponseArrayOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) []TlsaRecordResponse { return v.TlsaRecords }).(TlsaRecordResponseArrayOutput)
+}
+
+// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
+func (o LookupRecordSetResultOutput) TrafficManagementProfile() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v LookupRecordSetResult) *SubResourceResponse { return v.TrafficManagementProfile }).(SubResourceResponsePtrOutput)
 }
 
 // The TTL (time-to-live) of the records in the record set.
