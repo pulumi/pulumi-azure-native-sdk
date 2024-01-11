@@ -13,6 +13,8 @@ import (
 
 // List the device groups for the catalog.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func ListCatalogDeviceGroups(ctx *pulumi.Context, args *ListCatalogDeviceGroupsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeviceGroupsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeviceGroupsResult

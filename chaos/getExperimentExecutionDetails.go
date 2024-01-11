@@ -13,6 +13,8 @@ import (
 
 // Execution details of an experiment resource.
 // Azure REST API version: 2023-11-01.
+//
+// Other available API versions: 2024-01-01.
 func GetExperimentExecutionDetails(ctx *pulumi.Context, args *GetExperimentExecutionDetailsArgs, opts ...pulumi.InvokeOption) (*GetExperimentExecutionDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetExperimentExecutionDetailsResult

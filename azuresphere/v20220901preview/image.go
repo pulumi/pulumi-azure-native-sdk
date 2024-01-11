@@ -59,6 +59,9 @@ func NewImage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuresphere:Image"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Image"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -100,7 +103,7 @@ type imageArgs struct {
 	Image *string `pulumi:"image"`
 	// Image ID
 	ImageId *string `pulumi:"imageId"`
-	// Image name. Use .default for image creation.
+	// Image name. Use an image GUID for GA versions of the API.
 	ImageName *string `pulumi:"imageName"`
 	// Regional data boundary for an image
 	RegionalDataBoundary *string `pulumi:"regionalDataBoundary"`
@@ -116,7 +119,7 @@ type ImageArgs struct {
 	Image pulumi.StringPtrInput
 	// Image ID
 	ImageId pulumi.StringPtrInput
-	// Image name. Use .default for image creation.
+	// Image name. Use an image GUID for GA versions of the API.
 	ImageName pulumi.StringPtrInput
 	// Regional data boundary for an image
 	RegionalDataBoundary pulumi.StringPtrInput

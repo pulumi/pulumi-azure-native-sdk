@@ -14,7 +14,7 @@ import (
 // Get an account
 // Azure REST API version: 2021-12-01.
 //
-// Other available API versions: 2020-12-01-preview, 2021-07-01.
+// Other available API versions: 2020-12-01-preview, 2021-07-01, 2023-05-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

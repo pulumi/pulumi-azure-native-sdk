@@ -13,6 +13,8 @@ import (
 
 // Lists device insights for catalog.
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func ListCatalogDeviceInsights(ctx *pulumi.Context, args *ListCatalogDeviceInsightsArgs, opts ...pulumi.InvokeOption) (*ListCatalogDeviceInsightsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListCatalogDeviceInsightsResult

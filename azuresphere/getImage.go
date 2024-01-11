@@ -13,6 +13,8 @@ import (
 
 // Get a Image
 // Azure REST API version: 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
@@ -26,7 +28,7 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 type LookupImageArgs struct {
 	// Name of catalog
 	CatalogName string `pulumi:"catalogName"`
-	// Image name. Use .default for image creation.
+	// Image name. Use an image GUID for GA versions of the API.
 	ImageName string `pulumi:"imageName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -78,7 +80,7 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 type LookupImageOutputArgs struct {
 	// Name of catalog
 	CatalogName pulumi.StringInput `pulumi:"catalogName"`
-	// Image name. Use .default for image creation.
+	// Image name. Use an image GUID for GA versions of the API.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`

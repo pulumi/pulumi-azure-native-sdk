@@ -61,6 +61,9 @@ func NewDevice(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuresphere:Device"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Device"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

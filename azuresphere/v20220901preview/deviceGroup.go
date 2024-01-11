@@ -58,6 +58,9 @@ func NewDeviceGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuresphere:DeviceGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuresphere/v20240401:DeviceGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

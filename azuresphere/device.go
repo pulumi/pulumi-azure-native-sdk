@@ -14,6 +14,8 @@ import (
 
 // An device resource belonging to a device group resource.
 // Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 type Device struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +63,9 @@ func NewDevice(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azuresphere/v20220901preview:Device"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuresphere/v20240401:Device"),
 		},
 	})
 	opts = append(opts, aliases)

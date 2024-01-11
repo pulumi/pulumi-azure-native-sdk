@@ -14,6 +14,8 @@ import (
 
 // The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
 // Azure REST API version: 2021-12-01.
+//
+// Other available API versions: 2023-05-01-preview.
 type KafkaConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewKafkaConfiguration(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:purview/v20211201:KafkaConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:purview/v20230501preview:KafkaConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

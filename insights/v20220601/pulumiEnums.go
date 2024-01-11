@@ -1764,15 +1764,21 @@ func (in *knownPublicNetworkAccessOptionsPtr) ToOutput(ctx context.Context) pulu
 type KnownSyslogDataSourceFacilityNames string
 
 const (
+	KnownSyslogDataSourceFacilityNamesAlert    = KnownSyslogDataSourceFacilityNames("alert")
+	KnownSyslogDataSourceFacilityNamesAudit    = KnownSyslogDataSourceFacilityNames("audit")
 	KnownSyslogDataSourceFacilityNamesAuth     = KnownSyslogDataSourceFacilityNames("auth")
 	KnownSyslogDataSourceFacilityNamesAuthpriv = KnownSyslogDataSourceFacilityNames("authpriv")
+	KnownSyslogDataSourceFacilityNamesClock    = KnownSyslogDataSourceFacilityNames("clock")
 	KnownSyslogDataSourceFacilityNamesCron     = KnownSyslogDataSourceFacilityNames("cron")
 	KnownSyslogDataSourceFacilityNamesDaemon   = KnownSyslogDataSourceFacilityNames("daemon")
+	KnownSyslogDataSourceFacilityNamesFtp      = KnownSyslogDataSourceFacilityNames("ftp")
 	KnownSyslogDataSourceFacilityNamesKern     = KnownSyslogDataSourceFacilityNames("kern")
 	KnownSyslogDataSourceFacilityNamesLpr      = KnownSyslogDataSourceFacilityNames("lpr")
 	KnownSyslogDataSourceFacilityNamesMail     = KnownSyslogDataSourceFacilityNames("mail")
 	KnownSyslogDataSourceFacilityNamesMark     = KnownSyslogDataSourceFacilityNames("mark")
 	KnownSyslogDataSourceFacilityNamesNews     = KnownSyslogDataSourceFacilityNames("news")
+	KnownSyslogDataSourceFacilityNamesNopri    = KnownSyslogDataSourceFacilityNames("nopri")
+	KnownSyslogDataSourceFacilityNamesNtp      = KnownSyslogDataSourceFacilityNames("ntp")
 	KnownSyslogDataSourceFacilityNamesSyslog   = KnownSyslogDataSourceFacilityNames("syslog")
 	KnownSyslogDataSourceFacilityNamesUser     = KnownSyslogDataSourceFacilityNames("user")
 	KnownSyslogDataSourceFacilityNamesUucp     = KnownSyslogDataSourceFacilityNames("uucp")
@@ -1909,15 +1915,21 @@ func (o KnownSyslogDataSourceFacilityNamesPtrOutput) ToStringPtrOutputWithContex
 // KnownSyslogDataSourceFacilityNamesInput is an input type that accepts values of the KnownSyslogDataSourceFacilityNames enum
 // A concrete instance of `KnownSyslogDataSourceFacilityNamesInput` can be one of the following:
 //
+//	KnownSyslogDataSourceFacilityNamesAlert
+//	KnownSyslogDataSourceFacilityNamesAudit
 //	KnownSyslogDataSourceFacilityNamesAuth
 //	KnownSyslogDataSourceFacilityNamesAuthpriv
+//	KnownSyslogDataSourceFacilityNamesClock
 //	KnownSyslogDataSourceFacilityNamesCron
 //	KnownSyslogDataSourceFacilityNamesDaemon
+//	KnownSyslogDataSourceFacilityNamesFtp
 //	KnownSyslogDataSourceFacilityNamesKern
 //	KnownSyslogDataSourceFacilityNamesLpr
 //	KnownSyslogDataSourceFacilityNamesMail
 //	KnownSyslogDataSourceFacilityNamesMark
 //	KnownSyslogDataSourceFacilityNamesNews
+//	KnownSyslogDataSourceFacilityNamesNopri
+//	KnownSyslogDataSourceFacilityNamesNtp
 //	KnownSyslogDataSourceFacilityNamesSyslog
 //	KnownSyslogDataSourceFacilityNamesUser
 //	KnownSyslogDataSourceFacilityNamesUucp
