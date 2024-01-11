@@ -120,6 +120,70 @@ func (o AccessPolicyEntryOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPolicyEntry) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+type AccessPolicyEntryPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyEntryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyEntry)(nil)).Elem()
+}
+
+func (o AccessPolicyEntryPtrOutput) ToAccessPolicyEntryPtrOutput() AccessPolicyEntryPtrOutput {
+	return o
+}
+
+func (o AccessPolicyEntryPtrOutput) ToAccessPolicyEntryPtrOutputWithContext(ctx context.Context) AccessPolicyEntryPtrOutput {
+	return o
+}
+
+func (o AccessPolicyEntryPtrOutput) Elem() AccessPolicyEntryOutput {
+	return o.ApplyT(func(v *AccessPolicyEntry) AccessPolicyEntry {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyEntry
+		return ret
+	}).(AccessPolicyEntryOutput)
+}
+
+// Application ID of the client making request on behalf of a principal
+func (o AccessPolicyEntryPtrOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyEntry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
+func (o AccessPolicyEntryPtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyEntry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Permissions the identity has for keys, secrets and certificates.
+func (o AccessPolicyEntryPtrOutput) Permissions() PermissionsPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyEntry) *Permissions {
+		if v == nil {
+			return nil
+		}
+		return &v.Permissions
+	}).(PermissionsPtrOutput)
+}
+
+// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+func (o AccessPolicyEntryPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyEntry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessPolicyEntryArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyEntryArrayOutput) ElementType() reflect.Type {
@@ -4047,6 +4111,70 @@ func (o PermissionsOutput) Storage() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Permissions) []string { return v.Storage }).(pulumi.StringArrayOutput)
 }
 
+type PermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Permissions)(nil)).Elem()
+}
+
+func (o PermissionsPtrOutput) ToPermissionsPtrOutput() PermissionsPtrOutput {
+	return o
+}
+
+func (o PermissionsPtrOutput) ToPermissionsPtrOutputWithContext(ctx context.Context) PermissionsPtrOutput {
+	return o
+}
+
+func (o PermissionsPtrOutput) Elem() PermissionsOutput {
+	return o.ApplyT(func(v *Permissions) Permissions {
+		if v != nil {
+			return *v
+		}
+		var ret Permissions
+		return ret
+	}).(PermissionsOutput)
+}
+
+// Permissions to certificates
+func (o PermissionsPtrOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Permissions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificates
+	}).(pulumi.StringArrayOutput)
+}
+
+// Permissions to keys
+func (o PermissionsPtrOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Permissions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.StringArrayOutput)
+}
+
+// Permissions to secrets
+func (o PermissionsPtrOutput) Secrets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Permissions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Secrets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Permissions to storage accounts
+func (o PermissionsPtrOutput) Storage() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Permissions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Storage
+	}).(pulumi.StringArrayOutput)
+}
+
 // Permissions the identity has for keys, secrets, certificates and storage.
 type PermissionsResponse struct {
 	// Permissions to certificates
@@ -5558,6 +5686,7 @@ func (o TriggerResponsePtrOutput) TimeBeforeExpiry() pulumi.StringPtrOutput {
 // Properties of the vault
 type VaultProperties struct {
 	// An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	AccessPolicies []AccessPolicyEntry `pulumi:"accessPolicies"`
 	// The vault's create mode to indicate whether the vault need to be recovered or not.
 	CreateMode *CreateMode `pulumi:"createMode"`
@@ -5628,6 +5757,7 @@ type VaultPropertiesInput interface {
 // Properties of the vault
 type VaultPropertiesArgs struct {
 	// An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	AccessPolicies AccessPolicyEntryArrayInput `pulumi:"accessPolicies"`
 	// The vault's create mode to indicate whether the vault need to be recovered or not.
 	CreateMode CreateModePtrInput `pulumi:"createMode"`
@@ -5707,6 +5837,7 @@ func (o VaultPropertiesOutput) ToVaultPropertiesOutputWithContext(ctx context.Co
 }
 
 // An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 func (o VaultPropertiesOutput) AccessPolicies() AccessPolicyEntryArrayOutput {
 	return o.ApplyT(func(v VaultProperties) []AccessPolicyEntry { return v.AccessPolicies }).(AccessPolicyEntryArrayOutput)
 }
@@ -5784,6 +5915,7 @@ func (o VaultPropertiesOutput) VaultUri() pulumi.StringPtrOutput {
 // Properties of the vault
 type VaultPropertiesResponse struct {
 	// An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	AccessPolicies []AccessPolicyEntryResponse `pulumi:"accessPolicies"`
 	// Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value.
 	EnablePurgeProtection *bool `pulumi:"enablePurgeProtection"`
@@ -5858,6 +5990,7 @@ func (o VaultPropertiesResponseOutput) ToVaultPropertiesResponseOutputWithContex
 }
 
 // An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 func (o VaultPropertiesResponseOutput) AccessPolicies() AccessPolicyEntryResponseArrayOutput {
 	return o.ApplyT(func(v VaultPropertiesResponse) []AccessPolicyEntryResponse { return v.AccessPolicies }).(AccessPolicyEntryResponseArrayOutput)
 }
@@ -6103,6 +6236,7 @@ func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualN
 
 func init() {
 	pulumi.RegisterOutputType(AccessPolicyEntryOutput{})
+	pulumi.RegisterOutputType(AccessPolicyEntryPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyEntryArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyEntryResponseOutput{})
 	pulumi.RegisterOutputType(AccessPolicyEntryResponseArrayOutput{})
@@ -6168,6 +6302,7 @@ func init() {
 	pulumi.RegisterOutputType(NetworkRuleSetResponseOutput{})
 	pulumi.RegisterOutputType(NetworkRuleSetResponsePtrOutput{})
 	pulumi.RegisterOutputType(PermissionsOutput{})
+	pulumi.RegisterOutputType(PermissionsPtrOutput{})
 	pulumi.RegisterOutputType(PermissionsResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionItemResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionItemResponseArrayOutput{})
