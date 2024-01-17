@@ -57,6 +57,9 @@ func NewAddress(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20211201:Address"),
 		},
+		{
+			Type: pulumi.String("azure-native:edgeorder/v20240201:Address"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

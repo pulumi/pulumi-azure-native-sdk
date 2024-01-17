@@ -6463,6 +6463,1013 @@ func (o SnowflakeSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SnowflakeSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The snowflake dataset.
+type SnowflakeV2Dataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'SnowflakeV2Table'.
+	Type string `pulumi:"type"`
+}
+
+// SnowflakeV2DatasetInput is an input type that accepts SnowflakeV2DatasetArgs and SnowflakeV2DatasetOutput values.
+// You can construct a concrete instance of `SnowflakeV2DatasetInput` via:
+//
+//	SnowflakeV2DatasetArgs{...}
+type SnowflakeV2DatasetInput interface {
+	pulumi.Input
+
+	ToSnowflakeV2DatasetOutput() SnowflakeV2DatasetOutput
+	ToSnowflakeV2DatasetOutputWithContext(context.Context) SnowflakeV2DatasetOutput
+}
+
+// The snowflake dataset.
+type SnowflakeV2DatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+	Table pulumi.Input `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'SnowflakeV2Table'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SnowflakeV2DatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2Dataset)(nil)).Elem()
+}
+
+func (i SnowflakeV2DatasetArgs) ToSnowflakeV2DatasetOutput() SnowflakeV2DatasetOutput {
+	return i.ToSnowflakeV2DatasetOutputWithContext(context.Background())
+}
+
+func (i SnowflakeV2DatasetArgs) ToSnowflakeV2DatasetOutputWithContext(ctx context.Context) SnowflakeV2DatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnowflakeV2DatasetOutput)
+}
+
+// The snowflake dataset.
+type SnowflakeV2DatasetOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2DatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2Dataset)(nil)).Elem()
+}
+
+func (o SnowflakeV2DatasetOutput) ToSnowflakeV2DatasetOutput() SnowflakeV2DatasetOutput {
+	return o
+}
+
+func (o SnowflakeV2DatasetOutput) ToSnowflakeV2DatasetOutputWithContext(ctx context.Context) SnowflakeV2DatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o SnowflakeV2DatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o SnowflakeV2DatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o SnowflakeV2DatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o SnowflakeV2DatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o SnowflakeV2DatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o SnowflakeV2DatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o SnowflakeV2DatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+func (o SnowflakeV2DatasetOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'SnowflakeV2Table'.
+func (o SnowflakeV2DatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2Dataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The snowflake dataset.
+type SnowflakeV2DatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'SnowflakeV2Table'.
+	Type string `pulumi:"type"`
+}
+
+// The snowflake dataset.
+type SnowflakeV2DatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2DatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2DatasetResponse)(nil)).Elem()
+}
+
+func (o SnowflakeV2DatasetResponseOutput) ToSnowflakeV2DatasetResponseOutput() SnowflakeV2DatasetResponseOutput {
+	return o
+}
+
+func (o SnowflakeV2DatasetResponseOutput) ToSnowflakeV2DatasetResponseOutputWithContext(ctx context.Context) SnowflakeV2DatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o SnowflakeV2DatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o SnowflakeV2DatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o SnowflakeV2DatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o SnowflakeV2DatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o SnowflakeV2DatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o SnowflakeV2DatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o SnowflakeV2DatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of the Snowflake database. Type: string (or Expression with resultType string).
+func (o SnowflakeV2DatasetResponseOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'SnowflakeV2Table'.
+func (o SnowflakeV2DatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2DatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Snowflake linked service.
+type SnowflakeV2LinkedService struct {
+	// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+	AccountIdentifier interface{} `pulumi:"accountIdentifier"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	ClientId interface{} `pulumi:"clientId"`
+	// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+	ClientSecret interface{} `pulumi:"clientSecret"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The name of the Snowflake database.
+	Database interface{} `pulumi:"database"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string.
+	Password interface{} `pulumi:"password"`
+	// The Azure key vault secret reference of privateKey for KeyPair auth.
+	PrivateKey interface{} `pulumi:"privateKey"`
+	// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+	PrivateKeyPassphrase interface{} `pulumi:"privateKeyPassphrase"`
+	// The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	Scope interface{} `pulumi:"scope"`
+	// The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	TenantId interface{} `pulumi:"tenantId"`
+	// Type of linked service.
+	// Expected value is 'SnowflakeV2'.
+	Type string `pulumi:"type"`
+	// The name of the Snowflake user.
+	User interface{} `pulumi:"user"`
+	// The name of the Snowflake warehouse.
+	Warehouse interface{} `pulumi:"warehouse"`
+}
+
+// Defaults sets the appropriate defaults for SnowflakeV2LinkedService
+func (val *SnowflakeV2LinkedService) Defaults() *SnowflakeV2LinkedService {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AuthenticationType == nil {
+		authenticationType_ := "Basic"
+		tmp.AuthenticationType = &authenticationType_
+	}
+	return &tmp
+}
+
+// SnowflakeV2LinkedServiceInput is an input type that accepts SnowflakeV2LinkedServiceArgs and SnowflakeV2LinkedServiceOutput values.
+// You can construct a concrete instance of `SnowflakeV2LinkedServiceInput` via:
+//
+//	SnowflakeV2LinkedServiceArgs{...}
+type SnowflakeV2LinkedServiceInput interface {
+	pulumi.Input
+
+	ToSnowflakeV2LinkedServiceOutput() SnowflakeV2LinkedServiceOutput
+	ToSnowflakeV2LinkedServiceOutputWithContext(context.Context) SnowflakeV2LinkedServiceOutput
+}
+
+// Snowflake linked service.
+type SnowflakeV2LinkedServiceArgs struct {
+	// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+	AccountIdentifier pulumi.Input `pulumi:"accountIdentifier"`
+	// List of tags that can be used for describing the linked service.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The type used for authentication. Type: string.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	ClientId pulumi.Input `pulumi:"clientId"`
+	// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+	ClientSecret pulumi.Input `pulumi:"clientSecret"`
+	// The integration runtime reference.
+	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// The name of the Snowflake database.
+	Database pulumi.Input `pulumi:"database"`
+	// Linked service description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string.
+	Password pulumi.Input `pulumi:"password"`
+	// The Azure key vault secret reference of privateKey for KeyPair auth.
+	PrivateKey pulumi.Input `pulumi:"privateKey"`
+	// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+	PrivateKeyPassphrase pulumi.Input `pulumi:"privateKeyPassphrase"`
+	// The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	Scope pulumi.Input `pulumi:"scope"`
+	// The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	TenantId pulumi.Input `pulumi:"tenantId"`
+	// Type of linked service.
+	// Expected value is 'SnowflakeV2'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The name of the Snowflake user.
+	User pulumi.Input `pulumi:"user"`
+	// The name of the Snowflake warehouse.
+	Warehouse pulumi.Input `pulumi:"warehouse"`
+}
+
+// Defaults sets the appropriate defaults for SnowflakeV2LinkedServiceArgs
+func (val *SnowflakeV2LinkedServiceArgs) Defaults() *SnowflakeV2LinkedServiceArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AuthenticationType == nil {
+		tmp.AuthenticationType = pulumi.StringPtr("Basic")
+	}
+	return &tmp
+}
+func (SnowflakeV2LinkedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2LinkedService)(nil)).Elem()
+}
+
+func (i SnowflakeV2LinkedServiceArgs) ToSnowflakeV2LinkedServiceOutput() SnowflakeV2LinkedServiceOutput {
+	return i.ToSnowflakeV2LinkedServiceOutputWithContext(context.Background())
+}
+
+func (i SnowflakeV2LinkedServiceArgs) ToSnowflakeV2LinkedServiceOutputWithContext(ctx context.Context) SnowflakeV2LinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnowflakeV2LinkedServiceOutput)
+}
+
+// Snowflake linked service.
+type SnowflakeV2LinkedServiceOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2LinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2LinkedService)(nil)).Elem()
+}
+
+func (o SnowflakeV2LinkedServiceOutput) ToSnowflakeV2LinkedServiceOutput() SnowflakeV2LinkedServiceOutput {
+	return o
+}
+
+func (o SnowflakeV2LinkedServiceOutput) ToSnowflakeV2LinkedServiceOutputWithContext(ctx context.Context) SnowflakeV2LinkedServiceOutput {
+	return o
+}
+
+// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+func (o SnowflakeV2LinkedServiceOutput) AccountIdentifier() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.AccountIdentifier }).(pulumi.AnyOutput)
+}
+
+// List of tags that can be used for describing the linked service.
+func (o SnowflakeV2LinkedServiceOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o SnowflakeV2LinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceOutput) ClientSecret() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.ClientSecret }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o SnowflakeV2LinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// The name of the Snowflake database.
+func (o SnowflakeV2LinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
+// Linked service description.
+func (o SnowflakeV2LinkedServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o SnowflakeV2LinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Parameters for linked service.
+func (o SnowflakeV2LinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// The Azure key vault secret reference of password in connection string.
+func (o SnowflakeV2LinkedServiceOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// The Azure key vault secret reference of privateKey for KeyPair auth.
+func (o SnowflakeV2LinkedServiceOutput) PrivateKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.PrivateKey }).(pulumi.AnyOutput)
+}
+
+// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+func (o SnowflakeV2LinkedServiceOutput) PrivateKeyPassphrase() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.PrivateKeyPassphrase }).(pulumi.AnyOutput)
+}
+
+// The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceOutput) Scope() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.Scope }).(pulumi.AnyOutput)
+}
+
+// The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceOutput) TenantId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.TenantId }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'SnowflakeV2'.
+func (o SnowflakeV2LinkedServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The name of the Snowflake user.
+func (o SnowflakeV2LinkedServiceOutput) User() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.User }).(pulumi.AnyOutput)
+}
+
+// The name of the Snowflake warehouse.
+func (o SnowflakeV2LinkedServiceOutput) Warehouse() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedService) interface{} { return v.Warehouse }).(pulumi.AnyOutput)
+}
+
+// Snowflake linked service.
+type SnowflakeV2LinkedServiceResponse struct {
+	// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+	AccountIdentifier interface{} `pulumi:"accountIdentifier"`
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	ClientId interface{} `pulumi:"clientId"`
+	// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+	ClientSecret interface{} `pulumi:"clientSecret"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The name of the Snowflake database.
+	Database interface{} `pulumi:"database"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string.
+	Password interface{} `pulumi:"password"`
+	// The Azure key vault secret reference of privateKey for KeyPair auth.
+	PrivateKey interface{} `pulumi:"privateKey"`
+	// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+	PrivateKeyPassphrase interface{} `pulumi:"privateKeyPassphrase"`
+	// The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	Scope interface{} `pulumi:"scope"`
+	// The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+	TenantId interface{} `pulumi:"tenantId"`
+	// Type of linked service.
+	// Expected value is 'SnowflakeV2'.
+	Type string `pulumi:"type"`
+	// The name of the Snowflake user.
+	User interface{} `pulumi:"user"`
+	// The name of the Snowflake warehouse.
+	Warehouse interface{} `pulumi:"warehouse"`
+}
+
+// Defaults sets the appropriate defaults for SnowflakeV2LinkedServiceResponse
+func (val *SnowflakeV2LinkedServiceResponse) Defaults() *SnowflakeV2LinkedServiceResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AuthenticationType == nil {
+		authenticationType_ := "Basic"
+		tmp.AuthenticationType = &authenticationType_
+	}
+	return &tmp
+}
+
+// Snowflake linked service.
+type SnowflakeV2LinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2LinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2LinkedServiceResponse)(nil)).Elem()
+}
+
+func (o SnowflakeV2LinkedServiceResponseOutput) ToSnowflakeV2LinkedServiceResponseOutput() SnowflakeV2LinkedServiceResponseOutput {
+	return o
+}
+
+func (o SnowflakeV2LinkedServiceResponseOutput) ToSnowflakeV2LinkedServiceResponseOutputWithContext(ctx context.Context) SnowflakeV2LinkedServiceResponseOutput {
+	return o
+}
+
+// The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+func (o SnowflakeV2LinkedServiceResponseOutput) AccountIdentifier() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.AccountIdentifier }).(pulumi.AnyOutput)
+}
+
+// List of tags that can be used for describing the linked service.
+func (o SnowflakeV2LinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o SnowflakeV2LinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceResponseOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceResponseOutput) ClientSecret() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.ClientSecret }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o SnowflakeV2LinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// The name of the Snowflake database.
+func (o SnowflakeV2LinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
+// Linked service description.
+func (o SnowflakeV2LinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o SnowflakeV2LinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Parameters for linked service.
+func (o SnowflakeV2LinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) map[string]ParameterSpecificationResponse {
+		return v.Parameters
+	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// The Azure key vault secret reference of password in connection string.
+func (o SnowflakeV2LinkedServiceResponseOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// The Azure key vault secret reference of privateKey for KeyPair auth.
+func (o SnowflakeV2LinkedServiceResponseOutput) PrivateKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.PrivateKey }).(pulumi.AnyOutput)
+}
+
+// The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+func (o SnowflakeV2LinkedServiceResponseOutput) PrivateKeyPassphrase() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.PrivateKeyPassphrase }).(pulumi.AnyOutput)
+}
+
+// The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceResponseOutput) Scope() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.Scope }).(pulumi.AnyOutput)
+}
+
+// The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+func (o SnowflakeV2LinkedServiceResponseOutput) TenantId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.TenantId }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'SnowflakeV2'.
+func (o SnowflakeV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The name of the Snowflake user.
+func (o SnowflakeV2LinkedServiceResponseOutput) User() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.User }).(pulumi.AnyOutput)
+}
+
+// The name of the Snowflake warehouse.
+func (o SnowflakeV2LinkedServiceResponseOutput) Warehouse() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2LinkedServiceResponse) interface{} { return v.Warehouse }).(pulumi.AnyOutput)
+}
+
+// A copy activity snowflake sink.
+type SnowflakeV2Sink struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake import settings.
+	ImportSettings *SnowflakeImportCopyCommand `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'SnowflakeV2Sink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// SnowflakeV2SinkInput is an input type that accepts SnowflakeV2SinkArgs and SnowflakeV2SinkOutput values.
+// You can construct a concrete instance of `SnowflakeV2SinkInput` via:
+//
+//	SnowflakeV2SinkArgs{...}
+type SnowflakeV2SinkInput interface {
+	pulumi.Input
+
+	ToSnowflakeV2SinkOutput() SnowflakeV2SinkOutput
+	ToSnowflakeV2SinkOutputWithContext(context.Context) SnowflakeV2SinkOutput
+}
+
+// A copy activity snowflake sink.
+type SnowflakeV2SinkArgs struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// Snowflake import settings.
+	ImportSettings SnowflakeImportCopyCommandPtrInput `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript pulumi.Input `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount pulumi.Input `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait pulumi.Input `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'SnowflakeV2Sink'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize pulumi.Input `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout pulumi.Input `pulumi:"writeBatchTimeout"`
+}
+
+func (SnowflakeV2SinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2Sink)(nil)).Elem()
+}
+
+func (i SnowflakeV2SinkArgs) ToSnowflakeV2SinkOutput() SnowflakeV2SinkOutput {
+	return i.ToSnowflakeV2SinkOutputWithContext(context.Background())
+}
+
+func (i SnowflakeV2SinkArgs) ToSnowflakeV2SinkOutputWithContext(ctx context.Context) SnowflakeV2SinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnowflakeV2SinkOutput)
+}
+
+// A copy activity snowflake sink.
+type SnowflakeV2SinkOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2SinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2Sink)(nil)).Elem()
+}
+
+func (o SnowflakeV2SinkOutput) ToSnowflakeV2SinkOutput() SnowflakeV2SinkOutput {
+	return o
+}
+
+func (o SnowflakeV2SinkOutput) ToSnowflakeV2SinkOutputWithContext(ctx context.Context) SnowflakeV2SinkOutput {
+	return o
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SnowflakeV2SinkOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Snowflake import settings.
+func (o SnowflakeV2SinkOutput) ImportSettings() SnowflakeImportCopyCommandPtrOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) *SnowflakeImportCopyCommand { return v.ImportSettings }).(SnowflakeImportCopyCommandPtrOutput)
+}
+
+// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SinkOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// SQL pre-copy script. Type: string (or Expression with resultType string).
+func (o SnowflakeV2SinkOutput) PreCopyScript() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.PreCopyScript }).(pulumi.AnyOutput)
+}
+
+// Sink retry count. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SinkOutput) SinkRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.SinkRetryCount }).(pulumi.AnyOutput)
+}
+
+// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SnowflakeV2SinkOutput) SinkRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy sink type.
+// Expected value is 'SnowflakeV2Sink'.
+func (o SnowflakeV2SinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+func (o SnowflakeV2SinkOutput) WriteBatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
+}
+
+// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SnowflakeV2SinkOutput) WriteBatchTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Sink) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
+}
+
+// A copy activity snowflake sink.
+type SnowflakeV2SinkResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake import settings.
+	ImportSettings *SnowflakeImportCopyCommandResponse `pulumi:"importSettings"`
+	// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// SQL pre-copy script. Type: string (or Expression with resultType string).
+	PreCopyScript interface{} `pulumi:"preCopyScript"`
+	// Sink retry count. Type: integer (or Expression with resultType integer).
+	SinkRetryCount interface{} `pulumi:"sinkRetryCount"`
+	// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SinkRetryWait interface{} `pulumi:"sinkRetryWait"`
+	// Copy sink type.
+	// Expected value is 'SnowflakeV2Sink'.
+	Type string `pulumi:"type"`
+	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
+	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
+}
+
+// A copy activity snowflake sink.
+type SnowflakeV2SinkResponseOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2SinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2SinkResponse)(nil)).Elem()
+}
+
+func (o SnowflakeV2SinkResponseOutput) ToSnowflakeV2SinkResponseOutput() SnowflakeV2SinkResponseOutput {
+	return o
+}
+
+func (o SnowflakeV2SinkResponseOutput) ToSnowflakeV2SinkResponseOutputWithContext(ctx context.Context) SnowflakeV2SinkResponseOutput {
+	return o
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SnowflakeV2SinkResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Snowflake import settings.
+func (o SnowflakeV2SinkResponseOutput) ImportSettings() SnowflakeImportCopyCommandResponsePtrOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) *SnowflakeImportCopyCommandResponse { return v.ImportSettings }).(SnowflakeImportCopyCommandResponsePtrOutput)
+}
+
+// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SinkResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// SQL pre-copy script. Type: string (or Expression with resultType string).
+func (o SnowflakeV2SinkResponseOutput) PreCopyScript() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.PreCopyScript }).(pulumi.AnyOutput)
+}
+
+// Sink retry count. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SinkResponseOutput) SinkRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.SinkRetryCount }).(pulumi.AnyOutput)
+}
+
+// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SnowflakeV2SinkResponseOutput) SinkRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.SinkRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy sink type.
+// Expected value is 'SnowflakeV2Sink'.
+func (o SnowflakeV2SinkResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+func (o SnowflakeV2SinkResponseOutput) WriteBatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.WriteBatchSize }).(pulumi.AnyOutput)
+}
+
+// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SnowflakeV2SinkResponseOutput) WriteBatchTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SinkResponse) interface{} { return v.WriteBatchTimeout }).(pulumi.AnyOutput)
+}
+
+// A copy activity snowflake source.
+type SnowflakeV2Source struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake export settings.
+	ExportSettings SnowflakeExportCopyCommand `pulumi:"exportSettings"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Snowflake Sql query. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SnowflakeV2Source'.
+	Type string `pulumi:"type"`
+}
+
+// SnowflakeV2SourceInput is an input type that accepts SnowflakeV2SourceArgs and SnowflakeV2SourceOutput values.
+// You can construct a concrete instance of `SnowflakeV2SourceInput` via:
+//
+//	SnowflakeV2SourceArgs{...}
+type SnowflakeV2SourceInput interface {
+	pulumi.Input
+
+	ToSnowflakeV2SourceOutput() SnowflakeV2SourceOutput
+	ToSnowflakeV2SourceOutputWithContext(context.Context) SnowflakeV2SourceOutput
+}
+
+// A copy activity snowflake source.
+type SnowflakeV2SourceArgs struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// Snowflake export settings.
+	ExportSettings SnowflakeExportCopyCommandInput `pulumi:"exportSettings"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// Snowflake Sql query. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SnowflakeV2Source'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SnowflakeV2SourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2Source)(nil)).Elem()
+}
+
+func (i SnowflakeV2SourceArgs) ToSnowflakeV2SourceOutput() SnowflakeV2SourceOutput {
+	return i.ToSnowflakeV2SourceOutputWithContext(context.Background())
+}
+
+func (i SnowflakeV2SourceArgs) ToSnowflakeV2SourceOutputWithContext(ctx context.Context) SnowflakeV2SourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnowflakeV2SourceOutput)
+}
+
+// A copy activity snowflake source.
+type SnowflakeV2SourceOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2SourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2Source)(nil)).Elem()
+}
+
+func (o SnowflakeV2SourceOutput) ToSnowflakeV2SourceOutput() SnowflakeV2SourceOutput {
+	return o
+}
+
+func (o SnowflakeV2SourceOutput) ToSnowflakeV2SourceOutputWithContext(ctx context.Context) SnowflakeV2SourceOutput {
+	return o
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SnowflakeV2SourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Snowflake export settings.
+func (o SnowflakeV2SourceOutput) ExportSettings() SnowflakeExportCopyCommandOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) SnowflakeExportCopyCommand { return v.ExportSettings }).(SnowflakeExportCopyCommandOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Snowflake Sql query. Type: string (or Expression with resultType string).
+func (o SnowflakeV2SourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SnowflakeV2SourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'SnowflakeV2Source'.
+func (o SnowflakeV2SourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2Source) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity snowflake source.
+type SnowflakeV2SourceResponse struct {
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// Snowflake export settings.
+	ExportSettings SnowflakeExportCopyCommandResponse `pulumi:"exportSettings"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Snowflake Sql query. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SnowflakeV2Source'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity snowflake source.
+type SnowflakeV2SourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeV2SourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeV2SourceResponse)(nil)).Elem()
+}
+
+func (o SnowflakeV2SourceResponseOutput) ToSnowflakeV2SourceResponseOutput() SnowflakeV2SourceResponseOutput {
+	return o
+}
+
+func (o SnowflakeV2SourceResponseOutput) ToSnowflakeV2SourceResponseOutputWithContext(ctx context.Context) SnowflakeV2SourceResponseOutput {
+	return o
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SnowflakeV2SourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// Snowflake export settings.
+func (o SnowflakeV2SourceResponseOutput) ExportSettings() SnowflakeExportCopyCommandResponseOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) SnowflakeExportCopyCommandResponse { return v.ExportSettings }).(SnowflakeExportCopyCommandResponseOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Snowflake Sql query. Type: string (or Expression with resultType string).
+func (o SnowflakeV2SourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o SnowflakeV2SourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SnowflakeV2SourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'SnowflakeV2Source'.
+func (o SnowflakeV2SourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SnowflakeV2SourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Spark configuration reference.
 type SparkConfigurationParametrizationReference struct {
 	// Reference spark configuration name. Type: string (or Expression with resultType string).
@@ -26861,6 +27868,14 @@ func init() {
 	pulumi.RegisterOutputType(SnowflakeSinkResponseOutput{})
 	pulumi.RegisterOutputType(SnowflakeSourceOutput{})
 	pulumi.RegisterOutputType(SnowflakeSourceResponseOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2DatasetOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2DatasetResponseOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2LinkedServiceOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2LinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2SinkOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2SinkResponseOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2SourceOutput{})
+	pulumi.RegisterOutputType(SnowflakeV2SourceResponseOutput{})
 	pulumi.RegisterOutputType(SparkConfigurationParametrizationReferenceOutput{})
 	pulumi.RegisterOutputType(SparkConfigurationParametrizationReferencePtrOutput{})
 	pulumi.RegisterOutputType(SparkConfigurationParametrizationReferenceResponseOutput{})
