@@ -10525,6 +10525,180 @@ func (in *sftpAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
+// The type used for authentication. Type: string.
+type SnowflakeAuthenticationType string
+
+const (
+	SnowflakeAuthenticationTypeBasic               = SnowflakeAuthenticationType("Basic")
+	SnowflakeAuthenticationTypeKeyPair             = SnowflakeAuthenticationType("KeyPair")
+	SnowflakeAuthenticationTypeAADServicePrincipal = SnowflakeAuthenticationType("AADServicePrincipal")
+)
+
+func (SnowflakeAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeAuthenticationType)(nil)).Elem()
+}
+
+func (e SnowflakeAuthenticationType) ToSnowflakeAuthenticationTypeOutput() SnowflakeAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(SnowflakeAuthenticationTypeOutput)
+}
+
+func (e SnowflakeAuthenticationType) ToSnowflakeAuthenticationTypeOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SnowflakeAuthenticationTypeOutput)
+}
+
+func (e SnowflakeAuthenticationType) ToSnowflakeAuthenticationTypePtrOutput() SnowflakeAuthenticationTypePtrOutput {
+	return e.ToSnowflakeAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e SnowflakeAuthenticationType) ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypePtrOutput {
+	return SnowflakeAuthenticationType(e).ToSnowflakeAuthenticationTypeOutputWithContext(ctx).ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e SnowflakeAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnowflakeAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnowflakeAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SnowflakeAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SnowflakeAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnowflakeAuthenticationType)(nil)).Elem()
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToSnowflakeAuthenticationTypeOutput() SnowflakeAuthenticationTypeOutput {
+	return o
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToSnowflakeAuthenticationTypeOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypeOutput {
+	return o
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToSnowflakeAuthenticationTypePtrOutput() SnowflakeAuthenticationTypePtrOutput {
+	return o.ToSnowflakeAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnowflakeAuthenticationType) *SnowflakeAuthenticationType {
+		return &v
+	}).(SnowflakeAuthenticationTypePtrOutput)
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnowflakeAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnowflakeAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnowflakeAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnowflakeAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SnowflakeAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnowflakeAuthenticationType)(nil)).Elem()
+}
+
+func (o SnowflakeAuthenticationTypePtrOutput) ToSnowflakeAuthenticationTypePtrOutput() SnowflakeAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o SnowflakeAuthenticationTypePtrOutput) ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o SnowflakeAuthenticationTypePtrOutput) Elem() SnowflakeAuthenticationTypeOutput {
+	return o.ApplyT(func(v *SnowflakeAuthenticationType) SnowflakeAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret SnowflakeAuthenticationType
+		return ret
+	}).(SnowflakeAuthenticationTypeOutput)
+}
+
+func (o SnowflakeAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnowflakeAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SnowflakeAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SnowflakeAuthenticationTypeInput is an input type that accepts values of the SnowflakeAuthenticationType enum
+// A concrete instance of `SnowflakeAuthenticationTypeInput` can be one of the following:
+//
+//	SnowflakeAuthenticationTypeBasic
+//	SnowflakeAuthenticationTypeKeyPair
+//	SnowflakeAuthenticationTypeAADServicePrincipal
+type SnowflakeAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToSnowflakeAuthenticationTypeOutput() SnowflakeAuthenticationTypeOutput
+	ToSnowflakeAuthenticationTypeOutputWithContext(context.Context) SnowflakeAuthenticationTypeOutput
+}
+
+var snowflakeAuthenticationTypePtrType = reflect.TypeOf((**SnowflakeAuthenticationType)(nil)).Elem()
+
+type SnowflakeAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToSnowflakeAuthenticationTypePtrOutput() SnowflakeAuthenticationTypePtrOutput
+	ToSnowflakeAuthenticationTypePtrOutputWithContext(context.Context) SnowflakeAuthenticationTypePtrOutput
+}
+
+type snowflakeAuthenticationTypePtr string
+
+func SnowflakeAuthenticationTypePtr(v string) SnowflakeAuthenticationTypePtrInput {
+	return (*snowflakeAuthenticationTypePtr)(&v)
+}
+
+func (*snowflakeAuthenticationTypePtr) ElementType() reflect.Type {
+	return snowflakeAuthenticationTypePtrType
+}
+
+func (in *snowflakeAuthenticationTypePtr) ToSnowflakeAuthenticationTypePtrOutput() SnowflakeAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(SnowflakeAuthenticationTypePtrOutput)
+}
+
+func (in *snowflakeAuthenticationTypePtr) ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SnowflakeAuthenticationTypePtrOutput)
+}
+
+func (in *snowflakeAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SnowflakeAuthenticationType] {
+	return pulumix.Output[*SnowflakeAuthenticationType]{
+		OutputState: in.ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The authentication method used to access the Spark server.
 type SparkAuthenticationType string
 
@@ -13762,6 +13936,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceNowAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(SftpAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(SftpAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(SnowflakeAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(SnowflakeAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(SparkAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(SparkAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(SparkConfigurationReferenceTypeOutput{})

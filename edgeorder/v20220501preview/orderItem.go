@@ -65,6 +65,9 @@ func NewOrderItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20211201:OrderItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:edgeorder/v20240201:OrderItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,6 +14,8 @@ import (
 
 // Address Resource.
 // Azure REST API version: 2022-05-01-preview.
+//
+// Other available API versions: 2024-02-01.
 type Address struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +59,9 @@ func NewAddress(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:Address"),
+		},
+		{
+			Type: pulumi.String("azure-native:edgeorder/v20240201:Address"),
 		},
 	})
 	opts = append(opts, aliases)
