@@ -13,6 +13,8 @@ import (
 
 // List product families for the given subscription.
 // Azure REST API version: 2022-05-01-preview.
+//
+// Other available API versions: 2024-02-01.
 func ListProductsAndConfigurationProductFamilies(ctx *pulumi.Context, args *ListProductsAndConfigurationProductFamiliesArgs, opts ...pulumi.InvokeOption) (*ListProductsAndConfigurationProductFamiliesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProductsAndConfigurationProductFamiliesResult

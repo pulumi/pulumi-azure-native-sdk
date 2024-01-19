@@ -14,6 +14,8 @@ import (
 
 // Represents order item resource.
 // Azure REST API version: 2022-05-01-preview.
+//
+// Other available API versions: 2024-02-01.
 type OrderItem struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +67,9 @@ func NewOrderItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:edgeorder/v20220501preview:OrderItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:edgeorder/v20240201:OrderItem"),
 		},
 	})
 	opts = append(opts, aliases)
