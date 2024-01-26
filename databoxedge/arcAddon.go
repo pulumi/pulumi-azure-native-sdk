@@ -110,6 +110,9 @@ func NewArcAddon(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:ArcAddon"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:ArcAddon"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

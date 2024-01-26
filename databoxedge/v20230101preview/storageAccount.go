@@ -95,6 +95,9 @@ func NewStorageAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:StorageAccount"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:StorageAccount"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

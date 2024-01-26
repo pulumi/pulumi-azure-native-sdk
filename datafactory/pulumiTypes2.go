@@ -22881,8 +22881,8 @@ type WebActivity struct {
 	Description *string `pulumi:"description"`
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation *bool `pulumi:"disableCertValidation"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers interface{} `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers map[string]string `pulumi:"headers"`
 	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
 	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
@@ -22937,8 +22937,8 @@ type WebActivityArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation pulumi.BoolPtrInput `pulumi:"disableCertValidation"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers pulumi.Input `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
 	HttpRequestTimeout pulumi.Input `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
@@ -23028,9 +23028,9 @@ func (o WebActivityOutput) DisableCertValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WebActivity) *bool { return v.DisableCertValidation }).(pulumi.BoolPtrOutput)
 }
 
-// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-func (o WebActivityOutput) Headers() pulumi.AnyOutput {
-	return o.ApplyT(func(v WebActivity) interface{} { return v.Headers }).(pulumi.AnyOutput)
+// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+func (o WebActivityOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WebActivity) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
@@ -23526,8 +23526,8 @@ type WebActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation *bool `pulumi:"disableCertValidation"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers interface{} `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers map[string]string `pulumi:"headers"`
 	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
 	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
@@ -23605,9 +23605,9 @@ func (o WebActivityResponseOutput) DisableCertValidation() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v WebActivityResponse) *bool { return v.DisableCertValidation }).(pulumi.BoolPtrOutput)
 }
 
-// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-func (o WebActivityResponseOutput) Headers() pulumi.AnyOutput {
-	return o.ApplyT(func(v WebActivityResponse) interface{} { return v.Headers }).(pulumi.AnyOutput)
+// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+func (o WebActivityResponseOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WebActivityResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
@@ -24051,8 +24051,8 @@ type WebHookActivity struct {
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
 	// Activity description.
 	Description *string `pulumi:"description"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers interface{} `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers map[string]string `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method string `pulumi:"method"`
 	// Activity name.
@@ -24097,8 +24097,8 @@ type WebHookActivityArgs struct {
 	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers pulumi.Input `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method pulumi.StringInput `pulumi:"method"`
 	// Activity name.
@@ -24169,9 +24169,9 @@ func (o WebHookActivityOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebHookActivity) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-func (o WebHookActivityOutput) Headers() pulumi.AnyOutput {
-	return o.ApplyT(func(v WebHookActivity) interface{} { return v.Headers }).(pulumi.AnyOutput)
+// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+func (o WebHookActivityOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WebHookActivity) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // Rest API method for target endpoint.
@@ -24235,8 +24235,8 @@ type WebHookActivityResponse struct {
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
 	// Activity description.
 	Description *string `pulumi:"description"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers interface{} `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers map[string]string `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method string `pulumi:"method"`
 	// Activity name.
@@ -24295,9 +24295,9 @@ func (o WebHookActivityResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebHookActivityResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-func (o WebHookActivityResponseOutput) Headers() pulumi.AnyOutput {
-	return o.ApplyT(func(v WebHookActivityResponse) interface{} { return v.Headers }).(pulumi.AnyOutput)
+// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+func (o WebHookActivityResponseOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WebHookActivityResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // Rest API method for target endpoint.

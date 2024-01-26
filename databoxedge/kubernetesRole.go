@@ -125,6 +125,9 @@ func NewKubernetesRole(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:KubernetesRole"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:KubernetesRole"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

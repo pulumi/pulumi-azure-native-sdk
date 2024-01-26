@@ -15,7 +15,7 @@ import (
 // Represents a share on the  Data Box Edge/Gateway device.
 // Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01.
+// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
 type Share struct {
 	pulumi.CustomResourceState
 
@@ -117,6 +117,9 @@ func NewShare(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:Share"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:Share"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -105,6 +105,9 @@ func NewMECRole(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:MECRole"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:MECRole"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

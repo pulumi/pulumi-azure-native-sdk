@@ -127,6 +127,9 @@ func NewDevice(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:Device"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:Device"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

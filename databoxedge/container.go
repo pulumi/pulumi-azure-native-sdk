@@ -15,7 +15,7 @@ import (
 // Represents a container on the  Data Box Edge/Gateway device.
 // Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01.
+// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
 type Container struct {
 	pulumi.CustomResourceState
 
@@ -96,6 +96,9 @@ func NewContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:Container"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:Container"),
 		},
 	})
 	opts = append(opts, aliases)
