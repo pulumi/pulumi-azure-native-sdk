@@ -14,6 +14,8 @@ import (
 
 // The resource proxy definition object for quantum workspace.
 // Azure REST API version: 2022-01-10-preview. Prior API version in Azure Native 1.x: 2019-11-04-preview.
+//
+// Other available API versions: 2023-11-13-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +59,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:quantum/v20220110preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:quantum/v20231113preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -95,6 +95,9 @@ func NewUser(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:User"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:User"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

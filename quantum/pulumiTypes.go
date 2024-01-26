@@ -13,6 +13,83 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Azure quantum workspace Api key details.
+type ApiKeyResponse struct {
+	// The creation time of the api key.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The Api key.
+	Key string `pulumi:"key"`
+}
+
+// Azure quantum workspace Api key details.
+type ApiKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyResponse)(nil)).Elem()
+}
+
+func (o ApiKeyResponseOutput) ToApiKeyResponseOutput() ApiKeyResponseOutput {
+	return o
+}
+
+func (o ApiKeyResponseOutput) ToApiKeyResponseOutputWithContext(ctx context.Context) ApiKeyResponseOutput {
+	return o
+}
+
+// The creation time of the api key.
+func (o ApiKeyResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiKeyResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The Api key.
+func (o ApiKeyResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type ApiKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiKeyResponse)(nil)).Elem()
+}
+
+func (o ApiKeyResponsePtrOutput) ToApiKeyResponsePtrOutput() ApiKeyResponsePtrOutput {
+	return o
+}
+
+func (o ApiKeyResponsePtrOutput) ToApiKeyResponsePtrOutputWithContext(ctx context.Context) ApiKeyResponsePtrOutput {
+	return o
+}
+
+func (o ApiKeyResponsePtrOutput) Elem() ApiKeyResponseOutput {
+	return o.ApplyT(func(v *ApiKeyResponse) ApiKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiKeyResponse
+		return ret
+	}).(ApiKeyResponseOutput)
+}
+
+// The creation time of the api key.
+func (o ApiKeyResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Api key.
+func (o ApiKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
 type Provider struct {
 	// The provider's marketplace application display name.
@@ -535,6 +612,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiKeyResponseOutput{})
+	pulumi.RegisterOutputType(ApiKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderArrayOutput{})
 	pulumi.RegisterOutputType(ProviderResponseOutput{})

@@ -19217,8 +19217,8 @@ type AzureFunctionActivity struct {
 	Description *string `pulumi:"description"`
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName interface{} `pulumi:"functionName"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers interface{} `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers map[string]string `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Rest API method for target endpoint.
@@ -19259,8 +19259,8 @@ type AzureFunctionActivityArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName pulumi.Input `pulumi:"functionName"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers pulumi.Input `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// Rest API method for target endpoint.
@@ -19327,9 +19327,9 @@ func (o AzureFunctionActivityOutput) FunctionName() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureFunctionActivity) interface{} { return v.FunctionName }).(pulumi.AnyOutput)
 }
 
-// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-func (o AzureFunctionActivityOutput) Headers() pulumi.AnyOutput {
-	return o.ApplyT(func(v AzureFunctionActivity) interface{} { return v.Headers }).(pulumi.AnyOutput)
+// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+func (o AzureFunctionActivityOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureFunctionActivity) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // Linked service reference.
@@ -19383,8 +19383,8 @@ type AzureFunctionActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName interface{} `pulumi:"functionName"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-	Headers interface{} `pulumi:"headers"`
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	Headers map[string]string `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Rest API method for target endpoint.
@@ -19439,9 +19439,9 @@ func (o AzureFunctionActivityResponseOutput) FunctionName() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureFunctionActivityResponse) interface{} { return v.FunctionName }).(pulumi.AnyOutput)
 }
 
-// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
-func (o AzureFunctionActivityResponseOutput) Headers() pulumi.AnyOutput {
-	return o.ApplyT(func(v AzureFunctionActivityResponse) interface{} { return v.Headers }).(pulumi.AnyOutput)
+// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+func (o AzureFunctionActivityResponseOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureFunctionActivityResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
 // Linked service reference.

@@ -109,6 +109,9 @@ func NewOrder(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:Order"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:Order"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

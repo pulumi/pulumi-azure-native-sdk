@@ -51111,6 +51111,8 @@ type SalesforceServiceCloudV2LinkedService struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 	ApiVersion interface{} `pulumi:"apiVersion"`
+	// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	ClientId interface{} `pulumi:"clientId"`
 	// The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
@@ -51147,6 +51149,8 @@ type SalesforceServiceCloudV2LinkedServiceArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 	ApiVersion pulumi.Input `pulumi:"apiVersion"`
+	// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	ClientId pulumi.Input `pulumi:"clientId"`
 	// The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
@@ -51203,6 +51207,11 @@ func (o SalesforceServiceCloudV2LinkedServiceOutput) ApiVersion() pulumi.AnyOutp
 	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedService) interface{} { return v.ApiVersion }).(pulumi.AnyOutput)
 }
 
+// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+func (o SalesforceServiceCloudV2LinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedService) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
+}
+
 // The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 func (o SalesforceServiceCloudV2LinkedServiceOutput) ClientId() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedService) interface{} { return v.ClientId }).(pulumi.AnyOutput)
@@ -51250,6 +51259,8 @@ type SalesforceServiceCloudV2LinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 	ApiVersion interface{} `pulumi:"apiVersion"`
+	// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	ClientId interface{} `pulumi:"clientId"`
 	// The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
@@ -51292,6 +51303,11 @@ func (o SalesforceServiceCloudV2LinkedServiceResponseOutput) Annotations() pulum
 // The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 func (o SalesforceServiceCloudV2LinkedServiceResponseOutput) ApiVersion() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedServiceResponse) interface{} { return v.ApiVersion }).(pulumi.AnyOutput)
+}
+
+// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+func (o SalesforceServiceCloudV2LinkedServiceResponseOutput) AuthenticationType() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedServiceResponse) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
 
 // The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
@@ -51809,10 +51825,10 @@ type SalesforceServiceCloudV2Source struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-	ReadBehavior interface{} `pulumi:"readBehavior"`
 	// Database query. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -51841,10 +51857,10 @@ type SalesforceServiceCloudV2SourceArgs struct {
 	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+	IncludeDeletedObjects pulumi.Input `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-	ReadBehavior pulumi.Input `pulumi:"readBehavior"`
 	// Database query. Type: string (or Expression with resultType string).
 	SOQLQuery pulumi.Input `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -51893,14 +51909,14 @@ func (o SalesforceServiceCloudV2SourceOutput) DisableMetricsCollection() pulumi.
 	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
 }
 
+// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SalesforceServiceCloudV2SourceOutput) IncludeDeletedObjects() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.IncludeDeletedObjects }).(pulumi.AnyOutput)
+}
+
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o SalesforceServiceCloudV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-func (o SalesforceServiceCloudV2SourceOutput) ReadBehavior() pulumi.AnyOutput {
-	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.ReadBehavior }).(pulumi.AnyOutput)
 }
 
 // Database query. Type: string (or Expression with resultType string).
@@ -51930,10 +51946,10 @@ type SalesforceServiceCloudV2SourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-	ReadBehavior interface{} `pulumi:"readBehavior"`
 	// Database query. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -51970,14 +51986,14 @@ func (o SalesforceServiceCloudV2SourceResponseOutput) DisableMetricsCollection()
 	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
 }
 
+// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SalesforceServiceCloudV2SourceResponseOutput) IncludeDeletedObjects() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.IncludeDeletedObjects }).(pulumi.AnyOutput)
+}
+
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o SalesforceServiceCloudV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-func (o SalesforceServiceCloudV2SourceResponseOutput) ReadBehavior() pulumi.AnyOutput {
-	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.ReadBehavior }).(pulumi.AnyOutput)
 }
 
 // Database query. Type: string (or Expression with resultType string).
@@ -52451,6 +52467,8 @@ type SalesforceV2LinkedService struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 	ApiVersion interface{} `pulumi:"apiVersion"`
+	// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	ClientId interface{} `pulumi:"clientId"`
 	// The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
@@ -52487,6 +52505,8 @@ type SalesforceV2LinkedServiceArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 	ApiVersion pulumi.Input `pulumi:"apiVersion"`
+	// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	ClientId pulumi.Input `pulumi:"clientId"`
 	// The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
@@ -52543,6 +52563,11 @@ func (o SalesforceV2LinkedServiceOutput) ApiVersion() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2LinkedService) interface{} { return v.ApiVersion }).(pulumi.AnyOutput)
 }
 
+// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+func (o SalesforceV2LinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2LinkedService) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
+}
+
 // The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 func (o SalesforceV2LinkedServiceOutput) ClientId() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2LinkedService) interface{} { return v.ClientId }).(pulumi.AnyOutput)
@@ -52590,6 +52615,8 @@ type SalesforceV2LinkedServiceResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 	ApiVersion interface{} `pulumi:"apiVersion"`
+	// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	ClientId interface{} `pulumi:"clientId"`
 	// The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
@@ -52632,6 +52659,11 @@ func (o SalesforceV2LinkedServiceResponseOutput) Annotations() pulumi.ArrayOutpu
 // The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
 func (o SalesforceV2LinkedServiceResponseOutput) ApiVersion() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2LinkedServiceResponse) interface{} { return v.ApiVersion }).(pulumi.AnyOutput)
+}
+
+// The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+func (o SalesforceV2LinkedServiceResponseOutput) AuthenticationType() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2LinkedServiceResponse) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
 
 // The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
@@ -53145,12 +53177,12 @@ type SalesforceV2Source struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-	ReadBehavior interface{} `pulumi:"readBehavior"`
 	// Database query. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -53179,12 +53211,12 @@ type SalesforceV2SourceArgs struct {
 	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+	IncludeDeletedObjects pulumi.Input `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
-	// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-	ReadBehavior pulumi.Input `pulumi:"readBehavior"`
 	// Database query. Type: string (or Expression with resultType string).
 	SOQLQuery pulumi.Input `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -53233,6 +53265,11 @@ func (o SalesforceV2SourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
 }
 
+// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SalesforceV2SourceOutput) IncludeDeletedObjects() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.IncludeDeletedObjects }).(pulumi.AnyOutput)
+}
+
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o SalesforceV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
@@ -53241,11 +53278,6 @@ func (o SalesforceV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 // Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 func (o SalesforceV2SourceOutput) QueryTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-func (o SalesforceV2SourceOutput) ReadBehavior() pulumi.AnyOutput {
-	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.ReadBehavior }).(pulumi.AnyOutput)
 }
 
 // Database query. Type: string (or Expression with resultType string).
@@ -53275,12 +53307,12 @@ type SalesforceV2SourceResponse struct {
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-	ReadBehavior interface{} `pulumi:"readBehavior"`
 	// Database query. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
@@ -53317,6 +53349,11 @@ func (o SalesforceV2SourceResponseOutput) DisableMetricsCollection() pulumi.AnyO
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
 }
 
+// This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SalesforceV2SourceResponseOutput) IncludeDeletedObjects() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.IncludeDeletedObjects }).(pulumi.AnyOutput)
+}
+
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o SalesforceV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
@@ -53325,11 +53362,6 @@ func (o SalesforceV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyO
 // Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 func (o SalesforceV2SourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-func (o SalesforceV2SourceResponseOutput) ReadBehavior() pulumi.AnyOutput {
-	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.ReadBehavior }).(pulumi.AnyOutput)
 }
 
 // Database query. Type: string (or Expression with resultType string).

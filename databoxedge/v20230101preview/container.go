@@ -94,6 +94,9 @@ func NewContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:Container"),
 		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:Container"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
