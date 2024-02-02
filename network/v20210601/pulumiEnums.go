@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the override action to be applied when rule matches.
@@ -181,12 +180,6 @@ func (in *actionTypePtr) ToActionTypePtrOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, in).(ActionTypePtrOutput)
 }
 
-func (in *actionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ActionType] {
-	return pulumix.Output[*ActionType]{
-		OutputState: in.ToActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'
 type BackendEnabledState string
 
@@ -351,12 +344,6 @@ func (in *backendEnabledStatePtr) ToBackendEnabledStatePtrOutput() BackendEnable
 
 func (in *backendEnabledStatePtr) ToBackendEnabledStatePtrOutputWithContext(ctx context.Context) BackendEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendEnabledStatePtrOutput)
-}
-
-func (in *backendEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*BackendEnabledState] {
-	return pulumix.Output[*BackendEnabledState]{
-		OutputState: in.ToBackendEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
@@ -525,12 +512,6 @@ func (in *customRuleEnabledStatePtr) ToCustomRuleEnabledStatePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CustomRuleEnabledStatePtrOutput)
 }
 
-func (in *customRuleEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomRuleEnabledState] {
-	return pulumix.Output[*CustomRuleEnabledState]{
-		OutputState: in.ToCustomRuleEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to use dynamic compression for cached content
 type DynamicCompressionEnabled string
 
@@ -695,12 +676,6 @@ func (in *dynamicCompressionEnabledPtr) ToDynamicCompressionEnabledPtrOutput() D
 
 func (in *dynamicCompressionEnabledPtr) ToDynamicCompressionEnabledPtrOutputWithContext(ctx context.Context) DynamicCompressionEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicCompressionEnabledPtrOutput)
-}
-
-func (in *dynamicCompressionEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicCompressionEnabled] {
-	return pulumix.Output[*DynamicCompressionEnabled]{
-		OutputState: in.ToDynamicCompressionEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.
@@ -869,12 +844,6 @@ func (in *enforceCertificateNameCheckEnabledStatePtr) ToEnforceCertificateNameCh
 	return pulumi.ToOutputWithContext(ctx, in).(EnforceCertificateNameCheckEnabledStatePtrOutput)
 }
 
-func (in *enforceCertificateNameCheckEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnforceCertificateNameCheckEnabledState] {
-	return pulumix.Output[*EnforceCertificateNameCheckEnabledState]{
-		OutputState: in.ToEnforceCertificateNameCheckEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'
 type FrontDoorEnabledState string
 
@@ -1039,12 +1008,6 @@ func (in *frontDoorEnabledStatePtr) ToFrontDoorEnabledStatePtrOutput() FrontDoor
 
 func (in *frontDoorEnabledStatePtr) ToFrontDoorEnabledStatePtrOutputWithContext(ctx context.Context) FrontDoorEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorEnabledStatePtrOutput)
-}
-
-func (in *frontDoorEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorEnabledState] {
-	return pulumix.Output[*FrontDoorEnabledState]{
-		OutputState: in.ToFrontDoorEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Protocol this rule will use when forwarding traffic to backends.
@@ -1215,12 +1178,6 @@ func (in *frontDoorForwardingProtocolPtr) ToFrontDoorForwardingProtocolPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorForwardingProtocolPtrOutput)
 }
 
-func (in *frontDoorForwardingProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorForwardingProtocol] {
-	return pulumix.Output[*FrontDoorForwardingProtocol]{
-		OutputState: in.ToFrontDoorForwardingProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures which HTTP method to use to probe the backends defined under backendPools.
 type FrontDoorHealthProbeMethod string
 
@@ -1385,12 +1342,6 @@ func (in *frontDoorHealthProbeMethodPtr) ToFrontDoorHealthProbeMethodPtrOutput()
 
 func (in *frontDoorHealthProbeMethodPtr) ToFrontDoorHealthProbeMethodPtrOutputWithContext(ctx context.Context) FrontDoorHealthProbeMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorHealthProbeMethodPtrOutput)
-}
-
-func (in *frontDoorHealthProbeMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorHealthProbeMethod] {
-	return pulumix.Output[*FrontDoorHealthProbeMethod]{
-		OutputState: in.ToFrontDoorHealthProbeMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Request variable to compare with.
@@ -1573,12 +1524,6 @@ func (in *frontDoorMatchVariablePtr) ToFrontDoorMatchVariablePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorMatchVariablePtrOutput)
 }
 
-func (in *frontDoorMatchVariablePtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorMatchVariable] {
-	return pulumix.Output[*FrontDoorMatchVariable]{
-		OutputState: in.ToFrontDoorMatchVariablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Accepted protocol schemes.
 type FrontDoorProtocol string
 
@@ -1743,12 +1688,6 @@ func (in *frontDoorProtocolPtr) ToFrontDoorProtocolPtrOutput() FrontDoorProtocol
 
 func (in *frontDoorProtocolPtr) ToFrontDoorProtocolPtrOutputWithContext(ctx context.Context) FrontDoorProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorProtocolPtrOutput)
-}
-
-func (in *frontDoorProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorProtocol] {
-	return pulumix.Output[*FrontDoorProtocol]{
-		OutputState: in.ToFrontDoorProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Treatment of URL query terms when forming the cache key.
@@ -1921,12 +1860,6 @@ func (in *frontDoorQueryPtr) ToFrontDoorQueryPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorQueryPtrOutput)
 }
 
-func (in *frontDoorQueryPtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorQuery] {
-	return pulumix.Output[*FrontDoorQuery]{
-		OutputState: in.ToFrontDoorQueryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol of the destination to where the traffic is redirected
 type FrontDoorRedirectProtocol string
 
@@ -2093,12 +2026,6 @@ func (in *frontDoorRedirectProtocolPtr) ToFrontDoorRedirectProtocolPtrOutput() F
 
 func (in *frontDoorRedirectProtocolPtr) ToFrontDoorRedirectProtocolPtrOutputWithContext(ctx context.Context) FrontDoorRedirectProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorRedirectProtocolPtrOutput)
-}
-
-func (in *frontDoorRedirectProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorRedirectProtocol] {
-	return pulumix.Output[*FrontDoorRedirectProtocol]{
-		OutputState: in.ToFrontDoorRedirectProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The redirect type the rule will use when redirecting traffic.
@@ -2271,12 +2198,6 @@ func (in *frontDoorRedirectTypePtr) ToFrontDoorRedirectTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorRedirectTypePtrOutput)
 }
 
-func (in *frontDoorRedirectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorRedirectType] {
-	return pulumix.Output[*FrontDoorRedirectType]{
-		OutputState: in.ToFrontDoorRedirectTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Which type of manipulation to apply to the header.
 type HeaderActionType string
 
@@ -2445,12 +2366,6 @@ func (in *headerActionTypePtr) ToHeaderActionTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(HeaderActionTypePtrOutput)
 }
 
-func (in *headerActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HeaderActionType] {
-	return pulumix.Output[*HeaderActionType]{
-		OutputState: in.ToHeaderActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 type HealthProbeEnabled string
 
@@ -2617,12 +2532,6 @@ func (in *healthProbeEnabledPtr) ToHealthProbeEnabledPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(HealthProbeEnabledPtrOutput)
 }
 
-func (in *healthProbeEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeEnabled] {
-	return pulumix.Output[*HealthProbeEnabled]{
-		OutputState: in.ToHealthProbeEnabledPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
 type ManagedRuleEnabledState string
 
@@ -2787,12 +2696,6 @@ func (in *managedRuleEnabledStatePtr) ToManagedRuleEnabledStatePtrOutput() Manag
 
 func (in *managedRuleEnabledStatePtr) ToManagedRuleEnabledStatePtrOutputWithContext(ctx context.Context) ManagedRuleEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleEnabledStatePtrOutput)
-}
-
-func (in *managedRuleEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleEnabledState] {
-	return pulumix.Output[*ManagedRuleEnabledState]{
-		OutputState: in.ToManagedRuleEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The variable type to be excluded.
@@ -2967,12 +2870,6 @@ func (in *managedRuleExclusionMatchVariablePtr) ToManagedRuleExclusionMatchVaria
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleExclusionMatchVariablePtrOutput)
 }
 
-func (in *managedRuleExclusionMatchVariablePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleExclusionMatchVariable] {
-	return pulumix.Output[*ManagedRuleExclusionMatchVariable]{
-		OutputState: in.ToManagedRuleExclusionMatchVariablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
 type ManagedRuleExclusionSelectorMatchOperator string
 
@@ -3145,12 +3042,6 @@ func (in *managedRuleExclusionSelectorMatchOperatorPtr) ToManagedRuleExclusionSe
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleExclusionSelectorMatchOperatorPtrOutput)
 }
 
-func (in *managedRuleExclusionSelectorMatchOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleExclusionSelectorMatchOperator] {
-	return pulumix.Output[*ManagedRuleExclusionSelectorMatchOperator]{
-		OutputState: in.ToManagedRuleExclusionSelectorMatchOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the action to take when a managed rule set score threshold is met.
 type ManagedRuleSetActionType string
 
@@ -3319,12 +3210,6 @@ func (in *managedRuleSetActionTypePtr) ToManagedRuleSetActionTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleSetActionTypePtrOutput)
 }
 
-func (in *managedRuleSetActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleSetActionType] {
-	return pulumix.Output[*ManagedRuleSetActionType]{
-		OutputState: in.ToManagedRuleSetActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
 type MatchProcessingBehavior string
 
@@ -3489,12 +3374,6 @@ func (in *matchProcessingBehaviorPtr) ToMatchProcessingBehaviorPtrOutput() Match
 
 func (in *matchProcessingBehaviorPtr) ToMatchProcessingBehaviorPtrOutputWithContext(ctx context.Context) MatchProcessingBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MatchProcessingBehaviorPtrOutput)
-}
-
-func (in *matchProcessingBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*MatchProcessingBehavior] {
-	return pulumix.Output[*MatchProcessingBehavior]{
-		OutputState: in.ToMatchProcessingBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Comparison type to use for matching with the variable value.
@@ -3683,12 +3562,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
 type PolicyEnabledState string
 
@@ -3853,12 +3726,6 @@ func (in *policyEnabledStatePtr) ToPolicyEnabledStatePtrOutput() PolicyEnabledSt
 
 func (in *policyEnabledStatePtr) ToPolicyEnabledStatePtrOutputWithContext(ctx context.Context) PolicyEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyEnabledStatePtrOutput)
-}
-
-func (in *policyEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyEnabledState] {
-	return pulumix.Output[*PolicyEnabledState]{
-		OutputState: in.ToPolicyEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes if it is in detection mode or prevention mode at policy level.
@@ -4027,12 +3894,6 @@ func (in *policyModePtr) ToPolicyModePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyModePtrOutput)
 }
 
-func (in *policyModePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyMode] {
-	return pulumix.Output[*PolicyMode]{
-		OutputState: in.ToPolicyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if policy managed rules will inspect the request body content.
 type PolicyRequestBodyCheck string
 
@@ -4197,12 +4058,6 @@ func (in *policyRequestBodyCheckPtr) ToPolicyRequestBodyCheckPtrOutput() PolicyR
 
 func (in *policyRequestBodyCheckPtr) ToPolicyRequestBodyCheckPtrOutputWithContext(ctx context.Context) PolicyRequestBodyCheckPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyRequestBodyCheckPtrOutput)
-}
-
-func (in *policyRequestBodyCheckPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyRequestBodyCheck] {
-	return pulumix.Output[*PolicyRequestBodyCheck]{
-		OutputState: in.ToPolicyRequestBodyCheckPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
@@ -4371,12 +4226,6 @@ func (in *routingRuleEnabledStatePtr) ToRoutingRuleEnabledStatePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingRuleEnabledStatePtrOutput)
 }
 
-func (in *routingRuleEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutingRuleEnabledState] {
-	return pulumix.Output[*RoutingRuleEnabledState]{
-		OutputState: in.ToRoutingRuleEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes type of rule.
 type RuleType string
 
@@ -4541,12 +4390,6 @@ func (in *ruleTypePtr) ToRuleTypePtrOutput() RuleTypePtrOutput {
 
 func (in *ruleTypePtr) ToRuleTypePtrOutputWithContext(ctx context.Context) RuleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleTypePtrOutput)
-}
-
-func (in *ruleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RuleType] {
-	return pulumix.Output[*RuleType]{
-		OutputState: in.ToRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Match Variable
@@ -4735,12 +4578,6 @@ func (in *rulesEngineMatchVariablePtr) ToRulesEngineMatchVariablePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RulesEngineMatchVariablePtrOutput)
 }
 
-func (in *rulesEngineMatchVariablePtr) ToOutput(ctx context.Context) pulumix.Output[*RulesEngineMatchVariable] {
-	return pulumix.Output[*RulesEngineMatchVariable]{
-		OutputState: in.ToRulesEngineMatchVariablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes operator to apply to the match condition.
 type RulesEngineOperator string
 
@@ -4925,12 +4762,6 @@ func (in *rulesEngineOperatorPtr) ToRulesEngineOperatorPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RulesEngineOperatorPtrOutput)
 }
 
-func (in *rulesEngineOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*RulesEngineOperator] {
-	return pulumix.Output[*RulesEngineOperator]{
-		OutputState: in.ToRulesEngineOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
 type SessionAffinityEnabledState string
 
@@ -5095,12 +4926,6 @@ func (in *sessionAffinityEnabledStatePtr) ToSessionAffinityEnabledStatePtrOutput
 
 func (in *sessionAffinityEnabledStatePtr) ToSessionAffinityEnabledStatePtrOutputWithContext(ctx context.Context) SessionAffinityEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionAffinityEnabledStatePtrOutput)
-}
-
-func (in *sessionAffinityEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SessionAffinityEnabledState] {
-	return pulumix.Output[*SessionAffinityEnabledState]{
-		OutputState: in.ToSessionAffinityEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the pricing tier.
@@ -5269,12 +5094,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes what transforms are applied before matching
@@ -5451,12 +5270,6 @@ func (in *transformPtr) ToTransformPtrOutputWithContext(ctx context.Context) Tra
 	return pulumi.ToOutputWithContext(ctx, in).(TransformPtrOutput)
 }
 
-func (in *transformPtr) ToOutput(ctx context.Context) pulumix.Output[*Transform] {
-	return pulumix.Output[*Transform]{
-		OutputState: in.ToTransformPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes what transforms applied before matching.
 type TransformType string
 
@@ -5629,12 +5442,6 @@ func (in *transformTypePtr) ToTransformTypePtrOutput() TransformTypePtrOutput {
 
 func (in *transformTypePtr) ToTransformTypePtrOutputWithContext(ctx context.Context) TransformTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransformTypePtrOutput)
-}
-
-func (in *transformTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TransformType] {
-	return pulumix.Output[*TransformType]{
-		OutputState: in.ToTransformTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

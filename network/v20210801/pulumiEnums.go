@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operation mode for Threat Intelligence.
@@ -179,12 +178,6 @@ func (in *azureFirewallThreatIntelModePtr) ToAzureFirewallThreatIntelModePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallThreatIntelModePtrOutput)
 }
 
-func (in *azureFirewallThreatIntelModePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallThreatIntelMode] {
-	return pulumix.Output[*AzureFirewallThreatIntelMode]{
-		OutputState: in.ToAzureFirewallThreatIntelModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if results should be in ascending/descending order
 type FirewallPolicyIDPSQuerySortOrder string
 
@@ -349,12 +342,6 @@ func (in *firewallPolicyIDPSQuerySortOrderPtr) ToFirewallPolicyIDPSQuerySortOrde
 
 func (in *firewallPolicyIDPSQuerySortOrderPtr) ToFirewallPolicyIDPSQuerySortOrderPtrOutputWithContext(ctx context.Context) FirewallPolicyIDPSQuerySortOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyIDPSQuerySortOrderPtrOutput)
-}
-
-func (in *firewallPolicyIDPSQuerySortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIDPSQuerySortOrder] {
-	return pulumix.Output[*FirewallPolicyIDPSQuerySortOrder]{
-		OutputState: in.ToFirewallPolicyIDPSQuerySortOrderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The rule bypass protocol.
@@ -527,12 +514,6 @@ func (in *firewallPolicyIntrusionDetectionProtocolPtr) ToFirewallPolicyIntrusion
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyIntrusionDetectionProtocolPtrOutput)
 }
 
-func (in *firewallPolicyIntrusionDetectionProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetectionProtocol] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetectionProtocol]{
-		OutputState: in.ToFirewallPolicyIntrusionDetectionProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Intrusion detection general state.
 type FirewallPolicyIntrusionDetectionStateType string
 
@@ -699,12 +680,6 @@ func (in *firewallPolicyIntrusionDetectionStateTypePtr) ToFirewallPolicyIntrusio
 
 func (in *firewallPolicyIntrusionDetectionStateTypePtr) ToFirewallPolicyIntrusionDetectionStateTypePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionStateTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyIntrusionDetectionStateTypePtrOutput)
-}
-
-func (in *firewallPolicyIntrusionDetectionStateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetectionStateType] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetectionStateType]{
-		OutputState: in.ToFirewallPolicyIntrusionDetectionStateTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tier of Firewall Policy.
@@ -875,12 +850,6 @@ func (in *firewallPolicySkuTierPtr) ToFirewallPolicySkuTierPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicySkuTierPtrOutput)
 }
 
-func (in *firewallPolicySkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySkuTier] {
-	return pulumix.Output[*FirewallPolicySkuTier]{
-		OutputState: in.ToFirewallPolicySkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 type ResourceIdentityType string
 
@@ -1049,12 +1018,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

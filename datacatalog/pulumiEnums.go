@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure data catalog SKU.
@@ -175,12 +174,6 @@ func (in *skuTypePtr) ToSkuTypePtrOutput() SkuTypePtrOutput {
 
 func (in *skuTypePtr) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTypePtrOutput)
-}
-
-func (in *skuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
-	return pulumix.Output[*SkuType]{
-		OutputState: in.ToSkuTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

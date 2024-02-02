@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enum indicating if user is adding or removing a favorite lab
@@ -177,12 +176,6 @@ func (in *addRemovePtr) ToAddRemovePtrOutput() AddRemovePtrOutput {
 
 func (in *addRemovePtr) ToAddRemovePtrOutputWithContext(ctx context.Context) AddRemovePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddRemovePtrOutput)
-}
-
-func (in *addRemovePtr) ToOutput(ctx context.Context) pulumix.Output[*AddRemove] {
-	return pulumix.Output[*AddRemove]{
-		OutputState: in.ToAddRemovePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the user's progress in configuring their environment setting
@@ -354,12 +347,6 @@ func (in *configurationStatePtr) ToConfigurationStatePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationStatePtrOutput)
 }
 
-func (in *configurationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationState] {
-	return pulumix.Output[*ConfigurationState]{
-		OutputState: in.ToConfigurationStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The enabled access level for Web Access over SSH.
 type ConnectionType string
 
@@ -526,12 +513,6 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutput() ConnectionTypePtrOutput
 
 func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionTypePtrOutput)
-}
-
-func (in *connectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
-	return pulumix.Output[*ConnectionType]{
-		OutputState: in.ToConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates what lab virtual machines are created from.
@@ -702,12 +683,6 @@ func (in *createOptionPtr) ToCreateOptionPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CreateOptionPtrOutput)
 }
 
-func (in *createOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*CreateOption] {
-	return pulumix.Output[*CreateOption]{
-		OutputState: in.ToCreateOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether a VM will get shutdown when it hasn't been connected to after a period of time.
 type EnableState string
 
@@ -872,12 +847,6 @@ func (in *enableStatePtr) ToEnableStatePtrOutput() EnableStatePtrOutput {
 
 func (in *enableStatePtr) ToEnableStatePtrOutputWithContext(ctx context.Context) EnableStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnableStatePtrOutput)
-}
-
-func (in *enableStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnableState] {
-	return pulumix.Output[*EnableState]{
-		OutputState: in.ToEnableStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The size of the virtual machine
@@ -1051,12 +1020,6 @@ func (in *managedLabVmSizePtr) ToManagedLabVmSizePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedLabVmSizePtrOutput)
 }
 
-func (in *managedLabVmSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedLabVmSize] {
-	return pulumix.Output[*ManagedLabVmSize]{
-		OutputState: in.ToManagedLabVmSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The frequency of the recurrence.
 type RecurrenceFrequency string
 
@@ -1225,12 +1188,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
 }
 
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1393,12 +1350,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether a VM will get shutdown when it has idled for a period of time.
@@ -1572,12 +1523,6 @@ func (in *shutdownOnIdleModePtr) ToShutdownOnIdleModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ShutdownOnIdleModePtrOutput)
 }
 
-func (in *shutdownOnIdleModePtr) ToOutput(ctx context.Context) pulumix.Output[*ShutdownOnIdleMode] {
-	return pulumix.Output[*ShutdownOnIdleMode]{
-		OutputState: in.ToShutdownOnIdleModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 type SkuTier string
 
@@ -1746,12 +1691,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Days of the week.
@@ -1935,12 +1874,6 @@ func (in *weekDayPtr) ToWeekDayPtrOutput() WeekDayPtrOutput {
 
 func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayPtrOutput)
-}
-
-func (in *weekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDay] {
-	return pulumix.Output[*WeekDay]{
-		OutputState: in.ToWeekDayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WeekDayArrayInput is an input type that accepts WeekDayArray and WeekDayArrayOutput values.

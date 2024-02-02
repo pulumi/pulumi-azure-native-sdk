@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The status of the Data Box Edge/Gateway device.
@@ -187,12 +186,6 @@ func (in *dataBoxEdgeDeviceStatusPtr) ToDataBoxEdgeDeviceStatusPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DataBoxEdgeDeviceStatusPtrOutput)
 }
 
-func (in *dataBoxEdgeDeviceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DataBoxEdgeDeviceStatus] {
-	return pulumix.Output[*DataBoxEdgeDeviceStatus]{
-		OutputState: in.ToDataBoxEdgeDeviceStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The algorithm used to encrypt "Value".
 type EncryptionAlgorithm string
 
@@ -361,12 +354,6 @@ func (in *encryptionAlgorithmPtr) ToEncryptionAlgorithmPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionAlgorithmPtrOutput)
 }
 
-func (in *encryptionAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionAlgorithm] {
-	return pulumix.Output[*EncryptionAlgorithm]{
-		OutputState: in.ToEncryptionAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity type
 type MsiIdentityType string
 
@@ -533,12 +520,6 @@ func (in *msiIdentityTypePtr) ToMsiIdentityTypePtrOutput() MsiIdentityTypePtrOut
 
 func (in *msiIdentityTypePtr) ToMsiIdentityTypePtrOutputWithContext(ctx context.Context) MsiIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MsiIdentityTypePtrOutput)
-}
-
-func (in *msiIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MsiIdentityType] {
-	return pulumix.Output[*MsiIdentityType]{
-		OutputState: in.ToMsiIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKU name.
@@ -753,12 +734,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU tier. This is based on the SKU name.
 type SkuTier string
 
@@ -921,12 +896,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the user.
@@ -1095,12 +1064,6 @@ func (in *userTypePtr) ToUserTypePtrOutput() UserTypePtrOutput {
 
 func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserTypePtrOutput)
-}
-
-func (in *userTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserType] {
-	return pulumix.Output[*UserType]{
-		OutputState: in.ToUserTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

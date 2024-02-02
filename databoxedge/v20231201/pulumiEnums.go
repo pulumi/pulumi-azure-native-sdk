@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of storage accessed on the storage account.
@@ -175,12 +174,6 @@ func (in *accountTypePtr) ToAccountTypePtrOutput() AccountTypePtrOutput {
 
 func (in *accountTypePtr) ToAccountTypePtrOutputWithContext(ctx context.Context) AccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccountTypePtrOutput)
-}
-
-func (in *accountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccountType] {
-	return pulumix.Output[*AccountType]{
-		OutputState: in.ToAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Addon type.
@@ -359,12 +352,6 @@ func (in *azureContainerDataFormatPtr) ToAzureContainerDataFormatPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(AzureContainerDataFormatPtrOutput)
 }
 
-func (in *azureContainerDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureContainerDataFormat] {
-	return pulumix.Output[*AzureContainerDataFormat]{
-		OutputState: in.ToAzureContainerDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of access to be allowed for the client.
 type ClientPermissionType string
 
@@ -533,12 +520,6 @@ func (in *clientPermissionTypePtr) ToClientPermissionTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ClientPermissionTypePtrOutput)
 }
 
-func (in *clientPermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClientPermissionType] {
-	return pulumix.Output[*ClientPermissionType]{
-		OutputState: in.ToClientPermissionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data policy of the storage Account.
 type DataPolicy string
 
@@ -705,12 +686,6 @@ func (in *dataPolicyPtr) ToDataPolicyPtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DataPolicyPtrOutput)
 }
 
-func (in *dataPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*DataPolicy] {
-	return pulumix.Output[*DataPolicy]{
-		OutputState: in.ToDataPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataResidencyType enum
 type DataResidencyType string
 
@@ -875,12 +850,6 @@ func (in *dataResidencyTypePtr) ToDataResidencyTypePtrOutput() DataResidencyType
 
 func (in *dataResidencyTypePtr) ToDataResidencyTypePtrOutputWithContext(ctx context.Context) DataResidencyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataResidencyTypePtrOutput)
-}
-
-func (in *dataResidencyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataResidencyType] {
-	return pulumix.Output[*DataResidencyType]{
-		OutputState: in.ToDataResidencyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DayOfWeek string
@@ -1058,12 +1027,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The algorithm used to encrypt "Value".
 type EncryptionAlgorithm string
 
@@ -1232,12 +1195,6 @@ func (in *encryptionAlgorithmPtr) ToEncryptionAlgorithmPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionAlgorithmPtrOutput)
 }
 
-func (in *encryptionAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionAlgorithm] {
-	return pulumix.Output[*EncryptionAlgorithm]{
-		OutputState: in.ToEncryptionAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Current monitoring status of the share.
 type MonitoringStatus string
 
@@ -1402,12 +1359,6 @@ func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutput() MonitoringStatusPtr
 
 func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutputWithContext(ctx context.Context) MonitoringStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringStatusPtrOutput)
-}
-
-func (in *monitoringStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringStatus] {
-	return pulumix.Output[*MonitoringStatus]{
-		OutputState: in.ToMonitoringStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Identity type
@@ -1578,12 +1529,6 @@ func (in *msiIdentityTypePtr) ToMsiIdentityTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(MsiIdentityTypePtrOutput)
 }
 
-func (in *msiIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MsiIdentityType] {
-	return pulumix.Output[*MsiIdentityType]{
-		OutputState: in.ToMsiIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Host OS supported by the Kubernetes role.
 type PlatformType string
 
@@ -1750,12 +1695,6 @@ func (in *platformTypePtr) ToPlatformTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PlatformTypePtrOutput)
 }
 
-func (in *platformTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PlatformType] {
-	return pulumix.Output[*PlatformType]{
-		OutputState: in.ToPlatformTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Role status.
 type RoleStatus string
 
@@ -1920,12 +1859,6 @@ func (in *roleStatusPtr) ToRoleStatusPtrOutput() RoleStatusPtrOutput {
 
 func (in *roleStatusPtr) ToRoleStatusPtrOutputWithContext(ctx context.Context) RoleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoleStatusPtrOutput)
-}
-
-func (in *roleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*RoleStatus] {
-	return pulumix.Output[*RoleStatus]{
-		OutputState: in.ToRoleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Role type.
@@ -2107,12 +2040,6 @@ func (in *sslstatusPtr) ToSSLStatusPtrOutputWithContext(ctx context.Context) SSL
 	return pulumi.ToOutputWithContext(ctx, in).(SSLStatusPtrOutput)
 }
 
-func (in *sslstatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SSLStatus] {
-	return pulumix.Output[*SSLStatus]{
-		OutputState: in.ToSSLStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access protocol to be used by the share.
 type ShareAccessProtocol string
 
@@ -2277,12 +2204,6 @@ func (in *shareAccessProtocolPtr) ToShareAccessProtocolPtrOutput() ShareAccessPr
 
 func (in *shareAccessProtocolPtr) ToShareAccessProtocolPtrOutputWithContext(ctx context.Context) ShareAccessProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShareAccessProtocolPtrOutput)
-}
-
-func (in *shareAccessProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ShareAccessProtocol] {
-	return pulumix.Output[*ShareAccessProtocol]{
-		OutputState: in.ToShareAccessProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of access to be allowed for the user.
@@ -2451,12 +2372,6 @@ func (in *shareAccessTypePtr) ToShareAccessTypePtrOutput() ShareAccessTypePtrOut
 
 func (in *shareAccessTypePtr) ToShareAccessTypePtrOutputWithContext(ctx context.Context) ShareAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShareAccessTypePtrOutput)
-}
-
-func (in *shareAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ShareAccessType] {
-	return pulumix.Output[*ShareAccessType]{
-		OutputState: in.ToShareAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Current status of the share.
@@ -2631,12 +2546,6 @@ func (in *shareStatusPtr) ToShareStatusPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ShareStatusPtrOutput)
 }
 
-func (in *shareStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ShareStatus] {
-	return pulumix.Output[*ShareStatus]{
-		OutputState: in.ToShareStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ShipmentType of the order
 type ShipmentType string
 
@@ -2803,12 +2712,6 @@ func (in *shipmentTypePtr) ToShipmentTypePtrOutput() ShipmentTypePtrOutput {
 
 func (in *shipmentTypePtr) ToShipmentTypePtrOutputWithContext(ctx context.Context) ShipmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShipmentTypePtrOutput)
-}
-
-func (in *shipmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ShipmentType] {
-	return pulumix.Output[*ShipmentType]{
-		OutputState: in.ToShipmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKU name.
@@ -3031,12 +2934,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU tier. This is based on the SKU name.
 type SkuTier string
 
@@ -3199,12 +3096,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Current status of the storage account
@@ -3377,12 +3268,6 @@ func (in *storageAccountStatusPtr) ToStorageAccountStatusPtrOutput() StorageAcco
 
 func (in *storageAccountStatusPtr) ToStorageAccountStatusPtrOutputWithContext(ctx context.Context) StorageAccountStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountStatusPtrOutput)
-}
-
-func (in *storageAccountStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountStatus] {
-	return pulumix.Output[*StorageAccountStatus]{
-		OutputState: in.ToStorageAccountStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Trigger Kind.
@@ -3559,12 +3444,6 @@ func (in *userTypePtr) ToUserTypePtrOutput() UserTypePtrOutput {
 
 func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserTypePtrOutput)
-}
-
-func (in *userTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UserType] {
-	return pulumix.Output[*UserType]{
-		OutputState: in.ToUserTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

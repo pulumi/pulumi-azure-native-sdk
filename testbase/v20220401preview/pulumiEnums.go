@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of the command.
@@ -183,12 +182,6 @@ func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
 }
 
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of command content.
 type ContentType string
 
@@ -357,12 +350,6 @@ func (in *contentTypePtr) ToContentTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ContentTypePtrOutput)
 }
 
-func (in *contentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentType] {
-	return pulumix.Output[*ContentType]{
-		OutputState: in.ToContentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the test.
 type TestType string
 
@@ -529,12 +516,6 @@ func (in *testTypePtr) ToTestTypePtrOutputWithContext(ctx context.Context) TestT
 	return pulumi.ToOutputWithContext(ctx, in).(TestTypePtrOutput)
 }
 
-func (in *testTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TestType] {
-	return pulumix.Output[*TestType]{
-		OutputState: in.ToTestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of this particular SKU.
 type Tier string
 
@@ -697,12 +678,6 @@ func (in *tierPtr) ToTierPtrOutput() TierPtrOutput {
 
 func (in *tierPtr) ToTierPtrOutputWithContext(ctx context.Context) TierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TierPtrOutput)
-}
-
-func (in *tierPtr) ToOutput(ctx context.Context) pulumix.Output[*Tier] {
-	return pulumix.Output[*Tier]{
-		OutputState: in.ToTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

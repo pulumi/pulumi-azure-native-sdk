@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Connector billing model
@@ -179,12 +178,6 @@ func (in *connectorBillingModelPtr) ToConnectorBillingModelPtrOutput() Connector
 
 func (in *connectorBillingModelPtr) ToConnectorBillingModelPtrOutputWithContext(ctx context.Context) ConnectorBillingModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectorBillingModelPtrOutput)
-}
-
-func (in *connectorBillingModelPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectorBillingModel] {
-	return pulumix.Output[*ConnectorBillingModel]{
-		OutputState: in.ToConnectorBillingModelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

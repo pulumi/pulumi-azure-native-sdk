@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The cloud connector type.
@@ -173,12 +172,6 @@ func (in *cloudTypePtr) ToCloudTypePtrOutput() CloudTypePtrOutput {
 
 func (in *cloudTypePtr) ToCloudTypePtrOutputWithContext(ctx context.Context) CloudTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudTypePtrOutput)
-}
-
-func (in *cloudTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudType] {
-	return pulumix.Output[*CloudType]{
-		OutputState: in.ToCloudTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

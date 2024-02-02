@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Elliptical curve algorithm to be used: ES256, ES384 or ES512.
@@ -182,12 +181,6 @@ func (in *accessPolicyEccAlgoPtr) ToAccessPolicyEccAlgoPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPolicyEccAlgoPtrOutput)
 }
 
-func (in *accessPolicyEccAlgoPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyEccAlgo] {
-	return pulumix.Output[*AccessPolicyEccAlgo]{
-		OutputState: in.ToAccessPolicyEccAlgoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the access level granted by this policy.
 type AccessPolicyRole string
 
@@ -351,12 +344,6 @@ func (in *accessPolicyRolePtr) ToAccessPolicyRolePtrOutput() AccessPolicyRolePtr
 
 func (in *accessPolicyRolePtr) ToAccessPolicyRolePtrOutputWithContext(ctx context.Context) AccessPolicyRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPolicyRolePtrOutput)
-}
-
-func (in *accessPolicyRolePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyRole] {
-	return pulumix.Output[*AccessPolicyRole]{
-		OutputState: in.ToAccessPolicyRolePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RSA algorithm to be used: RS256, RS384 or RS512.
@@ -530,12 +517,6 @@ func (in *accessPolicyRsaAlgoPtr) ToAccessPolicyRsaAlgoPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPolicyRsaAlgoPtrOutput)
 }
 
-func (in *accessPolicyRsaAlgoPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyRsaAlgo] {
-	return pulumix.Output[*AccessPolicyRsaAlgo]{
-		OutputState: in.ToAccessPolicyRsaAlgoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of key used to encrypt the Account Key.
 type AccountEncryptionKeyType string
 
@@ -702,12 +683,6 @@ func (in *accountEncryptionKeyTypePtr) ToAccountEncryptionKeyTypePtrOutput() Acc
 
 func (in *accountEncryptionKeyTypePtr) ToAccountEncryptionKeyTypePtrOutputWithContext(ctx context.Context) AccountEncryptionKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccountEncryptionKeyTypePtrOutput)
-}
-
-func (in *accountEncryptionKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccountEncryptionKeyType] {
-	return pulumix.Output[*AccountEncryptionKeyType]{
-		OutputState: in.ToAccountEncryptionKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the built-in encoding preset.
@@ -884,12 +859,6 @@ func (in *encoderSystemPresetTypePtr) ToEncoderSystemPresetTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(EncoderSystemPresetTypePtrOutput)
 }
 
-func (in *encoderSystemPresetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncoderSystemPresetType] {
-	return pulumix.Output[*EncoderSystemPresetType]{
-		OutputState: in.ToEncoderSystemPresetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Topology kind.
 type Kind string
 
@@ -1056,12 +1025,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the parameter.
@@ -1241,12 +1204,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -1413,12 +1370,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 
 func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether or not public network access is allowed for resources under the Video Analyzer account.
@@ -1589,12 +1540,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network transport utilized by the RTSP and RTP exchange: TCP or HTTP. When using TCP, the RTP packets are interleaved on the TCP RTSP connection. When using HTTP, the RTSP messages are exchanged through long lived HTTP connections, and the RTP packages are interleaved in the HTTP connections alongside the RTSP messages.
 type RtspTransport string
 
@@ -1763,12 +1708,6 @@ func (in *rtspTransportPtr) ToRtspTransportPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(RtspTransportPtrOutput)
 }
 
-func (in *rtspTransportPtr) ToOutput(ctx context.Context) pulumix.Output[*RtspTransport] {
-	return pulumix.Output[*RtspTransport]{
-		OutputState: in.ToRtspTransportPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU name.
 type SkuName string
 
@@ -1935,12 +1874,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the video scaling mode to be applied. Default mode is 'Pad'. If the mode is 'Pad' or 'Stretch' then both width and height must be specified. Else if the mode is 'PreserveAspectRatio' then only one of width or height need be provided.
@@ -2112,12 +2045,6 @@ func (in *videoScaleModePtr) ToVideoScaleModePtrOutput() VideoScaleModePtrOutput
 
 func (in *videoScaleModePtr) ToVideoScaleModePtrOutputWithContext(ctx context.Context) VideoScaleModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VideoScaleModePtrOutput)
-}
-
-func (in *videoScaleModePtr) ToOutput(ctx context.Context) pulumix.Output[*VideoScaleMode] {
-	return pulumix.Output[*VideoScaleMode]{
-		OutputState: in.ToVideoScaleModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

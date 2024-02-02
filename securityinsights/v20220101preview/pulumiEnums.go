@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The entity query kind
@@ -180,12 +179,6 @@ func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutput() EntityTimelineK
 
 func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutputWithContext(ctx context.Context) EntityTimelineKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTimelineKindPtrOutput)
-}
-
-func (in *entityTimelineKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTimelineKind] {
-	return pulumix.Output[*EntityTimelineKind]{
-		OutputState: in.ToEntityTimelineKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the setting
@@ -362,12 +355,6 @@ func (in *sourceTypePtr) ToSourceTypePtrOutput() SourceTypePtrOutput {
 
 func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
-}
-
-func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

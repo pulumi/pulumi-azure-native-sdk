@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action object.
@@ -175,12 +174,6 @@ func (in *accessControlEntryActionPtr) ToAccessControlEntryActionPtrOutput() Acc
 
 func (in *accessControlEntryActionPtr) ToAccessControlEntryActionPtrOutputWithContext(ctx context.Context) AccessControlEntryActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessControlEntryActionPtrOutput)
-}
-
-func (in *accessControlEntryActionPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessControlEntryAction] {
-	return pulumix.Output[*AccessControlEntryAction]{
-		OutputState: in.ToAccessControlEntryActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Shared or dedicated app hosting.
@@ -351,12 +344,6 @@ func (in *computeModeOptionsPtr) ToComputeModeOptionsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeModeOptionsPtrOutput)
 }
 
-func (in *computeModeOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeModeOptions] {
-	return pulumix.Output[*ComputeModeOptions]{
-		OutputState: in.ToComputeModeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
 type InternalLoadBalancingMode string
 
@@ -523,12 +510,6 @@ func (in *internalLoadBalancingModePtr) ToInternalLoadBalancingModePtrOutput() I
 
 func (in *internalLoadBalancingModePtr) ToInternalLoadBalancingModePtrOutputWithContext(ctx context.Context) InternalLoadBalancingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InternalLoadBalancingModePtrOutput)
-}
-
-func (in *internalLoadBalancingModePtr) ToOutput(ctx context.Context) pulumix.Output[*InternalLoadBalancingMode] {
-	return pulumix.Output[*InternalLoadBalancingMode]{
-		OutputState: in.ToInternalLoadBalancingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

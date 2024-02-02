@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Plan accessibility
@@ -179,12 +178,6 @@ func (in *accessibilityPtr) ToAccessibilityPtrOutput() AccessibilityPtrOutput {
 
 func (in *accessibilityPtr) ToAccessibilityPtrOutputWithContext(ctx context.Context) AccessibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessibilityPtrOutput)
-}
-
-func (in *accessibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*Accessibility] {
-	return pulumix.Output[*Accessibility]{
-		OutputState: in.ToAccessibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

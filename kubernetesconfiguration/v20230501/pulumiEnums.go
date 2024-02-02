@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The identity type.
@@ -175,12 +174,6 @@ func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutput() AKSIdentityTypePtrOut
 
 func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutputWithContext(ctx context.Context) AKSIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AKSIdentityTypePtrOutput)
-}
-
-func (in *aksidentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AKSIdentityType] {
-	return pulumix.Output[*AKSIdentityType]{
-		OutputState: in.ToAKSIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Level of the status.
@@ -351,12 +344,6 @@ func (in *levelTypePtr) ToLevelTypePtrOutputWithContext(ctx context.Context) Lev
 	return pulumi.ToOutputWithContext(ctx, in).(LevelTypePtrOutput)
 }
 
-func (in *levelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LevelType] {
-	return pulumix.Output[*LevelType]{
-		OutputState: in.ToLevelTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scope at which the operator will be installed.
 type OperatorScopeType string
 
@@ -523,12 +510,6 @@ func (in *operatorScopeTypePtr) ToOperatorScopeTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorScopeTypePtrOutput)
 }
 
-func (in *operatorScopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatorScopeType] {
-	return pulumix.Output[*OperatorScopeType]{
-		OutputState: in.ToOperatorScopeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the operator
 type OperatorType string
 
@@ -693,12 +674,6 @@ func (in *operatorTypePtr) ToOperatorTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorTypePtrOutput)
 }
 
-func (in *operatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatorType] {
-	return pulumix.Output[*OperatorType]{
-		OutputState: in.ToOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -861,12 +836,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Scope at which the operator will be installed.
@@ -1035,12 +1004,6 @@ func (in *scopeTypePtr) ToScopeTypePtrOutputWithContext(ctx context.Context) Sco
 	return pulumi.ToOutputWithContext(ctx, in).(ScopeTypePtrOutput)
 }
 
-func (in *scopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScopeType] {
-	return pulumix.Output[*ScopeType]{
-		OutputState: in.ToScopeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source Kind to pull the configuration data from.
 type SourceKindType string
 
@@ -1207,12 +1170,6 @@ func (in *sourceKindTypePtr) ToSourceKindTypePtrOutput() SourceKindTypePtrOutput
 
 func (in *sourceKindTypePtr) ToSourceKindTypePtrOutputWithContext(ctx context.Context) SourceKindTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceKindTypePtrOutput)
-}
-
-func (in *sourceKindTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceKindType] {
-	return pulumix.Output[*SourceKindType]{
-		OutputState: in.ToSourceKindTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

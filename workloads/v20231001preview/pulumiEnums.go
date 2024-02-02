@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of backup, VM, SQL or HANA.
@@ -202,12 +201,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
-}
-
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DayOfWeekArrayInput is an input type that accepts DayOfWeekArray and DayOfWeekArrayOutput values.
@@ -431,12 +424,6 @@ func (in *diskSkuNamePtr) ToDiskSkuNamePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(DiskSkuNamePtrOutput)
 }
 
-func (in *diskSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskSkuName] {
-	return pulumix.Output[*DiskSkuName]{
-		OutputState: in.ToDiskSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy type.
 type IAASVMPolicyType string
 
@@ -605,12 +592,6 @@ func (in *iaasvmpolicyTypePtr) ToIAASVMPolicyTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IAASVMPolicyTypePtrOutput)
 }
 
-func (in *iaasvmpolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IAASVMPolicyType] {
-	return pulumix.Output[*IAASVMPolicyType]{
-		OutputState: in.ToIAASVMPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228
 type ManagedResourcesNetworkAccessType string
 
@@ -775,12 +756,6 @@ func (in *managedResourcesNetworkAccessTypePtr) ToManagedResourcesNetworkAccessT
 
 func (in *managedResourcesNetworkAccessTypePtr) ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedResourcesNetworkAccessTypePtrOutput)
-}
-
-func (in *managedResourcesNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedResourcesNetworkAccessType] {
-	return pulumix.Output[*ManagedResourcesNetworkAccessType]{
-		OutputState: in.ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The managed service identity for all identities.
@@ -949,12 +924,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type MonthOfYear string
@@ -1142,12 +1111,6 @@ func (in *monthOfYearPtr) ToMonthOfYearPtrOutput() MonthOfYearPtrOutput {
 
 func (in *monthOfYearPtr) ToMonthOfYearPtrOutputWithContext(ctx context.Context) MonthOfYearPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonthOfYearPtrOutput)
-}
-
-func (in *monthOfYearPtr) ToOutput(ctx context.Context) pulumix.Output[*MonthOfYear] {
-	return pulumix.Output[*MonthOfYear]{
-		OutputState: in.ToMonthOfYearPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonthOfYearArrayInput is an input type that accepts MonthOfYearArray and MonthOfYearArrayOutput values.
@@ -1388,12 +1351,6 @@ func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyTypePtrOutput)
 }
 
-func (in *policyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyType] {
-	return pulumix.Output[*PolicyType]{
-		OutputState: in.ToPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Retention duration type: days/weeks/months/years
 // Used only if TieringMode is set to TierAfter
 type RetentionDurationType string
@@ -1567,12 +1524,6 @@ func (in *retentionDurationTypePtr) ToRetentionDurationTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RetentionDurationTypePtrOutput)
 }
 
-func (in *retentionDurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RetentionDurationType] {
-	return pulumix.Output[*RetentionDurationType]{
-		OutputState: in.ToRetentionDurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Retention schedule format for yearly retention policy.
 type RetentionScheduleFormat string
 
@@ -1741,12 +1692,6 @@ func (in *retentionScheduleFormatPtr) ToRetentionScheduleFormatPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(RetentionScheduleFormatPtrOutput)
 }
 
-func (in *retentionScheduleFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*RetentionScheduleFormat] {
-	return pulumix.Output[*RetentionScheduleFormat]{
-		OutputState: in.ToRetentionScheduleFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
 type RoutingPreference string
 
@@ -1911,12 +1856,6 @@ func (in *routingPreferencePtr) ToRoutingPreferencePtrOutput() RoutingPreference
 
 func (in *routingPreferencePtr) ToRoutingPreferencePtrOutputWithContext(ctx context.Context) RoutingPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingPreferencePtrOutput)
-}
-
-func (in *routingPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutingPreference] {
-	return pulumix.Output[*RoutingPreference]{
-		OutputState: in.ToRoutingPreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The configuration Type.
@@ -2092,12 +2031,6 @@ func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseScaleMethodPtrOutput)
 }
 
-func (in *sapdatabaseScaleMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseScaleMethod] {
-	return pulumix.Output[*SAPDatabaseScaleMethod]{
-		OutputState: in.ToSAPDatabaseScaleMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The database type. Eg: HANA, DB2, etc
 type SAPDatabaseType string
 
@@ -2262,12 +2195,6 @@ func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutput() SAPDatabaseTypePtrOut
 
 func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutputWithContext(ctx context.Context) SAPDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseTypePtrOutput)
-}
-
-func (in *sapdatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseType] {
-	return pulumix.Output[*SAPDatabaseType]{
-		OutputState: in.ToSAPDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The deployment type. Eg: SingleServer/ThreeTier
@@ -2436,12 +2363,6 @@ func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDeploymentTypePtrOutput)
 }
 
-func (in *sapdeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDeploymentType] {
-	return pulumix.Output[*SAPDeploymentType]{
-		OutputState: in.ToSAPDeploymentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the environment type - Production/Non Production.
 type SAPEnvironmentType string
 
@@ -2606,12 +2527,6 @@ func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutput() SAPEnvironmentT
 
 func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutputWithContext(ctx context.Context) SAPEnvironmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPEnvironmentTypePtrOutput)
-}
-
-func (in *sapenvironmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPEnvironmentType] {
-	return pulumix.Output[*SAPEnvironmentType]{
-		OutputState: in.ToSAPEnvironmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The high availability type.
@@ -2780,12 +2695,6 @@ func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SAPHighAvailabilityTypePtrOutput)
 }
 
-func (in *saphighAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPHighAvailabilityType] {
-	return pulumix.Output[*SAPHighAvailabilityType]{
-		OutputState: in.ToSAPHighAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the SAP Product type.
 type SAPProductType string
 
@@ -2952,12 +2861,6 @@ func (in *sapproductTypePtr) ToSAPProductTypePtrOutput() SAPProductTypePtrOutput
 
 func (in *sapproductTypePtr) ToSAPProductTypePtrOutputWithContext(ctx context.Context) SAPProductTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPProductTypePtrOutput)
-}
-
-func (in *sapproductTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPProductType] {
-	return pulumix.Output[*SAPProductType]{
-		OutputState: in.ToSAPProductTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SAP software installation Type.
@@ -3139,12 +3042,6 @@ func (in *scheduleRunTypePtr) ToScheduleRunTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleRunTypePtrOutput)
 }
 
-func (in *scheduleRunTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleRunType] {
-	return pulumix.Output[*ScheduleRunType]{
-		OutputState: in.ToScheduleRunTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
 type SslCryptoProvider string
 
@@ -3309,12 +3206,6 @@ func (in *sslCryptoProviderPtr) ToSslCryptoProviderPtrOutput() SslCryptoProvider
 
 func (in *sslCryptoProviderPtr) ToSslCryptoProviderPtrOutputWithContext(ctx context.Context) SslCryptoProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslCryptoProviderPtrOutput)
-}
-
-func (in *sslCryptoProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*SslCryptoProvider] {
-	return pulumix.Output[*SslCryptoProvider]{
-		OutputState: in.ToSslCryptoProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets certificate preference if secure communication is enabled.
@@ -3483,12 +3374,6 @@ func (in *sslPreferencePtr) ToSslPreferencePtrOutput() SslPreferencePtrOutput {
 
 func (in *sslPreferencePtr) ToSslPreferencePtrOutputWithContext(ctx context.Context) SslPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslPreferencePtrOutput)
-}
-
-func (in *sslPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*SslPreference] {
-	return pulumix.Output[*SslPreference]{
-		OutputState: in.ToSslPreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tiering Mode to control automatic tiering of recovery points. Supported values are:
@@ -3662,12 +3547,6 @@ func (in *tieringModePtr) ToTieringModePtrOutput() TieringModePtrOutput {
 
 func (in *tieringModePtr) ToTieringModePtrOutputWithContext(ctx context.Context) TieringModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TieringModePtrOutput)
-}
-
-func (in *tieringModePtr) ToOutput(ctx context.Context) pulumix.Output[*TieringMode] {
-	return pulumix.Output[*TieringMode]{
-		OutputState: in.ToTieringModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The vault type, whether it is existing or has to be created.
@@ -3849,12 +3728,6 @@ func (in *weekOfMonthPtr) ToWeekOfMonthPtrOutput() WeekOfMonthPtrOutput {
 
 func (in *weekOfMonthPtr) ToWeekOfMonthPtrOutputWithContext(ctx context.Context) WeekOfMonthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekOfMonthPtrOutput)
-}
-
-func (in *weekOfMonthPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekOfMonth] {
-	return pulumix.Output[*WeekOfMonth]{
-		OutputState: in.ToWeekOfMonthPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WeekOfMonthArrayInput is an input type that accepts WeekOfMonthArray and WeekOfMonthArrayOutput values.
@@ -4094,12 +3967,6 @@ func (in *workloadTypePtr) ToWorkloadTypePtrOutput() WorkloadTypePtrOutput {
 
 func (in *workloadTypePtr) ToWorkloadTypePtrOutputWithContext(ctx context.Context) WorkloadTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadTypePtrOutput)
-}
-
-func (in *workloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadType] {
-	return pulumix.Output[*WorkloadType]{
-		OutputState: in.ToWorkloadTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

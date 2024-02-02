@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
@@ -175,12 +174,6 @@ func (in *encryptionKeySourcePtr) ToEncryptionKeySourcePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeySourcePtrOutput)
 }
 
-func (in *encryptionKeySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySource] {
-	return pulumix.Output[*EncryptionKeySource]{
-		OutputState: in.ToEncryptionKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
 type KeySource string
 
@@ -345,12 +338,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
-}
-
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -523,12 +510,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of a private endpoint connection
 type PrivateLinkServiceConnectionStatus string
 
@@ -699,12 +680,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
 type PublicNetworkAccess string
 
@@ -869,12 +844,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
@@ -1043,12 +1012,6 @@ func (in *requiredNsgRulesPtr) ToRequiredNsgRulesPtrOutput() RequiredNsgRulesPtr
 
 func (in *requiredNsgRulesPtr) ToRequiredNsgRulesPtrOutputWithContext(ctx context.Context) RequiredNsgRulesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequiredNsgRulesPtrOutput)
-}
-
-func (in *requiredNsgRulesPtr) ToOutput(ctx context.Context) pulumix.Output[*RequiredNsgRules] {
-	return pulumix.Output[*RequiredNsgRules]{
-		OutputState: in.ToRequiredNsgRulesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The multi-factor authorization provider to be used for just-in-time access requests.
@@ -175,12 +174,6 @@ func (in *multiFactorAuthProviderPtr) ToMultiFactorAuthProviderPtrOutput() Multi
 
 func (in *multiFactorAuthProviderPtr) ToMultiFactorAuthProviderPtrOutputWithContext(ctx context.Context) MultiFactorAuthProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MultiFactorAuthProviderPtrOutput)
-}
-
-func (in *multiFactorAuthProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*MultiFactorAuthProvider] {
-	return pulumix.Output[*MultiFactorAuthProvider]{
-		OutputState: in.ToMultiFactorAuthProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

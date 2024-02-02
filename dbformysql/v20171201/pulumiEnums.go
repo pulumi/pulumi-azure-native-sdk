@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of administrator.
@@ -173,12 +172,6 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutput() AdministratorType
 
 func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
-}
-
-func (in *administratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdministratorType] {
-	return pulumix.Output[*AdministratorType]{
-		OutputState: in.ToAdministratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode to create a new server.
@@ -357,12 +350,6 @@ func (in *geoRedundantBackupPtr) ToGeoRedundantBackupPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupPtrOutput)
 }
 
-func (in *geoRedundantBackupPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoRedundantBackup] {
-	return pulumix.Output[*GeoRedundantBackup]{
-		OutputState: in.ToGeoRedundantBackupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 type IdentityType string
 
@@ -525,12 +512,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status showing whether the server enabled infrastructure encryption.
@@ -699,12 +680,6 @@ func (in *infrastructureEncryptionPtr) ToInfrastructureEncryptionPtrOutput() Inf
 
 func (in *infrastructureEncryptionPtr) ToInfrastructureEncryptionPtrOutputWithContext(ctx context.Context) InfrastructureEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionPtrOutput)
-}
-
-func (in *infrastructureEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureEncryption] {
-	return pulumix.Output[*InfrastructureEncryption]{
-		OutputState: in.ToInfrastructureEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enforce a minimal Tls version for the server.
@@ -877,12 +852,6 @@ func (in *minimalTlsVersionEnumPtr) ToMinimalTlsVersionEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MinimalTlsVersionEnumPtrOutput)
 }
 
-func (in *minimalTlsVersionEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MinimalTlsVersionEnum] {
-	return pulumix.Output[*MinimalTlsVersionEnum]{
-		OutputState: in.ToMinimalTlsVersionEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 type PublicNetworkAccessEnum string
 
@@ -1047,12 +1016,6 @@ func (in *publicNetworkAccessEnumPtr) ToPublicNetworkAccessEnumPtrOutput() Publi
 
 func (in *publicNetworkAccessEnumPtr) ToPublicNetworkAccessEnumPtrOutputWithContext(ctx context.Context) PublicNetworkAccessEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessEnumPtrOutput)
-}
-
-func (in *publicNetworkAccessEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessEnum] {
-	return pulumix.Output[*PublicNetworkAccessEnum]{
-		OutputState: in.ToPublicNetworkAccessEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Server version.
@@ -1223,12 +1186,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
 }
 
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the particular SKU, e.g. Basic.
 type SkuTier string
 
@@ -1397,12 +1354,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable ssl enforcement or not when connect to server.
 type SslEnforcementEnum string
 
@@ -1569,12 +1520,6 @@ func (in *sslEnforcementEnumPtr) ToSslEnforcementEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SslEnforcementEnumPtrOutput)
 }
 
-func (in *sslEnforcementEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SslEnforcementEnum] {
-	return pulumix.Output[*SslEnforcementEnum]{
-		OutputState: in.ToSslEnforcementEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable Storage Auto Grow.
 type StorageAutogrow string
 
@@ -1739,12 +1684,6 @@ func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutput() StorageAutogrowPtrOut
 
 func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutputWithContext(ctx context.Context) StorageAutogrowPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAutogrowPtrOutput)
-}
-
-func (in *storageAutogrowPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAutogrow] {
-	return pulumix.Output[*StorageAutogrow]{
-		OutputState: in.ToStorageAutogrowPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

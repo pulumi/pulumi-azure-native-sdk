@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cookie based affinity.
@@ -177,12 +176,6 @@ func (in *applicationGatewayCookieBasedAffinityPtr) ToApplicationGatewayCookieBa
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayCookieBasedAffinityPtrOutput)
 }
 
-func (in *applicationGatewayCookieBasedAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayCookieBasedAffinity] {
-	return pulumix.Output[*ApplicationGatewayCookieBasedAffinity]{
-		OutputState: in.ToApplicationGatewayCookieBasedAffinityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status code of the application gateway customer error.
 type ApplicationGatewayCustomErrorStatusCode string
 
@@ -347,12 +340,6 @@ func (in *applicationGatewayCustomErrorStatusCodePtr) ToApplicationGatewayCustom
 
 func (in *applicationGatewayCustomErrorStatusCodePtr) ToApplicationGatewayCustomErrorStatusCodePtrOutputWithContext(ctx context.Context) ApplicationGatewayCustomErrorStatusCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayCustomErrorStatusCodePtrOutput)
-}
-
-func (in *applicationGatewayCustomErrorStatusCodePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayCustomErrorStatusCode] {
-	return pulumix.Output[*ApplicationGatewayCustomErrorStatusCode]{
-		OutputState: in.ToApplicationGatewayCustomErrorStatusCodePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Web application firewall mode.
@@ -521,12 +508,6 @@ func (in *applicationGatewayFirewallModePtr) ToApplicationGatewayFirewallModePtr
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayFirewallModePtrOutput)
 }
 
-func (in *applicationGatewayFirewallModePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayFirewallMode] {
-	return pulumix.Output[*ApplicationGatewayFirewallMode]{
-		OutputState: in.ToApplicationGatewayFirewallModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol used for the probe.
 type ApplicationGatewayProtocol string
 
@@ -691,12 +672,6 @@ func (in *applicationGatewayProtocolPtr) ToApplicationGatewayProtocolPtrOutput()
 
 func (in *applicationGatewayProtocolPtr) ToApplicationGatewayProtocolPtrOutputWithContext(ctx context.Context) ApplicationGatewayProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayProtocolPtrOutput)
-}
-
-func (in *applicationGatewayProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayProtocol] {
-	return pulumix.Output[*ApplicationGatewayProtocol]{
-		OutputState: in.ToApplicationGatewayProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HTTP redirection type.
@@ -869,12 +844,6 @@ func (in *applicationGatewayRedirectTypePtr) ToApplicationGatewayRedirectTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayRedirectTypePtrOutput)
 }
 
-func (in *applicationGatewayRedirectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayRedirectType] {
-	return pulumix.Output[*ApplicationGatewayRedirectType]{
-		OutputState: in.ToApplicationGatewayRedirectTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rule type.
 type ApplicationGatewayRequestRoutingRuleType string
 
@@ -1039,12 +1008,6 @@ func (in *applicationGatewayRequestRoutingRuleTypePtr) ToApplicationGatewayReque
 
 func (in *applicationGatewayRequestRoutingRuleTypePtr) ToApplicationGatewayRequestRoutingRuleTypePtrOutputWithContext(ctx context.Context) ApplicationGatewayRequestRoutingRuleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayRequestRoutingRuleTypePtrOutput)
-}
-
-func (in *applicationGatewayRequestRoutingRuleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayRequestRoutingRuleType] {
-	return pulumix.Output[*ApplicationGatewayRequestRoutingRuleType]{
-		OutputState: in.ToApplicationGatewayRequestRoutingRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of an application gateway SKU.
@@ -1221,12 +1184,6 @@ func (in *applicationGatewaySkuNamePtr) ToApplicationGatewaySkuNamePtrOutput() A
 
 func (in *applicationGatewaySkuNamePtr) ToApplicationGatewaySkuNamePtrOutputWithContext(ctx context.Context) ApplicationGatewaySkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewaySkuNamePtrOutput)
-}
-
-func (in *applicationGatewaySkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewaySkuName] {
-	return pulumix.Output[*ApplicationGatewaySkuName]{
-		OutputState: in.ToApplicationGatewaySkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Ssl cipher suites enums.
@@ -1447,12 +1404,6 @@ func (in *applicationGatewaySslCipherSuitePtr) ToApplicationGatewaySslCipherSuit
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewaySslCipherSuitePtrOutput)
 }
 
-func (in *applicationGatewaySslCipherSuitePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewaySslCipherSuite] {
-	return pulumix.Output[*ApplicationGatewaySslCipherSuite]{
-		OutputState: in.ToApplicationGatewaySslCipherSuitePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of Ssl predefined policy.
 type ApplicationGatewaySslPolicyName string
 
@@ -1621,12 +1572,6 @@ func (in *applicationGatewaySslPolicyNamePtr) ToApplicationGatewaySslPolicyNameP
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewaySslPolicyNamePtrOutput)
 }
 
-func (in *applicationGatewaySslPolicyNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewaySslPolicyName] {
-	return pulumix.Output[*ApplicationGatewaySslPolicyName]{
-		OutputState: in.ToApplicationGatewaySslPolicyNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of Ssl Policy.
 type ApplicationGatewaySslPolicyType string
 
@@ -1791,12 +1736,6 @@ func (in *applicationGatewaySslPolicyTypePtr) ToApplicationGatewaySslPolicyTypeP
 
 func (in *applicationGatewaySslPolicyTypePtr) ToApplicationGatewaySslPolicyTypePtrOutputWithContext(ctx context.Context) ApplicationGatewaySslPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewaySslPolicyTypePtrOutput)
-}
-
-func (in *applicationGatewaySslPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewaySslPolicyType] {
-	return pulumix.Output[*ApplicationGatewaySslPolicyType]{
-		OutputState: in.ToApplicationGatewaySslPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Minimum version of Ssl protocol to be supported on application gateway.
@@ -1965,12 +1904,6 @@ func (in *applicationGatewaySslProtocolPtr) ToApplicationGatewaySslProtocolPtrOu
 
 func (in *applicationGatewaySslProtocolPtr) ToApplicationGatewaySslProtocolPtrOutputWithContext(ctx context.Context) ApplicationGatewaySslProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewaySslProtocolPtrOutput)
-}
-
-func (in *applicationGatewaySslProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewaySslProtocol] {
-	return pulumix.Output[*ApplicationGatewaySslProtocol]{
-		OutputState: in.ToApplicationGatewaySslProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tier of an application gateway.
@@ -2143,12 +2076,6 @@ func (in *applicationGatewayTierPtr) ToApplicationGatewayTierPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGatewayTierPtrOutput)
 }
 
-func (in *applicationGatewayTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGatewayTier] {
-	return pulumix.Output[*ApplicationGatewayTier]{
-		OutputState: in.ToApplicationGatewayTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authorization use status.
 type AuthorizationUseStatus string
 
@@ -2315,12 +2242,6 @@ func (in *authorizationUseStatusPtr) ToAuthorizationUseStatusPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationUseStatusPtrOutput)
 }
 
-func (in *authorizationUseStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationUseStatus] {
-	return pulumix.Output[*AuthorizationUseStatus]{
-		OutputState: in.ToAuthorizationUseStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
 type DdosSettingsProtectionCoverage string
 
@@ -2485,12 +2406,6 @@ func (in *ddosSettingsProtectionCoveragePtr) ToDdosSettingsProtectionCoveragePtr
 
 func (in *ddosSettingsProtectionCoveragePtr) ToDdosSettingsProtectionCoveragePtrOutputWithContext(ctx context.Context) DdosSettingsProtectionCoveragePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DdosSettingsProtectionCoveragePtrOutput)
-}
-
-func (in *ddosSettingsProtectionCoveragePtr) ToOutput(ctx context.Context) pulumix.Output[*DdosSettingsProtectionCoverage] {
-	return pulumix.Output[*DdosSettingsProtectionCoverage]{
-		OutputState: in.ToDdosSettingsProtectionCoveragePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The advertised public prefix state of the Peering resource.
@@ -2663,12 +2578,6 @@ func (in *expressRouteCircuitPeeringAdvertisedPublicPrefixStatePtr) ToExpressRou
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitPeeringAdvertisedPublicPrefixStatePtrOutput)
 }
 
-func (in *expressRouteCircuitPeeringAdvertisedPublicPrefixStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringAdvertisedPublicPrefixState] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringAdvertisedPublicPrefixState]{
-		OutputState: in.ToExpressRouteCircuitPeeringAdvertisedPublicPrefixStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of peering.
 type ExpressRouteCircuitPeeringStateEnum string
 
@@ -2835,12 +2744,6 @@ func (in *expressRouteCircuitPeeringStateEnumPtr) ToExpressRouteCircuitPeeringSt
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitPeeringStateEnumPtrOutput)
 }
 
-func (in *expressRouteCircuitPeeringStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringStateEnum] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringStateEnum]{
-		OutputState: in.ToExpressRouteCircuitPeeringStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The family of the SKU.
 type ExpressRouteCircuitSkuFamily string
 
@@ -3005,12 +2908,6 @@ func (in *expressRouteCircuitSkuFamilyPtr) ToExpressRouteCircuitSkuFamilyPtrOutp
 
 func (in *expressRouteCircuitSkuFamilyPtr) ToExpressRouteCircuitSkuFamilyPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitSkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitSkuFamilyPtrOutput)
-}
-
-func (in *expressRouteCircuitSkuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSkuFamily] {
-	return pulumix.Output[*ExpressRouteCircuitSkuFamily]{
-		OutputState: in.ToExpressRouteCircuitSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The tier of the SKU.
@@ -3183,12 +3080,6 @@ func (in *expressRouteCircuitSkuTierPtr) ToExpressRouteCircuitSkuTierPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitSkuTierPtrOutput)
 }
 
-func (in *expressRouteCircuitSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSkuTier] {
-	return pulumix.Output[*ExpressRouteCircuitSkuTier]{
-		OutputState: in.ToExpressRouteCircuitSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The peering state.
 type ExpressRoutePeeringState string
 
@@ -3353,12 +3244,6 @@ func (in *expressRoutePeeringStatePtr) ToExpressRoutePeeringStatePtrOutput() Exp
 
 func (in *expressRoutePeeringStatePtr) ToExpressRoutePeeringStatePtrOutputWithContext(ctx context.Context) ExpressRoutePeeringStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRoutePeeringStatePtrOutput)
-}
-
-func (in *expressRoutePeeringStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRoutePeeringState] {
-	return pulumix.Output[*ExpressRoutePeeringState]{
-		OutputState: in.ToExpressRoutePeeringStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The peering type.
@@ -3529,12 +3414,6 @@ func (in *expressRoutePeeringTypePtr) ToExpressRoutePeeringTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRoutePeeringTypePtrOutput)
 }
 
-func (in *expressRoutePeeringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRoutePeeringType] {
-	return pulumix.Output[*ExpressRoutePeeringType]{
-		OutputState: in.ToExpressRoutePeeringTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The public IP address allocation method.
 type IPAllocationMethod string
 
@@ -3701,12 +3580,6 @@ func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationMethodPtrOutput)
 }
 
-func (in *ipallocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationMethod] {
-	return pulumix.Output[*IPAllocationMethod]{
-		OutputState: in.ToIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The public IP address version.
 type IPVersion string
 
@@ -3871,12 +3744,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutput() IPVersionPtrOutput {
 
 func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
-}
-
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The protocol for the outbound rule in load balancer.
@@ -4047,12 +3914,6 @@ func (in *loadBalancerOutboundRuleProtocolPtr) ToLoadBalancerOutboundRuleProtoco
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerOutboundRuleProtocolPtrOutput)
 }
 
-func (in *loadBalancerOutboundRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerOutboundRuleProtocol] {
-	return pulumix.Output[*LoadBalancerOutboundRuleProtocol]{
-		OutputState: in.ToLoadBalancerOutboundRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a load balancer SKU.
 type LoadBalancerSkuName string
 
@@ -4217,12 +4078,6 @@ func (in *loadBalancerSkuNamePtr) ToLoadBalancerSkuNamePtrOutput() LoadBalancerS
 
 func (in *loadBalancerSkuNamePtr) ToLoadBalancerSkuNamePtrOutputWithContext(ctx context.Context) LoadBalancerSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerSkuNamePtrOutput)
-}
-
-func (in *loadBalancerSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSkuName] {
-	return pulumix.Output[*LoadBalancerSkuName]{
-		OutputState: in.ToLoadBalancerSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The load distribution policy for this rule.
@@ -4393,12 +4248,6 @@ func (in *loadDistributionPtr) ToLoadDistributionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(LoadDistributionPtrOutput)
 }
 
-func (in *loadDistributionPtr) ToOutput(ctx context.Context) pulumix.Output[*LoadDistribution] {
-	return pulumix.Output[*LoadDistribution]{
-		OutputState: in.ToLoadDistributionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of Nat Gateway SKU.
 type NatGatewaySkuName string
 
@@ -4561,12 +4410,6 @@ func (in *natGatewaySkuNamePtr) ToNatGatewaySkuNamePtrOutput() NatGatewaySkuName
 
 func (in *natGatewaySkuNamePtr) ToNatGatewaySkuNamePtrOutputWithContext(ctx context.Context) NatGatewaySkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NatGatewaySkuNamePtrOutput)
-}
-
-func (in *natGatewaySkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*NatGatewaySkuName] {
-	return pulumix.Output[*NatGatewaySkuName]{
-		OutputState: in.ToNatGatewaySkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The protocol of the end point. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
@@ -4737,12 +4580,6 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
 }
 
-func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
-	return pulumix.Output[*ProbeProtocol]{
-		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a public IP address SKU.
 type PublicIPAddressSkuName string
 
@@ -4909,12 +4746,6 @@ func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuNamePtrOutput)
 }
 
-func (in *publicIPAddressSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuName] {
-	return pulumix.Output[*PublicIPAddressSkuName]{
-		OutputState: in.ToPublicIPAddressSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a public IP prefix SKU.
 type PublicIPPrefixSkuName string
 
@@ -5077,12 +4908,6 @@ func (in *publicIPPrefixSkuNamePtr) ToPublicIPPrefixSkuNamePtrOutput() PublicIPP
 
 func (in *publicIPPrefixSkuNamePtr) ToPublicIPPrefixSkuNamePtrOutputWithContext(ctx context.Context) PublicIPPrefixSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPPrefixSkuNamePtrOutput)
-}
-
-func (in *publicIPPrefixSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPPrefixSkuName] {
-	return pulumix.Output[*PublicIPPrefixSkuName]{
-		OutputState: in.ToPublicIPPrefixSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
@@ -5253,12 +5078,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Azure hop the packet should be sent to.
@@ -5433,12 +5252,6 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
-func (in *routeNextHopTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteNextHopType] {
-	return pulumix.Output[*RouteNextHopType]{
-		OutputState: in.ToRouteNextHopTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network traffic is allowed or denied.
 type SecurityRuleAccess string
 
@@ -5605,12 +5418,6 @@ func (in *securityRuleAccessPtr) ToSecurityRuleAccessPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleAccessPtrOutput)
 }
 
-func (in *securityRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleAccess] {
-	return pulumix.Output[*SecurityRuleAccess]{
-		OutputState: in.ToSecurityRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
 type SecurityRuleDirection string
 
@@ -5775,12 +5582,6 @@ func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityR
 
 func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
-}
-
-func (in *securityRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleDirection] {
-	return pulumix.Output[*SecurityRuleDirection]{
-		OutputState: in.ToSecurityRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to.
@@ -5955,12 +5756,6 @@ func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleProtocolPtrOutput)
 }
 
-func (in *securityRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleProtocol] {
-	return pulumix.Output[*SecurityRuleProtocol]{
-		OutputState: in.ToSecurityRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The ServiceProviderProvisioningState state of the resource.
 type ServiceProviderProvisioningState string
 
@@ -6131,12 +5926,6 @@ func (in *serviceProviderProvisioningStatePtr) ToServiceProviderProvisioningStat
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceProviderProvisioningStatePtrOutput)
 }
 
-func (in *serviceProviderProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceProviderProvisioningState] {
-	return pulumix.Output[*ServiceProviderProvisioningState]{
-		OutputState: in.ToServiceProviderProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to the transport protocol used by the load balancing rule.
 type TransportProtocol string
 
@@ -6305,12 +6094,6 @@ func (in *transportProtocolPtr) ToTransportProtocolPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TransportProtocolPtrOutput)
 }
 
-func (in *transportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportProtocol] {
-	return pulumix.Output[*TransportProtocol]{
-		OutputState: in.ToTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the virtual network peering.
 type VirtualNetworkPeeringStateEnum string
 
@@ -6477,12 +6260,6 @@ func (in *virtualNetworkPeeringStateEnumPtr) ToVirtualNetworkPeeringStateEnumPtr
 
 func (in *virtualNetworkPeeringStateEnumPtr) ToVirtualNetworkPeeringStateEnumPtrOutputWithContext(ctx context.Context) VirtualNetworkPeeringStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkPeeringStateEnumPtrOutput)
-}
-
-func (in *virtualNetworkPeeringStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPeeringStateEnum] {
-	return pulumix.Output[*VirtualNetworkPeeringStateEnum]{
-		OutputState: in.ToVirtualNetworkPeeringStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

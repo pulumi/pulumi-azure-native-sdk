@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The compliance state that should be set on the resource.
@@ -180,12 +179,6 @@ func (in *complianceStatePtr) ToComplianceStatePtrOutput() ComplianceStatePtrOut
 
 func (in *complianceStatePtr) ToComplianceStatePtrOutputWithContext(ctx context.Context) ComplianceStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceStatePtrOutput)
-}
-
-func (in *complianceStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ComplianceState] {
-	return pulumix.Output[*ComplianceState]{
-		OutputState: in.ToComplianceStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

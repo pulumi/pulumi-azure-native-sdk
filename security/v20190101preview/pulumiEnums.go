@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the action that will be triggered by the Automation
@@ -191,12 +190,6 @@ func (in *assessmentTypePtr) ToAssessmentTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentTypePtrOutput)
 }
 
-func (in *assessmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentType] {
-	return pulumix.Output[*AssessmentType]{
-		OutputState: in.ToAssessmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The categories of resource that is at risk when the assessment is unhealthy
 type Categories string
 
@@ -367,12 +360,6 @@ func (in *categoriesPtr) ToCategoriesPtrOutput() CategoriesPtrOutput {
 
 func (in *categoriesPtr) ToCategoriesPtrOutputWithContext(ctx context.Context) CategoriesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoriesPtrOutput)
-}
-
-func (in *categoriesPtr) ToOutput(ctx context.Context) pulumix.Output[*Categories] {
-	return pulumix.Output[*Categories]{
-		OutputState: in.ToCategoriesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A valid event source type.
@@ -559,12 +546,6 @@ func (in *eventSourcePtr) ToEventSourcePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(EventSourcePtrOutput)
 }
 
-func (in *eventSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*EventSource] {
-	return pulumix.Output[*EventSource]{
-		OutputState: in.ToEventSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The implementation effort required to remediate this assessment
 type ImplementationEffort string
 
@@ -731,12 +712,6 @@ func (in *implementationEffortPtr) ToImplementationEffortPtrOutput() Implementat
 
 func (in *implementationEffortPtr) ToImplementationEffortPtrOutputWithContext(ctx context.Context) ImplementationEffortPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImplementationEffortPtrOutput)
-}
-
-func (in *implementationEffortPtr) ToOutput(ctx context.Context) pulumix.Output[*ImplementationEffort] {
-	return pulumix.Output[*ImplementationEffort]{
-		OutputState: in.ToImplementationEffortPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
@@ -928,12 +903,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
 type PropertyType string
 
@@ -1104,12 +1073,6 @@ func (in *propertyTypePtr) ToPropertyTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PropertyTypePtrOutput)
 }
 
-func (in *propertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PropertyType] {
-	return pulumix.Output[*PropertyType]{
-		OutputState: in.ToPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Possible states of the rule
 type RuleState string
 
@@ -1278,12 +1241,6 @@ func (in *ruleStatePtr) ToRuleStatePtrOutputWithContext(ctx context.Context) Rul
 	return pulumi.ToOutputWithContext(ctx, in).(RuleStatePtrOutput)
 }
 
-func (in *ruleStatePtr) ToOutput(ctx context.Context) pulumix.Output[*RuleState] {
-	return pulumix.Output[*RuleState]{
-		OutputState: in.ToRuleStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The severity level of the assessment
 type Severity string
 
@@ -1450,12 +1407,6 @@ func (in *severityPtr) ToSeverityPtrOutput() SeverityPtrOutput {
 
 func (in *severityPtr) ToSeverityPtrOutputWithContext(ctx context.Context) SeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityPtrOutput)
-}
-
-func (in *severityPtr) ToOutput(ctx context.Context) pulumix.Output[*Severity] {
-	return pulumix.Output[*Severity]{
-		OutputState: in.ToSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Threats impact of the assessment
@@ -1636,12 +1587,6 @@ func (in *threatsPtr) ToThreatsPtrOutputWithContext(ctx context.Context) Threats
 	return pulumi.ToOutputWithContext(ctx, in).(ThreatsPtrOutput)
 }
 
-func (in *threatsPtr) ToOutput(ctx context.Context) pulumix.Output[*Threats] {
-	return pulumix.Output[*Threats]{
-		OutputState: in.ToThreatsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The user impact of the assessment
 type UserImpact string
 
@@ -1808,12 +1753,6 @@ func (in *userImpactPtr) ToUserImpactPtrOutput() UserImpactPtrOutput {
 
 func (in *userImpactPtr) ToUserImpactPtrOutputWithContext(ctx context.Context) UserImpactPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserImpactPtrOutput)
-}
-
-func (in *userImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*UserImpact] {
-	return pulumix.Output[*UserImpact]{
-		OutputState: in.ToUserImpactPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

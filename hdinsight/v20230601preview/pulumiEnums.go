@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // User to specify which type of Autoscale to be implemented - Scheduled Based or Load Based.
@@ -175,12 +174,6 @@ func (in *autoscaleTypePtr) ToAutoscaleTypePtrOutput() AutoscaleTypePtrOutput {
 
 func (in *autoscaleTypePtr) ToAutoscaleTypePtrOutputWithContext(ctx context.Context) AutoscaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoscaleTypePtrOutput)
-}
-
-func (in *autoscaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoscaleType] {
-	return pulumix.Output[*AutoscaleType]{
-		OutputState: in.ToAutoscaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The comparison operator.
@@ -353,12 +346,6 @@ func (in *comparisonOperatorPtr) ToComparisonOperatorPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ComparisonOperatorPtrOutput)
 }
 
-func (in *comparisonOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ComparisonOperator] {
-	return pulumix.Output[*ComparisonOperator]{
-		OutputState: in.ToComparisonOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property indicates if the content is encoded and is case-insensitive. Please set the value to base64 if the content is base64 encoded. Set it to none or skip it if the content is plain text.
 type ContentEncoding string
 
@@ -523,12 +510,6 @@ func (in *contentEncodingPtr) ToContentEncodingPtrOutput() ContentEncodingPtrOut
 
 func (in *contentEncodingPtr) ToContentEncodingPtrOutputWithContext(ctx context.Context) ContentEncodingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContentEncodingPtrOutput)
-}
-
-func (in *contentEncodingPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentEncoding] {
-	return pulumix.Output[*ContentEncoding]{
-		OutputState: in.ToContentEncodingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of key vault object: secret, key or certificate.
@@ -699,12 +680,6 @@ func (in *keyVaultObjectTypePtr) ToKeyVaultObjectTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultObjectTypePtrOutput)
 }
 
-func (in *keyVaultObjectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultObjectType] {
-	return pulumix.Output[*KeyVaultObjectType]{
-		OutputState: in.ToKeyVaultObjectTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The action type.
 type ScaleActionType string
 
@@ -869,12 +844,6 @@ func (in *scaleActionTypePtr) ToScaleActionTypePtrOutput() ScaleActionTypePtrOut
 
 func (in *scaleActionTypePtr) ToScaleActionTypePtrOutputWithContext(ctx context.Context) ScaleActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleActionTypePtrOutput)
-}
-
-func (in *scaleActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleActionType] {
-	return pulumix.Output[*ScaleActionType]{
-		OutputState: in.ToScaleActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ScheduleDay string
@@ -1050,12 +1019,6 @@ func (in *scheduleDayPtr) ToScheduleDayPtrOutput() ScheduleDayPtrOutput {
 
 func (in *scheduleDayPtr) ToScheduleDayPtrOutputWithContext(ctx context.Context) ScheduleDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleDayPtrOutput)
-}
-
-func (in *scheduleDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleDay] {
-	return pulumix.Output[*ScheduleDay]{
-		OutputState: in.ToScheduleDayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

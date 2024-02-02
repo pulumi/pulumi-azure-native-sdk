@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AutomaticClusterUpdateValue string
@@ -176,12 +175,6 @@ func (in *automaticClusterUpdateValuePtr) ToAutomaticClusterUpdateValuePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(AutomaticClusterUpdateValuePtrOutput)
 }
 
-func (in *automaticClusterUpdateValuePtr) ToOutput(ctx context.Context) pulumix.Output[*AutomaticClusterUpdateValue] {
-	return pulumix.Output[*AutomaticClusterUpdateValue]{
-		OutputState: in.ToAutomaticClusterUpdateValuePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComplianceSecurityProfileValue string
 
 const (
@@ -345,12 +338,6 @@ func (in *complianceSecurityProfileValuePtr) ToComplianceSecurityProfileValuePtr
 
 func (in *complianceSecurityProfileValuePtr) ToComplianceSecurityProfileValuePtrOutputWithContext(ctx context.Context) ComplianceSecurityProfileValuePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceSecurityProfileValuePtrOutput)
-}
-
-func (in *complianceSecurityProfileValuePtr) ToOutput(ctx context.Context) pulumix.Output[*ComplianceSecurityProfileValue] {
-	return pulumix.Output[*ComplianceSecurityProfileValue]{
-		OutputState: in.ToComplianceSecurityProfileValuePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Compliance standard that can be associated with a workspace.
@@ -521,12 +508,6 @@ func (in *complianceStandardPtr) ToComplianceStandardPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceStandardPtrOutput)
 }
 
-func (in *complianceStandardPtr) ToOutput(ctx context.Context) pulumix.Output[*ComplianceStandard] {
-	return pulumix.Output[*ComplianceStandard]{
-		OutputState: in.ToComplianceStandardPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
 type EncryptionKeySource string
 
@@ -689,12 +670,6 @@ func (in *encryptionKeySourcePtr) ToEncryptionKeySourcePtrOutput() EncryptionKey
 
 func (in *encryptionKeySourcePtr) ToEncryptionKeySourcePtrOutputWithContext(ctx context.Context) EncryptionKeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeySourcePtrOutput)
-}
-
-func (in *encryptionKeySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySource] {
-	return pulumix.Output[*EncryptionKeySource]{
-		OutputState: in.ToEncryptionKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EnhancedSecurityMonitoringValue string
@@ -860,12 +835,6 @@ func (in *enhancedSecurityMonitoringValuePtr) ToEnhancedSecurityMonitoringValueP
 
 func (in *enhancedSecurityMonitoringValuePtr) ToEnhancedSecurityMonitoringValuePtrOutputWithContext(ctx context.Context) EnhancedSecurityMonitoringValuePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnhancedSecurityMonitoringValuePtrOutput)
-}
-
-func (in *enhancedSecurityMonitoringValuePtr) ToOutput(ctx context.Context) pulumix.Output[*EnhancedSecurityMonitoringValue] {
-	return pulumix.Output[*EnhancedSecurityMonitoringValue]{
-		OutputState: in.ToEnhancedSecurityMonitoringValuePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
@@ -1034,12 +1003,6 @@ func (in *initialTypePtr) ToInitialTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(InitialTypePtrOutput)
 }
 
-func (in *initialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InitialType] {
-	return pulumix.Output[*InitialType]{
-		OutputState: in.ToInitialTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
 type KeySource string
 
@@ -1204,12 +1167,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
-}
-
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of a private endpoint connection
@@ -1382,12 +1339,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
 type PublicNetworkAccess string
 
@@ -1552,12 +1503,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
@@ -1726,12 +1671,6 @@ func (in *requiredNsgRulesPtr) ToRequiredNsgRulesPtrOutput() RequiredNsgRulesPtr
 
 func (in *requiredNsgRulesPtr) ToRequiredNsgRulesPtrOutputWithContext(ctx context.Context) RequiredNsgRulesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequiredNsgRulesPtrOutput)
-}
-
-func (in *requiredNsgRulesPtr) ToOutput(ctx context.Context) pulumix.Output[*RequiredNsgRules] {
-	return pulumix.Output[*RequiredNsgRules]{
-		OutputState: in.ToRequiredNsgRulesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

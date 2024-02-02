@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
@@ -179,12 +178,6 @@ func (in *activityOnInactiveMarkAsPtr) ToActivityOnInactiveMarkAsPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ActivityOnInactiveMarkAsPtrOutput)
 }
 
-func (in *activityOnInactiveMarkAsPtr) ToOutput(ctx context.Context) pulumix.Output[*ActivityOnInactiveMarkAs] {
-	return pulumix.Output[*ActivityOnInactiveMarkAs]{
-		OutputState: in.ToActivityOnInactiveMarkAsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Activity state. This is an optional property and if not provided, the state will be Active by default.
 type ActivityState string
 
@@ -349,12 +342,6 @@ func (in *activityStatePtr) ToActivityStatePtrOutput() ActivityStatePtrOutput {
 
 func (in *activityStatePtr) ToActivityStatePtrOutputWithContext(ctx context.Context) ActivityStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActivityStatePtrOutput)
-}
-
-func (in *activityStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ActivityState] {
-	return pulumix.Output[*ActivityState]{
-		OutputState: in.ToActivityStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Rest API method for target endpoint.
@@ -533,12 +520,6 @@ func (in *azureFunctionActivityMethodPtr) ToAzureFunctionActivityMethodPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFunctionActivityMethodPtrOutput)
 }
 
-func (in *azureFunctionActivityMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFunctionActivityMethod] {
-	return pulumix.Output[*AzureFunctionActivityMethod]{
-		OutputState: in.ToAzureFunctionActivityMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify the write behavior when upserting documents into Azure Search Index.
 type AzureSearchIndexWriteBehaviorType string
 
@@ -703,12 +684,6 @@ func (in *azureSearchIndexWriteBehaviorTypePtr) ToAzureSearchIndexWriteBehaviorT
 
 func (in *azureSearchIndexWriteBehaviorTypePtr) ToAzureSearchIndexWriteBehaviorTypePtrOutputWithContext(ctx context.Context) AzureSearchIndexWriteBehaviorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSearchIndexWriteBehaviorTypePtrOutput)
-}
-
-func (in *azureSearchIndexWriteBehaviorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSearchIndexWriteBehaviorType] {
-	return pulumix.Output[*AzureSearchIndexWriteBehaviorType]{
-		OutputState: in.ToAzureSearchIndexWriteBehaviorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type used for authentication. Type: string.
@@ -883,12 +858,6 @@ func (in *azureStorageAuthenticationTypePtr) ToAzureStorageAuthenticationTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(AzureStorageAuthenticationTypePtrOutput)
 }
 
-func (in *azureStorageAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureStorageAuthenticationType] {
-	return pulumix.Output[*AzureStorageAuthenticationType]{
-		OutputState: in.ToAzureStorageAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Big data pool reference type.
 type BigDataPoolReferenceType string
 
@@ -1051,12 +1020,6 @@ func (in *bigDataPoolReferenceTypePtr) ToBigDataPoolReferenceTypePtrOutput() Big
 
 func (in *bigDataPoolReferenceTypePtr) ToBigDataPoolReferenceTypePtrOutputWithContext(ctx context.Context) BigDataPoolReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BigDataPoolReferenceTypePtrOutput)
-}
-
-func (in *bigDataPoolReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BigDataPoolReferenceType] {
-	return pulumix.Output[*BigDataPoolReferenceType]{
-		OutputState: in.ToBigDataPoolReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type BlobEventTypes string
@@ -1222,12 +1185,6 @@ func (in *blobEventTypesPtr) ToBlobEventTypesPtrOutput() BlobEventTypesPtrOutput
 
 func (in *blobEventTypesPtr) ToBlobEventTypesPtrOutputWithContext(ctx context.Context) BlobEventTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BlobEventTypesPtrOutput)
-}
-
-func (in *blobEventTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*BlobEventTypes] {
-	return pulumix.Output[*BlobEventTypes]{
-		OutputState: in.ToBlobEventTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The consistency level specifies how many Cassandra servers must respond to a read request before returning data to the client application. Cassandra checks the specified number of Cassandra servers for data to satisfy the read request. Must be one of cassandraSourceReadConsistencyLevels. The default value is 'ONE'. It is case-insensitive.
@@ -1412,12 +1369,6 @@ func (in *cassandraSourceReadConsistencyLevelsPtr) ToCassandraSourceReadConsiste
 	return pulumi.ToOutputWithContext(ctx, in).(CassandraSourceReadConsistencyLevelsPtrOutput)
 }
 
-func (in *cassandraSourceReadConsistencyLevelsPtr) ToOutput(ctx context.Context) pulumix.Output[*CassandraSourceReadConsistencyLevels] {
-	return pulumix.Output[*CassandraSourceReadConsistencyLevels]{
-		OutputState: in.ToCassandraSourceReadConsistencyLevelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the spark config.
 type ConfigurationType string
 
@@ -1586,12 +1537,6 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
 }
 
-func (in *configurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationType] {
-	return pulumix.Output[*ConfigurationType]{
-		OutputState: in.ToConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of connection via linked service or dataset.
 type ConnectionType string
 
@@ -1754,12 +1699,6 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutput() ConnectionTypePtrOutput
 
 func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionTypePtrOutput)
-}
-
-func (in *connectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
-	return pulumix.Output[*ConnectionType]{
-		OutputState: in.ToConnectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The connection mode used to access CosmosDB account. Type: string.
@@ -1928,12 +1867,6 @@ func (in *cosmosDbConnectionModePtr) ToCosmosDbConnectionModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CosmosDbConnectionModePtrOutput)
 }
 
-func (in *cosmosDbConnectionModePtr) ToOutput(ctx context.Context) pulumix.Output[*CosmosDbConnectionMode] {
-	return pulumix.Output[*CosmosDbConnectionMode]{
-		OutputState: in.ToCosmosDbConnectionModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Credential reference type.
 type CredentialReferenceType string
 
@@ -2096,12 +2029,6 @@ func (in *credentialReferenceTypePtr) ToCredentialReferenceTypePtrOutput() Crede
 
 func (in *credentialReferenceTypePtr) ToCredentialReferenceTypePtrOutputWithContext(ctx context.Context) CredentialReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CredentialReferenceTypePtrOutput)
-}
-
-func (in *credentialReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CredentialReferenceType] {
-	return pulumix.Output[*CredentialReferenceType]{
-		OutputState: in.ToCredentialReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Compute type of the cluster which will execute data flow job.
@@ -2272,12 +2199,6 @@ func (in *dataFlowComputeTypePtr) ToDataFlowComputeTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DataFlowComputeTypePtrOutput)
 }
 
-func (in *dataFlowComputeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataFlowComputeType] {
-	return pulumix.Output[*DataFlowComputeType]{
-		OutputState: in.ToDataFlowComputeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data flow reference type.
 type DataFlowReferenceType string
 
@@ -2440,12 +2361,6 @@ func (in *dataFlowReferenceTypePtr) ToDataFlowReferenceTypePtrOutput() DataFlowR
 
 func (in *dataFlowReferenceTypePtr) ToDataFlowReferenceTypePtrOutputWithContext(ctx context.Context) DataFlowReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataFlowReferenceTypePtrOutput)
-}
-
-func (in *dataFlowReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataFlowReferenceType] {
-	return pulumix.Output[*DataFlowReferenceType]{
-		OutputState: in.ToDataFlowReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The day of the week.
@@ -2624,12 +2539,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DaysOfWeek string
 
 const (
@@ -2803,12 +2712,6 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutput() DaysOfWeekPtrOutput {
 
 func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) DaysOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
-}
-
-func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DaysOfWeekArrayInput is an input type that accepts DaysOfWeekArray and DaysOfWeekArrayOutput values.
@@ -3020,12 +2923,6 @@ func (in *db2AuthenticationTypePtr) ToDb2AuthenticationTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(Db2AuthenticationTypePtrOutput)
 }
 
-func (in *db2AuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Db2AuthenticationType] {
-	return pulumix.Output[*Db2AuthenticationType]{
-		OutputState: in.ToDb2AuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DependencyCondition string
 
 const (
@@ -3195,12 +3092,6 @@ func (in *dependencyConditionPtr) ToDependencyConditionPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DependencyConditionPtrOutput)
 }
 
-func (in *dependencyConditionPtr) ToOutput(ctx context.Context) pulumix.Output[*DependencyCondition] {
-	return pulumix.Output[*DependencyCondition]{
-		OutputState: in.ToDependencyConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The write behavior for the operation.
 type DynamicsSinkWriteBehavior string
 
@@ -3363,12 +3254,6 @@ func (in *dynamicsSinkWriteBehaviorPtr) ToDynamicsSinkWriteBehaviorPtrOutput() D
 
 func (in *dynamicsSinkWriteBehaviorPtr) ToDynamicsSinkWriteBehaviorPtrOutputWithContext(ctx context.Context) DynamicsSinkWriteBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicsSinkWriteBehaviorPtrOutput)
-}
-
-func (in *dynamicsSinkWriteBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicsSinkWriteBehavior] {
-	return pulumix.Output[*DynamicsSinkWriteBehavior]{
-		OutputState: in.ToDynamicsSinkWriteBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -3539,12 +3424,6 @@ func (in *factoryIdentityTypePtr) ToFactoryIdentityTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(FactoryIdentityTypePtrOutput)
 }
 
-func (in *factoryIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FactoryIdentityType] {
-	return pulumix.Output[*FactoryIdentityType]{
-		OutputState: in.ToFactoryIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
 type FrequencyType string
 
@@ -3713,12 +3592,6 @@ func (in *frequencyTypePtr) ToFrequencyTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(FrequencyTypePtrOutput)
 }
 
-func (in *frequencyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FrequencyType] {
-	return pulumix.Output[*FrequencyType]{
-		OutputState: in.ToFrequencyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication type to be used to connect to the FTP server.
 type FtpAuthenticationType string
 
@@ -3883,12 +3756,6 @@ func (in *ftpAuthenticationTypePtr) ToFtpAuthenticationTypePtrOutput() FtpAuthen
 
 func (in *ftpAuthenticationTypePtr) ToFtpAuthenticationTypePtrOutputWithContext(ctx context.Context) FtpAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FtpAuthenticationTypePtrOutput)
-}
-
-func (in *ftpAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FtpAuthenticationType] {
-	return pulumix.Output[*FtpAuthenticationType]{
-		OutputState: in.ToFtpAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Global Parameter type.
@@ -4065,12 +3932,6 @@ func (in *globalParameterTypePtr) ToGlobalParameterTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalParameterTypePtrOutput)
 }
 
-func (in *globalParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GlobalParameterType] {
-	return pulumix.Output[*GlobalParameterType]{
-		OutputState: in.ToGlobalParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
 type GoogleAdWordsAuthenticationType string
 
@@ -4235,12 +4096,6 @@ func (in *googleAdWordsAuthenticationTypePtr) ToGoogleAdWordsAuthenticationTypeP
 
 func (in *googleAdWordsAuthenticationTypePtr) ToGoogleAdWordsAuthenticationTypePtrOutputWithContext(ctx context.Context) GoogleAdWordsAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleAdWordsAuthenticationTypePtrOutput)
-}
-
-func (in *googleAdWordsAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleAdWordsAuthenticationType] {
-	return pulumix.Output[*GoogleAdWordsAuthenticationType]{
-		OutputState: in.ToGoogleAdWordsAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
@@ -4409,12 +4264,6 @@ func (in *googleBigQueryAuthenticationTypePtr) ToGoogleBigQueryAuthenticationTyp
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleBigQueryAuthenticationTypePtrOutput)
 }
 
-func (in *googleBigQueryAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GoogleBigQueryAuthenticationType] {
-	return pulumix.Output[*GoogleBigQueryAuthenticationType]{
-		OutputState: in.ToGoogleBigQueryAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication mechanism to use to connect to the HBase server.
 type HBaseAuthenticationType string
 
@@ -4579,12 +4428,6 @@ func (in *hbaseAuthenticationTypePtr) ToHBaseAuthenticationTypePtrOutput() HBase
 
 func (in *hbaseAuthenticationTypePtr) ToHBaseAuthenticationTypePtrOutputWithContext(ctx context.Context) HBaseAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HBaseAuthenticationTypePtrOutput)
-}
-
-func (in *hbaseAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HBaseAuthenticationType] {
-	return pulumix.Output[*HBaseAuthenticationType]{
-		OutputState: in.ToHBaseAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Debug info option.
@@ -4753,12 +4596,6 @@ func (in *hdinsightActivityDebugInfoOptionPtr) ToHDInsightActivityDebugInfoOptio
 
 func (in *hdinsightActivityDebugInfoOptionPtr) ToHDInsightActivityDebugInfoOptionPtrOutputWithContext(ctx context.Context) HDInsightActivityDebugInfoOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HDInsightActivityDebugInfoOptionPtrOutput)
-}
-
-func (in *hdinsightActivityDebugInfoOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*HDInsightActivityDebugInfoOption] {
-	return pulumix.Output[*HDInsightActivityDebugInfoOption]{
-		OutputState: in.ToHDInsightActivityDebugInfoOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication method used to access the Hive server.
@@ -4931,12 +4768,6 @@ func (in *hiveAuthenticationTypePtr) ToHiveAuthenticationTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(HiveAuthenticationTypePtrOutput)
 }
 
-func (in *hiveAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HiveAuthenticationType] {
-	return pulumix.Output[*HiveAuthenticationType]{
-		OutputState: in.ToHiveAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Hive server.
 type HiveServerType string
 
@@ -5105,12 +4936,6 @@ func (in *hiveServerTypePtr) ToHiveServerTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(HiveServerTypePtrOutput)
 }
 
-func (in *hiveServerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HiveServerType] {
-	return pulumix.Output[*HiveServerType]{
-		OutputState: in.ToHiveServerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The transport protocol to use in the Thrift layer.
 type HiveThriftTransportProtocol string
 
@@ -5277,12 +5102,6 @@ func (in *hiveThriftTransportProtocolPtr) ToHiveThriftTransportProtocolPtrOutput
 
 func (in *hiveThriftTransportProtocolPtr) ToHiveThriftTransportProtocolPtrOutputWithContext(ctx context.Context) HiveThriftTransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HiveThriftTransportProtocolPtrOutput)
-}
-
-func (in *hiveThriftTransportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*HiveThriftTransportProtocol] {
-	return pulumix.Output[*HiveThriftTransportProtocol]{
-		OutputState: in.ToHiveThriftTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication type to be used to connect to the HTTP server.
@@ -5457,12 +5276,6 @@ func (in *httpAuthenticationTypePtr) ToHttpAuthenticationTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(HttpAuthenticationTypePtrOutput)
 }
 
-func (in *httpAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HttpAuthenticationType] {
-	return pulumix.Output[*HttpAuthenticationType]{
-		OutputState: in.ToHttpAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication type to use.
 type ImpalaAuthenticationType string
 
@@ -5631,12 +5444,6 @@ func (in *impalaAuthenticationTypePtr) ToImpalaAuthenticationTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ImpalaAuthenticationTypePtrOutput)
 }
 
-func (in *impalaAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImpalaAuthenticationType] {
-	return pulumix.Output[*ImpalaAuthenticationType]{
-		OutputState: in.ToImpalaAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The edition for the SSIS Integration Runtime
 type IntegrationRuntimeEdition string
 
@@ -5801,12 +5608,6 @@ func (in *integrationRuntimeEditionPtr) ToIntegrationRuntimeEditionPtrOutput() I
 
 func (in *integrationRuntimeEditionPtr) ToIntegrationRuntimeEditionPtrOutputWithContext(ctx context.Context) IntegrationRuntimeEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeEditionPtrOutput)
-}
-
-func (in *integrationRuntimeEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeEdition] {
-	return pulumix.Output[*IntegrationRuntimeEdition]{
-		OutputState: in.ToIntegrationRuntimeEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of this referenced entity.
@@ -5975,12 +5776,6 @@ func (in *integrationRuntimeEntityReferenceTypePtr) ToIntegrationRuntimeEntityRe
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeEntityReferenceTypePtrOutput)
 }
 
-func (in *integrationRuntimeEntityReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeEntityReferenceType] {
-	return pulumix.Output[*IntegrationRuntimeEntityReferenceType]{
-		OutputState: in.ToIntegrationRuntimeEntityReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // License type for bringing your own license scenario.
 type IntegrationRuntimeLicenseType string
 
@@ -6145,12 +5940,6 @@ func (in *integrationRuntimeLicenseTypePtr) ToIntegrationRuntimeLicenseTypePtrOu
 
 func (in *integrationRuntimeLicenseTypePtr) ToIntegrationRuntimeLicenseTypePtrOutputWithContext(ctx context.Context) IntegrationRuntimeLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeLicenseTypePtrOutput)
-}
-
-func (in *integrationRuntimeLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeLicenseType] {
-	return pulumix.Output[*IntegrationRuntimeLicenseType]{
-		OutputState: in.ToIntegrationRuntimeLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
@@ -6321,12 +6110,6 @@ func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToIntegrationRuntimeSsisC
 
 func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToIntegrationRuntimeSsisCatalogPricingTierPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogPricingTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeSsisCatalogPricingTierPtrOutput)
-}
-
-func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeSsisCatalogPricingTier] {
-	return pulumix.Output[*IntegrationRuntimeSsisCatalogPricingTier]{
-		OutputState: in.ToIntegrationRuntimeSsisCatalogPricingTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of integration runtime.
@@ -6501,12 +6284,6 @@ func (in *managedVirtualNetworkReferenceTypePtr) ToManagedVirtualNetworkReferenc
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedVirtualNetworkReferenceTypePtrOutput)
 }
 
-func (in *managedVirtualNetworkReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedVirtualNetworkReferenceType] {
-	return pulumix.Output[*ManagedVirtualNetworkReferenceType]{
-		OutputState: in.ToManagedVirtualNetworkReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
 type MappingType string
 
@@ -6675,12 +6452,6 @@ func (in *mappingTypePtr) ToMappingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(MappingTypePtrOutput)
 }
 
-func (in *mappingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MappingType] {
-	return pulumix.Output[*MappingType]{
-		OutputState: in.ToMappingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication type to be used to connect to the MongoDB database.
 type MongoDbAuthenticationType string
 
@@ -6845,12 +6616,6 @@ func (in *mongoDbAuthenticationTypePtr) ToMongoDbAuthenticationTypePtrOutput() M
 
 func (in *mongoDbAuthenticationTypePtr) ToMongoDbAuthenticationTypePtrOutputWithContext(ctx context.Context) MongoDbAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MongoDbAuthenticationTypePtrOutput)
-}
-
-func (in *mongoDbAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MongoDbAuthenticationType] {
-	return pulumix.Output[*MongoDbAuthenticationType]{
-		OutputState: in.ToMongoDbAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Notebook parameter type.
@@ -7023,12 +6788,6 @@ func (in *notebookParameterTypePtr) ToNotebookParameterTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(NotebookParameterTypePtrOutput)
 }
 
-func (in *notebookParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NotebookParameterType] {
-	return pulumix.Output[*NotebookParameterType]{
-		OutputState: in.ToNotebookParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Synapse notebook reference type.
 type NotebookReferenceType string
 
@@ -7191,12 +6950,6 @@ func (in *notebookReferenceTypePtr) ToNotebookReferenceTypePtrOutput() NotebookR
 
 func (in *notebookReferenceTypePtr) ToNotebookReferenceTypePtrOutputWithContext(ctx context.Context) NotebookReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotebookReferenceTypePtrOutput)
-}
-
-func (in *notebookReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NotebookReferenceType] {
-	return pulumix.Output[*NotebookReferenceType]{
-		OutputState: in.ToNotebookReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specify the credential type (key or cert) is used for service principal.
@@ -7363,12 +7116,6 @@ func (in *odataAadServicePrincipalCredentialTypePtr) ToODataAadServicePrincipalC
 
 func (in *odataAadServicePrincipalCredentialTypePtr) ToODataAadServicePrincipalCredentialTypePtrOutputWithContext(ctx context.Context) ODataAadServicePrincipalCredentialTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ODataAadServicePrincipalCredentialTypePtrOutput)
-}
-
-func (in *odataAadServicePrincipalCredentialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ODataAadServicePrincipalCredentialType] {
-	return pulumix.Output[*ODataAadServicePrincipalCredentialType]{
-		OutputState: in.ToODataAadServicePrincipalCredentialTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of authentication used to connect to the OData service.
@@ -7541,12 +7288,6 @@ func (in *odataAuthenticationTypePtr) ToODataAuthenticationTypePtrOutput() OData
 
 func (in *odataAuthenticationTypePtr) ToODataAuthenticationTypePtrOutputWithContext(ctx context.Context) ODataAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ODataAuthenticationTypePtrOutput)
-}
-
-func (in *odataAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ODataAuthenticationType] {
-	return pulumix.Output[*ODataAuthenticationType]{
-		OutputState: in.ToODataAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Parameter type.
@@ -7725,12 +7466,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication mechanism used to connect to the Phoenix server.
 type PhoenixAuthenticationType string
 
@@ -7899,12 +7634,6 @@ func (in *phoenixAuthenticationTypePtr) ToPhoenixAuthenticationTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(PhoenixAuthenticationTypePtrOutput)
 }
 
-func (in *phoenixAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PhoenixAuthenticationType] {
-	return pulumix.Output[*PhoenixAuthenticationType]{
-		OutputState: in.ToPhoenixAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reject type.
 type PolybaseSettingsRejectType string
 
@@ -8069,12 +7798,6 @@ func (in *polybaseSettingsRejectTypePtr) ToPolybaseSettingsRejectTypePtrOutput()
 
 func (in *polybaseSettingsRejectTypePtr) ToPolybaseSettingsRejectTypePtrOutputWithContext(ctx context.Context) PolybaseSettingsRejectTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolybaseSettingsRejectTypePtrOutput)
-}
-
-func (in *polybaseSettingsRejectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolybaseSettingsRejectType] {
-	return pulumix.Output[*PolybaseSettingsRejectType]{
-		OutputState: in.ToPolybaseSettingsRejectTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication mechanism used to connect to the Presto server.
@@ -8243,12 +7966,6 @@ func (in *prestoAuthenticationTypePtr) ToPrestoAuthenticationTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(PrestoAuthenticationTypePtrOutput)
 }
 
-func (in *prestoAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrestoAuthenticationType] {
-	return pulumix.Output[*PrestoAuthenticationType]{
-		OutputState: in.ToPrestoAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public network access is allowed for the data factory.
 type PublicNetworkAccess string
 
@@ -8413,12 +8130,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The frequency.
@@ -8597,12 +8308,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
 }
 
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of authentication used to connect to the REST service.
 type RestServiceAuthenticationType string
 
@@ -8775,12 +8480,6 @@ func (in *restServiceAuthenticationTypePtr) ToRestServiceAuthenticationTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(RestServiceAuthenticationTypePtrOutput)
 }
 
-func (in *restServiceAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RestServiceAuthenticationType] {
-	return pulumix.Output[*RestServiceAuthenticationType]{
-		OutputState: in.ToRestServiceAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The write behavior for the operation. Default is Insert.
 type SalesforceSinkWriteBehavior string
 
@@ -8945,12 +8644,6 @@ func (in *salesforceSinkWriteBehaviorPtr) ToSalesforceSinkWriteBehaviorPtrOutput
 
 func (in *salesforceSinkWriteBehaviorPtr) ToSalesforceSinkWriteBehaviorPtrOutputWithContext(ctx context.Context) SalesforceSinkWriteBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SalesforceSinkWriteBehaviorPtrOutput)
-}
-
-func (in *salesforceSinkWriteBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*SalesforceSinkWriteBehavior] {
-	return pulumix.Output[*SalesforceSinkWriteBehavior]{
-		OutputState: in.ToSalesforceSinkWriteBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The write behavior for the operation. Default is Insert.
@@ -9119,12 +8812,6 @@ func (in *salesforceV2SinkWriteBehaviorPtr) ToSalesforceV2SinkWriteBehaviorPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(SalesforceV2SinkWriteBehaviorPtrOutput)
 }
 
-func (in *salesforceV2SinkWriteBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*SalesforceV2SinkWriteBehavior] {
-	return pulumix.Output[*SalesforceV2SinkWriteBehavior]{
-		OutputState: in.ToSalesforceV2SinkWriteBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The write behavior for the operation. Default is 'Insert'.
 type SapCloudForCustomerSinkWriteBehavior string
 
@@ -9289,12 +8976,6 @@ func (in *sapCloudForCustomerSinkWriteBehaviorPtr) ToSapCloudForCustomerSinkWrit
 
 func (in *sapCloudForCustomerSinkWriteBehaviorPtr) ToSapCloudForCustomerSinkWriteBehaviorPtrOutputWithContext(ctx context.Context) SapCloudForCustomerSinkWriteBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SapCloudForCustomerSinkWriteBehaviorPtrOutput)
-}
-
-func (in *sapCloudForCustomerSinkWriteBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*SapCloudForCustomerSinkWriteBehavior] {
-	return pulumix.Output[*SapCloudForCustomerSinkWriteBehavior]{
-		OutputState: in.ToSapCloudForCustomerSinkWriteBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication type to be used to connect to the SAP HANA server.
@@ -9463,12 +9144,6 @@ func (in *sapHanaAuthenticationTypePtr) ToSapHanaAuthenticationTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(SapHanaAuthenticationTypePtrOutput)
 }
 
-func (in *sapHanaAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SapHanaAuthenticationType] {
-	return pulumix.Output[*SapHanaAuthenticationType]{
-		OutputState: in.ToSapHanaAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The destination of logs. Type: string.
 type ScriptActivityLogDestination string
 
@@ -9633,12 +9308,6 @@ func (in *scriptActivityLogDestinationPtr) ToScriptActivityLogDestinationPtrOutp
 
 func (in *scriptActivityLogDestinationPtr) ToScriptActivityLogDestinationPtrOutputWithContext(ctx context.Context) ScriptActivityLogDestinationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScriptActivityLogDestinationPtrOutput)
-}
-
-func (in *scriptActivityLogDestinationPtr) ToOutput(ctx context.Context) pulumix.Output[*ScriptActivityLogDestination] {
-	return pulumix.Output[*ScriptActivityLogDestination]{
-		OutputState: in.ToScriptActivityLogDestinationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The direction of the parameter.
@@ -9807,12 +9476,6 @@ func (in *scriptActivityParameterDirectionPtr) ToScriptActivityParameterDirectio
 
 func (in *scriptActivityParameterDirectionPtr) ToScriptActivityParameterDirectionPtrOutputWithContext(ctx context.Context) ScriptActivityParameterDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScriptActivityParameterDirectionPtrOutput)
-}
-
-func (in *scriptActivityParameterDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*ScriptActivityParameterDirection] {
-	return pulumix.Output[*ScriptActivityParameterDirection]{
-		OutputState: in.ToScriptActivityParameterDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the parameter.
@@ -10001,12 +9664,6 @@ func (in *scriptActivityParameterTypePtr) ToScriptActivityParameterTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ScriptActivityParameterTypePtrOutput)
 }
 
-func (in *scriptActivityParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScriptActivityParameterType] {
-	return pulumix.Output[*ScriptActivityParameterType]{
-		OutputState: in.ToScriptActivityParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the query. Type: string.
 type ScriptType string
 
@@ -10173,12 +9830,6 @@ func (in *scriptTypePtr) ToScriptTypePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(ScriptTypePtrOutput)
 }
 
-func (in *scriptTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScriptType] {
-	return pulumix.Output[*ScriptType]{
-		OutputState: in.ToScriptTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication type to use.
 type ServiceNowAuthenticationType string
 
@@ -10343,12 +9994,6 @@ func (in *serviceNowAuthenticationTypePtr) ToServiceNowAuthenticationTypePtrOutp
 
 func (in *serviceNowAuthenticationTypePtr) ToServiceNowAuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceNowAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceNowAuthenticationTypePtrOutput)
-}
-
-func (in *serviceNowAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceNowAuthenticationType] {
-	return pulumix.Output[*ServiceNowAuthenticationType]{
-		OutputState: in.ToServiceNowAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication type to be used to connect to the FTP server.
@@ -10519,12 +10164,6 @@ func (in *sftpAuthenticationTypePtr) ToSftpAuthenticationTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SftpAuthenticationTypePtrOutput)
 }
 
-func (in *sftpAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SftpAuthenticationType] {
-	return pulumix.Output[*SftpAuthenticationType]{
-		OutputState: in.ToSftpAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type used for authentication. Type: string.
 type SnowflakeAuthenticationType string
 
@@ -10691,12 +10330,6 @@ func (in *snowflakeAuthenticationTypePtr) ToSnowflakeAuthenticationTypePtrOutput
 
 func (in *snowflakeAuthenticationTypePtr) ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx context.Context) SnowflakeAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SnowflakeAuthenticationTypePtrOutput)
-}
-
-func (in *snowflakeAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SnowflakeAuthenticationType] {
-	return pulumix.Output[*SnowflakeAuthenticationType]{
-		OutputState: in.ToSnowflakeAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication method used to access the Spark server.
@@ -10869,12 +10502,6 @@ func (in *sparkAuthenticationTypePtr) ToSparkAuthenticationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SparkAuthenticationTypePtrOutput)
 }
 
-func (in *sparkAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SparkAuthenticationType] {
-	return pulumix.Output[*SparkAuthenticationType]{
-		OutputState: in.ToSparkAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Spark configuration reference type.
 type SparkConfigurationReferenceType string
 
@@ -11039,12 +10666,6 @@ func (in *sparkConfigurationReferenceTypePtr) ToSparkConfigurationReferenceTypeP
 	return pulumi.ToOutputWithContext(ctx, in).(SparkConfigurationReferenceTypePtrOutput)
 }
 
-func (in *sparkConfigurationReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SparkConfigurationReferenceType] {
-	return pulumix.Output[*SparkConfigurationReferenceType]{
-		OutputState: in.ToSparkConfigurationReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Synapse spark job reference type.
 type SparkJobReferenceType string
 
@@ -11207,12 +10828,6 @@ func (in *sparkJobReferenceTypePtr) ToSparkJobReferenceTypePtrOutput() SparkJobR
 
 func (in *sparkJobReferenceTypePtr) ToSparkJobReferenceTypePtrOutputWithContext(ctx context.Context) SparkJobReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SparkJobReferenceTypePtrOutput)
-}
-
-func (in *sparkJobReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SparkJobReferenceType] {
-	return pulumix.Output[*SparkJobReferenceType]{
-		OutputState: in.ToSparkJobReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Spark server.
@@ -11383,12 +10998,6 @@ func (in *sparkServerTypePtr) ToSparkServerTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SparkServerTypePtrOutput)
 }
 
-func (in *sparkServerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SparkServerType] {
-	return pulumix.Output[*SparkServerType]{
-		OutputState: in.ToSparkServerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The transport protocol to use in the Thrift layer.
 type SparkThriftTransportProtocol string
 
@@ -11555,12 +11164,6 @@ func (in *sparkThriftTransportProtocolPtr) ToSparkThriftTransportProtocolPtrOutp
 
 func (in *sparkThriftTransportProtocolPtr) ToSparkThriftTransportProtocolPtrOutputWithContext(ctx context.Context) SparkThriftTransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SparkThriftTransportProtocolPtrOutput)
-}
-
-func (in *sparkThriftTransportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SparkThriftTransportProtocol] {
-	return pulumix.Output[*SparkThriftTransportProtocol]{
-		OutputState: in.ToSparkThriftTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sql always encrypted AKV authentication type. Type: string.
@@ -11731,12 +11334,6 @@ func (in *sqlAlwaysEncryptedAkvAuthTypePtr) ToSqlAlwaysEncryptedAkvAuthTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(SqlAlwaysEncryptedAkvAuthTypePtrOutput)
 }
 
-func (in *sqlAlwaysEncryptedAkvAuthTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlAlwaysEncryptedAkvAuthType] {
-	return pulumix.Output[*SqlAlwaysEncryptedAkvAuthType]{
-		OutputState: in.ToSqlAlwaysEncryptedAkvAuthTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of SSIS log location.
 type SsisLogLocationType string
 
@@ -11899,12 +11496,6 @@ func (in *ssisLogLocationTypePtr) ToSsisLogLocationTypePtrOutput() SsisLogLocati
 
 func (in *ssisLogLocationTypePtr) ToSsisLogLocationTypePtrOutputWithContext(ctx context.Context) SsisLogLocationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SsisLogLocationTypePtrOutput)
-}
-
-func (in *ssisLogLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SsisLogLocationType] {
-	return pulumix.Output[*SsisLogLocationType]{
-		OutputState: in.ToSsisLogLocationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of SSIS package location.
@@ -12077,12 +11668,6 @@ func (in *ssisPackageLocationTypePtr) ToSsisPackageLocationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SsisPackageLocationTypePtrOutput)
 }
 
-func (in *ssisPackageLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SsisPackageLocationType] {
-	return pulumix.Output[*SsisPackageLocationType]{
-		OutputState: in.ToSsisPackageLocationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthenticationType to be used for connection.
 type SybaseAuthenticationType string
 
@@ -12247,12 +11832,6 @@ func (in *sybaseAuthenticationTypePtr) ToSybaseAuthenticationTypePtrOutput() Syb
 
 func (in *sybaseAuthenticationTypePtr) ToSybaseAuthenticationTypePtrOutputWithContext(ctx context.Context) SybaseAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SybaseAuthenticationTypePtrOutput)
-}
-
-func (in *sybaseAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SybaseAuthenticationType] {
-	return pulumix.Output[*SybaseAuthenticationType]{
-		OutputState: in.ToSybaseAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication type to use.
@@ -12421,12 +12000,6 @@ func (in *teamDeskAuthenticationTypePtr) ToTeamDeskAuthenticationTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(TeamDeskAuthenticationTypePtrOutput)
 }
 
-func (in *teamDeskAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TeamDeskAuthenticationType] {
-	return pulumix.Output[*TeamDeskAuthenticationType]{
-		OutputState: in.ToTeamDeskAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthenticationType to be used for connection.
 type TeradataAuthenticationType string
 
@@ -12593,12 +12166,6 @@ func (in *teradataAuthenticationTypePtr) ToTeradataAuthenticationTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(TeradataAuthenticationTypePtrOutput)
 }
 
-func (in *teradataAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TeradataAuthenticationType] {
-	return pulumix.Output[*TeradataAuthenticationType]{
-		OutputState: in.ToTeradataAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Trigger reference type.
 type TriggerReferenceType string
 
@@ -12761,12 +12328,6 @@ func (in *triggerReferenceTypePtr) ToTriggerReferenceTypePtrOutput() TriggerRefe
 
 func (in *triggerReferenceTypePtr) ToTriggerReferenceTypePtrOutputWithContext(ctx context.Context) TriggerReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerReferenceTypePtrOutput)
-}
-
-func (in *triggerReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerReferenceType] {
-	return pulumix.Output[*TriggerReferenceType]{
-		OutputState: in.ToTriggerReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The frequency of the time windows.
@@ -12937,12 +12498,6 @@ func (in *tumblingWindowFrequencyPtr) ToTumblingWindowFrequencyPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(TumblingWindowFrequencyPtrOutput)
 }
 
-func (in *tumblingWindowFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*TumblingWindowFrequency] {
-	return pulumix.Output[*TumblingWindowFrequency]{
-		OutputState: in.ToTumblingWindowFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Linked service reference type.
 type Type string
 
@@ -13105,12 +12660,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Variable type.
@@ -13281,12 +12830,6 @@ func (in *variableTypePtr) ToVariableTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(VariableTypePtrOutput)
 }
 
-func (in *variableTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VariableType] {
-	return pulumix.Output[*VariableType]{
-		OutputState: in.ToVariableTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rest API method for target endpoint.
 type WebActivityMethod string
 
@@ -13455,12 +12998,6 @@ func (in *webActivityMethodPtr) ToWebActivityMethodPtrOutput() WebActivityMethod
 
 func (in *webActivityMethodPtr) ToWebActivityMethodPtrOutputWithContext(ctx context.Context) WebActivityMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebActivityMethodPtrOutput)
-}
-
-func (in *webActivityMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*WebActivityMethod] {
-	return pulumix.Output[*WebActivityMethod]{
-		OutputState: in.ToWebActivityMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of authentication used to connect to the web table source.
@@ -13636,12 +13173,6 @@ func (in *webHookActivityMethodPtr) ToWebHookActivityMethodPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(WebHookActivityMethodPtrOutput)
 }
 
-func (in *webHookActivityMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*WebHookActivityMethod] {
-	return pulumix.Output[*WebHookActivityMethod]{
-		OutputState: in.ToWebHookActivityMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication type to use.
 type ZendeskAuthenticationType string
 
@@ -13806,12 +13337,6 @@ func (in *zendeskAuthenticationTypePtr) ToZendeskAuthenticationTypePtrOutput() Z
 
 func (in *zendeskAuthenticationTypePtr) ToZendeskAuthenticationTypePtrOutputWithContext(ctx context.Context) ZendeskAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZendeskAuthenticationTypePtrOutput)
-}
-
-func (in *zendeskAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ZendeskAuthenticationType] {
-	return pulumix.Output[*ZendeskAuthenticationType]{
-		OutputState: in.ToZendeskAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

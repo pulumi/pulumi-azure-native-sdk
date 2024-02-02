@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The server key type like 'ServiceManaged', 'AzureKeyVault'.
@@ -175,12 +174,6 @@ func (in *serverKeyTypePtr) ToServerKeyTypePtrOutput() ServerKeyTypePtrOutput {
 
 func (in *serverKeyTypePtr) ToServerKeyTypePtrOutputWithContext(ctx context.Context) ServerKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerKeyTypePtrOutput)
-}
-
-func (in *serverKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerKeyType] {
-	return pulumix.Output[*ServerKeyType]{
-		OutputState: in.ToServerKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

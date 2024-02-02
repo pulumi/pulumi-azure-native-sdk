@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the automation rule action
@@ -213,12 +212,6 @@ func (in *automationRulePropertyConditionSupportedOperatorPtr) ToAutomationRuleP
 
 func (in *automationRulePropertyConditionSupportedOperatorPtr) ToAutomationRulePropertyConditionSupportedOperatorPtrOutputWithContext(ctx context.Context) AutomationRulePropertyConditionSupportedOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutomationRulePropertyConditionSupportedOperatorPtrOutput)
-}
-
-func (in *automationRulePropertyConditionSupportedOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*AutomationRulePropertyConditionSupportedOperator] {
-	return pulumix.Output[*AutomationRulePropertyConditionSupportedOperator]{
-		OutputState: in.ToAutomationRulePropertyConditionSupportedOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The property to evaluate
@@ -539,12 +532,6 @@ func (in *automationRulePropertyConditionSupportedPropertyPtr) ToAutomationRuleP
 	return pulumi.ToOutputWithContext(ctx, in).(AutomationRulePropertyConditionSupportedPropertyPtrOutput)
 }
 
-func (in *automationRulePropertyConditionSupportedPropertyPtr) ToOutput(ctx context.Context) pulumix.Output[*AutomationRulePropertyConditionSupportedProperty] {
-	return pulumix.Output[*AutomationRulePropertyConditionSupportedProperty]{
-		OutputState: in.ToAutomationRulePropertyConditionSupportedPropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The entity query kind
 type EntityTimelineKind string
 
@@ -714,12 +701,6 @@ func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutput() EntityTimelineK
 
 func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutputWithContext(ctx context.Context) EntityTimelineKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTimelineKindPtrOutput)
-}
-
-func (in *entityTimelineKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTimelineKind] {
-	return pulumix.Output[*EntityTimelineKind]{
-		OutputState: in.ToEntityTimelineKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The reason the incident was closed
@@ -896,12 +877,6 @@ func (in *incidentClassificationPtr) ToIncidentClassificationPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentClassificationPtrOutput)
 }
 
-func (in *incidentClassificationPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentClassification] {
-	return pulumix.Output[*IncidentClassification]{
-		OutputState: in.ToIncidentClassificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The classification reason to close the incident with
 type IncidentClassificationReason string
 
@@ -1074,12 +1049,6 @@ func (in *incidentClassificationReasonPtr) ToIncidentClassificationReasonPtrOutp
 
 func (in *incidentClassificationReasonPtr) ToIncidentClassificationReasonPtrOutputWithContext(ctx context.Context) IncidentClassificationReasonPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentClassificationReasonPtrOutput)
-}
-
-func (in *incidentClassificationReasonPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentClassificationReason] {
-	return pulumix.Output[*IncidentClassificationReason]{
-		OutputState: in.ToIncidentClassificationReasonPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The severity of the incident
@@ -1256,12 +1225,6 @@ func (in *incidentSeverityPtr) ToIncidentSeverityPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentSeverityPtrOutput)
 }
 
-func (in *incidentSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentSeverity] {
-	return pulumix.Output[*IncidentSeverity]{
-		OutputState: in.ToIncidentSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the incident
 type IncidentStatus string
 
@@ -1431,12 +1394,6 @@ func (in *incidentStatusPtr) ToIncidentStatusPtrOutput() IncidentStatusPtrOutput
 
 func (in *incidentStatusPtr) ToIncidentStatusPtrOutputWithContext(ctx context.Context) IncidentStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentStatusPtrOutput)
-}
-
-func (in *incidentStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentStatus] {
-	return pulumix.Output[*IncidentStatus]{
-		OutputState: in.ToIncidentStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the setting
@@ -1615,12 +1572,6 @@ func (in *sourcePtr) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtr
 	return pulumi.ToOutputWithContext(ctx, in).(SourcePtrOutput)
 }
 
-func (in *sourcePtr) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: in.ToSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of object the automation rule triggers on
 type TriggersOn string
 
@@ -1786,12 +1737,6 @@ func (in *triggersOnPtr) ToTriggersOnPtrOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, in).(TriggersOnPtrOutput)
 }
 
-func (in *triggersOnPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggersOn] {
-	return pulumix.Output[*TriggersOn]{
-		OutputState: in.ToTriggersOnPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of event the automation rule triggers on
 type TriggersWhen string
 
@@ -1955,12 +1900,6 @@ func (in *triggersWhenPtr) ToTriggersWhenPtrOutput() TriggersWhenPtrOutput {
 
 func (in *triggersWhenPtr) ToTriggersWhenPtrOutputWithContext(ctx context.Context) TriggersWhenPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TriggersWhenPtrOutput)
-}
-
-func (in *triggersWhenPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggersWhen] {
-	return pulumix.Output[*TriggersWhen]{
-		OutputState: in.ToTriggersWhenPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

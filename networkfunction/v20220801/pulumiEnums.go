@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Emission destination type.
@@ -175,12 +174,6 @@ func (in *destinationTypePtr) ToDestinationTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DestinationTypePtrOutput)
 }
 
-func (in *destinationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DestinationType] {
-	return pulumix.Output[*DestinationType]{
-		OutputState: in.ToDestinationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Emission format type.
 type EmissionType string
 
@@ -343,12 +336,6 @@ func (in *emissionTypePtr) ToEmissionTypePtrOutput() EmissionTypePtrOutput {
 
 func (in *emissionTypePtr) ToEmissionTypePtrOutputWithContext(ctx context.Context) EmissionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EmissionTypePtrOutput)
-}
-
-func (in *emissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EmissionType] {
-	return pulumix.Output[*EmissionType]{
-		OutputState: in.ToEmissionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The ingestion type.
@@ -515,12 +502,6 @@ func (in *ingestionTypePtr) ToIngestionTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IngestionTypePtrOutput)
 }
 
-func (in *ingestionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IngestionType] {
-	return pulumix.Output[*IngestionType]{
-		OutputState: in.ToIngestionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ingestion source type.
 type SourceType string
 
@@ -683,12 +664,6 @@ func (in *sourceTypePtr) ToSourceTypePtrOutput() SourceTypePtrOutput {
 
 func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
-}
-
-func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

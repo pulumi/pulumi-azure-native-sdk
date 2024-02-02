@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The activation Mode of the service package
@@ -179,12 +178,6 @@ func (in *armServicePackageActivationModePtr) ToArmServicePackageActivationModeP
 	return pulumi.ToOutputWithContext(ctx, in).(ArmServicePackageActivationModePtrOutput)
 }
 
-func (in *armServicePackageActivationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ArmServicePackageActivationMode] {
-	return pulumix.Output[*ArmServicePackageActivationMode]{
-		OutputState: in.ToArmServicePackageActivationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The activation Mode of the service package
 type ArmUpgradeFailureAction string
 
@@ -351,12 +344,6 @@ func (in *armUpgradeFailureActionPtr) ToArmUpgradeFailureActionPtrOutput() ArmUp
 
 func (in *armUpgradeFailureActionPtr) ToArmUpgradeFailureActionPtrOutputWithContext(ctx context.Context) ArmUpgradeFailureActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArmUpgradeFailureActionPtrOutput)
-}
-
-func (in *armUpgradeFailureActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ArmUpgradeFailureAction] {
-	return pulumix.Output[*ArmUpgradeFailureAction]{
-		OutputState: in.ToArmUpgradeFailureActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **upgradeMode** is set to 'Automatic'.
@@ -528,12 +515,6 @@ func (in *clusterUpgradeCadencePtr) ToClusterUpgradeCadencePtrOutput() ClusterUp
 
 func (in *clusterUpgradeCadencePtr) ToClusterUpgradeCadencePtrOutputWithContext(ctx context.Context) ClusterUpgradeCadencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpgradeCadencePtrOutput)
-}
-
-func (in *clusterUpgradeCadencePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeCadence] {
-	return pulumix.Output[*ClusterUpgradeCadence]{
-		OutputState: in.ToClusterUpgradeCadencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of managed identity for the resource.
@@ -710,12 +691,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
 }
 
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the move cost for the service.
 type MoveCost string
 
@@ -890,12 +865,6 @@ func (in *moveCostPtr) ToMoveCostPtrOutputWithContext(ctx context.Context) MoveC
 	return pulumi.ToOutputWithContext(ctx, in).(MoveCostPtrOutput)
 }
 
-func (in *moveCostPtr) ToOutput(ctx context.Context) pulumix.Output[*MoveCost] {
-	return pulumix.Output[*MoveCost]{
-		OutputState: in.ToMoveCostPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The category of notification.
 type NotificationCategory string
 
@@ -1059,12 +1028,6 @@ func (in *notificationCategoryPtr) ToNotificationCategoryPtrOutput() Notificatio
 
 func (in *notificationCategoryPtr) ToNotificationCategoryPtrOutputWithContext(ctx context.Context) NotificationCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationCategoryPtrOutput)
-}
-
-func (in *notificationCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationCategory] {
-	return pulumix.Output[*NotificationCategory]{
-		OutputState: in.ToNotificationCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The notification channel indicates the type of receivers subscribed to the notification, either user or subscription.
@@ -1235,12 +1198,6 @@ func (in *notificationChannelPtr) ToNotificationChannelPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationChannelPtrOutput)
 }
 
-func (in *notificationChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannel] {
-	return pulumix.Output[*NotificationChannel]{
-		OutputState: in.ToNotificationChannelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The level of notification.
 type NotificationLevel string
 
@@ -1407,12 +1364,6 @@ func (in *notificationLevelPtr) ToNotificationLevelPtrOutput() NotificationLevel
 
 func (in *notificationLevelPtr) ToNotificationLevelPtrOutputWithContext(ctx context.Context) NotificationLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationLevelPtrOutput)
-}
-
-func (in *notificationLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationLevel] {
-	return pulumix.Output[*NotificationLevel]{
-		OutputState: in.ToNotificationLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how the service is partitioned.
@@ -1603,12 +1554,6 @@ func (in *rollingUpgradeModePtr) ToRollingUpgradeModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RollingUpgradeModePtrOutput)
 }
 
-func (in *rollingUpgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*RollingUpgradeMode] {
-	return pulumix.Output[*RollingUpgradeMode]{
-		OutputState: in.ToRollingUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
 type ServiceCorrelationScheme string
 
@@ -1783,12 +1728,6 @@ func (in *serviceCorrelationSchemePtr) ToServiceCorrelationSchemePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceCorrelationSchemePtrOutput)
 }
 
-func (in *serviceCorrelationSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceCorrelationScheme] {
-	return pulumix.Output[*ServiceCorrelationScheme]{
-		OutputState: in.ToServiceCorrelationSchemePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of service (Stateless or Stateful).
 type ServiceKind string
 
@@ -1958,12 +1897,6 @@ func (in *serviceKindPtr) ToServiceKindPtrOutput() ServiceKindPtrOutput {
 
 func (in *serviceKindPtr) ToServiceKindPtrOutputWithContext(ctx context.Context) ServiceKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceKindPtrOutput)
-}
-
-func (in *serviceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceKind] {
-	return pulumix.Output[*ServiceKind]{
-		OutputState: in.ToServiceKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The service load metric relative weight, compared to other metrics configured for this service, as a number.
@@ -2138,12 +2071,6 @@ func (in *serviceLoadMetricWeightPtr) ToServiceLoadMetricWeightPtrOutput() Servi
 
 func (in *serviceLoadMetricWeightPtr) ToServiceLoadMetricWeightPtrOutputWithContext(ctx context.Context) ServiceLoadMetricWeightPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLoadMetricWeightPtrOutput)
-}
-
-func (in *serviceLoadMetricWeightPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLoadMetricWeight] {
-	return pulumix.Output[*ServiceLoadMetricWeight]{
-		OutputState: in.ToServiceLoadMetricWeightPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of placement policy for a service fabric service. Following are the possible values.
@@ -2326,12 +2253,6 @@ func (in *servicePlacementPolicyTypePtr) ToServicePlacementPolicyTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ServicePlacementPolicyTypePtrOutput)
 }
 
-func (in *servicePlacementPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServicePlacementPolicyType] {
-	return pulumix.Output[*ServicePlacementPolicyType]{
-		OutputState: in.ToServicePlacementPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property controls the logical grouping of VMs in upgrade domains (UDs). This property can't be modified if a node type with multiple Availability Zones is already present in the cluster.
 type SfZonalUpgradeMode string
 
@@ -2498,12 +2419,6 @@ func (in *sfZonalUpgradeModePtr) ToSfZonalUpgradeModePtrOutput() SfZonalUpgradeM
 
 func (in *sfZonalUpgradeModePtr) ToSfZonalUpgradeModePtrOutputWithContext(ctx context.Context) SfZonalUpgradeModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SfZonalUpgradeModePtrOutput)
-}
-
-func (in *sfZonalUpgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*SfZonalUpgradeMode] {
-	return pulumix.Output[*SfZonalUpgradeMode]{
-		OutputState: in.ToSfZonalUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The upgrade mode of the cluster when new Service Fabric runtime version is available.
@@ -2674,12 +2589,6 @@ func (in *upgradeModePtr) ToUpgradeModePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeModePtrOutput)
 }
 
-func (in *upgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeMode] {
-	return pulumix.Output[*UpgradeMode]{
-		OutputState: in.ToUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property defines the upgrade mode for the virtual machine scale set, it is mandatory if a node type with multiple Availability Zones is added.
 type VmssZonalUpgradeMode string
 
@@ -2846,12 +2755,6 @@ func (in *vmssZonalUpgradeModePtr) ToVmssZonalUpgradeModePtrOutput() VmssZonalUp
 
 func (in *vmssZonalUpgradeModePtr) ToVmssZonalUpgradeModePtrOutputWithContext(ctx context.Context) VmssZonalUpgradeModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmssZonalUpgradeModePtrOutput)
-}
-
-func (in *vmssZonalUpgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*VmssZonalUpgradeMode] {
-	return pulumix.Output[*VmssZonalUpgradeMode]{
-		OutputState: in.ToVmssZonalUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

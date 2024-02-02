@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Update classifications included in the software update configuration.
@@ -181,12 +180,6 @@ func (in *linuxUpdateClassesPtr) ToLinuxUpdateClassesPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxUpdateClassesPtrOutput)
 }
 
-func (in *linuxUpdateClassesPtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxUpdateClasses] {
-	return pulumix.Output[*LinuxUpdateClasses]{
-		OutputState: in.ToLinuxUpdateClassesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // operating system of target machines
 type OperatingSystemType string
 
@@ -351,12 +344,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutput() OperatingSyst
 
 func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
-}
-
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -535,12 +522,6 @@ func (in *scheduleDayPtr) ToScheduleDayPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleDayPtrOutput)
 }
 
-func (in *scheduleDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleDay] {
-	return pulumix.Output[*ScheduleDay]{
-		OutputState: in.ToScheduleDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the frequency of the schedule.
 type ScheduleFrequency string
 
@@ -716,12 +697,6 @@ func (in *scheduleFrequencyPtr) ToScheduleFrequencyPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleFrequencyPtrOutput)
 }
 
-func (in *scheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleFrequency] {
-	return pulumix.Output[*ScheduleFrequency]{
-		OutputState: in.ToScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Filter VMs by Any or All specified tags.
 type TagOperators string
 
@@ -886,12 +861,6 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
-}
-
-func (in *tagOperatorsPtr) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
-	return pulumix.Output[*TagOperators]{
-		OutputState: in.ToTagOperatorsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Update classification included in the software update configuration. A comma separated string with required values
@@ -1072,12 +1041,6 @@ func (in *windowsUpdateClassesPtr) ToWindowsUpdateClassesPtrOutput() WindowsUpda
 
 func (in *windowsUpdateClassesPtr) ToWindowsUpdateClassesPtrOutputWithContext(ctx context.Context) WindowsUpdateClassesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateClassesPtrOutput)
-}
-
-func (in *windowsUpdateClassesPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsUpdateClasses] {
-	return pulumix.Output[*WindowsUpdateClasses]{
-		OutputState: in.ToWindowsUpdateClassesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

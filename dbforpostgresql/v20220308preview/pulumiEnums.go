@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data encryption type to depict if it is System assigned vs Azure Key vault.
@@ -175,12 +174,6 @@ func (in *armServerKeyTypePtr) ToArmServerKeyTypePtrOutput() ArmServerKeyTypePtr
 
 func (in *armServerKeyTypePtr) ToArmServerKeyTypePtrOutputWithContext(ctx context.Context) ArmServerKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArmServerKeyTypePtrOutput)
-}
-
-func (in *armServerKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ArmServerKeyType] {
-	return pulumix.Output[*ArmServerKeyType]{
-		OutputState: in.ToArmServerKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode to create a new PostgreSQL server.
@@ -357,12 +350,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A value indicating whether Geo-Redundant backup is enabled on the server.
 type GeoRedundantBackupEnum string
 
@@ -527,12 +514,6 @@ func (in *geoRedundantBackupEnumPtr) ToGeoRedundantBackupEnumPtrOutput() GeoRedu
 
 func (in *geoRedundantBackupEnumPtr) ToGeoRedundantBackupEnumPtrOutputWithContext(ctx context.Context) GeoRedundantBackupEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupEnumPtrOutput)
-}
-
-func (in *geoRedundantBackupEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoRedundantBackupEnum] {
-	return pulumix.Output[*GeoRedundantBackupEnum]{
-		OutputState: in.ToGeoRedundantBackupEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The HA mode for the server.
@@ -703,12 +684,6 @@ func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(HighAvailabilityModePtrOutput)
 }
 
-func (in *highAvailabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*HighAvailabilityMode] {
-	return pulumix.Output[*HighAvailabilityMode]{
-		OutputState: in.ToHighAvailabilityModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the types of identities associated with this resource; currently restricted to 'SystemAssigned and UserAssigned'
 type IdentityType string
 
@@ -875,12 +850,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Replication role of the server
@@ -1053,12 +1022,6 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRolePtrOutput)
 }
 
-func (in *replicationRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
-	return pulumix.Output[*ReplicationRole]{
-		OutputState: in.ToReplicationRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PostgreSQL Server version.
 type ServerVersion string
 
@@ -1229,12 +1192,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
 }
 
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the particular SKU, e.g. Burstable.
 type SkuTier string
 
@@ -1401,12 +1358,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get or Set Kind property.
@@ -177,12 +176,6 @@ func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
 }
 
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU, in standard format (such as S0).
 type Name string
 
@@ -349,12 +342,6 @@ func (in *namePtr) ToNamePtrOutput() NamePtrOutput {
 
 func (in *namePtr) ToNamePtrOutputWithContext(ctx context.Context) NamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NamePtrOutput)
-}
-
-func (in *namePtr) ToOutput(ctx context.Context) pulumix.Output[*Name] {
-	return pulumix.Output[*Name]{
-		OutputState: in.ToNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

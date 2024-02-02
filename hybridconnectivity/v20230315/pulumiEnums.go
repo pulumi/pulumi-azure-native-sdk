@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity that last modified the resource.
@@ -181,12 +180,6 @@ func (in *createdByTypePtr) ToCreatedByTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(CreatedByTypePtrOutput)
 }
 
-func (in *createdByTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CreatedByType] {
-	return pulumix.Output[*CreatedByType]{
-		OutputState: in.ToCreatedByTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
 type ServiceName string
 
@@ -353,12 +346,6 @@ func (in *serviceNamePtr) ToServiceNamePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceNamePtrOutput)
 }
 
-func (in *serviceNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceName] {
-	return pulumix.Output[*ServiceName]{
-		OutputState: in.ToServiceNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of endpoint.
 type Type string
 
@@ -523,12 +510,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

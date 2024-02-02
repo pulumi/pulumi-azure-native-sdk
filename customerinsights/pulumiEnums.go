@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The calculation window.
@@ -183,12 +182,6 @@ func (in *calculationWindowTypesPtr) ToCalculationWindowTypesPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CalculationWindowTypesPtrOutput)
 }
 
-func (in *calculationWindowTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CalculationWindowTypes] {
-	return pulumix.Output[*CalculationWindowTypes]{
-		OutputState: in.ToCalculationWindowTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Relationship Cardinality.
 type CardinalityTypes string
 
@@ -357,12 +350,6 @@ func (in *cardinalityTypesPtr) ToCardinalityTypesPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(CardinalityTypesPtrOutput)
 }
 
-func (in *cardinalityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CardinalityTypes] {
-	return pulumix.Output[*CardinalityTypes]{
-		OutputState: in.ToCardinalityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of completion operation.
 type CompletionOperationTypes string
 
@@ -529,12 +516,6 @@ func (in *completionOperationTypesPtr) ToCompletionOperationTypesPtrOutput() Com
 
 func (in *completionOperationTypesPtr) ToCompletionOperationTypesPtrOutputWithContext(ctx context.Context) CompletionOperationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompletionOperationTypesPtrOutput)
-}
-
-func (in *completionOperationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CompletionOperationTypes] {
-	return pulumix.Output[*CompletionOperationTypes]{
-		OutputState: in.ToCompletionOperationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of connector.
@@ -711,12 +692,6 @@ func (in *connectorTypesPtr) ToConnectorTypesPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectorTypesPtrOutput)
 }
 
-func (in *connectorTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectorTypes] {
-	return pulumix.Output[*ConnectorTypes]{
-		OutputState: in.ToConnectorTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of target entity.
 type EntityType string
 
@@ -885,12 +860,6 @@ func (in *entityTypePtr) ToEntityTypePtrOutput() EntityTypePtrOutput {
 
 func (in *entityTypePtr) ToEntityTypePtrOutputWithContext(ctx context.Context) EntityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypePtrOutput)
-}
-
-func (in *entityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
-	return pulumix.Output[*EntityType]{
-		OutputState: in.ToEntityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of entity.
@@ -1063,12 +1032,6 @@ func (in *entityTypesPtr) ToEntityTypesPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypesPtrOutput)
 }
 
-func (in *entityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTypes] {
-	return pulumix.Output[*EntityTypes]{
-		OutputState: in.ToEntityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of error management to use for the mapping.
 type ErrorManagementTypes string
 
@@ -1237,12 +1200,6 @@ func (in *errorManagementTypesPtr) ToErrorManagementTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ErrorManagementTypesPtrOutput)
 }
 
-func (in *errorManagementTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ErrorManagementTypes] {
-	return pulumix.Output[*ErrorManagementTypes]{
-		OutputState: in.ToErrorManagementTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type mapping format.
 type FormatTypes string
 
@@ -1405,12 +1362,6 @@ func (in *formatTypesPtr) ToFormatTypesPtrOutput() FormatTypesPtrOutput {
 
 func (in *formatTypesPtr) ToFormatTypesPtrOutputWithContext(ctx context.Context) FormatTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FormatTypesPtrOutput)
-}
-
-func (in *formatTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*FormatTypes] {
-	return pulumix.Output[*FormatTypes]{
-		OutputState: in.ToFormatTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The frequency to update.
@@ -1585,12 +1536,6 @@ func (in *frequencyTypesPtr) ToFrequencyTypesPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(FrequencyTypesPtrOutput)
 }
 
-func (in *frequencyTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*FrequencyTypes] {
-	return pulumix.Output[*FrequencyTypes]{
-		OutputState: in.ToFrequencyTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
 type InstanceOperationType string
 
@@ -1755,12 +1700,6 @@ func (in *instanceOperationTypePtr) ToInstanceOperationTypePtrOutput() InstanceO
 
 func (in *instanceOperationTypePtr) ToInstanceOperationTypePtrOutputWithContext(ctx context.Context) InstanceOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceOperationTypePtrOutput)
-}
-
-func (in *instanceOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceOperationType] {
-	return pulumix.Output[*InstanceOperationType]{
-		OutputState: in.ToInstanceOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The computation function for the KPI.
@@ -1941,12 +1880,6 @@ func (in *kpiFunctionsPtr) ToKpiFunctionsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(KpiFunctionsPtrOutput)
 }
 
-func (in *kpiFunctionsPtr) ToOutput(ctx context.Context) pulumix.Output[*KpiFunctions] {
-	return pulumix.Output[*KpiFunctions]{
-		OutputState: in.ToKpiFunctionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Link type.
 type LinkTypes string
 
@@ -2111,12 +2044,6 @@ func (in *linkTypesPtr) ToLinkTypesPtrOutput() LinkTypesPtrOutput {
 
 func (in *linkTypesPtr) ToLinkTypesPtrOutputWithContext(ctx context.Context) LinkTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinkTypesPtrOutput)
-}
-
-func (in *linkTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*LinkTypes] {
-	return pulumix.Output[*LinkTypes]{
-		OutputState: in.ToLinkTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of roles.
@@ -2291,12 +2218,6 @@ func (in *roleTypesPtr) ToRoleTypesPtrOutput() RoleTypesPtrOutput {
 
 func (in *roleTypesPtr) ToRoleTypesPtrOutputWithContext(ctx context.Context) RoleTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoleTypesPtrOutput)
-}
-
-func (in *roleTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*RoleTypes] {
-	return pulumix.Output[*RoleTypes]{
-		OutputState: in.ToRoleTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // LedgerRole associated with the Security Principal of Ledger
@@ -179,12 +178,6 @@ func (in *ledgerRoleNamePtr) ToLedgerRoleNamePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LedgerRoleNamePtrOutput)
 }
 
-func (in *ledgerRoleNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LedgerRoleName] {
-	return pulumix.Output[*LedgerRoleName]{
-		OutputState: in.ToLedgerRoleNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of Confidential Ledger
 type LedgerType string
 
@@ -351,12 +344,6 @@ func (in *ledgerTypePtr) ToLedgerTypePtrOutput() LedgerTypePtrOutput {
 
 func (in *ledgerTypePtr) ToLedgerTypePtrOutputWithContext(ctx context.Context) LedgerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LedgerTypePtrOutput)
-}
-
-func (in *ledgerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LedgerType] {
-	return pulumix.Output[*LedgerType]{
-		OutputState: in.ToLedgerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

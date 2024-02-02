@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // denySettings Mode.
@@ -182,12 +181,6 @@ func (in *denySettingsModePtr) ToDenySettingsModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DenySettingsModePtrOutput)
 }
 
-func (in *denySettingsModePtr) ToOutput(ctx context.Context) pulumix.Output[*DenySettingsMode] {
-	return pulumix.Output[*DenySettingsMode]{
-		OutputState: in.ToDenySettingsModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
 type DeploymentStacksDeleteDetachEnum string
 
@@ -352,12 +345,6 @@ func (in *deploymentStacksDeleteDetachEnumPtr) ToDeploymentStacksDeleteDetachEnu
 
 func (in *deploymentStacksDeleteDetachEnumPtr) ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentStacksDeleteDetachEnumPtrOutput)
-}
-
-func (in *deploymentStacksDeleteDetachEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentStacksDeleteDetachEnum] {
-	return pulumix.Output[*DeploymentStacksDeleteDetachEnum]{
-		OutputState: in.ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

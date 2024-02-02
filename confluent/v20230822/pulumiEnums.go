@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SaaS Offer Status
@@ -191,12 +190,6 @@ func (in *saaSOfferStatusPtr) ToSaaSOfferStatusPtrOutput() SaaSOfferStatusPtrOut
 
 func (in *saaSOfferStatusPtr) ToSaaSOfferStatusPtrOutputWithContext(ctx context.Context) SaaSOfferStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SaaSOfferStatusPtrOutput)
-}
-
-func (in *saaSOfferStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SaaSOfferStatus] {
-	return pulumix.Output[*SaaSOfferStatus]{
-		OutputState: in.ToSaaSOfferStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

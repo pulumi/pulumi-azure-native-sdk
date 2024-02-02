@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Supported protocols for the customer's endpoint.
@@ -175,12 +174,6 @@ func (in *afdendpointProtocolsPtr) ToAFDEndpointProtocolsPtrOutput() AFDEndpoint
 
 func (in *afdendpointProtocolsPtr) ToAFDEndpointProtocolsPtrOutputWithContext(ctx context.Context) AFDEndpointProtocolsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AFDEndpointProtocolsPtrOutput)
-}
-
-func (in *afdendpointProtocolsPtr) ToOutput(ctx context.Context) pulumix.Output[*AFDEndpointProtocols] {
-	return pulumix.Output[*AFDEndpointProtocols]{
-		OutputState: in.ToAFDEndpointProtocolsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
@@ -351,12 +344,6 @@ func (in *afdQueryStringCachingBehaviorPtr) ToAfdQueryStringCachingBehaviorPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(AfdQueryStringCachingBehaviorPtrOutput)
 }
 
-func (in *afdQueryStringCachingBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*AfdQueryStringCachingBehavior] {
-	return pulumix.Output[*AfdQueryStringCachingBehavior]{
-		OutputState: in.ToAfdQueryStringCachingBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
 type EnabledState string
 
@@ -521,12 +508,6 @@ func (in *enabledStatePtr) ToEnabledStatePtrOutput() EnabledStatePtrOutput {
 
 func (in *enabledStatePtr) ToEnabledStatePtrOutputWithContext(ctx context.Context) EnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnabledStatePtrOutput)
-}
-
-func (in *enabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnabledState] {
-	return pulumix.Output[*EnabledState]{
-		OutputState: in.ToEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Protocol this rule will use when forwarding traffic to backends.
@@ -697,12 +678,6 @@ func (in *forwardingProtocolPtr) ToForwardingProtocolPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingProtocolPtrOutput)
 }
 
-func (in *forwardingProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardingProtocol] {
-	return pulumix.Output[*ForwardingProtocol]{
-		OutputState: in.ToForwardingProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of health probe request that is made.
 type HealthProbeRequestType string
 
@@ -871,12 +846,6 @@ func (in *healthProbeRequestTypePtr) ToHealthProbeRequestTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(HealthProbeRequestTypePtrOutput)
 }
 
-func (in *healthProbeRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeRequestType] {
-	return pulumix.Output[*HealthProbeRequestType]{
-		OutputState: in.ToHealthProbeRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
 type HttpsRedirect string
 
@@ -1043,12 +1012,6 @@ func (in *httpsRedirectPtr) ToHttpsRedirectPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(HttpsRedirectPtrOutput)
 }
 
-func (in *httpsRedirectPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpsRedirect] {
-	return pulumix.Output[*HttpsRedirect]{
-		OutputState: in.ToHttpsRedirectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // whether this route will be linked to the default endpoint domain.
 type LinkToDefaultDomain string
 
@@ -1213,12 +1176,6 @@ func (in *linkToDefaultDomainPtr) ToLinkToDefaultDomainPtrOutput() LinkToDefault
 
 func (in *linkToDefaultDomainPtr) ToLinkToDefaultDomainPtrOutputWithContext(ctx context.Context) LinkToDefaultDomainPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinkToDefaultDomainPtrOutput)
-}
-
-func (in *linkToDefaultDomainPtr) ToOutput(ctx context.Context) pulumix.Output[*LinkToDefaultDomain] {
-	return pulumix.Output[*LinkToDefaultDomain]{
-		OutputState: in.ToLinkToDefaultDomainPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Protocol to use for health probe.
@@ -1389,12 +1346,6 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
 }
 
-func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
-	return pulumix.Output[*ProbeProtocol]{
-		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of response errors for real user requests for which origin will be deemed unhealthy
 type ResponseBasedDetectedErrorTypes string
 
@@ -1561,12 +1512,6 @@ func (in *responseBasedDetectedErrorTypesPtr) ToResponseBasedDetectedErrorTypesP
 
 func (in *responseBasedDetectedErrorTypesPtr) ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx context.Context) ResponseBasedDetectedErrorTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResponseBasedDetectedErrorTypesPtrOutput)
-}
-
-func (in *responseBasedDetectedErrorTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedDetectedErrorTypes] {
-	return pulumix.Output[*ResponseBasedDetectedErrorTypes]{
-		OutputState: in.ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the pricing tier.
@@ -1757,12 +1702,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

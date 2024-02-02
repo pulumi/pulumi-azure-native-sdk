@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method of cost allocation for the rule
@@ -173,12 +172,6 @@ func (in *costAllocationPolicyTypePtr) ToCostAllocationPolicyTypePtrOutput() Cos
 
 func (in *costAllocationPolicyTypePtr) ToCostAllocationPolicyTypePtrOutputWithContext(ctx context.Context) CostAllocationPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CostAllocationPolicyTypePtrOutput)
-}
-
-func (in *costAllocationPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationPolicyType] {
-	return pulumix.Output[*CostAllocationPolicyType]{
-		OutputState: in.ToCostAllocationPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of resources contained in this cost allocation rule
@@ -347,12 +340,6 @@ func (in *costAllocationResourceTypePtr) ToCostAllocationResourceTypePtrOutput()
 
 func (in *costAllocationResourceTypePtr) ToCostAllocationResourceTypePtrOutputWithContext(ctx context.Context) CostAllocationResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CostAllocationResourceTypePtrOutput)
-}
-
-func (in *costAllocationResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationResourceType] {
-	return pulumix.Output[*CostAllocationResourceType]{
-		OutputState: in.ToCostAllocationResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the rule
@@ -524,12 +511,6 @@ func (in *ruleStatusPtr) ToRuleStatusPtrOutput() RuleStatusPtrOutput {
 
 func (in *ruleStatusPtr) ToRuleStatusPtrOutputWithContext(ctx context.Context) RuleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleStatusPtrOutput)
-}
-
-func (in *ruleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleStatus] {
-	return pulumix.Output[*RuleStatus]{
-		OutputState: in.ToRuleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The cluster's billing type.
@@ -177,12 +176,6 @@ func (in *billingTypePtr) ToBillingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(BillingTypePtrOutput)
 }
 
-func (in *billingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BillingType] {
-	return pulumix.Output[*BillingType]{
-		OutputState: in.ToBillingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU.
 type ClusterSkuNameEnum string
 
@@ -345,12 +338,6 @@ func (in *clusterSkuNameEnumPtr) ToClusterSkuNameEnumPtrOutput() ClusterSkuNameE
 
 func (in *clusterSkuNameEnumPtr) ToClusterSkuNameEnumPtrOutputWithContext(ctx context.Context) ClusterSkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterSkuNameEnumPtrOutput)
-}
-
-func (in *clusterSkuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterSkuNameEnum] {
-	return pulumix.Output[*ClusterSkuNameEnum]{
-		OutputState: in.ToClusterSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Column data type logical hint.
@@ -525,12 +512,6 @@ func (in *columnDataTypeHintEnumPtr) ToColumnDataTypeHintEnumPtrOutput() ColumnD
 
 func (in *columnDataTypeHintEnumPtr) ToColumnDataTypeHintEnumPtrOutputWithContext(ctx context.Context) ColumnDataTypeHintEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ColumnDataTypeHintEnumPtrOutput)
-}
-
-func (in *columnDataTypeHintEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ColumnDataTypeHintEnum] {
-	return pulumix.Output[*ColumnDataTypeHintEnum]{
-		OutputState: in.ToColumnDataTypeHintEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Column data type.
@@ -709,12 +690,6 @@ func (in *columnTypeEnumPtr) ToColumnTypeEnumPtrOutput() ColumnTypeEnumPtrOutput
 
 func (in *columnTypeEnumPtr) ToColumnTypeEnumPtrOutputWithContext(ctx context.Context) ColumnTypeEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ColumnTypeEnumPtrOutput)
-}
-
-func (in *columnTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ColumnTypeEnum] {
-	return pulumix.Output[*ColumnTypeEnum]{
-		OutputState: in.ToColumnTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the DataSource.
@@ -945,12 +920,6 @@ func (in *dataSourceKindPtr) ToDataSourceKindPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourceKindPtrOutput)
 }
 
-func (in *dataSourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DataSourceKind] {
-	return pulumix.Output[*DataSourceKind]{
-		OutputState: in.ToDataSourceKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity.
 type IdentityType string
 
@@ -1117,12 +1086,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the linked service.
@@ -1293,12 +1256,6 @@ func (in *linkedServiceEntityStatusPtr) ToLinkedServiceEntityStatusPtrOutput() L
 
 func (in *linkedServiceEntityStatusPtr) ToLinkedServiceEntityStatusPtrOutputWithContext(ctx context.Context) LinkedServiceEntityStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinkedServiceEntityStatusPtrOutput)
-}
-
-func (in *linkedServiceEntityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceEntityStatus] {
-	return pulumix.Output[*LinkedServiceEntityStatus]{
-		OutputState: in.ToLinkedServiceEntityStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the machine group
@@ -1473,12 +1430,6 @@ func (in *machineGroupTypePtr) ToMachineGroupTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(MachineGroupTypePtrOutput)
 }
 
-func (in *machineGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MachineGroupType] {
-	return pulumix.Output[*MachineGroupType]{
-		OutputState: in.ToMachineGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network access type for accessing Log Analytics query.
 type PublicNetworkAccessType string
 
@@ -1647,12 +1598,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Instruct the system how to handle and charge the logs ingested to this table.
 type TablePlanEnum string
 
@@ -1819,12 +1764,6 @@ func (in *tablePlanEnumPtr) ToTablePlanEnumPtrOutput() TablePlanEnumPtrOutput {
 
 func (in *tablePlanEnumPtr) ToTablePlanEnumPtrOutputWithContext(ctx context.Context) TablePlanEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TablePlanEnumPtrOutput)
-}
-
-func (in *tablePlanEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*TablePlanEnum] {
-	return pulumix.Output[*TablePlanEnum]{
-		OutputState: in.ToTablePlanEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the SKU.
@@ -2003,12 +1942,6 @@ func (in *workspaceSkuNameEnumPtr) ToWorkspaceSkuNameEnumPtrOutput() WorkspaceSk
 
 func (in *workspaceSkuNameEnumPtr) ToWorkspaceSkuNameEnumPtrOutputWithContext(ctx context.Context) WorkspaceSkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkspaceSkuNameEnumPtrOutput)
-}
-
-func (in *workspaceSkuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSkuNameEnum] {
-	return pulumix.Output[*WorkspaceSkuNameEnum]{
-		OutputState: in.ToWorkspaceSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

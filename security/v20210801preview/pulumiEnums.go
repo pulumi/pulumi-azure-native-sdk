@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The cloud that the standard is supported on.
@@ -175,12 +174,6 @@ func (in *standardSupportedCloudsPtr) ToStandardSupportedCloudsPtrOutput() Stand
 
 func (in *standardSupportedCloudsPtr) ToStandardSupportedCloudsPtrOutputWithContext(ctx context.Context) StandardSupportedCloudsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StandardSupportedCloudsPtrOutput)
-}
-
-func (in *standardSupportedCloudsPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardSupportedClouds] {
-	return pulumix.Output[*StandardSupportedClouds]{
-		OutputState: in.ToStandardSupportedCloudsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StandardSupportedCloudsArrayInput is an input type that accepts StandardSupportedCloudsArray and StandardSupportedCloudsArrayOutput values.

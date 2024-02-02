@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the sever administrator.
@@ -173,12 +172,6 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutput() AdministratorType
 
 func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
-}
-
-func (in *administratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdministratorType] {
-	return pulumix.Output[*AdministratorType]{
-		OutputState: in.ToAdministratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
@@ -351,12 +344,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
 type ManagedInstanceLicenseType string
 
@@ -521,12 +508,6 @@ func (in *managedInstanceLicenseTypePtr) ToManagedInstanceLicenseTypePtrOutput()
 
 func (in *managedInstanceLicenseTypePtr) ToManagedInstanceLicenseTypePtrOutputWithContext(ctx context.Context) ManagedInstanceLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedInstanceLicenseTypePtrOutput)
-}
-
-func (in *managedInstanceLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceLicenseType] {
-	return pulumix.Output[*ManagedInstanceLicenseType]{
-		OutputState: in.ToManagedInstanceLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Connection type used for connecting to the instance.
@@ -695,12 +676,6 @@ func (in *managedInstanceProxyOverridePtr) ToManagedInstanceProxyOverridePtrOutp
 
 func (in *managedInstanceProxyOverridePtr) ToManagedInstanceProxyOverridePtrOutputWithContext(ctx context.Context) ManagedInstanceProxyOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedInstanceProxyOverridePtrOutput)
-}
-
-func (in *managedInstanceProxyOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceProxyOverride] {
-	return pulumix.Output[*ManagedInstanceProxyOverride]{
-		OutputState: in.ToManagedInstanceProxyOverridePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the mode of database creation.
@@ -873,12 +848,6 @@ func (in *managedServerCreateModePtr) ToManagedServerCreateModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServerCreateModePtrOutput)
 }
 
-func (in *managedServerCreateModePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServerCreateMode] {
-	return pulumix.Output[*ManagedServerCreateMode]{
-		OutputState: in.ToManagedServerCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Principal Type of the sever administrator.
 type PrincipalType string
 
@@ -1047,12 +1016,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
 }
 
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The storage account type used to store backups for this instance. The options are LRS (LocallyRedundantStorage), ZRS (ZoneRedundantStorage) and GRS (GeoRedundantStorage)
 type StorageAccountType string
 
@@ -1219,12 +1182,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutput() StorageAccountT
 
 func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
-}
-
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

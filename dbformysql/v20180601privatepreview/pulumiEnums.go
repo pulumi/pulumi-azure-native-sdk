@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of administrator.
@@ -173,12 +172,6 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutput() AdministratorType
 
 func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
-}
-
-func (in *administratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdministratorType] {
-	return pulumix.Output[*AdministratorType]{
-		OutputState: in.ToAdministratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode to create a new server.
@@ -357,12 +350,6 @@ func (in *geoRedundantBackupPtr) ToGeoRedundantBackupPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupPtrOutput)
 }
 
-func (in *geoRedundantBackupPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoRedundantBackup] {
-	return pulumix.Output[*GeoRedundantBackup]{
-		OutputState: in.ToGeoRedundantBackupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Server version.
 type ServerVersion string
 
@@ -527,12 +514,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutput() ServerVersionPtrOutput {
 
 func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Context) ServerVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
-}
-
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The tier of the particular SKU, e.g. Basic.
@@ -703,12 +684,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable ssl enforcement or not when connect to server.
 type SslEnforcementEnum string
 
@@ -875,12 +850,6 @@ func (in *sslEnforcementEnumPtr) ToSslEnforcementEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SslEnforcementEnumPtrOutput)
 }
 
-func (in *sslEnforcementEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SslEnforcementEnum] {
-	return pulumix.Output[*SslEnforcementEnum]{
-		OutputState: in.ToSslEnforcementEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable Storage Auto Grow.
 type StorageAutogrow string
 
@@ -1045,12 +1014,6 @@ func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutput() StorageAutogrowPtrOut
 
 func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutputWithContext(ctx context.Context) StorageAutogrowPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAutogrowPtrOutput)
-}
-
-func (in *storageAutogrowPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAutogrow] {
-	return pulumix.Output[*StorageAutogrow]{
-		OutputState: in.ToStorageAutogrowPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

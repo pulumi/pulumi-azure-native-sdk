@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of backup which needs to be taken.
@@ -175,12 +174,6 @@ func (in *backupTypePtr) ToBackupTypePtrOutput() BackupTypePtrOutput {
 
 func (in *backupTypePtr) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupTypePtrOutput)
-}
-
-func (in *backupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupType] {
-	return pulumix.Output[*BackupType]{
-		OutputState: in.ToBackupTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DayOfWeek string
@@ -356,12 +349,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
-}
-
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DayOfWeekArrayInput is an input type that accepts DayOfWeekArray and DayOfWeekArrayOutput values.
@@ -577,12 +564,6 @@ func (in *encryptionAlgorithmPtr) ToEncryptionAlgorithmPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionAlgorithmPtrOutput)
 }
 
-func (in *encryptionAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionAlgorithm] {
-	return pulumix.Output[*EncryptionAlgorithm]{
-		OutputState: in.ToEncryptionAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Kind of the object. Currently only Series8000 is supported
 type Kind string
 
@@ -747,12 +728,6 @@ func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
 }
 
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Refers to the sku name which should be "Standard"
 type ManagerSkuType string
 
@@ -915,12 +890,6 @@ func (in *managerSkuTypePtr) ToManagerSkuTypePtrOutput() ManagerSkuTypePtrOutput
 
 func (in *managerSkuTypePtr) ToManagerSkuTypePtrOutputWithContext(ctx context.Context) ManagerSkuTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagerSkuTypePtrOutput)
-}
-
-func (in *managerSkuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagerSkuType] {
-	return pulumix.Output[*ManagerSkuType]{
-		OutputState: in.ToManagerSkuTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of StorSimple Manager.
@@ -1089,12 +1058,6 @@ func (in *managerTypePtr) ToManagerTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ManagerTypePtrOutput)
 }
 
-func (in *managerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagerType] {
-	return pulumix.Output[*ManagerType]{
-		OutputState: in.ToManagerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The monitoring status of the volume.
 type MonitoringStatus string
 
@@ -1259,12 +1222,6 @@ func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutput() MonitoringStatusPtr
 
 func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutputWithContext(ctx context.Context) MonitoringStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringStatusPtrOutput)
-}
-
-func (in *monitoringStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringStatus] {
-	return pulumix.Output[*MonitoringStatus]{
-		OutputState: in.ToMonitoringStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The recurrence type.
@@ -1437,12 +1394,6 @@ func (in *recurrenceTypePtr) ToRecurrenceTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceTypePtrOutput)
 }
 
-func (in *recurrenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceType] {
-	return pulumix.Output[*RecurrenceType]{
-		OutputState: in.ToRecurrenceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schedule status.
 type ScheduleStatus string
 
@@ -1607,12 +1558,6 @@ func (in *scheduleStatusPtr) ToScheduleStatusPtrOutput() ScheduleStatusPtrOutput
 
 func (in *scheduleStatusPtr) ToScheduleStatusPtrOutputWithContext(ctx context.Context) ScheduleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleStatusPtrOutput)
-}
-
-func (in *scheduleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStatus] {
-	return pulumix.Output[*ScheduleStatus]{
-		OutputState: in.ToScheduleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Signifies whether SSL needs to be enabled or not.
@@ -1781,12 +1726,6 @@ func (in *sslStatusPtr) ToSslStatusPtrOutputWithContext(ctx context.Context) Ssl
 	return pulumi.ToOutputWithContext(ctx, in).(SslStatusPtrOutput)
 }
 
-func (in *sslStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SslStatus] {
-	return pulumix.Output[*SslStatus]{
-		OutputState: in.ToSslStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The volume status.
 type VolumeStatus string
 
@@ -1951,12 +1890,6 @@ func (in *volumeStatusPtr) ToVolumeStatusPtrOutput() VolumeStatusPtrOutput {
 
 func (in *volumeStatusPtr) ToVolumeStatusPtrOutputWithContext(ctx context.Context) VolumeStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeStatusPtrOutput)
-}
-
-func (in *volumeStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeStatus] {
-	return pulumix.Output[*VolumeStatus]{
-		OutputState: in.ToVolumeStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the volume.
@@ -2125,12 +2058,6 @@ func (in *volumeTypePtr) ToVolumeTypePtrOutput() VolumeTypePtrOutput {
 
 func (in *volumeTypePtr) ToVolumeTypePtrOutputWithContext(ctx context.Context) VolumeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeTypePtrOutput)
-}
-
-func (in *volumeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeType] {
-	return pulumix.Output[*VolumeType]{
-		OutputState: in.ToVolumeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

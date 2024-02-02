@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity used for the resource mover service.
@@ -177,12 +176,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the target availability zone.
@@ -355,12 +348,6 @@ func (in *targetAvailabilityZonePtr) ToTargetAvailabilityZonePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(TargetAvailabilityZonePtrOutput)
 }
 
-func (in *targetAvailabilityZonePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetAvailabilityZone] {
-	return pulumix.Output[*TargetAvailabilityZone]{
-		OutputState: in.ToTargetAvailabilityZonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the zone redundant resource setting.
 type ZoneRedundant string
 
@@ -525,12 +512,6 @@ func (in *zoneRedundantPtr) ToZoneRedundantPtrOutput() ZoneRedundantPtrOutput {
 
 func (in *zoneRedundantPtr) ToZoneRedundantPtrOutputWithContext(ctx context.Context) ZoneRedundantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneRedundantPtrOutput)
-}
-
-func (in *zoneRedundantPtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedundant] {
-	return pulumix.Output[*ZoneRedundant]{
-		OutputState: in.ToZoneRedundantPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

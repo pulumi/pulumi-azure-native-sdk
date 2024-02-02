@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of virtual network rule.
@@ -173,12 +172,6 @@ func (in *actionPtr) ToActionPtrOutput() ActionPtrOutput {
 
 func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
-}
-
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of encryption
@@ -349,12 +342,6 @@ func (in *encryptionTypePtr) ToEncryptionTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionTypePtrOutput)
 }
 
-func (in *encryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionType] {
-	return pulumix.Output[*EncryptionType]{
-		OutputState: in.ToEncryptionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type IdentityType string
 
@@ -521,12 +508,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -699,12 +680,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'.
 type PublicNetworkAccess string
 
@@ -869,12 +844,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku name.
@@ -1045,12 +1014,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku tier.
 type SkuTier string
 
@@ -1214,12 +1177,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of storage target
@@ -1386,12 +1343,6 @@ func (in *storageTargetTypePtr) ToStorageTargetTypePtrOutput() StorageTargetType
 
 func (in *storageTargetTypePtr) ToStorageTargetTypePtrOutputWithContext(ctx context.Context) StorageTargetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTargetTypePtrOutput)
-}
-
-func (in *storageTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageTargetType] {
-	return pulumix.Output[*StorageTargetType]{
-		OutputState: in.ToStorageTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This enumerates the possible sources of a volume creation.
@@ -1564,12 +1515,6 @@ func (in *volumeCreateOptionPtr) ToVolumeCreateOptionPtrOutput() VolumeCreateOpt
 
 func (in *volumeCreateOptionPtr) ToVolumeCreateOptionPtrOutputWithContext(ctx context.Context) VolumeCreateOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeCreateOptionPtrOutput)
-}
-
-func (in *volumeCreateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeCreateOption] {
-	return pulumix.Output[*VolumeCreateOption]{
-		OutputState: in.ToVolumeCreateOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

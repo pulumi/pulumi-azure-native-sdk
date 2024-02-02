@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A role defining the data plane operations that a principal can perform on a Time Series Insights client.
@@ -177,12 +176,6 @@ func (in *accessPolicyRolePtr) ToAccessPolicyRolePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPolicyRolePtrOutput)
 }
 
-func (in *accessPolicyRolePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyRole] {
-	return pulumix.Output[*AccessPolicyRole]{
-		OutputState: in.ToAccessPolicyRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
 type DataStringComparisonBehavior string
 
@@ -347,12 +340,6 @@ func (in *dataStringComparisonBehaviorPtr) ToDataStringComparisonBehaviorPtrOutp
 
 func (in *dataStringComparisonBehaviorPtr) ToDataStringComparisonBehaviorPtrOutputWithContext(ctx context.Context) DataStringComparisonBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataStringComparisonBehaviorPtrOutput)
-}
-
-func (in *dataStringComparisonBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStringComparisonBehavior] {
-	return pulumix.Output[*DataStringComparisonBehavior]{
-		OutputState: in.ToDataStringComparisonBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the environment.
@@ -539,12 +526,6 @@ func (in *ingressStartAtTypePtr) ToIngressStartAtTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IngressStartAtTypePtrOutput)
 }
 
-func (in *ingressStartAtTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IngressStartAtType] {
-	return pulumix.Output[*IngressStartAtType]{
-		OutputState: in.ToIngressStartAtTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An enum that represents the format of the local timestamp property that needs to be set.
 type LocalTimestampFormat string
 
@@ -707,12 +688,6 @@ func (in *localTimestampFormatPtr) ToLocalTimestampFormatPtrOutput() LocalTimest
 
 func (in *localTimestampFormatPtr) ToLocalTimestampFormatPtrOutputWithContext(ctx context.Context) LocalTimestampFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LocalTimestampFormatPtrOutput)
-}
-
-func (in *localTimestampFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*LocalTimestampFormat] {
-	return pulumix.Output[*LocalTimestampFormat]{
-		OutputState: in.ToLocalTimestampFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -883,12 +858,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the property.
 type PropertyType string
 
@@ -1051,12 +1020,6 @@ func (in *propertyTypePtr) ToPropertyTypePtrOutput() PropertyTypePtrOutput {
 
 func (in *propertyTypePtr) ToPropertyTypePtrOutputWithContext(ctx context.Context) PropertyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PropertyTypePtrOutput)
-}
-
-func (in *propertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PropertyType] {
-	return pulumix.Output[*PropertyType]{
-		OutputState: in.ToPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the key property.
@@ -1229,12 +1192,6 @@ func (in *referenceDataKeyPropertyTypePtr) ToReferenceDataKeyPropertyTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ReferenceDataKeyPropertyTypePtrOutput)
 }
 
-func (in *referenceDataKeyPropertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReferenceDataKeyPropertyType] {
-	return pulumix.Output[*ReferenceDataKeyPropertyType]{
-		OutputState: in.ToReferenceDataKeyPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of this SKU.
 type SkuName string
 
@@ -1405,12 +1362,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
 type StorageLimitExceededBehavior string
 
@@ -1575,12 +1526,6 @@ func (in *storageLimitExceededBehaviorPtr) ToStorageLimitExceededBehaviorPtrOutp
 
 func (in *storageLimitExceededBehaviorPtr) ToStorageLimitExceededBehaviorPtrOutputWithContext(ctx context.Context) StorageLimitExceededBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageLimitExceededBehaviorPtrOutput)
-}
-
-func (in *storageLimitExceededBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageLimitExceededBehavior] {
-	return pulumix.Output[*StorageLimitExceededBehavior]{
-		OutputState: in.ToStorageLimitExceededBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

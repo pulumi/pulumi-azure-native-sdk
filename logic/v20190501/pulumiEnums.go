@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The agreement type.
@@ -179,12 +178,6 @@ func (in *agreementTypePtr) ToAgreementTypePtrOutput() AgreementTypePtrOutput {
 
 func (in *agreementTypePtr) ToAgreementTypePtrOutputWithContext(ctx context.Context) AgreementTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AgreementTypePtrOutput)
-}
-
-func (in *agreementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgreementType] {
-	return pulumix.Output[*AgreementType]{
-		OutputState: in.ToAgreementTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The day of the week.
@@ -363,12 +356,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DaysOfWeek string
 
 const (
@@ -542,12 +529,6 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutput() DaysOfWeekPtrOutput {
 
 func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) DaysOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
-}
-
-func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DaysOfWeekArrayInput is an input type that accepts DaysOfWeekArray and DaysOfWeekArrayOutput values.
@@ -787,12 +768,6 @@ func (in *edifactCharacterSetPtr) ToEdifactCharacterSetPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EdifactCharacterSetPtrOutput)
 }
 
-func (in *edifactCharacterSetPtr) ToOutput(ctx context.Context) pulumix.Output[*EdifactCharacterSet] {
-	return pulumix.Output[*EdifactCharacterSet]{
-		OutputState: in.ToEdifactCharacterSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The EDIFACT frame setting decimal indicator.
 type EdifactDecimalIndicator string
 
@@ -959,12 +934,6 @@ func (in *edifactDecimalIndicatorPtr) ToEdifactDecimalIndicatorPtrOutput() Edifa
 
 func (in *edifactDecimalIndicatorPtr) ToEdifactDecimalIndicatorPtrOutputWithContext(ctx context.Context) EdifactDecimalIndicatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EdifactDecimalIndicatorPtrOutput)
-}
-
-func (in *edifactDecimalIndicatorPtr) ToOutput(ctx context.Context) pulumix.Output[*EdifactDecimalIndicator] {
-	return pulumix.Output[*EdifactDecimalIndicator]{
-		OutputState: in.ToEdifactDecimalIndicatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The encryption algorithm.
@@ -1143,12 +1112,6 @@ func (in *encryptionAlgorithmPtr) ToEncryptionAlgorithmPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionAlgorithmPtrOutput)
 }
 
-func (in *encryptionAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionAlgorithm] {
-	return pulumix.Output[*EncryptionAlgorithm]{
-		OutputState: in.ToEncryptionAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The signing or hashing algorithm.
 type HashingAlgorithm string
 
@@ -1325,12 +1288,6 @@ func (in *hashingAlgorithmPtr) ToHashingAlgorithmPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(HashingAlgorithmPtrOutput)
 }
 
-func (in *hashingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*HashingAlgorithm] {
-	return pulumix.Output[*HashingAlgorithm]{
-		OutputState: in.ToHashingAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku name.
 type IntegrationAccountSkuName string
 
@@ -1501,12 +1458,6 @@ func (in *integrationAccountSkuNamePtr) ToIntegrationAccountSkuNamePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationAccountSkuNamePtrOutput)
 }
 
-func (in *integrationAccountSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountSkuName] {
-	return pulumix.Output[*IntegrationAccountSkuName]{
-		OutputState: in.ToIntegrationAccountSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The access endpoint type.
 type IntegrationServiceEnvironmentAccessEndpointType string
 
@@ -1673,12 +1624,6 @@ func (in *integrationServiceEnvironmentAccessEndpointTypePtr) ToIntegrationServi
 
 func (in *integrationServiceEnvironmentAccessEndpointTypePtr) ToIntegrationServiceEnvironmentAccessEndpointTypePtrOutputWithContext(ctx context.Context) IntegrationServiceEnvironmentAccessEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationServiceEnvironmentAccessEndpointTypePtrOutput)
-}
-
-func (in *integrationServiceEnvironmentAccessEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationServiceEnvironmentAccessEndpointType] {
-	return pulumix.Output[*IntegrationServiceEnvironmentAccessEndpointType]{
-		OutputState: in.ToIntegrationServiceEnvironmentAccessEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku name.
@@ -1849,12 +1794,6 @@ func (in *integrationServiceEnvironmentSkuNamePtr) ToIntegrationServiceEnvironme
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationServiceEnvironmentSkuNamePtrOutput)
 }
 
-func (in *integrationServiceEnvironmentSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationServiceEnvironmentSkuName] {
-	return pulumix.Output[*IntegrationServiceEnvironmentSkuName]{
-		OutputState: in.ToIntegrationServiceEnvironmentSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The key type.
 type KeyType string
 
@@ -2023,12 +1962,6 @@ func (in *keyTypePtr) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyType
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypePtrOutput)
 }
 
-func (in *keyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
-	return pulumix.Output[*KeyType]{
-		OutputState: in.ToKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource.
 type ManagedServiceIdentityType string
 
@@ -2195,12 +2128,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The map type.
@@ -2375,12 +2302,6 @@ func (in *mapTypePtr) ToMapTypePtrOutputWithContext(ctx context.Context) MapType
 	return pulumi.ToOutputWithContext(ctx, in).(MapTypePtrOutput)
 }
 
-func (in *mapTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MapType] {
-	return pulumix.Output[*MapType]{
-		OutputState: in.ToMapTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The message filter type.
 type MessageFilterType string
 
@@ -2549,12 +2470,6 @@ func (in *messageFilterTypePtr) ToMessageFilterTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(MessageFilterTypePtrOutput)
 }
 
-func (in *messageFilterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageFilterType] {
-	return pulumix.Output[*MessageFilterType]{
-		OutputState: in.ToMessageFilterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of provider for OAuth.
 type OpenAuthenticationProviderType string
 
@@ -2717,12 +2632,6 @@ func (in *openAuthenticationProviderTypePtr) ToOpenAuthenticationProviderTypePtr
 
 func (in *openAuthenticationProviderTypePtr) ToOpenAuthenticationProviderTypePtrOutputWithContext(ctx context.Context) OpenAuthenticationProviderTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OpenAuthenticationProviderTypePtrOutput)
-}
-
-func (in *openAuthenticationProviderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OpenAuthenticationProviderType] {
-	return pulumix.Output[*OpenAuthenticationProviderType]{
-		OutputState: in.ToOpenAuthenticationProviderTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type.
@@ -2905,12 +2814,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The partner type.
 type PartnerType string
 
@@ -3075,12 +2978,6 @@ func (in *partnerTypePtr) ToPartnerTypePtrOutput() PartnerTypePtrOutput {
 
 func (in *partnerTypePtr) ToPartnerTypePtrOutputWithContext(ctx context.Context) PartnerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PartnerTypePtrOutput)
-}
-
-func (in *partnerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PartnerType] {
-	return pulumix.Output[*PartnerType]{
-		OutputState: in.ToPartnerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The frequency.
@@ -3261,12 +3158,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
 }
 
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schema type.
 type SchemaType string
 
@@ -3431,12 +3322,6 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
-}
-
-func (in *schemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaType] {
-	return pulumix.Output[*SchemaType]{
-		OutputState: in.ToSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The segment terminator suffix.
@@ -3609,12 +3494,6 @@ func (in *segmentTerminatorSuffixPtr) ToSegmentTerminatorSuffixPtrOutput() Segme
 
 func (in *segmentTerminatorSuffixPtr) ToSegmentTerminatorSuffixPtrOutputWithContext(ctx context.Context) SegmentTerminatorSuffixPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SegmentTerminatorSuffixPtrOutput)
-}
-
-func (in *segmentTerminatorSuffixPtr) ToOutput(ctx context.Context) pulumix.Output[*SegmentTerminatorSuffix] {
-	return pulumix.Output[*SegmentTerminatorSuffix]{
-		OutputState: in.ToSegmentTerminatorSuffixPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The signing algorithm.
@@ -3791,12 +3670,6 @@ func (in *signingAlgorithmPtr) ToSigningAlgorithmPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SigningAlgorithmPtrOutput)
 }
 
-func (in *signingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SigningAlgorithm] {
-	return pulumix.Output[*SigningAlgorithm]{
-		OutputState: in.ToSigningAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The trailing separator policy.
 type TrailingSeparatorPolicy string
 
@@ -3967,12 +3840,6 @@ func (in *trailingSeparatorPolicyPtr) ToTrailingSeparatorPolicyPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(TrailingSeparatorPolicyPtrOutput)
 }
 
-func (in *trailingSeparatorPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TrailingSeparatorPolicy] {
-	return pulumix.Output[*TrailingSeparatorPolicy]{
-		OutputState: in.ToTrailingSeparatorPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The usage indicator.
 type UsageIndicator string
 
@@ -4141,12 +4008,6 @@ func (in *usageIndicatorPtr) ToUsageIndicatorPtrOutput() UsageIndicatorPtrOutput
 
 func (in *usageIndicatorPtr) ToUsageIndicatorPtrOutputWithContext(ctx context.Context) UsageIndicatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UsageIndicatorPtrOutput)
-}
-
-func (in *usageIndicatorPtr) ToOutput(ctx context.Context) pulumix.Output[*UsageIndicator] {
-	return pulumix.Output[*UsageIndicator]{
-		OutputState: in.ToUsageIndicatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state.
@@ -4355,12 +4216,6 @@ func (in *workflowProvisioningStatePtr) ToWorkflowProvisioningStatePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(WorkflowProvisioningStatePtrOutput)
 }
 
-func (in *workflowProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkflowProvisioningState] {
-	return pulumix.Output[*WorkflowProvisioningState]{
-		OutputState: in.ToWorkflowProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state.
 type WorkflowStateEnum string
 
@@ -4535,12 +4390,6 @@ func (in *workflowStateEnumPtr) ToWorkflowStateEnumPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(WorkflowStateEnumPtrOutput)
 }
 
-func (in *workflowStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkflowStateEnum] {
-	return pulumix.Output[*WorkflowStateEnum]{
-		OutputState: in.ToWorkflowStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The X12 character set.
 type X12CharacterSet string
 
@@ -4711,12 +4560,6 @@ func (in *x12characterSetPtr) ToX12CharacterSetPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(X12CharacterSetPtrOutput)
 }
 
-func (in *x12characterSetPtr) ToOutput(ctx context.Context) pulumix.Output[*X12CharacterSet] {
-	return pulumix.Output[*X12CharacterSet]{
-		OutputState: in.ToX12CharacterSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The group header date format.
 type X12DateFormat string
 
@@ -4883,12 +4726,6 @@ func (in *x12dateFormatPtr) ToX12DateFormatPtrOutput() X12DateFormatPtrOutput {
 
 func (in *x12dateFormatPtr) ToX12DateFormatPtrOutputWithContext(ctx context.Context) X12DateFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(X12DateFormatPtrOutput)
-}
-
-func (in *x12dateFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*X12DateFormat] {
-	return pulumix.Output[*X12DateFormat]{
-		OutputState: in.ToX12DateFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The group header time format.
@@ -5061,12 +4898,6 @@ func (in *x12timeFormatPtr) ToX12TimeFormatPtrOutput() X12TimeFormatPtrOutput {
 
 func (in *x12timeFormatPtr) ToX12TimeFormatPtrOutputWithContext(ctx context.Context) X12TimeFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(X12TimeFormatPtrOutput)
-}
-
-func (in *x12timeFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*X12TimeFormat] {
-	return pulumix.Output[*X12TimeFormat]{
-		OutputState: in.ToX12TimeFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

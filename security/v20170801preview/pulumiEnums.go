@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Whether to send security alerts notifications to the security contact
@@ -179,12 +178,6 @@ func (in *alertNotificationsPtr) ToAlertNotificationsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AlertNotificationsPtrOutput)
 }
 
-func (in *alertNotificationsPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertNotifications] {
-	return pulumix.Output[*AlertNotifications]{
-		OutputState: in.ToAlertNotificationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to send security alerts notifications to subscription admins
 type AlertsToAdmins string
 
@@ -353,12 +346,6 @@ func (in *alertsToAdminsPtr) ToAlertsToAdminsPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AlertsToAdminsPtrOutput)
 }
 
-func (in *alertsToAdminsPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertsToAdmins] {
-	return pulumix.Output[*AlertsToAdmins]{
-		OutputState: in.ToAlertsToAdminsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataSource string
 
 const (
@@ -521,12 +508,6 @@ func (in *dataSourcePtr) ToDataSourcePtrOutput() DataSourcePtrOutput {
 
 func (in *dataSourcePtr) ToDataSourcePtrOutputWithContext(ctx context.Context) DataSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourcePtrOutput)
-}
-
-func (in *dataSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
-	return pulumix.Output[*DataSource]{
-		OutputState: in.ToDataSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ExportData string
@@ -693,12 +674,6 @@ func (in *exportDataPtr) ToExportDataPtrOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, in).(ExportDataPtrOutput)
 }
 
-func (in *exportDataPtr) ToOutput(ctx context.Context) pulumix.Output[*ExportData] {
-	return pulumix.Output[*ExportData]{
-		OutputState: in.ToExportDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Recommendation status. The recommendation is not generated when the status is disabled
 type RecommendationConfigStatus string
 
@@ -863,12 +838,6 @@ func (in *recommendationConfigStatusPtr) ToRecommendationConfigStatusPtrOutput()
 
 func (in *recommendationConfigStatusPtr) ToRecommendationConfigStatusPtrOutputWithContext(ctx context.Context) RecommendationConfigStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationConfigStatusPtrOutput)
-}
-
-func (in *recommendationConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*RecommendationConfigStatus] {
-	return pulumix.Output[*RecommendationConfigStatus]{
-		OutputState: in.ToRecommendationConfigStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The recommendation type.
@@ -1081,12 +1050,6 @@ func (in *recommendationTypePtr) ToRecommendationTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationTypePtrOutput)
 }
 
-func (in *recommendationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RecommendationType] {
-	return pulumix.Output[*RecommendationType]{
-		OutputState: in.ToRecommendationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Security solution status
 type SecuritySolutionStatus string
 
@@ -1251,12 +1214,6 @@ func (in *securitySolutionStatusPtr) ToSecuritySolutionStatusPtrOutput() Securit
 
 func (in *securitySolutionStatusPtr) ToSecuritySolutionStatusPtrOutputWithContext(ctx context.Context) SecuritySolutionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecuritySolutionStatusPtrOutput)
-}
-
-func (in *securitySolutionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySolutionStatus] {
-	return pulumix.Output[*SecuritySolutionStatus]{
-		OutputState: in.ToSecuritySolutionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

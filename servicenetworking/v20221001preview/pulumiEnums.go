@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Association Type
@@ -173,12 +172,6 @@ func (in *associationTypePtr) ToAssociationTypePtrOutput() AssociationTypePtrOut
 
 func (in *associationTypePtr) ToAssociationTypePtrOutputWithContext(ctx context.Context) AssociationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssociationTypePtrOutput)
-}
-
-func (in *associationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssociationType] {
-	return pulumix.Output[*AssociationType]{
-		OutputState: in.ToAssociationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Frontend IP Address Version (Optional).
@@ -347,12 +340,6 @@ func (in *frontendIPAddressVersionPtr) ToFrontendIPAddressVersionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(FrontendIPAddressVersionPtrOutput)
 }
 
-func (in *frontendIPAddressVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*FrontendIPAddressVersion] {
-	return pulumix.Output[*FrontendIPAddressVersion]{
-		OutputState: in.ToFrontendIPAddressVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Frontend Mode (Optional).
 type FrontendMode string
 
@@ -515,12 +502,6 @@ func (in *frontendModePtr) ToFrontendModePtrOutput() FrontendModePtrOutput {
 
 func (in *frontendModePtr) ToFrontendModePtrOutputWithContext(ctx context.Context) FrontendModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrontendModePtrOutput)
-}
-
-func (in *frontendModePtr) ToOutput(ctx context.Context) pulumix.Output[*FrontendMode] {
-	return pulumix.Output[*FrontendMode]{
-		OutputState: in.ToFrontendModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

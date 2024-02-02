@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
@@ -175,12 +174,6 @@ func (in *categoryPtr) ToCategoryPtrOutput() CategoryPtrOutput {
 
 func (in *categoryPtr) ToCategoryPtrOutputWithContext(ctx context.Context) CategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoryPtrOutput)
-}
-
-func (in *categoryPtr) ToOutput(ctx context.Context) pulumix.Output[*Category] {
-	return pulumix.Output[*Category]{
-		OutputState: in.ToCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been approved, rejected or removed by the given policy owner.
@@ -351,12 +344,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 
 func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

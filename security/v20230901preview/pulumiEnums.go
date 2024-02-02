@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AutoDiscovery states.
@@ -177,12 +176,6 @@ func (in *autoDiscoveryPtr) ToAutoDiscoveryPtrOutput() AutoDiscoveryPtrOutput {
 
 func (in *autoDiscoveryPtr) ToAutoDiscoveryPtrOutputWithContext(ctx context.Context) AutoDiscoveryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoDiscoveryPtrOutput)
-}
-
-func (in *autoDiscoveryPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoDiscovery] {
-	return pulumix.Output[*AutoDiscovery]{
-		OutputState: in.ToAutoDiscoveryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the resource.
@@ -367,12 +360,6 @@ func (in *devOpsProvisioningStatePtr) ToDevOpsProvisioningStatePtrOutput() DevOp
 
 func (in *devOpsProvisioningStatePtr) ToDevOpsProvisioningStatePtrOutputWithContext(ctx context.Context) DevOpsProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DevOpsProvisioningStatePtrOutput)
-}
-
-func (in *devOpsProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DevOpsProvisioningState] {
-	return pulumix.Output[*DevOpsProvisioningState]{
-		OutputState: in.ToDevOpsProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

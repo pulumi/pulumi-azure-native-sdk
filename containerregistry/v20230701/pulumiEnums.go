@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of IP ACL rule.
@@ -175,12 +174,6 @@ func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
 }
 
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A message indicating if changes on the service provider require any updates on the consumer.
 type ActionsRequired string
 
@@ -345,12 +338,6 @@ func (in *actionsRequiredPtr) ToActionsRequiredPtrOutput() ActionsRequiredPtrOut
 
 func (in *actionsRequiredPtr) ToActionsRequiredPtrOutputWithContext(ctx context.Context) ActionsRequiredPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionsRequiredPtrOutput)
-}
-
-func (in *actionsRequiredPtr) ToOutput(ctx context.Context) pulumix.Output[*ActionsRequired] {
-	return pulumix.Output[*ActionsRequired]{
-		OutputState: in.ToActionsRequiredPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The private link service connection status.
@@ -523,12 +510,6 @@ func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
 }
 
-func (in *connectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStatus] {
-	return pulumix.Output[*ConnectionStatus]{
-		OutputState: in.ToConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the credential.
 type CredentialName string
 
@@ -691,12 +672,6 @@ func (in *credentialNamePtr) ToCredentialNamePtrOutput() CredentialNamePtrOutput
 
 func (in *credentialNamePtr) ToCredentialNamePtrOutputWithContext(ctx context.Context) CredentialNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CredentialNamePtrOutput)
-}
-
-func (in *credentialNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CredentialName] {
-	return pulumix.Output[*CredentialName]{
-		OutputState: in.ToCredentialNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default action of allow or deny when no other rules match.
@@ -865,12 +840,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether or not the encryption is enabled for container registry.
 type EncryptionStatus string
 
@@ -1035,12 +1004,6 @@ func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutput() EncryptionStatusPtr
 
 func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatusPtrOutput)
-}
-
-func (in *encryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionStatus] {
-	return pulumix.Output[*EncryptionStatus]{
-		OutputState: in.ToEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The value that indicates whether the policy is enabled or not.
@@ -1209,12 +1172,6 @@ func (in *exportPolicyStatusPtr) ToExportPolicyStatusPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ExportPolicyStatusPtrOutput)
 }
 
-func (in *exportPolicyStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ExportPolicyStatus] {
-	return pulumix.Output[*ExportPolicyStatus]{
-		OutputState: in.ToExportPolicyStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to allow trusted Azure services to access a network restricted registry.
 type NetworkRuleBypassOptions string
 
@@ -1379,12 +1336,6 @@ func (in *networkRuleBypassOptionsPtr) ToNetworkRuleBypassOptionsPtrOutput() Net
 
 func (in *networkRuleBypassOptionsPtr) ToNetworkRuleBypassOptionsPtrOutputWithContext(ctx context.Context) NetworkRuleBypassOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleBypassOptionsPtrOutput)
-}
-
-func (in *networkRuleBypassOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleBypassOptions] {
-	return pulumix.Output[*NetworkRuleBypassOptions]{
-		OutputState: in.ToNetworkRuleBypassOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The value that indicates whether the policy is enabled or not.
@@ -1553,12 +1504,6 @@ func (in *policyStatusPtr) ToPolicyStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyStatusPtrOutput)
 }
 
-func (in *policyStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyStatus] {
-	return pulumix.Output[*PolicyStatus]{
-		OutputState: in.ToPolicyStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public network access is allowed for the container registry.
 type PublicNetworkAccess string
 
@@ -1723,12 +1668,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -1901,12 +1840,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU name of the container registry. Required for registry creation.
 type SkuName string
 
@@ -2077,12 +2010,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TokenCertificateName string
 
 const (
@@ -2246,12 +2173,6 @@ func (in *tokenCertificateNamePtr) ToTokenCertificateNamePtrOutput() TokenCertif
 
 func (in *tokenCertificateNamePtr) ToTokenCertificateNamePtrOutputWithContext(ctx context.Context) TokenCertificateNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TokenCertificateNamePtrOutput)
-}
-
-func (in *tokenCertificateNamePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenCertificateName] {
-	return pulumix.Output[*TokenCertificateName]{
-		OutputState: in.ToTokenCertificateNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The password name "password1" or "password2"
@@ -2420,12 +2341,6 @@ func (in *tokenPasswordNamePtr) ToTokenPasswordNamePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TokenPasswordNamePtrOutput)
 }
 
-func (in *tokenPasswordNamePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenPasswordName] {
-	return pulumix.Output[*TokenPasswordName]{
-		OutputState: in.ToTokenPasswordNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the token example enabled or disabled.
 type TokenStatus string
 
@@ -2592,12 +2507,6 @@ func (in *tokenStatusPtr) ToTokenStatusPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(TokenStatusPtrOutput)
 }
 
-func (in *tokenStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TokenStatus] {
-	return pulumix.Output[*TokenStatus]{
-		OutputState: in.ToTokenStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of trust policy.
 type TrustPolicyType string
 
@@ -2760,12 +2669,6 @@ func (in *trustPolicyTypePtr) ToTrustPolicyTypePtrOutput() TrustPolicyTypePtrOut
 
 func (in *trustPolicyTypePtr) ToTrustPolicyTypePtrOutputWithContext(ctx context.Context) TrustPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrustPolicyTypePtrOutput)
-}
-
-func (in *trustPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TrustPolicyType] {
-	return pulumix.Output[*TrustPolicyType]{
-		OutputState: in.ToTrustPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WebhookAction string
@@ -2939,12 +2842,6 @@ func (in *webhookActionPtr) ToWebhookActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(WebhookActionPtrOutput)
 }
 
-func (in *webhookActionPtr) ToOutput(ctx context.Context) pulumix.Output[*WebhookAction] {
-	return pulumix.Output[*WebhookAction]{
-		OutputState: in.ToWebhookActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the webhook at the time the operation was called.
 type WebhookStatus string
 
@@ -3111,12 +3008,6 @@ func (in *webhookStatusPtr) ToWebhookStatusPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(WebhookStatusPtrOutput)
 }
 
-func (in *webhookStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*WebhookStatus] {
-	return pulumix.Output[*WebhookStatus]{
-		OutputState: in.ToWebhookStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not zone redundancy is enabled for this container registry replication
 type ZoneRedundancy string
 
@@ -3281,12 +3172,6 @@ func (in *zoneRedundancyPtr) ToZoneRedundancyPtrOutput() ZoneRedundancyPtrOutput
 
 func (in *zoneRedundancyPtr) ToZoneRedundancyPtrOutputWithContext(ctx context.Context) ZoneRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneRedundancyPtrOutput)
-}
-
-func (in *zoneRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedundancy] {
-	return pulumix.Output[*ZoneRedundancy]{
-		OutputState: in.ToZoneRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

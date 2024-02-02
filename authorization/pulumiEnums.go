@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The recurrence type : weekly, monthly, etc.
@@ -187,12 +186,6 @@ func (in *accessReviewRecurrenceRangeTypePtr) ToAccessReviewRecurrenceRangeTypeP
 	return pulumi.ToOutputWithContext(ctx, in).(AccessReviewRecurrenceRangeTypePtrOutput)
 }
 
-func (in *accessReviewRecurrenceRangeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessReviewRecurrenceRangeType] {
-	return pulumix.Output[*AccessReviewRecurrenceRangeType]{
-		OutputState: in.ToAccessReviewRecurrenceRangeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a reviewer's decision for a given review
 type AccessReviewResult string
 
@@ -365,12 +358,6 @@ func (in *accessReviewResultPtr) ToAccessReviewResultPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AccessReviewResultPtrOutput)
 }
 
-func (in *accessReviewResultPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessReviewResult] {
-	return pulumix.Output[*AccessReviewResult]{
-		OutputState: in.ToAccessReviewResultPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The option whether validate the exemption is at or under the assignment scope.
 type AssignmentScopeValidation string
 
@@ -537,12 +524,6 @@ func (in *assignmentScopeValidationPtr) ToAssignmentScopeValidationPtrOutput() A
 
 func (in *assignmentScopeValidationPtr) ToAssignmentScopeValidationPtrOutputWithContext(ctx context.Context) AssignmentScopeValidationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssignmentScopeValidationPtrOutput)
-}
-
-func (in *assignmentScopeValidationPtr) ToOutput(ctx context.Context) pulumix.Output[*AssignmentScopeValidation] {
-	return pulumix.Output[*AssignmentScopeValidation]{
-		OutputState: in.ToAssignmentScopeValidationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This specifies the behavior for the autoReview feature when an access review completes.
@@ -713,12 +694,6 @@ func (in *defaultDecisionTypePtr) ToDefaultDecisionTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultDecisionTypePtrOutput)
 }
 
-func (in *defaultDecisionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultDecisionType] {
-	return pulumix.Output[*DefaultDecisionType]{
-		OutputState: in.ToDefaultDecisionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 type EnforcementMode string
 
@@ -885,12 +860,6 @@ func (in *enforcementModePtr) ToEnforcementModePtrOutput() EnforcementModePtrOut
 
 func (in *enforcementModePtr) ToEnforcementModePtrOutputWithContext(ctx context.Context) EnforcementModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnforcementModePtrOutput)
-}
-
-func (in *enforcementModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnforcementMode] {
-	return pulumix.Output[*EnforcementMode]{
-		OutputState: in.ToEnforcementModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The policy exemption category. Possible values are Waiver and Mitigated.
@@ -1061,12 +1030,6 @@ func (in *exemptionCategoryPtr) ToExemptionCategoryPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ExemptionCategoryPtrOutput)
 }
 
-func (in *exemptionCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*ExemptionCategory] {
-	return pulumix.Output[*ExemptionCategory]{
-		OutputState: in.ToExemptionCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
 type LockLevel string
 
@@ -1235,12 +1198,6 @@ func (in *lockLevelPtr) ToLockLevelPtrOutputWithContext(ctx context.Context) Loc
 	return pulumi.ToOutputWithContext(ctx, in).(LockLevelPtrOutput)
 }
 
-func (in *lockLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*LockLevel] {
-	return pulumix.Output[*LockLevel]{
-		OutputState: in.ToLockLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The override kind.
 type OverrideKind string
 
@@ -1404,12 +1361,6 @@ func (in *overrideKindPtr) ToOverrideKindPtrOutput() OverrideKindPtrOutput {
 
 func (in *overrideKindPtr) ToOverrideKindPtrOutputWithContext(ctx context.Context) OverrideKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OverrideKindPtrOutput)
-}
-
-func (in *overrideKindPtr) ToOutput(ctx context.Context) pulumix.Output[*OverrideKind] {
-	return pulumix.Output[*OverrideKind]{
-		OutputState: in.ToOverrideKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The data type of the parameter.
@@ -1588,12 +1539,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 type PolicyType string
 
@@ -1762,12 +1707,6 @@ func (in *policyTypePtr) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
 
 func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyTypePtrOutput)
-}
-
-func (in *policyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyType] {
-	return pulumix.Output[*PolicyType]{
-		OutputState: in.ToPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The principal type of the assigned principal ID.
@@ -1942,12 +1881,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
 }
 
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicNetworkAccessOptions string
 
 const (
@@ -2111,12 +2044,6 @@ func (in *publicNetworkAccessOptionsPtr) ToPublicNetworkAccessOptionsPtrOutput()
 
 func (in *publicNetworkAccessOptionsPtr) ToPublicNetworkAccessOptionsPtrOutputWithContext(ctx context.Context) PublicNetworkAccessOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessOptionsPtrOutput)
-}
-
-func (in *publicNetworkAccessOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessOptions] {
-	return pulumix.Output[*PublicNetworkAccessOptions]{
-		OutputState: in.ToPublicNetworkAccessOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type. This is the only required field when adding a system or user assigned identity to a resource.
@@ -2288,12 +2215,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The selector kind.
@@ -2468,12 +2389,6 @@ func (in *selectorKindPtr) ToSelectorKindPtrOutput() SelectorKindPtrOutput {
 
 func (in *selectorKindPtr) ToSelectorKindPtrOutputWithContext(ctx context.Context) SelectorKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SelectorKindPtrOutput)
-}
-
-func (in *selectorKindPtr) ToOutput(ctx context.Context) pulumix.Output[*SelectorKind] {
-	return pulumix.Output[*SelectorKind]{
-		OutputState: in.ToSelectorKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

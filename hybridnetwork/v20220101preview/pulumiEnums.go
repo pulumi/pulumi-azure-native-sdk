@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the device.
@@ -177,12 +176,6 @@ func (in *deviceTypePtr) ToDeviceTypePtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DeviceTypePtrOutput)
 }
 
-func (in *deviceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DeviceType] {
-	return pulumix.Output[*DeviceType]{
-		OutputState: in.ToDeviceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how the virtual machine should be created.
 type DiskCreateOptionTypes string
 
@@ -347,12 +340,6 @@ func (in *diskCreateOptionTypesPtr) ToDiskCreateOptionTypesPtrOutput() DiskCreat
 
 func (in *diskCreateOptionTypesPtr) ToDiskCreateOptionTypesPtrOutputWithContext(ctx context.Context) DiskCreateOptionTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskCreateOptionTypesPtrOutput)
-}
-
-func (in *diskCreateOptionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskCreateOptionTypes] {
-	return pulumix.Output[*DiskCreateOptionTypes]{
-		OutputState: in.ToDiskCreateOptionTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IP address allocation method.
@@ -523,12 +510,6 @@ func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationMethodPtrOutput)
 }
 
-func (in *ipallocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationMethod] {
-	return pulumix.Output[*IPAllocationMethod]{
-		OutputState: in.ToIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IP address version.
 type IPVersion string
 
@@ -695,12 +676,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPV
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
 }
 
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Role type.
 type NetworkFunctionRoleConfigurationType string
 
@@ -865,12 +840,6 @@ func (in *networkFunctionRoleConfigurationTypePtr) ToNetworkFunctionRoleConfigur
 
 func (in *networkFunctionRoleConfigurationTypePtr) ToNetworkFunctionRoleConfigurationTypePtrOutputWithContext(ctx context.Context) NetworkFunctionRoleConfigurationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkFunctionRoleConfigurationTypePtrOutput)
-}
-
-func (in *networkFunctionRoleConfigurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionRoleConfigurationType] {
-	return pulumix.Output[*NetworkFunctionRoleConfigurationType]{
-		OutputState: in.ToNetworkFunctionRoleConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The network function type.
@@ -1041,12 +1010,6 @@ func (in *networkFunctionTypePtr) ToNetworkFunctionTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkFunctionTypePtrOutput)
 }
 
-func (in *networkFunctionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionType] {
-	return pulumix.Output[*NetworkFunctionType]{
-		OutputState: in.ToNetworkFunctionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The OS type.
 type OperatingSystemTypes string
 
@@ -1215,12 +1178,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
 }
 
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku deployment mode.
 type SkuDeploymentMode string
 
@@ -1387,12 +1344,6 @@ func (in *skuDeploymentModePtr) ToSkuDeploymentModePtrOutput() SkuDeploymentMode
 
 func (in *skuDeploymentModePtr) ToSkuDeploymentModePtrOutputWithContext(ctx context.Context) SkuDeploymentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuDeploymentModePtrOutput)
-}
-
-func (in *skuDeploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuDeploymentMode] {
-	return pulumix.Output[*SkuDeploymentMode]{
-		OutputState: in.ToSkuDeploymentModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku type.
@@ -1565,12 +1516,6 @@ func (in *skuTypePtr) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuType
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTypePtrOutput)
 }
 
-func (in *skuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
-	return pulumix.Output[*SkuType]{
-		OutputState: in.ToSkuTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the VM switch.
 type VMSwitchType string
 
@@ -1739,12 +1684,6 @@ func (in *vmswitchTypePtr) ToVMSwitchTypePtrOutput() VMSwitchTypePtrOutput {
 
 func (in *vmswitchTypePtr) ToVMSwitchTypePtrOutputWithContext(ctx context.Context) VMSwitchTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VMSwitchTypePtrOutput)
-}
-
-func (in *vmswitchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VMSwitchType] {
-	return pulumix.Output[*VMSwitchType]{
-		OutputState: in.ToVMSwitchTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The size of the virtual machine.
@@ -1961,12 +1900,6 @@ func (in *virtualMachineSizeTypesPtr) ToVirtualMachineSizeTypesPtrOutput() Virtu
 
 func (in *virtualMachineSizeTypesPtr) ToVirtualMachineSizeTypesPtrOutputWithContext(ctx context.Context) VirtualMachineSizeTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineSizeTypesPtrOutput)
-}
-
-func (in *virtualMachineSizeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSizeTypes] {
-	return pulumix.Output[*VirtualMachineSizeTypes]{
-		OutputState: in.ToVirtualMachineSizeTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

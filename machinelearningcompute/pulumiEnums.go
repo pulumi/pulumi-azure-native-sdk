@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure VM size of the agent VM nodes. This cannot be changed once the cluster is created. This list is non exhaustive; refer to https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for the possible VM sizes.
@@ -267,12 +266,6 @@ func (in *agentVMSizeTypesPtr) ToAgentVMSizeTypesPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AgentVMSizeTypesPtrOutput)
 }
 
-func (in *agentVMSizeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*AgentVMSizeTypes] {
-	return pulumix.Output[*AgentVMSizeTypes]{
-		OutputState: in.ToAgentVMSizeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The cluster type.
 type ClusterType string
 
@@ -437,12 +430,6 @@ func (in *clusterTypePtr) ToClusterTypePtrOutput() ClusterTypePtrOutput {
 
 func (in *clusterTypePtr) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterTypePtrOutput)
-}
-
-func (in *clusterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterType] {
-	return pulumix.Output[*ClusterType]{
-		OutputState: in.ToClusterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of orchestrator. It cannot be changed once the cluster is created.
@@ -611,12 +598,6 @@ func (in *orchestratorTypePtr) ToOrchestratorTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(OrchestratorTypePtrOutput)
 }
 
-func (in *orchestratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorType] {
-	return pulumix.Output[*OrchestratorType]{
-		OutputState: in.ToOrchestratorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSL status. Allowed values are Enabled and Disabled.
 type Status string
 
@@ -781,12 +762,6 @@ func (in *statusPtr) ToStatusPtrOutput() StatusPtrOutput {
 
 func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
-}
-
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The system service type
@@ -955,12 +930,6 @@ func (in *systemServiceTypePtr) ToSystemServiceTypePtrOutput() SystemServiceType
 
 func (in *systemServiceTypePtr) ToSystemServiceTypePtrOutputWithContext(ctx context.Context) SystemServiceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SystemServiceTypePtrOutput)
-}
-
-func (in *systemServiceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SystemServiceType] {
-	return pulumix.Output[*SystemServiceType]{
-		OutputState: in.ToSystemServiceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

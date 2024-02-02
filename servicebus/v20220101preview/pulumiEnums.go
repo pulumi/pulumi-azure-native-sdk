@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -178,12 +177,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
 }
 
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default Action for Network Rule Set
 type DefaultAction string
 
@@ -348,12 +341,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutput() DefaultActionPtrOutput {
 
 func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
-}
-
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the Private Endpoint Connection.
@@ -528,12 +515,6 @@ func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutput() E
 
 func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutputWithContext(ctx context.Context) EndPointProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndPointProvisioningStatePtrOutput)
-}
-
-func (in *endPointProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EndPointProvisioningState] {
-	return pulumix.Output[*EndPointProvisioningState]{
-		OutputState: in.ToEndPointProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enumerates the possible values for the status of a messaging entity.
@@ -716,12 +697,6 @@ func (in *entityStatusPtr) ToEntityStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(EntityStatusPtrOutput)
 }
 
-func (in *entityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
-	return pulumix.Output[*EntityStatus]{
-		OutputState: in.ToEntityStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Filter type that is evaluated against a BrokeredMessage.
 type FilterType string
 
@@ -888,12 +863,6 @@ func (in *filterTypePtr) ToFilterTypePtrOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, in).(FilterTypePtrOutput)
 }
 
-func (in *filterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FilterType] {
-	return pulumix.Output[*FilterType]{
-		OutputState: in.ToFilterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enumerates the possible value of keySource for Encryption
 type KeySource string
 
@@ -1056,12 +1025,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
-}
-
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity.
@@ -1234,12 +1197,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP Filter Action
 type NetworkRuleIPAction string
 
@@ -1402,12 +1359,6 @@ func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutput() NetworkRuleIP
 
 func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleIPActionPtrOutput)
-}
-
-func (in *networkRuleIPActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleIPAction] {
-	return pulumix.Output[*NetworkRuleIPAction]{
-		OutputState: in.ToNetworkRuleIPActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the connection.
@@ -1580,12 +1531,6 @@ func (in *privateLinkConnectionStatusPtr) ToPrivateLinkConnectionStatusPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStatus] {
-	return pulumix.Output[*PrivateLinkConnectionStatus]{
-		OutputState: in.ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This determines if traffic is allowed over public network. By default it is enabled.
 type PublicNetworkAccess string
 
@@ -1754,12 +1699,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This determines if traffic is allowed over public network. By default it is enabled.
 type PublicNetworkAccessFlag string
 
@@ -1924,12 +1863,6 @@ func (in *publicNetworkAccessFlagPtr) ToPublicNetworkAccessFlagPtrOutput() Publi
 
 func (in *publicNetworkAccessFlagPtr) ToPublicNetworkAccessFlagPtrOutputWithContext(ctx context.Context) PublicNetworkAccessFlagPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessFlagPtrOutput)
-}
-
-func (in *publicNetworkAccessFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessFlag] {
-	return pulumix.Output[*PublicNetworkAccessFlag]{
-		OutputState: in.ToPublicNetworkAccessFlagPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of this SKU.
@@ -2100,12 +2033,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The billing tier of this particular SKU.
 type SkuTier string
 
@@ -2274,12 +2201,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum TLS version for the cluster to support, e.g. '1.2'
 type TlsVersion string
 
@@ -2446,12 +2367,6 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
 
 func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsVersionPtrOutput)
-}
-
-func (in *tlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsVersion] {
-	return pulumix.Output[*TlsVersion]{
-		OutputState: in.ToTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

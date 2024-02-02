@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type EndpointType string
@@ -178,12 +177,6 @@ func (in *endpointTypePtr) ToEndpointTypePtrOutput() EndpointTypePtrOutput {
 
 func (in *endpointTypePtr) ToEndpointTypePtrOutputWithContext(ctx context.Context) EndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointTypePtrOutput)
-}
-
-func (in *endpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointType] {
-	return pulumix.Output[*EndpointType]{
-		OutputState: in.ToEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ExtensionCategory string
@@ -379,12 +372,6 @@ func (in *extensionCategoryPtr) ToExtensionCategoryPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ExtensionCategoryPtrOutput)
 }
 
-func (in *extensionCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtensionCategory] {
-	return pulumix.Output[*ExtensionCategory]{
-		OutputState: in.ToExtensionCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExtensionOptionType string
 
 const (
@@ -552,12 +539,6 @@ func (in *extensionOptionTypePtr) ToExtensionOptionTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ExtensionOptionTypePtrOutput)
 }
 
-func (in *extensionOptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExtensionOptionType] {
-	return pulumix.Output[*ExtensionOptionType]{
-		OutputState: in.ToExtensionOptionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FeaturesPolicy string
 
 const (
@@ -721,12 +702,6 @@ func (in *featuresPolicyPtr) ToFeaturesPolicyPtrOutput() FeaturesPolicyPtrOutput
 
 func (in *featuresPolicyPtr) ToFeaturesPolicyPtrOutputWithContext(ctx context.Context) FeaturesPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeaturesPolicyPtrOutput)
-}
-
-func (in *featuresPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*FeaturesPolicy] {
-	return pulumix.Output[*FeaturesPolicy]{
-		OutputState: in.ToFeaturesPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type IdentityManagementTypes string
@@ -900,12 +875,6 @@ func (in *identityManagementTypesPtr) ToIdentityManagementTypesPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityManagementTypesPtrOutput)
 }
 
-func (in *identityManagementTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityManagementTypes] {
-	return pulumix.Output[*IdentityManagementTypes]{
-		OutputState: in.ToIdentityManagementTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoggingDetails string
 
 const (
@@ -1069,12 +1038,6 @@ func (in *loggingDetailsPtr) ToLoggingDetailsPtrOutput() LoggingDetailsPtrOutput
 
 func (in *loggingDetailsPtr) ToLoggingDetailsPtrOutputWithContext(ctx context.Context) LoggingDetailsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingDetailsPtrOutput)
-}
-
-func (in *loggingDetailsPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingDetails] {
-	return pulumix.Output[*LoggingDetails]{
-		OutputState: in.ToLoggingDetailsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type LoggingDirections string
@@ -1244,12 +1207,6 @@ func (in *loggingDirectionsPtr) ToLoggingDirectionsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(LoggingDirectionsPtrOutput)
 }
 
-func (in *loggingDirectionsPtr) ToOutput(ctx context.Context) pulumix.Output[*LoggingDirections] {
-	return pulumix.Output[*LoggingDirections]{
-		OutputState: in.ToLoggingDirectionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MessageScope string
 
 const (
@@ -1413,12 +1370,6 @@ func (in *messageScopePtr) ToMessageScopePtrOutput() MessageScopePtrOutput {
 
 func (in *messageScopePtr) ToMessageScopePtrOutputWithContext(ctx context.Context) MessageScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MessageScopePtrOutput)
-}
-
-func (in *messageScopePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageScope] {
-	return pulumix.Output[*MessageScope]{
-		OutputState: in.ToMessageScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type NotificationMode string
@@ -1586,12 +1537,6 @@ func (in *notificationModePtr) ToNotificationModePtrOutput() NotificationModePtr
 
 func (in *notificationModePtr) ToNotificationModePtrOutputWithContext(ctx context.Context) NotificationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationModePtrOutput)
-}
-
-func (in *notificationModePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationMode] {
-	return pulumix.Output[*NotificationMode]{
-		OutputState: in.ToNotificationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type OptInHeaderType string
@@ -1765,12 +1710,6 @@ func (in *optInHeaderTypePtr) ToOptInHeaderTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(OptInHeaderTypePtrOutput)
 }
 
-func (in *optInHeaderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OptInHeaderType] {
-	return pulumix.Output[*OptInHeaderType]{
-		OutputState: in.ToOptInHeaderTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Policy string
 
 const (
@@ -1934,12 +1873,6 @@ func (in *policyPtr) ToPolicyPtrOutput() PolicyPtrOutput {
 
 func (in *policyPtr) ToPolicyPtrOutputWithContext(ctx context.Context) PolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyPtrOutput)
-}
-
-func (in *policyPtr) ToOutput(ctx context.Context) pulumix.Output[*Policy] {
-	return pulumix.Output[*Policy]{
-		OutputState: in.ToPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type PreflightOption string
@@ -2107,12 +2040,6 @@ func (in *preflightOptionPtr) ToPreflightOptionPtrOutput() PreflightOptionPtrOut
 
 func (in *preflightOptionPtr) ToPreflightOptionPtrOutputWithContext(ctx context.Context) PreflightOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PreflightOptionPtrOutput)
-}
-
-func (in *preflightOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*PreflightOption] {
-	return pulumix.Output[*PreflightOption]{
-		OutputState: in.ToPreflightOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioned state of the resource.
@@ -2303,12 +2230,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Readiness string
 
 const (
@@ -2488,12 +2409,6 @@ func (in *readinessPtr) ToReadinessPtrOutputWithContext(ctx context.Context) Rea
 	return pulumi.ToOutputWithContext(ctx, in).(ReadinessPtrOutput)
 }
 
-func (in *readinessPtr) ToOutput(ctx context.Context) pulumix.Output[*Readiness] {
-	return pulumix.Output[*Readiness]{
-		OutputState: in.ToReadinessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Regionality string
 
 const (
@@ -2659,12 +2574,6 @@ func (in *regionalityPtr) ToRegionalityPtrOutput() RegionalityPtrOutput {
 
 func (in *regionalityPtr) ToRegionalityPtrOutputWithContext(ctx context.Context) RegionalityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionalityPtrOutput)
-}
-
-func (in *regionalityPtr) ToOutput(ctx context.Context) pulumix.Output[*Regionality] {
-	return pulumix.Output[*Regionality]{
-		OutputState: in.ToRegionalityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ResourceDeletionPolicy string
@@ -2834,12 +2743,6 @@ func (in *resourceDeletionPolicyPtr) ToResourceDeletionPolicyPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceDeletionPolicyPtrOutput)
 }
 
-func (in *resourceDeletionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceDeletionPolicy] {
-	return pulumix.Output[*ResourceDeletionPolicy]{
-		OutputState: in.ToResourceDeletionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceProviderCapabilitiesEffect string
 
 const (
@@ -3005,12 +2908,6 @@ func (in *resourceProviderCapabilitiesEffectPtr) ToResourceProviderCapabilitiesE
 
 func (in *resourceProviderCapabilitiesEffectPtr) ToResourceProviderCapabilitiesEffectPtrOutputWithContext(ctx context.Context) ResourceProviderCapabilitiesEffectPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceProviderCapabilitiesEffectPtrOutput)
-}
-
-func (in *resourceProviderCapabilitiesEffectPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceProviderCapabilitiesEffect] {
-	return pulumix.Output[*ResourceProviderCapabilitiesEffect]{
-		OutputState: in.ToResourceProviderCapabilitiesEffectPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ResourceProviderType string
@@ -3188,12 +3085,6 @@ func (in *resourceProviderTypePtr) ToResourceProviderTypePtrOutput() ResourcePro
 
 func (in *resourceProviderTypePtr) ToResourceProviderTypePtrOutputWithContext(ctx context.Context) ResourceProviderTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceProviderTypePtrOutput)
-}
-
-func (in *resourceProviderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceProviderType] {
-	return pulumix.Output[*ResourceProviderType]{
-		OutputState: in.ToResourceProviderTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type RoutingType string
@@ -3375,12 +3266,6 @@ func (in *routingTypePtr) ToRoutingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingTypePtrOutput)
 }
 
-func (in *routingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutingType] {
-	return pulumix.Output[*RoutingType]{
-		OutputState: in.ToRoutingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SkuScaleType string
 
 const (
@@ -3546,12 +3431,6 @@ func (in *skuScaleTypePtr) ToSkuScaleTypePtrOutput() SkuScaleTypePtrOutput {
 
 func (in *skuScaleTypePtr) ToSkuScaleTypePtrOutputWithContext(ctx context.Context) SkuScaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuScaleTypePtrOutput)
-}
-
-func (in *skuScaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuScaleType] {
-	return pulumix.Output[*SkuScaleType]{
-		OutputState: in.ToSkuScaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SubscriptionNotificationOperation string
@@ -3727,12 +3606,6 @@ func (in *subscriptionNotificationOperationPtr) ToSubscriptionNotificationOperat
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionNotificationOperationPtrOutput)
 }
 
-func (in *subscriptionNotificationOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionNotificationOperation] {
-	return pulumix.Output[*SubscriptionNotificationOperation]{
-		OutputState: in.ToSubscriptionNotificationOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionReregistrationResult string
 
 const (
@@ -3900,12 +3773,6 @@ func (in *subscriptionReregistrationResultPtr) ToSubscriptionReregistrationResul
 
 func (in *subscriptionReregistrationResultPtr) ToSubscriptionReregistrationResultPtrOutputWithContext(ctx context.Context) SubscriptionReregistrationResultPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionReregistrationResultPtrOutput)
-}
-
-func (in *subscriptionReregistrationResultPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionReregistrationResult] {
-	return pulumix.Output[*SubscriptionReregistrationResult]{
-		OutputState: in.ToSubscriptionReregistrationResultPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SubscriptionState string
@@ -4079,12 +3946,6 @@ func (in *subscriptionStatePtr) ToSubscriptionStatePtrOutput() SubscriptionState
 
 func (in *subscriptionStatePtr) ToSubscriptionStatePtrOutputWithContext(ctx context.Context) SubscriptionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionStatePtrOutput)
-}
-
-func (in *subscriptionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionState] {
-	return pulumix.Output[*SubscriptionState]{
-		OutputState: in.ToSubscriptionStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SubscriptionTransitioningState string
@@ -4274,12 +4135,6 @@ func (in *subscriptionTransitioningStatePtr) ToSubscriptionTransitioningStatePtr
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionTransitioningStatePtrOutput)
 }
 
-func (in *subscriptionTransitioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionTransitioningState] {
-	return pulumix.Output[*SubscriptionTransitioningState]{
-		OutputState: in.ToSubscriptionTransitioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ThrottlingMetricType string
 
 const (
@@ -4445,12 +4300,6 @@ func (in *throttlingMetricTypePtr) ToThrottlingMetricTypePtrOutput() ThrottlingM
 
 func (in *throttlingMetricTypePtr) ToThrottlingMetricTypePtrOutputWithContext(ctx context.Context) ThrottlingMetricTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThrottlingMetricTypePtrOutput)
-}
-
-func (in *throttlingMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ThrottlingMetricType] {
-	return pulumix.Output[*ThrottlingMetricType]{
-		OutputState: in.ToThrottlingMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type TrafficRegionCategory string
@@ -4628,12 +4477,6 @@ func (in *trafficRegionCategoryPtr) ToTrafficRegionCategoryPtrOutput() TrafficRe
 
 func (in *trafficRegionCategoryPtr) ToTrafficRegionCategoryPtrOutputWithContext(ctx context.Context) TrafficRegionCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrafficRegionCategoryPtrOutput)
-}
-
-func (in *trafficRegionCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*TrafficRegionCategory] {
-	return pulumix.Output[*TrafficRegionCategory]{
-		OutputState: in.ToTrafficRegionCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

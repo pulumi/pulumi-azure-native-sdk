@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Asset's type.
@@ -175,12 +174,6 @@ func (in *assetTypePtr) ToAssetTypePtrOutput() AssetTypePtrOutput {
 
 func (in *assetTypePtr) ToAssetTypePtrOutputWithContext(ctx context.Context) AssetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssetTypePtrOutput)
-}
-
-func (in *assetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssetType] {
-	return pulumix.Output[*AssetType]{
-		OutputState: in.ToAssetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Additional format information for the data type.
@@ -379,12 +372,6 @@ func (in *columnFormatPtr) ToColumnFormatPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ColumnFormatPtrOutput)
 }
 
-func (in *columnFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ColumnFormat] {
-	return pulumix.Output[*ColumnFormat]{
-		OutputState: in.ToColumnFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data type of the column.
 type ColumnType string
 
@@ -555,12 +542,6 @@ func (in *columnTypePtr) ToColumnTypePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(ColumnTypePtrOutput)
 }
 
-func (in *columnTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ColumnType] {
-	return pulumix.Output[*ColumnType]{
-		OutputState: in.ToColumnTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the verbosity of the diagnostic output. Valid values are: None - disables tracing; Error - collects only error (stderr) traces; All - collects all traces (stdout and stderr).
 type DiagnosticsLevel string
 
@@ -729,12 +710,6 @@ func (in *diagnosticsLevelPtr) ToDiagnosticsLevelPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticsLevelPtrOutput)
 }
 
-func (in *diagnosticsLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticsLevel] {
-	return pulumix.Output[*DiagnosticsLevel]{
-		OutputState: in.ToDiagnosticsLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Port data type.
 type InputPortType string
 
@@ -899,12 +874,6 @@ func (in *inputPortTypePtr) ToInputPortTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(InputPortTypePtrOutput)
 }
 
-func (in *inputPortTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InputPortType] {
-	return pulumix.Output[*InputPortType]{
-		OutputState: in.ToInputPortTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Port data type.
 type OutputPortType string
 
@@ -1067,12 +1036,6 @@ func (in *outputPortTypePtr) ToOutputPortTypePtrOutput() OutputPortTypePtrOutput
 
 func (in *outputPortTypePtr) ToOutputPortTypePtrOutputWithContext(ctx context.Context) OutputPortTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OutputPortTypePtrOutput)
-}
-
-func (in *outputPortTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OutputPortType] {
-	return pulumix.Output[*OutputPortType]{
-		OutputState: in.ToOutputPortTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Graph parameter's type.
@@ -1259,12 +1222,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutput() ParameterTypePtrOutput {
 
 func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Context) ParameterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
-}
-
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

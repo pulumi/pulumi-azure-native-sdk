@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Kind of API. For example, REST or GraphQL.
@@ -185,12 +184,6 @@ func (in *apiKindPtr) ToApiKindPtrOutputWithContext(ctx context.Context) ApiKind
 	return pulumi.ToOutputWithContext(ctx, in).(ApiKindPtrOutput)
 }
 
-func (in *apiKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ApiKind] {
-	return pulumix.Output[*ApiKind]{
-		OutputState: in.ToApiKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of API deployment.
 type DeploymentStateEnum string
 
@@ -355,12 +348,6 @@ func (in *deploymentStateEnumPtr) ToDeploymentStateEnumPtrOutput() DeploymentSta
 
 func (in *deploymentStateEnumPtr) ToDeploymentStateEnumPtrOutputWithContext(ctx context.Context) DeploymentStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentStateEnumPtrOutput)
-}
-
-func (in *deploymentStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentStateEnum] {
-	return pulumix.Output[*DeploymentStateEnum]{
-		OutputState: in.ToDeploymentStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Environment kind.
@@ -531,12 +518,6 @@ func (in *environmentKindPtr) ToEnvironmentKindPtrOutput() EnvironmentKindPtrOut
 
 func (in *environmentKindPtr) ToEnvironmentKindPtrOutputWithContext(ctx context.Context) EnvironmentKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentKindPtrOutput)
-}
-
-func (in *environmentKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentKind] {
-	return pulumix.Output[*EnvironmentKind]{
-		OutputState: in.ToEnvironmentKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the server that represents the environment.
@@ -715,12 +696,6 @@ func (in *environmentServerTypePtr) ToEnvironmentServerTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentServerTypePtrOutput)
 }
 
-func (in *environmentServerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentServerType] {
-	return pulumix.Output[*EnvironmentServerType]{
-		OutputState: in.ToEnvironmentServerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Current lifecycle stage of the API.
 type LifecycleStage string
 
@@ -897,12 +872,6 @@ func (in *lifecycleStagePtr) ToLifecycleStagePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LifecycleStagePtrOutput)
 }
 
-func (in *lifecycleStagePtr) ToOutput(ctx context.Context) pulumix.Output[*LifecycleStage] {
-	return pulumix.Output[*LifecycleStage]{
-		OutputState: in.ToLifecycleStagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -1073,12 +1042,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The entities this metadata schema component gets applied to.
 type MetadataAssignmentEntity string
 
@@ -1245,12 +1208,6 @@ func (in *metadataAssignmentEntityPtr) ToMetadataAssignmentEntityPtrOutput() Met
 
 func (in *metadataAssignmentEntityPtr) ToMetadataAssignmentEntityPtrOutputWithContext(ctx context.Context) MetadataAssignmentEntityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataAssignmentEntityPtrOutput)
-}
-
-func (in *metadataAssignmentEntityPtr) ToOutput(ctx context.Context) pulumix.Output[*MetadataAssignmentEntity] {
-	return pulumix.Output[*MetadataAssignmentEntity]{
-		OutputState: in.ToMetadataAssignmentEntityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

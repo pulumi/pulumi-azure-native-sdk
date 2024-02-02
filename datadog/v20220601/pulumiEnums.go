@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Identity type
@@ -177,12 +176,6 @@ func (in *managedIdentityTypesPtr) ToManagedIdentityTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypesPtrOutput)
 }
 
-func (in *managedIdentityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityTypes] {
-	return pulumix.Output[*ManagedIdentityTypes]{
-		OutputState: in.ToManagedIdentityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag specifying if the resource monitoring is enabled or disabled.
 type MonitoringStatus string
 
@@ -347,12 +340,6 @@ func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutput() MonitoringStatusPtr
 
 func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutputWithContext(ctx context.Context) MonitoringStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringStatusPtrOutput)
-}
-
-func (in *monitoringStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringStatus] {
-	return pulumix.Output[*MonitoringStatus]{
-		OutputState: in.ToMonitoringStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

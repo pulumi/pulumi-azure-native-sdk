@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AAD Join type.
@@ -177,12 +176,6 @@ func (in *domainJoinTypePtr) ToDomainJoinTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DomainJoinTypePtrOutput)
 }
 
-func (in *domainJoinTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DomainJoinType] {
-	return pulumix.Output[*DomainJoinType]{
-		OutputState: in.ToDomainJoinTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines whether this Environment Type can be used in this Project.
 type EnvironmentTypeEnableStatus string
 
@@ -347,12 +340,6 @@ func (in *environmentTypeEnableStatusPtr) ToEnvironmentTypeEnableStatusPtrOutput
 
 func (in *environmentTypeEnableStatusPtr) ToEnvironmentTypeEnableStatusPtrOutputWithContext(ctx context.Context) EnvironmentTypeEnableStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentTypeEnableStatusPtrOutput)
-}
-
-func (in *environmentTypeEnableStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentTypeEnableStatus] {
-	return pulumix.Output[*EnvironmentTypeEnableStatus]{
-		OutputState: in.ToEnvironmentTypeEnableStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
@@ -521,12 +508,6 @@ func (in *hibernateSupportPtr) ToHibernateSupportPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(HibernateSupportPtrOutput)
 }
 
-func (in *hibernateSupportPtr) ToOutput(ctx context.Context) pulumix.Output[*HibernateSupport] {
-	return pulumix.Output[*HibernateSupport]{
-		OutputState: in.ToHibernateSupportPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
 type LicenseType string
 
@@ -689,12 +670,6 @@ func (in *licenseTypePtr) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
 
 func (in *licenseTypePtr) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypePtrOutput)
-}
-
-func (in *licenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseType] {
-	return pulumix.Output[*LicenseType]{
-		OutputState: in.ToLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
@@ -861,12 +836,6 @@ func (in *localAdminStatusPtr) ToLocalAdminStatusPtrOutput() LocalAdminStatusPtr
 
 func (in *localAdminStatusPtr) ToLocalAdminStatusPtrOutputWithContext(ctx context.Context) LocalAdminStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LocalAdminStatusPtrOutput)
-}
-
-func (in *localAdminStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*LocalAdminStatus] {
-	return pulumix.Output[*LocalAdminStatus]{
-		OutputState: in.ToLocalAdminStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -1039,12 +1008,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether or not this scheduled task is enabled.
 type ScheduleEnableStatus string
 
@@ -1211,12 +1174,6 @@ func (in *scheduleEnableStatusPtr) ToScheduleEnableStatusPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleEnableStatusPtrOutput)
 }
 
-func (in *scheduleEnableStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleEnableStatus] {
-	return pulumix.Output[*ScheduleEnableStatus]{
-		OutputState: in.ToScheduleEnableStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The frequency of this scheduled task.
 type ScheduledFrequency string
 
@@ -1381,12 +1338,6 @@ func (in *scheduledFrequencyPtr) ToScheduledFrequencyPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduledFrequencyPtrOutput)
 }
 
-func (in *scheduledFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduledFrequency] {
-	return pulumix.Output[*ScheduledFrequency]{
-		OutputState: in.ToScheduledFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Supported type this scheduled task represents.
 type ScheduledType string
 
@@ -1549,12 +1500,6 @@ func (in *scheduledTypePtr) ToScheduledTypePtrOutput() ScheduledTypePtrOutput {
 
 func (in *scheduledTypePtr) ToScheduledTypePtrOutputWithContext(ctx context.Context) ScheduledTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduledTypePtrOutput)
-}
-
-func (in *scheduledTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduledType] {
-	return pulumix.Output[*ScheduledType]{
-		OutputState: in.ToScheduledTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -1727,12 +1672,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
 type StopOnDisconnectEnableStatus string
 
@@ -1897,12 +1836,6 @@ func (in *stopOnDisconnectEnableStatusPtr) ToStopOnDisconnectEnableStatusPtrOutp
 
 func (in *stopOnDisconnectEnableStatusPtr) ToStopOnDisconnectEnableStatusPtrOutputWithContext(ctx context.Context) StopOnDisconnectEnableStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StopOnDisconnectEnableStatusPtrOutput)
-}
-
-func (in *stopOnDisconnectEnableStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*StopOnDisconnectEnableStatus] {
-	return pulumix.Output[*StopOnDisconnectEnableStatus]{
-		OutputState: in.ToStopOnDisconnectEnableStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

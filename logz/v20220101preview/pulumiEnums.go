@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ManagedIdentityTypes string
@@ -174,12 +173,6 @@ func (in *managedIdentityTypesPtr) ToManagedIdentityTypesPtrOutput() ManagedIden
 
 func (in *managedIdentityTypesPtr) ToManagedIdentityTypesPtrOutputWithContext(ctx context.Context) ManagedIdentityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypesPtrOutput)
-}
-
-func (in *managedIdentityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityTypes] {
-	return pulumix.Output[*ManagedIdentityTypes]{
-		OutputState: in.ToManagedIdentityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
@@ -348,12 +341,6 @@ func (in *marketplaceSubscriptionStatusPtr) ToMarketplaceSubscriptionStatusPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(MarketplaceSubscriptionStatusPtrOutput)
 }
 
-func (in *marketplaceSubscriptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*MarketplaceSubscriptionStatus] {
-	return pulumix.Output[*MarketplaceSubscriptionStatus]{
-		OutputState: in.ToMarketplaceSubscriptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag specifying if the resource monitoring is enabled or disabled.
 type MonitoringStatus string
 
@@ -520,12 +507,6 @@ func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringStatusPtrOutput)
 }
 
-func (in *monitoringStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringStatus] {
-	return pulumix.Output[*MonitoringStatus]{
-		OutputState: in.ToMonitoringStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Valid actions for a filtering tag. Exclusion takes priority over inclusion.
 type TagAction string
 
@@ -690,12 +671,6 @@ func (in *tagActionPtr) ToTagActionPtrOutput() TagActionPtrOutput {
 
 func (in *tagActionPtr) ToTagActionPtrOutputWithContext(ctx context.Context) TagActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagActionPtrOutput)
-}
-
-func (in *tagActionPtr) ToOutput(ctx context.Context) pulumix.Output[*TagAction] {
-	return pulumix.Output[*TagAction]{
-		OutputState: in.ToTagActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

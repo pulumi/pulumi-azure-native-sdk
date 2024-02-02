@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
@@ -177,12 +176,6 @@ func (in *applicationSharingPolicyPtr) ToApplicationSharingPolicyPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationSharingPolicyPtrOutput)
 }
 
-func (in *applicationSharingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationSharingPolicy] {
-	return pulumix.Output[*ApplicationSharingPolicy]{
-		OutputState: in.ToApplicationSharingPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines if image needs to be rebuilt based on base image changes.
 type AutoRebuildSetting string
 
@@ -347,12 +340,6 @@ func (in *autoRebuildSettingPtr) ToAutoRebuildSettingPtrOutput() AutoRebuildSett
 
 func (in *autoRebuildSettingPtr) ToAutoRebuildSettingPtrOutputWithContext(ctx context.Context) AutoRebuildSettingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoRebuildSettingPtrOutput)
-}
-
-func (in *autoRebuildSettingPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoRebuildSetting] {
-	return pulumix.Output[*AutoRebuildSetting]{
-		OutputState: in.ToAutoRebuildSettingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Logging level for batch inference operation.
@@ -523,12 +510,6 @@ func (in *batchLoggingLevelPtr) ToBatchLoggingLevelPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(BatchLoggingLevelPtrOutput)
 }
 
-func (in *batchLoggingLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*BatchLoggingLevel] {
-	return pulumix.Output[*BatchLoggingLevel]{
-		OutputState: in.ToBatchLoggingLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates how the output will be organized.
 type BatchOutputAction string
 
@@ -693,12 +674,6 @@ func (in *batchOutputActionPtr) ToBatchOutputActionPtrOutput() BatchOutputAction
 
 func (in *batchOutputActionPtr) ToBatchOutputActionPtrOutputWithContext(ctx context.Context) BatchOutputActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BatchOutputActionPtrOutput)
-}
-
-func (in *batchOutputActionPtr) ToOutput(ctx context.Context) pulumix.Output[*BatchOutputAction] {
-	return pulumix.Output[*BatchOutputAction]{
-		OutputState: in.ToBatchOutputActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum for all classification models supported by AutoML.
@@ -893,12 +868,6 @@ func (in *blockedTransformersPtr) ToBlockedTransformersPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(BlockedTransformersPtrOutput)
 }
 
-func (in *blockedTransformersPtr) ToOutput(ctx context.Context) pulumix.Output[*BlockedTransformers] {
-	return pulumix.Output[*BlockedTransformers]{
-		OutputState: in.ToBlockedTransformersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The categorical data drift metric to calculate.
 type CategoricalDataDriftMetric string
 
@@ -1068,12 +1037,6 @@ func (in *categoricalDataDriftMetricPtr) ToCategoricalDataDriftMetricPtrOutput()
 
 func (in *categoricalDataDriftMetricPtr) ToCategoricalDataDriftMetricPtrOutputWithContext(ctx context.Context) CategoricalDataDriftMetricPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoricalDataDriftMetricPtrOutput)
-}
-
-func (in *categoricalDataDriftMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*CategoricalDataDriftMetric] {
-	return pulumix.Output[*CategoricalDataDriftMetric]{
-		OutputState: in.ToCategoricalDataDriftMetricPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The categorical data quality metric to calculate.
@@ -1247,12 +1210,6 @@ func (in *categoricalDataQualityMetricPtr) ToCategoricalDataQualityMetricPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(CategoricalDataQualityMetricPtrOutput)
 }
 
-func (in *categoricalDataQualityMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*CategoricalDataQualityMetric] {
-	return pulumix.Output[*CategoricalDataQualityMetric]{
-		OutputState: in.ToCategoricalDataQualityMetricPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The categorical prediction drift metric to calculate.
 type CategoricalPredictionDriftMetric string
 
@@ -1422,12 +1379,6 @@ func (in *categoricalPredictionDriftMetricPtr) ToCategoricalPredictionDriftMetri
 
 func (in *categoricalPredictionDriftMetricPtr) ToCategoricalPredictionDriftMetricPtrOutputWithContext(ctx context.Context) CategoricalPredictionDriftMetricPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoricalPredictionDriftMetricPtrOutput)
-}
-
-func (in *categoricalPredictionDriftMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*CategoricalPredictionDriftMetric] {
-	return pulumix.Output[*CategoricalPredictionDriftMetric]{
-		OutputState: in.ToCategoricalPredictionDriftMetricPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum for all classification models supported by AutoML.
@@ -1643,12 +1594,6 @@ func (in *classificationModelsPtr) ToClassificationModelsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationModelsPtrOutput)
 }
 
-func (in *classificationModelsPtr) ToOutput(ctx context.Context) pulumix.Output[*ClassificationModels] {
-	return pulumix.Output[*ClassificationModels]{
-		OutputState: in.ToClassificationModelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric to optimize for this task.
 type ClassificationMultilabelPrimaryMetrics string
 
@@ -1833,12 +1778,6 @@ func (in *classificationMultilabelPrimaryMetricsPtr) ToClassificationMultilabelP
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationMultilabelPrimaryMetricsPtrOutput)
 }
 
-func (in *classificationMultilabelPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ClassificationMultilabelPrimaryMetrics] {
-	return pulumix.Output[*ClassificationMultilabelPrimaryMetrics]{
-		OutputState: in.ToClassificationMultilabelPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric for Text-Classification task.
 type ClassificationPrimaryMetrics string
 
@@ -2020,12 +1959,6 @@ func (in *classificationPrimaryMetricsPtr) ToClassificationPrimaryMetricsPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationPrimaryMetricsPtrOutput)
 }
 
-func (in *classificationPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ClassificationPrimaryMetrics] {
-	return pulumix.Output[*ClassificationPrimaryMetrics]{
-		OutputState: in.ToClassificationPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Intended usage of the cluster
 type ClusterPurpose string
 
@@ -2194,12 +2127,6 @@ func (in *clusterPurposePtr) ToClusterPurposePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterPurposePtrOutput)
 }
 
-func (in *clusterPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterPurpose] {
-	return pulumix.Output[*ClusterPurpose]{
-		OutputState: in.ToClusterPurposePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Compute Instance Authorization type. Available values are personal (default).
 type ComputeInstanceAuthorizationType string
 
@@ -2362,12 +2289,6 @@ func (in *computeInstanceAuthorizationTypePtr) ToComputeInstanceAuthorizationTyp
 
 func (in *computeInstanceAuthorizationTypePtr) ToComputeInstanceAuthorizationTypePtrOutputWithContext(ctx context.Context) ComputeInstanceAuthorizationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeInstanceAuthorizationTypePtrOutput)
-}
-
-func (in *computeInstanceAuthorizationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeInstanceAuthorizationType] {
-	return pulumix.Output[*ComputeInstanceAuthorizationType]{
-		OutputState: in.ToComputeInstanceAuthorizationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The compute power action.
@@ -2534,12 +2455,6 @@ func (in *computePowerActionPtr) ToComputePowerActionPtrOutput() ComputePowerAct
 
 func (in *computePowerActionPtr) ToComputePowerActionPtrOutputWithContext(ctx context.Context) ComputePowerActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputePowerActionPtrOutput)
-}
-
-func (in *computePowerActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ComputePowerAction] {
-	return pulumix.Output[*ComputePowerAction]{
-		OutputState: in.ToComputePowerActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The frequency to trigger schedule.
@@ -2719,12 +2634,6 @@ func (in *computeRecurrenceFrequencyPtr) ToComputeRecurrenceFrequencyPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeRecurrenceFrequencyPtrOutput)
 }
 
-func (in *computeRecurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeRecurrenceFrequency] {
-	return pulumix.Output[*ComputeRecurrenceFrequency]{
-		OutputState: in.ToComputeRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The schedule trigger type.
 type ComputeTriggerType string
 
@@ -2889,12 +2798,6 @@ func (in *computeTriggerTypePtr) ToComputeTriggerTypePtrOutput() ComputeTriggerT
 
 func (in *computeTriggerTypePtr) ToComputeTriggerTypePtrOutputWithContext(ctx context.Context) ComputeTriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeTriggerTypePtrOutput)
-}
-
-func (in *computeTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeTriggerType] {
-	return pulumix.Output[*ComputeTriggerType]{
-		OutputState: in.ToComputeTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of compute
@@ -3096,12 +2999,6 @@ func (in *computeWeekDayPtr) ToComputeWeekDayPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeWeekDayPtrOutput)
 }
 
-func (in *computeWeekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeWeekDay] {
-	return pulumix.Output[*ComputeWeekDay]{
-		OutputState: in.ToComputeWeekDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authentication type of the connection target
 type ConnectionAuthType string
 
@@ -3281,12 +3178,6 @@ func (in *connectionCategoryPtr) ToConnectionCategoryPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionCategoryPtrOutput)
 }
 
-func (in *connectionCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionCategory] {
-	return pulumix.Output[*ConnectionCategory]{
-		OutputState: in.ToConnectionCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of container to retrieve logs from.
 type ContainerType string
 
@@ -3451,12 +3342,6 @@ func (in *containerTypePtr) ToContainerTypePtrOutput() ContainerTypePtrOutput {
 
 func (in *containerTypePtr) ToContainerTypePtrOutputWithContext(ctx context.Context) ContainerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerTypePtrOutput)
-}
-
-func (in *containerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerType] {
-	return pulumix.Output[*ContainerType]{
-		OutputState: in.ToContainerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Credential type used to authentication with storage.
@@ -3636,12 +3521,6 @@ func (in *dataTypePtr) ToDataTypePtrOutput() DataTypePtrOutput {
 
 func (in *dataTypePtr) ToDataTypePtrOutputWithContext(ctx context.Context) DataTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataTypePtrOutput)
-}
-
-func (in *dataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataType] {
-	return pulumix.Output[*DataType]{
-		OutputState: in.ToDataTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Storage type backing the datastore.
@@ -3838,12 +3717,6 @@ func (in *egressPublicNetworkAccessTypePtr) ToEgressPublicNetworkAccessTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(EgressPublicNetworkAccessTypePtrOutput)
 }
 
-func (in *egressPublicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EgressPublicNetworkAccessType] {
-	return pulumix.Output[*EgressPublicNetworkAccessType]{
-		OutputState: in.ToEgressPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum to determine the email notification type.
 type EmailNotificationEnableType string
 
@@ -4012,12 +3885,6 @@ func (in *emailNotificationEnableTypePtr) ToEmailNotificationEnableTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(EmailNotificationEnableTypePtrOutput)
 }
 
-func (in *emailNotificationEnableTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EmailNotificationEnableType] {
-	return pulumix.Output[*EmailNotificationEnableType]{
-		OutputState: in.ToEmailNotificationEnableTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether or not the encryption is enabled for the workspace.
 type EncryptionStatus string
 
@@ -4182,12 +4049,6 @@ func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutput() EncryptionStatusPtr
 
 func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatusPtrOutput)
-}
-
-func (in *encryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionStatus] {
-	return pulumix.Output[*EncryptionStatus]{
-		OutputState: in.ToEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
@@ -4356,12 +4217,6 @@ func (in *endpointAuthModePtr) ToEndpointAuthModePtrOutput() EndpointAuthModePtr
 
 func (in *endpointAuthModePtr) ToEndpointAuthModePtrOutputWithContext(ctx context.Context) EndpointAuthModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointAuthModePtrOutput)
-}
-
-func (in *endpointAuthModePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointAuthMode] {
-	return pulumix.Output[*EndpointAuthMode]{
-		OutputState: in.ToEndpointAuthModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The compute type of the endpoint.
@@ -4543,12 +4398,6 @@ func (in *endpointServiceConnectionStatusPtr) ToEndpointServiceConnectionStatusP
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *endpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointServiceConnectionStatus] {
-	return pulumix.Output[*EndpointServiceConnectionStatus]{
-		OutputState: in.ToEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the Environment Variable. Possible values are: local - For local variable
 type EnvironmentVariableType string
 
@@ -4711,12 +4560,6 @@ func (in *environmentVariableTypePtr) ToEnvironmentVariableTypePtrOutput() Envir
 
 func (in *environmentVariableTypePtr) ToEnvironmentVariableTypePtrOutputWithContext(ctx context.Context) EnvironmentVariableTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentVariableTypePtrOutput)
-}
-
-func (in *environmentVariableTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentVariableType] {
-	return pulumix.Output[*EnvironmentVariableType]{
-		OutputState: in.ToEnvironmentVariableTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The feature attribution metric to calculate.
@@ -4882,12 +4725,6 @@ func (in *featureAttributionMetricPtr) ToFeatureAttributionMetricPtrOutput() Fea
 
 func (in *featureAttributionMetricPtr) ToFeatureAttributionMetricPtrOutputWithContext(ctx context.Context) FeatureAttributionMetricPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureAttributionMetricPtrOutput)
-}
-
-func (in *featureAttributionMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureAttributionMetric] {
-	return pulumix.Output[*FeatureAttributionMetric]{
-		OutputState: in.ToFeatureAttributionMetricPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the data type
@@ -5068,12 +4905,6 @@ func (in *featureDataTypePtr) ToFeatureDataTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureDataTypePtrOutput)
 }
 
-func (in *featureDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureDataType] {
-	return pulumix.Output[*FeatureDataType]{
-		OutputState: in.ToFeatureDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mode of operation for computing feature importance.
 type FeatureImportanceMode string
 
@@ -5242,12 +5073,6 @@ func (in *featureImportanceModePtr) ToFeatureImportanceModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureImportanceModePtrOutput)
 }
 
-func (in *featureImportanceModePtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureImportanceMode] {
-	return pulumix.Output[*FeatureImportanceMode]{
-		OutputState: in.ToFeatureImportanceModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag for generating lags for the numeric features with 'auto' or null.
 type FeatureLags string
 
@@ -5414,12 +5239,6 @@ func (in *featureLagsPtr) ToFeatureLagsPtrOutput() FeatureLagsPtrOutput {
 
 func (in *featureLagsPtr) ToFeatureLagsPtrOutputWithContext(ctx context.Context) FeatureLagsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureLagsPtrOutput)
-}
-
-func (in *featureLagsPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureLags] {
-	return pulumix.Output[*FeatureLags]{
-		OutputState: in.ToFeatureLagsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
@@ -5593,12 +5412,6 @@ func (in *featurizationModePtr) ToFeaturizationModePtrOutput() FeaturizationMode
 
 func (in *featurizationModePtr) ToFeaturizationModePtrOutputWithContext(ctx context.Context) FeaturizationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeaturizationModePtrOutput)
-}
-
-func (in *featurizationModePtr) ToOutput(ctx context.Context) pulumix.Output[*FeaturizationMode] {
-	return pulumix.Output[*FeaturizationMode]{
-		OutputState: in.ToFeaturizationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Set forecast horizon value selection mode.
@@ -5839,12 +5652,6 @@ func (in *forecastingModelsPtr) ToForecastingModelsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ForecastingModelsPtrOutput)
 }
 
-func (in *forecastingModelsPtr) ToOutput(ctx context.Context) pulumix.Output[*ForecastingModels] {
-	return pulumix.Output[*ForecastingModels]{
-		OutputState: in.ToForecastingModelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric for forecasting task.
 type ForecastingPrimaryMetrics string
 
@@ -6019,12 +5826,6 @@ func (in *forecastingPrimaryMetricsPtr) ToForecastingPrimaryMetricsPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ForecastingPrimaryMetricsPtrOutput)
 }
 
-func (in *forecastingPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ForecastingPrimaryMetrics] {
-	return pulumix.Output[*ForecastingPrimaryMetrics]{
-		OutputState: in.ToForecastingPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Defines supported metric goals for hyperparameter tuning
 type Goal string
 
@@ -6189,12 +5990,6 @@ func (in *goalPtr) ToGoalPtrOutput() GoalPtrOutput {
 
 func (in *goalPtr) ToGoalPtrOutputWithContext(ctx context.Context) GoalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoalPtrOutput)
-}
-
-func (in *goalPtr) ToOutput(ctx context.Context) pulumix.Output[*Goal] {
-	return pulumix.Output[*Goal]{
-		OutputState: in.ToGoalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of identity framework.
@@ -6372,12 +6167,6 @@ func (in *imageTypePtr) ToImageTypePtrOutputWithContext(ctx context.Context) Ima
 	return pulumi.ToOutputWithContext(ctx, in).(ImageTypePtrOutput)
 }
 
-func (in *imageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageType] {
-	return pulumix.Output[*ImageType]{
-		OutputState: in.ToImageTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input Asset Delivery Mode.
 type InputDeliveryMode string
 
@@ -6552,12 +6341,6 @@ func (in *inputDeliveryModePtr) ToInputDeliveryModePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(InputDeliveryModePtrOutput)
 }
 
-func (in *inputDeliveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*InputDeliveryMode] {
-	return pulumix.Output[*InputDeliveryMode]{
-		OutputState: in.ToInputDeliveryModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric to optimize for this task.
 type InstanceSegmentationPrimaryMetrics string
 
@@ -6722,12 +6505,6 @@ func (in *instanceSegmentationPrimaryMetricsPtr) ToInstanceSegmentationPrimaryMe
 
 func (in *instanceSegmentationPrimaryMetricsPtr) ToInstanceSegmentationPrimaryMetricsPtrOutputWithContext(ctx context.Context) InstanceSegmentationPrimaryMetricsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSegmentationPrimaryMetricsPtrOutput)
-}
-
-func (in *instanceSegmentationPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSegmentationPrimaryMetrics] {
-	return pulumix.Output[*InstanceSegmentationPrimaryMetrics]{
-		OutputState: in.ToInstanceSegmentationPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Isolation mode for the managed network of a machine learning workspace.
@@ -6896,12 +6673,6 @@ func (in *isolationModePtr) ToIsolationModePtrOutput() IsolationModePtrOutput {
 
 func (in *isolationModePtr) ToIsolationModePtrOutputWithContext(ctx context.Context) IsolationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IsolationModePtrOutput)
-}
-
-func (in *isolationModePtr) ToOutput(ctx context.Context) pulumix.Output[*IsolationMode] {
-	return pulumix.Output[*IsolationMode]{
-		OutputState: in.ToIsolationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of job.
@@ -7078,12 +6849,6 @@ func (in *jobInputTypePtr) ToJobInputTypePtrOutput() JobInputTypePtrOutput {
 
 func (in *jobInputTypePtr) ToJobInputTypePtrOutputWithContext(ctx context.Context) JobInputTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobInputTypePtrOutput)
-}
-
-func (in *jobInputTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobInputType] {
-	return pulumix.Output[*JobInputType]{
-		OutputState: in.ToJobInputTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] JobLimit type.
@@ -7278,12 +7043,6 @@ func (in *jobTierPtr) ToJobTierPtrOutputWithContext(ctx context.Context) JobTier
 	return pulumi.ToOutputWithContext(ctx, in).(JobTierPtrOutput)
 }
 
-func (in *jobTierPtr) ToOutput(ctx context.Context) pulumix.Output[*JobTier] {
-	return pulumix.Output[*JobTier]{
-		OutputState: in.ToJobTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Specifies the type of job.
 type JobType string
 
@@ -7465,12 +7224,6 @@ func (in *learningRateSchedulerPtr) ToLearningRateSchedulerPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LearningRateSchedulerPtrOutput)
 }
 
-func (in *learningRateSchedulerPtr) ToOutput(ctx context.Context) pulumix.Output[*LearningRateScheduler] {
-	return pulumix.Output[*LearningRateScheduler]{
-		OutputState: in.ToLearningRateSchedulerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Load Balancer Type
 type LoadBalancerType string
 
@@ -7635,12 +7388,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutput() LoadBalancerTypePtr
 
 func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx context.Context) LoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
-}
-
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Log verbosity for the job.
@@ -7823,12 +7570,6 @@ func (in *logVerbosityPtr) ToLogVerbosityPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(LogVerbosityPtrOutput)
 }
 
-func (in *logVerbosityPtr) ToOutput(ctx context.Context) pulumix.Output[*LogVerbosity] {
-	return pulumix.Output[*LogVerbosity]{
-		OutputState: in.ToLogVerbosityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status for the managed network of a machine learning workspace.
 type ManagedNetworkStatus string
 
@@ -7993,12 +7734,6 @@ func (in *managedNetworkStatusPtr) ToManagedNetworkStatusPtrOutput() ManagedNetw
 
 func (in *managedNetworkStatusPtr) ToManagedNetworkStatusPtrOutputWithContext(ctx context.Context) ManagedNetworkStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedNetworkStatusPtrOutput)
-}
-
-func (in *managedNetworkStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkStatus] {
-	return pulumix.Output[*ManagedNetworkStatus]{
-		OutputState: in.ToManagedNetworkStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -8171,12 +7906,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the stores to which materialization should happen
 type MaterializationStoreType string
 
@@ -8345,12 +8074,6 @@ func (in *materializationStoreTypePtr) ToMaterializationStoreTypePtrOutput() Mat
 
 func (in *materializationStoreTypePtr) ToMaterializationStoreTypePtrOutputWithContext(ctx context.Context) MaterializationStoreTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MaterializationStoreTypePtrOutput)
-}
-
-func (in *materializationStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MaterializationStoreType] {
-	return pulumix.Output[*MaterializationStoreType]{
-		OutputState: in.ToMaterializationStoreTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
@@ -8532,12 +8255,6 @@ func (in *modelSizePtr) ToModelSizePtrOutputWithContext(ctx context.Context) Mod
 	return pulumi.ToOutputWithContext(ctx, in).(ModelSizePtrOutput)
 }
 
-func (in *modelSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelSize] {
-	return pulumix.Output[*ModelSize]{
-		OutputState: in.ToModelSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The machine learning task type of the monitored model.
 type ModelTaskType string
 
@@ -8702,12 +8419,6 @@ func (in *modelTaskTypePtr) ToModelTaskTypePtrOutput() ModelTaskTypePtrOutput {
 
 func (in *modelTaskTypePtr) ToModelTaskTypePtrOutputWithContext(ctx context.Context) ModelTaskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ModelTaskTypePtrOutput)
-}
-
-func (in *modelTaskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelTaskType] {
-	return pulumix.Output[*ModelTaskType]{
-		OutputState: in.ToModelTaskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of identity to use within the monitoring jobs.
@@ -8896,12 +8607,6 @@ func (in *monitoringFeatureDataTypePtr) ToMonitoringFeatureDataTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringFeatureDataTypePtrOutput)
 }
 
-func (in *monitoringFeatureDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringFeatureDataType] {
-	return pulumix.Output[*MonitoringFeatureDataType]{
-		OutputState: in.ToMonitoringFeatureDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Specifies the feature filter to leverage when selecting features to calculate metrics over.
 type MonitoringFeatureFilterType string
 
@@ -9088,12 +8793,6 @@ func (in *monitoringNotificationTypePtr) ToMonitoringNotificationTypePtrOutput()
 
 func (in *monitoringNotificationTypePtr) ToMonitoringNotificationTypePtrOutputWithContext(ctx context.Context) MonitoringNotificationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringNotificationTypePtrOutput)
-}
-
-func (in *monitoringNotificationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringNotificationType] {
-	return pulumix.Output[*MonitoringNotificationType]{
-		OutputState: in.ToMonitoringNotificationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of signal to monitor.
@@ -9303,12 +9002,6 @@ func (in *numericalDataDriftMetricPtr) ToNumericalDataDriftMetricPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(NumericalDataDriftMetricPtrOutput)
 }
 
-func (in *numericalDataDriftMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*NumericalDataDriftMetric] {
-	return pulumix.Output[*NumericalDataDriftMetric]{
-		OutputState: in.ToNumericalDataDriftMetricPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The numerical data quality metric to calculate.
 type NumericalDataQualityMetric string
 
@@ -9478,12 +9171,6 @@ func (in *numericalDataQualityMetricPtr) ToNumericalDataQualityMetricPtrOutput()
 
 func (in *numericalDataQualityMetricPtr) ToNumericalDataQualityMetricPtrOutputWithContext(ctx context.Context) NumericalDataQualityMetricPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NumericalDataQualityMetricPtrOutput)
-}
-
-func (in *numericalDataQualityMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*NumericalDataQualityMetric] {
-	return pulumix.Output[*NumericalDataQualityMetric]{
-		OutputState: in.ToNumericalDataQualityMetricPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The numerical prediction drift metric to calculate.
@@ -9660,12 +9347,6 @@ func (in *numericalPredictionDriftMetricPtr) ToNumericalPredictionDriftMetricPtr
 	return pulumi.ToOutputWithContext(ctx, in).(NumericalPredictionDriftMetricPtrOutput)
 }
 
-func (in *numericalPredictionDriftMetricPtr) ToOutput(ctx context.Context) pulumix.Output[*NumericalPredictionDriftMetric] {
-	return pulumix.Output[*NumericalPredictionDriftMetric]{
-		OutputState: in.ToNumericalPredictionDriftMetricPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric to optimize for this task.
 type ObjectDetectionPrimaryMetrics string
 
@@ -9830,12 +9511,6 @@ func (in *objectDetectionPrimaryMetricsPtr) ToObjectDetectionPrimaryMetricsPtrOu
 
 func (in *objectDetectionPrimaryMetricsPtr) ToObjectDetectionPrimaryMetricsPtrOutputWithContext(ctx context.Context) ObjectDetectionPrimaryMetricsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ObjectDetectionPrimaryMetricsPtrOutput)
-}
-
-func (in *objectDetectionPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ObjectDetectionPrimaryMetrics] {
-	return pulumix.Output[*ObjectDetectionPrimaryMetrics]{
-		OutputState: in.ToObjectDetectionPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The OS type of the environment.
@@ -10004,12 +9679,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
 }
 
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compute OS Type
 type OsType string
 
@@ -10176,12 +9845,6 @@ func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
 }
 
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Output Asset Delivery Mode.
 type OutputDeliveryMode string
 
@@ -10346,12 +10009,6 @@ func (in *outputDeliveryModePtr) ToOutputDeliveryModePtrOutput() OutputDeliveryM
 
 func (in *outputDeliveryModePtr) ToOutputDeliveryModePtrOutputWithContext(ctx context.Context) OutputDeliveryModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OutputDeliveryModePtrOutput)
-}
-
-func (in *outputDeliveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*OutputDeliveryMode] {
-	return pulumix.Output[*OutputDeliveryMode]{
-		OutputState: in.ToOutputDeliveryModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -10526,12 +10183,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Protocol over which communication will happen over this endpoint
 type Protocol string
 
@@ -10700,12 +10351,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether requests from Public Network are allowed.
 type PublicNetworkAccess string
 
@@ -10870,12 +10515,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
@@ -11044,12 +10683,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specific type of random algorithm
 type RandomSamplingAlgorithmRule string
 
@@ -11214,12 +10847,6 @@ func (in *randomSamplingAlgorithmRulePtr) ToRandomSamplingAlgorithmRulePtrOutput
 
 func (in *randomSamplingAlgorithmRulePtr) ToRandomSamplingAlgorithmRulePtrOutputWithContext(ctx context.Context) RandomSamplingAlgorithmRulePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RandomSamplingAlgorithmRulePtrOutput)
-}
-
-func (in *randomSamplingAlgorithmRulePtr) ToOutput(ctx context.Context) pulumix.Output[*RandomSamplingAlgorithmRule] {
-	return pulumix.Output[*RandomSamplingAlgorithmRule]{
-		OutputState: in.ToRandomSamplingAlgorithmRulePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The frequency to trigger schedule.
@@ -11397,12 +11024,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutput() RecurrenceFre
 
 func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
-}
-
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of asset reference.
@@ -11612,12 +11233,6 @@ func (in *regressionModelsPtr) ToRegressionModelsPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RegressionModelsPtrOutput)
 }
 
-func (in *regressionModelsPtr) ToOutput(ctx context.Context) pulumix.Output[*RegressionModels] {
-	return pulumix.Output[*RegressionModels]{
-		OutputState: in.ToRegressionModelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric for regression task.
 type RegressionPrimaryMetrics string
 
@@ -11792,12 +11407,6 @@ func (in *regressionPrimaryMetricsPtr) ToRegressionPrimaryMetricsPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RegressionPrimaryMetricsPtrOutput)
 }
 
-func (in *regressionPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*RegressionPrimaryMetrics] {
-	return pulumix.Output[*RegressionPrimaryMetrics]{
-		OutputState: in.ToRegressionPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
 type RemoteLoginPortPublicAccess string
 
@@ -11966,12 +11575,6 @@ func (in *remoteLoginPortPublicAccessPtr) ToRemoteLoginPortPublicAccessPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(RemoteLoginPortPublicAccessPtrOutput)
 }
 
-func (in *remoteLoginPortPublicAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*RemoteLoginPortPublicAccess] {
-	return pulumix.Output[*RemoteLoginPortPublicAccess]{
-		OutputState: in.ToRemoteLoginPortPublicAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The action enum for networking rule.
 type RuleAction string
 
@@ -12136,12 +11739,6 @@ func (in *ruleActionPtr) ToRuleActionPtrOutput() RuleActionPtrOutput {
 
 func (in *ruleActionPtr) ToRuleActionPtrOutputWithContext(ctx context.Context) RuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleActionPtrOutput)
-}
-
-func (in *ruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleAction] {
-	return pulumix.Output[*RuleAction]{
-		OutputState: in.ToRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Category of a managed network Outbound Rule of a machine learning workspace.
@@ -12312,12 +11909,6 @@ func (in *ruleCategoryPtr) ToRuleCategoryPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(RuleCategoryPtrOutput)
 }
 
-func (in *ruleCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleCategory] {
-	return pulumix.Output[*RuleCategory]{
-		OutputState: in.ToRuleCategoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of a managed network Outbound Rule of a machine learning workspace.
 type RuleStatus string
 
@@ -12482,12 +12073,6 @@ func (in *ruleStatusPtr) ToRuleStatusPtrOutput() RuleStatusPtrOutput {
 
 func (in *ruleStatusPtr) ToRuleStatusPtrOutputWithContext(ctx context.Context) RuleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RuleStatusPtrOutput)
-}
-
-func (in *ruleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*RuleStatus] {
-	return pulumix.Output[*RuleStatus]{
-		OutputState: in.ToRuleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.
@@ -12665,12 +12250,6 @@ func (in *samplingAlgorithmTypePtr) ToSamplingAlgorithmTypePtrOutput() SamplingA
 
 func (in *samplingAlgorithmTypePtr) ToSamplingAlgorithmTypePtrOutputWithContext(ctx context.Context) SamplingAlgorithmTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SamplingAlgorithmTypePtrOutput)
-}
-
-func (in *samplingAlgorithmTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SamplingAlgorithmType] {
-	return pulumix.Output[*SamplingAlgorithmType]{
-		OutputState: in.ToSamplingAlgorithmTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Type of deployment scaling algorithm
@@ -12858,12 +12437,6 @@ func (in *scheduleProvisioningStatePtr) ToScheduleProvisioningStatePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleProvisioningStatePtrOutput)
 }
 
-func (in *scheduleProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleProvisioningState] {
-	return pulumix.Output[*ScheduleProvisioningState]{
-		OutputState: in.ToScheduleProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Is the schedule enabled or disabled?
 type ScheduleStatus string
 
@@ -13028,12 +12601,6 @@ func (in *scheduleStatusPtr) ToScheduleStatusPtrOutput() ScheduleStatusPtrOutput
 
 func (in *scheduleStatusPtr) ToScheduleStatusPtrOutputWithContext(ctx context.Context) ScheduleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleStatusPtrOutput)
-}
-
-func (in *scheduleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStatus] {
-	return pulumix.Output[*ScheduleStatus]{
-		OutputState: in.ToScheduleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Seasonality mode.
@@ -13227,12 +12794,6 @@ func (in *serviceDataAccessAuthIdentityPtr) ToServiceDataAccessAuthIdentityPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceDataAccessAuthIdentityPtrOutput)
 }
 
-func (in *serviceDataAccessAuthIdentityPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceDataAccessAuthIdentity] {
-	return pulumix.Output[*ServiceDataAccessAuthIdentity]{
-		OutputState: in.ToServiceDataAccessAuthIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parameter defining how if AutoML should handle short time series.
 type ShortSeriesHandlingConfiguration string
 
@@ -13407,12 +12968,6 @@ func (in *shortSeriesHandlingConfigurationPtr) ToShortSeriesHandlingConfiguratio
 	return pulumi.ToOutputWithContext(ctx, in).(ShortSeriesHandlingConfigurationPtrOutput)
 }
 
-func (in *shortSeriesHandlingConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*ShortSeriesHandlingConfiguration] {
-	return pulumix.Output[*ShortSeriesHandlingConfiguration]{
-		OutputState: in.ToShortSeriesHandlingConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 type SkuTier string
 
@@ -13583,12 +13138,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
 type SshPublicAccess string
 
@@ -13753,12 +13302,6 @@ func (in *sshPublicAccessPtr) ToSshPublicAccessPtrOutput() SshPublicAccessPtrOut
 
 func (in *sshPublicAccessPtr) ToSshPublicAccessPtrOutputWithContext(ctx context.Context) SshPublicAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SshPublicAccessPtrOutput)
-}
-
-func (in *sshPublicAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SshPublicAccess] {
-	return pulumix.Output[*SshPublicAccess]{
-		OutputState: in.ToSshPublicAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enable or disable ssl for scoring
@@ -13927,12 +13470,6 @@ func (in *sslConfigStatusPtr) ToSslConfigStatusPtrOutput() SslConfigStatusPtrOut
 
 func (in *sslConfigStatusPtr) ToSslConfigStatusPtrOutputWithContext(ctx context.Context) SslConfigStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslConfigStatusPtrOutput)
-}
-
-func (in *sslConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SslConfigStatus] {
-	return pulumix.Output[*SslConfigStatus]{
-		OutputState: in.ToSslConfigStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The meta-learner is a model trained on the output of the individual heterogeneous models.
@@ -14117,12 +13654,6 @@ func (in *stackMetaLearnerTypePtr) ToStackMetaLearnerTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(StackMetaLearnerTypePtrOutput)
 }
 
-func (in *stackMetaLearnerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StackMetaLearnerType] {
-	return pulumix.Output[*StackMetaLearnerType]{
-		OutputState: in.ToStackMetaLearnerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of optimizer.
 type StochasticOptimizer string
 
@@ -14297,12 +13828,6 @@ func (in *stochasticOptimizerPtr) ToStochasticOptimizerPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StochasticOptimizerPtrOutput)
 }
 
-func (in *stochasticOptimizerPtr) ToOutput(ctx context.Context) pulumix.Output[*StochasticOptimizer] {
-	return pulumix.Output[*StochasticOptimizer]{
-		OutputState: in.ToStochasticOptimizerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The function to be used to aggregate the time series target column to conform to a user specified frequency.
 // If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
 type TargetAggregationFunction string
@@ -14475,12 +14000,6 @@ func (in *targetAggregationFunctionPtr) ToTargetAggregationFunctionPtrOutput() T
 
 func (in *targetAggregationFunctionPtr) ToTargetAggregationFunctionPtrOutputWithContext(ctx context.Context) TargetAggregationFunctionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetAggregationFunctionPtrOutput)
-}
-
-func (in *targetAggregationFunctionPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetAggregationFunction] {
-	return pulumix.Output[*TargetAggregationFunction]{
-		OutputState: in.ToTargetAggregationFunctionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Set target lags mode - Auto/Custom
@@ -14714,12 +14233,6 @@ func (in *useStlPtr) ToUseStlPtrOutputWithContext(ctx context.Context) UseStlPtr
 	return pulumi.ToOutputWithContext(ctx, in).(UseStlPtrOutput)
 }
 
-func (in *useStlPtr) ToOutput(ctx context.Context) pulumix.Output[*UseStl] {
-	return pulumix.Output[*UseStl]{
-		OutputState: in.ToUseStlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metric computation method to use for validation metrics.
 type ValidationMetricType string
 
@@ -14894,12 +14407,6 @@ func (in *validationMetricTypePtr) ToValidationMetricTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationMetricTypePtrOutput)
 }
 
-func (in *validationMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationMetricType] {
-	return pulumix.Output[*ValidationMetricType]{
-		OutputState: in.ToValidationMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // format for the workspace connection value
 type ValueFormat string
 
@@ -15062,12 +14569,6 @@ func (in *valueFormatPtr) ToValueFormatPtrOutput() ValueFormatPtrOutput {
 
 func (in *valueFormatPtr) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValueFormatPtrOutput)
-}
-
-func (in *valueFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ValueFormat] {
-	return pulumix.Output[*ValueFormat]{
-		OutputState: in.ToValueFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Virtual Machine priority
@@ -15234,12 +14735,6 @@ func (in *vmPriorityPtr) ToVmPriorityPtrOutput() VmPriorityPtrOutput {
 
 func (in *vmPriorityPtr) ToVmPriorityPtrOutputWithContext(ctx context.Context) VmPriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmPriorityPtrOutput)
-}
-
-func (in *vmPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*VmPriority] {
-	return pulumix.Output[*VmPriority]{
-		OutputState: in.ToVmPriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
@@ -15410,12 +14905,6 @@ func (in *volumeDefinitionTypePtr) ToVolumeDefinitionTypePtrOutput() VolumeDefin
 
 func (in *volumeDefinitionTypePtr) ToVolumeDefinitionTypePtrOutputWithContext(ctx context.Context) VolumeDefinitionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeDefinitionTypePtrOutput)
-}
-
-func (in *volumeDefinitionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeDefinitionType] {
-	return pulumix.Output[*VolumeDefinitionType]{
-		OutputState: in.ToVolumeDefinitionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of service to send a callback
@@ -15606,12 +15095,6 @@ func (in *weekDayPtr) ToWeekDayPtrOutput() WeekDayPtrOutput {
 
 func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayPtrOutput)
-}
-
-func (in *weekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDay] {
-	return pulumix.Output[*WeekDay]{
-		OutputState: in.ToWeekDayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

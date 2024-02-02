@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of managed service identity (either system assigned, or none).
@@ -175,12 +174,6 @@ func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityT
 
 func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
-}
-
-func (in *systemAssignedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityType] {
-	return pulumix.Output[*SystemAssignedServiceIdentityType]{
-		OutputState: in.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

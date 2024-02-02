@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource Type of ApplicationGroup.
@@ -177,12 +176,6 @@ func (in *applicationGroupTypePtr) ToApplicationGroupTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGroupTypePtrOutput)
 }
 
-func (in *applicationGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGroupType] {
-	return pulumix.Output[*ApplicationGroupType]{
-		OutputState: in.ToApplicationGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
 type CommandLineSetting string
 
@@ -349,12 +342,6 @@ func (in *commandLineSettingPtr) ToCommandLineSettingPtrOutput() CommandLineSett
 
 func (in *commandLineSettingPtr) ToCommandLineSettingPtrOutputWithContext(ctx context.Context) CommandLineSettingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CommandLineSettingPtrOutput)
-}
-
-func (in *commandLineSettingPtr) ToOutput(ctx context.Context) pulumix.Output[*CommandLineSetting] {
-	return pulumix.Output[*CommandLineSetting]{
-		OutputState: in.ToCommandLineSettingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DayOfWeek string
@@ -532,12 +519,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostPool type for desktop.
 type HostPoolType string
 
@@ -709,12 +690,6 @@ func (in *hostPoolTypePtr) ToHostPoolTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostPoolTypePtrOutput)
 }
 
-func (in *hostPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostPoolType] {
-	return pulumix.Output[*HostPoolType]{
-		OutputState: in.ToHostPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the load balancer.
 type LoadBalancerType string
 
@@ -883,12 +858,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
 }
 
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PersonalDesktopAssignment type for HostPool.
 type PersonalDesktopAssignmentType string
 
@@ -1053,12 +1022,6 @@ func (in *personalDesktopAssignmentTypePtr) ToPersonalDesktopAssignmentTypePtrOu
 
 func (in *personalDesktopAssignmentTypePtr) ToPersonalDesktopAssignmentTypePtrOutputWithContext(ctx context.Context) PersonalDesktopAssignmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersonalDesktopAssignmentTypePtrOutput)
-}
-
-func (in *personalDesktopAssignmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PersonalDesktopAssignmentType] {
-	return pulumix.Output[*PersonalDesktopAssignmentType]{
-		OutputState: in.ToPersonalDesktopAssignmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of preferred application group type, default to Desktop Application Group
@@ -1229,12 +1192,6 @@ func (in *preferredAppGroupTypePtr) ToPreferredAppGroupTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(PreferredAppGroupTypePtrOutput)
 }
 
-func (in *preferredAppGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PreferredAppGroupType] {
-	return pulumix.Output[*PreferredAppGroupType]{
-		OutputState: in.ToPreferredAppGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of resetting the token.
 type RegistrationTokenOperation string
 
@@ -1403,12 +1360,6 @@ func (in *registrationTokenOperationPtr) ToRegistrationTokenOperationPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RegistrationTokenOperationPtrOutput)
 }
 
-func (in *registrationTokenOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*RegistrationTokenOperation] {
-	return pulumix.Output[*RegistrationTokenOperation]{
-		OutputState: in.ToRegistrationTokenOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource Type of Application.
 type RemoteApplicationType string
 
@@ -1575,12 +1526,6 @@ func (in *remoteApplicationTypePtr) ToRemoteApplicationTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RemoteApplicationTypePtrOutput)
 }
 
-func (in *remoteApplicationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RemoteApplicationType] {
-	return pulumix.Output[*RemoteApplicationType]{
-		OutputState: in.ToRemoteApplicationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1743,12 +1688,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of single sign on Secret Type.
@@ -1921,12 +1860,6 @@ func (in *ssosecretTypePtr) ToSSOSecretTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SSOSecretTypePtrOutput)
 }
 
-func (in *ssosecretTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SSOSecretType] {
-	return pulumix.Output[*SSOSecretType]{
-		OutputState: in.ToSSOSecretTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostPool type for desktop.
 type ScalingHostPoolType string
 
@@ -2090,12 +2023,6 @@ func (in *scalingHostPoolTypePtr) ToScalingHostPoolTypePtrOutput() ScalingHostPo
 
 func (in *scalingHostPoolTypePtr) ToScalingHostPoolTypePtrOutputWithContext(ctx context.Context) ScalingHostPoolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScalingHostPoolTypePtrOutput)
-}
-
-func (in *scalingHostPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScalingHostPoolType] {
-	return pulumix.Output[*ScalingHostPoolType]{
-		OutputState: in.ToScalingHostPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of maintenance for session host components.
@@ -2266,12 +2193,6 @@ func (in *sessionHostComponentUpdateTypePtr) ToSessionHostComponentUpdateTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(SessionHostComponentUpdateTypePtrOutput)
 }
 
-func (in *sessionHostComponentUpdateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SessionHostComponentUpdateType] {
-	return pulumix.Output[*SessionHostComponentUpdateType]{
-		OutputState: in.ToSessionHostComponentUpdateTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Load balancing algorithm for ramp up period.
 type SessionHostLoadBalancingAlgorithm string
 
@@ -2436,12 +2357,6 @@ func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgori
 
 func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionHostLoadBalancingAlgorithmPtrOutput)
-}
-
-func (in *sessionHostLoadBalancingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SessionHostLoadBalancingAlgorithm] {
-	return pulumix.Output[*SessionHostLoadBalancingAlgorithm]{
-		OutputState: in.ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -2614,12 +2529,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies when to stop hosts during ramp down period.
 type StopHostsWhen string
 
@@ -2784,12 +2693,6 @@ func (in *stopHostsWhenPtr) ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput {
 
 func (in *stopHostsWhenPtr) ToStopHostsWhenPtrOutputWithContext(ctx context.Context) StopHostsWhenPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StopHostsWhenPtrOutput)
-}
-
-func (in *stopHostsWhenPtr) ToOutput(ctx context.Context) pulumix.Output[*StopHostsWhen] {
-	return pulumix.Output[*StopHostsWhen]{
-		OutputState: in.ToStopHostsWhenPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

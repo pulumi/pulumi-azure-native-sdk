@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SKU name.
@@ -297,12 +296,6 @@ func (in *azureSkuNamePtr) ToAzureSkuNamePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSkuNamePtrOutput)
 }
 
-func (in *azureSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuName] {
-	return pulumix.Output[*AzureSkuName]{
-		OutputState: in.ToAzureSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU tier.
 type AzureSkuTier string
 
@@ -467,12 +460,6 @@ func (in *azureSkuTierPtr) ToAzureSkuTierPtrOutput() AzureSkuTierPtrOutput {
 
 func (in *azureSkuTierPtr) ToAzureSkuTierPtrOutputWithContext(ctx context.Context) AzureSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSkuTierPtrOutput)
-}
-
-func (in *azureSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuTier] {
-	return pulumix.Output[*AzureSkuTier]{
-		OutputState: in.ToAzureSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
@@ -641,12 +628,6 @@ func (in *clusterNetworkAccessFlagPtr) ToClusterNetworkAccessFlagPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterNetworkAccessFlagPtrOutput)
 }
 
-func (in *clusterNetworkAccessFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkAccessFlag] {
-	return pulumix.Output[*ClusterNetworkAccessFlag]{
-		OutputState: in.ToClusterNetworkAccessFlagPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The engine type
 type EngineType string
 
@@ -811,12 +792,6 @@ func (in *engineTypePtr) ToEngineTypePtrOutput() EngineTypePtrOutput {
 
 func (in *engineTypePtr) ToEngineTypePtrOutputWithContext(ctx context.Context) EngineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EngineTypePtrOutput)
-}
-
-func (in *engineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EngineType] {
-	return pulumix.Output[*EngineType]{
-		OutputState: in.ToEngineTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
@@ -989,12 +964,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
 type PublicIPType string
 
@@ -1161,12 +1130,6 @@ func (in *publicIPTypePtr) ToPublicIPTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPTypePtrOutput)
 }
 
-func (in *publicIPTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPType] {
-	return pulumix.Output[*PublicIPType]{
-		OutputState: in.ToPublicIPTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
 type PublicNetworkAccess string
 
@@ -1331,12 +1294,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity used for the resource.
@@ -175,12 +174,6 @@ func (in *amlFilesystemIdentityTypePtr) ToAmlFilesystemIdentityTypePtrOutput() A
 
 func (in *amlFilesystemIdentityTypePtr) ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AmlFilesystemIdentityTypePtrOutput)
-}
-
-func (in *amlFilesystemIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AmlFilesystemIdentityType] {
-	return pulumix.Output[*AmlFilesystemIdentityType]{
-		OutputState: in.ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
@@ -351,12 +344,6 @@ func (in *amlFilesystemSquashModePtr) ToAmlFilesystemSquashModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AmlFilesystemSquashModePtrOutput)
 }
 
-func (in *amlFilesystemSquashModePtr) ToOutput(ctx context.Context) pulumix.Output[*AmlFilesystemSquashMode] {
-	return pulumix.Output[*AmlFilesystemSquashMode]{
-		OutputState: in.ToAmlFilesystemSquashModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the cache
 type CacheIdentityType string
 
@@ -525,12 +512,6 @@ func (in *cacheIdentityTypePtr) ToCacheIdentityTypePtrOutput() CacheIdentityType
 
 func (in *cacheIdentityTypePtr) ToCacheIdentityTypePtrOutputWithContext(ctx context.Context) CacheIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CacheIdentityTypePtrOutput)
-}
-
-func (in *cacheIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentityType] {
-	return pulumix.Output[*CacheIdentityType]{
-		OutputState: in.ToCacheIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Day of the week on which the maintenance window will occur.
@@ -709,12 +690,6 @@ func (in *maintenanceDayOfWeekTypePtr) ToMaintenanceDayOfWeekTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceDayOfWeekTypePtrOutput)
 }
 
-func (in *maintenanceDayOfWeekTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceDayOfWeekType] {
-	return pulumix.Output[*MaintenanceDayOfWeekType]{
-		OutputState: in.ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access allowed by this rule.
 type NfsAccessRuleAccess string
 
@@ -883,12 +858,6 @@ func (in *nfsAccessRuleAccessPtr) ToNfsAccessRuleAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(NfsAccessRuleAccessPtrOutput)
 }
 
-func (in *nfsAccessRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*NfsAccessRuleAccess] {
-	return pulumix.Output[*NfsAccessRuleAccess]{
-		OutputState: in.ToNfsAccessRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scope for this rule. The scope and filter determine which clients match the rule.
 type NfsAccessRuleScope string
 
@@ -1055,12 +1024,6 @@ func (in *nfsAccessRuleScopePtr) ToNfsAccessRuleScopePtrOutput() NfsAccessRuleSc
 
 func (in *nfsAccessRuleScopePtr) ToNfsAccessRuleScopePtrOutputWithContext(ctx context.Context) NfsAccessRuleScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsAccessRuleScopePtrOutput)
-}
-
-func (in *nfsAccessRuleScopePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsAccessRuleScope] {
-	return pulumix.Output[*NfsAccessRuleScope]{
-		OutputState: in.ToNfsAccessRuleScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Storage target operational state.
@@ -1233,12 +1196,6 @@ func (in *operationalStateTypePtr) ToOperationalStateTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(OperationalStateTypePtrOutput)
 }
 
-func (in *operationalStateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperationalStateType] {
-	return pulumix.Output[*OperationalStateType]{
-		OutputState: in.ToOperationalStateTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the Storage Target.
 type StorageTargetType string
 
@@ -1409,12 +1366,6 @@ func (in *storageTargetTypePtr) ToStorageTargetTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTargetTypePtrOutput)
 }
 
-func (in *storageTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageTargetType] {
-	return pulumix.Output[*StorageTargetType]{
-		OutputState: in.ToStorageTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This setting determines how the cache gets username and group names for clients.
 type UsernameSource string
 
@@ -1583,12 +1534,6 @@ func (in *usernameSourcePtr) ToUsernameSourcePtrOutput() UsernameSourcePtrOutput
 
 func (in *usernameSourcePtr) ToUsernameSourcePtrOutputWithContext(ctx context.Context) UsernameSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UsernameSourcePtrOutput)
-}
-
-func (in *usernameSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*UsernameSource] {
-	return pulumix.Output[*UsernameSource]{
-		OutputState: in.ToUsernameSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

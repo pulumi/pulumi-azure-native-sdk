@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Strategy to use for copy.
@@ -175,12 +174,6 @@ func (in *copyModePtr) ToCopyModePtrOutput() CopyModePtrOutput {
 
 func (in *copyModePtr) ToCopyModePtrOutputWithContext(ctx context.Context) CopyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CopyModePtrOutput)
-}
-
-func (in *copyModePtr) ToOutput(ctx context.Context) pulumix.Output[*CopyMode] {
-	return pulumix.Output[*CopyMode]{
-		OutputState: in.ToCopyModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Endpoint resource type.
@@ -357,12 +350,6 @@ func (in *nfsVersionPtr) ToNfsVersionPtrOutput() NfsVersionPtrOutput {
 
 func (in *nfsVersionPtr) ToNfsVersionPtrOutputWithContext(ctx context.Context) NfsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NfsVersionPtrOutput)
-}
-
-func (in *nfsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*NfsVersion] {
-	return pulumix.Output[*NfsVersion]{
-		OutputState: in.ToNfsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

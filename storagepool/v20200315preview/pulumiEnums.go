@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Determines the SKU of VM deployed for Disk pool
@@ -177,12 +176,6 @@ func (in *diskPoolTierPtr) ToDiskPoolTierPtrOutput() DiskPoolTierPtrOutput {
 
 func (in *diskPoolTierPtr) ToDiskPoolTierPtrOutputWithContext(ctx context.Context) DiskPoolTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskPoolTierPtrOutput)
-}
-
-func (in *diskPoolTierPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskPoolTier] {
-	return pulumix.Output[*DiskPoolTier]{
-		OutputState: in.ToDiskPoolTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

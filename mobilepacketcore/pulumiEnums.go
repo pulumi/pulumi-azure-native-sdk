@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Administrative state of the network function
@@ -177,12 +176,6 @@ func (in *networkFunctionAdministrativeStatePtr) ToNetworkFunctionAdministrative
 
 func (in *networkFunctionAdministrativeStatePtr) ToNetworkFunctionAdministrativeStatePtrOutputWithContext(ctx context.Context) NetworkFunctionAdministrativeStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkFunctionAdministrativeStatePtrOutput)
-}
-
-func (in *networkFunctionAdministrativeStatePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionAdministrativeState] {
-	return pulumix.Output[*NetworkFunctionAdministrativeState]{
-		OutputState: in.ToNetworkFunctionAdministrativeStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of network function
@@ -389,12 +382,6 @@ func (in *networkFunctionTypePtr) ToNetworkFunctionTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkFunctionTypePtrOutput)
 }
 
-func (in *networkFunctionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionType] {
-	return pulumix.Output[*NetworkFunctionType]{
-		OutputState: in.ToNetworkFunctionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provisioned SKU Value.
 type SkuDefinitions string
 
@@ -567,12 +554,6 @@ func (in *skuDefinitionsPtr) ToSkuDefinitionsPtrOutput() SkuDefinitionsPtrOutput
 
 func (in *skuDefinitionsPtr) ToSkuDefinitionsPtrOutputWithContext(ctx context.Context) SkuDefinitionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuDefinitionsPtrOutput)
-}
-
-func (in *skuDefinitionsPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuDefinitions] {
-	return pulumix.Output[*SkuDefinitions]{
-		OutputState: in.ToSkuDefinitionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of data destination.
@@ -200,12 +199,6 @@ func (in *fhirResourceVersionPolicyPtr) ToFhirResourceVersionPolicyPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(FhirResourceVersionPolicyPtrOutput)
 }
 
-func (in *fhirResourceVersionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*FhirResourceVersionPolicy] {
-	return pulumix.Output[*FhirResourceVersionPolicy]{
-		OutputState: in.ToFhirResourceVersionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the service.
 type FhirServiceKind string
 
@@ -370,12 +363,6 @@ func (in *fhirServiceKindPtr) ToFhirServiceKindPtrOutput() FhirServiceKindPtrOut
 
 func (in *fhirServiceKindPtr) ToFhirServiceKindPtrOutputWithContext(ctx context.Context) FhirServiceKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FhirServiceKindPtrOutput)
-}
-
-func (in *fhirServiceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceKind] {
-	return pulumix.Output[*FhirServiceKind]{
-		OutputState: in.ToFhirServiceKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of FHIR Service.
@@ -544,12 +531,6 @@ func (in *fhirServiceVersionPtr) ToFhirServiceVersionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(FhirServiceVersionPtrOutput)
 }
 
-func (in *fhirServiceVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceVersion] {
-	return pulumix.Output[*FhirServiceVersion]{
-		OutputState: in.ToFhirServiceVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines how resource identity is resolved on the destination.
 type IotIdentityResolutionType string
 
@@ -714,12 +695,6 @@ func (in *iotIdentityResolutionTypePtr) ToIotIdentityResolutionTypePtrOutput() I
 
 func (in *iotIdentityResolutionTypePtr) ToIotIdentityResolutionTypePtrOutputWithContext(ctx context.Context) IotIdentityResolutionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IotIdentityResolutionTypePtrOutput)
-}
-
-func (in *iotIdentityResolutionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IotIdentityResolutionType] {
-	return pulumix.Output[*IotIdentityResolutionType]{
-		OutputState: in.ToIotIdentityResolutionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the service.
@@ -890,12 +865,6 @@ func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
 }
 
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of identity being specified, currently SystemAssigned and None are allowed.
 type ManagedServiceIdentityType string
 
@@ -1060,12 +1029,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -1236,12 +1199,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 type PublicNetworkAccess string
 
@@ -1406,12 +1363,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of identity being specified, currently SystemAssigned and None are allowed.
@@ -1582,12 +1533,6 @@ func (in *serviceManagedIdentityTypePtr) ToServiceManagedIdentityTypePtrOutput()
 
 func (in *serviceManagedIdentityTypePtr) ToServiceManagedIdentityTypePtrOutputWithContext(ctx context.Context) ServiceManagedIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceManagedIdentityTypePtrOutput)
-}
-
-func (in *serviceManagedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityType] {
-	return pulumix.Output[*ServiceManagedIdentityType]{
-		OutputState: in.ToServiceManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A flag to determine whether or not ChannelBinding is enabled or disabled.
@@ -177,12 +176,6 @@ func (in *channelBindingPtr) ToChannelBindingPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ChannelBindingPtrOutput)
 }
 
-func (in *channelBindingPtr) ToOutput(ctx context.Context) pulumix.Output[*ChannelBinding] {
-	return pulumix.Output[*ChannelBinding]{
-		OutputState: in.ToChannelBindingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
 type ExternalAccess string
 
@@ -347,12 +340,6 @@ func (in *externalAccessPtr) ToExternalAccessPtrOutput() ExternalAccessPtrOutput
 
 func (in *externalAccessPtr) ToExternalAccessPtrOutputWithContext(ctx context.Context) ExternalAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExternalAccessPtrOutput)
-}
-
-func (in *externalAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*ExternalAccess] {
-	return pulumix.Output[*ExternalAccess]{
-		OutputState: in.ToExternalAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enabled or Disabled flag to turn on Group-based filtered sync
@@ -521,12 +508,6 @@ func (in *filteredSyncPtr) ToFilteredSyncPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(FilteredSyncPtrOutput)
 }
 
-func (in *filteredSyncPtr) ToOutput(ctx context.Context) pulumix.Output[*FilteredSync] {
-	return pulumix.Output[*FilteredSync]{
-		OutputState: in.ToFilteredSyncPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not KerberosArmoring is enabled or disabled.
 type KerberosArmoring string
 
@@ -691,12 +672,6 @@ func (in *kerberosArmoringPtr) ToKerberosArmoringPtrOutput() KerberosArmoringPtr
 
 func (in *kerberosArmoringPtr) ToKerberosArmoringPtrOutputWithContext(ctx context.Context) KerberosArmoringPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KerberosArmoringPtrOutput)
-}
-
-func (in *kerberosArmoringPtr) ToOutput(ctx context.Context) pulumix.Output[*KerberosArmoring] {
-	return pulumix.Output[*KerberosArmoring]{
-		OutputState: in.ToKerberosArmoringPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
@@ -865,12 +840,6 @@ func (in *kerberosRc4EncryptionPtr) ToKerberosRc4EncryptionPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(KerberosRc4EncryptionPtrOutput)
 }
 
-func (in *kerberosRc4EncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*KerberosRc4Encryption] {
-	return pulumix.Output[*KerberosRc4Encryption]{
-		OutputState: in.ToKerberosRc4EncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not LdapSigning is enabled or disabled.
 type LdapSigning string
 
@@ -1035,12 +1004,6 @@ func (in *ldapSigningPtr) ToLdapSigningPtrOutput() LdapSigningPtrOutput {
 
 func (in *ldapSigningPtr) ToLdapSigningPtrOutputWithContext(ctx context.Context) LdapSigningPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LdapSigningPtrOutput)
-}
-
-func (in *ldapSigningPtr) ToOutput(ctx context.Context) pulumix.Output[*LdapSigning] {
-	return pulumix.Output[*LdapSigning]{
-		OutputState: in.ToLdapSigningPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A flag to determine whether or not Secure LDAP is enabled or disabled.
@@ -1209,12 +1172,6 @@ func (in *ldapsPtr) ToLdapsPtrOutputWithContext(ctx context.Context) LdapsPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(LdapsPtrOutput)
 }
 
-func (in *ldapsPtr) ToOutput(ctx context.Context) pulumix.Output[*Ldaps] {
-	return pulumix.Output[*Ldaps]{
-		OutputState: in.ToLdapsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Should domain controller admins be notified
 type NotifyDcAdmins string
 
@@ -1379,12 +1336,6 @@ func (in *notifyDcAdminsPtr) ToNotifyDcAdminsPtrOutput() NotifyDcAdminsPtrOutput
 
 func (in *notifyDcAdminsPtr) ToNotifyDcAdminsPtrOutputWithContext(ctx context.Context) NotifyDcAdminsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotifyDcAdminsPtrOutput)
-}
-
-func (in *notifyDcAdminsPtr) ToOutput(ctx context.Context) pulumix.Output[*NotifyDcAdmins] {
-	return pulumix.Output[*NotifyDcAdmins]{
-		OutputState: in.ToNotifyDcAdminsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Should global admins be notified
@@ -1553,12 +1504,6 @@ func (in *notifyGlobalAdminsPtr) ToNotifyGlobalAdminsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(NotifyGlobalAdminsPtrOutput)
 }
 
-func (in *notifyGlobalAdminsPtr) ToOutput(ctx context.Context) pulumix.Output[*NotifyGlobalAdmins] {
-	return pulumix.Output[*NotifyGlobalAdmins]{
-		OutputState: in.ToNotifyGlobalAdminsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not NtlmV1 is enabled or disabled.
 type NtlmV1 string
 
@@ -1723,12 +1668,6 @@ func (in *ntlmV1Ptr) ToNtlmV1PtrOutput() NtlmV1PtrOutput {
 
 func (in *ntlmV1Ptr) ToNtlmV1PtrOutputWithContext(ctx context.Context) NtlmV1PtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NtlmV1PtrOutput)
-}
-
-func (in *ntlmV1Ptr) ToOutput(ctx context.Context) pulumix.Output[*NtlmV1] {
-	return pulumix.Output[*NtlmV1]{
-		OutputState: in.ToNtlmV1PtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status for individual validator after running diagnostics.
@@ -1905,12 +1844,6 @@ func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtr
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
 }
 
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
 type SyncKerberosPasswords string
 
@@ -2075,12 +2008,6 @@ func (in *syncKerberosPasswordsPtr) ToSyncKerberosPasswordsPtrOutput() SyncKerbe
 
 func (in *syncKerberosPasswordsPtr) ToSyncKerberosPasswordsPtrOutputWithContext(ctx context.Context) SyncKerberosPasswordsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SyncKerberosPasswordsPtrOutput)
-}
-
-func (in *syncKerberosPasswordsPtr) ToOutput(ctx context.Context) pulumix.Output[*SyncKerberosPasswords] {
-	return pulumix.Output[*SyncKerberosPasswords]{
-		OutputState: in.ToSyncKerberosPasswordsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
@@ -2249,12 +2176,6 @@ func (in *syncNtlmPasswordsPtr) ToSyncNtlmPasswordsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SyncNtlmPasswordsPtrOutput)
 }
 
-func (in *syncNtlmPasswordsPtr) ToOutput(ctx context.Context) pulumix.Output[*SyncNtlmPasswords] {
-	return pulumix.Output[*SyncNtlmPasswords]{
-		OutputState: in.ToSyncNtlmPasswordsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
 type SyncOnPremPasswords string
 
@@ -2419,12 +2340,6 @@ func (in *syncOnPremPasswordsPtr) ToSyncOnPremPasswordsPtrOutput() SyncOnPremPas
 
 func (in *syncOnPremPasswordsPtr) ToSyncOnPremPasswordsPtrOutputWithContext(ctx context.Context) SyncOnPremPasswordsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SyncOnPremPasswordsPtrOutput)
-}
-
-func (in *syncOnPremPasswordsPtr) ToOutput(ctx context.Context) pulumix.Output[*SyncOnPremPasswords] {
-	return pulumix.Output[*SyncOnPremPasswords]{
-		OutputState: in.ToSyncOnPremPasswordsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
@@ -2593,12 +2508,6 @@ func (in *syncScopePtr) ToSyncScopePtrOutputWithContext(ctx context.Context) Syn
 	return pulumi.ToOutputWithContext(ctx, in).(SyncScopePtrOutput)
 }
 
-func (in *syncScopePtr) ToOutput(ctx context.Context) pulumix.Output[*SyncScope] {
-	return pulumix.Output[*SyncScope]{
-		OutputState: in.ToSyncScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A flag to determine whether or not TlsV1 is enabled or disabled.
 type TlsV1 string
 
@@ -2763,12 +2672,6 @@ func (in *tlsV1Ptr) ToTlsV1PtrOutput() TlsV1PtrOutput {
 
 func (in *tlsV1Ptr) ToTlsV1PtrOutputWithContext(ctx context.Context) TlsV1PtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsV1PtrOutput)
-}
-
-func (in *tlsV1Ptr) ToOutput(ctx context.Context) pulumix.Output[*TlsV1] {
-	return pulumix.Output[*TlsV1]{
-		OutputState: in.ToTlsV1PtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

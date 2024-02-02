@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the cleanup state of the solution.
@@ -183,12 +182,6 @@ func (in *cleanupStatePtr) ToCleanupStatePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CleanupStatePtrOutput)
 }
 
-func (in *cleanupStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CleanupState] {
-	return pulumix.Output[*CleanupState]{
-		OutputState: in.ToCleanupStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the goal of the solution.
 type Goal string
 
@@ -361,12 +354,6 @@ func (in *goalPtr) ToGoalPtrOutputWithContext(ctx context.Context) GoalPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(GoalPtrOutput)
 }
 
-func (in *goalPtr) ToOutput(ctx context.Context) pulumix.Output[*Goal] {
-	return pulumix.Output[*Goal]{
-		OutputState: in.ToGoalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Private link connection state.
 type PrivateLinkServiceConnectionStateStatus string
 
@@ -537,12 +524,6 @@ func (in *privateLinkServiceConnectionStateStatusPtr) ToPrivateLinkServiceConnec
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStateStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStateStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStateStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the state of public network access.
 type PublicNetworkAccess string
 
@@ -709,12 +690,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the purpose of the solution.
@@ -885,12 +860,6 @@ func (in *purposePtr) ToPurposePtrOutputWithContext(ctx context.Context) Purpose
 	return pulumi.ToOutputWithContext(ctx, in).(PurposePtrOutput)
 }
 
-func (in *purposePtr) ToOutput(ctx context.Context) pulumix.Output[*Purpose] {
-	return pulumix.Output[*Purpose]{
-		OutputState: in.ToPurposePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the current status of the solution.
 type Status string
 
@@ -1055,12 +1024,6 @@ func (in *statusPtr) ToStatusPtrOutput() StatusPtrOutput {
 
 func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
-}
-
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the tool being used in the solution.
@@ -1273,12 +1236,6 @@ func (in *toolPtr) ToToolPtrOutput() ToolPtrOutput {
 
 func (in *toolPtr) ToToolPtrOutputWithContext(ctx context.Context) ToolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ToolPtrOutput)
-}
-
-func (in *toolPtr) ToOutput(ctx context.Context) pulumix.Output[*Tool] {
-	return pulumix.Output[*Tool]{
-		OutputState: in.ToToolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

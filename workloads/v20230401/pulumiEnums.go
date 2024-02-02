@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of file share config.
@@ -196,12 +195,6 @@ func (in *diskSkuNamePtr) ToDiskSkuNamePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(DiskSkuNamePtrOutput)
 }
 
-func (in *diskSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskSkuName] {
-	return pulumix.Output[*DiskSkuName]{
-		OutputState: in.ToDiskSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of manage identity
 type ManagedServiceIdentityType string
 
@@ -366,12 +359,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pattern type to be used for resource naming.
@@ -555,12 +542,6 @@ func (in *routingPreferencePtr) ToRoutingPreferencePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingPreferencePtrOutput)
 }
 
-func (in *routingPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutingPreference] {
-	return pulumix.Output[*RoutingPreference]{
-		OutputState: in.ToRoutingPreferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration Type.
 type SAPConfigurationType string
 
@@ -734,12 +715,6 @@ func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseScaleMethodPtrOutput)
 }
 
-func (in *sapdatabaseScaleMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseScaleMethod] {
-	return pulumix.Output[*SAPDatabaseScaleMethod]{
-		OutputState: in.ToSAPDatabaseScaleMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The database type. Eg: HANA, DB2, etc
 type SAPDatabaseType string
 
@@ -904,12 +879,6 @@ func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutput() SAPDatabaseTypePtrOut
 
 func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutputWithContext(ctx context.Context) SAPDatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseTypePtrOutput)
-}
-
-func (in *sapdatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseType] {
-	return pulumix.Output[*SAPDatabaseType]{
-		OutputState: in.ToSAPDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The deployment type. Eg: SingleServer/ThreeTier
@@ -1078,12 +1047,6 @@ func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDeploymentTypePtrOutput)
 }
 
-func (in *sapdeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDeploymentType] {
-	return pulumix.Output[*SAPDeploymentType]{
-		OutputState: in.ToSAPDeploymentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the environment type - Production/Non Production.
 type SAPEnvironmentType string
 
@@ -1248,12 +1211,6 @@ func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutput() SAPEnvironmentT
 
 func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutputWithContext(ctx context.Context) SAPEnvironmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPEnvironmentTypePtrOutput)
-}
-
-func (in *sapenvironmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPEnvironmentType] {
-	return pulumix.Output[*SAPEnvironmentType]{
-		OutputState: in.ToSAPEnvironmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The high availability type.
@@ -1422,12 +1379,6 @@ func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SAPHighAvailabilityTypePtrOutput)
 }
 
-func (in *saphighAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPHighAvailabilityType] {
-	return pulumix.Output[*SAPHighAvailabilityType]{
-		OutputState: in.ToSAPHighAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the SAP Product type.
 type SAPProductType string
 
@@ -1594,12 +1545,6 @@ func (in *sapproductTypePtr) ToSAPProductTypePtrOutput() SAPProductTypePtrOutput
 
 func (in *sapproductTypePtr) ToSAPProductTypePtrOutputWithContext(ctx context.Context) SAPProductTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPProductTypePtrOutput)
-}
-
-func (in *sapproductTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPProductType] {
-	return pulumix.Output[*SAPProductType]{
-		OutputState: in.ToSAPProductTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SAP software installation Type.
@@ -1777,12 +1722,6 @@ func (in *sslPreferencePtr) ToSslPreferencePtrOutput() SslPreferencePtrOutput {
 
 func (in *sslPreferencePtr) ToSslPreferencePtrOutputWithContext(ctx context.Context) SslPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslPreferencePtrOutput)
-}
-
-func (in *sslPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*SslPreference] {
-	return pulumix.Output[*SslPreference]{
-		OutputState: in.ToSslPreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

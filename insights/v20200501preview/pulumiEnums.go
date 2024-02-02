@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The criteria operator.
@@ -183,12 +182,6 @@ func (in *conditionOperatorPtr) ToConditionOperatorPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOperatorPtrOutput)
 }
 
-func (in *conditionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOperator] {
-	return pulumix.Output[*ConditionOperator]{
-		OutputState: in.ToConditionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operator for dimension values
 type DimensionOperator string
 
@@ -353,12 +346,6 @@ func (in *dimensionOperatorPtr) ToDimensionOperatorPtrOutput() DimensionOperator
 
 func (in *dimensionOperatorPtr) ToDimensionOperatorPtrOutputWithContext(ctx context.Context) DimensionOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DimensionOperatorPtrOutput)
-}
-
-func (in *dimensionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*DimensionOperator] {
-	return pulumix.Output[*DimensionOperator]{
-		OutputState: in.ToDimensionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Aggregation type
@@ -531,12 +518,6 @@ func (in *timeAggregationPtr) ToTimeAggregationPtrOutput() TimeAggregationPtrOut
 
 func (in *timeAggregationPtr) ToTimeAggregationPtrOutputWithContext(ctx context.Context) TimeAggregationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationPtrOutput)
-}
-
-func (in *timeAggregationPtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregation] {
-	return pulumix.Output[*TimeAggregation]{
-		OutputState: in.ToTimeAggregationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

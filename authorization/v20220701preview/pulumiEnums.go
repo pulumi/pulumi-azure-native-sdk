@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The option whether validate the exemption is at or under the assignment scope.
@@ -179,12 +178,6 @@ func (in *assignmentScopeValidationPtr) ToAssignmentScopeValidationPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AssignmentScopeValidationPtrOutput)
 }
 
-func (in *assignmentScopeValidationPtr) ToOutput(ctx context.Context) pulumix.Output[*AssignmentScopeValidation] {
-	return pulumix.Output[*AssignmentScopeValidation]{
-		OutputState: in.ToAssignmentScopeValidationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy exemption category. Possible values are Waiver and Mitigated.
 type ExemptionCategory string
 
@@ -351,12 +344,6 @@ func (in *exemptionCategoryPtr) ToExemptionCategoryPtrOutput() ExemptionCategory
 
 func (in *exemptionCategoryPtr) ToExemptionCategoryPtrOutputWithContext(ctx context.Context) ExemptionCategoryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExemptionCategoryPtrOutput)
-}
-
-func (in *exemptionCategoryPtr) ToOutput(ctx context.Context) pulumix.Output[*ExemptionCategory] {
-	return pulumix.Output[*ExemptionCategory]{
-		OutputState: in.ToExemptionCategoryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The selector kind.
@@ -531,12 +518,6 @@ func (in *selectorKindPtr) ToSelectorKindPtrOutput() SelectorKindPtrOutput {
 
 func (in *selectorKindPtr) ToSelectorKindPtrOutputWithContext(ctx context.Context) SelectorKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SelectorKindPtrOutput)
-}
-
-func (in *selectorKindPtr) ToOutput(ctx context.Context) pulumix.Output[*SelectorKind] {
-	return pulumix.Output[*SelectorKind]{
-		OutputState: in.ToSelectorKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

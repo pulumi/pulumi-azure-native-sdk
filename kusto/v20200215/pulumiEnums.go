@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The data format of the message. Optionally the data format can be added to each message.
@@ -199,12 +198,6 @@ func (in *eventGridDataFormatPtr) ToEventGridDataFormatPtrOutput() EventGridData
 
 func (in *eventGridDataFormatPtr) ToEventGridDataFormatPtrOutputWithContext(ctx context.Context) EventGridDataFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EventGridDataFormatPtrOutput)
-}
-
-func (in *eventGridDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*EventGridDataFormat] {
-	return pulumix.Output[*EventGridDataFormat]{
-		OutputState: in.ToEventGridDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Kind of the endpoint for the data connection

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OS architecture.
@@ -179,12 +178,6 @@ func (in *architecturePtr) ToArchitecturePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ArchitecturePtrOutput)
 }
 
-func (in *architecturePtr) ToOutput(ctx context.Context) pulumix.Output[*Architecture] {
-	return pulumix.Output[*Architecture]{
-		OutputState: in.ToArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the auto trigger for base image dependency updates.
 type BaseImageTriggerType string
 
@@ -349,12 +342,6 @@ func (in *baseImageTriggerTypePtr) ToBaseImageTriggerTypePtrOutput() BaseImageTr
 
 func (in *baseImageTriggerTypePtr) ToBaseImageTriggerTypePtrOutputWithContext(ctx context.Context) BaseImageTriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BaseImageTriggerTypePtrOutput)
-}
-
-func (in *baseImageTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BaseImageTriggerType] {
-	return pulumix.Output[*BaseImageTriggerType]{
-		OutputState: in.ToBaseImageTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operating system type required for the run.
@@ -523,12 +510,6 @@ func (in *osPtr) ToOSPtrOutputWithContext(ctx context.Context) OSPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPtrOutput)
 }
 
-func (in *osPtr) ToOutput(ctx context.Context) pulumix.Output[*OS] {
-	return pulumix.Output[*OS]{
-		OutputState: in.ToOSPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the secret object which determines how the value of the secret object has to be
 // interpreted.
 type SecretObjectType string
@@ -692,12 +673,6 @@ func (in *secretObjectTypePtr) ToSecretObjectTypePtrOutput() SecretObjectTypePtr
 
 func (in *secretObjectTypePtr) ToSecretObjectTypePtrOutputWithContext(ctx context.Context) SecretObjectTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecretObjectTypePtrOutput)
-}
-
-func (in *secretObjectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecretObjectType] {
-	return pulumix.Output[*SecretObjectType]{
-		OutputState: in.ToSecretObjectTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of source control service.
@@ -864,12 +839,6 @@ func (in *sourceControlTypePtr) ToSourceControlTypePtrOutput() SourceControlType
 
 func (in *sourceControlTypePtr) ToSourceControlTypePtrOutputWithContext(ctx context.Context) SourceControlTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceControlTypePtrOutput)
-}
-
-func (in *sourceControlTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceControlType] {
-	return pulumix.Output[*SourceControlType]{
-		OutputState: in.ToSourceControlTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication mode which determines the source registry login scope. The credentials for the source registry
@@ -1040,12 +1009,6 @@ func (in *sourceRegistryLoginModePtr) ToSourceRegistryLoginModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SourceRegistryLoginModePtrOutput)
 }
 
-func (in *sourceRegistryLoginModePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceRegistryLoginMode] {
-	return pulumix.Output[*SourceRegistryLoginMode]{
-		OutputState: in.ToSourceRegistryLoginModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceTriggerEvent string
 
 const (
@@ -1209,12 +1172,6 @@ func (in *sourceTriggerEventPtr) ToSourceTriggerEventPtrOutput() SourceTriggerEv
 
 func (in *sourceTriggerEventPtr) ToSourceTriggerEventPtrOutputWithContext(ctx context.Context) SourceTriggerEventPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTriggerEventPtrOutput)
-}
-
-func (in *sourceTriggerEventPtr) ToOutput(ctx context.Context) pulumix.Output[*SourceTriggerEvent] {
-	return pulumix.Output[*SourceTriggerEvent]{
-		OutputState: in.ToSourceTriggerEventPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current status of task.
@@ -1383,12 +1340,6 @@ func (in *taskStatusPtr) ToTaskStatusPtrOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, in).(TaskStatusPtrOutput)
 }
 
-func (in *taskStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TaskStatus] {
-	return pulumix.Output[*TaskStatus]{
-		OutputState: in.ToTaskStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Auth token.
 type TokenType string
 
@@ -1553,12 +1504,6 @@ func (in *tokenTypePtr) ToTokenTypePtrOutput() TokenTypePtrOutput {
 
 func (in *tokenTypePtr) ToTokenTypePtrOutputWithContext(ctx context.Context) TokenTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TokenTypePtrOutput)
-}
-
-func (in *tokenTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenType] {
-	return pulumix.Output[*TokenType]{
-		OutputState: in.ToTokenTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current status of trigger.
@@ -1727,12 +1672,6 @@ func (in *triggerStatusPtr) ToTriggerStatusPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerStatusPtrOutput)
 }
 
-func (in *triggerStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerStatus] {
-	return pulumix.Output[*TriggerStatus]{
-		OutputState: in.ToTriggerStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Variant of the CPU.
 type Variant string
 
@@ -1899,12 +1838,6 @@ func (in *variantPtr) ToVariantPtrOutput() VariantPtrOutput {
 
 func (in *variantPtr) ToVariantPtrOutputWithContext(ctx context.Context) VariantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VariantPtrOutput)
-}
-
-func (in *variantPtr) ToOutput(ctx context.Context) pulumix.Output[*Variant] {
-	return pulumix.Output[*Variant]{
-		OutputState: in.ToVariantPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

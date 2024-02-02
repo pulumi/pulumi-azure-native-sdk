@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The identity type.
@@ -175,12 +174,6 @@ func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutput() AKSIdentityTypePtrOut
 
 func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutputWithContext(ctx context.Context) AKSIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AKSIdentityTypePtrOutput)
-}
-
-func (in *aksidentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AKSIdentityType] {
-	return pulumix.Output[*AKSIdentityType]{
-		OutputState: in.ToAKSIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Level of the status.
@@ -351,12 +344,6 @@ func (in *levelTypePtr) ToLevelTypePtrOutputWithContext(ctx context.Context) Lev
 	return pulumi.ToOutputWithContext(ctx, in).(LevelTypePtrOutput)
 }
 
-func (in *levelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LevelType] {
-	return pulumix.Output[*LevelType]{
-		OutputState: in.ToLevelTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -519,12 +506,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

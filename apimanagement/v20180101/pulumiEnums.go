@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Backend communication protocol.
@@ -179,12 +178,6 @@ func (in *backendProtocolPtr) ToBackendProtocolPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(BackendProtocolPtrOutput)
 }
 
-func (in *backendProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendProtocol] {
-	return pulumix.Output[*BackendProtocol]{
-		OutputState: in.ToBackendProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of confirmation e-mail that will be sent to the newly created user.
 type Confirmation string
 
@@ -353,12 +346,6 @@ func (in *confirmationPtr) ToConfirmationPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConfirmationPtrOutput)
 }
 
-func (in *confirmationPtr) ToOutput(ctx context.Context) pulumix.Output[*Confirmation] {
-	return pulumix.Output[*Confirmation]{
-		OutputState: in.ToConfirmationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Logger type.
 type LoggerType string
 
@@ -525,12 +512,6 @@ func (in *loggerTypePtr) ToLoggerTypePtrOutput() LoggerTypePtrOutput {
 
 func (in *loggerTypePtr) ToLoggerTypePtrOutputWithContext(ctx context.Context) LoggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoggerTypePtrOutput)
-}
-
-func (in *loggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoggerType] {
-	return pulumix.Output[*LoggerType]{
-		OutputState: in.ToLoggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
@@ -707,12 +688,6 @@ func (in *subscriptionStateEnumPtr) ToSubscriptionStateEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionStateEnumPtrOutput)
 }
 
-func (in *subscriptionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
-	return pulumix.Output[*SubscriptionStateEnum]{
-		OutputState: in.ToSubscriptionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
 type UserStateEnum string
 
@@ -885,12 +860,6 @@ func (in *userStateEnumPtr) ToUserStateEnumPtrOutput() UserStateEnumPtrOutput {
 
 func (in *userStateEnumPtr) ToUserStateEnumPtrOutputWithContext(ctx context.Context) UserStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserStateEnumPtrOutput)
-}
-
-func (in *userStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*UserStateEnum] {
-	return pulumix.Output[*UserStateEnum]{
-		OutputState: in.ToUserStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

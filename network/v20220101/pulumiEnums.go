@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The protocol for which the DDoS protection policy is being customized.
@@ -179,12 +178,6 @@ func (in *ddosCustomPolicyProtocolPtr) ToDdosCustomPolicyProtocolPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DdosCustomPolicyProtocolPtrOutput)
 }
 
-func (in *ddosCustomPolicyProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*DdosCustomPolicyProtocol] {
-	return pulumix.Output[*DdosCustomPolicyProtocol]{
-		OutputState: in.ToDdosCustomPolicyProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The customized DDoS protection trigger rate sensitivity degrees. High: Trigger rate set with most sensitivity w.r.t. normal traffic. Default: Trigger rate set with moderate sensitivity w.r.t. normal traffic. Low: Trigger rate set with less sensitivity w.r.t. normal traffic. Relaxed: Trigger rate set with least sensitivity w.r.t. normal traffic.
 type DdosCustomPolicyTriggerSensitivityOverride string
 
@@ -353,12 +346,6 @@ func (in *ddosCustomPolicyTriggerSensitivityOverridePtr) ToDdosCustomPolicyTrigg
 
 func (in *ddosCustomPolicyTriggerSensitivityOverridePtr) ToDdosCustomPolicyTriggerSensitivityOverridePtrOutputWithContext(ctx context.Context) DdosCustomPolicyTriggerSensitivityOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DdosCustomPolicyTriggerSensitivityOverridePtrOutput)
-}
-
-func (in *ddosCustomPolicyTriggerSensitivityOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*DdosCustomPolicyTriggerSensitivityOverride] {
-	return pulumix.Output[*DdosCustomPolicyTriggerSensitivityOverride]{
-		OutputState: in.ToDdosCustomPolicyTriggerSensitivityOverridePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

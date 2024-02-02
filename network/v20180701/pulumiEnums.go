@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The DH Groups used in IKE Phase 1 for initial SA.
@@ -189,12 +188,6 @@ func (in *dhGroupPtr) ToDhGroupPtrOutputWithContext(ctx context.Context) DhGroup
 	return pulumi.ToOutputWithContext(ctx, in).(DhGroupPtrOutput)
 }
 
-func (in *dhGroupPtr) ToOutput(ctx context.Context) pulumix.Output[*DhGroup] {
-	return pulumix.Output[*DhGroup]{
-		OutputState: in.ToDhGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
 type IPAllocationMethod string
 
@@ -361,12 +354,6 @@ func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationMethodPtrOutput)
 }
 
-func (in *ipallocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationMethod] {
-	return pulumix.Output[*IPAllocationMethod]{
-		OutputState: in.ToIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
 type IPVersion string
 
@@ -531,12 +518,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutput() IPVersionPtrOutput {
 
 func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
-}
-
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The IKE encryption algorithm (IKE phase 2).
@@ -715,12 +696,6 @@ func (in *ikeEncryptionPtr) ToIkeEncryptionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IkeEncryptionPtrOutput)
 }
 
-func (in *ikeEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*IkeEncryption] {
-	return pulumix.Output[*IkeEncryption]{
-		OutputState: in.ToIkeEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IKE integrity algorithm (IKE phase 2).
 type IkeIntegrity string
 
@@ -893,12 +868,6 @@ func (in *ikeIntegrityPtr) ToIkeIntegrityPtrOutput() IkeIntegrityPtrOutput {
 
 func (in *ikeIntegrityPtr) ToIkeIntegrityPtrOutputWithContext(ctx context.Context) IkeIntegrityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IkeIntegrityPtrOutput)
-}
-
-func (in *ikeIntegrityPtr) ToOutput(ctx context.Context) pulumix.Output[*IkeIntegrity] {
-	return pulumix.Output[*IkeIntegrity]{
-		OutputState: in.ToIkeIntegrityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The IPSec encryption algorithm (IKE phase 1).
@@ -1081,12 +1050,6 @@ func (in *ipsecEncryptionPtr) ToIpsecEncryptionPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(IpsecEncryptionPtrOutput)
 }
 
-func (in *ipsecEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*IpsecEncryption] {
-	return pulumix.Output[*IpsecEncryption]{
-		OutputState: in.ToIpsecEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IPSec integrity algorithm (IKE phase 1).
 type IpsecIntegrity string
 
@@ -1259,12 +1222,6 @@ func (in *ipsecIntegrityPtr) ToIpsecIntegrityPtrOutput() IpsecIntegrityPtrOutput
 
 func (in *ipsecIntegrityPtr) ToIpsecIntegrityPtrOutputWithContext(ctx context.Context) IpsecIntegrityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpsecIntegrityPtrOutput)
-}
-
-func (in *ipsecIntegrityPtr) ToOutput(ctx context.Context) pulumix.Output[*IpsecIntegrity] {
-	return pulumix.Output[*IpsecIntegrity]{
-		OutputState: in.ToIpsecIntegrityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Pfs Groups used in IKE Phase 2 for new child SA.
@@ -1447,12 +1404,6 @@ func (in *pfsGroupPtr) ToPfsGroupPtrOutputWithContext(ctx context.Context) PfsGr
 	return pulumi.ToOutputWithContext(ctx, in).(PfsGroupPtrOutput)
 }
 
-func (in *pfsGroupPtr) ToOutput(ctx context.Context) pulumix.Output[*PfsGroup] {
-	return pulumix.Output[*PfsGroup]{
-		OutputState: in.ToPfsGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a public IP address SKU.
 type PublicIPAddressSkuName string
 
@@ -1617,12 +1568,6 @@ func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutput() PublicI
 
 func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutputWithContext(ctx context.Context) PublicIPAddressSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuNamePtrOutput)
-}
-
-func (in *publicIPAddressSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuName] {
-	return pulumix.Output[*PublicIPAddressSkuName]{
-		OutputState: in.ToPublicIPAddressSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Azure hop the packet should be sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'
@@ -1797,12 +1742,6 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
-func (in *routeNextHopTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteNextHopType] {
-	return pulumix.Output[*RouteNextHopType]{
-		OutputState: in.ToRouteNextHopTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
 type SecurityRuleAccess string
 
@@ -1969,12 +1908,6 @@ func (in *securityRuleAccessPtr) ToSecurityRuleAccessPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleAccessPtrOutput)
 }
 
-func (in *securityRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleAccess] {
-	return pulumix.Output[*SecurityRuleAccess]{
-		OutputState: in.ToSecurityRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
 type SecurityRuleDirection string
 
@@ -2139,12 +2072,6 @@ func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityR
 
 func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
-}
-
-func (in *securityRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleDirection] {
-	return pulumix.Output[*SecurityRuleDirection]{
-		OutputState: in.ToSecurityRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
@@ -2315,12 +2242,6 @@ func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleProtocolPtrOutput)
 }
 
-func (in *securityRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleProtocol] {
-	return pulumix.Output[*SecurityRuleProtocol]{
-		OutputState: in.ToSecurityRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The transport protocol for the endpoint. Possible values are 'Udp' or 'Tcp' or 'All'.
 type TransportProtocol string
 
@@ -2487,12 +2408,6 @@ func (in *transportProtocolPtr) ToTransportProtocolPtrOutput() TransportProtocol
 
 func (in *transportProtocolPtr) ToTransportProtocolPtrOutputWithContext(ctx context.Context) TransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransportProtocolPtrOutput)
-}
-
-func (in *transportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportProtocol] {
-	return pulumix.Output[*TransportProtocol]{
-		OutputState: in.ToTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of private cloud addon
@@ -187,12 +186,6 @@ func (in *affinityStrengthPtr) ToAffinityStrengthPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AffinityStrengthPtrOutput)
 }
 
-func (in *affinityStrengthPtr) ToOutput(ctx context.Context) pulumix.Output[*AffinityStrength] {
-	return pulumix.Output[*AffinityStrength]{
-		OutputState: in.ToAffinityStrengthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // placement policy affinity type
 type AffinityType string
 
@@ -357,12 +350,6 @@ func (in *affinityTypePtr) ToAffinityTypePtrOutput() AffinityTypePtrOutput {
 
 func (in *affinityTypePtr) ToAffinityTypePtrOutputWithContext(ctx context.Context) AffinityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AffinityTypePtrOutput)
-}
-
-func (in *affinityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AffinityType] {
-	return pulumix.Output[*AffinityType]{
-		OutputState: in.ToAffinityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The availability strategy for the private cloud
@@ -531,12 +518,6 @@ func (in *availabilityStrategyPtr) ToAvailabilityStrategyPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AvailabilityStrategyPtrOutput)
 }
 
-func (in *availabilityStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityStrategy] {
-	return pulumix.Output[*AvailabilityStrategy]{
-		OutputState: in.ToAvailabilityStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // placement policy azure hybrid benefit opt-in type
 type AzureHybridBenefitType string
 
@@ -701,12 +682,6 @@ func (in *azureHybridBenefitTypePtr) ToAzureHybridBenefitTypePtrOutput() AzureHy
 
 func (in *azureHybridBenefitTypePtr) ToAzureHybridBenefitTypePtrOutputWithContext(ctx context.Context) AzureHybridBenefitTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureHybridBenefitTypePtrOutput)
-}
-
-func (in *azureHybridBenefitTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridBenefitType] {
-	return pulumix.Output[*AzureHybridBenefitType]{
-		OutputState: in.ToAzureHybridBenefitTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of DHCP: SERVER or RELAY.
@@ -889,12 +864,6 @@ func (in *dnsServiceLogLevelEnumPtr) ToDnsServiceLogLevelEnumPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(DnsServiceLogLevelEnumPtrOutput)
 }
 
-func (in *dnsServiceLogLevelEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DnsServiceLogLevelEnum] {
-	return pulumix.Output[*DnsServiceLogLevelEnum]{
-		OutputState: in.ToDnsServiceLogLevelEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of customer managed encryption key
 type EncryptionState string
 
@@ -1059,12 +1028,6 @@ func (in *encryptionStatePtr) ToEncryptionStatePtrOutput() EncryptionStatePtrOut
 
 func (in *encryptionStatePtr) ToEncryptionStatePtrOutputWithContext(ctx context.Context) EncryptionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatePtrOutput)
-}
-
-func (in *encryptionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionState] {
-	return pulumix.Output[*EncryptionState]{
-		OutputState: in.ToEncryptionStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Connectivity to internet is enabled or disabled
@@ -1233,12 +1196,6 @@ func (in *internetEnumPtr) ToInternetEnumPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InternetEnumPtrOutput)
 }
 
-func (in *internetEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*InternetEnum] {
-	return pulumix.Output[*InternetEnum]{
-		OutputState: in.ToInternetEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
 type MountOptionEnum string
 
@@ -1405,12 +1362,6 @@ func (in *mountOptionEnumPtr) ToMountOptionEnumPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(MountOptionEnumPtrOutput)
 }
 
-func (in *mountOptionEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*MountOptionEnum] {
-	return pulumix.Output[*MountOptionEnum]{
-		OutputState: in.ToMountOptionEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether the placement policy is enabled or disabled
 type PlacementPolicyStateEnum string
 
@@ -1575,12 +1526,6 @@ func (in *placementPolicyStateEnumPtr) ToPlacementPolicyStateEnumPtrOutput() Pla
 
 func (in *placementPolicyStateEnumPtr) ToPlacementPolicyStateEnumPtrOutputWithContext(ctx context.Context) PlacementPolicyStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyStateEnumPtrOutput)
-}
-
-func (in *placementPolicyStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*PlacementPolicyStateEnum] {
-	return pulumix.Output[*PlacementPolicyStateEnum]{
-		OutputState: in.ToPlacementPolicyStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // placement policy type
@@ -1759,12 +1704,6 @@ func (in *portMirroringDirectionEnumPtr) ToPortMirroringDirectionEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(PortMirroringDirectionEnumPtrOutput)
 }
 
-func (in *portMirroringDirectionEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*PortMirroringDirectionEnum] {
-	return pulumix.Output[*PortMirroringDirectionEnum]{
-		OutputState: in.ToPortMirroringDirectionEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
 type ResourceIdentityType string
 
@@ -1929,12 +1868,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of execution parameter
@@ -2110,12 +2043,6 @@ func (in *sslEnumPtr) ToSslEnumPtrOutput() SslEnumPtrOutput {
 
 func (in *sslEnumPtr) ToSslEnumPtrOutputWithContext(ctx context.Context) SslEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SslEnumPtrOutput)
-}
-
-func (in *sslEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SslEnum] {
-	return pulumix.Output[*SslEnum]{
-		OutputState: in.ToSslEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

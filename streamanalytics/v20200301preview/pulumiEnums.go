@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
@@ -174,12 +173,6 @@ func (in *clusterSkuNamePtr) ToClusterSkuNamePtrOutput() ClusterSkuNamePtrOutput
 
 func (in *clusterSkuNamePtr) ToClusterSkuNamePtrOutputWithContext(ctx context.Context) ClusterSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterSkuNamePtrOutput)
-}
-
-func (in *clusterSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterSkuName] {
-	return pulumix.Output[*ClusterSkuName]{
-		OutputState: in.ToClusterSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

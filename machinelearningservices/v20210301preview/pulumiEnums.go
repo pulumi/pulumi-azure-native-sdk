@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Logging level for batch inference operation.
@@ -179,12 +178,6 @@ func (in *batchLoggingLevelPtr) ToBatchLoggingLevelPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(BatchLoggingLevelPtrOutput)
 }
 
-func (in *batchLoggingLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*BatchLoggingLevel] {
-	return pulumix.Output[*BatchLoggingLevel]{
-		OutputState: in.ToBatchLoggingLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates how the output will be organized.
 type BatchOutputAction string
 
@@ -349,12 +342,6 @@ func (in *batchOutputActionPtr) ToBatchOutputActionPtrOutput() BatchOutputAction
 
 func (in *batchOutputActionPtr) ToBatchOutputActionPtrOutputWithContext(ctx context.Context) BatchOutputActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BatchOutputActionPtrOutput)
-}
-
-func (in *batchOutputActionPtr) ToOutput(ctx context.Context) pulumix.Output[*BatchOutputAction] {
-	return pulumix.Output[*BatchOutputAction]{
-		OutputState: in.ToBatchOutputActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Storage type backing the datastore.
@@ -561,12 +548,6 @@ func (in *dataBindingModePtr) ToDataBindingModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DataBindingModePtrOutput)
 }
 
-func (in *dataBindingModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataBindingMode] {
-	return pulumix.Output[*DataBindingMode]{
-		OutputState: in.ToDataBindingModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Format of dataset.
 type DatasetType string
 
@@ -731,12 +712,6 @@ func (in *datasetTypePtr) ToDatasetTypePtrOutput() DatasetTypePtrOutput {
 
 func (in *datasetTypePtr) ToDatasetTypePtrOutputWithContext(ctx context.Context) DatasetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatasetTypePtrOutput)
-}
-
-func (in *datasetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatasetType] {
-	return pulumix.Output[*DatasetType]{
-		OutputState: in.ToDatasetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of distribution framework.
@@ -933,12 +908,6 @@ func (in *endpointAuthModePtr) ToEndpointAuthModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointAuthModePtrOutput)
 }
 
-func (in *endpointAuthModePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointAuthMode] {
-	return pulumix.Output[*EndpointAuthMode]{
-		OutputState: in.ToEndpointAuthModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The compute type of the endpoint.
 type EndpointComputeType string
 
@@ -1112,12 +1081,6 @@ func (in *goalPtr) ToGoalPtrOutput() GoalPtrOutput {
 
 func (in *goalPtr) ToGoalPtrOutputWithContext(ctx context.Context) GoalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoalPtrOutput)
-}
-
-func (in *goalPtr) ToOutput(ctx context.Context) pulumix.Output[*Goal] {
-	return pulumix.Output[*Goal]{
-		OutputState: in.ToGoalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of identity framework.
@@ -1296,12 +1259,6 @@ func (in *imageAnnotationTypePtr) ToImageAnnotationTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ImageAnnotationTypePtrOutput)
 }
 
-func (in *imageAnnotationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageAnnotationType] {
-	return pulumix.Output[*ImageAnnotationType]{
-		OutputState: in.ToImageAnnotationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Specifies the type of job. This field should always be set to "Labeling".
 type JobType string
 
@@ -1468,12 +1425,6 @@ func (in *jobTypePtr) ToJobTypePtrOutput() JobTypePtrOutput {
 
 func (in *jobTypePtr) ToJobTypePtrOutputWithContext(ctx context.Context) JobTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobTypePtrOutput)
-}
-
-func (in *jobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobType] {
-	return pulumix.Output[*JobType]{
-		OutputState: in.ToJobTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Media type of the job.
@@ -1650,12 +1601,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
 }
 
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the linked service.
 type OriginType string
 
@@ -1818,12 +1763,6 @@ func (in *originTypePtr) ToOriginTypePtrOutput() OriginTypePtrOutput {
 
 func (in *originTypePtr) ToOriginTypePtrOutputWithContext(ctx context.Context) OriginTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OriginTypePtrOutput)
-}
-
-func (in *originTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OriginType] {
-	return pulumix.Output[*OriginType]{
-		OutputState: in.ToOriginTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of asset reference.
@@ -2005,12 +1944,6 @@ func (in *resourceIdentityAssignmentPtr) ToResourceIdentityAssignmentPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityAssignmentPtrOutput)
 }
 
-func (in *resourceIdentityAssignmentPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityAssignment] {
-	return pulumix.Output[*ResourceIdentityAssignment]{
-		OutputState: in.ToResourceIdentityAssignmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Type of the hyperparameter sampling algorithms
 type SamplingAlgorithm string
 
@@ -2177,12 +2110,6 @@ func (in *samplingAlgorithmPtr) ToSamplingAlgorithmPtrOutput() SamplingAlgorithm
 
 func (in *samplingAlgorithmPtr) ToSamplingAlgorithmPtrOutputWithContext(ctx context.Context) SamplingAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SamplingAlgorithmPtrOutput)
-}
-
-func (in *samplingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SamplingAlgorithm] {
-	return pulumix.Output[*SamplingAlgorithm]{
-		OutputState: in.ToSamplingAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Type of deployment scaling algorithm
@@ -2367,12 +2294,6 @@ func (in *textAnnotationTypePtr) ToTextAnnotationTypePtrOutput() TextAnnotationT
 
 func (in *textAnnotationTypePtr) ToTextAnnotationTypePtrOutputWithContext(ctx context.Context) TextAnnotationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TextAnnotationTypePtrOutput)
-}
-
-func (in *textAnnotationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TextAnnotationType] {
-	return pulumix.Output[*TextAnnotationType]{
-		OutputState: in.ToTextAnnotationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

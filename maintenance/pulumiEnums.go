@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets maintenanceScope of the configuration
@@ -194,12 +193,6 @@ func (in *maintenanceScopePtr) ToMaintenanceScopePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceScopePtrOutput)
 }
 
-func (in *maintenanceScopePtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceScope] {
-	return pulumix.Output[*MaintenanceScope]{
-		OutputState: in.ToMaintenanceScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 type RebootOptions string
 
@@ -368,12 +361,6 @@ func (in *rebootOptionsPtr) ToRebootOptionsPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(RebootOptionsPtrOutput)
 }
 
-func (in *rebootOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*RebootOptions] {
-	return pulumix.Output[*RebootOptions]{
-		OutputState: in.ToRebootOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Filter VMs by Any or All specified tags.
 type TagOperators string
 
@@ -538,12 +525,6 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagOperatorsPtrOutput)
-}
-
-func (in *tagOperatorsPtr) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
-	return pulumix.Output[*TagOperators]{
-		OutputState: in.ToTagOperatorsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Global Task execute once when schedule trigger. Resource task execute for each VM.
@@ -712,12 +693,6 @@ func (in *taskScopePtr) ToTaskScopePtrOutputWithContext(ctx context.Context) Tas
 	return pulumi.ToOutputWithContext(ctx, in).(TaskScopePtrOutput)
 }
 
-func (in *taskScopePtr) ToOutput(ctx context.Context) pulumix.Output[*TaskScope] {
-	return pulumix.Output[*TaskScope]{
-		OutputState: in.ToTaskScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the visibility of the configuration. The default value is 'Custom'
 type Visibility string
 
@@ -884,12 +859,6 @@ func (in *visibilityPtr) ToVisibilityPtrOutput() VisibilityPtrOutput {
 
 func (in *visibilityPtr) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VisibilityPtrOutput)
-}
-
-func (in *visibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*Visibility] {
-	return pulumix.Output[*Visibility]{
-		OutputState: in.ToVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

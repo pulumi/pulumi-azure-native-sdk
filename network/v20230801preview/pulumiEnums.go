@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Direction that specifies whether the access rules is inbound/outbound.
@@ -177,12 +176,6 @@ func (in *accessRuleDirectionPtr) ToAccessRuleDirectionPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRuleDirectionPtrOutput)
 }
 
-func (in *accessRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRuleDirection] {
-	return pulumix.Output[*AccessRuleDirection]{
-		OutputState: in.ToAccessRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access mode on the association.
 type AssociationAccessMode string
 
@@ -349,12 +342,6 @@ func (in *associationAccessModePtr) ToAssociationAccessModePtrOutput() Associati
 
 func (in *associationAccessModePtr) ToAssociationAccessModePtrOutputWithContext(ctx context.Context) AssociationAccessModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssociationAccessModePtrOutput)
-}
-
-func (in *associationAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*AssociationAccessMode] {
-	return pulumix.Output[*AssociationAccessMode]{
-		OutputState: in.ToAssociationAccessModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

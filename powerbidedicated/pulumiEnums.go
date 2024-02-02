@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the Azure pricing tier to which the SKU applies.
@@ -177,12 +176,6 @@ func (in *capacitySkuTierPtr) ToCapacitySkuTierPtrOutput() CapacitySkuTierPtrOut
 
 func (in *capacitySkuTierPtr) ToCapacitySkuTierPtrOutputWithContext(ctx context.Context) CapacitySkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CapacitySkuTierPtrOutput)
-}
-
-func (in *capacitySkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*CapacitySkuTier] {
-	return pulumix.Output[*CapacitySkuTier]{
-		OutputState: in.ToCapacitySkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity that last modified the resource
@@ -355,12 +348,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
 type Mode string
 
@@ -527,12 +514,6 @@ func (in *modePtr) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ModePtrOutput)
 }
 
-func (in *modePtr) ToOutput(ctx context.Context) pulumix.Output[*Mode] {
-	return pulumix.Output[*Mode]{
-		OutputState: in.ToModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the Azure pricing tier to which the SKU applies.
 type VCoreSkuTier string
 
@@ -695,12 +676,6 @@ func (in *vcoreSkuTierPtr) ToVCoreSkuTierPtrOutput() VCoreSkuTierPtrOutput {
 
 func (in *vcoreSkuTierPtr) ToVCoreSkuTierPtrOutputWithContext(ctx context.Context) VCoreSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VCoreSkuTierPtrOutput)
-}
-
-func (in *vcoreSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*VCoreSkuTier] {
-	return pulumix.Output[*VCoreSkuTier]{
-		OutputState: in.ToVCoreSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

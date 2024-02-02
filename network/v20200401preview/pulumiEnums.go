@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Private IP address allocation method.
@@ -175,12 +174,6 @@ func (in *ipAllocationMethodPtr) ToIpAllocationMethodPtrOutput() IpAllocationMet
 
 func (in *ipAllocationMethodPtr) ToIpAllocationMethodPtrOutputWithContext(ctx context.Context) IpAllocationMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpAllocationMethodPtrOutput)
-}
-
-func (in *ipAllocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IpAllocationMethod] {
-	return pulumix.Output[*IpAllocationMethod]{
-		OutputState: in.ToIpAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enum that discriminates between filter types. Currently only `Simple` type is supported.
@@ -186,12 +185,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum of the selector type.
 type SelectorType string
 
@@ -362,12 +355,6 @@ func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutput() TargetReferen
 
 func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetReferenceTypePtrOutput)
-}
-
-func (in *targetReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetReferenceType] {
-	return pulumix.Output[*TargetReferenceType]{
-		OutputState: in.ToTargetReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

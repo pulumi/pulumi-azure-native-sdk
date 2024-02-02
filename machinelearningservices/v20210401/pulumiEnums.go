@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
@@ -177,12 +176,6 @@ func (in *applicationSharingPolicyPtr) ToApplicationSharingPolicyPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationSharingPolicyPtrOutput)
 }
 
-func (in *applicationSharingPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationSharingPolicy] {
-	return pulumix.Output[*ApplicationSharingPolicy]{
-		OutputState: in.ToApplicationSharingPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Intended usage of the cluster
 type ClusterPurpose string
 
@@ -349,12 +342,6 @@ func (in *clusterPurposePtr) ToClusterPurposePtrOutput() ClusterPurposePtrOutput
 
 func (in *clusterPurposePtr) ToClusterPurposePtrOutputWithContext(ctx context.Context) ClusterPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterPurposePtrOutput)
-}
-
-func (in *clusterPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterPurpose] {
-	return pulumix.Output[*ClusterPurpose]{
-		OutputState: in.ToClusterPurposePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The compute environment type for the service.
@@ -527,12 +514,6 @@ func (in *computeInstanceAuthorizationTypePtr) ToComputeInstanceAuthorizationTyp
 
 func (in *computeInstanceAuthorizationTypePtr) ToComputeInstanceAuthorizationTypePtrOutputWithContext(ctx context.Context) ComputeInstanceAuthorizationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeInstanceAuthorizationTypePtrOutput)
-}
-
-func (in *computeInstanceAuthorizationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeInstanceAuthorizationType] {
-	return pulumix.Output[*ComputeInstanceAuthorizationType]{
-		OutputState: in.ToComputeInstanceAuthorizationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of compute
@@ -716,12 +697,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
 }
 
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compute OS Type
 type OsType string
 
@@ -886,12 +861,6 @@ func (in *osTypePtr) ToOsTypePtrOutput() OsTypePtrOutput {
 
 func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
-}
-
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on all nodes of the cluster. Enabled - Indicates that the public ssh port is open on all nodes of the cluster. NotSpecified - Indicates that the public ssh port is closed on all nodes of the cluster if VNet is defined, else is open all public nodes. It can be default only during cluster creation time, after creation it will be either enabled or disabled.
@@ -1060,12 +1029,6 @@ func (in *remoteLoginPortPublicAccessPtr) ToRemoteLoginPortPublicAccessPtrOutput
 
 func (in *remoteLoginPortPublicAccessPtr) ToRemoteLoginPortPublicAccessPtrOutputWithContext(ctx context.Context) RemoteLoginPortPublicAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RemoteLoginPortPublicAccessPtrOutput)
-}
-
-func (in *remoteLoginPortPublicAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*RemoteLoginPortPublicAccess] {
-	return pulumix.Output[*RemoteLoginPortPublicAccess]{
-		OutputState: in.ToRemoteLoginPortPublicAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -1238,12 +1201,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
 type SshPublicAccess string
 
@@ -1410,12 +1367,6 @@ func (in *sshPublicAccessPtr) ToSshPublicAccessPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SshPublicAccessPtrOutput)
 }
 
-func (in *sshPublicAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SshPublicAccess] {
-	return pulumix.Output[*SshPublicAccess]{
-		OutputState: in.ToSshPublicAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // format for the workspace connection value
 type ValueFormat string
 
@@ -1578,12 +1529,6 @@ func (in *valueFormatPtr) ToValueFormatPtrOutput() ValueFormatPtrOutput {
 
 func (in *valueFormatPtr) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValueFormatPtrOutput)
-}
-
-func (in *valueFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ValueFormat] {
-	return pulumix.Output[*ValueFormat]{
-		OutputState: in.ToValueFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the variant.
@@ -1752,12 +1697,6 @@ func (in *variantTypePtr) ToVariantTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(VariantTypePtrOutput)
 }
 
-func (in *variantTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VariantType] {
-	return pulumix.Output[*VariantType]{
-		OutputState: in.ToVariantTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual Machine priority
 type VmPriority string
 
@@ -1922,12 +1861,6 @@ func (in *vmPriorityPtr) ToVmPriorityPtrOutput() VmPriorityPtrOutput {
 
 func (in *vmPriorityPtr) ToVmPriorityPtrOutputWithContext(ctx context.Context) VmPriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmPriorityPtrOutput)
-}
-
-func (in *vmPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*VmPriority] {
-	return pulumix.Output[*VmPriority]{
-		OutputState: in.ToVmPriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

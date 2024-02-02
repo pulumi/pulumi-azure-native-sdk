@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the way the update content can be downloaded.
@@ -179,12 +178,6 @@ func (in *availabilityTypePtr) ToAvailabilityTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AvailabilityTypePtrOutput)
 }
 
-func (in *availabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityType] {
-	return pulumix.Output[*AvailabilityType]{
-		OutputState: in.ToAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
 type CloudInitDataSource string
 
@@ -349,12 +342,6 @@ func (in *cloudInitDataSourcePtr) ToCloudInitDataSourcePtrOutput() CloudInitData
 
 func (in *cloudInitDataSourcePtr) ToCloudInitDataSourcePtrOutputWithContext(ctx context.Context) CloudInitDataSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudInitDataSourcePtrOutput)
-}
-
-func (in *cloudInitDataSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudInitDataSource] {
-	return pulumix.Output[*CloudInitDataSource]{
-		OutputState: in.ToCloudInitDataSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Secured Core Compliance Assignment
@@ -525,12 +512,6 @@ func (in *complianceAssignmentTypePtr) ToComplianceAssignmentTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceAssignmentTypePtrOutput)
 }
 
-func (in *complianceAssignmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComplianceAssignmentType] {
-	return pulumix.Output[*ComplianceAssignmentType]{
-		OutputState: in.ToComplianceAssignmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The deployment mode for cluster deployment.
 type DeploymentMode string
 
@@ -697,12 +678,6 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutput() DeploymentModePtrOutput
 
 func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
-}
-
-func (in *deploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
-	return pulumix.Output[*DeploymentMode]{
-		OutputState: in.ToDeploymentModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Desired level of diagnostic data emitted by the cluster.
@@ -873,12 +848,6 @@ func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticLevelPtrOutput)
 }
 
-func (in *diagnosticLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticLevel] {
-	return pulumix.Output[*DiagnosticLevel]{
-		OutputState: in.ToDiagnosticLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The format of the actual VHD file [vhd, vhdx]
 type DiskFileFormat string
 
@@ -1045,12 +1014,6 @@ func (in *diskFileFormatPtr) ToDiskFileFormatPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DiskFileFormatPtrOutput)
 }
 
-func (in *diskFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskFileFormat] {
-	return pulumix.Output[*DiskFileFormat]{
-		OutputState: in.ToDiskFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1213,12 +1176,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The hypervisor generation of the Virtual Machine [V1, V2]
@@ -1387,12 +1344,6 @@ func (in *hyperVGenerationPtr) ToHyperVGenerationPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(HyperVGenerationPtrOutput)
 }
 
-func (in *hyperVGenerationPtr) ToOutput(ctx context.Context) pulumix.Output[*HyperVGeneration] {
-	return pulumix.Output[*HyperVGeneration]{
-		OutputState: in.ToHyperVGenerationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ip pool type
 type IPPoolTypeEnum string
 
@@ -1559,12 +1510,6 @@ func (in *ippoolTypeEnumPtr) ToIPPoolTypeEnumPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(IPPoolTypeEnumPtrOutput)
 }
 
-func (in *ippoolTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*IPPoolTypeEnum] {
-	return pulumix.Output[*IPPoolTypeEnum]{
-		OutputState: in.ToIPPoolTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
 type IpAllocationMethodEnum string
 
@@ -1729,12 +1674,6 @@ func (in *ipAllocationMethodEnumPtr) ToIpAllocationMethodEnumPtrOutput() IpAlloc
 
 func (in *ipAllocationMethodEnumPtr) ToIpAllocationMethodEnumPtrOutputWithContext(ctx context.Context) IpAllocationMethodEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpAllocationMethodEnumPtrOutput)
-}
-
-func (in *ipAllocationMethodEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*IpAllocationMethodEnum] {
-	return pulumix.Output[*IpAllocationMethodEnum]{
-		OutputState: in.ToIpAllocationMethodEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -1905,12 +1844,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the network
@@ -2093,12 +2026,6 @@ func (in *networkTypeEnumPtr) ToNetworkTypeEnumPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkTypeEnumPtrOutput)
 }
 
-func (in *networkTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkTypeEnum] {
-	return pulumix.Output[*NetworkTypeEnum]{
-		OutputState: in.ToNetworkTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
 type OperatingSystemTypes string
 
@@ -2263,12 +2190,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
-}
-
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OsType - string specifying whether the OS is Linux or Windows
@@ -2437,12 +2358,6 @@ func (in *osTypeEnumPtr) ToOsTypeEnumPtrOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypeEnumPtrOutput)
 }
 
-func (in *osTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*OsTypeEnum] {
-	return pulumix.Output[*OsTypeEnum]{
-		OutputState: in.ToOsTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateIPAllocationMethod - The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
 type PrivateIPAllocationMethodEnum string
 
@@ -2607,12 +2522,6 @@ func (in *privateIPAllocationMethodEnumPtr) ToPrivateIPAllocationMethodEnumPtrOu
 
 func (in *privateIPAllocationMethodEnumPtr) ToPrivateIPAllocationMethodEnumPtrOutputWithContext(ctx context.Context) PrivateIPAllocationMethodEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateIPAllocationMethodEnumPtrOutput)
-}
-
-func (in *privateIPAllocationMethodEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateIPAllocationMethodEnum] {
-	return pulumix.Output[*PrivateIPAllocationMethodEnum]{
-		OutputState: in.ToPrivateIPAllocationMethodEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The guest agent provisioning action.
@@ -2783,12 +2692,6 @@ func (in *provisioningActionPtr) ToProvisioningActionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningActionPtrOutput)
 }
 
-func (in *provisioningActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningAction] {
-	return pulumix.Output[*ProvisioningAction]{
-		OutputState: in.ToProvisioningActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -2951,12 +2854,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
@@ -3125,12 +3022,6 @@ func (in *securityTypesPtr) ToSecurityTypesPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypesPtrOutput)
 }
 
-func (in *securityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityTypes] {
-	return pulumix.Output[*SecurityTypes]{
-		OutputState: in.ToSecurityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Customer Intent for Software Assurance Benefit.
 type SoftwareAssuranceIntent string
 
@@ -3297,12 +3188,6 @@ func (in *softwareAssuranceIntentPtr) ToSoftwareAssuranceIntentPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceIntentPtrOutput)
 }
 
-func (in *softwareAssuranceIntentPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceIntent] {
-	return pulumix.Output[*SoftwareAssuranceIntent]{
-		OutputState: in.ToSoftwareAssuranceIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the Software Assurance for the cluster.
 type SoftwareAssuranceStatus string
 
@@ -3467,12 +3352,6 @@ func (in *softwareAssuranceStatusPtr) ToSoftwareAssuranceStatusPtrOutput() Softw
 
 func (in *softwareAssuranceStatusPtr) ToSoftwareAssuranceStatusPtrOutputWithContext(ctx context.Context) SoftwareAssuranceStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceStatusPtrOutput)
-}
-
-func (in *softwareAssuranceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceStatus] {
-	return pulumix.Output[*SoftwareAssuranceStatus]{
-		OutputState: in.ToSoftwareAssuranceStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of the update as it relates to this stamp.
@@ -3673,12 +3552,6 @@ func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
 }
 
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the update run.
 type UpdateRunPropertiesState string
 
@@ -3847,12 +3720,6 @@ func (in *updateRunPropertiesStatePtr) ToUpdateRunPropertiesStatePtrOutput() Upd
 
 func (in *updateRunPropertiesStatePtr) ToUpdateRunPropertiesStatePtrOutputWithContext(ctx context.Context) UpdateRunPropertiesStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateRunPropertiesStatePtrOutput)
-}
-
-func (in *updateRunPropertiesStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateRunPropertiesState] {
-	return pulumix.Output[*UpdateRunPropertiesState]{
-		OutputState: in.ToUpdateRunPropertiesStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Overall update state of the stamp.
@@ -4031,12 +3898,6 @@ func (in *updateSummariesPropertiesStatePtr) ToUpdateSummariesPropertiesStatePtr
 
 func (in *updateSummariesPropertiesStatePtr) ToUpdateSummariesPropertiesStatePtrOutputWithContext(ctx context.Context) UpdateSummariesPropertiesStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateSummariesPropertiesStatePtrOutput)
-}
-
-func (in *updateSummariesPropertiesStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateSummariesPropertiesState] {
-	return pulumix.Output[*UpdateSummariesPropertiesState]{
-		OutputState: in.ToUpdateSummariesPropertiesStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type VmSizeEnum string
@@ -4246,12 +4107,6 @@ func (in *vmSizeEnumPtr) ToVmSizeEnumPtrOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, in).(VmSizeEnumPtrOutput)
 }
 
-func (in *vmSizeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*VmSizeEnum] {
-	return pulumix.Output[*VmSizeEnum]{
-		OutputState: in.ToVmSizeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired state of Windows Server Subscription.
 type WindowsServerSubscription string
 
@@ -4416,12 +4271,6 @@ func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutput() W
 
 func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutputWithContext(ctx context.Context) WindowsServerSubscriptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsServerSubscriptionPtrOutput)
-}
-
-func (in *windowsServerSubscriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsServerSubscription] {
-	return pulumix.Output[*WindowsServerSubscription]{
-		OutputState: in.ToWindowsServerSubscriptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

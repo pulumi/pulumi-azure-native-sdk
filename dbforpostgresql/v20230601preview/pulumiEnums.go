@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // If Enabled, Azure Active Directory authentication is enabled.
@@ -177,12 +176,6 @@ func (in *activeDirectoryAuthEnumPtr) ToActiveDirectoryAuthEnumPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ActiveDirectoryAuthEnumPtrOutput)
 }
 
-func (in *activeDirectoryAuthEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ActiveDirectoryAuthEnum] {
-	return pulumix.Output[*ActiveDirectoryAuthEnum]{
-		OutputState: in.ToActiveDirectoryAuthEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data encryption type to depict if it is System Managed vs Azure Key vault.
 type ArmServerKeyType string
 
@@ -347,12 +340,6 @@ func (in *armServerKeyTypePtr) ToArmServerKeyTypePtrOutput() ArmServerKeyTypePtr
 
 func (in *armServerKeyTypePtr) ToArmServerKeyTypePtrOutputWithContext(ctx context.Context) ArmServerKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArmServerKeyTypePtrOutput)
-}
-
-func (in *armServerKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ArmServerKeyType] {
-	return pulumix.Output[*ArmServerKeyType]{
-		OutputState: in.ToArmServerKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of storage tier for IOPS.
@@ -545,12 +532,6 @@ func (in *azureManagedDiskPerformanceTiersPtr) ToAzureManagedDiskPerformanceTier
 	return pulumi.ToOutputWithContext(ctx, in).(AzureManagedDiskPerformanceTiersPtrOutput)
 }
 
-func (in *azureManagedDiskPerformanceTiersPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureManagedDiskPerformanceTiers] {
-	return pulumix.Output[*AzureManagedDiskPerformanceTiers]{
-		OutputState: in.ToAzureManagedDiskPerformanceTiersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // To trigger cancel for entire migration we need to send this flag as True
 type CancelEnum string
 
@@ -715,12 +696,6 @@ func (in *cancelEnumPtr) ToCancelEnumPtrOutput() CancelEnumPtrOutput {
 
 func (in *cancelEnumPtr) ToCancelEnumPtrOutputWithContext(ctx context.Context) CancelEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CancelEnumPtrOutput)
-}
-
-func (in *cancelEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*CancelEnum] {
-	return pulumix.Output[*CancelEnum]{
-		OutputState: in.ToCancelEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode to create a new PostgreSQL server.
@@ -899,12 +874,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A value indicating whether Geo-Redundant backup is enabled on the server.
 type GeoRedundantBackupEnum string
 
@@ -1069,12 +1038,6 @@ func (in *geoRedundantBackupEnumPtr) ToGeoRedundantBackupEnumPtrOutput() GeoRedu
 
 func (in *geoRedundantBackupEnumPtr) ToGeoRedundantBackupEnumPtrOutputWithContext(ctx context.Context) GeoRedundantBackupEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupEnumPtrOutput)
-}
-
-func (in *geoRedundantBackupEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoRedundantBackupEnum] {
-	return pulumix.Output[*GeoRedundantBackupEnum]{
-		OutputState: in.ToGeoRedundantBackupEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The HA mode for the server.
@@ -1245,12 +1208,6 @@ func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(HighAvailabilityModePtrOutput)
 }
 
-func (in *highAvailabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*HighAvailabilityMode] {
-	return pulumix.Output[*HighAvailabilityMode]{
-		OutputState: in.ToHighAvailabilityModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the types of identities associated with this resource; currently restricted to 'None and UserAssigned'
 type IdentityType string
 
@@ -1415,12 +1372,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Primary encryption key status for Data encryption enabled server.
@@ -1589,12 +1540,6 @@ func (in *keyStatusEnumPtr) ToKeyStatusEnumPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(KeyStatusEnumPtrOutput)
 }
 
-func (in *keyStatusEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyStatusEnum] {
-	return pulumix.Output[*KeyStatusEnum]{
-		OutputState: in.ToKeyStatusEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether to setup LogicalReplicationOnSourceDb, if needed
 type LogicalReplicationOnSourceDbEnum string
 
@@ -1761,12 +1706,6 @@ func (in *logicalReplicationOnSourceDbEnumPtr) ToLogicalReplicationOnSourceDbEnu
 	return pulumi.ToOutputWithContext(ctx, in).(LogicalReplicationOnSourceDbEnumPtrOutput)
 }
 
-func (in *logicalReplicationOnSourceDbEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*LogicalReplicationOnSourceDbEnum] {
-	return pulumix.Output[*LogicalReplicationOnSourceDbEnum]{
-		OutputState: in.ToLogicalReplicationOnSourceDbEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // There are two types of migration modes Online and Offline
 type MigrationMode string
 
@@ -1931,12 +1870,6 @@ func (in *migrationModePtr) ToMigrationModePtrOutput() MigrationModePtrOutput {
 
 func (in *migrationModePtr) ToMigrationModePtrOutputWithContext(ctx context.Context) MigrationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationModePtrOutput)
-}
-
-func (in *migrationModePtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationMode] {
-	return pulumix.Output[*MigrationMode]{
-		OutputState: in.ToMigrationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This indicates the supported Migration option for the migration
@@ -2107,12 +2040,6 @@ func (in *migrationOptionPtr) ToMigrationOptionPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationOptionPtrOutput)
 }
 
-func (in *migrationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationOption] {
-	return pulumix.Output[*MigrationOption]{
-		OutputState: in.ToMigrationOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
 type OverwriteDbsInTargetEnum string
 
@@ -2279,12 +2206,6 @@ func (in *overwriteDbsInTargetEnumPtr) ToOverwriteDbsInTargetEnumPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(OverwriteDbsInTargetEnumPtrOutput)
 }
 
-func (in *overwriteDbsInTargetEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*OverwriteDbsInTargetEnum] {
-	return pulumix.Output[*OverwriteDbsInTargetEnum]{
-		OutputState: in.ToOverwriteDbsInTargetEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If Enabled, Password authentication is enabled.
 type PasswordAuthEnum string
 
@@ -2449,12 +2370,6 @@ func (in *passwordAuthEnumPtr) ToPasswordAuthEnumPtrOutput() PasswordAuthEnumPtr
 
 func (in *passwordAuthEnumPtr) ToPasswordAuthEnumPtrOutputWithContext(ctx context.Context) PasswordAuthEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PasswordAuthEnumPtrOutput)
-}
-
-func (in *passwordAuthEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*PasswordAuthEnum] {
-	return pulumix.Output[*PasswordAuthEnum]{
-		OutputState: in.ToPasswordAuthEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The principal type used to represent the type of Active Directory Administrator.
@@ -2627,12 +2542,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
 }
 
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -2801,12 +2710,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the promote mode for a replica server. This is a write only property.
 type ReadReplicaPromoteMode string
 
@@ -2973,12 +2876,6 @@ func (in *readReplicaPromoteModePtr) ToReadReplicaPromoteModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ReadReplicaPromoteModePtrOutput)
 }
 
-func (in *readReplicaPromoteModePtr) ToOutput(ctx context.Context) pulumix.Output[*ReadReplicaPromoteMode] {
-	return pulumix.Output[*ReadReplicaPromoteMode]{
-		OutputState: in.ToReadReplicaPromoteModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the promote options for a replica server. This is a write only property.
 type ReplicationPromoteOption string
 
@@ -3143,12 +3040,6 @@ func (in *replicationPromoteOptionPtr) ToReplicationPromoteOptionPtrOutput() Rep
 
 func (in *replicationPromoteOptionPtr) ToReplicationPromoteOptionPtrOutputWithContext(ctx context.Context) ReplicationPromoteOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationPromoteOptionPtrOutput)
-}
-
-func (in *replicationPromoteOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationPromoteOption] {
-	return pulumix.Output[*ReplicationPromoteOption]{
-		OutputState: in.ToReplicationPromoteOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Replication role of the server
@@ -3321,12 +3212,6 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRolePtrOutput)
 }
 
-func (in *replicationRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
-	return pulumix.Output[*ReplicationRole]{
-		OutputState: in.ToReplicationRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // public network access is enabled or not
 type ServerPublicNetworkAccessState string
 
@@ -3491,12 +3376,6 @@ func (in *serverPublicNetworkAccessStatePtr) ToServerPublicNetworkAccessStatePtr
 
 func (in *serverPublicNetworkAccessStatePtr) ToServerPublicNetworkAccessStatePtrOutputWithContext(ctx context.Context) ServerPublicNetworkAccessStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerPublicNetworkAccessStatePtrOutput)
-}
-
-func (in *serverPublicNetworkAccessStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerPublicNetworkAccessState] {
-	return pulumix.Output[*ServerPublicNetworkAccessState]{
-		OutputState: in.ToServerPublicNetworkAccessStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PostgreSQL Server version.
@@ -3673,12 +3552,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
 }
 
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the particular SKU, e.g. Burstable.
 type SkuTier string
 
@@ -3845,12 +3718,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // migration source server type : OnPremises, AWS, GCP, AzureVM or PostgreSQLSingleServer
@@ -4025,12 +3892,6 @@ func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
 }
 
-func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSL modes for migration. Default SSL mode for PostgreSQLSingleServer is VerifyFull and Prefer for other source types
 type SslMode string
 
@@ -4201,12 +4062,6 @@ func (in *sslModePtr) ToSslModePtrOutputWithContext(ctx context.Context) SslMode
 	return pulumi.ToOutputWithContext(ctx, in).(SslModePtrOutput)
 }
 
-func (in *sslModePtr) ToOutput(ctx context.Context) pulumix.Output[*SslMode] {
-	return pulumix.Output[*SslMode]{
-		OutputState: in.ToSslModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the data migration should start right away
 type StartDataMigrationEnum string
 
@@ -4371,12 +4226,6 @@ func (in *startDataMigrationEnumPtr) ToStartDataMigrationEnumPtrOutput() StartDa
 
 func (in *startDataMigrationEnumPtr) ToStartDataMigrationEnumPtrOutputWithContext(ctx context.Context) StartDataMigrationEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StartDataMigrationEnumPtrOutput)
-}
-
-func (in *startDataMigrationEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*StartDataMigrationEnum] {
-	return pulumix.Output[*StartDataMigrationEnum]{
-		OutputState: in.ToStartDataMigrationEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Flag to enable / disable Storage Auto grow for flexible server.
@@ -4545,12 +4394,6 @@ func (in *storageAutoGrowPtr) ToStorageAutoGrowPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAutoGrowPtrOutput)
 }
 
-func (in *storageAutoGrowPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAutoGrow] {
-	return pulumix.Output[*StorageAutoGrow]{
-		OutputState: in.ToStorageAutoGrowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Storage type for the server. Allowed values are Premium_LRS and PremiumV2_LRS, and default is Premium_LRS if not specified
 type StorageType string
 
@@ -4715,12 +4558,6 @@ func (in *storageTypePtr) ToStorageTypePtrOutput() StorageTypePtrOutput {
 
 func (in *storageTypePtr) ToStorageTypePtrOutputWithContext(ctx context.Context) StorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTypePtrOutput)
-}
-
-func (in *storageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageType] {
-	return pulumix.Output[*StorageType]{
-		OutputState: in.ToStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // To trigger cutover for entire migration we need to send this flag as True
@@ -4889,12 +4726,6 @@ func (in *triggerCutoverEnumPtr) ToTriggerCutoverEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerCutoverEnumPtrOutput)
 }
 
-func (in *triggerCutoverEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerCutoverEnum] {
-	return pulumix.Output[*TriggerCutoverEnum]{
-		OutputState: in.ToTriggerCutoverEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The endpoint type for the virtual endpoint.
 type VirtualEndpointType string
 
@@ -5057,12 +4888,6 @@ func (in *virtualEndpointTypePtr) ToVirtualEndpointTypePtrOutput() VirtualEndpoi
 
 func (in *virtualEndpointTypePtr) ToVirtualEndpointTypePtrOutputWithContext(ctx context.Context) VirtualEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualEndpointTypePtrOutput)
-}
-
-func (in *virtualEndpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualEndpointType] {
-	return pulumix.Output[*VirtualEndpointType]{
-		OutputState: in.ToVirtualEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the types of schema for analytical storage.
@@ -175,12 +174,6 @@ func (in *analyticalStorageSchemaTypePtr) ToAnalyticalStorageSchemaTypePtrOutput
 
 func (in *analyticalStorageSchemaTypePtr) ToAnalyticalStorageSchemaTypePtrOutputWithContext(ctx context.Context) AnalyticalStorageSchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AnalyticalStorageSchemaTypePtrOutput)
-}
-
-func (in *analyticalStorageSchemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AnalyticalStorageSchemaType] {
-	return pulumix.Output[*AnalyticalStorageSchemaType]{
-		OutputState: in.ToAnalyticalStorageSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the status of migration between backup policy types.
@@ -353,12 +346,6 @@ func (in *backupPolicyMigrationStatusPtr) ToBackupPolicyMigrationStatusPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(BackupPolicyMigrationStatusPtrOutput)
 }
 
-func (in *backupPolicyMigrationStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicyMigrationStatus] {
-	return pulumix.Output[*BackupPolicyMigrationStatus]{
-		OutputState: in.ToBackupPolicyMigrationStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the mode of backups.
 type BackupPolicyType string
 
@@ -523,12 +510,6 @@ func (in *backupPolicyTypePtr) ToBackupPolicyTypePtrOutput() BackupPolicyTypePtr
 
 func (in *backupPolicyTypePtr) ToBackupPolicyTypePtrOutputWithContext(ctx context.Context) BackupPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupPolicyTypePtrOutput)
-}
-
-func (in *backupPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupPolicyType] {
-	return pulumix.Output[*BackupPolicyType]{
-		OutputState: in.ToBackupPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum to indicate type of backup residency
@@ -699,12 +680,6 @@ func (in *backupStorageRedundancyPtr) ToBackupStorageRedundancyPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(BackupStorageRedundancyPtrOutput)
 }
 
-func (in *backupStorageRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupStorageRedundancy] {
-	return pulumix.Output[*BackupStorageRedundancy]{
-		OutputState: in.ToBackupStorageRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sort order for composite paths.
 type CompositePathSortOrder string
 
@@ -869,12 +844,6 @@ func (in *compositePathSortOrderPtr) ToCompositePathSortOrderPtrOutput() Composi
 
 func (in *compositePathSortOrderPtr) ToCompositePathSortOrderPtrOutputWithContext(ctx context.Context) CompositePathSortOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompositePathSortOrderPtrOutput)
-}
-
-func (in *compositePathSortOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*CompositePathSortOrder] {
-	return pulumix.Output[*CompositePathSortOrder]{
-		OutputState: in.ToCompositePathSortOrderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the conflict resolution mode.
@@ -1043,12 +1012,6 @@ func (in *conflictResolutionModePtr) ToConflictResolutionModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ConflictResolutionModePtrOutput)
 }
 
-func (in *conflictResolutionModePtr) ToOutput(ctx context.Context) pulumix.Output[*ConflictResolutionMode] {
-	return pulumix.Output[*ConflictResolutionMode]{
-		OutputState: in.ToConflictResolutionModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The cassandra connector offer type for the Cosmos DB database C* account.
 type ConnectorOffer string
 
@@ -1211,12 +1174,6 @@ func (in *connectorOfferPtr) ToConnectorOfferPtrOutput() ConnectorOfferPtrOutput
 
 func (in *connectorOfferPtr) ToConnectorOfferPtrOutputWithContext(ctx context.Context) ConnectorOfferPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectorOfferPtrOutput)
-}
-
-func (in *connectorOfferPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectorOffer] {
-	return pulumix.Output[*ConnectorOffer]{
-		OutputState: in.ToConnectorOfferPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum to indicate type of Continuos backup mode
@@ -1385,12 +1342,6 @@ func (in *continuousTierPtr) ToContinuousTierPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ContinuousTierPtrOutput)
 }
 
-func (in *continuousTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ContinuousTier] {
-	return pulumix.Output[*ContinuousTier]{
-		OutputState: in.ToContinuousTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum to indicate the mode of resource creation.
 type CreateMode string
 
@@ -1555,12 +1506,6 @@ func (in *createModePtr) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
-}
-
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The datatype for which the indexing behavior is applied to.
@@ -1737,12 +1682,6 @@ func (in *dataTypePtr) ToDataTypePtrOutputWithContext(ctx context.Context) DataT
 	return pulumi.ToOutputWithContext(ctx, in).(DataTypePtrOutput)
 }
 
-func (in *dataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataType] {
-	return pulumix.Output[*DataType]{
-		OutputState: in.ToDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the type of database account. This can only be set at database account creation.
 type DatabaseAccountKind string
 
@@ -1911,12 +1850,6 @@ func (in *databaseAccountKindPtr) ToDatabaseAccountKindPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAccountKindPtrOutput)
 }
 
-func (in *databaseAccountKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccountKind] {
-	return pulumix.Output[*DatabaseAccountKind]{
-		OutputState: in.ToDatabaseAccountKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The offer type for the database
 type DatabaseAccountOfferType string
 
@@ -2079,12 +2012,6 @@ func (in *databaseAccountOfferTypePtr) ToDatabaseAccountOfferTypePtrOutput() Dat
 
 func (in *databaseAccountOfferTypePtr) ToDatabaseAccountOfferTypePtrOutputWithContext(ctx context.Context) DatabaseAccountOfferTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAccountOfferTypePtrOutput)
-}
-
-func (in *databaseAccountOfferTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccountOfferType] {
-	return pulumix.Output[*DatabaseAccountOfferType]{
-		OutputState: in.ToDatabaseAccountOfferTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default consistency level and configuration settings of the Cosmos DB account.
@@ -2259,12 +2186,6 @@ func (in *defaultConsistencyLevelPtr) ToDefaultConsistencyLevelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultConsistencyLevelPtrOutput)
 }
 
-func (in *defaultConsistencyLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultConsistencyLevel] {
-	return pulumix.Output[*DefaultConsistencyLevel]{
-		OutputState: in.ToDefaultConsistencyLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe the level of detail with which queries are to be logged.
 type EnableFullTextQuery string
 
@@ -2431,12 +2352,6 @@ func (in *enableFullTextQueryPtr) ToEnableFullTextQueryPtrOutput() EnableFullTex
 
 func (in *enableFullTextQueryPtr) ToEnableFullTextQueryPtrOutputWithContext(ctx context.Context) EnableFullTextQueryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnableFullTextQueryPtrOutput)
-}
-
-func (in *enableFullTextQueryPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableFullTextQuery] {
-	return pulumix.Output[*EnableFullTextQuery]{
-		OutputState: in.ToEnableFullTextQueryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the type of index.
@@ -2607,12 +2522,6 @@ func (in *indexKindPtr) ToIndexKindPtrOutputWithContext(ctx context.Context) Ind
 	return pulumi.ToOutputWithContext(ctx, in).(IndexKindPtrOutput)
 }
 
-func (in *indexKindPtr) ToOutput(ctx context.Context) pulumix.Output[*IndexKind] {
-	return pulumix.Output[*IndexKind]{
-		OutputState: in.ToIndexKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the indexing mode.
 type IndexingMode string
 
@@ -2779,12 +2688,6 @@ func (in *indexingModePtr) ToIndexingModePtrOutput() IndexingModePtrOutput {
 
 func (in *indexingModePtr) ToIndexingModePtrOutputWithContext(ctx context.Context) IndexingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IndexingModePtrOutput)
-}
-
-func (in *indexingModePtr) ToOutput(ctx context.Context) pulumix.Output[*IndexingMode] {
-	return pulumix.Output[*IndexingMode]{
-		OutputState: in.ToIndexingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2.
@@ -2955,12 +2858,6 @@ func (in *minimalTlsVersionPtr) ToMinimalTlsVersionPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(MinimalTlsVersionPtrOutput)
 }
 
-func (in *minimalTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*MinimalTlsVersion] {
-	return pulumix.Output[*MinimalTlsVersion]{
-		OutputState: in.ToMinimalTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates what services are allowed to bypass firewall checks.
 type NetworkAclBypass string
 
@@ -3127,12 +3024,6 @@ func (in *networkAclBypassPtr) ToNetworkAclBypassPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkAclBypassPtrOutput)
 }
 
-func (in *networkAclBypassPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkAclBypass] {
-	return pulumix.Output[*NetworkAclBypass]{
-		OutputState: in.ToNetworkAclBypassPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The node type deployed in the node group.
 type NodeKind string
 
@@ -3295,12 +3186,6 @@ func (in *nodeKindPtr) ToNodeKindPtrOutput() NodeKindPtrOutput {
 
 func (in *nodeKindPtr) ToNodeKindPtrOutputWithContext(ctx context.Context) NodeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeKindPtrOutput)
-}
-
-func (in *nodeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeKind] {
-	return pulumix.Output[*NodeKind]{
-		OutputState: in.ToNodeKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
@@ -3471,12 +3356,6 @@ func (in *partitionKindPtr) ToPartitionKindPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PartitionKindPtrOutput)
 }
 
-func (in *partitionKindPtr) ToOutput(ctx context.Context) pulumix.Output[*PartitionKind] {
-	return pulumix.Output[*PartitionKind]{
-		OutputState: in.ToPartitionKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether requests from Public Network are allowed
 type PublicNetworkAccess string
 
@@ -3641,12 +3520,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -3819,12 +3692,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the mode of the restore.
 type RestoreMode string
 
@@ -3987,12 +3854,6 @@ func (in *restoreModePtr) ToRestoreModePtrOutput() RestoreModePtrOutput {
 
 func (in *restoreModePtr) ToRestoreModePtrOutputWithContext(ctx context.Context) RestoreModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestoreModePtrOutput)
-}
-
-func (in *restoreModePtr) ToOutput(ctx context.Context) pulumix.Output[*RestoreMode] {
-	return pulumix.Output[*RestoreMode]{
-		OutputState: in.ToRestoreModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the ServerVersion of an a MongoDB account.
@@ -4165,12 +4026,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
 }
 
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the spatial type of index.
 type SpatialType string
 
@@ -4339,12 +4194,6 @@ func (in *spatialTypePtr) ToSpatialTypePtrOutput() SpatialTypePtrOutput {
 
 func (in *spatialTypePtr) ToSpatialTypePtrOutputWithContext(ctx context.Context) SpatialTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SpatialTypePtrOutput)
-}
-
-func (in *spatialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SpatialType] {
-	return pulumix.Output[*SpatialType]{
-		OutputState: in.ToSpatialTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operation the trigger is associated with
@@ -4519,12 +4368,6 @@ func (in *triggerOperationPtr) ToTriggerOperationPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerOperationPtrOutput)
 }
 
-func (in *triggerOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerOperation] {
-	return pulumix.Output[*TriggerOperation]{
-		OutputState: in.ToTriggerOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the Trigger
 type TriggerType string
 
@@ -4689,12 +4532,6 @@ func (in *triggerTypePtr) ToTriggerTypePtrOutput() TriggerTypePtrOutput {
 
 func (in *triggerTypePtr) ToTriggerTypePtrOutputWithContext(ctx context.Context) TriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerTypePtrOutput)
-}
-
-func (in *triggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerType] {
-	return pulumix.Output[*TriggerType]{
-		OutputState: in.ToTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

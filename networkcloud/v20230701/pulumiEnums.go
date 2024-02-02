@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
@@ -175,12 +174,6 @@ func (in *advertiseToFabricPtr) ToAdvertiseToFabricPtrOutput() AdvertiseToFabric
 
 func (in *advertiseToFabricPtr) ToAdvertiseToFabricPtrOutputWithContext(ctx context.Context) AdvertiseToFabricPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdvertiseToFabricPtrOutput)
-}
-
-func (in *advertiseToFabricPtr) ToOutput(ctx context.Context) pulumix.Output[*AdvertiseToFabric] {
-	return pulumix.Output[*AdvertiseToFabric]{
-		OutputState: in.ToAdvertiseToFabricPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
@@ -351,12 +344,6 @@ func (in *agentPoolModePtr) ToAgentPoolModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolModePtrOutput)
 }
 
-func (in *agentPoolModePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolMode] {
-	return pulumix.Output[*AgentPoolMode]{
-		OutputState: in.ToAgentPoolModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The access level allowed for the users in this key set.
 type BareMetalMachineKeySetPrivilegeLevel string
 
@@ -521,12 +508,6 @@ func (in *bareMetalMachineKeySetPrivilegeLevelPtr) ToBareMetalMachineKeySetPrivi
 
 func (in *bareMetalMachineKeySetPrivilegeLevelPtr) ToBareMetalMachineKeySetPrivilegeLevelPtrOutputWithContext(ctx context.Context) BareMetalMachineKeySetPrivilegeLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BareMetalMachineKeySetPrivilegeLevelPtrOutput)
-}
-
-func (in *bareMetalMachineKeySetPrivilegeLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMachineKeySetPrivilegeLevel] {
-	return pulumix.Output[*BareMetalMachineKeySetPrivilegeLevel]{
-		OutputState: in.ToBareMetalMachineKeySetPrivilegeLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The indicator to prevent the use of IP addresses ending with .0 and .255 for this pool. Enabling this option will only use IP addresses between .1 and .254 inclusive.
@@ -695,12 +676,6 @@ func (in *bfdEnabledPtr) ToBfdEnabledPtrOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, in).(BfdEnabledPtrOutput)
 }
 
-func (in *bfdEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*BfdEnabled] {
-	return pulumix.Output[*BfdEnabled]{
-		OutputState: in.ToBfdEnabledPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The indicator to enable multi-hop peering support.
 type BgpMultiHop string
 
@@ -865,12 +840,6 @@ func (in *bgpMultiHopPtr) ToBgpMultiHopPtrOutput() BgpMultiHopPtrOutput {
 
 func (in *bgpMultiHopPtr) ToBgpMultiHopPtrOutputWithContext(ctx context.Context) BgpMultiHopPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BgpMultiHopPtrOutput)
-}
-
-func (in *bgpMultiHopPtr) ToOutput(ctx context.Context) pulumix.Output[*BgpMultiHop] {
-	return pulumix.Output[*BgpMultiHop]{
-		OutputState: in.ToBgpMultiHopPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The access level allowed for the users in this key set.
@@ -1039,12 +1008,6 @@ func (in *bmcKeySetPrivilegeLevelPtr) ToBmcKeySetPrivilegeLevelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(BmcKeySetPrivilegeLevelPtrOutput)
 }
 
-func (in *bmcKeySetPrivilegeLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*BmcKeySetPrivilegeLevel] {
-	return pulumix.Output[*BmcKeySetPrivilegeLevel]{
-		OutputState: in.ToBmcKeySetPrivilegeLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The indicator of whether the platform default endpoints are allowed for the egress traffic.
 type CloudServicesNetworkEnableDefaultEgressEndpoints string
 
@@ -1209,12 +1172,6 @@ func (in *cloudServicesNetworkEnableDefaultEgressEndpointsPtr) ToCloudServicesNe
 
 func (in *cloudServicesNetworkEnableDefaultEgressEndpointsPtr) ToCloudServicesNetworkEnableDefaultEgressEndpointsPtrOutputWithContext(ctx context.Context) CloudServicesNetworkEnableDefaultEgressEndpointsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudServicesNetworkEnableDefaultEgressEndpointsPtrOutput)
-}
-
-func (in *cloudServicesNetworkEnableDefaultEgressEndpointsPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudServicesNetworkEnableDefaultEgressEndpoints] {
-	return pulumix.Output[*CloudServicesNetworkEnableDefaultEgressEndpoints]{
-		OutputState: in.ToCloudServicesNetworkEnableDefaultEgressEndpointsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of rack configuration for the cluster.
@@ -1383,12 +1340,6 @@ func (in *clusterTypePtr) ToClusterTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterTypePtrOutput)
 }
 
-func (in *clusterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterType] {
-	return pulumix.Output[*ClusterType]{
-		OutputState: in.ToClusterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The indicator of whether the console access is enabled.
 type ConsoleEnabled string
 
@@ -1553,12 +1504,6 @@ func (in *consoleEnabledPtr) ToConsoleEnabledPtrOutput() ConsoleEnabledPtrOutput
 
 func (in *consoleEnabledPtr) ToConsoleEnabledPtrOutputWithContext(ctx context.Context) ConsoleEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConsoleEnabledPtrOutput)
-}
-
-func (in *consoleEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*ConsoleEnabled] {
-	return pulumix.Output[*ConsoleEnabled]{
-		OutputState: in.ToConsoleEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The indicator of whether this is the default gateway.
@@ -1728,12 +1673,6 @@ func (in *defaultGatewayPtr) ToDefaultGatewayPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultGatewayPtrOutput)
 }
 
-func (in *defaultGatewayPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultGateway] {
-	return pulumix.Output[*DefaultGateway]{
-		OutputState: in.ToDefaultGatewayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The indicator to specify if the load balancer peers with the network fabric.
 type FabricPeeringEnabled string
 
@@ -1898,12 +1837,6 @@ func (in *fabricPeeringEnabledPtr) ToFabricPeeringEnabledPtrOutput() FabricPeeri
 
 func (in *fabricPeeringEnabledPtr) ToFabricPeeringEnabledPtrOutputWithContext(ctx context.Context) FabricPeeringEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FabricPeeringEnabledPtrOutput)
-}
-
-func (in *fabricPeeringEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*FabricPeeringEnabled] {
-	return pulumix.Output[*FabricPeeringEnabled]{
-		OutputState: in.ToFabricPeeringEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The size of the hugepages to allocate.
@@ -2072,12 +2005,6 @@ func (in *hugepagesSizePtr) ToHugepagesSizePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(HugepagesSizePtrOutput)
 }
 
-func (in *hugepagesSizePtr) ToOutput(ctx context.Context) pulumix.Output[*HugepagesSize] {
-	return pulumix.Output[*HugepagesSize]{
-		OutputState: in.ToHugepagesSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
 type HybridAksIpamEnabled string
 
@@ -2242,12 +2169,6 @@ func (in *hybridAksIpamEnabledPtr) ToHybridAksIpamEnabledPtrOutput() HybridAksIp
 
 func (in *hybridAksIpamEnabledPtr) ToHybridAksIpamEnabledPtrOutputWithContext(ctx context.Context) HybridAksIpamEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HybridAksIpamEnabledPtrOutput)
-}
-
-func (in *hybridAksIpamEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*HybridAksIpamEnabled] {
-	return pulumix.Output[*HybridAksIpamEnabled]{
-		OutputState: in.ToHybridAksIpamEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
@@ -2418,12 +2339,6 @@ func (in *hybridAksPluginTypePtr) ToHybridAksPluginTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(HybridAksPluginTypePtrOutput)
 }
 
-func (in *hybridAksPluginTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HybridAksPluginType] {
-	return pulumix.Output[*HybridAksPluginType]{
-		OutputState: in.ToHybridAksPluginTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the IP address allocation, defaulted to "DualStack".
 type IpAllocationType string
 
@@ -2590,12 +2505,6 @@ func (in *ipAllocationTypePtr) ToIpAllocationTypePtrOutput() IpAllocationTypePtr
 
 func (in *ipAllocationTypePtr) ToIpAllocationTypePtrOutputWithContext(ctx context.Context) IpAllocationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpAllocationTypePtrOutput)
-}
-
-func (in *ipAllocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpAllocationType] {
-	return pulumix.Output[*IpAllocationType]{
-		OutputState: in.ToIpAllocationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The indicator of how this network will be utilized by the Kubernetes cluster.
@@ -2770,12 +2679,6 @@ func (in *kubernetesPluginTypePtr) ToKubernetesPluginTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(KubernetesPluginTypePtrOutput)
 }
 
-func (in *kubernetesPluginTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KubernetesPluginType] {
-	return pulumix.Output[*KubernetesPluginType]{
-		OutputState: in.ToKubernetesPluginTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
 type L3NetworkConfigurationIpamEnabled string
 
@@ -2942,12 +2845,6 @@ func (in *l3networkConfigurationIpamEnabledPtr) ToL3NetworkConfigurationIpamEnab
 	return pulumi.ToOutputWithContext(ctx, in).(L3NetworkConfigurationIpamEnabledPtrOutput)
 }
 
-func (in *l3networkConfigurationIpamEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*L3NetworkConfigurationIpamEnabled] {
-	return pulumix.Output[*L3NetworkConfigurationIpamEnabled]{
-		OutputState: in.ToL3NetworkConfigurationIpamEnabledPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The strategy for creating the OS disk.
 type OsDiskCreateOption string
 
@@ -3112,12 +3009,6 @@ func (in *osDiskCreateOptionPtr) ToOsDiskCreateOptionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(OsDiskCreateOptionPtrOutput)
 }
 
-func (in *osDiskCreateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*OsDiskCreateOption] {
-	return pulumix.Output[*OsDiskCreateOption]{
-		OutputState: in.ToOsDiskCreateOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The strategy for deleting the OS disk.
 type OsDiskDeleteOption string
 
@@ -3280,12 +3171,6 @@ func (in *osDiskDeleteOptionPtr) ToOsDiskDeleteOptionPtrOutput() OsDiskDeleteOpt
 
 func (in *osDiskDeleteOptionPtr) ToOsDiskDeleteOptionPtrOutputWithContext(ctx context.Context) OsDiskDeleteOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsDiskDeleteOptionPtrOutput)
-}
-
-func (in *osDiskDeleteOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*OsDiskDeleteOption] {
-	return pulumix.Output[*OsDiskDeleteOption]{
-		OutputState: in.ToOsDiskDeleteOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Selection of how the type evaluation is applied to the cluster calculation.
@@ -3454,12 +3339,6 @@ func (in *validationThresholdGroupingPtr) ToValidationThresholdGroupingPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationThresholdGroupingPtrOutput)
 }
 
-func (in *validationThresholdGroupingPtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationThresholdGrouping] {
-	return pulumix.Output[*ValidationThresholdGrouping]{
-		OutputState: in.ToValidationThresholdGroupingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Selection of how the threshold should be evaluated.
 type ValidationThresholdType string
 
@@ -3624,12 +3503,6 @@ func (in *validationThresholdTypePtr) ToValidationThresholdTypePtrOutput() Valid
 
 func (in *validationThresholdTypePtr) ToValidationThresholdTypePtrOutputWithContext(ctx context.Context) ValidationThresholdTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationThresholdTypePtrOutput)
-}
-
-func (in *validationThresholdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationThresholdType] {
-	return pulumix.Output[*ValidationThresholdType]{
-		OutputState: in.ToValidationThresholdTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Selects the boot method for the virtual machine.
@@ -3798,12 +3671,6 @@ func (in *virtualMachineBootMethodPtr) ToVirtualMachineBootMethodPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineBootMethodPtrOutput)
 }
 
-func (in *virtualMachineBootMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineBootMethod] {
-	return pulumix.Output[*VirtualMachineBootMethod]{
-		OutputState: in.ToVirtualMachineBootMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the device model to use.
 type VirtualMachineDeviceModelType string
 
@@ -3968,12 +3835,6 @@ func (in *virtualMachineDeviceModelTypePtr) ToVirtualMachineDeviceModelTypePtrOu
 
 func (in *virtualMachineDeviceModelTypePtr) ToVirtualMachineDeviceModelTypePtrOutputWithContext(ctx context.Context) VirtualMachineDeviceModelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineDeviceModelTypePtrOutput)
-}
-
-func (in *virtualMachineDeviceModelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineDeviceModelType] {
-	return pulumix.Output[*VirtualMachineDeviceModelType]{
-		OutputState: in.ToVirtualMachineDeviceModelTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The IP allocation mechanism for the virtual machine.
@@ -4146,12 +4007,6 @@ func (in *virtualMachineIPAllocationMethodPtr) ToVirtualMachineIPAllocationMetho
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineIPAllocationMethodPtrOutput)
 }
 
-func (in *virtualMachineIPAllocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineIPAllocationMethod] {
-	return pulumix.Output[*VirtualMachineIPAllocationMethod]{
-		OutputState: in.ToVirtualMachineIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
 type VirtualMachineIsolateEmulatorThread string
 
@@ -4316,12 +4171,6 @@ func (in *virtualMachineIsolateEmulatorThreadPtr) ToVirtualMachineIsolateEmulato
 
 func (in *virtualMachineIsolateEmulatorThreadPtr) ToVirtualMachineIsolateEmulatorThreadPtrOutputWithContext(ctx context.Context) VirtualMachineIsolateEmulatorThreadPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineIsolateEmulatorThreadPtrOutput)
-}
-
-func (in *virtualMachineIsolateEmulatorThreadPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineIsolateEmulatorThread] {
-	return pulumix.Output[*VirtualMachineIsolateEmulatorThread]{
-		OutputState: in.ToVirtualMachineIsolateEmulatorThreadPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
@@ -4490,12 +4339,6 @@ func (in *virtualMachinePlacementHintPodAffinityScopePtr) ToVirtualMachinePlacem
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePlacementHintPodAffinityScopePtrOutput)
 }
 
-func (in *virtualMachinePlacementHintPodAffinityScopePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePlacementHintPodAffinityScope] {
-	return pulumix.Output[*VirtualMachinePlacementHintPodAffinityScope]{
-		OutputState: in.ToVirtualMachinePlacementHintPodAffinityScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
 type VirtualMachinePlacementHintType string
 
@@ -4660,12 +4503,6 @@ func (in *virtualMachinePlacementHintTypePtr) ToVirtualMachinePlacementHintTypeP
 
 func (in *virtualMachinePlacementHintTypePtr) ToVirtualMachinePlacementHintTypePtrOutputWithContext(ctx context.Context) VirtualMachinePlacementHintTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePlacementHintTypePtrOutput)
-}
-
-func (in *virtualMachinePlacementHintTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePlacementHintType] {
-	return pulumix.Output[*VirtualMachinePlacementHintType]{
-		OutputState: in.ToVirtualMachinePlacementHintTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The indicator of whether the hint is a hard or soft requirement during scheduling.
@@ -4834,12 +4671,6 @@ func (in *virtualMachineSchedulingExecutionPtr) ToVirtualMachineSchedulingExecut
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineSchedulingExecutionPtrOutput)
 }
 
-func (in *virtualMachineSchedulingExecutionPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSchedulingExecution] {
-	return pulumix.Output[*VirtualMachineSchedulingExecution]{
-		OutputState: in.ToVirtualMachineSchedulingExecutionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Field Deprecated, use virtualizationModel instead. The type of the virtio interface.
 type VirtualMachineVirtioInterfaceType string
 
@@ -5004,12 +4835,6 @@ func (in *virtualMachineVirtioInterfaceTypePtr) ToVirtualMachineVirtioInterfaceT
 
 func (in *virtualMachineVirtioInterfaceTypePtr) ToVirtualMachineVirtioInterfaceTypePtrOutputWithContext(ctx context.Context) VirtualMachineVirtioInterfaceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineVirtioInterfaceTypePtrOutput)
-}
-
-func (in *virtualMachineVirtioInterfaceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineVirtioInterfaceType] {
-	return pulumix.Output[*VirtualMachineVirtioInterfaceType]{
-		OutputState: in.ToVirtualMachineVirtioInterfaceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

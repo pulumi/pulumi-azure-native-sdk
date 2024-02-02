@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the SKU.
@@ -173,12 +172,6 @@ func (in *clusterSkuNameEnumPtr) ToClusterSkuNameEnumPtrOutput() ClusterSkuNameE
 
 func (in *clusterSkuNameEnumPtr) ToClusterSkuNameEnumPtrOutputWithContext(ctx context.Context) ClusterSkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterSkuNameEnumPtrOutput)
-}
-
-func (in *clusterSkuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterSkuNameEnum] {
-	return pulumix.Output[*ClusterSkuNameEnum]{
-		OutputState: in.ToClusterSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the DataSource.
@@ -409,12 +402,6 @@ func (in *dataSourceKindPtr) ToDataSourceKindPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourceKindPtrOutput)
 }
 
-func (in *dataSourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DataSourceKind] {
-	return pulumix.Output[*DataSourceKind]{
-		OutputState: in.ToDataSourceKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type IdentityType string
 
@@ -579,12 +566,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the linked service.
@@ -757,12 +738,6 @@ func (in *linkedServiceEntityStatusPtr) ToLinkedServiceEntityStatusPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(LinkedServiceEntityStatusPtrOutput)
 }
 
-func (in *linkedServiceEntityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceEntityStatus] {
-	return pulumix.Output[*LinkedServiceEntityStatus]{
-		OutputState: in.ToLinkedServiceEntityStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network access type for accessing Log Analytics query.
 type PublicNetworkAccessType string
 
@@ -929,12 +904,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutput() Publi
 
 func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
-}
-
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the workspace.
@@ -1113,12 +1082,6 @@ func (in *workspaceEntityStatusPtr) ToWorkspaceEntityStatusPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(WorkspaceEntityStatusPtrOutput)
 }
 
-func (in *workspaceEntityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceEntityStatus] {
-	return pulumix.Output[*WorkspaceEntityStatus]{
-		OutputState: in.ToWorkspaceEntityStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU.
 type WorkspaceSkuNameEnum string
 
@@ -1295,12 +1258,6 @@ func (in *workspaceSkuNameEnumPtr) ToWorkspaceSkuNameEnumPtrOutput() WorkspaceSk
 
 func (in *workspaceSkuNameEnumPtr) ToWorkspaceSkuNameEnumPtrOutputWithContext(ctx context.Context) WorkspaceSkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkspaceSkuNameEnumPtrOutput)
-}
-
-func (in *workspaceSkuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSkuNameEnum] {
-	return pulumix.Output[*WorkspaceSkuNameEnum]{
-		OutputState: in.ToWorkspaceSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

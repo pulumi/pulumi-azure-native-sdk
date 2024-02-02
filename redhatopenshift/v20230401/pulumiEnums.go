@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Whether master virtual machines are encrypted at host.
@@ -177,12 +176,6 @@ func (in *encryptionAtHostPtr) ToEncryptionAtHostPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionAtHostPtrOutput)
 }
 
-func (in *encryptionAtHostPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionAtHost] {
-	return pulumix.Output[*EncryptionAtHost]{
-		OutputState: in.ToEncryptionAtHostPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If FIPS validated crypto modules are used
 type FipsValidatedModules string
 
@@ -347,12 +340,6 @@ func (in *fipsValidatedModulesPtr) ToFipsValidatedModulesPtrOutput() FipsValidat
 
 func (in *fipsValidatedModulesPtr) ToFipsValidatedModulesPtrOutputWithContext(ctx context.Context) FipsValidatedModulesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FipsValidatedModulesPtrOutput)
-}
-
-func (in *fipsValidatedModulesPtr) ToOutput(ctx context.Context) pulumix.Output[*FipsValidatedModules] {
-	return pulumix.Output[*FipsValidatedModules]{
-		OutputState: in.ToFipsValidatedModulesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The OutboundType used for egress traffic.
@@ -521,12 +508,6 @@ func (in *outboundTypePtr) ToOutboundTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OutboundTypePtrOutput)
 }
 
-func (in *outboundTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OutboundType] {
-	return pulumix.Output[*OutboundType]{
-		OutputState: in.ToOutboundTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ingress visibility.
 type Visibility string
 
@@ -691,12 +672,6 @@ func (in *visibilityPtr) ToVisibilityPtrOutput() VisibilityPtrOutput {
 
 func (in *visibilityPtr) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VisibilityPtrOutput)
-}
-
-func (in *visibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*Visibility] {
-	return pulumix.Output[*Visibility]{
-		OutputState: in.ToVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

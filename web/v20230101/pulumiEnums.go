@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ActiveRevisionsMode controls how active revisions are handled for the Container app:
@@ -176,12 +175,6 @@ func (in *activeRevisionsModePtr) ToActiveRevisionsModePtrOutput() ActiveRevisio
 
 func (in *activeRevisionsModePtr) ToActiveRevisionsModePtrOutputWithContext(ctx context.Context) ActiveRevisionsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActiveRevisionsModePtrOutput)
-}
-
-func (in *activeRevisionsModePtr) ToOutput(ctx context.Context) pulumix.Output[*ActiveRevisionsMode] {
-	return pulumix.Output[*ActiveRevisionsMode]{
-		OutputState: in.ToActiveRevisionsModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Predefined action to be taken.
@@ -352,12 +345,6 @@ func (in *autoHealActionTypePtr) ToAutoHealActionTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AutoHealActionTypePtrOutput)
 }
 
-func (in *autoHealActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoHealActionType] {
-	return pulumix.Output[*AutoHealActionType]{
-		OutputState: in.ToAutoHealActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure resource type.
 type AzureResourceType string
 
@@ -524,12 +511,6 @@ func (in *azureResourceTypePtr) ToAzureResourceTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureResourceTypePtrOutput)
 }
 
-func (in *azureResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureResourceType] {
-	return pulumix.Output[*AzureResourceType]{
-		OutputState: in.ToAzureResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of storage.
 type AzureStorageType string
 
@@ -694,12 +675,6 @@ func (in *azureStorageTypePtr) ToAzureStorageTypePtrOutput() AzureStorageTypePtr
 
 func (in *azureStorageTypePtr) ToAzureStorageTypePtrOutputWithContext(ctx context.Context) AzureStorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureStorageTypePtrOutput)
-}
-
-func (in *azureStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureStorageType] {
-	return pulumix.Output[*AzureStorageType]{
-		OutputState: in.ToAzureStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default authentication provider to use when multiple providers are configured.
@@ -878,12 +853,6 @@ func (in *builtInAuthenticationProviderPtr) ToBuiltInAuthenticationProviderPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(BuiltInAuthenticationProviderPtrOutput)
 }
 
-func (in *builtInAuthenticationProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*BuiltInAuthenticationProvider] {
-	return pulumix.Output[*BuiltInAuthenticationProvider]{
-		OutputState: in.ToBuiltInAuthenticationProviderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This composes with ClientCertEnabled setting.
 // - ClientCertEnabled: false means ClientCert is ignored.
 // - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.
@@ -1053,12 +1022,6 @@ func (in *clientCertModePtr) ToClientCertModePtrOutput() ClientCertModePtrOutput
 
 func (in *clientCertModePtr) ToClientCertModePtrOutputWithContext(ctx context.Context) ClientCertModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClientCertModePtrOutput)
-}
-
-func (in *clientCertModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClientCertMode] {
-	return pulumix.Output[*ClientCertMode]{
-		OutputState: in.ToClientCertModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of database.
@@ -1245,12 +1208,6 @@ func (in *connectionStringTypePtr) ToConnectionStringTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStringTypePtrOutput)
 }
 
-func (in *connectionStringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStringType] {
-	return pulumix.Output[*ConnectionStringType]{
-		OutputState: in.ToConnectionStringTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom DNS record type.
 type CustomHostNameDnsRecordType string
 
@@ -1415,12 +1372,6 @@ func (in *customHostNameDnsRecordTypePtr) ToCustomHostNameDnsRecordTypePtrOutput
 
 func (in *customHostNameDnsRecordTypePtr) ToCustomHostNameDnsRecordTypePtrOutputWithContext(ctx context.Context) CustomHostNameDnsRecordTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CustomHostNameDnsRecordTypePtrOutput)
-}
-
-func (in *customHostNameDnsRecordTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomHostNameDnsRecordType] {
-	return pulumix.Output[*CustomHostNameDnsRecordType]{
-		OutputState: in.ToCustomHostNameDnsRecordTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
@@ -1593,12 +1544,6 @@ func (in *daprLogLevelPtr) ToDaprLogLevelPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(DaprLogLevelPtrOutput)
 }
 
-func (in *daprLogLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DaprLogLevel] {
-	return pulumix.Output[*DaprLogLevel]{
-		OutputState: in.ToDaprLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Database type (e.g. SqlAzure / MySql).
 type DatabaseType string
 
@@ -1769,12 +1714,6 @@ func (in *databaseTypePtr) ToDatabaseTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypePtrOutput)
 }
 
-func (in *databaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
-	return pulumix.Output[*DatabaseType]{
-		OutputState: in.ToDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default action for scm access restriction if no rules are matched.
 type DefaultAction string
 
@@ -1939,12 +1878,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutput() DefaultActionPtrOutput {
 
 func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
-}
-
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State indicating the status of the enterprise grade CDN serving traffic to the static web app.
@@ -2117,12 +2050,6 @@ func (in *enterpriseGradeCdnStatusPtr) ToEnterpriseGradeCdnStatusPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseGradeCdnStatusPtrOutput)
 }
 
-func (in *enterpriseGradeCdnStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseGradeCdnStatus] {
-	return pulumix.Output[*EnterpriseGradeCdnStatus]{
-		OutputState: in.ToEnterpriseGradeCdnStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
 type FrequencyUnit string
 
@@ -2289,12 +2216,6 @@ func (in *frequencyUnitPtr) ToFrequencyUnitPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(FrequencyUnitPtrOutput)
 }
 
-func (in *frequencyUnitPtr) ToOutput(ctx context.Context) pulumix.Output[*FrequencyUnit] {
-	return pulumix.Output[*FrequencyUnit]{
-		OutputState: in.ToFrequencyUnitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FrontEndServiceType string
 
 const (
@@ -2458,12 +2379,6 @@ func (in *frontEndServiceTypePtr) ToFrontEndServiceTypePtrOutput() FrontEndServi
 
 func (in *frontEndServiceTypePtr) ToFrontEndServiceTypePtrOutputWithContext(ctx context.Context) FrontEndServiceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FrontEndServiceTypePtrOutput)
-}
-
-func (in *frontEndServiceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FrontEndServiceType] {
-	return pulumix.Output[*FrontEndServiceType]{
-		OutputState: in.ToFrontEndServiceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of FTP / FTPS service
@@ -2634,12 +2549,6 @@ func (in *ftpsStatePtr) ToFtpsStatePtrOutputWithContext(ctx context.Context) Ftp
 	return pulumi.ToOutputWithContext(ctx, in).(FtpsStatePtrOutput)
 }
 
-func (in *ftpsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FtpsState] {
-	return pulumix.Output[*FtpsState]{
-		OutputState: in.ToFtpsStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hostname type.
 type HostNameType string
 
@@ -2806,12 +2715,6 @@ func (in *hostNameTypePtr) ToHostNameTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostNameTypePtrOutput)
 }
 
-func (in *hostNameTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostNameType] {
-	return pulumix.Output[*HostNameType]{
-		OutputState: in.ToHostNameTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the hostname is a standard or repository hostname.
 type HostType string
 
@@ -2976,12 +2879,6 @@ func (in *hostTypePtr) ToHostTypePtrOutput() HostTypePtrOutput {
 
 func (in *hostTypePtr) ToHostTypePtrOutputWithContext(ctx context.Context) HostTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostTypePtrOutput)
-}
-
-func (in *hostTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostType] {
-	return pulumix.Output[*HostType]{
-		OutputState: in.ToHostTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Ingress transport protocol
@@ -3152,12 +3049,6 @@ func (in *ingressTransportMethodPtr) ToIngressTransportMethodPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(IngressTransportMethodPtrOutput)
 }
 
-func (in *ingressTransportMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IngressTransportMethod] {
-	return pulumix.Output[*IngressTransportMethod]{
-		OutputState: in.ToIngressTransportMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines what this IP filter will be used for. This is to support IP filtering on proxies.
 type IpFilterTag string
 
@@ -3324,12 +3215,6 @@ func (in *ipFilterTagPtr) ToIpFilterTagPtrOutput() IpFilterTagPtrOutput {
 
 func (in *ipFilterTagPtr) ToIpFilterTagPtrOutputWithContext(ctx context.Context) IpFilterTagPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpFilterTagPtrOutput)
-}
-
-func (in *ipFilterTagPtr) ToOutput(ctx context.Context) pulumix.Output[*IpFilterTag] {
-	return pulumix.Output[*IpFilterTag]{
-		OutputState: in.ToIpFilterTagPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
@@ -3500,12 +3385,6 @@ func (in *loadBalancingModePtr) ToLoadBalancingModePtrOutput() LoadBalancingMode
 
 func (in *loadBalancingModePtr) ToLoadBalancingModePtrOutputWithContext(ctx context.Context) LoadBalancingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancingModePtrOutput)
-}
-
-func (in *loadBalancingModePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancingMode] {
-	return pulumix.Output[*LoadBalancingMode]{
-		OutputState: in.ToLoadBalancingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Log level.
@@ -3680,12 +3559,6 @@ func (in *logLevelPtr) ToLogLevelPtrOutputWithContext(ctx context.Context) LogLe
 	return pulumi.ToOutputWithContext(ctx, in).(LogLevelPtrOutput)
 }
 
-func (in *logLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*LogLevel] {
-	return pulumix.Output[*LogLevel]{
-		OutputState: in.ToLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed pipeline mode.
 type ManagedPipelineMode string
 
@@ -3850,12 +3723,6 @@ func (in *managedPipelineModePtr) ToManagedPipelineModePtrOutput() ManagedPipeli
 
 func (in *managedPipelineModePtr) ToManagedPipelineModePtrOutputWithContext(ctx context.Context) ManagedPipelineModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedPipelineModePtrOutput)
-}
-
-func (in *managedPipelineModePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedPipelineMode] {
-	return pulumix.Output[*ManagedPipelineMode]{
-		OutputState: in.ToManagedPipelineModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity.
@@ -4028,12 +3895,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Public Certificate Location
 type PublicCertificateLocation string
 
@@ -4200,12 +4061,6 @@ func (in *publicCertificateLocationPtr) ToPublicCertificateLocationPtrOutput() P
 
 func (in *publicCertificateLocationPtr) ToPublicCertificateLocationPtrOutputWithContext(ctx context.Context) PublicCertificateLocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicCertificateLocationPtrOutput)
-}
-
-func (in *publicCertificateLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicCertificateLocation] {
-	return pulumix.Output[*PublicCertificateLocation]{
-		OutputState: in.ToPublicCertificateLocationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Site redundancy mode
@@ -4380,12 +4235,6 @@ func (in *redundancyModePtr) ToRedundancyModePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(RedundancyModePtrOutput)
 }
 
-func (in *redundancyModePtr) ToOutput(ctx context.Context) pulumix.Output[*RedundancyMode] {
-	return pulumix.Output[*RedundancyMode]{
-		OutputState: in.ToRedundancyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of route this is:
 // DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
 // INHERITED - Routes inherited from the real Virtual Network routes
@@ -4557,12 +4406,6 @@ func (in *routeTypePtr) ToRouteTypePtrOutput() RouteTypePtrOutput {
 
 func (in *routeTypePtr) ToRouteTypePtrOutputWithContext(ctx context.Context) RouteTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouteTypePtrOutput)
-}
-
-func (in *routeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteType] {
-	return pulumix.Output[*RouteType]{
-		OutputState: in.ToRouteTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SCM type.
@@ -4755,12 +4598,6 @@ func (in *scmTypePtr) ToScmTypePtrOutputWithContext(ctx context.Context) ScmType
 	return pulumi.ToOutputWithContext(ctx, in).(ScmTypePtrOutput)
 }
 
-func (in *scmTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScmType] {
-	return pulumix.Output[*ScmType]{
-		OutputState: in.ToScmTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Site load balancing.
 type SiteLoadBalancing string
 
@@ -4935,12 +4772,6 @@ func (in *siteLoadBalancingPtr) ToSiteLoadBalancingPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SiteLoadBalancingPtrOutput)
 }
 
-func (in *siteLoadBalancingPtr) ToOutput(ctx context.Context) pulumix.Output[*SiteLoadBalancing] {
-	return pulumix.Output[*SiteLoadBalancing]{
-		OutputState: in.ToSiteLoadBalancingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSL type.
 type SslState string
 
@@ -5109,12 +4940,6 @@ func (in *sslStatePtr) ToSslStatePtrOutputWithContext(ctx context.Context) SslSt
 	return pulumi.ToOutputWithContext(ctx, in).(SslStatePtrOutput)
 }
 
-func (in *sslStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SslState] {
-	return pulumix.Output[*SslState]{
-		OutputState: in.ToSslStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State indicating whether staging environments are allowed or not allowed for a static web app.
 type StagingEnvironmentPolicy string
 
@@ -5281,12 +5106,6 @@ func (in *stagingEnvironmentPolicyPtr) ToStagingEnvironmentPolicyPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(StagingEnvironmentPolicyPtrOutput)
 }
 
-func (in *stagingEnvironmentPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*StagingEnvironmentPolicy] {
-	return pulumix.Output[*StagingEnvironmentPolicy]{
-		OutputState: in.ToStagingEnvironmentPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageType string
 
 const (
@@ -5450,12 +5269,6 @@ func (in *storageTypePtr) ToStorageTypePtrOutput() StorageTypePtrOutput {
 
 func (in *storageTypePtr) ToStorageTypePtrOutputWithContext(ctx context.Context) StorageTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTypePtrOutput)
-}
-
-func (in *storageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageType] {
-	return pulumix.Output[*StorageType]{
-		OutputState: in.ToStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
@@ -5624,12 +5437,6 @@ func (in *supportedTlsVersionsPtr) ToSupportedTlsVersionsPtrOutput() SupportedTl
 
 func (in *supportedTlsVersionsPtr) ToSupportedTlsVersionsPtrOutputWithContext(ctx context.Context) SupportedTlsVersionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SupportedTlsVersionsPtrOutput)
-}
-
-func (in *supportedTlsVersionsPtr) ToOutput(ctx context.Context) pulumix.Output[*SupportedTlsVersions] {
-	return pulumix.Output[*SupportedTlsVersions]{
-		OutputState: in.ToSupportedTlsVersionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The minimum strength TLS cipher suite allowed for an application
@@ -5828,12 +5635,6 @@ func (in *tlsCipherSuitesPtr) ToTlsCipherSuitesPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(TlsCipherSuitesPtrOutput)
 }
 
-func (in *tlsCipherSuitesPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsCipherSuites] {
-	return pulumix.Output[*TlsCipherSuites]{
-		OutputState: in.ToTlsCipherSuitesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The action to take when an unauthenticated client attempts to access the app.
 type UnauthenticatedClientAction string
 
@@ -5998,12 +5799,6 @@ func (in *unauthenticatedClientActionPtr) ToUnauthenticatedClientActionPtrOutput
 
 func (in *unauthenticatedClientActionPtr) ToUnauthenticatedClientActionPtrOutputWithContext(ctx context.Context) UnauthenticatedClientActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UnauthenticatedClientActionPtrOutput)
-}
-
-func (in *unauthenticatedClientActionPtr) ToOutput(ctx context.Context) pulumix.Output[*UnauthenticatedClientAction] {
-	return pulumix.Output[*UnauthenticatedClientAction]{
-		OutputState: in.ToUnauthenticatedClientActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Upgrade Preference
@@ -6178,12 +5973,6 @@ func (in *upgradePreferencePtr) ToUpgradePreferencePtrOutput() UpgradePreference
 
 func (in *upgradePreferencePtr) ToUpgradePreferencePtrOutputWithContext(ctx context.Context) UpgradePreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradePreferencePtrOutput)
-}
-
-func (in *upgradePreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradePreference] {
-	return pulumix.Output[*UpgradePreference]{
-		OutputState: in.ToUpgradePreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

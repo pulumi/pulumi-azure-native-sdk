@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a supported Fabric/Infra. (AKSEdge etc...).
@@ -173,12 +172,6 @@ func (in *distroPtr) ToDistroPtrOutput() DistroPtrOutput {
 
 func (in *distroPtr) ToDistroPtrOutputWithContext(ctx context.Context) DistroPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DistroPtrOutput)
-}
-
-func (in *distroPtr) ToOutput(ctx context.Context) pulumix.Output[*Distro] {
-	return pulumix.Output[*Distro]{
-		OutputState: in.ToDistroPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Information about the connected appliance.
@@ -349,12 +342,6 @@ func (in *providerPtr) ToProviderPtrOutputWithContext(ctx context.Context) Provi
 	return pulumi.ToOutputWithContext(ctx, in).(ProviderPtrOutput)
 }
 
-func (in *providerPtr) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: in.ToProviderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -519,12 +506,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

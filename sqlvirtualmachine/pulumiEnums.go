@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Day of the week to run assessment.
@@ -187,12 +186,6 @@ func (in *assessmentDayOfWeekPtr) ToAssessmentDayOfWeekPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentDayOfWeekPtrOutput)
 }
 
-func (in *assessmentDayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentDayOfWeek] {
-	return pulumix.Output[*AssessmentDayOfWeek]{
-		OutputState: in.ToAssessmentDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoBackupDaysOfWeek string
 
 const (
@@ -368,12 +361,6 @@ func (in *autoBackupDaysOfWeekPtr) ToAutoBackupDaysOfWeekPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AutoBackupDaysOfWeekPtrOutput)
 }
 
-func (in *autoBackupDaysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoBackupDaysOfWeek] {
-	return pulumix.Output[*AutoBackupDaysOfWeek]{
-		OutputState: in.ToAutoBackupDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backup schedule type.
 type BackupScheduleType string
 
@@ -538,12 +525,6 @@ func (in *backupScheduleTypePtr) ToBackupScheduleTypePtrOutput() BackupScheduleT
 
 func (in *backupScheduleTypePtr) ToBackupScheduleTypePtrOutputWithContext(ctx context.Context) BackupScheduleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupScheduleTypePtrOutput)
-}
-
-func (in *backupScheduleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupScheduleType] {
-	return pulumix.Output[*BackupScheduleType]{
-		OutputState: in.ToBackupScheduleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Cluster subnet type.
@@ -712,12 +693,6 @@ func (in *clusterSubnetTypePtr) ToClusterSubnetTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterSubnetTypePtrOutput)
 }
 
-func (in *clusterSubnetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterSubnetType] {
-	return pulumix.Output[*ClusterSubnetType]{
-		OutputState: in.ToClusterSubnetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Replica commit mode in availability group.
 type Commit string
 
@@ -882,12 +857,6 @@ func (in *commitPtr) ToCommitPtrOutput() CommitPtrOutput {
 
 func (in *commitPtr) ToCommitPtrOutputWithContext(ctx context.Context) CommitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CommitPtrOutput)
-}
-
-func (in *commitPtr) ToOutput(ctx context.Context) pulumix.Output[*Commit] {
-	return pulumix.Output[*Commit]{
-		OutputState: in.ToCommitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server connectivity option.
@@ -1056,12 +1025,6 @@ func (in *connectivityTypePtr) ToConnectivityTypePtrOutput() ConnectivityTypePtr
 
 func (in *connectivityTypePtr) ToConnectivityTypePtrOutputWithContext(ctx context.Context) ConnectivityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectivityTypePtrOutput)
-}
-
-func (in *connectivityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityType] {
-	return pulumix.Output[*ConnectivityType]{
-		OutputState: in.ToConnectivityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Day of week to apply the patch on.
@@ -1242,12 +1205,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Disk configuration to apply to SQL Server.
 type DiskConfigurationType string
 
@@ -1416,12 +1373,6 @@ func (in *diskConfigurationTypePtr) ToDiskConfigurationTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DiskConfigurationTypePtrOutput)
 }
 
-func (in *diskConfigurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskConfigurationType] {
-	return pulumix.Output[*DiskConfigurationType]{
-		OutputState: in.ToDiskConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Replica failover mode in availability group.
 type Failover string
 
@@ -1586,12 +1537,6 @@ func (in *failoverPtr) ToFailoverPtrOutput() FailoverPtrOutput {
 
 func (in *failoverPtr) ToFailoverPtrOutputWithContext(ctx context.Context) FailoverPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FailoverPtrOutput)
-}
-
-func (in *failoverPtr) ToOutput(ctx context.Context) pulumix.Output[*Failover] {
-	return pulumix.Output[*Failover]{
-		OutputState: in.ToFailoverPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Frequency of full backups. In both cases, full backups begin during the next scheduled time window.
@@ -1760,12 +1705,6 @@ func (in *fullBackupFrequencyTypePtr) ToFullBackupFrequencyTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(FullBackupFrequencyTypePtrOutput)
 }
 
-func (in *fullBackupFrequencyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FullBackupFrequencyType] {
-	return pulumix.Output[*FullBackupFrequencyType]{
-		OutputState: in.ToFullBackupFrequencyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 type IdentityType string
 
@@ -1930,12 +1869,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Replica readable secondary mode in availability group.
@@ -2106,12 +2039,6 @@ func (in *readableSecondaryPtr) ToReadableSecondaryPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ReadableSecondaryPtrOutput)
 }
 
-func (in *readableSecondaryPtr) ToOutput(ctx context.Context) pulumix.Output[*ReadableSecondary] {
-	return pulumix.Output[*ReadableSecondary]{
-		OutputState: in.ToReadableSecondaryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Replica Role in availability group.
 type Role string
 
@@ -2276,12 +2203,6 @@ func (in *rolePtr) ToRolePtrOutput() RolePtrOutput {
 
 func (in *rolePtr) ToRolePtrOutputWithContext(ctx context.Context) RolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RolePtrOutput)
-}
-
-func (in *rolePtr) ToOutput(ctx context.Context) pulumix.Output[*Role] {
-	return pulumix.Output[*Role]{
-		OutputState: in.ToRolePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server edition type.
@@ -2456,12 +2377,6 @@ func (in *sqlImageSkuPtr) ToSqlImageSkuPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(SqlImageSkuPtrOutput)
 }
 
-func (in *sqlImageSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlImageSku] {
-	return pulumix.Output[*SqlImageSku]{
-		OutputState: in.ToSqlImageSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SQL Server Management type.
 type SqlManagementMode string
 
@@ -2628,12 +2543,6 @@ func (in *sqlManagementModePtr) ToSqlManagementModePtrOutput() SqlManagementMode
 
 func (in *sqlManagementModePtr) ToSqlManagementModePtrOutputWithContext(ctx context.Context) SqlManagementModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlManagementModePtrOutput)
-}
-
-func (in *sqlManagementModePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlManagementMode] {
-	return pulumix.Output[*SqlManagementMode]{
-		OutputState: in.ToSqlManagementModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server license type.
@@ -2804,12 +2713,6 @@ func (in *sqlServerLicenseTypePtr) ToSqlServerLicenseTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SqlServerLicenseTypePtrOutput)
 }
 
-func (in *sqlServerLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlServerLicenseType] {
-	return pulumix.Output[*SqlServerLicenseType]{
-		OutputState: in.ToSqlServerLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SQL image sku.
 type SqlVmGroupImageSku string
 
@@ -2974,12 +2877,6 @@ func (in *sqlVmGroupImageSkuPtr) ToSqlVmGroupImageSkuPtrOutput() SqlVmGroupImage
 
 func (in *sqlVmGroupImageSkuPtr) ToSqlVmGroupImageSkuPtrOutputWithContext(ctx context.Context) SqlVmGroupImageSkuPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlVmGroupImageSkuPtrOutput)
-}
-
-func (in *sqlVmGroupImageSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlVmGroupImageSku] {
-	return pulumix.Output[*SqlVmGroupImageSku]{
-		OutputState: in.ToSqlVmGroupImageSkuPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server workload type.
@@ -3150,12 +3047,6 @@ func (in *sqlWorkloadTypePtr) ToSqlWorkloadTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SqlWorkloadTypePtrOutput)
 }
 
-func (in *sqlWorkloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlWorkloadType] {
-	return pulumix.Output[*SqlWorkloadType]{
-		OutputState: in.ToSqlWorkloadTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Storage workload type.
 type StorageWorkloadType string
 
@@ -3322,12 +3213,6 @@ func (in *storageWorkloadTypePtr) ToStorageWorkloadTypePtrOutput() StorageWorklo
 
 func (in *storageWorkloadTypePtr) ToStorageWorkloadTypePtrOutputWithContext(ctx context.Context) StorageWorkloadTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageWorkloadTypePtrOutput)
-}
-
-func (in *storageWorkloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageWorkloadType] {
-	return pulumix.Output[*StorageWorkloadType]{
-		OutputState: in.ToStorageWorkloadTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

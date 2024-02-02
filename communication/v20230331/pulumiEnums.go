@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes how a Domains resource is being managed.
@@ -179,12 +178,6 @@ func (in *domainManagementPtr) ToDomainManagementPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DomainManagementPtrOutput)
 }
 
-func (in *domainManagementPtr) ToOutput(ctx context.Context) pulumix.Output[*DomainManagement] {
-	return pulumix.Output[*DomainManagement]{
-		OutputState: in.ToDomainManagementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes whether user engagement tracking is enabled or disabled.
 type UserEngagementTracking string
 
@@ -349,12 +342,6 @@ func (in *userEngagementTrackingPtr) ToUserEngagementTrackingPtrOutput() UserEng
 
 func (in *userEngagementTrackingPtr) ToUserEngagementTrackingPtrOutputWithContext(ctx context.Context) UserEngagementTrackingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserEngagementTrackingPtrOutput)
-}
-
-func (in *userEngagementTrackingPtr) ToOutput(ctx context.Context) pulumix.Output[*UserEngagementTracking] {
-	return pulumix.Output[*UserEngagementTracking]{
-		OutputState: in.ToUserEngagementTrackingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

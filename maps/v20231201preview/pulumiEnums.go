@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
@@ -177,12 +176,6 @@ func (in *infrastructureEncryptionPtr) ToInfrastructureEncryptionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionPtrOutput)
 }
 
-func (in *infrastructureEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureEncryption] {
-	return pulumix.Output[*InfrastructureEncryption]{
-		OutputState: in.ToInfrastructureEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Get or Set Kind property.
 type Kind string
 
@@ -345,12 +338,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -523,12 +510,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU, in standard format (such as G2).
 type Name string
 
@@ -691,12 +672,6 @@ func (in *namePtr) ToNamePtrOutput() NamePtrOutput {
 
 func (in *namePtr) ToNamePtrOutputWithContext(ctx context.Context) NamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NamePtrOutput)
-}
-
-func (in *namePtr) ToOutput(ctx context.Context) pulumix.Output[*Name] {
-	return pulumix.Output[*Name]{
-		OutputState: in.ToNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -867,12 +842,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Property to specify whether the Maps Account will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked.
 type PublicNetworkAccess string
 
@@ -1037,12 +1006,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
@@ -1211,12 +1174,6 @@ func (in *signingKeyPtr) ToSigningKeyPtrOutput() SigningKeyPtrOutput {
 
 func (in *signingKeyPtr) ToSigningKeyPtrOutputWithContext(ctx context.Context) SigningKeyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SigningKeyPtrOutput)
-}
-
-func (in *signingKeyPtr) ToOutput(ctx context.Context) pulumix.Output[*SigningKey] {
-	return pulumix.Output[*SigningKey]{
-		OutputState: in.ToSigningKeyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
