@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode of client authentication.
@@ -175,12 +174,6 @@ func (in *authenticationMethodPtr) ToAuthenticationMethodPtrOutput() Authenticat
 
 func (in *authenticationMethodPtr) ToAuthenticationMethodPtrOutputWithContext(ctx context.Context) AuthenticationMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationMethodPtrOutput)
-}
-
-func (in *authenticationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMethod] {
-	return pulumix.Output[*AuthenticationMethod]{
-		OutputState: in.ToAuthenticationMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

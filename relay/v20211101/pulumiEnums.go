@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -176,12 +175,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
-}
-
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the Private Endpoint Connection.
@@ -358,12 +351,6 @@ func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(EndPointProvisioningStatePtrOutput)
 }
 
-func (in *endPointProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EndPointProvisioningState] {
-	return pulumix.Output[*EndPointProvisioningState]{
-		OutputState: in.ToEndPointProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the connection.
 type PrivateLinkConnectionStatus string
 
@@ -534,12 +521,6 @@ func (in *privateLinkConnectionStatusPtr) ToPrivateLinkConnectionStatusPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStatus] {
-	return pulumix.Output[*PrivateLinkConnectionStatus]{
-		OutputState: in.ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This determines if traffic is allowed over public network. By default it is enabled.
 type PublicNetworkAccess string
 
@@ -708,12 +689,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WCF relay type.
 type Relaytype string
 
@@ -880,12 +855,6 @@ func (in *relaytypePtr) ToRelaytypePtrOutputWithContext(ctx context.Context) Rel
 	return pulumi.ToOutputWithContext(ctx, in).(RelaytypePtrOutput)
 }
 
-func (in *relaytypePtr) ToOutput(ctx context.Context) pulumix.Output[*Relaytype] {
-	return pulumix.Output[*Relaytype]{
-		OutputState: in.ToRelaytypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of this SKU.
 type SkuName string
 
@@ -1050,12 +1019,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of this SKU.
 type SkuTier string
 
@@ -1218,12 +1181,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

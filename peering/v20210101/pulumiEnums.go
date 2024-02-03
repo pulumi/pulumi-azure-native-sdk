@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The role of the contact.
@@ -185,12 +184,6 @@ func (in *rolePtr) ToRolePtrOutputWithContext(ctx context.Context) RolePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(RolePtrOutput)
 }
 
-func (in *rolePtr) ToOutput(ctx context.Context) pulumix.Output[*Role] {
-	return pulumix.Output[*Role]{
-		OutputState: in.ToRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The validation state of the ASN associated with the peer.
 type ValidationState string
 
@@ -359,12 +352,6 @@ func (in *validationStatePtr) ToValidationStatePtrOutput() ValidationStatePtrOut
 
 func (in *validationStatePtr) ToValidationStatePtrOutputWithContext(ctx context.Context) ValidationStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationStatePtrOutput)
-}
-
-func (in *validationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationState] {
-	return pulumix.Output[*ValidationState]{
-		OutputState: in.ToValidationStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

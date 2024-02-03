@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The principal type of the assigned principal ID.
@@ -179,12 +178,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutput() PrincipalTypePtrOutput {
 
 func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Context) PrincipalTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
-}
-
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode to create a new MySQL server.
@@ -179,12 +178,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable HA or not for a server.
 type HaEnabledEnum string
 
@@ -349,12 +342,6 @@ func (in *haEnabledEnumPtr) ToHaEnabledEnumPtrOutput() HaEnabledEnumPtrOutput {
 
 func (in *haEnabledEnumPtr) ToHaEnabledEnumPtrOutputWithContext(ctx context.Context) HaEnabledEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HaEnabledEnumPtrOutput)
-}
-
-func (in *haEnabledEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*HaEnabledEnum] {
-	return pulumix.Output[*HaEnabledEnum]{
-		OutputState: in.ToHaEnabledEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status showing whether the server enabled infrastructure encryption.
@@ -523,12 +510,6 @@ func (in *infrastructureEncryptionEnumPtr) ToInfrastructureEncryptionEnumPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionEnumPtrOutput)
 }
 
-func (in *infrastructureEncryptionEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureEncryptionEnum] {
-	return pulumix.Output[*InfrastructureEncryptionEnum]{
-		OutputState: in.ToInfrastructureEncryptionEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -693,12 +674,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Server version.
 type ServerVersion string
 
@@ -861,12 +836,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutput() ServerVersionPtrOutput {
 
 func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Context) ServerVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
-}
-
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The tier of the particular SKU, e.g. GeneralPurpose.
@@ -1037,12 +1006,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable ssl enforcement or not when connect to server.
 type SslEnforcementEnum string
 
@@ -1209,12 +1172,6 @@ func (in *sslEnforcementEnumPtr) ToSslEnforcementEnumPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SslEnforcementEnumPtrOutput)
 }
 
-func (in *sslEnforcementEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SslEnforcementEnum] {
-	return pulumix.Output[*SslEnforcementEnum]{
-		OutputState: in.ToSslEnforcementEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable Storage Auto Grow.
 type StorageAutogrow string
 
@@ -1379,12 +1336,6 @@ func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutput() StorageAutogrowPtrOut
 
 func (in *storageAutogrowPtr) ToStorageAutogrowPtrOutputWithContext(ctx context.Context) StorageAutogrowPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAutogrowPtrOutput)
-}
-
-func (in *storageAutogrowPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAutogrow] {
-	return pulumix.Output[*StorageAutogrow]{
-		OutputState: in.ToStorageAutogrowPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

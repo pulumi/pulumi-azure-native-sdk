@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The service account provisioning mode for this Active Directory connector.
@@ -177,12 +176,6 @@ func (in *accountProvisioningModePtr) ToAccountProvisioningModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AccountProvisioningModePtrOutput)
 }
 
-func (in *accountProvisioningModePtr) ToOutput(ctx context.Context) pulumix.Output[*AccountProvisioningMode] {
-	return pulumix.Output[*AccountProvisioningMode]{
-		OutputState: in.ToAccountProvisioningModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type to apply for this managed instance.
 type ArcSqlManagedInstanceLicenseType string
 
@@ -349,12 +342,6 @@ func (in *arcSqlManagedInstanceLicenseTypePtr) ToArcSqlManagedInstanceLicenseTyp
 
 func (in *arcSqlManagedInstanceLicenseTypePtr) ToArcSqlManagedInstanceLicenseTypePtrOutputWithContext(ctx context.Context) ArcSqlManagedInstanceLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArcSqlManagedInstanceLicenseTypePtrOutput)
-}
-
-func (in *arcSqlManagedInstanceLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ArcSqlManagedInstanceLicenseType] {
-	return pulumix.Output[*ArcSqlManagedInstanceLicenseType]{
-		OutputState: in.ToArcSqlManagedInstanceLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server license type.
@@ -533,12 +520,6 @@ func (in *arcSqlServerLicenseTypePtr) ToArcSqlServerLicenseTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ArcSqlServerLicenseTypePtrOutput)
 }
 
-func (in *arcSqlServerLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ArcSqlServerLicenseType] {
-	return pulumix.Output[*ArcSqlServerLicenseType]{
-		OutputState: in.ToArcSqlServerLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The cloud connectivity status.
 type ConnectionStatus string
 
@@ -707,12 +688,6 @@ func (in *connectionStatusPtr) ToConnectionStatusPtrOutput() ConnectionStatusPtr
 
 func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
-}
-
-func (in *connectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStatus] {
-	return pulumix.Output[*ConnectionStatus]{
-		OutputState: in.ToConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of the database.
@@ -895,12 +870,6 @@ func (in *databaseStatePtr) ToDatabaseStatePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseStatePtrOutput)
 }
 
-func (in *databaseStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseState] {
-	return pulumix.Output[*DatabaseState]{
-		OutputState: in.ToDatabaseStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of Azure Defender.
 type DefenderStatus string
 
@@ -1067,12 +1036,6 @@ func (in *defenderStatusPtr) ToDefenderStatusPtrOutput() DefenderStatusPtrOutput
 
 func (in *defenderStatusPtr) ToDefenderStatusPtrOutputWithContext(ctx context.Context) DefenderStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DefenderStatusPtrOutput)
-}
-
-func (in *defenderStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DefenderStatus] {
-	return pulumix.Output[*DefenderStatus]{
-		OutputState: in.ToDefenderStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server edition.
@@ -1251,12 +1214,6 @@ func (in *editionTypePtr) ToEditionTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(EditionTypePtrOutput)
 }
 
-func (in *editionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EditionType] {
-	return pulumix.Output[*EditionType]{
-		OutputState: in.ToEditionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1419,12 +1376,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The partner sync mode of the SQL managed instance.
@@ -1591,12 +1542,6 @@ func (in *failoverGroupPartnerSyncModePtr) ToFailoverGroupPartnerSyncModePtrOutp
 
 func (in *failoverGroupPartnerSyncModePtr) ToFailoverGroupPartnerSyncModePtrOutputWithContext(ctx context.Context) FailoverGroupPartnerSyncModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FailoverGroupPartnerSyncModePtrOutput)
-}
-
-func (in *failoverGroupPartnerSyncModePtr) ToOutput(ctx context.Context) pulumix.Output[*FailoverGroupPartnerSyncMode] {
-	return pulumix.Output[*FailoverGroupPartnerSyncMode]{
-		OutputState: in.ToFailoverGroupPartnerSyncModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of host for Azure Arc SQL Server
@@ -1787,12 +1732,6 @@ func (in *hostTypePtr) ToHostTypePtrOutputWithContext(ctx context.Context) HostT
 	return pulumi.ToOutputWithContext(ctx, in).(HostTypePtrOutput)
 }
 
-func (in *hostTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostType] {
-	return pulumix.Output[*HostType]{
-		OutputState: in.ToHostTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The infrastructure the data controller is running on.
 type Infrastructure string
 
@@ -1967,12 +1906,6 @@ func (in *infrastructurePtr) ToInfrastructurePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructurePtrOutput)
 }
 
-func (in *infrastructurePtr) ToOutput(ctx context.Context) pulumix.Output[*Infrastructure] {
-	return pulumix.Output[*Infrastructure]{
-		OutputState: in.ToInfrastructurePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The role of the SQL managed instance in this failover group.
 type InstanceFailoverGroupRole string
 
@@ -2143,12 +2076,6 @@ func (in *instanceFailoverGroupRolePtr) ToInstanceFailoverGroupRolePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceFailoverGroupRolePtrOutput)
 }
 
-func (in *instanceFailoverGroupRolePtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceFailoverGroupRole] {
-	return pulumix.Output[*InstanceFailoverGroupRole]{
-		OutputState: in.ToInstanceFailoverGroupRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field is required to be implemented by the Resource Provider if the service has more than one tier.
 type PostgresInstanceSkuTier string
 
@@ -2311,12 +2238,6 @@ func (in *postgresInstanceSkuTierPtr) ToPostgresInstanceSkuTierPtrOutput() Postg
 
 func (in *postgresInstanceSkuTierPtr) ToPostgresInstanceSkuTierPtrOutputWithContext(ctx context.Context) PostgresInstanceSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PostgresInstanceSkuTierPtrOutput)
-}
-
-func (in *postgresInstanceSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*PostgresInstanceSkuTier] {
-	return pulumix.Output[*PostgresInstanceSkuTier]{
-		OutputState: in.ToPostgresInstanceSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the database.
@@ -2487,12 +2408,6 @@ func (in *recoveryModePtr) ToRecoveryModePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(RecoveryModePtrOutput)
 }
 
-func (in *recoveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*RecoveryMode] {
-	return pulumix.Output[*RecoveryMode]{
-		OutputState: in.ToRecoveryModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU.
 type SqlManagedInstanceSkuName string
 
@@ -2655,12 +2570,6 @@ func (in *sqlManagedInstanceSkuNamePtr) ToSqlManagedInstanceSkuNamePtrOutput() S
 
 func (in *sqlManagedInstanceSkuNamePtr) ToSqlManagedInstanceSkuNamePtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlManagedInstanceSkuNamePtrOutput)
-}
-
-func (in *sqlManagedInstanceSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuName] {
-	return pulumix.Output[*SqlManagedInstanceSkuName]{
-		OutputState: in.ToSqlManagedInstanceSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pricing tier for the instance.
@@ -2827,12 +2736,6 @@ func (in *sqlManagedInstanceSkuTierPtr) ToSqlManagedInstanceSkuTierPtrOutput() S
 
 func (in *sqlManagedInstanceSkuTierPtr) ToSqlManagedInstanceSkuTierPtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlManagedInstanceSkuTierPtrOutput)
-}
-
-func (in *sqlManagedInstanceSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuTier] {
-	return pulumix.Output[*SqlManagedInstanceSkuTier]{
-		OutputState: in.ToSqlManagedInstanceSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SQL Server version.
@@ -3009,12 +2912,6 @@ func (in *sqlVersionPtr) ToSqlVersionPtrOutput() SqlVersionPtrOutput {
 
 func (in *sqlVersionPtr) ToSqlVersionPtrOutputWithContext(ctx context.Context) SqlVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlVersionPtrOutput)
-}
-
-func (in *sqlVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlVersion] {
-	return pulumix.Output[*SqlVersion]{
-		OutputState: in.ToSqlVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

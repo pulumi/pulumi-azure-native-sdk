@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether Azure Hybrid Benefit is opted in
@@ -179,12 +178,6 @@ func (in *azureHybridBenefitPtr) ToAzureHybridBenefitPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AzureHybridBenefitPtrOutput)
 }
 
-func (in *azureHybridBenefitPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridBenefit] {
-	return pulumix.Output[*AzureHybridBenefit]{
-		OutputState: in.ToAzureHybridBenefitPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The extended location type.
 type ExtendedLocationTypes string
 
@@ -347,12 +340,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NetworkPolicy - Network policy used for building Kubernetes network. Possible values include: 'calico', 'flannel'. Default is 'calico'
@@ -519,12 +506,6 @@ func (in *networkPolicyPtr) ToNetworkPolicyPtrOutput() NetworkPolicyPtrOutput {
 
 func (in *networkPolicyPtr) ToNetworkPolicyPtrOutputWithContext(ctx context.Context) NetworkPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPolicyPtrOutput)
-}
-
-func (in *networkPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicy] {
-	return pulumix.Output[*NetworkPolicy]{
-		OutputState: in.ToNetworkPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
@@ -698,12 +679,6 @@ func (in *osskuPtr) ToOSSKUPtrOutputWithContext(ctx context.Context) OSSKUPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(OSSKUPtrOutput)
 }
 
-func (in *osskuPtr) ToOutput(ctx context.Context) pulumix.Output[*OSSKU] {
-	return pulumix.Output[*OSSKU]{
-		OutputState: in.ToOSSKUPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
 type OsType string
 
@@ -868,12 +843,6 @@ func (in *osTypePtr) ToOsTypePtrOutput() OsTypePtrOutput {
 
 func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
-}
-
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

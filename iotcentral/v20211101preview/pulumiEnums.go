@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the SKU.
@@ -179,12 +178,6 @@ func (in *appSkuPtr) ToAppSkuPtrOutputWithContext(ctx context.Context) AppSkuPtr
 	return pulumi.ToOutputWithContext(ctx, in).(AppSkuPtrOutput)
 }
 
-func (in *appSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*AppSku] {
-	return pulumix.Output[*AppSku]{
-		OutputState: in.ToAppSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default network action to apply.
 type NetworkAction string
 
@@ -349,12 +342,6 @@ func (in *networkActionPtr) ToNetworkActionPtrOutput() NetworkActionPtrOutput {
 
 func (in *networkActionPtr) ToNetworkActionPtrOutputWithContext(ctx context.Context) NetworkActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkActionPtrOutput)
-}
-
-func (in *networkActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkAction] {
-	return pulumix.Output[*NetworkAction]{
-		OutputState: in.ToNetworkActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -525,12 +512,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether requests from the public network are allowed.
 type PublicNetworkAccess string
 
@@ -697,12 +678,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (either system assigned, or none).
 type SystemAssignedServiceIdentityType string
 
@@ -867,12 +842,6 @@ func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityT
 
 func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
-}
-
-func (in *systemAssignedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityType] {
-	return pulumix.Output[*SystemAssignedServiceIdentityType]{
-		OutputState: in.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

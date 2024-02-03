@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity that last modified the resource.
@@ -181,12 +180,6 @@ func (in *createdByTypePtr) ToCreatedByTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(CreatedByTypePtrOutput)
 }
 
-func (in *createdByTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CreatedByType] {
-	return pulumix.Output[*CreatedByType]{
-		OutputState: in.ToCreatedByTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired level of diagnostic data emitted by the cluster.
 type DiagnosticLevel string
 
@@ -355,12 +348,6 @@ func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticLevelPtrOutput)
 }
 
-func (in *diagnosticLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticLevel] {
-	return pulumix.Output[*DiagnosticLevel]{
-		OutputState: in.ToDiagnosticLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Customer Intent for Software Assurance Benefit.
 type SoftwareAssuranceIntent string
 
@@ -525,12 +512,6 @@ func (in *softwareAssuranceIntentPtr) ToSoftwareAssuranceIntentPtrOutput() Softw
 
 func (in *softwareAssuranceIntentPtr) ToSoftwareAssuranceIntentPtrOutputWithContext(ctx context.Context) SoftwareAssuranceIntentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceIntentPtrOutput)
-}
-
-func (in *softwareAssuranceIntentPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceIntent] {
-	return pulumix.Output[*SoftwareAssuranceIntent]{
-		OutputState: in.ToSoftwareAssuranceIntentPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the Software Assurance for the cluster.
@@ -699,12 +680,6 @@ func (in *softwareAssuranceStatusPtr) ToSoftwareAssuranceStatusPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceStatusPtrOutput)
 }
 
-func (in *softwareAssuranceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceStatus] {
-	return pulumix.Output[*SoftwareAssuranceStatus]{
-		OutputState: in.ToSoftwareAssuranceStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired state of Windows Server Subscription.
 type WindowsServerSubscription string
 
@@ -869,12 +844,6 @@ func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutput() W
 
 func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutputWithContext(ctx context.Context) WindowsServerSubscriptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsServerSubscriptionPtrOutput)
-}
-
-func (in *windowsServerSubscriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsServerSubscription] {
-	return pulumix.Output[*WindowsServerSubscription]{
-		OutputState: in.ToWindowsServerSubscriptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

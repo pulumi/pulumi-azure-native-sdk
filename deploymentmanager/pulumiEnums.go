@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the type of ARM deployment to be performed on the resource.
@@ -177,12 +176,6 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
 }
 
-func (in *deploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
-	return pulumix.Output[*DeploymentMode]{
-		OutputState: in.ToDeploymentModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The location of the authentication key/value pair in the request.
 type RestAuthLocation string
 
@@ -347,12 +340,6 @@ func (in *restAuthLocationPtr) ToRestAuthLocationPtrOutput() RestAuthLocationPtr
 
 func (in *restAuthLocationPtr) ToRestAuthLocationPtrOutputWithContext(ctx context.Context) RestAuthLocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestAuthLocationPtrOutput)
-}
-
-func (in *restAuthLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*RestAuthLocation] {
-	return pulumix.Output[*RestAuthLocation]{
-		OutputState: in.ToRestAuthLocationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication type.
@@ -529,12 +516,6 @@ func (in *restMatchQuantifierPtr) ToRestMatchQuantifierPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RestMatchQuantifierPtrOutput)
 }
 
-func (in *restMatchQuantifierPtr) ToOutput(ctx context.Context) pulumix.Output[*RestMatchQuantifier] {
-	return pulumix.Output[*RestMatchQuantifier]{
-		OutputState: in.ToRestMatchQuantifierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The HTTP method to use for the request.
 type RestRequestMethod string
 
@@ -699,12 +680,6 @@ func (in *restRequestMethodPtr) ToRestRequestMethodPtrOutput() RestRequestMethod
 
 func (in *restRequestMethodPtr) ToRestRequestMethodPtrOutputWithContext(ctx context.Context) RestRequestMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestRequestMethodPtrOutput)
-}
-
-func (in *restRequestMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*RestRequestMethod] {
-	return pulumix.Output[*RestRequestMethod]{
-		OutputState: in.ToRestRequestMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of step.

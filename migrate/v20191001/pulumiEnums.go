@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Assessment sizing criterion.
@@ -177,12 +176,6 @@ func (in *assessmentSizingCriterionPtr) ToAssessmentSizingCriterionPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentSizingCriterionPtrOutput)
 }
 
-func (in *assessmentSizingCriterionPtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentSizingCriterion] {
-	return pulumix.Output[*AssessmentSizingCriterion]{
-		OutputState: in.ToAssessmentSizingCriterionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User configurable setting that describes the status of the assessment.
 type AssessmentStage string
 
@@ -349,12 +342,6 @@ func (in *assessmentStagePtr) ToAssessmentStagePtrOutput() AssessmentStagePtrOut
 
 func (in *assessmentStagePtr) ToAssessmentStagePtrOutputWithContext(ctx context.Context) AssessmentStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentStagePtrOutput)
-}
-
-func (in *assessmentStagePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentStage] {
-	return pulumix.Output[*AssessmentStage]{
-		OutputState: in.ToAssessmentStagePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Storage type selected for this disk.
@@ -529,12 +516,6 @@ func (in *azureDiskTypePtr) ToAzureDiskTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureDiskTypePtrOutput)
 }
 
-func (in *azureDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureDiskType] {
-	return pulumix.Output[*AzureDiskType]{
-		OutputState: in.ToAzureDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AHUB discount on windows virtual machines.
 type AzureHybridUseBenefit string
 
@@ -701,12 +682,6 @@ func (in *azureHybridUseBenefitPtr) ToAzureHybridUseBenefitPtrOutput() AzureHybr
 
 func (in *azureHybridUseBenefitPtr) ToAzureHybridUseBenefitPtrOutputWithContext(ctx context.Context) AzureHybridUseBenefitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureHybridUseBenefitPtrOutput)
-}
-
-func (in *azureHybridUseBenefitPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridUseBenefit] {
-	return pulumix.Output[*AzureHybridUseBenefit]{
-		OutputState: in.ToAzureHybridUseBenefitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Target Azure location for which the machines should be assessed. These enums are the same as used by Compute API.
@@ -943,12 +918,6 @@ func (in *azureLocationPtr) ToAzureLocationPtrOutput() AzureLocationPtrOutput {
 
 func (in *azureLocationPtr) ToAzureLocationPtrOutputWithContext(ctx context.Context) AzureLocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureLocationPtrOutput)
-}
-
-func (in *azureLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureLocation] {
-	return pulumix.Output[*AzureLocation]{
-		OutputState: in.ToAzureLocationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Offer code according to which cost estimation is done.
@@ -1193,12 +1162,6 @@ func (in *azureOfferCodePtr) ToAzureOfferCodePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AzureOfferCodePtrOutput)
 }
 
-func (in *azureOfferCodePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureOfferCode] {
-	return pulumix.Output[*AzureOfferCode]{
-		OutputState: in.ToAzureOfferCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pricing tier for Size evaluation.
 type AzurePricingTier string
 
@@ -1363,12 +1326,6 @@ func (in *azurePricingTierPtr) ToAzurePricingTierPtrOutput() AzurePricingTierPtr
 
 func (in *azurePricingTierPtr) ToAzurePricingTierPtrOutputWithContext(ctx context.Context) AzurePricingTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzurePricingTierPtrOutput)
-}
-
-func (in *azurePricingTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzurePricingTier] {
-	return pulumix.Output[*AzurePricingTier]{
-		OutputState: in.ToAzurePricingTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Storage Redundancy type offered by Azure.
@@ -1541,12 +1498,6 @@ func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutput() AzureSt
 
 func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutputWithContext(ctx context.Context) AzureStorageRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureStorageRedundancyPtrOutput)
-}
-
-func (in *azureStorageRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureStorageRedundancy] {
-	return pulumix.Output[*AzureStorageRedundancy]{
-		OutputState: in.ToAzureStorageRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Azure VM family.
@@ -1753,12 +1704,6 @@ func (in *azureVmFamilyPtr) ToAzureVmFamilyPtrOutput() AzureVmFamilyPtrOutput {
 
 func (in *azureVmFamilyPtr) ToAzureVmFamilyPtrOutputWithContext(ctx context.Context) AzureVmFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureVmFamilyPtrOutput)
-}
-
-func (in *azureVmFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureVmFamily] {
-	return pulumix.Output[*AzureVmFamily]{
-		OutputState: in.ToAzureVmFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Currency to report prices in.
@@ -1975,12 +1920,6 @@ func (in *currencyPtr) ToCurrencyPtrOutputWithContext(ctx context.Context) Curre
 	return pulumi.ToOutputWithContext(ctx, in).(CurrencyPtrOutput)
 }
 
-func (in *currencyPtr) ToOutput(ctx context.Context) pulumix.Output[*Currency] {
-	return pulumix.Output[*Currency]{
-		OutputState: in.ToCurrencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Percentile of performance data used to recommend Azure size.
 type Percentile string
 
@@ -2151,12 +2090,6 @@ func (in *percentilePtr) ToPercentilePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PercentilePtrOutput)
 }
 
-func (in *percentilePtr) ToOutput(ctx context.Context) pulumix.Output[*Percentile] {
-	return pulumix.Output[*Percentile]{
-		OutputState: in.ToPercentilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assessment project status.
 type ProjectStatus string
 
@@ -2321,12 +2254,6 @@ func (in *projectStatusPtr) ToProjectStatusPtrOutput() ProjectStatusPtrOutput {
 
 func (in *projectStatusPtr) ToProjectStatusPtrOutputWithContext(ctx context.Context) ProjectStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectStatusPtrOutput)
-}
-
-func (in *projectStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectStatus] {
-	return pulumix.Output[*ProjectStatus]{
-		OutputState: in.ToProjectStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Azure reserved instance.
@@ -2497,12 +2424,6 @@ func (in *reservedInstancePtr) ToReservedInstancePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ReservedInstancePtrOutput)
 }
 
-func (in *reservedInstancePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservedInstance] {
-	return pulumix.Output[*ReservedInstance]{
-		OutputState: in.ToReservedInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Time range of performance data used to recommend a size.
 type TimeRange string
 
@@ -2671,12 +2592,6 @@ func (in *timeRangePtr) ToTimeRangePtrOutput() TimeRangePtrOutput {
 
 func (in *timeRangePtr) ToTimeRangePtrOutputWithContext(ctx context.Context) TimeRangePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeRangePtrOutput)
-}
-
-func (in *timeRangePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeRange] {
-	return pulumix.Output[*TimeRange]{
-		OutputState: in.ToTimeRangePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

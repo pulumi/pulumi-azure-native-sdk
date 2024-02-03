@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes what response the data plane API of a Search service would send for requests that failed authentication.
@@ -179,12 +178,6 @@ func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AadAuthFailureModePtrOutput)
 }
 
-func (in *aadAuthFailureModePtr) ToOutput(ctx context.Context) pulumix.Output[*AadAuthFailureMode] {
-	return pulumix.Output[*AadAuthFailureMode]{
-		OutputState: in.ToAadAuthFailureModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 type HostingMode string
 
@@ -351,12 +344,6 @@ func (in *hostingModePtr) ToHostingModePtrOutput() HostingModePtrOutput {
 
 func (in *hostingModePtr) ToHostingModePtrOutputWithContext(ctx context.Context) HostingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostingModePtrOutput)
-}
-
-func (in *hostingModePtr) ToOutput(ctx context.Context) pulumix.Output[*HostingMode] {
-	return pulumix.Output[*HostingMode]{
-		OutputState: in.ToHostingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.
@@ -533,12 +520,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 type PublicNetworkAccess string
 
@@ -705,12 +686,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Possible origins of inbound traffic that can bypass the rules defined in the 'ipRules' section.
@@ -881,12 +856,6 @@ func (in *searchBypassPtr) ToSearchBypassPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(SearchBypassPtrOutput)
 }
 
-func (in *searchBypassPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchBypass] {
-	return pulumix.Output[*SearchBypass]{
-		OutputState: in.ToSearchBypassPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A specific data exfiltration scenario that is disabled for the service.
 type SearchDisabledDataExfiltrationOption string
 
@@ -1050,12 +1019,6 @@ func (in *searchDisabledDataExfiltrationOptionPtr) ToSearchDisabledDataExfiltrat
 
 func (in *searchDisabledDataExfiltrationOptionPtr) ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx context.Context) SearchDisabledDataExfiltrationOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SearchDisabledDataExfiltrationOptionPtrOutput)
-}
-
-func (in *searchDisabledDataExfiltrationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchDisabledDataExfiltrationOption] {
-	return pulumix.Output[*SearchDisabledDataExfiltrationOption]{
-		OutputState: in.ToSearchDisabledDataExfiltrationOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes how a search service should enforce having one or more non customer encrypted resources.
@@ -1229,12 +1192,6 @@ func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SearchEncryptionWithCmkPtrOutput)
 }
 
-func (in *searchEncryptionWithCmkPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchEncryptionWithCmk] {
-	return pulumix.Output[*SearchEncryptionWithCmk]{
-		OutputState: in.ToSearchEncryptionWithCmkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets options that control the availability of semantic search. This configuration is only possible for certain Azure Cognitive Search SKUs in certain locations.
 type SearchSemanticSearch string
 
@@ -1404,12 +1361,6 @@ func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutput() SearchSeman
 
 func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SearchSemanticSearchPtrOutput)
-}
-
-func (in *searchSemanticSearchPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchSemanticSearch] {
-	return pulumix.Output[*SearchSemanticSearch]{
-		OutputState: in.ToSearchSemanticSearchPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
@@ -1593,12 +1544,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

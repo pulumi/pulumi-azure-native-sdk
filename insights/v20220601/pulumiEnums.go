@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the column data.
@@ -187,12 +186,6 @@ func (in *knownColumnDefinitionTypePtr) ToKnownColumnDefinitionTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(KnownColumnDefinitionTypePtrOutput)
 }
 
-func (in *knownColumnDefinitionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KnownColumnDefinitionType] {
-	return pulumix.Output[*KnownColumnDefinitionType]{
-		OutputState: in.ToKnownColumnDefinitionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the resource.
 type KnownDataCollectionEndpointResourceKind string
 
@@ -359,12 +352,6 @@ func (in *knownDataCollectionEndpointResourceKindPtr) ToKnownDataCollectionEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(KnownDataCollectionEndpointResourceKindPtrOutput)
 }
 
-func (in *knownDataCollectionEndpointResourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownDataCollectionEndpointResourceKind] {
-	return pulumix.Output[*KnownDataCollectionEndpointResourceKind]{
-		OutputState: in.ToKnownDataCollectionEndpointResourceKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the resource.
 type KnownDataCollectionRuleResourceKind string
 
@@ -529,12 +516,6 @@ func (in *knownDataCollectionRuleResourceKindPtr) ToKnownDataCollectionRuleResou
 
 func (in *knownDataCollectionRuleResourceKindPtr) ToKnownDataCollectionRuleResourceKindPtrOutputWithContext(ctx context.Context) KnownDataCollectionRuleResourceKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownDataCollectionRuleResourceKindPtrOutput)
-}
-
-func (in *knownDataCollectionRuleResourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownDataCollectionRuleResourceKind] {
-	return pulumix.Output[*KnownDataCollectionRuleResourceKind]{
-		OutputState: in.ToKnownDataCollectionRuleResourceKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownDataFlowStreams string
@@ -708,12 +689,6 @@ func (in *knownDataFlowStreamsPtr) ToKnownDataFlowStreamsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(KnownDataFlowStreamsPtrOutput)
 }
 
-func (in *knownDataFlowStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownDataFlowStreams] {
-	return pulumix.Output[*KnownDataFlowStreams]{
-		OutputState: in.ToKnownDataFlowStreamsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownExtensionDataSourceStreams string
 
 const (
@@ -883,12 +858,6 @@ func (in *knownExtensionDataSourceStreamsPtr) ToKnownExtensionDataSourceStreamsP
 
 func (in *knownExtensionDataSourceStreamsPtr) ToKnownExtensionDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownExtensionDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownExtensionDataSourceStreamsPtrOutput)
-}
-
-func (in *knownExtensionDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownExtensionDataSourceStreams] {
-	return pulumix.Output[*KnownExtensionDataSourceStreams]{
-		OutputState: in.ToKnownExtensionDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // One of the supported timestamp formats
@@ -1071,12 +1040,6 @@ func (in *knownLogFileTextSettingsRecordStartTimestampFormatPtr) ToKnownLogFileT
 	return pulumi.ToOutputWithContext(ctx, in).(KnownLogFileTextSettingsRecordStartTimestampFormatPtrOutput)
 }
 
-func (in *knownLogFileTextSettingsRecordStartTimestampFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownLogFileTextSettingsRecordStartTimestampFormat] {
-	return pulumix.Output[*KnownLogFileTextSettingsRecordStartTimestampFormat]{
-		OutputState: in.ToKnownLogFileTextSettingsRecordStartTimestampFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data format of the log files
 type KnownLogFilesDataSourceFormat string
 
@@ -1239,12 +1202,6 @@ func (in *knownLogFilesDataSourceFormatPtr) ToKnownLogFilesDataSourceFormatPtrOu
 
 func (in *knownLogFilesDataSourceFormatPtr) ToKnownLogFilesDataSourceFormatPtrOutputWithContext(ctx context.Context) KnownLogFilesDataSourceFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownLogFilesDataSourceFormatPtrOutput)
-}
-
-func (in *knownLogFilesDataSourceFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownLogFilesDataSourceFormat] {
-	return pulumix.Output[*KnownLogFilesDataSourceFormat]{
-		OutputState: in.ToKnownLogFilesDataSourceFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownPerfCounterDataSourceStreams string
@@ -1412,12 +1369,6 @@ func (in *knownPerfCounterDataSourceStreamsPtr) ToKnownPerfCounterDataSourceStre
 	return pulumi.ToOutputWithContext(ctx, in).(KnownPerfCounterDataSourceStreamsPtrOutput)
 }
 
-func (in *knownPerfCounterDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownPerfCounterDataSourceStreams] {
-	return pulumix.Output[*KnownPerfCounterDataSourceStreams]{
-		OutputState: in.ToKnownPerfCounterDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownPrometheusForwarderDataSourceStreams string
 
 const (
@@ -1579,12 +1530,6 @@ func (in *knownPrometheusForwarderDataSourceStreamsPtr) ToKnownPrometheusForward
 
 func (in *knownPrometheusForwarderDataSourceStreamsPtr) ToKnownPrometheusForwarderDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownPrometheusForwarderDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownPrometheusForwarderDataSourceStreamsPtrOutput)
-}
-
-func (in *knownPrometheusForwarderDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownPrometheusForwarderDataSourceStreams] {
-	return pulumix.Output[*KnownPrometheusForwarderDataSourceStreams]{
-		OutputState: in.ToKnownPrometheusForwarderDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The configuration to set whether network access from public internet to the endpoints are allowed.
@@ -1753,12 +1698,6 @@ func (in *knownPublicNetworkAccessOptionsPtr) ToKnownPublicNetworkAccessOptionsP
 
 func (in *knownPublicNetworkAccessOptionsPtr) ToKnownPublicNetworkAccessOptionsPtrOutputWithContext(ctx context.Context) KnownPublicNetworkAccessOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownPublicNetworkAccessOptionsPtrOutput)
-}
-
-func (in *knownPublicNetworkAccessOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownPublicNetworkAccessOptions] {
-	return pulumix.Output[*KnownPublicNetworkAccessOptions]{
-		OutputState: in.ToKnownPublicNetworkAccessOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownSyslogDataSourceFacilityNames string
@@ -1976,12 +1915,6 @@ func (in *knownSyslogDataSourceFacilityNamesPtr) ToKnownSyslogDataSourceFacility
 	return pulumi.ToOutputWithContext(ctx, in).(KnownSyslogDataSourceFacilityNamesPtrOutput)
 }
 
-func (in *knownSyslogDataSourceFacilityNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownSyslogDataSourceFacilityNames] {
-	return pulumix.Output[*KnownSyslogDataSourceFacilityNames]{
-		OutputState: in.ToKnownSyslogDataSourceFacilityNamesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownSyslogDataSourceLogLevels string
 
 const (
@@ -2161,12 +2094,6 @@ func (in *knownSyslogDataSourceLogLevelsPtr) ToKnownSyslogDataSourceLogLevelsPtr
 	return pulumi.ToOutputWithContext(ctx, in).(KnownSyslogDataSourceLogLevelsPtrOutput)
 }
 
-func (in *knownSyslogDataSourceLogLevelsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownSyslogDataSourceLogLevels] {
-	return pulumix.Output[*KnownSyslogDataSourceLogLevels]{
-		OutputState: in.ToKnownSyslogDataSourceLogLevelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownSyslogDataSourceStreams string
 
 const (
@@ -2328,12 +2255,6 @@ func (in *knownSyslogDataSourceStreamsPtr) ToKnownSyslogDataSourceStreamsPtrOutp
 
 func (in *knownSyslogDataSourceStreamsPtr) ToKnownSyslogDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownSyslogDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownSyslogDataSourceStreamsPtrOutput)
-}
-
-func (in *knownSyslogDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownSyslogDataSourceStreams] {
-	return pulumix.Output[*KnownSyslogDataSourceStreams]{
-		OutputState: in.ToKnownSyslogDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownWindowsEventLogDataSourceStreams string
@@ -2499,12 +2420,6 @@ func (in *knownWindowsEventLogDataSourceStreamsPtr) ToKnownWindowsEventLogDataSo
 
 func (in *knownWindowsEventLogDataSourceStreamsPtr) ToKnownWindowsEventLogDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownWindowsEventLogDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownWindowsEventLogDataSourceStreamsPtrOutput)
-}
-
-func (in *knownWindowsEventLogDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownWindowsEventLogDataSourceStreams] {
-	return pulumix.Output[*KnownWindowsEventLogDataSourceStreams]{
-		OutputState: in.ToKnownWindowsEventLogDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -2675,12 +2590,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

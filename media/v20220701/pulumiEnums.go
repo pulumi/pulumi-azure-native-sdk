@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The encoding profile to be used when encoding audio with AAC.
@@ -182,12 +181,6 @@ func (in *aacAudioProfilePtr) ToAacAudioProfilePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AacAudioProfilePtrOutput)
 }
 
-func (in *aacAudioProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*AacAudioProfile] {
-	return pulumix.Output[*AacAudioProfile]{
-		OutputState: in.ToAacAudioProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the maximum resolution at which your video is analyzed. The default behavior is "SourceResolution," which will keep the input video at its original resolution when analyzed. Using "StandardDefinition" will resize input videos to standard definition while preserving the appropriate aspect ratio. It will only resize if the video is of higher resolution. For example, a 1920x1080 input would be scaled to 640x360 before processing. Switching to "StandardDefinition" will reduce the time it takes to process high resolution video. It may also reduce the cost of using this component (see https://azure.microsoft.com/en-us/pricing/details/media-services/#analytics for details). However, faces that end up being too small in the resized video may not be detected.
 type AnalysisResolution string
 
@@ -352,12 +345,6 @@ func (in *analysisResolutionPtr) ToAnalysisResolutionPtrOutput() AnalysisResolut
 
 func (in *analysisResolutionPtr) ToAnalysisResolutionPtrOutputWithContext(ctx context.Context) AnalysisResolutionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AnalysisResolutionPtrOutput)
-}
-
-func (in *analysisResolutionPtr) ToOutput(ctx context.Context) pulumix.Output[*AnalysisResolution] {
-	return pulumix.Output[*AnalysisResolution]{
-		OutputState: in.ToAnalysisResolutionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of AttributeFilter to apply to the TrackAttribute in order to select the tracks.
@@ -534,12 +521,6 @@ func (in *attributeFilterPtr) ToAttributeFilterPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AttributeFilterPtrOutput)
 }
 
-func (in *attributeFilterPtr) ToOutput(ctx context.Context) pulumix.Output[*AttributeFilter] {
-	return pulumix.Output[*AttributeFilter]{
-		OutputState: in.ToAttributeFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the set of audio analysis operations to be performed. If unspecified, the Standard AudioAnalysisMode would be chosen.
 type AudioAnalysisMode string
 
@@ -706,12 +687,6 @@ func (in *audioAnalysisModePtr) ToAudioAnalysisModePtrOutput() AudioAnalysisMode
 
 func (in *audioAnalysisModePtr) ToAudioAnalysisModePtrOutputWithContext(ctx context.Context) AudioAnalysisModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AudioAnalysisModePtrOutput)
-}
-
-func (in *audioAnalysisModePtr) ToOutput(ctx context.Context) pulumix.Output[*AudioAnalysisMode] {
-	return pulumix.Output[*AudioAnalysisMode]{
-		OutputState: in.ToAudioAnalysisModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Blur type
@@ -889,12 +864,6 @@ func (in *blurTypePtr) ToBlurTypePtrOutput() BlurTypePtrOutput {
 
 func (in *blurTypePtr) ToBlurTypePtrOutputWithContext(ctx context.Context) BlurTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BlurTypePtrOutput)
-}
-
-func (in *blurTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BlurType] {
-	return pulumix.Output[*BlurType]{
-		OutputState: in.ToBlurTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional designation for single channel audio tracks.  Can be used to combine the tracks into stereo or multi-channel audio tracks.
@@ -1083,12 +1052,6 @@ func (in *channelMappingPtr) ToChannelMappingPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ChannelMappingPtrOutput)
 }
 
-func (in *channelMappingPtr) ToOutput(ctx context.Context) pulumix.Output[*ChannelMapping] {
-	return pulumix.Output[*ChannelMapping]{
-		OutputState: in.ToChannelMappingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allows you to configure the encoder settings to control the balance between speed and quality. Example: set Complexity as Speed for faster encoding but less compression efficiency.
 type Complexity string
 
@@ -1260,12 +1223,6 @@ func (in *complexityPtr) ToComplexityPtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(ComplexityPtrOutput)
 }
 
-func (in *complexityPtr) ToOutput(ctx context.Context) pulumix.Output[*Complexity] {
-	return pulumix.Output[*Complexity]{
-		OutputState: in.ToComplexityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The deinterlacing mode. Defaults to AutoPixelAdaptive.
 type DeinterlaceMode string
 
@@ -1432,12 +1389,6 @@ func (in *deinterlaceModePtr) ToDeinterlaceModePtrOutput() DeinterlaceModePtrOut
 
 func (in *deinterlaceModePtr) ToDeinterlaceModePtrOutputWithContext(ctx context.Context) DeinterlaceModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeinterlaceModePtrOutput)
-}
-
-func (in *deinterlaceModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeinterlaceMode] {
-	return pulumix.Output[*DeinterlaceMode]{
-		OutputState: in.ToDeinterlaceModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The field parity for de-interlacing, defaults to Auto.
@@ -1609,12 +1560,6 @@ func (in *deinterlaceParityPtr) ToDeinterlaceParityPtrOutput() DeinterlaceParity
 
 func (in *deinterlaceParityPtr) ToDeinterlaceParityPtrOutputWithContext(ctx context.Context) DeinterlaceParityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeinterlaceParityPtrOutput)
-}
-
-func (in *deinterlaceParityPtr) ToOutput(ctx context.Context) pulumix.Output[*DeinterlaceParity] {
-	return pulumix.Output[*DeinterlaceParity]{
-		OutputState: in.ToDeinterlaceParityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The built-in preset to be used for encoding videos.
@@ -1830,12 +1775,6 @@ func (in *encoderNamedPresetPtr) ToEncoderNamedPresetPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EncoderNamedPresetPtrOutput)
 }
 
-func (in *encoderNamedPresetPtr) ToOutput(ctx context.Context) pulumix.Output[*EncoderNamedPreset] {
-	return pulumix.Output[*EncoderNamedPreset]{
-		OutputState: in.ToEncoderNamedPresetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The entropy mode to be used for this layer. If not specified, the encoder chooses the mode that is appropriate for the profile and level.
 type EntropyMode string
 
@@ -2002,12 +1941,6 @@ func (in *entropyModePtr) ToEntropyModePtrOutput() EntropyModePtrOutput {
 
 func (in *entropyModePtr) ToEntropyModePtrOutputWithContext(ctx context.Context) EntropyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntropyModePtrOutput)
-}
-
-func (in *entropyModePtr) ToOutput(ctx context.Context) pulumix.Output[*EntropyMode] {
-	return pulumix.Output[*EntropyMode]{
-		OutputState: in.ToEntropyModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This mode provides the ability to choose between the following settings: 1) Analyze - For detection only.This mode generates a metadata JSON file marking appearances of faces throughout the video.Where possible, appearances of the same person are assigned the same ID. 2) Combined - Additionally redacts(blurs) detected faces. 3) Redact - This enables a 2-pass process, allowing for selective redaction of a subset of detected faces.It takes in the metadata file from a prior analyze pass, along with the source video, and a user-selected subset of IDs that require redaction.
@@ -2181,12 +2114,6 @@ func (in *faceRedactorModePtr) ToFaceRedactorModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(FaceRedactorModePtrOutput)
 }
 
-func (in *faceRedactorModePtr) ToOutput(ctx context.Context) pulumix.Output[*FaceRedactorMode] {
-	return pulumix.Output[*FaceRedactorMode]{
-		OutputState: in.ToFaceRedactorModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tells the encoder how to choose its encoding settings. The default value is Balanced.
 type H264Complexity string
 
@@ -2358,12 +2285,6 @@ func (in *h264complexityPtr) ToH264ComplexityPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(H264ComplexityPtrOutput)
 }
 
-func (in *h264complexityPtr) ToOutput(ctx context.Context) pulumix.Output[*H264Complexity] {
-	return pulumix.Output[*H264Complexity]{
-		OutputState: in.ToH264ComplexityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The video rate control mode
 type H264RateControlMode string
 
@@ -2533,12 +2454,6 @@ func (in *h264rateControlModePtr) ToH264RateControlModePtrOutput() H264RateContr
 
 func (in *h264rateControlModePtr) ToH264RateControlModePtrOutputWithContext(ctx context.Context) H264RateControlModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(H264RateControlModePtrOutput)
-}
-
-func (in *h264rateControlModePtr) ToOutput(ctx context.Context) pulumix.Output[*H264RateControlMode] {
-	return pulumix.Output[*H264RateControlMode]{
-		OutputState: in.ToH264RateControlModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // We currently support Baseline, Main, High, High422, High444. Default is Auto.
@@ -2721,12 +2636,6 @@ func (in *h264videoProfilePtr) ToH264VideoProfilePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(H264VideoProfilePtrOutput)
 }
 
-func (in *h264videoProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*H264VideoProfile] {
-	return pulumix.Output[*H264VideoProfile]{
-		OutputState: in.ToH264VideoProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tells the encoder how to choose its encoding settings.  Quality will provide for a higher compression ratio but at a higher cost and longer compute time.  Speed will produce a relatively larger file but is faster and more economical. The default value is Balanced.
 type H265Complexity string
 
@@ -2896,12 +2805,6 @@ func (in *h265complexityPtr) ToH265ComplexityPtrOutput() H265ComplexityPtrOutput
 
 func (in *h265complexityPtr) ToH265ComplexityPtrOutputWithContext(ctx context.Context) H265ComplexityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(H265ComplexityPtrOutput)
-}
-
-func (in *h265complexityPtr) ToOutput(ctx context.Context) pulumix.Output[*H265Complexity] {
-	return pulumix.Output[*H265Complexity]{
-		OutputState: in.ToH265ComplexityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // We currently support Main. Default is Auto.
@@ -3075,12 +2978,6 @@ func (in *h265videoProfilePtr) ToH265VideoProfilePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(H265VideoProfilePtrOutput)
 }
 
-func (in *h265videoProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*H265VideoProfile] {
-	return pulumix.Output[*H265VideoProfile]{
-		OutputState: in.ToH265VideoProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the type of insights that you want the service to generate. The allowed values are 'AudioInsightsOnly', 'VideoInsightsOnly', and 'AllInsights'. The default is AllInsights. If you set this to AllInsights and the input is audio only, then only audio insights are generated. Similarly if the input is video only, then only video insights are generated. It is recommended that you not use AudioInsightsOnly if you expect some of your inputs to be video only; or use VideoInsightsOnly if you expect some of your inputs to be audio only. Your Jobs in such conditions would error out.
 type InsightsType string
 
@@ -3252,12 +3149,6 @@ func (in *insightsTypePtr) ToInsightsTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InsightsTypePtrOutput)
 }
 
-func (in *insightsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InsightsType] {
-	return pulumix.Output[*InsightsType]{
-		OutputState: in.ToInsightsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the interleave mode of the output to control how audio and video are stored in the container format. Example: set InterleavedOutput as NonInterleavedOutput to produce audio-only and video-only outputs in separate MP4 files.
 type InterleaveOutput string
 
@@ -3426,12 +3317,6 @@ func (in *interleaveOutputPtr) ToInterleaveOutputPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(InterleaveOutputPtrOutput)
 }
 
-func (in *interleaveOutputPtr) ToOutput(ctx context.Context) pulumix.Output[*InterleaveOutput] {
-	return pulumix.Output[*InterleaveOutput]{
-		OutputState: in.ToInterleaveOutputPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Transform can define more than one outputs. This property defines what the service should do when one output fails - either continue to produce other outputs, or, stop the other outputs. The overall Job state will not reflect failures of outputs that are specified with 'ContinueJob'. The default is 'StopProcessingJob'.
 type OnErrorType string
 
@@ -3598,12 +3483,6 @@ func (in *onErrorTypePtr) ToOnErrorTypePtrOutput() OnErrorTypePtrOutput {
 
 func (in *onErrorTypePtr) ToOnErrorTypePtrOutputWithContext(ctx context.Context) OnErrorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OnErrorTypePtrOutput)
-}
-
-func (in *onErrorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OnErrorType] {
-	return pulumix.Output[*OnErrorType]{
-		OutputState: in.ToOnErrorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets the relative priority of the TransformOutputs within a Transform. This sets the priority that the service uses for processing TransformOutputs. The default priority is Normal.
@@ -3775,12 +3654,6 @@ func (in *priorityPtr) ToPriorityPtrOutput() PriorityPtrOutput {
 
 func (in *priorityPtr) ToPriorityPtrOutputWithContext(ctx context.Context) PriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PriorityPtrOutput)
-}
-
-func (in *priorityPtr) ToOutput(ctx context.Context) pulumix.Output[*Priority] {
-	return pulumix.Output[*Priority]{
-		OutputState: in.ToPriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The rotation, if any, to be applied to the input video, before it is encoded. Default is Auto
@@ -3963,12 +3836,6 @@ func (in *rotationPtr) ToRotationPtrOutputWithContext(ctx context.Context) Rotat
 	return pulumi.ToOutputWithContext(ctx, in).(RotationPtrOutput)
 }
 
-func (in *rotationPtr) ToOutput(ctx context.Context) pulumix.Output[*Rotation] {
-	return pulumix.Output[*Rotation]{
-		OutputState: in.ToRotationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The resizing mode - how the input video will be resized to fit the desired output resolution(s). Default is AutoSize
 type StretchMode string
 
@@ -4140,12 +4007,6 @@ func (in *stretchModePtr) ToStretchModePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(StretchModePtrOutput)
 }
 
-func (in *stretchModePtr) ToOutput(ctx context.Context) pulumix.Output[*StretchMode] {
-	return pulumix.Output[*StretchMode]{
-		OutputState: in.ToStretchModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The TrackAttribute to filter the tracks by.
 type TrackAttribute string
 
@@ -4312,12 +4173,6 @@ func (in *trackAttributePtr) ToTrackAttributePtrOutput() TrackAttributePtrOutput
 
 func (in *trackAttributePtr) ToTrackAttributePtrOutputWithContext(ctx context.Context) TrackAttributePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrackAttributePtrOutput)
-}
-
-func (in *trackAttributePtr) ToOutput(ctx context.Context) pulumix.Output[*TrackAttribute] {
-	return pulumix.Output[*TrackAttribute]{
-		OutputState: in.ToTrackAttributePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Video Sync Mode
@@ -4492,12 +4347,6 @@ func (in *videoSyncModePtr) ToVideoSyncModePtrOutput() VideoSyncModePtrOutput {
 
 func (in *videoSyncModePtr) ToVideoSyncModePtrOutputWithContext(ctx context.Context) VideoSyncModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VideoSyncModePtrOutput)
-}
-
-func (in *videoSyncModePtr) ToOutput(ctx context.Context) pulumix.Output[*VideoSyncMode] {
-	return pulumix.Output[*VideoSyncMode]{
-		OutputState: in.ToVideoSyncModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Programmatic code for the status of the assessment
@@ -180,12 +179,6 @@ func (in *assessmentStatusCodePtr) ToAssessmentStatusCodePtrOutput() AssessmentS
 
 func (in *assessmentStatusCodePtr) ToAssessmentStatusCodePtrOutputWithContext(ctx context.Context) AssessmentStatusCodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentStatusCodePtrOutput)
-}
-
-func (in *assessmentStatusCodePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentStatusCode] {
-	return pulumix.Output[*AssessmentStatusCode]{
-		OutputState: in.ToAssessmentStatusCodePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
@@ -362,12 +355,6 @@ func (in *assessmentTypePtr) ToAssessmentTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentTypePtrOutput)
 }
 
-func (in *assessmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentType] {
-	return pulumix.Output[*AssessmentType]{
-		OutputState: in.ToAssessmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The categories of resource that is at risk when the assessment is unhealthy
 type Categories string
 
@@ -540,12 +527,6 @@ func (in *categoriesPtr) ToCategoriesPtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CategoriesPtrOutput)
 }
 
-func (in *categoriesPtr) ToOutput(ctx context.Context) pulumix.Output[*Categories] {
-	return pulumix.Output[*Categories]{
-		OutputState: in.ToCategoriesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The implementation effort required to remediate this assessment
 type ImplementationEffort string
 
@@ -712,12 +693,6 @@ func (in *implementationEffortPtr) ToImplementationEffortPtrOutput() Implementat
 
 func (in *implementationEffortPtr) ToImplementationEffortPtrOutputWithContext(ctx context.Context) ImplementationEffortPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImplementationEffortPtrOutput)
-}
-
-func (in *implementationEffortPtr) ToOutput(ctx context.Context) pulumix.Output[*ImplementationEffort] {
-	return pulumix.Output[*ImplementationEffort]{
-		OutputState: in.ToImplementationEffortPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type Protocol string
@@ -887,12 +862,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The severity level of the assessment
 type Severity string
 
@@ -1059,12 +1028,6 @@ func (in *severityPtr) ToSeverityPtrOutput() SeverityPtrOutput {
 
 func (in *severityPtr) ToSeverityPtrOutputWithContext(ctx context.Context) SeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityPtrOutput)
-}
-
-func (in *severityPtr) ToOutput(ctx context.Context) pulumix.Output[*Severity] {
-	return pulumix.Output[*Severity]{
-		OutputState: in.ToSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The platform where the assessed resource resides
@@ -1245,12 +1208,6 @@ func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtr
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
 }
 
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A description of why the `status` has its value
 type StatusReason string
 
@@ -1417,12 +1374,6 @@ func (in *statusReasonPtr) ToStatusReasonPtrOutput() StatusReasonPtrOutput {
 
 func (in *statusReasonPtr) ToStatusReasonPtrOutputWithContext(ctx context.Context) StatusReasonPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusReasonPtrOutput)
-}
-
-func (in *statusReasonPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusReason] {
-	return pulumix.Output[*StatusReason]{
-		OutputState: in.ToStatusReasonPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Threats impact of the assessment
@@ -1603,12 +1554,6 @@ func (in *threatsPtr) ToThreatsPtrOutputWithContext(ctx context.Context) Threats
 	return pulumi.ToOutputWithContext(ctx, in).(ThreatsPtrOutput)
 }
 
-func (in *threatsPtr) ToOutput(ctx context.Context) pulumix.Output[*Threats] {
-	return pulumix.Output[*Threats]{
-		OutputState: in.ToThreatsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The user impact of the assessment
 type UserImpact string
 
@@ -1775,12 +1720,6 @@ func (in *userImpactPtr) ToUserImpactPtrOutput() UserImpactPtrOutput {
 
 func (in *userImpactPtr) ToUserImpactPtrOutputWithContext(ctx context.Context) UserImpactPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserImpactPtrOutput)
-}
-
-func (in *userImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*UserImpact] {
-	return pulumix.Output[*UserImpact]{
-		OutputState: in.ToUserImpactPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

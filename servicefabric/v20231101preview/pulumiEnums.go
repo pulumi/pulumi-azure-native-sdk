@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network traffic is allowed or denied.
@@ -175,12 +174,6 @@ func (in *accessPtr) ToAccessPtrOutput() AccessPtrOutput {
 
 func (in *accessPtr) ToAccessPtrOutputWithContext(ctx context.Context) AccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPtrOutput)
-}
-
-func (in *accessPtr) ToOutput(ctx context.Context) pulumix.Output[*Access] {
-	return pulumix.Output[*Access]{
-		OutputState: in.ToAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'.
@@ -354,12 +347,6 @@ func (in *clusterUpgradeCadencePtr) ToClusterUpgradeCadencePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpgradeCadencePtrOutput)
 }
 
-func (in *clusterUpgradeCadencePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeCadence] {
-	return pulumix.Output[*ClusterUpgradeCadence]{
-		OutputState: in.ToClusterUpgradeCadencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The upgrade mode of the cluster when new Service Fabric runtime version is available.
 type ClusterUpgradeMode string
 
@@ -528,12 +515,6 @@ func (in *clusterUpgradeModePtr) ToClusterUpgradeModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpgradeModePtrOutput)
 }
 
-func (in *clusterUpgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeMode] {
-	return pulumix.Output[*ClusterUpgradeMode]{
-		OutputState: in.ToClusterUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network security rule direction.
 type Direction string
 
@@ -698,12 +679,6 @@ func (in *directionPtr) ToDirectionPtrOutput() DirectionPtrOutput {
 
 func (in *directionPtr) ToDirectionPtrOutputWithContext(ctx context.Context) DirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DirectionPtrOutput)
-}
-
-func (in *directionPtr) ToOutput(ctx context.Context) pulumix.Output[*Direction] {
-	return pulumix.Output[*Direction]{
-		OutputState: in.ToDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Managed data disk type. Specifies the storage account type for the managed disk
@@ -877,12 +852,6 @@ func (in *diskTypePtr) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskT
 	return pulumi.ToOutputWithContext(ctx, in).(DiskTypePtrOutput)
 }
 
-func (in *diskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskType] {
-	return pulumix.Output[*DiskType]{
-		OutputState: in.ToDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
 type EvictionPolicyType string
 
@@ -1049,12 +1018,6 @@ func (in *evictionPolicyTypePtr) ToEvictionPolicyTypePtrOutput() EvictionPolicyT
 
 func (in *evictionPolicyTypePtr) ToEvictionPolicyTypePtrOutputWithContext(ctx context.Context) EvictionPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EvictionPolicyTypePtrOutput)
-}
-
-func (in *evictionPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EvictionPolicyType] {
-	return pulumix.Output[*EvictionPolicyType]{
-		OutputState: in.ToEvictionPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode.
@@ -1225,12 +1188,6 @@ func (in *failureActionPtr) ToFailureActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(FailureActionPtrOutput)
 }
 
-func (in *failureActionPtr) ToOutput(ctx context.Context) pulumix.Output[*FailureAction] {
-	return pulumix.Output[*FailureAction]{
-		OutputState: in.ToFailureActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP address type of this frontend configuration. If omitted the default value is IPv4.
 type IPAddressType string
 
@@ -1397,12 +1354,6 @@ func (in *ipaddressTypePtr) ToIPAddressTypePtrOutput() IPAddressTypePtrOutput {
 
 func (in *ipaddressTypePtr) ToIPAddressTypePtrOutputWithContext(ctx context.Context) IPAddressTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPAddressTypePtrOutput)
-}
-
-func (in *ipaddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IPAddressType] {
-	return pulumix.Output[*IPAddressType]{
-		OutputState: in.ToIPAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Available cluster add-on features
@@ -1574,12 +1525,6 @@ func (in *managedClusterAddOnFeaturePtr) ToManagedClusterAddOnFeaturePtrOutput()
 
 func (in *managedClusterAddOnFeaturePtr) ToManagedClusterAddOnFeaturePtrOutputWithContext(ctx context.Context) ManagedClusterAddOnFeaturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterAddOnFeaturePtrOutput)
-}
-
-func (in *managedClusterAddOnFeaturePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAddOnFeature] {
-	return pulumix.Output[*ManagedClusterAddOnFeature]{
-		OutputState: in.ToManagedClusterAddOnFeaturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of managed identity for the resource.
@@ -1756,12 +1701,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
 }
 
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the move cost for the service.
 type MoveCost string
 
@@ -1934,12 +1873,6 @@ func (in *moveCostPtr) ToMoveCostPtrOutput() MoveCostPtrOutput {
 
 func (in *moveCostPtr) ToMoveCostPtrOutputWithContext(ctx context.Context) MoveCostPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MoveCostPtrOutput)
-}
-
-func (in *moveCostPtr) ToOutput(ctx context.Context) pulumix.Output[*MoveCost] {
-	return pulumix.Output[*MoveCost]{
-		OutputState: in.ToMoveCostPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to.
@@ -2116,12 +2049,6 @@ func (in *nsgProtocolPtr) ToNsgProtocolPtrOutput() NsgProtocolPtrOutput {
 
 func (in *nsgProtocolPtr) ToNsgProtocolPtrOutputWithContext(ctx context.Context) NsgProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NsgProtocolPtrOutput)
-}
-
-func (in *nsgProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*NsgProtocol] {
-	return pulumix.Output[*NsgProtocol]{
-		OutputState: in.ToNsgProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how the service is partitioned.
@@ -2302,12 +2229,6 @@ func (in *privateEndpointNetworkPoliciesPtr) ToPrivateEndpointNetworkPoliciesPtr
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointNetworkPoliciesPtrOutput)
 }
 
-func (in *privateEndpointNetworkPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointNetworkPolicies] {
-	return pulumix.Output[*PrivateEndpointNetworkPolicies]{
-		OutputState: in.ToPrivateEndpointNetworkPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
 type PrivateIPAddressVersion string
 
@@ -2474,12 +2395,6 @@ func (in *privateIPAddressVersionPtr) ToPrivateIPAddressVersionPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateIPAddressVersionPtrOutput)
 }
 
-func (in *privateIPAddressVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateIPAddressVersion] {
-	return pulumix.Output[*PrivateIPAddressVersion]{
-		OutputState: in.ToPrivateIPAddressVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable apply network policies on private link service in the subnet.
 type PrivateLinkServiceNetworkPolicies string
 
@@ -2644,12 +2559,6 @@ func (in *privateLinkServiceNetworkPoliciesPtr) ToPrivateLinkServiceNetworkPolic
 
 func (in *privateLinkServiceNetworkPoliciesPtr) ToPrivateLinkServiceNetworkPoliciesPtrOutputWithContext(ctx context.Context) PrivateLinkServiceNetworkPoliciesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceNetworkPoliciesPtrOutput)
-}
-
-func (in *privateLinkServiceNetworkPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceNetworkPolicies] {
-	return pulumix.Output[*PrivateLinkServiceNetworkPolicies]{
-		OutputState: in.ToPrivateLinkServiceNetworkPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the reference to the load balancer probe used by the load balancing rule.
@@ -2820,12 +2729,6 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
 }
 
-func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
-	return pulumix.Output[*ProbeProtocol]{
-		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to the transport protocol used by the load balancing rule.
 type Protocol string
 
@@ -2992,12 +2895,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4.
 type PublicIPAddressVersion string
 
@@ -3162,12 +3059,6 @@ func (in *publicIPAddressVersionPtr) ToPublicIPAddressVersionPtrOutput() PublicI
 
 func (in *publicIPAddressVersionPtr) ToPublicIPAddressVersionPtrOutputWithContext(ctx context.Context) PublicIPAddressVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressVersionPtrOutput)
-}
-
-func (in *publicIPAddressVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressVersion] {
-	return pulumix.Output[*PublicIPAddressVersion]{
-		OutputState: in.ToPublicIPAddressVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.
@@ -3338,12 +3229,6 @@ func (in *rollingUpgradeModePtr) ToRollingUpgradeModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RollingUpgradeModePtrOutput)
 }
 
-func (in *rollingUpgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*RollingUpgradeMode] {
-	return pulumix.Output[*RollingUpgradeMode]{
-		OutputState: in.ToRollingUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
 type SecurityType string
 
@@ -3507,12 +3392,6 @@ func (in *securityTypePtr) ToSecurityTypePtrOutput() SecurityTypePtrOutput {
 
 func (in *securityTypePtr) ToSecurityTypePtrOutputWithContext(ctx context.Context) SecurityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypePtrOutput)
-}
-
-func (in *securityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityType] {
-	return pulumix.Output[*SecurityType]{
-		OutputState: in.ToSecurityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
@@ -3681,12 +3560,6 @@ func (in *serviceCorrelationSchemePtr) ToServiceCorrelationSchemePtrOutput() Ser
 
 func (in *serviceCorrelationSchemePtr) ToServiceCorrelationSchemePtrOutputWithContext(ctx context.Context) ServiceCorrelationSchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceCorrelationSchemePtrOutput)
-}
-
-func (in *serviceCorrelationSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceCorrelationScheme] {
-	return pulumix.Output[*ServiceCorrelationScheme]{
-		OutputState: in.ToServiceCorrelationSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of service (Stateless or Stateful).
@@ -3873,12 +3746,6 @@ func (in *serviceLoadMetricWeightPtr) ToServiceLoadMetricWeightPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLoadMetricWeightPtrOutput)
 }
 
-func (in *serviceLoadMetricWeightPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLoadMetricWeight] {
-	return pulumix.Output[*ServiceLoadMetricWeight]{
-		OutputState: in.ToServiceLoadMetricWeightPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The activation Mode of the service package
 type ServicePackageActivationMode string
 
@@ -4045,12 +3912,6 @@ func (in *servicePackageActivationModePtr) ToServicePackageActivationModePtrOutp
 
 func (in *servicePackageActivationModePtr) ToServicePackageActivationModePtrOutputWithContext(ctx context.Context) ServicePackageActivationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServicePackageActivationModePtrOutput)
-}
-
-func (in *servicePackageActivationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ServicePackageActivationMode] {
-	return pulumix.Output[*ServicePackageActivationMode]{
-		OutputState: in.ToServicePackageActivationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of placement policy for a service fabric service. Following are the possible values.
@@ -4257,12 +4118,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // action to be performed on the vms before bootstrapping the service fabric runtime.
 type VmSetupAction string
 
@@ -4431,12 +4286,6 @@ func (in *vmSetupActionPtr) ToVmSetupActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(VmSetupActionPtrOutput)
 }
 
-func (in *vmSetupActionPtr) ToOutput(ctx context.Context) pulumix.Output[*VmSetupAction] {
-	return pulumix.Output[*VmSetupAction]{
-		OutputState: in.ToVmSetupActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Vm extension setup order.
 type VmssExtensionSetupOrder string
 
@@ -4600,12 +4449,6 @@ func (in *vmssExtensionSetupOrderPtr) ToVmssExtensionSetupOrderPtrOutput() VmssE
 
 func (in *vmssExtensionSetupOrderPtr) ToVmssExtensionSetupOrderPtrOutputWithContext(ctx context.Context) VmssExtensionSetupOrderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmssExtensionSetupOrderPtrOutput)
-}
-
-func (in *vmssExtensionSetupOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*VmssExtensionSetupOrder] {
-	return pulumix.Output[*VmssExtensionSetupOrder]{
-		OutputState: in.ToVmssExtensionSetupOrderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the update mode for Cross Az clusters.
@@ -4774,12 +4617,6 @@ func (in *zonalUpdateModePtr) ToZonalUpdateModePtrOutput() ZonalUpdateModePtrOut
 
 func (in *zonalUpdateModePtr) ToZonalUpdateModePtrOutputWithContext(ctx context.Context) ZonalUpdateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZonalUpdateModePtrOutput)
-}
-
-func (in *zonalUpdateModePtr) ToOutput(ctx context.Context) pulumix.Output[*ZonalUpdateMode] {
-	return pulumix.Output[*ZonalUpdateMode]{
-		OutputState: in.ToZonalUpdateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

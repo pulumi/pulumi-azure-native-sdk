@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the spark config properties file.
@@ -175,12 +174,6 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutput() ConfigurationType
 
 func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx context.Context) ConfigurationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
-}
-
-func (in *configurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationType] {
-	return pulumix.Output[*ConfigurationType]{
-		OutputState: in.ToConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the mode of sql pool creation.
@@ -361,12 +354,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Compute type of the cluster which will execute data flow job.
 type DataFlowComputeType string
 
@@ -535,12 +522,6 @@ func (in *dataFlowComputeTypePtr) ToDataFlowComputeTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DataFlowComputeTypePtrOutput)
 }
 
-func (in *dataFlowComputeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataFlowComputeType] {
-	return pulumix.Output[*DataFlowComputeType]{
-		OutputState: in.ToDataFlowComputeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The edition for the SSIS Integration Runtime
 type IntegrationRuntimeEdition string
 
@@ -705,12 +686,6 @@ func (in *integrationRuntimeEditionPtr) ToIntegrationRuntimeEditionPtrOutput() I
 
 func (in *integrationRuntimeEditionPtr) ToIntegrationRuntimeEditionPtrOutputWithContext(ctx context.Context) IntegrationRuntimeEditionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeEditionPtrOutput)
-}
-
-func (in *integrationRuntimeEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeEdition] {
-	return pulumix.Output[*IntegrationRuntimeEdition]{
-		OutputState: in.ToIntegrationRuntimeEditionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of this referenced entity.
@@ -879,12 +854,6 @@ func (in *integrationRuntimeEntityReferenceTypePtr) ToIntegrationRuntimeEntityRe
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeEntityReferenceTypePtrOutput)
 }
 
-func (in *integrationRuntimeEntityReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeEntityReferenceType] {
-	return pulumix.Output[*IntegrationRuntimeEntityReferenceType]{
-		OutputState: in.ToIntegrationRuntimeEntityReferenceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // License type for bringing your own license scenario.
 type IntegrationRuntimeLicenseType string
 
@@ -1049,12 +1018,6 @@ func (in *integrationRuntimeLicenseTypePtr) ToIntegrationRuntimeLicenseTypePtrOu
 
 func (in *integrationRuntimeLicenseTypePtr) ToIntegrationRuntimeLicenseTypePtrOutputWithContext(ctx context.Context) IntegrationRuntimeLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeLicenseTypePtrOutput)
-}
-
-func (in *integrationRuntimeLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeLicenseType] {
-	return pulumix.Output[*IntegrationRuntimeLicenseType]{
-		OutputState: in.ToIntegrationRuntimeLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
@@ -1225,12 +1188,6 @@ func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToIntegrationRuntimeSsisC
 
 func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToIntegrationRuntimeSsisCatalogPricingTierPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogPricingTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeSsisCatalogPricingTierPtrOutput)
-}
-
-func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntimeSsisCatalogPricingTier] {
-	return pulumix.Output[*IntegrationRuntimeSsisCatalogPricingTier]{
-		OutputState: in.ToIntegrationRuntimeSsisCatalogPricingTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of integration runtime.
@@ -1417,12 +1374,6 @@ func (in *nodeSizePtr) ToNodeSizePtrOutputWithContext(ctx context.Context) NodeS
 	return pulumi.ToOutputWithContext(ctx, in).(NodeSizePtrOutput)
 }
 
-func (in *nodeSizePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeSize] {
-	return pulumix.Output[*NodeSize]{
-		OutputState: in.ToNodeSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of nodes that the Big Data pool provides.
 type NodeSizeFamily string
 
@@ -1593,12 +1544,6 @@ func (in *nodeSizeFamilyPtr) ToNodeSizeFamilyPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(NodeSizeFamilyPtrOutput)
 }
 
-func (in *nodeSizeFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeSizeFamily] {
-	return pulumix.Output[*NodeSizeFamily]{
-		OutputState: in.ToNodeSizeFamilyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of managed identity for the workspace
 type ResourceIdentityType string
 
@@ -1765,12 +1710,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SensitivityLabelRank string
@@ -1944,12 +1883,6 @@ func (in *sensitivityLabelRankPtr) ToSensitivityLabelRankPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SensitivityLabelRankPtrOutput)
 }
 
-func (in *sensitivityLabelRankPtr) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabelRank] {
-	return pulumix.Output[*SensitivityLabelRank]{
-		OutputState: in.ToSensitivityLabelRankPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The storage account type used to store backups for this sql pool.
 type StorageAccountType string
 
@@ -2114,12 +2047,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutput() StorageAccountT
 
 func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
-}
-
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the database transparent data encryption.
@@ -2288,12 +2215,6 @@ func (in *transparentDataEncryptionStatusPtr) ToTransparentDataEncryptionStatusP
 	return pulumi.ToOutputWithContext(ctx, in).(TransparentDataEncryptionStatusPtrOutput)
 }
 
-func (in *transparentDataEncryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TransparentDataEncryptionStatus] {
-	return pulumix.Output[*TransparentDataEncryptionStatus]{
-		OutputState: in.ToTransparentDataEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable public network access to workspace
 type WorkspacePublicNetworkAccess string
 
@@ -2458,12 +2379,6 @@ func (in *workspacePublicNetworkAccessPtr) ToWorkspacePublicNetworkAccessPtrOutp
 
 func (in *workspacePublicNetworkAccessPtr) ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkspacePublicNetworkAccessPtrOutput)
-}
-
-func (in *workspacePublicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePublicNetworkAccess] {
-	return pulumix.Output[*WorkspacePublicNetworkAccess]{
-		OutputState: in.ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

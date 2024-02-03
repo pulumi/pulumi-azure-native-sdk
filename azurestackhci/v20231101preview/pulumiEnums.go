@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the way the update content can be downloaded.
@@ -179,12 +178,6 @@ func (in *availabilityTypePtr) ToAvailabilityTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AvailabilityTypePtrOutput)
 }
 
-func (in *availabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityType] {
-	return pulumix.Output[*AvailabilityType]{
-		OutputState: in.ToAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Secured Core Compliance Assignment
 type ComplianceAssignmentType string
 
@@ -351,12 +344,6 @@ func (in *complianceAssignmentTypePtr) ToComplianceAssignmentTypePtrOutput() Com
 
 func (in *complianceAssignmentTypePtr) ToComplianceAssignmentTypePtrOutputWithContext(ctx context.Context) ComplianceAssignmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceAssignmentTypePtrOutput)
-}
-
-func (in *complianceAssignmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComplianceAssignmentType] {
-	return pulumix.Output[*ComplianceAssignmentType]{
-		OutputState: in.ToComplianceAssignmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The deployment mode for cluster deployment.
@@ -527,12 +514,6 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
 }
 
-func (in *deploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
-	return pulumix.Output[*DeploymentMode]{
-		OutputState: in.ToDeploymentModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired level of diagnostic data emitted by the cluster.
 type DiagnosticLevel string
 
@@ -699,12 +680,6 @@ func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutput() DiagnosticLevelPtrOut
 
 func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutputWithContext(ctx context.Context) DiagnosticLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticLevelPtrOutput)
-}
-
-func (in *diagnosticLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticLevel] {
-	return pulumix.Output[*DiagnosticLevel]{
-		OutputState: in.ToDiagnosticLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -877,12 +852,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of the service.
 type ServiceName string
 
@@ -1045,12 +1014,6 @@ func (in *serviceNamePtr) ToServiceNamePtrOutput() ServiceNamePtrOutput {
 
 func (in *serviceNamePtr) ToServiceNamePtrOutputWithContext(ctx context.Context) ServiceNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceNamePtrOutput)
-}
-
-func (in *serviceNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceName] {
-	return pulumix.Output[*ServiceName]{
-		OutputState: in.ToServiceNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Customer Intent for Software Assurance Benefit.
@@ -1217,12 +1180,6 @@ func (in *softwareAssuranceIntentPtr) ToSoftwareAssuranceIntentPtrOutput() Softw
 
 func (in *softwareAssuranceIntentPtr) ToSoftwareAssuranceIntentPtrOutputWithContext(ctx context.Context) SoftwareAssuranceIntentPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceIntentPtrOutput)
-}
-
-func (in *softwareAssuranceIntentPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceIntent] {
-	return pulumix.Output[*SoftwareAssuranceIntent]{
-		OutputState: in.ToSoftwareAssuranceIntentPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of the update as it relates to this stamp.
@@ -1425,12 +1382,6 @@ func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
 }
 
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the update run.
 type UpdateRunPropertiesState string
 
@@ -1599,12 +1550,6 @@ func (in *updateRunPropertiesStatePtr) ToUpdateRunPropertiesStatePtrOutput() Upd
 
 func (in *updateRunPropertiesStatePtr) ToUpdateRunPropertiesStatePtrOutputWithContext(ctx context.Context) UpdateRunPropertiesStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateRunPropertiesStatePtrOutput)
-}
-
-func (in *updateRunPropertiesStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateRunPropertiesState] {
-	return pulumix.Output[*UpdateRunPropertiesState]{
-		OutputState: in.ToUpdateRunPropertiesStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Overall update state of the stamp.
@@ -1785,12 +1730,6 @@ func (in *updateSummariesPropertiesStatePtr) ToUpdateSummariesPropertiesStatePtr
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateSummariesPropertiesStatePtrOutput)
 }
 
-func (in *updateSummariesPropertiesStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateSummariesPropertiesState] {
-	return pulumix.Output[*UpdateSummariesPropertiesState]{
-		OutputState: in.ToUpdateSummariesPropertiesStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired state of Windows Server Subscription.
 type WindowsServerSubscription string
 
@@ -1955,12 +1894,6 @@ func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutput() W
 
 func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutputWithContext(ctx context.Context) WindowsServerSubscriptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsServerSubscriptionPtrOutput)
-}
-
-func (in *windowsServerSubscriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsServerSubscription] {
-	return pulumix.Output[*WindowsServerSubscription]{
-		OutputState: in.ToWindowsServerSubscriptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

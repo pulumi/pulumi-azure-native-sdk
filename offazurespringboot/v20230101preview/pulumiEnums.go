@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The resource provisioning state.
@@ -185,12 +184,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningState
 
 func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
-}
-
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

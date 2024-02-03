@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The criteria operator. Relevant and required only for rules of the kind LogAlert.
@@ -183,12 +182,6 @@ func (in *conditionOperatorPtr) ToConditionOperatorPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOperatorPtrOutput)
 }
 
-func (in *conditionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOperator] {
-	return pulumix.Output[*ConditionOperator]{
-		OutputState: in.ToConditionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operator for dimension values
 type DimensionOperator string
 
@@ -353,12 +346,6 @@ func (in *dimensionOperatorPtr) ToDimensionOperatorPtrOutput() DimensionOperator
 
 func (in *dimensionOperatorPtr) ToDimensionOperatorPtrOutputWithContext(ctx context.Context) DimensionOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DimensionOperatorPtrOutput)
-}
-
-func (in *dimensionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*DimensionOperator] {
-	return pulumix.Output[*DimensionOperator]{
-		OutputState: in.ToDimensionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity.
@@ -529,12 +516,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the type of scheduled query rule. The default is LogAlert.
 type Kind string
 
@@ -699,12 +680,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This determines if traffic is allowed over public network. By default it is enabled.
@@ -873,12 +848,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Aggregation type. Relevant and required only for rules of the kind LogAlert.
@@ -1051,12 +1020,6 @@ func (in *timeAggregationPtr) ToTimeAggregationPtrOutput() TimeAggregationPtrOut
 
 func (in *timeAggregationPtr) ToTimeAggregationPtrOutputWithContext(ctx context.Context) TimeAggregationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationPtrOutput)
-}
-
-func (in *timeAggregationPtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregation] {
-	return pulumix.Output[*TimeAggregation]{
-		OutputState: in.ToTimeAggregationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

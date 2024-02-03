@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines values for AccessRights.
@@ -177,12 +176,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
-}
-
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Namespace status.
@@ -355,12 +348,6 @@ func (in *namespaceStatusPtr) ToNamespaceStatusPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NamespaceStatusPtrOutput)
 }
 
-func (in *namespaceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*NamespaceStatus] {
-	return pulumix.Output[*NamespaceStatus]{
-		OutputState: in.ToNamespaceStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines values for NamespaceType.
 type NamespaceType string
 
@@ -525,12 +512,6 @@ func (in *namespaceTypePtr) ToNamespaceTypePtrOutput() NamespaceTypePtrOutput {
 
 func (in *namespaceTypePtr) ToNamespaceTypePtrOutputWithContext(ctx context.Context) NamespaceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NamespaceTypePtrOutput)
-}
-
-func (in *namespaceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NamespaceType] {
-	return pulumix.Output[*NamespaceType]{
-		OutputState: in.ToNamespaceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines values for OperationProvisioningState.
@@ -707,12 +688,6 @@ func (in *operationProvisioningStatePtr) ToOperationProvisioningStatePtrOutput()
 
 func (in *operationProvisioningStatePtr) ToOperationProvisioningStatePtrOutputWithContext(ctx context.Context) OperationProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperationProvisioningStatePtrOutput)
-}
-
-func (in *operationProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*OperationProvisioningState] {
-	return pulumix.Output[*OperationProvisioningState]{
-		OutputState: in.ToOperationProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of Private Endpoint Connection.
@@ -893,12 +868,6 @@ func (in *privateEndpointConnectionProvisioningStatePtr) ToPrivateEndpointConnec
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointConnectionProvisioningStatePtrOutput)
 }
 
-func (in *privateEndpointConnectionProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProvisioningState] {
-	return pulumix.Output[*PrivateEndpointConnectionProvisioningState]{
-		OutputState: in.ToPrivateEndpointConnectionProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of Private Link Connection.
 type PrivateLinkConnectionStatus string
 
@@ -1069,12 +1038,6 @@ func (in *privateLinkConnectionStatusPtr) ToPrivateLinkConnectionStatusPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStatus] {
-	return pulumix.Output[*PrivateLinkConnectionStatus]{
-		OutputState: in.ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of public network access.
 type PublicNetworkAccess string
 
@@ -1239,12 +1202,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Allowed replication region
@@ -1425,12 +1382,6 @@ func (in *replicationRegionPtr) ToReplicationRegionPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRegionPtrOutput)
 }
 
-func (in *replicationRegionPtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRegion] {
-	return pulumix.Output[*ReplicationRegion]{
-		OutputState: in.ToReplicationRegionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Namespace SKU name.
 type SkuName string
 
@@ -1599,12 +1550,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Namespace SKU name.
 type ZoneRedundancyPreference string
 
@@ -1769,12 +1714,6 @@ func (in *zoneRedundancyPreferencePtr) ToZoneRedundancyPreferencePtrOutput() Zon
 
 func (in *zoneRedundancyPreferencePtr) ToZoneRedundancyPreferencePtrOutputWithContext(ctx context.Context) ZoneRedundancyPreferencePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneRedundancyPreferencePtrOutput)
-}
-
-func (in *zoneRedundancyPreferencePtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedundancyPreference] {
-	return pulumix.Output[*ZoneRedundancyPreference]{
-		OutputState: in.ToZoneRedundancyPreferencePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

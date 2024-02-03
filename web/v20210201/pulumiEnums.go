@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The method that should be used to authenticate the user.
@@ -173,12 +172,6 @@ func (in *clientCredentialMethodPtr) ToClientCredentialMethodPtrOutput() ClientC
 
 func (in *clientCredentialMethodPtr) ToClientCredentialMethodPtrOutputWithContext(ctx context.Context) ClientCredentialMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClientCredentialMethodPtrOutput)
-}
-
-func (in *clientCredentialMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ClientCredentialMethod] {
-	return pulumix.Output[*ClientCredentialMethod]{
-		OutputState: in.ToClientCredentialMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The convention used when determining the session cookie's expiration.
@@ -347,12 +340,6 @@ func (in *cookieExpirationConventionPtr) ToCookieExpirationConventionPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(CookieExpirationConventionPtrOutput)
 }
 
-func (in *cookieExpirationConventionPtr) ToOutput(ctx context.Context) pulumix.Output[*CookieExpirationConvention] {
-	return pulumix.Output[*CookieExpirationConvention]{
-		OutputState: in.ToCookieExpirationConventionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The convention used to determine the url of the request made.
 type ForwardProxyConvention string
 
@@ -519,12 +506,6 @@ func (in *forwardProxyConventionPtr) ToForwardProxyConventionPtrOutput() Forward
 
 func (in *forwardProxyConventionPtr) ToForwardProxyConventionPtrOutputWithContext(ctx context.Context) ForwardProxyConventionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardProxyConventionPtrOutput)
-}
-
-func (in *forwardProxyConventionPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardProxyConvention] {
-	return pulumix.Output[*ForwardProxyConvention]{
-		OutputState: in.ToForwardProxyConventionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity.
@@ -697,12 +678,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State indicating whether staging environments are allowed or not allowed for a static web app.
 type StagingEnvironmentPolicy string
 
@@ -867,12 +842,6 @@ func (in *stagingEnvironmentPolicyPtr) ToStagingEnvironmentPolicyPtrOutput() Sta
 
 func (in *stagingEnvironmentPolicyPtr) ToStagingEnvironmentPolicyPtrOutputWithContext(ctx context.Context) StagingEnvironmentPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StagingEnvironmentPolicyPtrOutput)
-}
-
-func (in *stagingEnvironmentPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*StagingEnvironmentPolicy] {
-	return pulumix.Output[*StagingEnvironmentPolicy]{
-		OutputState: in.ToStagingEnvironmentPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The action to take when an unauthenticated client attempts to access the app.
@@ -1043,12 +1012,6 @@ func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOu
 
 func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx context.Context) UnauthenticatedClientActionV2PtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UnauthenticatedClientActionV2PtrOutput)
-}
-
-func (in *unauthenticatedClientActionV2Ptr) ToOutput(ctx context.Context) pulumix.Output[*UnauthenticatedClientActionV2] {
-	return pulumix.Output[*UnauthenticatedClientActionV2]{
-		OutputState: in.ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

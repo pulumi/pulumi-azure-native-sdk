@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network traffic is allowed or denied.
@@ -175,12 +174,6 @@ func (in *accessPtr) ToAccessPtrOutput() AccessPtrOutput {
 
 func (in *accessPtr) ToAccessPtrOutputWithContext(ctx context.Context) AccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPtrOutput)
-}
-
-func (in *accessPtr) ToOutput(ctx context.Context) pulumix.Output[*Access] {
-	return pulumix.Output[*Access]{
-		OutputState: in.ToAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'.
@@ -354,12 +347,6 @@ func (in *clusterUpgradeCadencePtr) ToClusterUpgradeCadencePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpgradeCadencePtrOutput)
 }
 
-func (in *clusterUpgradeCadencePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeCadence] {
-	return pulumix.Output[*ClusterUpgradeCadence]{
-		OutputState: in.ToClusterUpgradeCadencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The upgrade mode of the cluster when new Service Fabric runtime version is available.
 type ClusterUpgradeMode string
 
@@ -528,12 +515,6 @@ func (in *clusterUpgradeModePtr) ToClusterUpgradeModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpgradeModePtrOutput)
 }
 
-func (in *clusterUpgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeMode] {
-	return pulumix.Output[*ClusterUpgradeMode]{
-		OutputState: in.ToClusterUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network security rule direction.
 type Direction string
 
@@ -698,12 +679,6 @@ func (in *directionPtr) ToDirectionPtrOutput() DirectionPtrOutput {
 
 func (in *directionPtr) ToDirectionPtrOutputWithContext(ctx context.Context) DirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DirectionPtrOutput)
-}
-
-func (in *directionPtr) ToOutput(ctx context.Context) pulumix.Output[*Direction] {
-	return pulumix.Output[*Direction]{
-		OutputState: in.ToDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Available cluster add-on features
@@ -875,12 +850,6 @@ func (in *managedClusterAddOnFeaturePtr) ToManagedClusterAddOnFeaturePtrOutput()
 
 func (in *managedClusterAddOnFeaturePtr) ToManagedClusterAddOnFeaturePtrOutputWithContext(ctx context.Context) ManagedClusterAddOnFeaturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterAddOnFeaturePtrOutput)
-}
-
-func (in *managedClusterAddOnFeaturePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAddOnFeature] {
-	return pulumix.Output[*ManagedClusterAddOnFeature]{
-		OutputState: in.ToManagedClusterAddOnFeaturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to.
@@ -1059,12 +1028,6 @@ func (in *nsgProtocolPtr) ToNsgProtocolPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(NsgProtocolPtrOutput)
 }
 
-func (in *nsgProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*NsgProtocol] {
-	return pulumix.Output[*NsgProtocol]{
-		OutputState: in.ToNsgProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable apply network policies on private end point in the subnet.
 type PrivateEndpointNetworkPolicies string
 
@@ -1231,12 +1194,6 @@ func (in *privateEndpointNetworkPoliciesPtr) ToPrivateEndpointNetworkPoliciesPtr
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointNetworkPoliciesPtrOutput)
 }
 
-func (in *privateEndpointNetworkPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointNetworkPolicies] {
-	return pulumix.Output[*PrivateEndpointNetworkPolicies]{
-		OutputState: in.ToPrivateEndpointNetworkPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable apply network policies on private link service in the subnet.
 type PrivateLinkServiceNetworkPolicies string
 
@@ -1401,12 +1358,6 @@ func (in *privateLinkServiceNetworkPoliciesPtr) ToPrivateLinkServiceNetworkPolic
 
 func (in *privateLinkServiceNetworkPoliciesPtr) ToPrivateLinkServiceNetworkPoliciesPtrOutputWithContext(ctx context.Context) PrivateLinkServiceNetworkPoliciesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceNetworkPoliciesPtrOutput)
-}
-
-func (in *privateLinkServiceNetworkPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceNetworkPolicies] {
-	return pulumix.Output[*PrivateLinkServiceNetworkPolicies]{
-		OutputState: in.ToPrivateLinkServiceNetworkPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the reference to the load balancer probe used by the load balancing rule.
@@ -1577,12 +1528,6 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
 }
 
-func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
-	return pulumix.Output[*ProbeProtocol]{
-		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to the transport protocol used by the load balancing rule.
 type Protocol string
 
@@ -1747,12 +1692,6 @@ func (in *protocolPtr) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
-}
-
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sku Name.
@@ -1923,12 +1862,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the update mode for Cross Az clusters.
 type ZonalUpdateMode string
 
@@ -2095,12 +2028,6 @@ func (in *zonalUpdateModePtr) ToZonalUpdateModePtrOutput() ZonalUpdateModePtrOut
 
 func (in *zonalUpdateModePtr) ToZonalUpdateModePtrOutputWithContext(ctx context.Context) ZonalUpdateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZonalUpdateModePtrOutput)
-}
-
-func (in *zonalUpdateModePtr) ToOutput(ctx context.Context) pulumix.Output[*ZonalUpdateMode] {
-	return pulumix.Output[*ZonalUpdateMode]{
-		OutputState: in.ToZonalUpdateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

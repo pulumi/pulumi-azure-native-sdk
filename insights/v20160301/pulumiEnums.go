@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // the operator used to compare the data and the threshold.
@@ -181,12 +180,6 @@ func (in *conditionOperatorPtr) ToConditionOperatorPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOperatorPtrOutput)
 }
 
-func (in *conditionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOperator] {
-	return pulumix.Output[*ConditionOperator]{
-		OutputState: in.ToConditionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
 type TimeAggregationOperator string
 
@@ -357,12 +350,6 @@ func (in *timeAggregationOperatorPtr) ToTimeAggregationOperatorPtrOutput() TimeA
 
 func (in *timeAggregationOperatorPtr) ToTimeAggregationOperatorPtrOutputWithContext(ctx context.Context) TimeAggregationOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationOperatorPtrOutput)
-}
-
-func (in *timeAggregationOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregationOperator] {
-	return pulumix.Output[*TimeAggregationOperator]{
-		OutputState: in.ToTimeAggregationOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

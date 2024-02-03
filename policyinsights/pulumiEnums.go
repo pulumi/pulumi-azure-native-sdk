@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The compliance state that should be set on the resource.
@@ -182,12 +181,6 @@ func (in *complianceStatePtr) ToComplianceStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceStatePtrOutput)
 }
 
-func (in *complianceStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ComplianceState] {
-	return pulumix.Output[*ComplianceState]{
-		OutputState: in.ToComplianceStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
 type ResourceDiscoveryMode string
 
@@ -354,12 +347,6 @@ func (in *resourceDiscoveryModePtr) ToResourceDiscoveryModePtrOutput() ResourceD
 
 func (in *resourceDiscoveryModePtr) ToResourceDiscoveryModePtrOutputWithContext(ctx context.Context) ResourceDiscoveryModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceDiscoveryModePtrOutput)
-}
-
-func (in *resourceDiscoveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceDiscoveryMode] {
-	return pulumix.Output[*ResourceDiscoveryMode]{
-		OutputState: in.ToResourceDiscoveryModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

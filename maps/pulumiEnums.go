@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get or Set Kind property.
@@ -175,12 +174,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the SKU, in standard format (such as S0).
@@ -351,12 +344,6 @@ func (in *namePtr) ToNamePtrOutputWithContext(ctx context.Context) NamePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(NamePtrOutput)
 }
 
-func (in *namePtr) ToOutput(ctx context.Context) pulumix.Output[*Name] {
-	return pulumix.Output[*Name]{
-		OutputState: in.ToNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -525,12 +512,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Map account key to use for signing.
 type SigningKey string
 
@@ -695,12 +676,6 @@ func (in *signingKeyPtr) ToSigningKeyPtrOutput() SigningKeyPtrOutput {
 
 func (in *signingKeyPtr) ToSigningKeyPtrOutputWithContext(ctx context.Context) SigningKeyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SigningKeyPtrOutput)
-}
-
-func (in *signingKeyPtr) ToOutput(ctx context.Context) pulumix.Output[*SigningKey] {
-	return pulumix.Output[*SigningKey]{
-		OutputState: in.ToSigningKeyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of OS for which the key is requested.
@@ -179,12 +178,6 @@ func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
 }
 
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of support
 type SupportType string
 
@@ -349,12 +342,6 @@ func (in *supportTypePtr) ToSupportTypePtrOutput() SupportTypePtrOutput {
 
 func (in *supportTypePtr) ToSupportTypePtrOutputWithContext(ctx context.Context) SupportTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SupportTypePtrOutput)
-}
-
-func (in *supportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SupportType] {
-	return pulumix.Output[*SupportType]{
-		OutputState: in.ToSupportTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

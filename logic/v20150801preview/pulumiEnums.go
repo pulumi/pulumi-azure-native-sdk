@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The agreement type.
@@ -179,12 +178,6 @@ func (in *agreementTypePtr) ToAgreementTypePtrOutput() AgreementTypePtrOutput {
 
 func (in *agreementTypePtr) ToAgreementTypePtrOutputWithContext(ctx context.Context) AgreementTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AgreementTypePtrOutput)
-}
-
-func (in *agreementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgreementType] {
-	return pulumix.Output[*AgreementType]{
-		OutputState: in.ToAgreementTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The EDIFACT frame setting characterSet.
@@ -379,12 +372,6 @@ func (in *edifactCharacterSetPtr) ToEdifactCharacterSetPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EdifactCharacterSetPtrOutput)
 }
 
-func (in *edifactCharacterSetPtr) ToOutput(ctx context.Context) pulumix.Output[*EdifactCharacterSet] {
-	return pulumix.Output[*EdifactCharacterSet]{
-		OutputState: in.ToEdifactCharacterSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The EDIFACT frame setting decimal indicator.
 type EdifactDecimalIndicator string
 
@@ -551,12 +538,6 @@ func (in *edifactDecimalIndicatorPtr) ToEdifactDecimalIndicatorPtrOutput() Edifa
 
 func (in *edifactDecimalIndicatorPtr) ToEdifactDecimalIndicatorPtrOutputWithContext(ctx context.Context) EdifactDecimalIndicatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EdifactDecimalIndicatorPtrOutput)
-}
-
-func (in *edifactDecimalIndicatorPtr) ToOutput(ctx context.Context) pulumix.Output[*EdifactDecimalIndicator] {
-	return pulumix.Output[*EdifactDecimalIndicator]{
-		OutputState: in.ToEdifactDecimalIndicatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The encryption algorithm.
@@ -735,12 +716,6 @@ func (in *encryptionAlgorithmPtr) ToEncryptionAlgorithmPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionAlgorithmPtrOutput)
 }
 
-func (in *encryptionAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionAlgorithm] {
-	return pulumix.Output[*EncryptionAlgorithm]{
-		OutputState: in.ToEncryptionAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The signing or hashing algorithm.
 type HashingAlgorithm string
 
@@ -913,12 +888,6 @@ func (in *hashingAlgorithmPtr) ToHashingAlgorithmPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(HashingAlgorithmPtrOutput)
 }
 
-func (in *hashingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*HashingAlgorithm] {
-	return pulumix.Output[*HashingAlgorithm]{
-		OutputState: in.ToHashingAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The map type.
 type MapType string
 
@@ -1083,12 +1052,6 @@ func (in *mapTypePtr) ToMapTypePtrOutput() MapTypePtrOutput {
 
 func (in *mapTypePtr) ToMapTypePtrOutputWithContext(ctx context.Context) MapTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MapTypePtrOutput)
-}
-
-func (in *mapTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MapType] {
-	return pulumix.Output[*MapType]{
-		OutputState: in.ToMapTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The message filter type.
@@ -1259,12 +1222,6 @@ func (in *messageFilterTypePtr) ToMessageFilterTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(MessageFilterTypePtrOutput)
 }
 
-func (in *messageFilterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MessageFilterType] {
-	return pulumix.Output[*MessageFilterType]{
-		OutputState: in.ToMessageFilterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The partner type.
 type PartnerType string
 
@@ -1431,12 +1388,6 @@ func (in *partnerTypePtr) ToPartnerTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(PartnerTypePtrOutput)
 }
 
-func (in *partnerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PartnerType] {
-	return pulumix.Output[*PartnerType]{
-		OutputState: in.ToPartnerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schema type.
 type SchemaType string
 
@@ -1601,12 +1552,6 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
-}
-
-func (in *schemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaType] {
-	return pulumix.Output[*SchemaType]{
-		OutputState: in.ToSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The segment terminator suffix.
@@ -1779,12 +1724,6 @@ func (in *segmentTerminatorSuffixPtr) ToSegmentTerminatorSuffixPtrOutput() Segme
 
 func (in *segmentTerminatorSuffixPtr) ToSegmentTerminatorSuffixPtrOutputWithContext(ctx context.Context) SegmentTerminatorSuffixPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SegmentTerminatorSuffixPtrOutput)
-}
-
-func (in *segmentTerminatorSuffixPtr) ToOutput(ctx context.Context) pulumix.Output[*SegmentTerminatorSuffix] {
-	return pulumix.Output[*SegmentTerminatorSuffix]{
-		OutputState: in.ToSegmentTerminatorSuffixPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku name.
@@ -1961,12 +1900,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The trailing separator policy.
 type TrailingSeparatorPolicy string
 
@@ -2135,12 +2068,6 @@ func (in *trailingSeparatorPolicyPtr) ToTrailingSeparatorPolicyPtrOutput() Trail
 
 func (in *trailingSeparatorPolicyPtr) ToTrailingSeparatorPolicyPtrOutputWithContext(ctx context.Context) TrailingSeparatorPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrailingSeparatorPolicyPtrOutput)
-}
-
-func (in *trailingSeparatorPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*TrailingSeparatorPolicy] {
-	return pulumix.Output[*TrailingSeparatorPolicy]{
-		OutputState: in.ToTrailingSeparatorPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The usage indicator.
@@ -2313,12 +2240,6 @@ func (in *usageIndicatorPtr) ToUsageIndicatorPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(UsageIndicatorPtrOutput)
 }
 
-func (in *usageIndicatorPtr) ToOutput(ctx context.Context) pulumix.Output[*UsageIndicator] {
-	return pulumix.Output[*UsageIndicator]{
-		OutputState: in.ToUsageIndicatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The X12 character set.
 type X12CharacterSet string
 
@@ -2489,12 +2410,6 @@ func (in *x12characterSetPtr) ToX12CharacterSetPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(X12CharacterSetPtrOutput)
 }
 
-func (in *x12characterSetPtr) ToOutput(ctx context.Context) pulumix.Output[*X12CharacterSet] {
-	return pulumix.Output[*X12CharacterSet]{
-		OutputState: in.ToX12CharacterSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The group header date format.
 type X12DateFormat string
 
@@ -2661,12 +2576,6 @@ func (in *x12dateFormatPtr) ToX12DateFormatPtrOutput() X12DateFormatPtrOutput {
 
 func (in *x12dateFormatPtr) ToX12DateFormatPtrOutputWithContext(ctx context.Context) X12DateFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(X12DateFormatPtrOutput)
-}
-
-func (in *x12dateFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*X12DateFormat] {
-	return pulumix.Output[*X12DateFormat]{
-		OutputState: in.ToX12DateFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The group header time format.
@@ -2839,12 +2748,6 @@ func (in *x12timeFormatPtr) ToX12TimeFormatPtrOutput() X12TimeFormatPtrOutput {
 
 func (in *x12timeFormatPtr) ToX12TimeFormatPtrOutputWithContext(ctx context.Context) X12TimeFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(X12TimeFormatPtrOutput)
-}
-
-func (in *x12timeFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*X12TimeFormat] {
-	return pulumix.Output[*X12TimeFormat]{
-		OutputState: in.ToX12TimeFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

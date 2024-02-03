@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
@@ -177,12 +176,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
 type SkuFamily string
 
@@ -347,12 +340,6 @@ func (in *skuFamilyPtr) ToSkuFamilyPtrOutput() SkuFamilyPtrOutput {
 
 func (in *skuFamilyPtr) ToSkuFamilyPtrOutputWithContext(ctx context.Context) SkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuFamilyPtrOutput)
-}
-
-func (in *skuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuFamily] {
-	return pulumix.Output[*SkuFamily]{
-		OutputState: in.ToSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
@@ -523,12 +510,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
 type TlsVersion string
 
@@ -695,12 +676,6 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
 
 func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsVersionPtrOutput)
-}
-
-func (in *tlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsVersion] {
-	return pulumix.Output[*TlsVersion]{
-		OutputState: in.ToTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

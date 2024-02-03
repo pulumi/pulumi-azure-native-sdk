@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
@@ -181,12 +180,6 @@ func (in *assignmentTypePtr) ToAssignmentTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AssignmentTypePtrOutput)
 }
 
-func (in *assignmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssignmentType] {
-	return pulumix.Output[*AssignmentType]{
-		OutputState: in.ToAssignmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kind of the guest configuration. For example:DSC
 type Kind string
 
@@ -349,12 +342,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

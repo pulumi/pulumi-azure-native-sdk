@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Address prefix type.
@@ -175,12 +174,6 @@ func (in *addressPrefixTypePtr) ToAddressPrefixTypePtrOutput() AddressPrefixType
 
 func (in *addressPrefixTypePtr) ToAddressPrefixTypePtrOutputWithContext(ctx context.Context) AddressPrefixTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressPrefixTypePtrOutput)
-}
-
-func (in *addressPrefixTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressPrefixType] {
-	return pulumix.Output[*AddressPrefixType]{
-		OutputState: in.ToAddressPrefixTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether the rule is custom or default.
@@ -359,12 +352,6 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
 }
 
-func (in *configurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationType] {
-	return pulumix.Output[*ConfigurationType]{
-		OutputState: in.ToConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Connectivity topology type.
 type ConnectivityTopology string
 
@@ -529,12 +516,6 @@ func (in *connectivityTopologyPtr) ToConnectivityTopologyPtrOutput() Connectivit
 
 func (in *connectivityTopologyPtr) ToConnectivityTopologyPtrOutputWithContext(ctx context.Context) ConnectivityTopologyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectivityTopologyPtrOutput)
-}
-
-func (in *connectivityTopologyPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityTopology] {
-	return pulumix.Output[*ConnectivityTopology]{
-		OutputState: in.ToConnectivityTopologyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Flag if need to delete existing network security groups.
@@ -703,12 +684,6 @@ func (in *deleteExistingNSGsPtr) ToDeleteExistingNSGsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(DeleteExistingNSGsPtrOutput)
 }
 
-func (in *deleteExistingNSGsPtr) ToOutput(ctx context.Context) pulumix.Output[*DeleteExistingNSGs] {
-	return pulumix.Output[*DeleteExistingNSGs]{
-		OutputState: in.ToDeleteExistingNSGsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag if need to remove current existing peerings.
 type DeleteExistingPeering string
 
@@ -873,12 +848,6 @@ func (in *deleteExistingPeeringPtr) ToDeleteExistingPeeringPtrOutput() DeleteExi
 
 func (in *deleteExistingPeeringPtr) ToDeleteExistingPeeringPtrOutputWithContext(ctx context.Context) DeleteExistingPeeringPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeleteExistingPeeringPtrOutput)
-}
-
-func (in *deleteExistingPeeringPtr) ToOutput(ctx context.Context) pulumix.Output[*DeleteExistingPeering] {
-	return pulumix.Output[*DeleteExistingPeering]{
-		OutputState: in.ToDeleteExistingPeeringPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Group connectivity type.
@@ -1047,12 +1016,6 @@ func (in *groupConnectivityPtr) ToGroupConnectivityPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(GroupConnectivityPtrOutput)
 }
 
-func (in *groupConnectivityPtr) ToOutput(ctx context.Context) pulumix.Output[*GroupConnectivity] {
-	return pulumix.Output[*GroupConnectivity]{
-		OutputState: in.ToGroupConnectivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag if global mesh is supported.
 type IsGlobal string
 
@@ -1219,12 +1182,6 @@ func (in *isGlobalPtr) ToIsGlobalPtrOutputWithContext(ctx context.Context) IsGlo
 	return pulumi.ToOutputWithContext(ctx, in).(IsGlobalPtrOutput)
 }
 
-func (in *isGlobalPtr) ToOutput(ctx context.Context) pulumix.Output[*IsGlobal] {
-	return pulumix.Output[*IsGlobal]{
-		OutputState: in.ToIsGlobalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network intent policy based services.
 type NetworkIntentPolicyBasedService string
 
@@ -1389,12 +1346,6 @@ func (in *networkIntentPolicyBasedServicePtr) ToNetworkIntentPolicyBasedServiceP
 
 func (in *networkIntentPolicyBasedServicePtr) ToNetworkIntentPolicyBasedServicePtrOutputWithContext(ctx context.Context) NetworkIntentPolicyBasedServicePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkIntentPolicyBasedServicePtrOutput)
-}
-
-func (in *networkIntentPolicyBasedServicePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkIntentPolicyBasedService] {
-	return pulumix.Output[*NetworkIntentPolicyBasedService]{
-		OutputState: in.ToNetworkIntentPolicyBasedServicePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the access allowed for this particular rule
@@ -1565,12 +1516,6 @@ func (in *securityConfigurationRuleAccessPtr) ToSecurityConfigurationRuleAccessP
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityConfigurationRuleAccessPtrOutput)
 }
 
-func (in *securityConfigurationRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityConfigurationRuleAccess] {
-	return pulumix.Output[*SecurityConfigurationRuleAccess]{
-		OutputState: in.ToSecurityConfigurationRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates if the traffic matched against the rule in inbound or outbound.
 type SecurityConfigurationRuleDirection string
 
@@ -1735,12 +1680,6 @@ func (in *securityConfigurationRuleDirectionPtr) ToSecurityConfigurationRuleDire
 
 func (in *securityConfigurationRuleDirectionPtr) ToSecurityConfigurationRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityConfigurationRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityConfigurationRuleDirectionPtrOutput)
-}
-
-func (in *securityConfigurationRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityConfigurationRuleDirection] {
-	return pulumix.Output[*SecurityConfigurationRuleDirection]{
-		OutputState: in.ToSecurityConfigurationRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to.
@@ -1917,12 +1856,6 @@ func (in *securityConfigurationRuleProtocolPtr) ToSecurityConfigurationRuleProto
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityConfigurationRuleProtocolPtrOutput)
 }
 
-func (in *securityConfigurationRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityConfigurationRuleProtocol] {
-	return pulumix.Output[*SecurityConfigurationRuleProtocol]{
-		OutputState: in.ToSecurityConfigurationRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Security Type.
 type SecurityType string
 
@@ -2089,12 +2022,6 @@ func (in *securityTypePtr) ToSecurityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypePtrOutput)
 }
 
-func (in *securityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityType] {
-	return pulumix.Output[*SecurityType]{
-		OutputState: in.ToSecurityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag if need to use hub gateway.
 type UseHubGateway string
 
@@ -2259,12 +2186,6 @@ func (in *useHubGatewayPtr) ToUseHubGatewayPtrOutput() UseHubGatewayPtrOutput {
 
 func (in *useHubGatewayPtr) ToUseHubGatewayPtrOutputWithContext(ctx context.Context) UseHubGatewayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UseHubGatewayPtrOutput)
-}
-
-func (in *useHubGatewayPtr) ToOutput(ctx context.Context) pulumix.Output[*UseHubGateway] {
-	return pulumix.Output[*UseHubGateway]{
-		OutputState: in.ToUseHubGatewayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether the rule is custom or default.

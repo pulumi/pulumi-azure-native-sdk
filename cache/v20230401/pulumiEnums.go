@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Day of the week when a cache can be patched.
@@ -191,12 +190,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -367,12 +360,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -541,12 +528,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public endpoint access is allowed for this cache.  Value is optional, but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'. Note: This setting is important for caches with private endpoints. It has *no effect* on caches that are joined to, or injected into, a virtual network subnet.
 type PublicNetworkAccess string
 
@@ -711,12 +692,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Role of the linked server.
@@ -885,12 +860,6 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRolePtrOutput)
 }
 
-func (in *replicationRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
-	return pulumix.Output[*ReplicationRole]{
-		OutputState: in.ToReplicationRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
 type SkuFamily string
 
@@ -1055,12 +1024,6 @@ func (in *skuFamilyPtr) ToSkuFamilyPtrOutput() SkuFamilyPtrOutput {
 
 func (in *skuFamilyPtr) ToSkuFamilyPtrOutputWithContext(ctx context.Context) SkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuFamilyPtrOutput)
-}
-
-func (in *skuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuFamily] {
-	return pulumix.Output[*SkuFamily]{
-		OutputState: in.ToSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Redis cache to deploy. Valid values: (Basic, Standard, Premium)
@@ -1231,12 +1194,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
 type TlsVersion string
 
@@ -1403,12 +1360,6 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
 
 func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsVersionPtrOutput)
-}
-
-func (in *tlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsVersion] {
-	return pulumix.Output[*TlsVersion]{
-		OutputState: in.ToTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The identity type.
@@ -175,12 +174,6 @@ func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutput() AKSIdentityTypePtrOut
 
 func (in *aksidentityTypePtr) ToAKSIdentityTypePtrOutputWithContext(ctx context.Context) AKSIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AKSIdentityTypePtrOutput)
-}
-
-func (in *aksidentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AKSIdentityType] {
-	return pulumix.Output[*AKSIdentityType]{
-		OutputState: in.ToAKSIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Level of the status.
@@ -351,12 +344,6 @@ func (in *levelTypePtr) ToLevelTypePtrOutputWithContext(ctx context.Context) Lev
 	return pulumi.ToOutputWithContext(ctx, in).(LevelTypePtrOutput)
 }
 
-func (in *levelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LevelType] {
-	return pulumix.Output[*LevelType]{
-		OutputState: in.ToLevelTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -523,12 +510,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 
 func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
@@ -699,12 +680,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -867,12 +842,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

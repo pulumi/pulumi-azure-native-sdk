@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of IP ACL rule.
@@ -175,12 +174,6 @@ func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
 }
 
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A message indicating if changes on the service provider require any updates on the consumer.
 type ActionsRequired string
 
@@ -345,12 +338,6 @@ func (in *actionsRequiredPtr) ToActionsRequiredPtrOutput() ActionsRequiredPtrOut
 
 func (in *actionsRequiredPtr) ToActionsRequiredPtrOutputWithContext(ctx context.Context) ActionsRequiredPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionsRequiredPtrOutput)
-}
-
-func (in *actionsRequiredPtr) ToOutput(ctx context.Context) pulumix.Output[*ActionsRequired] {
-	return pulumix.Output[*ActionsRequired]{
-		OutputState: in.ToActionsRequiredPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The OS architecture.
@@ -525,12 +512,6 @@ func (in *architecturePtr) ToArchitecturePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ArchitecturePtrOutput)
 }
 
-func (in *architecturePtr) ToOutput(ctx context.Context) pulumix.Output[*Architecture] {
-	return pulumix.Output[*Architecture]{
-		OutputState: in.ToArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether audit logs are enabled on the connected registry.
 type AuditLogStatus string
 
@@ -697,12 +678,6 @@ func (in *auditLogStatusPtr) ToAuditLogStatusPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogStatusPtrOutput)
 }
 
-func (in *auditLogStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AuditLogStatus] {
-	return pulumix.Output[*AuditLogStatus]{
-		OutputState: in.ToAuditLogStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the auto trigger for base image dependency updates.
 type BaseImageTriggerType string
 
@@ -867,12 +842,6 @@ func (in *baseImageTriggerTypePtr) ToBaseImageTriggerTypePtrOutput() BaseImageTr
 
 func (in *baseImageTriggerTypePtr) ToBaseImageTriggerTypePtrOutputWithContext(ctx context.Context) BaseImageTriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BaseImageTriggerTypePtrOutput)
-}
-
-func (in *baseImageTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BaseImageTriggerType] {
-	return pulumix.Output[*BaseImageTriggerType]{
-		OutputState: in.ToBaseImageTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode of the connected registry resource that indicates the permissions of the registry.
@@ -1045,12 +1014,6 @@ func (in *connectedRegistryModePtr) ToConnectedRegistryModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectedRegistryModePtrOutput)
 }
 
-func (in *connectedRegistryModePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRegistryMode] {
-	return pulumix.Output[*ConnectedRegistryMode]{
-		OutputState: in.ToConnectedRegistryModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private link service connection status.
 type ConnectionStatus string
 
@@ -1221,12 +1184,6 @@ func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
 }
 
-func (in *connectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStatus] {
-	return pulumix.Output[*ConnectionStatus]{
-		OutputState: in.ToConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the credential.
 type CredentialName string
 
@@ -1389,12 +1346,6 @@ func (in *credentialNamePtr) ToCredentialNamePtrOutput() CredentialNamePtrOutput
 
 func (in *credentialNamePtr) ToCredentialNamePtrOutputWithContext(ctx context.Context) CredentialNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CredentialNamePtrOutput)
-}
-
-func (in *credentialNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CredentialName] {
-	return pulumix.Output[*CredentialName]{
-		OutputState: in.ToCredentialNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default action of allow or deny when no other rules match.
@@ -1563,12 +1514,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether or not the encryption is enabled for container registry.
 type EncryptionStatus string
 
@@ -1735,12 +1680,6 @@ func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatusPtrOutput)
 }
 
-func (in *encryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionStatus] {
-	return pulumix.Output[*EncryptionStatus]{
-		OutputState: in.ToEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The value that indicates whether the policy is enabled or not.
 type ExportPolicyStatus string
 
@@ -1905,12 +1844,6 @@ func (in *exportPolicyStatusPtr) ToExportPolicyStatusPtrOutput() ExportPolicySta
 
 func (in *exportPolicyStatusPtr) ToExportPolicyStatusPtrOutputWithContext(ctx context.Context) ExportPolicyStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExportPolicyStatusPtrOutput)
-}
-
-func (in *exportPolicyStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ExportPolicyStatus] {
-	return pulumix.Output[*ExportPolicyStatus]{
-		OutputState: in.ToExportPolicyStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The verbosity of logs persisted on the connected registry.
@@ -2085,12 +2018,6 @@ func (in *logLevelPtr) ToLogLevelPtrOutputWithContext(ctx context.Context) LogLe
 	return pulumi.ToOutputWithContext(ctx, in).(LogLevelPtrOutput)
 }
 
-func (in *logLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*LogLevel] {
-	return pulumix.Output[*LogLevel]{
-		OutputState: in.ToLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to allow trusted Azure services to access a network restricted registry.
 type NetworkRuleBypassOptions string
 
@@ -2255,12 +2182,6 @@ func (in *networkRuleBypassOptionsPtr) ToNetworkRuleBypassOptionsPtrOutput() Net
 
 func (in *networkRuleBypassOptionsPtr) ToNetworkRuleBypassOptionsPtrOutputWithContext(ctx context.Context) NetworkRuleBypassOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleBypassOptionsPtrOutput)
-}
-
-func (in *networkRuleBypassOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleBypassOptions] {
-	return pulumix.Output[*NetworkRuleBypassOptions]{
-		OutputState: in.ToNetworkRuleBypassOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operating system type required for the run.
@@ -2429,12 +2350,6 @@ func (in *osPtr) ToOSPtrOutputWithContext(ctx context.Context) OSPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSPtrOutput)
 }
 
-func (in *osPtr) ToOutput(ctx context.Context) pulumix.Output[*OS] {
-	return pulumix.Output[*OS]{
-		OutputState: in.ToOSPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of package source for a archive.
 type PackageSourceType string
 
@@ -2597,12 +2512,6 @@ func (in *packageSourceTypePtr) ToPackageSourceTypePtrOutput() PackageSourceType
 
 func (in *packageSourceTypePtr) ToPackageSourceTypePtrOutputWithContext(ctx context.Context) PackageSourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PackageSourceTypePtrOutput)
-}
-
-func (in *packageSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PackageSourceType] {
-	return pulumix.Output[*PackageSourceType]{
-		OutputState: in.ToPackageSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type PipelineOptions string
@@ -2774,12 +2683,6 @@ func (in *pipelineOptionsPtr) ToPipelineOptionsPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(PipelineOptionsPtrOutput)
 }
 
-func (in *pipelineOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*PipelineOptions] {
-	return pulumix.Output[*PipelineOptions]{
-		OutputState: in.ToPipelineOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the source.
 type PipelineRunSourceType string
 
@@ -2942,12 +2845,6 @@ func (in *pipelineRunSourceTypePtr) ToPipelineRunSourceTypePtrOutput() PipelineR
 
 func (in *pipelineRunSourceTypePtr) ToPipelineRunSourceTypePtrOutputWithContext(ctx context.Context) PipelineRunSourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PipelineRunSourceTypePtrOutput)
-}
-
-func (in *pipelineRunSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PipelineRunSourceType] {
-	return pulumix.Output[*PipelineRunSourceType]{
-		OutputState: in.ToPipelineRunSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the target.
@@ -3114,12 +3011,6 @@ func (in *pipelineRunTargetTypePtr) ToPipelineRunTargetTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(PipelineRunTargetTypePtrOutput)
 }
 
-func (in *pipelineRunTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PipelineRunTargetType] {
-	return pulumix.Output[*PipelineRunTargetType]{
-		OutputState: in.ToPipelineRunTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of source for the import pipeline.
 type PipelineSourceType string
 
@@ -3282,12 +3173,6 @@ func (in *pipelineSourceTypePtr) ToPipelineSourceTypePtrOutput() PipelineSourceT
 
 func (in *pipelineSourceTypePtr) ToPipelineSourceTypePtrOutputWithContext(ctx context.Context) PipelineSourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PipelineSourceTypePtrOutput)
-}
-
-func (in *pipelineSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PipelineSourceType] {
-	return pulumix.Output[*PipelineSourceType]{
-		OutputState: in.ToPipelineSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The value that indicates whether the policy is enabled or not.
@@ -3456,12 +3341,6 @@ func (in *policyStatusPtr) ToPolicyStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyStatusPtrOutput)
 }
 
-func (in *policyStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyStatus] {
-	return pulumix.Output[*PolicyStatus]{
-		OutputState: in.ToPolicyStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public network access is allowed for the container registry.
 type PublicNetworkAccess string
 
@@ -3626,12 +3505,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -3804,12 +3677,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the secret object which determines how the value of the secret object has to be
 // interpreted.
 type SecretObjectType string
@@ -3975,12 +3842,6 @@ func (in *secretObjectTypePtr) ToSecretObjectTypePtrOutput() SecretObjectTypePtr
 
 func (in *secretObjectTypePtr) ToSecretObjectTypePtrOutputWithContext(ctx context.Context) SecretObjectTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecretObjectTypePtrOutput)
-}
-
-func (in *secretObjectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecretObjectType] {
-	return pulumix.Output[*SecretObjectType]{
-		OutputState: in.ToSecretObjectTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SKU name of the container registry. Required for registry creation.
@@ -4153,12 +4014,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of source control service.
 type SourceControlType string
 
@@ -4323,12 +4178,6 @@ func (in *sourceControlTypePtr) ToSourceControlTypePtrOutput() SourceControlType
 
 func (in *sourceControlTypePtr) ToSourceControlTypePtrOutputWithContext(ctx context.Context) SourceControlTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceControlTypePtrOutput)
-}
-
-func (in *sourceControlTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceControlType] {
-	return pulumix.Output[*SourceControlType]{
-		OutputState: in.ToSourceControlTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication mode which determines the source registry login scope. The credentials for the source registry
@@ -4499,12 +4348,6 @@ func (in *sourceRegistryLoginModePtr) ToSourceRegistryLoginModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SourceRegistryLoginModePtrOutput)
 }
 
-func (in *sourceRegistryLoginModePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceRegistryLoginMode] {
-	return pulumix.Output[*SourceRegistryLoginMode]{
-		OutputState: in.ToSourceRegistryLoginModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceTriggerEvent string
 
 const (
@@ -4668,12 +4511,6 @@ func (in *sourceTriggerEventPtr) ToSourceTriggerEventPtrOutput() SourceTriggerEv
 
 func (in *sourceTriggerEventPtr) ToSourceTriggerEventPtrOutputWithContext(ctx context.Context) SourceTriggerEventPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTriggerEventPtrOutput)
-}
-
-func (in *sourceTriggerEventPtr) ToOutput(ctx context.Context) pulumix.Output[*SourceTriggerEvent] {
-	return pulumix.Output[*SourceTriggerEvent]{
-		OutputState: in.ToSourceTriggerEventPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the step.
@@ -4851,12 +4688,6 @@ func (in *taskStatusPtr) ToTaskStatusPtrOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, in).(TaskStatusPtrOutput)
 }
 
-func (in *taskStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TaskStatus] {
-	return pulumix.Output[*TaskStatus]{
-		OutputState: in.ToTaskStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TokenCertificateName string
 
 const (
@@ -5020,12 +4851,6 @@ func (in *tokenCertificateNamePtr) ToTokenCertificateNamePtrOutput() TokenCertif
 
 func (in *tokenCertificateNamePtr) ToTokenCertificateNamePtrOutputWithContext(ctx context.Context) TokenCertificateNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TokenCertificateNamePtrOutput)
-}
-
-func (in *tokenCertificateNamePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenCertificateName] {
-	return pulumix.Output[*TokenCertificateName]{
-		OutputState: in.ToTokenCertificateNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The password name "password1" or "password2"
@@ -5194,12 +5019,6 @@ func (in *tokenPasswordNamePtr) ToTokenPasswordNamePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TokenPasswordNamePtrOutput)
 }
 
-func (in *tokenPasswordNamePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenPasswordName] {
-	return pulumix.Output[*TokenPasswordName]{
-		OutputState: in.ToTokenPasswordNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the token example enabled or disabled.
 type TokenStatus string
 
@@ -5364,12 +5183,6 @@ func (in *tokenStatusPtr) ToTokenStatusPtrOutput() TokenStatusPtrOutput {
 
 func (in *tokenStatusPtr) ToTokenStatusPtrOutputWithContext(ctx context.Context) TokenStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TokenStatusPtrOutput)
-}
-
-func (in *tokenStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TokenStatus] {
-	return pulumix.Output[*TokenStatus]{
-		OutputState: in.ToTokenStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Auth token.
@@ -5538,12 +5351,6 @@ func (in *tokenTypePtr) ToTokenTypePtrOutputWithContext(ctx context.Context) Tok
 	return pulumi.ToOutputWithContext(ctx, in).(TokenTypePtrOutput)
 }
 
-func (in *tokenTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenType] {
-	return pulumix.Output[*TokenType]{
-		OutputState: in.ToTokenTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current status of trigger.
 type TriggerStatus string
 
@@ -5710,12 +5517,6 @@ func (in *triggerStatusPtr) ToTriggerStatusPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerStatusPtrOutput)
 }
 
-func (in *triggerStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerStatus] {
-	return pulumix.Output[*TriggerStatus]{
-		OutputState: in.ToTriggerStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of trust policy.
 type TrustPolicyType string
 
@@ -5878,12 +5679,6 @@ func (in *trustPolicyTypePtr) ToTrustPolicyTypePtrOutput() TrustPolicyTypePtrOut
 
 func (in *trustPolicyTypePtr) ToTrustPolicyTypePtrOutputWithContext(ctx context.Context) TrustPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrustPolicyTypePtrOutput)
-}
-
-func (in *trustPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TrustPolicyType] {
-	return pulumix.Output[*TrustPolicyType]{
-		OutputState: in.ToTrustPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of Payload body for Base image update triggers.
@@ -6052,12 +5847,6 @@ func (in *updateTriggerPayloadTypePtr) ToUpdateTriggerPayloadTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateTriggerPayloadTypePtrOutput)
 }
 
-func (in *updateTriggerPayloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateTriggerPayloadType] {
-	return pulumix.Output[*UpdateTriggerPayloadType]{
-		OutputState: in.ToUpdateTriggerPayloadTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Variant of the CPU.
 type Variant string
 
@@ -6224,12 +6013,6 @@ func (in *variantPtr) ToVariantPtrOutput() VariantPtrOutput {
 
 func (in *variantPtr) ToVariantPtrOutputWithContext(ctx context.Context) VariantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VariantPtrOutput)
-}
-
-func (in *variantPtr) ToOutput(ctx context.Context) pulumix.Output[*Variant] {
-	return pulumix.Output[*Variant]{
-		OutputState: in.ToVariantPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WebhookAction string
@@ -6403,12 +6186,6 @@ func (in *webhookActionPtr) ToWebhookActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(WebhookActionPtrOutput)
 }
 
-func (in *webhookActionPtr) ToOutput(ctx context.Context) pulumix.Output[*WebhookAction] {
-	return pulumix.Output[*WebhookAction]{
-		OutputState: in.ToWebhookActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the webhook at the time the operation was called.
 type WebhookStatus string
 
@@ -6575,12 +6352,6 @@ func (in *webhookStatusPtr) ToWebhookStatusPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(WebhookStatusPtrOutput)
 }
 
-func (in *webhookStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*WebhookStatus] {
-	return pulumix.Output[*WebhookStatus]{
-		OutputState: in.ToWebhookStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not zone redundancy is enabled for this container registry replication
 type ZoneRedundancy string
 
@@ -6745,12 +6516,6 @@ func (in *zoneRedundancyPtr) ToZoneRedundancyPtrOutput() ZoneRedundancyPtrOutput
 
 func (in *zoneRedundancyPtr) ToZoneRedundancyPtrOutputWithContext(ctx context.Context) ZoneRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneRedundancyPtrOutput)
-}
-
-func (in *zoneRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedundancy] {
-	return pulumix.Output[*ZoneRedundancy]{
-		OutputState: in.ToZoneRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

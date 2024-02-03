@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The identity type.
@@ -173,12 +172,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostPool type for desktop.
@@ -346,12 +339,6 @@ func (in *scalingHostPoolTypePtr) ToScalingHostPoolTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ScalingHostPoolTypePtrOutput)
 }
 
-func (in *scalingHostPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScalingHostPoolType] {
-	return pulumix.Output[*ScalingHostPoolType]{
-		OutputState: in.ToScalingHostPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Load balancing algorithm for ramp up period.
 type SessionHostLoadBalancingAlgorithm string
 
@@ -516,12 +503,6 @@ func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgori
 
 func (in *sessionHostLoadBalancingAlgorithmPtr) ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx context.Context) SessionHostLoadBalancingAlgorithmPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionHostLoadBalancingAlgorithmPtrOutput)
-}
-
-func (in *sessionHostLoadBalancingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SessionHostLoadBalancingAlgorithm] {
-	return pulumix.Output[*SessionHostLoadBalancingAlgorithm]{
-		OutputState: in.ToSessionHostLoadBalancingAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -694,12 +675,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies when to stop hosts during ramp down period.
 type StopHostsWhen string
 
@@ -864,12 +839,6 @@ func (in *stopHostsWhenPtr) ToStopHostsWhenPtrOutput() StopHostsWhenPtrOutput {
 
 func (in *stopHostsWhenPtr) ToStopHostsWhenPtrOutputWithContext(ctx context.Context) StopHostsWhenPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StopHostsWhenPtrOutput)
-}
-
-func (in *stopHostsWhenPtr) ToOutput(ctx context.Context) pulumix.Output[*StopHostsWhen] {
-	return pulumix.Output[*StopHostsWhen]{
-		OutputState: in.ToStopHostsWhenPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

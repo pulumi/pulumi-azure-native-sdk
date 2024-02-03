@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An indication of how the data point should be mapped to OpenTelemetry.
@@ -183,12 +182,6 @@ func (in *dataPointsObservabilityModePtr) ToDataPointsObservabilityModePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(DataPointsObservabilityModePtrOutput)
 }
 
-func (in *dataPointsObservabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataPointsObservabilityMode] {
-	return pulumix.Output[*DataPointsObservabilityMode]{
-		OutputState: in.ToDataPointsObservabilityModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An indication of how the event should be mapped to OpenTelemetry.
 type EventsObservabilityMode string
 
@@ -353,12 +346,6 @@ func (in *eventsObservabilityModePtr) ToEventsObservabilityModePtrOutput() Event
 
 func (in *eventsObservabilityModePtr) ToEventsObservabilityModePtrOutputWithContext(ctx context.Context) EventsObservabilityModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EventsObservabilityModePtrOutput)
-}
-
-func (in *eventsObservabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*EventsObservabilityMode] {
-	return pulumix.Output[*EventsObservabilityMode]{
-		OutputState: in.ToEventsObservabilityModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the mode to authenticate the user of the client at the server.
@@ -527,12 +514,6 @@ func (in *modePtr) ToModePtrOutput() ModePtrOutput {
 
 func (in *modePtr) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ModePtrOutput)
-}
-
-func (in *modePtr) ToOutput(ctx context.Context) pulumix.Output[*Mode] {
-	return pulumix.Output[*Mode]{
-		OutputState: in.ToModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

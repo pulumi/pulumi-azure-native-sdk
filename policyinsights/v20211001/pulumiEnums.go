@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
@@ -177,12 +176,6 @@ func (in *resourceDiscoveryModePtr) ToResourceDiscoveryModePtrOutput() ResourceD
 
 func (in *resourceDiscoveryModePtr) ToResourceDiscoveryModePtrOutputWithContext(ctx context.Context) ResourceDiscoveryModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceDiscoveryModePtrOutput)
-}
-
-func (in *resourceDiscoveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceDiscoveryMode] {
-	return pulumix.Output[*ResourceDiscoveryMode]{
-		OutputState: in.ToResourceDiscoveryModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies if the IP is exposed to the public internet or private VNET.
@@ -177,12 +176,6 @@ func (in *containerGroupIpAddressTypePtr) ToContainerGroupIpAddressTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerGroupIpAddressTypePtrOutput)
 }
 
-func (in *containerGroupIpAddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupIpAddressType] {
-	return pulumix.Output[*ContainerGroupIpAddressType]{
-		OutputState: in.ToContainerGroupIpAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol associated with the port.
 type ContainerGroupNetworkProtocol string
 
@@ -347,12 +340,6 @@ func (in *containerGroupNetworkProtocolPtr) ToContainerGroupNetworkProtocolPtrOu
 
 func (in *containerGroupNetworkProtocolPtr) ToContainerGroupNetworkProtocolPtrOutputWithContext(ctx context.Context) ContainerGroupNetworkProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerGroupNetworkProtocolPtrOutput)
-}
-
-func (in *containerGroupNetworkProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupNetworkProtocol] {
-	return pulumix.Output[*ContainerGroupNetworkProtocol]{
-		OutputState: in.ToContainerGroupNetworkProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Restart policy for all containers within the container group.
@@ -526,12 +513,6 @@ func (in *containerGroupRestartPolicyPtr) ToContainerGroupRestartPolicyPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerGroupRestartPolicyPtrOutput)
 }
 
-func (in *containerGroupRestartPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupRestartPolicy] {
-	return pulumix.Output[*ContainerGroupRestartPolicy]{
-		OutputState: in.ToContainerGroupRestartPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU for a container group.
 type ContainerGroupSku string
 
@@ -698,12 +679,6 @@ func (in *containerGroupSkuPtr) ToContainerGroupSkuPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerGroupSkuPtrOutput)
 }
 
-func (in *containerGroupSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerGroupSku] {
-	return pulumix.Output[*ContainerGroupSku]{
-		OutputState: in.ToContainerGroupSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol associated with the port.
 type ContainerNetworkProtocol string
 
@@ -868,12 +843,6 @@ func (in *containerNetworkProtocolPtr) ToContainerNetworkProtocolPtrOutput() Con
 
 func (in *containerNetworkProtocolPtr) ToContainerNetworkProtocolPtrOutputWithContext(ctx context.Context) ContainerNetworkProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerNetworkProtocolPtrOutput)
-}
-
-func (in *containerNetworkProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerNetworkProtocol] {
-	return pulumix.Output[*ContainerNetworkProtocol]{
-		OutputState: in.ToContainerNetworkProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SKU of the GPU resource.
@@ -1044,12 +1013,6 @@ func (in *gpuSkuPtr) ToGpuSkuPtrOutputWithContext(ctx context.Context) GpuSkuPtr
 	return pulumi.ToOutputWithContext(ctx, in).(GpuSkuPtrOutput)
 }
 
-func (in *gpuSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*GpuSku] {
-	return pulumix.Output[*GpuSku]{
-		OutputState: in.ToGpuSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The log type to be used.
 type LogAnalyticsLogType string
 
@@ -1216,12 +1179,6 @@ func (in *logAnalyticsLogTypePtr) ToLogAnalyticsLogTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(LogAnalyticsLogTypePtrOutput)
 }
 
-func (in *logAnalyticsLogTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LogAnalyticsLogType] {
-	return pulumix.Output[*LogAnalyticsLogType]{
-		OutputState: in.ToLogAnalyticsLogTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operating system type required by the containers in the container group.
 type OperatingSystemTypes string
 
@@ -1386,12 +1343,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
-}
-
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
@@ -1564,12 +1515,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The scheme.
 type Scheme string
 
@@ -1734,12 +1679,6 @@ func (in *schemePtr) ToSchemePtrOutput() SchemePtrOutput {
 
 func (in *schemePtr) ToSchemePtrOutputWithContext(ctx context.Context) SchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemePtrOutput)
-}
-
-func (in *schemePtr) ToOutput(ctx context.Context) pulumix.Output[*Scheme] {
-	return pulumix.Output[*Scheme]{
-		OutputState: in.ToSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

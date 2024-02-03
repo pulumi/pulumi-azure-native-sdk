@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Size of terminal font.
@@ -181,12 +180,6 @@ func (in *fontSizePtr) ToFontSizePtrOutputWithContext(ctx context.Context) FontS
 	return pulumi.ToOutputWithContext(ctx, in).(FontSizePtrOutput)
 }
 
-func (in *fontSizePtr) ToOutput(ctx context.Context) pulumix.Output[*FontSize] {
-	return pulumix.Output[*FontSize]{
-		OutputState: in.ToFontSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Style of terminal font.
 type FontStyle string
 
@@ -355,12 +348,6 @@ func (in *fontStylePtr) ToFontStylePtrOutputWithContext(ctx context.Context) Fon
 	return pulumi.ToOutputWithContext(ctx, in).(FontStylePtrOutput)
 }
 
-func (in *fontStylePtr) ToOutput(ctx context.Context) pulumix.Output[*FontStyle] {
-	return pulumix.Output[*FontStyle]{
-		OutputState: in.ToFontStylePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operating system type of the cloud shell. Deprecated, use preferredShellType.
 type OsType string
 
@@ -525,12 +512,6 @@ func (in *osTypePtr) ToOsTypePtrOutput() OsTypePtrOutput {
 
 func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
-}
-
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the console.
@@ -713,12 +694,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The shell type of the cloud shell.
 type ShellType string
 
@@ -885,12 +860,6 @@ func (in *shellTypePtr) ToShellTypePtrOutput() ShellTypePtrOutput {
 
 func (in *shellTypePtr) ToShellTypePtrOutputWithContext(ctx context.Context) ShellTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShellTypePtrOutput)
-}
-
-func (in *shellTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ShellType] {
-	return pulumix.Output[*ShellType]{
-		OutputState: in.ToShellTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the frequency at which data is written to disk.
@@ -177,12 +176,6 @@ func (in *aofFrequencyPtr) ToAofFrequencyPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AofFrequencyPtrOutput)
 }
 
-func (in *aofFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*AofFrequency] {
-	return pulumix.Output[*AofFrequency]{
-		OutputState: in.ToAofFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Clustering policy - default is OSSCluster. Specified at create time.
 type ClusteringPolicy string
 
@@ -349,12 +342,6 @@ func (in *clusteringPolicyPtr) ToClusteringPolicyPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ClusteringPolicyPtrOutput)
 }
 
-func (in *clusteringPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusteringPolicy] {
-	return pulumix.Output[*ClusteringPolicy]{
-		OutputState: in.ToClusteringPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Only userAssignedIdentity is supported in this API version; other types may be supported in the future
 type CmkIdentityType string
 
@@ -519,12 +506,6 @@ func (in *cmkIdentityTypePtr) ToCmkIdentityTypePtrOutput() CmkIdentityTypePtrOut
 
 func (in *cmkIdentityTypePtr) ToCmkIdentityTypePtrOutputWithContext(ctx context.Context) CmkIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CmkIdentityTypePtrOutput)
-}
-
-func (in *cmkIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CmkIdentityType] {
-	return pulumix.Output[*CmkIdentityType]{
-		OutputState: in.ToCmkIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Day of the week when a cache can be patched.
@@ -707,12 +688,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Redis eviction policy - default is VolatileLRU
 type EvictionPolicy string
 
@@ -891,12 +866,6 @@ func (in *evictionPolicyPtr) ToEvictionPolicyPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(EvictionPolicyPtrOutput)
 }
 
-func (in *evictionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*EvictionPolicy] {
-	return pulumix.Output[*EvictionPolicy]{
-		OutputState: in.ToEvictionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -1067,12 +1036,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -1241,12 +1204,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.
 type Protocol string
 
@@ -1413,12 +1370,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public endpoint access is allowed for this cache.  Value is optional, but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'. Note: This setting is important for caches with private endpoints. It has *no effect* on caches that are joined to, or injected into, a virtual network subnet.
 type PublicNetworkAccess string
 
@@ -1583,12 +1534,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets the frequency at which a snapshot of the database is created.
@@ -1759,12 +1704,6 @@ func (in *rdbFrequencyPtr) ToRdbFrequencyPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(RdbFrequencyPtrOutput)
 }
 
-func (in *rdbFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RdbFrequency] {
-	return pulumix.Output[*RdbFrequency]{
-		OutputState: in.ToRdbFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Role of the linked server.
 type ReplicationRole string
 
@@ -1931,12 +1870,6 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRolePtrOutput)
 }
 
-func (in *replicationRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
-	return pulumix.Output[*ReplicationRole]{
-		OutputState: in.ToReplicationRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU family to use. Valid values: (C, P). (C = Basic/Standard, P = Premium).
 type SkuFamily string
 
@@ -2101,12 +2034,6 @@ func (in *skuFamilyPtr) ToSkuFamilyPtrOutput() SkuFamilyPtrOutput {
 
 func (in *skuFamilyPtr) ToSkuFamilyPtrOutputWithContext(ctx context.Context) SkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuFamilyPtrOutput)
-}
-
-func (in *skuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuFamily] {
-	return pulumix.Output[*SkuFamily]{
-		OutputState: in.ToSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
@@ -2285,12 +2212,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum TLS version for the cluster to support, e.g. '1.2'
 type TlsVersion string
 
@@ -2457,12 +2378,6 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
 
 func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsVersionPtrOutput)
-}
-
-func (in *tlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsVersion] {
-	return pulumix.Output[*TlsVersion]{
-		OutputState: in.ToTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Logging level for batch inference operation.
@@ -179,12 +178,6 @@ func (in *batchLoggingLevelPtr) ToBatchLoggingLevelPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(BatchLoggingLevelPtrOutput)
 }
 
-func (in *batchLoggingLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*BatchLoggingLevel] {
-	return pulumix.Output[*BatchLoggingLevel]{
-		OutputState: in.ToBatchLoggingLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates how the output will be organized.
 type BatchOutputAction string
 
@@ -349,12 +342,6 @@ func (in *batchOutputActionPtr) ToBatchOutputActionPtrOutput() BatchOutputAction
 
 func (in *batchOutputActionPtr) ToBatchOutputActionPtrOutputWithContext(ctx context.Context) BatchOutputActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BatchOutputActionPtrOutput)
-}
-
-func (in *batchOutputActionPtr) ToOutput(ctx context.Context) pulumix.Output[*BatchOutputAction] {
-	return pulumix.Output[*BatchOutputAction]{
-		OutputState: in.ToBatchOutputActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum for all classification models supported by AutoML.
@@ -570,12 +557,6 @@ func (in *classificationModelsPtr) ToClassificationModelsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationModelsPtrOutput)
 }
 
-func (in *classificationModelsPtr) ToOutput(ctx context.Context) pulumix.Output[*ClassificationModels] {
-	return pulumix.Output[*ClassificationModels]{
-		OutputState: in.ToClassificationModelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric to optimize for this task.
 type ClassificationMultilabelPrimaryMetrics string
 
@@ -760,12 +741,6 @@ func (in *classificationMultilabelPrimaryMetricsPtr) ToClassificationMultilabelP
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationMultilabelPrimaryMetricsPtrOutput)
 }
 
-func (in *classificationMultilabelPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ClassificationMultilabelPrimaryMetrics] {
-	return pulumix.Output[*ClassificationMultilabelPrimaryMetrics]{
-		OutputState: in.ToClassificationMultilabelPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric for Text-Classification task.
 type ClassificationPrimaryMetrics string
 
@@ -947,12 +922,6 @@ func (in *classificationPrimaryMetricsPtr) ToClassificationPrimaryMetricsPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ClassificationPrimaryMetricsPtrOutput)
 }
 
-func (in *classificationPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ClassificationPrimaryMetrics] {
-	return pulumix.Output[*ClassificationPrimaryMetrics]{
-		OutputState: in.ToClassificationPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Credential type used to authentication with storage.
 type CredentialsType string
 
@@ -1132,12 +1101,6 @@ func (in *dataTypePtr) ToDataTypePtrOutput() DataTypePtrOutput {
 
 func (in *dataTypePtr) ToDataTypePtrOutputWithContext(ctx context.Context) DataTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataTypePtrOutput)
-}
-
-func (in *dataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataType] {
-	return pulumix.Output[*DataType]{
-		OutputState: in.ToDataTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Storage type backing the datastore.
@@ -1335,12 +1298,6 @@ func (in *egressPublicNetworkAccessTypePtr) ToEgressPublicNetworkAccessTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(EgressPublicNetworkAccessTypePtrOutput)
 }
 
-func (in *egressPublicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EgressPublicNetworkAccessType] {
-	return pulumix.Output[*EgressPublicNetworkAccessType]{
-		OutputState: in.ToEgressPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
 type EndpointAuthMode string
 
@@ -1507,12 +1464,6 @@ func (in *endpointAuthModePtr) ToEndpointAuthModePtrOutput() EndpointAuthModePtr
 
 func (in *endpointAuthModePtr) ToEndpointAuthModePtrOutputWithContext(ctx context.Context) EndpointAuthModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointAuthModePtrOutput)
-}
-
-func (in *endpointAuthModePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointAuthMode] {
-	return pulumix.Output[*EndpointAuthMode]{
-		OutputState: in.ToEndpointAuthModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] The compute type of the endpoint.
@@ -1692,12 +1643,6 @@ func (in *featureLagsPtr) ToFeatureLagsPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureLagsPtrOutput)
 }
 
-func (in *featureLagsPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureLags] {
-	return pulumix.Output[*FeatureLags]{
-		OutputState: in.ToFeatureLagsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
 // If 'Off' is selected then no featurization is done.
 // If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
@@ -1869,12 +1814,6 @@ func (in *featurizationModePtr) ToFeaturizationModePtrOutput() FeaturizationMode
 
 func (in *featurizationModePtr) ToFeaturizationModePtrOutputWithContext(ctx context.Context) FeaturizationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FeaturizationModePtrOutput)
-}
-
-func (in *featurizationModePtr) ToOutput(ctx context.Context) pulumix.Output[*FeaturizationMode] {
-	return pulumix.Output[*FeaturizationMode]{
-		OutputState: in.ToFeaturizationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Set forecast horizon value selection mode.
@@ -2115,12 +2054,6 @@ func (in *forecastingModelsPtr) ToForecastingModelsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ForecastingModelsPtrOutput)
 }
 
-func (in *forecastingModelsPtr) ToOutput(ctx context.Context) pulumix.Output[*ForecastingModels] {
-	return pulumix.Output[*ForecastingModels]{
-		OutputState: in.ToForecastingModelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric for forecasting task.
 type ForecastingPrimaryMetrics string
 
@@ -2295,12 +2228,6 @@ func (in *forecastingPrimaryMetricsPtr) ToForecastingPrimaryMetricsPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ForecastingPrimaryMetricsPtrOutput)
 }
 
-func (in *forecastingPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ForecastingPrimaryMetrics] {
-	return pulumix.Output[*ForecastingPrimaryMetrics]{
-		OutputState: in.ToForecastingPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] Defines supported metric goals for hyperparameter tuning
 type Goal string
 
@@ -2465,12 +2392,6 @@ func (in *goalPtr) ToGoalPtrOutput() GoalPtrOutput {
 
 func (in *goalPtr) ToGoalPtrOutputWithContext(ctx context.Context) GoalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoalPtrOutput)
-}
-
-func (in *goalPtr) ToOutput(ctx context.Context) pulumix.Output[*Goal] {
-	return pulumix.Output[*Goal]{
-		OutputState: in.ToGoalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of identity framework.
@@ -2656,12 +2577,6 @@ func (in *inputDeliveryModePtr) ToInputDeliveryModePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(InputDeliveryModePtrOutput)
 }
 
-func (in *inputDeliveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*InputDeliveryMode] {
-	return pulumix.Output[*InputDeliveryMode]{
-		OutputState: in.ToInputDeliveryModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric to optimize for this task.
 type InstanceSegmentationPrimaryMetrics string
 
@@ -2826,12 +2741,6 @@ func (in *instanceSegmentationPrimaryMetricsPtr) ToInstanceSegmentationPrimaryMe
 
 func (in *instanceSegmentationPrimaryMetricsPtr) ToInstanceSegmentationPrimaryMetricsPtrOutputWithContext(ctx context.Context) InstanceSegmentationPrimaryMetricsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceSegmentationPrimaryMetricsPtrOutput)
-}
-
-func (in *instanceSegmentationPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*InstanceSegmentationPrimaryMetrics] {
-	return pulumix.Output[*InstanceSegmentationPrimaryMetrics]{
-		OutputState: in.ToInstanceSegmentationPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of job.
@@ -3048,12 +2957,6 @@ func (in *learningRateSchedulerPtr) ToLearningRateSchedulerPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LearningRateSchedulerPtrOutput)
 }
 
-func (in *learningRateSchedulerPtr) ToOutput(ctx context.Context) pulumix.Output[*LearningRateScheduler] {
-	return pulumix.Output[*LearningRateScheduler]{
-		OutputState: in.ToLearningRateSchedulerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Log verbosity for the job.
 type LogVerbosity string
 
@@ -3234,12 +3137,6 @@ func (in *logVerbosityPtr) ToLogVerbosityPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(LogVerbosityPtrOutput)
 }
 
-func (in *logVerbosityPtr) ToOutput(ctx context.Context) pulumix.Output[*LogVerbosity] {
-	return pulumix.Output[*LogVerbosity]{
-		OutputState: in.ToLogVerbosityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -3408,12 +3305,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
@@ -3595,12 +3486,6 @@ func (in *modelSizePtr) ToModelSizePtrOutputWithContext(ctx context.Context) Mod
 	return pulumi.ToOutputWithContext(ctx, in).(ModelSizePtrOutput)
 }
 
-func (in *modelSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelSize] {
-	return pulumix.Output[*ModelSize]{
-		OutputState: in.ToModelSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The storage format for this entity. Used for NCD.
 type ModelType string
 
@@ -3767,12 +3652,6 @@ func (in *modelTypePtr) ToModelTypePtrOutput() ModelTypePtrOutput {
 
 func (in *modelTypePtr) ToModelTypePtrOutputWithContext(ctx context.Context) ModelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ModelTypePtrOutput)
-}
-
-func (in *modelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelType] {
-	return pulumix.Output[*ModelType]{
-		OutputState: in.ToModelTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Mode for determining N-Cross validations.
@@ -3951,12 +3830,6 @@ func (in *objectDetectionPrimaryMetricsPtr) ToObjectDetectionPrimaryMetricsPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ObjectDetectionPrimaryMetricsPtrOutput)
 }
 
-func (in *objectDetectionPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*ObjectDetectionPrimaryMetrics] {
-	return pulumix.Output[*ObjectDetectionPrimaryMetrics]{
-		OutputState: in.ToObjectDetectionPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The OS type of the environment.
 type OperatingSystemType string
 
@@ -4121,12 +3994,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutput() OperatingSyst
 
 func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
-}
-
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Output Asset Delivery Mode.
@@ -4295,12 +4162,6 @@ func (in *outputDeliveryModePtr) ToOutputDeliveryModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(OutputDeliveryModePtrOutput)
 }
 
-func (in *outputDeliveryModePtr) ToOutput(ctx context.Context) pulumix.Output[*OutputDeliveryMode] {
-	return pulumix.Output[*OutputDeliveryMode]{
-		OutputState: in.ToOutputDeliveryModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
 type PublicNetworkAccessType string
 
@@ -4467,12 +4328,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The specific type of random algorithm
 type RandomSamplingAlgorithmRule string
 
@@ -4637,12 +4492,6 @@ func (in *randomSamplingAlgorithmRulePtr) ToRandomSamplingAlgorithmRulePtrOutput
 
 func (in *randomSamplingAlgorithmRulePtr) ToRandomSamplingAlgorithmRulePtrOutputWithContext(ctx context.Context) RandomSamplingAlgorithmRulePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RandomSamplingAlgorithmRulePtrOutput)
-}
-
-func (in *randomSamplingAlgorithmRulePtr) ToOutput(ctx context.Context) pulumix.Output[*RandomSamplingAlgorithmRule] {
-	return pulumix.Output[*RandomSamplingAlgorithmRule]{
-		OutputState: in.ToRandomSamplingAlgorithmRulePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies frequency with with which to trigger schedule
@@ -4820,12 +4669,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutput() RecurrenceFre
 
 func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
-}
-
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the type of asset reference.
@@ -5035,12 +4878,6 @@ func (in *regressionModelsPtr) ToRegressionModelsPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RegressionModelsPtrOutput)
 }
 
-func (in *regressionModelsPtr) ToOutput(ctx context.Context) pulumix.Output[*RegressionModels] {
-	return pulumix.Output[*RegressionModels]{
-		OutputState: in.ToRegressionModelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Primary metric for regression task.
 type RegressionPrimaryMetrics string
 
@@ -5215,12 +5052,6 @@ func (in *regressionPrimaryMetricsPtr) ToRegressionPrimaryMetricsPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RegressionPrimaryMetricsPtrOutput)
 }
 
-func (in *regressionPrimaryMetricsPtr) ToOutput(ctx context.Context) pulumix.Output[*RegressionPrimaryMetrics] {
-	return pulumix.Output[*RegressionPrimaryMetrics]{
-		OutputState: in.ToRegressionPrimaryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // [Required] The algorithm used for generating hyperparameter values, along with configuration properties
 type SamplingAlgorithmType string
 
@@ -5387,12 +5218,6 @@ func (in *samplingAlgorithmTypePtr) ToSamplingAlgorithmTypePtrOutput() SamplingA
 
 func (in *samplingAlgorithmTypePtr) ToSamplingAlgorithmTypePtrOutputWithContext(ctx context.Context) SamplingAlgorithmTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SamplingAlgorithmTypePtrOutput)
-}
-
-func (in *samplingAlgorithmTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SamplingAlgorithmType] {
-	return pulumix.Output[*SamplingAlgorithmType]{
-		OutputState: in.ToSamplingAlgorithmTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Type of deployment scaling algorithm
@@ -5569,12 +5394,6 @@ func (in *scheduleStatusPtr) ToScheduleStatusPtrOutput() ScheduleStatusPtrOutput
 
 func (in *scheduleStatusPtr) ToScheduleStatusPtrOutputWithContext(ctx context.Context) ScheduleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleStatusPtrOutput)
-}
-
-func (in *scheduleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleStatus] {
-	return pulumix.Output[*ScheduleStatus]{
-		OutputState: in.ToScheduleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Specifies the schedule type
@@ -5780,12 +5599,6 @@ func (in *serviceDataAccessAuthIdentityPtr) ToServiceDataAccessAuthIdentityPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceDataAccessAuthIdentityPtrOutput)
 }
 
-func (in *serviceDataAccessAuthIdentityPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceDataAccessAuthIdentity] {
-	return pulumix.Output[*ServiceDataAccessAuthIdentity]{
-		OutputState: in.ToServiceDataAccessAuthIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parameter defining how if AutoML should handle short time series.
 type ShortSeriesHandlingConfiguration string
 
@@ -5960,12 +5773,6 @@ func (in *shortSeriesHandlingConfigurationPtr) ToShortSeriesHandlingConfiguratio
 	return pulumi.ToOutputWithContext(ctx, in).(ShortSeriesHandlingConfigurationPtrOutput)
 }
 
-func (in *shortSeriesHandlingConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*ShortSeriesHandlingConfiguration] {
-	return pulumix.Output[*ShortSeriesHandlingConfiguration]{
-		OutputState: in.ToShortSeriesHandlingConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 type SkuTier string
 
@@ -6134,12 +5941,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The meta-learner is a model trained on the output of the individual heterogeneous models.
@@ -6324,12 +6125,6 @@ func (in *stackMetaLearnerTypePtr) ToStackMetaLearnerTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(StackMetaLearnerTypePtrOutput)
 }
 
-func (in *stackMetaLearnerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StackMetaLearnerType] {
-	return pulumix.Output[*StackMetaLearnerType]{
-		OutputState: in.ToStackMetaLearnerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of optimizer.
 type StochasticOptimizer string
 
@@ -6504,12 +6299,6 @@ func (in *stochasticOptimizerPtr) ToStochasticOptimizerPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StochasticOptimizerPtrOutput)
 }
 
-func (in *stochasticOptimizerPtr) ToOutput(ctx context.Context) pulumix.Output[*StochasticOptimizer] {
-	return pulumix.Output[*StochasticOptimizer]{
-		OutputState: in.ToStochasticOptimizerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The function to be used to aggregate the time series target column to conform to a user specified frequency.
 // If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
 type TargetAggregationFunction string
@@ -6682,12 +6471,6 @@ func (in *targetAggregationFunctionPtr) ToTargetAggregationFunctionPtrOutput() T
 
 func (in *targetAggregationFunctionPtr) ToTargetAggregationFunctionPtrOutputWithContext(ctx context.Context) TargetAggregationFunctionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetAggregationFunctionPtrOutput)
-}
-
-func (in *targetAggregationFunctionPtr) ToOutput(ctx context.Context) pulumix.Output[*TargetAggregationFunction] {
-	return pulumix.Output[*TargetAggregationFunction]{
-		OutputState: in.ToTargetAggregationFunctionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // [Required] Set target lags mode - Auto/Custom
@@ -6913,12 +6696,6 @@ func (in *useStlPtr) ToUseStlPtrOutputWithContext(ctx context.Context) UseStlPtr
 	return pulumi.ToOutputWithContext(ctx, in).(UseStlPtrOutput)
 }
 
-func (in *useStlPtr) ToOutput(ctx context.Context) pulumix.Output[*UseStl] {
-	return pulumix.Output[*UseStl]{
-		OutputState: in.ToUseStlPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metric computation method to use for validation metrics.
 type ValidationMetricType string
 
@@ -7093,12 +6870,6 @@ func (in *validationMetricTypePtr) ToValidationMetricTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationMetricTypePtrOutput)
 }
 
-func (in *validationMetricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationMetricType] {
-	return pulumix.Output[*ValidationMetricType]{
-		OutputState: in.ToValidationMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // format for the workspace connection value
 type ValueFormat string
 
@@ -7261,12 +7032,6 @@ func (in *valueFormatPtr) ToValueFormatPtrOutput() ValueFormatPtrOutput {
 
 func (in *valueFormatPtr) ToValueFormatPtrOutputWithContext(ctx context.Context) ValueFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValueFormatPtrOutput)
-}
-
-func (in *valueFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ValueFormat] {
-	return pulumix.Output[*ValueFormat]{
-		OutputState: in.ToValueFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum of weekdays
@@ -7450,12 +7215,6 @@ func (in *weekdayPtr) ToWeekdayPtrOutput() WeekdayPtrOutput {
 
 func (in *weekdayPtr) ToWeekdayPtrOutputWithContext(ctx context.Context) WeekdayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekdayPtrOutput)
-}
-
-func (in *weekdayPtr) ToOutput(ctx context.Context) pulumix.Output[*Weekday] {
-	return pulumix.Output[*Weekday]{
-		OutputState: in.ToWeekdayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

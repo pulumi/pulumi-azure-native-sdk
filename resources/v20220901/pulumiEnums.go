@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
@@ -175,12 +174,6 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutput() DeploymentModePtrOutput
 
 func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
-}
-
-func (in *deploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
-	return pulumix.Output[*DeploymentMode]{
-		OutputState: in.ToDeploymentModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The scope to be used for evaluation of parameters, variables and functions in a nested template.
@@ -351,12 +344,6 @@ func (in *expressionEvaluationOptionsScopeTypePtr) ToExpressionEvaluationOptions
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressionEvaluationOptionsScopeTypePtrOutput)
 }
 
-func (in *expressionEvaluationOptionsScopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressionEvaluationOptionsScopeType] {
-	return pulumix.Output[*ExpressionEvaluationOptionsScopeType]{
-		OutputState: in.ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The extended location type.
 type ExtendedLocationType string
 
@@ -519,12 +506,6 @@ func (in *extendedLocationTypePtr) ToExtendedLocationTypePtrOutput() ExtendedLoc
 
 func (in *extendedLocationTypePtr) ToExtendedLocationTypePtrOutputWithContext(ctx context.Context) ExtendedLocationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypePtrOutput)
-}
-
-func (in *extendedLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationType] {
-	return pulumix.Output[*ExtendedLocationType]{
-		OutputState: in.ToExtendedLocationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
@@ -691,12 +672,6 @@ func (in *onErrorDeploymentTypePtr) ToOnErrorDeploymentTypePtrOutput() OnErrorDe
 
 func (in *onErrorDeploymentTypePtr) ToOnErrorDeploymentTypePtrOutputWithContext(ctx context.Context) OnErrorDeploymentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OnErrorDeploymentTypePtrOutput)
-}
-
-func (in *onErrorDeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OnErrorDeploymentType] {
-	return pulumix.Output[*OnErrorDeploymentType]{
-		OutputState: in.ToOnErrorDeploymentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -867,12 +842,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

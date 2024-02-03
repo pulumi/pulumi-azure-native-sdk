@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The owner type for the governance rule owner source
@@ -179,12 +178,6 @@ func (in *governanceRuleOwnerSourceTypePtr) ToGovernanceRuleOwnerSourceTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(GovernanceRuleOwnerSourceTypePtrOutput)
 }
 
-func (in *governanceRuleOwnerSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleOwnerSourceType] {
-	return pulumix.Output[*GovernanceRuleOwnerSourceType]{
-		OutputState: in.ToGovernanceRuleOwnerSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The governance rule source, what the rule affects, e.g. Assessments
 type GovernanceRuleSourceResourceType string
 
@@ -348,12 +341,6 @@ func (in *governanceRuleSourceResourceTypePtr) ToGovernanceRuleSourceResourceTyp
 
 func (in *governanceRuleSourceResourceTypePtr) ToGovernanceRuleSourceResourceTypePtrOutputWithContext(ctx context.Context) GovernanceRuleSourceResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GovernanceRuleSourceResourceTypePtrOutput)
-}
-
-func (in *governanceRuleSourceResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleSourceResourceType] {
-	return pulumix.Output[*GovernanceRuleSourceResourceType]{
-		OutputState: in.ToGovernanceRuleSourceResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The rule type of the governance rule, defines the source of the rule e.g. Integrated
@@ -522,12 +509,6 @@ func (in *governanceRuleTypePtr) ToGovernanceRuleTypePtrOutput() GovernanceRuleT
 
 func (in *governanceRuleTypePtr) ToGovernanceRuleTypePtrOutputWithContext(ctx context.Context) GovernanceRuleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GovernanceRuleTypePtrOutput)
-}
-
-func (in *governanceRuleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleType] {
-	return pulumix.Output[*GovernanceRuleType]{
-		OutputState: in.ToGovernanceRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

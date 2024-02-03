@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sku family of the Cloud HSM Cluster
@@ -175,12 +174,6 @@ func (in *cloudHsmClusterSkuFamilyPtr) ToCloudHsmClusterSkuFamilyPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(CloudHsmClusterSkuFamilyPtrOutput)
 }
 
-func (in *cloudHsmClusterSkuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterSkuFamily] {
-	return pulumix.Output[*CloudHsmClusterSkuFamily]{
-		OutputState: in.ToCloudHsmClusterSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sku name of the Cloud HSM Cluster
 type CloudHsmClusterSkuName string
 
@@ -345,12 +338,6 @@ func (in *cloudHsmClusterSkuNamePtr) ToCloudHsmClusterSkuNamePtrOutput() CloudHs
 
 func (in *cloudHsmClusterSkuNamePtr) ToCloudHsmClusterSkuNamePtrOutputWithContext(ctx context.Context) CloudHsmClusterSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudHsmClusterSkuNamePtrOutput)
-}
-
-func (in *cloudHsmClusterSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterSkuName] {
-	return pulumix.Output[*CloudHsmClusterSkuName]{
-		OutputState: in.ToCloudHsmClusterSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -523,12 +510,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -695,12 +676,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 
 func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Cloud HSM Cluster's provisioningState
@@ -873,12 +848,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningState
 
 func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
-}
-
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
@@ -177,12 +176,6 @@ func (in *favoriteTypePtr) ToFavoriteTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(FavoriteTypePtrOutput)
 }
 
-func (in *favoriteTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FavoriteType] {
-	return pulumix.Output[*FavoriteType]{
-		OutputState: in.ToFavoriteTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 type ItemScope string
 
@@ -347,12 +340,6 @@ func (in *itemScopePtr) ToItemScopePtrOutput() ItemScopePtrOutput {
 
 func (in *itemScopePtr) ToItemScopePtrOutputWithContext(ctx context.Context) ItemScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ItemScopePtrOutput)
-}
-
-func (in *itemScopePtr) ToOutput(ctx context.Context) pulumix.Output[*ItemScope] {
-	return pulumix.Output[*ItemScope]{
-		OutputState: in.ToItemScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum indicating the type of the Analytics item.
@@ -525,12 +512,6 @@ func (in *itemTypePtr) ToItemTypePtrOutputWithContext(ctx context.Context) ItemT
 	return pulumi.ToOutputWithContext(ctx, in).(ItemTypePtrOutput)
 }
 
-func (in *itemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ItemType] {
-	return pulumix.Output[*ItemType]{
-		OutputState: in.ToItemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum indicating if this workbook definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 type SharedTypeKind string
 
@@ -695,12 +676,6 @@ func (in *sharedTypeKindPtr) ToSharedTypeKindPtrOutput() SharedTypeKindPtrOutput
 
 func (in *sharedTypeKindPtr) ToSharedTypeKindPtrOutputWithContext(ctx context.Context) SharedTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SharedTypeKindPtrOutput)
-}
-
-func (in *sharedTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*SharedTypeKind] {
-	return pulumix.Output[*SharedTypeKind]{
-		OutputState: in.ToSharedTypeKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

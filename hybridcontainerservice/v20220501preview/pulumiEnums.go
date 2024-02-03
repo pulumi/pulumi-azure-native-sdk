@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether the Arc agents on the provisioned clusters be upgraded automatically to the latest version. Defaults to Enabled.
@@ -177,12 +176,6 @@ func (in *autoUpgradeOptionsPtr) ToAutoUpgradeOptionsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AutoUpgradeOptionsPtrOutput)
 }
 
-func (in *autoUpgradeOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoUpgradeOptions] {
-	return pulumix.Output[*AutoUpgradeOptions]{
-		OutputState: in.ToAutoUpgradeOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LicenseType - The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs. Possible values include: 'None', 'Windows_Server'
 type LicenseType string
 
@@ -347,12 +340,6 @@ func (in *licenseTypePtr) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
 
 func (in *licenseTypePtr) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypePtrOutput)
-}
-
-func (in *licenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseType] {
-	return pulumix.Output[*LicenseType]{
-		OutputState: in.ToLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LoadBalancerSku - The load balancer sku for the provisioned cluster. Possible values: 'unstacked-haproxy', 'stacked-kube-vip', 'stacked-metallb', 'unmanaged'. The default is 'unmanaged'.
@@ -525,12 +512,6 @@ func (in *loadBalancerSkuPtr) ToLoadBalancerSkuPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerSkuPtrOutput)
 }
 
-func (in *loadBalancerSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSku] {
-	return pulumix.Output[*LoadBalancerSku]{
-		OutputState: in.ToLoadBalancerSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mode - AgentPoolMode represents mode of an agent pool. Possible values include: 'System', 'LB', 'User'. Default is 'User'
 type Mode string
 
@@ -699,12 +680,6 @@ func (in *modePtr) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ModePtrOutput)
 }
 
-func (in *modePtr) ToOutput(ctx context.Context) pulumix.Output[*Mode] {
-	return pulumix.Output[*Mode]{
-		OutputState: in.ToModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkPolicy - Network policy used for building Kubernetes network. Possible values include: 'calico', 'flannel'. Default is 'calico'
 type NetworkPolicy string
 
@@ -869,12 +844,6 @@ func (in *networkPolicyPtr) ToNetworkPolicyPtrOutput() NetworkPolicyPtrOutput {
 
 func (in *networkPolicyPtr) ToNetworkPolicyPtrOutputWithContext(ctx context.Context) NetworkPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPolicyPtrOutput)
-}
-
-func (in *networkPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicy] {
-	return pulumix.Output[*NetworkPolicy]{
-		OutputState: in.ToNetworkPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
@@ -1043,12 +1012,6 @@ func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
 }
 
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
 type ResourceIdentityType string
 
@@ -1213,12 +1176,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

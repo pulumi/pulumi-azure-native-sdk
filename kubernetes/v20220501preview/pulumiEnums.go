@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode of client authentication.
@@ -177,12 +176,6 @@ func (in *authenticationMethodPtr) ToAuthenticationMethodPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationMethodPtrOutput)
 }
 
-func (in *authenticationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMethod] {
-	return pulumix.Output[*AuthenticationMethod]{
-		OutputState: in.ToAuthenticationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Property which describes the state of private link on a connected cluster resource.
 type PrivateLinkState string
 
@@ -347,12 +340,6 @@ func (in *privateLinkStatePtr) ToPrivateLinkStatePtrOutput() PrivateLinkStatePtr
 
 func (in *privateLinkStatePtr) ToPrivateLinkStatePtrOutputWithContext(ctx context.Context) PrivateLinkStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkStatePtrOutput)
-}
-
-func (in *privateLinkStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkState] {
-	return pulumix.Output[*PrivateLinkState]{
-		OutputState: in.ToPrivateLinkStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the connected cluster resource.
@@ -531,12 +518,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
 type ResourceIdentityType string
 
@@ -701,12 +682,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

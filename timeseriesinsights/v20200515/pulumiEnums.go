@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A role defining the data plane operations that a principal can perform on a Time Series Insights client.
@@ -177,12 +176,6 @@ func (in *accessPolicyRolePtr) ToAccessPolicyRolePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPolicyRolePtrOutput)
 }
 
-func (in *accessPolicyRolePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyRole] {
-	return pulumix.Output[*AccessPolicyRole]{
-		OutputState: in.ToAccessPolicyRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
 type DataStringComparisonBehavior string
 
@@ -347,12 +340,6 @@ func (in *dataStringComparisonBehaviorPtr) ToDataStringComparisonBehaviorPtrOutp
 
 func (in *dataStringComparisonBehaviorPtr) ToDataStringComparisonBehaviorPtrOutputWithContext(ctx context.Context) DataStringComparisonBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataStringComparisonBehaviorPtrOutput)
-}
-
-func (in *dataStringComparisonBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStringComparisonBehavior] {
-	return pulumix.Output[*DataStringComparisonBehavior]{
-		OutputState: in.ToDataStringComparisonBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the key property.
@@ -523,12 +510,6 @@ func (in *referenceDataKeyPropertyTypePtr) ToReferenceDataKeyPropertyTypePtrOutp
 
 func (in *referenceDataKeyPropertyTypePtr) ToReferenceDataKeyPropertyTypePtrOutputWithContext(ctx context.Context) ReferenceDataKeyPropertyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReferenceDataKeyPropertyTypePtrOutput)
-}
-
-func (in *referenceDataKeyPropertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReferenceDataKeyPropertyType] {
-	return pulumix.Output[*ReferenceDataKeyPropertyType]{
-		OutputState: in.ToReferenceDataKeyPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

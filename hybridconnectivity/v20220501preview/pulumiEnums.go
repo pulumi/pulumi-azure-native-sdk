@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of identity that last modified the resource.
@@ -181,12 +180,6 @@ func (in *createdByTypePtr) ToCreatedByTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(CreatedByTypePtrOutput)
 }
 
-func (in *createdByTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CreatedByType] {
-	return pulumix.Output[*CreatedByType]{
-		OutputState: in.ToCreatedByTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of endpoint.
 type Type string
 
@@ -351,12 +344,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

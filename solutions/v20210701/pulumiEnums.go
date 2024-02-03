@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The managed application definition artifact type.
@@ -177,12 +176,6 @@ func (in *applicationArtifactTypePtr) ToApplicationArtifactTypePtrOutput() Appli
 
 func (in *applicationArtifactTypePtr) ToApplicationArtifactTypePtrOutputWithContext(ctx context.Context) ApplicationArtifactTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationArtifactTypePtrOutput)
-}
-
-func (in *applicationArtifactTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationArtifactType] {
-	return pulumix.Output[*ApplicationArtifactType]{
-		OutputState: in.ToApplicationArtifactTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The managed application definition artifact name.
@@ -355,12 +348,6 @@ func (in *applicationDefinitionArtifactNamePtr) ToApplicationDefinitionArtifactN
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationDefinitionArtifactNamePtrOutput)
 }
 
-func (in *applicationDefinitionArtifactNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDefinitionArtifactName] {
-	return pulumix.Output[*ApplicationDefinitionArtifactName]{
-		OutputState: in.ToApplicationDefinitionArtifactNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The managed application lock level.
 type ApplicationLockLevel string
 
@@ -527,12 +514,6 @@ func (in *applicationLockLevelPtr) ToApplicationLockLevelPtrOutput() Application
 
 func (in *applicationLockLevelPtr) ToApplicationLockLevelPtrOutputWithContext(ctx context.Context) ApplicationLockLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationLockLevelPtrOutput)
-}
-
-func (in *applicationLockLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLockLevel] {
-	return pulumix.Output[*ApplicationLockLevel]{
-		OutputState: in.ToApplicationLockLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The managed application management mode.
@@ -703,12 +684,6 @@ func (in *applicationManagementModePtr) ToApplicationManagementModePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationManagementModePtrOutput)
 }
 
-func (in *applicationManagementModePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationManagementMode] {
-	return pulumix.Output[*ApplicationManagementMode]{
-		OutputState: in.ToApplicationManagementModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The managed application deployment mode.
 type DeploymentMode string
 
@@ -875,12 +850,6 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutput() DeploymentModePtrOutput
 
 func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
-}
-
-func (in *deploymentModePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
-	return pulumix.Output[*DeploymentMode]{
-		OutputState: in.ToDeploymentModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // JIT approval mode.
@@ -1051,12 +1020,6 @@ func (in *jitApprovalModePtr) ToJitApprovalModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(JitApprovalModePtrOutput)
 }
 
-func (in *jitApprovalModePtr) ToOutput(ctx context.Context) pulumix.Output[*JitApprovalMode] {
-	return pulumix.Output[*JitApprovalMode]{
-		OutputState: in.ToJitApprovalModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The approver type.
 type JitApproverType string
 
@@ -1221,12 +1184,6 @@ func (in *jitApproverTypePtr) ToJitApproverTypePtrOutput() JitApproverTypePtrOut
 
 func (in *jitApproverTypePtr) ToJitApproverTypePtrOutputWithContext(ctx context.Context) JitApproverTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JitApproverTypePtrOutput)
-}
-
-func (in *jitApproverTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JitApproverType] {
-	return pulumix.Output[*JitApproverType]{
-		OutputState: in.ToJitApproverTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of JIT schedule.
@@ -1397,12 +1354,6 @@ func (in *jitSchedulingTypePtr) ToJitSchedulingTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(JitSchedulingTypePtrOutput)
 }
 
-func (in *jitSchedulingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JitSchedulingType] {
-	return pulumix.Output[*JitSchedulingType]{
-		OutputState: in.ToJitSchedulingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1571,12 +1522,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

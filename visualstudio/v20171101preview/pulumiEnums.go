@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the operation.
@@ -179,12 +178,6 @@ func (in *accountResourceRequestOperationTypePtr) ToAccountResourceRequestOperat
 
 func (in *accountResourceRequestOperationTypePtr) ToAccountResourceRequestOperationTypePtrOutputWithContext(ctx context.Context) AccountResourceRequestOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccountResourceRequestOperationTypePtrOutput)
-}
-
-func (in *accountResourceRequestOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccountResourceRequestOperationType] {
-	return pulumix.Output[*AccountResourceRequestOperationType]{
-		OutputState: in.ToAccountResourceRequestOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

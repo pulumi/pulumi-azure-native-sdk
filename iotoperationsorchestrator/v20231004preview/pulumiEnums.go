@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policy type
@@ -174,12 +173,6 @@ func (in *reconciliationPoliciesPtr) ToReconciliationPoliciesPtrOutput() Reconci
 
 func (in *reconciliationPoliciesPtr) ToReconciliationPoliciesPtrOutputWithContext(ctx context.Context) ReconciliationPoliciesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReconciliationPoliciesPtrOutput)
-}
-
-func (in *reconciliationPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*ReconciliationPolicies] {
-	return pulumix.Output[*ReconciliationPolicies]{
-		OutputState: in.ToReconciliationPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

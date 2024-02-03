@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
@@ -179,12 +178,6 @@ func (in *agentPoolModePtr) ToAgentPoolModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolModePtrOutput)
 }
 
-func (in *agentPoolModePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolMode] {
-	return pulumix.Output[*AgentPoolMode]{
-		OutputState: in.ToAgentPoolModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Agent Pool.
 type AgentPoolType string
 
@@ -351,12 +344,6 @@ func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutput() AgentPoolTypePtrOutput {
 
 func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutputWithContext(ctx context.Context) AgentPoolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolTypePtrOutput)
-}
-
-func (in *agentPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolType] {
-	return pulumix.Output[*AgentPoolType]{
-		OutputState: in.ToAgentPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tells whether the cluster is Running or Stopped
@@ -527,12 +514,6 @@ func (in *codePtr) ToCodePtrOutputWithContext(ctx context.Context) CodePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(CodePtrOutput)
 }
 
-func (in *codePtr) ToOutput(ctx context.Context) pulumix.Output[*Code] {
-	return pulumix.Output[*Code]{
-		OutputState: in.ToCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private link service connection status.
 type ConnectionStatus string
 
@@ -701,12 +682,6 @@ func (in *connectionStatusPtr) ToConnectionStatusPtrOutput() ConnectionStatusPtr
 
 func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx context.Context) ConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
-}
-
-func (in *connectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStatus] {
-	return pulumix.Output[*ConnectionStatus]{
-		OutputState: in.ToConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
@@ -883,12 +858,6 @@ func (in *expanderPtr) ToExpanderPtrOutputWithContext(ctx context.Context) Expan
 	return pulumi.ToOutputWithContext(ctx, in).(ExpanderPtrOutput)
 }
 
-func (in *expanderPtr) ToOutput(ctx context.Context) pulumix.Output[*Expander] {
-	return pulumix.Output[*Expander]{
-		OutputState: in.ToExpanderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1051,12 +1020,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
@@ -1231,12 +1194,6 @@ func (in *gpuinstanceProfilePtr) ToGPUInstanceProfilePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GPUInstanceProfilePtrOutput)
 }
 
-func (in *gpuinstanceProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*GPUInstanceProfile] {
-	return pulumix.Output[*GPUInstanceProfile]{
-		OutputState: in.ToGPUInstanceProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP version to use for cluster networking and IP assignment.
 type IpFamily string
 
@@ -1401,12 +1358,6 @@ func (in *ipFamilyPtr) ToIpFamilyPtrOutput() IpFamilyPtrOutput {
 
 func (in *ipFamilyPtr) ToIpFamilyPtrOutputWithContext(ctx context.Context) IpFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpFamilyPtrOutput)
-}
-
-func (in *ipFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*IpFamily] {
-	return pulumix.Output[*IpFamily]{
-		OutputState: in.ToIpFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Mode of an ingress gateway.
@@ -1577,12 +1528,6 @@ func (in *istioIngressGatewayModePtr) ToIstioIngressGatewayModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(IstioIngressGatewayModePtrOutput)
 }
 
-func (in *istioIngressGatewayModePtr) ToOutput(ctx context.Context) pulumix.Output[*IstioIngressGatewayMode] {
-	return pulumix.Output[*IstioIngressGatewayMode]{
-		OutputState: in.ToIstioIngressGatewayModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`.
 type KeyVaultNetworkAccessTypes string
 
@@ -1747,12 +1692,6 @@ func (in *keyVaultNetworkAccessTypesPtr) ToKeyVaultNetworkAccessTypesPtrOutput()
 
 func (in *keyVaultNetworkAccessTypesPtr) ToKeyVaultNetworkAccessTypesPtrOutputWithContext(ctx context.Context) KeyVaultNetworkAccessTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultNetworkAccessTypesPtrOutput)
-}
-
-func (in *keyVaultNetworkAccessTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultNetworkAccessTypes] {
-	return pulumix.Output[*KeyVaultNetworkAccessTypes]{
-		OutputState: in.ToKeyVaultNetworkAccessTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
@@ -1923,12 +1862,6 @@ func (in *kubeletDiskTypePtr) ToKubeletDiskTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(KubeletDiskTypePtrOutput)
 }
 
-func (in *kubeletDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KubeletDiskType] {
-	return pulumix.Output[*KubeletDiskType]{
-		OutputState: in.ToKubeletDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
 type KubernetesSupportPlan string
 
@@ -2095,12 +2028,6 @@ func (in *kubernetesSupportPlanPtr) ToKubernetesSupportPlanPtrOutput() Kubernete
 
 func (in *kubernetesSupportPlanPtr) ToKubernetesSupportPlanPtrOutputWithContext(ctx context.Context) KubernetesSupportPlanPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KubernetesSupportPlanPtrOutput)
-}
-
-func (in *kubernetesSupportPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*KubernetesSupportPlan] {
-	return pulumix.Output[*KubernetesSupportPlan]{
-		OutputState: in.ToKubernetesSupportPlanPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more details.
@@ -2271,12 +2198,6 @@ func (in *licenseTypePtr) ToLicenseTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypePtrOutput)
 }
 
-func (in *licenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseType] {
-	return pulumix.Output[*LicenseType]{
-		OutputState: in.ToLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs.
 type LoadBalancerSku string
 
@@ -2445,12 +2366,6 @@ func (in *loadBalancerSkuPtr) ToLoadBalancerSkuPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerSkuPtrOutput)
 }
 
-func (in *loadBalancerSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSku] {
-	return pulumix.Output[*LoadBalancerSku]{
-		OutputState: in.ToLoadBalancerSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of a managed cluster SKU.
 type ManagedClusterSKUName string
 
@@ -2614,12 +2529,6 @@ func (in *managedClusterSKUNamePtr) ToManagedClusterSKUNamePtrOutput() ManagedCl
 
 func (in *managedClusterSKUNamePtr) ToManagedClusterSKUNamePtrOutputWithContext(ctx context.Context) ManagedClusterSKUNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterSKUNamePtrOutput)
-}
-
-func (in *managedClusterSKUNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSKUName] {
-	return pulumix.Output[*ManagedClusterSKUName]{
-		OutputState: in.ToManagedClusterSKUNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
@@ -2793,12 +2702,6 @@ func (in *managedClusterSKUTierPtr) ToManagedClusterSKUTierPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterSKUTierPtrOutput)
 }
 
-func (in *managedClusterSKUTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSKUTier] {
-	return pulumix.Output[*ManagedClusterSKUTier]{
-		OutputState: in.ToManagedClusterSKUTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network dataplane used in the Kubernetes cluster.
 type NetworkDataplane string
 
@@ -2967,12 +2870,6 @@ func (in *networkDataplanePtr) ToNetworkDataplanePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkDataplanePtrOutput)
 }
 
-func (in *networkDataplanePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkDataplane] {
-	return pulumix.Output[*NetworkDataplane]{
-		OutputState: in.ToNetworkDataplanePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This cannot be specified if networkPlugin is anything other than 'azure'.
 type NetworkMode string
 
@@ -3139,12 +3036,6 @@ func (in *networkModePtr) ToNetworkModePtrOutput() NetworkModePtrOutput {
 
 func (in *networkModePtr) ToNetworkModePtrOutputWithContext(ctx context.Context) NetworkModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkModePtrOutput)
-}
-
-func (in *networkModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkMode] {
-	return pulumix.Output[*NetworkMode]{
-		OutputState: in.ToNetworkModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network plugin used for building the Kubernetes network.
@@ -3318,12 +3209,6 @@ func (in *networkPluginPtr) ToNetworkPluginPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPluginPtrOutput)
 }
 
-func (in *networkPluginPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPlugin] {
-	return pulumix.Output[*NetworkPlugin]{
-		OutputState: in.ToNetworkPluginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mode the network plugin should use.
 type NetworkPluginMode string
 
@@ -3487,12 +3372,6 @@ func (in *networkPluginModePtr) ToNetworkPluginModePtrOutput() NetworkPluginMode
 
 func (in *networkPluginModePtr) ToNetworkPluginModePtrOutputWithContext(ctx context.Context) NetworkPluginModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPluginModePtrOutput)
-}
-
-func (in *networkPluginModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPluginMode] {
-	return pulumix.Output[*NetworkPluginMode]{
-		OutputState: in.ToNetworkPluginModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network policy used for building the Kubernetes network.
@@ -3666,12 +3545,6 @@ func (in *networkPolicyPtr) ToNetworkPolicyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPolicyPtrOutput)
 }
 
-func (in *networkPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicy] {
-	return pulumix.Output[*NetworkPolicy]{
-		OutputState: in.ToNetworkPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Manner in which the OS on your nodes is updated. The default is NodeImage.
 type NodeOSUpgradeChannel string
 
@@ -3843,12 +3716,6 @@ func (in *nodeOSUpgradeChannelPtr) ToNodeOSUpgradeChannelPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(NodeOSUpgradeChannelPtrOutput)
 }
 
-func (in *nodeOSUpgradeChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeOSUpgradeChannel] {
-	return pulumix.Output[*NodeOSUpgradeChannel]{
-		OutputState: in.ToNodeOSUpgradeChannelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
 type OSDiskType string
 
@@ -4015,12 +3882,6 @@ func (in *osdiskTypePtr) ToOSDiskTypePtrOutput() OSDiskTypePtrOutput {
 
 func (in *osdiskTypePtr) ToOSDiskTypePtrOutputWithContext(ctx context.Context) OSDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSDiskTypePtrOutput)
-}
-
-func (in *osdiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSDiskType] {
-	return pulumix.Output[*OSDiskType]{
-		OutputState: in.ToOSDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows.
@@ -4200,12 +4061,6 @@ func (in *osskuPtr) ToOSSKUPtrOutputWithContext(ctx context.Context) OSSKUPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(OSSKUPtrOutput)
 }
 
-func (in *osskuPtr) ToOutput(ctx context.Context) pulumix.Output[*OSSKU] {
-	return pulumix.Output[*OSSKU]{
-		OutputState: in.ToOSSKUPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operating system type. The default is Linux.
 type OSType string
 
@@ -4372,12 +4227,6 @@ func (in *ostypePtr) ToOSTypePtrOutput() OSTypePtrOutput {
 
 func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
-}
-
-func (in *ostypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSType] {
-	return pulumix.Output[*OSType]{
-		OutputState: in.ToOSTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
@@ -4554,12 +4403,6 @@ func (in *outboundTypePtr) ToOutboundTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OutboundTypePtrOutput)
 }
 
-func (in *outboundTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OutboundType] {
-	return pulumix.Output[*OutboundType]{
-		OutputState: in.ToOutboundTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allow or deny public network access for AKS
 type PublicNetworkAccess string
 
@@ -4724,12 +4567,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
@@ -4903,12 +4740,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
 type ScaleDownMode string
 
@@ -5075,12 +4906,6 @@ func (in *scaleDownModePtr) ToScaleDownModePtrOutput() ScaleDownModePtrOutput {
 
 func (in *scaleDownModePtr) ToScaleDownModePtrOutputWithContext(ctx context.Context) ScaleDownModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleDownModePtrOutput)
-}
-
-func (in *scaleDownModePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleDownMode] {
-	return pulumix.Output[*ScaleDownMode]{
-		OutputState: in.ToScaleDownModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
@@ -5251,12 +5076,6 @@ func (in *scaleSetEvictionPolicyPtr) ToScaleSetEvictionPolicyPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetEvictionPolicyPtrOutput)
 }
 
-func (in *scaleSetEvictionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetEvictionPolicy] {
-	return pulumix.Output[*ScaleSetEvictionPolicy]{
-		OutputState: in.ToScaleSetEvictionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
 type ScaleSetPriority string
 
@@ -5423,12 +5242,6 @@ func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutput() ScaleSetPriorityPtr
 
 func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutputWithContext(ctx context.Context) ScaleSetPriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetPriorityPtrOutput)
-}
-
-func (in *scaleSetPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetPriority] {
-	return pulumix.Output[*ScaleSetPriority]{
-		OutputState: in.ToScaleSetPriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Mode of the service mesh.
@@ -5599,12 +5412,6 @@ func (in *serviceMeshModePtr) ToServiceMeshModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceMeshModePtrOutput)
 }
 
-func (in *serviceMeshModePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMode] {
-	return pulumix.Output[*ServiceMeshMode]{
-		OutputState: in.ToServiceMeshModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of a snapshot. The default is NodePool.
 type SnapshotType string
 
@@ -5768,12 +5575,6 @@ func (in *snapshotTypePtr) ToSnapshotTypePtrOutput() SnapshotTypePtrOutput {
 
 func (in *snapshotTypePtr) ToSnapshotTypePtrOutputWithContext(ctx context.Context) SnapshotTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SnapshotTypePtrOutput)
-}
-
-func (in *snapshotTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SnapshotType] {
-	return pulumix.Output[*SnapshotType]{
-		OutputState: in.ToSnapshotTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies on which week of the month the dayOfWeek applies.
@@ -5953,12 +5754,6 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
 }
 
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
 type UpgradeChannel string
 
@@ -6134,12 +5929,6 @@ func (in *upgradeChannelPtr) ToUpgradeChannelPtrOutput() UpgradeChannelPtrOutput
 
 func (in *upgradeChannelPtr) ToUpgradeChannelPtrOutputWithContext(ctx context.Context) UpgradeChannelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeChannelPtrOutput)
-}
-
-func (in *upgradeChannelPtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeChannel] {
-	return pulumix.Output[*UpgradeChannel]{
-		OutputState: in.ToUpgradeChannelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The day of the week.
@@ -6318,12 +6107,6 @@ func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDay
 	return pulumi.ToOutputWithContext(ctx, in).(WeekDayPtrOutput)
 }
 
-func (in *weekDayPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekDay] {
-	return pulumix.Output[*WeekDay]{
-		OutputState: in.ToWeekDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of workload a node can run.
 type WorkloadRuntime string
 
@@ -6490,12 +6273,6 @@ func (in *workloadRuntimePtr) ToWorkloadRuntimePtrOutput() WorkloadRuntimePtrOut
 
 func (in *workloadRuntimePtr) ToWorkloadRuntimePtrOutputWithContext(ctx context.Context) WorkloadRuntimePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadRuntimePtrOutput)
-}
-
-func (in *workloadRuntimePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadRuntime] {
-	return pulumix.Output[*WorkloadRuntime]{
-		OutputState: in.ToWorkloadRuntimePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

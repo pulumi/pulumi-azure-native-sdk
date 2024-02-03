@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Default action when no other rule matches
@@ -175,12 +174,6 @@ func (in *aclactionPtr) ToACLActionPtrOutput() ACLActionPtrOutput {
 
 func (in *aclactionPtr) ToACLActionPtrOutputWithContext(ctx context.Context) ACLActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ACLActionPtrOutput)
-}
-
-func (in *aclactionPtr) ToOutput(ctx context.Context) pulumix.Output[*ACLAction] {
-	return pulumix.Output[*ACLAction]{
-		OutputState: in.ToACLActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FeatureFlags is the supported features of Azure SignalR service.
@@ -354,12 +347,6 @@ func (in *featureFlagsPtr) ToFeatureFlagsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureFlagsPtrOutput)
 }
 
-func (in *featureFlagsPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureFlags] {
-	return pulumix.Output[*FeatureFlags]{
-		OutputState: in.ToFeatureFlagsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent the identity type: systemAssigned, userAssigned, None
 type ManagedIdentityType string
 
@@ -528,12 +515,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
 }
 
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the type of auth. None or ManagedIdentity is supported now.
 type UpstreamAuthType string
 
@@ -698,12 +679,6 @@ func (in *upstreamAuthTypePtr) ToUpstreamAuthTypePtrOutput() UpstreamAuthTypePtr
 
 func (in *upstreamAuthTypePtr) ToUpstreamAuthTypePtrOutputWithContext(ctx context.Context) UpstreamAuthTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpstreamAuthTypePtrOutput)
-}
-
-func (in *upstreamAuthTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UpstreamAuthType] {
-	return pulumix.Output[*UpstreamAuthType]{
-		OutputState: in.ToUpstreamAuthTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -876,12 +851,6 @@ func (in *webPubSubRequestTypePtr) ToWebPubSubRequestTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(WebPubSubRequestTypePtrOutput)
 }
 
-func (in *webPubSubRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubRequestType] {
-	return pulumix.Output[*WebPubSubRequestType]{
-		OutputState: in.ToWebPubSubRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional tier of this particular SKU. 'Standard' or 'Free'.
 //
 // `Basic` is deprecated, use `Standard` instead.
@@ -1052,12 +1021,6 @@ func (in *webPubSubSkuTierPtr) ToWebPubSubSkuTierPtrOutput() WebPubSubSkuTierPtr
 
 func (in *webPubSubSkuTierPtr) ToWebPubSubSkuTierPtrOutputWithContext(ctx context.Context) WebPubSubSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebPubSubSkuTierPtrOutput)
-}
-
-func (in *webPubSubSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubSkuTier] {
-	return pulumix.Output[*WebPubSubSkuTier]{
-		OutputState: in.ToWebPubSubSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

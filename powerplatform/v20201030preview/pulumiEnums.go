@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind (type) of Enterprise Policy.
@@ -183,12 +182,6 @@ func (in *enterprisePolicyKindPtr) ToEnterprisePolicyKindPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(EnterprisePolicyKindPtrOutput)
 }
 
-func (in *enterprisePolicyKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePolicyKind] {
-	return pulumix.Output[*EnterprisePolicyKind]{
-		OutputState: in.ToEnterprisePolicyKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The health status of the resource.
 type HealthStatus string
 
@@ -359,12 +352,6 @@ func (in *healthStatusPtr) ToHealthStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HealthStatusPtrOutput)
 }
 
-func (in *healthStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*HealthStatus] {
-	return pulumix.Output[*HealthStatus]{
-		OutputState: in.ToHealthStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -533,12 +520,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 type ResourceIdentityType string
 
@@ -703,12 +684,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // lockbox configuration
@@ -877,12 +852,6 @@ func (in *statePtr) ToStatePtrOutput() StatePtrOutput {
 
 func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
-}
-
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

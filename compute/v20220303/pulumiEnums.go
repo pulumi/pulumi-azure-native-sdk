@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The architecture of the image. Applicable to OS disks only.
@@ -177,12 +176,6 @@ func (in *architecturePtr) ToArchitecturePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ArchitecturePtrOutput)
 }
 
-func (in *architecturePtr) ToOutput(ctx context.Context) pulumix.Output[*Architecture] {
-	return pulumix.Output[*Architecture]{
-		OutputState: in.ToArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // confidential VM encryption types
 type ConfidentialVMEncryptionType string
 
@@ -349,12 +342,6 @@ func (in *confidentialVMEncryptionTypePtr) ToConfidentialVMEncryptionTypePtrOutp
 
 func (in *confidentialVMEncryptionTypePtr) ToConfidentialVMEncryptionTypePtrOutputWithContext(ctx context.Context) ConfidentialVMEncryptionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfidentialVMEncryptionTypePtrOutput)
-}
-
-func (in *confidentialVMEncryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfidentialVMEncryptionType] {
-	return pulumix.Output[*ConfidentialVMEncryptionType]{
-		OutputState: in.ToConfidentialVMEncryptionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the storage account type to be used to store the image. This property is not updatable.
@@ -527,12 +514,6 @@ func (in *edgeZoneStorageAccountTypePtr) ToEdgeZoneStorageAccountTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(EdgeZoneStorageAccountTypePtrOutput)
 }
 
-func (in *edgeZoneStorageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EdgeZoneStorageAccountType] {
-	return pulumix.Output[*EdgeZoneStorageAccountType]{
-		OutputState: in.ToEdgeZoneStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
 type GalleryApplicationCustomActionParameterType string
 
@@ -701,12 +682,6 @@ func (in *galleryApplicationCustomActionParameterTypePtr) ToGalleryApplicationCu
 	return pulumi.ToOutputWithContext(ctx, in).(GalleryApplicationCustomActionParameterTypePtrOutput)
 }
 
-func (in *galleryApplicationCustomActionParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GalleryApplicationCustomActionParameterType] {
-	return pulumix.Output[*GalleryApplicationCustomActionParameterType]{
-		OutputState: in.ToGalleryApplicationCustomActionParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // It is type of the extended location.
 type GalleryExtendedLocationType string
 
@@ -871,12 +846,6 @@ func (in *galleryExtendedLocationTypePtr) ToGalleryExtendedLocationTypePtrOutput
 
 func (in *galleryExtendedLocationTypePtr) ToGalleryExtendedLocationTypePtrOutputWithContext(ctx context.Context) GalleryExtendedLocationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GalleryExtendedLocationTypePtrOutput)
-}
-
-func (in *galleryExtendedLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GalleryExtendedLocationType] {
-	return pulumix.Output[*GalleryExtendedLocationType]{
-		OutputState: in.ToGalleryExtendedLocationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This property allows you to specify the permission of sharing gallery. <br><br> Possible values are: <br><br> **Private** <br><br> **Groups** <br><br> **Community**
@@ -1047,12 +1016,6 @@ func (in *gallerySharingPermissionTypesPtr) ToGallerySharingPermissionTypesPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(GallerySharingPermissionTypesPtrOutput)
 }
 
-func (in *gallerySharingPermissionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*GallerySharingPermissionTypes] {
-	return pulumix.Output[*GallerySharingPermissionTypes]{
-		OutputState: in.ToGallerySharingPermissionTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
 type HostCaching string
 
@@ -1221,12 +1184,6 @@ func (in *hostCachingPtr) ToHostCachingPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(HostCachingPtrOutput)
 }
 
-func (in *hostCachingPtr) ToOutput(ctx context.Context) pulumix.Output[*HostCaching] {
-	return pulumix.Output[*HostCaching]{
-		OutputState: in.ToHostCachingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 type HyperVGeneration string
 
@@ -1391,12 +1348,6 @@ func (in *hyperVGenerationPtr) ToHyperVGenerationPtrOutput() HyperVGenerationPtr
 
 func (in *hyperVGenerationPtr) ToHyperVGenerationPtrOutputWithContext(ctx context.Context) HyperVGenerationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HyperVGenerationPtrOutput)
-}
-
-func (in *hyperVGenerationPtr) ToOutput(ctx context.Context) pulumix.Output[*HyperVGeneration] {
-	return pulumix.Output[*HyperVGeneration]{
-		OutputState: in.ToHyperVGenerationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
@@ -1565,12 +1516,6 @@ func (in *operatingSystemStateTypesPtr) ToOperatingSystemStateTypesPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemStateTypesPtrOutput)
 }
 
-func (in *operatingSystemStateTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemStateTypes] {
-	return pulumix.Output[*OperatingSystemStateTypes]{
-		OutputState: in.ToOperatingSystemStateTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
 type OperatingSystemTypes string
 
@@ -1735,12 +1680,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
-}
-
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional parameter which specifies the mode to be used for replication. This property is not updatable.
@@ -1909,12 +1848,6 @@ func (in *replicationModePtr) ToReplicationModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationModePtrOutput)
 }
 
-func (in *replicationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationMode] {
-	return pulumix.Output[*ReplicationMode]{
-		OutputState: in.ToReplicationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the storage account type to be used to store the image. This property is not updatable.
 type StorageAccountType string
 
@@ -2081,12 +2014,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutput() StorageAccountT
 
 func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
-}
-
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

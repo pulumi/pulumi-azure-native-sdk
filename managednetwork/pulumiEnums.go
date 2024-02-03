@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Responsibility role under which this Managed Network Group will be created
@@ -175,12 +174,6 @@ func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
 }
 
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the connectivity type of a network structure policy
 type Type string
 
@@ -345,12 +338,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

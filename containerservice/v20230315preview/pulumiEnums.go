@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The upgrade type.
@@ -179,12 +178,6 @@ func (in *managedClusterUpgradeTypePtr) ToManagedClusterUpgradeTypePtrOutput() M
 
 func (in *managedClusterUpgradeTypePtr) ToManagedClusterUpgradeTypePtrOutputWithContext(ctx context.Context) ManagedClusterUpgradeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterUpgradeTypePtrOutput)
-}
-
-func (in *managedClusterUpgradeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterUpgradeType] {
-	return pulumix.Output[*ManagedClusterUpgradeType]{
-		OutputState: in.ToManagedClusterUpgradeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

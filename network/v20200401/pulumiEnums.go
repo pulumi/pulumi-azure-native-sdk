@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Protocol type.
@@ -179,12 +178,6 @@ func (in *azureFirewallApplicationRuleProtocolTypePtr) ToAzureFirewallApplicatio
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallApplicationRuleProtocolTypePtrOutput)
 }
 
-func (in *azureFirewallApplicationRuleProtocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallApplicationRuleProtocolType] {
-	return pulumix.Output[*AzureFirewallApplicationRuleProtocolType]{
-		OutputState: in.ToAzureFirewallApplicationRuleProtocolTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of action.
 type AzureFirewallNatRCActionType string
 
@@ -349,12 +342,6 @@ func (in *azureFirewallNatRCActionTypePtr) ToAzureFirewallNatRCActionTypePtrOutp
 
 func (in *azureFirewallNatRCActionTypePtr) ToAzureFirewallNatRCActionTypePtrOutputWithContext(ctx context.Context) AzureFirewallNatRCActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallNatRCActionTypePtrOutput)
-}
-
-func (in *azureFirewallNatRCActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallNatRCActionType] {
-	return pulumix.Output[*AzureFirewallNatRCActionType]{
-		OutputState: in.ToAzureFirewallNatRCActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The protocol of a Network Rule resource.
@@ -527,12 +514,6 @@ func (in *azureFirewallNetworkRuleProtocolPtr) ToAzureFirewallNetworkRuleProtoco
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallNetworkRuleProtocolPtrOutput)
 }
 
-func (in *azureFirewallNetworkRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallNetworkRuleProtocol] {
-	return pulumix.Output[*AzureFirewallNetworkRuleProtocol]{
-		OutputState: in.ToAzureFirewallNetworkRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of action.
 type AzureFirewallRCActionType string
 
@@ -697,12 +678,6 @@ func (in *azureFirewallRCActionTypePtr) ToAzureFirewallRCActionTypePtrOutput() A
 
 func (in *azureFirewallRCActionTypePtr) ToAzureFirewallRCActionTypePtrOutputWithContext(ctx context.Context) AzureFirewallRCActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallRCActionTypePtrOutput)
-}
-
-func (in *azureFirewallRCActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallRCActionType] {
-	return pulumix.Output[*AzureFirewallRCActionType]{
-		OutputState: in.ToAzureFirewallRCActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of an Azure Firewall SKU.
@@ -871,12 +846,6 @@ func (in *azureFirewallSkuNamePtr) ToAzureFirewallSkuNamePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallSkuNamePtrOutput)
 }
 
-func (in *azureFirewallSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallSkuName] {
-	return pulumix.Output[*AzureFirewallSkuName]{
-		OutputState: in.ToAzureFirewallSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tier of an Azure Firewall.
 type AzureFirewallSkuTier string
 
@@ -1041,12 +1010,6 @@ func (in *azureFirewallSkuTierPtr) ToAzureFirewallSkuTierPtrOutput() AzureFirewa
 
 func (in *azureFirewallSkuTierPtr) ToAzureFirewallSkuTierPtrOutputWithContext(ctx context.Context) AzureFirewallSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallSkuTierPtrOutput)
-}
-
-func (in *azureFirewallSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallSkuTier] {
-	return pulumix.Output[*AzureFirewallSkuTier]{
-		OutputState: in.ToAzureFirewallSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operation mode for Threat Intelligence.
@@ -1217,12 +1180,6 @@ func (in *azureFirewallThreatIntelModePtr) ToAzureFirewallThreatIntelModePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFirewallThreatIntelModePtrOutput)
 }
 
-func (in *azureFirewallThreatIntelModePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFirewallThreatIntelMode] {
-	return pulumix.Output[*AzureFirewallThreatIntelMode]{
-		OutputState: in.ToAzureFirewallThreatIntelModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of action.
 type FirewallPolicyFilterRuleActionType string
 
@@ -1389,12 +1346,6 @@ func (in *firewallPolicyFilterRuleActionTypePtr) ToFirewallPolicyFilterRuleActio
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyFilterRuleActionTypePtrOutput)
 }
 
-func (in *firewallPolicyFilterRuleActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyFilterRuleActionType] {
-	return pulumix.Output[*FirewallPolicyFilterRuleActionType]{
-		OutputState: in.ToFirewallPolicyFilterRuleActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of action.
 type FirewallPolicyNatRuleActionType string
 
@@ -1557,12 +1508,6 @@ func (in *firewallPolicyNatRuleActionTypePtr) ToFirewallPolicyNatRuleActionTypeP
 
 func (in *firewallPolicyNatRuleActionTypePtr) ToFirewallPolicyNatRuleActionTypePtrOutputWithContext(ctx context.Context) FirewallPolicyNatRuleActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyNatRuleActionTypePtrOutput)
-}
-
-func (in *firewallPolicyNatRuleActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyNatRuleActionType] {
-	return pulumix.Output[*FirewallPolicyNatRuleActionType]{
-		OutputState: in.ToFirewallPolicyNatRuleActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Protocol type.
@@ -1729,12 +1674,6 @@ func (in *firewallPolicyRuleConditionApplicationProtocolTypePtr) ToFirewallPolic
 
 func (in *firewallPolicyRuleConditionApplicationProtocolTypePtr) ToFirewallPolicyRuleConditionApplicationProtocolTypePtrOutputWithContext(ctx context.Context) FirewallPolicyRuleConditionApplicationProtocolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleConditionApplicationProtocolTypePtrOutput)
-}
-
-func (in *firewallPolicyRuleConditionApplicationProtocolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRuleConditionApplicationProtocolType] {
-	return pulumix.Output[*FirewallPolicyRuleConditionApplicationProtocolType]{
-		OutputState: in.ToFirewallPolicyRuleConditionApplicationProtocolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Network protocol of a Rule condition.
@@ -1905,12 +1844,6 @@ func (in *firewallPolicyRuleConditionNetworkProtocolPtr) ToFirewallPolicyRuleCon
 
 func (in *firewallPolicyRuleConditionNetworkProtocolPtr) ToFirewallPolicyRuleConditionNetworkProtocolPtrOutputWithContext(ctx context.Context) FirewallPolicyRuleConditionNetworkProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyRuleConditionNetworkProtocolPtrOutput)
-}
-
-func (in *firewallPolicyRuleConditionNetworkProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyRuleConditionNetworkProtocol] {
-	return pulumix.Output[*FirewallPolicyRuleConditionNetworkProtocol]{
-		OutputState: in.ToFirewallPolicyRuleConditionNetworkProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Rule Condition Type.
@@ -2098,12 +2031,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

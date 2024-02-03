@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // CPU architecture supported by an OS disk.
@@ -177,12 +176,6 @@ func (in *architecturePtr) ToArchitecturePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ArchitecturePtrOutput)
 }
 
-func (in *architecturePtr) ToOutput(ctx context.Context) pulumix.Output[*Architecture] {
-	return pulumix.Output[*Architecture]{
-		OutputState: in.ToArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
 type CopyCompletionErrorReason string
 
@@ -346,12 +339,6 @@ func (in *copyCompletionErrorReasonPtr) ToCopyCompletionErrorReasonPtrOutput() C
 
 func (in *copyCompletionErrorReasonPtr) ToCopyCompletionErrorReasonPtrOutputWithContext(ctx context.Context) CopyCompletionErrorReasonPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CopyCompletionErrorReasonPtrOutput)
-}
-
-func (in *copyCompletionErrorReasonPtr) ToOutput(ctx context.Context) pulumix.Output[*CopyCompletionErrorReason] {
-	return pulumix.Output[*CopyCompletionErrorReason]{
-		OutputState: in.ToCopyCompletionErrorReasonPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Additional authentication requirements when exporting or uploading to a disk or snapshot.
@@ -520,12 +507,6 @@ func (in *dataAccessAuthModePtr) ToDataAccessAuthModePtrOutput() DataAccessAuthM
 
 func (in *dataAccessAuthModePtr) ToDataAccessAuthModePtrOutputWithContext(ctx context.Context) DataAccessAuthModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataAccessAuthModePtrOutput)
-}
-
-func (in *dataAccessAuthModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataAccessAuthMode] {
-	return pulumix.Output[*DataAccessAuthMode]{
-		OutputState: in.ToDataAccessAuthModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This enumerates the possible sources of a disk's creation.
@@ -723,12 +704,6 @@ func (in *diskCreateOptionPtr) ToDiskCreateOptionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DiskCreateOptionPtrOutput)
 }
 
-func (in *diskCreateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskCreateOption] {
-	return pulumix.Output[*DiskCreateOption]{
-		OutputState: in.ToDiskCreateOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys.
 type DiskEncryptionSetIdentityType string
 
@@ -897,12 +872,6 @@ func (in *diskEncryptionSetIdentityTypePtr) ToDiskEncryptionSetIdentityTypePtrOu
 
 func (in *diskEncryptionSetIdentityTypePtr) ToDiskEncryptionSetIdentityTypePtrOutputWithContext(ctx context.Context) DiskEncryptionSetIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskEncryptionSetIdentityTypePtrOutput)
-}
-
-func (in *diskEncryptionSetIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskEncryptionSetIdentityType] {
-	return pulumix.Output[*DiskEncryptionSetIdentityType]{
-		OutputState: in.ToDiskEncryptionSetIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of key used to encrypt the data of the disk.
@@ -1074,12 +1043,6 @@ func (in *diskEncryptionSetTypePtr) ToDiskEncryptionSetTypePtrOutput() DiskEncry
 
 func (in *diskEncryptionSetTypePtr) ToDiskEncryptionSetTypePtrOutputWithContext(ctx context.Context) DiskEncryptionSetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskEncryptionSetTypePtrOutput)
-}
-
-func (in *diskEncryptionSetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskEncryptionSetType] {
-	return pulumix.Output[*DiskEncryptionSetType]{
-		OutputState: in.ToDiskEncryptionSetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the SecurityType of the VM. Applicable for OS disks only.
@@ -1257,12 +1220,6 @@ func (in *diskSecurityTypesPtr) ToDiskSecurityTypesPtrOutput() DiskSecurityTypes
 
 func (in *diskSecurityTypesPtr) ToDiskSecurityTypesPtrOutputWithContext(ctx context.Context) DiskSecurityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskSecurityTypesPtrOutput)
-}
-
-func (in *diskSecurityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskSecurityTypes] {
-	return pulumix.Output[*DiskSecurityTypes]{
-		OutputState: in.ToDiskSecurityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku name.
@@ -1448,12 +1405,6 @@ func (in *diskStorageAccountTypesPtr) ToDiskStorageAccountTypesPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DiskStorageAccountTypesPtrOutput)
 }
 
-func (in *diskStorageAccountTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskStorageAccountTypes] {
-	return pulumix.Output[*DiskStorageAccountTypes]{
-		OutputState: in.ToDiskStorageAccountTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of key used to encrypt the data of the disk.
 type EncryptionType string
 
@@ -1625,12 +1576,6 @@ func (in *encryptionTypePtr) ToEncryptionTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionTypePtrOutput)
 }
 
-func (in *encryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionType] {
-	return pulumix.Output[*EncryptionType]{
-		OutputState: in.ToEncryptionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1793,12 +1738,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
@@ -1965,12 +1904,6 @@ func (in *hyperVGenerationPtr) ToHyperVGenerationPtrOutput() HyperVGenerationPtr
 
 func (in *hyperVGenerationPtr) ToHyperVGenerationPtrOutputWithContext(ctx context.Context) HyperVGenerationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HyperVGenerationPtrOutput)
-}
-
-func (in *hyperVGenerationPtr) ToOutput(ctx context.Context) pulumix.Output[*HyperVGeneration] {
-	return pulumix.Output[*HyperVGeneration]{
-		OutputState: in.ToHyperVGenerationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Policy for accessing the disk via network.
@@ -2144,12 +2077,6 @@ func (in *networkAccessPolicyPtr) ToNetworkAccessPolicyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkAccessPolicyPtrOutput)
 }
 
-func (in *networkAccessPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkAccessPolicy] {
-	return pulumix.Output[*NetworkAccessPolicy]{
-		OutputState: in.ToNetworkAccessPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Operating System type.
 type OperatingSystemTypes string
 
@@ -2314,12 +2241,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
-}
-
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -2490,12 +2411,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed.
 type ProvisionedBandwidthCopyOption string
 
@@ -2660,12 +2575,6 @@ func (in *provisionedBandwidthCopyOptionPtr) ToProvisionedBandwidthCopyOptionPtr
 
 func (in *provisionedBandwidthCopyOptionPtr) ToProvisionedBandwidthCopyOptionPtrOutputWithContext(ctx context.Context) ProvisionedBandwidthCopyOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisionedBandwidthCopyOptionPtrOutput)
-}
-
-func (in *provisionedBandwidthCopyOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisionedBandwidthCopyOption] {
-	return pulumix.Output[*ProvisionedBandwidthCopyOption]{
-		OutputState: in.ToProvisionedBandwidthCopyOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Policy for controlling export on the disk.
@@ -2834,12 +2743,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku name.
@@ -3011,12 +2914,6 @@ func (in *snapshotStorageAccountTypesPtr) ToSnapshotStorageAccountTypesPtrOutput
 
 func (in *snapshotStorageAccountTypesPtr) ToSnapshotStorageAccountTypesPtrOutputWithContext(ctx context.Context) SnapshotStorageAccountTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SnapshotStorageAccountTypesPtrOutput)
-}
-
-func (in *snapshotStorageAccountTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SnapshotStorageAccountTypes] {
-	return pulumix.Output[*SnapshotStorageAccountTypes]{
-		OutputState: in.ToSnapshotStorageAccountTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

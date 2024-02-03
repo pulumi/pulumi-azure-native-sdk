@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The access type of the rule.
@@ -177,12 +176,6 @@ func (in *accessPtr) ToAccessPtrOutputWithContext(ctx context.Context) AccessPtr
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPtrOutput)
 }
 
-func (in *accessPtr) ToOutput(ctx context.Context) pulumix.Output[*Access] {
-	return pulumix.Output[*Access]{
-		OutputState: in.ToAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
 type DdosSettingsProtectionCoverage string
 
@@ -347,12 +340,6 @@ func (in *ddosSettingsProtectionCoveragePtr) ToDdosSettingsProtectionCoveragePtr
 
 func (in *ddosSettingsProtectionCoveragePtr) ToDdosSettingsProtectionCoveragePtrOutputWithContext(ctx context.Context) DdosSettingsProtectionCoveragePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DdosSettingsProtectionCoveragePtrOutput)
-}
-
-func (in *ddosSettingsProtectionCoveragePtr) ToOutput(ctx context.Context) pulumix.Output[*DdosSettingsProtectionCoverage] {
-	return pulumix.Output[*DdosSettingsProtectionCoverage]{
-		OutputState: in.ToDdosSettingsProtectionCoveragePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
@@ -525,12 +512,6 @@ func (in *expressRouteCircuitPeeringAdvertisedPublicPrefixStatePtr) ToExpressRou
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitPeeringAdvertisedPublicPrefixStatePtrOutput)
 }
 
-func (in *expressRouteCircuitPeeringAdvertisedPublicPrefixStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringAdvertisedPublicPrefixState] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringAdvertisedPublicPrefixState]{
-		OutputState: in.ToExpressRouteCircuitPeeringAdvertisedPublicPrefixStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of peering. Possible values are: 'Disabled' and 'Enabled'
 type ExpressRouteCircuitPeeringStateEnum string
 
@@ -697,12 +678,6 @@ func (in *expressRouteCircuitPeeringStateEnumPtr) ToExpressRouteCircuitPeeringSt
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitPeeringStateEnumPtrOutput)
 }
 
-func (in *expressRouteCircuitPeeringStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringStateEnum] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringStateEnum]{
-		OutputState: in.ToExpressRouteCircuitPeeringStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The peering state.
 type ExpressRoutePeeringState string
 
@@ -867,12 +842,6 @@ func (in *expressRoutePeeringStatePtr) ToExpressRoutePeeringStatePtrOutput() Exp
 
 func (in *expressRoutePeeringStatePtr) ToExpressRoutePeeringStatePtrOutputWithContext(ctx context.Context) ExpressRoutePeeringStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRoutePeeringStatePtrOutput)
-}
-
-func (in *expressRoutePeeringStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRoutePeeringState] {
-	return pulumix.Output[*ExpressRoutePeeringState]{
-		OutputState: in.ToExpressRoutePeeringStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The peering type.
@@ -1043,12 +1012,6 @@ func (in *expressRoutePeeringTypePtr) ToExpressRoutePeeringTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRoutePeeringTypePtrOutput)
 }
 
-func (in *expressRoutePeeringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRoutePeeringType] {
-	return pulumix.Output[*ExpressRoutePeeringType]{
-		OutputState: in.ToExpressRoutePeeringTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Private IP allocation method.
 type IPAllocationMethod string
 
@@ -1213,12 +1176,6 @@ func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutput() IPAllocationMet
 
 func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutputWithContext(ctx context.Context) IPAllocationMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationMethodPtrOutput)
-}
-
-func (in *ipallocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationMethod] {
-	return pulumix.Output[*IPAllocationMethod]{
-		OutputState: in.ToIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The public IP address version.
@@ -1387,12 +1344,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPV
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
 }
 
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a public IP address SKU.
 type PublicIPAddressSkuName string
 
@@ -1559,12 +1510,6 @@ func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuNamePtrOutput)
 }
 
-func (in *publicIPAddressSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuName] {
-	return pulumix.Output[*PublicIPAddressSkuName]{
-		OutputState: in.ToPublicIPAddressSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The rule type of the rule. Valid value is: 'Community'
 type RouteFilterRuleType string
 
@@ -1727,12 +1672,6 @@ func (in *routeFilterRuleTypePtr) ToRouteFilterRuleTypePtrOutput() RouteFilterRu
 
 func (in *routeFilterRuleTypePtr) ToRouteFilterRuleTypePtrOutputWithContext(ctx context.Context) RouteFilterRuleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouteFilterRuleTypePtrOutput)
-}
-
-func (in *routeFilterRuleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteFilterRuleType] {
-	return pulumix.Output[*RouteFilterRuleType]{
-		OutputState: in.ToRouteFilterRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Azure hop the packet should be sent to.
@@ -1907,12 +1846,6 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
-func (in *routeNextHopTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteNextHopType] {
-	return pulumix.Output[*RouteNextHopType]{
-		OutputState: in.ToRouteNextHopTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network traffic is allowed or denied.
 type SecurityRuleAccess string
 
@@ -2079,12 +2012,6 @@ func (in *securityRuleAccessPtr) ToSecurityRuleAccessPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleAccessPtrOutput)
 }
 
-func (in *securityRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleAccess] {
-	return pulumix.Output[*SecurityRuleAccess]{
-		OutputState: in.ToSecurityRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
 type SecurityRuleDirection string
 
@@ -2249,12 +2176,6 @@ func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityR
 
 func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
-}
-
-func (in *securityRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleDirection] {
-	return pulumix.Output[*SecurityRuleDirection]{
-		OutputState: in.ToSecurityRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
@@ -2429,12 +2350,6 @@ func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleProtocolPtrOutput)
 }
 
-func (in *securityRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleProtocol] {
-	return pulumix.Output[*SecurityRuleProtocol]{
-		OutputState: in.ToSecurityRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to the transport protocol used by the load balancing rule.
 type TransportProtocol string
 
@@ -2601,12 +2516,6 @@ func (in *transportProtocolPtr) ToTransportProtocolPtrOutput() TransportProtocol
 
 func (in *transportProtocolPtr) ToTransportProtocolPtrOutputWithContext(ctx context.Context) TransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransportProtocolPtrOutput)
-}
-
-func (in *transportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportProtocol] {
-	return pulumix.Output[*TransportProtocol]{
-		OutputState: in.ToTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

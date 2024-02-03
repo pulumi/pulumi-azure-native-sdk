@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The entity query kind
@@ -182,12 +181,6 @@ func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTimelineKindPtrOutput)
 }
 
-func (in *entityTimelineKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTimelineKind] {
-	return pulumix.Output[*EntityTimelineKind]{
-		OutputState: in.ToEntityTimelineKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the entity.
 type ThreatIntelligenceResourceKindEnum string
 
@@ -351,12 +344,6 @@ func (in *threatIntelligenceResourceKindEnumPtr) ToThreatIntelligenceResourceKin
 
 func (in *threatIntelligenceResourceKindEnumPtr) ToThreatIntelligenceResourceKindEnumPtrOutputWithContext(ctx context.Context) ThreatIntelligenceResourceKindEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThreatIntelligenceResourceKindEnumPtrOutput)
-}
-
-func (in *threatIntelligenceResourceKindEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceResourceKindEnum] {
-	return pulumix.Output[*ThreatIntelligenceResourceKindEnum]{
-		OutputState: in.ToThreatIntelligenceResourceKindEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

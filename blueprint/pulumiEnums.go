@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the kind of blueprint artifact.
@@ -188,12 +187,6 @@ func (in *assignmentLockModePtr) ToAssignmentLockModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AssignmentLockModePtrOutput)
 }
 
-func (in *assignmentLockModePtr) ToOutput(ctx context.Context) pulumix.Output[*AssignmentLockMode] {
-	return pulumix.Output[*AssignmentLockMode]{
-		OutputState: in.ToAssignmentLockModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The scope where this blueprint definition can be assigned.
 type BlueprintTargetScope string
 
@@ -362,12 +355,6 @@ func (in *blueprintTargetScopePtr) ToBlueprintTargetScopePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(BlueprintTargetScopePtrOutput)
 }
 
-func (in *blueprintTargetScopePtr) ToOutput(ctx context.Context) pulumix.Output[*BlueprintTargetScope] {
-	return pulumix.Output[*BlueprintTargetScope]{
-		OutputState: in.ToBlueprintTargetScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the managed identity.
 type ManagedServiceIdentityType string
 
@@ -534,12 +521,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Allowed data types for Resource Manager template parameters.
@@ -716,12 +697,6 @@ func (in *templateParameterTypePtr) ToTemplateParameterTypePtrOutput() TemplateP
 
 func (in *templateParameterTypePtr) ToTemplateParameterTypePtrOutputWithContext(ctx context.Context) TemplateParameterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TemplateParameterTypePtrOutput)
-}
-
-func (in *templateParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TemplateParameterType] {
-	return pulumix.Output[*TemplateParameterType]{
-		OutputState: in.ToTemplateParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

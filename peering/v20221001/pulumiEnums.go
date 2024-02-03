@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of direct peering.
@@ -189,12 +188,6 @@ func (in *directPeeringTypePtr) ToDirectPeeringTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(DirectPeeringTypePtrOutput)
 }
 
-func (in *directPeeringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DirectPeeringType] {
-	return pulumix.Output[*DirectPeeringType]{
-		OutputState: in.ToDirectPeeringTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the peering.
 type Kind string
 
@@ -359,12 +352,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The role of the contact.
@@ -541,12 +528,6 @@ func (in *rolePtr) ToRolePtrOutputWithContext(ctx context.Context) RolePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(RolePtrOutput)
 }
 
-func (in *rolePtr) ToOutput(ctx context.Context) pulumix.Output[*Role] {
-	return pulumix.Output[*Role]{
-		OutputState: in.ToRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The field indicating if Microsoft provides session ip addresses.
 type SessionAddressProvider string
 
@@ -711,12 +692,6 @@ func (in *sessionAddressProviderPtr) ToSessionAddressProviderPtrOutput() Session
 
 func (in *sessionAddressProviderPtr) ToSessionAddressProviderPtrOutputWithContext(ctx context.Context) SessionAddressProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionAddressProviderPtrOutput)
-}
-
-func (in *sessionAddressProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*SessionAddressProvider] {
-	return pulumix.Output[*SessionAddressProvider]{
-		OutputState: in.ToSessionAddressProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

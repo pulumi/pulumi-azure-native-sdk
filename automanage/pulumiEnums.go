@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enables or disables Real Time Protection
@@ -177,12 +176,6 @@ func (in *enableRealTimeProtectionPtr) ToEnableRealTimeProtectionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(EnableRealTimeProtectionPtrOutput)
 }
 
-func (in *enableRealTimeProtectionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableRealTimeProtection] {
-	return pulumix.Output[*EnableRealTimeProtection]{
-		OutputState: in.ToEnableRealTimeProtectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the Automanage account. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
 type ResourceIdentityType string
 
@@ -347,12 +340,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enables or disables a periodic scan for antimalware
@@ -521,12 +508,6 @@ func (in *runScheduledScanPtr) ToRunScheduledScanPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RunScheduledScanPtrOutput)
 }
 
-func (in *runScheduledScanPtr) ToOutput(ctx context.Context) pulumix.Output[*RunScheduledScan] {
-	return pulumix.Output[*RunScheduledScan]{
-		OutputState: in.ToRunScheduledScanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of scheduled scan
 type ScanType string
 
@@ -691,12 +672,6 @@ func (in *scanTypePtr) ToScanTypePtrOutput() ScanTypePtrOutput {
 
 func (in *scanTypePtr) ToScanTypePtrOutputWithContext(ctx context.Context) ScanTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanTypePtrOutput)
-}
-
-func (in *scanTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanType] {
-	return pulumix.Output[*ScanType]{
-		OutputState: in.ToScanTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

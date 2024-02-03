@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The encoding type for Live Event.  This value is specified at creation time and cannot be updated.
@@ -181,12 +180,6 @@ func (in *liveEventEncodingTypePtr) ToLiveEventEncodingTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LiveEventEncodingTypePtrOutput)
 }
 
-func (in *liveEventEncodingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncodingType] {
-	return pulumix.Output[*LiveEventEncodingType]{
-		OutputState: in.ToLiveEventEncodingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The streaming protocol for the Live Event.  This is specified at creation time and cannot be updated.
 type LiveEventInputProtocol string
 
@@ -353,12 +346,6 @@ func (in *liveEventInputProtocolPtr) ToLiveEventInputProtocolPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(LiveEventInputProtocolPtrOutput)
 }
 
-func (in *liveEventInputProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputProtocol] {
-	return pulumix.Output[*LiveEventInputProtocol]{
-		OutputState: in.ToLiveEventInputProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamOptionsFlag string
 
 const (
@@ -522,12 +509,6 @@ func (in *streamOptionsFlagPtr) ToStreamOptionsFlagPtrOutput() StreamOptionsFlag
 
 func (in *streamOptionsFlagPtr) ToStreamOptionsFlagPtrOutputWithContext(ctx context.Context) StreamOptionsFlagPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StreamOptionsFlagPtrOutput)
-}
-
-func (in *streamOptionsFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*StreamOptionsFlag] {
-	return pulumix.Output[*StreamOptionsFlag]{
-		OutputState: in.ToStreamOptionsFlagPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

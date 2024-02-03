@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes how a Domains resource is being managed.
@@ -177,12 +176,6 @@ func (in *domainManagementPtr) ToDomainManagementPtrOutput() DomainManagementPtr
 
 func (in *domainManagementPtr) ToDomainManagementPtrOutputWithContext(ctx context.Context) DomainManagementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DomainManagementPtrOutput)
-}
-
-func (in *domainManagementPtr) ToOutput(ctx context.Context) pulumix.Output[*DomainManagement] {
-	return pulumix.Output[*DomainManagement]{
-		OutputState: in.ToDomainManagementPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -355,12 +348,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes whether user engagement tracking is enabled or disabled.
 type UserEngagementTracking string
 
@@ -525,12 +512,6 @@ func (in *userEngagementTrackingPtr) ToUserEngagementTrackingPtrOutput() UserEng
 
 func (in *userEngagementTrackingPtr) ToUserEngagementTrackingPtrOutputWithContext(ctx context.Context) UserEngagementTrackingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserEngagementTrackingPtrOutput)
-}
-
-func (in *userEngagementTrackingPtr) ToOutput(ctx context.Context) pulumix.Output[*UserEngagementTracking] {
-	return pulumix.Output[*UserEngagementTracking]{
-		OutputState: in.ToUserEngagementTrackingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

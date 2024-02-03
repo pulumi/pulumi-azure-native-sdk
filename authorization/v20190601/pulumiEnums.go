@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -179,12 +178,6 @@ func (in *enforcementModePtr) ToEnforcementModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(EnforcementModePtrOutput)
 }
 
-func (in *enforcementModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnforcementMode] {
-	return pulumix.Output[*EnforcementMode]{
-		OutputState: in.ToEnforcementModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
 type PolicyType string
 
@@ -353,12 +346,6 @@ func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyTypePtrOutput)
 }
 
-func (in *policyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyType] {
-	return pulumix.Output[*PolicyType]{
-		OutputState: in.ToPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -523,12 +510,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

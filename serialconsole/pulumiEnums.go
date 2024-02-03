@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies whether the port is enabled for a serial console connection.
@@ -175,12 +174,6 @@ func (in *serialPortStateEnumPtr) ToSerialPortStateEnumPtrOutput() SerialPortSta
 
 func (in *serialPortStateEnumPtr) ToSerialPortStateEnumPtrOutputWithContext(ctx context.Context) SerialPortStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SerialPortStateEnumPtrOutput)
-}
-
-func (in *serialPortStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SerialPortStateEnum] {
-	return pulumix.Output[*SerialPortStateEnum]{
-		OutputState: in.ToSerialPortStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

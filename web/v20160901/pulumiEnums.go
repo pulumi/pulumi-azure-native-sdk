@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of route this is:
@@ -182,12 +181,6 @@ func (in *routeTypePtr) ToRouteTypePtrOutput() RouteTypePtrOutput {
 
 func (in *routeTypePtr) ToRouteTypePtrOutputWithContext(ctx context.Context) RouteTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouteTypePtrOutput)
-}
-
-func (in *routeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteType] {
-	return pulumix.Output[*RouteType]{
-		OutputState: in.ToRouteTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

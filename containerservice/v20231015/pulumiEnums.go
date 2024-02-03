@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The upgrade type.
@@ -181,12 +180,6 @@ func (in *managedClusterUpgradeTypePtr) ToManagedClusterUpgradeTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterUpgradeTypePtrOutput)
 }
 
-func (in *managedClusterUpgradeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterUpgradeType] {
-	return pulumix.Output[*ManagedClusterUpgradeType]{
-		OutputState: in.ToManagedClusterUpgradeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -357,12 +350,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The node image upgrade type.
 type NodeImageSelectionType string
 
@@ -529,12 +516,6 @@ func (in *nodeImageSelectionTypePtr) ToNodeImageSelectionTypePtrOutput() NodeIma
 
 func (in *nodeImageSelectionTypePtr) ToNodeImageSelectionTypePtrOutputWithContext(ctx context.Context) NodeImageSelectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodeImageSelectionTypePtrOutput)
-}
-
-func (in *nodeImageSelectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeImageSelectionType] {
-	return pulumix.Output[*NodeImageSelectionType]{
-		OutputState: in.ToNodeImageSelectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

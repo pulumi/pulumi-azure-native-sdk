@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Underlying RTSP transport. This can be used to enable or disable HTTP tunneling.
@@ -177,12 +176,6 @@ func (in *mediaGraphRtspTransportPtr) ToMediaGraphRtspTransportPtrOutput() Media
 
 func (in *mediaGraphRtspTransportPtr) ToMediaGraphRtspTransportPtrOutputWithContext(ctx context.Context) MediaGraphRtspTransportPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MediaGraphRtspTransportPtrOutput)
-}
-
-func (in *mediaGraphRtspTransportPtr) ToOutput(ctx context.Context) pulumix.Output[*MediaGraphRtspTransport] {
-	return pulumix.Output[*MediaGraphRtspTransport]{
-		OutputState: in.ToMediaGraphRtspTransportPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

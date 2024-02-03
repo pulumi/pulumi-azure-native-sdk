@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of virtual network rule.
@@ -173,12 +172,6 @@ func (in *actionPtr) ToActionPtrOutput() ActionPtrOutput {
 
 func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
-}
-
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default action of allow or deny when no other rules match.
@@ -347,12 +340,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The value that indicates whether the policy is enabled or not.
 type PolicyStatus string
 
@@ -517,12 +504,6 @@ func (in *policyStatusPtr) ToPolicyStatusPtrOutput() PolicyStatusPtrOutput {
 
 func (in *policyStatusPtr) ToPolicyStatusPtrOutputWithContext(ctx context.Context) PolicyStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyStatusPtrOutput)
-}
-
-func (in *policyStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyStatus] {
-	return pulumix.Output[*PolicyStatus]{
-		OutputState: in.ToPolicyStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SKU name of the container registry. Required for registry creation.
@@ -695,12 +676,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of trust policy.
 type TrustPolicyType string
 
@@ -863,12 +838,6 @@ func (in *trustPolicyTypePtr) ToTrustPolicyTypePtrOutput() TrustPolicyTypePtrOut
 
 func (in *trustPolicyTypePtr) ToTrustPolicyTypePtrOutputWithContext(ctx context.Context) TrustPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrustPolicyTypePtrOutput)
-}
-
-func (in *trustPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TrustPolicyType] {
-	return pulumix.Output[*TrustPolicyType]{
-		OutputState: in.ToTrustPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

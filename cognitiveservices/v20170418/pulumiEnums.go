@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of managed service identity.
@@ -179,12 +178,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enumerates the possible value of keySource for Encryption
 type KeySource string
 
@@ -351,12 +344,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) Key
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
 }
 
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 type NetworkRuleAction string
 
@@ -521,12 +508,6 @@ func (in *networkRuleActionPtr) ToNetworkRuleActionPtrOutput() NetworkRuleAction
 
 func (in *networkRuleActionPtr) ToNetworkRuleActionPtrOutputWithContext(ctx context.Context) NetworkRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleActionPtrOutput)
-}
-
-func (in *networkRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleAction] {
-	return pulumix.Output[*NetworkRuleAction]{
-		OutputState: in.ToNetworkRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -699,12 +680,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public endpoint access is allowed for this account. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 type PublicNetworkAccess string
 
@@ -869,12 +844,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

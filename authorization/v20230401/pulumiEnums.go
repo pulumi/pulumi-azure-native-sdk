@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -179,12 +178,6 @@ func (in *enforcementModePtr) ToEnforcementModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(EnforcementModePtrOutput)
 }
 
-func (in *enforcementModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnforcementMode] {
-	return pulumix.Output[*EnforcementMode]{
-		OutputState: in.ToEnforcementModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The override kind.
 type OverrideKind string
 
@@ -348,12 +341,6 @@ func (in *overrideKindPtr) ToOverrideKindPtrOutput() OverrideKindPtrOutput {
 
 func (in *overrideKindPtr) ToOverrideKindPtrOutputWithContext(ctx context.Context) OverrideKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OverrideKindPtrOutput)
-}
-
-func (in *overrideKindPtr) ToOutput(ctx context.Context) pulumix.Output[*OverrideKind] {
-	return pulumix.Output[*OverrideKind]{
-		OutputState: in.ToOverrideKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The data type of the parameter.
@@ -532,12 +519,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 type PolicyType string
 
@@ -706,12 +687,6 @@ func (in *policyTypePtr) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
 
 func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyTypePtrOutput)
-}
-
-func (in *policyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyType] {
-	return pulumix.Output[*PolicyType]{
-		OutputState: in.ToPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type. This is the only required field when adding a system or user assigned identity to a resource.
@@ -883,12 +858,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The selector kind.
@@ -1063,12 +1032,6 @@ func (in *selectorKindPtr) ToSelectorKindPtrOutput() SelectorKindPtrOutput {
 
 func (in *selectorKindPtr) ToSelectorKindPtrOutputWithContext(ctx context.Context) SelectorKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SelectorKindPtrOutput)
-}
-
-func (in *selectorKindPtr) ToOutput(ctx context.Context) pulumix.Output[*SelectorKind] {
-	return pulumix.Output[*SelectorKind]{
-		OutputState: in.ToSelectorKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

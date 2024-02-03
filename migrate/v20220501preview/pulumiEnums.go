@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the status of automation artifacts.
@@ -175,12 +174,6 @@ func (in *automationArtifactStatusPtr) ToAutomationArtifactStatusPtrOutput() Aut
 
 func (in *automationArtifactStatusPtr) ToAutomationArtifactStatusPtrOutputWithContext(ctx context.Context) AutomationArtifactStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutomationArtifactStatusPtrOutput)
-}
-
-func (in *automationArtifactStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AutomationArtifactStatus] {
-	return pulumix.Output[*AutomationArtifactStatus]{
-		OutputState: in.ToAutomationArtifactStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the configuration type.
@@ -351,12 +344,6 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
 }
 
-func (in *configurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationType] {
-	return pulumix.Output[*ConfigurationType]{
-		OutputState: in.ToConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the load balancer type.
 type LoadBalancerType string
 
@@ -521,12 +508,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutput() LoadBalancerTypePtr
 
 func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx context.Context) LoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
-}
-
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type OperatingSystemType string
@@ -694,12 +675,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
 }
 
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceIdentityTypes string
 
 const (
@@ -865,12 +840,6 @@ func (in *resourceIdentityTypesPtr) ToResourceIdentityTypesPtrOutput() ResourceI
 
 func (in *resourceIdentityTypesPtr) ToResourceIdentityTypesPtrOutputWithContext(ctx context.Context) ResourceIdentityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypesPtrOutput)
-}
-
-func (in *resourceIdentityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityTypes] {
-	return pulumix.Output[*ResourceIdentityTypes]{
-		OutputState: in.ToResourceIdentityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SecretStoreType string
@@ -1042,12 +1011,6 @@ func (in *secretStoreTypePtr) ToSecretStoreTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SecretStoreTypePtrOutput)
 }
 
-func (in *secretStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreType] {
-	return pulumix.Output[*SecretStoreType]{
-		OutputState: in.ToSecretStoreTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the storage provider type on the target.
 // Applicable when StorageProjectionType is not ContainerFileSystem.
 type TargetHydrationStorageProviderType string
@@ -1211,12 +1174,6 @@ func (in *targetHydrationStorageProviderTypePtr) ToTargetHydrationStorageProvide
 
 func (in *targetHydrationStorageProviderTypePtr) ToTargetHydrationStorageProviderTypePtrOutputWithContext(ctx context.Context) TargetHydrationStorageProviderTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetHydrationStorageProviderTypePtrOutput)
-}
-
-func (in *targetHydrationStorageProviderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetHydrationStorageProviderType] {
-	return pulumix.Output[*TargetHydrationStorageProviderType]{
-		OutputState: in.ToTargetHydrationStorageProviderTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the target storage access type.
@@ -1385,12 +1342,6 @@ func (in *targetStorageAccessTypePtr) ToTargetStorageAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(TargetStorageAccessTypePtrOutput)
 }
 
-func (in *targetStorageAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetStorageAccessType] {
-	return pulumix.Output[*TargetStorageAccessType]{
-		OutputState: in.ToTargetStorageAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the target projection type.
 type TargetStorageProjectionType string
 
@@ -1555,12 +1506,6 @@ func (in *targetStorageProjectionTypePtr) ToTargetStorageProjectionTypePtrOutput
 
 func (in *targetStorageProjectionTypePtr) ToTargetStorageProjectionTypePtrOutputWithContext(ctx context.Context) TargetStorageProjectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetStorageProjectionTypePtrOutput)
-}
-
-func (in *targetStorageProjectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetStorageProjectionType] {
-	return pulumix.Output[*TargetStorageProjectionType]{
-		OutputState: in.ToTargetStorageProjectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the deployment target platform.
@@ -1729,12 +1674,6 @@ func (in *workloadDeploymentTargetPtr) ToWorkloadDeploymentTargetPtrOutput() Wor
 
 func (in *workloadDeploymentTargetPtr) ToWorkloadDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkloadDeploymentTargetPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadDeploymentTargetPtrOutput)
-}
-
-func (in *workloadDeploymentTargetPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadDeploymentTarget] {
-	return pulumix.Output[*WorkloadDeploymentTarget]{
-		OutputState: in.ToWorkloadDeploymentTargetPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the instance type.

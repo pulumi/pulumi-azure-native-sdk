@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The authentication mode for the Batch account.
@@ -180,12 +179,6 @@ func (in *authenticationModePtr) ToAuthenticationModePtrOutput() AuthenticationM
 
 func (in *authenticationModePtr) ToAuthenticationModePtrOutputWithContext(ctx context.Context) AuthenticationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationModePtrOutput)
-}
-
-func (in *authenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMode] {
-	return pulumix.Output[*AuthenticationMode]{
-		OutputState: in.ToAuthenticationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthenticationModeArrayInput is an input type that accepts AuthenticationModeArray and AuthenticationModeArrayOutput values.
@@ -401,12 +394,6 @@ func (in *autoStorageAuthenticationModePtr) ToAutoStorageAuthenticationModePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(AutoStorageAuthenticationModePtrOutput)
 }
 
-func (in *autoStorageAuthenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoStorageAuthenticationMode] {
-	return pulumix.Output[*AutoStorageAuthenticationMode]{
-		OutputState: in.ToAutoStorageAuthenticationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the key source.
 type KeySource string
 
@@ -573,12 +560,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
-}
-
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
@@ -749,12 +730,6 @@ func (in *poolAllocationModePtr) ToPoolAllocationModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(PoolAllocationModePtrOutput)
 }
 
-func (in *poolAllocationModePtr) ToOutput(ctx context.Context) pulumix.Output[*PoolAllocationMode] {
-	return pulumix.Output[*PoolAllocationMode]{
-		OutputState: in.ToPoolAllocationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If not specified, the default value is 'enabled'.
 type PublicNetworkAccessType string
 
@@ -921,12 +896,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutput() Publi
 
 func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
-}
-
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the Batch account.
@@ -1098,12 +1067,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

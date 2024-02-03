@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode of includeChangeDetails feature. The flag configures whether to include or exclude content of the change before and after values.
@@ -179,12 +178,6 @@ func (in *changeDetailsModePtr) ToChangeDetailsModePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ChangeDetailsModePtrOutput)
 }
 
-func (in *changeDetailsModePtr) ToOutput(ctx context.Context) pulumix.Output[*ChangeDetailsMode] {
-	return pulumix.Output[*ChangeDetailsMode]{
-		OutputState: in.ToChangeDetailsModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 type ManagedIdentityTypes string
 
@@ -349,12 +342,6 @@ func (in *managedIdentityTypesPtr) ToManagedIdentityTypesPtrOutput() ManagedIden
 
 func (in *managedIdentityTypesPtr) ToManagedIdentityTypesPtrOutputWithContext(ctx context.Context) ManagedIdentityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypesPtrOutput)
-}
-
-func (in *managedIdentityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityTypes] {
-	return pulumix.Output[*ManagedIdentityTypes]{
-		OutputState: in.ToManagedIdentityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The state of notifications feature.
@@ -523,12 +510,6 @@ func (in *notificationsStatePtr) ToNotificationsStatePtrOutput() NotificationsSt
 
 func (in *notificationsStatePtr) ToNotificationsStatePtrOutputWithContext(ctx context.Context) NotificationsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationsStatePtrOutput)
-}
-
-func (in *notificationsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationsState] {
-	return pulumix.Output[*NotificationsState]{
-		OutputState: in.ToNotificationsStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

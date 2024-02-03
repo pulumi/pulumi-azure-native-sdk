@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The authentication type.
@@ -204,12 +203,6 @@ func (in *clientTypePtr) ToClientTypePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(ClientTypePtrOutput)
 }
 
-func (in *clientTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClientType] {
-	return pulumix.Output[*ClientType]{
-		OutputState: in.ToClientTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of VNet solution.
 type VNetSolutionType string
 
@@ -374,12 +367,6 @@ func (in *vnetSolutionTypePtr) ToVNetSolutionTypePtrOutput() VNetSolutionTypePtr
 
 func (in *vnetSolutionTypePtr) ToVNetSolutionTypePtrOutputWithContext(ctx context.Context) VNetSolutionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VNetSolutionTypePtrOutput)
-}
-
-func (in *vnetSolutionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VNetSolutionType] {
-	return pulumix.Output[*VNetSolutionType]{
-		OutputState: in.ToVNetSolutionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specify action.
@@ -177,12 +176,6 @@ func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
 }
 
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IP address family. Example: ipv4 | ipv6.
 type AddressFamily string
 
@@ -347,12 +340,6 @@ func (in *addressFamilyPtr) ToAddressFamilyPtrOutput() AddressFamilyPtrOutput {
 
 func (in *addressFamilyPtr) ToAddressFamilyPtrOutputWithContext(ctx context.Context) AddressFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressFamilyPtrOutput)
-}
-
-func (in *addressFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AddressFamily] {
-	return pulumix.Output[*AddressFamily]{
-		OutputState: in.ToAddressFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enable Or Disable state.
@@ -521,12 +508,6 @@ func (in *allowASOverridePtr) ToAllowASOverridePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(AllowASOverridePtrOutput)
 }
 
-func (in *allowASOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*AllowASOverride] {
-	return pulumix.Output[*AllowASOverride]{
-		OutputState: in.ToAllowASOverridePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
 type BooleanEnumProperty string
 
@@ -693,12 +674,6 @@ func (in *booleanEnumPropertyPtr) ToBooleanEnumPropertyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(BooleanEnumPropertyPtrOutput)
 }
 
-func (in *booleanEnumPropertyPtr) ToOutput(ctx context.Context) pulumix.Output[*BooleanEnumProperty] {
-	return pulumix.Output[*BooleanEnumProperty]{
-		OutputState: in.ToBooleanEnumPropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // action. Example: Permit | Deny.
 type CommunityActionTypes string
 
@@ -863,12 +838,6 @@ func (in *communityActionTypesPtr) ToCommunityActionTypesPtrOutput() CommunityAc
 
 func (in *communityActionTypesPtr) ToCommunityActionTypesPtrOutputWithContext(ctx context.Context) CommunityActionTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CommunityActionTypesPtrOutput)
-}
-
-func (in *communityActionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CommunityActionTypes] {
-	return pulumix.Output[*CommunityActionTypes]{
-		OutputState: in.ToCommunityActionTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specify prefix-list bounds.
@@ -1039,12 +1008,6 @@ func (in *conditionPtr) ToConditionPtrOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionPtrOutput)
 }
 
-func (in *conditionPtr) ToOutput(ctx context.Context) pulumix.Output[*Condition] {
-	return pulumix.Output[*Condition]{
-		OutputState: in.ToConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // action. Example: allow | deny.
 type ConditionActionType string
 
@@ -1209,12 +1172,6 @@ func (in *conditionActionTypePtr) ToConditionActionTypePtrOutput() ConditionActi
 
 func (in *conditionActionTypePtr) ToConditionActionTypePtrOutputWithContext(ctx context.Context) ConditionActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionActionTypePtrOutput)
-}
-
-func (in *conditionActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionActionType] {
-	return pulumix.Output[*ConditionActionType]{
-		OutputState: in.ToConditionActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Input method to configure Network Tap Rule.
@@ -1383,12 +1340,6 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
 }
 
-func (in *configurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationType] {
-	return pulumix.Output[*ConfigurationType]{
-		OutputState: in.ToConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of destination. Input can be IsolationDomain or Direct.
 type DestinationType string
 
@@ -1553,12 +1504,6 @@ func (in *destinationTypePtr) ToDestinationTypePtrOutput() DestinationTypePtrOut
 
 func (in *destinationTypePtr) ToDestinationTypePtrOutputWithContext(ctx context.Context) DestinationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DestinationTypePtrOutput)
-}
-
-func (in *destinationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DestinationType] {
-	return pulumix.Output[*DestinationType]{
-		OutputState: in.ToDestinationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of encapsulation.
@@ -1727,12 +1672,6 @@ func (in *encapsulationPtr) ToEncapsulationPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(EncapsulationPtrOutput)
 }
 
-func (in *encapsulationPtr) ToOutput(ctx context.Context) pulumix.Output[*Encapsulation] {
-	return pulumix.Output[*Encapsulation]{
-		OutputState: in.ToEncapsulationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encapsulation Type that needs to be matched.
 type EncapsulationType string
 
@@ -1897,12 +1836,6 @@ func (in *encapsulationTypePtr) ToEncapsulationTypePtrOutput() EncapsulationType
 
 func (in *encapsulationTypePtr) ToEncapsulationTypePtrOutputWithContext(ctx context.Context) EncapsulationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncapsulationTypePtrOutput)
-}
-
-func (in *encapsulationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncapsulationType] {
-	return pulumix.Output[*EncapsulationType]{
-		OutputState: in.ToEncapsulationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gateway Type of the resource.
@@ -2071,12 +2004,6 @@ func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
 }
 
-func (in *gatewayTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayType] {
-	return pulumix.Output[*GatewayType]{
-		OutputState: in.ToGatewayTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of IP Address. IPv4 or IPv6
 type IPAddressType string
 
@@ -2243,12 +2170,6 @@ func (in *ipaddressTypePtr) ToIPAddressTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IPAddressTypePtrOutput)
 }
 
-func (in *ipaddressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IPAddressType] {
-	return pulumix.Output[*IPAddressType]{
-		OutputState: in.ToIPAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Layer4 protocol type that needs to be matched.
 type Layer4Protocol string
 
@@ -2413,12 +2334,6 @@ func (in *layer4ProtocolPtr) ToLayer4ProtocolPtrOutput() Layer4ProtocolPtrOutput
 
 func (in *layer4ProtocolPtr) ToLayer4ProtocolPtrOutputWithContext(ctx context.Context) Layer4ProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(Layer4ProtocolPtrOutput)
-}
-
-func (in *layer4ProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Layer4Protocol] {
-	return pulumix.Output[*Layer4Protocol]{
-		OutputState: in.ToLayer4ProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // networkDeviceRole is the device role: Example: CE | ToR.
@@ -2593,12 +2508,6 @@ func (in *networkDeviceRoleTypesPtr) ToNetworkDeviceRoleTypesPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkDeviceRoleTypesPtrOutput)
 }
 
-func (in *networkDeviceRoleTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkDeviceRoleTypes] {
-	return pulumix.Output[*NetworkDeviceRoleTypes]{
-		OutputState: in.ToNetworkDeviceRoleTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of NNI used. Example: CE | NPB
 type NniType string
 
@@ -2763,12 +2672,6 @@ func (in *nniTypePtr) ToNniTypePtrOutput() NniTypePtrOutput {
 
 func (in *nniTypePtr) ToNniTypePtrOutputWithContext(ctx context.Context) NniTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NniTypePtrOutput)
-}
-
-func (in *nniTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NniType] {
-	return pulumix.Output[*NniType]{
-		OutputState: in.ToNniTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Peering option list.
@@ -2937,12 +2840,6 @@ func (in *peeringOptionPtr) ToPeeringOptionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PeeringOptionPtrOutput)
 }
 
-func (in *peeringOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*PeeringOption] {
-	return pulumix.Output[*PeeringOption]{
-		OutputState: in.ToPeeringOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Polling type.
 type PollingType string
 
@@ -3107,12 +3004,6 @@ func (in *pollingTypePtr) ToPollingTypePtrOutput() PollingTypePtrOutput {
 
 func (in *pollingTypePtr) ToPollingTypePtrOutputWithContext(ctx context.Context) PollingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PollingTypePtrOutput)
-}
-
-func (in *pollingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PollingType] {
-	return pulumix.Output[*PollingType]{
-		OutputState: in.ToPollingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Port type that needs to be matched.
@@ -3281,12 +3172,6 @@ func (in *portTypePtr) ToPortTypePtrOutputWithContext(ctx context.Context) PortT
 	return pulumi.ToOutputWithContext(ctx, in).(PortTypePtrOutput)
 }
 
-func (in *portTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PortType] {
-	return pulumix.Output[*PortType]{
-		OutputState: in.ToPortTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IP Prefix Type that needs to be matched.
 type PrefixType string
 
@@ -3451,12 +3336,6 @@ func (in *prefixTypePtr) ToPrefixTypePtrOutput() PrefixTypePtrOutput {
 
 func (in *prefixTypePtr) ToPrefixTypePtrOutputWithContext(ctx context.Context) PrefixTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrefixTypePtrOutput)
-}
-
-func (in *prefixTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrefixType] {
-	return pulumix.Output[*PrefixType]{
-		OutputState: in.ToPrefixTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Advertise Connected Subnets. Ex: "True" | "False".
@@ -3625,12 +3504,6 @@ func (in *redistributeConnectedSubnetsPtr) ToRedistributeConnectedSubnetsPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(RedistributeConnectedSubnetsPtrOutput)
 }
 
-func (in *redistributeConnectedSubnetsPtr) ToOutput(ctx context.Context) pulumix.Output[*RedistributeConnectedSubnets] {
-	return pulumix.Output[*RedistributeConnectedSubnets]{
-		OutputState: in.ToRedistributeConnectedSubnetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Advertise Static Routes. Ex: "True" | "False".
 type RedistributeStaticRoutes string
 
@@ -3797,12 +3670,6 @@ func (in *redistributeStaticRoutesPtr) ToRedistributeStaticRoutesPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RedistributeStaticRoutesPtrOutput)
 }
 
-func (in *redistributeStaticRoutesPtr) ToOutput(ctx context.Context) pulumix.Output[*RedistributeStaticRoutes] {
-	return pulumix.Output[*RedistributeStaticRoutes]{
-		OutputState: in.ToRedistributeStaticRoutesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IP Address type that needs to be matched.
 type SourceDestinationType string
 
@@ -3967,12 +3834,6 @@ func (in *sourceDestinationTypePtr) ToSourceDestinationTypePtrOutput() SourceDes
 
 func (in *sourceDestinationTypePtr) ToSourceDestinationTypePtrOutputWithContext(ctx context.Context) SourceDestinationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceDestinationTypePtrOutput)
-}
-
-func (in *sourceDestinationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceDestinationType] {
-	return pulumix.Output[*SourceDestinationType]{
-		OutputState: in.ToSourceDestinationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of actions that can be performed.
@@ -4151,12 +4012,6 @@ func (in *tapRuleActionTypePtr) ToTapRuleActionTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TapRuleActionTypePtrOutput)
 }
 
-func (in *tapRuleActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TapRuleActionType] {
-	return pulumix.Output[*TapRuleActionType]{
-		OutputState: in.ToTapRuleActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // `Internet` - Advertise routes to internet community.
 //
 //	`LocalAS` - Advertise routes to only localAS peers.
@@ -4333,12 +4188,6 @@ func (in *wellKnownCommunitiesPtr) ToWellKnownCommunitiesPtrOutput() WellKnownCo
 
 func (in *wellKnownCommunitiesPtr) ToWellKnownCommunitiesPtrOutputWithContext(ctx context.Context) WellKnownCommunitiesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WellKnownCommunitiesPtrOutput)
-}
-
-func (in *wellKnownCommunitiesPtr) ToOutput(ctx context.Context) pulumix.Output[*WellKnownCommunities] {
-	return pulumix.Output[*WellKnownCommunities]{
-		OutputState: in.ToWellKnownCommunitiesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
