@@ -144,6 +144,9 @@ func NewMicrosoftPurviewInformationProtectionDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231101:MicrosoftPurviewInformationProtectionDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MicrosoftPurviewInformationProtectionDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

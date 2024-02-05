@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sku name
@@ -194,12 +193,6 @@ func (in *azureDiskSkuNamePtr) ToAzureDiskSkuNamePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AzureDiskSkuNamePtrOutput)
 }
 
-func (in *azureDiskSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureDiskSkuName] {
-	return pulumix.Output[*AzureDiskSkuName]{
-		OutputState: in.ToAzureDiskSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sku name
 type ElasticSanSkuName string
 
@@ -366,12 +359,6 @@ func (in *elasticSanSkuNamePtr) ToElasticSanSkuNamePtrOutput() ElasticSanSkuName
 
 func (in *elasticSanSkuNamePtr) ToElasticSanSkuNamePtrOutputWithContext(ctx context.Context) ElasticSanSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ElasticSanSkuNamePtrOutput)
-}
-
-func (in *elasticSanSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ElasticSanSkuName] {
-	return pulumix.Output[*ElasticSanSkuName]{
-		OutputState: in.ToElasticSanSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -544,12 +531,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
 type ReclaimPolicy string
 
@@ -716,12 +697,6 @@ func (in *reclaimPolicyPtr) ToReclaimPolicyPtrOutput() ReclaimPolicyPtrOutput {
 
 func (in *reclaimPolicyPtr) ToReclaimPolicyPtrOutputWithContext(ctx context.Context) ReclaimPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReclaimPolicyPtrOutput)
-}
-
-func (in *reclaimPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ReclaimPolicy] {
-	return pulumix.Output[*ReclaimPolicy]{
-		OutputState: in.ToReclaimPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Availability Zones
@@ -893,12 +868,6 @@ func (in *zonePtr) ToZonePtrOutput() ZonePtrOutput {
 
 func (in *zonePtr) ToZonePtrOutputWithContext(ctx context.Context) ZonePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZonePtrOutput)
-}
-
-func (in *zonePtr) ToOutput(ctx context.Context) pulumix.Output[*Zone] {
-	return pulumix.Output[*Zone]{
-		OutputState: in.ToZonePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

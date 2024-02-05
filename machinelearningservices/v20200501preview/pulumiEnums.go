@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies dataset type.
@@ -175,12 +174,6 @@ func (in *datasetTypePtr) ToDatasetTypePtrOutput() DatasetTypePtrOutput {
 
 func (in *datasetTypePtr) ToDatasetTypePtrOutputWithContext(ctx context.Context) DatasetTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatasetTypePtrOutput)
-}
-
-func (in *datasetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatasetType] {
-	return pulumix.Output[*DatasetType]{
-		OutputState: in.ToDatasetTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies datastore type.
@@ -361,12 +354,6 @@ func (in *datastoreTypeArmPtr) ToDatastoreTypeArmPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatastoreTypeArmPtrOutput)
 }
 
-func (in *datastoreTypeArmPtr) ToOutput(ctx context.Context) pulumix.Output[*DatastoreTypeArm] {
-	return pulumix.Output[*DatastoreTypeArm]{
-		OutputState: in.ToDatastoreTypeArmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Header type.
 type Header string
 
@@ -537,12 +524,6 @@ func (in *headerPtr) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtr
 	return pulumi.ToOutputWithContext(ctx, in).(HeaderPtrOutput)
 }
 
-func (in *headerPtr) ToOutput(ctx context.Context) pulumix.Output[*Header] {
-	return pulumix.Output[*Header]{
-		OutputState: in.ToHeaderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data source type.
 type SourceType string
 
@@ -709,12 +690,6 @@ func (in *sourceTypePtr) ToSourceTypePtrOutput() SourceTypePtrOutput {
 
 func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
-}
-
-func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

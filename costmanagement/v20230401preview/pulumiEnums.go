@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Show costs accumulated over time.
@@ -175,12 +174,6 @@ func (in *accumulatedTypePtr) ToAccumulatedTypePtrOutput() AccumulatedTypePtrOut
 
 func (in *accumulatedTypePtr) ToAccumulatedTypePtrOutputWithContext(ctx context.Context) AccumulatedTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccumulatedTypePtrOutput)
-}
-
-func (in *accumulatedTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccumulatedType] {
-	return pulumix.Output[*AccumulatedType]{
-		OutputState: in.ToAccumulatedTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The comparison operator.
@@ -376,12 +369,6 @@ func (in *budgetNotificationOperatorTypePtr) ToBudgetNotificationOperatorTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(BudgetNotificationOperatorTypePtrOutput)
 }
 
-func (in *budgetNotificationOperatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BudgetNotificationOperatorType] {
-	return pulumix.Output[*BudgetNotificationOperatorType]{
-		OutputState: in.ToBudgetNotificationOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operator to use for comparison.
 type BudgetOperatorType string
 
@@ -544,12 +531,6 @@ func (in *budgetOperatorTypePtr) ToBudgetOperatorTypePtrOutput() BudgetOperatorT
 
 func (in *budgetOperatorTypePtr) ToBudgetOperatorTypePtrOutputWithContext(ctx context.Context) BudgetOperatorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BudgetOperatorTypePtrOutput)
-}
-
-func (in *budgetOperatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BudgetOperatorType] {
-	return pulumix.Output[*BudgetOperatorType]{
-		OutputState: in.ToBudgetOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The category of the budget.
@@ -722,12 +703,6 @@ func (in *categoryTypePtr) ToCategoryTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CategoryTypePtrOutput)
 }
 
-func (in *categoryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CategoryType] {
-	return pulumix.Output[*CategoryType]{
-		OutputState: in.ToCategoryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Chart type of the main view in Cost Analysis. Required.
 type ChartType string
 
@@ -898,12 +873,6 @@ func (in *chartTypePtr) ToChartTypePtrOutput() ChartTypePtrOutput {
 
 func (in *chartTypePtr) ToChartTypePtrOutputWithContext(ctx context.Context) ChartTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ChartTypePtrOutput)
-}
-
-func (in *chartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ChartType] {
-	return pulumix.Output[*ChartType]{
-		OutputState: in.ToChartTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Language in which the recipient will receive the notification,
@@ -1112,12 +1081,6 @@ func (in *cultureCodePtr) ToCultureCodePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(CultureCodePtrOutput)
 }
 
-func (in *cultureCodePtr) ToOutput(ctx context.Context) pulumix.Output[*CultureCode] {
-	return pulumix.Output[*CultureCode]{
-		OutputState: in.ToCultureCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Days of Week.
 type DaysOfWeek string
 
@@ -1294,12 +1257,6 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
 }
 
-func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
 type ExportType string
 
@@ -1468,12 +1425,6 @@ func (in *exportTypePtr) ToExportTypePtrOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, in).(ExportTypePtrOutput)
 }
 
-func (in *exportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExportType] {
-	return pulumix.Output[*ExportType]{
-		OutputState: in.ToExportTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Destination of the view data. Currently only CSV format is supported.
 type FileFormat string
 
@@ -1638,12 +1589,6 @@ func (in *fileFormatPtr) ToFileFormatPtrOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, in).(FileFormatPtrOutput)
 }
 
-func (in *fileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*FileFormat] {
-	return pulumix.Output[*FileFormat]{
-		OutputState: in.ToFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The format of the export being delivered. Currently only 'Csv' is supported.
 type FormatType string
 
@@ -1806,12 +1751,6 @@ func (in *formatTypePtr) ToFormatTypePtrOutput() FormatTypePtrOutput {
 
 func (in *formatTypePtr) ToFormatTypePtrOutputWithContext(ctx context.Context) FormatTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FormatTypePtrOutput)
-}
-
-func (in *formatTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FormatType] {
-	return pulumix.Output[*FormatType]{
-		OutputState: in.ToFormatTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
@@ -1987,12 +1926,6 @@ func (in *frequencyPtr) ToFrequencyPtrOutputWithContext(ctx context.Context) Fre
 	return pulumi.ToOutputWithContext(ctx, in).(FrequencyPtrOutput)
 }
 
-func (in *frequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*Frequency] {
-	return pulumix.Output[*Frequency]{
-		OutputState: in.ToFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the aggregation function to use.
 type FunctionType string
 
@@ -2155,12 +2088,6 @@ func (in *functionTypePtr) ToFunctionTypePtrOutput() FunctionTypePtrOutput {
 
 func (in *functionTypePtr) ToFunctionTypePtrOutputWithContext(ctx context.Context) FunctionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FunctionTypePtrOutput)
-}
-
-func (in *functionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FunctionType] {
-	return pulumix.Output[*FunctionType]{
-		OutputState: in.ToFunctionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The granularity of rows in the export. Currently only 'Daily' is supported.
@@ -2327,12 +2254,6 @@ func (in *granularityTypePtr) ToGranularityTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(GranularityTypePtrOutput)
 }
 
-func (in *granularityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GranularityType] {
-	return pulumix.Output[*GranularityType]{
-		OutputState: in.ToGranularityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KPI type (Forecast, Budget).
 type KpiTypeType string
 
@@ -2497,12 +2418,6 @@ func (in *kpiTypeTypePtr) ToKpiTypeTypePtrOutput() KpiTypeTypePtrOutput {
 
 func (in *kpiTypeTypePtr) ToKpiTypeTypePtrOutputWithContext(ctx context.Context) KpiTypeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KpiTypeTypePtrOutput)
-}
-
-func (in *kpiTypeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KpiTypeType] {
-	return pulumix.Output[*KpiTypeType]{
-		OutputState: in.ToKpiTypeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Metric to use when displaying costs.
@@ -2673,12 +2588,6 @@ func (in *metricTypePtr) ToMetricTypePtrOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, in).(MetricTypePtrOutput)
 }
 
-func (in *metricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricType] {
-	return pulumix.Output[*MetricType]{
-		OutputState: in.ToMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operator to use for comparison.
 type OperatorType string
 
@@ -2843,12 +2752,6 @@ func (in *operatorTypePtr) ToOperatorTypePtrOutput() OperatorTypePtrOutput {
 
 func (in *operatorTypePtr) ToOperatorTypePtrOutputWithContext(ctx context.Context) OperatorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorTypePtrOutput)
-}
-
-func (in *operatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatorType] {
-	return pulumix.Output[*OperatorType]{
-		OutputState: in.ToOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Data type to show in view.
@@ -3017,12 +2920,6 @@ func (in *pivotTypeTypePtr) ToPivotTypeTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PivotTypeTypePtrOutput)
 }
 
-func (in *pivotTypeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PivotTypeType] {
-	return pulumix.Output[*PivotTypeType]{
-		OutputState: in.ToPivotTypeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Has type of the column to group.
 type QueryColumnType string
 
@@ -3189,12 +3086,6 @@ func (in *queryColumnTypePtr) ToQueryColumnTypePtrOutput() QueryColumnTypePtrOut
 
 func (in *queryColumnTypePtr) ToQueryColumnTypePtrOutputWithContext(ctx context.Context) QueryColumnTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(QueryColumnTypePtrOutput)
-}
-
-func (in *queryColumnTypePtr) ToOutput(ctx context.Context) pulumix.Output[*QueryColumnType] {
-	return pulumix.Output[*QueryColumnType]{
-		OutputState: in.ToQueryColumnTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The schedule recurrence.
@@ -3367,12 +3258,6 @@ func (in *recurrenceTypePtr) ToRecurrenceTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceTypePtrOutput)
 }
 
-func (in *recurrenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceType] {
-	return pulumix.Output[*RecurrenceType]{
-		OutputState: in.ToRecurrenceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Direction of sort.
 type ReportConfigSortingType string
 
@@ -3539,12 +3424,6 @@ func (in *reportConfigSortingTypePtr) ToReportConfigSortingTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ReportConfigSortingTypePtrOutput)
 }
 
-func (in *reportConfigSortingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigSortingType] {
-	return pulumix.Output[*ReportConfigSortingType]{
-		OutputState: in.ToReportConfigSortingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The granularity of rows in the report.
 type ReportGranularityType string
 
@@ -3709,12 +3588,6 @@ func (in *reportGranularityTypePtr) ToReportGranularityTypePtrOutput() ReportGra
 
 func (in *reportGranularityTypePtr) ToReportGranularityTypePtrOutputWithContext(ctx context.Context) ReportGranularityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportGranularityTypePtrOutput)
-}
-
-func (in *reportGranularityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportGranularityType] {
-	return pulumix.Output[*ReportGranularityType]{
-		OutputState: in.ToReportGranularityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The time frame for pulling data for the report. If custom, then a specific time period must be provided.
@@ -3887,12 +3760,6 @@ func (in *reportTimeframeTypePtr) ToReportTimeframeTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ReportTimeframeTypePtrOutput)
 }
 
-func (in *reportTimeframeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportTimeframeType] {
-	return pulumix.Output[*ReportTimeframeType]{
-		OutputState: in.ToReportTimeframeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates.
 type ReportType string
 
@@ -4055,12 +3922,6 @@ func (in *reportTypePtr) ToReportTypePtrOutput() ReportTypePtrOutput {
 
 func (in *reportTypePtr) ToReportTypePtrOutputWithContext(ctx context.Context) ReportTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportTypePtrOutput)
-}
-
-func (in *reportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportType] {
-	return pulumix.Output[*ReportType]{
-		OutputState: in.ToReportTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Frequency of the schedule.
@@ -4234,12 +4095,6 @@ func (in *scheduleFrequencyPtr) ToScheduleFrequencyPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleFrequencyPtrOutput)
 }
 
-func (in *scheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleFrequency] {
-	return pulumix.Output[*ScheduleFrequency]{
-		OutputState: in.ToScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kind of the scheduled action.
 type ScheduledActionKind string
 
@@ -4406,12 +4261,6 @@ func (in *scheduledActionKindPtr) ToScheduledActionKindPtrOutput() ScheduledActi
 
 func (in *scheduledActionKindPtr) ToScheduledActionKindPtrOutputWithContext(ctx context.Context) ScheduledActionKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduledActionKindPtrOutput)
-}
-
-func (in *scheduledActionKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduledActionKind] {
-	return pulumix.Output[*ScheduledActionKind]{
-		OutputState: in.ToScheduledActionKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the scheduled action.
@@ -4585,12 +4434,6 @@ func (in *scheduledActionStatusPtr) ToScheduledActionStatusPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduledActionStatusPtrOutput)
 }
 
-func (in *scheduledActionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduledActionStatus] {
-	return pulumix.Output[*ScheduledActionStatus]{
-		OutputState: in.ToScheduledActionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the export's schedule. If 'Inactive', the export's schedule is paused.
 type StatusType string
 
@@ -4757,12 +4600,6 @@ func (in *statusTypePtr) ToStatusTypePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(StatusTypePtrOutput)
 }
 
-func (in *statusTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StatusType] {
-	return pulumix.Output[*StatusType]{
-		OutputState: in.ToStatusTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (either system assigned, or none).
 type SystemAssignedServiceIdentityType string
 
@@ -4927,12 +4764,6 @@ func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityT
 
 func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
-}
-
-func (in *systemAssignedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityType] {
-	return pulumix.Output[*SystemAssignedServiceIdentityType]{
-		OutputState: in.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of threshold.
@@ -5103,12 +4934,6 @@ func (in *thresholdTypePtr) ToThresholdTypePtrOutput() ThresholdTypePtrOutput {
 
 func (in *thresholdTypePtr) ToThresholdTypePtrOutputWithContext(ctx context.Context) ThresholdTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdTypePtrOutput)
-}
-
-func (in *thresholdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ThresholdType] {
-	return pulumix.Output[*ThresholdType]{
-		OutputState: in.ToThresholdTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The time covered by a budget. Tracking of the amount will be reset based on the time grain.
@@ -5333,12 +5158,6 @@ func (in *timeGrainTypePtr) ToTimeGrainTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(TimeGrainTypePtrOutput)
 }
 
-func (in *timeGrainTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeGrainType] {
-	return pulumix.Output[*TimeGrainType]{
-		OutputState: in.ToTimeGrainTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The time frame for pulling data for the export. If custom, then a specific time period must be provided.
 type TimeframeType string
 
@@ -5513,12 +5332,6 @@ func (in *timeframeTypePtr) ToTimeframeTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(TimeframeTypePtrOutput)
 }
 
-func (in *timeframeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeframeType] {
-	return pulumix.Output[*TimeframeType]{
-		OutputState: in.ToTimeframeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Weeks of month.
 type WeeksOfMonth string
 
@@ -5689,12 +5502,6 @@ func (in *weeksOfMonthPtr) ToWeeksOfMonthPtrOutput() WeeksOfMonthPtrOutput {
 
 func (in *weeksOfMonthPtr) ToWeeksOfMonthPtrOutputWithContext(ctx context.Context) WeeksOfMonthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeeksOfMonthPtrOutput)
-}
-
-func (in *weeksOfMonthPtr) ToOutput(ctx context.Context) pulumix.Output[*WeeksOfMonth] {
-	return pulumix.Output[*WeeksOfMonth]{
-		OutputState: in.ToWeeksOfMonthPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

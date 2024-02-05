@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of key used to encrypt the Account Key.
@@ -177,12 +176,6 @@ func (in *accountEncryptionKeyTypePtr) ToAccountEncryptionKeyTypePtrOutput() Acc
 
 func (in *accountEncryptionKeyTypePtr) ToAccountEncryptionKeyTypePtrOutputWithContext(ctx context.Context) AccountEncryptionKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccountEncryptionKeyTypePtrOutput)
-}
-
-func (in *accountEncryptionKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccountEncryptionKeyType] {
-	return pulumix.Output[*AccountEncryptionKeyType]{
-		OutputState: in.ToAccountEncryptionKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

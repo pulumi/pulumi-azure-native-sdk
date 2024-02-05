@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data types sent to workspace.
@@ -177,12 +176,6 @@ func (in *additionalWorkspaceDataTypePtr) ToAdditionalWorkspaceDataTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(AdditionalWorkspaceDataTypePtrOutput)
 }
 
-func (in *additionalWorkspaceDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdditionalWorkspaceDataType] {
-	return pulumix.Output[*AdditionalWorkspaceDataType]{
-		OutputState: in.ToAdditionalWorkspaceDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workspace type.
 type AdditionalWorkspaceType string
 
@@ -345,12 +338,6 @@ func (in *additionalWorkspaceTypePtr) ToAdditionalWorkspaceTypePtrOutput() Addit
 
 func (in *additionalWorkspaceTypePtr) ToAdditionalWorkspaceTypePtrOutputWithContext(ctx context.Context) AdditionalWorkspaceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdditionalWorkspaceTypePtrOutput)
-}
-
-func (in *additionalWorkspaceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdditionalWorkspaceType] {
-	return pulumix.Output[*AdditionalWorkspaceType]{
-		OutputState: in.ToAdditionalWorkspaceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DataSource string
@@ -517,12 +504,6 @@ func (in *dataSourcePtr) ToDataSourcePtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourcePtrOutput)
 }
 
-func (in *dataSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
-	return pulumix.Output[*DataSource]{
-		OutputState: in.ToDataSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExportData string
 
 const (
@@ -685,12 +666,6 @@ func (in *exportDataPtr) ToExportDataPtrOutput() ExportDataPtrOutput {
 
 func (in *exportDataPtr) ToExportDataPtrOutputWithContext(ctx context.Context) ExportDataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExportDataPtrOutput)
-}
-
-func (in *exportDataPtr) ToOutput(ctx context.Context) pulumix.Output[*ExportData] {
-	return pulumix.Output[*ExportData]{
-		OutputState: in.ToExportDataPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Recommendation status. When the recommendation status is disabled recommendations are not generated.
@@ -857,12 +832,6 @@ func (in *recommendationConfigStatusPtr) ToRecommendationConfigStatusPtrOutput()
 
 func (in *recommendationConfigStatusPtr) ToRecommendationConfigStatusPtrOutputWithContext(ctx context.Context) RecommendationConfigStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationConfigStatusPtrOutput)
-}
-
-func (in *recommendationConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*RecommendationConfigStatus] {
-	return pulumix.Output[*RecommendationConfigStatus]{
-		OutputState: in.ToRecommendationConfigStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of IoT Security recommendation.
@@ -1075,12 +1044,6 @@ func (in *recommendationTypePtr) ToRecommendationTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationTypePtrOutput)
 }
 
-func (in *recommendationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RecommendationType] {
-	return pulumix.Output[*RecommendationType]{
-		OutputState: in.ToRecommendationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the IoT Security solution.
 type SecuritySolutionStatus string
 
@@ -1245,12 +1208,6 @@ func (in *securitySolutionStatusPtr) ToSecuritySolutionStatusPtrOutput() Securit
 
 func (in *securitySolutionStatusPtr) ToSecuritySolutionStatusPtrOutputWithContext(ctx context.Context) SecuritySolutionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecuritySolutionStatusPtrOutput)
-}
-
-func (in *securitySolutionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySolutionStatus] {
-	return pulumix.Output[*SecuritySolutionStatus]{
-		OutputState: in.ToSecuritySolutionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Unmasked IP address logging status
@@ -1419,12 +1376,6 @@ func (in *unmaskedIpLoggingStatusPtr) ToUnmaskedIpLoggingStatusPtrOutput() Unmas
 
 func (in *unmaskedIpLoggingStatusPtr) ToUnmaskedIpLoggingStatusPtrOutputWithContext(ctx context.Context) UnmaskedIpLoggingStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UnmaskedIpLoggingStatusPtrOutput)
-}
-
-func (in *unmaskedIpLoggingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*UnmaskedIpLoggingStatus] {
-	return pulumix.Output[*UnmaskedIpLoggingStatus]{
-		OutputState: in.ToUnmaskedIpLoggingStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

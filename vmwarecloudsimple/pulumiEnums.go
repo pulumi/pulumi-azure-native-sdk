@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Disk's independence mode type
@@ -177,12 +176,6 @@ func (in *diskIndependenceModePtr) ToDiskIndependenceModePtrOutput() DiskIndepen
 
 func (in *diskIndependenceModePtr) ToDiskIndependenceModePtrOutputWithContext(ctx context.Context) DiskIndependenceModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskIndependenceModePtrOutput)
-}
-
-func (in *diskIndependenceModePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskIndependenceMode] {
-	return pulumix.Output[*DiskIndependenceMode]{
-		OutputState: in.ToDiskIndependenceModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NIC type
@@ -357,12 +350,6 @@ func (in *nictypePtr) ToNICTypePtrOutput() NICTypePtrOutput {
 
 func (in *nictypePtr) ToNICTypePtrOutputWithContext(ctx context.Context) NICTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NICTypePtrOutput)
-}
-
-func (in *nictypePtr) ToOutput(ctx context.Context) pulumix.Output[*NICType] {
-	return pulumix.Output[*NICType]{
-		OutputState: in.ToNICTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

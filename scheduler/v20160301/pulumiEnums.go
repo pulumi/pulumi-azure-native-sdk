@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DayOfWeek string
@@ -184,12 +183,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
-}
-
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DayOfWeekArrayInput is an input type that accepts DayOfWeekArray and DayOfWeekArrayOutput values.
@@ -419,12 +412,6 @@ func (in *jobActionTypePtr) ToJobActionTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(JobActionTypePtrOutput)
 }
 
-func (in *jobActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobActionType] {
-	return pulumix.Output[*JobActionType]{
-		OutputState: in.ToJobActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the state.
 type JobCollectionStateEnum string
 
@@ -593,12 +580,6 @@ func (in *jobCollectionStateEnumPtr) ToJobCollectionStateEnumPtrOutput() JobColl
 
 func (in *jobCollectionStateEnumPtr) ToJobCollectionStateEnumPtrOutputWithContext(ctx context.Context) JobCollectionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobCollectionStateEnumPtrOutput)
-}
-
-func (in *jobCollectionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*JobCollectionStateEnum] {
-	return pulumix.Output[*JobCollectionStateEnum]{
-		OutputState: in.ToJobCollectionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
@@ -777,12 +758,6 @@ func (in *jobScheduleDayPtr) ToJobScheduleDayPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(JobScheduleDayPtrOutput)
 }
 
-func (in *jobScheduleDayPtr) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleDay] {
-	return pulumix.Output[*JobScheduleDay]{
-		OutputState: in.ToJobScheduleDayPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or set the job state.
 type JobStateEnum string
 
@@ -951,12 +926,6 @@ func (in *jobStateEnumPtr) ToJobStateEnumPtrOutput() JobStateEnumPtrOutput {
 
 func (in *jobStateEnumPtr) ToJobStateEnumPtrOutputWithContext(ctx context.Context) JobStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobStateEnumPtrOutput)
-}
-
-func (in *jobStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*JobStateEnum] {
-	return pulumix.Output[*JobStateEnum]{
-		OutputState: in.ToJobStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
@@ -1131,12 +1100,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
 }
 
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the retry strategy to be used.
 type RetryType string
 
@@ -1303,12 +1266,6 @@ func (in *retryTypePtr) ToRetryTypePtrOutputWithContext(ctx context.Context) Ret
 	return pulumi.ToOutputWithContext(ctx, in).(RetryTypePtrOutput)
 }
 
-func (in *retryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RetryType] {
-	return pulumix.Output[*RetryType]{
-		OutputState: in.ToRetryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the authentication type.
 type ServiceBusAuthenticationType string
 
@@ -1473,12 +1430,6 @@ func (in *serviceBusAuthenticationTypePtr) ToServiceBusAuthenticationTypePtrOutp
 
 func (in *serviceBusAuthenticationTypePtr) ToServiceBusAuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceBusAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceBusAuthenticationTypePtrOutput)
-}
-
-func (in *serviceBusAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusAuthenticationType] {
-	return pulumix.Output[*ServiceBusAuthenticationType]{
-		OutputState: in.ToServiceBusAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the transport type.
@@ -1649,12 +1600,6 @@ func (in *serviceBusTransportTypePtr) ToServiceBusTransportTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceBusTransportTypePtrOutput)
 }
 
-func (in *serviceBusTransportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceBusTransportType] {
-	return pulumix.Output[*ServiceBusTransportType]{
-		OutputState: in.ToServiceBusTransportTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or set the SKU.
 type SkuDefinition string
 
@@ -1823,12 +1768,6 @@ func (in *skuDefinitionPtr) ToSkuDefinitionPtrOutput() SkuDefinitionPtrOutput {
 
 func (in *skuDefinitionPtr) ToSkuDefinitionPtrOutputWithContext(ctx context.Context) SkuDefinitionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuDefinitionPtrOutput)
-}
-
-func (in *skuDefinitionPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuDefinition] {
-	return pulumix.Output[*SkuDefinition]{
-		OutputState: in.ToSkuDefinitionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

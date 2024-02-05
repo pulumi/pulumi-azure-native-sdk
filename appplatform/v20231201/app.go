@@ -101,6 +101,9 @@ func NewApp(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:App"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240101preview:App"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

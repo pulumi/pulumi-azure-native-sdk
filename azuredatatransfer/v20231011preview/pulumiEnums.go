@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Transfer Storage Blobs or Tables
@@ -177,12 +176,6 @@ func (in *dataTypePtr) ToDataTypePtrOutputWithContext(ctx context.Context) DataT
 	return pulumi.ToOutputWithContext(ctx, in).(DataTypePtrOutput)
 }
 
-func (in *dataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataType] {
-	return pulumix.Output[*DataType]{
-		OutputState: in.ToDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Direction of data movement
 type Direction string
 
@@ -349,12 +342,6 @@ func (in *directionPtr) ToDirectionPtrOutputWithContext(ctx context.Context) Dir
 	return pulumi.ToOutputWithContext(ctx, in).(DirectionPtrOutput)
 }
 
-func (in *directionPtr) ToOutput(ctx context.Context) pulumix.Output[*Direction] {
-	return pulumix.Output[*Direction]{
-		OutputState: in.ToDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the current flow
 type FlowStatus string
 
@@ -519,12 +506,6 @@ func (in *flowStatusPtr) ToFlowStatusPtrOutput() FlowStatusPtrOutput {
 
 func (in *flowStatusPtr) ToFlowStatusPtrOutputWithContext(ctx context.Context) FlowStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FlowStatusPtrOutput)
-}
-
-func (in *flowStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*FlowStatus] {
-	return pulumix.Output[*FlowStatus]{
-		OutputState: in.ToFlowStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Flow type for the specified resource
@@ -705,12 +686,6 @@ func (in *flowTypePtr) ToFlowTypePtrOutputWithContext(ctx context.Context) FlowT
 	return pulumi.ToOutputWithContext(ctx, in).(FlowTypePtrOutput)
 }
 
-func (in *flowTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FlowType] {
-	return pulumix.Output[*FlowType]{
-		OutputState: in.ToFlowTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction pipeline to filter approved schemas.
 type ListApprovedSchemasDirection string
 
@@ -875,12 +850,6 @@ func (in *listApprovedSchemasDirectionPtr) ToListApprovedSchemasDirectionPtrOutp
 
 func (in *listApprovedSchemasDirectionPtr) ToListApprovedSchemasDirectionPtrOutputWithContext(ctx context.Context) ListApprovedSchemasDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ListApprovedSchemasDirectionPtrOutput)
-}
-
-func (in *listApprovedSchemasDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*ListApprovedSchemasDirection] {
-	return pulumix.Output[*ListApprovedSchemasDirection]{
-		OutputState: in.ToListApprovedSchemasDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -1053,12 +1022,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the schema
 type SchemaStatus string
 
@@ -1223,12 +1186,6 @@ func (in *schemaStatusPtr) ToSchemaStatusPtrOutput() SchemaStatusPtrOutput {
 
 func (in *schemaStatusPtr) ToSchemaStatusPtrOutputWithContext(ctx context.Context) SchemaStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaStatusPtrOutput)
-}
-
-func (in *schemaStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaStatus] {
-	return pulumix.Output[*SchemaStatus]{
-		OutputState: in.ToSchemaStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

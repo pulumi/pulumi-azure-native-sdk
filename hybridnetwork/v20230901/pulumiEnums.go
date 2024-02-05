@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The application enablement.
@@ -179,12 +178,6 @@ func (in *applicationEnablementPtr) ToApplicationEnablementPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationEnablementPtrOutput)
 }
 
-func (in *applicationEnablementPtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationEnablement] {
-	return pulumix.Output[*ApplicationEnablement]{
-		OutputState: in.ToApplicationEnablementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The replication strategy.
 type ArtifactReplicationStrategy string
 
@@ -349,12 +342,6 @@ func (in *artifactReplicationStrategyPtr) ToArtifactReplicationStrategyPtrOutput
 
 func (in *artifactReplicationStrategyPtr) ToArtifactReplicationStrategyPtrOutputWithContext(ctx context.Context) ArtifactReplicationStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArtifactReplicationStrategyPtrOutput)
-}
-
-func (in *artifactReplicationStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*ArtifactReplicationStrategy] {
-	return pulumix.Output[*ArtifactReplicationStrategy]{
-		OutputState: in.ToArtifactReplicationStrategyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The artifact store type.
@@ -523,12 +510,6 @@ func (in *artifactStoreTypePtr) ToArtifactStoreTypePtrOutput() ArtifactStoreType
 
 func (in *artifactStoreTypePtr) ToArtifactStoreTypePtrOutputWithContext(ctx context.Context) ArtifactStoreTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArtifactStoreTypePtrOutput)
-}
-
-func (in *artifactStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStoreType] {
-	return pulumix.Output[*ArtifactStoreType]{
-		OutputState: in.ToArtifactStoreTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The artifact type.
@@ -701,12 +682,6 @@ func (in *artifactTypePtr) ToArtifactTypePtrOutput() ArtifactTypePtrOutput {
 
 func (in *artifactTypePtr) ToArtifactTypePtrOutputWithContext(ctx context.Context) ArtifactTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArtifactTypePtrOutput)
-}
-
-func (in *artifactTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ArtifactType] {
-	return pulumix.Output[*ArtifactType]{
-		OutputState: in.ToArtifactTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The artifact type.
@@ -931,12 +906,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The NFVI type.
 type NFVIType string
 
@@ -1105,12 +1074,6 @@ func (in *nfvitypePtr) ToNFVITypePtrOutput() NFVITypePtrOutput {
 
 func (in *nfvitypePtr) ToNFVITypePtrOutputWithContext(ctx context.Context) NFVITypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NFVITypePtrOutput)
-}
-
-func (in *nfvitypePtr) ToOutput(ctx context.Context) pulumix.Output[*NFVIType] {
-	return pulumix.Output[*NFVIType]{
-		OutputState: in.ToNFVITypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The value which indicates if NF  values are secrets
@@ -1297,12 +1260,6 @@ func (in *publisherScopePtr) ToPublisherScopePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(PublisherScopePtrOutput)
 }
 
-func (in *publisherScopePtr) ToOutput(ctx context.Context) pulumix.Output[*PublisherScope] {
-	return pulumix.Output[*PublisherScope]{
-		OutputState: in.ToPublisherScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of this Sku
 type SkuName string
 
@@ -1469,12 +1426,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The template type.
 type TemplateType string
 
@@ -1639,12 +1590,6 @@ func (in *templateTypePtr) ToTemplateTypePtrOutput() TemplateTypePtrOutput {
 
 func (in *templateTypePtr) ToTemplateTypePtrOutputWithContext(ctx context.Context) TemplateTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TemplateTypePtrOutput)
-}
-
-func (in *templateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TemplateType] {
-	return pulumix.Output[*TemplateType]{
-		OutputState: in.ToTemplateTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The resource element template type.

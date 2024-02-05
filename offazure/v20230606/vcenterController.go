@@ -69,6 +69,9 @@ func NewVcenterController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20200707:VcenterController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:VcenterController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

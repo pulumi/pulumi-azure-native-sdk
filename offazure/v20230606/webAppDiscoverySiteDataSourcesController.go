@@ -48,6 +48,9 @@ func NewWebAppDiscoverySiteDataSourcesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure:WebAppDiscoverySiteDataSourcesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:WebAppDiscoverySiteDataSourcesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

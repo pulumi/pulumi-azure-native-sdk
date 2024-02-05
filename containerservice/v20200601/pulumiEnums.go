@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AgentPoolMode represents mode of an agent pool
@@ -177,12 +176,6 @@ func (in *agentPoolModePtr) ToAgentPoolModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolModePtrOutput)
 }
 
-func (in *agentPoolModePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolMode] {
-	return pulumix.Output[*AgentPoolMode]{
-		OutputState: in.ToAgentPoolModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AgentPoolType represents types of an agent pool
 type AgentPoolType string
 
@@ -347,12 +340,6 @@ func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutput() AgentPoolTypePtrOutput {
 
 func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutputWithContext(ctx context.Context) AgentPoolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolTypePtrOutput)
-}
-
-func (in *agentPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolType] {
-	return pulumix.Output[*AgentPoolType]{
-		OutputState: in.ToAgentPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Size of agent VMs.
@@ -865,12 +852,6 @@ func (in *containerServiceVMSizeTypesPtr) ToContainerServiceVMSizeTypesPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerServiceVMSizeTypesPtrOutput)
 }
 
-func (in *containerServiceVMSizeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceVMSizeTypes] {
-	return pulumix.Output[*ContainerServiceVMSizeTypes]{
-		OutputState: in.ToContainerServiceVMSizeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
 type OSType string
 
@@ -1035,12 +1016,6 @@ func (in *ostypePtr) ToOSTypePtrOutput() OSTypePtrOutput {
 
 func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
-}
-
-func (in *ostypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSType] {
-	return pulumix.Output[*OSType]{
-		OutputState: in.ToOSTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
@@ -1209,12 +1184,6 @@ func (in *scaleSetEvictionPolicyPtr) ToScaleSetEvictionPolicyPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetEvictionPolicyPtrOutput)
 }
 
-func (in *scaleSetEvictionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetEvictionPolicy] {
-	return pulumix.Output[*ScaleSetEvictionPolicy]{
-		OutputState: in.ToScaleSetEvictionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
 type ScaleSetPriority string
 
@@ -1379,12 +1348,6 @@ func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutput() ScaleSetPriorityPtr
 
 func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutputWithContext(ctx context.Context) ScaleSetPriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetPriorityPtrOutput)
-}
-
-func (in *scaleSetPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetPriority] {
-	return pulumix.Output[*ScaleSetPriority]{
-		OutputState: in.ToScaleSetPriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Whether storage account lock is to be acquired for this container or not.
@@ -177,12 +176,6 @@ func (in *acquireStorageAccountLockPtr) ToAcquireStorageAccountLockPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AcquireStorageAccountLockPtrOutput)
 }
 
-func (in *acquireStorageAccountLockPtr) ToOutput(ctx context.Context) pulumix.Output[*AcquireStorageAccountLock] {
-	return pulumix.Output[*AcquireStorageAccountLock]{
-		OutputState: in.ToAcquireStorageAccountLockPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertsState string
 
 const (
@@ -346,12 +339,6 @@ func (in *alertsStatePtr) ToAlertsStatePtrOutput() AlertsStatePtrOutput {
 
 func (in *alertsStatePtr) ToAlertsStatePtrOutputWithContext(ctx context.Context) AlertsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertsStatePtrOutput)
-}
-
-func (in *alertsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AlertsState] {
-	return pulumix.Output[*AlertsState]{
-		OutputState: in.ToAlertsStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of backup items associated with this container.
@@ -548,12 +535,6 @@ func (in *backupItemTypePtr) ToBackupItemTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(BackupItemTypePtrOutput)
 }
 
-func (in *backupItemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupItemType] {
-	return pulumix.Output[*BackupItemType]{
-		OutputState: in.ToBackupItemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of backup management for the backed up item.
 type BackupManagementType string
 
@@ -734,12 +715,6 @@ func (in *backupManagementTypePtr) ToBackupManagementTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(BackupManagementTypePtrOutput)
 }
 
-func (in *backupManagementTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupManagementType] {
-	return pulumix.Output[*BackupManagementType]{
-		OutputState: in.ToBackupManagementTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
 type CreateMode string
 
@@ -908,12 +883,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag to show if Cross Region Restore is enabled on the Vault or not
 type CrossRegionRestore string
 
@@ -1078,12 +1047,6 @@ func (in *crossRegionRestorePtr) ToCrossRegionRestorePtrOutput() CrossRegionRest
 
 func (in *crossRegionRestorePtr) ToCrossRegionRestorePtrOutputWithContext(ctx context.Context) CrossRegionRestorePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CrossRegionRestorePtrOutput)
-}
-
-func (in *crossRegionRestorePtr) ToOutput(ctx context.Context) pulumix.Output[*CrossRegionRestore] {
-	return pulumix.Output[*CrossRegionRestore]{
-		OutputState: in.ToCrossRegionRestorePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CrossSubscriptionRestoreState string
@@ -1251,12 +1214,6 @@ func (in *crossSubscriptionRestoreStatePtr) ToCrossSubscriptionRestoreStatePtrOu
 
 func (in *crossSubscriptionRestoreStatePtr) ToCrossSubscriptionRestoreStatePtrOutputWithContext(ctx context.Context) CrossSubscriptionRestoreStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CrossSubscriptionRestoreStatePtrOutput)
-}
-
-func (in *crossSubscriptionRestoreStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CrossSubscriptionRestoreState] {
-	return pulumix.Output[*CrossSubscriptionRestoreState]{
-		OutputState: in.ToCrossSubscriptionRestoreStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DayOfWeek string
@@ -1432,12 +1389,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
-}
-
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DayOfWeekArrayInput is an input type that accepts DayOfWeekArray and DayOfWeekArrayOutput values.
@@ -1654,12 +1605,6 @@ func (in *enhancedSecurityStatePtr) ToEnhancedSecurityStatePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(EnhancedSecurityStatePtrOutput)
 }
 
-func (in *enhancedSecurityStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnhancedSecurityState] {
-	return pulumix.Output[*EnhancedSecurityState]{
-		OutputState: in.ToEnhancedSecurityStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IAASVMPolicyType string
 
 const (
@@ -1827,12 +1772,6 @@ func (in *iaasvmpolicyTypePtr) ToIAASVMPolicyTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IAASVMPolicyTypePtrOutput)
 }
 
-func (in *iaasvmpolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IAASVMPolicyType] {
-	return pulumix.Output[*IAASVMPolicyType]{
-		OutputState: in.ToIAASVMPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IaasVMSnapshotConsistencyType string
 
 const (
@@ -1994,12 +1933,6 @@ func (in *iaasVMSnapshotConsistencyTypePtr) ToIaasVMSnapshotConsistencyTypePtrOu
 
 func (in *iaasVMSnapshotConsistencyTypePtr) ToIaasVMSnapshotConsistencyTypePtrOutputWithContext(ctx context.Context) IaasVMSnapshotConsistencyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IaasVMSnapshotConsistencyTypePtrOutput)
-}
-
-func (in *iaasVMSnapshotConsistencyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IaasVMSnapshotConsistencyType] {
-	return pulumix.Output[*IaasVMSnapshotConsistencyType]{
-		OutputState: in.ToIaasVMSnapshotConsistencyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ImmutabilityState string
@@ -2169,12 +2102,6 @@ func (in *immutabilityStatePtr) ToImmutabilityStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ImmutabilityStatePtrOutput)
 }
 
-func (in *immutabilityStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ImmutabilityState] {
-	return pulumix.Output[*ImmutabilityState]{
-		OutputState: in.ToImmutabilityStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enabling/Disabling the Double Encryption state
 type InfrastructureEncryptionState string
 
@@ -2339,12 +2266,6 @@ func (in *infrastructureEncryptionStatePtr) ToInfrastructureEncryptionStatePtrOu
 
 func (in *infrastructureEncryptionStatePtr) ToInfrastructureEncryptionStatePtrOutputWithContext(ctx context.Context) InfrastructureEncryptionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionStatePtrOutput)
-}
-
-func (in *infrastructureEncryptionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureEncryptionState] {
-	return pulumix.Output[*InfrastructureEncryptionState]{
-		OutputState: in.ToInfrastructureEncryptionStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Last backup operation status. Possible values: Healthy, Unhealthy.
@@ -2515,12 +2436,6 @@ func (in *lastBackupStatusPtr) ToLastBackupStatusPtrOutput() LastBackupStatusPtr
 
 func (in *lastBackupStatusPtr) ToLastBackupStatusPtrOutputWithContext(ctx context.Context) LastBackupStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LastBackupStatusPtrOutput)
-}
-
-func (in *lastBackupStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*LastBackupStatus] {
-	return pulumix.Output[*LastBackupStatus]{
-		OutputState: in.ToLastBackupStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type MonthOfYear string
@@ -2708,12 +2623,6 @@ func (in *monthOfYearPtr) ToMonthOfYearPtrOutput() MonthOfYearPtrOutput {
 
 func (in *monthOfYearPtr) ToMonthOfYearPtrOutputWithContext(ctx context.Context) MonthOfYearPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonthOfYearPtrOutput)
-}
-
-func (in *monthOfYearPtr) ToOutput(ctx context.Context) pulumix.Output[*MonthOfYear] {
-	return pulumix.Output[*MonthOfYear]{
-		OutputState: in.ToMonthOfYearPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonthOfYearArrayInput is an input type that accepts MonthOfYearArray and MonthOfYearArrayOutput values.
@@ -2929,12 +2838,6 @@ func (in *operationTypePtr) ToOperationTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(OperationTypePtrOutput)
 }
 
-func (in *operationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperationType] {
-	return pulumix.Output[*OperationType]{
-		OutputState: in.ToOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of backup policy type
 type PolicyType string
 
@@ -3113,12 +3016,6 @@ func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyTypePtrOutput)
 }
 
-func (in *policyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyType] {
-	return pulumix.Output[*PolicyType]{
-		OutputState: in.ToPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the status
 type PrivateEndpointConnectionStatus string
 
@@ -3287,12 +3184,6 @@ func (in *privateEndpointConnectionStatusPtr) ToPrivateEndpointConnectionStatusP
 
 func (in *privateEndpointConnectionStatusPtr) ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointConnectionStatus]{
-		OutputState: in.ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
@@ -3494,12 +3385,6 @@ func (in *protectedItemHealthStatusPtr) ToProtectedItemHealthStatusPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ProtectedItemHealthStatusPtrOutput)
 }
 
-func (in *protectedItemHealthStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ProtectedItemHealthStatus] {
-	return pulumix.Output[*ProtectedItemHealthStatus]{
-		OutputState: in.ToProtectedItemHealthStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Protection state of the backup engine
 type ProtectedItemStateEnum string
 
@@ -3674,12 +3559,6 @@ func (in *protectedItemStateEnumPtr) ToProtectedItemStateEnumPtrOutput() Protect
 
 func (in *protectedItemStateEnumPtr) ToProtectedItemStateEnumPtrOutputWithContext(ctx context.Context) ProtectedItemStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtectedItemStateEnumPtrOutput)
-}
-
-func (in *protectedItemStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ProtectedItemStateEnum] {
-	return pulumix.Output[*ProtectedItemStateEnum]{
-		OutputState: in.ToProtectedItemStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // backup protectionIntent type.
@@ -3870,12 +3749,6 @@ func (in *protectionStatePtr) ToProtectionStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ProtectionStatePtrOutput)
 }
 
-func (in *protectionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProtectionState] {
-	return pulumix.Output[*ProtectionState]{
-		OutputState: in.ToProtectionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backup state of this backup item.
 type ProtectionStatus string
 
@@ -4048,12 +3921,6 @@ func (in *protectionStatusPtr) ToProtectionStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ProtectionStatusPtrOutput)
 }
 
-func (in *protectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ProtectionStatus] {
-	return pulumix.Output[*ProtectionStatus]{
-		OutputState: in.ToProtectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets provisioning state of the private endpoint connection
 type ProvisioningState string
 
@@ -4224,12 +4091,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // property to enable or disable resource provider inbound network traffic from public clients
 type PublicNetworkAccess string
 
@@ -4394,12 +4255,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Resource Health Status
@@ -4576,12 +4431,6 @@ func (in *resourceHealthStatusPtr) ToResourceHealthStatusPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceHealthStatusPtrOutput)
 }
 
-func (in *resourceHealthStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceHealthStatus] {
-	return pulumix.Output[*ResourceHealthStatus]{
-		OutputState: in.ToResourceHealthStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 type ResourceIdentityType string
 
@@ -4750,12 +4599,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Retention duration type: days/weeks/months/years
@@ -4931,12 +4774,6 @@ func (in *retentionDurationTypePtr) ToRetentionDurationTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RetentionDurationTypePtrOutput)
 }
 
-func (in *retentionDurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RetentionDurationType] {
-	return pulumix.Output[*RetentionDurationType]{
-		OutputState: in.ToRetentionDurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Retention schedule format for yearly retention policy.
 type RetentionScheduleFormat string
 
@@ -5103,12 +4940,6 @@ func (in *retentionScheduleFormatPtr) ToRetentionScheduleFormatPtrOutput() Reten
 
 func (in *retentionScheduleFormatPtr) ToRetentionScheduleFormatPtrOutputWithContext(ctx context.Context) RetentionScheduleFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RetentionScheduleFormatPtrOutput)
-}
-
-func (in *retentionScheduleFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*RetentionScheduleFormat] {
-	return pulumix.Output[*RetentionScheduleFormat]{
-		OutputState: in.ToRetentionScheduleFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Frequency of the schedule operation of this policy.
@@ -5281,12 +5112,6 @@ func (in *scheduleRunTypePtr) ToScheduleRunTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleRunTypePtrOutput)
 }
 
-func (in *scheduleRunTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleRunType] {
-	return pulumix.Output[*ScheduleRunType]{
-		OutputState: in.ToScheduleRunTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
 type SkuName string
 
@@ -5451,12 +5276,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SoftDeleteState string
@@ -5628,12 +5447,6 @@ func (in *softDeleteStatePtr) ToSoftDeleteStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SoftDeleteStatePtrOutput)
 }
 
-func (in *softDeleteStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftDeleteState] {
-	return pulumix.Output[*SoftDeleteState]{
-		OutputState: in.ToSoftDeleteStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The storage redundancy setting of a vault
 type StandardTierStorageRedundancy string
 
@@ -5802,12 +5615,6 @@ func (in *standardTierStorageRedundancyPtr) ToStandardTierStorageRedundancyPtrOu
 
 func (in *standardTierStorageRedundancyPtr) ToStandardTierStorageRedundancyPtrOutputWithContext(ctx context.Context) StandardTierStorageRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StandardTierStorageRedundancyPtrOutput)
-}
-
-func (in *standardTierStorageRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardTierStorageRedundancy] {
-	return pulumix.Output[*StandardTierStorageRedundancy]{
-		OutputState: in.ToStandardTierStorageRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tiering Mode to control automatic tiering of recovery points. Supported values are:
@@ -5983,12 +5790,6 @@ func (in *tieringModePtr) ToTieringModePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(TieringModePtrOutput)
 }
 
-func (in *tieringModePtr) ToOutput(ctx context.Context) pulumix.Output[*TieringMode] {
-	return pulumix.Output[*TieringMode]{
-		OutputState: in.ToTieringModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupId for the PrivateEndpointConnection - AzureBackup, AzureBackup_secondary or AzureSiteRecovery
 type VaultSubResourceType string
 
@@ -6155,12 +5956,6 @@ func (in *vaultSubResourceTypePtr) ToVaultSubResourceTypePtrOutput() VaultSubRes
 
 func (in *vaultSubResourceTypePtr) ToVaultSubResourceTypePtrOutputWithContext(ctx context.Context) VaultSubResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VaultSubResourceTypePtrOutput)
-}
-
-func (in *vaultSubResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VaultSubResourceType] {
-	return pulumix.Output[*VaultSubResourceType]{
-		OutputState: in.ToVaultSubResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WeekOfMonth string
@@ -6334,12 +6129,6 @@ func (in *weekOfMonthPtr) ToWeekOfMonthPtrOutput() WeekOfMonthPtrOutput {
 
 func (in *weekOfMonthPtr) ToWeekOfMonthPtrOutputWithContext(ctx context.Context) WeekOfMonthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekOfMonthPtrOutput)
-}
-
-func (in *weekOfMonthPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekOfMonth] {
-	return pulumix.Output[*WeekOfMonth]{
-		OutputState: in.ToWeekOfMonthPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WeekOfMonthArrayInput is an input type that accepts WeekOfMonthArray and WeekOfMonthArrayOutput values.
@@ -6565,12 +6354,6 @@ func (in *workloadItemTypePtr) ToWorkloadItemTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadItemTypePtrOutput)
 }
 
-func (in *workloadItemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadItemType] {
-	return pulumix.Output[*WorkloadItemType]{
-		OutputState: in.ToWorkloadItemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of workload for the backup management
 type WorkloadType string
 
@@ -6763,12 +6546,6 @@ func (in *workloadTypePtr) ToWorkloadTypePtrOutput() WorkloadTypePtrOutput {
 
 func (in *workloadTypePtr) ToWorkloadTypePtrOutputWithContext(ctx context.Context) WorkloadTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadTypePtrOutput)
-}
-
-func (in *workloadTypePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadType] {
-	return pulumix.Output[*WorkloadType]{
-		OutputState: in.ToWorkloadTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

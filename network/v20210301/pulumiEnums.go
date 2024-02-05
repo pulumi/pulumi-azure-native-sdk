@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The commissioned state of the Custom IP Prefix.
@@ -185,12 +184,6 @@ func (in *commissionedStatePtr) ToCommissionedStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(CommissionedStatePtrOutput)
 }
 
-func (in *commissionedStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CommissionedState] {
-	return pulumix.Output[*CommissionedState]{
-		OutputState: in.ToCommissionedStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -353,12 +346,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

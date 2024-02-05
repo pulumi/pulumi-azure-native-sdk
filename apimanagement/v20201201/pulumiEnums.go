@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of API.
@@ -177,12 +176,6 @@ func (in *apiTypePtr) ToApiTypePtrOutputWithContext(ctx context.Context) ApiType
 	return pulumi.ToOutputWithContext(ctx, in).(ApiTypePtrOutput)
 }
 
-func (in *apiTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApiType] {
-	return pulumix.Output[*ApiType]{
-		OutputState: in.ToApiTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Form of an authorization grant, which the client uses to request the access token.
 type BearerTokenSendingMethods string
 
@@ -349,12 +342,6 @@ func (in *bearerTokenSendingMethodsPtr) ToBearerTokenSendingMethodsPtrOutput() B
 
 func (in *bearerTokenSendingMethodsPtr) ToBearerTokenSendingMethodsPtrOutputWithContext(ctx context.Context) BearerTokenSendingMethodsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BearerTokenSendingMethodsPtrOutput)
-}
-
-func (in *bearerTokenSendingMethodsPtr) ToOutput(ctx context.Context) pulumix.Output[*BearerTokenSendingMethods] {
-	return pulumix.Output[*BearerTokenSendingMethods]{
-		OutputState: in.ToBearerTokenSendingMethodsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Format of the Content in which the API is getting imported.
@@ -549,12 +536,6 @@ func (in *contentFormatPtr) ToContentFormatPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContentFormatPtrOutput)
 }
 
-func (in *contentFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentFormat] {
-	return pulumix.Output[*ContentFormat]{
-		OutputState: in.ToContentFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Protocol string
 
 const (
@@ -718,12 +699,6 @@ func (in *protocolPtr) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
-}
-
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProtocolArrayInput is an input type that accepts ProtocolArray and ProtocolArrayOutput values.
@@ -939,12 +914,6 @@ func (in *soapApiTypePtr) ToSoapApiTypePtrOutput() SoapApiTypePtrOutput {
 
 func (in *soapApiTypePtr) ToSoapApiTypePtrOutputWithContext(ctx context.Context) SoapApiTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoapApiTypePtrOutput)
-}
-
-func (in *soapApiTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SoapApiType] {
-	return pulumix.Output[*SoapApiType]{
-		OutputState: in.ToSoapApiTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

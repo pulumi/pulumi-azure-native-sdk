@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The multi cloud resource's cloud name.
@@ -183,12 +182,6 @@ func (in *cloudNamePtr) ToCloudNamePtrOutput() CloudNamePtrOutput {
 
 func (in *cloudNamePtr) ToCloudNamePtrOutputWithContext(ctx context.Context) CloudNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CloudNamePtrOutput)
-}
-
-func (in *cloudNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudName] {
-	return pulumix.Output[*CloudName]{
-		OutputState: in.ToCloudNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the environment data.
@@ -397,12 +390,6 @@ func (in *scanningModePtr) ToScanningModePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ScanningModePtrOutput)
 }
 
-func (in *scanningModePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanningMode] {
-	return pulumix.Output[*ScanningMode]{
-		OutputState: in.ToScanningModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The available sub plans
 type SubPlan string
 
@@ -569,12 +556,6 @@ func (in *subPlanPtr) ToSubPlanPtrOutputWithContext(ctx context.Context) SubPlan
 	return pulumi.ToOutputWithContext(ctx, in).(SubPlanPtrOutput)
 }
 
-func (in *subPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*SubPlan] {
-	return pulumix.Output[*SubPlan]{
-		OutputState: in.ToSubPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
 type Type string
 
@@ -739,12 +720,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

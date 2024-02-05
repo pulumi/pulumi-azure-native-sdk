@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Association Type
@@ -173,12 +172,6 @@ func (in *associationTypePtr) ToAssociationTypePtrOutput() AssociationTypePtrOut
 
 func (in *associationTypePtr) ToAssociationTypePtrOutputWithContext(ctx context.Context) AssociationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssociationTypePtrOutput)
-}
-
-func (in *associationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssociationType] {
-	return pulumix.Output[*AssociationType]{
-		OutputState: in.ToAssociationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

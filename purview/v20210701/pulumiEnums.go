@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the public network access.
@@ -177,12 +176,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status.
@@ -357,12 +350,6 @@ func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtr
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
 }
 
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity Type
 type Type string
 
@@ -529,12 +516,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

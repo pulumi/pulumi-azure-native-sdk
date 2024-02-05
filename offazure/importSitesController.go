@@ -14,6 +14,8 @@ import (
 
 // A ImportSite
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 type ImportSitesController struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewImportSitesController(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:ImportSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:ImportSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

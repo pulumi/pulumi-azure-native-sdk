@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enum indicating if user is adding or removing a favorite lab
@@ -177,12 +176,6 @@ func (in *addRemovePtr) ToAddRemovePtrOutput() AddRemovePtrOutput {
 
 func (in *addRemovePtr) ToAddRemovePtrOutputWithContext(ctx context.Context) AddRemovePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddRemovePtrOutput)
-}
-
-func (in *addRemovePtr) ToOutput(ctx context.Context) pulumix.Output[*AddRemove] {
-	return pulumix.Output[*AddRemove]{
-		OutputState: in.ToAddRemovePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the user's progress in configuring their environment setting
@@ -354,12 +347,6 @@ func (in *configurationStatePtr) ToConfigurationStatePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationStatePtrOutput)
 }
 
-func (in *configurationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationState] {
-	return pulumix.Output[*ConfigurationState]{
-		OutputState: in.ToConfigurationStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Lab user access mode (open to all vs. restricted to those listed on the lab).
 type LabUserAccessMode string
 
@@ -526,12 +513,6 @@ func (in *labUserAccessModePtr) ToLabUserAccessModePtrOutput() LabUserAccessMode
 
 func (in *labUserAccessModePtr) ToLabUserAccessModePtrOutputWithContext(ctx context.Context) LabUserAccessModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LabUserAccessModePtrOutput)
-}
-
-func (in *labUserAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*LabUserAccessMode] {
-	return pulumix.Output[*LabUserAccessMode]{
-		OutputState: in.ToLabUserAccessModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The size of the virtual machine
@@ -703,12 +684,6 @@ func (in *managedLabVmSizePtr) ToManagedLabVmSizePtrOutput() ManagedLabVmSizePtr
 
 func (in *managedLabVmSizePtr) ToManagedLabVmSizePtrOutputWithContext(ctx context.Context) ManagedLabVmSizePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedLabVmSizePtrOutput)
-}
-
-func (in *managedLabVmSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedLabVmSize] {
-	return pulumix.Output[*ManagedLabVmSize]{
-		OutputState: in.ToManagedLabVmSizePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

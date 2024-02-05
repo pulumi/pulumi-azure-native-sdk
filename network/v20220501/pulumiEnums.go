@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the override action to be applied when rule matches.
@@ -183,12 +182,6 @@ func (in *actionTypePtr) ToActionTypePtrOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, in).(ActionTypePtrOutput)
 }
 
-func (in *actionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ActionType] {
-	return pulumix.Output[*ActionType]{
-		OutputState: in.ToActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
 type CustomRuleEnabledState string
 
@@ -353,12 +346,6 @@ func (in *customRuleEnabledStatePtr) ToCustomRuleEnabledStatePtrOutput() CustomR
 
 func (in *customRuleEnabledStatePtr) ToCustomRuleEnabledStatePtrOutputWithContext(ctx context.Context) CustomRuleEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CustomRuleEnabledStatePtrOutput)
-}
-
-func (in *customRuleEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomRuleEnabledState] {
-	return pulumix.Output[*CustomRuleEnabledState]{
-		OutputState: in.ToCustomRuleEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Request variable to compare with.
@@ -541,12 +528,6 @@ func (in *frontDoorMatchVariablePtr) ToFrontDoorMatchVariablePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(FrontDoorMatchVariablePtrOutput)
 }
 
-func (in *frontDoorMatchVariablePtr) ToOutput(ctx context.Context) pulumix.Output[*FrontDoorMatchVariable] {
-	return pulumix.Output[*FrontDoorMatchVariable]{
-		OutputState: in.ToFrontDoorMatchVariablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
 type ManagedRuleEnabledState string
 
@@ -711,12 +692,6 @@ func (in *managedRuleEnabledStatePtr) ToManagedRuleEnabledStatePtrOutput() Manag
 
 func (in *managedRuleEnabledStatePtr) ToManagedRuleEnabledStatePtrOutputWithContext(ctx context.Context) ManagedRuleEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleEnabledStatePtrOutput)
-}
-
-func (in *managedRuleEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleEnabledState] {
-	return pulumix.Output[*ManagedRuleEnabledState]{
-		OutputState: in.ToManagedRuleEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The variable type to be excluded.
@@ -891,12 +866,6 @@ func (in *managedRuleExclusionMatchVariablePtr) ToManagedRuleExclusionMatchVaria
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleExclusionMatchVariablePtrOutput)
 }
 
-func (in *managedRuleExclusionMatchVariablePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleExclusionMatchVariable] {
-	return pulumix.Output[*ManagedRuleExclusionMatchVariable]{
-		OutputState: in.ToManagedRuleExclusionMatchVariablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
 type ManagedRuleExclusionSelectorMatchOperator string
 
@@ -1069,12 +1038,6 @@ func (in *managedRuleExclusionSelectorMatchOperatorPtr) ToManagedRuleExclusionSe
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleExclusionSelectorMatchOperatorPtrOutput)
 }
 
-func (in *managedRuleExclusionSelectorMatchOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleExclusionSelectorMatchOperator] {
-	return pulumix.Output[*ManagedRuleExclusionSelectorMatchOperator]{
-		OutputState: in.ToManagedRuleExclusionSelectorMatchOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the rule set action.
 type ManagedRuleSetActionType string
 
@@ -1241,12 +1204,6 @@ func (in *managedRuleSetActionTypePtr) ToManagedRuleSetActionTypePtrOutput() Man
 
 func (in *managedRuleSetActionTypePtr) ToManagedRuleSetActionTypePtrOutputWithContext(ctx context.Context) ManagedRuleSetActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedRuleSetActionTypePtrOutput)
-}
-
-func (in *managedRuleSetActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedRuleSetActionType] {
-	return pulumix.Output[*ManagedRuleSetActionType]{
-		OutputState: in.ToManagedRuleSetActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Comparison type to use for matching with the variable value.
@@ -1435,12 +1392,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
 type PolicyEnabledState string
 
@@ -1605,12 +1556,6 @@ func (in *policyEnabledStatePtr) ToPolicyEnabledStatePtrOutput() PolicyEnabledSt
 
 func (in *policyEnabledStatePtr) ToPolicyEnabledStatePtrOutputWithContext(ctx context.Context) PolicyEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyEnabledStatePtrOutput)
-}
-
-func (in *policyEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyEnabledState] {
-	return pulumix.Output[*PolicyEnabledState]{
-		OutputState: in.ToPolicyEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes if it is in detection mode or prevention mode at policy level.
@@ -1779,12 +1724,6 @@ func (in *policyModePtr) ToPolicyModePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyModePtrOutput)
 }
 
-func (in *policyModePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyMode] {
-	return pulumix.Output[*PolicyMode]{
-		OutputState: in.ToPolicyModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if policy managed rules will inspect the request body content.
 type PolicyRequestBodyCheck string
 
@@ -1949,12 +1888,6 @@ func (in *policyRequestBodyCheckPtr) ToPolicyRequestBodyCheckPtrOutput() PolicyR
 
 func (in *policyRequestBodyCheckPtr) ToPolicyRequestBodyCheckPtrOutputWithContext(ctx context.Context) PolicyRequestBodyCheckPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyRequestBodyCheckPtrOutput)
-}
-
-func (in *policyRequestBodyCheckPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyRequestBodyCheck] {
-	return pulumix.Output[*PolicyRequestBodyCheck]{
-		OutputState: in.ToPolicyRequestBodyCheckPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes type of rule.
@@ -2123,12 +2056,6 @@ func (in *ruleTypePtr) ToRuleTypePtrOutputWithContext(ctx context.Context) RuleT
 	return pulumi.ToOutputWithContext(ctx, in).(RuleTypePtrOutput)
 }
 
-func (in *ruleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RuleType] {
-	return pulumix.Output[*RuleType]{
-		OutputState: in.ToRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of the pricing tier.
 type SkuName string
 
@@ -2295,12 +2222,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes what transforms applied before matching.
@@ -2475,12 +2396,6 @@ func (in *transformTypePtr) ToTransformTypePtrOutput() TransformTypePtrOutput {
 
 func (in *transformTypePtr) ToTransformTypePtrOutputWithContext(ctx context.Context) TransformTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransformTypePtrOutput)
-}
-
-func (in *transformTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TransformType] {
-	return pulumix.Output[*TransformType]{
-		OutputState: in.ToTransformTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

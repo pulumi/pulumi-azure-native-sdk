@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessKeyPermissions string
@@ -182,12 +181,6 @@ func (in *accessKeyPermissionsPtr) ToAccessKeyPermissionsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AccessKeyPermissionsPtrOutput)
 }
 
-func (in *accessKeyPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessKeyPermissions] {
-	return pulumix.Output[*AccessKeyPermissions]{
-		OutputState: in.ToAccessKeyPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional. Indicates public network solution. If enable, enable public network access of target service with best try. Default is enable. If optOut, opt out public network access configuration.
 type ActionType string
 
@@ -354,12 +347,6 @@ func (in *actionTypePtr) ToActionTypePtrOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, in).(ActionTypePtrOutput)
 }
 
-func (in *actionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ActionType] {
-	return pulumix.Output[*ActionType]{
-		OutputState: in.ToActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allow caller client IP to access the target service if true. the property is used when connecting local application to target service.
 type AllowType string
 
@@ -524,12 +511,6 @@ func (in *allowTypePtr) ToAllowTypePtrOutput() AllowTypePtrOutput {
 
 func (in *allowTypePtr) ToAllowTypePtrOutputWithContext(ctx context.Context) AllowTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllowTypePtrOutput)
-}
-
-func (in *allowTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AllowType] {
-	return pulumix.Output[*AllowType]{
-		OutputState: in.ToAllowTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The authentication type.
@@ -738,12 +719,6 @@ func (in *clientTypePtr) ToClientTypePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(ClientTypePtrOutput)
 }
 
-func (in *clientTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ClientType] {
-	return pulumix.Output[*ClientType]{
-		OutputState: in.ToClientTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether to clean up previous operation when Linker is updating or deleting
 type DeleteOrUpdateBehavior string
 
@@ -908,12 +883,6 @@ func (in *deleteOrUpdateBehaviorPtr) ToDeleteOrUpdateBehaviorPtrOutput() DeleteO
 
 func (in *deleteOrUpdateBehaviorPtr) ToDeleteOrUpdateBehaviorPtrOutputWithContext(ctx context.Context) DeleteOrUpdateBehaviorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeleteOrUpdateBehaviorPtrOutput)
-}
-
-func (in *deleteOrUpdateBehaviorPtr) ToOutput(ctx context.Context) pulumix.Output[*DeleteOrUpdateBehavior] {
-	return pulumix.Output[*DeleteOrUpdateBehavior]{
-		OutputState: in.ToDeleteOrUpdateBehaviorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of action for you dryrun job.
@@ -1106,12 +1075,6 @@ func (in *vnetSolutionTypePtr) ToVNetSolutionTypePtrOutput() VNetSolutionTypePtr
 
 func (in *vnetSolutionTypePtr) ToVNetSolutionTypePtrOutputWithContext(ctx context.Context) VNetSolutionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VNetSolutionTypePtrOutput)
-}
-
-func (in *vnetSolutionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VNetSolutionType] {
-	return pulumix.Output[*VNetSolutionType]{
-		OutputState: in.ToVNetSolutionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

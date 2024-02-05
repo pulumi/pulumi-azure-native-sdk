@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode of generation to be used for generating Dockerfiles.
@@ -177,12 +176,6 @@ func (in *dockerfileGenerationModePtr) ToDockerfileGenerationModePtrOutput() Doc
 
 func (in *dockerfileGenerationModePtr) ToDockerfileGenerationModePtrOutputWithContext(ctx context.Context) DockerfileGenerationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DockerfileGenerationModePtrOutput)
-}
-
-func (in *dockerfileGenerationModePtr) ToOutput(ctx context.Context) pulumix.Output[*DockerfileGenerationMode] {
-	return pulumix.Output[*DockerfileGenerationMode]{
-		OutputState: in.ToDockerfileGenerationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The programming language used.
@@ -386,12 +379,6 @@ func (in *generationLanguagePtr) ToGenerationLanguagePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GenerationLanguagePtrOutput)
 }
 
-func (in *generationLanguagePtr) ToOutput(ctx context.Context) pulumix.Output[*GenerationLanguage] {
-	return pulumix.Output[*GenerationLanguage]{
-		OutputState: in.ToGenerationLanguagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of manifests to be generated.
 type GenerationManifestType string
 
@@ -558,12 +545,6 @@ func (in *generationManifestTypePtr) ToGenerationManifestTypePtrOutput() Generat
 
 func (in *generationManifestTypePtr) ToGenerationManifestTypePtrOutputWithContext(ctx context.Context) GenerationManifestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GenerationManifestTypePtrOutput)
-}
-
-func (in *generationManifestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GenerationManifestType] {
-	return pulumix.Output[*GenerationManifestType]{
-		OutputState: in.ToGenerationManifestTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The mode of generation to be used for generating Manifest.
@@ -734,12 +715,6 @@ func (in *manifestGenerationModePtr) ToManifestGenerationModePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ManifestGenerationModePtrOutput)
 }
 
-func (in *manifestGenerationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ManifestGenerationMode] {
-	return pulumix.Output[*ManifestGenerationMode]{
-		OutputState: in.ToManifestGenerationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of manifests within the repository.
 type ManifestType string
 
@@ -906,12 +881,6 @@ func (in *manifestTypePtr) ToManifestTypePtrOutput() ManifestTypePtrOutput {
 
 func (in *manifestTypePtr) ToManifestTypePtrOutputWithContext(ctx context.Context) ManifestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManifestTypePtrOutput)
-}
-
-func (in *manifestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManifestType] {
-	return pulumix.Output[*ManifestType]{
-		OutputState: in.ToManifestTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the status of the workflow run
@@ -1083,12 +1052,6 @@ func (in *workflowRunStatusPtr) ToWorkflowRunStatusPtrOutput() WorkflowRunStatus
 
 func (in *workflowRunStatusPtr) ToWorkflowRunStatusPtrOutputWithContext(ctx context.Context) WorkflowRunStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkflowRunStatusPtrOutput)
-}
-
-func (in *workflowRunStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkflowRunStatus] {
-	return pulumix.Output[*WorkflowRunStatus]{
-		OutputState: in.ToWorkflowRunStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

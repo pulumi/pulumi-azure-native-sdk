@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
@@ -177,12 +176,6 @@ func (in *cloudInitDataSourcePtr) ToCloudInitDataSourcePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(CloudInitDataSourcePtrOutput)
 }
 
-func (in *cloudInitDataSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudInitDataSource] {
-	return pulumix.Output[*CloudInitDataSource]{
-		OutputState: in.ToCloudInitDataSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The format of the actual VHD file [vhd, vhdx]
 type DiskFileFormat string
 
@@ -349,12 +342,6 @@ func (in *diskFileFormatPtr) ToDiskFileFormatPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DiskFileFormatPtrOutput)
 }
 
-func (in *diskFileFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskFileFormat] {
-	return pulumix.Output[*DiskFileFormat]{
-		OutputState: in.ToDiskFileFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -517,12 +504,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The hypervisor generation of the Virtual Machine [V1, V2]
@@ -691,12 +672,6 @@ func (in *hyperVGenerationPtr) ToHyperVGenerationPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(HyperVGenerationPtrOutput)
 }
 
-func (in *hyperVGenerationPtr) ToOutput(ctx context.Context) pulumix.Output[*HyperVGeneration] {
-	return pulumix.Output[*HyperVGeneration]{
-		OutputState: in.ToHyperVGenerationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
 type IpAllocationMethodEnum string
 
@@ -861,12 +836,6 @@ func (in *ipAllocationMethodEnumPtr) ToIpAllocationMethodEnumPtrOutput() IpAlloc
 
 func (in *ipAllocationMethodEnumPtr) ToIpAllocationMethodEnumPtrOutputWithContext(ctx context.Context) IpAllocationMethodEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpAllocationMethodEnumPtrOutput)
-}
-
-func (in *ipAllocationMethodEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*IpAllocationMethodEnum] {
-	return pulumix.Output[*IpAllocationMethodEnum]{
-		OutputState: in.ToIpAllocationMethodEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the network
@@ -1049,12 +1018,6 @@ func (in *networkTypeEnumPtr) ToNetworkTypeEnumPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkTypeEnumPtrOutput)
 }
 
-func (in *networkTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkTypeEnum] {
-	return pulumix.Output[*NetworkTypeEnum]{
-		OutputState: in.ToNetworkTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
 type OperatingSystemTypes string
 
@@ -1219,12 +1182,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
-}
-
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The guest agent provisioning action.
@@ -1395,12 +1352,6 @@ func (in *provisioningActionPtr) ToProvisioningActionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningActionPtrOutput)
 }
 
-func (in *provisioningActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningAction] {
-	return pulumix.Output[*ProvisioningAction]{
-		OutputState: in.ToProvisioningActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1563,12 +1514,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
@@ -1735,12 +1680,6 @@ func (in *securityTypesPtr) ToSecurityTypesPtrOutput() SecurityTypesPtrOutput {
 
 func (in *securityTypesPtr) ToSecurityTypesPtrOutputWithContext(ctx context.Context) SecurityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypesPtrOutput)
-}
-
-func (in *securityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityTypes] {
-	return pulumix.Output[*SecurityTypes]{
-		OutputState: in.ToSecurityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type VmSizeEnum string
@@ -1948,12 +1887,6 @@ func (in *vmSizeEnumPtr) ToVmSizeEnumPtrOutput() VmSizeEnumPtrOutput {
 
 func (in *vmSizeEnumPtr) ToVmSizeEnumPtrOutputWithContext(ctx context.Context) VmSizeEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VmSizeEnumPtrOutput)
-}
-
-func (in *vmSizeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*VmSizeEnum] {
-	return pulumix.Output[*VmSizeEnum]{
-		OutputState: in.ToVmSizeEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

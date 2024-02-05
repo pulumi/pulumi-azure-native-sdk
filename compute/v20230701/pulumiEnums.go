@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The defaulting behavior is: **None for Standard storage. ReadOnly for Premium storage.**
@@ -179,12 +178,6 @@ func (in *cachingTypesPtr) ToCachingTypesPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CachingTypesPtrOutput)
 }
 
-func (in *cachingTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CachingTypes] {
-	return pulumix.Output[*CachingTypes]{
-		OutputState: in.ToCachingTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
 type ComponentNames string
 
@@ -347,12 +340,6 @@ func (in *componentNamesPtr) ToComponentNamesPtrOutput() ComponentNamesPtrOutput
 
 func (in *componentNamesPtr) ToComponentNamesPtrOutputWithContext(ctx context.Context) ComponentNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComponentNamesPtrOutput)
-}
-
-func (in *componentNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*ComponentNames] {
-	return pulumix.Output[*ComponentNames]{
-		OutputState: in.ToComponentNamesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
@@ -523,12 +510,6 @@ func (in *consistencyModeTypesPtr) ToConsistencyModeTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ConsistencyModeTypesPtrOutput)
 }
 
-func (in *consistencyModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ConsistencyModeTypes] {
-	return pulumix.Output[*ConsistencyModeTypes]{
-		OutputState: in.ToConsistencyModeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
 type DedicatedHostLicenseTypes string
 
@@ -697,12 +678,6 @@ func (in *dedicatedHostLicenseTypesPtr) ToDedicatedHostLicenseTypesPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(DedicatedHostLicenseTypesPtrOutput)
 }
 
-func (in *dedicatedHostLicenseTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHostLicenseTypes] {
-	return pulumix.Output[*DedicatedHostLicenseTypes]{
-		OutputState: in.ToDedicatedHostLicenseTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify what happens to the public IP when the VM is deleted
 type DeleteOptions string
 
@@ -869,12 +844,6 @@ func (in *deleteOptionsPtr) ToDeleteOptionsPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DeleteOptionsPtrOutput)
 }
 
-func (in *deleteOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*DeleteOptions] {
-	return pulumix.Output[*DeleteOptions]{
-		OutputState: in.ToDeleteOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the ephemeral disk settings for operating system disk.
 type DiffDiskOptions string
 
@@ -1037,12 +1006,6 @@ func (in *diffDiskOptionsPtr) ToDiffDiskOptionsPtrOutput() DiffDiskOptionsPtrOut
 
 func (in *diffDiskOptionsPtr) ToDiffDiskOptionsPtrOutputWithContext(ctx context.Context) DiffDiskOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiffDiskOptionsPtrOutput)
-}
-
-func (in *diffDiskOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*DiffDiskOptions] {
-	return pulumix.Output[*DiffDiskOptions]{
-		OutputState: in.ToDiffDiskOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
@@ -1211,12 +1174,6 @@ func (in *diffDiskPlacementPtr) ToDiffDiskPlacementPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(DiffDiskPlacementPtrOutput)
 }
 
-func (in *diffDiskPlacementPtr) ToOutput(ctx context.Context) pulumix.Output[*DiffDiskPlacement] {
-	return pulumix.Output[*DiffDiskPlacement]{
-		OutputState: in.ToDiffDiskPlacementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the disk controller type configured for the VM. **Note:** This property will be set to the default disk controller type if not specified provided virtual machine is being created with 'hyperVGeneration' set to V2 based on the capabilities of the operating system disk and VM size from the the specified minimum api version. You need to deallocate the VM before updating its disk controller type unless you are updating the VM size in the VM configuration which implicitly deallocates and reallocates the VM. Minimum api-version: 2022-08-01.
 type DiskControllerTypes string
 
@@ -1381,12 +1338,6 @@ func (in *diskControllerTypesPtr) ToDiskControllerTypesPtrOutput() DiskControlle
 
 func (in *diskControllerTypesPtr) ToDiskControllerTypesPtrOutputWithContext(ctx context.Context) DiskControllerTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskControllerTypesPtrOutput)
-}
-
-func (in *diskControllerTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskControllerTypes] {
-	return pulumix.Output[*DiskControllerTypes]{
-		OutputState: in.ToDiskControllerTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies how the virtual machine should be created. Possible values are: **Attach.** This value is used when you are using a specialized disk to create the virtual machine. **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you should also use the imageReference element described above. If you are using a marketplace image, you should also use the plan element previously described.
@@ -1557,12 +1508,6 @@ func (in *diskCreateOptionTypesPtr) ToDiskCreateOptionTypesPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DiskCreateOptionTypesPtrOutput)
 }
 
-func (in *diskCreateOptionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskCreateOptionTypes] {
-	return pulumix.Output[*DiskCreateOptionTypes]{
-		OutputState: in.ToDiskCreateOptionTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether OS Disk should be deleted or detached upon VM deletion. Possible values are: **Delete.** If this value is used, the OS disk is deleted when VM is deleted. **Detach.** If this value is used, the os disk is retained after VM is deleted. The default value is set to **Detach**. For an ephemeral OS Disk, the default value is set to **Delete**. The user cannot change the delete option for an ephemeral OS Disk.
 type DiskDeleteOptionTypes string
 
@@ -1729,12 +1674,6 @@ func (in *diskDeleteOptionTypesPtr) ToDiskDeleteOptionTypesPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DiskDeleteOptionTypesPtrOutput)
 }
 
-func (in *diskDeleteOptionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskDeleteOptionTypes] {
-	return pulumix.Output[*DiskDeleteOptionTypes]{
-		OutputState: in.ToDiskDeleteOptionTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. **This feature is still in preview** mode and is not supported for VirtualMachineScaleSet. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
 type DiskDetachOptionTypes string
 
@@ -1897,12 +1836,6 @@ func (in *diskDetachOptionTypesPtr) ToDiskDetachOptionTypesPtrOutput() DiskDetac
 
 func (in *diskDetachOptionTypesPtr) ToDiskDetachOptionTypesPtrOutputWithContext(ctx context.Context) DiskDetachOptionTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskDetachOptionTypesPtrOutput)
-}
-
-func (in *diskDetachOptionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskDetachOptionTypes] {
-	return pulumix.Output[*DiskDetachOptionTypes]{
-		OutputState: in.ToDiskDetachOptionTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
@@ -2075,12 +2008,6 @@ func (in *domainNameLabelScopeTypesPtr) ToDomainNameLabelScopeTypesPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(DomainNameLabelScopeTypesPtrOutput)
 }
 
-func (in *domainNameLabelScopeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DomainNameLabelScopeTypes] {
-	return pulumix.Output[*DomainNameLabelScopeTypes]{
-		OutputState: in.ToDomainNameLabelScopeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -2243,12 +2170,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
@@ -2417,12 +2338,6 @@ func (in *hyperVGenerationTypesPtr) ToHyperVGenerationTypesPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(HyperVGenerationTypesPtrOutput)
 }
 
-func (in *hyperVGenerationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*HyperVGenerationTypes] {
-	return pulumix.Output[*HyperVGenerationTypes]{
-		OutputState: in.ToHyperVGenerationTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
 type IPVersion string
 
@@ -2589,12 +2504,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPV
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
 }
 
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
 type IPVersions string
 
@@ -2759,12 +2668,6 @@ func (in *ipversionsPtr) ToIPVersionsPtrOutput() IPVersionsPtrOutput {
 
 func (in *ipversionsPtr) ToIPVersionsPtrOutputWithContext(ctx context.Context) IPVersionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionsPtrOutput)
-}
-
-func (in *ipversionsPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersions] {
-	return pulumix.Output[*IPVersions]{
-		OutputState: in.ToIPVersionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Interval value in minutes used to create LogAnalytics call rate logs.
@@ -2937,12 +2840,6 @@ func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(IntervalInMinsPtrOutput)
 }
 
-func (in *intervalInMinsPtr) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
-	return pulumix.Output[*IntervalInMins]{
-		OutputState: in.ToIntervalInMinsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
 type LinuxPatchAssessmentMode string
 
@@ -3107,12 +3004,6 @@ func (in *linuxPatchAssessmentModePtr) ToLinuxPatchAssessmentModePtrOutput() Lin
 
 func (in *linuxPatchAssessmentModePtr) ToLinuxPatchAssessmentModePtrOutputWithContext(ctx context.Context) LinuxPatchAssessmentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxPatchAssessmentModePtrOutput)
-}
-
-func (in *linuxPatchAssessmentModePtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxPatchAssessmentMode] {
-	return pulumix.Output[*LinuxPatchAssessmentMode]{
-		OutputState: in.ToLinuxPatchAssessmentModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
@@ -3285,12 +3176,6 @@ func (in *linuxVMGuestPatchAutomaticByPlatformRebootSettingPtr) ToLinuxVMGuestPa
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxVMGuestPatchAutomaticByPlatformRebootSettingPtrOutput)
 }
 
-func (in *linuxVMGuestPatchAutomaticByPlatformRebootSettingPtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxVMGuestPatchAutomaticByPlatformRebootSetting] {
-	return pulumix.Output[*LinuxVMGuestPatchAutomaticByPlatformRebootSetting]{
-		OutputState: in.ToLinuxVMGuestPatchAutomaticByPlatformRebootSettingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
 type LinuxVMGuestPatchMode string
 
@@ -3457,12 +3342,6 @@ func (in *linuxVMGuestPatchModePtr) ToLinuxVMGuestPatchModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxVMGuestPatchModePtrOutput)
 }
 
-func (in *linuxVMGuestPatchModePtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxVMGuestPatchMode] {
-	return pulumix.Output[*LinuxVMGuestPatchMode]{
-		OutputState: in.ToLinuxVMGuestPatchModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
 type NetworkApiVersion string
 
@@ -3625,12 +3504,6 @@ func (in *networkApiVersionPtr) ToNetworkApiVersionPtrOutput() NetworkApiVersion
 
 func (in *networkApiVersionPtr) ToNetworkApiVersionPtrOutputWithContext(ctx context.Context) NetworkApiVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkApiVersionPtrOutput)
-}
-
-func (in *networkApiVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkApiVersion] {
-	return pulumix.Output[*NetworkApiVersion]{
-		OutputState: in.ToNetworkApiVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
@@ -3799,12 +3672,6 @@ func (in *networkInterfaceAuxiliaryModePtr) ToNetworkInterfaceAuxiliaryModePtrOu
 
 func (in *networkInterfaceAuxiliaryModePtr) ToNetworkInterfaceAuxiliaryModePtrOutputWithContext(ctx context.Context) NetworkInterfaceAuxiliaryModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceAuxiliaryModePtrOutput)
-}
-
-func (in *networkInterfaceAuxiliaryModePtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceAuxiliaryMode] {
-	return pulumix.Output[*NetworkInterfaceAuxiliaryMode]{
-		OutputState: in.ToNetworkInterfaceAuxiliaryModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
@@ -3979,12 +3846,6 @@ func (in *networkInterfaceAuxiliarySkuPtr) ToNetworkInterfaceAuxiliarySkuPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceAuxiliarySkuPtrOutput)
 }
 
-func (in *networkInterfaceAuxiliarySkuPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceAuxiliarySku] {
-	return pulumix.Output[*NetworkInterfaceAuxiliarySku]{
-		OutputState: in.ToNetworkInterfaceAuxiliarySkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The OS State. For managed images, use Generalized.
 type OperatingSystemStateTypes string
 
@@ -4153,12 +4014,6 @@ func (in *operatingSystemStateTypesPtr) ToOperatingSystemStateTypesPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemStateTypesPtrOutput)
 }
 
-func (in *operatingSystemStateTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemStateTypes] {
-	return pulumix.Output[*OperatingSystemStateTypes]{
-		OutputState: in.ToOperatingSystemStateTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
 type OperatingSystemTypes string
 
@@ -4323,12 +4178,6 @@ func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutput() OperatingSy
 
 func (in *operatingSystemTypesPtr) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypesPtrOutput)
-}
-
-func (in *operatingSystemTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: in.ToOperatingSystemTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the orchestration mode for the virtual machine scale set.
@@ -4497,12 +4346,6 @@ func (in *orchestrationModePtr) ToOrchestrationModePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(OrchestrationModePtrOutput)
 }
 
-func (in *orchestrationModePtr) ToOutput(ctx context.Context) pulumix.Output[*OrchestrationMode] {
-	return pulumix.Output[*OrchestrationMode]{
-		OutputState: in.ToOrchestrationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The pass name. Currently, the only allowable value is OobeSystem.
 type PassNames string
 
@@ -4665,12 +4508,6 @@ func (in *passNamesPtr) ToPassNamesPtrOutput() PassNamesPtrOutput {
 
 func (in *passNamesPtr) ToPassNamesPtrOutputWithContext(ctx context.Context) PassNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PassNamesPtrOutput)
-}
-
-func (in *passNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*PassNames] {
-	return pulumix.Output[*PassNames]{
-		OutputState: in.ToPassNamesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
@@ -4839,12 +4676,6 @@ func (in *protocolTypesPtr) ToProtocolTypesPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolTypesPtrOutput)
 }
 
-func (in *protocolTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ProtocolTypes] {
-	return pulumix.Output[*ProtocolTypes]{
-		OutputState: in.ToProtocolTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
 type ProximityPlacementGroupType string
 
@@ -5009,12 +4840,6 @@ func (in *proximityPlacementGroupTypePtr) ToProximityPlacementGroupTypePtrOutput
 
 func (in *proximityPlacementGroupTypePtr) ToProximityPlacementGroupTypePtrOutputWithContext(ctx context.Context) ProximityPlacementGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProximityPlacementGroupTypePtrOutput)
-}
-
-func (in *proximityPlacementGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ProximityPlacementGroupType] {
-	return pulumix.Output[*ProximityPlacementGroupType]{
-		OutputState: in.ToProximityPlacementGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specify public IP sku name
@@ -5183,12 +5008,6 @@ func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuNamePtrOutput)
 }
 
-func (in *publicIPAddressSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuName] {
-	return pulumix.Output[*PublicIPAddressSkuName]{
-		OutputState: in.ToPublicIPAddressSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify public IP sku tier
 type PublicIPAddressSkuTier string
 
@@ -5355,12 +5174,6 @@ func (in *publicIPAddressSkuTierPtr) ToPublicIPAddressSkuTierPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuTierPtrOutput)
 }
 
-func (in *publicIPAddressSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuTier] {
-	return pulumix.Output[*PublicIPAddressSkuTier]{
-		OutputState: in.ToPublicIPAddressSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify the public IP allocation type
 type PublicIPAllocationMethod string
 
@@ -5525,12 +5338,6 @@ func (in *publicIPAllocationMethodPtr) ToPublicIPAllocationMethodPtrOutput() Pub
 
 func (in *publicIPAllocationMethodPtr) ToPublicIPAllocationMethodPtrOutputWithContext(ctx context.Context) PublicIPAllocationMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAllocationMethodPtrOutput)
-}
-
-func (in *publicIPAllocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAllocationMethod] {
-	return pulumix.Output[*PublicIPAllocationMethod]{
-		OutputState: in.ToPublicIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.
@@ -5701,12 +5508,6 @@ func (in *repairActionPtr) ToRepairActionPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(RepairActionPtrOutput)
 }
 
-func (in *repairActionPtr) ToOutput(ctx context.Context) pulumix.Output[*RepairAction] {
-	return pulumix.Output[*RepairAction]{
-		OutputState: in.ToRepairActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the virtual machine. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 type ResourceIdentityType string
 
@@ -5875,12 +5676,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of key used to encrypt the data of the disk restore point.
@@ -6054,12 +5849,6 @@ func (in *restorePointEncryptionTypePtr) ToRestorePointEncryptionTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RestorePointEncryptionTypePtrOutput)
 }
 
-func (in *restorePointEncryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RestorePointEncryptionType] {
-	return pulumix.Output[*RestorePointEncryptionType]{
-		OutputState: in.ToRestorePointEncryptionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, and VMGuestStateOnly for encryption of just the VMGuestState blob. **Note:** It can be set for only Confidential VMs.
 type SecurityEncryptionTypes string
 
@@ -6224,12 +6013,6 @@ func (in *securityEncryptionTypesPtr) ToSecurityEncryptionTypesPtrOutput() Secur
 
 func (in *securityEncryptionTypesPtr) ToSecurityEncryptionTypesPtrOutputWithContext(ctx context.Context) SecurityEncryptionTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityEncryptionTypesPtrOutput)
-}
-
-func (in *securityEncryptionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityEncryptionTypes] {
-	return pulumix.Output[*SecurityEncryptionTypes]{
-		OutputState: in.ToSecurityEncryptionTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
@@ -6398,12 +6181,6 @@ func (in *securityTypesPtr) ToSecurityTypesPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypesPtrOutput)
 }
 
-func (in *securityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityTypes] {
-	return pulumix.Output[*SecurityTypes]{
-		OutputState: in.ToSecurityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
 type SettingNames string
 
@@ -6568,12 +6345,6 @@ func (in *settingNamesPtr) ToSettingNamesPtrOutput() SettingNamesPtrOutput {
 
 func (in *settingNamesPtr) ToSettingNamesPtrOutputWithContext(ctx context.Context) SettingNamesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SettingNamesPtrOutput)
-}
-
-func (in *settingNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*SettingNames] {
-	return pulumix.Output[*SettingNames]{
-		OutputState: in.ToSettingNamesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The level code.
@@ -6742,12 +6513,6 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutput() StatusLevelTypesPtr
 
 func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx context.Context) StatusLevelTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusLevelTypesPtrOutput)
-}
-
-func (in *statusLevelTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusLevelTypes] {
-	return pulumix.Output[*StatusLevelTypes]{
-		OutputState: in.ToStatusLevelTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
@@ -6926,12 +6691,6 @@ func (in *storageAccountTypesPtr) ToStorageAccountTypesPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypesPtrOutput)
 }
 
-func (in *storageAccountTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountTypes] {
-	return pulumix.Output[*StorageAccountTypes]{
-		OutputState: in.ToStorageAccountTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
 type UpgradeMode string
 
@@ -7100,12 +6859,6 @@ func (in *upgradeModePtr) ToUpgradeModePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeModePtrOutput)
 }
 
-func (in *upgradeModePtr) ToOutput(ctx context.Context) pulumix.Output[*UpgradeMode] {
-	return pulumix.Output[*UpgradeMode]{
-		OutputState: in.ToUpgradeModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
 type VirtualMachineEvictionPolicyTypes string
 
@@ -7270,12 +7023,6 @@ func (in *virtualMachineEvictionPolicyTypesPtr) ToVirtualMachineEvictionPolicyTy
 
 func (in *virtualMachineEvictionPolicyTypesPtr) ToVirtualMachineEvictionPolicyTypesPtrOutputWithContext(ctx context.Context) VirtualMachineEvictionPolicyTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineEvictionPolicyTypesPtrOutput)
-}
-
-func (in *virtualMachineEvictionPolicyTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineEvictionPolicyTypes] {
-	return pulumix.Output[*VirtualMachineEvictionPolicyTypes]{
-		OutputState: in.ToVirtualMachineEvictionPolicyTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
@@ -7446,12 +7193,6 @@ func (in *virtualMachinePriorityTypesPtr) ToVirtualMachinePriorityTypesPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachinePriorityTypesPtrOutput)
 }
 
-func (in *virtualMachinePriorityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachinePriorityTypes] {
-	return pulumix.Output[*VirtualMachinePriorityTypes]{
-		OutputState: in.ToVirtualMachinePriorityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineScaleSetScaleInRules string
 
 const (
@@ -7617,12 +7358,6 @@ func (in *virtualMachineScaleSetScaleInRulesPtr) ToVirtualMachineScaleSetScaleIn
 
 func (in *virtualMachineScaleSetScaleInRulesPtr) ToVirtualMachineScaleSetScaleInRulesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetScaleInRulesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineScaleSetScaleInRulesPtrOutput)
-}
-
-func (in *virtualMachineScaleSetScaleInRulesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineScaleSetScaleInRules] {
-	return pulumix.Output[*VirtualMachineScaleSetScaleInRules]{
-		OutputState: in.ToVirtualMachineScaleSetScaleInRulesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the size of the virtual machine. The enum data type is currently deprecated and will be removed by December 23rd 2023. The recommended way to get the list of available sizes is using these APIs: [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes), [List all available virtual machine sizes in a region](https://docs.microsoft.com/rest/api/compute/resourceskus/list), [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/azure/virtual-machines/sizes). The available VM sizes depend on region and availability set.
@@ -8119,12 +7854,6 @@ func (in *virtualMachineSizeTypesPtr) ToVirtualMachineSizeTypesPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualMachineSizeTypesPtrOutput)
 }
 
-func (in *virtualMachineSizeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSizeTypes] {
-	return pulumix.Output[*VirtualMachineSizeTypes]{
-		OutputState: in.ToVirtualMachineSizeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
 type WindowsPatchAssessmentMode string
 
@@ -8289,12 +8018,6 @@ func (in *windowsPatchAssessmentModePtr) ToWindowsPatchAssessmentModePtrOutput()
 
 func (in *windowsPatchAssessmentModePtr) ToWindowsPatchAssessmentModePtrOutputWithContext(ctx context.Context) WindowsPatchAssessmentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsPatchAssessmentModePtrOutput)
-}
-
-func (in *windowsPatchAssessmentModePtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsPatchAssessmentMode] {
-	return pulumix.Output[*WindowsPatchAssessmentMode]{
-		OutputState: in.ToWindowsPatchAssessmentModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
@@ -8467,12 +8190,6 @@ func (in *windowsVMGuestPatchAutomaticByPlatformRebootSettingPtr) ToWindowsVMGue
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsVMGuestPatchAutomaticByPlatformRebootSettingPtrOutput)
 }
 
-func (in *windowsVMGuestPatchAutomaticByPlatformRebootSettingPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsVMGuestPatchAutomaticByPlatformRebootSetting] {
-	return pulumix.Output[*WindowsVMGuestPatchAutomaticByPlatformRebootSetting]{
-		OutputState: in.ToWindowsVMGuestPatchAutomaticByPlatformRebootSettingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
 type WindowsVMGuestPatchMode string
 
@@ -8639,12 +8356,6 @@ func (in *windowsVMGuestPatchModePtr) ToWindowsVMGuestPatchModePtrOutput() Windo
 
 func (in *windowsVMGuestPatchModePtr) ToWindowsVMGuestPatchModePtrOutputWithContext(ctx context.Context) WindowsVMGuestPatchModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsVMGuestPatchModePtrOutput)
-}
-
-func (in *windowsVMGuestPatchModePtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsVMGuestPatchMode] {
-	return pulumix.Output[*WindowsVMGuestPatchMode]{
-		OutputState: in.ToWindowsVMGuestPatchModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

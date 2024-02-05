@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Memory profile of broker.
@@ -185,12 +184,6 @@ func (in *brokerMemoryProfilePtr) ToBrokerMemoryProfilePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(BrokerMemoryProfilePtrOutput)
 }
 
-func (in *brokerMemoryProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*BrokerMemoryProfile] {
-	return pulumix.Output[*BrokerMemoryProfile]{
-		OutputState: in.ToBrokerMemoryProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake database format to use.
 type DataLakeDatabaseFormat string
 
@@ -357,12 +350,6 @@ func (in *dataLakeDatabaseFormatPtr) ToDataLakeDatabaseFormatPtrOutput() DataLak
 
 func (in *dataLakeDatabaseFormatPtr) ToDataLakeDatabaseFormatPtrOutputWithContext(ctx context.Context) DataLakeDatabaseFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataLakeDatabaseFormatPtrOutput)
-}
-
-func (in *dataLakeDatabaseFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*DataLakeDatabaseFormat] {
-	return pulumix.Output[*DataLakeDatabaseFormat]{
-		OutputState: in.ToDataLakeDatabaseFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Delta table format supported.
@@ -572,12 +559,6 @@ func (in *deltaTableFormatEnumPtr) ToDeltaTableFormatEnumPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(DeltaTableFormatEnumPtrOutput)
 }
 
-func (in *deltaTableFormatEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DeltaTableFormatEnum] {
-	return pulumix.Output[*DeltaTableFormatEnum]{
-		OutputState: in.ToDeltaTableFormatEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of ExtendedLocation.
 type ExtendedLocationType string
 
@@ -741,12 +722,6 @@ func (in *extendedLocationTypePtr) ToExtendedLocationTypePtrOutput() ExtendedLoc
 
 func (in *extendedLocationTypePtr) ToExtendedLocationTypePtrOutputWithContext(ctx context.Context) ExtendedLocationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypePtrOutput)
-}
-
-func (in *extendedLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationType] {
-	return pulumix.Output[*ExtendedLocationType]{
-		OutputState: in.ToExtendedLocationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Fabric path type to use.
@@ -915,12 +890,6 @@ func (in *fabricPathTypePtr) ToFabricPathTypePtrOutput() FabricPathTypePtrOutput
 
 func (in *fabricPathTypePtr) ToFabricPathTypePtrOutputWithContext(ctx context.Context) FabricPathTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FabricPathTypePtrOutput)
-}
-
-func (in *fabricPathTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FabricPathType] {
-	return pulumix.Output[*FabricPathType]{
-		OutputState: in.ToFabricPathTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kafka acks to use.
@@ -1092,12 +1061,6 @@ func (in *kafkaAcksPtr) ToKafkaAcksPtrOutput() KafkaAcksPtrOutput {
 
 func (in *kafkaAcksPtr) ToKafkaAcksPtrOutputWithContext(ctx context.Context) KafkaAcksPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KafkaAcksPtrOutput)
-}
-
-func (in *kafkaAcksPtr) ToOutput(ctx context.Context) pulumix.Output[*KafkaAcks] {
-	return pulumix.Output[*KafkaAcks]{
-		OutputState: in.ToKafkaAcksPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The compression to use for kafka messages.
@@ -1274,12 +1237,6 @@ func (in *kafkaMessageCompressionTypePtr) ToKafkaMessageCompressionTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KafkaMessageCompressionTypePtrOutput)
 }
 
-func (in *kafkaMessageCompressionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KafkaMessageCompressionType] {
-	return pulumix.Output[*KafkaMessageCompressionType]{
-		OutputState: in.ToKafkaMessageCompressionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The partition strategy to use for Kafka.
 type KafkaPartitionStrategy string
 
@@ -1454,12 +1411,6 @@ func (in *kafkaPartitionStrategyPtr) ToKafkaPartitionStrategyPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(KafkaPartitionStrategyPtrOutput)
 }
 
-func (in *kafkaPartitionStrategyPtr) ToOutput(ctx context.Context) pulumix.Output[*KafkaPartitionStrategy] {
-	return pulumix.Output[*KafkaPartitionStrategy]{
-		OutputState: in.ToKafkaPartitionStrategyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sasl Mechanism for remote broker authentication.
 type KafkaSaslType string
 
@@ -1631,12 +1582,6 @@ func (in *kafkaSaslTypePtr) ToKafkaSaslTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(KafkaSaslTypePtrOutput)
 }
 
-func (in *kafkaSaslTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KafkaSaslType] {
-	return pulumix.Output[*KafkaSaslType]{
-		OutputState: in.ToKafkaSaslTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Protocol for remote connection.
 type MqttBridgeRemoteBrokerProtocol string
 
@@ -1803,12 +1748,6 @@ func (in *mqttBridgeRemoteBrokerProtocolPtr) ToMqttBridgeRemoteBrokerProtocolPtr
 
 func (in *mqttBridgeRemoteBrokerProtocolPtr) ToMqttBridgeRemoteBrokerProtocolPtrOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MqttBridgeRemoteBrokerProtocolPtrOutput)
-}
-
-func (in *mqttBridgeRemoteBrokerProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRemoteBrokerProtocol] {
-	return pulumix.Output[*MqttBridgeRemoteBrokerProtocol]{
-		OutputState: in.ToMqttBridgeRemoteBrokerProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Direction of the route.
@@ -1979,12 +1918,6 @@ func (in *mqttBridgeRouteDirectionPtr) ToMqttBridgeRouteDirectionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(MqttBridgeRouteDirectionPtrOutput)
 }
 
-func (in *mqttBridgeRouteDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRouteDirection] {
-	return pulumix.Output[*MqttBridgeRouteDirection]{
-		OutputState: in.ToMqttBridgeRouteDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol to use for connecting with Brokers.
 type MqttProtocol string
 
@@ -2151,12 +2084,6 @@ func (in *mqttProtocolPtr) ToMqttProtocolPtrOutput() MqttProtocolPtrOutput {
 
 func (in *mqttProtocolPtr) ToMqttProtocolPtrOutputWithContext(ctx context.Context) MqttProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MqttProtocolPtrOutput)
-}
-
-func (in *mqttProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*MqttProtocol] {
-	return pulumix.Output[*MqttProtocol]{
-		OutputState: in.ToMqttProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of action that the clients can perform on the broker: Connect, Publish or Subscribe.
@@ -2330,12 +2257,6 @@ func (in *resourceInfoDefinitionMethodsPtr) ToResourceInfoDefinitionMethodsPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceInfoDefinitionMethodsPtrOutput)
 }
 
-func (in *resourceInfoDefinitionMethodsPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceInfoDefinitionMethods] {
-	return pulumix.Output[*ResourceInfoDefinitionMethods]{
-		OutputState: in.ToResourceInfoDefinitionMethodsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Running Mode of the Broker Deployment.
 type RunMode string
 
@@ -2502,12 +2423,6 @@ func (in *runModePtr) ToRunModePtrOutput() RunModePtrOutput {
 
 func (in *runModePtr) ToRunModePtrOutputWithContext(ctx context.Context) RunModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RunModePtrOutput)
-}
-
-func (in *runModePtr) ToOutput(ctx context.Context) pulumix.Output[*RunMode] {
-	return pulumix.Output[*RunMode]{
-		OutputState: in.ToRunModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Kubernetes Service type to deploy for Listener.
@@ -2679,12 +2594,6 @@ func (in *serviceTypePtr) ToServiceTypePtrOutput() ServiceTypePtrOutput {
 
 func (in *serviceTypePtr) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTypePtrOutput)
-}
-
-func (in *serviceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceType] {
-	return pulumix.Output[*ServiceType]{
-		OutputState: in.ToServiceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

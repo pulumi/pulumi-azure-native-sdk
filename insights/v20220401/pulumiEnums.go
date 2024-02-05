@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -181,12 +180,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of workbook. Only valid value is shared.
 type WorkbookSharedTypeKind string
 
@@ -349,12 +342,6 @@ func (in *workbookSharedTypeKindPtr) ToWorkbookSharedTypeKindPtrOutput() Workboo
 
 func (in *workbookSharedTypeKindPtr) ToWorkbookSharedTypeKindPtrOutputWithContext(ctx context.Context) WorkbookSharedTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkbookSharedTypeKindPtrOutput)
-}
-
-func (in *workbookSharedTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkbookSharedTypeKind] {
-	return pulumix.Output[*WorkbookSharedTypeKind]{
-		OutputState: in.ToWorkbookSharedTypeKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

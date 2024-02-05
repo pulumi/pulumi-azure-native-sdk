@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Content type.
@@ -175,12 +174,6 @@ func (in *contentTypePtr) ToContentTypePtrOutput() ContentTypePtrOutput {
 
 func (in *contentTypePtr) ToContentTypePtrOutputWithContext(ctx context.Context) ContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContentTypePtrOutput)
-}
-
-func (in *contentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentType] {
-	return pulumix.Output[*ContentType]{
-		OutputState: in.ToContentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status while fetching the last deployment.
@@ -351,12 +344,6 @@ func (in *deploymentFetchStatusPtr) ToDeploymentFetchStatusPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentFetchStatusPtrOutput)
 }
 
-func (in *deploymentFetchStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentFetchStatus] {
-	return pulumix.Output[*DeploymentFetchStatus]{
-		OutputState: in.ToDeploymentFetchStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The outcome of the deployment.
 type DeploymentResult string
 
@@ -523,12 +510,6 @@ func (in *deploymentResultPtr) ToDeploymentResultPtrOutput() DeploymentResultPtr
 
 func (in *deploymentResultPtr) ToDeploymentResultPtrOutputWithContext(ctx context.Context) DeploymentResultPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentResultPtrOutput)
-}
-
-func (in *deploymentResultPtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentResult] {
-	return pulumix.Output[*DeploymentResult]{
-		OutputState: in.ToDeploymentResultPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Current status of the deployment.
@@ -699,12 +680,6 @@ func (in *deploymentStatePtr) ToDeploymentStatePtrOutput() DeploymentStatePtrOut
 
 func (in *deploymentStatePtr) ToDeploymentStatePtrOutputWithContext(ctx context.Context) DeploymentStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentStatePtrOutput)
-}
-
-func (in *deploymentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentState] {
-	return pulumix.Output[*DeploymentState]{
-		OutputState: in.ToDeploymentStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The entity query kind
@@ -881,12 +856,6 @@ func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTimelineKindPtrOutput)
 }
 
-func (in *entityTimelineKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTimelineKind] {
-	return pulumix.Output[*EntityTimelineKind]{
-		OutputState: in.ToEntityTimelineKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The repository type of the source control
 type RepoType string
 
@@ -1053,12 +1022,6 @@ func (in *repoTypePtr) ToRepoTypePtrOutputWithContext(ctx context.Context) RepoT
 	return pulumi.ToOutputWithContext(ctx, in).(RepoTypePtrOutput)
 }
 
-func (in *repoTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RepoType] {
-	return pulumix.Output[*RepoType]{
-		OutputState: in.ToRepoTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The version number associated with the source control
 type Version string
 
@@ -1223,12 +1186,6 @@ func (in *versionPtr) ToVersionPtrOutput() VersionPtrOutput {
 
 func (in *versionPtr) ToVersionPtrOutputWithContext(ctx context.Context) VersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionPtrOutput)
-}
-
-func (in *versionPtr) ToOutput(ctx context.Context) pulumix.Output[*Version] {
-	return pulumix.Output[*Version]{
-		OutputState: in.ToVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

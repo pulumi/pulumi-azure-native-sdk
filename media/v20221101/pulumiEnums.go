@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Live event type. When encodingType is set to PassthroughBasic or PassthroughStandard, the service simply passes through the incoming video and audio layer(s) to the output. When encodingType is set to Standard or Premium1080p, a live encoder transcodes the incoming stream into multiple bitrates or layers. See https://go.microsoft.com/fwlink/?linkid=2095101 for more information. This property cannot be modified after the live event is created.
@@ -188,12 +187,6 @@ func (in *liveEventEncodingTypePtr) ToLiveEventEncodingTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(LiveEventEncodingTypePtrOutput)
 }
 
-func (in *liveEventEncodingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncodingType] {
-	return pulumix.Output[*LiveEventEncodingType]{
-		OutputState: in.ToLiveEventEncodingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The input protocol for the live event. This is specified at creation time and cannot be updated.
 type LiveEventInputProtocol string
 
@@ -360,12 +353,6 @@ func (in *liveEventInputProtocolPtr) ToLiveEventInputProtocolPtrOutput() LiveEve
 
 func (in *liveEventInputProtocolPtr) ToLiveEventInputProtocolPtrOutputWithContext(ctx context.Context) LiveEventInputProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LiveEventInputProtocolPtrOutput)
-}
-
-func (in *liveEventInputProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputProtocol] {
-	return pulumix.Output[*LiveEventInputProtocol]{
-		OutputState: in.ToLiveEventInputProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type StreamOptionsFlag string
@@ -538,12 +525,6 @@ func (in *streamOptionsFlagPtr) ToStreamOptionsFlagPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(StreamOptionsFlagPtrOutput)
 }
 
-func (in *streamOptionsFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*StreamOptionsFlag] {
-	return pulumix.Output[*StreamOptionsFlag]{
-		OutputState: in.ToStreamOptionsFlagPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how the input video will be resized to fit the desired output resolution(s). Default is None
 type StretchMode string
 
@@ -713,12 +694,6 @@ func (in *stretchModePtr) ToStretchModePtrOutput() StretchModePtrOutput {
 
 func (in *stretchModePtr) ToStretchModePtrOutputWithContext(ctx context.Context) StretchModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StretchModePtrOutput)
-}
-
-func (in *stretchModePtr) ToOutput(ctx context.Context) pulumix.Output[*StretchMode] {
-	return pulumix.Output[*StretchMode]{
-		OutputState: in.ToStretchModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

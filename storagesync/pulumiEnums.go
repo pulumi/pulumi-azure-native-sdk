@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Offline data transfer
@@ -177,12 +176,6 @@ func (in *featureStatusPtr) ToFeatureStatusPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureStatusPtrOutput)
 }
 
-func (in *featureStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureStatus] {
-	return pulumix.Output[*FeatureStatus]{
-		OutputState: in.ToFeatureStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Incoming Traffic Policy
 type IncomingTrafficPolicy string
 
@@ -347,12 +340,6 @@ func (in *incomingTrafficPolicyPtr) ToIncomingTrafficPolicyPtrOutput() IncomingT
 
 func (in *incomingTrafficPolicyPtr) ToIncomingTrafficPolicyPtrOutputWithContext(ctx context.Context) IncomingTrafficPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IncomingTrafficPolicyPtrOutput)
-}
-
-func (in *incomingTrafficPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*IncomingTrafficPolicy] {
-	return pulumix.Output[*IncomingTrafficPolicy]{
-		OutputState: in.ToIncomingTrafficPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Policy for how namespace and files are recalled during FastDr.
@@ -523,12 +510,6 @@ func (in *initialDownloadPolicyPtr) ToInitialDownloadPolicyPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(InitialDownloadPolicyPtrOutput)
 }
 
-func (in *initialDownloadPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*InitialDownloadPolicy] {
-	return pulumix.Output[*InitialDownloadPolicy]{
-		OutputState: in.ToInitialDownloadPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Policy for how the initial upload sync session is performed.
 type InitialUploadPolicy string
 
@@ -693,12 +674,6 @@ func (in *initialUploadPolicyPtr) ToInitialUploadPolicyPtrOutput() InitialUpload
 
 func (in *initialUploadPolicyPtr) ToInitialUploadPolicyPtrOutputWithContext(ctx context.Context) InitialUploadPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InitialUploadPolicyPtrOutput)
-}
-
-func (in *initialUploadPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*InitialUploadPolicy] {
-	return pulumix.Output[*InitialUploadPolicy]{
-		OutputState: in.ToInitialUploadPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access.
@@ -867,12 +842,6 @@ func (in *localCacheModePtr) ToLocalCacheModePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LocalCacheModePtrOutput)
 }
 
-func (in *localCacheModePtr) ToOutput(ctx context.Context) pulumix.Output[*LocalCacheMode] {
-	return pulumix.Output[*LocalCacheMode]{
-		OutputState: in.ToLocalCacheModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -1039,12 +1008,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 
 func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

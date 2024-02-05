@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Kind of data set.
@@ -215,12 +214,6 @@ func (in *outputTypePtr) ToOutputTypePtrOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, in).(OutputTypePtrOutput)
 }
 
-func (in *outputTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OutputType] {
-	return pulumix.Output[*OutputType]{
-		OutputState: in.ToOutputTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Recurrence Interval
 type RecurrenceInterval string
 
@@ -385,12 +378,6 @@ func (in *recurrenceIntervalPtr) ToRecurrenceIntervalPtrOutput() RecurrenceInter
 
 func (in *recurrenceIntervalPtr) ToRecurrenceIntervalPtrOutputWithContext(ctx context.Context) RecurrenceIntervalPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceIntervalPtrOutput)
-}
-
-func (in *recurrenceIntervalPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceInterval] {
-	return pulumix.Output[*RecurrenceInterval]{
-		OutputState: in.ToRecurrenceIntervalPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Share kind.
@@ -559,12 +546,6 @@ func (in *shareKindPtr) ToShareKindPtrOutputWithContext(ctx context.Context) Sha
 	return pulumi.ToOutputWithContext(ctx, in).(ShareKindPtrOutput)
 }
 
-func (in *shareKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ShareKind] {
-	return pulumix.Output[*ShareKind]{
-		OutputState: in.ToShareKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Synchronization mode
 type SynchronizationMode string
 
@@ -729,12 +710,6 @@ func (in *synchronizationModePtr) ToSynchronizationModePtrOutput() Synchronizati
 
 func (in *synchronizationModePtr) ToSynchronizationModePtrOutputWithContext(ctx context.Context) SynchronizationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SynchronizationModePtrOutput)
-}
-
-func (in *synchronizationModePtr) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationMode] {
-	return pulumix.Output[*SynchronizationMode]{
-		OutputState: in.ToSynchronizationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Kind of synchronization setting.
@@ -913,12 +888,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

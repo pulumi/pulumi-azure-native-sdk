@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the state of public network access.
@@ -180,12 +179,6 @@ func (in *masterSitePropertiesPublicNetworkAccessPtr) ToMasterSitePropertiesPubl
 
 func (in *masterSitePropertiesPublicNetworkAccessPtr) ToMasterSitePropertiesPublicNetworkAccessPtrOutputWithContext(ctx context.Context) MasterSitePropertiesPublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MasterSitePropertiesPublicNetworkAccessPtrOutput)
-}
-
-func (in *masterSitePropertiesPublicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*MasterSitePropertiesPublicNetworkAccess] {
-	return pulumix.Output[*MasterSitePropertiesPublicNetworkAccess]{
-		OutputState: in.ToMasterSitePropertiesPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // state status
@@ -360,12 +353,6 @@ func (in *privateLinkServiceConnectionStateStatusPtr) ToPrivateLinkServiceConnec
 
 func (in *privateLinkServiceConnectionStateStatusPtr) ToPrivateLinkServiceConnectionStateStatusPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStateStatusPtrOutput)
-}
-
-func (in *privateLinkServiceConnectionStateStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStateStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the last operation.
@@ -551,12 +538,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the discovery scenario.
 type SqlSitePropertiesDiscoveryScenario string
 
@@ -725,12 +706,6 @@ func (in *sqlSitePropertiesDiscoveryScenarioPtr) ToSqlSitePropertiesDiscoverySce
 	return pulumi.ToOutputWithContext(ctx, in).(SqlSitePropertiesDiscoveryScenarioPtrOutput)
 }
 
-func (in *sqlSitePropertiesDiscoveryScenarioPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlSitePropertiesDiscoveryScenario] {
-	return pulumix.Output[*SqlSitePropertiesDiscoveryScenario]{
-		OutputState: in.ToSqlSitePropertiesDiscoveryScenarioPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the discovery scenario.
 type WebAppSitePropertiesDiscoveryScenario string
 
@@ -897,12 +872,6 @@ func (in *webAppSitePropertiesDiscoveryScenarioPtr) ToWebAppSitePropertiesDiscov
 
 func (in *webAppSitePropertiesDiscoveryScenarioPtr) ToWebAppSitePropertiesDiscoveryScenarioPtrOutputWithContext(ctx context.Context) WebAppSitePropertiesDiscoveryScenarioPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebAppSitePropertiesDiscoveryScenarioPtrOutput)
-}
-
-func (in *webAppSitePropertiesDiscoveryScenarioPtr) ToOutput(ctx context.Context) pulumix.Output[*WebAppSitePropertiesDiscoveryScenario] {
-	return pulumix.Output[*WebAppSitePropertiesDiscoveryScenario]{
-		OutputState: in.ToWebAppSitePropertiesDiscoveryScenarioPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The current state of the Enterprise Channel Node.
@@ -193,12 +192,6 @@ func (in *enterpriseChannelNodeStatePtr) ToEnterpriseChannelNodeStatePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseChannelNodeStatePtrOutput)
 }
 
-func (in *enterpriseChannelNodeStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseChannelNodeState] {
-	return pulumix.Output[*EnterpriseChannelNodeState]{
-		OutputState: in.ToEnterpriseChannelNodeStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of the Enterprise Channel.
 type EnterpriseChannelStateEnum string
 
@@ -381,12 +374,6 @@ func (in *enterpriseChannelStateEnumPtr) ToEnterpriseChannelStateEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(EnterpriseChannelStateEnumPtrOutput)
 }
 
-func (in *enterpriseChannelStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseChannelStateEnum] {
-	return pulumix.Output[*EnterpriseChannelStateEnum]{
-		OutputState: in.ToEnterpriseChannelStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Required. Gets or sets the Kind of the resource.
 type Kind string
 
@@ -557,12 +544,6 @@ func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
 }
 
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku name
 type SkuName string
 
@@ -727,12 +708,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

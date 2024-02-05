@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Assessment sizing criterion.
@@ -179,12 +178,6 @@ func (in *assessmentSizingCriterionPtr) ToAssessmentSizingCriterionPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentSizingCriterionPtrOutput)
 }
 
-func (in *assessmentSizingCriterionPtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentSizingCriterion] {
-	return pulumix.Output[*AssessmentSizingCriterion]{
-		OutputState: in.ToAssessmentSizingCriterionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User configurable setting that describes the status of the assessment.
 type AssessmentStage string
 
@@ -351,12 +344,6 @@ func (in *assessmentStagePtr) ToAssessmentStagePtrOutput() AssessmentStagePtrOut
 
 func (in *assessmentStagePtr) ToAssessmentStagePtrOutputWithContext(ctx context.Context) AssessmentStagePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentStagePtrOutput)
-}
-
-func (in *assessmentStagePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentStage] {
-	return pulumix.Output[*AssessmentStage]{
-		OutputState: in.ToAssessmentStagePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Assessment type of the assessment.
@@ -531,12 +518,6 @@ func (in *assessmentTypePtr) ToAssessmentTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentTypePtrOutput)
 }
 
-func (in *assessmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentType] {
-	return pulumix.Output[*AssessmentType]{
-		OutputState: in.ToAssessmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets user preference indicating intent of async commit mode.
 type AsyncCommitModeIntent string
 
@@ -705,12 +686,6 @@ func (in *asyncCommitModeIntentPtr) ToAsyncCommitModeIntentPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AsyncCommitModeIntentPtrOutput)
 }
 
-func (in *asyncCommitModeIntentPtr) ToOutput(ctx context.Context) pulumix.Output[*AsyncCommitModeIntent] {
-	return pulumix.Output[*AsyncCommitModeIntent]{
-		OutputState: in.ToAsyncCommitModeIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the status of automation artifacts.
 type AutomationArtifactStatus string
 
@@ -877,12 +852,6 @@ func (in *automationArtifactStatusPtr) ToAutomationArtifactStatusPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(AutomationArtifactStatusPtrOutput)
 }
 
-func (in *automationArtifactStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AutomationArtifactStatus] {
-	return pulumix.Output[*AutomationArtifactStatus]{
-		OutputState: in.ToAutomationArtifactStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AVS node type.
 type AzureAvsNodeType string
 
@@ -1047,12 +1016,6 @@ func (in *azureAvsNodeTypePtr) ToAzureAvsNodeTypePtrOutput() AzureAvsNodeTypePtr
 
 func (in *azureAvsNodeTypePtr) ToAzureAvsNodeTypePtrOutputWithContext(ctx context.Context) AzureAvsNodeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureAvsNodeTypePtrOutput)
-}
-
-func (in *azureAvsNodeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureAvsNodeType] {
-	return pulumix.Output[*AzureAvsNodeType]{
-		OutputState: in.ToAzureAvsNodeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Currency in which prices should be reported.
@@ -1269,12 +1232,6 @@ func (in *azureCurrencyPtr) ToAzureCurrencyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureCurrencyPtrOutput)
 }
 
-func (in *azureCurrencyPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureCurrency] {
-	return pulumix.Output[*AzureCurrency]{
-		OutputState: in.ToAzureCurrencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Storage type selected for this disk.
 type AzureDiskType string
 
@@ -1447,12 +1404,6 @@ func (in *azureDiskTypePtr) ToAzureDiskTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureDiskTypePtrOutput)
 }
 
-func (in *azureDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureDiskType] {
-	return pulumix.Output[*AzureDiskType]{
-		OutputState: in.ToAzureDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AHUB discount on windows virtual machines.
 type AzureHybridUseBenefit string
 
@@ -1619,12 +1570,6 @@ func (in *azureHybridUseBenefitPtr) ToAzureHybridUseBenefitPtrOutput() AzureHybr
 
 func (in *azureHybridUseBenefitPtr) ToAzureHybridUseBenefitPtrOutputWithContext(ctx context.Context) AzureHybridUseBenefitPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureHybridUseBenefitPtrOutput)
-}
-
-func (in *azureHybridUseBenefitPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridUseBenefit] {
-	return pulumix.Output[*AzureHybridUseBenefit]{
-		OutputState: in.ToAzureHybridUseBenefitPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the Azure Location or Azure region where to which the machines
@@ -1910,12 +1855,6 @@ func (in *azureLocationPtr) ToAzureLocationPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureLocationPtrOutput)
 }
 
-func (in *azureLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureLocation] {
-	return pulumix.Output[*AzureLocation]{
-		OutputState: in.ToAzureLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets Azure Offer Code for VM.
 type AzureOfferCode string
 
@@ -2164,12 +2103,6 @@ func (in *azureOfferCodePtr) ToAzureOfferCodePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AzureOfferCodePtrOutput)
 }
 
-func (in *azureOfferCodePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureOfferCode] {
-	return pulumix.Output[*AzureOfferCode]{
-		OutputState: in.ToAzureOfferCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pricing tier for Size evaluation.
 type AzurePricingTier string
 
@@ -2334,12 +2267,6 @@ func (in *azurePricingTierPtr) ToAzurePricingTierPtrOutput() AzurePricingTierPtr
 
 func (in *azurePricingTierPtr) ToAzurePricingTierPtrOutputWithContext(ctx context.Context) AzurePricingTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzurePricingTierPtrOutput)
-}
-
-func (in *azurePricingTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzurePricingTier] {
-	return pulumix.Output[*AzurePricingTier]{
-		OutputState: in.ToAzurePricingTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets azure reserved instance for VM.
@@ -2510,12 +2437,6 @@ func (in *azureReservedInstancePtr) ToAzureReservedInstancePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AzureReservedInstancePtrOutput)
 }
 
-func (in *azureReservedInstancePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureReservedInstance] {
-	return pulumix.Output[*AzureReservedInstance]{
-		OutputState: in.ToAzureReservedInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets a value indicating azure security offering type.
 type AzureSecurityOfferingType string
 
@@ -2680,12 +2601,6 @@ func (in *azureSecurityOfferingTypePtr) ToAzureSecurityOfferingTypePtrOutput() A
 
 func (in *azureSecurityOfferingTypePtr) ToAzureSecurityOfferingTypePtrOutputWithContext(ctx context.Context) AzureSecurityOfferingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSecurityOfferingTypePtrOutput)
-}
-
-func (in *azureSecurityOfferingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSecurityOfferingType] {
-	return pulumix.Output[*AzureSecurityOfferingType]{
-		OutputState: in.ToAzureSecurityOfferingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the azure PAAS SQL instance type.
@@ -2858,12 +2773,6 @@ func (in *azureSqlDataBaseTypePtr) ToAzureSqlDataBaseTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlDataBaseTypePtrOutput)
 }
 
-func (in *azureSqlDataBaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSqlDataBaseType] {
-	return pulumix.Output[*AzureSqlDataBaseType]{
-		OutputState: in.ToAzureSqlDataBaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the azure PAAS SQL instance type.
 type AzureSqlInstanceType string
 
@@ -3034,12 +2943,6 @@ func (in *azureSqlInstanceTypePtr) ToAzureSqlInstanceTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlInstanceTypePtrOutput)
 }
 
-func (in *azureSqlInstanceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSqlInstanceType] {
-	return pulumix.Output[*AzureSqlInstanceType]{
-		OutputState: in.ToAzureSqlInstanceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the azure SQL purchase model.
 type AzureSqlPurchaseModel string
 
@@ -3206,12 +3109,6 @@ func (in *azureSqlPurchaseModelPtr) ToAzureSqlPurchaseModelPtrOutput() AzureSqlP
 
 func (in *azureSqlPurchaseModelPtr) ToAzureSqlPurchaseModelPtrOutputWithContext(ctx context.Context) AzureSqlPurchaseModelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlPurchaseModelPtrOutput)
-}
-
-func (in *azureSqlPurchaseModelPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSqlPurchaseModel] {
-	return pulumix.Output[*AzureSqlPurchaseModel]{
-		OutputState: in.ToAzureSqlPurchaseModelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the azure SQL service tier.
@@ -3386,12 +3283,6 @@ func (in *azureSqlServiceTierPtr) ToAzureSqlServiceTierPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlServiceTierPtrOutput)
 }
 
-func (in *azureSqlServiceTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSqlServiceTier] {
-	return pulumix.Output[*AzureSqlServiceTier]{
-		OutputState: in.ToAzureSqlServiceTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Storage Redundancy type offered by Azure.
 type AzureStorageRedundancy string
 
@@ -3562,12 +3453,6 @@ func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutput() AzureSt
 
 func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutputWithContext(ctx context.Context) AzureStorageRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureStorageRedundancyPtrOutput)
-}
-
-func (in *azureStorageRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureStorageRedundancy] {
-	return pulumix.Output[*AzureStorageRedundancy]{
-		OutputState: in.ToAzureStorageRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type AzureVmFamily string
@@ -3835,12 +3720,6 @@ func (in *azureVmFamilyPtr) ToAzureVmFamilyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureVmFamilyPtrOutput)
 }
 
-func (in *azureVmFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureVmFamily] {
-	return pulumix.Output[*AzureVmFamily]{
-		OutputState: in.ToAzureVmFamilyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the cleanup state of the solution.
 type CleanupState string
 
@@ -4013,12 +3892,6 @@ func (in *cleanupStatePtr) ToCleanupStatePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CleanupStatePtrOutput)
 }
 
-func (in *cleanupStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CleanupState] {
-	return pulumix.Output[*CleanupState]{
-		OutputState: in.ToCleanupStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the azure SQL compute tier.
 type ComputeTier string
 
@@ -4189,12 +4062,6 @@ func (in *computeTierPtr) ToComputeTierPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeTierPtrOutput)
 }
 
-func (in *computeTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeTier] {
-	return pulumix.Output[*ComputeTier]{
-		OutputState: in.ToComputeTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the configuration type.
 type ConfigurationType string
 
@@ -4361,12 +4228,6 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutput() ConfigurationType
 
 func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx context.Context) ConfigurationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
-}
-
-func (in *configurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationType] {
-	return pulumix.Output[*ConfigurationType]{
-		OutputState: in.ToConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Currency to report prices in.
@@ -4583,12 +4444,6 @@ func (in *currencyPtr) ToCurrencyPtrOutputWithContext(ctx context.Context) Curre
 	return pulumi.ToOutputWithContext(ctx, in).(CurrencyPtrOutput)
 }
 
-func (in *currencyPtr) ToOutput(ctx context.Context) pulumix.Output[*Currency] {
-	return pulumix.Output[*Currency]{
-		OutputState: in.ToCurrencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets user configurable setting to display the environment type.
 type EnvironmentType string
 
@@ -4753,12 +4608,6 @@ func (in *environmentTypePtr) ToEnvironmentTypePtrOutput() EnvironmentTypePtrOut
 
 func (in *environmentTypePtr) ToEnvironmentTypePtrOutputWithContext(ctx context.Context) EnvironmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentTypePtrOutput)
-}
-
-func (in *environmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentType] {
-	return pulumix.Output[*EnvironmentType]{
-		OutputState: in.ToEnvironmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Failures to tolerate and RAID level in a common property.
@@ -4935,12 +4784,6 @@ func (in *fttAndRaidLevelPtr) ToFttAndRaidLevelPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(FttAndRaidLevelPtrOutput)
 }
 
-func (in *fttAndRaidLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*FttAndRaidLevel] {
-	return pulumix.Output[*FttAndRaidLevel]{
-		OutputState: in.ToFttAndRaidLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the goal of the solution.
 type Goal string
 
@@ -5113,12 +4956,6 @@ func (in *goalPtr) ToGoalPtrOutputWithContext(ctx context.Context) GoalPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(GoalPtrOutput)
 }
 
-func (in *goalPtr) ToOutput(ctx context.Context) pulumix.Output[*Goal] {
-	return pulumix.Output[*Goal]{
-		OutputState: in.ToGoalPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets the group type for the assessment.
 type GroupType string
 
@@ -5285,12 +5122,6 @@ func (in *groupTypePtr) ToGroupTypePtrOutputWithContext(ctx context.Context) Gro
 	return pulumi.ToOutputWithContext(ctx, in).(GroupTypePtrOutput)
 }
 
-func (in *groupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GroupType] {
-	return pulumix.Output[*GroupType]{
-		OutputState: in.ToGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the load balancer type.
 type LoadBalancerType string
 
@@ -5455,12 +5286,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutput() LoadBalancerTypePtr
 
 func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx context.Context) LoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
-}
-
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets user preference indicating intent of multi-subnet configuration.
@@ -5631,12 +5456,6 @@ func (in *multiSubnetIntentPtr) ToMultiSubnetIntentPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(MultiSubnetIntentPtrOutput)
 }
 
-func (in *multiSubnetIntentPtr) ToOutput(ctx context.Context) pulumix.Output[*MultiSubnetIntent] {
-	return pulumix.Output[*MultiSubnetIntent]{
-		OutputState: in.ToMultiSubnetIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OperatingSystemType string
 
 const (
@@ -5800,12 +5619,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutput() OperatingSyst
 
 func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
-}
-
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets SQL optimization logic.
@@ -5978,12 +5791,6 @@ func (in *optimizationLogicPtr) ToOptimizationLogicPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(OptimizationLogicPtrOutput)
 }
 
-func (in *optimizationLogicPtr) ToOutput(ctx context.Context) pulumix.Output[*OptimizationLogic] {
-	return pulumix.Output[*OptimizationLogic]{
-		OutputState: in.ToOptimizationLogicPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets user configurable setting to display the azure hybrid use benefit.
 type OsLicense string
 
@@ -6150,12 +5957,6 @@ func (in *osLicensePtr) ToOsLicensePtrOutput() OsLicensePtrOutput {
 
 func (in *osLicensePtr) ToOsLicensePtrOutputWithContext(ctx context.Context) OsLicensePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsLicensePtrOutput)
-}
-
-func (in *osLicensePtr) ToOutput(ctx context.Context) pulumix.Output[*OsLicense] {
-	return pulumix.Output[*OsLicense]{
-		OutputState: in.ToOsLicensePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Percentile of the utilization data values to be considered while assessing
@@ -6329,12 +6130,6 @@ func (in *percentilePtr) ToPercentilePtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PercentilePtrOutput)
 }
 
-func (in *percentilePtr) ToOutput(ctx context.Context) pulumix.Output[*Percentile] {
-	return pulumix.Output[*Percentile]{
-		OutputState: in.ToPercentilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -6503,12 +6298,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assessment project status.
 type ProjectStatus string
 
@@ -6673,12 +6462,6 @@ func (in *projectStatusPtr) ToProjectStatusPtrOutput() ProjectStatusPtrOutput {
 
 func (in *projectStatusPtr) ToProjectStatusPtrOutputWithContext(ctx context.Context) ProjectStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectStatusPtrOutput)
-}
-
-func (in *projectStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectStatus] {
-	return pulumix.Output[*ProjectStatus]{
-		OutputState: in.ToProjectStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the last operation.
@@ -6864,12 +6647,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the purpose of the solution.
 type Purpose string
 
@@ -7036,12 +6813,6 @@ func (in *purposePtr) ToPurposePtrOutput() PurposePtrOutput {
 
 func (in *purposePtr) ToPurposePtrOutputWithContext(ctx context.Context) PurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PurposePtrOutput)
-}
-
-func (in *purposePtr) ToOutput(ctx context.Context) pulumix.Output[*Purpose] {
-	return pulumix.Output[*Purpose]{
-		OutputState: in.ToPurposePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Azure reserved instance.
@@ -7212,12 +6983,6 @@ func (in *reservedInstancePtr) ToReservedInstancePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ReservedInstancePtrOutput)
 }
 
-func (in *reservedInstancePtr) ToOutput(ctx context.Context) pulumix.Output[*ReservedInstance] {
-	return pulumix.Output[*ReservedInstance]{
-		OutputState: in.ToReservedInstancePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the resource mover service.
 type ResourceIdentityType string
 
@@ -7386,12 +7151,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceIdentityTypes string
 
 const (
@@ -7557,12 +7316,6 @@ func (in *resourceIdentityTypesPtr) ToResourceIdentityTypesPtrOutput() ResourceI
 
 func (in *resourceIdentityTypesPtr) ToResourceIdentityTypesPtrOutputWithContext(ctx context.Context) ResourceIdentityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypesPtrOutput)
-}
-
-func (in *resourceIdentityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityTypes] {
-	return pulumix.Output[*ResourceIdentityTypes]{
-		OutputState: in.ToResourceIdentityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SecretStoreType string
@@ -7734,12 +7487,6 @@ func (in *secretStoreTypePtr) ToSecretStoreTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SecretStoreTypePtrOutput)
 }
 
-func (in *secretStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreType] {
-	return pulumix.Output[*SecretStoreType]{
-		OutputState: in.ToSecretStoreTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SQL server license.
 type SqlServerLicense string
 
@@ -7908,12 +7655,6 @@ func (in *sqlServerLicensePtr) ToSqlServerLicensePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SqlServerLicensePtrOutput)
 }
 
-func (in *sqlServerLicensePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlServerLicense] {
-	return pulumix.Output[*SqlServerLicense]{
-		OutputState: in.ToSqlServerLicensePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the current status of the solution.
 type Status string
 
@@ -8078,12 +7819,6 @@ func (in *statusPtr) ToStatusPtrOutput() StatusPtrOutput {
 
 func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
-}
-
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the target availability zone.
@@ -8256,12 +7991,6 @@ func (in *targetAvailabilityZonePtr) ToTargetAvailabilityZonePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(TargetAvailabilityZonePtrOutput)
 }
 
-func (in *targetAvailabilityZonePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetAvailabilityZone] {
-	return pulumix.Output[*TargetAvailabilityZone]{
-		OutputState: in.ToTargetAvailabilityZonePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the storage provider type on the target.
 // Applicable when StorageProjectionType is not ContainerFileSystem.
 type TargetHydrationStorageProviderType string
@@ -8425,12 +8154,6 @@ func (in *targetHydrationStorageProviderTypePtr) ToTargetHydrationStorageProvide
 
 func (in *targetHydrationStorageProviderTypePtr) ToTargetHydrationStorageProviderTypePtrOutputWithContext(ctx context.Context) TargetHydrationStorageProviderTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetHydrationStorageProviderTypePtrOutput)
-}
-
-func (in *targetHydrationStorageProviderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetHydrationStorageProviderType] {
-	return pulumix.Output[*TargetHydrationStorageProviderType]{
-		OutputState: in.ToTargetHydrationStorageProviderTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the target storage access type.
@@ -8599,12 +8322,6 @@ func (in *targetStorageAccessTypePtr) ToTargetStorageAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(TargetStorageAccessTypePtrOutput)
 }
 
-func (in *targetStorageAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetStorageAccessType] {
-	return pulumix.Output[*TargetStorageAccessType]{
-		OutputState: in.ToTargetStorageAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the target projection type.
 type TargetStorageProjectionType string
 
@@ -8769,12 +8486,6 @@ func (in *targetStorageProjectionTypePtr) ToTargetStorageProjectionTypePtrOutput
 
 func (in *targetStorageProjectionTypePtr) ToTargetStorageProjectionTypePtrOutputWithContext(ctx context.Context) TargetStorageProjectionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TargetStorageProjectionTypePtrOutput)
-}
-
-func (in *targetStorageProjectionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetStorageProjectionType] {
-	return pulumix.Output[*TargetStorageProjectionType]{
-		OutputState: in.ToTargetStorageProjectionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Time Range for which the historic utilization data should be considered for
@@ -8946,12 +8657,6 @@ func (in *timeRangePtr) ToTimeRangePtrOutput() TimeRangePtrOutput {
 
 func (in *timeRangePtr) ToTimeRangePtrOutputWithContext(ctx context.Context) TimeRangePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeRangePtrOutput)
-}
-
-func (in *timeRangePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeRange] {
-	return pulumix.Output[*TimeRange]{
-		OutputState: in.ToTimeRangePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the tool being used in the solution.
@@ -9166,12 +8871,6 @@ func (in *toolPtr) ToToolPtrOutputWithContext(ctx context.Context) ToolPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ToolPtrOutput)
 }
 
-func (in *toolPtr) ToOutput(ctx context.Context) pulumix.Output[*Tool] {
-	return pulumix.Output[*Tool]{
-		OutputState: in.ToToolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the deployment target platform.
 type WorkloadDeploymentTarget string
 
@@ -9338,12 +9037,6 @@ func (in *workloadDeploymentTargetPtr) ToWorkloadDeploymentTargetPtrOutput() Wor
 
 func (in *workloadDeploymentTargetPtr) ToWorkloadDeploymentTargetPtrOutputWithContext(ctx context.Context) WorkloadDeploymentTargetPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadDeploymentTargetPtrOutput)
-}
-
-func (in *workloadDeploymentTargetPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadDeploymentTarget] {
-	return pulumix.Output[*WorkloadDeploymentTarget]{
-		OutputState: in.ToWorkloadDeploymentTargetPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the instance type.
@@ -9526,12 +9219,6 @@ func (in *zoneRedundantPtr) ToZoneRedundantPtrOutput() ZoneRedundantPtrOutput {
 
 func (in *zoneRedundantPtr) ToZoneRedundantPtrOutputWithContext(ctx context.Context) ZoneRedundantPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneRedundantPtrOutput)
-}
-
-func (in *zoneRedundantPtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneRedundant] {
-	return pulumix.Output[*ZoneRedundant]{
-		OutputState: in.ToZoneRedundantPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

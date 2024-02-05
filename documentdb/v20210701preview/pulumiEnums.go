@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'.
@@ -175,12 +174,6 @@ func (in *authenticationMethodPtr) ToAuthenticationMethodPtrOutput() Authenticat
 
 func (in *authenticationMethodPtr) ToAuthenticationMethodPtrOutputWithContext(ctx context.Context) AuthenticationMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationMethodPtrOutput)
-}
-
-func (in *authenticationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMethod] {
-	return pulumix.Output[*AuthenticationMethod]{
-		OutputState: in.ToAuthenticationMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the resource at the time the operation was called.
@@ -357,12 +350,6 @@ func (in *managedCassandraProvisioningStatePtr) ToManagedCassandraProvisioningSt
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedCassandraProvisioningStatePtrOutput)
 }
 
-func (in *managedCassandraProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedCassandraProvisioningState] {
-	return pulumix.Output[*ManagedCassandraProvisioningState]{
-		OutputState: in.ToManagedCassandraProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
 type ResourceIdentityType string
 
@@ -531,12 +518,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

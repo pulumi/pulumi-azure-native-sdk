@@ -73,6 +73,9 @@ func NewWorkspaceManagerGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:WorkspaceManagerGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:WorkspaceManagerGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

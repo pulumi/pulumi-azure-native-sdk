@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Direction that specifies whether the access rules is inbound/outbound.
@@ -175,12 +174,6 @@ func (in *accessRuleDirectionPtr) ToAccessRuleDirectionPtrOutput() AccessRuleDir
 
 func (in *accessRuleDirectionPtr) ToAccessRuleDirectionPtrOutputWithContext(ctx context.Context) AccessRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRuleDirectionPtrOutput)
-}
-
-func (in *accessRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRuleDirection] {
-	return pulumix.Output[*AccessRuleDirection]{
-		OutputState: in.ToAccessRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Access mode on the association.
@@ -351,12 +344,6 @@ func (in *associationAccessModePtr) ToAssociationAccessModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AssociationAccessModePtrOutput)
 }
 
-func (in *associationAccessModePtr) ToOutput(ctx context.Context) pulumix.Output[*AssociationAccessMode] {
-	return pulumix.Output[*AssociationAccessMode]{
-		OutputState: in.ToAssociationAccessModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of this DNS zone (Public or Private).
 type ZoneType string
 
@@ -521,12 +508,6 @@ func (in *zoneTypePtr) ToZoneTypePtrOutput() ZoneTypePtrOutput {
 
 func (in *zoneTypePtr) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneTypePtrOutput)
-}
-
-func (in *zoneTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneType] {
-	return pulumix.Output[*ZoneType]{
-		OutputState: in.ToZoneTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

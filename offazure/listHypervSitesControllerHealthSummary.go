@@ -13,6 +13,8 @@ import (
 
 // Method to get site health summary.
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 func ListHypervSitesControllerHealthSummary(ctx *pulumi.Context, args *ListHypervSitesControllerHealthSummaryArgs, opts ...pulumi.InvokeOption) (*ListHypervSitesControllerHealthSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListHypervSitesControllerHealthSummaryResult

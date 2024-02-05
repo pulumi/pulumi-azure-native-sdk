@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Collation of the metadata catalog.
@@ -175,12 +174,6 @@ func (in *catalogCollationTypePtr) ToCatalogCollationTypePtrOutput() CatalogColl
 
 func (in *catalogCollationTypePtr) ToCatalogCollationTypePtrOutputWithContext(ctx context.Context) CatalogCollationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CatalogCollationTypePtrOutput)
-}
-
-func (in *catalogCollationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CatalogCollationType] {
-	return pulumix.Output[*CatalogCollationType]{
-		OutputState: in.ToCatalogCollationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the mode of database creation.
@@ -381,12 +374,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 type DatabaseLicenseType string
 
@@ -553,12 +540,6 @@ func (in *databaseLicenseTypePtr) ToDatabaseLicenseTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseLicenseTypePtrOutput)
 }
 
-func (in *databaseLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseLicenseType] {
-	return pulumix.Output[*DatabaseLicenseType]{
-		OutputState: in.ToDatabaseLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region.
 type DatabaseReadScale string
 
@@ -723,12 +704,6 @@ func (in *databaseReadScalePtr) ToDatabaseReadScalePtrOutput() DatabaseReadScale
 
 func (in *databaseReadScalePtr) ToDatabaseReadScalePtrOutputWithContext(ctx context.Context) DatabaseReadScalePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseReadScalePtrOutput)
-}
-
-func (in *databaseReadScalePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseReadScale] {
-	return pulumix.Output[*DatabaseReadScale]{
-		OutputState: in.ToDatabaseReadScalePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the sample schema to apply when creating this database.
@@ -899,12 +874,6 @@ func (in *sampleNamePtr) ToSampleNamePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(SampleNamePtrOutput)
 }
 
-func (in *sampleNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SampleName] {
-	return pulumix.Output[*SampleName]{
-		OutputState: in.ToSampleNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The storage account type used to store backups for this database.
 type StorageAccountType string
 
@@ -1071,12 +1040,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutput() StorageAccountT
 
 func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
-}
-
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

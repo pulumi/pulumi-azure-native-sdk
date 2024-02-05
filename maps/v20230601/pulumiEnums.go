@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Values can be systemAssignedIdentity or userAssignedIdentity
@@ -179,12 +178,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Values are enabled and disabled.
 type InfrastructureEncryption string
 
@@ -351,12 +344,6 @@ func (in *infrastructureEncryptionPtr) ToInfrastructureEncryptionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionPtrOutput)
 }
 
-func (in *infrastructureEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureEncryption] {
-	return pulumix.Output[*InfrastructureEncryption]{
-		OutputState: in.ToInfrastructureEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Get or Set Kind property.
 type Kind string
 
@@ -521,12 +508,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -699,12 +680,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU, in standard format (such as S0).
 type Name string
 
@@ -873,12 +848,6 @@ func (in *namePtr) ToNamePtrOutputWithContext(ctx context.Context) NamePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(NamePtrOutput)
 }
 
-func (in *namePtr) ToOutput(ctx context.Context) pulumix.Output[*Name] {
-	return pulumix.Output[*Name]{
-		OutputState: in.ToNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
 type SigningKey string
 
@@ -1045,12 +1014,6 @@ func (in *signingKeyPtr) ToSigningKeyPtrOutput() SigningKeyPtrOutput {
 
 func (in *signingKeyPtr) ToSigningKeyPtrOutputWithContext(ctx context.Context) SigningKeyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SigningKeyPtrOutput)
-}
-
-func (in *signingKeyPtr) ToOutput(ctx context.Context) pulumix.Output[*SigningKey] {
-	return pulumix.Output[*SigningKey]{
-		OutputState: in.ToSigningKeyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

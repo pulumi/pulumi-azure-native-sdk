@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of address.
@@ -180,12 +179,6 @@ func (in *addressTypePtr) ToAddressTypePtrOutput() AddressTypePtrOutput {
 
 func (in *addressTypePtr) ToAddressTypePtrOutputWithContext(ctx context.Context) AddressTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AddressTypePtrOutput)
-}
-
-func (in *addressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressType] {
-	return pulumix.Output[*AddressType]{
-		OutputState: in.ToAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the type of job details.
@@ -370,12 +363,6 @@ func (in *dataAccountTypePtr) ToDataAccountTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DataAccountTypePtrOutput)
 }
 
-func (in *dataAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataAccountType] {
-	return pulumix.Output[*DataAccountType]{
-		OutputState: in.ToDataAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines secondary layer of software-based encryption enablement.
 type DoubleEncryption string
 
@@ -542,12 +529,6 @@ func (in *doubleEncryptionPtr) ToDoubleEncryptionPtrOutput() DoubleEncryptionPtr
 
 func (in *doubleEncryptionPtr) ToDoubleEncryptionPtrOutputWithContext(ctx context.Context) DoubleEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DoubleEncryptionPtrOutput)
-}
-
-func (in *doubleEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*DoubleEncryption] {
-	return pulumix.Output[*DoubleEncryption]{
-		OutputState: in.ToDoubleEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the filter file.
@@ -718,12 +699,6 @@ func (in *filterFileTypePtr) ToFilterFileTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(FilterFileTypePtrOutput)
 }
 
-func (in *filterFileTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FilterFileType] {
-	return pulumix.Output[*FilterFileType]{
-		OutputState: in.ToFilterFileTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines Hardware level encryption (Only for disk)
 type HardwareEncryption string
 
@@ -890,12 +865,6 @@ func (in *hardwareEncryptionPtr) ToHardwareEncryptionPtrOutput() HardwareEncrypt
 
 func (in *hardwareEncryptionPtr) ToHardwareEncryptionPtrOutputWithContext(ctx context.Context) HardwareEncryptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HardwareEncryptionPtrOutput)
-}
-
-func (in *hardwareEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*HardwareEncryption] {
-	return pulumix.Output[*HardwareEncryption]{
-		OutputState: in.ToHardwareEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Delivery type of Job.
@@ -1066,12 +1035,6 @@ func (in *jobDeliveryTypePtr) ToJobDeliveryTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(JobDeliveryTypePtrOutput)
 }
 
-func (in *jobDeliveryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobDeliveryType] {
-	return pulumix.Output[*JobDeliveryType]{
-		OutputState: in.ToJobDeliveryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of encryption key used for key encryption.
 type KekType string
 
@@ -1240,12 +1203,6 @@ func (in *kekTypePtr) ToKekTypePtrOutputWithContext(ctx context.Context) KekType
 	return pulumi.ToOutputWithContext(ctx, in).(KekTypePtrOutput)
 }
 
-func (in *kekTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KekType] {
-	return pulumix.Output[*KekType]{
-		OutputState: in.ToKekTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Level of the logs to be collected.
 type LogCollectionLevel string
 
@@ -1412,12 +1369,6 @@ func (in *logCollectionLevelPtr) ToLogCollectionLevelPtrOutput() LogCollectionLe
 
 func (in *logCollectionLevelPtr) ToLogCollectionLevelPtrOutputWithContext(ctx context.Context) LogCollectionLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogCollectionLevelPtrOutput)
-}
-
-func (in *logCollectionLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*LogCollectionLevel] {
-	return pulumix.Output[*LogCollectionLevel]{
-		OutputState: in.ToLogCollectionLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the stage.
@@ -1606,12 +1557,6 @@ func (in *notificationStageNamePtr) ToNotificationStageNamePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationStageNamePtrOutput)
 }
 
-func (in *notificationStageNamePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationStageName] {
-	return pulumix.Output[*NotificationStageName]{
-		OutputState: in.ToNotificationStageNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku name.
 type SkuName string
 
@@ -1786,12 +1731,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageAccountAccessTier string
 
 const (
@@ -1954,12 +1893,6 @@ func (in *storageAccountAccessTierPtr) ToStorageAccountAccessTierPtrOutput() Sto
 
 func (in *storageAccountAccessTierPtr) ToStorageAccountAccessTierPtrOutputWithContext(ctx context.Context) StorageAccountAccessTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountAccessTierPtrOutput)
-}
-
-func (in *storageAccountAccessTierPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountAccessTier] {
-	return pulumix.Output[*StorageAccountAccessTier]{
-		OutputState: in.ToStorageAccountAccessTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the configuration for transfer.
@@ -2130,12 +2063,6 @@ func (in *transferConfigurationTypePtr) ToTransferConfigurationTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(TransferConfigurationTypePtrOutput)
 }
 
-func (in *transferConfigurationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TransferConfigurationType] {
-	return pulumix.Output[*TransferConfigurationType]{
-		OutputState: in.ToTransferConfigurationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the data transfer.
 type TransferType string
 
@@ -2304,12 +2231,6 @@ func (in *transferTypePtr) ToTransferTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(TransferTypePtrOutput)
 }
 
-func (in *transferTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TransferType] {
-	return pulumix.Output[*TransferType]{
-		OutputState: in.ToTransferTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates Shipment Logistics type that the customer preferred.
 type TransportShipmentTypes string
 
@@ -2476,12 +2397,6 @@ func (in *transportShipmentTypesPtr) ToTransportShipmentTypesPtrOutput() Transpo
 
 func (in *transportShipmentTypesPtr) ToTransportShipmentTypesPtrOutputWithContext(ctx context.Context) TransportShipmentTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransportShipmentTypesPtrOutput)
-}
-
-func (in *transportShipmentTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportShipmentTypes] {
-	return pulumix.Output[*TransportShipmentTypes]{
-		OutputState: in.ToTransportShipmentTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

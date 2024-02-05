@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -173,12 +172,6 @@ func (in *actionsRequiredPtr) ToActionsRequiredPtrOutput() ActionsRequiredPtrOut
 
 func (in *actionsRequiredPtr) ToActionsRequiredPtrOutputWithContext(ctx context.Context) ActionsRequiredPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionsRequiredPtrOutput)
-}
-
-func (in *actionsRequiredPtr) ToOutput(ctx context.Context) pulumix.Output[*ActionsRequired] {
-	return pulumix.Output[*ActionsRequired]{
-		OutputState: in.ToActionsRequiredPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CertificatePermissions string
@@ -376,12 +369,6 @@ func (in *certificatePermissionsPtr) ToCertificatePermissionsPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(CertificatePermissionsPtrOutput)
 }
 
-func (in *certificatePermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificatePermissions] {
-	return pulumix.Output[*CertificatePermissions]{
-		OutputState: in.ToCertificatePermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The vault's create mode to indicate whether the vault need to be recovered or not.
 type CreateMode string
 
@@ -546,12 +533,6 @@ func (in *createModePtr) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
-}
-
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The elliptic curve name. For valid values, see JsonWebKeyCurveName.
@@ -722,12 +703,6 @@ func (in *jsonWebKeyCurveNamePtr) ToJsonWebKeyCurveNamePtrOutput() JsonWebKeyCur
 
 func (in *jsonWebKeyCurveNamePtr) ToJsonWebKeyCurveNamePtrOutputWithContext(ctx context.Context) JsonWebKeyCurveNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JsonWebKeyCurveNamePtrOutput)
-}
-
-func (in *jsonWebKeyCurveNamePtr) ToOutput(ctx context.Context) pulumix.Output[*JsonWebKeyCurveName] {
-	return pulumix.Output[*JsonWebKeyCurveName]{
-		OutputState: in.ToJsonWebKeyCurveNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The permitted JSON web key operations of the key. For more information, see JsonWebKeyOperation.
@@ -908,12 +883,6 @@ func (in *jsonWebKeyOperationPtr) ToJsonWebKeyOperationPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(JsonWebKeyOperationPtrOutput)
 }
 
-func (in *jsonWebKeyOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*JsonWebKeyOperation] {
-	return pulumix.Output[*JsonWebKeyOperation]{
-		OutputState: in.ToJsonWebKeyOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the key. For valid values, see JsonWebKeyType.
 type JsonWebKeyType string
 
@@ -1082,12 +1051,6 @@ func (in *jsonWebKeyTypePtr) ToJsonWebKeyTypePtrOutput() JsonWebKeyTypePtrOutput
 
 func (in *jsonWebKeyTypePtr) ToJsonWebKeyTypePtrOutputWithContext(ctx context.Context) JsonWebKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JsonWebKeyTypePtrOutput)
-}
-
-func (in *jsonWebKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JsonWebKeyType] {
-	return pulumix.Output[*JsonWebKeyType]{
-		OutputState: in.ToJsonWebKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KeyPermissions string
@@ -1293,12 +1256,6 @@ func (in *keyPermissionsPtr) ToKeyPermissionsPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(KeyPermissionsPtrOutput)
 }
 
-func (in *keyPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyPermissions] {
-	return pulumix.Output[*KeyPermissions]{
-		OutputState: in.ToKeyPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the action. The value should be compared case-insensitively.
 type KeyRotationPolicyActionType string
 
@@ -1467,12 +1424,6 @@ func (in *keyRotationPolicyActionTypePtr) ToKeyRotationPolicyActionTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KeyRotationPolicyActionTypePtrOutput)
 }
 
-func (in *keyRotationPolicyActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyRotationPolicyActionType] {
-	return pulumix.Output[*KeyRotationPolicyActionType]{
-		OutputState: in.ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU Family of the managed HSM Pool
 type ManagedHsmSkuFamily string
 
@@ -1635,12 +1586,6 @@ func (in *managedHsmSkuFamilyPtr) ToManagedHsmSkuFamilyPtrOutput() ManagedHsmSku
 
 func (in *managedHsmSkuFamilyPtr) ToManagedHsmSkuFamilyPtrOutputWithContext(ctx context.Context) ManagedHsmSkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedHsmSkuFamilyPtrOutput)
-}
-
-func (in *managedHsmSkuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsmSkuFamily] {
-	return pulumix.Output[*ManagedHsmSkuFamily]{
-		OutputState: in.ToManagedHsmSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKU of the managed HSM Pool
@@ -1811,12 +1756,6 @@ func (in *managedHsmSkuNamePtr) ToManagedHsmSkuNamePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedHsmSkuNamePtrOutput)
 }
 
-func (in *managedHsmSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsmSkuName] {
-	return pulumix.Output[*ManagedHsmSkuName]{
-		OutputState: in.ToManagedHsmSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 type NetworkRuleAction string
 
@@ -1983,12 +1922,6 @@ func (in *networkRuleActionPtr) ToNetworkRuleActionPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleActionPtrOutput)
 }
 
-func (in *networkRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleAction] {
-	return pulumix.Output[*NetworkRuleAction]{
-		OutputState: in.ToNetworkRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
 type NetworkRuleBypassOptions string
 
@@ -2153,12 +2086,6 @@ func (in *networkRuleBypassOptionsPtr) ToNetworkRuleBypassOptionsPtrOutput() Net
 
 func (in *networkRuleBypassOptionsPtr) ToNetworkRuleBypassOptionsPtrOutputWithContext(ctx context.Context) NetworkRuleBypassOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleBypassOptionsPtrOutput)
-}
-
-func (in *networkRuleBypassOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleBypassOptions] {
-	return pulumix.Output[*NetworkRuleBypassOptions]{
-		OutputState: in.ToNetworkRuleBypassOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been approved, rejected or removed by the key vault owner.
@@ -2331,12 +2258,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Control permission to the managed HSM from public networks.
 type PublicNetworkAccess string
 
@@ -2501,12 +2422,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SecretPermissions string
@@ -2688,12 +2603,6 @@ func (in *secretPermissionsPtr) ToSecretPermissionsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SecretPermissionsPtrOutput)
 }
 
-func (in *secretPermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*SecretPermissions] {
-	return pulumix.Output[*SecretPermissions]{
-		OutputState: in.ToSecretPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU family name
 type SkuFamily string
 
@@ -2856,12 +2765,6 @@ func (in *skuFamilyPtr) ToSkuFamilyPtrOutput() SkuFamilyPtrOutput {
 
 func (in *skuFamilyPtr) ToSkuFamilyPtrOutputWithContext(ctx context.Context) SkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuFamilyPtrOutput)
-}
-
-func (in *skuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuFamily] {
-	return pulumix.Output[*SkuFamily]{
-		OutputState: in.ToSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKU name to specify whether the key vault is a standard vault or a premium vault.
@@ -3028,12 +2931,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type StoragePermissions string
@@ -3227,12 +3124,6 @@ func (in *storagePermissionsPtr) ToStoragePermissionsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(StoragePermissionsPtrOutput)
 }
 
-func (in *storagePermissionsPtr) ToOutput(ctx context.Context) pulumix.Output[*StoragePermissions] {
-	return pulumix.Output[*StoragePermissions]{
-		OutputState: in.ToStoragePermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provisioning state of the vault.
 type VaultProvisioningState string
 
@@ -3397,12 +3288,6 @@ func (in *vaultProvisioningStatePtr) ToVaultProvisioningStatePtrOutput() VaultPr
 
 func (in *vaultProvisioningStatePtr) ToVaultProvisioningStatePtrOutputWithContext(ctx context.Context) VaultProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VaultProvisioningStatePtrOutput)
-}
-
-func (in *vaultProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VaultProvisioningState] {
-	return pulumix.Output[*VaultProvisioningState]{
-		OutputState: in.ToVaultProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This is the preferred geo location for the job to run.
@@ -227,12 +226,6 @@ func (in *runLocationPtr) ToRunLocationPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(RunLocationPtrOutput)
 }
 
-func (in *runLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*RunLocation] {
-	return pulumix.Output[*RunLocation]{
-		OutputState: in.ToRunLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the job definition.
 type State string
 
@@ -399,12 +392,6 @@ func (in *statePtr) ToStatePtrOutput() StatePtrOutput {
 
 func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
-}
-
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The encryption algorithm used to encrypt data.
@@ -577,12 +564,6 @@ func (in *supportedAlgorithmPtr) ToSupportedAlgorithmPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SupportedAlgorithmPtrOutput)
 }
 
-func (in *supportedAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SupportedAlgorithm] {
-	return pulumix.Output[*SupportedAlgorithm]{
-		OutputState: in.ToSupportedAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum to detect if user confirmation is required. If not passed will default to NotRequired.
 type UserConfirmation string
 
@@ -747,12 +728,6 @@ func (in *userConfirmationPtr) ToUserConfirmationPtrOutput() UserConfirmationPtr
 
 func (in *userConfirmationPtr) ToUserConfirmationPtrOutputWithContext(ctx context.Context) UserConfirmationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserConfirmationPtrOutput)
-}
-
-func (in *userConfirmationPtr) ToOutput(ctx context.Context) pulumix.Output[*UserConfirmation] {
-	return pulumix.Output[*UserConfirmation]{
-		OutputState: in.ToUserConfirmationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

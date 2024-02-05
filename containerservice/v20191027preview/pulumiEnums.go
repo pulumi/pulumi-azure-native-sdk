@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
@@ -177,12 +176,6 @@ func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
 }
 
-func (in *ostypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSType] {
-	return pulumix.Output[*OSType]{
-		OutputState: in.ToOSTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Define the role of the AgentPoolProfile.
 type OpenShiftAgentPoolProfileRole string
 
@@ -347,12 +340,6 @@ func (in *openShiftAgentPoolProfileRolePtr) ToOpenShiftAgentPoolProfileRolePtrOu
 
 func (in *openShiftAgentPoolProfileRolePtr) ToOpenShiftAgentPoolProfileRolePtrOutputWithContext(ctx context.Context) OpenShiftAgentPoolProfileRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OpenShiftAgentPoolProfileRolePtrOutput)
-}
-
-func (in *openShiftAgentPoolProfileRolePtr) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftAgentPoolProfileRole] {
-	return pulumix.Output[*OpenShiftAgentPoolProfileRole]{
-		OutputState: in.ToOpenShiftAgentPoolProfileRolePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Size of agent VMs.
@@ -581,12 +568,6 @@ func (in *openShiftContainerServiceVMSizePtr) ToOpenShiftContainerServiceVMSizeP
 
 func (in *openShiftContainerServiceVMSizePtr) ToOpenShiftContainerServiceVMSizePtrOutputWithContext(ctx context.Context) OpenShiftContainerServiceVMSizePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OpenShiftContainerServiceVMSizePtrOutput)
-}
-
-func (in *openShiftContainerServiceVMSizePtr) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftContainerServiceVMSize] {
-	return pulumix.Output[*OpenShiftContainerServiceVMSize]{
-		OutputState: in.ToOpenShiftContainerServiceVMSizePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

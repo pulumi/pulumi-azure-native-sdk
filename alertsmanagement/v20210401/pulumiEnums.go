@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The alert rule state.
@@ -175,12 +174,6 @@ func (in *alertRuleStatePtr) ToAlertRuleStatePtrOutput() AlertRuleStatePtrOutput
 
 func (in *alertRuleStatePtr) ToAlertRuleStatePtrOutputWithContext(ctx context.Context) AlertRuleStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertRuleStatePtrOutput)
-}
-
-func (in *alertRuleStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AlertRuleState] {
-	return pulumix.Output[*AlertRuleState]{
-		OutputState: in.ToAlertRuleStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The alert rule severity.
@@ -353,12 +346,6 @@ func (in *severityPtr) ToSeverityPtrOutput() SeverityPtrOutput {
 
 func (in *severityPtr) ToSeverityPtrOutputWithContext(ctx context.Context) SeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityPtrOutput)
-}
-
-func (in *severityPtr) ToOutput(ctx context.Context) pulumix.Output[*Severity] {
-	return pulumix.Output[*Severity]{
-		OutputState: in.ToSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

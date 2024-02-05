@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Access mode for storage
@@ -177,12 +176,6 @@ func (in *accessModePtr) ToAccessModePtrOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, in).(AccessModePtrOutput)
 }
 
-func (in *accessModePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessMode] {
-	return pulumix.Output[*AccessMode]{
-		OutputState: in.ToAccessModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allow or Deny rules to determine for incoming IP. Note: Rules can only consist of ALL Allow or ALL Deny
 type Action string
 
@@ -347,12 +340,6 @@ func (in *actionPtr) ToActionPtrOutput() ActionPtrOutput {
 
 func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
-}
-
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ActiveRevisionsMode controls how active revisions are handled for the Container app:
@@ -522,12 +509,6 @@ func (in *activeRevisionsModePtr) ToActiveRevisionsModePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ActiveRevisionsModePtrOutput)
 }
 
-func (in *activeRevisionsModePtr) ToOutput(ctx context.Context) pulumix.Output[*ActiveRevisionsMode] {
-	return pulumix.Output[*ActiveRevisionsMode]{
-		OutputState: in.ToActiveRevisionsModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sticky Session Affinity
 type Affinity string
 
@@ -692,12 +673,6 @@ func (in *affinityPtr) ToAffinityPtrOutput() AffinityPtrOutput {
 
 func (in *affinityPtr) ToAffinityPtrOutputWithContext(ctx context.Context) AffinityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AffinityPtrOutput)
-}
-
-func (in *affinityPtr) ToOutput(ctx context.Context) pulumix.Output[*Affinity] {
-	return pulumix.Output[*Affinity]{
-		OutputState: in.ToAffinityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tells Dapr which protocol your application is using. Valid options are http and grpc. Default is http
@@ -866,12 +841,6 @@ func (in *appProtocolPtr) ToAppProtocolPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(AppProtocolPtrOutput)
 }
 
-func (in *appProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*AppProtocol] {
-	return pulumix.Output[*AppProtocol]{
-		OutputState: in.ToAppProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom Domain binding type.
 type BindingType string
 
@@ -1036,12 +1005,6 @@ func (in *bindingTypePtr) ToBindingTypePtrOutput() BindingTypePtrOutput {
 
 func (in *bindingTypePtr) ToBindingTypePtrOutputWithContext(ctx context.Context) BindingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BindingTypePtrOutput)
-}
-
-func (in *bindingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BindingType] {
-	return pulumix.Output[*BindingType]{
-		OutputState: in.ToBindingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
@@ -1210,12 +1173,6 @@ func (in *certificateTypePtr) ToCertificateTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateTypePtrOutput)
 }
 
-func (in *certificateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateType] {
-	return pulumix.Output[*CertificateType]{
-		OutputState: in.ToCertificateTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The method that should be used to authenticate the user.
 type ClientCredentialMethod string
 
@@ -1378,12 +1335,6 @@ func (in *clientCredentialMethodPtr) ToClientCredentialMethodPtrOutput() ClientC
 
 func (in *clientCredentialMethodPtr) ToClientCredentialMethodPtrOutputWithContext(ctx context.Context) ClientCredentialMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClientCredentialMethodPtrOutput)
-}
-
-func (in *clientCredentialMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ClientCredentialMethod] {
-	return pulumix.Output[*ClientCredentialMethod]{
-		OutputState: in.ToClientCredentialMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The convention used when determining the session cookie's expiration.
@@ -1552,12 +1503,6 @@ func (in *cookieExpirationConventionPtr) ToCookieExpirationConventionPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(CookieExpirationConventionPtrOutput)
 }
 
-func (in *cookieExpirationConventionPtr) ToOutput(ctx context.Context) pulumix.Output[*CookieExpirationConvention] {
-	return pulumix.Output[*CookieExpirationConvention]{
-		OutputState: in.ToCookieExpirationConventionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1720,12 +1665,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The convention used to determine the url of the request made.
@@ -1896,12 +1835,6 @@ func (in *forwardProxyConventionPtr) ToForwardProxyConventionPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardProxyConventionPtrOutput)
 }
 
-func (in *forwardProxyConventionPtr) ToOutput(ctx context.Context) pulumix.Output[*ForwardProxyConvention] {
-	return pulumix.Output[*ForwardProxyConvention]{
-		OutputState: in.ToForwardProxyConventionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate.
 type IngressClientCertificateMode string
 
@@ -2068,12 +2001,6 @@ func (in *ingressClientCertificateModePtr) ToIngressClientCertificateModePtrOutp
 
 func (in *ingressClientCertificateModePtr) ToIngressClientCertificateModePtrOutputWithContext(ctx context.Context) IngressClientCertificateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IngressClientCertificateModePtrOutput)
-}
-
-func (in *ingressClientCertificateModePtr) ToOutput(ctx context.Context) pulumix.Output[*IngressClientCertificateMode] {
-	return pulumix.Output[*IngressClientCertificateMode]{
-		OutputState: in.ToIngressClientCertificateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Ingress transport protocol
@@ -2246,12 +2173,6 @@ func (in *ingressTransportMethodPtr) ToIngressTransportMethodPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(IngressTransportMethodPtrOutput)
 }
 
-func (in *ingressTransportMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IngressTransportMethod] {
-	return pulumix.Output[*IngressTransportMethod]{
-		OutputState: in.ToIngressTransportMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
 type LogLevel string
 
@@ -2422,12 +2343,6 @@ func (in *logLevelPtr) ToLogLevelPtrOutputWithContext(ctx context.Context) LogLe
 	return pulumi.ToOutputWithContext(ctx, in).(LogLevelPtrOutput)
 }
 
-func (in *logLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*LogLevel] {
-	return pulumix.Output[*LogLevel]{
-		OutputState: in.ToLogLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Selected type of domain control validation for managed certificates.
 type ManagedCertificateDomainControlValidation string
 
@@ -2594,12 +2509,6 @@ func (in *managedCertificateDomainControlValidationPtr) ToManagedCertificateDoma
 
 func (in *managedCertificateDomainControlValidationPtr) ToManagedCertificateDomainControlValidationPtrOutputWithContext(ctx context.Context) ManagedCertificateDomainControlValidationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedCertificateDomainControlValidationPtrOutput)
-}
-
-func (in *managedCertificateDomainControlValidationPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedCertificateDomainControlValidation] {
-	return pulumix.Output[*ManagedCertificateDomainControlValidation]{
-		OutputState: in.ToManagedCertificateDomainControlValidationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -2772,12 +2681,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scheme to use for connecting to the host. Defaults to HTTP.
 type Scheme string
 
@@ -2942,12 +2845,6 @@ func (in *schemePtr) ToSchemePtrOutput() SchemePtrOutput {
 
 func (in *schemePtr) ToSchemePtrOutputWithContext(ctx context.Context) SchemePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemePtrOutput)
-}
-
-func (in *schemePtr) ToOutput(ctx context.Context) pulumix.Output[*Scheme] {
-	return pulumix.Output[*Scheme]{
-		OutputState: in.ToSchemePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Storage type for the volume. If not provided, use EmptyDir.
@@ -3118,12 +3015,6 @@ func (in *storageTypePtr) ToStorageTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTypePtrOutput)
 }
 
-func (in *storageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageType] {
-	return pulumix.Output[*StorageType]{
-		OutputState: in.ToStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Trigger type of the job
 type TriggerType string
 
@@ -3290,12 +3181,6 @@ func (in *triggerTypePtr) ToTriggerTypePtrOutput() TriggerTypePtrOutput {
 
 func (in *triggerTypePtr) ToTriggerTypePtrOutputWithContext(ctx context.Context) TriggerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerTypePtrOutput)
-}
-
-func (in *triggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerType] {
-	return pulumix.Output[*TriggerType]{
-		OutputState: in.ToTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of probe.
@@ -3466,12 +3351,6 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
 }
 
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The action to take when an unauthenticated client attempts to access the app.
 type UnauthenticatedClientActionV2 string
 
@@ -3640,12 +3519,6 @@ func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOu
 
 func (in *unauthenticatedClientActionV2Ptr) ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx context.Context) UnauthenticatedClientActionV2PtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UnauthenticatedClientActionV2PtrOutput)
-}
-
-func (in *unauthenticatedClientActionV2Ptr) ToOutput(ctx context.Context) pulumix.Output[*UnauthenticatedClientActionV2] {
-	return pulumix.Output[*UnauthenticatedClientActionV2]{
-		OutputState: in.ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

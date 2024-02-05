@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network access type for accessing Log Analytics query.
@@ -177,12 +176,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutput() Publi
 
 func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
-}
-
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the SKU.
@@ -361,12 +354,6 @@ func (in *workspaceSkuNameEnumPtr) ToWorkspaceSkuNameEnumPtrOutput() WorkspaceSk
 
 func (in *workspaceSkuNameEnumPtr) ToWorkspaceSkuNameEnumPtrOutputWithContext(ctx context.Context) WorkspaceSkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkspaceSkuNameEnumPtrOutput)
-}
-
-func (in *workspaceSkuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceSkuNameEnum] {
-	return pulumix.Output[*WorkspaceSkuNameEnum]{
-		OutputState: in.ToWorkspaceSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

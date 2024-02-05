@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Identity type
@@ -177,12 +176,6 @@ func (in *managedIdentityTypesPtr) ToManagedIdentityTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypesPtrOutput)
 }
 
-func (in *managedIdentityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityTypes] {
-	return pulumix.Output[*ManagedIdentityTypes]{
-		OutputState: in.ToManagedIdentityTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Flag specifying if the resource monitoring is enabled or disabled.
 type MonitoringStatus string
 
@@ -347,12 +340,6 @@ func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutput() MonitoringStatusPtr
 
 func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutputWithContext(ctx context.Context) MonitoringStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringStatusPtrOutput)
-}
-
-func (in *monitoringStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitoringStatus] {
-	return pulumix.Output[*MonitoringStatus]{
-		OutputState: in.ToMonitoringStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operation for the patch on the resource.
@@ -527,12 +514,6 @@ func (in *operationPtr) ToOperationPtrOutputWithContext(ctx context.Context) Ope
 	return pulumi.ToOutputWithContext(ctx, in).(OperationPtrOutput)
 }
 
-func (in *operationPtr) ToOutput(ctx context.Context) pulumix.Output[*Operation] {
-	return pulumix.Output[*Operation]{
-		OutputState: in.ToOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of monitoring.
 type Status string
 
@@ -703,12 +684,6 @@ func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtr
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
 }
 
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Valid actions for a filtering tag. Exclusion takes priority over inclusion.
 type TagAction string
 
@@ -873,12 +848,6 @@ func (in *tagActionPtr) ToTagActionPtrOutput() TagActionPtrOutput {
 
 func (in *tagActionPtr) ToTagActionPtrOutputWithContext(ctx context.Context) TagActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TagActionPtrOutput)
-}
-
-func (in *tagActionPtr) ToOutput(ctx context.Context) pulumix.Output[*TagAction] {
-	return pulumix.Output[*TagAction]{
-		OutputState: in.ToTagActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

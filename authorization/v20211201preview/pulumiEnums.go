@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The recurrence type : weekly, monthly, etc.
@@ -187,12 +186,6 @@ func (in *accessReviewRecurrenceRangeTypePtr) ToAccessReviewRecurrenceRangeTypeP
 	return pulumi.ToOutputWithContext(ctx, in).(AccessReviewRecurrenceRangeTypePtrOutput)
 }
 
-func (in *accessReviewRecurrenceRangeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessReviewRecurrenceRangeType] {
-	return pulumix.Output[*AccessReviewRecurrenceRangeType]{
-		OutputState: in.ToAccessReviewRecurrenceRangeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a reviewer's decision for a given review
 type AccessReviewResult string
 
@@ -365,12 +358,6 @@ func (in *accessReviewResultPtr) ToAccessReviewResultPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AccessReviewResultPtrOutput)
 }
 
-func (in *accessReviewResultPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessReviewResult] {
-	return pulumix.Output[*AccessReviewResult]{
-		OutputState: in.ToAccessReviewResultPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This specifies the behavior for the autoReview feature when an access review completes.
 type DefaultDecisionType string
 
@@ -537,12 +524,6 @@ func (in *defaultDecisionTypePtr) ToDefaultDecisionTypePtrOutput() DefaultDecisi
 
 func (in *defaultDecisionTypePtr) ToDefaultDecisionTypePtrOutputWithContext(ctx context.Context) DefaultDecisionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultDecisionTypePtrOutput)
-}
-
-func (in *defaultDecisionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultDecisionType] {
-	return pulumix.Output[*DefaultDecisionType]{
-		OutputState: in.ToDefaultDecisionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

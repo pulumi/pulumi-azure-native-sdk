@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The source of the watchlist
@@ -177,12 +176,6 @@ func (in *sourcePtr) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtr
 	return pulumi.ToOutputWithContext(ctx, in).(SourcePtrOutput)
 }
 
-func (in *sourcePtr) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: in.ToSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the entity.
 type ThreatIntelligenceResourceInnerKind string
 
@@ -346,12 +339,6 @@ func (in *threatIntelligenceResourceInnerKindPtr) ToThreatIntelligenceResourceIn
 
 func (in *threatIntelligenceResourceInnerKindPtr) ToThreatIntelligenceResourceInnerKindPtrOutputWithContext(ctx context.Context) ThreatIntelligenceResourceInnerKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThreatIntelligenceResourceInnerKindPtrOutput)
-}
-
-func (in *threatIntelligenceResourceInnerKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceResourceInnerKind] {
-	return pulumix.Output[*ThreatIntelligenceResourceInnerKind]{
-		OutputState: in.ToThreatIntelligenceResourceInnerKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

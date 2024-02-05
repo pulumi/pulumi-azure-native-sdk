@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Interval value in minutes used to create LogAnalytics call rate logs.
@@ -179,12 +178,6 @@ func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOutput
 
 func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntervalInMinsPtrOutput)
-}
-
-func (in *intervalInMinsPtr) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
-	return pulumix.Output[*IntervalInMins]{
-		OutputState: in.ToIntervalInMinsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

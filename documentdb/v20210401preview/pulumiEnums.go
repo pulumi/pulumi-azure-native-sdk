@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the mode of backups.
@@ -187,12 +186,6 @@ func (in *backupStorageRedundancyPtr) ToBackupStorageRedundancyPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(BackupStorageRedundancyPtrOutput)
 }
 
-func (in *backupStorageRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupStorageRedundancy] {
-	return pulumix.Output[*BackupStorageRedundancy]{
-		OutputState: in.ToBackupStorageRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The cassandra connector offer type for the Cosmos DB database C* account.
 type ConnectorOffer string
 
@@ -355,12 +348,6 @@ func (in *connectorOfferPtr) ToConnectorOfferPtrOutput() ConnectorOfferPtrOutput
 
 func (in *connectorOfferPtr) ToConnectorOfferPtrOutputWithContext(ctx context.Context) ConnectorOfferPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectorOfferPtrOutput)
-}
-
-func (in *connectorOfferPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectorOffer] {
-	return pulumix.Output[*ConnectorOffer]{
-		OutputState: in.ToConnectorOfferPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum to indicate the mode of account creation.
@@ -539,12 +526,6 @@ func (in *databaseAccountKindPtr) ToDatabaseAccountKindPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAccountKindPtrOutput)
 }
 
-func (in *databaseAccountKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccountKind] {
-	return pulumix.Output[*DatabaseAccountKind]{
-		OutputState: in.ToDatabaseAccountKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The offer type for the database
 type DatabaseAccountOfferType string
 
@@ -707,12 +688,6 @@ func (in *databaseAccountOfferTypePtr) ToDatabaseAccountOfferTypePtrOutput() Dat
 
 func (in *databaseAccountOfferTypePtr) ToDatabaseAccountOfferTypePtrOutputWithContext(ctx context.Context) DatabaseAccountOfferTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAccountOfferTypePtrOutput)
-}
-
-func (in *databaseAccountOfferTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccountOfferType] {
-	return pulumix.Output[*DatabaseAccountOfferType]{
-		OutputState: in.ToDatabaseAccountOfferTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default consistency level and configuration settings of the Cosmos DB account.
@@ -887,12 +862,6 @@ func (in *defaultConsistencyLevelPtr) ToDefaultConsistencyLevelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultConsistencyLevelPtrOutput)
 }
 
-func (in *defaultConsistencyLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultConsistencyLevel] {
-	return pulumix.Output[*DefaultConsistencyLevel]{
-		OutputState: in.ToDefaultConsistencyLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates what services are allowed to bypass firewall checks.
 type NetworkAclBypass string
 
@@ -1059,12 +1028,6 @@ func (in *networkAclBypassPtr) ToNetworkAclBypassPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkAclBypassPtrOutput)
 }
 
-func (in *networkAclBypassPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkAclBypass] {
-	return pulumix.Output[*NetworkAclBypass]{
-		OutputState: in.ToNetworkAclBypassPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether requests from Public Network are allowed
 type PublicNetworkAccess string
 
@@ -1229,12 +1192,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -1407,12 +1364,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the mode of the restore.
 type RestoreMode string
 
@@ -1575,12 +1526,6 @@ func (in *restoreModePtr) ToRestoreModePtrOutput() RestoreModePtrOutput {
 
 func (in *restoreModePtr) ToRestoreModePtrOutputWithContext(ctx context.Context) RestoreModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RestoreModePtrOutput)
-}
-
-func (in *restoreModePtr) ToOutput(ctx context.Context) pulumix.Output[*RestoreMode] {
-	return pulumix.Output[*RestoreMode]{
-		OutputState: in.ToRestoreModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the ServerVersion of an a MongoDB account.
@@ -1749,12 +1694,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutput() ServerVersionPtrOutput {
 
 func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Context) ServerVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
-}
-
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

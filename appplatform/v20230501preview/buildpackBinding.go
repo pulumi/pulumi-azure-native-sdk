@@ -88,6 +88,9 @@ func NewBuildpackBinding(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231201:BuildpackBinding"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240101preview:BuildpackBinding"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of address.
@@ -182,12 +181,6 @@ func (in *addressTypePtr) ToAddressTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(AddressTypePtrOutput)
 }
 
-func (in *addressTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddressType] {
-	return pulumix.Output[*AddressType]{
-		OutputState: in.ToAddressTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
 type DoubleEncryptionStatus string
 
@@ -354,12 +347,6 @@ func (in *doubleEncryptionStatusPtr) ToDoubleEncryptionStatusPtrOutput() DoubleE
 
 func (in *doubleEncryptionStatusPtr) ToDoubleEncryptionStatusPtrOutputWithContext(ctx context.Context) DoubleEncryptionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DoubleEncryptionStatusPtrOutput)
-}
-
-func (in *doubleEncryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DoubleEncryptionStatus] {
-	return pulumix.Output[*DoubleEncryptionStatus]{
-		OutputState: in.ToDoubleEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the stage.
@@ -530,12 +517,6 @@ func (in *notificationStageNamePtr) ToNotificationStageNamePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationStageNamePtrOutput)
 }
 
-func (in *notificationStageNamePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationStageName] {
-	return pulumix.Output[*NotificationStageName]{
-		OutputState: in.ToNotificationStageNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Order item type.
 type OrderItemType string
 
@@ -702,12 +683,6 @@ func (in *orderItemTypePtr) ToOrderItemTypePtrOutput() OrderItemTypePtrOutput {
 
 func (in *orderItemTypePtr) ToOrderItemTypePtrOutputWithContext(ctx context.Context) OrderItemTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrderItemTypePtrOutput)
-}
-
-func (in *orderItemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OrderItemType] {
-	return pulumix.Output[*OrderItemType]{
-		OutputState: in.ToOrderItemTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of product filter.
@@ -878,12 +853,6 @@ func (in *supportedFilterTypesPtr) ToSupportedFilterTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SupportedFilterTypesPtrOutput)
 }
 
-func (in *supportedFilterTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SupportedFilterTypes] {
-	return pulumix.Output[*SupportedFilterTypes]{
-		OutputState: in.ToSupportedFilterTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates Shipment Logistics type that the customer preferred.
 type TransportShipmentTypes string
 
@@ -1050,12 +1019,6 @@ func (in *transportShipmentTypesPtr) ToTransportShipmentTypesPtrOutput() Transpo
 
 func (in *transportShipmentTypesPtr) ToTransportShipmentTypesPtrOutputWithContext(ctx context.Context) TransportShipmentTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransportShipmentTypesPtrOutput)
-}
-
-func (in *transportShipmentTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportShipmentTypes] {
-	return pulumix.Output[*TransportShipmentTypes]{
-		OutputState: in.ToTransportShipmentTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

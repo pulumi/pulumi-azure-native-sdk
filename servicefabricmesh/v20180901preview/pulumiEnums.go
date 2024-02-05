@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the application-scoped volume kind.
@@ -203,12 +202,6 @@ func (in *autoScalingResourceMetricNamePtr) ToAutoScalingResourceMetricNamePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(AutoScalingResourceMetricNamePtrOutput)
 }
 
-func (in *autoScalingResourceMetricNamePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoScalingResourceMetricName] {
-	return pulumix.Output[*AutoScalingResourceMetricName]{
-		OutputState: in.ToAutoScalingResourceMetricNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of auto scaling trigger
 type AutoScalingTriggerKind string
 
@@ -391,12 +384,6 @@ func (in *headerMatchTypePtr) ToHeaderMatchTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(HeaderMatchTypePtrOutput)
 }
 
-func (in *headerMatchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HeaderMatchType] {
-	return pulumix.Output[*HeaderMatchType]{
-		OutputState: in.ToHeaderMatchTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of a Service Fabric container network.
 type NetworkKind string
 
@@ -573,12 +560,6 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(OperatingSystemTypePtrOutput)
 }
 
-func (in *operatingSystemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: in.ToOperatingSystemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // how to match value in the Uri
 type PathMatchType string
 
@@ -741,12 +722,6 @@ func (in *pathMatchTypePtr) ToPathMatchTypePtrOutput() PathMatchTypePtrOutput {
 
 func (in *pathMatchTypePtr) ToPathMatchTypePtrOutputWithContext(ctx context.Context) PathMatchTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PathMatchTypePtrOutput)
-}
-
-func (in *pathMatchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PathMatchType] {
-	return pulumix.Output[*PathMatchType]{
-		OutputState: in.ToPathMatchTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the kind of secret.
@@ -925,12 +900,6 @@ func (in *sizeTypesPtr) ToSizeTypesPtrOutputWithContext(ctx context.Context) Siz
 	return pulumi.ToOutputWithContext(ctx, in).(SizeTypesPtrOutput)
 }
 
-func (in *sizeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SizeTypes] {
-	return pulumix.Output[*SizeTypes]{
-		OutputState: in.ToSizeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provider of the volume.
 type VolumeProvider string
 
@@ -1094,12 +1063,6 @@ func (in *volumeProviderPtr) ToVolumeProviderPtrOutput() VolumeProviderPtrOutput
 
 func (in *volumeProviderPtr) ToVolumeProviderPtrOutputWithContext(ctx context.Context) VolumeProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeProviderPtrOutput)
-}
-
-func (in *volumeProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeProvider] {
-	return pulumix.Output[*VolumeProvider]{
-		OutputState: in.ToVolumeProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

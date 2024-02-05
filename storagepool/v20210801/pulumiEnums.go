@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Mode for Target connectivity.
@@ -175,12 +174,6 @@ func (in *iscsiTargetAclModePtr) ToIscsiTargetAclModePtrOutput() IscsiTargetAclM
 
 func (in *iscsiTargetAclModePtr) ToIscsiTargetAclModePtrOutputWithContext(ctx context.Context) IscsiTargetAclModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IscsiTargetAclModePtrOutput)
-}
-
-func (in *iscsiTargetAclModePtr) ToOutput(ctx context.Context) pulumix.Output[*IscsiTargetAclMode] {
-	return pulumix.Output[*IscsiTargetAclMode]{
-		OutputState: in.ToIscsiTargetAclModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

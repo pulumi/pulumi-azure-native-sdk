@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -179,12 +178,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
 type PublicNetworkAccessType string
 
@@ -353,12 +346,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
 type TpmAttestationAuthenticationType string
 
@@ -525,12 +512,6 @@ func (in *tpmAttestationAuthenticationTypePtr) ToTpmAttestationAuthenticationTyp
 
 func (in *tpmAttestationAuthenticationTypePtr) ToTpmAttestationAuthenticationTypePtrOutputWithContext(ctx context.Context) TpmAttestationAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TpmAttestationAuthenticationTypePtrOutput)
-}
-
-func (in *tpmAttestationAuthenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TpmAttestationAuthenticationType] {
-	return pulumix.Output[*TpmAttestationAuthenticationType]{
-		OutputState: in.ToTpmAttestationAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

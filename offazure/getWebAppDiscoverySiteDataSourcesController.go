@@ -13,6 +13,8 @@ import (
 
 // Method to get a Web app data source in site.
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupWebAppDiscoverySiteDataSourcesController(ctx *pulumi.Context, args *LookupWebAppDiscoverySiteDataSourcesControllerArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDiscoverySiteDataSourcesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDiscoverySiteDataSourcesControllerResult

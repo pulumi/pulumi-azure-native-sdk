@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
@@ -179,12 +178,6 @@ func (in *agentPoolModePtr) ToAgentPoolModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolModePtrOutput)
 }
 
-func (in *agentPoolModePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolMode] {
-	return pulumix.Output[*AgentPoolMode]{
-		OutputState: in.ToAgentPoolModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Agent Pool.
 type AgentPoolType string
 
@@ -353,12 +346,6 @@ func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolTypePtrOutput)
 }
 
-func (in *agentPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolType] {
-	return pulumix.Output[*AgentPoolType]{
-		OutputState: in.ToAgentPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tells whether the cluster is Running or Stopped
 type Code string
 
@@ -525,12 +512,6 @@ func (in *codePtr) ToCodePtrOutput() CodePtrOutput {
 
 func (in *codePtr) ToCodePtrOutputWithContext(ctx context.Context) CodePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CodePtrOutput)
-}
-
-func (in *codePtr) ToOutput(ctx context.Context) pulumix.Output[*Code] {
-	return pulumix.Output[*Code]{
-		OutputState: in.ToCodePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
@@ -705,12 +686,6 @@ func (in *gpuinstanceProfilePtr) ToGPUInstanceProfilePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GPUInstanceProfilePtrOutput)
 }
 
-func (in *gpuinstanceProfilePtr) ToOutput(ctx context.Context) pulumix.Output[*GPUInstanceProfile] {
-	return pulumix.Output[*GPUInstanceProfile]{
-		OutputState: in.ToGPUInstanceProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
 type KubeletDiskType string
 
@@ -879,12 +854,6 @@ func (in *kubeletDiskTypePtr) ToKubeletDiskTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(KubeletDiskTypePtrOutput)
 }
 
-func (in *kubeletDiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KubeletDiskType] {
-	return pulumix.Output[*KubeletDiskType]{
-		OutputState: in.ToKubeletDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
 type OSDiskType string
 
@@ -1051,12 +1020,6 @@ func (in *osdiskTypePtr) ToOSDiskTypePtrOutput() OSDiskTypePtrOutput {
 
 func (in *osdiskTypePtr) ToOSDiskTypePtrOutputWithContext(ctx context.Context) OSDiskTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSDiskTypePtrOutput)
-}
-
-func (in *osdiskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSDiskType] {
-	return pulumix.Output[*OSDiskType]{
-		OutputState: in.ToOSDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the OS SKU used by the agent pool. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated.
@@ -1229,12 +1192,6 @@ func (in *osskuPtr) ToOSSKUPtrOutputWithContext(ctx context.Context) OSSKUPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(OSSKUPtrOutput)
 }
 
-func (in *osskuPtr) ToOutput(ctx context.Context) pulumix.Output[*OSSKU] {
-	return pulumix.Output[*OSSKU]{
-		OutputState: in.ToOSSKUPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operating system type. The default is Linux.
 type OSType string
 
@@ -1401,12 +1358,6 @@ func (in *ostypePtr) ToOSTypePtrOutput() OSTypePtrOutput {
 
 func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
-}
-
-func (in *ostypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSType] {
-	return pulumix.Output[*OSType]{
-		OutputState: in.ToOSTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
@@ -1577,12 +1528,6 @@ func (in *scaleDownModePtr) ToScaleDownModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleDownModePtrOutput)
 }
 
-func (in *scaleDownModePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleDownMode] {
-	return pulumix.Output[*ScaleDownMode]{
-		OutputState: in.ToScaleDownModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
 type ScaleSetEvictionPolicy string
 
@@ -1749,12 +1694,6 @@ func (in *scaleSetEvictionPolicyPtr) ToScaleSetEvictionPolicyPtrOutput() ScaleSe
 
 func (in *scaleSetEvictionPolicyPtr) ToScaleSetEvictionPolicyPtrOutputWithContext(ctx context.Context) ScaleSetEvictionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetEvictionPolicyPtrOutput)
-}
-
-func (in *scaleSetEvictionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetEvictionPolicy] {
-	return pulumix.Output[*ScaleSetEvictionPolicy]{
-		OutputState: in.ToScaleSetEvictionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
@@ -1925,12 +1864,6 @@ func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetPriorityPtrOutput)
 }
 
-func (in *scaleSetPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetPriority] {
-	return pulumix.Output[*ScaleSetPriority]{
-		OutputState: in.ToScaleSetPriorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of workload a node can run.
 type WorkloadRuntime string
 
@@ -2097,12 +2030,6 @@ func (in *workloadRuntimePtr) ToWorkloadRuntimePtrOutput() WorkloadRuntimePtrOut
 
 func (in *workloadRuntimePtr) ToWorkloadRuntimePtrOutputWithContext(ctx context.Context) WorkloadRuntimePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadRuntimePtrOutput)
-}
-
-func (in *workloadRuntimePtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadRuntime] {
-	return pulumix.Output[*WorkloadRuntime]{
-		OutputState: in.ToWorkloadRuntimePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

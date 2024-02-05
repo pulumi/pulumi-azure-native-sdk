@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The allowed type DNS record types for this profile.
@@ -181,12 +180,6 @@ func (in *allowedEndpointRecordTypePtr) ToAllowedEndpointRecordTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AllowedEndpointRecordTypePtrOutput)
 }
 
-func (in *allowedEndpointRecordTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AllowedEndpointRecordType] {
-	return pulumix.Output[*AllowedEndpointRecordType]{
-		OutputState: in.ToAllowedEndpointRecordTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
 type AlwaysServe string
 
@@ -351,12 +344,6 @@ func (in *alwaysServePtr) ToAlwaysServePtrOutput() AlwaysServePtrOutput {
 
 func (in *alwaysServePtr) ToAlwaysServePtrOutputWithContext(ctx context.Context) AlwaysServePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlwaysServePtrOutput)
-}
-
-func (in *alwaysServePtr) ToOutput(ctx context.Context) pulumix.Output[*AlwaysServe] {
-	return pulumix.Output[*AlwaysServe]{
-		OutputState: in.ToAlwaysServePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The monitoring status of the endpoint.
@@ -535,12 +522,6 @@ func (in *endpointMonitorStatusPtr) ToEndpointMonitorStatusPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointMonitorStatusPtrOutput)
 }
 
-func (in *endpointMonitorStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointMonitorStatus] {
-	return pulumix.Output[*EndpointMonitorStatus]{
-		OutputState: in.ToEndpointMonitorStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
 type EndpointStatus string
 
@@ -705,12 +686,6 @@ func (in *endpointStatusPtr) ToEndpointStatusPtrOutput() EndpointStatusPtrOutput
 
 func (in *endpointStatusPtr) ToEndpointStatusPtrOutputWithContext(ctx context.Context) EndpointStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointStatusPtrOutput)
-}
-
-func (in *endpointStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointStatus] {
-	return pulumix.Output[*EndpointStatus]{
-		OutputState: in.ToEndpointStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
@@ -879,12 +854,6 @@ func (in *monitorProtocolPtr) ToMonitorProtocolPtrOutput() MonitorProtocolPtrOut
 
 func (in *monitorProtocolPtr) ToMonitorProtocolPtrOutputWithContext(ctx context.Context) MonitorProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonitorProtocolPtrOutput)
-}
-
-func (in *monitorProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*MonitorProtocol] {
-	return pulumix.Output[*MonitorProtocol]{
-		OutputState: in.ToMonitorProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The profile-level monitoring status of the Traffic Manager profile.
@@ -1059,12 +1028,6 @@ func (in *profileMonitorStatusPtr) ToProfileMonitorStatusPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileMonitorStatusPtrOutput)
 }
 
-func (in *profileMonitorStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileMonitorStatus] {
-	return pulumix.Output[*ProfileMonitorStatus]{
-		OutputState: in.ToProfileMonitorStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the Traffic Manager profile.
 type ProfileStatus string
 
@@ -1229,12 +1192,6 @@ func (in *profileStatusPtr) ToProfileStatusPtrOutput() ProfileStatusPtrOutput {
 
 func (in *profileStatusPtr) ToProfileStatusPtrOutputWithContext(ctx context.Context) ProfileStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProfileStatusPtrOutput)
-}
-
-func (in *profileStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ProfileStatus] {
-	return pulumix.Output[*ProfileStatus]{
-		OutputState: in.ToProfileStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The traffic routing method of the Traffic Manager profile.
@@ -1411,12 +1368,6 @@ func (in *trafficRoutingMethodPtr) ToTrafficRoutingMethodPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(TrafficRoutingMethodPtrOutput)
 }
 
-func (in *trafficRoutingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*TrafficRoutingMethod] {
-	return pulumix.Output[*TrafficRoutingMethod]{
-		OutputState: in.ToTrafficRoutingMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
 type TrafficViewEnrollmentStatus string
 
@@ -1581,12 +1532,6 @@ func (in *trafficViewEnrollmentStatusPtr) ToTrafficViewEnrollmentStatusPtrOutput
 
 func (in *trafficViewEnrollmentStatusPtr) ToTrafficViewEnrollmentStatusPtrOutputWithContext(ctx context.Context) TrafficViewEnrollmentStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrafficViewEnrollmentStatusPtrOutput)
-}
-
-func (in *trafficViewEnrollmentStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TrafficViewEnrollmentStatus] {
-	return pulumix.Output[*TrafficViewEnrollmentStatus]{
-		OutputState: in.ToTrafficViewEnrollmentStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

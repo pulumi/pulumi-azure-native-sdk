@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific database.
@@ -177,12 +176,6 @@ func (in *securityAlertPolicyStatePtr) ToSecurityAlertPolicyStatePtrOutput() Sec
 
 func (in *securityAlertPolicyStatePtr) ToSecurityAlertPolicyStatePtrOutputWithContext(ctx context.Context) SecurityAlertPolicyStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyStatePtrOutput)
-}
-
-func (in *securityAlertPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyState] {
-	return pulumix.Output[*SecurityAlertPolicyState]{
-		OutputState: in.ToSecurityAlertPolicyStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

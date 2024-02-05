@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The permissions assigned to the shared access policy.
@@ -203,12 +202,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
 }
 
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Rights that this key has.
 type AccessRightsDescription string
 
@@ -383,12 +376,6 @@ func (in *accessRightsDescriptionPtr) ToAccessRightsDescriptionPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsDescriptionPtrOutput)
 }
 
-func (in *accessRightsDescriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRightsDescription] {
-	return pulumix.Output[*AccessRightsDescription]{
-		OutputState: in.ToAccessRightsDescriptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allocation policy to be used by this provisioning service.
 type AllocationPolicy string
 
@@ -557,12 +544,6 @@ func (in *allocationPolicyPtr) ToAllocationPolicyPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationPolicyPtrOutput)
 }
 
-func (in *allocationPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationPolicy] {
-	return pulumix.Output[*AllocationPolicy]{
-		OutputState: in.ToAllocationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies authentication type being used for connecting to the storage account.
 type AuthenticationType string
 
@@ -727,12 +708,6 @@ func (in *authenticationTypePtr) ToAuthenticationTypePtrOutput() AuthenticationT
 
 func (in *authenticationTypePtr) ToAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationTypePtrOutput)
-}
-
-func (in *authenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationType] {
-	return pulumix.Output[*AuthenticationType]{
-		OutputState: in.ToAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The capabilities and features enabled for the IoT hub.
@@ -901,12 +876,6 @@ func (in *capabilitiesPtr) ToCapabilitiesPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CapabilitiesPtrOutput)
 }
 
-func (in *capabilitiesPtr) ToOutput(ctx context.Context) pulumix.Output[*Capabilities] {
-	return pulumix.Output[*Capabilities]{
-		OutputState: in.ToCapabilitiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default Action for Network Rule Set
 type DefaultAction string
 
@@ -1073,12 +1042,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sku name.
 type IotDpsSku string
 
@@ -1241,12 +1204,6 @@ func (in *iotDpsSkuPtr) ToIotDpsSkuPtrOutput() IotDpsSkuPtrOutput {
 
 func (in *iotDpsSkuPtr) ToIotDpsSkuPtrOutputWithContext(ctx context.Context) IotDpsSkuPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IotDpsSkuPtrOutput)
-}
-
-func (in *iotDpsSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*IotDpsSku] {
-	return pulumix.Output[*IotDpsSku]{
-		OutputState: in.ToIotDpsSkuPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the SKU.
@@ -1425,12 +1382,6 @@ func (in *iotHubSkuPtr) ToIotHubSkuPtrOutputWithContext(ctx context.Context) Iot
 	return pulumi.ToOutputWithContext(ctx, in).(IotHubSkuPtrOutput)
 }
 
-func (in *iotHubSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*IotHubSku] {
-	return pulumix.Output[*IotHubSku]{
-		OutputState: in.ToIotHubSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The desired action for requests captured by this rule.
 type IpFilterActionType string
 
@@ -1595,12 +1546,6 @@ func (in *ipFilterActionTypePtr) ToIpFilterActionTypePtrOutput() IpFilterActionT
 
 func (in *ipFilterActionTypePtr) ToIpFilterActionTypePtrOutputWithContext(ctx context.Context) IpFilterActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpFilterActionTypePtrOutput)
-}
-
-func (in *ipFilterActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpFilterActionType] {
-	return pulumix.Output[*IpFilterActionType]{
-		OutputState: in.ToIpFilterActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Target for requests captured by this rule.
@@ -1771,12 +1716,6 @@ func (in *ipFilterTargetTypePtr) ToIpFilterTargetTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IpFilterTargetTypePtrOutput)
 }
 
-func (in *ipFilterTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpFilterTargetType] {
-	return pulumix.Output[*IpFilterTargetType]{
-		OutputState: in.ToIpFilterTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IP Filter Action
 type NetworkRuleIPAction string
 
@@ -1939,12 +1878,6 @@ func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutput() NetworkRuleIP
 
 func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleIPActionPtrOutput)
-}
-
-func (in *networkRuleIPActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleIPAction] {
-	return pulumix.Output[*NetworkRuleIPAction]{
-		OutputState: in.ToNetworkRuleIPActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of a private endpoint connection
@@ -2117,12 +2050,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether requests from Public Network are allowed
 type PublicNetworkAccess string
 
@@ -2287,12 +2214,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -2463,12 +2384,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The source that the routing rule is to be applied to, such as DeviceMessages.
@@ -2647,12 +2562,6 @@ func (in *routingSourcePtr) ToRoutingSourcePtrOutput() RoutingSourcePtrOutput {
 
 func (in *routingSourcePtr) ToRoutingSourcePtrOutputWithContext(ctx context.Context) RoutingSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingSourcePtrOutput)
-}
-
-func (in *routingSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*RoutingSource] {
-	return pulumix.Output[*RoutingSource]{
-		OutputState: in.ToRoutingSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Current state of the provisioning service.
@@ -2839,12 +2748,6 @@ func (in *statePtr) ToStatePtrOutput() StatePtrOutput {
 
 func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
-}
-
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -181,12 +180,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Action to be taken when the operation fails for a object.
 type OnFailure string
 
@@ -351,12 +344,6 @@ func (in *onFailurePtr) ToOnFailurePtrOutputWithContext(ctx context.Context) OnF
 	return pulumi.ToOutputWithContext(ctx, in).(OnFailurePtrOutput)
 }
 
-func (in *onFailurePtr) ToOutput(ctx context.Context) pulumix.Output[*OnFailure] {
-	return pulumix.Output[*OnFailure]{
-		OutputState: in.ToOnFailurePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Action to be taken when the operation is successful for a object.
 type OnSuccess string
 
@@ -519,12 +506,6 @@ func (in *onSuccessPtr) ToOnSuccessPtrOutput() OnSuccessPtrOutput {
 
 func (in *onSuccessPtr) ToOnSuccessPtrOutputWithContext(ctx context.Context) OnSuccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OnSuccessPtrOutput)
-}
-
-func (in *onSuccessPtr) ToOutput(ctx context.Context) pulumix.Output[*OnSuccess] {
-	return pulumix.Output[*OnSuccess]{
-		OutputState: in.ToOnSuccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operation to be performed on the object.
@@ -701,12 +682,6 @@ func (in *storageTaskOperationNamePtr) ToStorageTaskOperationNamePtrOutput() Sto
 
 func (in *storageTaskOperationNamePtr) ToStorageTaskOperationNamePtrOutputWithContext(ctx context.Context) StorageTaskOperationNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTaskOperationNamePtrOutput)
-}
-
-func (in *storageTaskOperationNamePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageTaskOperationName] {
-	return pulumix.Output[*StorageTaskOperationName]{
-		OutputState: in.ToStorageTaskOperationNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

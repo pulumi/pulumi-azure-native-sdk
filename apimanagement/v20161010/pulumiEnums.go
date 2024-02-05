@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hostname type.
@@ -181,12 +180,6 @@ func (in *hostnameTypePtr) ToHostnameTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostnameTypePtrOutput)
 }
 
-func (in *hostnameTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostnameType] {
-	return pulumix.Output[*HostnameType]{
-		OutputState: in.ToHostnameTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Key to be used to generate token for user.
 type KeyTypeContract string
 
@@ -351,12 +344,6 @@ func (in *keyTypeContractPtr) ToKeyTypeContractPtrOutput() KeyTypeContractPtrOut
 
 func (in *keyTypeContractPtr) ToKeyTypeContractPtrOutputWithContext(ctx context.Context) KeyTypeContractPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypeContractPtrOutput)
-}
-
-func (in *keyTypeContractPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyTypeContract] {
-	return pulumix.Output[*KeyTypeContract]{
-		OutputState: in.ToKeyTypeContractPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the Sku.
@@ -527,12 +514,6 @@ func (in *skuTypePtr) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuType
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTypePtrOutput)
 }
 
-func (in *skuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
-	return pulumix.Output[*SkuType]{
-		OutputState: in.ToSkuTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
 type VirtualNetworkType string
 
@@ -699,12 +680,6 @@ func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutput() VirtualNetworkT
 
 func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkTypePtrOutput)
-}
-
-func (in *virtualNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkType] {
-	return pulumix.Output[*VirtualNetworkType]{
-		OutputState: in.ToVirtualNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

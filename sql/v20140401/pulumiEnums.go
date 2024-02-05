@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of administrator.
@@ -173,12 +172,6 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutput() AdministratorType
 
 func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
-}
-
-func (in *administratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdministratorType] {
-	return pulumix.Output[*AdministratorType]{
-		OutputState: in.ToAdministratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
@@ -347,12 +340,6 @@ func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutput() AutoExecuteStatus
 
 func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutputWithContext(ctx context.Context) AutoExecuteStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoExecuteStatusPtrOutput)
-}
-
-func (in *autoExecuteStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoExecuteStatus] {
-	return pulumix.Output[*AutoExecuteStatus]{
-		OutputState: in.ToAutoExecuteStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the mode of database creation.
@@ -549,12 +536,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The edition of the database. The DatabaseEditions enumeration contains all the valid editions. If createMode is NonReadableSecondary or OnlineSecondary, this value is ignored.
 //
 // The list of SKUs may vary by region and support offer. To determine the SKUs (including the SKU name, tier/edition, family, and capacity) that are available to your subscription in an Azure region, use the `Capabilities_ListByLocation` REST API or one of the following commands:
@@ -747,12 +728,6 @@ func (in *databaseEditionPtr) ToDatabaseEditionPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseEditionPtrOutput)
 }
 
-func (in *databaseEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseEdition] {
-	return pulumix.Output[*DatabaseEdition]{
-		OutputState: in.ToDatabaseEditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The edition of the elastic pool.
 type ElasticPoolEdition string
 
@@ -925,12 +900,6 @@ func (in *elasticPoolEditionPtr) ToElasticPoolEditionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ElasticPoolEditionPtrOutput)
 }
 
-func (in *elasticPoolEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*ElasticPoolEdition] {
-	return pulumix.Output[*ElasticPoolEdition]{
-		OutputState: in.ToElasticPoolEditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Conditional. If the database is a geo-secondary, readScale indicates whether read-only connections are allowed to this database or not. Not supported for DataWarehouse edition.
 type ReadScale string
 
@@ -1097,12 +1066,6 @@ func (in *readScalePtr) ToReadScalePtrOutputWithContext(ctx context.Context) Rea
 	return pulumi.ToOutputWithContext(ctx, in).(ReadScalePtrOutput)
 }
 
-func (in *readScalePtr) ToOutput(ctx context.Context) pulumix.Output[*ReadScale] {
-	return pulumix.Output[*ReadScale]{
-		OutputState: in.ToReadScalePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the name of the sample schema to apply when creating this database. If createMode is not Default, this value is ignored. Not supported for DataWarehouse edition.
 type SampleName string
 
@@ -1265,12 +1228,6 @@ func (in *sampleNamePtr) ToSampleNamePtrOutput() SampleNamePtrOutput {
 
 func (in *sampleNamePtr) ToSampleNamePtrOutputWithContext(ctx context.Context) SampleNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SampleNamePtrOutput)
-}
-
-func (in *sampleNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SampleName] {
-	return pulumix.Output[*SampleName]{
-		OutputState: in.ToSampleNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies that the alert is sent to the account administrators.
@@ -1437,12 +1394,6 @@ func (in *securityAlertPolicyEmailAccountAdminsPtr) ToSecurityAlertPolicyEmailAc
 
 func (in *securityAlertPolicyEmailAccountAdminsPtr) ToSecurityAlertPolicyEmailAccountAdminsPtrOutputWithContext(ctx context.Context) SecurityAlertPolicyEmailAccountAdminsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyEmailAccountAdminsPtrOutput)
-}
-
-func (in *securityAlertPolicyEmailAccountAdminsPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyEmailAccountAdmins] {
-	return pulumix.Output[*SecurityAlertPolicyEmailAccountAdmins]{
-		OutputState: in.ToSecurityAlertPolicyEmailAccountAdminsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the state of the policy. If state is Enabled, storageEndpoint and storageAccountAccessKey are required.
@@ -1613,12 +1564,6 @@ func (in *securityAlertPolicyStatePtr) ToSecurityAlertPolicyStatePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyStatePtrOutput)
 }
 
-func (in *securityAlertPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyState] {
-	return pulumix.Output[*SecurityAlertPolicyState]{
-		OutputState: in.ToSecurityAlertPolicyStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether to use the default server policy.
 type SecurityAlertPolicyUseServerDefault string
 
@@ -1785,12 +1730,6 @@ func (in *securityAlertPolicyUseServerDefaultPtr) ToSecurityAlertPolicyUseServer
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyUseServerDefaultPtrOutput)
 }
 
-func (in *securityAlertPolicyUseServerDefaultPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyUseServerDefault] {
-	return pulumix.Output[*SecurityAlertPolicyUseServerDefault]{
-		OutputState: in.ToSecurityAlertPolicyUseServerDefaultPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The version of the server.
 type ServerVersion string
 
@@ -1955,12 +1894,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutput() ServerVersionPtrOutput {
 
 func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Context) ServerVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
-}
-
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the configured service level objective of the database. This is the service level objective that is in the process of being applied to the database. Once successfully updated, it will match the value of serviceLevelObjective property.
@@ -2257,12 +2190,6 @@ func (in *serviceObjectiveNamePtr) ToServiceObjectiveNamePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceObjectiveNamePtrOutput)
 }
 
-func (in *serviceObjectiveNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceObjectiveName] {
-	return pulumix.Output[*ServiceObjectiveName]{
-		OutputState: in.ToServiceObjectiveNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the database transparent data encryption.
 type TransparentDataEncryptionStatus string
 
@@ -2427,12 +2354,6 @@ func (in *transparentDataEncryptionStatusPtr) ToTransparentDataEncryptionStatusP
 
 func (in *transparentDataEncryptionStatusPtr) ToTransparentDataEncryptionStatusPtrOutputWithContext(ctx context.Context) TransparentDataEncryptionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransparentDataEncryptionStatusPtrOutput)
-}
-
-func (in *transparentDataEncryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*TransparentDataEncryptionStatus] {
-	return pulumix.Output[*TransparentDataEncryptionStatus]{
-		OutputState: in.ToTransparentDataEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

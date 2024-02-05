@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The application source, what it affects, e.g. Assessments
@@ -174,12 +173,6 @@ func (in *applicationSourceResourceTypePtr) ToApplicationSourceResourceTypePtrOu
 
 func (in *applicationSourceResourceTypePtr) ToApplicationSourceResourceTypePtrOutputWithContext(ctx context.Context) ApplicationSourceResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationSourceResourceTypePtrOutput)
-}
-
-func (in *applicationSourceResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationSourceResourceType] {
-	return pulumix.Output[*ApplicationSourceResourceType]{
-		OutputState: in.ToApplicationSourceResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

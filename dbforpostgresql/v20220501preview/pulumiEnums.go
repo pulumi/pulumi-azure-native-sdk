@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // There are two types of migration modes Online and Offline
@@ -175,12 +174,6 @@ func (in *migrationModePtr) ToMigrationModePtrOutput() MigrationModePtrOutput {
 
 func (in *migrationModePtr) ToMigrationModePtrOutputWithContext(ctx context.Context) MigrationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MigrationModePtrOutput)
-}
-
-func (in *migrationModePtr) ToOutput(ctx context.Context) pulumix.Output[*MigrationMode] {
-	return pulumix.Output[*MigrationMode]{
-		OutputState: in.ToMigrationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

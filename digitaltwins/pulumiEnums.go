@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
@@ -175,12 +174,6 @@ func (in *authenticationTypePtr) ToAuthenticationTypePtrOutput() AuthenticationT
 
 func (in *authenticationTypePtr) ToAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationTypePtrOutput)
-}
-
-func (in *authenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationType] {
-	return pulumix.Output[*AuthenticationType]{
-		OutputState: in.ToAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of time series connection resource.
@@ -360,12 +353,6 @@ func (in *digitalTwinsIdentityTypePtr) ToDigitalTwinsIdentityTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DigitalTwinsIdentityTypePtrOutput)
 }
 
-func (in *digitalTwinsIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DigitalTwinsIdentityType] {
-	return pulumix.Output[*DigitalTwinsIdentityType]{
-		OutputState: in.ToDigitalTwinsIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of Digital Twins endpoint
 type EndpointType string
 
@@ -541,12 +528,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of a private endpoint connection.
 type PrivateLinkServiceConnectionStatus string
 
@@ -717,12 +698,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Public network access for the DigitalTwinsInstance.
 type PublicNetworkAccess string
 
@@ -889,12 +864,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether or not to record twin / relationship property and item removals, including removals of indexed or keyed values (such as map entries, array elements, etc.). This feature is de-activated unless explicitly set to 'true'. Setting this property to 'true' will generate an additional column in the property events table in ADX.
 type RecordPropertyAndItemRemovals string
 
@@ -1059,12 +1028,6 @@ func (in *recordPropertyAndItemRemovalsPtr) ToRecordPropertyAndItemRemovalsPtrOu
 
 func (in *recordPropertyAndItemRemovalsPtr) ToRecordPropertyAndItemRemovalsPtrOutputWithContext(ctx context.Context) RecordPropertyAndItemRemovalsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecordPropertyAndItemRemovalsPtrOutput)
-}
-
-func (in *recordPropertyAndItemRemovalsPtr) ToOutput(ctx context.Context) pulumix.Output[*RecordPropertyAndItemRemovals] {
-	return pulumix.Output[*RecordPropertyAndItemRemovals]{
-		OutputState: in.ToRecordPropertyAndItemRemovalsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

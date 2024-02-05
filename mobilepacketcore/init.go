@@ -21,8 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:mobilepacketcore:AmfDeployment":
+		r = &AmfDeployment{}
+	case "azure-native:mobilepacketcore:ClusterService":
+		r = &ClusterService{}
 	case "azure-native:mobilepacketcore:NetworkFunction":
 		r = &NetworkFunction{}
+	case "azure-native:mobilepacketcore:NrfDeployment":
+		r = &NrfDeployment{}
+	case "azure-native:mobilepacketcore:NssfDeployment":
+		r = &NssfDeployment{}
+	case "azure-native:mobilepacketcore:ObservabilityService":
+		r = &ObservabilityService{}
+	case "azure-native:mobilepacketcore:SmfDeployment":
+		r = &SmfDeployment{}
+	case "azure-native:mobilepacketcore:UpfDeployment":
+		r = &UpfDeployment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

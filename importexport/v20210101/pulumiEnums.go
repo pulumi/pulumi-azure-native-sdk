@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The drive's current state.
@@ -187,12 +186,6 @@ func (in *driveStatePtr) ToDriveStatePtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DriveStatePtrOutput)
 }
 
-func (in *driveStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DriveState] {
-	return pulumix.Output[*DriveState]{
-		OutputState: in.ToDriveStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of kek encryption key
 type EncryptionKekType string
 
@@ -357,12 +350,6 @@ func (in *encryptionKekTypePtr) ToEncryptionKekTypePtrOutput() EncryptionKekType
 
 func (in *encryptionKekTypePtr) ToEncryptionKekTypePtrOutputWithContext(ctx context.Context) EncryptionKekTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKekTypePtrOutput)
-}
-
-func (in *encryptionKekTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKekType] {
-	return pulumix.Output[*EncryptionKekType]{
-		OutputState: in.ToEncryptionKekTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

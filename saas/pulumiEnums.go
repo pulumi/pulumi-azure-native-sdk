@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Payment channel for the SaasSubscription.
@@ -175,12 +174,6 @@ func (in *paymentChannelTypePtr) ToPaymentChannelTypePtrOutput() PaymentChannelT
 
 func (in *paymentChannelTypePtr) ToPaymentChannelTypePtrOutputWithContext(ctx context.Context) PaymentChannelTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PaymentChannelTypePtrOutput)
-}
-
-func (in *paymentChannelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PaymentChannelType] {
-	return pulumix.Output[*PaymentChannelType]{
-		OutputState: in.ToPaymentChannelTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

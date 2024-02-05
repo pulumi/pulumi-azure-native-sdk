@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The authentication mode for the Batch account.
@@ -180,12 +179,6 @@ func (in *authenticationModePtr) ToAuthenticationModePtrOutput() AuthenticationM
 
 func (in *authenticationModePtr) ToAuthenticationModePtrOutputWithContext(ctx context.Context) AuthenticationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationModePtrOutput)
-}
-
-func (in *authenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMode] {
-	return pulumix.Output[*AuthenticationMode]{
-		OutputState: in.ToAuthenticationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthenticationModeArrayInput is an input type that accepts AuthenticationModeArray and AuthenticationModeArrayOutput values.
@@ -401,12 +394,6 @@ func (in *autoStorageAuthenticationModePtr) ToAutoStorageAuthenticationModePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(AutoStorageAuthenticationModePtrOutput)
 }
 
-func (in *autoStorageAuthenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoStorageAuthenticationMode] {
-	return pulumix.Output[*AutoStorageAuthenticationMode]{
-		OutputState: in.ToAutoStorageAuthenticationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default value is Pool. If the pool is running Windows a value of Task should be specified if stricter isolation between tasks is required. For example, if the task mutates the registry in a way which could impact other tasks, or if certificates have been specified on the pool which should not be accessible by normal tasks but should be accessible by start tasks.
 type AutoUserScope string
 
@@ -573,12 +560,6 @@ func (in *autoUserScopePtr) ToAutoUserScopePtrOutput() AutoUserScopePtrOutput {
 
 func (in *autoUserScopePtr) ToAutoUserScopePtrOutputWithContext(ctx context.Context) AutoUserScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoUserScopePtrOutput)
-}
-
-func (in *autoUserScopePtr) ToOutput(ctx context.Context) pulumix.Output[*AutoUserScope] {
-	return pulumix.Output[*AutoUserScope]{
-		OutputState: in.ToAutoUserScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CachingType string
@@ -751,12 +732,6 @@ func (in *cachingTypePtr) ToCachingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(CachingTypePtrOutput)
 }
 
-func (in *cachingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CachingType] {
-	return pulumix.Output[*CachingType]{
-		OutputState: in.ToCachingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 type CertificateStoreLocation string
 
@@ -923,12 +898,6 @@ func (in *certificateStoreLocationPtr) ToCertificateStoreLocationPtrOutput() Cer
 
 func (in *certificateStoreLocationPtr) ToCertificateStoreLocationPtrOutputWithContext(ctx context.Context) CertificateStoreLocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateStoreLocationPtrOutput)
-}
-
-func (in *certificateStoreLocationPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateStoreLocation] {
-	return pulumix.Output[*CertificateStoreLocation]{
-		OutputState: in.ToCertificateStoreLocationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type CertificateVisibility string
@@ -1099,12 +1068,6 @@ func (in *certificateVisibilityPtr) ToCertificateVisibilityPtrOutput() Certifica
 
 func (in *certificateVisibilityPtr) ToCertificateVisibilityPtrOutputWithContext(ctx context.Context) CertificateVisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateVisibilityPtrOutput)
-}
-
-func (in *certificateVisibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateVisibility] {
-	return pulumix.Output[*CertificateVisibility]{
-		OutputState: in.ToCertificateVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CertificateVisibilityArrayInput is an input type that accepts CertificateVisibilityArray and CertificateVisibilityArrayOutput values.
@@ -1326,12 +1289,6 @@ func (in *computeNodeDeallocationOptionPtr) ToComputeNodeDeallocationOptionPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeNodeDeallocationOptionPtrOutput)
 }
 
-func (in *computeNodeDeallocationOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeNodeDeallocationOption] {
-	return pulumix.Output[*ComputeNodeDeallocationOption]{
-		OutputState: in.ToComputeNodeDeallocationOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComputeNodeFillType string
 
 const (
@@ -1497,12 +1454,6 @@ func (in *computeNodeFillTypePtr) ToComputeNodeFillTypePtrOutput() ComputeNodeFi
 
 func (in *computeNodeFillTypePtr) ToComputeNodeFillTypePtrOutputWithContext(ctx context.Context) ComputeNodeFillTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComputeNodeFillTypePtrOutput)
-}
-
-func (in *computeNodeFillTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComputeNodeFillType] {
-	return pulumix.Output[*ComputeNodeFillType]{
-		OutputState: in.ToComputeNodeFillTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ContainerType string
@@ -1672,12 +1623,6 @@ func (in *containerTypePtr) ToContainerTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerTypePtrOutput)
 }
 
-func (in *containerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerType] {
-	return pulumix.Output[*ContainerType]{
-		OutputState: in.ToContainerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerWorkingDirectory string
 
 const (
@@ -1845,12 +1790,6 @@ func (in *containerWorkingDirectoryPtr) ToContainerWorkingDirectoryPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerWorkingDirectoryPtrOutput)
 }
 
-func (in *containerWorkingDirectoryPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerWorkingDirectory] {
-	return pulumix.Output[*ContainerWorkingDirectory]{
-		OutputState: in.ToContainerWorkingDirectoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 type DiffDiskPlacement string
 
@@ -2014,12 +1953,6 @@ func (in *diffDiskPlacementPtr) ToDiffDiskPlacementPtrOutput() DiffDiskPlacement
 
 func (in *diffDiskPlacementPtr) ToDiffDiskPlacementPtrOutputWithContext(ctx context.Context) DiffDiskPlacementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiffDiskPlacementPtrOutput)
-}
-
-func (in *diffDiskPlacementPtr) ToOutput(ctx context.Context) pulumix.Output[*DiffDiskPlacement] {
-	return pulumix.Output[*DiffDiskPlacement]{
-		OutputState: in.ToDiffDiskPlacementPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // If omitted, no disks on the compute nodes in the pool will be encrypted.
@@ -2188,12 +2121,6 @@ func (in *diskEncryptionTargetPtr) ToDiskEncryptionTargetPtrOutput() DiskEncrypt
 
 func (in *diskEncryptionTargetPtr) ToDiskEncryptionTargetPtrOutputWithContext(ctx context.Context) DiskEncryptionTargetPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskEncryptionTargetPtrOutput)
-}
-
-func (in *diskEncryptionTargetPtr) ToOutput(ctx context.Context) pulumix.Output[*DiskEncryptionTarget] {
-	return pulumix.Output[*DiskEncryptionTarget]{
-		OutputState: in.ToDiskEncryptionTargetPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DiskEncryptionTargetArrayInput is an input type that accepts DiskEncryptionTargetArray and DiskEncryptionTargetArrayOutput values.
@@ -2408,12 +2335,6 @@ func (in *dynamicVNetAssignmentScopePtr) ToDynamicVNetAssignmentScopePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicVNetAssignmentScopePtrOutput)
 }
 
-func (in *dynamicVNetAssignmentScopePtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicVNetAssignmentScope] {
-	return pulumix.Output[*DynamicVNetAssignmentScope]{
-		OutputState: in.ToDynamicVNetAssignmentScopePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
 type ElevationLevel string
 
@@ -2582,12 +2503,6 @@ func (in *elevationLevelPtr) ToElevationLevelPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ElevationLevelPtrOutput)
 }
 
-func (in *elevationLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ElevationLevel] {
-	return pulumix.Output[*ElevationLevel]{
-		OutputState: in.ToElevationLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled.
 type EndpointAccessDefaultAction string
 
@@ -2754,12 +2669,6 @@ func (in *endpointAccessDefaultActionPtr) ToEndpointAccessDefaultActionPtrOutput
 
 func (in *endpointAccessDefaultActionPtr) ToEndpointAccessDefaultActionPtrOutputWithContext(ctx context.Context) EndpointAccessDefaultActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointAccessDefaultActionPtrOutput)
-}
-
-func (in *endpointAccessDefaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointAccessDefaultAction] {
-	return pulumix.Output[*EndpointAccessDefaultAction]{
-		OutputState: in.ToEndpointAccessDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default value is BatchManaged
@@ -2933,12 +2842,6 @@ func (in *ipaddressProvisioningTypePtr) ToIPAddressProvisioningTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(IPAddressProvisioningTypePtrOutput)
 }
 
-func (in *ipaddressProvisioningTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IPAddressProvisioningType] {
-	return pulumix.Output[*IPAddressProvisioningType]{
-		OutputState: in.ToIPAddressProvisioningTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Action when client IP address is matched.
 type IPRuleAction string
 
@@ -3102,12 +3005,6 @@ func (in *ipruleActionPtr) ToIPRuleActionPtrOutput() IPRuleActionPtrOutput {
 
 func (in *ipruleActionPtr) ToIPRuleActionPtrOutputWithContext(ctx context.Context) IPRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPRuleActionPtrOutput)
-}
-
-func (in *ipruleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPRuleAction] {
-	return pulumix.Output[*IPRuleAction]{
-		OutputState: in.ToIPRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type InboundEndpointProtocol string
@@ -3275,12 +3172,6 @@ func (in *inboundEndpointProtocolPtr) ToInboundEndpointProtocolPtrOutput() Inbou
 
 func (in *inboundEndpointProtocolPtr) ToInboundEndpointProtocolPtrOutputWithContext(ctx context.Context) InboundEndpointProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InboundEndpointProtocolPtrOutput)
-}
-
-func (in *inboundEndpointProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*InboundEndpointProtocol] {
-	return pulumix.Output[*InboundEndpointProtocol]{
-		OutputState: in.ToInboundEndpointProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This imposes restrictions on which nodes can be assigned to the pool. Enabling this value can reduce the chance of the requested number of nodes to be allocated in the pool. If not specified, this value defaults to 'Disabled'.
@@ -3451,12 +3342,6 @@ func (in *interNodeCommunicationStatePtr) ToInterNodeCommunicationStatePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(InterNodeCommunicationStatePtrOutput)
 }
 
-func (in *interNodeCommunicationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*InterNodeCommunicationState] {
-	return pulumix.Output[*InterNodeCommunicationState]{
-		OutputState: in.ToInterNodeCommunicationStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the key source.
 type KeySource string
 
@@ -3623,12 +3508,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
-}
-
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
@@ -3799,12 +3678,6 @@ func (in *loginModePtr) ToLoginModePtrOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, in).(LoginModePtrOutput)
 }
 
-func (in *loginModePtr) ToOutput(ctx context.Context) pulumix.Output[*LoginMode] {
-	return pulumix.Output[*LoginMode]{
-		OutputState: in.ToLoginModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkSecurityGroupRuleAccess string
 
 const (
@@ -3970,12 +3843,6 @@ func (in *networkSecurityGroupRuleAccessPtr) ToNetworkSecurityGroupRuleAccessPtr
 
 func (in *networkSecurityGroupRuleAccessPtr) ToNetworkSecurityGroupRuleAccessPtrOutputWithContext(ctx context.Context) NetworkSecurityGroupRuleAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkSecurityGroupRuleAccessPtrOutput)
-}
-
-func (in *networkSecurityGroupRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkSecurityGroupRuleAccess] {
-	return pulumix.Output[*NetworkSecurityGroupRuleAccess]{
-		OutputState: in.ToNetworkSecurityGroupRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // If omitted, the default value is Default.
@@ -4149,12 +4016,6 @@ func (in *nodeCommunicationModePtr) ToNodeCommunicationModePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(NodeCommunicationModePtrOutput)
 }
 
-func (in *nodeCommunicationModePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeCommunicationMode] {
-	return pulumix.Output[*NodeCommunicationMode]{
-		OutputState: in.ToNodeCommunicationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Allocation policy used by Batch Service to provision the nodes. If not specified, Batch will use the regional policy.
 type NodePlacementPolicyType string
 
@@ -4321,12 +4182,6 @@ func (in *nodePlacementPolicyTypePtr) ToNodePlacementPolicyTypePtrOutput() NodeP
 
 func (in *nodePlacementPolicyTypePtr) ToNodePlacementPolicyTypePtrOutputWithContext(ctx context.Context) NodePlacementPolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NodePlacementPolicyTypePtrOutput)
-}
-
-func (in *nodePlacementPolicyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NodePlacementPolicyType] {
-	return pulumix.Output[*NodePlacementPolicyType]{
-		OutputState: in.ToNodePlacementPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
@@ -4497,12 +4352,6 @@ func (in *poolAllocationModePtr) ToPoolAllocationModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(PoolAllocationModePtrOutput)
 }
 
-func (in *poolAllocationModePtr) ToOutput(ctx context.Context) pulumix.Output[*PoolAllocationMode] {
-	return pulumix.Output[*PoolAllocationMode]{
-		OutputState: in.ToPoolAllocationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the Batch Pool.
 type PoolIdentityType string
 
@@ -4671,12 +4520,6 @@ func (in *poolIdentityTypePtr) ToPoolIdentityTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(PoolIdentityTypePtrOutput)
 }
 
-func (in *poolIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PoolIdentityType] {
-	return pulumix.Output[*PoolIdentityType]{
-		OutputState: in.ToPoolIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If not specified, the default value is 'enabled'.
 type PublicNetworkAccessType string
 
@@ -4843,12 +4686,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutput() Publi
 
 func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
-}
-
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for the Batch account.
@@ -5022,12 +4859,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityTypes string
 
 const (
@@ -5190,12 +5021,6 @@ func (in *securityTypesPtr) ToSecurityTypesPtrOutput() SecurityTypesPtrOutput {
 
 func (in *securityTypesPtr) ToSecurityTypesPtrOutputWithContext(ctx context.Context) SecurityTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityTypesPtrOutput)
-}
-
-func (in *securityTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityTypes] {
-	return pulumix.Output[*SecurityTypes]{
-		OutputState: in.ToSecurityTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type StorageAccountType string
@@ -5366,12 +5191,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutput() StorageAccountT
 
 func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx context.Context) StorageAccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
-}
-
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

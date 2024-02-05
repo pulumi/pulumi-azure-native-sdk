@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type DaysOfWeek string
@@ -186,12 +185,6 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
 }
 
-func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The directory type.
 type DirectoryType string
 
@@ -354,12 +347,6 @@ func (in *directoryTypePtr) ToDirectoryTypePtrOutput() DirectoryTypePtrOutput {
 
 func (in *directoryTypePtr) ToDirectoryTypePtrOutputWithContext(ctx context.Context) DirectoryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DirectoryTypePtrOutput)
-}
-
-func (in *directoryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DirectoryType] {
-	return pulumix.Output[*DirectoryType]{
-		OutputState: in.ToDirectoryTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Algorithm identifier for encryption, default RSA-OAEP.
@@ -530,12 +517,6 @@ func (in *jsonWebKeyEncryptionAlgorithmPtr) ToJsonWebKeyEncryptionAlgorithmPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(JsonWebKeyEncryptionAlgorithmPtrOutput)
 }
 
-func (in *jsonWebKeyEncryptionAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*JsonWebKeyEncryptionAlgorithm] {
-	return pulumix.Output[*JsonWebKeyEncryptionAlgorithm]{
-		OutputState: in.ToJsonWebKeyEncryptionAlgorithmPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of operating system.
 type OSType string
 
@@ -700,12 +681,6 @@ func (in *ostypePtr) ToOSTypePtrOutput() OSTypePtrOutput {
 
 func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
-}
-
-func (in *ostypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSType] {
-	return pulumix.Output[*OSType]{
-		OutputState: in.ToOSTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The method that private IP address is allocated.
@@ -874,12 +849,6 @@ func (in *privateIPAllocationMethodPtr) ToPrivateIPAllocationMethodPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateIPAllocationMethodPtrOutput)
 }
 
-func (in *privateIPAllocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateIPAllocationMethod] {
-	return pulumix.Output[*PrivateIPAllocationMethod]{
-		OutputState: in.ToPrivateIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether or not private link is enabled.
 type PrivateLink string
 
@@ -1044,12 +1013,6 @@ func (in *privateLinkPtr) ToPrivateLinkPtrOutput() PrivateLinkPtrOutput {
 
 func (in *privateLinkPtr) ToPrivateLinkPtrOutputWithContext(ctx context.Context) PrivateLinkPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkPtrOutput)
-}
-
-func (in *privateLinkPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLink] {
-	return pulumix.Output[*PrivateLink]{
-		OutputState: in.ToPrivateLinkPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The concrete private link service connection.
@@ -1222,12 +1185,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
 type ResourceIdentityType string
 
@@ -1398,12 +1355,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction for the resource provider connection.
 type ResourceProviderConnection string
 
@@ -1570,12 +1521,6 @@ func (in *resourceProviderConnectionPtr) ToResourceProviderConnectionPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceProviderConnectionPtrOutput)
 }
 
-func (in *resourceProviderConnectionPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceProviderConnection] {
-	return pulumix.Output[*ResourceProviderConnection]{
-		OutputState: in.ToResourceProviderConnectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The cluster tier.
 type Tier string
 
@@ -1740,12 +1685,6 @@ func (in *tierPtr) ToTierPtrOutput() TierPtrOutput {
 
 func (in *tierPtr) ToTierPtrOutputWithContext(ctx context.Context) TierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TierPtrOutput)
-}
-
-func (in *tierPtr) ToOutput(ctx context.Context) pulumix.Output[*Tier] {
-	return pulumix.Output[*Tier]{
-		OutputState: in.ToTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the assessment mode.
@@ -177,12 +176,6 @@ func (in *assessmentModeTypesPtr) ToAssessmentModeTypesPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentModeTypesPtrOutput)
 }
 
-func (in *assessmentModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentModeTypes] {
-	return pulumix.Output[*AssessmentModeTypes]{
-		OutputState: in.ToAssessmentModeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the license core type (pCore or vCore).
 type LicenseCoreType string
 
@@ -347,12 +340,6 @@ func (in *licenseCoreTypePtr) ToLicenseCoreTypePtrOutput() LicenseCoreTypePtrOut
 
 func (in *licenseCoreTypePtr) ToLicenseCoreTypePtrOutputWithContext(ctx context.Context) LicenseCoreTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseCoreTypePtrOutput)
-}
-
-func (in *licenseCoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseCoreType] {
-	return pulumix.Output[*LicenseCoreType]{
-		OutputState: in.ToLicenseCoreTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the edition of the license. The values are either Standard or Datacenter.
@@ -521,12 +508,6 @@ func (in *licenseEditionPtr) ToLicenseEditionPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseEditionPtrOutput)
 }
 
-func (in *licenseEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseEdition] {
-	return pulumix.Output[*LicenseEdition]{
-		OutputState: in.ToLicenseEditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the state of the license.
 type LicenseStateEnum string
 
@@ -691,12 +672,6 @@ func (in *licenseStateEnumPtr) ToLicenseStateEnumPtrOutput() LicenseStateEnumPtr
 
 func (in *licenseStateEnumPtr) ToLicenseStateEnumPtrOutputWithContext(ctx context.Context) LicenseStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseStateEnumPtrOutput)
-}
-
-func (in *licenseStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseStateEnum] {
-	return pulumix.Output[*LicenseStateEnum]{
-		OutputState: in.ToLicenseStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the license target server.
@@ -865,12 +840,6 @@ func (in *licenseTargetPtr) ToLicenseTargetPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseTargetPtrOutput)
 }
 
-func (in *licenseTargetPtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseTarget] {
-	return pulumix.Output[*LicenseTarget]{
-		OutputState: in.ToLicenseTargetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the license resource.
 type LicenseType string
 
@@ -1033,12 +1002,6 @@ func (in *licenseTypePtr) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
 
 func (in *licenseTypePtr) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypePtrOutput)
-}
-
-func (in *licenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LicenseType] {
-	return pulumix.Output[*LicenseType]{
-		OutputState: in.ToLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the patch mode.
@@ -1211,12 +1174,6 @@ func (in *patchModeTypesPtr) ToPatchModeTypesPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(PatchModeTypesPtrOutput)
 }
 
-func (in *patchModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*PatchModeTypes] {
-	return pulumix.Output[*PatchModeTypes]{
-		OutputState: in.ToPatchModeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 type PublicNetworkAccessType string
 
@@ -1385,12 +1342,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1553,12 +1504,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The level code.
@@ -1727,12 +1672,6 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutput() StatusLevelTypesPtr
 
 func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx context.Context) StatusLevelTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusLevelTypesPtrOutput)
-}
-
-func (in *statusLevelTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusLevelTypes] {
-	return pulumix.Output[*StatusLevelTypes]{
-		OutputState: in.ToStatusLevelTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode to create a new MySQL server.
@@ -181,12 +180,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
 type DataEncryptionType string
 
@@ -353,12 +346,6 @@ func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(DataEncryptionTypePtrOutput)
 }
 
-func (in *dataEncryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
-	return pulumix.Output[*DataEncryptionType]{
-		OutputState: in.ToDataEncryptionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable Log On Disk or not.
 type EnableStatusEnum string
 
@@ -523,12 +510,6 @@ func (in *enableStatusEnumPtr) ToEnableStatusEnumPtrOutput() EnableStatusEnumPtr
 
 func (in *enableStatusEnumPtr) ToEnableStatusEnumPtrOutputWithContext(ctx context.Context) EnableStatusEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnableStatusEnumPtrOutput)
-}
-
-func (in *enableStatusEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableStatusEnum] {
-	return pulumix.Output[*EnableStatusEnum]{
-		OutputState: in.ToEnableStatusEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // High availability mode for a server.
@@ -699,12 +680,6 @@ func (in *highAvailabilityModePtr) ToHighAvailabilityModePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(HighAvailabilityModePtrOutput)
 }
 
-func (in *highAvailabilityModePtr) ToOutput(ctx context.Context) pulumix.Output[*HighAvailabilityMode] {
-	return pulumix.Output[*HighAvailabilityMode]{
-		OutputState: in.ToHighAvailabilityModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity.
 type ManagedServiceIdentityType string
 
@@ -867,12 +842,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -1043,12 +1012,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The replication role.
 type ReplicationRole string
 
@@ -1217,12 +1180,6 @@ func (in *replicationRolePtr) ToReplicationRolePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationRolePtrOutput)
 }
 
-func (in *replicationRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
-	return pulumix.Output[*ReplicationRole]{
-		OutputState: in.ToReplicationRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Server version.
 type ServerVersion string
 
@@ -1387,12 +1344,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutput() ServerVersionPtrOutput {
 
 func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Context) ServerVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
-}
-
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The tier of the particular SKU, e.g. GeneralPurpose.
@@ -1561,12 +1512,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

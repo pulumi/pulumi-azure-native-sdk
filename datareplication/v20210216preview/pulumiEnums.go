@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the type of vault.
@@ -175,12 +174,6 @@ func (in *replicationVaultTypePtr) ToReplicationVaultTypePtrOutput() Replication
 
 func (in *replicationVaultTypePtr) ToReplicationVaultTypePtrOutputWithContext(ctx context.Context) ReplicationVaultTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationVaultTypePtrOutput)
-}
-
-func (in *replicationVaultTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationVaultType] {
-	return pulumix.Output[*ReplicationVaultType]{
-		OutputState: in.ToReplicationVaultTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the selection type of the NIC.
@@ -351,12 +344,6 @@ func (in *vmnicSelectionPtr) ToVMNicSelectionPtrOutput() VMNicSelectionPtrOutput
 
 func (in *vmnicSelectionPtr) ToVMNicSelectionPtrOutputWithContext(ctx context.Context) VMNicSelectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VMNicSelectionPtrOutput)
-}
-
-func (in *vmnicSelectionPtr) ToOutput(ctx context.Context) pulumix.Output[*VMNicSelection] {
-	return pulumix.Output[*VMNicSelection]{
-		OutputState: in.ToVMNicSelectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

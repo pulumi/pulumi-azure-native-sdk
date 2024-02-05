@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Alert detail
@@ -177,12 +176,6 @@ func (in *alertDetailPtr) ToAlertDetailPtrOutput() AlertDetailPtrOutput {
 
 func (in *alertDetailPtr) ToAlertDetailPtrOutputWithContext(ctx context.Context) AlertDetailPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertDetailPtrOutput)
-}
-
-func (in *alertDetailPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertDetail] {
-	return pulumix.Output[*AlertDetail]{
-		OutputState: in.ToAlertDetailPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the alert rule
@@ -369,12 +362,6 @@ func (in *alertSeverityPtr) ToAlertSeverityPtrOutput() AlertSeverityPtrOutput {
 
 func (in *alertSeverityPtr) ToAlertSeverityPtrOutputWithContext(ctx context.Context) AlertSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertSeverityPtrOutput)
-}
-
-func (in *alertSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertSeverity] {
-	return pulumix.Output[*AlertSeverity]{
-		OutputState: in.ToAlertSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The severity for alerts created by this alert rule.
@@ -571,12 +558,6 @@ func (in *attackTacticPtr) ToAttackTacticPtrOutput() AttackTacticPtrOutput {
 
 func (in *attackTacticPtr) ToAttackTacticPtrOutputWithContext(ctx context.Context) AttackTacticPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AttackTacticPtrOutput)
-}
-
-func (in *attackTacticPtr) ToOutput(ctx context.Context) pulumix.Output[*AttackTactic] {
-	return pulumix.Output[*AttackTactic]{
-		OutputState: in.ToAttackTacticPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The V3 type of the mapped entity
@@ -795,12 +776,6 @@ func (in *entityMappingTypePtr) ToEntityMappingTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(EntityMappingTypePtrOutput)
 }
 
-func (in *entityMappingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityMappingType] {
-	return pulumix.Output[*EntityMappingType]{
-		OutputState: in.ToEntityMappingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The entity query kind
 type EntityTimelineKind string
 
@@ -970,12 +945,6 @@ func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutput() EntityTimelineK
 
 func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutputWithContext(ctx context.Context) EntityTimelineKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTimelineKindPtrOutput)
-}
-
-func (in *entityTimelineKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTimelineKind] {
-	return pulumix.Output[*EntityTimelineKind]{
-		OutputState: in.ToEntityTimelineKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
@@ -1149,12 +1118,6 @@ func (in *matchingMethodPtr) ToMatchingMethodPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(MatchingMethodPtrOutput)
 }
 
-func (in *matchingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*MatchingMethod] {
-	return pulumix.Output[*MatchingMethod]{
-		OutputState: in.ToMatchingMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The source of the watchlist
 type Source string
 
@@ -1319,12 +1282,6 @@ func (in *sourcePtr) ToSourcePtrOutput() SourcePtrOutput {
 
 func (in *sourcePtr) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourcePtrOutput)
-}
-
-func (in *sourcePtr) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: in.ToSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

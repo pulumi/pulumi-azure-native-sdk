@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The mode to create a new PostgreSQL server.
@@ -179,12 +178,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Geo Backup redundancy option
 type GeoRedundantBackupOption string
 
@@ -349,12 +342,6 @@ func (in *geoRedundantBackupOptionPtr) ToGeoRedundantBackupOptionPtrOutput() Geo
 
 func (in *geoRedundantBackupOptionPtr) ToGeoRedundantBackupOptionPtrOutputWithContext(ctx context.Context) GeoRedundantBackupOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GeoRedundantBackupOptionPtrOutput)
-}
-
-func (in *geoRedundantBackupOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoRedundantBackupOption] {
-	return pulumix.Output[*GeoRedundantBackupOption]{
-		OutputState: in.ToGeoRedundantBackupOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // stand by count value can be either enabled or disabled
@@ -523,12 +510,6 @@ func (in *haenabledEnumPtr) ToHAEnabledEnumPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(HAEnabledEnumPtrOutput)
 }
 
-func (in *haenabledEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*HAEnabledEnum] {
-	return pulumix.Output[*HAEnabledEnum]{
-		OutputState: in.ToHAEnabledEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -691,12 +672,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PostgreSQL Server version.
@@ -865,12 +840,6 @@ func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVersionPtrOutput)
 }
 
-func (in *serverVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVersion] {
-	return pulumix.Output[*ServerVersion]{
-		OutputState: in.ToServerVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the particular SKU, e.g. Burstable.
 type SkuTier string
 
@@ -1037,12 +1006,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

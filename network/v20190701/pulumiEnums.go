@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The DH Group used in IKE Phase 1 for initial SA.
@@ -189,12 +188,6 @@ func (in *dhGroupPtr) ToDhGroupPtrOutputWithContext(ctx context.Context) DhGroup
 	return pulumi.ToOutputWithContext(ctx, in).(DhGroupPtrOutput)
 }
 
-func (in *dhGroupPtr) ToOutput(ctx context.Context) pulumix.Output[*DhGroup] {
-	return pulumix.Output[*DhGroup]{
-		OutputState: in.ToDhGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IKE encryption algorithm (IKE phase 2).
 type IkeEncryption string
 
@@ -371,12 +364,6 @@ func (in *ikeEncryptionPtr) ToIkeEncryptionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IkeEncryptionPtrOutput)
 }
 
-func (in *ikeEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*IkeEncryption] {
-	return pulumix.Output[*IkeEncryption]{
-		OutputState: in.ToIkeEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IKE integrity algorithm (IKE phase 2).
 type IkeIntegrity string
 
@@ -549,12 +536,6 @@ func (in *ikeIntegrityPtr) ToIkeIntegrityPtrOutput() IkeIntegrityPtrOutput {
 
 func (in *ikeIntegrityPtr) ToIkeIntegrityPtrOutputWithContext(ctx context.Context) IkeIntegrityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IkeIntegrityPtrOutput)
-}
-
-func (in *ikeIntegrityPtr) ToOutput(ctx context.Context) pulumix.Output[*IkeIntegrity] {
-	return pulumix.Output[*IkeIntegrity]{
-		OutputState: in.ToIkeIntegrityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The IPSec encryption algorithm (IKE phase 1).
@@ -737,12 +718,6 @@ func (in *ipsecEncryptionPtr) ToIpsecEncryptionPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(IpsecEncryptionPtrOutput)
 }
 
-func (in *ipsecEncryptionPtr) ToOutput(ctx context.Context) pulumix.Output[*IpsecEncryption] {
-	return pulumix.Output[*IpsecEncryption]{
-		OutputState: in.ToIpsecEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IPSec integrity algorithm (IKE phase 1).
 type IpsecIntegrity string
 
@@ -915,12 +890,6 @@ func (in *ipsecIntegrityPtr) ToIpsecIntegrityPtrOutput() IpsecIntegrityPtrOutput
 
 func (in *ipsecIntegrityPtr) ToIpsecIntegrityPtrOutputWithContext(ctx context.Context) IpsecIntegrityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IpsecIntegrityPtrOutput)
-}
-
-func (in *ipsecIntegrityPtr) ToOutput(ctx context.Context) pulumix.Output[*IpsecIntegrity] {
-	return pulumix.Output[*IpsecIntegrity]{
-		OutputState: in.ToIpsecIntegrityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The Pfs Group used in IKE Phase 2 for new child SA.
@@ -1103,12 +1072,6 @@ func (in *pfsGroupPtr) ToPfsGroupPtrOutputWithContext(ctx context.Context) PfsGr
 	return pulumi.ToOutputWithContext(ctx, in).(PfsGroupPtrOutput)
 }
 
-func (in *pfsGroupPtr) ToOutput(ctx context.Context) pulumix.Output[*PfsGroup] {
-	return pulumix.Output[*PfsGroup]{
-		OutputState: in.ToPfsGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VPN protocol enabled for the P2SVpnServerConfiguration.
 type VpnGatewayTunnelingProtocol string
 
@@ -1273,12 +1236,6 @@ func (in *vpnGatewayTunnelingProtocolPtr) ToVpnGatewayTunnelingProtocolPtrOutput
 
 func (in *vpnGatewayTunnelingProtocolPtr) ToVpnGatewayTunnelingProtocolPtrOutputWithContext(ctx context.Context) VpnGatewayTunnelingProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VpnGatewayTunnelingProtocolPtrOutput)
-}
-
-func (in *vpnGatewayTunnelingProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*VpnGatewayTunnelingProtocol] {
-	return pulumix.Output[*VpnGatewayTunnelingProtocol]{
-		OutputState: in.ToVpnGatewayTunnelingProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of Actions.
@@ -1449,12 +1406,6 @@ func (in *webApplicationFirewallActionPtr) ToWebApplicationFirewallActionPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallActionPtrOutput)
 }
 
-func (in *webApplicationFirewallActionPtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallAction] {
-	return pulumix.Output[*WebApplicationFirewallAction]{
-		OutputState: in.ToWebApplicationFirewallActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if the policy is in enabled state or disabled state.
 type WebApplicationFirewallEnabledState string
 
@@ -1619,12 +1570,6 @@ func (in *webApplicationFirewallEnabledStatePtr) ToWebApplicationFirewallEnabled
 
 func (in *webApplicationFirewallEnabledStatePtr) ToWebApplicationFirewallEnabledStatePtrOutputWithContext(ctx context.Context) WebApplicationFirewallEnabledStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallEnabledStatePtrOutput)
-}
-
-func (in *webApplicationFirewallEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallEnabledState] {
-	return pulumix.Output[*WebApplicationFirewallEnabledState]{
-		OutputState: in.ToWebApplicationFirewallEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Match Variable.
@@ -1805,12 +1750,6 @@ func (in *webApplicationFirewallMatchVariablePtr) ToWebApplicationFirewallMatchV
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallMatchVariablePtrOutput)
 }
 
-func (in *webApplicationFirewallMatchVariablePtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallMatchVariable] {
-	return pulumix.Output[*WebApplicationFirewallMatchVariable]{
-		OutputState: in.ToWebApplicationFirewallMatchVariablePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes if it is in detection mode or prevention mode at policy level.
 type WebApplicationFirewallMode string
 
@@ -1975,12 +1914,6 @@ func (in *webApplicationFirewallModePtr) ToWebApplicationFirewallModePtrOutput()
 
 func (in *webApplicationFirewallModePtr) ToWebApplicationFirewallModePtrOutputWithContext(ctx context.Context) WebApplicationFirewallModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallModePtrOutput)
-}
-
-func (in *webApplicationFirewallModePtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallMode] {
-	return pulumix.Output[*WebApplicationFirewallMode]{
-		OutputState: in.ToWebApplicationFirewallModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes operator to be matched.
@@ -2165,12 +2098,6 @@ func (in *webApplicationFirewallOperatorPtr) ToWebApplicationFirewallOperatorPtr
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallOperatorPtrOutput)
 }
 
-func (in *webApplicationFirewallOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallOperator] {
-	return pulumix.Output[*WebApplicationFirewallOperator]{
-		OutputState: in.ToWebApplicationFirewallOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes type of rule.
 type WebApplicationFirewallRuleType string
 
@@ -2335,12 +2262,6 @@ func (in *webApplicationFirewallRuleTypePtr) ToWebApplicationFirewallRuleTypePtr
 
 func (in *webApplicationFirewallRuleTypePtr) ToWebApplicationFirewallRuleTypePtrOutputWithContext(ctx context.Context) WebApplicationFirewallRuleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallRuleTypePtrOutput)
-}
-
-func (in *webApplicationFirewallRuleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallRuleType] {
-	return pulumix.Output[*WebApplicationFirewallRuleType]{
-		OutputState: in.ToWebApplicationFirewallRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes what transforms applied before matching.
@@ -2515,12 +2436,6 @@ func (in *webApplicationFirewallTransformPtr) ToWebApplicationFirewallTransformP
 
 func (in *webApplicationFirewallTransformPtr) ToWebApplicationFirewallTransformPtrOutputWithContext(ctx context.Context) WebApplicationFirewallTransformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebApplicationFirewallTransformPtrOutput)
-}
-
-func (in *webApplicationFirewallTransformPtr) ToOutput(ctx context.Context) pulumix.Output[*WebApplicationFirewallTransform] {
-	return pulumix.Output[*WebApplicationFirewallTransform]{
-		OutputState: in.ToWebApplicationFirewallTransformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

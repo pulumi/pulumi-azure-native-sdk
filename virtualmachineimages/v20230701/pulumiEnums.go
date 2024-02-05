@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
@@ -177,12 +176,6 @@ func (in *onBuildErrorPtr) ToOnBuildErrorPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OnBuildErrorPtrOutput)
 }
 
-func (in *onBuildErrorPtr) ToOutput(ctx context.Context) pulumix.Output[*OnBuildError] {
-	return pulumix.Output[*OnBuildError]{
-		OutputState: in.ToOnBuildErrorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the image template. The type 'None' will remove any identities from the image template.
 type ResourceIdentityType string
 
@@ -347,12 +340,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
@@ -523,12 +510,6 @@ func (in *sharedImageStorageAccountTypePtr) ToSharedImageStorageAccountTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(SharedImageStorageAccountTypePtrOutput)
 }
 
-func (in *sharedImageStorageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SharedImageStorageAccountType] {
-	return pulumix.Output[*SharedImageStorageAccountType]{
-		OutputState: in.ToSharedImageStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enabling this field will improve VM boot time by optimizing the final customized image output.
 type VMBootOptimizationState string
 
@@ -693,12 +674,6 @@ func (in *vmbootOptimizationStatePtr) ToVMBootOptimizationStatePtrOutput() VMBoo
 
 func (in *vmbootOptimizationStatePtr) ToVMBootOptimizationStatePtrOutputWithContext(ctx context.Context) VMBootOptimizationStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VMBootOptimizationStatePtrOutput)
-}
-
-func (in *vmbootOptimizationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*VMBootOptimizationState] {
-	return pulumix.Output[*VMBootOptimizationState]{
-		OutputState: in.ToVMBootOptimizationStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

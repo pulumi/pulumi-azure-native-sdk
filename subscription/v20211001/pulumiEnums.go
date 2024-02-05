@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The workload type of the subscription. It can be either Production or DevTest.
@@ -175,12 +174,6 @@ func (in *workloadPtr) ToWorkloadPtrOutput() WorkloadPtrOutput {
 
 func (in *workloadPtr) ToWorkloadPtrOutputWithContext(ctx context.Context) WorkloadPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadPtrOutput)
-}
-
-func (in *workloadPtr) ToOutput(ctx context.Context) pulumix.Output[*Workload] {
-	return pulumix.Output[*Workload]{
-		OutputState: in.ToWorkloadPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

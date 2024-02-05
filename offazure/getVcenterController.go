@@ -13,6 +13,8 @@ import (
 
 // Get a Vcenter
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupVcenterController(ctx *pulumi.Context, args *LookupVcenterControllerArgs, opts ...pulumi.InvokeOption) (*LookupVcenterControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVcenterControllerResult

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The SKU name
@@ -187,12 +186,6 @@ func (in *storageSkuNamePtr) ToStorageSkuNamePtrOutput() StorageSkuNamePtrOutput
 
 func (in *storageSkuNamePtr) ToStorageSkuNamePtrOutputWithContext(ctx context.Context) StorageSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageSkuNamePtrOutput)
-}
-
-func (in *storageSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSkuName] {
-	return pulumix.Output[*StorageSkuName]{
-		OutputState: in.ToStorageSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

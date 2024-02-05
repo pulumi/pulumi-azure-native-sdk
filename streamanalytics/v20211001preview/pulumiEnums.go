@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authentication Mode.
@@ -179,12 +178,6 @@ func (in *authenticationModePtr) ToAuthenticationModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationModePtrOutput)
 }
 
-func (in *authenticationModePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationMode] {
-	return pulumix.Output[*AuthenticationMode]{
-		OutputState: in.ToAuthenticationModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Blob write mode.
 type BlobWriteMode string
 
@@ -351,12 +344,6 @@ func (in *blobWriteModePtr) ToBlobWriteModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(BlobWriteModePtrOutput)
 }
 
-func (in *blobWriteModePtr) ToOutput(ctx context.Context) pulumix.Output[*BlobWriteMode] {
-	return pulumix.Output[*BlobWriteMode]{
-		OutputState: in.ToBlobWriteModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Controls certain runtime behaviors of the streaming job.
 type CompatibilityLevel string
 
@@ -521,12 +508,6 @@ func (in *compatibilityLevelPtr) ToCompatibilityLevelPtrOutput() CompatibilityLe
 
 func (in *compatibilityLevelPtr) ToCompatibilityLevelPtrOutputWithContext(ctx context.Context) CompatibilityLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompatibilityLevelPtrOutput)
-}
-
-func (in *compatibilityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*CompatibilityLevel] {
-	return pulumix.Output[*CompatibilityLevel]{
-		OutputState: in.ToCompatibilityLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
@@ -697,12 +678,6 @@ func (in *compressionTypePtr) ToCompressionTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CompressionTypePtrOutput)
 }
 
-func (in *compressionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CompressionType] {
-	return pulumix.Output[*CompressionType]{
-		OutputState: in.ToCompressionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. .
 type ContentStoragePolicy string
 
@@ -869,12 +844,6 @@ func (in *contentStoragePolicyPtr) ToContentStoragePolicyPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ContentStoragePolicyPtrOutput)
 }
 
-func (in *contentStoragePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentStoragePolicy] {
-	return pulumix.Output[*ContentStoragePolicy]{
-		OutputState: in.ToContentStoragePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. Required on PUT (CreateOrReplace) requests.
 type Encoding string
 
@@ -1037,12 +1006,6 @@ func (in *encodingPtr) ToEncodingPtrOutput() EncodingPtrOutput {
 
 func (in *encodingPtr) ToEncodingPtrOutputWithContext(ctx context.Context) EncodingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncodingPtrOutput)
-}
-
-func (in *encodingPtr) ToOutput(ctx context.Context) pulumix.Output[*Encoding] {
-	return pulumix.Output[*Encoding]{
-		OutputState: in.ToEncodingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the Event Grid schema type.
@@ -1209,12 +1172,6 @@ func (in *eventGridEventSchemaTypePtr) ToEventGridEventSchemaTypePtrOutput() Eve
 
 func (in *eventGridEventSchemaTypePtr) ToEventGridEventSchemaTypePtrOutputWithContext(ctx context.Context) EventGridEventSchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EventGridEventSchemaTypePtrOutput)
-}
-
-func (in *eventGridEventSchemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EventGridEventSchemaType] {
-	return pulumix.Output[*EventGridEventSchemaType]{
-		OutputState: in.ToEventGridEventSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
@@ -1395,12 +1352,6 @@ func (in *eventsOutOfOrderPolicyPtr) ToEventsOutOfOrderPolicyPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(EventsOutOfOrderPolicyPtrOutput)
 }
 
-func (in *eventsOutOfOrderPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*EventsOutOfOrderPolicy] {
-	return pulumix.Output[*EventsOutOfOrderPolicy]{
-		OutputState: in.ToEventsOutOfOrderPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The input watermark mode.
 type InputWatermarkMode string
 
@@ -1565,12 +1516,6 @@ func (in *inputWatermarkModePtr) ToInputWatermarkModePtrOutput() InputWatermarkM
 
 func (in *inputWatermarkModePtr) ToInputWatermarkModePtrOutputWithContext(ctx context.Context) InputWatermarkModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InputWatermarkModePtrOutput)
-}
-
-func (in *inputWatermarkModePtr) ToOutput(ctx context.Context) pulumix.Output[*InputWatermarkMode] {
-	return pulumix.Output[*InputWatermarkMode]{
-		OutputState: in.ToInputWatermarkModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes the type of the job. Valid modes are `Cloud` and 'Edge'.
@@ -1739,12 +1684,6 @@ func (in *jobTypePtr) ToJobTypePtrOutputWithContext(ctx context.Context) JobType
 	return pulumi.ToOutputWithContext(ctx, in).(JobTypePtrOutput)
 }
 
-func (in *jobTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobType] {
-	return pulumix.Output[*JobType]{
-		OutputState: in.ToJobTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This property only applies to JSON serialization of outputs only. It is not applicable to inputs. This property specifies the format of the JSON the output will be written in. The currently supported values are 'lineSeparated' indicating the output will be formatted by having each JSON object separated by a new line and 'array' indicating the output will be formatted as an array of JSON objects. Default value is 'lineSeparated' if left null.
 type JsonOutputSerializationFormat string
 
@@ -1911,12 +1850,6 @@ func (in *jsonOutputSerializationFormatPtr) ToJsonOutputSerializationFormatPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(JsonOutputSerializationFormatPtrOutput)
 }
 
-func (in *jsonOutputSerializationFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*JsonOutputSerializationFormat] {
-	return pulumix.Output[*JsonOutputSerializationFormat]{
-		OutputState: in.ToJsonOutputSerializationFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
 type OutputErrorPolicy string
 
@@ -2081,12 +2014,6 @@ func (in *outputErrorPolicyPtr) ToOutputErrorPolicyPtrOutput() OutputErrorPolicy
 
 func (in *outputErrorPolicyPtr) ToOutputErrorPolicyPtrOutputWithContext(ctx context.Context) OutputErrorPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OutputErrorPolicyPtrOutput)
-}
-
-func (in *outputErrorPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*OutputErrorPolicy] {
-	return pulumix.Output[*OutputErrorPolicy]{
-		OutputState: in.ToOutputErrorPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This property should only be utilized when it is desired that the job be started immediately upon creation. Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
@@ -2257,12 +2184,6 @@ func (in *outputStartModePtr) ToOutputStartModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(OutputStartModePtrOutput)
 }
 
-func (in *outputStartModePtr) ToOutput(ctx context.Context) pulumix.Output[*OutputStartMode] {
-	return pulumix.Output[*OutputStartMode]{
-		OutputState: in.ToOutputStartModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The output watermark mode.
 type OutputWatermarkMode string
 
@@ -2429,12 +2350,6 @@ func (in *outputWatermarkModePtr) ToOutputWatermarkModePtrOutput() OutputWaterma
 
 func (in *outputWatermarkModePtr) ToOutputWatermarkModePtrOutputWithContext(ctx context.Context) OutputWatermarkModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OutputWatermarkModePtrOutput)
-}
-
-func (in *outputWatermarkModePtr) ToOutput(ctx context.Context) pulumix.Output[*OutputWatermarkMode] {
-	return pulumix.Output[*OutputWatermarkMode]{
-		OutputState: in.ToOutputWatermarkModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the type of data refresh option.
@@ -2605,12 +2520,6 @@ func (in *refreshTypePtr) ToRefreshTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(RefreshTypePtrOutput)
 }
 
-func (in *refreshTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RefreshType] {
-	return pulumix.Output[*RefreshType]{
-		OutputState: in.ToRefreshTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the SKU. Required on PUT (CreateOrReplace) requests.
 type SkuName string
 
@@ -2773,12 +2682,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This property indicates which data refresh option to use, Blocking or Nonblocking.
@@ -2947,12 +2850,6 @@ func (in *updatableUdfRefreshTypePtr) ToUpdatableUdfRefreshTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(UpdatableUdfRefreshTypePtrOutput)
 }
 
-func (in *updatableUdfRefreshTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdatableUdfRefreshType] {
-	return pulumix.Output[*UpdatableUdfRefreshType]{
-		OutputState: in.ToUpdatableUdfRefreshTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Refresh modes for Stream Analytics functions.
 type UpdateMode string
 
@@ -3117,12 +3014,6 @@ func (in *updateModePtr) ToUpdateModePtrOutput() UpdateModePtrOutput {
 
 func (in *updateModePtr) ToUpdateModePtrOutputWithContext(ctx context.Context) UpdateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateModePtrOutput)
-}
-
-func (in *updateModePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateMode] {
-	return pulumix.Output[*UpdateMode]{
-		OutputState: in.ToUpdateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
@@ -177,12 +176,6 @@ func (in *apiPortalApiTryOutEnabledStatePtr) ToApiPortalApiTryOutEnabledStatePtr
 	return pulumi.ToOutputWithContext(ctx, in).(ApiPortalApiTryOutEnabledStatePtrOutput)
 }
 
-func (in *apiPortalApiTryOutEnabledStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ApiPortalApiTryOutEnabledState] {
-	return pulumix.Output[*ApiPortalApiTryOutEnabledState]{
-		OutputState: in.ToApiPortalApiTryOutEnabledStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // How ingress should communicate with this app backend service.
 type BackendProtocol string
 
@@ -347,12 +340,6 @@ func (in *backendProtocolPtr) ToBackendProtocolPtrOutput() BackendProtocolPtrOut
 
 func (in *backendProtocolPtr) ToBackendProtocolPtrOutputWithContext(ctx context.Context) BackendProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendProtocolPtrOutput)
-}
-
-func (in *backendProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendProtocol] {
-	return pulumix.Output[*BackendProtocol]{
-		OutputState: in.ToBackendProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Buildpack Binding Type
@@ -529,12 +516,6 @@ func (in *bindingTypePtr) ToBindingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(BindingTypePtrOutput)
 }
 
-func (in *bindingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BindingType] {
-	return pulumix.Output[*BindingType]{
-		OutputState: in.ToBindingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The generation of the Application Configuration Service.
 type ConfigurationServiceGeneration string
 
@@ -701,12 +682,6 @@ func (in *configurationServiceGenerationPtr) ToConfigurationServiceGenerationPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationServiceGenerationPtrOutput)
 }
 
-func (in *configurationServiceGenerationPtr) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationServiceGeneration] {
-	return pulumix.Output[*ConfigurationServiceGeneration]{
-		OutputState: in.ToConfigurationServiceGenerationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the customized accelerator.
 type CustomizedAcceleratorType string
 
@@ -871,12 +846,6 @@ func (in *customizedAcceleratorTypePtr) ToCustomizedAcceleratorTypePtrOutput() C
 
 func (in *customizedAcceleratorTypePtr) ToCustomizedAcceleratorTypePtrOutputWithContext(ctx context.Context) CustomizedAcceleratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CustomizedAcceleratorTypePtrOutput)
-}
-
-func (in *customizedAcceleratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomizedAcceleratorType] {
-	return pulumix.Output[*CustomizedAcceleratorType]{
-		OutputState: in.ToCustomizedAcceleratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of the plugin
@@ -1047,12 +1016,6 @@ func (in *devToolPortalFeatureStatePtr) ToDevToolPortalFeatureStatePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(DevToolPortalFeatureStatePtrOutput)
 }
 
-func (in *devToolPortalFeatureStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DevToolPortalFeatureState] {
-	return pulumix.Output[*DevToolPortalFeatureState]{
-		OutputState: in.ToDevToolPortalFeatureStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enable certificate verification or not
 type GatewayCertificateVerification string
 
@@ -1221,12 +1184,6 @@ func (in *gatewayCertificateVerificationPtr) ToGatewayCertificateVerificationPtr
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayCertificateVerificationPtrOutput)
 }
 
-func (in *gatewayCertificateVerificationPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayCertificateVerification] {
-	return pulumix.Output[*GatewayCertificateVerification]{
-		OutputState: in.ToGatewayCertificateVerificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Protocol of routed Azure Spring Apps applications.
 type GatewayRouteConfigProtocol string
 
@@ -1393,12 +1350,6 @@ func (in *gatewayRouteConfigProtocolPtr) ToGatewayRouteConfigProtocolPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayRouteConfigProtocolPtrOutput)
 }
 
-func (in *gatewayRouteConfigProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayRouteConfigProtocol] {
-	return pulumix.Output[*GatewayRouteConfigProtocol]{
-		OutputState: in.ToGatewayRouteConfigProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Git libraries used to support various repository providers
 type GitImplementation string
 
@@ -1563,12 +1514,6 @@ func (in *gitImplementationPtr) ToGitImplementationPtrOutput() GitImplementation
 
 func (in *gitImplementationPtr) ToGitImplementationPtrOutputWithContext(ctx context.Context) GitImplementationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GitImplementationPtrOutput)
-}
-
-func (in *gitImplementationPtr) ToOutput(ctx context.Context) pulumix.Output[*GitImplementation] {
-	return pulumix.Output[*GitImplementation]{
-		OutputState: in.ToGitImplementationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Scheme to use for connecting to the host. Defaults to HTTP.
@@ -1741,12 +1686,6 @@ func (in *httpschemeTypePtr) ToHTTPSchemeTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(HTTPSchemeTypePtrOutput)
 }
 
-func (in *httpschemeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HTTPSchemeType] {
-	return pulumix.Output[*HTTPSchemeType]{
-		OutputState: in.ToHTTPSchemeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether to automatically synchronize certificate from key vault or not.
 type KeyVaultCertificateAutoSync string
 
@@ -1911,12 +1850,6 @@ func (in *keyVaultCertificateAutoSyncPtr) ToKeyVaultCertificateAutoSyncPtrOutput
 
 func (in *keyVaultCertificateAutoSyncPtr) ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx context.Context) KeyVaultCertificateAutoSyncPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyVaultCertificateAutoSyncPtrOutput)
-}
-
-func (in *keyVaultCertificateAutoSyncPtr) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCertificateAutoSync] {
-	return pulumix.Output[*KeyVaultCertificateAutoSync]{
-		OutputState: in.ToKeyVaultCertificateAutoSyncPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the managed identity
@@ -2087,12 +2020,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutput() ManagedIdenti
 
 func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx context.Context) ManagedIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
-}
-
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the action to take to perform the health check.
@@ -2268,12 +2195,6 @@ func (in *sessionAffinityPtr) ToSessionAffinityPtrOutput() SessionAffinityPtrOut
 
 func (in *sessionAffinityPtr) ToSessionAffinityPtrOutputWithContext(ctx context.Context) SessionAffinityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionAffinityPtrOutput)
-}
-
-func (in *sessionAffinityPtr) ToOutput(ctx context.Context) pulumix.Output[*SessionAffinity] {
-	return pulumix.Output[*SessionAffinity]{
-		OutputState: in.ToSessionAffinityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the storage.

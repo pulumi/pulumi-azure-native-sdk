@@ -64,6 +64,9 @@ func NewHypervSitesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20200707:HypervSitesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:HypervSitesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

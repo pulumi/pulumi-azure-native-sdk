@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
@@ -202,12 +201,6 @@ func (in *partnerDestinationActivationStatePtr) ToPartnerDestinationActivationSt
 	return pulumi.ToOutputWithContext(ctx, in).(PartnerDestinationActivationStatePtrOutput)
 }
 
-func (in *partnerDestinationActivationStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PartnerDestinationActivationState] {
-	return pulumix.Output[*PartnerDestinationActivationState]{
-		OutputState: in.ToPartnerDestinationActivationStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provisioning state of the partner destination.
 type PartnerDestinationProvisioningState string
 
@@ -382,12 +375,6 @@ func (in *partnerDestinationProvisioningStatePtr) ToPartnerDestinationProvisioni
 	return pulumi.ToOutputWithContext(ctx, in).(PartnerDestinationProvisioningStatePtrOutput)
 }
 
-func (in *partnerDestinationProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PartnerDestinationProvisioningState] {
-	return pulumix.Output[*PartnerDestinationProvisioningState]{
-		OutputState: in.ToPartnerDestinationProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Visibility state of the partner registration.
 type PartnerRegistrationVisibilityState string
 
@@ -554,12 +541,6 @@ func (in *partnerRegistrationVisibilityStatePtr) ToPartnerRegistrationVisibility
 
 func (in *partnerRegistrationVisibilityStatePtr) ToPartnerRegistrationVisibilityStatePtrOutputWithContext(ctx context.Context) PartnerRegistrationVisibilityStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PartnerRegistrationVisibilityStatePtrOutput)
-}
-
-func (in *partnerRegistrationVisibilityStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PartnerRegistrationVisibilityState] {
-	return pulumix.Output[*PartnerRegistrationVisibilityState]{
-		OutputState: in.ToPartnerRegistrationVisibilityStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

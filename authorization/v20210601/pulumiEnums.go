@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The data type of the parameter.
@@ -187,12 +186,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 type PolicyType string
 
@@ -361,12 +354,6 @@ func (in *policyTypePtr) ToPolicyTypePtrOutput() PolicyTypePtrOutput {
 
 func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) PolicyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyTypePtrOutput)
-}
-
-func (in *policyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyType] {
-	return pulumix.Output[*PolicyType]{
-		OutputState: in.ToPolicyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

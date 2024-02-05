@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates if the given action rule is enabled or disabled
@@ -175,12 +174,6 @@ func (in *actionRuleStatusPtr) ToActionRuleStatusPtrOutput() ActionRuleStatusPtr
 
 func (in *actionRuleStatusPtr) ToActionRuleStatusPtrOutputWithContext(ctx context.Context) ActionRuleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionRuleStatusPtrOutput)
-}
-
-func (in *actionRuleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ActionRuleStatus] {
-	return pulumix.Output[*ActionRuleStatus]{
-		OutputState: in.ToActionRuleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates type of action rule
@@ -366,12 +359,6 @@ func (in *alertRuleStatePtr) ToAlertRuleStatePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AlertRuleStatePtrOutput)
 }
 
-func (in *alertRuleStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AlertRuleState] {
-	return pulumix.Output[*AlertRuleState]{
-		OutputState: in.ToAlertRuleStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Days of week.
 type DaysOfWeek string
 
@@ -546,12 +533,6 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutput() DaysOfWeekPtrOutput {
 
 func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) DaysOfWeekPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
-}
-
-func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Field for a given condition.
@@ -738,12 +719,6 @@ func (in *fieldPtr) ToFieldPtrOutputWithContext(ctx context.Context) FieldPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(FieldPtrOutput)
 }
 
-func (in *fieldPtr) ToOutput(ctx context.Context) pulumix.Output[*Field] {
-	return pulumix.Output[*Field]{
-		OutputState: in.ToFieldPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operator for a given condition.
 type Operator string
 
@@ -912,12 +887,6 @@ func (in *operatorPtr) ToOperatorPtrOutput() OperatorPtrOutput {
 
 func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
-}
-
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies when the recurrence should be applied.
@@ -1097,12 +1066,6 @@ func (in *scopeTypePtr) ToScopeTypePtrOutputWithContext(ctx context.Context) Sco
 	return pulumi.ToOutputWithContext(ctx, in).(ScopeTypePtrOutput)
 }
 
-func (in *scopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScopeType] {
-	return pulumix.Output[*ScopeType]{
-		OutputState: in.ToScopeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The alert rule severity.
 type Severity string
 
@@ -1275,12 +1238,6 @@ func (in *severityPtr) ToSeverityPtrOutputWithContext(ctx context.Context) Sever
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityPtrOutput)
 }
 
-func (in *severityPtr) ToOutput(ctx context.Context) pulumix.Output[*Severity] {
-	return pulumix.Output[*Severity]{
-		OutputState: in.ToSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies when the suppression should be applied
 type SuppressionType string
 
@@ -1451,12 +1408,6 @@ func (in *suppressionTypePtr) ToSuppressionTypePtrOutput() SuppressionTypePtrOut
 
 func (in *suppressionTypePtr) ToSuppressionTypePtrOutputWithContext(ctx context.Context) SuppressionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SuppressionTypePtrOutput)
-}
-
-func (in *suppressionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SuppressionType] {
-	return pulumix.Output[*SuppressionType]{
-		OutputState: in.ToSuppressionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

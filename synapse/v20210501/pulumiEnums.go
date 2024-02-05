@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the mode of sql pool creation.
@@ -189,12 +188,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The level of compute power that each node in the Big Data pool has.
 type NodeSize string
 
@@ -371,12 +364,6 @@ func (in *nodeSizePtr) ToNodeSizePtrOutputWithContext(ctx context.Context) NodeS
 	return pulumi.ToOutputWithContext(ctx, in).(NodeSizePtrOutput)
 }
 
-func (in *nodeSizePtr) ToOutput(ctx context.Context) pulumix.Output[*NodeSize] {
-	return pulumix.Output[*NodeSize]{
-		OutputState: in.ToNodeSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of nodes that the Big Data pool provides.
 type NodeSizeFamily string
 
@@ -547,12 +534,6 @@ func (in *nodeSizeFamilyPtr) ToNodeSizeFamilyPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(NodeSizeFamilyPtrOutput)
 }
 
-func (in *nodeSizeFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*NodeSizeFamily] {
-	return pulumix.Output[*NodeSizeFamily]{
-		OutputState: in.ToNodeSizeFamilyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of managed identity for the workspace
 type ResourceIdentityType string
 
@@ -719,12 +700,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The storage account type used to store backups for this sql pool.
@@ -895,12 +870,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
 }
 
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable public network access to workspace
 type WorkspacePublicNetworkAccess string
 
@@ -1065,12 +1034,6 @@ func (in *workspacePublicNetworkAccessPtr) ToWorkspacePublicNetworkAccessPtrOutp
 
 func (in *workspacePublicNetworkAccessPtr) ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx context.Context) WorkspacePublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkspacePublicNetworkAccessPtrOutput)
-}
-
-func (in *workspacePublicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkspacePublicNetworkAccess] {
-	return pulumix.Output[*WorkspacePublicNetworkAccess]{
-		OutputState: in.ToWorkspacePublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

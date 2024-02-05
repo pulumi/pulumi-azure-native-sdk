@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
@@ -177,12 +176,6 @@ func (in *encryptionConfigTypePtr) ToEncryptionConfigTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionConfigTypePtrOutput)
 }
 
-func (in *encryptionConfigTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionConfigType] {
-	return pulumix.Output[*EncryptionConfigType]{
-		OutputState: in.ToEncryptionConfigTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
 type EncryptionIdentityType string
 
@@ -345,12 +338,6 @@ func (in *encryptionIdentityTypePtr) ToEncryptionIdentityTypePtrOutput() Encrypt
 
 func (in *encryptionIdentityTypePtr) ToEncryptionIdentityTypePtrOutputWithContext(ctx context.Context) EncryptionIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionIdentityTypePtrOutput)
-}
-
-func (in *encryptionIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionIdentityType] {
-	return pulumix.Output[*EncryptionIdentityType]{
-		OutputState: in.ToEncryptionIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The current state of encryption for this Data Lake Store account.
@@ -519,12 +506,6 @@ func (in *encryptionStatePtr) ToEncryptionStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatePtrOutput)
 }
 
-func (in *encryptionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionState] {
-	return pulumix.Output[*EncryptionState]{
-		OutputState: in.ToEncryptionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
 type FirewallAllowAzureIpsState string
 
@@ -691,12 +672,6 @@ func (in *firewallAllowAzureIpsStatePtr) ToFirewallAllowAzureIpsStatePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallAllowAzureIpsStatePtrOutput)
 }
 
-func (in *firewallAllowAzureIpsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallAllowAzureIpsState] {
-	return pulumix.Output[*FirewallAllowAzureIpsState]{
-		OutputState: in.ToFirewallAllowAzureIpsStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of the IP address firewall for this Data Lake Store account.
 type FirewallState string
 
@@ -861,12 +836,6 @@ func (in *firewallStatePtr) ToFirewallStatePtrOutput() FirewallStatePtrOutput {
 
 func (in *firewallStatePtr) ToFirewallStatePtrOutputWithContext(ctx context.Context) FirewallStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallStatePtrOutput)
-}
-
-func (in *firewallStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallState] {
-	return pulumix.Output[*FirewallState]{
-		OutputState: in.ToFirewallStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The commitment tier to use for next month.
@@ -1045,12 +1014,6 @@ func (in *tierTypePtr) ToTierTypePtrOutputWithContext(ctx context.Context) TierT
 	return pulumi.ToOutputWithContext(ctx, in).(TierTypePtrOutput)
 }
 
-func (in *tierTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TierType] {
-	return pulumix.Output[*TierType]{
-		OutputState: in.ToTierTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of the trusted identity provider feature for this Data Lake Store account.
 type TrustedIdProviderStateEnum string
 
@@ -1215,12 +1178,6 @@ func (in *trustedIdProviderStateEnumPtr) ToTrustedIdProviderStateEnumPtrOutput()
 
 func (in *trustedIdProviderStateEnumPtr) ToTrustedIdProviderStateEnumPtrOutputWithContext(ctx context.Context) TrustedIdProviderStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrustedIdProviderStateEnumPtrOutput)
-}
-
-func (in *trustedIdProviderStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*TrustedIdProviderStateEnum] {
-	return pulumix.Output[*TrustedIdProviderStateEnum]{
-		OutputState: in.ToTrustedIdProviderStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

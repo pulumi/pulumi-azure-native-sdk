@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Purpose of this test line, e.g. automated or manual testing
@@ -175,12 +174,6 @@ func (in *testLinePurposePtr) ToTestLinePurposePtrOutput() TestLinePurposePtrOut
 
 func (in *testLinePurposePtr) ToTestLinePurposePtrOutputWithContext(ctx context.Context) TestLinePurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TestLinePurposePtrOutput)
-}
-
-func (in *testLinePurposePtr) ToOutput(ctx context.Context) pulumix.Output[*TestLinePurpose] {
-	return pulumix.Output[*TestLinePurpose]{
-		OutputState: in.ToTestLinePurposePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

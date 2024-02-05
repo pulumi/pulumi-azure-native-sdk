@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Flag to define if the user allows for crash dump collection.
@@ -179,12 +178,6 @@ func (in *allowCrashDumpCollectionPtr) ToAllowCrashDumpCollectionPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(AllowCrashDumpCollectionPtrOutput)
 }
 
-func (in *allowCrashDumpCollectionPtr) ToOutput(ctx context.Context) pulumix.Output[*AllowCrashDumpCollection] {
-	return pulumix.Output[*AllowCrashDumpCollection]{
-		OutputState: in.ToAllowCrashDumpCollectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operating system feed type of the device group.
 type OSFeedType string
 
@@ -351,12 +344,6 @@ func (in *osfeedTypePtr) ToOSFeedTypePtrOutput() OSFeedTypePtrOutput {
 
 func (in *osfeedTypePtr) ToOSFeedTypePtrOutputWithContext(ctx context.Context) OSFeedTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSFeedTypePtrOutput)
-}
-
-func (in *osfeedTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSFeedType] {
-	return pulumix.Output[*OSFeedType]{
-		OutputState: in.ToOSFeedTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Regional data boundary for an image
@@ -527,12 +514,6 @@ func (in *regionalDataBoundaryPtr) ToRegionalDataBoundaryPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(RegionalDataBoundaryPtrOutput)
 }
 
-func (in *regionalDataBoundaryPtr) ToOutput(ctx context.Context) pulumix.Output[*RegionalDataBoundary] {
-	return pulumix.Output[*RegionalDataBoundary]{
-		OutputState: in.ToRegionalDataBoundaryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Update policy of the device group.
 type UpdatePolicy string
 
@@ -699,12 +680,6 @@ func (in *updatePolicyPtr) ToUpdatePolicyPtrOutput() UpdatePolicyPtrOutput {
 
 func (in *updatePolicyPtr) ToUpdatePolicyPtrOutputWithContext(ctx context.Context) UpdatePolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpdatePolicyPtrOutput)
-}
-
-func (in *updatePolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*UpdatePolicy] {
-	return pulumix.Output[*UpdatePolicy]{
-		OutputState: in.ToUpdatePolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

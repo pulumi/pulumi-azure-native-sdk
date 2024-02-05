@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the assessment mode.
@@ -175,12 +174,6 @@ func (in *assessmentModeTypesPtr) ToAssessmentModeTypesPtrOutput() AssessmentMod
 
 func (in *assessmentModeTypesPtr) ToAssessmentModeTypesPtrOutputWithContext(ctx context.Context) AssessmentModeTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentModeTypesPtrOutput)
-}
-
-func (in *assessmentModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentModeTypes] {
-	return pulumix.Output[*AssessmentModeTypes]{
-		OutputState: in.ToAssessmentModeTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the patch mode.
@@ -353,12 +346,6 @@ func (in *patchModeTypesPtr) ToPatchModeTypesPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(PatchModeTypesPtrOutput)
 }
 
-func (in *patchModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*PatchModeTypes] {
-	return pulumix.Output[*PatchModeTypes]{
-		OutputState: in.ToPatchModeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -521,12 +508,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The level code.
@@ -695,12 +676,6 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutput() StatusLevelTypesPtr
 
 func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx context.Context) StatusLevelTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusLevelTypesPtrOutput)
-}
-
-func (in *statusLevelTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusLevelTypes] {
-	return pulumix.Output[*StatusLevelTypes]{
-		OutputState: in.ToStatusLevelTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

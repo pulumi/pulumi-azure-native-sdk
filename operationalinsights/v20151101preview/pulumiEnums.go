@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of the DataSource.
@@ -203,12 +202,6 @@ func (in *dataSourceKindPtr) ToDataSourceKindPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourceKindPtrOutput)
 }
 
-func (in *dataSourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DataSourceKind] {
-	return pulumix.Output[*DataSourceKind]{
-		OutputState: in.ToDataSourceKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The provisioning state of the workspace.
 type EntityStatus string
 
@@ -383,12 +376,6 @@ func (in *entityStatusPtr) ToEntityStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(EntityStatusPtrOutput)
 }
 
-func (in *entityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
-	return pulumix.Output[*EntityStatus]{
-		OutputState: in.ToEntityStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the machine group
 type MachineGroupType string
 
@@ -559,12 +546,6 @@ func (in *machineGroupTypePtr) ToMachineGroupTypePtrOutput() MachineGroupTypePtr
 
 func (in *machineGroupTypePtr) ToMachineGroupTypePtrOutputWithContext(ctx context.Context) MachineGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MachineGroupTypePtrOutput)
-}
-
-func (in *machineGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MachineGroupType] {
-	return pulumix.Output[*MachineGroupType]{
-		OutputState: in.ToMachineGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the SKU.
@@ -741,12 +722,6 @@ func (in *skuNameEnumPtr) ToSkuNameEnumPtrOutput() SkuNameEnumPtrOutput {
 
 func (in *skuNameEnumPtr) ToSkuNameEnumPtrOutputWithContext(ctx context.Context) SkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNameEnumPtrOutput)
-}
-
-func (in *skuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuNameEnum] {
-	return pulumix.Output[*SkuNameEnum]{
-		OutputState: in.ToSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

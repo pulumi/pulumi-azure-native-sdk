@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of the action that will be triggered by the Automation
@@ -186,12 +185,6 @@ func (in *additionalWorkspaceDataTypePtr) ToAdditionalWorkspaceDataTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(AdditionalWorkspaceDataTypePtrOutput)
 }
 
-func (in *additionalWorkspaceDataTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdditionalWorkspaceDataType] {
-	return pulumix.Output[*AdditionalWorkspaceDataType]{
-		OutputState: in.ToAdditionalWorkspaceDataTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workspace type.
 type AdditionalWorkspaceType string
 
@@ -354,12 +347,6 @@ func (in *additionalWorkspaceTypePtr) ToAdditionalWorkspaceTypePtrOutput() Addit
 
 func (in *additionalWorkspaceTypePtr) ToAdditionalWorkspaceTypePtrOutputWithContext(ctx context.Context) AdditionalWorkspaceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdditionalWorkspaceTypePtrOutput)
-}
-
-func (in *additionalWorkspaceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdditionalWorkspaceType] {
-	return pulumix.Output[*AdditionalWorkspaceType]{
-		OutputState: in.ToAdditionalWorkspaceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The application source, what it affects, e.g. Assessments
@@ -525,12 +512,6 @@ func (in *applicationSourceResourceTypePtr) ToApplicationSourceResourceTypePtrOu
 
 func (in *applicationSourceResourceTypePtr) ToApplicationSourceResourceTypePtrOutputWithContext(ctx context.Context) ApplicationSourceResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationSourceResourceTypePtrOutput)
-}
-
-func (in *applicationSourceResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationSourceResourceType] {
-	return pulumix.Output[*ApplicationSourceResourceType]{
-		OutputState: in.ToApplicationSourceResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Programmatic code for the status of the assessment
@@ -704,12 +685,6 @@ func (in *assessmentStatusCodePtr) ToAssessmentStatusCodePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentStatusCodePtrOutput)
 }
 
-func (in *assessmentStatusCodePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentStatusCode] {
-	return pulumix.Output[*AssessmentStatusCode]{
-		OutputState: in.ToAssessmentStatusCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
 type AssessmentType string
 
@@ -879,12 +854,6 @@ func (in *assessmentTypePtr) ToAssessmentTypePtrOutput() AssessmentTypePtrOutput
 
 func (in *assessmentTypePtr) ToAssessmentTypePtrOutputWithContext(ctx context.Context) AssessmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentTypePtrOutput)
-}
-
-func (in *assessmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AssessmentType] {
-	return pulumix.Output[*AssessmentType]{
-		OutputState: in.ToAssessmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
@@ -1067,12 +1036,6 @@ func (in *autoDiscoveryPtr) ToAutoDiscoveryPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AutoDiscoveryPtrOutput)
 }
 
-func (in *autoDiscoveryPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoDiscovery] {
-	return pulumix.Output[*AutoDiscovery]{
-		OutputState: in.ToAutoDiscoveryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not to automatically install Azure Arc (hybrid compute) agents on machines
 type AutoProvision string
 
@@ -1239,12 +1202,6 @@ func (in *autoProvisionPtr) ToAutoProvisionPtrOutput() AutoProvisionPtrOutput {
 
 func (in *autoProvisionPtr) ToAutoProvisionPtrOutputWithContext(ctx context.Context) AutoProvisionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoProvisionPtrOutput)
-}
-
-func (in *autoProvisionPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoProvision] {
-	return pulumix.Output[*AutoProvision]{
-		OutputState: in.ToAutoProvisionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The categories of resource that is at risk when the assessment is unhealthy
@@ -1417,12 +1374,6 @@ func (in *categoriesPtr) ToCategoriesPtrOutput() CategoriesPtrOutput {
 
 func (in *categoriesPtr) ToCategoriesPtrOutputWithContext(ctx context.Context) CategoriesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoriesPtrOutput)
-}
-
-func (in *categoriesPtr) ToOutput(ctx context.Context) pulumix.Output[*Categories] {
-	return pulumix.Output[*Categories]{
-		OutputState: in.ToCategoriesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The multi cloud resource's cloud name.
@@ -1599,12 +1550,6 @@ func (in *cloudNamePtr) ToCloudNamePtrOutputWithContext(ctx context.Context) Clo
 	return pulumi.ToOutputWithContext(ctx, in).(CloudNamePtrOutput)
 }
 
-func (in *cloudNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CloudName] {
-	return pulumix.Output[*CloudName]{
-		OutputState: in.ToCloudNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataSource string
 
 const (
@@ -1767,12 +1712,6 @@ func (in *dataSourcePtr) ToDataSourcePtrOutput() DataSourcePtrOutput {
 
 func (in *dataSourcePtr) ToDataSourcePtrOutputWithContext(ctx context.Context) DataSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataSourcePtrOutput)
-}
-
-func (in *dataSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*DataSource] {
-	return pulumix.Output[*DataSource]{
-		OutputState: in.ToDataSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the resource.
@@ -1959,12 +1898,6 @@ func (in *devOpsProvisioningStatePtr) ToDevOpsProvisioningStatePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DevOpsProvisioningStatePtrOutput)
 }
 
-func (in *devOpsProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DevOpsProvisioningState] {
-	return pulumix.Output[*DevOpsProvisioningState]{
-		OutputState: in.ToDevOpsProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
 type Enforce string
 
@@ -2131,12 +2064,6 @@ func (in *enforcePtr) ToEnforcePtrOutput() EnforcePtrOutput {
 
 func (in *enforcePtr) ToEnforcePtrOutputWithContext(ctx context.Context) EnforcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnforcePtrOutput)
-}
-
-func (in *enforcePtr) ToOutput(ctx context.Context) pulumix.Output[*Enforce] {
-	return pulumix.Output[*Enforce]{
-		OutputState: in.ToEnforcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the environment data.
@@ -2334,12 +2261,6 @@ func (in *eventSourcePtr) ToEventSourcePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(EventSourcePtrOutput)
 }
 
-func (in *eventSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*EventSource] {
-	return pulumix.Output[*EventSource]{
-		OutputState: in.ToEventSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExportData string
 
 const (
@@ -2502,12 +2423,6 @@ func (in *exportDataPtr) ToExportDataPtrOutput() ExportDataPtrOutput {
 
 func (in *exportDataPtr) ToExportDataPtrOutputWithContext(ctx context.Context) ExportDataPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExportDataPtrOutput)
-}
-
-func (in *exportDataPtr) ToOutput(ctx context.Context) pulumix.Output[*ExportData] {
-	return pulumix.Output[*ExportData]{
-		OutputState: in.ToExportDataPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The owner type for the governance rule owner source
@@ -2678,12 +2593,6 @@ func (in *governanceRuleOwnerSourceTypePtr) ToGovernanceRuleOwnerSourceTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(GovernanceRuleOwnerSourceTypePtrOutput)
 }
 
-func (in *governanceRuleOwnerSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleOwnerSourceType] {
-	return pulumix.Output[*GovernanceRuleOwnerSourceType]{
-		OutputState: in.ToGovernanceRuleOwnerSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The governance rule source, what the rule affects, e.g. Assessments
 type GovernanceRuleSourceResourceType string
 
@@ -2847,12 +2756,6 @@ func (in *governanceRuleSourceResourceTypePtr) ToGovernanceRuleSourceResourceTyp
 
 func (in *governanceRuleSourceResourceTypePtr) ToGovernanceRuleSourceResourceTypePtrOutputWithContext(ctx context.Context) GovernanceRuleSourceResourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GovernanceRuleSourceResourceTypePtrOutput)
-}
-
-func (in *governanceRuleSourceResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleSourceResourceType] {
-	return pulumix.Output[*GovernanceRuleSourceResourceType]{
-		OutputState: in.ToGovernanceRuleSourceResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The rule type of the governance rule, defines the source of the rule e.g. Integrated
@@ -3023,12 +2926,6 @@ func (in *governanceRuleTypePtr) ToGovernanceRuleTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(GovernanceRuleTypePtrOutput)
 }
 
-func (in *governanceRuleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleType] {
-	return pulumix.Output[*GovernanceRuleType]{
-		OutputState: in.ToGovernanceRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The implementation effort required to remediate this assessment
 type ImplementationEffort string
 
@@ -3197,12 +3094,6 @@ func (in *implementationEffortPtr) ToImplementationEffortPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ImplementationEffortPtrOutput)
 }
 
-func (in *implementationEffortPtr) ToOutput(ctx context.Context) pulumix.Output[*ImplementationEffort] {
-	return pulumix.Output[*ImplementationEffort]{
-		OutputState: in.ToImplementationEffortPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the extension is enabled.
 type IsEnabled string
 
@@ -3369,12 +3260,6 @@ func (in *isEnabledPtr) ToIsEnabledPtrOutput() IsEnabledPtrOutput {
 
 func (in *isEnabledPtr) ToIsEnabledPtrOutputWithContext(ctx context.Context) IsEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IsEnabledPtrOutput)
-}
-
-func (in *isEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*IsEnabled] {
-	return pulumix.Output[*IsEnabled]{
-		OutputState: in.ToIsEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the minimal alert severity which will be sent as email notifications
@@ -3546,12 +3431,6 @@ func (in *minimalSeverityPtr) ToMinimalSeverityPtrOutput() MinimalSeverityPtrOut
 
 func (in *minimalSeverityPtr) ToMinimalSeverityPtrOutputWithContext(ctx context.Context) MinimalSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MinimalSeverityPtrOutput)
-}
-
-func (in *minimalSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*MinimalSeverity] {
-	return pulumix.Output[*MinimalSeverity]{
-		OutputState: in.ToMinimalSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the security offering.
@@ -3766,12 +3645,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The multi cloud account's membership type in the organization
 type OrganizationMembershipType string
 
@@ -3948,12 +3821,6 @@ func (in *pricingTierPtr) ToPricingTierPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(PricingTierPtrOutput)
 }
 
-func (in *pricingTierPtr) ToOutput(ctx context.Context) pulumix.Output[*PricingTier] {
-	return pulumix.Output[*PricingTier]{
-		OutputState: in.ToPricingTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
 type PropertyType string
 
@@ -4124,12 +3991,6 @@ func (in *propertyTypePtr) ToPropertyTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PropertyTypePtrOutput)
 }
 
-func (in *propertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PropertyType] {
-	return pulumix.Output[*PropertyType]{
-		OutputState: in.ToPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Protocol string
 
 const (
@@ -4297,12 +4158,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Recommendation status. When the recommendation status is disabled recommendations are not generated.
 type RecommendationConfigStatus string
 
@@ -4467,12 +4322,6 @@ func (in *recommendationConfigStatusPtr) ToRecommendationConfigStatusPtrOutput()
 
 func (in *recommendationConfigStatusPtr) ToRecommendationConfigStatusPtrOutputWithContext(ctx context.Context) RecommendationConfigStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationConfigStatusPtrOutput)
-}
-
-func (in *recommendationConfigStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*RecommendationConfigStatus] {
-	return pulumix.Output[*RecommendationConfigStatus]{
-		OutputState: in.ToRecommendationConfigStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of IoT Security recommendation.
@@ -4685,12 +4534,6 @@ func (in *recommendationTypePtr) ToRecommendationTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RecommendationTypePtrOutput)
 }
 
-func (in *recommendationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RecommendationType] {
-	return pulumix.Output[*RecommendationType]{
-		OutputState: in.ToRecommendationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A possible role to configure sending security notification alerts to
 type Roles string
 
@@ -4865,12 +4708,6 @@ func (in *rolesPtr) ToRolesPtrOutputWithContext(ctx context.Context) RolesPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(RolesPtrOutput)
 }
 
-func (in *rolesPtr) ToOutput(ctx context.Context) pulumix.Output[*Roles] {
-	return pulumix.Output[*Roles]{
-		OutputState: in.ToRolesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Possible states of the rule
 type RuleState string
 
@@ -5039,12 +4876,6 @@ func (in *ruleStatePtr) ToRuleStatePtrOutputWithContext(ctx context.Context) Rul
 	return pulumi.ToOutputWithContext(ctx, in).(RuleStatePtrOutput)
 }
 
-func (in *ruleStatePtr) ToOutput(ctx context.Context) pulumix.Output[*RuleState] {
-	return pulumix.Output[*RuleState]{
-		OutputState: in.ToRuleStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The scanning mode for the VM scan.
 type ScanningMode string
 
@@ -5207,12 +5038,6 @@ func (in *scanningModePtr) ToScanningModePtrOutput() ScanningModePtrOutput {
 
 func (in *scanningModePtr) ToScanningModePtrOutputWithContext(ctx context.Context) ScanningModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScanningModePtrOutput)
-}
-
-func (in *scanningModePtr) ToOutput(ctx context.Context) pulumix.Output[*ScanningMode] {
-	return pulumix.Output[*ScanningMode]{
-		OutputState: in.ToScanningModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the IoT Security solution.
@@ -5381,12 +5206,6 @@ func (in *securitySolutionStatusPtr) ToSecuritySolutionStatusPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(SecuritySolutionStatusPtrOutput)
 }
 
-func (in *securitySolutionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SecuritySolutionStatus] {
-	return pulumix.Output[*SecuritySolutionStatus]{
-		OutputState: in.ToSecuritySolutionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The selected vulnerability assessments provider on Azure servers in the defined scope.
 type ServerVulnerabilityAssessmentsAzureSettingSelectedProvider string
 
@@ -5550,12 +5369,6 @@ func (in *serverVulnerabilityAssessmentsAzureSettingSelectedProviderPtr) ToServe
 
 func (in *serverVulnerabilityAssessmentsAzureSettingSelectedProviderPtr) ToServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutputWithContext(ctx context.Context) ServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutput)
-}
-
-func (in *serverVulnerabilityAssessmentsAzureSettingSelectedProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVulnerabilityAssessmentsAzureSettingSelectedProvider] {
-	return pulumix.Output[*ServerVulnerabilityAssessmentsAzureSettingSelectedProvider]{
-		OutputState: in.ToServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the server vulnerability assessments setting.
@@ -5733,12 +5546,6 @@ func (in *severityPtr) ToSeverityPtrOutputWithContext(ctx context.Context) Sever
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityPtrOutput)
 }
 
-func (in *severityPtr) ToOutput(ctx context.Context) pulumix.Output[*Severity] {
-	return pulumix.Output[*Severity]{
-		OutputState: in.ToSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The severity to relate to the assessments generated by this assessment automation.
 type SeverityEnum string
 
@@ -5905,12 +5712,6 @@ func (in *severityEnumPtr) ToSeverityEnumPtrOutput() SeverityEnumPtrOutput {
 
 func (in *severityEnumPtr) ToSeverityEnumPtrOutputWithContext(ctx context.Context) SeverityEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SeverityEnumPtrOutput)
-}
-
-func (in *severityEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SeverityEnum] {
-	return pulumix.Output[*SeverityEnum]{
-		OutputState: in.ToSeverityEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The platform where the assessed resource resides
@@ -6089,12 +5890,6 @@ func (in *standardSupportedCloudsPtr) ToStandardSupportedCloudsPtrOutput() Stand
 
 func (in *standardSupportedCloudsPtr) ToStandardSupportedCloudsPtrOutputWithContext(ctx context.Context) StandardSupportedCloudsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StandardSupportedCloudsPtrOutput)
-}
-
-func (in *standardSupportedCloudsPtr) ToOutput(ctx context.Context) pulumix.Output[*StandardSupportedClouds] {
-	return pulumix.Output[*StandardSupportedClouds]{
-		OutputState: in.ToStandardSupportedCloudsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // StandardSupportedCloudsArrayInput is an input type that accepts StandardSupportedCloudsArray and StandardSupportedCloudsArrayOutput values.
@@ -6310,12 +6105,6 @@ func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
 }
 
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the port
 type Status string
 
@@ -6480,12 +6269,6 @@ func (in *statusPtr) ToStatusPtrOutput() StatusPtrOutput {
 
 func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
-}
-
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A description of why the `status` has its value
@@ -6656,12 +6439,6 @@ func (in *statusReasonPtr) ToStatusReasonPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(StatusReasonPtrOutput)
 }
 
-func (in *statusReasonPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusReason] {
-	return pulumix.Output[*StatusReason]{
-		OutputState: in.ToStatusReasonPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The available sub plans
 type SubPlan string
 
@@ -6828,12 +6605,6 @@ func (in *subPlanPtr) ToSubPlanPtrOutputWithContext(ctx context.Context) SubPlan
 	return pulumi.ToOutputWithContext(ctx, in).(SubPlanPtrOutput)
 }
 
-func (in *subPlanPtr) ToOutput(ctx context.Context) pulumix.Output[*SubPlan] {
-	return pulumix.Output[*SubPlan]{
-		OutputState: in.ToSubPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Relevant cloud for the custom assessment automation.
 type SupportedCloudEnum string
 
@@ -6998,12 +6769,6 @@ func (in *supportedCloudEnumPtr) ToSupportedCloudEnumPtrOutput() SupportedCloudE
 
 func (in *supportedCloudEnumPtr) ToSupportedCloudEnumPtrOutputWithContext(ctx context.Context) SupportedCloudEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SupportedCloudEnumPtrOutput)
-}
-
-func (in *supportedCloudEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SupportedCloudEnum] {
-	return pulumix.Output[*SupportedCloudEnum]{
-		OutputState: in.ToSupportedCloudEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tactic of the assessment
@@ -7194,12 +6959,6 @@ func (in *tacticsPtr) ToTacticsPtrOutput() TacticsPtrOutput {
 
 func (in *tacticsPtr) ToTacticsPtrOutputWithContext(ctx context.Context) TacticsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TacticsPtrOutput)
-}
-
-func (in *tacticsPtr) ToOutput(ctx context.Context) pulumix.Output[*Tactics] {
-	return pulumix.Output[*Tactics]{
-		OutputState: in.ToTacticsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Techniques of the assessment
@@ -7572,12 +7331,6 @@ func (in *techniquesPtr) ToTechniquesPtrOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, in).(TechniquesPtrOutput)
 }
 
-func (in *techniquesPtr) ToOutput(ctx context.Context) pulumix.Output[*Techniques] {
-	return pulumix.Output[*Techniques]{
-		OutputState: in.ToTechniquesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Threats impact of the assessment
 type Threats string
 
@@ -7756,12 +7509,6 @@ func (in *threatsPtr) ToThreatsPtrOutputWithContext(ctx context.Context) Threats
 	return pulumi.ToOutputWithContext(ctx, in).(ThreatsPtrOutput)
 }
 
-func (in *threatsPtr) ToOutput(ctx context.Context) pulumix.Output[*Threats] {
-	return pulumix.Output[*Threats]{
-		OutputState: in.ToThreatsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
 type Type string
 
@@ -7926,12 +7673,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Unmasked IP address logging status
@@ -8102,12 +7843,6 @@ func (in *unmaskedIpLoggingStatusPtr) ToUnmaskedIpLoggingStatusPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(UnmaskedIpLoggingStatusPtrOutput)
 }
 
-func (in *unmaskedIpLoggingStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*UnmaskedIpLoggingStatus] {
-	return pulumix.Output[*UnmaskedIpLoggingStatus]{
-		OutputState: in.ToUnmaskedIpLoggingStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The user impact of the assessment
 type UserImpact string
 
@@ -8274,12 +8009,6 @@ func (in *userImpactPtr) ToUserImpactPtrOutput() UserImpactPtrOutput {
 
 func (in *userImpactPtr) ToUserImpactPtrOutputWithContext(ctx context.Context) UserImpactPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UserImpactPtrOutput)
-}
-
-func (in *userImpactPtr) ToOutput(ctx context.Context) pulumix.Output[*UserImpact] {
-	return pulumix.Output[*UserImpact]{
-		OutputState: in.ToUserImpactPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

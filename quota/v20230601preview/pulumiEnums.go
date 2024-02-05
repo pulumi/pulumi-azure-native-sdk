@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
@@ -175,12 +174,6 @@ func (in *groupingIdTypePtr) ToGroupingIdTypePtrOutput() GroupingIdTypePtrOutput
 
 func (in *groupingIdTypePtr) ToGroupingIdTypePtrOutputWithContext(ctx context.Context) GroupingIdTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GroupingIdTypePtrOutput)
-}
-
-func (in *groupingIdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GroupingIdType] {
-	return pulumix.Output[*GroupingIdType]{
-		OutputState: in.ToGroupingIdTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

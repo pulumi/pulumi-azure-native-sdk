@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the parameter
@@ -191,12 +190,6 @@ func (in *connectionParameterTypePtr) ToConnectionParameterTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionParameterTypePtrOutput)
 }
 
-func (in *connectionParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionParameterType] {
-	return pulumix.Output[*ConnectionParameterType]{
-		OutputState: in.ToConnectionParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Principal type
 type PrincipalType string
 
@@ -363,12 +356,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutput() PrincipalTypePtrOutput {
 
 func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Context) PrincipalTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
-}
-
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

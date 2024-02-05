@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Citus version of server group.
@@ -187,12 +186,6 @@ func (in *citusVersionPtr) ToCitusVersionPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(CitusVersionPtrOutput)
 }
 
-func (in *citusVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*CitusVersion] {
-	return pulumix.Output[*CitusVersion]{
-		OutputState: in.ToCitusVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mode to create a new server group.
 type CreateMode string
 
@@ -361,12 +354,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The PostgreSQL version of server group.
 type PostgreSQLVersion string
 
@@ -531,12 +518,6 @@ func (in *postgreSQLVersionPtr) ToPostgreSQLVersionPtrOutput() PostgreSQLVersion
 
 func (in *postgreSQLVersionPtr) ToPostgreSQLVersionPtrOutputWithContext(ctx context.Context) PostgreSQLVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PostgreSQLVersionPtrOutput)
-}
-
-func (in *postgreSQLVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*PostgreSQLVersion] {
-	return pulumix.Output[*PostgreSQLVersion]{
-		OutputState: in.ToPostgreSQLVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The edition of a server (default: GeneralPurpose).
@@ -705,12 +686,6 @@ func (in *serverEditionPtr) ToServerEditionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerEditionPtrOutput)
 }
 
-func (in *serverEditionPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerEdition] {
-	return pulumix.Output[*ServerEdition]{
-		OutputState: in.ToServerEditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The role of servers in the server role group.
 type ServerRole string
 
@@ -875,12 +850,6 @@ func (in *serverRolePtr) ToServerRolePtrOutput() ServerRolePtrOutput {
 
 func (in *serverRolePtr) ToServerRolePtrOutputWithContext(ctx context.Context) ServerRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerRolePtrOutput)
-}
-
-func (in *serverRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerRole] {
-	return pulumix.Output[*ServerRole]{
-		OutputState: in.ToServerRolePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

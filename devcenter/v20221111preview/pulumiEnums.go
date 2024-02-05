@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
@@ -175,12 +174,6 @@ func (in *hibernateSupportPtr) ToHibernateSupportPtrOutput() HibernateSupportPtr
 
 func (in *hibernateSupportPtr) ToHibernateSupportPtrOutputWithContext(ctx context.Context) HibernateSupportPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HibernateSupportPtrOutput)
-}
-
-func (in *hibernateSupportPtr) ToOutput(ctx context.Context) pulumix.Output[*HibernateSupport] {
-	return pulumix.Output[*HibernateSupport]{
-		OutputState: in.ToHibernateSupportPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -351,12 +344,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

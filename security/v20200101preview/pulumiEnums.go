@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
@@ -191,12 +190,6 @@ func (in *autoProvisionPtr) ToAutoProvisionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AutoProvisionPtrOutput)
 }
 
-func (in *autoProvisionPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoProvision] {
-	return pulumix.Output[*AutoProvision]{
-		OutputState: in.ToAutoProvisionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the minimal alert severity which will be sent as email notifications
 type MinimalSeverity string
 
@@ -366,12 +359,6 @@ func (in *minimalSeverityPtr) ToMinimalSeverityPtrOutput() MinimalSeverityPtrOut
 
 func (in *minimalSeverityPtr) ToMinimalSeverityPtrOutputWithContext(ctx context.Context) MinimalSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MinimalSeverityPtrOutput)
-}
-
-func (in *minimalSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*MinimalSeverity] {
-	return pulumix.Output[*MinimalSeverity]{
-		OutputState: in.ToMinimalSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // A possible role to configure sending security notification alerts to
@@ -548,12 +535,6 @@ func (in *rolesPtr) ToRolesPtrOutputWithContext(ctx context.Context) RolesPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(RolesPtrOutput)
 }
 
-func (in *rolesPtr) ToOutput(ctx context.Context) pulumix.Output[*Roles] {
-	return pulumix.Output[*Roles]{
-		OutputState: in.ToRolesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 type State string
 
@@ -720,12 +701,6 @@ func (in *statePtr) ToStatePtrOutput() StatePtrOutput {
 
 func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
-}
-
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -50,6 +50,9 @@ func NewImportSitesController(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure:ImportSitesController"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:ImportSitesController"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource Type of ApplicationGroup.
@@ -175,12 +174,6 @@ func (in *applicationGroupTypePtr) ToApplicationGroupTypePtrOutput() Application
 
 func (in *applicationGroupTypePtr) ToApplicationGroupTypePtrOutputWithContext(ctx context.Context) ApplicationGroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationGroupTypePtrOutput)
-}
-
-func (in *applicationGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGroupType] {
-	return pulumix.Output[*ApplicationGroupType]{
-		OutputState: in.ToApplicationGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Day of the week.
@@ -359,12 +352,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostPool type for desktop.
 type HostPoolType string
 
@@ -534,12 +521,6 @@ func (in *hostPoolTypePtr) ToHostPoolTypePtrOutput() HostPoolTypePtrOutput {
 
 func (in *hostPoolTypePtr) ToHostPoolTypePtrOutputWithContext(ctx context.Context) HostPoolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HostPoolTypePtrOutput)
-}
-
-func (in *hostPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostPoolType] {
-	return pulumix.Output[*HostPoolType]{
-		OutputState: in.ToHostPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
@@ -712,12 +693,6 @@ func (in *hostpoolPublicNetworkAccessPtr) ToHostpoolPublicNetworkAccessPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(HostpoolPublicNetworkAccessPtrOutput)
 }
 
-func (in *hostpoolPublicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*HostpoolPublicNetworkAccess] {
-	return pulumix.Output[*HostpoolPublicNetworkAccess]{
-		OutputState: in.ToHostpoolPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the load balancer.
 type LoadBalancerType string
 
@@ -884,12 +859,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutput() LoadBalancerTypePtr
 
 func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx context.Context) LoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
-}
-
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of operation for migration.
@@ -1069,12 +1038,6 @@ func (in *operationPtr) ToOperationPtrOutputWithContext(ctx context.Context) Ope
 	return pulumi.ToOutputWithContext(ctx, in).(OperationPtrOutput)
 }
 
-func (in *operationPtr) ToOutput(ctx context.Context) pulumix.Output[*Operation] {
-	return pulumix.Output[*Operation]{
-		OutputState: in.ToOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PersonalDesktopAssignment type for HostPool.
 type PersonalDesktopAssignmentType string
 
@@ -1239,12 +1202,6 @@ func (in *personalDesktopAssignmentTypePtr) ToPersonalDesktopAssignmentTypePtrOu
 
 func (in *personalDesktopAssignmentTypePtr) ToPersonalDesktopAssignmentTypePtrOutputWithContext(ctx context.Context) PersonalDesktopAssignmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersonalDesktopAssignmentTypePtrOutput)
-}
-
-func (in *personalDesktopAssignmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PersonalDesktopAssignmentType] {
-	return pulumix.Output[*PersonalDesktopAssignmentType]{
-		OutputState: in.ToPersonalDesktopAssignmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of preferred application group type, default to Desktop Application Group
@@ -1415,12 +1372,6 @@ func (in *preferredAppGroupTypePtr) ToPreferredAppGroupTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(PreferredAppGroupTypePtrOutput)
 }
 
-func (in *preferredAppGroupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PreferredAppGroupType] {
-	return pulumix.Output[*PreferredAppGroupType]{
-		OutputState: in.ToPreferredAppGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of resetting the token.
 type RegistrationTokenOperation string
 
@@ -1589,12 +1540,6 @@ func (in *registrationTokenOperationPtr) ToRegistrationTokenOperationPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(RegistrationTokenOperationPtrOutput)
 }
 
-func (in *registrationTokenOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*RegistrationTokenOperation] {
-	return pulumix.Output[*RegistrationTokenOperation]{
-		OutputState: in.ToRegistrationTokenOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1757,12 +1702,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of single sign on Secret Type.
@@ -1935,12 +1874,6 @@ func (in *ssosecretTypePtr) ToSSOSecretTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SSOSecretTypePtrOutput)
 }
 
-func (in *ssosecretTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SSOSecretType] {
-	return pulumix.Output[*SSOSecretType]{
-		OutputState: in.ToSSOSecretTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of maintenance for session host components.
 type SessionHostComponentUpdateType string
 
@@ -2107,12 +2040,6 @@ func (in *sessionHostComponentUpdateTypePtr) ToSessionHostComponentUpdateTypePtr
 
 func (in *sessionHostComponentUpdateTypePtr) ToSessionHostComponentUpdateTypePtrOutputWithContext(ctx context.Context) SessionHostComponentUpdateTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SessionHostComponentUpdateTypePtrOutput)
-}
-
-func (in *sessionHostComponentUpdateTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SessionHostComponentUpdateType] {
-	return pulumix.Output[*SessionHostComponentUpdateType]{
-		OutputState: in.ToSessionHostComponentUpdateTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -2283,12 +2210,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

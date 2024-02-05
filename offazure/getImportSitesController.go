@@ -13,6 +13,8 @@ import (
 
 // Get a ImportSite
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupImportSitesController(ctx *pulumi.Context, args *LookupImportSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupImportSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupImportSitesControllerResult

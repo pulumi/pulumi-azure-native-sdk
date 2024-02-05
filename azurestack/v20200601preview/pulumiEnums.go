@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Location of the resource.
@@ -173,12 +172,6 @@ func (in *locationPtr) ToLocationPtrOutput() LocationPtrOutput {
 
 func (in *locationPtr) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LocationPtrOutput)
-}
-
-func (in *locationPtr) ToOutput(ctx context.Context) pulumix.Output[*Location] {
-	return pulumix.Output[*Location]{
-		OutputState: in.ToLocationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

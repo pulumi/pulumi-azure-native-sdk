@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IP address family. Example: ipv4 | ipv6.
@@ -177,12 +176,6 @@ func (in *addressFamilyPtr) ToAddressFamilyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AddressFamilyPtrOutput)
 }
 
-func (in *addressFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*AddressFamily] {
-	return pulumix.Output[*AddressFamily]{
-		OutputState: in.ToAddressFamilyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable Or Disable state.
 type AllowASOverride string
 
@@ -347,12 +340,6 @@ func (in *allowASOverridePtr) ToAllowASOverridePtrOutput() AllowASOverridePtrOut
 
 func (in *allowASOverridePtr) ToAllowASOverridePtrOutputWithContext(ctx context.Context) AllowASOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AllowASOverridePtrOutput)
-}
-
-func (in *allowASOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*AllowASOverride] {
-	return pulumix.Output[*AllowASOverride]{
-		OutputState: in.ToAllowASOverridePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
@@ -521,12 +508,6 @@ func (in *booleanEnumPropertyPtr) ToBooleanEnumPropertyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(BooleanEnumPropertyPtrOutput)
 }
 
-func (in *booleanEnumPropertyPtr) ToOutput(ctx context.Context) pulumix.Output[*BooleanEnumProperty] {
-	return pulumix.Output[*BooleanEnumProperty]{
-		OutputState: in.ToBooleanEnumPropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // action. Example: Permit | Deny.
 type CommunityActionTypes string
 
@@ -691,12 +672,6 @@ func (in *communityActionTypesPtr) ToCommunityActionTypesPtrOutput() CommunityAc
 
 func (in *communityActionTypesPtr) ToCommunityActionTypesPtrOutputWithContext(ctx context.Context) CommunityActionTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CommunityActionTypesPtrOutput)
-}
-
-func (in *communityActionTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*CommunityActionTypes] {
-	return pulumix.Output[*CommunityActionTypes]{
-		OutputState: in.ToCommunityActionTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specify prefix-list bounds.
@@ -867,12 +842,6 @@ func (in *conditionPtr) ToConditionPtrOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionPtrOutput)
 }
 
-func (in *conditionPtr) ToOutput(ctx context.Context) pulumix.Output[*Condition] {
-	return pulumix.Output[*Condition]{
-		OutputState: in.ToConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // action. Example: allow | deny.
 type ConditionActionType string
 
@@ -1037,12 +1006,6 @@ func (in *conditionActionTypePtr) ToConditionActionTypePtrOutput() ConditionActi
 
 func (in *conditionActionTypePtr) ToConditionActionTypePtrOutputWithContext(ctx context.Context) ConditionActionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionActionTypePtrOutput)
-}
-
-func (in *conditionActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionActionType] {
-	return pulumix.Output[*ConditionActionType]{
-		OutputState: in.ToConditionActionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // networkDeviceRole is the device role: Example: CE | ToR.
@@ -1217,12 +1180,6 @@ func (in *networkDeviceRoleTypesPtr) ToNetworkDeviceRoleTypesPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkDeviceRoleTypesPtrOutput)
 }
 
-func (in *networkDeviceRoleTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkDeviceRoleTypes] {
-	return pulumix.Output[*NetworkDeviceRoleTypes]{
-		OutputState: in.ToNetworkDeviceRoleTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of NNI used. Example: CE | NPB
 type NniType string
 
@@ -1387,12 +1344,6 @@ func (in *nniTypePtr) ToNniTypePtrOutput() NniTypePtrOutput {
 
 func (in *nniTypePtr) ToNniTypePtrOutputWithContext(ctx context.Context) NniTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NniTypePtrOutput)
-}
-
-func (in *nniTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NniType] {
-	return pulumix.Output[*NniType]{
-		OutputState: in.ToNniTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Peering option list.
@@ -1561,12 +1512,6 @@ func (in *peeringOptionPtr) ToPeeringOptionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PeeringOptionPtrOutput)
 }
 
-func (in *peeringOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*PeeringOption] {
-	return pulumix.Output[*PeeringOption]{
-		OutputState: in.ToPeeringOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Advertise Connected Subnets. Ex: "True" | "False".
 type RedistributeConnectedSubnets string
 
@@ -1733,12 +1678,6 @@ func (in *redistributeConnectedSubnetsPtr) ToRedistributeConnectedSubnetsPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(RedistributeConnectedSubnetsPtrOutput)
 }
 
-func (in *redistributeConnectedSubnetsPtr) ToOutput(ctx context.Context) pulumix.Output[*RedistributeConnectedSubnets] {
-	return pulumix.Output[*RedistributeConnectedSubnets]{
-		OutputState: in.ToRedistributeConnectedSubnetsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Advertise Static Routes. Ex: "True" | "False".
 type RedistributeStaticRoutes string
 
@@ -1903,12 +1842,6 @@ func (in *redistributeStaticRoutesPtr) ToRedistributeStaticRoutesPtrOutput() Red
 
 func (in *redistributeStaticRoutesPtr) ToRedistributeStaticRoutesPtrOutputWithContext(ctx context.Context) RedistributeStaticRoutesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RedistributeStaticRoutesPtrOutput)
-}
-
-func (in *redistributeStaticRoutesPtr) ToOutput(ctx context.Context) pulumix.Output[*RedistributeStaticRoutes] {
-	return pulumix.Output[*RedistributeStaticRoutes]{
-		OutputState: in.ToRedistributeStaticRoutesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // `Internet` - Advertise routes to internet community.
@@ -2087,12 +2020,6 @@ func (in *wellKnownCommunitiesPtr) ToWellKnownCommunitiesPtrOutput() WellKnownCo
 
 func (in *wellKnownCommunitiesPtr) ToWellKnownCommunitiesPtrOutputWithContext(ctx context.Context) WellKnownCommunitiesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WellKnownCommunitiesPtrOutput)
-}
-
-func (in *wellKnownCommunitiesPtr) ToOutput(ctx context.Context) pulumix.Output[*WellKnownCommunities] {
-	return pulumix.Output[*WellKnownCommunities]{
-		OutputState: in.ToWellKnownCommunitiesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

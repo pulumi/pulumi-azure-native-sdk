@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Account configuration. This can only be set at RecommendationsService Account creation.
@@ -175,12 +174,6 @@ func (in *accountConfigurationPtr) ToAccountConfigurationPtrOutput() AccountConf
 
 func (in *accountConfigurationPtr) ToAccountConfigurationPtrOutputWithContext(ctx context.Context) AccountConfigurationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccountConfigurationPtrOutput)
-}
-
-func (in *accountConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*AccountConfiguration] {
-	return pulumix.Output[*AccountConfiguration]{
-		OutputState: in.ToAccountConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -353,12 +346,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
 type ModelingFeatures string
 
@@ -525,12 +512,6 @@ func (in *modelingFeaturesPtr) ToModelingFeaturesPtrOutput() ModelingFeaturesPtr
 
 func (in *modelingFeaturesPtr) ToModelingFeaturesPtrOutputWithContext(ctx context.Context) ModelingFeaturesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ModelingFeaturesPtrOutput)
-}
-
-func (in *modelingFeaturesPtr) ToOutput(ctx context.Context) pulumix.Output[*ModelingFeatures] {
-	return pulumix.Output[*ModelingFeatures]{
-		OutputState: in.ToModelingFeaturesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Modeling frequency controls the modeling compute frequency.
@@ -701,12 +682,6 @@ func (in *modelingFrequencyPtr) ToModelingFrequencyPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ModelingFrequencyPtrOutput)
 }
 
-func (in *modelingFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ModelingFrequency] {
-	return pulumix.Output[*ModelingFrequency]{
-		OutputState: in.ToModelingFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Modeling size controls the maximum supported input data size.
 type ModelingSize string
 
@@ -875,12 +850,6 @@ func (in *modelingSizePtr) ToModelingSizePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ModelingSizePtrOutput)
 }
 
-func (in *modelingSizePtr) ToOutput(ctx context.Context) pulumix.Output[*ModelingSize] {
-	return pulumix.Output[*ModelingSize]{
-		OutputState: in.ToModelingSizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AAD principal type.
 type PrincipalType string
 
@@ -1045,12 +1014,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutput() PrincipalTypePtrOutput {
 
 func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Context) PrincipalTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
-}
-
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

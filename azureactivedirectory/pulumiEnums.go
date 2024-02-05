@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the SKU for the tenant.
@@ -182,12 +181,6 @@ func (in *b2cresourceSKUNamePtr) ToB2CResourceSKUNamePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(B2CResourceSKUNamePtrOutput)
 }
 
-func (in *b2cresourceSKUNamePtr) ToOutput(ctx context.Context) pulumix.Output[*B2CResourceSKUName] {
-	return pulumix.Output[*B2CResourceSKUName]{
-		OutputState: in.ToB2CResourceSKUNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the tenant.
 type B2CResourceSKUTier string
 
@@ -351,12 +344,6 @@ func (in *b2cresourceSKUTierPtr) ToB2CResourceSKUTierPtrOutput() B2CResourceSKUT
 
 func (in *b2cresourceSKUTierPtr) ToB2CResourceSKUTierPtrOutputWithContext(ctx context.Context) B2CResourceSKUTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(B2CResourceSKUTierPtrOutput)
-}
-
-func (in *b2cresourceSKUTierPtr) ToOutput(ctx context.Context) pulumix.Output[*B2CResourceSKUTier] {
-	return pulumix.Output[*B2CResourceSKUTier]{
-		OutputState: in.ToB2CResourceSKUTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the SKU for the tenant.
@@ -525,12 +512,6 @@ func (in *ciamresourceSKUNamePtr) ToCIAMResourceSKUNamePtrOutput() CIAMResourceS
 
 func (in *ciamresourceSKUNamePtr) ToCIAMResourceSKUNamePtrOutputWithContext(ctx context.Context) CIAMResourceSKUNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CIAMResourceSKUNamePtrOutput)
-}
-
-func (in *ciamresourceSKUNamePtr) ToOutput(ctx context.Context) pulumix.Output[*CIAMResourceSKUName] {
-	return pulumix.Output[*CIAMResourceSKUName]{
-		OutputState: in.ToCIAMResourceSKUNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the SKU.
@@ -179,12 +178,6 @@ func (in *appSkuPtr) ToAppSkuPtrOutputWithContext(ctx context.Context) AppSkuPtr
 	return pulumi.ToOutputWithContext(ctx, in).(AppSkuPtrOutput)
 }
 
-func (in *appSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*AppSku] {
-	return pulumix.Output[*AppSku]{
-		OutputState: in.ToAppSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (either system assigned, or none).
 type SystemAssignedServiceIdentityType string
 
@@ -349,12 +342,6 @@ func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityT
 
 func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
-}
-
-func (in *systemAssignedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityType] {
-	return pulumix.Output[*SystemAssignedServiceIdentityType]{
-		OutputState: in.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Identity Type.
@@ -179,12 +178,6 @@ func (in *credentialsTypePtr) ToCredentialsTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CredentialsTypePtrOutput)
 }
 
-func (in *credentialsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CredentialsType] {
-	return pulumix.Output[*CredentialsType]{
-		OutputState: in.ToCredentialsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The event hub type.
 type EventHubType string
 
@@ -351,12 +344,6 @@ func (in *eventHubTypePtr) ToEventHubTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(EventHubTypePtrOutput)
 }
 
-func (in *eventHubTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EventHubType] {
-	return pulumix.Output[*EventHubType]{
-		OutputState: in.ToEventHubTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of the event streaming service
 type EventStreamingState string
 
@@ -521,12 +508,6 @@ func (in *eventStreamingStatePtr) ToEventStreamingStatePtrOutput() EventStreamin
 
 func (in *eventStreamingStatePtr) ToEventStreamingStatePtrOutputWithContext(ctx context.Context) EventStreamingStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EventStreamingStatePtrOutput)
-}
-
-func (in *eventStreamingStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EventStreamingState] {
-	return pulumix.Output[*EventStreamingState]{
-		OutputState: in.ToEventStreamingStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The event streaming service type
@@ -697,12 +678,6 @@ func (in *eventStreamingTypePtr) ToEventStreamingTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EventStreamingTypePtrOutput)
 }
 
-func (in *eventStreamingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EventStreamingType] {
-	return pulumix.Output[*EventStreamingType]{
-		OutputState: in.ToEventStreamingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
 type ManagedEventHubState string
 
@@ -869,12 +844,6 @@ func (in *managedEventHubStatePtr) ToManagedEventHubStatePtrOutput() ManagedEven
 
 func (in *managedEventHubStatePtr) ToManagedEventHubStatePtrOutputWithContext(ctx context.Context) ManagedEventHubStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedEventHubStatePtrOutput)
-}
-
-func (in *managedEventHubStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedEventHubState] {
-	return pulumix.Output[*ManagedEventHubState]{
-		OutputState: in.ToManagedEventHubStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the public network access for managed resources.
@@ -1045,12 +1014,6 @@ func (in *managedResourcesPublicNetworkAccessPtr) ToManagedResourcesPublicNetwor
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedResourcesPublicNetworkAccessPtrOutput)
 }
 
-func (in *managedResourcesPublicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedResourcesPublicNetworkAccess] {
-	return pulumix.Output[*ManagedResourcesPublicNetworkAccess]{
-		OutputState: in.ToManagedResourcesPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the public network access.
 type PublicNetworkAccess string
 
@@ -1217,12 +1180,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status.
@@ -1397,12 +1354,6 @@ func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtr
 	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
 }
 
-func (in *statusPtr) ToOutput(ctx context.Context) pulumix.Output[*Status] {
-	return pulumix.Output[*Status]{
-		OutputState: in.ToStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity Type
 type Type string
 
@@ -1569,12 +1520,6 @@ func (in *typePtr) ToTypePtrOutput() TypePtrOutput {
 
 func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TypePtrOutput)
-}
-
-func (in *typePtr) ToOutput(ctx context.Context) pulumix.Output[*Type] {
-	return pulumix.Output[*Type]{
-		OutputState: in.ToTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
