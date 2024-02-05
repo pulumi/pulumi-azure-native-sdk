@@ -14,6 +14,8 @@ import (
 
 // A ServerSiteResource
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 type ServerSitesController struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +60,9 @@ func NewServerSitesController(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:ServerSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:ServerSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

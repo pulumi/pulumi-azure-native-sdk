@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The IP Filter Action
@@ -175,12 +174,6 @@ func (in *ipactionPtr) ToIPActionPtrOutput() IPActionPtrOutput {
 
 func (in *ipactionPtr) ToIPActionPtrOutputWithContext(ctx context.Context) IPActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPActionPtrOutput)
-}
-
-func (in *ipactionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAction] {
-	return pulumix.Output[*IPAction]{
-		OutputState: in.ToIPActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

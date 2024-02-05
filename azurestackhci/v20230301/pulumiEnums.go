@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates the way the update content can be downloaded.
@@ -179,12 +178,6 @@ func (in *availabilityTypePtr) ToAvailabilityTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AvailabilityTypePtrOutput)
 }
 
-func (in *availabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AvailabilityType] {
-	return pulumix.Output[*AvailabilityType]{
-		OutputState: in.ToAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired level of diagnostic data emitted by the cluster.
 type DiagnosticLevel string
 
@@ -351,12 +344,6 @@ func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutput() DiagnosticLevelPtrOut
 
 func (in *diagnosticLevelPtr) ToDiagnosticLevelPtrOutputWithContext(ctx context.Context) DiagnosticLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiagnosticLevelPtrOutput)
-}
-
-func (in *diagnosticLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticLevel] {
-	return pulumix.Output[*DiagnosticLevel]{
-		OutputState: in.ToDiagnosticLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -529,12 +516,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Customer Intent for Software Assurance Benefit.
 type SoftwareAssuranceIntent string
 
@@ -701,12 +682,6 @@ func (in *softwareAssuranceIntentPtr) ToSoftwareAssuranceIntentPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceIntentPtrOutput)
 }
 
-func (in *softwareAssuranceIntentPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceIntent] {
-	return pulumix.Output[*SoftwareAssuranceIntent]{
-		OutputState: in.ToSoftwareAssuranceIntentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the Software Assurance for the cluster.
 type SoftwareAssuranceStatus string
 
@@ -871,12 +846,6 @@ func (in *softwareAssuranceStatusPtr) ToSoftwareAssuranceStatusPtrOutput() Softw
 
 func (in *softwareAssuranceStatusPtr) ToSoftwareAssuranceStatusPtrOutputWithContext(ctx context.Context) SoftwareAssuranceStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoftwareAssuranceStatusPtrOutput)
-}
-
-func (in *softwareAssuranceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SoftwareAssuranceStatus] {
-	return pulumix.Output[*SoftwareAssuranceStatus]{
-		OutputState: in.ToSoftwareAssuranceStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of the update as it relates to this stamp.
@@ -1077,12 +1046,6 @@ func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
 }
 
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the update run.
 type UpdateRunPropertiesState string
 
@@ -1251,12 +1214,6 @@ func (in *updateRunPropertiesStatePtr) ToUpdateRunPropertiesStatePtrOutput() Upd
 
 func (in *updateRunPropertiesStatePtr) ToUpdateRunPropertiesStatePtrOutputWithContext(ctx context.Context) UpdateRunPropertiesStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateRunPropertiesStatePtrOutput)
-}
-
-func (in *updateRunPropertiesStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateRunPropertiesState] {
-	return pulumix.Output[*UpdateRunPropertiesState]{
-		OutputState: in.ToUpdateRunPropertiesStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Overall update state of the stamp.
@@ -1437,12 +1394,6 @@ func (in *updateSummariesPropertiesStatePtr) ToUpdateSummariesPropertiesStatePtr
 	return pulumi.ToOutputWithContext(ctx, in).(UpdateSummariesPropertiesStatePtrOutput)
 }
 
-func (in *updateSummariesPropertiesStatePtr) ToOutput(ctx context.Context) pulumix.Output[*UpdateSummariesPropertiesState] {
-	return pulumix.Output[*UpdateSummariesPropertiesState]{
-		OutputState: in.ToUpdateSummariesPropertiesStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired state of Windows Server Subscription.
 type WindowsServerSubscription string
 
@@ -1607,12 +1558,6 @@ func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutput() W
 
 func (in *windowsServerSubscriptionPtr) ToWindowsServerSubscriptionPtrOutputWithContext(ctx context.Context) WindowsServerSubscriptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsServerSubscriptionPtrOutput)
-}
-
-func (in *windowsServerSubscriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsServerSubscription] {
-	return pulumix.Output[*WindowsServerSubscription]{
-		OutputState: in.ToWindowsServerSubscriptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

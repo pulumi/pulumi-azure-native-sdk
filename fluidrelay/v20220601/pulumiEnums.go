@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Values can be SystemAssigned or UserAssigned
@@ -177,12 +176,6 @@ func (in *cmkIdentityTypePtr) ToCmkIdentityTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CmkIdentityTypePtrOutput)
 }
 
-func (in *cmkIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CmkIdentityType] {
-	return pulumix.Output[*CmkIdentityType]{
-		OutputState: in.ToCmkIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provision states for FluidRelay RP
 type ProvisioningState string
 
@@ -349,12 +342,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningState
 
 func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
-}
-
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -527,12 +514,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sku of the storage associated with the resource
 type StorageSKU string
 
@@ -697,12 +678,6 @@ func (in *storageSKUPtr) ToStorageSKUPtrOutput() StorageSKUPtrOutput {
 
 func (in *storageSKUPtr) ToStorageSKUPtrOutputWithContext(ctx context.Context) StorageSKUPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageSKUPtrOutput)
-}
-
-func (in *storageSKUPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSKU] {
-	return pulumix.Output[*StorageSKU]{
-		OutputState: in.ToStorageSKUPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

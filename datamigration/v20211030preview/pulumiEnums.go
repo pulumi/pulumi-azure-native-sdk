@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authentication type to use for connection
@@ -183,12 +182,6 @@ func (in *authenticationTypePtr) ToAuthenticationTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationTypePtrOutput)
 }
 
-func (in *authenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationType] {
-	return pulumix.Output[*AuthenticationType]{
-		OutputState: in.ToAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source platform for the project
 type ProjectSourcePlatform string
 
@@ -359,12 +352,6 @@ func (in *projectSourcePlatformPtr) ToProjectSourcePlatformPtrOutput() ProjectSo
 
 func (in *projectSourcePlatformPtr) ToProjectSourcePlatformPtrOutputWithContext(ctx context.Context) ProjectSourcePlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectSourcePlatformPtrOutput)
-}
-
-func (in *projectSourcePlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectSourcePlatform] {
-	return pulumix.Output[*ProjectSourcePlatform]{
-		OutputState: in.ToProjectSourcePlatformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Target platform for the project
@@ -541,12 +528,6 @@ func (in *projectTargetPlatformPtr) ToProjectTargetPlatformPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectTargetPlatformPtrOutput)
 }
 
-func (in *projectTargetPlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectTargetPlatform] {
-	return pulumix.Output[*ProjectTargetPlatform]{
-		OutputState: in.ToProjectTargetPlatformPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Server platform type for connection
 type SqlSourcePlatform string
 
@@ -709,12 +690,6 @@ func (in *sqlSourcePlatformPtr) ToSqlSourcePlatformPtrOutput() SqlSourcePlatform
 
 func (in *sqlSourcePlatformPtr) ToSqlSourcePlatformPtrOutputWithContext(ctx context.Context) SqlSourcePlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlSourcePlatformPtrOutput)
-}
-
-func (in *sqlSourcePlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlSourcePlatform] {
-	return pulumix.Output[*SqlSourcePlatform]{
-		OutputState: in.ToSqlSourcePlatformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

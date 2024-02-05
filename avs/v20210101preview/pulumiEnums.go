@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of private cloud addon
@@ -177,12 +176,6 @@ func (in *addonTypePtr) ToAddonTypePtrOutputWithContext(ctx context.Context) Add
 	return pulumi.ToOutputWithContext(ctx, in).(AddonTypePtrOutput)
 }
 
-func (in *addonTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AddonType] {
-	return pulumix.Output[*AddonType]{
-		OutputState: in.ToAddonTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of DHCP: SERVER or RELAY.
 type DhcpTypeEnum string
 
@@ -345,12 +338,6 @@ func (in *dhcpTypeEnumPtr) ToDhcpTypeEnumPtrOutput() DhcpTypeEnumPtrOutput {
 
 func (in *dhcpTypeEnumPtr) ToDhcpTypeEnumPtrOutputWithContext(ctx context.Context) DhcpTypeEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DhcpTypeEnumPtrOutput)
-}
-
-func (in *dhcpTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DhcpTypeEnum] {
-	return pulumix.Output[*DhcpTypeEnum]{
-		OutputState: in.ToDhcpTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

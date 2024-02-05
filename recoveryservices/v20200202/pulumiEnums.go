@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enabling/Disabling the Double Encryption state
@@ -175,12 +174,6 @@ func (in *infrastructureEncryptionStatePtr) ToInfrastructureEncryptionStatePtrOu
 
 func (in *infrastructureEncryptionStatePtr) ToInfrastructureEncryptionStatePtrOutputWithContext(ctx context.Context) InfrastructureEncryptionStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionStatePtrOutput)
-}
-
-func (in *infrastructureEncryptionStatePtr) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureEncryptionState] {
-	return pulumix.Output[*InfrastructureEncryptionState]{
-		OutputState: in.ToInfrastructureEncryptionStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
@@ -353,12 +346,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Sku name.
 type SkuName string
 
@@ -523,12 +510,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

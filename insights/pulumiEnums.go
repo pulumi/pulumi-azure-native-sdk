@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies the default access mode of queries through associated private endpoints in scope. If not specified default value is 'Open'. You can override this default setting for a specific private endpoint connection by adding an exclusion in the 'exclusions' array.
@@ -175,12 +174,6 @@ func (in *accessModePtr) ToAccessModePtrOutput() AccessModePtrOutput {
 
 func (in *accessModePtr) ToAccessModePtrOutputWithContext(ctx context.Context) AccessModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessModePtrOutput)
-}
-
-func (in *accessModePtr) ToOutput(ctx context.Context) pulumix.Output[*AccessMode] {
-	return pulumix.Output[*AccessMode]{
-		OutputState: in.ToAccessModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the criteria time aggregation types.
@@ -355,12 +348,6 @@ func (in *aggregationTypeEnumPtr) ToAggregationTypeEnumPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AggregationTypeEnumPtrOutput)
 }
 
-func (in *aggregationTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*AggregationTypeEnum] {
-	return pulumix.Output[*AggregationTypeEnum]{
-		OutputState: in.ToAggregationTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of application being monitored.
 type ApplicationType string
 
@@ -525,12 +512,6 @@ func (in *applicationTypePtr) ToApplicationTypePtrOutput() ApplicationTypePtrOut
 
 func (in *applicationTypePtr) ToApplicationTypePtrOutputWithContext(ctx context.Context) ApplicationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationTypePtrOutput)
-}
-
-func (in *applicationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationType] {
-	return pulumix.Output[*ApplicationType]{
-		OutputState: in.ToApplicationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the operator that is used to compare the metric data and the threshold.
@@ -707,12 +688,6 @@ func (in *comparisonOperationTypePtr) ToComparisonOperationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ComparisonOperationTypePtrOutput)
 }
 
-func (in *comparisonOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComparisonOperationType] {
-	return pulumix.Output[*ComparisonOperationType]{
-		OutputState: in.ToComparisonOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The criteria operator. Relevant and required only for rules of the kind LogAlert.
 type ConditionOperator string
 
@@ -883,12 +858,6 @@ func (in *conditionOperatorPtr) ToConditionOperatorPtrOutput() ConditionOperator
 
 func (in *conditionOperatorPtr) ToConditionOperatorPtrOutputWithContext(ctx context.Context) ConditionOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionOperatorPtrOutput)
-}
-
-func (in *conditionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionOperator] {
-	return pulumix.Output[*ConditionOperator]{
-		OutputState: in.ToConditionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of threshold criteria
@@ -1065,12 +1034,6 @@ func (in *dimensionOperatorPtr) ToDimensionOperatorPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(DimensionOperatorPtrOutput)
 }
 
-func (in *dimensionOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*DimensionOperator] {
-	return pulumix.Output[*DimensionOperator]{
-		OutputState: in.ToDimensionOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operator used to compare the metric value against the threshold.
 type DynamicThresholdOperator string
 
@@ -1237,12 +1200,6 @@ func (in *dynamicThresholdOperatorPtr) ToDynamicThresholdOperatorPtrOutput() Dyn
 
 func (in *dynamicThresholdOperatorPtr) ToDynamicThresholdOperatorPtrOutputWithContext(ctx context.Context) DynamicThresholdOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicThresholdOperatorPtrOutput)
-}
-
-func (in *dynamicThresholdOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicThresholdOperator] {
-	return pulumix.Output[*DynamicThresholdOperator]{
-		OutputState: in.ToDynamicThresholdOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
@@ -1413,12 +1370,6 @@ func (in *dynamicThresholdSensitivityPtr) ToDynamicThresholdSensitivityPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicThresholdSensitivityPtrOutput)
 }
 
-func (in *dynamicThresholdSensitivityPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicThresholdSensitivity] {
-	return pulumix.Output[*DynamicThresholdSensitivity]{
-		OutputState: in.ToDynamicThresholdSensitivityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 type FavoriteType string
 
@@ -1585,12 +1536,6 @@ func (in *favoriteTypePtr) ToFavoriteTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(FavoriteTypePtrOutput)
 }
 
-func (in *favoriteTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FavoriteType] {
-	return pulumix.Output[*FavoriteType]{
-		OutputState: in.ToFavoriteTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
 type FlowType string
 
@@ -1753,12 +1698,6 @@ func (in *flowTypePtr) ToFlowTypePtrOutput() FlowTypePtrOutput {
 
 func (in *flowTypePtr) ToFlowTypePtrOutputWithContext(ctx context.Context) FlowTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FlowTypePtrOutput)
-}
-
-func (in *flowTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FlowType] {
-	return pulumix.Output[*FlowType]{
-		OutputState: in.ToFlowTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity.
@@ -1929,12 +1868,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the flow of the ingestion.
 type IngestionMode string
 
@@ -2103,12 +2036,6 @@ func (in *ingestionModePtr) ToIngestionModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IngestionModePtrOutput)
 }
 
-func (in *ingestionModePtr) ToOutput(ctx context.Context) pulumix.Output[*IngestionMode] {
-	return pulumix.Output[*IngestionMode]{
-		OutputState: in.ToIngestionModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 type ItemScope string
 
@@ -2273,12 +2200,6 @@ func (in *itemScopePtr) ToItemScopePtrOutput() ItemScopePtrOutput {
 
 func (in *itemScopePtr) ToItemScopePtrOutputWithContext(ctx context.Context) ItemScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ItemScopePtrOutput)
-}
-
-func (in *itemScopePtr) ToOutput(ctx context.Context) pulumix.Output[*ItemScope] {
-	return pulumix.Output[*ItemScope]{
-		OutputState: in.ToItemScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enum indicating the type of the Analytics item.
@@ -2451,12 +2372,6 @@ func (in *itemTypePtr) ToItemTypePtrOutputWithContext(ctx context.Context) ItemT
 	return pulumi.ToOutputWithContext(ctx, in).(ItemTypePtrOutput)
 }
 
-func (in *itemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ItemType] {
-	return pulumix.Output[*ItemType]{
-		OutputState: in.ToItemTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the type of scheduled query rule. The default is LogAlert.
 type Kind string
 
@@ -2621,12 +2536,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the column data.
@@ -2805,12 +2714,6 @@ func (in *knownColumnDefinitionTypePtr) ToKnownColumnDefinitionTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(KnownColumnDefinitionTypePtrOutput)
 }
 
-func (in *knownColumnDefinitionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KnownColumnDefinitionType] {
-	return pulumix.Output[*KnownColumnDefinitionType]{
-		OutputState: in.ToKnownColumnDefinitionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the resource.
 type KnownDataCollectionEndpointResourceKind string
 
@@ -2977,12 +2880,6 @@ func (in *knownDataCollectionEndpointResourceKindPtr) ToKnownDataCollectionEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(KnownDataCollectionEndpointResourceKindPtrOutput)
 }
 
-func (in *knownDataCollectionEndpointResourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownDataCollectionEndpointResourceKind] {
-	return pulumix.Output[*KnownDataCollectionEndpointResourceKind]{
-		OutputState: in.ToKnownDataCollectionEndpointResourceKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the resource.
 type KnownDataCollectionRuleResourceKind string
 
@@ -3147,12 +3044,6 @@ func (in *knownDataCollectionRuleResourceKindPtr) ToKnownDataCollectionRuleResou
 
 func (in *knownDataCollectionRuleResourceKindPtr) ToKnownDataCollectionRuleResourceKindPtrOutputWithContext(ctx context.Context) KnownDataCollectionRuleResourceKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownDataCollectionRuleResourceKindPtrOutput)
-}
-
-func (in *knownDataCollectionRuleResourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownDataCollectionRuleResourceKind] {
-	return pulumix.Output[*KnownDataCollectionRuleResourceKind]{
-		OutputState: in.ToKnownDataCollectionRuleResourceKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownDataFlowStreams string
@@ -3326,12 +3217,6 @@ func (in *knownDataFlowStreamsPtr) ToKnownDataFlowStreamsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(KnownDataFlowStreamsPtrOutput)
 }
 
-func (in *knownDataFlowStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownDataFlowStreams] {
-	return pulumix.Output[*KnownDataFlowStreams]{
-		OutputState: in.ToKnownDataFlowStreamsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownExtensionDataSourceStreams string
 
 const (
@@ -3501,12 +3386,6 @@ func (in *knownExtensionDataSourceStreamsPtr) ToKnownExtensionDataSourceStreamsP
 
 func (in *knownExtensionDataSourceStreamsPtr) ToKnownExtensionDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownExtensionDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownExtensionDataSourceStreamsPtrOutput)
-}
-
-func (in *knownExtensionDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownExtensionDataSourceStreams] {
-	return pulumix.Output[*KnownExtensionDataSourceStreams]{
-		OutputState: in.ToKnownExtensionDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // One of the supported timestamp formats
@@ -3689,12 +3568,6 @@ func (in *knownLogFileTextSettingsRecordStartTimestampFormatPtr) ToKnownLogFileT
 	return pulumi.ToOutputWithContext(ctx, in).(KnownLogFileTextSettingsRecordStartTimestampFormatPtrOutput)
 }
 
-func (in *knownLogFileTextSettingsRecordStartTimestampFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownLogFileTextSettingsRecordStartTimestampFormat] {
-	return pulumix.Output[*KnownLogFileTextSettingsRecordStartTimestampFormat]{
-		OutputState: in.ToKnownLogFileTextSettingsRecordStartTimestampFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data format of the log files
 type KnownLogFilesDataSourceFormat string
 
@@ -3857,12 +3730,6 @@ func (in *knownLogFilesDataSourceFormatPtr) ToKnownLogFilesDataSourceFormatPtrOu
 
 func (in *knownLogFilesDataSourceFormatPtr) ToKnownLogFilesDataSourceFormatPtrOutputWithContext(ctx context.Context) KnownLogFilesDataSourceFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownLogFilesDataSourceFormatPtrOutput)
-}
-
-func (in *knownLogFilesDataSourceFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownLogFilesDataSourceFormat] {
-	return pulumix.Output[*KnownLogFilesDataSourceFormat]{
-		OutputState: in.ToKnownLogFilesDataSourceFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownPerfCounterDataSourceStreams string
@@ -4030,12 +3897,6 @@ func (in *knownPerfCounterDataSourceStreamsPtr) ToKnownPerfCounterDataSourceStre
 	return pulumi.ToOutputWithContext(ctx, in).(KnownPerfCounterDataSourceStreamsPtrOutput)
 }
 
-func (in *knownPerfCounterDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownPerfCounterDataSourceStreams] {
-	return pulumix.Output[*KnownPerfCounterDataSourceStreams]{
-		OutputState: in.ToKnownPerfCounterDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownPrometheusForwarderDataSourceStreams string
 
 const (
@@ -4197,12 +4058,6 @@ func (in *knownPrometheusForwarderDataSourceStreamsPtr) ToKnownPrometheusForward
 
 func (in *knownPrometheusForwarderDataSourceStreamsPtr) ToKnownPrometheusForwarderDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownPrometheusForwarderDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownPrometheusForwarderDataSourceStreamsPtrOutput)
-}
-
-func (in *knownPrometheusForwarderDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownPrometheusForwarderDataSourceStreams] {
-	return pulumix.Output[*KnownPrometheusForwarderDataSourceStreams]{
-		OutputState: in.ToKnownPrometheusForwarderDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The configuration to set whether network access from public internet to the endpoints are allowed.
@@ -4371,12 +4226,6 @@ func (in *knownPublicNetworkAccessOptionsPtr) ToKnownPublicNetworkAccessOptionsP
 
 func (in *knownPublicNetworkAccessOptionsPtr) ToKnownPublicNetworkAccessOptionsPtrOutputWithContext(ctx context.Context) KnownPublicNetworkAccessOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownPublicNetworkAccessOptionsPtrOutput)
-}
-
-func (in *knownPublicNetworkAccessOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownPublicNetworkAccessOptions] {
-	return pulumix.Output[*KnownPublicNetworkAccessOptions]{
-		OutputState: in.ToKnownPublicNetworkAccessOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownSyslogDataSourceFacilityNames string
@@ -4594,12 +4443,6 @@ func (in *knownSyslogDataSourceFacilityNamesPtr) ToKnownSyslogDataSourceFacility
 	return pulumi.ToOutputWithContext(ctx, in).(KnownSyslogDataSourceFacilityNamesPtrOutput)
 }
 
-func (in *knownSyslogDataSourceFacilityNamesPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownSyslogDataSourceFacilityNames] {
-	return pulumix.Output[*KnownSyslogDataSourceFacilityNames]{
-		OutputState: in.ToKnownSyslogDataSourceFacilityNamesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownSyslogDataSourceLogLevels string
 
 const (
@@ -4779,12 +4622,6 @@ func (in *knownSyslogDataSourceLogLevelsPtr) ToKnownSyslogDataSourceLogLevelsPtr
 	return pulumi.ToOutputWithContext(ctx, in).(KnownSyslogDataSourceLogLevelsPtrOutput)
 }
 
-func (in *knownSyslogDataSourceLogLevelsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownSyslogDataSourceLogLevels] {
-	return pulumix.Output[*KnownSyslogDataSourceLogLevels]{
-		OutputState: in.ToKnownSyslogDataSourceLogLevelsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KnownSyslogDataSourceStreams string
 
 const (
@@ -4946,12 +4783,6 @@ func (in *knownSyslogDataSourceStreamsPtr) ToKnownSyslogDataSourceStreamsPtrOutp
 
 func (in *knownSyslogDataSourceStreamsPtr) ToKnownSyslogDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownSyslogDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownSyslogDataSourceStreamsPtrOutput)
-}
-
-func (in *knownSyslogDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownSyslogDataSourceStreams] {
-	return pulumix.Output[*KnownSyslogDataSourceStreams]{
-		OutputState: in.ToKnownSyslogDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type KnownWindowsEventLogDataSourceStreams string
@@ -5117,12 +4948,6 @@ func (in *knownWindowsEventLogDataSourceStreamsPtr) ToKnownWindowsEventLogDataSo
 
 func (in *knownWindowsEventLogDataSourceStreamsPtr) ToKnownWindowsEventLogDataSourceStreamsPtrOutputWithContext(ctx context.Context) KnownWindowsEventLogDataSourceStreamsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KnownWindowsEventLogDataSourceStreamsPtrOutput)
-}
-
-func (in *knownWindowsEventLogDataSourceStreamsPtr) ToOutput(ctx context.Context) pulumix.Output[*KnownWindowsEventLogDataSourceStreams] {
-	return pulumix.Output[*KnownWindowsEventLogDataSourceStreams]{
-		OutputState: in.ToKnownWindowsEventLogDataSourceStreamsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -5295,12 +5120,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the metric statistic type. How the metrics from multiple instances are combined.
 type MetricStatisticType string
 
@@ -5471,12 +5290,6 @@ func (in *metricStatisticTypePtr) ToMetricStatisticTypePtrOutput() MetricStatist
 
 func (in *metricStatisticTypePtr) ToMetricStatisticTypePtrOutputWithContext(ctx context.Context) MetricStatisticTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricStatisticTypePtrOutput)
-}
-
-func (in *metricStatisticTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricStatisticType] {
-	return pulumix.Output[*MetricStatisticType]{
-		OutputState: in.ToMetricStatisticTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // specifies the type of the alert criteria.
@@ -5652,12 +5465,6 @@ func (in *operationTypePtr) ToOperationTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(OperationTypePtrOutput)
 }
 
-func (in *operationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperationType] {
-	return pulumix.Output[*OperationType]{
-		OutputState: in.ToOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the criteria operator.
 type Operator string
 
@@ -5830,12 +5637,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the predictive autoscale mode
 type PredictiveAutoscalePolicyScaleMode string
 
@@ -6002,12 +5803,6 @@ func (in *predictiveAutoscalePolicyScaleModePtr) ToPredictiveAutoscalePolicyScal
 
 func (in *predictiveAutoscalePolicyScaleModePtr) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PredictiveAutoscalePolicyScaleModePtrOutput)
-}
-
-func (in *predictiveAutoscalePolicyScaleModePtr) ToOutput(ctx context.Context) pulumix.Output[*PredictiveAutoscalePolicyScaleMode] {
-	return pulumix.Output[*PredictiveAutoscalePolicyScaleMode]{
-		OutputState: in.ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -6178,12 +5973,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network access type for accessing Application Insights query.
 type PublicNetworkAccessType string
 
@@ -6350,12 +6139,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutput() Publi
 
 func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithContext(ctx context.Context) PublicNetworkAccessTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
-}
-
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the recurrence frequency. How often the schedule profile should take effect. This value must be Week, meaning each week will have the same set of profiles. For example, to set a daily schedule, set **schedule** to every day of the week. The frequency property specifies that the schedule is repeated weekly.
@@ -6536,12 +6319,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
 }
 
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
 type RequestSource string
 
@@ -6704,12 +6481,6 @@ func (in *requestSourcePtr) ToRequestSourcePtrOutput() RequestSourcePtrOutput {
 
 func (in *requestSourcePtr) ToRequestSourcePtrOutputWithContext(ctx context.Context) RequestSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequestSourcePtrOutput)
-}
-
-func (in *requestSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*RequestSource] {
-	return pulumix.Output[*RequestSource]{
-		OutputState: in.ToRequestSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the scale direction. Whether the scaling action increases or decreases the number of instances.
@@ -6880,12 +6651,6 @@ func (in *scaleDirectionPtr) ToScaleDirectionPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleDirectionPtrOutput)
 }
 
-func (in *scaleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleDirection] {
-	return pulumix.Output[*ScaleDirection]{
-		OutputState: in.ToScaleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
 type ScaleRuleMetricDimensionOperationType string
 
@@ -7050,12 +6815,6 @@ func (in *scaleRuleMetricDimensionOperationTypePtr) ToScaleRuleMetricDimensionOp
 
 func (in *scaleRuleMetricDimensionOperationTypePtr) ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleRuleMetricDimensionOperationTypePtrOutput)
-}
-
-func (in *scaleRuleMetricDimensionOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleRuleMetricDimensionOperationType] {
-	return pulumix.Output[*ScaleRuleMetricDimensionOperationType]{
-		OutputState: in.ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the type of action that should occur when the scale rule fires.
@@ -7226,12 +6985,6 @@ func (in *scaleTypePtr) ToScaleTypePtrOutput() ScaleTypePtrOutput {
 
 func (in *scaleTypePtr) ToScaleTypePtrOutputWithContext(ctx context.Context) ScaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleTypePtrOutput)
-}
-
-func (in *scaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleType] {
-	return pulumix.Output[*ScaleType]{
-		OutputState: in.ToScaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Aggregation type. Relevant and required only for rules of the kind LogAlert.
@@ -7406,12 +7159,6 @@ func (in *timeAggregationPtr) ToTimeAggregationPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationPtrOutput)
 }
 
-func (in *timeAggregationPtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregation] {
-	return pulumix.Output[*TimeAggregation]{
-		OutputState: in.ToTimeAggregationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
 type TimeAggregationOperator string
 
@@ -7582,12 +7329,6 @@ func (in *timeAggregationOperatorPtr) ToTimeAggregationOperatorPtrOutput() TimeA
 
 func (in *timeAggregationOperatorPtr) ToTimeAggregationOperatorPtrOutputWithContext(ctx context.Context) TimeAggregationOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationOperatorPtrOutput)
-}
-
-func (in *timeAggregationOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregationOperator] {
-	return pulumix.Output[*TimeAggregationOperator]{
-		OutputState: in.ToTimeAggregationOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // time aggregation type. How the data that is collected should be combined over time. The default value is Average.
@@ -7764,12 +7505,6 @@ func (in *timeAggregationTypePtr) ToTimeAggregationTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationTypePtrOutput)
 }
 
-func (in *timeAggregationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregationType] {
-	return pulumix.Output[*TimeAggregationType]{
-		OutputState: in.ToTimeAggregationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of web test this is, valid choices are ping, multistep and standard.
 type WebTestKind string
 
@@ -7938,12 +7673,6 @@ func (in *webTestKindPtr) ToWebTestKindPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(WebTestKindPtrOutput)
 }
 
-func (in *webTestKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
-	return pulumix.Output[*WebTestKind]{
-		OutputState: in.ToWebTestKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of workbook. Only valid value is shared.
 type WorkbookSharedTypeKind string
 
@@ -8106,12 +7835,6 @@ func (in *workbookSharedTypeKindPtr) ToWorkbookSharedTypeKindPtrOutput() Workboo
 
 func (in *workbookSharedTypeKindPtr) ToWorkbookSharedTypeKindPtrOutputWithContext(ctx context.Context) WorkbookSharedTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkbookSharedTypeKindPtrOutput)
-}
-
-func (in *workbookSharedTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkbookSharedTypeKind] {
-	return pulumix.Output[*WorkbookSharedTypeKind]{
-		OutputState: in.ToWorkbookSharedTypeKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

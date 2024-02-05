@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of RedisEnterprise cluster to deploy. Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
@@ -185,12 +184,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

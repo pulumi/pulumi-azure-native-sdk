@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Application Type
@@ -173,12 +172,6 @@ func (in *applicationTypePtr) ToApplicationTypePtrOutput() ApplicationTypePtrOut
 
 func (in *applicationTypePtr) ToApplicationTypePtrOutputWithContext(ctx context.Context) ApplicationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationTypePtrOutput)
-}
-
-func (in *applicationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationType] {
-	return pulumix.Output[*ApplicationType]{
-		OutputState: in.ToApplicationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
@@ -349,12 +342,6 @@ func (in *avsDataStorePtr) ToAvsDataStorePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AvsDataStorePtrOutput)
 }
 
-func (in *avsDataStorePtr) ToOutput(ctx context.Context) pulumix.Output[*AvsDataStore] {
-	return pulumix.Output[*AvsDataStore]{
-		OutputState: in.ToAvsDataStorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
 type ChownMode string
 
@@ -519,12 +506,6 @@ func (in *chownModePtr) ToChownModePtrOutput() ChownModePtrOutput {
 
 func (in *chownModePtr) ToChownModePtrOutputWithContext(ctx context.Context) ChownModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ChownModePtrOutput)
-}
-
-func (in *chownModePtr) ToOutput(ctx context.Context) pulumix.Output[*ChownMode] {
-	return pulumix.Output[*ChownMode]{
-		OutputState: in.ToChownModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Flag indicating whether subvolume operations are enabled on the volume
@@ -695,12 +676,6 @@ func (in *enableSubvolumesPtr) ToEnableSubvolumesPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(EnableSubvolumesPtrOutput)
 }
 
-func (in *enableSubvolumesPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableSubvolumes] {
-	return pulumix.Output[*EnableSubvolumes]{
-		OutputState: in.ToEnableSubvolumesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the local volume is the source or destination for the Volume Replication
 type EndpointType string
 
@@ -865,12 +840,6 @@ func (in *endpointTypePtr) ToEndpointTypePtrOutput() EndpointTypePtrOutput {
 
 func (in *endpointTypePtr) ToEndpointTypePtrOutputWithContext(ctx context.Context) EndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointTypePtrOutput)
-}
-
-func (in *endpointTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EndpointType] {
-	return pulumix.Output[*EndpointType]{
-		OutputState: in.ToEndpointTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Basic network, or Standard features available to the volume.
@@ -1041,12 +1010,6 @@ func (in *networkFeaturesPtr) ToNetworkFeaturesPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkFeaturesPtrOutput)
 }
 
-func (in *networkFeaturesPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkFeatures] {
-	return pulumix.Output[*NetworkFeatures]{
-		OutputState: in.ToNetworkFeaturesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Schedule
 type ReplicationSchedule string
 
@@ -1215,12 +1178,6 @@ func (in *replicationSchedulePtr) ToReplicationSchedulePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationSchedulePtrOutput)
 }
 
-func (in *replicationSchedulePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationSchedule] {
-	return pulumix.Output[*ReplicationSchedule]{
-		OutputState: in.ToReplicationSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
 type SecurityStyle string
 
@@ -1385,12 +1342,6 @@ func (in *securityStylePtr) ToSecurityStylePtrOutput() SecurityStylePtrOutput {
 
 func (in *securityStylePtr) ToSecurityStylePtrOutputWithContext(ctx context.Context) SecurityStylePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityStylePtrOutput)
-}
-
-func (in *securityStylePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityStyle] {
-	return pulumix.Output[*SecurityStyle]{
-		OutputState: in.ToSecurityStylePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The service level of the file system
@@ -1565,12 +1516,6 @@ func (in *serviceLevelPtr) ToServiceLevelPtrOutput() ServiceLevelPtrOutput {
 
 func (in *serviceLevelPtr) ToServiceLevelPtrOutputWithContext(ctx context.Context) ServiceLevelPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceLevelPtrOutput)
-}
-
-func (in *serviceLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceLevel] {
-	return pulumix.Output[*ServiceLevel]{
-		OutputState: in.ToServiceLevelPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

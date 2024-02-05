@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of application being monitored.
@@ -177,12 +176,6 @@ func (in *applicationTypePtr) ToApplicationTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(ApplicationTypePtrOutput)
 }
 
-func (in *applicationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApplicationType] {
-	return pulumix.Output[*ApplicationType]{
-		OutputState: in.ToApplicationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
 type FlowType string
 
@@ -345,12 +338,6 @@ func (in *flowTypePtr) ToFlowTypePtrOutput() FlowTypePtrOutput {
 
 func (in *flowTypePtr) ToFlowTypePtrOutputWithContext(ctx context.Context) FlowTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FlowTypePtrOutput)
-}
-
-func (in *flowTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FlowType] {
-	return pulumix.Output[*FlowType]{
-		OutputState: in.ToFlowTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates the flow of the ingestion.
@@ -521,12 +508,6 @@ func (in *ingestionModePtr) ToIngestionModePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(IngestionModePtrOutput)
 }
 
-func (in *ingestionModePtr) ToOutput(ctx context.Context) pulumix.Output[*IngestionMode] {
-	return pulumix.Output[*IngestionMode]{
-		OutputState: in.ToIngestionModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network access type for accessing Application Insights query.
 type PublicNetworkAccessType string
 
@@ -695,12 +676,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
 type RequestSource string
 
@@ -863,12 +838,6 @@ func (in *requestSourcePtr) ToRequestSourcePtrOutput() RequestSourcePtrOutput {
 
 func (in *requestSourcePtr) ToRequestSourcePtrOutputWithContext(ctx context.Context) RequestSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequestSourcePtrOutput)
-}
-
-func (in *requestSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*RequestSource] {
-	return pulumix.Output[*RequestSource]{
-		OutputState: in.ToRequestSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the blockchain protocol.
@@ -179,12 +178,6 @@ func (in *blockchainProtocolPtr) ToBlockchainProtocolPtrOutput() BlockchainProto
 
 func (in *blockchainProtocolPtr) ToBlockchainProtocolPtrOutputWithContext(ctx context.Context) BlockchainProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BlockchainProtocolPtrOutput)
-}
-
-func (in *blockchainProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*BlockchainProtocol] {
-	return pulumix.Output[*BlockchainProtocol]{
-		OutputState: in.ToBlockchainProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

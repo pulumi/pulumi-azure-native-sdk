@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
@@ -179,12 +178,6 @@ func (in *enforcePtr) ToEnforcePtrOutputWithContext(ctx context.Context) Enforce
 	return pulumi.ToOutputWithContext(ctx, in).(EnforcePtrOutput)
 }
 
-func (in *enforcePtr) ToOutput(ctx context.Context) pulumix.Output[*Enforce] {
-	return pulumix.Output[*Enforce]{
-		OutputState: in.ToEnforcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the extension is enabled.
 type IsEnabled string
 
@@ -353,12 +346,6 @@ func (in *isEnabledPtr) ToIsEnabledPtrOutputWithContext(ctx context.Context) IsE
 	return pulumi.ToOutputWithContext(ctx, in).(IsEnabledPtrOutput)
 }
 
-func (in *isEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*IsEnabled] {
-	return pulumix.Output[*IsEnabled]{
-		OutputState: in.ToIsEnabledPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
 type PricingTier string
 
@@ -525,12 +512,6 @@ func (in *pricingTierPtr) ToPricingTierPtrOutput() PricingTierPtrOutput {
 
 func (in *pricingTierPtr) ToPricingTierPtrOutputWithContext(ctx context.Context) PricingTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PricingTierPtrOutput)
-}
-
-func (in *pricingTierPtr) ToOutput(ctx context.Context) pulumix.Output[*PricingTier] {
-	return pulumix.Output[*PricingTier]{
-		OutputState: in.ToPricingTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The state.
@@ -185,12 +184,6 @@ func (in *subscriptionFeatureRegistrationStateEnumPtr) ToSubscriptionFeatureRegi
 
 func (in *subscriptionFeatureRegistrationStateEnumPtr) ToSubscriptionFeatureRegistrationStateEnumPtrOutputWithContext(ctx context.Context) SubscriptionFeatureRegistrationStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionFeatureRegistrationStateEnumPtrOutput)
-}
-
-func (in *subscriptionFeatureRegistrationStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionFeatureRegistrationStateEnum] {
-	return pulumix.Output[*SubscriptionFeatureRegistrationStateEnum]{
-		OutputState: in.ToSubscriptionFeatureRegistrationStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

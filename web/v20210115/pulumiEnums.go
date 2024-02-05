@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
@@ -179,12 +178,6 @@ func (in *loadBalancingModePtr) ToLoadBalancingModePtrOutput() LoadBalancingMode
 
 func (in *loadBalancingModePtr) ToLoadBalancingModePtrOutputWithContext(ctx context.Context) LoadBalancingModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancingModePtrOutput)
-}
-
-func (in *loadBalancingModePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancingMode] {
-	return pulumix.Output[*LoadBalancingMode]{
-		OutputState: in.ToLoadBalancingModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

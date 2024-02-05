@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of data destination.
@@ -198,12 +197,6 @@ func (in *fhirServiceVersionPtr) ToFhirServiceVersionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(FhirServiceVersionPtrOutput)
 }
 
-func (in *fhirServiceVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceVersion] {
-	return pulumix.Output[*FhirServiceVersion]{
-		OutputState: in.ToFhirServiceVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of identity being specified, currently SystemAssigned and None are allowed.
 type ServiceManagedIdentityType string
 
@@ -372,12 +365,6 @@ func (in *serviceManagedIdentityTypePtr) ToServiceManagedIdentityTypePtrOutput()
 
 func (in *serviceManagedIdentityTypePtr) ToServiceManagedIdentityTypePtrOutputWithContext(ctx context.Context) ServiceManagedIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceManagedIdentityTypePtrOutput)
-}
-
-func (in *serviceManagedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityType] {
-	return pulumix.Output[*ServiceManagedIdentityType]{
-		OutputState: in.ToServiceManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

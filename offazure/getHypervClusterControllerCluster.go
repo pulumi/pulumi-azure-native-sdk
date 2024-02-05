@@ -13,6 +13,8 @@ import (
 
 // Method to get a Hyper-V cluster.
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupHypervClusterControllerCluster(ctx *pulumi.Context, args *LookupHypervClusterControllerClusterArgs, opts ...pulumi.InvokeOption) (*LookupHypervClusterControllerClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHypervClusterControllerClusterResult

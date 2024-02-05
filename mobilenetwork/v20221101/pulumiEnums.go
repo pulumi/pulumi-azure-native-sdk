@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // How to authenticate users who access local diagnostics APIs.
@@ -177,12 +176,6 @@ func (in *authenticationTypePtr) ToAuthenticationTypePtrOutput() AuthenticationT
 
 func (in *authenticationTypePtr) ToAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationTypePtrOutput)
-}
-
-func (in *authenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationType] {
-	return pulumix.Output[*AuthenticationType]{
-		OutputState: in.ToAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
@@ -362,12 +355,6 @@ func (in *billingSkuPtr) ToBillingSkuPtrOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, in).(BillingSkuPtrOutput)
 }
 
-func (in *billingSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*BillingSku] {
-	return pulumix.Output[*BillingSku]{
-		OutputState: in.ToBillingSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The core network technology generation (5G core or EPC / 4G core).
 type CoreNetworkType string
 
@@ -534,12 +521,6 @@ func (in *coreNetworkTypePtr) ToCoreNetworkTypePtrOutput() CoreNetworkTypePtrOut
 
 func (in *coreNetworkTypePtr) ToCoreNetworkTypePtrOutputWithContext(ctx context.Context) CoreNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CoreNetworkTypePtrOutput)
-}
-
-func (in *coreNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CoreNetworkType] {
-	return pulumix.Output[*CoreNetworkType]{
-		OutputState: in.ToCoreNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -712,12 +693,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether NAPT is enabled for connections to this attached data network.
 type NaptEnabled string
 
@@ -886,12 +861,6 @@ func (in *naptEnabledPtr) ToNaptEnabledPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(NaptEnabledPtrOutput)
 }
 
-func (in *naptEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*NaptEnabled] {
-	return pulumix.Output[*NaptEnabled]{
-		OutputState: in.ToNaptEnabledPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default PDU session type, which is used if the UE does not request a specific session type.
 type PduSessionType string
 
@@ -1056,12 +1025,6 @@ func (in *pduSessionTypePtr) ToPduSessionTypePtrOutput() PduSessionTypePtrOutput
 
 func (in *pduSessionTypePtr) ToPduSessionTypePtrOutputWithContext(ctx context.Context) PduSessionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PduSessionTypePtrOutput)
-}
-
-func (in *pduSessionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PduSessionType] {
-	return pulumix.Output[*PduSessionType]{
-		OutputState: in.ToPduSessionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The platform type where packet core is deployed.
@@ -1232,12 +1195,6 @@ func (in *platformTypePtr) ToPlatformTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PlatformTypePtrOutput)
 }
 
-func (in *platformTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PlatformType] {
-	return pulumix.Output[*PlatformType]{
-		OutputState: in.ToPlatformTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 type PreemptionCapability string
 
@@ -1406,12 +1363,6 @@ func (in *preemptionCapabilityPtr) ToPreemptionCapabilityPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(PreemptionCapabilityPtrOutput)
 }
 
-func (in *preemptionCapabilityPtr) ToOutput(ctx context.Context) pulumix.Output[*PreemptionCapability] {
-	return pulumix.Output[*PreemptionCapability]{
-		OutputState: in.ToPreemptionCapabilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Default QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 type PreemptionVulnerability string
 
@@ -1578,12 +1529,6 @@ func (in *preemptionVulnerabilityPtr) ToPreemptionVulnerabilityPtrOutput() Preem
 
 func (in *preemptionVulnerabilityPtr) ToPreemptionVulnerabilityPtrOutputWithContext(ctx context.Context) PreemptionVulnerabilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PreemptionVulnerabilityPtrOutput)
-}
-
-func (in *preemptionVulnerabilityPtr) ToOutput(ctx context.Context) pulumix.Output[*PreemptionVulnerability] {
-	return pulumix.Output[*PreemptionVulnerability]{
-		OutputState: in.ToPreemptionVulnerabilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The direction of this flow.
@@ -1757,12 +1702,6 @@ func (in *sdfDirectionPtr) ToSdfDirectionPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(SdfDirectionPtrOutput)
 }
 
-func (in *sdfDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SdfDirection] {
-	return pulumix.Output[*SdfDirection]{
-		OutputState: in.ToSdfDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines whether flows that match this data flow policy rule are permitted.
 type TrafficControlPermission string
 
@@ -1929,12 +1868,6 @@ func (in *trafficControlPermissionPtr) ToTrafficControlPermissionPtrOutput() Tra
 
 func (in *trafficControlPermissionPtr) ToTrafficControlPermissionPtrOutputWithContext(ctx context.Context) TrafficControlPermissionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TrafficControlPermissionPtrOutput)
-}
-
-func (in *trafficControlPermissionPtr) ToOutput(ctx context.Context) pulumix.Output[*TrafficControlPermission] {
-	return pulumix.Output[*TrafficControlPermission]{
-		OutputState: in.ToTrafficControlPermissionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

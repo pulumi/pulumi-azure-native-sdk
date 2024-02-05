@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Level of the status.
@@ -179,12 +178,6 @@ func (in *levelTypePtr) ToLevelTypePtrOutputWithContext(ctx context.Context) Lev
 	return pulumi.ToOutputWithContext(ctx, in).(LevelTypePtrOutput)
 }
 
-func (in *levelTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LevelType] {
-	return pulumix.Output[*LevelType]{
-		OutputState: in.ToLevelTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the configuration. Type 'SystemAssigned' will use an implicitly created identity. Type 'None' will not use Managed Identity for the configuration.
 type ResourceIdentityType string
 
@@ -349,12 +342,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of this DNS zone (Public or Private).
@@ -175,12 +174,6 @@ func (in *zoneTypePtr) ToZoneTypePtrOutput() ZoneTypePtrOutput {
 
 func (in *zoneTypePtr) ToZoneTypePtrOutputWithContext(ctx context.Context) ZoneTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ZoneTypePtrOutput)
-}
-
-func (in *zoneTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ZoneType] {
-	return pulumix.Output[*ZoneType]{
-		OutputState: in.ToZoneTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
@@ -179,12 +178,6 @@ func (in *lockLevelPtr) ToLockLevelPtrOutputWithContext(ctx context.Context) Loc
 	return pulumi.ToOutputWithContext(ctx, in).(LockLevelPtrOutput)
 }
 
-func (in *lockLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*LockLevel] {
-	return pulumix.Output[*LockLevel]{
-		OutputState: in.ToLockLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicNetworkAccessOptions string
 
 const (
@@ -348,12 +341,6 @@ func (in *publicNetworkAccessOptionsPtr) ToPublicNetworkAccessOptionsPtrOutput()
 
 func (in *publicNetworkAccessOptionsPtr) ToPublicNetworkAccessOptionsPtrOutputWithContext(ctx context.Context) PublicNetworkAccessOptionsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessOptionsPtrOutput)
-}
-
-func (in *publicNetworkAccessOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessOptions] {
-	return pulumix.Output[*PublicNetworkAccessOptions]{
-		OutputState: in.ToPublicNetworkAccessOptionsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

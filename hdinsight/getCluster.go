@@ -14,7 +14,7 @@ import (
 // Gets the specified cluster.
 // Azure REST API version: 2021-06-01.
 //
-// Other available API versions: 2023-04-15-preview, 2023-06-01-preview, 2023-08-15-preview.
+// Other available API versions: 2023-04-15-preview, 2023-06-01-preview, 2023-08-15-preview, 2023-11-01-preview.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

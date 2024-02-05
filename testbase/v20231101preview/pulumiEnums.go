@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of the command.
@@ -185,12 +184,6 @@ func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
 }
 
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The architecture of a first party application of a Test Base Account.
 type Architecture string
 
@@ -357,12 +350,6 @@ func (in *architecturePtr) ToArchitecturePtrOutput() ArchitecturePtrOutput {
 
 func (in *architecturePtr) ToArchitecturePtrOutputWithContext(ctx context.Context) ArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ArchitecturePtrOutput)
-}
-
-func (in *architecturePtr) ToOutput(ctx context.Context) pulumix.Output[*Architecture] {
-	return pulumix.Output[*Architecture]{
-		OutputState: in.ToArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of command content.
@@ -533,12 +520,6 @@ func (in *contentTypePtr) ToContentTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ContentTypePtrOutput)
 }
 
-func (in *contentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentType] {
-	return pulumix.Output[*ContentType]{
-		OutputState: in.ToContentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Credential type.
 type CredentialType string
 
@@ -702,12 +683,6 @@ func (in *credentialTypePtr) ToCredentialTypePtrOutput() CredentialTypePtrOutput
 
 func (in *credentialTypePtr) ToCredentialTypePtrOutputWithContext(ctx context.Context) CredentialTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CredentialTypePtrOutput)
-}
-
-func (in *credentialTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CredentialType] {
-	return pulumix.Output[*CredentialType]{
-		OutputState: in.ToCredentialTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The source type.
@@ -882,12 +857,6 @@ func (in *draftPackageSourceTypePtr) ToDraftPackageSourceTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(DraftPackageSourceTypePtrOutput)
 }
 
-func (in *draftPackageSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DraftPackageSourceType] {
-	return pulumix.Output[*DraftPackageSourceType]{
-		OutputState: in.ToDraftPackageSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Engagements string
 
 const (
@@ -1059,12 +1028,6 @@ func (in *engagementsPtr) ToEngagementsPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(EngagementsPtrOutput)
 }
 
-func (in *engagementsPtr) ToOutput(ctx context.Context) pulumix.Output[*Engagements] {
-	return pulumix.Output[*Engagements]{
-		OutputState: in.ToEngagementsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource type for file uploading.
 type FileUploadResourceType string
 
@@ -1233,12 +1196,6 @@ func (in *fileUploadResourceTypePtr) ToFileUploadResourceTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(FileUploadResourceTypePtrOutput)
 }
 
-func (in *fileUploadResourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileUploadResourceType] {
-	return pulumix.Output[*FileUploadResourceType]{
-		OutputState: in.ToFileUploadResourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom image architecture.
 type ImageArchitecture string
 
@@ -1402,12 +1359,6 @@ func (in *imageArchitecturePtr) ToImageArchitecturePtrOutput() ImageArchitecture
 
 func (in *imageArchitecturePtr) ToImageArchitecturePtrOutputWithContext(ctx context.Context) ImageArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageArchitecturePtrOutput)
-}
-
-func (in *imageArchitecturePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageArchitecture] {
-	return pulumix.Output[*ImageArchitecture]{
-		OutputState: in.ToImageArchitecturePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Custom image OS state.
@@ -1578,12 +1529,6 @@ func (in *imageOSStatePtr) ToImageOSStatePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ImageOSStatePtrOutput)
 }
 
-func (in *imageOSStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageOSState] {
-	return pulumix.Output[*ImageOSState]{
-		OutputState: in.ToImageOSStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom image security type.
 type ImageSecurityType string
 
@@ -1750,12 +1695,6 @@ func (in *imageSecurityTypePtr) ToImageSecurityTypePtrOutput() ImageSecurityType
 
 func (in *imageSecurityTypePtr) ToImageSecurityTypePtrOutputWithContext(ctx context.Context) ImageSecurityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImageSecurityTypePtrOutput)
-}
-
-func (in *imageSecurityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageSecurityType] {
-	return pulumix.Output[*ImageSecurityType]{
-		OutputState: in.ToImageSecurityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Custom image source type.
@@ -1926,12 +1865,6 @@ func (in *imageSourcePtr) ToImageSourcePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ImageSourcePtrOutput)
 }
 
-func (in *imageSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageSource] {
-	return pulumix.Output[*ImageSource]{
-		OutputState: in.ToImageSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies how the first party applications should be inter-operated with user's application.
 type InteropExecutionMode string
 
@@ -2098,12 +2031,6 @@ func (in *interopExecutionModePtr) ToInteropExecutionModePtrOutput() InteropExec
 
 func (in *interopExecutionModePtr) ToInteropExecutionModePtrOutputWithContext(ctx context.Context) InteropExecutionModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InteropExecutionModePtrOutput)
-}
-
-func (in *interopExecutionModePtr) ToOutput(ctx context.Context) pulumix.Output[*InteropExecutionMode] {
-	return pulumix.Output[*InteropExecutionMode]{
-		OutputState: in.ToInteropExecutionModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Extract status.
@@ -2276,12 +2203,6 @@ func (in *intuneExtractStatusPtr) ToIntuneExtractStatusPtrOutput() IntuneExtract
 
 func (in *intuneExtractStatusPtr) ToIntuneExtractStatusPtrOutputWithContext(ctx context.Context) IntuneExtractStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntuneExtractStatusPtrOutput)
-}
-
-func (in *intuneExtractStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*IntuneExtractStatus] {
-	return pulumix.Output[*IntuneExtractStatus]{
-		OutputState: in.ToIntuneExtractStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the tabs when creating / cloning / editing a package.
@@ -2460,12 +2381,6 @@ func (in *packageStudioTabsPtr) ToPackageStudioTabsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(PackageStudioTabsPtrOutput)
 }
 
-func (in *packageStudioTabsPtr) ToOutput(ctx context.Context) pulumix.Output[*PackageStudioTabs] {
-	return pulumix.Output[*PackageStudioTabs]{
-		OutputState: in.ToPackageStudioTabsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RequestTypes string
 
 const (
@@ -2627,12 +2542,6 @@ func (in *requestTypesPtr) ToRequestTypesPtrOutput() RequestTypesPtrOutput {
 
 func (in *requestTypesPtr) ToRequestTypesPtrOutputWithContext(ctx context.Context) RequestTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RequestTypesPtrOutput)
-}
-
-func (in *requestTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*RequestTypes] {
-	return pulumix.Output[*RequestTypes]{
-		OutputState: in.ToRequestTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (either system assigned, or none).
@@ -2799,12 +2708,6 @@ func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityT
 
 func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
-}
-
-func (in *systemAssignedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityType] {
-	return pulumix.Output[*SystemAssignedServiceIdentityType]{
-		OutputState: in.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the test.
@@ -2975,12 +2878,6 @@ func (in *testTypePtr) ToTestTypePtrOutputWithContext(ctx context.Context) TestT
 	return pulumi.ToOutputWithContext(ctx, in).(TestTypePtrOutput)
 }
 
-func (in *testTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TestType] {
-	return pulumix.Output[*TestType]{
-		OutputState: in.ToTestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of this particular SKU.
 type Tier string
 
@@ -3143,12 +3040,6 @@ func (in *tierPtr) ToTierPtrOutput() TierPtrOutput {
 
 func (in *tierPtr) ToTierPtrOutputWithContext(ctx context.Context) TierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TierPtrOutput)
-}
-
-func (in *tierPtr) ToOutput(ctx context.Context) pulumix.Output[*Tier] {
-	return pulumix.Output[*Tier]{
-		OutputState: in.ToTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

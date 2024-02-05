@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes what response the data plane API of a search service would send for requests that failed authentication.
@@ -179,12 +178,6 @@ func (in *aadAuthFailureModePtr) ToAadAuthFailureModePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AadAuthFailureModePtrOutput)
 }
 
-func (in *aadAuthFailureModePtr) ToOutput(ctx context.Context) pulumix.Output[*AadAuthFailureMode] {
-	return pulumix.Output[*AadAuthFailureMode]{
-		OutputState: in.ToAadAuthFailureModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'default' or 'highDensity'. For all other SKUs, this value must be 'default'.
 type HostingMode string
 
@@ -353,12 +346,6 @@ func (in *hostingModePtr) ToHostingModePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(HostingModePtrOutput)
 }
 
-func (in *hostingModePtr) ToOutput(ctx context.Context) pulumix.Output[*HostingMode] {
-	return pulumix.Output[*HostingMode]{
-		OutputState: in.ToHostingModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type IdentityType string
 
@@ -523,12 +510,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, or Incomplete
@@ -711,12 +692,6 @@ func (in *privateLinkServiceConnectionProvisioningStatePtr) ToPrivateLinkService
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionProvisioningStatePtrOutput)
 }
 
-func (in *privateLinkServiceConnectionProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionProvisioningState] {
-	return pulumix.Output[*PrivateLinkServiceConnectionProvisioningState]{
-		OutputState: in.ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
 type PrivateLinkServiceConnectionStatus string
 
@@ -891,12 +866,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
 type PublicNetworkAccess string
 
@@ -1061,12 +1030,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes how a search service should enforce having one or more non-customer-encrypted resources.
@@ -1240,12 +1203,6 @@ func (in *searchEncryptionWithCmkPtr) ToSearchEncryptionWithCmkPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(SearchEncryptionWithCmkPtrOutput)
 }
 
-func (in *searchEncryptionWithCmkPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchEncryptionWithCmk] {
-	return pulumix.Output[*SearchEncryptionWithCmk]{
-		OutputState: in.ToSearchEncryptionWithCmkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets options that control the availability of semantic search. This configuration is only possible for certain search SKUs in certain locations.
 type SearchSemanticSearch string
 
@@ -1415,12 +1372,6 @@ func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutput() SearchSeman
 
 func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SearchSemanticSearchPtrOutput)
-}
-
-func (in *searchSemanticSearchPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchSemanticSearch] {
-	return pulumix.Output[*SearchSemanticSearch]{
-		OutputState: in.ToSearchSemanticSearchPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
@@ -1595,12 +1546,6 @@ func (in *sharedPrivateLinkResourceProvisioningStatePtr) ToSharedPrivateLinkReso
 	return pulumi.ToOutputWithContext(ctx, in).(SharedPrivateLinkResourceProvisioningStatePtrOutput)
 }
 
-func (in *sharedPrivateLinkResourceProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceProvisioningState] {
-	return pulumix.Output[*SharedPrivateLinkResourceProvisioningState]{
-		OutputState: in.ToSharedPrivateLinkResourceProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
 type SharedPrivateLinkResourceStatus string
 
@@ -1769,12 +1714,6 @@ func (in *sharedPrivateLinkResourceStatusPtr) ToSharedPrivateLinkResourceStatusP
 
 func (in *sharedPrivateLinkResourceStatusPtr) ToSharedPrivateLinkResourceStatusPtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourceStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SharedPrivateLinkResourceStatusPtrOutput)
-}
-
-func (in *sharedPrivateLinkResourceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceStatus] {
-	return pulumix.Output[*SharedPrivateLinkResourceStatus]{
-		OutputState: in.ToSharedPrivateLinkResourceStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The SKU of the search service. Valid values include: 'free': Shared service. 'basic': Dedicated service with up to 3 replicas. 'standard': Dedicated service with up to 12 partitions and 12 replicas. 'standard2': Similar to standard, but with more capacity per search unit. 'standard3': The largest Standard offering with up to 12 partitions and 12 replicas (or up to 3 partitions with more indexes if you also set the hostingMode property to 'highDensity'). 'storage_optimized_l1': Supports 1TB per partition, up to 12 partitions. 'storage_optimized_l2': Supports 2TB per partition, up to 12 partitions.'
@@ -1958,12 +1897,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DataResidencyType enum
@@ -177,12 +176,6 @@ func (in *dataResidencyTypePtr) ToDataResidencyTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(DataResidencyTypePtrOutput)
 }
 
-func (in *dataResidencyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataResidencyType] {
-	return pulumix.Output[*DataResidencyType]{
-		OutputState: in.ToDataResidencyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ShipmentType of the order
 type ShipmentType string
 
@@ -349,12 +342,6 @@ func (in *shipmentTypePtr) ToShipmentTypePtrOutput() ShipmentTypePtrOutput {
 
 func (in *shipmentTypePtr) ToShipmentTypePtrOutputWithContext(ctx context.Context) ShipmentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ShipmentTypePtrOutput)
-}
-
-func (in *shipmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ShipmentType] {
-	return pulumix.Output[*ShipmentType]{
-		OutputState: in.ToShipmentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKU name.
@@ -577,12 +564,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU tier. This is based on the SKU name.
 type SkuTier string
 
@@ -745,12 +726,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

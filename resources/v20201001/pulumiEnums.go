@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
@@ -179,12 +178,6 @@ func (in *cleanupOptionsPtr) ToCleanupOptionsPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(CleanupOptionsPtrOutput)
 }
 
-func (in *cleanupOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*CleanupOptions] {
-	return pulumix.Output[*CleanupOptions]{
-		OutputState: in.ToCleanupOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the managed identity.
 type ManagedServiceIdentityType string
 
@@ -347,12 +340,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the script.

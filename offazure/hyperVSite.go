@@ -52,6 +52,9 @@ func NewHyperVSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:HyperVSite"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:HyperVSite"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

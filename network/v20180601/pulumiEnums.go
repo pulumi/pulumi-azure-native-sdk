@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The public IP allocation method. Possible values are: 'Static' and 'Dynamic'.
@@ -177,12 +176,6 @@ func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationMethodPtrOutput)
 }
 
-func (in *ipallocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationMethod] {
-	return pulumix.Output[*IPAllocationMethod]{
-		OutputState: in.ToIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The public IP address version. Possible values are: 'IPv4' and 'IPv6'.
 type IPVersion string
 
@@ -349,12 +342,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPV
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
 }
 
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a load balancer SKU.
 type LoadBalancerSkuName string
 
@@ -519,12 +506,6 @@ func (in *loadBalancerSkuNamePtr) ToLoadBalancerSkuNamePtrOutput() LoadBalancerS
 
 func (in *loadBalancerSkuNamePtr) ToLoadBalancerSkuNamePtrOutputWithContext(ctx context.Context) LoadBalancerSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerSkuNamePtrOutput)
-}
-
-func (in *loadBalancerSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSkuName] {
-	return pulumix.Output[*LoadBalancerSkuName]{
-		OutputState: in.ToLoadBalancerSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The load distribution policy for this rule. Possible values are 'Default', 'SourceIP', and 'SourceIPProtocol'.
@@ -695,12 +676,6 @@ func (in *loadDistributionPtr) ToLoadDistributionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(LoadDistributionPtrOutput)
 }
 
-func (in *loadDistributionPtr) ToOutput(ctx context.Context) pulumix.Output[*LoadDistribution] {
-	return pulumix.Output[*LoadDistribution]{
-		OutputState: in.ToLoadDistributionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The protocol of the end point. Possible values are: 'Http', 'Tcp', or 'Https'. If 'Tcp' is specified, a received ACK is required for the probe to be successful. If 'Http' or 'Https' is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
 type ProbeProtocol string
 
@@ -869,12 +844,6 @@ func (in *probeProtocolPtr) ToProbeProtocolPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProbeProtocolPtrOutput)
 }
 
-func (in *probeProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
-	return pulumix.Output[*ProbeProtocol]{
-		OutputState: in.ToProbeProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a public IP address SKU.
 type PublicIPAddressSkuName string
 
@@ -1039,12 +1008,6 @@ func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutput() PublicI
 
 func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutputWithContext(ctx context.Context) PublicIPAddressSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuNamePtrOutput)
-}
-
-func (in *publicIPAddressSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuName] {
-	return pulumix.Output[*PublicIPAddressSkuName]{
-		OutputState: in.ToPublicIPAddressSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Azure hop the packet should be sent to. Possible values are: 'VirtualNetworkGateway', 'VnetLocal', 'Internet', 'VirtualAppliance', and 'None'
@@ -1219,12 +1182,6 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
-func (in *routeNextHopTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteNextHopType] {
-	return pulumix.Output[*RouteNextHopType]{
-		OutputState: in.ToRouteNextHopTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network traffic is allowed or denied. Possible values are: 'Allow' and 'Deny'.
 type SecurityRuleAccess string
 
@@ -1391,12 +1348,6 @@ func (in *securityRuleAccessPtr) ToSecurityRuleAccessPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleAccessPtrOutput)
 }
 
-func (in *securityRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleAccess] {
-	return pulumix.Output[*SecurityRuleAccess]{
-		OutputState: in.ToSecurityRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are: 'Inbound' and 'Outbound'.
 type SecurityRuleDirection string
 
@@ -1561,12 +1512,6 @@ func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityR
 
 func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
-}
-
-func (in *securityRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleDirection] {
-	return pulumix.Output[*SecurityRuleDirection]{
-		OutputState: in.ToSecurityRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', and '*'.
@@ -1737,12 +1682,6 @@ func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleProtocolPtrOutput)
 }
 
-func (in *securityRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleProtocol] {
-	return pulumix.Output[*SecurityRuleProtocol]{
-		OutputState: in.ToSecurityRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The transport protocol for the endpoint. Possible values are 'Udp' or 'Tcp' or 'All'.
 type TransportProtocol string
 
@@ -1909,12 +1848,6 @@ func (in *transportProtocolPtr) ToTransportProtocolPtrOutput() TransportProtocol
 
 func (in *transportProtocolPtr) ToTransportProtocolPtrOutputWithContext(ctx context.Context) TransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransportProtocolPtrOutput)
-}
-
-func (in *transportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportProtocol] {
-	return pulumix.Output[*TransportProtocol]{
-		OutputState: in.ToTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

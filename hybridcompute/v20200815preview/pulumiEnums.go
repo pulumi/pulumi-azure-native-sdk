@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
@@ -179,12 +178,6 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
-func (in *publicNetworkAccessTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessType] {
-	return pulumix.Output[*PublicNetworkAccessType]{
-		OutputState: in.ToPublicNetworkAccessTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The level code.
 type StatusLevelTypes string
 
@@ -351,12 +344,6 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutput() StatusLevelTypesPtr
 
 func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx context.Context) StatusLevelTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatusLevelTypesPtrOutput)
-}
-
-func (in *statusLevelTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StatusLevelTypes] {
-	return pulumix.Output[*StatusLevelTypes]{
-		OutputState: in.ToStatusLevelTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

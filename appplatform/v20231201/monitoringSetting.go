@@ -94,6 +94,9 @@ func NewMonitoringSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:MonitoringSetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240101preview:MonitoringSetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of API.
@@ -177,12 +176,6 @@ func (in *apiTypePtr) ToApiTypePtrOutputWithContext(ctx context.Context) ApiType
 	return pulumi.ToOutputWithContext(ctx, in).(ApiTypePtrOutput)
 }
 
-func (in *apiTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApiType] {
-	return pulumix.Output[*ApiType]{
-		OutputState: in.ToApiTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type. Currently the only supported type is 'SystemAssigned'.
 type ApimIdentityType string
 
@@ -345,12 +338,6 @@ func (in *apimIdentityTypePtr) ToApimIdentityTypePtrOutput() ApimIdentityTypePtr
 
 func (in *apimIdentityTypePtr) ToApimIdentityTypePtrOutputWithContext(ctx context.Context) ApimIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApimIdentityTypePtrOutput)
-}
-
-func (in *apimIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApimIdentityType] {
-	return pulumix.Output[*ApimIdentityType]{
-		OutputState: in.ToApimIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Determines the type of confirmation e-mail that will be sent to the newly created user.
@@ -519,12 +506,6 @@ func (in *confirmationPtr) ToConfirmationPtrOutput() ConfirmationPtrOutput {
 
 func (in *confirmationPtr) ToConfirmationPtrOutputWithContext(ctx context.Context) ConfirmationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfirmationPtrOutput)
-}
-
-func (in *confirmationPtr) ToOutput(ctx context.Context) pulumix.Output[*Confirmation] {
-	return pulumix.Output[*Confirmation]{
-		OutputState: in.ToConfirmationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Format of the Content in which the API is getting imported.
@@ -707,12 +688,6 @@ func (in *contentFormatPtr) ToContentFormatPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContentFormatPtrOutput)
 }
 
-func (in *contentFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentFormat] {
-	return pulumix.Output[*ContentFormat]{
-		OutputState: in.ToContentFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Hostname type.
 type HostnameType string
 
@@ -883,12 +858,6 @@ func (in *hostnameTypePtr) ToHostnameTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostnameTypePtrOutput)
 }
 
-func (in *hostnameTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostnameType] {
-	return pulumix.Output[*HostnameType]{
-		OutputState: in.ToHostnameTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Key to be used to generate token for user.
 type KeyType string
 
@@ -1053,12 +1022,6 @@ func (in *keyTypePtr) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (in *keyTypePtr) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypePtrOutput)
-}
-
-func (in *keyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
-	return pulumix.Output[*KeyType]{
-		OutputState: in.ToKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Logger type.
@@ -1229,12 +1192,6 @@ func (in *loggerTypePtr) ToLoggerTypePtrOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, in).(LoggerTypePtrOutput)
 }
 
-func (in *loggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoggerType] {
-	return pulumix.Output[*LoggerType]{
-		OutputState: in.ToLoggerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Protocol string
 
 const (
@@ -1398,12 +1355,6 @@ func (in *protocolPtr) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
-}
-
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProtocolArrayInput is an input type that accepts ProtocolArray and ProtocolArrayOutput values.
@@ -1619,12 +1570,6 @@ func (in *samplingTypePtr) ToSamplingTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(SamplingTypePtrOutput)
 }
 
-func (in *samplingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SamplingType] {
-	return pulumix.Output[*SamplingType]{
-		OutputState: in.ToSamplingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of the Sku.
 type SkuType string
 
@@ -1797,12 +1742,6 @@ func (in *skuTypePtr) ToSkuTypePtrOutput() SkuTypePtrOutput {
 
 func (in *skuTypePtr) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTypePtrOutput)
-}
-
-func (in *skuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
-	return pulumix.Output[*SkuType]{
-		OutputState: in.ToSkuTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
@@ -1979,12 +1918,6 @@ func (in *userStateEnumPtr) ToUserStateEnumPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(UserStateEnumPtrOutput)
 }
 
-func (in *userStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*UserStateEnum] {
-	return pulumix.Output[*UserStateEnum]{
-		OutputState: in.ToUserStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An value that determines where the API Version identifier will be located in a HTTP request.
 type VersioningScheme string
 
@@ -2156,12 +2089,6 @@ func (in *versioningSchemePtr) ToVersioningSchemePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(VersioningSchemePtrOutput)
 }
 
-func (in *versioningSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*VersioningScheme] {
-	return pulumix.Output[*VersioningScheme]{
-		OutputState: in.ToVersioningSchemePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
 type VirtualNetworkType string
 
@@ -2331,12 +2258,6 @@ func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutput() VirtualNetworkT
 
 func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkTypePtrOutput)
-}
-
-func (in *virtualNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkType] {
-	return pulumix.Output[*VirtualNetworkType]{
-		OutputState: in.ToVirtualNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

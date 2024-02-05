@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Severity of the alert
@@ -183,12 +182,6 @@ func (in *alertSeverityPtr) ToAlertSeverityPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AlertSeverityPtrOutput)
 }
 
-func (in *alertSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertSeverity] {
-	return pulumix.Output[*AlertSeverity]{
-		OutputState: in.ToAlertSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Evaluation operation for rule - 'GreaterThan' or 'LessThan.
 type ConditionalOperator string
 
@@ -361,12 +354,6 @@ func (in *conditionalOperatorPtr) ToConditionalOperatorPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionalOperatorPtrOutput)
 }
 
-func (in *conditionalOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*ConditionalOperator] {
-	return pulumix.Output[*ConditionalOperator]{
-		OutputState: in.ToConditionalOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The flag which indicates whether the Log Search rule is enabled. Value should be true or false
 type Enabled string
 
@@ -531,12 +518,6 @@ func (in *enabledPtr) ToEnabledPtrOutput() EnabledPtrOutput {
 
 func (in *enabledPtr) ToEnabledPtrOutputWithContext(ctx context.Context) EnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnabledPtrOutput)
-}
-
-func (in *enabledPtr) ToOutput(ctx context.Context) pulumix.Output[*Enabled] {
-	return pulumix.Output[*Enabled]{
-		OutputState: in.ToEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Metric Trigger Type - 'Consecutive' or 'Total'
@@ -705,12 +686,6 @@ func (in *metricTriggerTypePtr) ToMetricTriggerTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(MetricTriggerTypePtrOutput)
 }
 
-func (in *metricTriggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricTriggerType] {
-	return pulumix.Output[*MetricTriggerType]{
-		OutputState: in.ToMetricTriggerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operator for dimension values
 type Operator string
 
@@ -875,12 +850,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set value to 'ResultCount' .
 type QueryType string
 
@@ -1043,12 +1012,6 @@ func (in *queryTypePtr) ToQueryTypePtrOutput() QueryTypePtrOutput {
 
 func (in *queryTypePtr) ToQueryTypePtrOutputWithContext(ctx context.Context) QueryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(QueryTypePtrOutput)
-}
-
-func (in *queryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*QueryType] {
-	return pulumix.Output[*QueryType]{
-		OutputState: in.ToQueryTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The name of the SKU for Azure Dev Spaces Controller.
@@ -175,12 +174,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The tier of the SKU for Azure Dev Spaces Controller.
 type SkuTier string
 
@@ -343,12 +336,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

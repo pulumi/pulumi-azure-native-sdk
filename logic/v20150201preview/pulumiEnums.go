@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the type.
@@ -191,12 +190,6 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ParameterTypePtrOutput)
 }
 
-func (in *parameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ParameterType] {
-	return pulumix.Output[*ParameterType]{
-		OutputState: in.ToParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the name.
 type SkuName string
 
@@ -371,12 +364,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the state.
 type WorkflowStateEnum string
 
@@ -547,12 +534,6 @@ func (in *workflowStateEnumPtr) ToWorkflowStateEnumPtrOutput() WorkflowStateEnum
 
 func (in *workflowStateEnumPtr) ToWorkflowStateEnumPtrOutputWithContext(ctx context.Context) WorkflowStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkflowStateEnumPtrOutput)
-}
-
-func (in *workflowStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkflowStateEnum] {
-	return pulumix.Output[*WorkflowStateEnum]{
-		OutputState: in.ToWorkflowStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

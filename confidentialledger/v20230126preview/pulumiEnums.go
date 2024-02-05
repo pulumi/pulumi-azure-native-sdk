@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Unique name for the Managed CCF.
@@ -175,12 +174,6 @@ func (in *languageRuntimePtr) ToLanguageRuntimePtrOutput() LanguageRuntimePtrOut
 
 func (in *languageRuntimePtr) ToLanguageRuntimePtrOutputWithContext(ctx context.Context) LanguageRuntimePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LanguageRuntimePtrOutput)
-}
-
-func (in *languageRuntimePtr) ToOutput(ctx context.Context) pulumix.Output[*LanguageRuntime] {
-	return pulumix.Output[*LanguageRuntime]{
-		OutputState: in.ToLanguageRuntimePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LedgerRole associated with the Security Principal of Ledger
@@ -351,12 +344,6 @@ func (in *ledgerRoleNamePtr) ToLedgerRoleNamePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LedgerRoleNamePtrOutput)
 }
 
-func (in *ledgerRoleNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LedgerRoleName] {
-	return pulumix.Output[*LedgerRoleName]{
-		OutputState: in.ToLedgerRoleNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of Confidential Ledger
 type LedgerType string
 
@@ -523,12 +510,6 @@ func (in *ledgerTypePtr) ToLedgerTypePtrOutput() LedgerTypePtrOutput {
 
 func (in *ledgerTypePtr) ToLedgerTypePtrOutputWithContext(ctx context.Context) LedgerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LedgerTypePtrOutput)
-}
-
-func (in *ledgerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LedgerType] {
-	return pulumix.Output[*LedgerType]{
-		OutputState: in.ToLedgerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Object representing RunningState for Ledger.
@@ -701,12 +682,6 @@ func (in *runningStatePtr) ToRunningStatePtrOutput() RunningStatePtrOutput {
 
 func (in *runningStatePtr) ToRunningStatePtrOutputWithContext(ctx context.Context) RunningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RunningStatePtrOutput)
-}
-
-func (in *runningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*RunningState] {
-	return pulumix.Output[*RunningState]{
-		OutputState: in.ToRunningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

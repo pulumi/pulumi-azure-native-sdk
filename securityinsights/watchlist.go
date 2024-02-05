@@ -15,7 +15,7 @@ import (
 // Represents a Watchlist in Azure Security Insights.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01.
+// Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview.
 type Watchlist struct {
 	pulumi.CustomResourceState
 
@@ -183,6 +183,9 @@ func NewWatchlist(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231101:Watchlist"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:Watchlist"),
 		},
 	})
 	opts = append(opts, aliases)

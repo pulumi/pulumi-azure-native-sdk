@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Auto-tracking configuration.
@@ -179,12 +178,6 @@ func (in *autoTrackingConfigurationPtr) ToAutoTrackingConfigurationPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AutoTrackingConfigurationPtrOutput)
 }
 
-func (in *autoTrackingConfigurationPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoTrackingConfiguration] {
-	return pulumix.Output[*AutoTrackingConfiguration]{
-		OutputState: in.ToAutoTrackingConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Direction (uplink or downlink).
 type Direction string
 
@@ -349,12 +342,6 @@ func (in *directionPtr) ToDirectionPtrOutput() DirectionPtrOutput {
 
 func (in *directionPtr) ToDirectionPtrOutputWithContext(ctx context.Context) DirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DirectionPtrOutput)
-}
-
-func (in *directionPtr) ToOutput(ctx context.Context) pulumix.Output[*Direction] {
-	return pulumix.Output[*Direction]{
-		OutputState: in.ToDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Polarization. e.g. (RHCP, LHCP).
@@ -527,12 +514,6 @@ func (in *polarizationPtr) ToPolarizationPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PolarizationPtrOutput)
 }
 
-func (in *polarizationPtr) ToOutput(ctx context.Context) pulumix.Output[*Polarization] {
-	return pulumix.Output[*Polarization]{
-		OutputState: in.ToPolarizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Protocol either UDP or TCP.
 type Protocol string
 
@@ -697,12 +678,6 @@ func (in *protocolPtr) ToProtocolPtrOutput() ProtocolPtrOutput {
 
 func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) ProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
-}
-
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

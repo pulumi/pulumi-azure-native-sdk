@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies that the image or disk that is being used was licensed on-premises. <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -175,12 +174,6 @@ func (in *hybridLicenseTypePtr) ToHybridLicenseTypePtrOutput() HybridLicenseType
 
 func (in *hybridLicenseTypePtr) ToHybridLicenseTypePtrOutputWithContext(ctx context.Context) HybridLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HybridLicenseTypePtrOutput)
-}
-
-func (in *hybridLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HybridLicenseType] {
-	return pulumix.Output[*HybridLicenseType]{
-		OutputState: in.ToHybridLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type
@@ -351,12 +344,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutput() ManagedIdenti
 
 func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx context.Context) ManagedIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
-}
-
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

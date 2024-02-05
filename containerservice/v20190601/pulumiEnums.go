@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AgentPoolType represents types of an agent pool
@@ -175,12 +174,6 @@ func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutput() AgentPoolTypePtrOutput {
 
 func (in *agentPoolTypePtr) ToAgentPoolTypePtrOutputWithContext(ctx context.Context) AgentPoolTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AgentPoolTypePtrOutput)
-}
-
-func (in *agentPoolTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolType] {
-	return pulumix.Output[*AgentPoolType]{
-		OutputState: in.ToAgentPoolTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Size of agent VMs.
@@ -693,12 +686,6 @@ func (in *containerServiceVMSizeTypesPtr) ToContainerServiceVMSizeTypesPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerServiceVMSizeTypesPtrOutput)
 }
 
-func (in *containerServiceVMSizeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceVMSizeTypes] {
-	return pulumix.Output[*ContainerServiceVMSizeTypes]{
-		OutputState: in.ToContainerServiceVMSizeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The load balancer sku for the managed cluster.
 type LoadBalancerSku string
 
@@ -863,12 +850,6 @@ func (in *loadBalancerSkuPtr) ToLoadBalancerSkuPtrOutput() LoadBalancerSkuPtrOut
 
 func (in *loadBalancerSkuPtr) ToLoadBalancerSkuPtrOutputWithContext(ctx context.Context) LoadBalancerSkuPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerSkuPtrOutput)
-}
-
-func (in *loadBalancerSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerSku] {
-	return pulumix.Output[*LoadBalancerSku]{
-		OutputState: in.ToLoadBalancerSkuPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network plugin used for building Kubernetes network.
@@ -1037,12 +1018,6 @@ func (in *networkPluginPtr) ToNetworkPluginPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPluginPtrOutput)
 }
 
-func (in *networkPluginPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPlugin] {
-	return pulumix.Output[*NetworkPlugin]{
-		OutputState: in.ToNetworkPluginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network policy used for building Kubernetes network.
 type NetworkPolicy string
 
@@ -1207,12 +1182,6 @@ func (in *networkPolicyPtr) ToNetworkPolicyPtrOutput() NetworkPolicyPtrOutput {
 
 func (in *networkPolicyPtr) ToNetworkPolicyPtrOutputWithContext(ctx context.Context) NetworkPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkPolicyPtrOutput)
-}
-
-func (in *networkPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkPolicy] {
-	return pulumix.Output[*NetworkPolicy]{
-		OutputState: in.ToNetworkPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
@@ -1381,12 +1350,6 @@ func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
 }
 
-func (in *ostypePtr) ToOutput(ctx context.Context) pulumix.Output[*OSType] {
-	return pulumix.Output[*OSType]{
-		OutputState: in.ToOSTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
 type ResourceIdentityType string
 
@@ -1551,12 +1514,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.
@@ -1725,12 +1682,6 @@ func (in *scaleSetEvictionPolicyPtr) ToScaleSetEvictionPolicyPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetEvictionPolicyPtrOutput)
 }
 
-func (in *scaleSetEvictionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetEvictionPolicy] {
-	return pulumix.Output[*ScaleSetEvictionPolicy]{
-		OutputState: in.ToScaleSetEvictionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
 type ScaleSetPriority string
 
@@ -1895,12 +1846,6 @@ func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutput() ScaleSetPriorityPtr
 
 func (in *scaleSetPriorityPtr) ToScaleSetPriorityPtrOutputWithContext(ctx context.Context) ScaleSetPriorityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleSetPriorityPtrOutput)
-}
-
-func (in *scaleSetPriorityPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleSetPriority] {
-	return pulumix.Output[*ScaleSetPriority]{
-		OutputState: in.ToScaleSetPriorityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

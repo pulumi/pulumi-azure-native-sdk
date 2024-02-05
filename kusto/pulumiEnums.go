@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SKU name.
@@ -301,12 +300,6 @@ func (in *azureSkuNamePtr) ToAzureSkuNamePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSkuNamePtrOutput)
 }
 
-func (in *azureSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuName] {
-	return pulumix.Output[*AzureSkuName]{
-		OutputState: in.ToAzureSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU tier.
 type AzureSkuTier string
 
@@ -471,12 +464,6 @@ func (in *azureSkuTierPtr) ToAzureSkuTierPtrOutput() AzureSkuTierPtrOutput {
 
 func (in *azureSkuTierPtr) ToAzureSkuTierPtrOutputWithContext(ctx context.Context) AzureSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSkuTierPtrOutput)
-}
-
-func (in *azureSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuTier] {
-	return pulumix.Output[*AzureSkuTier]{
-		OutputState: in.ToAzureSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of blob storage event type to process.
@@ -645,12 +632,6 @@ func (in *blobStorageEventTypePtr) ToBlobStorageEventTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(BlobStorageEventTypePtrOutput)
 }
 
-func (in *blobStorageEventTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageEventType] {
-	return pulumix.Output[*BlobStorageEventType]{
-		OutputState: in.ToBlobStorageEventTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 type ClusterNetworkAccessFlag string
 
@@ -815,12 +796,6 @@ func (in *clusterNetworkAccessFlagPtr) ToClusterNetworkAccessFlagPtrOutput() Clu
 
 func (in *clusterNetworkAccessFlagPtr) ToClusterNetworkAccessFlagPtrOutputWithContext(ctx context.Context) ClusterNetworkAccessFlagPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterNetworkAccessFlagPtrOutput)
-}
-
-func (in *clusterNetworkAccessFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkAccessFlag] {
-	return pulumix.Output[*ClusterNetworkAccessFlag]{
-		OutputState: in.ToClusterNetworkAccessFlagPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Cluster principal role.
@@ -989,12 +964,6 @@ func (in *clusterPrincipalRolePtr) ToClusterPrincipalRolePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterPrincipalRolePtrOutput)
 }
 
-func (in *clusterPrincipalRolePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterPrincipalRole] {
-	return pulumix.Output[*ClusterPrincipalRole]{
-		OutputState: in.ToClusterPrincipalRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The event hub messages compression type
 type Compression string
 
@@ -1159,12 +1128,6 @@ func (in *compressionPtr) ToCompressionPtrOutput() CompressionPtrOutput {
 
 func (in *compressionPtr) ToCompressionPtrOutputWithContext(ctx context.Context) CompressionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CompressionPtrOutput)
-}
-
-func (in *compressionPtr) ToOutput(ctx context.Context) pulumix.Output[*Compression] {
-	return pulumix.Output[*Compression]{
-		OutputState: in.ToCompressionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Kind of the endpoint for the data connection
@@ -1345,12 +1308,6 @@ func (in *dataFormatPtr) ToDataFormatPtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DataFormatPtrOutput)
 }
 
-func (in *dataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*DataFormat] {
-	return pulumix.Output[*DataFormat]{
-		OutputState: in.ToDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Database principal role.
 type DatabasePrincipalRole string
 
@@ -1525,12 +1482,6 @@ func (in *databasePrincipalRolePtr) ToDatabasePrincipalRolePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DatabasePrincipalRolePtrOutput)
 }
 
-func (in *databasePrincipalRolePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabasePrincipalRole] {
-	return pulumix.Output[*DatabasePrincipalRole]{
-		OutputState: in.ToDatabasePrincipalRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indication for database routing information from the data connection, by default only database routing information is allowed
 type DatabaseRouting string
 
@@ -1695,12 +1646,6 @@ func (in *databaseRoutingPtr) ToDatabaseRoutingPtrOutput() DatabaseRoutingPtrOut
 
 func (in *databaseRoutingPtr) ToDatabaseRoutingPtrOutputWithContext(ctx context.Context) DatabaseRoutingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseRoutingPtrOutput)
-}
-
-func (in *databaseRoutingPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseRouting] {
-	return pulumix.Output[*DatabaseRouting]{
-		OutputState: in.ToDatabaseRoutingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The default principals modification kind
@@ -1871,12 +1816,6 @@ func (in *defaultPrincipalsModificationKindPtr) ToDefaultPrincipalsModificationK
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultPrincipalsModificationKindPtrOutput)
 }
 
-func (in *defaultPrincipalsModificationKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultPrincipalsModificationKind] {
-	return pulumix.Output[*DefaultPrincipalsModificationKind]{
-		OutputState: in.ToDefaultPrincipalsModificationKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The engine type
 type EngineType string
 
@@ -2041,12 +1980,6 @@ func (in *engineTypePtr) ToEngineTypePtrOutput() EngineTypePtrOutput {
 
 func (in *engineTypePtr) ToEngineTypePtrOutputWithContext(ctx context.Context) EngineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EngineTypePtrOutput)
-}
-
-func (in *engineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EngineType] {
-	return pulumix.Output[*EngineType]{
-		OutputState: in.ToEngineTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The data format of the message. Optionally the data format can be added to each message.
@@ -2243,12 +2176,6 @@ func (in *eventGridDataFormatPtr) ToEventGridDataFormatPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(EventGridDataFormatPtrOutput)
 }
 
-func (in *eventGridDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*EventGridDataFormat] {
-	return pulumix.Output[*EventGridDataFormat]{
-		OutputState: in.ToEventGridDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data format of the message. Optionally the data format can be added to each message.
 type EventHubDataFormat string
 
@@ -2443,12 +2370,6 @@ func (in *eventHubDataFormatPtr) ToEventHubDataFormatPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EventHubDataFormatPtrOutput)
 }
 
-func (in *eventHubDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*EventHubDataFormat] {
-	return pulumix.Output[*EventHubDataFormat]{
-		OutputState: in.ToEventHubDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
 type IdentityType string
 
@@ -2617,12 +2538,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The data format of the message. Optionally the data format can be added to each message.
@@ -2819,12 +2734,6 @@ func (in *iotHubDataFormatPtr) ToIotHubDataFormatPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IotHubDataFormatPtrOutput)
 }
 
-func (in *iotHubDataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*IotHubDataFormat] {
-	return pulumix.Output[*IotHubDataFormat]{
-		OutputState: in.ToIotHubDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kind of the database
 type Kind string
 
@@ -2997,12 +2906,6 @@ func (in *languagePtr) ToLanguagePtrOutputWithContext(ctx context.Context) Langu
 	return pulumi.ToOutputWithContext(ctx, in).(LanguagePtrOutput)
 }
 
-func (in *languagePtr) ToOutput(ctx context.Context) pulumix.Output[*Language] {
-	return pulumix.Output[*Language]{
-		OutputState: in.ToLanguagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The language extension image name.
 type LanguageExtensionImageName string
 
@@ -3171,12 +3074,6 @@ func (in *languageExtensionImageNamePtr) ToLanguageExtensionImageNamePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(LanguageExtensionImageNamePtrOutput)
 }
 
-func (in *languageExtensionImageNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LanguageExtensionImageName] {
-	return pulumix.Output[*LanguageExtensionImageName]{
-		OutputState: in.ToLanguageExtensionImageNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The language extension name.
 type LanguageExtensionName string
 
@@ -3341,12 +3238,6 @@ func (in *languageExtensionNamePtr) ToLanguageExtensionNamePtrOutput() LanguageE
 
 func (in *languageExtensionNamePtr) ToLanguageExtensionNamePtrOutputWithContext(ctx context.Context) LanguageExtensionNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LanguageExtensionNamePtrOutput)
-}
-
-func (in *languageExtensionNamePtr) ToOutput(ctx context.Context) pulumix.Output[*LanguageExtensionName] {
-	return pulumix.Output[*LanguageExtensionName]{
-		OutputState: in.ToLanguageExtensionNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Principal type.
@@ -3517,12 +3408,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
 }
 
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
 type PublicIPType string
 
@@ -3689,12 +3574,6 @@ func (in *publicIPTypePtr) ToPublicIPTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPTypePtrOutput)
 }
 
-func (in *publicIPTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPType] {
-	return pulumix.Output[*PublicIPType]{
-		OutputState: in.ToPublicIPTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
 type PublicNetworkAccess string
 
@@ -3859,12 +3738,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

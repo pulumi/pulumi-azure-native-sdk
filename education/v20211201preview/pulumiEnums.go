@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Student Role
@@ -175,12 +174,6 @@ func (in *studentRolePtr) ToStudentRolePtrOutput() StudentRolePtrOutput {
 
 func (in *studentRolePtr) ToStudentRolePtrOutputWithContext(ctx context.Context) StudentRolePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StudentRolePtrOutput)
-}
-
-func (in *studentRolePtr) ToOutput(ctx context.Context) pulumix.Output[*StudentRole] {
-	return pulumix.Output[*StudentRole]{
-		OutputState: in.ToStudentRolePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

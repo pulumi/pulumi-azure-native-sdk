@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies for what type of messages sampling settings should not apply.
@@ -174,12 +173,6 @@ func (in *alwaysLogPtr) ToAlwaysLogPtrOutput() AlwaysLogPtrOutput {
 
 func (in *alwaysLogPtr) ToAlwaysLogPtrOutputWithContext(ctx context.Context) AlwaysLogPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlwaysLogPtrOutput)
-}
-
-func (in *alwaysLogPtr) ToOutput(ctx context.Context) pulumix.Output[*AlwaysLog] {
-	return pulumix.Output[*AlwaysLog]{
-		OutputState: in.ToAlwaysLogPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of API.
@@ -352,12 +345,6 @@ func (in *apiTypePtr) ToApiTypePtrOutputWithContext(ctx context.Context) ApiType
 	return pulumi.ToOutputWithContext(ctx, in).(ApiTypePtrOutput)
 }
 
-func (in *apiTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApiType] {
-	return pulumix.Output[*ApiType]{
-		OutputState: in.ToApiTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
 type ApimIdentityType string
 
@@ -528,12 +515,6 @@ func (in *apimIdentityTypePtr) ToApimIdentityTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ApimIdentityTypePtrOutput)
 }
 
-func (in *apimIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApimIdentityType] {
-	return pulumix.Output[*ApimIdentityType]{
-		OutputState: in.ToApimIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of application which send the create user request. Default is legacy portal.
 type AppType string
 
@@ -700,12 +681,6 @@ func (in *appTypePtr) ToAppTypePtrOutput() AppTypePtrOutput {
 
 func (in *appTypePtr) ToAppTypePtrOutputWithContext(ctx context.Context) AppTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AppTypePtrOutput)
-}
-
-func (in *appTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AppType] {
-	return pulumix.Output[*AppType]{
-		OutputState: in.ToAppTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type AuthorizationMethod string
@@ -883,12 +858,6 @@ func (in *authorizationMethodPtr) ToAuthorizationMethodPtrOutput() Authorization
 
 func (in *authorizationMethodPtr) ToAuthorizationMethodPtrOutputWithContext(ctx context.Context) AuthorizationMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationMethodPtrOutput)
-}
-
-func (in *authorizationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationMethod] {
-	return pulumix.Output[*AuthorizationMethod]{
-		OutputState: in.ToAuthorizationMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthorizationMethodArrayInput is an input type that accepts AuthorizationMethodArray and AuthorizationMethodArrayOutput values.
@@ -1101,12 +1070,6 @@ func (in *authorizationTypePtr) ToAuthorizationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationTypePtrOutput)
 }
 
-func (in *authorizationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationType] {
-	return pulumix.Output[*AuthorizationType]{
-		OutputState: in.ToAuthorizationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backend communication protocol.
 type BackendProtocol string
 
@@ -1275,12 +1238,6 @@ func (in *backendProtocolPtr) ToBackendProtocolPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(BackendProtocolPtrOutput)
 }
 
-func (in *backendProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*BackendProtocol] {
-	return pulumix.Output[*BackendProtocol]{
-		OutputState: in.ToBackendProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BearerTokenSendingMethod string
 
 const (
@@ -1444,12 +1401,6 @@ func (in *bearerTokenSendingMethodPtr) ToBearerTokenSendingMethodPtrOutput() Bea
 
 func (in *bearerTokenSendingMethodPtr) ToBearerTokenSendingMethodPtrOutputWithContext(ctx context.Context) BearerTokenSendingMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BearerTokenSendingMethodPtrOutput)
-}
-
-func (in *bearerTokenSendingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*BearerTokenSendingMethod] {
-	return pulumix.Output[*BearerTokenSendingMethod]{
-		OutputState: in.ToBearerTokenSendingMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Form of an authorization grant, which the client uses to request the access token.
@@ -1618,12 +1569,6 @@ func (in *bearerTokenSendingMethodsPtr) ToBearerTokenSendingMethodsPtrOutput() B
 
 func (in *bearerTokenSendingMethodsPtr) ToBearerTokenSendingMethodsPtrOutputWithContext(ctx context.Context) BearerTokenSendingMethodsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BearerTokenSendingMethodsPtrOutput)
-}
-
-func (in *bearerTokenSendingMethodsPtr) ToOutput(ctx context.Context) pulumix.Output[*BearerTokenSendingMethods] {
-	return pulumix.Output[*BearerTokenSendingMethods]{
-		OutputState: in.ToBearerTokenSendingMethodsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Certificate Source.
@@ -1796,12 +1741,6 @@ func (in *certificateSourcePtr) ToCertificateSourcePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateSourcePtrOutput)
 }
 
-func (in *certificateSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateSource] {
-	return pulumix.Output[*CertificateSource]{
-		OutputState: in.ToCertificateSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Certificate Status.
 type CertificateStatus string
 
@@ -1968,12 +1907,6 @@ func (in *certificateStatusPtr) ToCertificateStatusPtrOutput() CertificateStatus
 
 func (in *certificateStatusPtr) ToCertificateStatusPtrOutputWithContext(ctx context.Context) CertificateStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CertificateStatusPtrOutput)
-}
-
-func (in *certificateStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*CertificateStatus] {
-	return pulumix.Output[*CertificateStatus]{
-		OutputState: in.ToCertificateStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ClientAuthenticationMethod string
@@ -2143,12 +2076,6 @@ func (in *clientAuthenticationMethodPtr) ToClientAuthenticationMethodPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ClientAuthenticationMethodPtrOutput)
 }
 
-func (in *clientAuthenticationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*ClientAuthenticationMethod] {
-	return pulumix.Output[*ClientAuthenticationMethod]{
-		OutputState: in.ToClientAuthenticationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines the type of confirmation e-mail that will be sent to the newly created user.
 type Confirmation string
 
@@ -2315,12 +2242,6 @@ func (in *confirmationPtr) ToConfirmationPtrOutput() ConfirmationPtrOutput {
 
 func (in *confirmationPtr) ToConfirmationPtrOutputWithContext(ctx context.Context) ConfirmationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConfirmationPtrOutput)
-}
-
-func (in *confirmationPtr) ToOutput(ctx context.Context) pulumix.Output[*Confirmation] {
-	return pulumix.Output[*Confirmation]{
-		OutputState: in.ToConfirmationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Format of the Content in which the API is getting imported.
@@ -2518,12 +2439,6 @@ func (in *contentFormatPtr) ToContentFormatPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContentFormatPtrOutput)
 }
 
-func (in *contentFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentFormat] {
-	return pulumix.Output[*ContentFormat]{
-		OutputState: in.ToContentFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data masking mode.
 type DataMaskingMode string
 
@@ -2692,12 +2607,6 @@ func (in *dataMaskingModePtr) ToDataMaskingModePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DataMaskingModePtrOutput)
 }
 
-func (in *dataMaskingModePtr) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingMode] {
-	return pulumix.Output[*DataMaskingMode]{
-		OutputState: in.ToDataMaskingModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Purpose of debug credential.
 type GatewayListDebugCredentialsContractPurpose string
 
@@ -2861,12 +2770,6 @@ func (in *gatewayListDebugCredentialsContractPurposePtr) ToGatewayListDebugCrede
 
 func (in *gatewayListDebugCredentialsContractPurposePtr) ToGatewayListDebugCredentialsContractPurposePtrOutputWithContext(ctx context.Context) GatewayListDebugCredentialsContractPurposePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GatewayListDebugCredentialsContractPurposePtrOutput)
-}
-
-func (in *gatewayListDebugCredentialsContractPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*GatewayListDebugCredentialsContractPurpose] {
-	return pulumix.Output[*GatewayListDebugCredentialsContractPurpose]{
-		OutputState: in.ToGatewayListDebugCredentialsContractPurposePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type GrantType string
@@ -3042,12 +2945,6 @@ func (in *grantTypePtr) ToGrantTypePtrOutputWithContext(ctx context.Context) Gra
 	return pulumi.ToOutputWithContext(ctx, in).(GrantTypePtrOutput)
 }
 
-func (in *grantTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GrantType] {
-	return pulumix.Output[*GrantType]{
-		OutputState: in.ToGrantTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Group type.
 type GroupType string
 
@@ -3214,12 +3111,6 @@ func (in *groupTypePtr) ToGroupTypePtrOutput() GroupTypePtrOutput {
 
 func (in *groupTypePtr) ToGroupTypePtrOutputWithContext(ctx context.Context) GroupTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GroupTypePtrOutput)
-}
-
-func (in *groupTypePtr) ToOutput(ctx context.Context) pulumix.Output[*GroupType] {
-	return pulumix.Output[*GroupType]{
-		OutputState: in.ToGroupTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Hostname type.
@@ -3394,12 +3285,6 @@ func (in *hostnameTypePtr) ToHostnameTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostnameTypePtrOutput)
 }
 
-func (in *hostnameTypePtr) ToOutput(ctx context.Context) pulumix.Output[*HostnameType] {
-	return pulumix.Output[*HostnameType]{
-		OutputState: in.ToHostnameTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sets correlation protocol to use for Application Insights diagnostics.
 type HttpCorrelationProtocol string
 
@@ -3569,12 +3454,6 @@ func (in *httpCorrelationProtocolPtr) ToHttpCorrelationProtocolPtrOutput() HttpC
 
 func (in *httpCorrelationProtocolPtr) ToHttpCorrelationProtocolPtrOutputWithContext(ctx context.Context) HttpCorrelationProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpCorrelationProtocolPtrOutput)
-}
-
-func (in *httpCorrelationProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpCorrelationProtocol] {
-	return pulumix.Output[*HttpCorrelationProtocol]{
-		OutputState: in.ToHttpCorrelationProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Identity Provider Type identifier.
@@ -3757,12 +3636,6 @@ func (in *identityProviderTypePtr) ToIdentityProviderTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityProviderTypePtrOutput)
 }
 
-func (in *identityProviderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityProviderType] {
-	return pulumix.Output[*IdentityProviderType]{
-		OutputState: in.ToIdentityProviderTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Key to be used to generate token for user.
 type KeyType string
 
@@ -3927,12 +3800,6 @@ func (in *keyTypePtr) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (in *keyTypePtr) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeyTypePtrOutput)
-}
-
-func (in *keyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
-	return pulumix.Output[*KeyType]{
-		OutputState: in.ToKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Logger type.
@@ -4106,12 +3973,6 @@ func (in *loggerTypePtr) ToLoggerTypePtrOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, in).(LoggerTypePtrOutput)
 }
 
-func (in *loggerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoggerType] {
-	return pulumix.Output[*LoggerType]{
-		OutputState: in.ToLoggerTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Property can be used to enable NAT Gateway for this API Management service.
 type NatGatewayState string
 
@@ -4278,12 +4139,6 @@ func (in *natGatewayStatePtr) ToNatGatewayStatePtrOutput() NatGatewayStatePtrOut
 
 func (in *natGatewayStatePtr) ToNatGatewayStatePtrOutputWithContext(ctx context.Context) NatGatewayStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NatGatewayStatePtrOutput)
-}
-
-func (in *natGatewayStatePtr) ToOutput(ctx context.Context) pulumix.Output[*NatGatewayState] {
-	return pulumix.Output[*NatGatewayState]{
-		OutputState: in.ToNatGatewayStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OAuth2 grant type options
@@ -4454,12 +4309,6 @@ func (in *oauth2GrantTypePtr) ToOAuth2GrantTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(OAuth2GrantTypePtrOutput)
 }
 
-func (in *oauth2GrantTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OAuth2GrantType] {
-	return pulumix.Output[*OAuth2GrantType]{
-		OutputState: in.ToOAuth2GrantTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The format of the Operation Name for Application Insights telemetries. Default is Name.
 type OperationNameFormat string
 
@@ -4626,12 +4475,6 @@ func (in *operationNameFormatPtr) ToOperationNameFormatPtrOutput() OperationName
 
 func (in *operationNameFormatPtr) ToOperationNameFormatPtrOutputWithContext(ctx context.Context) OperationNameFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperationNameFormatPtrOutput)
-}
-
-func (in *operationNameFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*OperationNameFormat] {
-	return pulumix.Output[*OperationNameFormat]{
-		OutputState: in.ToOperationNameFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Format of the policyContent.
@@ -4808,12 +4651,6 @@ func (in *policyContentFormatPtr) ToPolicyContentFormatPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyContentFormatPtrOutput)
 }
 
-func (in *policyContentFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyContentFormat] {
-	return pulumix.Output[*PolicyContentFormat]{
-		OutputState: in.ToPolicyContentFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Format of the policy fragment content.
 type PolicyFragmentContentFormat string
 
@@ -4980,12 +4817,6 @@ func (in *policyFragmentContentFormatPtr) ToPolicyFragmentContentFormatPtrOutput
 
 func (in *policyFragmentContentFormatPtr) ToPolicyFragmentContentFormatPtrOutputWithContext(ctx context.Context) PolicyFragmentContentFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyFragmentContentFormatPtrOutput)
-}
-
-func (in *policyFragmentContentFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyFragmentContentFormat] {
-	return pulumix.Output[*PolicyFragmentContentFormat]{
-		OutputState: in.ToPolicyFragmentContentFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates if base policy should be enforced for the policy document.
@@ -5156,12 +4987,6 @@ func (in *policyRestrictionRequireBasePtr) ToPolicyRestrictionRequireBasePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyRestrictionRequireBasePtrOutput)
 }
 
-func (in *policyRestrictionRequireBasePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyRestrictionRequireBase] {
-	return pulumix.Output[*PolicyRestrictionRequireBase]{
-		OutputState: in.ToPolicyRestrictionRequireBasePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -5330,12 +5155,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished.
 type ProductStateEnum string
 
@@ -5500,12 +5319,6 @@ func (in *productStateEnumPtr) ToProductStateEnumPtrOutput() ProductStateEnumPtr
 
 func (in *productStateEnumPtr) ToProductStateEnumPtrOutputWithContext(ctx context.Context) ProductStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProductStateEnumPtrOutput)
-}
-
-func (in *productStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*ProductStateEnum] {
-	return pulumix.Output[*ProductStateEnum]{
-		OutputState: in.ToProductStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type Protocol string
@@ -5677,12 +5490,6 @@ func (in *protocolPtr) ToProtocolPtrOutputWithContext(ctx context.Context) Proto
 	return pulumi.ToOutputWithContext(ctx, in).(ProtocolPtrOutput)
 }
 
-func (in *protocolPtr) ToOutput(ctx context.Context) pulumix.Output[*Protocol] {
-	return pulumix.Output[*Protocol]{
-		OutputState: in.ToProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Provisioning state.
 type ProvisioningState string
 
@@ -5845,12 +5652,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningState
 
 func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
-}
-
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
@@ -6019,12 +5820,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sampling type.
 type SamplingType string
 
@@ -6188,12 +5983,6 @@ func (in *samplingTypePtr) ToSamplingTypePtrOutput() SamplingTypePtrOutput {
 
 func (in *samplingTypePtr) ToSamplingTypePtrOutputWithContext(ctx context.Context) SamplingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SamplingTypePtrOutput)
-}
-
-func (in *samplingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SamplingType] {
-	return pulumix.Output[*SamplingType]{
-		OutputState: in.ToSamplingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Schema Type. Immutable.
@@ -6362,12 +6151,6 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
-}
-
-func (in *schemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaType] {
-	return pulumix.Output[*SchemaType]{
-		OutputState: in.ToSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of the Sku.
@@ -6550,12 +6333,6 @@ func (in *skuTypePtr) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuType
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTypePtrOutput)
 }
 
-func (in *skuTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
-	return pulumix.Output[*SkuType]{
-		OutputState: in.ToSkuTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of API to create.
 //   - `http` creates a REST API
 //   - `soap` creates a SOAP pass-through API
@@ -6732,12 +6509,6 @@ func (in *soapApiTypePtr) ToSoapApiTypePtrOutput() SoapApiTypePtrOutput {
 
 func (in *soapApiTypePtr) ToSoapApiTypePtrOutputWithContext(ctx context.Context) SoapApiTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SoapApiTypePtrOutput)
-}
-
-func (in *soapApiTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SoapApiType] {
-	return pulumix.Output[*SoapApiType]{
-		OutputState: in.ToSoapApiTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the issue.
@@ -6917,12 +6688,6 @@ func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
 }
 
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
 type SubscriptionStateEnum string
 
@@ -7097,12 +6862,6 @@ func (in *subscriptionStateEnumPtr) ToSubscriptionStateEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionStateEnumPtrOutput)
 }
 
-func (in *subscriptionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
-	return pulumix.Output[*SubscriptionStateEnum]{
-		OutputState: in.ToSubscriptionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'
 type TranslateRequiredQueryParametersConduct string
 
@@ -7269,12 +7028,6 @@ func (in *translateRequiredQueryParametersConductPtr) ToTranslateRequiredQueryPa
 
 func (in *translateRequiredQueryParametersConductPtr) ToTranslateRequiredQueryParametersConductPtrOutputWithContext(ctx context.Context) TranslateRequiredQueryParametersConductPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TranslateRequiredQueryParametersConductPtrOutput)
-}
-
-func (in *translateRequiredQueryParametersConductPtr) ToOutput(ctx context.Context) pulumix.Output[*TranslateRequiredQueryParametersConduct] {
-	return pulumix.Output[*TranslateRequiredQueryParametersConduct]{
-		OutputState: in.ToTranslateRequiredQueryParametersConductPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
@@ -7451,12 +7204,6 @@ func (in *userStateEnumPtr) ToUserStateEnumPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(UserStateEnumPtrOutput)
 }
 
-func (in *userStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*UserStateEnum] {
-	return pulumix.Output[*UserStateEnum]{
-		OutputState: in.ToUserStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The verbosity level applied to traces emitted by trace policies.
 type Verbosity string
 
@@ -7626,12 +7373,6 @@ func (in *verbosityPtr) ToVerbosityPtrOutput() VerbosityPtrOutput {
 
 func (in *verbosityPtr) ToVerbosityPtrOutputWithContext(ctx context.Context) VerbosityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VerbosityPtrOutput)
-}
-
-func (in *verbosityPtr) ToOutput(ctx context.Context) pulumix.Output[*Verbosity] {
-	return pulumix.Output[*Verbosity]{
-		OutputState: in.ToVerbosityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // An value that determines where the API Version identifier will be located in a HTTP request.
@@ -7805,12 +7546,6 @@ func (in *versioningSchemePtr) ToVersioningSchemePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(VersioningSchemePtrOutput)
 }
 
-func (in *versioningSchemePtr) ToOutput(ctx context.Context) pulumix.Output[*VersioningScheme] {
-	return pulumix.Output[*VersioningScheme]{
-		OutputState: in.ToVersioningSchemePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
 type VirtualNetworkType string
 
@@ -7980,12 +7715,6 @@ func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutput() VirtualNetworkT
 
 func (in *virtualNetworkTypePtr) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkTypePtrOutput)
-}
-
-func (in *virtualNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkType] {
-	return pulumix.Output[*VirtualNetworkType]{
-		OutputState: in.ToVirtualNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

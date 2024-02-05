@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Protocol to be filtered on.
@@ -177,12 +176,6 @@ func (in *pcProtocolPtr) ToPcProtocolPtrOutput() PcProtocolPtrOutput {
 
 func (in *pcProtocolPtr) ToPcProtocolPtrOutputWithContext(ctx context.Context) PcProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PcProtocolPtrOutput)
-}
-
-func (in *pcProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*PcProtocol] {
-	return pulumix.Output[*PcProtocol]{
-		OutputState: in.ToPcProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Azure hop the packet should be sent to.
@@ -357,12 +350,6 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
-func (in *routeNextHopTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteNextHopType] {
-	return pulumix.Output[*RouteNextHopType]{
-		OutputState: in.ToRouteNextHopTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network traffic is allowed or denied.
 type SecurityRuleAccess string
 
@@ -529,12 +516,6 @@ func (in *securityRuleAccessPtr) ToSecurityRuleAccessPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleAccessPtrOutput)
 }
 
-func (in *securityRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleAccess] {
-	return pulumix.Output[*SecurityRuleAccess]{
-		OutputState: in.ToSecurityRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
 type SecurityRuleDirection string
 
@@ -699,12 +680,6 @@ func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityR
 
 func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
-}
-
-func (in *securityRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleDirection] {
-	return pulumix.Output[*SecurityRuleDirection]{
-		OutputState: in.ToSecurityRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to.
@@ -879,12 +854,6 @@ func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutput() SecurityRul
 
 func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutputWithContext(ctx context.Context) SecurityRuleProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleProtocolPtrOutput)
-}
-
-func (in *securityRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleProtocol] {
-	return pulumix.Output[*SecurityRuleProtocol]{
-		OutputState: in.ToSecurityRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

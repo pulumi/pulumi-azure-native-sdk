@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Type of the sever administrator.
@@ -173,12 +172,6 @@ func (in *administratorTypePtr) ToAdministratorTypePtrOutput() AdministratorType
 
 func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
-}
-
-func (in *administratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AdministratorType] {
-	return pulumix.Output[*AdministratorType]{
-		OutputState: in.ToAdministratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
@@ -347,12 +340,6 @@ func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutput() AutoExecuteStatus
 
 func (in *autoExecuteStatusPtr) ToAutoExecuteStatusPtrOutputWithContext(ctx context.Context) AutoExecuteStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoExecuteStatusPtrOutput)
-}
-
-func (in *autoExecuteStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoExecuteStatus] {
-	return pulumix.Output[*AutoExecuteStatus]{
-		OutputState: in.ToAutoExecuteStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
@@ -525,12 +512,6 @@ func (in *backupStorageRedundancyPtr) ToBackupStorageRedundancyPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(BackupStorageRedundancyPtrOutput)
 }
 
-func (in *backupStorageRedundancyPtr) ToOutput(ctx context.Context) pulumix.Output[*BackupStorageRedundancy] {
-	return pulumix.Output[*BackupStorageRedundancy]{
-		OutputState: in.ToBackupStorageRedundancyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
 type BlobAuditingPolicyState string
 
@@ -697,12 +678,6 @@ func (in *blobAuditingPolicyStatePtr) ToBlobAuditingPolicyStatePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(BlobAuditingPolicyStatePtrOutput)
 }
 
-func (in *blobAuditingPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*BlobAuditingPolicyState] {
-	return pulumix.Output[*BlobAuditingPolicyState]{
-		OutputState: in.ToBlobAuditingPolicyStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Collation of the metadata catalog.
 type CatalogCollationType string
 
@@ -867,12 +842,6 @@ func (in *catalogCollationTypePtr) ToCatalogCollationTypePtrOutput() CatalogColl
 
 func (in *catalogCollationTypePtr) ToCatalogCollationTypePtrOutputWithContext(ctx context.Context) CatalogCollationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CatalogCollationTypePtrOutput)
-}
-
-func (in *catalogCollationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CatalogCollationType] {
-	return pulumix.Output[*CatalogCollationType]{
-		OutputState: in.ToCatalogCollationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the mode of database creation.
@@ -1073,12 +1042,6 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of the data masking policy.
 type DataMaskingState string
 
@@ -1243,12 +1206,6 @@ func (in *dataMaskingStatePtr) ToDataMaskingStatePtrOutput() DataMaskingStatePtr
 
 func (in *dataMaskingStatePtr) ToDataMaskingStatePtrOutputWithContext(ctx context.Context) DataMaskingStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataMaskingStatePtrOutput)
-}
-
-func (in *dataMaskingStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingState] {
-	return pulumix.Output[*DataMaskingState]{
-		OutputState: in.ToDataMaskingStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type
@@ -1417,12 +1374,6 @@ func (in *databaseIdentityTypePtr) ToDatabaseIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseIdentityTypePtrOutput)
 }
 
-func (in *databaseIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseIdentityType] {
-	return pulumix.Output[*DatabaseIdentityType]{
-		OutputState: in.ToDatabaseIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
 type DatabaseLicenseType string
 
@@ -1589,12 +1540,6 @@ func (in *databaseLicenseTypePtr) ToDatabaseLicenseTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseLicenseTypePtrOutput)
 }
 
-func (in *databaseLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseLicenseType] {
-	return pulumix.Output[*DatabaseLicenseType]{
-		OutputState: in.ToDatabaseLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
 type DatabaseReadScale string
 
@@ -1759,12 +1704,6 @@ func (in *databaseReadScalePtr) ToDatabaseReadScalePtrOutput() DatabaseReadScale
 
 func (in *databaseReadScalePtr) ToDatabaseReadScalePtrOutputWithContext(ctx context.Context) DatabaseReadScalePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseReadScalePtrOutput)
-}
-
-func (in *databaseReadScalePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseReadScale] {
-	return pulumix.Output[*DatabaseReadScale]{
-		OutputState: in.ToDatabaseReadScalePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Stop day.
@@ -1943,12 +1882,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type to apply for this elastic pool.
 type ElasticPoolLicenseType string
 
@@ -2115,12 +2048,6 @@ func (in *elasticPoolLicenseTypePtr) ToElasticPoolLicenseTypePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(ElasticPoolLicenseTypePtrOutput)
 }
 
-func (in *elasticPoolLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ElasticPoolLicenseType] {
-	return pulumix.Output[*ElasticPoolLicenseType]{
-		OutputState: in.ToElasticPoolLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of the geo backup policy.
 type GeoBackupPolicyStateEnum string
 
@@ -2285,12 +2212,6 @@ func (in *geoBackupPolicyStateEnumPtr) ToGeoBackupPolicyStateEnumPtrOutput() Geo
 
 func (in *geoBackupPolicyStateEnumPtr) ToGeoBackupPolicyStateEnumPtrOutputWithContext(ctx context.Context) GeoBackupPolicyStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GeoBackupPolicyStateEnumPtrOutput)
-}
-
-func (in *geoBackupPolicyStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*GeoBackupPolicyStateEnum] {
-	return pulumix.Output[*GeoBackupPolicyStateEnum]{
-		OutputState: in.ToGeoBackupPolicyStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
@@ -2463,12 +2384,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
 type InstancePoolLicenseType string
 
@@ -2633,12 +2548,6 @@ func (in *instancePoolLicenseTypePtr) ToInstancePoolLicenseTypePtrOutput() Insta
 
 func (in *instancePoolLicenseTypePtr) ToInstancePoolLicenseTypePtrOutputWithContext(ctx context.Context) InstancePoolLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InstancePoolLicenseTypePtrOutput)
-}
-
-func (in *instancePoolLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InstancePoolLicenseType] {
-	return pulumix.Output[*InstancePoolLicenseType]{
-		OutputState: in.ToInstancePoolLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Schedule interval type
@@ -2807,12 +2716,6 @@ func (in *jobScheduleTypePtr) ToJobScheduleTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(JobScheduleTypePtrOutput)
 }
 
-func (in *jobScheduleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleType] {
-	return pulumix.Output[*JobScheduleType]{
-		OutputState: in.ToJobScheduleTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The source of the action to execute.
 type JobStepActionSource string
 
@@ -2975,12 +2878,6 @@ func (in *jobStepActionSourcePtr) ToJobStepActionSourcePtrOutput() JobStepAction
 
 func (in *jobStepActionSourcePtr) ToJobStepActionSourcePtrOutputWithContext(ctx context.Context) JobStepActionSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobStepActionSourcePtrOutput)
-}
-
-func (in *jobStepActionSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*JobStepActionSource] {
-	return pulumix.Output[*JobStepActionSource]{
-		OutputState: in.ToJobStepActionSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of action being executed by the job step.
@@ -3147,12 +3044,6 @@ func (in *jobStepActionTypePtr) ToJobStepActionTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(JobStepActionTypePtrOutput)
 }
 
-func (in *jobStepActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobStepActionType] {
-	return pulumix.Output[*JobStepActionType]{
-		OutputState: in.ToJobStepActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The output destination type.
 type JobStepOutputTypeEnum string
 
@@ -3315,12 +3206,6 @@ func (in *jobStepOutputTypeEnumPtr) ToJobStepOutputTypeEnumPtrOutput() JobStepOu
 
 func (in *jobStepOutputTypeEnumPtr) ToJobStepOutputTypeEnumPtrOutputWithContext(ctx context.Context) JobStepOutputTypeEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobStepOutputTypeEnumPtrOutput)
-}
-
-func (in *jobStepOutputTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*JobStepOutputTypeEnum] {
-	return pulumix.Output[*JobStepOutputTypeEnum]{
-		OutputState: in.ToJobStepOutputTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether the target is included or excluded from the group.
@@ -3487,12 +3372,6 @@ func (in *jobTargetGroupMembershipTypePtr) ToJobTargetGroupMembershipTypePtrOutp
 
 func (in *jobTargetGroupMembershipTypePtr) ToJobTargetGroupMembershipTypePtrOutputWithContext(ctx context.Context) JobTargetGroupMembershipTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(JobTargetGroupMembershipTypePtrOutput)
-}
-
-func (in *jobTargetGroupMembershipTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobTargetGroupMembershipType] {
-	return pulumix.Output[*JobTargetGroupMembershipType]{
-		OutputState: in.ToJobTargetGroupMembershipTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The target type.
@@ -3667,12 +3546,6 @@ func (in *jobTargetTypePtr) ToJobTargetTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(JobTargetTypePtrOutput)
 }
 
-func (in *jobTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*JobTargetType] {
-	return pulumix.Output[*JobTargetType]{
-		OutputState: in.ToJobTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required).
 type ManagedDatabaseCreateMode string
 
@@ -3845,12 +3718,6 @@ func (in *managedDatabaseCreateModePtr) ToManagedDatabaseCreateModePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedDatabaseCreateModePtrOutput)
 }
 
-func (in *managedDatabaseCreateModePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedDatabaseCreateMode] {
-	return pulumix.Output[*ManagedDatabaseCreateMode]{
-		OutputState: in.ToManagedDatabaseCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the managed instance administrator.
 type ManagedInstanceAdministratorType string
 
@@ -4013,12 +3880,6 @@ func (in *managedInstanceAdministratorTypePtr) ToManagedInstanceAdministratorTyp
 
 func (in *managedInstanceAdministratorTypePtr) ToManagedInstanceAdministratorTypePtrOutputWithContext(ctx context.Context) ManagedInstanceAdministratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedInstanceAdministratorTypePtrOutput)
-}
-
-func (in *managedInstanceAdministratorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceAdministratorType] {
-	return pulumix.Output[*ManagedInstanceAdministratorType]{
-		OutputState: in.ToManagedInstanceAdministratorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
@@ -4187,12 +4048,6 @@ func (in *managedInstanceLicenseTypePtr) ToManagedInstanceLicenseTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedInstanceLicenseTypePtrOutput)
 }
 
-func (in *managedInstanceLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceLicenseType] {
-	return pulumix.Output[*ManagedInstanceLicenseType]{
-		OutputState: in.ToManagedInstanceLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Connection type used for connecting to the instance.
 type ManagedInstanceProxyOverride string
 
@@ -4359,12 +4214,6 @@ func (in *managedInstanceProxyOverridePtr) ToManagedInstanceProxyOverridePtrOutp
 
 func (in *managedInstanceProxyOverridePtr) ToManagedInstanceProxyOverridePtrOutputWithContext(ctx context.Context) ManagedInstanceProxyOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedInstanceProxyOverridePtrOutput)
-}
-
-func (in *managedInstanceProxyOverridePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceProxyOverride] {
-	return pulumix.Output[*ManagedInstanceProxyOverride]{
-		OutputState: in.ToManagedInstanceProxyOverridePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the mode of database creation.
@@ -4537,12 +4386,6 @@ func (in *managedServerCreateModePtr) ToManagedServerCreateModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServerCreateModePtrOutput)
 }
 
-func (in *managedServerCreateModePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServerCreateMode] {
-	return pulumix.Output[*ManagedServerCreateMode]{
-		OutputState: in.ToManagedServerCreateModePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Principal Type of the sever administrator.
 type PrincipalType string
 
@@ -4709,12 +4552,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutput() PrincipalTypePtrOutput {
 
 func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Context) PrincipalTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
-}
-
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The private link service connection status.
@@ -4887,12 +4724,6 @@ func (in *privateLinkServiceConnectionStateStatusPtr) ToPrivateLinkServiceConnec
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStateStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStateStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStateStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Failover policy of the read-only endpoint for the failover group.
 type ReadOnlyEndpointFailoverPolicy string
 
@@ -5059,12 +4890,6 @@ func (in *readOnlyEndpointFailoverPolicyPtr) ToReadOnlyEndpointFailoverPolicyPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ReadOnlyEndpointFailoverPolicyPtrOutput)
 }
 
-func (in *readOnlyEndpointFailoverPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ReadOnlyEndpointFailoverPolicy] {
-	return pulumix.Output[*ReadOnlyEndpointFailoverPolicy]{
-		OutputState: in.ToReadOnlyEndpointFailoverPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
 type ReadWriteEndpointFailoverPolicy string
 
@@ -5229,12 +5054,6 @@ func (in *readWriteEndpointFailoverPolicyPtr) ToReadWriteEndpointFailoverPolicyP
 
 func (in *readWriteEndpointFailoverPolicyPtr) ToReadWriteEndpointFailoverPolicyPtrOutputWithContext(ctx context.Context) ReadWriteEndpointFailoverPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReadWriteEndpointFailoverPolicyPtrOutput)
-}
-
-func (in *readWriteEndpointFailoverPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*ReadWriteEndpointFailoverPolicy] {
-	return pulumix.Output[*ReadWriteEndpointFailoverPolicy]{
-		OutputState: in.ToReadWriteEndpointFailoverPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
@@ -5405,12 +5224,6 @@ func (in *replicationLinkTypePtr) ToReplicationLinkTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationLinkTypePtrOutput)
 }
 
-func (in *replicationLinkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationLinkType] {
-	return pulumix.Output[*ReplicationLinkType]{
-		OutputState: in.ToReplicationLinkTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The replication mode of a distributed availability group. Parameter will be ignored during link creation.
 type ReplicationMode string
 
@@ -5575,12 +5388,6 @@ func (in *replicationModePtr) ToReplicationModePtrOutput() ReplicationModePtrOut
 
 func (in *replicationModePtr) ToReplicationModePtrOutputWithContext(ctx context.Context) ReplicationModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReplicationModePtrOutput)
-}
-
-func (in *replicationModePtr) ToOutput(ctx context.Context) pulumix.Output[*ReplicationMode] {
-	return pulumix.Output[*ReplicationMode]{
-		OutputState: in.ToReplicationModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The name of the sample schema to apply when creating this database.
@@ -5751,12 +5558,6 @@ func (in *sampleNamePtr) ToSampleNamePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(SampleNamePtrOutput)
 }
 
-func (in *sampleNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SampleName] {
-	return pulumix.Output[*SampleName]{
-		OutputState: in.ToSampleNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
 type SecondaryType string
 
@@ -5923,12 +5724,6 @@ func (in *secondaryTypePtr) ToSecondaryTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SecondaryTypePtrOutput)
 }
 
-func (in *secondaryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecondaryType] {
-	return pulumix.Output[*SecondaryType]{
-		OutputState: in.ToSecondaryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies that the alert is sent to the account administrators.
 type SecurityAlertPolicyEmailAccountAdmins string
 
@@ -6093,12 +5888,6 @@ func (in *securityAlertPolicyEmailAccountAdminsPtr) ToSecurityAlertPolicyEmailAc
 
 func (in *securityAlertPolicyEmailAccountAdminsPtr) ToSecurityAlertPolicyEmailAccountAdminsPtrOutputWithContext(ctx context.Context) SecurityAlertPolicyEmailAccountAdminsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyEmailAccountAdminsPtrOutput)
-}
-
-func (in *securityAlertPolicyEmailAccountAdminsPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyEmailAccountAdmins] {
-	return pulumix.Output[*SecurityAlertPolicyEmailAccountAdmins]{
-		OutputState: in.ToSecurityAlertPolicyEmailAccountAdminsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the state of the policy. If state is Enabled, storageEndpoint and storageAccountAccessKey are required.
@@ -6269,12 +6058,6 @@ func (in *securityAlertPolicyStatePtr) ToSecurityAlertPolicyStatePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyStatePtrOutput)
 }
 
-func (in *securityAlertPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyState] {
-	return pulumix.Output[*SecurityAlertPolicyState]{
-		OutputState: in.ToSecurityAlertPolicyStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies whether to use the default server policy.
 type SecurityAlertPolicyUseServerDefault string
 
@@ -6441,12 +6224,6 @@ func (in *securityAlertPolicyUseServerDefaultPtr) ToSecurityAlertPolicyUseServer
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertPolicyUseServerDefaultPtrOutput)
 }
 
-func (in *securityAlertPolicyUseServerDefaultPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyUseServerDefault] {
-	return pulumix.Output[*SecurityAlertPolicyUseServerDefault]{
-		OutputState: in.ToSecurityAlertPolicyUseServerDefaultPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific database.
 type SecurityAlertsPolicyState string
 
@@ -6611,12 +6388,6 @@ func (in *securityAlertsPolicyStatePtr) ToSecurityAlertsPolicyStatePtrOutput() S
 
 func (in *securityAlertsPolicyStatePtr) ToSecurityAlertsPolicyStatePtrOutputWithContext(ctx context.Context) SecurityAlertsPolicyStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityAlertsPolicyStatePtrOutput)
-}
-
-func (in *securityAlertsPolicyStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertsPolicyState] {
-	return pulumix.Output[*SecurityAlertsPolicyState]{
-		OutputState: in.ToSecurityAlertsPolicyStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type SensitivityLabelRank string
@@ -6790,12 +6561,6 @@ func (in *sensitivityLabelRankPtr) ToSensitivityLabelRankPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SensitivityLabelRankPtrOutput)
 }
 
-func (in *sensitivityLabelRankPtr) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabelRank] {
-	return pulumix.Output[*SensitivityLabelRank]{
-		OutputState: in.ToSensitivityLabelRankPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The server key type like 'ServiceManaged', 'AzureKeyVault'.
 type ServerKeyType string
 
@@ -6960,12 +6725,6 @@ func (in *serverKeyTypePtr) ToServerKeyTypePtrOutput() ServerKeyTypePtrOutput {
 
 func (in *serverKeyTypePtr) ToServerKeyTypePtrOutputWithContext(ctx context.Context) ServerKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerKeyTypePtrOutput)
-}
-
-func (in *serverKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServerKeyType] {
-	return pulumix.Output[*ServerKeyType]{
-		OutputState: in.ToServerKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
@@ -7134,12 +6893,6 @@ func (in *serverNetworkAccessFlagPtr) ToServerNetworkAccessFlagPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ServerNetworkAccessFlagPtrOutput)
 }
 
-func (in *serverNetworkAccessFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerNetworkAccessFlag] {
-	return pulumix.Output[*ServerNetworkAccessFlag]{
-		OutputState: in.ToServerNetworkAccessFlagPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Service principal type.
 type ServicePrincipalType string
 
@@ -7304,12 +7057,6 @@ func (in *servicePrincipalTypePtr) ToServicePrincipalTypePtrOutput() ServicePrin
 
 func (in *servicePrincipalTypePtr) ToServicePrincipalTypePtrOutputWithContext(ctx context.Context) ServicePrincipalTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServicePrincipalTypePtrOutput)
-}
-
-func (in *servicePrincipalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalType] {
-	return pulumix.Output[*ServicePrincipalType]{
-		OutputState: in.ToServicePrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the state of the SQL Vulnerability Assessment, whether it is enabled or disabled or a state has not been applied yet on the specific database or server.
@@ -7478,12 +7225,6 @@ func (in *sqlVulnerabilityAssessmentStatePtr) ToSqlVulnerabilityAssessmentStateP
 	return pulumi.ToOutputWithContext(ctx, in).(SqlVulnerabilityAssessmentStatePtrOutput)
 }
 
-func (in *sqlVulnerabilityAssessmentStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SqlVulnerabilityAssessmentState] {
-	return pulumix.Output[*SqlVulnerabilityAssessmentState]{
-		OutputState: in.ToSqlVulnerabilityAssessmentStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Conflict resolution policy of the sync group.
 type SyncConflictResolutionPolicy string
 
@@ -7648,12 +7389,6 @@ func (in *syncConflictResolutionPolicyPtr) ToSyncConflictResolutionPolicyPtrOutp
 
 func (in *syncConflictResolutionPolicyPtr) ToSyncConflictResolutionPolicyPtrOutputWithContext(ctx context.Context) SyncConflictResolutionPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SyncConflictResolutionPolicyPtrOutput)
-}
-
-func (in *syncConflictResolutionPolicyPtr) ToOutput(ctx context.Context) pulumix.Output[*SyncConflictResolutionPolicy] {
-	return pulumix.Output[*SyncConflictResolutionPolicy]{
-		OutputState: in.ToSyncConflictResolutionPolicyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sync direction of the sync member.
@@ -7824,12 +7559,6 @@ func (in *syncDirectionPtr) ToSyncDirectionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SyncDirectionPtrOutput)
 }
 
-func (in *syncDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SyncDirection] {
-	return pulumix.Output[*SyncDirection]{
-		OutputState: in.ToSyncDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Database type of the sync member.
 type SyncMemberDbType string
 
@@ -7996,12 +7725,6 @@ func (in *syncMemberDbTypePtr) ToSyncMemberDbTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SyncMemberDbTypePtrOutput)
 }
 
-func (in *syncMemberDbTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SyncMemberDbType] {
-	return pulumix.Output[*SyncMemberDbType]{
-		OutputState: in.ToSyncMemberDbTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the state of the transparent data encryption.
 type TransparentDataEncryptionStateEnum string
 
@@ -8166,12 +7889,6 @@ func (in *transparentDataEncryptionStateEnumPtr) ToTransparentDataEncryptionStat
 
 func (in *transparentDataEncryptionStateEnumPtr) ToTransparentDataEncryptionStateEnumPtrOutputWithContext(ctx context.Context) TransparentDataEncryptionStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransparentDataEncryptionStateEnumPtrOutput)
-}
-
-func (in *transparentDataEncryptionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*TransparentDataEncryptionStateEnum] {
-	return pulumix.Output[*TransparentDataEncryptionStateEnum]{
-		OutputState: in.ToTransparentDataEncryptionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

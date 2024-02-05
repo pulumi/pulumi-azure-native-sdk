@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates if the given action rule is enabled or disabled
@@ -175,12 +174,6 @@ func (in *actionRuleStatusPtr) ToActionRuleStatusPtrOutput() ActionRuleStatusPtr
 
 func (in *actionRuleStatusPtr) ToActionRuleStatusPtrOutputWithContext(ctx context.Context) ActionRuleStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionRuleStatusPtrOutput)
-}
-
-func (in *actionRuleStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ActionRuleStatus] {
-	return pulumix.Output[*ActionRuleStatus]{
-		OutputState: in.ToActionRuleStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates type of action rule
@@ -362,12 +355,6 @@ func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) Opera
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
 }
 
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // type of target scope
 type ScopeType string
 
@@ -534,12 +521,6 @@ func (in *scopeTypePtr) ToScopeTypePtrOutput() ScopeTypePtrOutput {
 
 func (in *scopeTypePtr) ToScopeTypePtrOutputWithContext(ctx context.Context) ScopeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScopeTypePtrOutput)
-}
-
-func (in *scopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScopeType] {
-	return pulumix.Output[*ScopeType]{
-		OutputState: in.ToScopeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies when the suppression should be applied
@@ -712,12 +693,6 @@ func (in *suppressionTypePtr) ToSuppressionTypePtrOutput() SuppressionTypePtrOut
 
 func (in *suppressionTypePtr) ToSuppressionTypePtrOutputWithContext(ctx context.Context) SuppressionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SuppressionTypePtrOutput)
-}
-
-func (in *suppressionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SuppressionType] {
-	return pulumix.Output[*SuppressionType]{
-		OutputState: in.ToSuppressionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

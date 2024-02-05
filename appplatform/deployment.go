@@ -15,7 +15,7 @@ import (
 // Deployment resource payload
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2020-07-01.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview.
 type Deployment struct {
 	pulumi.CustomResourceState
 
@@ -107,6 +107,9 @@ func NewDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231201:Deployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240101preview:Deployment"),
 		},
 	})
 	opts = append(opts, aliases)

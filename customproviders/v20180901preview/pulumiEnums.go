@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The routing types that are supported for action requests.
@@ -173,12 +172,6 @@ func (in *actionRoutingPtr) ToActionRoutingPtrOutput() ActionRoutingPtrOutput {
 
 func (in *actionRoutingPtr) ToActionRoutingPtrOutputWithContext(ctx context.Context) ActionRoutingPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ActionRoutingPtrOutput)
-}
-
-func (in *actionRoutingPtr) ToOutput(ctx context.Context) pulumix.Output[*ActionRouting] {
-	return pulumix.Output[*ActionRouting]{
-		OutputState: in.ToActionRoutingPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The routing types that are supported for resource requests.
@@ -347,12 +340,6 @@ func (in *resourceTypeRoutingPtr) ToResourceTypeRoutingPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceTypeRoutingPtrOutput)
 }
 
-func (in *resourceTypeRoutingPtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceTypeRouting] {
-	return pulumix.Output[*ResourceTypeRouting]{
-		OutputState: in.ToResourceTypeRoutingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of validation to run against a matching request.
 type ValidationType string
 
@@ -515,12 +502,6 @@ func (in *validationTypePtr) ToValidationTypePtrOutput() ValidationTypePtrOutput
 
 func (in *validationTypePtr) ToValidationTypePtrOutputWithContext(ctx context.Context) ValidationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationTypePtrOutput)
-}
-
-func (in *validationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationType] {
-	return pulumix.Output[*ValidationType]{
-		OutputState: in.ToValidationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

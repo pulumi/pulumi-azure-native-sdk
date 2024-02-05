@@ -63,6 +63,12 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	args.ClusterProfile = args.ClusterProfile.ToClusterProfileOutput().ApplyT(func(v ClusterProfile) ClusterProfile { return *v.Defaults() }).(ClusterProfileOutput)
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20231101preview:Cluster"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("azure-native:hdinsight/v20230601preview:Cluster", name, args, &resource, opts...)

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The category of the budget, whether the budget tracks cost or usage.
@@ -175,12 +174,6 @@ func (in *categoryTypePtr) ToCategoryTypePtrOutput() CategoryTypePtrOutput {
 
 func (in *categoryTypePtr) ToCategoryTypePtrOutputWithContext(ctx context.Context) CategoryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoryTypePtrOutput)
-}
-
-func (in *categoryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CategoryType] {
-	return pulumix.Output[*CategoryType]{
-		OutputState: in.ToCategoryTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The comparison operator.
@@ -351,12 +344,6 @@ func (in *notificationOperatorTypePtr) ToNotificationOperatorTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationOperatorTypePtrOutput)
 }
 
-func (in *notificationOperatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationOperatorType] {
-	return pulumix.Output[*NotificationOperatorType]{
-		OutputState: in.ToNotificationOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operator to use for comparison.
 type OperatorType string
 
@@ -521,12 +508,6 @@ func (in *operatorTypePtr) ToOperatorTypePtrOutput() OperatorTypePtrOutput {
 
 func (in *operatorTypePtr) ToOperatorTypePtrOutputWithContext(ctx context.Context) OperatorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorTypePtrOutput)
-}
-
-func (in *operatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatorType] {
-	return pulumix.Output[*OperatorType]{
-		OutputState: in.ToOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The time covered by a budget. Tracking of the amount will be reset based on the time grain.
@@ -695,12 +676,6 @@ func (in *timeGrainTypePtr) ToTimeGrainTypePtrOutput() TimeGrainTypePtrOutput {
 
 func (in *timeGrainTypePtr) ToTimeGrainTypePtrOutputWithContext(ctx context.Context) TimeGrainTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeGrainTypePtrOutput)
-}
-
-func (in *timeGrainTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeGrainType] {
-	return pulumix.Output[*TimeGrainType]{
-		OutputState: in.ToTimeGrainTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -65,6 +65,9 @@ func NewClusterPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hdinsight:ClusterPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20231101preview:ClusterPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

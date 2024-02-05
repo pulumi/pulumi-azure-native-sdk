@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The action of virtual network rule.
@@ -175,12 +174,6 @@ func (in *actionPtr) ToActionPtrOutputWithContext(ctx context.Context) ActionPtr
 	return pulumi.ToOutputWithContext(ctx, in).(ActionPtrOutput)
 }
 
-func (in *actionPtr) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: in.ToActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of encryption
 type EncryptionType string
 
@@ -344,12 +337,6 @@ func (in *encryptionTypePtr) ToEncryptionTypePtrOutput() EncryptionTypePtrOutput
 
 func (in *encryptionTypePtr) ToEncryptionTypePtrOutputWithContext(ctx context.Context) EncryptionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionTypePtrOutput)
-}
-
-func (in *encryptionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionType] {
-	return pulumix.Output[*EncryptionType]{
-		OutputState: in.ToEncryptionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The sku name.
@@ -520,12 +507,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku tier.
 type SkuTier string
 
@@ -689,12 +670,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of storage target
@@ -863,12 +838,6 @@ func (in *storageTargetTypePtr) ToStorageTargetTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTargetTypePtrOutput)
 }
 
-func (in *storageTargetTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageTargetType] {
-	return pulumix.Output[*StorageTargetType]{
-		OutputState: in.ToStorageTargetTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This enumerates the possible sources of a volume creation.
 type VolumeCreateOption string
 
@@ -1031,12 +1000,6 @@ func (in *volumeCreateOptionPtr) ToVolumeCreateOptionPtrOutput() VolumeCreateOpt
 
 func (in *volumeCreateOptionPtr) ToVolumeCreateOptionPtrOutputWithContext(ctx context.Context) VolumeCreateOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeCreateOptionPtrOutput)
-}
-
-func (in *volumeCreateOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*VolumeCreateOption] {
-	return pulumix.Output[*VolumeCreateOption]{
-		OutputState: in.ToVolumeCreateOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

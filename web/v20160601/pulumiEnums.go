@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The API type
@@ -177,12 +176,6 @@ func (in *apiTypePtr) ToApiTypePtrOutput() ApiTypePtrOutput {
 
 func (in *apiTypePtr) ToApiTypePtrOutputWithContext(ctx context.Context) ApiTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ApiTypePtrOutput)
-}
-
-func (in *apiTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ApiType] {
-	return pulumix.Output[*ApiType]{
-		OutputState: in.ToApiTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the parameter
@@ -365,12 +358,6 @@ func (in *connectionParameterTypePtr) ToConnectionParameterTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionParameterTypePtrOutput)
 }
 
-func (in *connectionParameterTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionParameterType] {
-	return pulumix.Output[*ConnectionParameterType]{
-		OutputState: in.ToConnectionParameterTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The WSDL import method
 type WsdlImportMethod string
 
@@ -537,12 +524,6 @@ func (in *wsdlImportMethodPtr) ToWsdlImportMethodPtrOutput() WsdlImportMethodPtr
 
 func (in *wsdlImportMethodPtr) ToWsdlImportMethodPtrOutputWithContext(ctx context.Context) WsdlImportMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WsdlImportMethodPtrOutput)
-}
-
-func (in *wsdlImportMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*WsdlImportMethod] {
-	return pulumix.Output[*WsdlImportMethod]{
-		OutputState: in.ToWsdlImportMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

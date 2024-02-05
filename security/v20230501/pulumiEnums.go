@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The selected vulnerability assessments provider on Azure servers in the defined scope.
@@ -174,12 +173,6 @@ func (in *serverVulnerabilityAssessmentsAzureSettingSelectedProviderPtr) ToServe
 
 func (in *serverVulnerabilityAssessmentsAzureSettingSelectedProviderPtr) ToServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutputWithContext(ctx context.Context) ServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutput)
-}
-
-func (in *serverVulnerabilityAssessmentsAzureSettingSelectedProviderPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerVulnerabilityAssessmentsAzureSettingSelectedProvider] {
-	return pulumix.Output[*ServerVulnerabilityAssessmentsAzureSettingSelectedProvider]{
-		OutputState: in.ToServerVulnerabilityAssessmentsAzureSettingSelectedProviderPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the server vulnerability assessments setting.

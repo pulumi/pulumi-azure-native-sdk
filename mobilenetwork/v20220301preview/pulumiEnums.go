@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The core network technology generation.
@@ -179,12 +178,6 @@ func (in *coreNetworkTypePtr) ToCoreNetworkTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CoreNetworkTypePtrOutput)
 }
 
-func (in *coreNetworkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CoreNetworkType] {
-	return pulumix.Output[*CoreNetworkType]{
-		OutputState: in.ToCoreNetworkTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of identity that last modified the resource.
 type CreatedByType string
 
@@ -353,12 +346,6 @@ func (in *createdByTypePtr) ToCreatedByTypePtrOutput() CreatedByTypePtrOutput {
 
 func (in *createdByTypePtr) ToCreatedByTypePtrOutputWithContext(ctx context.Context) CreatedByTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreatedByTypePtrOutput)
-}
-
-func (in *createdByTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CreatedByType] {
-	return pulumix.Output[*CreatedByType]{
-		OutputState: in.ToCreatedByTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

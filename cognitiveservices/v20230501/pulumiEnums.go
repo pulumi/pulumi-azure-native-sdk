@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Deployment model version upgrade option.
@@ -179,12 +178,6 @@ func (in *deploymentModelVersionUpgradeOptionPtr) ToDeploymentModelVersionUpgrad
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModelVersionUpgradeOptionPtrOutput)
 }
 
-func (in *deploymentModelVersionUpgradeOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentModelVersionUpgradeOption] {
-	return pulumix.Output[*DeploymentModelVersionUpgradeOption]{
-		OutputState: in.ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Deployment scale type.
 type DeploymentScaleType string
 
@@ -349,12 +342,6 @@ func (in *deploymentScaleTypePtr) ToDeploymentScaleTypePtrOutput() DeploymentSca
 
 func (in *deploymentScaleTypePtr) ToDeploymentScaleTypePtrOutputWithContext(ctx context.Context) DeploymentScaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentScaleTypePtrOutput)
-}
-
-func (in *deploymentScaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DeploymentScaleType] {
-	return pulumix.Output[*DeploymentScaleType]{
-		OutputState: in.ToDeploymentScaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Account hosting model.
@@ -527,12 +514,6 @@ func (in *hostingModelPtr) ToHostingModelPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(HostingModelPtrOutput)
 }
 
-func (in *hostingModelPtr) ToOutput(ctx context.Context) pulumix.Output[*HostingModel] {
-	return pulumix.Output[*HostingModel]{
-		OutputState: in.ToHostingModelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enumerates the possible value of keySource for Encryption
 type KeySource string
 
@@ -699,12 +680,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) Key
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
 }
 
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
 type NetworkRuleAction string
 
@@ -869,12 +844,6 @@ func (in *networkRuleActionPtr) ToNetworkRuleActionPtrOutput() NetworkRuleAction
 
 func (in *networkRuleActionPtr) ToNetworkRuleActionPtrOutputWithContext(ctx context.Context) NetworkRuleActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleActionPtrOutput)
-}
-
-func (in *networkRuleActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleAction] {
-	return pulumix.Output[*NetworkRuleAction]{
-		OutputState: in.ToNetworkRuleActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -1045,12 +1014,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public endpoint access is allowed for this account.
 type PublicNetworkAccess string
 
@@ -1215,12 +1178,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -1393,12 +1350,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Multiregion routing methods.
 type RoutingMethods string
 
@@ -1565,12 +1516,6 @@ func (in *routingMethodsPtr) ToRoutingMethodsPtrOutput() RoutingMethodsPtrOutput
 
 func (in *routingMethodsPtr) ToRoutingMethodsPtrOutputWithContext(ctx context.Context) RoutingMethodsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingMethodsPtrOutput)
-}
-
-func (in *routingMethodsPtr) ToOutput(ctx context.Context) pulumix.Output[*RoutingMethods] {
-	return pulumix.Output[*RoutingMethods]{
-		OutputState: in.ToRoutingMethodsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -1743,12 +1688,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

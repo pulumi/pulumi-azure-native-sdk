@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Networking ACL Action.
@@ -175,12 +174,6 @@ func (in *aclactionPtr) ToACLActionPtrOutput() ACLActionPtrOutput {
 
 func (in *aclactionPtr) ToACLActionPtrOutputWithContext(ctx context.Context) ACLActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ACLActionPtrOutput)
-}
-
-func (in *aclactionPtr) ToOutput(ctx context.Context) pulumix.Output[*ACLAction] {
-	return pulumix.Output[*ACLAction]{
-		OutputState: in.ToACLActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FeatureFlags is the supported features of Azure SignalR service.
@@ -357,12 +350,6 @@ func (in *featureFlagsPtr) ToFeatureFlagsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(FeatureFlagsPtrOutput)
 }
 
-func (in *featureFlagsPtr) ToOutput(ctx context.Context) pulumix.Output[*FeatureFlags] {
-	return pulumix.Output[*FeatureFlags]{
-		OutputState: in.ToFeatureFlagsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the identity type: systemAssigned, userAssigned, None
 type ManagedIdentityType string
 
@@ -529,12 +516,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutput() ManagedIdenti
 
 func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx context.Context) ManagedIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
-}
-
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -707,12 +688,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of the service, it can be SignalR or RawWebSockets
 type ServiceKind string
 
@@ -877,12 +852,6 @@ func (in *serviceKindPtr) ToServiceKindPtrOutput() ServiceKindPtrOutput {
 
 func (in *serviceKindPtr) ToServiceKindPtrOutputWithContext(ctx context.Context) ServiceKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceKindPtrOutput)
-}
-
-func (in *serviceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceKind] {
-	return pulumix.Output[*ServiceKind]{
-		OutputState: in.ToServiceKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The incoming request type to the service
@@ -1053,12 +1022,6 @@ func (in *signalRRequestTypePtr) ToSignalRRequestTypePtrOutput() SignalRRequestT
 
 func (in *signalRRequestTypePtr) ToSignalRRequestTypePtrOutputWithContext(ctx context.Context) SignalRRequestTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SignalRRequestTypePtrOutput)
-}
-
-func (in *signalRRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SignalRRequestType] {
-	return pulumix.Output[*SignalRRequestType]{
-		OutputState: in.ToSignalRRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Optional tier of this particular SKU. 'Standard' or 'Free'.
@@ -1233,12 +1196,6 @@ func (in *signalRSkuTierPtr) ToSignalRSkuTierPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(SignalRSkuTierPtrOutput)
 }
 
-func (in *signalRSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SignalRSkuTier] {
-	return pulumix.Output[*SignalRSkuTier]{
-		OutputState: in.ToSignalRSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Upstream auth type enum.
 type UpstreamAuthType string
 
@@ -1403,12 +1360,6 @@ func (in *upstreamAuthTypePtr) ToUpstreamAuthTypePtrOutput() UpstreamAuthTypePtr
 
 func (in *upstreamAuthTypePtr) ToUpstreamAuthTypePtrOutputWithContext(ctx context.Context) UpstreamAuthTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpstreamAuthTypePtrOutput)
-}
-
-func (in *upstreamAuthTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UpstreamAuthType] {
-	return pulumix.Output[*UpstreamAuthType]{
-		OutputState: in.ToUpstreamAuthTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

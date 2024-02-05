@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Networking ACL Action.
@@ -175,12 +174,6 @@ func (in *aclactionPtr) ToACLActionPtrOutput() ACLActionPtrOutput {
 
 func (in *aclactionPtr) ToACLActionPtrOutputWithContext(ctx context.Context) ACLActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ACLActionPtrOutput)
-}
-
-func (in *aclactionPtr) ToOutput(ctx context.Context) pulumix.Output[*ACLAction] {
-	return pulumix.Output[*ACLAction]{
-		OutputState: in.ToACLActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type EventListenerEndpointDiscriminator string
@@ -363,12 +356,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
 }
 
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateLinkServiceConnectionStatus string
 
@@ -539,12 +526,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Upstream auth type enum.
 type UpstreamAuthType string
 
@@ -709,12 +690,6 @@ func (in *upstreamAuthTypePtr) ToUpstreamAuthTypePtrOutput() UpstreamAuthTypePtr
 
 func (in *upstreamAuthTypePtr) ToUpstreamAuthTypePtrOutputWithContext(ctx context.Context) UpstreamAuthTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpstreamAuthTypePtrOutput)
-}
-
-func (in *upstreamAuthTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UpstreamAuthType] {
-	return pulumix.Output[*UpstreamAuthType]{
-		OutputState: in.ToUpstreamAuthTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The incoming request type to the service
@@ -887,12 +862,6 @@ func (in *webPubSubRequestTypePtr) ToWebPubSubRequestTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(WebPubSubRequestTypePtrOutput)
 }
 
-func (in *webPubSubRequestTypePtr) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubRequestType] {
-	return pulumix.Output[*WebPubSubRequestType]{
-		OutputState: in.ToWebPubSubRequestTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional tier of this particular SKU. 'Standard' or 'Free'.
 //
 // `Basic` is deprecated, use `Standard` instead.
@@ -1063,12 +1032,6 @@ func (in *webPubSubSkuTierPtr) ToWebPubSubSkuTierPtrOutput() WebPubSubSkuTierPtr
 
 func (in *webPubSubSkuTierPtr) ToWebPubSubSkuTierPtrOutputWithContext(ctx context.Context) WebPubSubSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebPubSubSkuTierPtrOutput)
-}
-
-func (in *webPubSubSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubSkuTier] {
-	return pulumix.Output[*WebPubSubSkuTier]{
-		OutputState: in.ToWebPubSubSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

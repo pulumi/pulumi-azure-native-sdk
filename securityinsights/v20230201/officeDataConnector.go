@@ -138,6 +138,9 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231101:OfficeDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:OfficeDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

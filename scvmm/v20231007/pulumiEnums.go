@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the mac address type.
@@ -177,12 +176,6 @@ func (in *allocationMethodPtr) ToAllocationMethodPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AllocationMethodPtrOutput)
 }
 
-func (in *allocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*AllocationMethod] {
-	return pulumix.Output[*AllocationMethod]{
-		OutputState: in.ToAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets a value indicating diff disk.
 type CreateDiffDisk string
 
@@ -349,12 +342,6 @@ func (in *createDiffDiskPtr) ToCreateDiffDiskPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(CreateDiffDiskPtrOutput)
 }
 
-func (in *createDiffDiskPtr) ToOutput(ctx context.Context) pulumix.Output[*CreateDiffDisk] {
-	return pulumix.Output[*CreateDiffDisk]{
-		OutputState: in.ToCreateDiffDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets a value indicating whether to enable dynamic memory or not.
 type DynamicMemoryEnabled string
 
@@ -519,12 +506,6 @@ func (in *dynamicMemoryEnabledPtr) ToDynamicMemoryEnabledPtrOutput() DynamicMemo
 
 func (in *dynamicMemoryEnabledPtr) ToDynamicMemoryEnabledPtrOutputWithContext(ctx context.Context) DynamicMemoryEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicMemoryEnabledPtrOutput)
-}
-
-func (in *dynamicMemoryEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicMemoryEnabled] {
-	return pulumix.Output[*DynamicMemoryEnabled]{
-		OutputState: in.ToDynamicMemoryEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // They inventory type.
@@ -697,12 +678,6 @@ func (in *inventoryTypePtr) ToInventoryTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(InventoryTypePtrOutput)
 }
 
-func (in *inventoryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InventoryType] {
-	return pulumix.Output[*InventoryType]{
-		OutputState: in.ToInventoryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
 type LimitCpuForMigration string
 
@@ -867,12 +842,6 @@ func (in *limitCpuForMigrationPtr) ToLimitCpuForMigrationPtrOutput() LimitCpuFor
 
 func (in *limitCpuForMigrationPtr) ToLimitCpuForMigrationPtrOutputWithContext(ctx context.Context) LimitCpuForMigrationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LimitCpuForMigrationPtrOutput)
-}
-
-func (in *limitCpuForMigrationPtr) ToOutput(ctx context.Context) pulumix.Output[*LimitCpuForMigration] {
-	return pulumix.Output[*LimitCpuForMigration]{
-		OutputState: in.ToLimitCpuForMigrationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the guest agent provisioning action.
@@ -1041,12 +1010,6 @@ func (in *provisioningActionPtr) ToProvisioningActionPtrOutput() ProvisioningAct
 
 func (in *provisioningActionPtr) ToProvisioningActionPtrOutputWithContext(ctx context.Context) ProvisioningActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningActionPtrOutput)
-}
-
-func (in *provisioningActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningAction] {
-	return pulumix.Output[*ProvisioningAction]{
-		OutputState: in.ToProvisioningActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

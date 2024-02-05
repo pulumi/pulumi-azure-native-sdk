@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations.
@@ -177,12 +176,6 @@ func (in *enablementStatusPtr) ToEnablementStatusPtrOutput() EnablementStatusPtr
 
 func (in *enablementStatusPtr) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnablementStatusPtrOutput)
-}
-
-func (in *enablementStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EnablementStatus] {
-	return pulumix.Output[*EnablementStatus]{
-		OutputState: in.ToEnablementStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

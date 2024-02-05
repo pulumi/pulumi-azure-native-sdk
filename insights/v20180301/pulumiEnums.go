@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // the criteria time aggregation types.
@@ -181,12 +180,6 @@ func (in *aggregationTypeEnumPtr) ToAggregationTypeEnumPtrOutput() AggregationTy
 
 func (in *aggregationTypeEnumPtr) ToAggregationTypeEnumPtrOutputWithContext(ctx context.Context) AggregationTypeEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AggregationTypeEnumPtrOutput)
-}
-
-func (in *aggregationTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*AggregationTypeEnum] {
-	return pulumix.Output[*AggregationTypeEnum]{
-		OutputState: in.ToAggregationTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies the type of threshold criteria
@@ -365,12 +358,6 @@ func (in *dynamicThresholdOperatorPtr) ToDynamicThresholdOperatorPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicThresholdOperatorPtrOutput)
 }
 
-func (in *dynamicThresholdOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicThresholdOperator] {
-	return pulumix.Output[*DynamicThresholdOperator]{
-		OutputState: in.ToDynamicThresholdOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
 type DynamicThresholdSensitivity string
 
@@ -537,12 +524,6 @@ func (in *dynamicThresholdSensitivityPtr) ToDynamicThresholdSensitivityPtrOutput
 
 func (in *dynamicThresholdSensitivityPtr) ToDynamicThresholdSensitivityPtrOutputWithContext(ctx context.Context) DynamicThresholdSensitivityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicThresholdSensitivityPtrOutput)
-}
-
-func (in *dynamicThresholdSensitivityPtr) ToOutput(ctx context.Context) pulumix.Output[*DynamicThresholdSensitivity] {
-	return pulumix.Output[*DynamicThresholdSensitivity]{
-		OutputState: in.ToDynamicThresholdSensitivityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // specifies the type of the alert criteria.
@@ -724,12 +705,6 @@ func (in *operatorPtr) ToOperatorPtrOutput() OperatorPtrOutput {
 
 func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
-}
-
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authentication type to use for connection
@@ -183,12 +182,6 @@ func (in *authenticationTypePtr) ToAuthenticationTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationTypePtrOutput)
 }
 
-func (in *authenticationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationType] {
-	return pulumix.Output[*AuthenticationType]{
-		OutputState: in.ToAuthenticationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backup Mode to specify whether to use existing backup or create new backup.
 type BackupMode string
 
@@ -353,12 +346,6 @@ func (in *backupModePtr) ToBackupModePtrOutput() BackupModePtrOutput {
 
 func (in *backupModePtr) ToBackupModePtrOutputWithContext(ctx context.Context) BackupModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackupModePtrOutput)
-}
-
-func (in *backupModePtr) ToOutput(ctx context.Context) pulumix.Output[*BackupMode] {
-	return pulumix.Output[*BackupMode]{
-		OutputState: in.ToBackupModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Describes how changes will be replicated from the source to the target. The default is OneTime.
@@ -529,12 +516,6 @@ func (in *mongoDbReplicationPtr) ToMongoDbReplicationPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MongoDbReplicationPtrOutput)
 }
 
-func (in *mongoDbReplicationPtr) ToOutput(ctx context.Context) pulumix.Output[*MongoDbReplication] {
-	return pulumix.Output[*MongoDbReplication]{
-		OutputState: in.ToMongoDbReplicationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The field ordering
 type MongoDbShardKeyOrder string
 
@@ -703,12 +684,6 @@ func (in *mongoDbShardKeyOrderPtr) ToMongoDbShardKeyOrderPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(MongoDbShardKeyOrderPtrOutput)
 }
 
-func (in *mongoDbShardKeyOrderPtr) ToOutput(ctx context.Context) pulumix.Output[*MongoDbShardKeyOrder] {
-	return pulumix.Output[*MongoDbShardKeyOrder]{
-		OutputState: in.ToMongoDbShardKeyOrderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target Platform for the migration
 type MySqlTargetPlatformType string
 
@@ -873,12 +848,6 @@ func (in *mySqlTargetPlatformTypePtr) ToMySqlTargetPlatformTypePtrOutput() MySql
 
 func (in *mySqlTargetPlatformTypePtr) ToMySqlTargetPlatformTypePtrOutputWithContext(ctx context.Context) MySqlTargetPlatformTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MySqlTargetPlatformTypePtrOutput)
-}
-
-func (in *mySqlTargetPlatformTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MySqlTargetPlatformType] {
-	return pulumix.Output[*MySqlTargetPlatformType]{
-		OutputState: in.ToMySqlTargetPlatformTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Source platform for the project
@@ -1053,12 +1022,6 @@ func (in *projectSourcePlatformPtr) ToProjectSourcePlatformPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectSourcePlatformPtrOutput)
 }
 
-func (in *projectSourcePlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectSourcePlatform] {
-	return pulumix.Output[*ProjectSourcePlatform]{
-		OutputState: in.ToProjectSourcePlatformPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target platform for the project
 type ProjectTargetPlatform string
 
@@ -1231,12 +1194,6 @@ func (in *projectTargetPlatformPtr) ToProjectTargetPlatformPtrOutput() ProjectTa
 
 func (in *projectTargetPlatformPtr) ToProjectTargetPlatformPtrOutputWithContext(ctx context.Context) ProjectTargetPlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProjectTargetPlatformPtrOutput)
-}
-
-func (in *projectTargetPlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*ProjectTargetPlatform] {
-	return pulumix.Output[*ProjectTargetPlatform]{
-		OutputState: in.ToProjectTargetPlatformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type ResourceType string
@@ -1420,12 +1377,6 @@ func (in *serverLevelPermissionsGroupPtr) ToServerLevelPermissionsGroupPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ServerLevelPermissionsGroupPtrOutput)
 }
 
-func (in *serverLevelPermissionsGroupPtr) ToOutput(ctx context.Context) pulumix.Output[*ServerLevelPermissionsGroup] {
-	return pulumix.Output[*ServerLevelPermissionsGroup]{
-		OutputState: in.ToServerLevelPermissionsGroupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Server platform type for connection
 type SqlSourcePlatform string
 
@@ -1588,12 +1539,6 @@ func (in *sqlSourcePlatformPtr) ToSqlSourcePlatformPtrOutput() SqlSourcePlatform
 
 func (in *sqlSourcePlatformPtr) ToSqlSourcePlatformPtrOutputWithContext(ctx context.Context) SqlSourcePlatformPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlSourcePlatformPtrOutput)
-}
-
-func (in *sqlSourcePlatformPtr) ToOutput(ctx context.Context) pulumix.Output[*SqlSourcePlatform] {
-	return pulumix.Output[*SqlSourcePlatform]{
-		OutputState: in.ToSqlSourcePlatformPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The overwrite option for the SSIS project migration
@@ -1762,12 +1707,6 @@ func (in *ssisMigrationOverwriteOptionPtr) ToSsisMigrationOverwriteOptionPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(SsisMigrationOverwriteOptionPtrOutput)
 }
 
-func (in *ssisMigrationOverwriteOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*SsisMigrationOverwriteOption] {
-	return pulumix.Output[*SsisMigrationOverwriteOption]{
-		OutputState: in.ToSsisMigrationOverwriteOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
 type SsisStoreType string
 
@@ -1930,12 +1869,6 @@ func (in *ssisStoreTypePtr) ToSsisStoreTypePtrOutput() SsisStoreTypePtrOutput {
 
 func (in *ssisStoreTypePtr) ToSsisStoreTypePtrOutputWithContext(ctx context.Context) SsisStoreTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SsisStoreTypePtrOutput)
-}
-
-func (in *ssisStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SsisStoreType] {
-	return pulumix.Output[*SsisStoreType]{
-		OutputState: in.ToSsisStoreTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Task type.

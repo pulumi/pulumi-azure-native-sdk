@@ -121,6 +121,9 @@ func NewConnectedCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:kubernetes/v20231101preview:ConnectedCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:kubernetes/v20240201preview:ConnectedCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

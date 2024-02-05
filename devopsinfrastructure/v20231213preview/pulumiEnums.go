@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Determines who has admin permissions to the Azure DevOps pool.
@@ -182,12 +181,6 @@ func (in *azureDevOpsPermissionTypePtr) ToAzureDevOpsPermissionTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AzureDevOpsPermissionTypePtrOutput)
 }
 
-func (in *azureDevOpsPermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsPermissionType] {
-	return pulumix.Output[*AzureDevOpsPermissionType]{
-		OutputState: in.ToAzureDevOpsPermissionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Determines how the service should be run. By default, this will be set to Service.
 type LogonType string
 
@@ -354,12 +347,6 @@ func (in *logonTypePtr) ToLogonTypePtrOutput() LogonTypePtrOutput {
 
 func (in *logonTypePtr) ToLogonTypePtrOutputWithContext(ctx context.Context) LogonTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LogonTypePtrOutput)
-}
-
-func (in *logonTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LogonType] {
-	return pulumix.Output[*LogonType]{
-		OutputState: in.ToLogonTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -532,12 +519,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Azure SKU name of the machines in the pool.
 type OsDiskStorageAccountType string
 
@@ -707,12 +688,6 @@ func (in *osDiskStorageAccountTypePtr) ToOsDiskStorageAccountTypePtrOutput() OsD
 
 func (in *osDiskStorageAccountTypePtr) ToOsDiskStorageAccountTypePtrOutputWithContext(ctx context.Context) OsDiskStorageAccountTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OsDiskStorageAccountTypePtrOutput)
-}
-
-func (in *osDiskStorageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsDiskStorageAccountType] {
-	return pulumix.Output[*OsDiskStorageAccountType]{
-		OutputState: in.ToOsDiskStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the current operation.
@@ -896,12 +871,6 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningState
 
 func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
-}
-
-func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

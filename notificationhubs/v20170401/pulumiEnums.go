@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -176,12 +175,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
-}
-
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessRightsArrayInput is an input type that accepts AccessRightsArray and AccessRightsArrayOutput values.
@@ -395,12 +388,6 @@ func (in *namespaceTypePtr) ToNamespaceTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(NamespaceTypePtrOutput)
 }
 
-func (in *namespaceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NamespaceType] {
-	return pulumix.Output[*NamespaceType]{
-		OutputState: in.ToNamespaceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of the notification hub sku
 type SkuName string
 
@@ -567,12 +554,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
-}
-
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

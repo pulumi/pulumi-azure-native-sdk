@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The purpose of the dnc controller resource.
@@ -177,12 +176,6 @@ func (in *controllerPurposePtr) ToControllerPurposePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ControllerPurposePtrOutput)
 }
 
-func (in *controllerPurposePtr) ToOutput(ctx context.Context) pulumix.Output[*ControllerPurpose] {
-	return pulumix.Output[*ControllerPurpose]{
-		OutputState: in.ToControllerPurposePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The kind of workbook. Choices are user and shared.
 type OrchestratorKind string
 
@@ -345,12 +338,6 @@ func (in *orchestratorKindPtr) ToOrchestratorKindPtrOutput() OrchestratorKindPtr
 
 func (in *orchestratorKindPtr) ToOrchestratorKindPtrOutputWithContext(ctx context.Context) OrchestratorKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OrchestratorKindPtrOutput)
-}
-
-func (in *orchestratorKindPtr) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorKind] {
-	return pulumix.Output[*OrchestratorKind]{
-		OutputState: in.ToOrchestratorKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
@@ -517,12 +504,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

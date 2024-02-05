@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Alert detail
@@ -177,12 +176,6 @@ func (in *alertDetailPtr) ToAlertDetailPtrOutput() AlertDetailPtrOutput {
 
 func (in *alertDetailPtr) ToAlertDetailPtrOutputWithContext(ctx context.Context) AlertDetailPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertDetailPtrOutput)
-}
-
-func (in *alertDetailPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertDetail] {
-	return pulumix.Output[*AlertDetail]{
-		OutputState: in.ToAlertDetailPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the alert rule
@@ -368,12 +361,6 @@ func (in *alertSeverityPtr) ToAlertSeverityPtrOutput() AlertSeverityPtrOutput {
 
 func (in *alertSeverityPtr) ToAlertSeverityPtrOutputWithContext(ctx context.Context) AlertSeverityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertSeverityPtrOutput)
-}
-
-func (in *alertSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*AlertSeverity] {
-	return pulumix.Output[*AlertSeverity]{
-		OutputState: in.ToAlertSeverityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The severity for alerts created by this alert rule.
@@ -564,12 +551,6 @@ func (in *attackTacticPtr) ToAttackTacticPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AttackTacticPtrOutput)
 }
 
-func (in *attackTacticPtr) ToOutput(ctx context.Context) pulumix.Output[*AttackTactic] {
-	return pulumix.Output[*AttackTactic]{
-		OutputState: in.ToAttackTacticPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // type of connectivity
 type ConnectivityType string
 
@@ -732,12 +713,6 @@ func (in *connectivityTypePtr) ToConnectivityTypePtrOutput() ConnectivityTypePtr
 
 func (in *connectivityTypePtr) ToConnectivityTypePtrOutputWithContext(ctx context.Context) ConnectivityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectivityTypePtrOutput)
-}
-
-func (in *connectivityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectivityType] {
-	return pulumix.Output[*ConnectivityType]{
-		OutputState: in.ToConnectivityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Content type.
@@ -904,12 +879,6 @@ func (in *contentTypePtr) ToContentTypePtrOutput() ContentTypePtrOutput {
 
 func (in *contentTypePtr) ToContentTypePtrOutputWithContext(ctx context.Context) ContentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContentTypePtrOutput)
-}
-
-func (in *contentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentType] {
-	return pulumix.Output[*ContentType]{
-		OutputState: in.ToContentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of identity that last modified the resource.
@@ -1080,12 +1049,6 @@ func (in *createdByTypePtr) ToCreatedByTypePtrOutput() CreatedByTypePtrOutput {
 
 func (in *createdByTypePtr) ToCreatedByTypePtrOutputWithContext(ctx context.Context) CreatedByTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreatedByTypePtrOutput)
-}
-
-func (in *createdByTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CreatedByType] {
-	return pulumix.Output[*CreatedByType]{
-		OutputState: in.ToCreatedByTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the entity query kind
@@ -1279,12 +1242,6 @@ func (in *dataTypeStatePtr) ToDataTypeStatePtrOutput() DataTypeStatePtrOutput {
 
 func (in *dataTypeStatePtr) ToDataTypeStatePtrOutputWithContext(ctx context.Context) DataTypeStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataTypeStatePtrOutput)
-}
-
-func (in *dataTypeStatePtr) ToOutput(ctx context.Context) pulumix.Output[*DataTypeState] {
-	return pulumix.Output[*DataTypeState]{
-		OutputState: in.ToDataTypeStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The V3 type of the mapped entity
@@ -1501,12 +1458,6 @@ func (in *entityMappingTypePtr) ToEntityMappingTypePtrOutput() EntityMappingType
 
 func (in *entityMappingTypePtr) ToEntityMappingTypePtrOutputWithContext(ctx context.Context) EntityMappingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityMappingTypePtrOutput)
-}
-
-func (in *entityMappingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityMappingType] {
-	return pulumix.Output[*EntityMappingType]{
-		OutputState: in.ToEntityMappingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of the query's source entity
@@ -1734,12 +1685,6 @@ func (in *entityTypePtr) ToEntityTypePtrOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypePtrOutput)
 }
 
-func (in *entityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EntityType] {
-	return pulumix.Output[*EntityType]{
-		OutputState: in.ToEntityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The event grouping aggregation kinds
 type EventGroupingAggregationKind string
 
@@ -1904,12 +1849,6 @@ func (in *eventGroupingAggregationKindPtr) ToEventGroupingAggregationKindPtrOutp
 
 func (in *eventGroupingAggregationKindPtr) ToEventGroupingAggregationKindPtrOutputWithContext(ctx context.Context) EventGroupingAggregationKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EventGroupingAggregationKindPtrOutput)
-}
-
-func (in *eventGroupingAggregationKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EventGroupingAggregationKind] {
-	return pulumix.Output[*EventGroupingAggregationKind]{
-		OutputState: in.ToEventGroupingAggregationKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The reason the incident was closed
@@ -2086,12 +2025,6 @@ func (in *incidentClassificationPtr) ToIncidentClassificationPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentClassificationPtrOutput)
 }
 
-func (in *incidentClassificationPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentClassification] {
-	return pulumix.Output[*IncidentClassification]{
-		OutputState: in.ToIncidentClassificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The classification reason the incident was closed with
 type IncidentClassificationReason string
 
@@ -2264,12 +2197,6 @@ func (in *incidentClassificationReasonPtr) ToIncidentClassificationReasonPtrOutp
 
 func (in *incidentClassificationReasonPtr) ToIncidentClassificationReasonPtrOutputWithContext(ctx context.Context) IncidentClassificationReasonPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentClassificationReasonPtrOutput)
-}
-
-func (in *incidentClassificationReasonPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentClassificationReason] {
-	return pulumix.Output[*IncidentClassificationReason]{
-		OutputState: in.ToIncidentClassificationReasonPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The severity of the incident
@@ -2446,12 +2373,6 @@ func (in *incidentSeverityPtr) ToIncidentSeverityPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentSeverityPtrOutput)
 }
 
-func (in *incidentSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentSeverity] {
-	return pulumix.Output[*IncidentSeverity]{
-		OutputState: in.ToIncidentSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the incident
 type IncidentStatus string
 
@@ -2621,12 +2542,6 @@ func (in *incidentStatusPtr) ToIncidentStatusPtrOutput() IncidentStatusPtrOutput
 
 func (in *incidentStatusPtr) ToIncidentStatusPtrOutputWithContext(ctx context.Context) IncidentStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentStatusPtrOutput)
-}
-
-func (in *incidentStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentStatus] {
-	return pulumix.Output[*IncidentStatus]{
-		OutputState: in.ToIncidentStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of content the metadata is for.
@@ -2819,12 +2734,6 @@ func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
 }
 
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
 type MatchingMethod string
 
@@ -2994,12 +2903,6 @@ func (in *matchingMethodPtr) ToMatchingMethodPtrOutput() MatchingMethodPtrOutput
 
 func (in *matchingMethodPtr) ToMatchingMethodPtrOutputWithContext(ctx context.Context) MatchingMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MatchingMethodPtrOutput)
-}
-
-func (in *matchingMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*MatchingMethod] {
-	return pulumix.Output[*MatchingMethod]{
-		OutputState: in.ToMatchingMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The alerts' productName on which the cases will be generated
@@ -3178,12 +3081,6 @@ func (in *microsoftSecurityProductNamePtr) ToMicrosoftSecurityProductNamePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(MicrosoftSecurityProductNamePtrOutput)
 }
 
-func (in *microsoftSecurityProductNamePtr) ToOutput(ctx context.Context) pulumix.Output[*MicrosoftSecurityProductName] {
-	return pulumix.Output[*MicrosoftSecurityProductName]{
-		OutputState: in.ToMicrosoftSecurityProductNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operator used for list of dependencies in criteria array.
 type Operator string
 
@@ -3348,12 +3245,6 @@ func (in *operatorPtr) ToOperatorPtrOutput() OperatorPtrOutput {
 
 func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
-}
-
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Permission provider scope
@@ -3522,12 +3413,6 @@ func (in *permissionProviderScopePtr) ToPermissionProviderScopePtrOutput() Permi
 
 func (in *permissionProviderScopePtr) ToPermissionProviderScopePtrOutputWithContext(ctx context.Context) PermissionProviderScopePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PermissionProviderScopePtrOutput)
-}
-
-func (in *permissionProviderScopePtr) ToOutput(ctx context.Context) pulumix.Output[*PermissionProviderScope] {
-	return pulumix.Output[*PermissionProviderScope]{
-		OutputState: in.ToPermissionProviderScopePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The polling frequency for the TAXII server.
@@ -3699,12 +3584,6 @@ func (in *pollingFrequencyPtr) ToPollingFrequencyPtrOutput() PollingFrequencyPtr
 
 func (in *pollingFrequencyPtr) ToPollingFrequencyPtrOutputWithContext(ctx context.Context) PollingFrequencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PollingFrequencyPtrOutput)
-}
-
-func (in *pollingFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*PollingFrequency] {
-	return pulumix.Output[*PollingFrequency]{
-		OutputState: in.ToPollingFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provider name
@@ -3881,12 +3760,6 @@ func (in *providerNamePtr) ToProviderNamePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ProviderNamePtrOutput)
 }
 
-func (in *providerNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ProviderName] {
-	return pulumix.Output[*ProviderName]{
-		OutputState: in.ToProviderNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The repository type of the source control
 type RepoType string
 
@@ -4051,12 +3924,6 @@ func (in *repoTypePtr) ToRepoTypePtrOutput() RepoTypePtrOutput {
 
 func (in *repoTypePtr) ToRepoTypePtrOutputWithContext(ctx context.Context) RepoTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RepoTypePtrOutput)
-}
-
-func (in *repoTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RepoType] {
-	return pulumix.Output[*RepoType]{
-		OutputState: in.ToRepoTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The kind of the setting
@@ -4237,12 +4104,6 @@ func (in *settingTypePtr) ToSettingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(SettingTypePtrOutput)
 }
 
-func (in *settingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SettingType] {
-	return pulumix.Output[*SettingType]{
-		OutputState: in.ToSettingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The source of the watchlist
 type Source string
 
@@ -4407,12 +4268,6 @@ func (in *sourcePtr) ToSourcePtrOutput() SourcePtrOutput {
 
 func (in *sourcePtr) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourcePtrOutput)
-}
-
-func (in *sourcePtr) ToOutput(ctx context.Context) pulumix.Output[*Source] {
-	return pulumix.Output[*Source]{
-		OutputState: in.ToSourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Source type of the content
@@ -4585,12 +4440,6 @@ func (in *sourceKindPtr) ToSourceKindPtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(SourceKindPtrOutput)
 }
 
-func (in *sourceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*SourceKind] {
-	return pulumix.Output[*SourceKind]{
-		OutputState: in.ToSourceKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of support for content item
 type SupportTier string
 
@@ -4757,12 +4606,6 @@ func (in *supportTierPtr) ToSupportTierPtrOutput() SupportTierPtrOutput {
 
 func (in *supportTierPtr) ToSupportTierPtrOutputWithContext(ctx context.Context) SupportTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SupportTierPtrOutput)
-}
-
-func (in *supportTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SupportTier] {
-	return pulumix.Output[*SupportTier]{
-		OutputState: in.ToSupportTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The operation against the threshold that triggers alert rule.
@@ -4935,12 +4778,6 @@ func (in *triggerOperatorPtr) ToTriggerOperatorPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(TriggerOperatorPtrOutput)
 }
 
-func (in *triggerOperatorPtr) ToOutput(ctx context.Context) pulumix.Output[*TriggerOperator] {
-	return pulumix.Output[*TriggerOperator]{
-		OutputState: in.ToTriggerOperatorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The data source that enriched by ueba.
 type UebaDataSources string
 
@@ -5109,12 +4946,6 @@ func (in *uebaDataSourcesPtr) ToUebaDataSourcesPtrOutput() UebaDataSourcesPtrOut
 
 func (in *uebaDataSourcesPtr) ToUebaDataSourcesPtrOutputWithContext(ctx context.Context) UebaDataSourcesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UebaDataSourcesPtrOutput)
-}
-
-func (in *uebaDataSourcesPtr) ToOutput(ctx context.Context) pulumix.Output[*UebaDataSources] {
-	return pulumix.Output[*UebaDataSources]{
-		OutputState: in.ToUebaDataSourcesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of key used to encrypt the Account Key.
@@ -177,12 +176,6 @@ func (in *accountEncryptionKeyTypePtr) ToAccountEncryptionKeyTypePtrOutput() Acc
 
 func (in *accountEncryptionKeyTypePtr) ToAccountEncryptionKeyTypePtrOutputWithContext(ctx context.Context) AccountEncryptionKeyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccountEncryptionKeyTypePtrOutput)
-}
-
-func (in *accountEncryptionKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccountEncryptionKeyType] {
-	return pulumix.Output[*AccountEncryptionKeyType]{
-		OutputState: in.ToAccountEncryptionKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The permissions to set on the SAS URL.
@@ -354,12 +347,6 @@ func (in *assetContainerPermissionPtr) ToAssetContainerPermissionPtrOutput() Ass
 
 func (in *assetContainerPermissionPtr) ToAssetContainerPermissionPtrOutputWithContext(ctx context.Context) AssetContainerPermissionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AssetContainerPermissionPtrOutput)
-}
-
-func (in *assetContainerPermissionPtr) ToOutput(ctx context.Context) pulumix.Output[*AssetContainerPermission] {
-	return pulumix.Output[*AssetContainerPermission]{
-		OutputState: in.ToAssetContainerPermissionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The rental and lease key type.
@@ -539,12 +526,6 @@ func (in *contentKeyPolicyFairPlayRentalAndLeaseKeyTypePtr) ToContentKeyPolicyFa
 	return pulumi.ToOutputWithContext(ctx, in).(ContentKeyPolicyFairPlayRentalAndLeaseKeyTypePtrOutput)
 }
 
-func (in *contentKeyPolicyFairPlayRentalAndLeaseKeyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicyFairPlayRentalAndLeaseKeyType] {
-	return pulumix.Output[*ContentKeyPolicyFairPlayRentalAndLeaseKeyType]{
-		OutputState: in.ToContentKeyPolicyFairPlayRentalAndLeaseKeyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The PlayReady content type.
 type ContentKeyPolicyPlayReadyContentType string
 
@@ -719,12 +700,6 @@ func (in *contentKeyPolicyPlayReadyContentTypePtr) ToContentKeyPolicyPlayReadyCo
 	return pulumi.ToOutputWithContext(ctx, in).(ContentKeyPolicyPlayReadyContentTypePtrOutput)
 }
 
-func (in *contentKeyPolicyPlayReadyContentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicyPlayReadyContentType] {
-	return pulumix.Output[*ContentKeyPolicyPlayReadyContentType]{
-		OutputState: in.ToContentKeyPolicyPlayReadyContentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The license type.
 type ContentKeyPolicyPlayReadyLicenseType string
 
@@ -894,12 +869,6 @@ func (in *contentKeyPolicyPlayReadyLicenseTypePtr) ToContentKeyPolicyPlayReadyLi
 
 func (in *contentKeyPolicyPlayReadyLicenseTypePtr) ToContentKeyPolicyPlayReadyLicenseTypePtrOutputWithContext(ctx context.Context) ContentKeyPolicyPlayReadyLicenseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ContentKeyPolicyPlayReadyLicenseTypePtrOutput)
-}
-
-func (in *contentKeyPolicyPlayReadyLicenseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicyPlayReadyLicenseType] {
-	return pulumix.Output[*ContentKeyPolicyPlayReadyLicenseType]{
-		OutputState: in.ToContentKeyPolicyPlayReadyLicenseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Configures Unknown output handling settings of the license.
@@ -1076,12 +1045,6 @@ func (in *contentKeyPolicyPlayReadyUnknownOutputPassingOptionPtr) ToContentKeyPo
 	return pulumi.ToOutputWithContext(ctx, in).(ContentKeyPolicyPlayReadyUnknownOutputPassingOptionPtrOutput)
 }
 
-func (in *contentKeyPolicyPlayReadyUnknownOutputPassingOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicyPlayReadyUnknownOutputPassingOption] {
-	return pulumix.Output[*ContentKeyPolicyPlayReadyUnknownOutputPassingOption]{
-		OutputState: in.ToContentKeyPolicyPlayReadyUnknownOutputPassingOptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of token.
 type ContentKeyPolicyRestrictionTokenType string
 
@@ -1253,12 +1216,6 @@ func (in *contentKeyPolicyRestrictionTokenTypePtr) ToContentKeyPolicyRestriction
 	return pulumi.ToOutputWithContext(ctx, in).(ContentKeyPolicyRestrictionTokenTypePtrOutput)
 }
 
-func (in *contentKeyPolicyRestrictionTokenTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicyRestrictionTokenType] {
-	return pulumix.Output[*ContentKeyPolicyRestrictionTokenType]{
-		OutputState: in.ToContentKeyPolicyRestrictionTokenTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The behavior for IP access control in Key Delivery.
 type DefaultAction string
 
@@ -1427,12 +1384,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The track property condition operation.
 type FilterTrackPropertyCompareOperation string
 
@@ -1599,12 +1550,6 @@ func (in *filterTrackPropertyCompareOperationPtr) ToFilterTrackPropertyCompareOp
 
 func (in *filterTrackPropertyCompareOperationPtr) ToFilterTrackPropertyCompareOperationPtrOutputWithContext(ctx context.Context) FilterTrackPropertyCompareOperationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FilterTrackPropertyCompareOperationPtrOutput)
-}
-
-func (in *filterTrackPropertyCompareOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*FilterTrackPropertyCompareOperation] {
-	return pulumix.Output[*FilterTrackPropertyCompareOperation]{
-		OutputState: in.ToFilterTrackPropertyCompareOperationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The track property type.
@@ -1787,12 +1732,6 @@ func (in *filterTrackPropertyTypePtr) ToFilterTrackPropertyTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(FilterTrackPropertyTypePtrOutput)
 }
 
-func (in *filterTrackPropertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FilterTrackPropertyType] {
-	return pulumix.Output[*FilterTrackPropertyType]{
-		OutputState: in.ToFilterTrackPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
 type MinimumTlsVersion string
 
@@ -1967,12 +1906,6 @@ func (in *minimumTlsVersionPtr) ToMinimumTlsVersionPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(MinimumTlsVersionPtrOutput)
 }
 
-func (in *minimumTlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*MinimumTlsVersion] {
-	return pulumix.Output[*MinimumTlsVersion]{
-		OutputState: in.ToMinimumTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 
@@ -2141,12 +2074,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether or not public network access is allowed for resources under the Media Services account.
 type PublicNetworkAccess string
 
@@ -2313,12 +2240,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The security level.
@@ -2495,12 +2416,6 @@ func (in *securityLevelPtr) ToSecurityLevelPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityLevelPtrOutput)
 }
 
-func (in *securityLevelPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityLevel] {
-	return pulumix.Output[*SecurityLevel]{
-		OutputState: in.ToSecurityLevelPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the storage account.
 type StorageAccountType string
 
@@ -2669,12 +2584,6 @@ func (in *storageAccountTypePtr) ToStorageAccountTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypePtrOutput)
 }
 
-func (in *storageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountType] {
-	return pulumix.Output[*StorageAccountType]{
-		OutputState: in.ToStorageAccountTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageAuthentication string
 
 const (
@@ -2840,12 +2749,6 @@ func (in *storageAuthenticationPtr) ToStorageAuthenticationPtrOutput() StorageAu
 
 func (in *storageAuthenticationPtr) ToStorageAuthenticationPtrOutputWithContext(ctx context.Context) StorageAuthenticationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAuthenticationPtrOutput)
-}
-
-func (in *storageAuthenticationPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageAuthentication] {
-	return pulumix.Output[*StorageAuthentication]{
-		OutputState: in.ToStorageAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Track property condition operation
@@ -3016,12 +2919,6 @@ func (in *trackPropertyCompareOperationPtr) ToTrackPropertyCompareOperationPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(TrackPropertyCompareOperationPtrOutput)
 }
 
-func (in *trackPropertyCompareOperationPtr) ToOutput(ctx context.Context) pulumix.Output[*TrackPropertyCompareOperation] {
-	return pulumix.Output[*TrackPropertyCompareOperation]{
-		OutputState: in.ToTrackPropertyCompareOperationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Track property type
 type TrackPropertyType string
 
@@ -3190,12 +3087,6 @@ func (in *trackPropertyTypePtr) ToTrackPropertyTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TrackPropertyTypePtrOutput)
 }
 
-func (in *trackPropertyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TrackPropertyType] {
-	return pulumix.Output[*TrackPropertyType]{
-		OutputState: in.ToTrackPropertyTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // When PlayerVisibility is set to "Visible", the text track will be present in the DASH manifest or HLS playlist when requested by a client. When the PlayerVisibility is set to "Hidden", the text will not be available to the client. The default value is "Visible".
 type Visibility string
 
@@ -3362,12 +3253,6 @@ func (in *visibilityPtr) ToVisibilityPtrOutput() VisibilityPtrOutput {
 
 func (in *visibilityPtr) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VisibilityPtrOutput)
-}
-
-func (in *visibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*Visibility] {
-	return pulumix.Output[*Visibility]{
-		OutputState: in.ToVisibilityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

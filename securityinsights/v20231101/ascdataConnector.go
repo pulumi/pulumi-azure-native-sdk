@@ -138,6 +138,9 @@ func NewASCDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ASCDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231201preview:ASCDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

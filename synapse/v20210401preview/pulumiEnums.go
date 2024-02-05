@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SKU name.
@@ -223,12 +222,6 @@ func (in *azureSkuNamePtr) ToAzureSkuNamePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSkuNamePtrOutput)
 }
 
-func (in *azureSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuName] {
-	return pulumix.Output[*AzureSkuName]{
-		OutputState: in.ToAzureSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU tier.
 type AzureSkuTier string
 
@@ -393,12 +386,6 @@ func (in *azureSkuTierPtr) ToAzureSkuTierPtrOutput() AzureSkuTierPtrOutput {
 
 func (in *azureSkuTierPtr) ToAzureSkuTierPtrOutputWithContext(ctx context.Context) AzureSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSkuTierPtrOutput)
-}
-
-func (in *azureSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureSkuTier] {
-	return pulumix.Output[*AzureSkuTier]{
-		OutputState: in.ToAzureSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Database principal role.
@@ -575,12 +562,6 @@ func (in *databasePrincipalRolePtr) ToDatabasePrincipalRolePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DatabasePrincipalRolePtrOutput)
 }
 
-func (in *databasePrincipalRolePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabasePrincipalRole] {
-	return pulumix.Output[*DatabasePrincipalRole]{
-		OutputState: in.ToDatabasePrincipalRolePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The engine type
 type EngineType string
 
@@ -745,12 +726,6 @@ func (in *engineTypePtr) ToEngineTypePtrOutput() EngineTypePtrOutput {
 
 func (in *engineTypePtr) ToEngineTypePtrOutputWithContext(ctx context.Context) EngineTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EngineTypePtrOutput)
-}
-
-func (in *engineTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EngineType] {
-	return pulumix.Output[*EngineType]{
-		OutputState: in.ToEngineTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Principal type.
@@ -919,12 +894,6 @@ func (in *principalTypePtr) ToPrincipalTypePtrOutput() PrincipalTypePtrOutput {
 
 func (in *principalTypePtr) ToPrincipalTypePtrOutputWithContext(ctx context.Context) PrincipalTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrincipalTypePtrOutput)
-}
-
-func (in *principalTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: in.ToPrincipalTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

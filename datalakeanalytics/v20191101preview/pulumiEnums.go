@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of AAD object the object identifier refers to.
@@ -179,12 +178,6 @@ func (in *aadobjectTypePtr) ToAADObjectTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AADObjectTypePtrOutput)
 }
 
-func (in *aadobjectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AADObjectType] {
-	return pulumix.Output[*AADObjectType]{
-		OutputState: in.ToAADObjectTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
 type FirewallAllowAzureIpsState string
 
@@ -351,12 +344,6 @@ func (in *firewallAllowAzureIpsStatePtr) ToFirewallAllowAzureIpsStatePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallAllowAzureIpsStatePtrOutput)
 }
 
-func (in *firewallAllowAzureIpsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallAllowAzureIpsState] {
-	return pulumix.Output[*FirewallAllowAzureIpsState]{
-		OutputState: in.ToFirewallAllowAzureIpsStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of the IP address firewall for this account.
 type FirewallState string
 
@@ -521,12 +508,6 @@ func (in *firewallStatePtr) ToFirewallStatePtrOutput() FirewallStatePtrOutput {
 
 func (in *firewallStatePtr) ToFirewallStatePtrOutputWithContext(ctx context.Context) FirewallStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallStatePtrOutput)
-}
-
-func (in *firewallStatePtr) ToOutput(ctx context.Context) pulumix.Output[*FirewallState] {
-	return pulumix.Output[*FirewallState]{
-		OutputState: in.ToFirewallStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The commitment tier for the next month.
@@ -707,12 +688,6 @@ func (in *tierTypePtr) ToTierTypePtrOutput() TierTypePtrOutput {
 
 func (in *tierTypePtr) ToTierTypePtrOutputWithContext(ctx context.Context) TierTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TierTypePtrOutput)
-}
-
-func (in *tierTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TierType] {
-	return pulumix.Output[*TierType]{
-		OutputState: in.ToTierTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

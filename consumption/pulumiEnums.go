@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operator to use for comparison.
@@ -175,12 +174,6 @@ func (in *budgetOperatorTypePtr) ToBudgetOperatorTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(BudgetOperatorTypePtrOutput)
 }
 
-func (in *budgetOperatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*BudgetOperatorType] {
-	return pulumix.Output[*BudgetOperatorType]{
-		OutputState: in.ToBudgetOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The category of the budget, whether the budget tracks cost or usage.
 type CategoryType string
 
@@ -343,12 +336,6 @@ func (in *categoryTypePtr) ToCategoryTypePtrOutput() CategoryTypePtrOutput {
 
 func (in *categoryTypePtr) ToCategoryTypePtrOutputWithContext(ctx context.Context) CategoryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CategoryTypePtrOutput)
-}
-
-func (in *categoryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CategoryType] {
-	return pulumix.Output[*CategoryType]{
-		OutputState: in.ToCategoryTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Language in which the recipient will receive the notification
@@ -555,12 +542,6 @@ func (in *cultureCodePtr) ToCultureCodePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(CultureCodePtrOutput)
 }
 
-func (in *cultureCodePtr) ToOutput(ctx context.Context) pulumix.Output[*CultureCode] {
-	return pulumix.Output[*CultureCode]{
-		OutputState: in.ToCultureCodePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The comparison operator.
 type OperatorType string
 
@@ -732,12 +713,6 @@ func (in *operatorTypePtr) ToOperatorTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorTypePtrOutput)
 }
 
-func (in *operatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatorType] {
-	return pulumix.Output[*OperatorType]{
-		OutputState: in.ToOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of threshold
 type ThresholdType string
 
@@ -904,12 +879,6 @@ func (in *thresholdTypePtr) ToThresholdTypePtrOutput() ThresholdTypePtrOutput {
 
 func (in *thresholdTypePtr) ToThresholdTypePtrOutputWithContext(ctx context.Context) ThresholdTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdTypePtrOutput)
-}
-
-func (in *thresholdTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ThresholdType] {
-	return pulumix.Output[*ThresholdType]{
-		OutputState: in.ToThresholdTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
@@ -1084,12 +1053,6 @@ func (in *timeGrainTypePtr) ToTimeGrainTypePtrOutput() TimeGrainTypePtrOutput {
 
 func (in *timeGrainTypePtr) ToTimeGrainTypePtrOutputWithContext(ctx context.Context) TimeGrainTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeGrainTypePtrOutput)
-}
-
-func (in *timeGrainTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeGrainType] {
-	return pulumix.Output[*TimeGrainType]{
-		OutputState: in.ToTimeGrainTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

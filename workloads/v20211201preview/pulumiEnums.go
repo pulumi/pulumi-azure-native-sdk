@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Whether to enable Azure front door
@@ -175,12 +174,6 @@ func (in *azureFrontDoorEnabledPtr) ToAzureFrontDoorEnabledPtrOutput() AzureFron
 
 func (in *azureFrontDoorEnabledPtr) ToAzureFrontDoorEnabledPtrOutputWithContext(ctx context.Context) AzureFrontDoorEnabledPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureFrontDoorEnabledPtrOutput)
-}
-
-func (in *azureFrontDoorEnabledPtr) ToOutput(ctx context.Context) pulumix.Output[*AzureFrontDoorEnabled] {
-	return pulumix.Output[*AzureFrontDoorEnabled]{
-		OutputState: in.ToAzureFrontDoorEnabledPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Tier of the server SKU
@@ -351,12 +344,6 @@ func (in *databaseTierPtr) ToDatabaseTierPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTierPtrOutput)
 }
 
-func (in *databaseTierPtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseTier] {
-	return pulumix.Output[*DatabaseTier]{
-		OutputState: in.ToDatabaseTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Database type
 type DatabaseType string
 
@@ -519,12 +506,6 @@ func (in *databaseTypePtr) ToDatabaseTypePtrOutput() DatabaseTypePtrOutput {
 
 func (in *databaseTypePtr) ToDatabaseTypePtrOutputWithContext(ctx context.Context) DatabaseTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypePtrOutput)
-}
-
-func (in *databaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DatabaseType] {
-	return pulumix.Output[*DatabaseType]{
-		OutputState: in.ToDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Storage type
@@ -695,12 +676,6 @@ func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(DiskStorageTypePtrOutput)
 }
 
-func (in *diskStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskStorageType] {
-	return pulumix.Output[*DiskStorageType]{
-		OutputState: in.ToDiskStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enable Azure backup for the workload
 type EnableBackup string
 
@@ -867,12 +842,6 @@ func (in *enableBackupPtr) ToEnableBackupPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(EnableBackupPtrOutput)
 }
 
-func (in *enableBackupPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableBackup] {
-	return pulumix.Output[*EnableBackup]{
-		OutputState: in.ToEnableBackupPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Whether to enable SSL enforcement on the database
 type EnableSslEnforcement string
 
@@ -1037,12 +1006,6 @@ func (in *enableSslEnforcementPtr) ToEnableSslEnforcementPtrOutput() EnableSslEn
 
 func (in *enableSslEnforcementPtr) ToEnableSslEnforcementPtrOutputWithContext(ctx context.Context) EnableSslEnforcementPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnableSslEnforcementPtrOutput)
-}
-
-func (in *enableSslEnforcementPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableSslEnforcement] {
-	return pulumix.Output[*EnableSslEnforcement]{
-		OutputState: in.ToEnableSslEnforcementPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // File share backing storage type
@@ -1215,12 +1178,6 @@ func (in *fileShareStorageTypePtr) ToFileShareStorageTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(FileShareStorageTypePtrOutput)
 }
 
-func (in *fileShareStorageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileShareStorageType] {
-	return pulumix.Output[*FileShareStorageType]{
-		OutputState: in.ToFileShareStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Share type
 type FileShareType string
 
@@ -1385,12 +1342,6 @@ func (in *fileShareTypePtr) ToFileShareTypePtrOutput() FileShareTypePtrOutput {
 
 func (in *fileShareTypePtr) ToFileShareTypePtrOutputWithContext(ctx context.Context) FileShareTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FileShareTypePtrOutput)
-}
-
-func (in *fileShareTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FileShareType] {
-	return pulumix.Output[*FileShareType]{
-		OutputState: in.ToFileShareTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Whether to enable HA for the server
@@ -1559,12 +1510,6 @@ func (in *haenabledPtr) ToHAEnabledPtrOutputWithContext(ctx context.Context) HAE
 	return pulumi.ToOutputWithContext(ctx, in).(HAEnabledPtrOutput)
 }
 
-func (in *haenabledPtr) ToOutput(ctx context.Context) pulumix.Output[*HAEnabled] {
-	return pulumix.Output[*HAEnabled]{
-		OutputState: in.ToHAEnabledPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Load balancer type
 type LoadBalancerType string
 
@@ -1729,12 +1674,6 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutput() LoadBalancerTypePtr
 
 func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx context.Context) LoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
-}
-
-func (in *loadBalancerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerType] {
-	return pulumix.Output[*LoadBalancerType]{
-		OutputState: in.ToLoadBalancerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of manage identity
@@ -1903,12 +1842,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OS image offer
 type OSImageOffer string
 
@@ -2073,12 +2006,6 @@ func (in *osimageOfferPtr) ToOSImageOfferPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OSImageOfferPtrOutput)
 }
 
-func (in *osimageOfferPtr) ToOutput(ctx context.Context) pulumix.Output[*OSImageOffer] {
-	return pulumix.Output[*OSImageOffer]{
-		OutputState: in.ToOSImageOfferPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OS image publisher
 type OSImagePublisher string
 
@@ -2241,12 +2168,6 @@ func (in *osimagePublisherPtr) ToOSImagePublisherPtrOutput() OSImagePublisherPtr
 
 func (in *osimagePublisherPtr) ToOSImagePublisherPtrOutputWithContext(ctx context.Context) OSImagePublisherPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSImagePublisherPtrOutput)
-}
-
-func (in *osimagePublisherPtr) ToOutput(ctx context.Context) pulumix.Output[*OSImagePublisher] {
-	return pulumix.Output[*OSImagePublisher]{
-		OutputState: in.ToOSImagePublisherPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OS image sku
@@ -2415,12 +2336,6 @@ func (in *osimageSkuPtr) ToOSImageSkuPtrOutputWithContext(ctx context.Context) O
 	return pulumi.ToOutputWithContext(ctx, in).(OSImageSkuPtrOutput)
 }
 
-func (in *osimageSkuPtr) ToOutput(ctx context.Context) pulumix.Output[*OSImageSku] {
-	return pulumix.Output[*OSImageSku]{
-		OutputState: in.ToOSImageSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OS image version
 type OSImageVersion string
 
@@ -2583,12 +2498,6 @@ func (in *osimageVersionPtr) ToOSImageVersionPtrOutput() OSImageVersionPtrOutput
 
 func (in *osimageVersionPtr) ToOSImageVersionPtrOutputWithContext(ctx context.Context) OSImageVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OSImageVersionPtrOutput)
-}
-
-func (in *osimageVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*OSImageVersion] {
-	return pulumix.Output[*OSImageVersion]{
-		OutputState: in.ToOSImageVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PHP version
@@ -2759,12 +2668,6 @@ func (in *phpversionPtr) ToPHPVersionPtrOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, in).(PHPVersionPtrOutput)
 }
 
-func (in *phpversionPtr) ToOutput(ctx context.Context) pulumix.Output[*PHPVersion] {
-	return pulumix.Output[*PHPVersion]{
-		OutputState: in.ToPHPVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cache family
 type RedisCacheFamily string
 
@@ -2931,12 +2834,6 @@ func (in *redisCacheFamilyPtr) ToRedisCacheFamilyPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RedisCacheFamilyPtrOutput)
 }
 
-func (in *redisCacheFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*RedisCacheFamily] {
-	return pulumix.Output[*RedisCacheFamily]{
-		OutputState: in.ToRedisCacheFamilyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The DB scale method.
 type SAPDatabaseScaleMethod string
 
@@ -3099,12 +2996,6 @@ func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutput() SAPData
 
 func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutputWithContext(ctx context.Context) SAPDatabaseScaleMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseScaleMethodPtrOutput)
-}
-
-func (in *sapdatabaseScaleMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseScaleMethod] {
-	return pulumix.Output[*SAPDatabaseScaleMethod]{
-		OutputState: in.ToSAPDatabaseScaleMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database type. Eg: HANA, DB2, etc
@@ -3273,12 +3164,6 @@ func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseTypePtrOutput)
 }
 
-func (in *sapdatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseType] {
-	return pulumix.Output[*SAPDatabaseType]{
-		OutputState: in.ToSAPDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The deployment type. Eg: SingleServer/ThreeTier
 type SAPDeploymentType string
 
@@ -3443,12 +3328,6 @@ func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutput() SAPDeploymentType
 
 func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutputWithContext(ctx context.Context) SAPDeploymentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDeploymentTypePtrOutput)
-}
-
-func (in *sapdeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDeploymentType] {
-	return pulumix.Output[*SAPDeploymentType]{
-		OutputState: in.ToSAPDeploymentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the environment type - Production/Non Production.
@@ -3617,12 +3496,6 @@ func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SAPEnvironmentTypePtrOutput)
 }
 
-func (in *sapenvironmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPEnvironmentType] {
-	return pulumix.Output[*SAPEnvironmentType]{
-		OutputState: in.ToSAPEnvironmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The high availability type.
 type SAPHighAvailabilityType string
 
@@ -3787,12 +3660,6 @@ func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutput() SAPHi
 
 func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutputWithContext(ctx context.Context) SAPHighAvailabilityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPHighAvailabilityTypePtrOutput)
-}
-
-func (in *saphighAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPHighAvailabilityType] {
-	return pulumix.Output[*SAPHighAvailabilityType]{
-		OutputState: in.ToSAPHighAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the SAP Product type.
@@ -3963,12 +3830,6 @@ func (in *sapproductTypePtr) ToSAPProductTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(SAPProductTypePtrOutput)
 }
 
-func (in *sapproductTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPProductType] {
-	return pulumix.Output[*SAPProductType]{
-		OutputState: in.ToSAPProductTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Search type
 type SearchType string
 
@@ -4131,12 +3992,6 @@ func (in *searchTypePtr) ToSearchTypePtrOutput() SearchTypePtrOutput {
 
 func (in *searchTypePtr) ToSearchTypePtrOutputWithContext(ctx context.Context) SearchTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SearchTypePtrOutput)
-}
-
-func (in *searchTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SearchType] {
-	return pulumix.Output[*SearchType]{
-		OutputState: in.ToSearchTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
@@ -4309,12 +4164,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Application version
 type WordpressVersions string
 
@@ -4485,12 +4334,6 @@ func (in *wordpressVersionsPtr) ToWordpressVersionsPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(WordpressVersionsPtrOutput)
 }
 
-func (in *wordpressVersionsPtr) ToOutput(ctx context.Context) pulumix.Output[*WordpressVersions] {
-	return pulumix.Output[*WordpressVersions]{
-		OutputState: in.ToWordpressVersionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates which kind of php workload this resource represent e.g WordPress
 type WorkloadKind string
 
@@ -4653,12 +4496,6 @@ func (in *workloadKindPtr) ToWorkloadKindPtrOutput() WorkloadKindPtrOutput {
 
 func (in *workloadKindPtr) ToWorkloadKindPtrOutputWithContext(ctx context.Context) WorkloadKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadKindPtrOutput)
-}
-
-func (in *workloadKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WorkloadKind] {
-	return pulumix.Output[*WorkloadKind]{
-		OutputState: in.ToWorkloadKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

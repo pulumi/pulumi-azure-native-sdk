@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The DB scale method.
@@ -173,12 +172,6 @@ func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutput() SAPData
 
 func (in *sapdatabaseScaleMethodPtr) ToSAPDatabaseScaleMethodPtrOutputWithContext(ctx context.Context) SAPDatabaseScaleMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseScaleMethodPtrOutput)
-}
-
-func (in *sapdatabaseScaleMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseScaleMethod] {
-	return pulumix.Output[*SAPDatabaseScaleMethod]{
-		OutputState: in.ToSAPDatabaseScaleMethodPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The database type. Eg: HANA, DB2, etc
@@ -347,12 +340,6 @@ func (in *sapdatabaseTypePtr) ToSAPDatabaseTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDatabaseTypePtrOutput)
 }
 
-func (in *sapdatabaseTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDatabaseType] {
-	return pulumix.Output[*SAPDatabaseType]{
-		OutputState: in.ToSAPDatabaseTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The deployment type. Eg: SingleServer/ThreeTier
 type SAPDeploymentType string
 
@@ -517,12 +504,6 @@ func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutput() SAPDeploymentType
 
 func (in *sapdeploymentTypePtr) ToSAPDeploymentTypePtrOutputWithContext(ctx context.Context) SAPDeploymentTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPDeploymentTypePtrOutput)
-}
-
-func (in *sapdeploymentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPDeploymentType] {
-	return pulumix.Output[*SAPDeploymentType]{
-		OutputState: in.ToSAPDeploymentTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the environment type - Production/Non Production.
@@ -691,12 +672,6 @@ func (in *sapenvironmentTypePtr) ToSAPEnvironmentTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SAPEnvironmentTypePtrOutput)
 }
 
-func (in *sapenvironmentTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPEnvironmentType] {
-	return pulumix.Output[*SAPEnvironmentType]{
-		OutputState: in.ToSAPEnvironmentTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The high availability type.
 type SAPHighAvailabilityType string
 
@@ -861,12 +836,6 @@ func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutput() SAPHi
 
 func (in *saphighAvailabilityTypePtr) ToSAPHighAvailabilityTypePtrOutputWithContext(ctx context.Context) SAPHighAvailabilityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPHighAvailabilityTypePtrOutput)
-}
-
-func (in *saphighAvailabilityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPHighAvailabilityType] {
-	return pulumix.Output[*SAPHighAvailabilityType]{
-		OutputState: in.ToSAPHighAvailabilityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Defines the SAP Product type.
@@ -1035,12 +1004,6 @@ func (in *sapproductTypePtr) ToSAPProductTypePtrOutput() SAPProductTypePtrOutput
 
 func (in *sapproductTypePtr) ToSAPProductTypePtrOutputWithContext(ctx context.Context) SAPProductTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SAPProductTypePtrOutput)
-}
-
-func (in *sapproductTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SAPProductType] {
-	return pulumix.Output[*SAPProductType]{
-		OutputState: in.ToSAPProductTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

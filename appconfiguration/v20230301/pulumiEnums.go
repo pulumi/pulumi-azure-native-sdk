@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The private link service connection status.
@@ -181,12 +180,6 @@ func (in *connectionStatusPtr) ToConnectionStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionStatusPtrOutput)
 }
 
-func (in *connectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*ConnectionStatus] {
-	return pulumix.Output[*ConnectionStatus]{
-		OutputState: in.ToConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates whether the configuration store need to be recovered.
 type CreateMode string
 
@@ -351,12 +344,6 @@ func (in *createModePtr) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
-}
-
-func (in *createModePtr) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: in.ToCreateModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
@@ -529,12 +516,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 type PublicNetworkAccess string
 
@@ -699,12 +680,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AbsoluteMarker string
@@ -182,12 +181,6 @@ func (in *absoluteMarkerPtr) ToAbsoluteMarkerPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AbsoluteMarkerPtrOutput)
 }
 
-func (in *absoluteMarkerPtr) ToOutput(ctx context.Context) pulumix.Output[*AbsoluteMarker] {
-	return pulumix.Output[*AbsoluteMarker]{
-		OutputState: in.ToAbsoluteMarkerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertsState string
 
 const (
@@ -351,12 +344,6 @@ func (in *alertsStatePtr) ToAlertsStatePtrOutput() AlertsStatePtrOutput {
 
 func (in *alertsStatePtr) ToAlertsStatePtrOutputWithContext(ctx context.Context) AlertsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertsStatePtrOutput)
-}
-
-func (in *alertsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*AlertsState] {
-	return pulumix.Output[*AlertsState]{
-		OutputState: in.ToAlertsStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CrossRegionRestore state
@@ -523,12 +510,6 @@ func (in *crossRegionRestoreStatePtr) ToCrossRegionRestoreStatePtrOutput() Cross
 
 func (in *crossRegionRestoreStatePtr) ToCrossRegionRestoreStatePtrOutputWithContext(ctx context.Context) CrossRegionRestoreStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CrossRegionRestoreStatePtrOutput)
-}
-
-func (in *crossRegionRestoreStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CrossRegionRestoreState] {
-	return pulumix.Output[*CrossRegionRestoreState]{
-		OutputState: in.ToCrossRegionRestoreStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CrossSubscriptionRestore state
@@ -699,12 +680,6 @@ func (in *crossSubscriptionRestoreStatePtr) ToCrossSubscriptionRestoreStatePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(CrossSubscriptionRestoreStatePtrOutput)
 }
 
-func (in *crossSubscriptionRestoreStatePtr) ToOutput(ctx context.Context) pulumix.Output[*CrossSubscriptionRestoreState] {
-	return pulumix.Output[*CrossSubscriptionRestoreState]{
-		OutputState: in.ToCrossSubscriptionRestoreStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // type of datastore; Operational/Vault/Archive
 type DataStoreTypes string
 
@@ -871,12 +846,6 @@ func (in *dataStoreTypesPtr) ToDataStoreTypesPtrOutput() DataStoreTypesPtrOutput
 
 func (in *dataStoreTypesPtr) ToDataStoreTypesPtrOutputWithContext(ctx context.Context) DataStoreTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataStoreTypesPtrOutput)
-}
-
-func (in *dataStoreTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*DataStoreTypes] {
-	return pulumix.Output[*DataStoreTypes]{
-		OutputState: in.ToDataStoreTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type DayOfWeek string
@@ -1054,12 +1023,6 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
-func (in *dayOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: in.ToDayOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Immutability state
 type ImmutabilityState string
 
@@ -1226,12 +1189,6 @@ func (in *immutabilityStatePtr) ToImmutabilityStatePtrOutput() ImmutabilityState
 
 func (in *immutabilityStatePtr) ToImmutabilityStatePtrOutputWithContext(ctx context.Context) ImmutabilityStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImmutabilityStatePtrOutput)
-}
-
-func (in *immutabilityStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ImmutabilityState] {
-	return pulumix.Output[*ImmutabilityState]{
-		OutputState: in.ToImmutabilityStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type Month string
@@ -1419,12 +1376,6 @@ func (in *monthPtr) ToMonthPtrOutputWithContext(ctx context.Context) MonthPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(MonthPtrOutput)
 }
 
-func (in *monthPtr) ToOutput(ctx context.Context) pulumix.Output[*Month] {
-	return pulumix.Output[*Month]{
-		OutputState: in.ToMonthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the type of secret store
 type SecretStoreType string
 
@@ -1589,12 +1540,6 @@ func (in *secretStoreTypePtr) ToSecretStoreTypePtrOutput() SecretStoreTypePtrOut
 
 func (in *secretStoreTypePtr) ToSecretStoreTypePtrOutputWithContext(ctx context.Context) SecretStoreTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecretStoreTypePtrOutput)
-}
-
-func (in *secretStoreTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreType] {
-	return pulumix.Output[*SecretStoreType]{
-		OutputState: in.ToSecretStoreTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // State of soft delete
@@ -1768,12 +1713,6 @@ func (in *softDeleteStatePtr) ToSoftDeleteStatePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(SoftDeleteStatePtrOutput)
 }
 
-func (in *softDeleteStatePtr) ToOutput(ctx context.Context) pulumix.Output[*SoftDeleteState] {
-	return pulumix.Output[*SoftDeleteState]{
-		OutputState: in.ToSoftDeleteStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the type of the datastore.
 type StorageSettingStoreTypes string
 
@@ -1940,12 +1879,6 @@ func (in *storageSettingStoreTypesPtr) ToStorageSettingStoreTypesPtrOutput() Sto
 
 func (in *storageSettingStoreTypesPtr) ToStorageSettingStoreTypesPtrOutputWithContext(ctx context.Context) StorageSettingStoreTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StorageSettingStoreTypesPtrOutput)
-}
-
-func (in *storageSettingStoreTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSettingStoreTypes] {
-	return pulumix.Output[*StorageSettingStoreTypes]{
-		OutputState: in.ToStorageSettingStoreTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the type.
@@ -2116,12 +2049,6 @@ func (in *storageSettingTypesPtr) ToStorageSettingTypesPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StorageSettingTypesPtrOutput)
 }
 
-func (in *storageSettingTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSettingTypes] {
-	return pulumix.Output[*StorageSettingTypes]{
-		OutputState: in.ToStorageSettingTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 type ValidationType string
 
@@ -2286,12 +2213,6 @@ func (in *validationTypePtr) ToValidationTypePtrOutput() ValidationTypePtrOutput
 
 func (in *validationTypePtr) ToValidationTypePtrOutputWithContext(ctx context.Context) ValidationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ValidationTypePtrOutput)
-}
-
-func (in *validationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ValidationType] {
-	return pulumix.Output[*ValidationType]{
-		OutputState: in.ToValidationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 type WeekNumber string
@@ -2463,12 +2384,6 @@ func (in *weekNumberPtr) ToWeekNumberPtrOutput() WeekNumberPtrOutput {
 
 func (in *weekNumberPtr) ToWeekNumberPtrOutputWithContext(ctx context.Context) WeekNumberPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WeekNumberPtrOutput)
-}
-
-func (in *weekNumberPtr) ToOutput(ctx context.Context) pulumix.Output[*WeekNumber] {
-	return pulumix.Output[*WeekNumber]{
-		OutputState: in.ToWeekNumberPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

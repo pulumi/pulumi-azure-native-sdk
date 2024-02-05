@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Indicates whether or not the encryption is enabled for the workspace.
@@ -175,12 +174,6 @@ func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutput() EncryptionStatusPtr
 
 func (in *encryptionStatusPtr) ToEncryptionStatusPtrOutputWithContext(ctx context.Context) EncryptionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatusPtrOutput)
-}
-
-func (in *encryptionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionStatus] {
-	return pulumix.Output[*EncryptionStatus]{
-		OutputState: in.ToEncryptionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Annotation type of image labeling tasks.
@@ -351,12 +344,6 @@ func (in *imageAnnotationTypePtr) ToImageAnnotationTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ImageAnnotationTypePtrOutput)
 }
 
-func (in *imageAnnotationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ImageAnnotationType] {
-	return pulumix.Output[*ImageAnnotationType]{
-		OutputState: in.ToImageAnnotationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the link target.
 type LinkedServiceLinkType string
 
@@ -519,12 +506,6 @@ func (in *linkedServiceLinkTypePtr) ToLinkedServiceLinkTypePtrOutput() LinkedSer
 
 func (in *linkedServiceLinkTypePtr) ToLinkedServiceLinkTypePtrOutputWithContext(ctx context.Context) LinkedServiceLinkTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinkedServiceLinkTypePtrOutput)
-}
-
-func (in *linkedServiceLinkTypePtr) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceLinkType] {
-	return pulumix.Output[*LinkedServiceLinkType]{
-		OutputState: in.ToLinkedServiceLinkTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Media type of data asset.
@@ -691,12 +672,6 @@ func (in *mediaTypePtr) ToMediaTypePtrOutput() MediaTypePtrOutput {
 
 func (in *mediaTypePtr) ToMediaTypePtrOutputWithContext(ctx context.Context) MediaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MediaTypePtrOutput)
-}
-
-func (in *mediaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MediaType] {
-	return pulumix.Output[*MediaType]{
-		OutputState: in.ToMediaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -871,12 +846,6 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointServiceConnectionStatus] {
-	return pulumix.Output[*PrivateEndpointServiceConnectionStatus]{
-		OutputState: in.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity type.
 type ResourceIdentityType string
 
@@ -1045,12 +1014,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of web test this is, valid choices are ping, multistep and standard.
@@ -177,12 +176,6 @@ func (in *webTestKindPtr) ToWebTestKindPtrOutput() WebTestKindPtrOutput {
 
 func (in *webTestKindPtr) ToWebTestKindPtrOutputWithContext(ctx context.Context) WebTestKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WebTestKindPtrOutput)
-}
-
-func (in *webTestKindPtr) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
-	return pulumix.Output[*WebTestKind]{
-		OutputState: in.ToWebTestKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

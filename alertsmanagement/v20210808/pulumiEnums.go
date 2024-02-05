@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action that should be applied.
@@ -195,12 +194,6 @@ func (in *daysOfWeekPtr) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, in).(DaysOfWeekPtrOutput)
 }
 
-func (in *daysOfWeekPtr) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: in.ToDaysOfWeekPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Field for a given condition.
 type Field string
 
@@ -385,12 +378,6 @@ func (in *fieldPtr) ToFieldPtrOutputWithContext(ctx context.Context) FieldPtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(FieldPtrOutput)
 }
 
-func (in *fieldPtr) ToOutput(ctx context.Context) pulumix.Output[*Field] {
-	return pulumix.Output[*Field]{
-		OutputState: in.ToFieldPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Operator for a given condition.
 type Operator string
 
@@ -559,12 +546,6 @@ func (in *operatorPtr) ToOperatorPtrOutput() OperatorPtrOutput {
 
 func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
-}
-
-func (in *operatorPtr) ToOutput(ctx context.Context) pulumix.Output[*Operator] {
-	return pulumix.Output[*Operator]{
-		OutputState: in.ToOperatorPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Specifies when the recurrence should be applied.

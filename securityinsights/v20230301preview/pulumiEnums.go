@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The entity query kind
@@ -185,12 +184,6 @@ func (in *entityTimelineKindPtr) ToEntityTimelineKindPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTimelineKindPtrOutput)
 }
 
-func (in *entityTimelineKindPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityTimelineKind] {
-	return pulumix.Output[*EntityTimelineKind]{
-		OutputState: in.ToEntityTimelineKindPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reason the incident was closed
 type IncidentClassification string
 
@@ -363,12 +356,6 @@ func (in *incidentClassificationPtr) ToIncidentClassificationPtrOutput() Inciden
 
 func (in *incidentClassificationPtr) ToIncidentClassificationPtrOutputWithContext(ctx context.Context) IncidentClassificationPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentClassificationPtrOutput)
-}
-
-func (in *incidentClassificationPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentClassification] {
-	return pulumix.Output[*IncidentClassification]{
-		OutputState: in.ToIncidentClassificationPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The classification reason the incident was closed with
@@ -545,12 +532,6 @@ func (in *incidentClassificationReasonPtr) ToIncidentClassificationReasonPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentClassificationReasonPtrOutput)
 }
 
-func (in *incidentClassificationReasonPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentClassificationReason] {
-	return pulumix.Output[*IncidentClassificationReason]{
-		OutputState: in.ToIncidentClassificationReasonPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The severity of the incident
 type IncidentSeverity string
 
@@ -725,12 +706,6 @@ func (in *incidentSeverityPtr) ToIncidentSeverityPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentSeverityPtrOutput)
 }
 
-func (in *incidentSeverityPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentSeverity] {
-	return pulumix.Output[*IncidentSeverity]{
-		OutputState: in.ToIncidentSeverityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the incident
 type IncidentStatus string
 
@@ -902,12 +877,6 @@ func (in *incidentStatusPtr) ToIncidentStatusPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(IncidentStatusPtrOutput)
 }
 
-func (in *incidentStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*IncidentStatus] {
-	return pulumix.Output[*IncidentStatus]{
-		OutputState: in.ToIncidentStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the owner the incident is assigned to.
 type OwnerType string
 
@@ -1077,12 +1046,6 @@ func (in *ownerTypePtr) ToOwnerTypePtrOutput() OwnerTypePtrOutput {
 
 func (in *ownerTypePtr) ToOwnerTypePtrOutputWithContext(ctx context.Context) OwnerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OwnerTypePtrOutput)
-}
-
-func (in *ownerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OwnerType] {
-	return pulumix.Output[*OwnerType]{
-		OutputState: in.ToOwnerTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

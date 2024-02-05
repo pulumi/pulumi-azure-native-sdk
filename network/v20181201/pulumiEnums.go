@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The access type of the rule. Valid values are: 'Allow', 'Deny'
@@ -177,12 +176,6 @@ func (in *accessPtr) ToAccessPtrOutputWithContext(ctx context.Context) AccessPtr
 	return pulumi.ToOutputWithContext(ctx, in).(AccessPtrOutput)
 }
 
-func (in *accessPtr) ToOutput(ctx context.Context) pulumix.Output[*Access] {
-	return pulumix.Output[*Access]{
-		OutputState: in.ToAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationUseStatus. Possible values are: 'Available' and 'InUse'.
 type AuthorizationUseStatus string
 
@@ -347,12 +340,6 @@ func (in *authorizationUseStatusPtr) ToAuthorizationUseStatusPtrOutput() Authori
 
 func (in *authorizationUseStatusPtr) ToAuthorizationUseStatusPtrOutputWithContext(ctx context.Context) AuthorizationUseStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuthorizationUseStatusPtrOutput)
-}
-
-func (in *authorizationUseStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationUseStatus] {
-	return pulumix.Output[*AuthorizationUseStatus]{
-		OutputState: in.ToAuthorizationUseStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AdvertisedPublicPrefixState of the Peering resource. Possible values are 'NotConfigured', 'Configuring', 'Configured', and 'ValidationNeeded'.
@@ -525,12 +512,6 @@ func (in *expressRouteCircuitPeeringAdvertisedPublicPrefixStatePtr) ToExpressRou
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitPeeringAdvertisedPublicPrefixStatePtrOutput)
 }
 
-func (in *expressRouteCircuitPeeringAdvertisedPublicPrefixStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringAdvertisedPublicPrefixState] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringAdvertisedPublicPrefixState]{
-		OutputState: in.ToExpressRouteCircuitPeeringAdvertisedPublicPrefixStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of peering. Possible values are: 'Disabled' and 'Enabled'
 type ExpressRouteCircuitPeeringState string
 
@@ -697,12 +678,6 @@ func (in *expressRouteCircuitPeeringStatePtr) ToExpressRouteCircuitPeeringStateP
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitPeeringStatePtrOutput)
 }
 
-func (in *expressRouteCircuitPeeringStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringState] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringState]{
-		OutputState: in.ToExpressRouteCircuitPeeringStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
 type ExpressRouteCircuitSkuFamily string
 
@@ -867,12 +842,6 @@ func (in *expressRouteCircuitSkuFamilyPtr) ToExpressRouteCircuitSkuFamilyPtrOutp
 
 func (in *expressRouteCircuitSkuFamilyPtr) ToExpressRouteCircuitSkuFamilyPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitSkuFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitSkuFamilyPtrOutput)
-}
-
-func (in *expressRouteCircuitSkuFamilyPtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSkuFamily] {
-	return pulumix.Output[*ExpressRouteCircuitSkuFamily]{
-		OutputState: in.ToExpressRouteCircuitSkuFamilyPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The tier of the SKU. Possible values are 'Standard', 'Premium' or 'Local'.
@@ -1045,12 +1014,6 @@ func (in *expressRouteCircuitSkuTierPtr) ToExpressRouteCircuitSkuTierPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRouteCircuitSkuTierPtrOutput)
 }
 
-func (in *expressRouteCircuitSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSkuTier] {
-	return pulumix.Output[*ExpressRouteCircuitSkuTier]{
-		OutputState: in.ToExpressRouteCircuitSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The peering state.
 type ExpressRoutePeeringState string
 
@@ -1215,12 +1178,6 @@ func (in *expressRoutePeeringStatePtr) ToExpressRoutePeeringStatePtrOutput() Exp
 
 func (in *expressRoutePeeringStatePtr) ToExpressRoutePeeringStatePtrOutputWithContext(ctx context.Context) ExpressRoutePeeringStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRoutePeeringStatePtrOutput)
-}
-
-func (in *expressRoutePeeringStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRoutePeeringState] {
-	return pulumix.Output[*ExpressRoutePeeringState]{
-		OutputState: in.ToExpressRoutePeeringStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The peering type.
@@ -1391,12 +1348,6 @@ func (in *expressRoutePeeringTypePtr) ToExpressRoutePeeringTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ExpressRoutePeeringTypePtrOutput)
 }
 
-func (in *expressRoutePeeringTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressRoutePeeringType] {
-	return pulumix.Output[*ExpressRoutePeeringType]{
-		OutputState: in.ToExpressRoutePeeringTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The rule type of the rule. Valid value is: 'Community'
 type RouteFilterRuleType string
 
@@ -1559,12 +1510,6 @@ func (in *routeFilterRuleTypePtr) ToRouteFilterRuleTypePtrOutput() RouteFilterRu
 
 func (in *routeFilterRuleTypePtr) ToRouteFilterRuleTypePtrOutputWithContext(ctx context.Context) RouteFilterRuleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RouteFilterRuleTypePtrOutput)
-}
-
-func (in *routeFilterRuleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteFilterRuleType] {
-	return pulumix.Output[*RouteFilterRuleType]{
-		OutputState: in.ToRouteFilterRuleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The ServiceProviderProvisioningState state of the resource. Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
@@ -1735,12 +1680,6 @@ func (in *serviceProviderProvisioningStatePtr) ToServiceProviderProvisioningStat
 
 func (in *serviceProviderProvisioningStatePtr) ToServiceProviderProvisioningStatePtrOutputWithContext(ctx context.Context) ServiceProviderProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceProviderProvisioningStatePtrOutput)
-}
-
-func (in *serviceProviderProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ServiceProviderProvisioningState] {
-	return pulumix.Output[*ServiceProviderProvisioningState]{
-		OutputState: in.ToServiceProviderProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -14,6 +14,8 @@ import (
 
 // WebApp site web model.
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 type WebAppSitesController struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewWebAppSitesController(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:offazure/v20230606:WebAppSitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20231001preview:WebAppSitesController"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -176,12 +175,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
-}
-
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Application Group Policy types
@@ -357,12 +350,6 @@ func (in *cleanupPolicyRetentionDescriptionPtr) ToCleanupPolicyRetentionDescript
 	return pulumi.ToOutputWithContext(ctx, in).(CleanupPolicyRetentionDescriptionPtrOutput)
 }
 
-func (in *cleanupPolicyRetentionDescriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*CleanupPolicyRetentionDescription] {
-	return pulumix.Output[*CleanupPolicyRetentionDescription]{
-		OutputState: in.ToCleanupPolicyRetentionDescriptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of this SKU.
 type ClusterSkuName string
 
@@ -525,12 +512,6 @@ func (in *clusterSkuNamePtr) ToClusterSkuNamePtrOutput() ClusterSkuNamePtrOutput
 
 func (in *clusterSkuNamePtr) ToClusterSkuNamePtrOutputWithContext(ctx context.Context) ClusterSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterSkuNamePtrOutput)
-}
-
-func (in *clusterSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*ClusterSkuName] {
-	return pulumix.Output[*ClusterSkuName]{
-		OutputState: in.ToClusterSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Default Action for Network Rule Set
@@ -699,12 +680,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
 type EncodingCaptureDescription string
 
@@ -869,12 +844,6 @@ func (in *encodingCaptureDescriptionPtr) ToEncodingCaptureDescriptionPtrOutput()
 
 func (in *encodingCaptureDescriptionPtr) ToEncodingCaptureDescriptionPtrOutputWithContext(ctx context.Context) EncodingCaptureDescriptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncodingCaptureDescriptionPtrOutput)
-}
-
-func (in *encodingCaptureDescriptionPtr) ToOutput(ctx context.Context) pulumix.Output[*EncodingCaptureDescription] {
-	return pulumix.Output[*EncodingCaptureDescription]{
-		OutputState: in.ToEncodingCaptureDescriptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the Private Endpoint Connection.
@@ -1049,12 +1018,6 @@ func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutput() E
 
 func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutputWithContext(ctx context.Context) EndPointProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EndPointProvisioningStatePtrOutput)
-}
-
-func (in *endPointProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EndPointProvisioningState] {
-	return pulumix.Output[*EndPointProvisioningState]{
-		OutputState: in.ToEndPointProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Enumerates the possible values for the status of the Event Hub.
@@ -1237,12 +1200,6 @@ func (in *entityStatusPtr) ToEntityStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(EntityStatusPtrOutput)
 }
 
-func (in *entityStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
-	return pulumix.Output[*EntityStatus]{
-		OutputState: in.ToEntityStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enumerates the possible value of keySource for Encryption
 type KeySource string
 
@@ -1405,12 +1362,6 @@ func (in *keySourcePtr) ToKeySourcePtrOutput() KeySourcePtrOutput {
 
 func (in *keySourcePtr) ToKeySourcePtrOutputWithContext(ctx context.Context) KeySourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KeySourcePtrOutput)
-}
-
-func (in *keySourcePtr) ToOutput(ctx context.Context) pulumix.Output[*KeySource] {
-	return pulumix.Output[*KeySource]{
-		OutputState: in.ToKeySourcePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of managed service identity.
@@ -1583,12 +1534,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal
 type MetricId string
 
@@ -1759,12 +1704,6 @@ func (in *metricIdPtr) ToMetricIdPtrOutputWithContext(ctx context.Context) Metri
 	return pulumi.ToOutputWithContext(ctx, in).(MetricIdPtrOutput)
 }
 
-func (in *metricIdPtr) ToOutput(ctx context.Context) pulumix.Output[*MetricId] {
-	return pulumix.Output[*MetricId]{
-		OutputState: in.ToMetricIdPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP Filter Action
 type NetworkRuleIPAction string
 
@@ -1927,12 +1866,6 @@ func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutput() NetworkRuleIP
 
 func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleIPActionPtrOutput)
-}
-
-func (in *networkRuleIPActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleIPAction] {
-	return pulumix.Output[*NetworkRuleIPAction]{
-		OutputState: in.ToNetworkRuleIPActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Status of the connection.
@@ -2105,12 +2038,6 @@ func (in *privateLinkConnectionStatusPtr) ToPrivateLinkConnectionStatusPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkConnectionStatusPtrOutput)
 }
 
-func (in *privateLinkConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStatus] {
-	return pulumix.Output[*PrivateLinkConnectionStatus]{
-		OutputState: in.ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This determines if traffic is allowed over public network. By default it is enabled.
 type PublicNetworkAccess string
 
@@ -2277,12 +2204,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules.
@@ -2453,12 +2374,6 @@ func (in *publicNetworkAccessFlagPtr) ToPublicNetworkAccessFlagPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessFlagPtrOutput)
 }
 
-func (in *publicNetworkAccessFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessFlag] {
-	return pulumix.Output[*PublicNetworkAccessFlag]{
-		OutputState: in.ToPublicNetworkAccessFlagPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SchemaCompatibility string
 
 const (
@@ -2626,12 +2541,6 @@ func (in *schemaCompatibilityPtr) ToSchemaCompatibilityPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaCompatibilityPtrOutput)
 }
 
-func (in *schemaCompatibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaCompatibility] {
-	return pulumix.Output[*SchemaCompatibility]{
-		OutputState: in.ToSchemaCompatibilityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SchemaType string
 
 const (
@@ -2795,12 +2704,6 @@ func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
 
 func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
-}
-
-func (in *schemaTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SchemaType] {
-	return pulumix.Output[*SchemaType]{
-		OutputState: in.ToSchemaTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Name of this SKU.
@@ -2971,12 +2874,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The billing tier of this particular SKU.
 type SkuTier string
 
@@ -3145,12 +3042,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum TLS version for the cluster to support, e.g. '1.2'
 type TlsVersion string
 
@@ -3317,12 +3208,6 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
 
 func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TlsVersionPtrOutput)
-}
-
-func (in *tlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsVersion] {
-	return pulumix.Output[*TlsVersion]{
-		OutputState: in.ToTlsVersionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

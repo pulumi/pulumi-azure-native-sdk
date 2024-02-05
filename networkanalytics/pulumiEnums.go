@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Flag to enable or disable redundancy for data product.
@@ -179,12 +178,6 @@ func (in *controlStatePtr) ToControlStatePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ControlStatePtrOutput)
 }
 
-func (in *controlStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ControlState] {
-	return pulumix.Output[*ControlState]{
-		OutputState: in.ToControlStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of data type.
 type DataTypeStateEnum string
 
@@ -351,12 +344,6 @@ func (in *dataTypeStateEnumPtr) ToDataTypeStateEnumPtrOutput() DataTypeStateEnum
 
 func (in *dataTypeStateEnumPtr) ToDataTypeStateEnumPtrOutputWithContext(ctx context.Context) DataTypeStateEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataTypeStateEnumPtrOutput)
-}
-
-func (in *dataTypeStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*DataTypeStateEnum] {
-	return pulumix.Output[*DataTypeStateEnum]{
-		OutputState: in.ToDataTypeStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Default Action
@@ -527,12 +514,6 @@ func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
 }
 
-func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
@@ -701,12 +682,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
-}
-
-func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

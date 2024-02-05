@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
@@ -181,12 +180,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This determines the format that Event Grid should expect for incoming events published to the topic.
 type InputSchema string
 
@@ -353,12 +346,6 @@ func (in *inputSchemaPtr) ToInputSchemaPtrOutput() InputSchemaPtrOutput {
 
 func (in *inputSchemaPtr) ToInputSchemaPtrOutputWithContext(ctx context.Context) InputSchemaPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(InputSchemaPtrOutput)
-}
-
-func (in *inputSchemaPtr) ToOutput(ctx context.Context) pulumix.Output[*InputSchema] {
-	return pulumix.Output[*InputSchema]{
-		OutputState: in.ToInputSchemaPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Type of the custom mapping
@@ -532,12 +519,6 @@ func (in *ipActionTypePtr) ToIpActionTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IpActionTypePtrOutput)
 }
 
-func (in *ipActionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IpActionType] {
-	return pulumix.Output[*IpActionType]{
-		OutputState: in.ToIpActionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Status of the connection.
 type PersistedConnectionStatus string
 
@@ -708,12 +689,6 @@ func (in *persistedConnectionStatusPtr) ToPersistedConnectionStatusPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(PersistedConnectionStatusPtrOutput)
 }
 
-func (in *persistedConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PersistedConnectionStatus] {
-	return pulumix.Output[*PersistedConnectionStatus]{
-		OutputState: in.ToPersistedConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This determines if traffic is allowed over public network. By default it is enabled.
 // You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
 type PublicNetworkAccess string
@@ -879,12 +854,6 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetwork
 
 func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
-}
-
-func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the Private Endpoint Connection.
@@ -1061,12 +1030,6 @@ func (in *resourceProvisioningStatePtr) ToResourceProvisioningStatePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceProvisioningStatePtrOutput)
 }
 
-func (in *resourceProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceProvisioningState] {
-	return pulumix.Output[*ResourceProvisioningState]{
-		OutputState: in.ToResourceProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Sku name of the resource. The possible values are: Basic or Premium.
 type Sku string
 
@@ -1231,12 +1194,6 @@ func (in *skuPtr) ToSkuPtrOutput() SkuPtrOutput {
 
 func (in *skuPtr) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuPtrOutput)
-}
-
-func (in *skuPtr) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: in.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
@@ -179,12 +178,6 @@ func (in *consistencyModeTypesPtr) ToConsistencyModeTypesPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(ConsistencyModeTypesPtrOutput)
 }
 
-func (in *consistencyModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ConsistencyModeTypes] {
-	return pulumix.Output[*ConsistencyModeTypes]{
-		OutputState: in.ToConsistencyModeTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Interval value in minutes used to create LogAnalytics call rate logs.
 type IntervalInMins string
 
@@ -353,12 +346,6 @@ func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOutput
 
 func (in *intervalInMinsPtr) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IntervalInMinsPtrOutput)
-}
-
-func (in *intervalInMinsPtr) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
-	return pulumix.Output[*IntervalInMins]{
-		OutputState: in.ToIntervalInMinsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

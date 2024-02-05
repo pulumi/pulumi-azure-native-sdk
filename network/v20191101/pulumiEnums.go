@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The state of the Experiment
@@ -175,12 +174,6 @@ func (in *statePtr) ToStatePtrOutput() StatePtrOutput {
 
 func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
-}
-
-func (in *statePtr) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: in.ToStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

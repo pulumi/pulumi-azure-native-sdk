@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specify whether to validate the Kubernetes objects referenced in the Kustomization before applying them to the cluster.
@@ -179,12 +178,6 @@ func (in *kustomizationValidationTypePtr) ToKustomizationValidationTypePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(KustomizationValidationTypePtrOutput)
 }
 
-func (in *kustomizationValidationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KustomizationValidationType] {
-	return pulumix.Output[*KustomizationValidationType]{
-		OutputState: in.ToKustomizationValidationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scope at which the operator will be installed.
 type ScopeType string
 
@@ -351,12 +344,6 @@ func (in *scopeTypePtr) ToScopeTypePtrOutputWithContext(ctx context.Context) Sco
 	return pulumi.ToOutputWithContext(ctx, in).(ScopeTypePtrOutput)
 }
 
-func (in *scopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScopeType] {
-	return pulumix.Output[*ScopeType]{
-		OutputState: in.ToScopeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source Kind to pull the configuration data from.
 type SourceKindType string
 
@@ -519,12 +506,6 @@ func (in *sourceKindTypePtr) ToSourceKindTypePtrOutput() SourceKindTypePtrOutput
 
 func (in *sourceKindTypePtr) ToSourceKindTypePtrOutputWithContext(ctx context.Context) SourceKindTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceKindTypePtrOutput)
-}
-
-func (in *sourceKindTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceKindType] {
-	return pulumix.Output[*SourceKindType]{
-		OutputState: in.ToSourceKindTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

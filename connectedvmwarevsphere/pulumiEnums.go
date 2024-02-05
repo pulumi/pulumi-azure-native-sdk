@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the disk mode.
@@ -177,12 +176,6 @@ func (in *diskModePtr) ToDiskModePtrOutput() DiskModePtrOutput {
 
 func (in *diskModePtr) ToDiskModePtrOutputWithContext(ctx context.Context) DiskModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskModePtrOutput)
-}
-
-func (in *diskModePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskMode] {
-	return pulumix.Output[*DiskMode]{
-		OutputState: in.ToDiskModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the disk backing type.
@@ -361,12 +354,6 @@ func (in *diskTypePtr) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskT
 	return pulumi.ToOutputWithContext(ctx, in).(DiskTypePtrOutput)
 }
 
-func (in *diskTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DiskType] {
-	return pulumix.Output[*DiskType]{
-		OutputState: in.ToDiskTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Firmware type
 type FirmwareType string
 
@@ -531,12 +518,6 @@ func (in *firmwareTypePtr) ToFirmwareTypePtrOutput() FirmwareTypePtrOutput {
 
 func (in *firmwareTypePtr) ToFirmwareTypePtrOutputWithContext(ctx context.Context) FirmwareTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FirmwareTypePtrOutput)
-}
-
-func (in *firmwareTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FirmwareType] {
-	return pulumix.Output[*FirmwareType]{
-		OutputState: in.ToFirmwareTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the nic allocation method.
@@ -713,12 +694,6 @@ func (in *ipaddressAllocationMethodPtr) ToIPAddressAllocationMethodPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(IPAddressAllocationMethodPtrOutput)
 }
 
-func (in *ipaddressAllocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAddressAllocationMethod] {
-	return pulumix.Output[*IPAddressAllocationMethod]{
-		OutputState: in.ToIPAddressAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of managed service identity.
 type IdentityType string
 
@@ -883,12 +858,6 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
-}
-
-func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // They inventory type.
@@ -1067,12 +1036,6 @@ func (in *inventoryTypePtr) ToInventoryTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(InventoryTypePtrOutput)
 }
 
-func (in *inventoryTypePtr) ToOutput(ctx context.Context) pulumix.Output[*InventoryType] {
-	return pulumix.Output[*InventoryType]{
-		OutputState: in.ToInventoryTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NIC type
 type NICType string
 
@@ -1247,12 +1210,6 @@ func (in *nictypePtr) ToNICTypePtrOutputWithContext(ctx context.Context) NICType
 	return pulumi.ToOutputWithContext(ctx, in).(NICTypePtrOutput)
 }
 
-func (in *nictypePtr) ToOutput(ctx context.Context) pulumix.Output[*NICType] {
-	return pulumix.Output[*NICType]{
-		OutputState: in.ToNICTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the type of the os.
 type OsType string
 
@@ -1421,12 +1378,6 @@ func (in *osTypePtr) ToOsTypePtrOutputWithContext(ctx context.Context) OsTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OsTypePtrOutput)
 }
 
-func (in *osTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OsType] {
-	return pulumix.Output[*OsType]{
-		OutputState: in.ToOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the power on boot.
 type PowerOnBootOption string
 
@@ -1591,12 +1542,6 @@ func (in *powerOnBootOptionPtr) ToPowerOnBootOptionPtrOutput() PowerOnBootOption
 
 func (in *powerOnBootOptionPtr) ToPowerOnBootOptionPtrOutputWithContext(ctx context.Context) PowerOnBootOptionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PowerOnBootOptionPtrOutput)
-}
-
-func (in *powerOnBootOptionPtr) ToOutput(ctx context.Context) pulumix.Output[*PowerOnBootOption] {
-	return pulumix.Output[*PowerOnBootOption]{
-		OutputState: in.ToPowerOnBootOptionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the guest agent provisioning action.
@@ -1765,12 +1710,6 @@ func (in *provisioningActionPtr) ToProvisioningActionPtrOutput() ProvisioningAct
 
 func (in *provisioningActionPtr) ToProvisioningActionPtrOutputWithContext(ctx context.Context) ProvisioningActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningActionPtrOutput)
-}
-
-func (in *provisioningActionPtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningAction] {
-	return pulumix.Output[*ProvisioningAction]{
-		OutputState: in.ToProvisioningActionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

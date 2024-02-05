@@ -34,7 +34,7 @@ type LookupProductArgs struct {
 // An product resource belonging to a catalog resource.
 type LookupProductResult struct {
 	// Description of the product
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -89,8 +89,8 @@ func (o LookupProductResultOutput) ToLookupProductResultOutputWithContext(ctx co
 }
 
 // Description of the product
-func (o LookupProductResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProductResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupProductResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProductResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AutoDiscovery string
@@ -174,12 +173,6 @@ func (in *autoDiscoveryPtr) ToAutoDiscoveryPtrOutput() AutoDiscoveryPtrOutput {
 
 func (in *autoDiscoveryPtr) ToAutoDiscoveryPtrOutputWithContext(ctx context.Context) AutoDiscoveryPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AutoDiscoveryPtrOutput)
-}
-
-func (in *autoDiscoveryPtr) ToOutput(ctx context.Context) pulumix.Output[*AutoDiscovery] {
-	return pulumix.Output[*AutoDiscovery]{
-		OutputState: in.ToAutoDiscoveryPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

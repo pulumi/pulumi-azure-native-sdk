@@ -13,6 +13,8 @@ import (
 
 // Get a HypervSite
 // Azure REST API version: 2023-06-06.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupHypervSitesController(ctx *pulumi.Context, args *LookupHypervSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupHypervSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHypervSitesControllerResult

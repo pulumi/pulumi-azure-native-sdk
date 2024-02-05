@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Show costs accumulated over time.
@@ -175,12 +174,6 @@ func (in *accumulatedTypePtr) ToAccumulatedTypePtrOutput() AccumulatedTypePtrOut
 
 func (in *accumulatedTypePtr) ToAccumulatedTypePtrOutputWithContext(ctx context.Context) AccumulatedTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccumulatedTypePtrOutput)
-}
-
-func (in *accumulatedTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AccumulatedType] {
-	return pulumix.Output[*AccumulatedType]{
-		OutputState: in.ToAccumulatedTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Chart type of the main view in Cost Analysis. Required.
@@ -355,12 +348,6 @@ func (in *chartTypePtr) ToChartTypePtrOutputWithContext(ctx context.Context) Cha
 	return pulumi.ToOutputWithContext(ctx, in).(ChartTypePtrOutput)
 }
 
-func (in *chartTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ChartType] {
-	return pulumix.Output[*ChartType]{
-		OutputState: in.ToChartTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name of the aggregation function to use.
 type FunctionType string
 
@@ -523,12 +510,6 @@ func (in *functionTypePtr) ToFunctionTypePtrOutput() FunctionTypePtrOutput {
 
 func (in *functionTypePtr) ToFunctionTypePtrOutputWithContext(ctx context.Context) FunctionTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(FunctionTypePtrOutput)
-}
-
-func (in *functionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*FunctionType] {
-	return pulumix.Output[*FunctionType]{
-		OutputState: in.ToFunctionTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // KPI type (Forecast, Budget).
@@ -695,12 +676,6 @@ func (in *kpiTypeTypePtr) ToKpiTypeTypePtrOutput() KpiTypeTypePtrOutput {
 
 func (in *kpiTypeTypePtr) ToKpiTypeTypePtrOutputWithContext(ctx context.Context) KpiTypeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KpiTypeTypePtrOutput)
-}
-
-func (in *kpiTypeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*KpiTypeType] {
-	return pulumix.Output[*KpiTypeType]{
-		OutputState: in.ToKpiTypeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Metric to use when displaying costs.
@@ -871,12 +846,6 @@ func (in *metricTypePtr) ToMetricTypePtrOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, in).(MetricTypePtrOutput)
 }
 
-func (in *metricTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricType] {
-	return pulumix.Output[*MetricType]{
-		OutputState: in.ToMetricTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operator to use for comparison.
 type OperatorType string
 
@@ -1043,12 +1012,6 @@ func (in *operatorTypePtr) ToOperatorTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(OperatorTypePtrOutput)
 }
 
-func (in *operatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperatorType] {
-	return pulumix.Output[*OperatorType]{
-		OutputState: in.ToOperatorTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data type to show in view.
 type PivotTypeType string
 
@@ -1213,12 +1176,6 @@ func (in *pivotTypeTypePtr) ToPivotTypeTypePtrOutput() PivotTypeTypePtrOutput {
 
 func (in *pivotTypeTypePtr) ToPivotTypeTypePtrOutputWithContext(ctx context.Context) PivotTypeTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PivotTypeTypePtrOutput)
-}
-
-func (in *pivotTypeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PivotTypeType] {
-	return pulumix.Output[*PivotTypeType]{
-		OutputState: in.ToPivotTypeTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Has type of the column to group.
@@ -1389,12 +1346,6 @@ func (in *queryColumnTypePtr) ToQueryColumnTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(QueryColumnTypePtrOutput)
 }
 
-func (in *queryColumnTypePtr) ToOutput(ctx context.Context) pulumix.Output[*QueryColumnType] {
-	return pulumix.Output[*QueryColumnType]{
-		OutputState: in.ToQueryColumnTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Direction of sort.
 type ReportConfigSortingType string
 
@@ -1561,12 +1512,6 @@ func (in *reportConfigSortingTypePtr) ToReportConfigSortingTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ReportConfigSortingTypePtrOutput)
 }
 
-func (in *reportConfigSortingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigSortingType] {
-	return pulumix.Output[*ReportConfigSortingType]{
-		OutputState: in.ToReportConfigSortingTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The granularity of rows in the report.
 type ReportGranularityType string
 
@@ -1731,12 +1676,6 @@ func (in *reportGranularityTypePtr) ToReportGranularityTypePtrOutput() ReportGra
 
 func (in *reportGranularityTypePtr) ToReportGranularityTypePtrOutputWithContext(ctx context.Context) ReportGranularityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportGranularityTypePtrOutput)
-}
-
-func (in *reportGranularityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportGranularityType] {
-	return pulumix.Output[*ReportGranularityType]{
-		OutputState: in.ToReportGranularityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The time frame for pulling data for the report. If custom, then a specific time period must be provided.
@@ -1909,12 +1848,6 @@ func (in *reportTimeframeTypePtr) ToReportTimeframeTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ReportTimeframeTypePtrOutput)
 }
 
-func (in *reportTimeframeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportTimeframeType] {
-	return pulumix.Output[*ReportTimeframeType]{
-		OutputState: in.ToReportTimeframeTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates.
 type ReportType string
 
@@ -2077,12 +2010,6 @@ func (in *reportTypePtr) ToReportTypePtrOutput() ReportTypePtrOutput {
 
 func (in *reportTypePtr) ToReportTypePtrOutputWithContext(ctx context.Context) ReportTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ReportTypePtrOutput)
-}
-
-func (in *reportTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ReportType] {
-	return pulumix.Output[*ReportType]{
-		OutputState: in.ToReportTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

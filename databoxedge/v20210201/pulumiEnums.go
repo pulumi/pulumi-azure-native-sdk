@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of the device.
@@ -179,12 +178,6 @@ func (in *dataBoxEdgeDeviceKindPtr) ToDataBoxEdgeDeviceKindPtrOutput() DataBoxEd
 
 func (in *dataBoxEdgeDeviceKindPtr) ToDataBoxEdgeDeviceKindPtrOutputWithContext(ctx context.Context) DataBoxEdgeDeviceKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataBoxEdgeDeviceKindPtrOutput)
-}
-
-func (in *dataBoxEdgeDeviceKindPtr) ToOutput(ctx context.Context) pulumix.Output[*DataBoxEdgeDeviceKind] {
-	return pulumix.Output[*DataBoxEdgeDeviceKind]{
-		OutputState: in.ToDataBoxEdgeDeviceKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The status of the Data Box Edge/Gateway device.
@@ -363,12 +356,6 @@ func (in *dataBoxEdgeDeviceStatusPtr) ToDataBoxEdgeDeviceStatusPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(DataBoxEdgeDeviceStatusPtrOutput)
 }
 
-func (in *dataBoxEdgeDeviceStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*DataBoxEdgeDeviceStatus] {
-	return pulumix.Output[*DataBoxEdgeDeviceStatus]{
-		OutputState: in.ToDataBoxEdgeDeviceStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataResidencyType enum
 type DataResidencyType string
 
@@ -533,12 +520,6 @@ func (in *dataResidencyTypePtr) ToDataResidencyTypePtrOutput() DataResidencyType
 
 func (in *dataResidencyTypePtr) ToDataResidencyTypePtrOutputWithContext(ctx context.Context) DataResidencyTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataResidencyTypePtrOutput)
-}
-
-func (in *dataResidencyTypePtr) ToOutput(ctx context.Context) pulumix.Output[*DataResidencyType] {
-	return pulumix.Output[*DataResidencyType]{
-		OutputState: in.ToDataResidencyTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Identity type
@@ -707,12 +688,6 @@ func (in *msiIdentityTypePtr) ToMsiIdentityTypePtrOutput() MsiIdentityTypePtrOut
 
 func (in *msiIdentityTypePtr) ToMsiIdentityTypePtrOutputWithContext(ctx context.Context) MsiIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MsiIdentityTypePtrOutput)
-}
-
-func (in *msiIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MsiIdentityType] {
-	return pulumix.Output[*MsiIdentityType]{
-		OutputState: in.ToMsiIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SKU name.
@@ -927,12 +902,6 @@ func (in *skuNamePtr) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuName
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNamePtrOutput)
 }
 
-func (in *skuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: in.ToSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU tier. This is based on the SKU name.
 type SkuTier string
 
@@ -1095,12 +1064,6 @@ func (in *skuTierPtr) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
-}
-
-func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: in.ToSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

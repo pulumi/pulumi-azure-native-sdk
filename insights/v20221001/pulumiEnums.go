@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // the operator that is used to compare the metric data and the threshold.
@@ -185,12 +184,6 @@ func (in *comparisonOperationTypePtr) ToComparisonOperationTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(ComparisonOperationTypePtrOutput)
 }
 
-func (in *comparisonOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ComparisonOperationType] {
-	return pulumix.Output[*ComparisonOperationType]{
-		OutputState: in.ToComparisonOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the metric statistic type. How the metrics from multiple instances are combined.
 type MetricStatisticType string
 
@@ -363,12 +356,6 @@ func (in *metricStatisticTypePtr) ToMetricStatisticTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(MetricStatisticTypePtrOutput)
 }
 
-func (in *metricStatisticTypePtr) ToOutput(ctx context.Context) pulumix.Output[*MetricStatisticType] {
-	return pulumix.Output[*MetricStatisticType]{
-		OutputState: in.ToMetricStatisticTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the operation associated with the notification and its value must be "scale"
 type OperationType string
 
@@ -531,12 +518,6 @@ func (in *operationTypePtr) ToOperationTypePtrOutput() OperationTypePtrOutput {
 
 func (in *operationTypePtr) ToOperationTypePtrOutputWithContext(ctx context.Context) OperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(OperationTypePtrOutput)
-}
-
-func (in *operationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*OperationType] {
-	return pulumix.Output[*OperationType]{
-		OutputState: in.ToOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the predictive autoscale mode
@@ -705,12 +686,6 @@ func (in *predictiveAutoscalePolicyScaleModePtr) ToPredictiveAutoscalePolicyScal
 
 func (in *predictiveAutoscalePolicyScaleModePtr) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PredictiveAutoscalePolicyScaleModePtrOutput)
-}
-
-func (in *predictiveAutoscalePolicyScaleModePtr) ToOutput(ctx context.Context) pulumix.Output[*PredictiveAutoscalePolicyScaleMode] {
-	return pulumix.Output[*PredictiveAutoscalePolicyScaleMode]{
-		OutputState: in.ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the recurrence frequency. How often the schedule profile should take effect. This value must be Week, meaning each week will have the same set of profiles. For example, to set a daily schedule, set **schedule** to every day of the week. The frequency property specifies that the schedule is repeated weekly.
@@ -891,12 +866,6 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(RecurrenceFrequencyPtrOutput)
 }
 
-func (in *recurrenceFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: in.ToRecurrenceFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the scale direction. Whether the scaling action increases or decreases the number of instances.
 type ScaleDirection string
 
@@ -1065,12 +1034,6 @@ func (in *scaleDirectionPtr) ToScaleDirectionPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleDirectionPtrOutput)
 }
 
-func (in *scaleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleDirection] {
-	return pulumix.Output[*ScaleDirection]{
-		OutputState: in.ToScaleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
 type ScaleRuleMetricDimensionOperationType string
 
@@ -1235,12 +1198,6 @@ func (in *scaleRuleMetricDimensionOperationTypePtr) ToScaleRuleMetricDimensionOp
 
 func (in *scaleRuleMetricDimensionOperationTypePtr) ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleRuleMetricDimensionOperationTypePtrOutput)
-}
-
-func (in *scaleRuleMetricDimensionOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleRuleMetricDimensionOperationType] {
-	return pulumix.Output[*ScaleRuleMetricDimensionOperationType]{
-		OutputState: in.ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // the type of action that should occur when the scale rule fires.
@@ -1411,12 +1368,6 @@ func (in *scaleTypePtr) ToScaleTypePtrOutput() ScaleTypePtrOutput {
 
 func (in *scaleTypePtr) ToScaleTypePtrOutputWithContext(ctx context.Context) ScaleTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScaleTypePtrOutput)
-}
-
-func (in *scaleTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleType] {
-	return pulumix.Output[*ScaleType]{
-		OutputState: in.ToScaleTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // time aggregation type. How the data that is collected should be combined over time. The default value is Average.
@@ -1591,12 +1542,6 @@ func (in *timeAggregationTypePtr) ToTimeAggregationTypePtrOutput() TimeAggregati
 
 func (in *timeAggregationTypePtr) ToTimeAggregationTypePtrOutputWithContext(ctx context.Context) TimeAggregationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TimeAggregationTypePtrOutput)
-}
-
-func (in *timeAggregationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregationType] {
-	return pulumix.Output[*TimeAggregationType]{
-		OutputState: in.ToTimeAggregationTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

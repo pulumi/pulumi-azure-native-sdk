@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The data format of the message. Optionally the data format can be added to each message.
@@ -177,12 +176,6 @@ func (in *dataFormatPtr) ToDataFormatPtrOutput() DataFormatPtrOutput {
 
 func (in *dataFormatPtr) ToDataFormatPtrOutputWithContext(ctx context.Context) DataFormatPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DataFormatPtrOutput)
-}
-
-func (in *dataFormatPtr) ToOutput(ctx context.Context) pulumix.Output[*DataFormat] {
-	return pulumix.Output[*DataFormat]{
-		OutputState: in.ToDataFormatPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

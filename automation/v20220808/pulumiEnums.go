@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets or sets the content source type.
@@ -177,12 +176,6 @@ func (in *contentSourceTypePtr) ToContentSourceTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContentSourceTypePtrOutput)
 }
 
-func (in *contentSourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContentSourceType] {
-	return pulumix.Output[*ContentSourceType]{
-		OutputState: in.ToContentSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption Key Source
 type EncryptionKeySourceType string
 
@@ -347,12 +340,6 @@ func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutput() Encry
 
 func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutputWithContext(ctx context.Context) EncryptionKeySourceTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EncryptionKeySourceTypePtrOutput)
-}
-
-func (in *encryptionKeySourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*EncryptionKeySourceType] {
-	return pulumix.Output[*EncryptionKeySourceType]{
-		OutputState: in.ToEncryptionKeySourceTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The identity type.
@@ -523,12 +510,6 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIde
 
 func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: in.ToResourceIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the type of the runbook.
@@ -709,12 +690,6 @@ func (in *runbookTypeEnumPtr) ToRunbookTypeEnumPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(RunbookTypeEnumPtrOutput)
 }
 
-func (in *runbookTypeEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*RunbookTypeEnum] {
-	return pulumix.Output[*RunbookTypeEnum]{
-		OutputState: in.ToRunbookTypeEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
 type ScheduleDay string
 
@@ -889,12 +864,6 @@ func (in *scheduleDayPtr) ToScheduleDayPtrOutput() ScheduleDayPtrOutput {
 
 func (in *scheduleDayPtr) ToScheduleDayPtrOutputWithContext(ctx context.Context) ScheduleDayPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleDayPtrOutput)
-}
-
-func (in *scheduleDayPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleDay] {
-	return pulumix.Output[*ScheduleDay]{
-		OutputState: in.ToScheduleDayPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Gets or sets the frequency of the schedule.
@@ -1072,12 +1041,6 @@ func (in *scheduleFrequencyPtr) ToScheduleFrequencyPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ScheduleFrequencyPtrOutput)
 }
 
-func (in *scheduleFrequencyPtr) ToOutput(ctx context.Context) pulumix.Output[*ScheduleFrequency] {
-	return pulumix.Output[*ScheduleFrequency]{
-		OutputState: in.ToScheduleFrequencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the SKU name of the account.
 type SkuNameEnum string
 
@@ -1242,12 +1205,6 @@ func (in *skuNameEnumPtr) ToSkuNameEnumPtrOutput() SkuNameEnumPtrOutput {
 
 func (in *skuNameEnumPtr) ToSkuNameEnumPtrOutputWithContext(ctx context.Context) SkuNameEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SkuNameEnumPtrOutput)
-}
-
-func (in *skuNameEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuNameEnum] {
-	return pulumix.Output[*SkuNameEnum]{
-		OutputState: in.ToSkuNameEnumPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
@@ -1418,12 +1375,6 @@ func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
 }
 
-func (in *sourceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceType] {
-	return pulumix.Output[*SourceType]{
-		OutputState: in.ToSourceTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The token type. Must be either PersonalAccessToken or Oauth.
 type TokenType string
 
@@ -1588,12 +1539,6 @@ func (in *tokenTypePtr) ToTokenTypePtrOutput() TokenTypePtrOutput {
 
 func (in *tokenTypePtr) ToTokenTypePtrOutputWithContext(ctx context.Context) TokenTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TokenTypePtrOutput)
-}
-
-func (in *tokenTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TokenType] {
-	return pulumix.Output[*TokenType]{
-		OutputState: in.ToTokenTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

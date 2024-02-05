@@ -6202,7 +6202,7 @@ type RaiPolicyContentFilter struct {
 	// If the ContentFilter is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of ContentFilter.
-	PolicyName *string `pulumi:"policyName"`
+	Name *string `pulumi:"name"`
 	// Content source to apply the Content Filters.
 	Source *string `pulumi:"source"`
 }
@@ -6227,7 +6227,7 @@ type RaiPolicyContentFilterArgs struct {
 	// If the ContentFilter is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Name of ContentFilter.
-	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Content source to apply the Content Filters.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -6300,8 +6300,8 @@ func (o RaiPolicyContentFilterOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Name of ContentFilter.
-func (o RaiPolicyContentFilterOutput) PolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+func (o RaiPolicyContentFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Content source to apply the Content Filters.
@@ -6338,7 +6338,7 @@ type RaiPolicyContentFilterResponse struct {
 	// If the ContentFilter is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Name of ContentFilter.
-	PolicyName *string `pulumi:"policyName"`
+	Name *string `pulumi:"name"`
 	// Content source to apply the Content Filters.
 	Source *string `pulumi:"source"`
 }
@@ -6374,8 +6374,8 @@ func (o RaiPolicyContentFilterResponseOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Name of ContentFilter.
-func (o RaiPolicyContentFilterResponseOutput) PolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+func (o RaiPolicyContentFilterResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Content source to apply the Content Filters.

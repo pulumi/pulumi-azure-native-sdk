@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The kind of workbook. Choices are user and shared.
@@ -175,12 +174,6 @@ func (in *kindPtr) ToKindPtrOutput() KindPtrOutput {
 
 func (in *kindPtr) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(KindPtrOutput)
-}
-
-func (in *kindPtr) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: in.ToKindPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

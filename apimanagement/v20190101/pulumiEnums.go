@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Specifies for what type of messages sampling settings should not apply.
@@ -174,12 +173,6 @@ func (in *alwaysLogPtr) ToAlwaysLogPtrOutput() AlwaysLogPtrOutput {
 
 func (in *alwaysLogPtr) ToAlwaysLogPtrOutputWithContext(ctx context.Context) AlwaysLogPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlwaysLogPtrOutput)
-}
-
-func (in *alwaysLogPtr) ToOutput(ctx context.Context) pulumix.Output[*AlwaysLog] {
-	return pulumix.Output[*AlwaysLog]{
-		OutputState: in.ToAlwaysLogPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Sets correlation protocol to use for Application Insights diagnostics.
@@ -351,12 +344,6 @@ func (in *httpCorrelationProtocolPtr) ToHttpCorrelationProtocolPtrOutput() HttpC
 
 func (in *httpCorrelationProtocolPtr) ToHttpCorrelationProtocolPtrOutputWithContext(ctx context.Context) HttpCorrelationProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(HttpCorrelationProtocolPtrOutput)
-}
-
-func (in *httpCorrelationProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*HttpCorrelationProtocol] {
-	return pulumix.Output[*HttpCorrelationProtocol]{
-		OutputState: in.ToHttpCorrelationProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Identity Provider Type identifier.
@@ -539,12 +526,6 @@ func (in *identityProviderTypePtr) ToIdentityProviderTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityProviderTypePtrOutput)
 }
 
-func (in *identityProviderTypePtr) ToOutput(ctx context.Context) pulumix.Output[*IdentityProviderType] {
-	return pulumix.Output[*IdentityProviderType]{
-		OutputState: in.ToIdentityProviderTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sampling type.
 type SamplingType string
 
@@ -708,12 +689,6 @@ func (in *samplingTypePtr) ToSamplingTypePtrOutput() SamplingTypePtrOutput {
 
 func (in *samplingTypePtr) ToSamplingTypePtrOutputWithContext(ctx context.Context) SamplingTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SamplingTypePtrOutput)
-}
-
-func (in *samplingTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SamplingType] {
-	return pulumix.Output[*SamplingType]{
-		OutputState: in.ToSamplingTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
@@ -890,12 +865,6 @@ func (in *subscriptionStateEnumPtr) ToSubscriptionStateEnumPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(SubscriptionStateEnumPtrOutput)
 }
 
-func (in *subscriptionStateEnumPtr) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
-	return pulumix.Output[*SubscriptionStateEnum]{
-		OutputState: in.ToSubscriptionStateEnumPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The verbosity level applied to traces emitted by trace policies.
 type Verbosity string
 
@@ -1065,12 +1034,6 @@ func (in *verbosityPtr) ToVerbosityPtrOutput() VerbosityPtrOutput {
 
 func (in *verbosityPtr) ToVerbosityPtrOutputWithContext(ctx context.Context) VerbosityPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VerbosityPtrOutput)
-}
-
-func (in *verbosityPtr) ToOutput(ctx context.Context) pulumix.Output[*Verbosity] {
-	return pulumix.Output[*Verbosity]{
-		OutputState: in.ToVerbosityPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

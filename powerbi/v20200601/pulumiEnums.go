@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Status of the connection.
@@ -179,12 +178,6 @@ func (in *persistedConnectionStatusPtr) ToPersistedConnectionStatusPtrOutput() P
 
 func (in *persistedConnectionStatusPtr) ToPersistedConnectionStatusPtrOutputWithContext(ctx context.Context) PersistedConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PersistedConnectionStatusPtrOutput)
-}
-
-func (in *persistedConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PersistedConnectionStatus] {
-	return pulumix.Output[*PersistedConnectionStatus]{
-		OutputState: in.ToPersistedConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Provisioning state of the Private Endpoint Connection.
@@ -359,12 +352,6 @@ func (in *resourceProvisioningStatePtr) ToResourceProvisioningStatePtrOutput() R
 
 func (in *resourceProvisioningStatePtr) ToResourceProvisioningStatePtrOutputWithContext(ctx context.Context) ResourceProvisioningStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceProvisioningStatePtrOutput)
-}
-
-func (in *resourceProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ResourceProvisioningState] {
-	return pulumix.Output[*ResourceProvisioningState]{
-		OutputState: in.ToResourceProvisioningStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

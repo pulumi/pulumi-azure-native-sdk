@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
@@ -177,12 +176,6 @@ func (in *ddosSettingsProtectionCoveragePtr) ToDdosSettingsProtectionCoveragePtr
 	return pulumi.ToOutputWithContext(ctx, in).(DdosSettingsProtectionCoveragePtrOutput)
 }
 
-func (in *ddosSettingsProtectionCoveragePtr) ToOutput(ctx context.Context) pulumix.Output[*DdosSettingsProtectionCoverage] {
-	return pulumix.Output[*DdosSettingsProtectionCoverage]{
-		OutputState: in.ToDdosSettingsProtectionCoveragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify what happens to the public IP address when the VM using it is deleted
 type DeleteOptions string
 
@@ -349,12 +342,6 @@ func (in *deleteOptionsPtr) ToDeleteOptionsPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(DeleteOptionsPtrOutput)
 }
 
-func (in *deleteOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*DeleteOptions] {
-	return pulumix.Output[*DeleteOptions]{
-		OutputState: in.ToDeleteOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -517,12 +504,6 @@ func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutput() ExtendedL
 
 func (in *extendedLocationTypesPtr) ToExtendedLocationTypesPtrOutputWithContext(ctx context.Context) ExtendedLocationTypesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypesPtrOutput)
-}
-
-func (in *extendedLocationTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationTypes] {
-	return pulumix.Output[*ExtendedLocationTypes]{
-		OutputState: in.ToExtendedLocationTypesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The public IP address allocation method.
@@ -691,12 +672,6 @@ func (in *ipallocationMethodPtr) ToIPAllocationMethodPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(IPAllocationMethodPtrOutput)
 }
 
-func (in *ipallocationMethodPtr) ToOutput(ctx context.Context) pulumix.Output[*IPAllocationMethod] {
-	return pulumix.Output[*IPAllocationMethod]{
-		OutputState: in.ToIPAllocationMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The public IP address version.
 type IPVersion string
 
@@ -863,12 +838,6 @@ func (in *ipversionPtr) ToIPVersionPtrOutputWithContext(ctx context.Context) IPV
 	return pulumi.ToOutputWithContext(ctx, in).(IPVersionPtrOutput)
 }
 
-func (in *ipversionPtr) ToOutput(ctx context.Context) pulumix.Output[*IPVersion] {
-	return pulumix.Output[*IPVersion]{
-		OutputState: in.ToIPVersionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of Nat Gateway SKU.
 type NatGatewaySkuName string
 
@@ -1031,12 +1000,6 @@ func (in *natGatewaySkuNamePtr) ToNatGatewaySkuNamePtrOutput() NatGatewaySkuName
 
 func (in *natGatewaySkuNamePtr) ToNatGatewaySkuNamePtrOutputWithContext(ctx context.Context) NatGatewaySkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NatGatewaySkuNamePtrOutput)
-}
-
-func (in *natGatewaySkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*NatGatewaySkuName] {
-	return pulumix.Output[*NatGatewaySkuName]{
-		OutputState: in.ToNatGatewaySkuNamePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Migration phase of Public IP Address.
@@ -1211,12 +1174,6 @@ func (in *publicIPAddressMigrationPhasePtr) ToPublicIPAddressMigrationPhasePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressMigrationPhasePtrOutput)
 }
 
-func (in *publicIPAddressMigrationPhasePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressMigrationPhase] {
-	return pulumix.Output[*PublicIPAddressMigrationPhase]{
-		OutputState: in.ToPublicIPAddressMigrationPhasePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name of a public IP address SKU.
 type PublicIPAddressSkuName string
 
@@ -1383,12 +1340,6 @@ func (in *publicIPAddressSkuNamePtr) ToPublicIPAddressSkuNamePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuNamePtrOutput)
 }
 
-func (in *publicIPAddressSkuNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuName] {
-	return pulumix.Output[*PublicIPAddressSkuName]{
-		OutputState: in.ToPublicIPAddressSkuNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tier of a public IP address SKU.
 type PublicIPAddressSkuTier string
 
@@ -1553,12 +1504,6 @@ func (in *publicIPAddressSkuTierPtr) ToPublicIPAddressSkuTierPtrOutput() PublicI
 
 func (in *publicIPAddressSkuTierPtr) ToPublicIPAddressSkuTierPtrOutputWithContext(ctx context.Context) PublicIPAddressSkuTierPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PublicIPAddressSkuTierPtrOutput)
-}
-
-func (in *publicIPAddressSkuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicIPAddressSkuTier] {
-	return pulumix.Output[*PublicIPAddressSkuTier]{
-		OutputState: in.ToPublicIPAddressSkuTierPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The type of Azure hop the packet should be sent to.
@@ -1733,12 +1678,6 @@ func (in *routeNextHopTypePtr) ToRouteNextHopTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(RouteNextHopTypePtrOutput)
 }
 
-func (in *routeNextHopTypePtr) ToOutput(ctx context.Context) pulumix.Output[*RouteNextHopType] {
-	return pulumix.Output[*RouteNextHopType]{
-		OutputState: in.ToRouteNextHopTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The network traffic is allowed or denied.
 type SecurityRuleAccess string
 
@@ -1905,12 +1844,6 @@ func (in *securityRuleAccessPtr) ToSecurityRuleAccessPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleAccessPtrOutput)
 }
 
-func (in *securityRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleAccess] {
-	return pulumix.Output[*SecurityRuleAccess]{
-		OutputState: in.ToSecurityRuleAccessPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
 type SecurityRuleDirection string
 
@@ -2075,12 +2008,6 @@ func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutput() SecurityR
 
 func (in *securityRuleDirectionPtr) ToSecurityRuleDirectionPtrOutputWithContext(ctx context.Context) SecurityRuleDirectionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleDirectionPtrOutput)
-}
-
-func (in *securityRuleDirectionPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleDirection] {
-	return pulumix.Output[*SecurityRuleDirection]{
-		OutputState: in.ToSecurityRuleDirectionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Network protocol this rule applies to.
@@ -2257,12 +2184,6 @@ func (in *securityRuleProtocolPtr) ToSecurityRuleProtocolPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityRuleProtocolPtrOutput)
 }
 
-func (in *securityRuleProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*SecurityRuleProtocol] {
-	return pulumix.Output[*SecurityRuleProtocol]{
-		OutputState: in.ToSecurityRuleProtocolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable apply network policies on private end point in the subnet.
 type VirtualNetworkPrivateEndpointNetworkPolicies string
 
@@ -2429,12 +2350,6 @@ func (in *virtualNetworkPrivateEndpointNetworkPoliciesPtr) ToVirtualNetworkPriva
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkPrivateEndpointNetworkPoliciesPtrOutput)
 }
 
-func (in *virtualNetworkPrivateEndpointNetworkPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPrivateEndpointNetworkPolicies] {
-	return pulumix.Output[*VirtualNetworkPrivateEndpointNetworkPolicies]{
-		OutputState: in.ToVirtualNetworkPrivateEndpointNetworkPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Enable or Disable apply network policies on private link service in the subnet.
 type VirtualNetworkPrivateLinkServiceNetworkPolicies string
 
@@ -2599,12 +2514,6 @@ func (in *virtualNetworkPrivateLinkServiceNetworkPoliciesPtr) ToVirtualNetworkPr
 
 func (in *virtualNetworkPrivateLinkServiceNetworkPoliciesPtr) ToVirtualNetworkPrivateLinkServiceNetworkPoliciesPtrOutputWithContext(ctx context.Context) VirtualNetworkPrivateLinkServiceNetworkPoliciesPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VirtualNetworkPrivateLinkServiceNetworkPoliciesPtrOutput)
-}
-
-func (in *virtualNetworkPrivateLinkServiceNetworkPoliciesPtr) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkPrivateLinkServiceNetworkPolicies] {
-	return pulumix.Output[*VirtualNetworkPrivateLinkServiceNetworkPolicies]{
-		OutputState: in.ToVirtualNetworkPrivateLinkServiceNetworkPoliciesPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

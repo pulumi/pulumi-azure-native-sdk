@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The OS type of the custom image (i.e. Windows, Linux)
@@ -179,12 +178,6 @@ func (in *customImageOsTypePtr) ToCustomImageOsTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(CustomImageOsTypePtrOutput)
 }
 
-func (in *customImageOsTypePtr) ToOutput(ctx context.Context) pulumix.Output[*CustomImageOsType] {
-	return pulumix.Output[*CustomImageOsType]{
-		OutputState: in.ToCustomImageOsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the schedule (i.e. Enabled, Disabled)
 type EnableStatus string
 
@@ -351,12 +344,6 @@ func (in *enableStatusPtr) ToEnableStatusPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(EnableStatusPtrOutput)
 }
 
-func (in *enableStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*EnableStatus] {
-	return pulumix.Output[*EnableStatus]{
-		OutputState: in.ToEnableStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The access rights to be granted to the user when provisioning an environment
 type EnvironmentPermission string
 
@@ -521,12 +508,6 @@ func (in *environmentPermissionPtr) ToEnvironmentPermissionPtrOutput() Environme
 
 func (in *environmentPermissionPtr) ToEnvironmentPermissionPtrOutputWithContext(ctx context.Context) EnvironmentPermissionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentPermissionPtrOutput)
-}
-
-func (in *environmentPermissionPtr) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentPermission] {
-	return pulumix.Output[*EnvironmentPermission]{
-		OutputState: in.ToEnvironmentPermissionPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).
@@ -697,12 +678,6 @@ func (in *hostCachingOptionsPtr) ToHostCachingOptionsPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(HostCachingOptionsPtrOutput)
 }
 
-func (in *hostCachingOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*HostCachingOptions] {
-	return pulumix.Output[*HostCachingOptions]{
-		OutputState: in.ToHostCachingOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
 type LinuxOsState string
 
@@ -869,12 +844,6 @@ func (in *linuxOsStatePtr) ToLinuxOsStatePtrOutput() LinuxOsStatePtrOutput {
 
 func (in *linuxOsStatePtr) ToLinuxOsStatePtrOutputWithContext(ctx context.Context) LinuxOsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxOsStatePtrOutput)
-}
-
-func (in *linuxOsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*LinuxOsState] {
-	return pulumix.Output[*LinuxOsState]{
-		OutputState: in.ToLinuxOsStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Managed identity.
@@ -1047,12 +1016,6 @@ func (in *managedIdentityTypePtr) ToManagedIdentityTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedIdentityTypePtrOutput)
 }
 
-func (in *managedIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityType] {
-	return pulumix.Output[*ManagedIdentityType]{
-		OutputState: in.ToManagedIdentityTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The event type for which this notification is enabled (i.e. AutoShutdown, Cost)
 type NotificationChannelEventType string
 
@@ -1219,12 +1182,6 @@ func (in *notificationChannelEventTypePtr) ToNotificationChannelEventTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(NotificationChannelEventTypePtrOutput)
 }
 
-func (in *notificationChannelEventTypePtr) ToOutput(ctx context.Context) pulumix.Output[*NotificationChannelEventType] {
-	return pulumix.Output[*NotificationChannelEventType]{
-		OutputState: in.ToNotificationChannelEventTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
 type PolicyEvaluatorType string
 
@@ -1389,12 +1346,6 @@ func (in *policyEvaluatorTypePtr) ToPolicyEvaluatorTypePtrOutput() PolicyEvaluat
 
 func (in *policyEvaluatorTypePtr) ToPolicyEvaluatorTypePtrOutputWithContext(ctx context.Context) PolicyEvaluatorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyEvaluatorTypePtrOutput)
-}
-
-func (in *policyEvaluatorTypePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyEvaluatorType] {
-	return pulumix.Output[*PolicyEvaluatorType]{
-		OutputState: in.ToPolicyEvaluatorTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
@@ -1579,12 +1530,6 @@ func (in *policyFactNamePtr) ToPolicyFactNamePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyFactNamePtrOutput)
 }
 
-func (in *policyFactNamePtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyFactName] {
-	return pulumix.Output[*PolicyFactName]{
-		OutputState: in.ToPolicyFactNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The status of the policy.
 type PolicyStatus string
 
@@ -1749,12 +1694,6 @@ func (in *policyStatusPtr) ToPolicyStatusPtrOutput() PolicyStatusPtrOutput {
 
 func (in *policyStatusPtr) ToPolicyStatusPtrOutputWithContext(ctx context.Context) PolicyStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyStatusPtrOutput)
-}
-
-func (in *policyStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PolicyStatus] {
-	return pulumix.Output[*PolicyStatus]{
-		OutputState: in.ToPolicyStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The setting to enable usage of premium data disks.
@@ -1925,12 +1864,6 @@ func (in *premiumDataDiskPtr) ToPremiumDataDiskPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(PremiumDataDiskPtrOutput)
 }
 
-func (in *premiumDataDiskPtr) ToOutput(ctx context.Context) pulumix.Output[*PremiumDataDisk] {
-	return pulumix.Output[*PremiumDataDisk]{
-		OutputState: in.ToPremiumDataDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The artifact source's type.
 type SourceControlType string
 
@@ -2097,12 +2030,6 @@ func (in *sourceControlTypePtr) ToSourceControlTypePtrOutput() SourceControlType
 
 func (in *sourceControlTypePtr) ToSourceControlTypePtrOutputWithContext(ctx context.Context) SourceControlTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SourceControlTypePtrOutput)
-}
-
-func (in *sourceControlTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SourceControlType] {
-	return pulumix.Output[*SourceControlType]{
-		OutputState: in.ToSourceControlTypePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The storage type for the disk (i.e. Standard, Premium).
@@ -2273,12 +2200,6 @@ func (in *storageTypePtr) ToStorageTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(StorageTypePtrOutput)
 }
 
-func (in *storageTypePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageType] {
-	return pulumix.Output[*StorageType]{
-		OutputState: in.ToStorageTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Protocol type of the port.
 type TransportProtocol string
 
@@ -2443,12 +2364,6 @@ func (in *transportProtocolPtr) ToTransportProtocolPtrOutput() TransportProtocol
 
 func (in *transportProtocolPtr) ToTransportProtocolPtrOutputWithContext(ctx context.Context) TransportProtocolPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TransportProtocolPtrOutput)
-}
-
-func (in *transportProtocolPtr) ToOutput(ctx context.Context) pulumix.Output[*TransportProtocol] {
-	return pulumix.Output[*TransportProtocol]{
-		OutputState: in.ToTransportProtocolPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).
@@ -2619,12 +2534,6 @@ func (in *usagePermissionTypePtr) ToUsagePermissionTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(UsagePermissionTypePtrOutput)
 }
 
-func (in *usagePermissionTypePtr) ToOutput(ctx context.Context) pulumix.Output[*UsagePermissionType] {
-	return pulumix.Output[*UsagePermissionType]{
-		OutputState: in.ToUsagePermissionTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
 type WindowsOsState string
 
@@ -2791,12 +2700,6 @@ func (in *windowsOsStatePtr) ToWindowsOsStatePtrOutput() WindowsOsStatePtrOutput
 
 func (in *windowsOsStatePtr) ToWindowsOsStatePtrOutputWithContext(ctx context.Context) WindowsOsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(WindowsOsStatePtrOutput)
-}
-
-func (in *windowsOsStatePtr) ToOutput(ctx context.Context) pulumix.Output[*WindowsOsState] {
-	return pulumix.Output[*WindowsOsState]{
-		OutputState: in.ToWindowsOsStatePtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {

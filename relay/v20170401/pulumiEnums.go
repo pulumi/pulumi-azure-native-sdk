@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessRights string
@@ -176,12 +175,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
-}
-
-func (in *accessRightsPtr) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: in.ToAccessRightsPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessRightsArrayInput is an input type that accepts AccessRightsArray and AccessRightsArrayOutput values.

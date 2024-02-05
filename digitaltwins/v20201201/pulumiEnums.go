@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The status of a private endpoint connection.
@@ -179,12 +178,6 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 
 func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatusPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateLinkServiceConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: in.ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx).OutputState,
-	}
 }
 
 func init() {
