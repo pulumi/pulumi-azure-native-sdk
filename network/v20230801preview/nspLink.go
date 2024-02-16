@@ -22,7 +22,7 @@ type NspLink struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 	LocalInboundProfiles pulumi.StringArrayOutput `pulumi:"localInboundProfiles"`
 	// Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
 	LocalOutboundProfiles pulumi.StringArrayOutput `pulumi:"localOutboundProfiles"`
@@ -30,7 +30,7 @@ type NspLink struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the NSP Link resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 	RemoteInboundProfiles pulumi.StringArrayOutput `pulumi:"remoteInboundProfiles"`
 	// Remote Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
 	RemoteOutboundProfiles pulumi.StringArrayOutput `pulumi:"remoteOutboundProfiles"`
@@ -108,11 +108,11 @@ type nspLinkArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the NSP link.
 	LinkName *string `pulumi:"linkName"`
-	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 	LocalInboundProfiles []string `pulumi:"localInboundProfiles"`
 	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName string `pulumi:"networkSecurityPerimeterName"`
-	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 	RemoteInboundProfiles []string `pulumi:"remoteInboundProfiles"`
 	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -126,11 +126,11 @@ type NspLinkArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the NSP link.
 	LinkName pulumi.StringPtrInput
-	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+	// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 	LocalInboundProfiles pulumi.StringArrayInput
 	// The name of the network security perimeter.
 	NetworkSecurityPerimeterName pulumi.StringInput
-	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+	// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 	RemoteInboundProfiles pulumi.StringArrayInput
 	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
@@ -188,7 +188,7 @@ func (o NspLinkOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
 func (o NspLinkOutput) LocalInboundProfiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringArrayOutput { return v.LocalInboundProfiles }).(pulumi.StringArrayOutput)
 }
@@ -208,7 +208,7 @@ func (o NspLinkOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
 func (o NspLinkOutput) RemoteInboundProfiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NspLink) pulumi.StringArrayOutput { return v.RemoteInboundProfiles }).(pulumi.StringArrayOutput)
 }

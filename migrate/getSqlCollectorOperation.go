@@ -13,6 +13,8 @@ import (
 
 // Get a SqlCollector
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2023-04-01-preview.
 func LookupSqlCollectorOperation(ctx *pulumi.Context, args *LookupSqlCollectorOperationArgs, opts ...pulumi.InvokeOption) (*LookupSqlCollectorOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlCollectorOperationResult

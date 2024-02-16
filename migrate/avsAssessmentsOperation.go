@@ -14,6 +14,8 @@ import (
 
 // AVS assessment resource.
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2023-04-01-preview.
 type AvsAssessmentsOperation struct {
 	pulumi.CustomResourceState
 
@@ -132,6 +134,9 @@ func NewAvsAssessmentsOperation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:migrate/v20230315:AvsAssessmentsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:AvsAssessmentsOperation"),
 		},
 	})
 	opts = append(opts, aliases)

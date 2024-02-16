@@ -1232,15 +1232,16 @@ func (in *azureCurrencyPtr) ToAzureCurrencyPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureCurrencyPtrOutput)
 }
 
-// Storage type selected for this disk.
 type AzureDiskType string
 
 const (
 	AzureDiskTypeUnknown           = AzureDiskType("Unknown")
 	AzureDiskTypeStandard          = AzureDiskType("Standard")
-	AzureDiskTypePremium           = AzureDiskType("Premium")
 	AzureDiskTypeStandardSSD       = AzureDiskType("StandardSSD")
+	AzureDiskTypePremium           = AzureDiskType("Premium")
 	AzureDiskTypeStandardOrPremium = AzureDiskType("StandardOrPremium")
+	AzureDiskTypeUltra             = AzureDiskType("Ultra")
+	AzureDiskTypePremiumV2         = AzureDiskType("PremiumV2")
 )
 
 func (AzureDiskType) ElementType() reflect.Type {
@@ -1367,9 +1368,11 @@ func (o AzureDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //
 //	AzureDiskTypeUnknown
 //	AzureDiskTypeStandard
-//	AzureDiskTypePremium
 //	AzureDiskTypeStandardSSD
+//	AzureDiskTypePremium
 //	AzureDiskTypeStandardOrPremium
+//	AzureDiskTypeUltra
+//	AzureDiskTypePremiumV2
 type AzureDiskTypeInput interface {
 	pulumi.Input
 
@@ -1404,7 +1407,179 @@ func (in *azureDiskTypePtr) ToAzureDiskTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureDiskTypePtrOutput)
 }
 
-// AHUB discount on windows virtual machines.
+// Gets or sets environment type.
+type AzureEnvironmentType string
+
+const (
+	// Unknown. Indicates missing data.
+	AzureEnvironmentTypeUnknown = AzureEnvironmentType("Unknown")
+	// Development or Test Environment.
+	AzureEnvironmentTypeDevTest = AzureEnvironmentType("DevTest")
+	// Production Environment.
+	AzureEnvironmentTypeProduction = AzureEnvironmentType("Production")
+)
+
+func (AzureEnvironmentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureEnvironmentType)(nil)).Elem()
+}
+
+func (e AzureEnvironmentType) ToAzureEnvironmentTypeOutput() AzureEnvironmentTypeOutput {
+	return pulumi.ToOutput(e).(AzureEnvironmentTypeOutput)
+}
+
+func (e AzureEnvironmentType) ToAzureEnvironmentTypeOutputWithContext(ctx context.Context) AzureEnvironmentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureEnvironmentTypeOutput)
+}
+
+func (e AzureEnvironmentType) ToAzureEnvironmentTypePtrOutput() AzureEnvironmentTypePtrOutput {
+	return e.ToAzureEnvironmentTypePtrOutputWithContext(context.Background())
+}
+
+func (e AzureEnvironmentType) ToAzureEnvironmentTypePtrOutputWithContext(ctx context.Context) AzureEnvironmentTypePtrOutput {
+	return AzureEnvironmentType(e).ToAzureEnvironmentTypeOutputWithContext(ctx).ToAzureEnvironmentTypePtrOutputWithContext(ctx)
+}
+
+func (e AzureEnvironmentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureEnvironmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureEnvironmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureEnvironmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureEnvironmentTypeOutput struct{ *pulumi.OutputState }
+
+func (AzureEnvironmentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureEnvironmentType)(nil)).Elem()
+}
+
+func (o AzureEnvironmentTypeOutput) ToAzureEnvironmentTypeOutput() AzureEnvironmentTypeOutput {
+	return o
+}
+
+func (o AzureEnvironmentTypeOutput) ToAzureEnvironmentTypeOutputWithContext(ctx context.Context) AzureEnvironmentTypeOutput {
+	return o
+}
+
+func (o AzureEnvironmentTypeOutput) ToAzureEnvironmentTypePtrOutput() AzureEnvironmentTypePtrOutput {
+	return o.ToAzureEnvironmentTypePtrOutputWithContext(context.Background())
+}
+
+func (o AzureEnvironmentTypeOutput) ToAzureEnvironmentTypePtrOutputWithContext(ctx context.Context) AzureEnvironmentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureEnvironmentType) *AzureEnvironmentType {
+		return &v
+	}).(AzureEnvironmentTypePtrOutput)
+}
+
+func (o AzureEnvironmentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureEnvironmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureEnvironmentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureEnvironmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureEnvironmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureEnvironmentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureEnvironmentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureEnvironmentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureEnvironmentType)(nil)).Elem()
+}
+
+func (o AzureEnvironmentTypePtrOutput) ToAzureEnvironmentTypePtrOutput() AzureEnvironmentTypePtrOutput {
+	return o
+}
+
+func (o AzureEnvironmentTypePtrOutput) ToAzureEnvironmentTypePtrOutputWithContext(ctx context.Context) AzureEnvironmentTypePtrOutput {
+	return o
+}
+
+func (o AzureEnvironmentTypePtrOutput) Elem() AzureEnvironmentTypeOutput {
+	return o.ApplyT(func(v *AzureEnvironmentType) AzureEnvironmentType {
+		if v != nil {
+			return *v
+		}
+		var ret AzureEnvironmentType
+		return ret
+	}).(AzureEnvironmentTypeOutput)
+}
+
+func (o AzureEnvironmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureEnvironmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureEnvironmentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureEnvironmentTypeInput is an input type that accepts values of the AzureEnvironmentType enum
+// A concrete instance of `AzureEnvironmentTypeInput` can be one of the following:
+//
+//	AzureEnvironmentTypeUnknown
+//	AzureEnvironmentTypeDevTest
+//	AzureEnvironmentTypeProduction
+type AzureEnvironmentTypeInput interface {
+	pulumi.Input
+
+	ToAzureEnvironmentTypeOutput() AzureEnvironmentTypeOutput
+	ToAzureEnvironmentTypeOutputWithContext(context.Context) AzureEnvironmentTypeOutput
+}
+
+var azureEnvironmentTypePtrType = reflect.TypeOf((**AzureEnvironmentType)(nil)).Elem()
+
+type AzureEnvironmentTypePtrInput interface {
+	pulumi.Input
+
+	ToAzureEnvironmentTypePtrOutput() AzureEnvironmentTypePtrOutput
+	ToAzureEnvironmentTypePtrOutputWithContext(context.Context) AzureEnvironmentTypePtrOutput
+}
+
+type azureEnvironmentTypePtr string
+
+func AzureEnvironmentTypePtr(v string) AzureEnvironmentTypePtrInput {
+	return (*azureEnvironmentTypePtr)(&v)
+}
+
+func (*azureEnvironmentTypePtr) ElementType() reflect.Type {
+	return azureEnvironmentTypePtrType
+}
+
+func (in *azureEnvironmentTypePtr) ToAzureEnvironmentTypePtrOutput() AzureEnvironmentTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureEnvironmentTypePtrOutput)
+}
+
+func (in *azureEnvironmentTypePtr) ToAzureEnvironmentTypePtrOutputWithContext(ctx context.Context) AzureEnvironmentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureEnvironmentTypePtrOutput)
+}
+
+// Gets or sets the user configurable setting to display the linux azure hybrid use
+// benefit.
 type AzureHybridUseBenefit string
 
 const (
@@ -1855,7 +2030,7 @@ func (in *azureLocationPtr) ToAzureLocationPtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(AzureLocationPtrOutput)
 }
 
-// Gets or sets Azure Offer Code for VM.
+// Azure Offer Code.
 type AzureOfferCode string
 
 const (
@@ -2103,7 +2278,7 @@ func (in *azureOfferCodePtr) ToAzureOfferCodePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(AzureOfferCodePtrOutput)
 }
 
-// Pricing tier for Size evaluation.
+// Gets or sets Azure Pricing Tier - Free, Basic, etc.
 type AzurePricingTier string
 
 const (
@@ -2269,7 +2444,7 @@ func (in *azurePricingTierPtr) ToAzurePricingTierPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AzurePricingTierPtrOutput)
 }
 
-// Gets or sets azure reserved instance for VM.
+// Reserved instance.
 type AzureReservedInstance string
 
 const (
@@ -3283,7 +3458,7 @@ func (in *azureSqlServiceTierPtr) ToAzureSqlServiceTierPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlServiceTierPtrOutput)
 }
 
-// Storage Redundancy type offered by Azure.
+// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
 type AzureStorageRedundancy string
 
 const (
@@ -3453,6 +3628,192 @@ func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutput() AzureSt
 
 func (in *azureStorageRedundancyPtr) ToAzureStorageRedundancyPtrOutputWithContext(ctx context.Context) AzureStorageRedundancyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureStorageRedundancyPtrOutput)
+}
+
+// Gets or sets azure VM category.
+type AzureVmCategory string
+
+const (
+	// Indicates All categories of VM.
+	AzureVmCategoryAll = AzureVmCategory("All")
+	// Compute Optimized.
+	AzureVmCategoryComputeOptimized = AzureVmCategory("ComputeOptimized")
+	// General Purpose.
+	AzureVmCategoryGeneralPurpose = AzureVmCategory("GeneralPurpose")
+	// GPU Optimized.
+	AzureVmCategoryGpuOptimized = AzureVmCategory("GpuOptimized")
+	// High Performance Compute.
+	AzureVmCategoryHighPerformanceCompute = AzureVmCategory("HighPerformanceCompute")
+	// Memory Optimized.
+	AzureVmCategoryMemoryOptimized = AzureVmCategory("MemoryOptimized")
+	// Storage Optimized.
+	AzureVmCategoryStorageOptimized = AzureVmCategory("StorageOptimized")
+	// Isolated VM.
+	AzureVmCategoryIsolated = AzureVmCategory("Isolated")
+)
+
+func (AzureVmCategory) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmCategory)(nil)).Elem()
+}
+
+func (e AzureVmCategory) ToAzureVmCategoryOutput() AzureVmCategoryOutput {
+	return pulumi.ToOutput(e).(AzureVmCategoryOutput)
+}
+
+func (e AzureVmCategory) ToAzureVmCategoryOutputWithContext(ctx context.Context) AzureVmCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureVmCategoryOutput)
+}
+
+func (e AzureVmCategory) ToAzureVmCategoryPtrOutput() AzureVmCategoryPtrOutput {
+	return e.ToAzureVmCategoryPtrOutputWithContext(context.Background())
+}
+
+func (e AzureVmCategory) ToAzureVmCategoryPtrOutputWithContext(ctx context.Context) AzureVmCategoryPtrOutput {
+	return AzureVmCategory(e).ToAzureVmCategoryOutputWithContext(ctx).ToAzureVmCategoryPtrOutputWithContext(ctx)
+}
+
+func (e AzureVmCategory) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureVmCategory) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureVmCategory) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureVmCategory) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureVmCategoryOutput struct{ *pulumi.OutputState }
+
+func (AzureVmCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureVmCategory)(nil)).Elem()
+}
+
+func (o AzureVmCategoryOutput) ToAzureVmCategoryOutput() AzureVmCategoryOutput {
+	return o
+}
+
+func (o AzureVmCategoryOutput) ToAzureVmCategoryOutputWithContext(ctx context.Context) AzureVmCategoryOutput {
+	return o
+}
+
+func (o AzureVmCategoryOutput) ToAzureVmCategoryPtrOutput() AzureVmCategoryPtrOutput {
+	return o.ToAzureVmCategoryPtrOutputWithContext(context.Background())
+}
+
+func (o AzureVmCategoryOutput) ToAzureVmCategoryPtrOutputWithContext(ctx context.Context) AzureVmCategoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureVmCategory) *AzureVmCategory {
+		return &v
+	}).(AzureVmCategoryPtrOutput)
+}
+
+func (o AzureVmCategoryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureVmCategoryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureVmCategory) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureVmCategoryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureVmCategoryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureVmCategory) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureVmCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureVmCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureVmCategory)(nil)).Elem()
+}
+
+func (o AzureVmCategoryPtrOutput) ToAzureVmCategoryPtrOutput() AzureVmCategoryPtrOutput {
+	return o
+}
+
+func (o AzureVmCategoryPtrOutput) ToAzureVmCategoryPtrOutputWithContext(ctx context.Context) AzureVmCategoryPtrOutput {
+	return o
+}
+
+func (o AzureVmCategoryPtrOutput) Elem() AzureVmCategoryOutput {
+	return o.ApplyT(func(v *AzureVmCategory) AzureVmCategory {
+		if v != nil {
+			return *v
+		}
+		var ret AzureVmCategory
+		return ret
+	}).(AzureVmCategoryOutput)
+}
+
+func (o AzureVmCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureVmCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureVmCategory) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureVmCategoryInput is an input type that accepts values of the AzureVmCategory enum
+// A concrete instance of `AzureVmCategoryInput` can be one of the following:
+//
+//	AzureVmCategoryAll
+//	AzureVmCategoryComputeOptimized
+//	AzureVmCategoryGeneralPurpose
+//	AzureVmCategoryGpuOptimized
+//	AzureVmCategoryHighPerformanceCompute
+//	AzureVmCategoryMemoryOptimized
+//	AzureVmCategoryStorageOptimized
+//	AzureVmCategoryIsolated
+type AzureVmCategoryInput interface {
+	pulumi.Input
+
+	ToAzureVmCategoryOutput() AzureVmCategoryOutput
+	ToAzureVmCategoryOutputWithContext(context.Context) AzureVmCategoryOutput
+}
+
+var azureVmCategoryPtrType = reflect.TypeOf((**AzureVmCategory)(nil)).Elem()
+
+type AzureVmCategoryPtrInput interface {
+	pulumi.Input
+
+	ToAzureVmCategoryPtrOutput() AzureVmCategoryPtrOutput
+	ToAzureVmCategoryPtrOutputWithContext(context.Context) AzureVmCategoryPtrOutput
+}
+
+type azureVmCategoryPtr string
+
+func AzureVmCategoryPtr(v string) AzureVmCategoryPtrInput {
+	return (*azureVmCategoryPtr)(&v)
+}
+
+func (*azureVmCategoryPtr) ElementType() reflect.Type {
+	return azureVmCategoryPtrType
+}
+
+func (in *azureVmCategoryPtr) ToAzureVmCategoryPtrOutput() AzureVmCategoryPtrOutput {
+	return pulumi.ToOutput(in).(AzureVmCategoryPtrOutput)
+}
+
+func (in *azureVmCategoryPtr) ToAzureVmCategoryPtrOutputWithContext(ctx context.Context) AzureVmCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureVmCategoryPtrOutput)
 }
 
 type AzureVmFamily string
@@ -3718,6 +4079,246 @@ func (in *azureVmFamilyPtr) ToAzureVmFamilyPtrOutput() AzureVmFamilyPtrOutput {
 
 func (in *azureVmFamilyPtr) ToAzureVmFamilyPtrOutputWithContext(ctx context.Context) AzureVmFamilyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureVmFamilyPtrOutput)
+}
+
+// Business case Currency.
+type BusinessCaseCurrency string
+
+const (
+	// Currency Unknown.
+	BusinessCaseCurrencyUnknown = BusinessCaseCurrency("Unknown")
+	// Currency USD.
+	BusinessCaseCurrencyUSD = BusinessCaseCurrency("USD")
+	// Currency DKK.
+	BusinessCaseCurrencyDKK = BusinessCaseCurrency("DKK")
+	// Currency CAD.
+	BusinessCaseCurrencyCAD = BusinessCaseCurrency("CAD")
+	// Currency IDR.
+	BusinessCaseCurrencyIDR = BusinessCaseCurrency("IDR")
+	// Currency JPY.
+	BusinessCaseCurrencyJPY = BusinessCaseCurrency("JPY")
+	// Currency KRW.
+	BusinessCaseCurrencyKRW = BusinessCaseCurrency("KRW")
+	// Currency NZD.
+	BusinessCaseCurrencyNZD = BusinessCaseCurrency("NZD")
+	// Currency NOK.
+	BusinessCaseCurrencyNOK = BusinessCaseCurrency("NOK")
+	// Currency RUB.
+	BusinessCaseCurrencyRUB = BusinessCaseCurrency("RUB")
+	// Currency SAR.
+	BusinessCaseCurrencySAR = BusinessCaseCurrency("SAR")
+	// Currency ZAR.
+	BusinessCaseCurrencyZAR = BusinessCaseCurrency("ZAR")
+	// Currency SEK.
+	BusinessCaseCurrencySEK = BusinessCaseCurrency("SEK")
+	// Currency TRY.
+	BusinessCaseCurrencyTRY = BusinessCaseCurrency("TRY")
+	// Currency GBP.
+	BusinessCaseCurrencyGBP = BusinessCaseCurrency("GBP")
+	// Currency MXN.
+	BusinessCaseCurrencyMXN = BusinessCaseCurrency("MXN")
+	// Currency MYR.
+	BusinessCaseCurrencyMYR = BusinessCaseCurrency("MYR")
+	// Currency INR.
+	BusinessCaseCurrencyINR = BusinessCaseCurrency("INR")
+	// Currency HKD.
+	BusinessCaseCurrencyHKD = BusinessCaseCurrency("HKD")
+	// Currency BRL.
+	BusinessCaseCurrencyBRL = BusinessCaseCurrency("BRL")
+	// Currency TWD.
+	BusinessCaseCurrencyTWD = BusinessCaseCurrency("TWD")
+	// Currency EUR.
+	BusinessCaseCurrencyEUR = BusinessCaseCurrency("EUR")
+	// Currency CHF.
+	BusinessCaseCurrencyCHF = BusinessCaseCurrency("CHF")
+	// Currency ARS.
+	BusinessCaseCurrencyARS = BusinessCaseCurrency("ARS")
+	// Currency AUD.
+	BusinessCaseCurrencyAUD = BusinessCaseCurrency("AUD")
+	// Currency CNY.
+	BusinessCaseCurrencyCNY = BusinessCaseCurrency("CNY")
+)
+
+func (BusinessCaseCurrency) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusinessCaseCurrency)(nil)).Elem()
+}
+
+func (e BusinessCaseCurrency) ToBusinessCaseCurrencyOutput() BusinessCaseCurrencyOutput {
+	return pulumi.ToOutput(e).(BusinessCaseCurrencyOutput)
+}
+
+func (e BusinessCaseCurrency) ToBusinessCaseCurrencyOutputWithContext(ctx context.Context) BusinessCaseCurrencyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BusinessCaseCurrencyOutput)
+}
+
+func (e BusinessCaseCurrency) ToBusinessCaseCurrencyPtrOutput() BusinessCaseCurrencyPtrOutput {
+	return e.ToBusinessCaseCurrencyPtrOutputWithContext(context.Background())
+}
+
+func (e BusinessCaseCurrency) ToBusinessCaseCurrencyPtrOutputWithContext(ctx context.Context) BusinessCaseCurrencyPtrOutput {
+	return BusinessCaseCurrency(e).ToBusinessCaseCurrencyOutputWithContext(ctx).ToBusinessCaseCurrencyPtrOutputWithContext(ctx)
+}
+
+func (e BusinessCaseCurrency) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BusinessCaseCurrency) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BusinessCaseCurrency) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BusinessCaseCurrency) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BusinessCaseCurrencyOutput struct{ *pulumi.OutputState }
+
+func (BusinessCaseCurrencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BusinessCaseCurrency)(nil)).Elem()
+}
+
+func (o BusinessCaseCurrencyOutput) ToBusinessCaseCurrencyOutput() BusinessCaseCurrencyOutput {
+	return o
+}
+
+func (o BusinessCaseCurrencyOutput) ToBusinessCaseCurrencyOutputWithContext(ctx context.Context) BusinessCaseCurrencyOutput {
+	return o
+}
+
+func (o BusinessCaseCurrencyOutput) ToBusinessCaseCurrencyPtrOutput() BusinessCaseCurrencyPtrOutput {
+	return o.ToBusinessCaseCurrencyPtrOutputWithContext(context.Background())
+}
+
+func (o BusinessCaseCurrencyOutput) ToBusinessCaseCurrencyPtrOutputWithContext(ctx context.Context) BusinessCaseCurrencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BusinessCaseCurrency) *BusinessCaseCurrency {
+		return &v
+	}).(BusinessCaseCurrencyPtrOutput)
+}
+
+func (o BusinessCaseCurrencyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BusinessCaseCurrencyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BusinessCaseCurrency) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BusinessCaseCurrencyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BusinessCaseCurrencyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BusinessCaseCurrency) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BusinessCaseCurrencyPtrOutput struct{ *pulumi.OutputState }
+
+func (BusinessCaseCurrencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BusinessCaseCurrency)(nil)).Elem()
+}
+
+func (o BusinessCaseCurrencyPtrOutput) ToBusinessCaseCurrencyPtrOutput() BusinessCaseCurrencyPtrOutput {
+	return o
+}
+
+func (o BusinessCaseCurrencyPtrOutput) ToBusinessCaseCurrencyPtrOutputWithContext(ctx context.Context) BusinessCaseCurrencyPtrOutput {
+	return o
+}
+
+func (o BusinessCaseCurrencyPtrOutput) Elem() BusinessCaseCurrencyOutput {
+	return o.ApplyT(func(v *BusinessCaseCurrency) BusinessCaseCurrency {
+		if v != nil {
+			return *v
+		}
+		var ret BusinessCaseCurrency
+		return ret
+	}).(BusinessCaseCurrencyOutput)
+}
+
+func (o BusinessCaseCurrencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BusinessCaseCurrencyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BusinessCaseCurrency) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BusinessCaseCurrencyInput is an input type that accepts values of the BusinessCaseCurrency enum
+// A concrete instance of `BusinessCaseCurrencyInput` can be one of the following:
+//
+//	BusinessCaseCurrencyUnknown
+//	BusinessCaseCurrencyUSD
+//	BusinessCaseCurrencyDKK
+//	BusinessCaseCurrencyCAD
+//	BusinessCaseCurrencyIDR
+//	BusinessCaseCurrencyJPY
+//	BusinessCaseCurrencyKRW
+//	BusinessCaseCurrencyNZD
+//	BusinessCaseCurrencyNOK
+//	BusinessCaseCurrencyRUB
+//	BusinessCaseCurrencySAR
+//	BusinessCaseCurrencyZAR
+//	BusinessCaseCurrencySEK
+//	BusinessCaseCurrencyTRY
+//	BusinessCaseCurrencyGBP
+//	BusinessCaseCurrencyMXN
+//	BusinessCaseCurrencyMYR
+//	BusinessCaseCurrencyINR
+//	BusinessCaseCurrencyHKD
+//	BusinessCaseCurrencyBRL
+//	BusinessCaseCurrencyTWD
+//	BusinessCaseCurrencyEUR
+//	BusinessCaseCurrencyCHF
+//	BusinessCaseCurrencyARS
+//	BusinessCaseCurrencyAUD
+//	BusinessCaseCurrencyCNY
+type BusinessCaseCurrencyInput interface {
+	pulumi.Input
+
+	ToBusinessCaseCurrencyOutput() BusinessCaseCurrencyOutput
+	ToBusinessCaseCurrencyOutputWithContext(context.Context) BusinessCaseCurrencyOutput
+}
+
+var businessCaseCurrencyPtrType = reflect.TypeOf((**BusinessCaseCurrency)(nil)).Elem()
+
+type BusinessCaseCurrencyPtrInput interface {
+	pulumi.Input
+
+	ToBusinessCaseCurrencyPtrOutput() BusinessCaseCurrencyPtrOutput
+	ToBusinessCaseCurrencyPtrOutputWithContext(context.Context) BusinessCaseCurrencyPtrOutput
+}
+
+type businessCaseCurrencyPtr string
+
+func BusinessCaseCurrencyPtr(v string) BusinessCaseCurrencyPtrInput {
+	return (*businessCaseCurrencyPtr)(&v)
+}
+
+func (*businessCaseCurrencyPtr) ElementType() reflect.Type {
+	return businessCaseCurrencyPtrType
+}
+
+func (in *businessCaseCurrencyPtr) ToBusinessCaseCurrencyPtrOutput() BusinessCaseCurrencyPtrOutput {
+	return pulumi.ToOutput(in).(BusinessCaseCurrencyPtrOutput)
+}
+
+func (in *businessCaseCurrencyPtr) ToBusinessCaseCurrencyPtrOutputWithContext(ctx context.Context) BusinessCaseCurrencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BusinessCaseCurrencyPtrOutput)
 }
 
 // Gets or sets the cleanup state of the solution.
@@ -4230,6 +4831,174 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationTypePtrOutput)
 }
 
+// Gets or sets consolidation type.
+type ConsolidationType string
+
+const (
+	// Full Consolidation.
+	ConsolidationTypeFull = ConsolidationType("Full")
+	// As On Source or On Premises Consolidation.
+	ConsolidationTypeAsOnSource = ConsolidationType("AsOnSource")
+)
+
+func (ConsolidationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsolidationType)(nil)).Elem()
+}
+
+func (e ConsolidationType) ToConsolidationTypeOutput() ConsolidationTypeOutput {
+	return pulumi.ToOutput(e).(ConsolidationTypeOutput)
+}
+
+func (e ConsolidationType) ToConsolidationTypeOutputWithContext(ctx context.Context) ConsolidationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConsolidationTypeOutput)
+}
+
+func (e ConsolidationType) ToConsolidationTypePtrOutput() ConsolidationTypePtrOutput {
+	return e.ToConsolidationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ConsolidationType) ToConsolidationTypePtrOutputWithContext(ctx context.Context) ConsolidationTypePtrOutput {
+	return ConsolidationType(e).ToConsolidationTypeOutputWithContext(ctx).ToConsolidationTypePtrOutputWithContext(ctx)
+}
+
+func (e ConsolidationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsolidationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsolidationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConsolidationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConsolidationTypeOutput struct{ *pulumi.OutputState }
+
+func (ConsolidationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsolidationType)(nil)).Elem()
+}
+
+func (o ConsolidationTypeOutput) ToConsolidationTypeOutput() ConsolidationTypeOutput {
+	return o
+}
+
+func (o ConsolidationTypeOutput) ToConsolidationTypeOutputWithContext(ctx context.Context) ConsolidationTypeOutput {
+	return o
+}
+
+func (o ConsolidationTypeOutput) ToConsolidationTypePtrOutput() ConsolidationTypePtrOutput {
+	return o.ToConsolidationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ConsolidationTypeOutput) ToConsolidationTypePtrOutputWithContext(ctx context.Context) ConsolidationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsolidationType) *ConsolidationType {
+		return &v
+	}).(ConsolidationTypePtrOutput)
+}
+
+func (o ConsolidationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConsolidationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsolidationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConsolidationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsolidationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsolidationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsolidationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ConsolidationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsolidationType)(nil)).Elem()
+}
+
+func (o ConsolidationTypePtrOutput) ToConsolidationTypePtrOutput() ConsolidationTypePtrOutput {
+	return o
+}
+
+func (o ConsolidationTypePtrOutput) ToConsolidationTypePtrOutputWithContext(ctx context.Context) ConsolidationTypePtrOutput {
+	return o
+}
+
+func (o ConsolidationTypePtrOutput) Elem() ConsolidationTypeOutput {
+	return o.ApplyT(func(v *ConsolidationType) ConsolidationType {
+		if v != nil {
+			return *v
+		}
+		var ret ConsolidationType
+		return ret
+	}).(ConsolidationTypeOutput)
+}
+
+func (o ConsolidationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsolidationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConsolidationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConsolidationTypeInput is an input type that accepts values of the ConsolidationType enum
+// A concrete instance of `ConsolidationTypeInput` can be one of the following:
+//
+//	ConsolidationTypeFull
+//	ConsolidationTypeAsOnSource
+type ConsolidationTypeInput interface {
+	pulumi.Input
+
+	ToConsolidationTypeOutput() ConsolidationTypeOutput
+	ToConsolidationTypeOutputWithContext(context.Context) ConsolidationTypeOutput
+}
+
+var consolidationTypePtrType = reflect.TypeOf((**ConsolidationType)(nil)).Elem()
+
+type ConsolidationTypePtrInput interface {
+	pulumi.Input
+
+	ToConsolidationTypePtrOutput() ConsolidationTypePtrOutput
+	ToConsolidationTypePtrOutputWithContext(context.Context) ConsolidationTypePtrOutput
+}
+
+type consolidationTypePtr string
+
+func ConsolidationTypePtr(v string) ConsolidationTypePtrInput {
+	return (*consolidationTypePtr)(&v)
+}
+
+func (*consolidationTypePtr) ElementType() reflect.Type {
+	return consolidationTypePtrType
+}
+
+func (in *consolidationTypePtr) ToConsolidationTypePtrOutput() ConsolidationTypePtrOutput {
+	return pulumi.ToOutput(in).(ConsolidationTypePtrOutput)
+}
+
+func (in *consolidationTypePtr) ToConsolidationTypePtrOutputWithContext(ctx context.Context) ConsolidationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConsolidationTypePtrOutput)
+}
+
 // Currency to report prices in.
 type Currency string
 
@@ -4442,6 +5211,177 @@ func (in *currencyPtr) ToCurrencyPtrOutput() CurrencyPtrOutput {
 
 func (in *currencyPtr) ToCurrencyPtrOutputWithContext(ctx context.Context) CurrencyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(CurrencyPtrOutput)
+}
+
+// Workload discovery source.
+type DiscoverySource string
+
+const (
+	// Unknown Discovery Source.
+	DiscoverySourceUnknown = DiscoverySource("Unknown")
+	// Appliance Discovery Source.
+	DiscoverySourceAppliance = DiscoverySource("Appliance")
+	// Import Discovery Source.
+	DiscoverySourceImport = DiscoverySource("Import")
+)
+
+func (DiscoverySource) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoverySource)(nil)).Elem()
+}
+
+func (e DiscoverySource) ToDiscoverySourceOutput() DiscoverySourceOutput {
+	return pulumi.ToOutput(e).(DiscoverySourceOutput)
+}
+
+func (e DiscoverySource) ToDiscoverySourceOutputWithContext(ctx context.Context) DiscoverySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiscoverySourceOutput)
+}
+
+func (e DiscoverySource) ToDiscoverySourcePtrOutput() DiscoverySourcePtrOutput {
+	return e.ToDiscoverySourcePtrOutputWithContext(context.Background())
+}
+
+func (e DiscoverySource) ToDiscoverySourcePtrOutputWithContext(ctx context.Context) DiscoverySourcePtrOutput {
+	return DiscoverySource(e).ToDiscoverySourceOutputWithContext(ctx).ToDiscoverySourcePtrOutputWithContext(ctx)
+}
+
+func (e DiscoverySource) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiscoverySource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiscoverySource) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiscoverySource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiscoverySourceOutput struct{ *pulumi.OutputState }
+
+func (DiscoverySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscoverySource)(nil)).Elem()
+}
+
+func (o DiscoverySourceOutput) ToDiscoverySourceOutput() DiscoverySourceOutput {
+	return o
+}
+
+func (o DiscoverySourceOutput) ToDiscoverySourceOutputWithContext(ctx context.Context) DiscoverySourceOutput {
+	return o
+}
+
+func (o DiscoverySourceOutput) ToDiscoverySourcePtrOutput() DiscoverySourcePtrOutput {
+	return o.ToDiscoverySourcePtrOutputWithContext(context.Background())
+}
+
+func (o DiscoverySourceOutput) ToDiscoverySourcePtrOutputWithContext(ctx context.Context) DiscoverySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscoverySource) *DiscoverySource {
+		return &v
+	}).(DiscoverySourcePtrOutput)
+}
+
+func (o DiscoverySourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiscoverySourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscoverySource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiscoverySourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoverySourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiscoverySource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiscoverySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscoverySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscoverySource)(nil)).Elem()
+}
+
+func (o DiscoverySourcePtrOutput) ToDiscoverySourcePtrOutput() DiscoverySourcePtrOutput {
+	return o
+}
+
+func (o DiscoverySourcePtrOutput) ToDiscoverySourcePtrOutputWithContext(ctx context.Context) DiscoverySourcePtrOutput {
+	return o
+}
+
+func (o DiscoverySourcePtrOutput) Elem() DiscoverySourceOutput {
+	return o.ApplyT(func(v *DiscoverySource) DiscoverySource {
+		if v != nil {
+			return *v
+		}
+		var ret DiscoverySource
+		return ret
+	}).(DiscoverySourceOutput)
+}
+
+func (o DiscoverySourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiscoverySourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiscoverySource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiscoverySourceInput is an input type that accepts values of the DiscoverySource enum
+// A concrete instance of `DiscoverySourceInput` can be one of the following:
+//
+//	DiscoverySourceUnknown
+//	DiscoverySourceAppliance
+//	DiscoverySourceImport
+type DiscoverySourceInput interface {
+	pulumi.Input
+
+	ToDiscoverySourceOutput() DiscoverySourceOutput
+	ToDiscoverySourceOutputWithContext(context.Context) DiscoverySourceOutput
+}
+
+var discoverySourcePtrType = reflect.TypeOf((**DiscoverySource)(nil)).Elem()
+
+type DiscoverySourcePtrInput interface {
+	pulumi.Input
+
+	ToDiscoverySourcePtrOutput() DiscoverySourcePtrOutput
+	ToDiscoverySourcePtrOutputWithContext(context.Context) DiscoverySourcePtrOutput
+}
+
+type discoverySourcePtr string
+
+func DiscoverySourcePtr(v string) DiscoverySourcePtrInput {
+	return (*discoverySourcePtr)(&v)
+}
+
+func (*discoverySourcePtr) ElementType() reflect.Type {
+	return discoverySourcePtrType
+}
+
+func (in *discoverySourcePtr) ToDiscoverySourcePtrOutput() DiscoverySourcePtrOutput {
+	return pulumi.ToOutput(in).(DiscoverySourcePtrOutput)
+}
+
+func (in *discoverySourcePtr) ToDiscoverySourcePtrOutputWithContext(ctx context.Context) DiscoverySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiscoverySourcePtrOutput)
 }
 
 // Gets or sets user configurable setting to display the environment type.
@@ -5122,6 +6062,516 @@ func (in *groupTypePtr) ToGroupTypePtrOutputWithContext(ctx context.Context) Gro
 	return pulumi.ToOutputWithContext(ctx, in).(GroupTypePtrOutput)
 }
 
+// HyperV licence type.
+type HyperVLicenseType string
+
+const (
+	// Unknown HyperV License.
+	HyperVLicenseTypeUnknown = HyperVLicenseType("Unknown")
+	// Datacentre HyperV License.
+	HyperVLicenseTypeDatacentre = HyperVLicenseType("Datacentre")
+	// Standard HyperV License.
+	HyperVLicenseTypeStandard = HyperVLicenseType("Standard")
+)
+
+func (HyperVLicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVLicenseType)(nil)).Elem()
+}
+
+func (e HyperVLicenseType) ToHyperVLicenseTypeOutput() HyperVLicenseTypeOutput {
+	return pulumi.ToOutput(e).(HyperVLicenseTypeOutput)
+}
+
+func (e HyperVLicenseType) ToHyperVLicenseTypeOutputWithContext(ctx context.Context) HyperVLicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HyperVLicenseTypeOutput)
+}
+
+func (e HyperVLicenseType) ToHyperVLicenseTypePtrOutput() HyperVLicenseTypePtrOutput {
+	return e.ToHyperVLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (e HyperVLicenseType) ToHyperVLicenseTypePtrOutputWithContext(ctx context.Context) HyperVLicenseTypePtrOutput {
+	return HyperVLicenseType(e).ToHyperVLicenseTypeOutputWithContext(ctx).ToHyperVLicenseTypePtrOutputWithContext(ctx)
+}
+
+func (e HyperVLicenseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HyperVLicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HyperVLicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HyperVLicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HyperVLicenseTypeOutput struct{ *pulumi.OutputState }
+
+func (HyperVLicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVLicenseType)(nil)).Elem()
+}
+
+func (o HyperVLicenseTypeOutput) ToHyperVLicenseTypeOutput() HyperVLicenseTypeOutput {
+	return o
+}
+
+func (o HyperVLicenseTypeOutput) ToHyperVLicenseTypeOutputWithContext(ctx context.Context) HyperVLicenseTypeOutput {
+	return o
+}
+
+func (o HyperVLicenseTypeOutput) ToHyperVLicenseTypePtrOutput() HyperVLicenseTypePtrOutput {
+	return o.ToHyperVLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (o HyperVLicenseTypeOutput) ToHyperVLicenseTypePtrOutputWithContext(ctx context.Context) HyperVLicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HyperVLicenseType) *HyperVLicenseType {
+		return &v
+	}).(HyperVLicenseTypePtrOutput)
+}
+
+func (o HyperVLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HyperVLicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HyperVLicenseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HyperVLicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HyperVLicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HyperVLicenseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HyperVLicenseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HyperVLicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperVLicenseType)(nil)).Elem()
+}
+
+func (o HyperVLicenseTypePtrOutput) ToHyperVLicenseTypePtrOutput() HyperVLicenseTypePtrOutput {
+	return o
+}
+
+func (o HyperVLicenseTypePtrOutput) ToHyperVLicenseTypePtrOutputWithContext(ctx context.Context) HyperVLicenseTypePtrOutput {
+	return o
+}
+
+func (o HyperVLicenseTypePtrOutput) Elem() HyperVLicenseTypeOutput {
+	return o.ApplyT(func(v *HyperVLicenseType) HyperVLicenseType {
+		if v != nil {
+			return *v
+		}
+		var ret HyperVLicenseType
+		return ret
+	}).(HyperVLicenseTypeOutput)
+}
+
+func (o HyperVLicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HyperVLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HyperVLicenseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HyperVLicenseTypeInput is an input type that accepts values of the HyperVLicenseType enum
+// A concrete instance of `HyperVLicenseTypeInput` can be one of the following:
+//
+//	HyperVLicenseTypeUnknown
+//	HyperVLicenseTypeDatacentre
+//	HyperVLicenseTypeStandard
+type HyperVLicenseTypeInput interface {
+	pulumi.Input
+
+	ToHyperVLicenseTypeOutput() HyperVLicenseTypeOutput
+	ToHyperVLicenseTypeOutputWithContext(context.Context) HyperVLicenseTypeOutput
+}
+
+var hyperVLicenseTypePtrType = reflect.TypeOf((**HyperVLicenseType)(nil)).Elem()
+
+type HyperVLicenseTypePtrInput interface {
+	pulumi.Input
+
+	ToHyperVLicenseTypePtrOutput() HyperVLicenseTypePtrOutput
+	ToHyperVLicenseTypePtrOutputWithContext(context.Context) HyperVLicenseTypePtrOutput
+}
+
+type hyperVLicenseTypePtr string
+
+func HyperVLicenseTypePtr(v string) HyperVLicenseTypePtrInput {
+	return (*hyperVLicenseTypePtr)(&v)
+}
+
+func (*hyperVLicenseTypePtr) ElementType() reflect.Type {
+	return hyperVLicenseTypePtrType
+}
+
+func (in *hyperVLicenseTypePtr) ToHyperVLicenseTypePtrOutput() HyperVLicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(HyperVLicenseTypePtrOutput)
+}
+
+func (in *hyperVLicenseTypePtr) ToHyperVLicenseTypePtrOutputWithContext(ctx context.Context) HyperVLicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HyperVLicenseTypePtrOutput)
+}
+
+// VSphere licence type.
+type LicenseType string
+
+const (
+	// Unknown License.
+	LicenseTypeUnknown = LicenseType("Unknown")
+	// VSphereStandard License.
+	LicenseTypeVSphereStandard = LicenseType("VSphereStandard")
+	// VSphereEnterprisePlus License.
+	LicenseTypeVSphereEnterprisePlus = LicenseType("VSphereEnterprisePlus")
+)
+
+func (LicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseType)(nil)).Elem()
+}
+
+func (e LicenseType) ToLicenseTypeOutput() LicenseTypeOutput {
+	return pulumi.ToOutput(e).(LicenseTypeOutput)
+}
+
+func (e LicenseType) ToLicenseTypeOutputWithContext(ctx context.Context) LicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LicenseTypeOutput)
+}
+
+func (e LicenseType) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return e.ToLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (e LicenseType) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return LicenseType(e).ToLicenseTypeOutputWithContext(ctx).ToLicenseTypePtrOutputWithContext(ctx)
+}
+
+func (e LicenseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LicenseTypeOutput struct{ *pulumi.OutputState }
+
+func (LicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicenseType)(nil)).Elem()
+}
+
+func (o LicenseTypeOutput) ToLicenseTypeOutput() LicenseTypeOutput {
+	return o
+}
+
+func (o LicenseTypeOutput) ToLicenseTypeOutputWithContext(ctx context.Context) LicenseTypeOutput {
+	return o
+}
+
+func (o LicenseTypeOutput) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return o.ToLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (o LicenseTypeOutput) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseType) *LicenseType {
+		return &v
+	}).(LicenseTypePtrOutput)
+}
+
+func (o LicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicenseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LicenseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicenseType)(nil)).Elem()
+}
+
+func (o LicenseTypePtrOutput) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return o
+}
+
+func (o LicenseTypePtrOutput) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return o
+}
+
+func (o LicenseTypePtrOutput) Elem() LicenseTypeOutput {
+	return o.ApplyT(func(v *LicenseType) LicenseType {
+		if v != nil {
+			return *v
+		}
+		var ret LicenseType
+		return ret
+	}).(LicenseTypeOutput)
+}
+
+func (o LicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicenseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LicenseTypeInput is an input type that accepts values of the LicenseType enum
+// A concrete instance of `LicenseTypeInput` can be one of the following:
+//
+//	LicenseTypeUnknown
+//	LicenseTypeVSphereStandard
+//	LicenseTypeVSphereEnterprisePlus
+type LicenseTypeInput interface {
+	pulumi.Input
+
+	ToLicenseTypeOutput() LicenseTypeOutput
+	ToLicenseTypeOutputWithContext(context.Context) LicenseTypeOutput
+}
+
+var licenseTypePtrType = reflect.TypeOf((**LicenseType)(nil)).Elem()
+
+type LicenseTypePtrInput interface {
+	pulumi.Input
+
+	ToLicenseTypePtrOutput() LicenseTypePtrOutput
+	ToLicenseTypePtrOutputWithContext(context.Context) LicenseTypePtrOutput
+}
+
+type licenseTypePtr string
+
+func LicenseTypePtr(v string) LicenseTypePtrInput {
+	return (*licenseTypePtr)(&v)
+}
+
+func (*licenseTypePtr) ElementType() reflect.Type {
+	return licenseTypePtrType
+}
+
+func (in *licenseTypePtr) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(LicenseTypePtrOutput)
+}
+
+func (in *licenseTypePtr) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LicenseTypePtrOutput)
+}
+
+// Gets or sets licensing program.
+type LicensingProgram string
+
+const (
+	// Default value. Indicates Pay As You Go.
+	LicensingProgramDefault = LicensingProgram("Default")
+	// Enterprise Agreement.
+	LicensingProgramEA = LicensingProgram("EA")
+)
+
+func (LicensingProgram) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicensingProgram)(nil)).Elem()
+}
+
+func (e LicensingProgram) ToLicensingProgramOutput() LicensingProgramOutput {
+	return pulumi.ToOutput(e).(LicensingProgramOutput)
+}
+
+func (e LicensingProgram) ToLicensingProgramOutputWithContext(ctx context.Context) LicensingProgramOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LicensingProgramOutput)
+}
+
+func (e LicensingProgram) ToLicensingProgramPtrOutput() LicensingProgramPtrOutput {
+	return e.ToLicensingProgramPtrOutputWithContext(context.Background())
+}
+
+func (e LicensingProgram) ToLicensingProgramPtrOutputWithContext(ctx context.Context) LicensingProgramPtrOutput {
+	return LicensingProgram(e).ToLicensingProgramOutputWithContext(ctx).ToLicensingProgramPtrOutputWithContext(ctx)
+}
+
+func (e LicensingProgram) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LicensingProgram) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LicensingProgram) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LicensingProgram) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LicensingProgramOutput struct{ *pulumi.OutputState }
+
+func (LicensingProgramOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LicensingProgram)(nil)).Elem()
+}
+
+func (o LicensingProgramOutput) ToLicensingProgramOutput() LicensingProgramOutput {
+	return o
+}
+
+func (o LicensingProgramOutput) ToLicensingProgramOutputWithContext(ctx context.Context) LicensingProgramOutput {
+	return o
+}
+
+func (o LicensingProgramOutput) ToLicensingProgramPtrOutput() LicensingProgramPtrOutput {
+	return o.ToLicensingProgramPtrOutputWithContext(context.Background())
+}
+
+func (o LicensingProgramOutput) ToLicensingProgramPtrOutputWithContext(ctx context.Context) LicensingProgramPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicensingProgram) *LicensingProgram {
+		return &v
+	}).(LicensingProgramPtrOutput)
+}
+
+func (o LicensingProgramOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LicensingProgramOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicensingProgram) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LicensingProgramOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LicensingProgramOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LicensingProgram) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LicensingProgramPtrOutput struct{ *pulumi.OutputState }
+
+func (LicensingProgramPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LicensingProgram)(nil)).Elem()
+}
+
+func (o LicensingProgramPtrOutput) ToLicensingProgramPtrOutput() LicensingProgramPtrOutput {
+	return o
+}
+
+func (o LicensingProgramPtrOutput) ToLicensingProgramPtrOutputWithContext(ctx context.Context) LicensingProgramPtrOutput {
+	return o
+}
+
+func (o LicensingProgramPtrOutput) Elem() LicensingProgramOutput {
+	return o.ApplyT(func(v *LicensingProgram) LicensingProgram {
+		if v != nil {
+			return *v
+		}
+		var ret LicensingProgram
+		return ret
+	}).(LicensingProgramOutput)
+}
+
+func (o LicensingProgramPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LicensingProgramPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LicensingProgram) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LicensingProgramInput is an input type that accepts values of the LicensingProgram enum
+// A concrete instance of `LicensingProgramInput` can be one of the following:
+//
+//	LicensingProgramDefault
+//	LicensingProgramEA
+type LicensingProgramInput interface {
+	pulumi.Input
+
+	ToLicensingProgramOutput() LicensingProgramOutput
+	ToLicensingProgramOutputWithContext(context.Context) LicensingProgramOutput
+}
+
+var licensingProgramPtrType = reflect.TypeOf((**LicensingProgram)(nil)).Elem()
+
+type LicensingProgramPtrInput interface {
+	pulumi.Input
+
+	ToLicensingProgramPtrOutput() LicensingProgramPtrOutput
+	ToLicensingProgramPtrOutputWithContext(context.Context) LicensingProgramPtrOutput
+}
+
+type licensingProgramPtr string
+
+func LicensingProgramPtr(v string) LicensingProgramPtrInput {
+	return (*licensingProgramPtr)(&v)
+}
+
+func (*licensingProgramPtr) ElementType() reflect.Type {
+	return licensingProgramPtrType
+}
+
+func (in *licensingProgramPtr) ToLicensingProgramPtrOutput() LicensingProgramPtrOutput {
+	return pulumi.ToOutput(in).(LicensingProgramPtrOutput)
+}
+
+func (in *licensingProgramPtr) ToLicensingProgramPtrOutputWithContext(ctx context.Context) LicensingProgramPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LicensingProgramPtrOutput)
+}
+
 // Gets or sets the load balancer type.
 type LoadBalancerType string
 
@@ -5286,6 +6736,183 @@ func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutput() LoadBalancerTypePtr
 
 func (in *loadBalancerTypePtr) ToLoadBalancerTypePtrOutputWithContext(ctx context.Context) LoadBalancerTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancerTypePtrOutput)
+}
+
+// Migration Strategy.
+type MigrationStrategy string
+
+const (
+	// Unknown Migration Strategy.
+	MigrationStrategyUnknown = MigrationStrategy("Unknown")
+	// Optimize for cost.
+	MigrationStrategyOptimizeForCost = MigrationStrategy("OptimizeForCost")
+	// IaaS only.
+	MigrationStrategyIaaSOnly = MigrationStrategy("IaaSOnly")
+	// Optimize for PaaS.
+	MigrationStrategyOptimizeForPaas = MigrationStrategy("OptimizeForPaas")
+	// Avs only.
+	MigrationStrategyAVSOnly = MigrationStrategy("AVSOnly")
+)
+
+func (MigrationStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationStrategy)(nil)).Elem()
+}
+
+func (e MigrationStrategy) ToMigrationStrategyOutput() MigrationStrategyOutput {
+	return pulumi.ToOutput(e).(MigrationStrategyOutput)
+}
+
+func (e MigrationStrategy) ToMigrationStrategyOutputWithContext(ctx context.Context) MigrationStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MigrationStrategyOutput)
+}
+
+func (e MigrationStrategy) ToMigrationStrategyPtrOutput() MigrationStrategyPtrOutput {
+	return e.ToMigrationStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e MigrationStrategy) ToMigrationStrategyPtrOutputWithContext(ctx context.Context) MigrationStrategyPtrOutput {
+	return MigrationStrategy(e).ToMigrationStrategyOutputWithContext(ctx).ToMigrationStrategyPtrOutputWithContext(ctx)
+}
+
+func (e MigrationStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MigrationStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MigrationStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MigrationStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MigrationStrategyOutput struct{ *pulumi.OutputState }
+
+func (MigrationStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationStrategy)(nil)).Elem()
+}
+
+func (o MigrationStrategyOutput) ToMigrationStrategyOutput() MigrationStrategyOutput {
+	return o
+}
+
+func (o MigrationStrategyOutput) ToMigrationStrategyOutputWithContext(ctx context.Context) MigrationStrategyOutput {
+	return o
+}
+
+func (o MigrationStrategyOutput) ToMigrationStrategyPtrOutput() MigrationStrategyPtrOutput {
+	return o.ToMigrationStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationStrategyOutput) ToMigrationStrategyPtrOutputWithContext(ctx context.Context) MigrationStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationStrategy) *MigrationStrategy {
+		return &v
+	}).(MigrationStrategyPtrOutput)
+}
+
+func (o MigrationStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MigrationStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MigrationStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MigrationStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MigrationStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MigrationStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationStrategy)(nil)).Elem()
+}
+
+func (o MigrationStrategyPtrOutput) ToMigrationStrategyPtrOutput() MigrationStrategyPtrOutput {
+	return o
+}
+
+func (o MigrationStrategyPtrOutput) ToMigrationStrategyPtrOutputWithContext(ctx context.Context) MigrationStrategyPtrOutput {
+	return o
+}
+
+func (o MigrationStrategyPtrOutput) Elem() MigrationStrategyOutput {
+	return o.ApplyT(func(v *MigrationStrategy) MigrationStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationStrategy
+		return ret
+	}).(MigrationStrategyOutput)
+}
+
+func (o MigrationStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MigrationStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MigrationStrategyInput is an input type that accepts values of the MigrationStrategy enum
+// A concrete instance of `MigrationStrategyInput` can be one of the following:
+//
+//	MigrationStrategyUnknown
+//	MigrationStrategyOptimizeForCost
+//	MigrationStrategyIaaSOnly
+//	MigrationStrategyOptimizeForPaas
+//	MigrationStrategyAVSOnly
+type MigrationStrategyInput interface {
+	pulumi.Input
+
+	ToMigrationStrategyOutput() MigrationStrategyOutput
+	ToMigrationStrategyOutputWithContext(context.Context) MigrationStrategyOutput
+}
+
+var migrationStrategyPtrType = reflect.TypeOf((**MigrationStrategy)(nil)).Elem()
+
+type MigrationStrategyPtrInput interface {
+	pulumi.Input
+
+	ToMigrationStrategyPtrOutput() MigrationStrategyPtrOutput
+	ToMigrationStrategyPtrOutputWithContext(context.Context) MigrationStrategyPtrOutput
+}
+
+type migrationStrategyPtr string
+
+func MigrationStrategyPtr(v string) MigrationStrategyPtrInput {
+	return (*migrationStrategyPtr)(&v)
+}
+
+func (*migrationStrategyPtr) ElementType() reflect.Type {
+	return migrationStrategyPtrType
+}
+
+func (in *migrationStrategyPtr) ToMigrationStrategyPtrOutput() MigrationStrategyPtrOutput {
+	return pulumi.ToOutput(in).(MigrationStrategyPtrOutput)
+}
+
+func (in *migrationStrategyPtr) ToMigrationStrategyPtrOutputWithContext(ctx context.Context) MigrationStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MigrationStrategyPtrOutput)
 }
 
 // Gets or sets user preference indicating intent of multi-subnet configuration.
@@ -5964,9 +7591,13 @@ func (in *osLicensePtr) ToOsLicensePtrOutputWithContext(ctx context.Context) OsL
 type Percentile string
 
 const (
+	// Percentile 50.
 	PercentilePercentile50 = Percentile("Percentile50")
+	// Percentile 90.
 	PercentilePercentile90 = Percentile("Percentile90")
+	// Percentile 95.
 	PercentilePercentile95 = Percentile("Percentile95")
+	// Percentile 99.
 	PercentilePercentile99 = Percentile("Percentile99")
 )
 
@@ -6128,6 +7759,174 @@ func (in *percentilePtr) ToPercentilePtrOutput() PercentilePtrOutput {
 
 func (in *percentilePtr) ToPercentilePtrOutputWithContext(ctx context.Context) PercentilePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PercentilePtrOutput)
+}
+
+// Gets or sets pricing tier.
+type PricingTier string
+
+const (
+	// Standard Pricing Tier.
+	PricingTierStandard = PricingTier("Standard")
+	// Free Pricing Tier.
+	PricingTierFree = PricingTier("Free")
+)
+
+func (PricingTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*PricingTier)(nil)).Elem()
+}
+
+func (e PricingTier) ToPricingTierOutput() PricingTierOutput {
+	return pulumi.ToOutput(e).(PricingTierOutput)
+}
+
+func (e PricingTier) ToPricingTierOutputWithContext(ctx context.Context) PricingTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PricingTierOutput)
+}
+
+func (e PricingTier) ToPricingTierPtrOutput() PricingTierPtrOutput {
+	return e.ToPricingTierPtrOutputWithContext(context.Background())
+}
+
+func (e PricingTier) ToPricingTierPtrOutputWithContext(ctx context.Context) PricingTierPtrOutput {
+	return PricingTier(e).ToPricingTierOutputWithContext(ctx).ToPricingTierPtrOutputWithContext(ctx)
+}
+
+func (e PricingTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PricingTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PricingTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PricingTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PricingTierOutput struct{ *pulumi.OutputState }
+
+func (PricingTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PricingTier)(nil)).Elem()
+}
+
+func (o PricingTierOutput) ToPricingTierOutput() PricingTierOutput {
+	return o
+}
+
+func (o PricingTierOutput) ToPricingTierOutputWithContext(ctx context.Context) PricingTierOutput {
+	return o
+}
+
+func (o PricingTierOutput) ToPricingTierPtrOutput() PricingTierPtrOutput {
+	return o.ToPricingTierPtrOutputWithContext(context.Background())
+}
+
+func (o PricingTierOutput) ToPricingTierPtrOutputWithContext(ctx context.Context) PricingTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PricingTier) *PricingTier {
+		return &v
+	}).(PricingTierPtrOutput)
+}
+
+func (o PricingTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PricingTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PricingTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PricingTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PricingTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PricingTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PricingTierPtrOutput struct{ *pulumi.OutputState }
+
+func (PricingTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PricingTier)(nil)).Elem()
+}
+
+func (o PricingTierPtrOutput) ToPricingTierPtrOutput() PricingTierPtrOutput {
+	return o
+}
+
+func (o PricingTierPtrOutput) ToPricingTierPtrOutputWithContext(ctx context.Context) PricingTierPtrOutput {
+	return o
+}
+
+func (o PricingTierPtrOutput) Elem() PricingTierOutput {
+	return o.ApplyT(func(v *PricingTier) PricingTier {
+		if v != nil {
+			return *v
+		}
+		var ret PricingTier
+		return ret
+	}).(PricingTierOutput)
+}
+
+func (o PricingTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PricingTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PricingTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PricingTierInput is an input type that accepts values of the PricingTier enum
+// A concrete instance of `PricingTierInput` can be one of the following:
+//
+//	PricingTierStandard
+//	PricingTierFree
+type PricingTierInput interface {
+	pulumi.Input
+
+	ToPricingTierOutput() PricingTierOutput
+	ToPricingTierOutputWithContext(context.Context) PricingTierOutput
+}
+
+var pricingTierPtrType = reflect.TypeOf((**PricingTier)(nil)).Elem()
+
+type PricingTierPtrInput interface {
+	pulumi.Input
+
+	ToPricingTierPtrOutput() PricingTierPtrOutput
+	ToPricingTierPtrOutputWithContext(context.Context) PricingTierPtrOutput
+}
+
+type pricingTierPtr string
+
+func PricingTierPtr(v string) PricingTierPtrInput {
+	return (*pricingTierPtr)(&v)
+}
+
+func (*pricingTierPtr) ElementType() reflect.Type {
+	return pricingTierPtrType
+}
+
+func (in *pricingTierPtr) ToPricingTierPtrOutput() PricingTierPtrOutput {
+	return pulumi.ToOutput(in).(PricingTierPtrOutput)
+}
+
+func (in *pricingTierPtr) ToPricingTierPtrOutputWithContext(ctx context.Context) PricingTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PricingTierPtrOutput)
 }
 
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
@@ -7318,6 +9117,354 @@ func (in *resourceIdentityTypesPtr) ToResourceIdentityTypesPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypesPtrOutput)
 }
 
+// Gets the business case savings option type.
+type SavingsOption string
+
+const (
+	// Unknown Savings Option.
+	SavingsOptionUnknown = SavingsOption("Unknown")
+	// Reserved Instance 3 Year.
+	SavingsOptionRI3Year = SavingsOption("RI3Year")
+	// Azure Savings Plan 3 Year.
+	SavingsOptionSavingsPlan3Year = SavingsOption("SavingsPlan3Year")
+)
+
+func (SavingsOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsOption)(nil)).Elem()
+}
+
+func (e SavingsOption) ToSavingsOptionOutput() SavingsOptionOutput {
+	return pulumi.ToOutput(e).(SavingsOptionOutput)
+}
+
+func (e SavingsOption) ToSavingsOptionOutputWithContext(ctx context.Context) SavingsOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SavingsOptionOutput)
+}
+
+func (e SavingsOption) ToSavingsOptionPtrOutput() SavingsOptionPtrOutput {
+	return e.ToSavingsOptionPtrOutputWithContext(context.Background())
+}
+
+func (e SavingsOption) ToSavingsOptionPtrOutputWithContext(ctx context.Context) SavingsOptionPtrOutput {
+	return SavingsOption(e).ToSavingsOptionOutputWithContext(ctx).ToSavingsOptionPtrOutputWithContext(ctx)
+}
+
+func (e SavingsOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SavingsOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SavingsOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SavingsOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SavingsOptionOutput struct{ *pulumi.OutputState }
+
+func (SavingsOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsOption)(nil)).Elem()
+}
+
+func (o SavingsOptionOutput) ToSavingsOptionOutput() SavingsOptionOutput {
+	return o
+}
+
+func (o SavingsOptionOutput) ToSavingsOptionOutputWithContext(ctx context.Context) SavingsOptionOutput {
+	return o
+}
+
+func (o SavingsOptionOutput) ToSavingsOptionPtrOutput() SavingsOptionPtrOutput {
+	return o.ToSavingsOptionPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionOutput) ToSavingsOptionPtrOutputWithContext(ctx context.Context) SavingsOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SavingsOption) *SavingsOption {
+		return &v
+	}).(SavingsOptionPtrOutput)
+}
+
+func (o SavingsOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SavingsOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SavingsOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SavingsOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SavingsOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SavingsOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavingsOption)(nil)).Elem()
+}
+
+func (o SavingsOptionPtrOutput) ToSavingsOptionPtrOutput() SavingsOptionPtrOutput {
+	return o
+}
+
+func (o SavingsOptionPtrOutput) ToSavingsOptionPtrOutputWithContext(ctx context.Context) SavingsOptionPtrOutput {
+	return o
+}
+
+func (o SavingsOptionPtrOutput) Elem() SavingsOptionOutput {
+	return o.ApplyT(func(v *SavingsOption) SavingsOption {
+		if v != nil {
+			return *v
+		}
+		var ret SavingsOption
+		return ret
+	}).(SavingsOptionOutput)
+}
+
+func (o SavingsOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SavingsOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SavingsOptionInput is an input type that accepts values of the SavingsOption enum
+// A concrete instance of `SavingsOptionInput` can be one of the following:
+//
+//	SavingsOptionUnknown
+//	SavingsOptionRI3Year
+//	SavingsOptionSavingsPlan3Year
+type SavingsOptionInput interface {
+	pulumi.Input
+
+	ToSavingsOptionOutput() SavingsOptionOutput
+	ToSavingsOptionOutputWithContext(context.Context) SavingsOptionOutput
+}
+
+var savingsOptionPtrType = reflect.TypeOf((**SavingsOption)(nil)).Elem()
+
+type SavingsOptionPtrInput interface {
+	pulumi.Input
+
+	ToSavingsOptionPtrOutput() SavingsOptionPtrOutput
+	ToSavingsOptionPtrOutputWithContext(context.Context) SavingsOptionPtrOutput
+}
+
+type savingsOptionPtr string
+
+func SavingsOptionPtr(v string) SavingsOptionPtrInput {
+	return (*savingsOptionPtr)(&v)
+}
+
+func (*savingsOptionPtr) ElementType() reflect.Type {
+	return savingsOptionPtrType
+}
+
+func (in *savingsOptionPtr) ToSavingsOptionPtrOutput() SavingsOptionPtrOutput {
+	return pulumi.ToOutput(in).(SavingsOptionPtrOutput)
+}
+
+func (in *savingsOptionPtr) ToSavingsOptionPtrOutputWithContext(ctx context.Context) SavingsOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SavingsOptionPtrOutput)
+}
+
+// Gets or sets savings options.
+type SavingsOptions string
+
+const (
+	// Savings Options is not applicable.
+	SavingsOptionsNone = SavingsOptions("None")
+	// One Year Savings Plan.
+	SavingsOptionsOneYearSavings = SavingsOptions("OneYearSavings")
+	// Three Years Savings Plan.
+	SavingsOptionsThreeYearsSavings = SavingsOptions("ThreeYearsSavings")
+	// One Year Reserved Instances.
+	SavingsOptionsOneYearReserved = SavingsOptions("OneYearReserved")
+	// Three Years Reserved Instances.
+	SavingsOptionsThreeYearsReserved = SavingsOptions("ThreeYearsReserved")
+)
+
+func (SavingsOptions) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsOptions)(nil)).Elem()
+}
+
+func (e SavingsOptions) ToSavingsOptionsOutput() SavingsOptionsOutput {
+	return pulumi.ToOutput(e).(SavingsOptionsOutput)
+}
+
+func (e SavingsOptions) ToSavingsOptionsOutputWithContext(ctx context.Context) SavingsOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SavingsOptionsOutput)
+}
+
+func (e SavingsOptions) ToSavingsOptionsPtrOutput() SavingsOptionsPtrOutput {
+	return e.ToSavingsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (e SavingsOptions) ToSavingsOptionsPtrOutputWithContext(ctx context.Context) SavingsOptionsPtrOutput {
+	return SavingsOptions(e).ToSavingsOptionsOutputWithContext(ctx).ToSavingsOptionsPtrOutputWithContext(ctx)
+}
+
+func (e SavingsOptions) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SavingsOptions) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SavingsOptions) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SavingsOptions) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SavingsOptionsOutput struct{ *pulumi.OutputState }
+
+func (SavingsOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SavingsOptions)(nil)).Elem()
+}
+
+func (o SavingsOptionsOutput) ToSavingsOptionsOutput() SavingsOptionsOutput {
+	return o
+}
+
+func (o SavingsOptionsOutput) ToSavingsOptionsOutputWithContext(ctx context.Context) SavingsOptionsOutput {
+	return o
+}
+
+func (o SavingsOptionsOutput) ToSavingsOptionsPtrOutput() SavingsOptionsPtrOutput {
+	return o.ToSavingsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionsOutput) ToSavingsOptionsPtrOutputWithContext(ctx context.Context) SavingsOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SavingsOptions) *SavingsOptions {
+		return &v
+	}).(SavingsOptionsPtrOutput)
+}
+
+func (o SavingsOptionsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SavingsOptions) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SavingsOptionsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SavingsOptions) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SavingsOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SavingsOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SavingsOptions)(nil)).Elem()
+}
+
+func (o SavingsOptionsPtrOutput) ToSavingsOptionsPtrOutput() SavingsOptionsPtrOutput {
+	return o
+}
+
+func (o SavingsOptionsPtrOutput) ToSavingsOptionsPtrOutputWithContext(ctx context.Context) SavingsOptionsPtrOutput {
+	return o
+}
+
+func (o SavingsOptionsPtrOutput) Elem() SavingsOptionsOutput {
+	return o.ApplyT(func(v *SavingsOptions) SavingsOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SavingsOptions
+		return ret
+	}).(SavingsOptionsOutput)
+}
+
+func (o SavingsOptionsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SavingsOptionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SavingsOptions) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SavingsOptionsInput is an input type that accepts values of the SavingsOptions enum
+// A concrete instance of `SavingsOptionsInput` can be one of the following:
+//
+//	SavingsOptionsNone
+//	SavingsOptionsOneYearSavings
+//	SavingsOptionsThreeYearsSavings
+//	SavingsOptionsOneYearReserved
+//	SavingsOptionsThreeYearsReserved
+type SavingsOptionsInput interface {
+	pulumi.Input
+
+	ToSavingsOptionsOutput() SavingsOptionsOutput
+	ToSavingsOptionsOutputWithContext(context.Context) SavingsOptionsOutput
+}
+
+var savingsOptionsPtrType = reflect.TypeOf((**SavingsOptions)(nil)).Elem()
+
+type SavingsOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSavingsOptionsPtrOutput() SavingsOptionsPtrOutput
+	ToSavingsOptionsPtrOutputWithContext(context.Context) SavingsOptionsPtrOutput
+}
+
+type savingsOptionsPtr string
+
+func SavingsOptionsPtr(v string) SavingsOptionsPtrInput {
+	return (*savingsOptionsPtr)(&v)
+}
+
+func (*savingsOptionsPtr) ElementType() reflect.Type {
+	return savingsOptionsPtrType
+}
+
+func (in *savingsOptionsPtr) ToSavingsOptionsPtrOutput() SavingsOptionsPtrOutput {
+	return pulumi.ToOutput(in).(SavingsOptionsPtrOutput)
+}
+
+func (in *savingsOptionsPtr) ToSavingsOptionsPtrOutputWithContext(ctx context.Context) SavingsOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SavingsOptionsPtrOutput)
+}
+
 type SecretStoreType string
 
 const (
@@ -7653,6 +9800,177 @@ func (in *sqlServerLicensePtr) ToSqlServerLicensePtrOutput() SqlServerLicensePtr
 
 func (in *sqlServerLicensePtr) ToSqlServerLicensePtrOutputWithContext(ctx context.Context) SqlServerLicensePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SqlServerLicensePtrOutput)
+}
+
+// SQL Server version.
+type SqlServerLicenseType string
+
+const (
+	// Unknown Sql Server License.
+	SqlServerLicenseTypeUnknown = SqlServerLicenseType("Unknown")
+	// Enterprise Sql Server License.
+	SqlServerLicenseTypeEnterprise = SqlServerLicenseType("Enterprise")
+	// Standard Sql Server License.
+	SqlServerLicenseTypeStandard = SqlServerLicenseType("Standard")
+)
+
+func (SqlServerLicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerLicenseType)(nil)).Elem()
+}
+
+func (e SqlServerLicenseType) ToSqlServerLicenseTypeOutput() SqlServerLicenseTypeOutput {
+	return pulumi.ToOutput(e).(SqlServerLicenseTypeOutput)
+}
+
+func (e SqlServerLicenseType) ToSqlServerLicenseTypeOutputWithContext(ctx context.Context) SqlServerLicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SqlServerLicenseTypeOutput)
+}
+
+func (e SqlServerLicenseType) ToSqlServerLicenseTypePtrOutput() SqlServerLicenseTypePtrOutput {
+	return e.ToSqlServerLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (e SqlServerLicenseType) ToSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) SqlServerLicenseTypePtrOutput {
+	return SqlServerLicenseType(e).ToSqlServerLicenseTypeOutputWithContext(ctx).ToSqlServerLicenseTypePtrOutputWithContext(ctx)
+}
+
+func (e SqlServerLicenseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SqlServerLicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SqlServerLicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SqlServerLicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SqlServerLicenseTypeOutput struct{ *pulumi.OutputState }
+
+func (SqlServerLicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerLicenseType)(nil)).Elem()
+}
+
+func (o SqlServerLicenseTypeOutput) ToSqlServerLicenseTypeOutput() SqlServerLicenseTypeOutput {
+	return o
+}
+
+func (o SqlServerLicenseTypeOutput) ToSqlServerLicenseTypeOutputWithContext(ctx context.Context) SqlServerLicenseTypeOutput {
+	return o
+}
+
+func (o SqlServerLicenseTypeOutput) ToSqlServerLicenseTypePtrOutput() SqlServerLicenseTypePtrOutput {
+	return o.ToSqlServerLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerLicenseTypeOutput) ToSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) SqlServerLicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerLicenseType) *SqlServerLicenseType {
+		return &v
+	}).(SqlServerLicenseTypePtrOutput)
+}
+
+func (o SqlServerLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SqlServerLicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SqlServerLicenseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SqlServerLicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerLicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SqlServerLicenseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SqlServerLicenseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerLicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerLicenseType)(nil)).Elem()
+}
+
+func (o SqlServerLicenseTypePtrOutput) ToSqlServerLicenseTypePtrOutput() SqlServerLicenseTypePtrOutput {
+	return o
+}
+
+func (o SqlServerLicenseTypePtrOutput) ToSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) SqlServerLicenseTypePtrOutput {
+	return o
+}
+
+func (o SqlServerLicenseTypePtrOutput) Elem() SqlServerLicenseTypeOutput {
+	return o.ApplyT(func(v *SqlServerLicenseType) SqlServerLicenseType {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerLicenseType
+		return ret
+	}).(SqlServerLicenseTypeOutput)
+}
+
+func (o SqlServerLicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SqlServerLicenseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SqlServerLicenseTypeInput is an input type that accepts values of the SqlServerLicenseType enum
+// A concrete instance of `SqlServerLicenseTypeInput` can be one of the following:
+//
+//	SqlServerLicenseTypeUnknown
+//	SqlServerLicenseTypeEnterprise
+//	SqlServerLicenseTypeStandard
+type SqlServerLicenseTypeInput interface {
+	pulumi.Input
+
+	ToSqlServerLicenseTypeOutput() SqlServerLicenseTypeOutput
+	ToSqlServerLicenseTypeOutputWithContext(context.Context) SqlServerLicenseTypeOutput
+}
+
+var sqlServerLicenseTypePtrType = reflect.TypeOf((**SqlServerLicenseType)(nil)).Elem()
+
+type SqlServerLicenseTypePtrInput interface {
+	pulumi.Input
+
+	ToSqlServerLicenseTypePtrOutput() SqlServerLicenseTypePtrOutput
+	ToSqlServerLicenseTypePtrOutputWithContext(context.Context) SqlServerLicenseTypePtrOutput
+}
+
+type sqlServerLicenseTypePtr string
+
+func SqlServerLicenseTypePtr(v string) SqlServerLicenseTypePtrInput {
+	return (*sqlServerLicenseTypePtr)(&v)
+}
+
+func (*sqlServerLicenseTypePtr) ElementType() reflect.Type {
+	return sqlServerLicenseTypePtrType
+}
+
+func (in *sqlServerLicenseTypePtr) ToSqlServerLicenseTypePtrOutput() SqlServerLicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(SqlServerLicenseTypePtrOutput)
+}
+
+func (in *sqlServerLicenseTypePtr) ToSqlServerLicenseTypePtrOutputWithContext(ctx context.Context) SqlServerLicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SqlServerLicenseTypePtrOutput)
 }
 
 // Gets or sets the current status of the solution.
@@ -8493,9 +10811,13 @@ func (in *targetStorageProjectionTypePtr) ToTargetStorageProjectionTypePtrOutput
 type TimeRange string
 
 const (
-	TimeRangeDay    = TimeRange("Day")
-	TimeRangeWeek   = TimeRange("Week")
-	TimeRangeMonth  = TimeRange("Month")
+	// Daily.
+	TimeRangeDay = TimeRange("Day")
+	// Weekly.
+	TimeRangeWeek = TimeRange("Week")
+	// Monthly.
+	TimeRangeMonth = TimeRange("Month")
+	// Custom Time Range.
 	TimeRangeCustom = TimeRange("Custom")
 )
 
@@ -8871,6 +11193,174 @@ func (in *toolPtr) ToToolPtrOutputWithContext(ctx context.Context) ToolPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ToolPtrOutput)
 }
 
+// VSphere licence type.
+type VsphereManagementLicenseType string
+
+const (
+	// Unknown License.
+	VsphereManagementLicenseTypeUnknown = VsphereManagementLicenseType("Unknown")
+	// VSphereServerStandard License.
+	VsphereManagementLicenseTypeVSphereServerStandard = VsphereManagementLicenseType("VSphereServerStandard")
+)
+
+func (VsphereManagementLicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*VsphereManagementLicenseType)(nil)).Elem()
+}
+
+func (e VsphereManagementLicenseType) ToVsphereManagementLicenseTypeOutput() VsphereManagementLicenseTypeOutput {
+	return pulumi.ToOutput(e).(VsphereManagementLicenseTypeOutput)
+}
+
+func (e VsphereManagementLicenseType) ToVsphereManagementLicenseTypeOutputWithContext(ctx context.Context) VsphereManagementLicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VsphereManagementLicenseTypeOutput)
+}
+
+func (e VsphereManagementLicenseType) ToVsphereManagementLicenseTypePtrOutput() VsphereManagementLicenseTypePtrOutput {
+	return e.ToVsphereManagementLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (e VsphereManagementLicenseType) ToVsphereManagementLicenseTypePtrOutputWithContext(ctx context.Context) VsphereManagementLicenseTypePtrOutput {
+	return VsphereManagementLicenseType(e).ToVsphereManagementLicenseTypeOutputWithContext(ctx).ToVsphereManagementLicenseTypePtrOutputWithContext(ctx)
+}
+
+func (e VsphereManagementLicenseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VsphereManagementLicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VsphereManagementLicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VsphereManagementLicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VsphereManagementLicenseTypeOutput struct{ *pulumi.OutputState }
+
+func (VsphereManagementLicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VsphereManagementLicenseType)(nil)).Elem()
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToVsphereManagementLicenseTypeOutput() VsphereManagementLicenseTypeOutput {
+	return o
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToVsphereManagementLicenseTypeOutputWithContext(ctx context.Context) VsphereManagementLicenseTypeOutput {
+	return o
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToVsphereManagementLicenseTypePtrOutput() VsphereManagementLicenseTypePtrOutput {
+	return o.ToVsphereManagementLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToVsphereManagementLicenseTypePtrOutputWithContext(ctx context.Context) VsphereManagementLicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VsphereManagementLicenseType) *VsphereManagementLicenseType {
+		return &v
+	}).(VsphereManagementLicenseTypePtrOutput)
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VsphereManagementLicenseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VsphereManagementLicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VsphereManagementLicenseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VsphereManagementLicenseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (VsphereManagementLicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VsphereManagementLicenseType)(nil)).Elem()
+}
+
+func (o VsphereManagementLicenseTypePtrOutput) ToVsphereManagementLicenseTypePtrOutput() VsphereManagementLicenseTypePtrOutput {
+	return o
+}
+
+func (o VsphereManagementLicenseTypePtrOutput) ToVsphereManagementLicenseTypePtrOutputWithContext(ctx context.Context) VsphereManagementLicenseTypePtrOutput {
+	return o
+}
+
+func (o VsphereManagementLicenseTypePtrOutput) Elem() VsphereManagementLicenseTypeOutput {
+	return o.ApplyT(func(v *VsphereManagementLicenseType) VsphereManagementLicenseType {
+		if v != nil {
+			return *v
+		}
+		var ret VsphereManagementLicenseType
+		return ret
+	}).(VsphereManagementLicenseTypeOutput)
+}
+
+func (o VsphereManagementLicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VsphereManagementLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VsphereManagementLicenseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VsphereManagementLicenseTypeInput is an input type that accepts values of the VsphereManagementLicenseType enum
+// A concrete instance of `VsphereManagementLicenseTypeInput` can be one of the following:
+//
+//	VsphereManagementLicenseTypeUnknown
+//	VsphereManagementLicenseTypeVSphereServerStandard
+type VsphereManagementLicenseTypeInput interface {
+	pulumi.Input
+
+	ToVsphereManagementLicenseTypeOutput() VsphereManagementLicenseTypeOutput
+	ToVsphereManagementLicenseTypeOutputWithContext(context.Context) VsphereManagementLicenseTypeOutput
+}
+
+var vsphereManagementLicenseTypePtrType = reflect.TypeOf((**VsphereManagementLicenseType)(nil)).Elem()
+
+type VsphereManagementLicenseTypePtrInput interface {
+	pulumi.Input
+
+	ToVsphereManagementLicenseTypePtrOutput() VsphereManagementLicenseTypePtrOutput
+	ToVsphereManagementLicenseTypePtrOutputWithContext(context.Context) VsphereManagementLicenseTypePtrOutput
+}
+
+type vsphereManagementLicenseTypePtr string
+
+func VsphereManagementLicenseTypePtr(v string) VsphereManagementLicenseTypePtrInput {
+	return (*vsphereManagementLicenseTypePtr)(&v)
+}
+
+func (*vsphereManagementLicenseTypePtr) ElementType() reflect.Type {
+	return vsphereManagementLicenseTypePtrType
+}
+
+func (in *vsphereManagementLicenseTypePtr) ToVsphereManagementLicenseTypePtrOutput() VsphereManagementLicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(VsphereManagementLicenseTypePtrOutput)
+}
+
+func (in *vsphereManagementLicenseTypePtr) ToVsphereManagementLicenseTypePtrOutputWithContext(ctx context.Context) VsphereManagementLicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VsphereManagementLicenseTypePtrOutput)
+}
+
 // Gets or sets the deployment target platform.
 type WorkloadDeploymentTarget string
 
@@ -9238,6 +11728,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureCurrencyPtrOutput{})
 	pulumi.RegisterOutputType(AzureDiskTypeOutput{})
 	pulumi.RegisterOutputType(AzureDiskTypePtrOutput{})
+	pulumi.RegisterOutputType(AzureEnvironmentTypeOutput{})
+	pulumi.RegisterOutputType(AzureEnvironmentTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureHybridUseBenefitOutput{})
 	pulumi.RegisterOutputType(AzureHybridUseBenefitPtrOutput{})
 	pulumi.RegisterOutputType(AzureLocationOutput{})
@@ -9260,16 +11752,24 @@ func init() {
 	pulumi.RegisterOutputType(AzureSqlServiceTierPtrOutput{})
 	pulumi.RegisterOutputType(AzureStorageRedundancyOutput{})
 	pulumi.RegisterOutputType(AzureStorageRedundancyPtrOutput{})
+	pulumi.RegisterOutputType(AzureVmCategoryOutput{})
+	pulumi.RegisterOutputType(AzureVmCategoryPtrOutput{})
 	pulumi.RegisterOutputType(AzureVmFamilyOutput{})
 	pulumi.RegisterOutputType(AzureVmFamilyPtrOutput{})
+	pulumi.RegisterOutputType(BusinessCaseCurrencyOutput{})
+	pulumi.RegisterOutputType(BusinessCaseCurrencyPtrOutput{})
 	pulumi.RegisterOutputType(CleanupStateOutput{})
 	pulumi.RegisterOutputType(CleanupStatePtrOutput{})
 	pulumi.RegisterOutputType(ComputeTierOutput{})
 	pulumi.RegisterOutputType(ComputeTierPtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationTypeOutput{})
 	pulumi.RegisterOutputType(ConfigurationTypePtrOutput{})
+	pulumi.RegisterOutputType(ConsolidationTypeOutput{})
+	pulumi.RegisterOutputType(ConsolidationTypePtrOutput{})
 	pulumi.RegisterOutputType(CurrencyOutput{})
 	pulumi.RegisterOutputType(CurrencyPtrOutput{})
+	pulumi.RegisterOutputType(DiscoverySourceOutput{})
+	pulumi.RegisterOutputType(DiscoverySourcePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentTypeOutput{})
 	pulumi.RegisterOutputType(EnvironmentTypePtrOutput{})
 	pulumi.RegisterOutputType(FttAndRaidLevelOutput{})
@@ -9278,8 +11778,16 @@ func init() {
 	pulumi.RegisterOutputType(GoalPtrOutput{})
 	pulumi.RegisterOutputType(GroupTypeOutput{})
 	pulumi.RegisterOutputType(GroupTypePtrOutput{})
+	pulumi.RegisterOutputType(HyperVLicenseTypeOutput{})
+	pulumi.RegisterOutputType(HyperVLicenseTypePtrOutput{})
+	pulumi.RegisterOutputType(LicenseTypeOutput{})
+	pulumi.RegisterOutputType(LicenseTypePtrOutput{})
+	pulumi.RegisterOutputType(LicensingProgramOutput{})
+	pulumi.RegisterOutputType(LicensingProgramPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerTypeOutput{})
 	pulumi.RegisterOutputType(LoadBalancerTypePtrOutput{})
+	pulumi.RegisterOutputType(MigrationStrategyOutput{})
+	pulumi.RegisterOutputType(MigrationStrategyPtrOutput{})
 	pulumi.RegisterOutputType(MultiSubnetIntentOutput{})
 	pulumi.RegisterOutputType(MultiSubnetIntentPtrOutput{})
 	pulumi.RegisterOutputType(OperatingSystemTypeOutput{})
@@ -9290,6 +11798,8 @@ func init() {
 	pulumi.RegisterOutputType(OsLicensePtrOutput{})
 	pulumi.RegisterOutputType(PercentileOutput{})
 	pulumi.RegisterOutputType(PercentilePtrOutput{})
+	pulumi.RegisterOutputType(PricingTierOutput{})
+	pulumi.RegisterOutputType(PricingTierPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(ProjectStatusOutput{})
@@ -9304,10 +11814,16 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypesOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypesPtrOutput{})
+	pulumi.RegisterOutputType(SavingsOptionOutput{})
+	pulumi.RegisterOutputType(SavingsOptionPtrOutput{})
+	pulumi.RegisterOutputType(SavingsOptionsOutput{})
+	pulumi.RegisterOutputType(SavingsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreTypeOutput{})
 	pulumi.RegisterOutputType(SecretStoreTypePtrOutput{})
 	pulumi.RegisterOutputType(SqlServerLicenseOutput{})
 	pulumi.RegisterOutputType(SqlServerLicensePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerLicenseTypeOutput{})
+	pulumi.RegisterOutputType(SqlServerLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(TargetAvailabilityZoneOutput{})
@@ -9322,6 +11838,8 @@ func init() {
 	pulumi.RegisterOutputType(TimeRangePtrOutput{})
 	pulumi.RegisterOutputType(ToolOutput{})
 	pulumi.RegisterOutputType(ToolPtrOutput{})
+	pulumi.RegisterOutputType(VsphereManagementLicenseTypeOutput{})
+	pulumi.RegisterOutputType(VsphereManagementLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadDeploymentTargetOutput{})
 	pulumi.RegisterOutputType(WorkloadDeploymentTargetPtrOutput{})
 	pulumi.RegisterOutputType(ZoneRedundantOutput{})

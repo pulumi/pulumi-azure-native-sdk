@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-01-01.
 //
-// Other available API versions: 2021-04-01, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
+// Other available API versions: 2021-04-01, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview.
 type WorkspaceConnection struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +103,9 @@ func NewWorkspaceConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:WorkspaceConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:WorkspaceConnection"),
 		},
 	})
 	opts = append(opts, aliases)

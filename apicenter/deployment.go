@@ -26,7 +26,8 @@ type Deployment struct {
 	// API center-scoped environment resource ID.
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
 	// The name of the resource
-	Name   pulumi.StringOutput               `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The deployment server
 	Server DeploymentServerResponsePtrOutput `pulumi:"server"`
 	// State of API deployment.
 	State pulumi.StringPtrOutput `pulumi:"state"`
@@ -109,8 +110,9 @@ type deploymentArgs struct {
 	// API center-scoped environment resource ID.
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string            `pulumi:"resourceGroupName"`
-	Server            *DeploymentServer `pulumi:"server"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The deployment server
+	Server *DeploymentServer `pulumi:"server"`
 	// The name of Azure API Center service.
 	ServiceName string `pulumi:"serviceName"`
 	// State of API deployment.
@@ -137,7 +139,8 @@ type DeploymentArgs struct {
 	EnvironmentId pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	Server            DeploymentServerPtrInput
+	// The deployment server
+	Server DeploymentServerPtrInput
 	// The name of Azure API Center service.
 	ServiceName pulumi.StringInput
 	// State of API deployment.
@@ -210,6 +213,7 @@ func (o DeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The deployment server
 func (o DeploymentOutput) Server() DeploymentServerResponsePtrOutput {
 	return o.ApplyT(func(v *Deployment) DeploymentServerResponsePtrOutput { return v.Server }).(DeploymentServerResponsePtrOutput)
 }

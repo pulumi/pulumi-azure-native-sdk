@@ -13,6 +13,8 @@ import (
 
 // Get a HypervCollector
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2023-04-01-preview.
 func LookupHypervCollectorsOperation(ctx *pulumi.Context, args *LookupHypervCollectorsOperationArgs, opts ...pulumi.InvokeOption) (*LookupHypervCollectorsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHypervCollectorsOperationResult

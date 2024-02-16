@@ -36,11 +36,13 @@ type LookupApiArgs struct {
 
 // API entity.
 type LookupApiResult struct {
+	// The set of contacts
 	Contacts []ContactResponse `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
 	// Description of the API.
-	Description           *string                         `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The set of external documentation
 	ExternalDocumentation []ExternalDocumentationResponse `pulumi:"externalDocumentation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -107,6 +109,7 @@ func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Co
 	return o
 }
 
+// The set of contacts
 func (o LookupApiResultOutput) Contacts() ContactResponseArrayOutput {
 	return o.ApplyT(func(v LookupApiResult) []ContactResponse { return v.Contacts }).(ContactResponseArrayOutput)
 }
@@ -121,6 +124,7 @@ func (o LookupApiResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApiResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The set of external documentation
 func (o LookupApiResultOutput) ExternalDocumentation() ExternalDocumentationResponseArrayOutput {
 	return o.ApplyT(func(v LookupApiResult) []ExternalDocumentationResponse { return v.ExternalDocumentation }).(ExternalDocumentationResponseArrayOutput)
 }

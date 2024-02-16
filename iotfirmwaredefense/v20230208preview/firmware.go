@@ -62,6 +62,9 @@ func NewFirmware(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense:Firmware"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20240110:Firmware"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

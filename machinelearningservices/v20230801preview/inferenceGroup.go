@@ -59,6 +59,9 @@ func NewInferenceGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices:InferenceGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:InferenceGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

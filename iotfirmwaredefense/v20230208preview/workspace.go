@@ -44,6 +44,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotfirmwaredefense:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotfirmwaredefense/v20240110:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

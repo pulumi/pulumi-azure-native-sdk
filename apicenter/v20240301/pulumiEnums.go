@@ -14,11 +14,17 @@ import (
 type ApiKind string
 
 const (
-	ApiKindRest      = ApiKind("rest")
-	ApiKindGraphql   = ApiKind("graphql")
-	ApiKindGrpc      = ApiKind("grpc")
-	ApiKindSoap      = ApiKind("soap")
-	ApiKindWebhook   = ApiKind("webhook")
+	// A Representational State Transfer Api
+	ApiKindRest = ApiKind("rest")
+	// A Graph query language Api
+	ApiKindGraphql = ApiKind("graphql")
+	// A gRPC Api
+	ApiKindGrpc = ApiKind("grpc")
+	// A SOAP Api
+	ApiKindSoap = ApiKind("soap")
+	// Web Hook
+	ApiKindWebhook = ApiKind("webhook")
+	// Web Socket
 	ApiKindWebsocket = ApiKind("websocket")
 )
 
@@ -188,7 +194,9 @@ func (in *apiKindPtr) ToApiKindPtrOutputWithContext(ctx context.Context) ApiKind
 type DeploymentStateEnum string
 
 const (
-	DeploymentStateEnumActive   = DeploymentStateEnum("active")
+	// Active State
+	DeploymentStateEnumActive = DeploymentStateEnum("active")
+	// Inactive State
 	DeploymentStateEnumInactive = DeploymentStateEnum("inactive")
 )
 
@@ -354,10 +362,14 @@ func (in *deploymentStateEnumPtr) ToDeploymentStateEnumPtrOutputWithContext(ctx 
 type EnvironmentKind string
 
 const (
+	// Development environment
 	EnvironmentKindDevelopment = EnvironmentKind("development")
-	EnvironmentKindTesting     = EnvironmentKind("testing")
-	EnvironmentKindStaging     = EnvironmentKind("staging")
-	EnvironmentKindProduction  = EnvironmentKind("production")
+	// Testing environment
+	EnvironmentKindTesting = EnvironmentKind("testing")
+	// Staging environment
+	EnvironmentKindStaging = EnvironmentKind("staging")
+	// Production environment
+	EnvironmentKindProduction = EnvironmentKind("production")
 )
 
 func (EnvironmentKind) ElementType() reflect.Type {
@@ -524,12 +536,19 @@ func (in *environmentKindPtr) ToEnvironmentKindPtrOutputWithContext(ctx context.
 type EnvironmentServerType string
 
 const (
-	EnvironmentServerType_Azure_API_Management    = EnvironmentServerType("Azure API Management")
-	EnvironmentServerType_Azure_compute_service   = EnvironmentServerType("Azure compute service")
-	EnvironmentServerType_Apigee_API_Management   = EnvironmentServerType("Apigee API Management")
-	EnvironmentServerType_AWS_API_Gateway         = EnvironmentServerType("AWS API Gateway")
-	EnvironmentServerType_Kong_API_Gateway        = EnvironmentServerType("Kong API Gateway")
-	EnvironmentServerTypeKubernetes               = EnvironmentServerType("Kubernetes")
+	// Api Management Server
+	EnvironmentServerType_Azure_API_Management = EnvironmentServerType("Azure API Management")
+	// Compute server
+	EnvironmentServerType_Azure_compute_service = EnvironmentServerType("Azure compute service")
+	// Apigee server
+	EnvironmentServerType_Apigee_API_Management = EnvironmentServerType("Apigee API Management")
+	// AWS Api Gateway server
+	EnvironmentServerType_AWS_API_Gateway = EnvironmentServerType("AWS API Gateway")
+	// Kong API Gateway server
+	EnvironmentServerType_Kong_API_Gateway = EnvironmentServerType("Kong API Gateway")
+	// Kubernetes server
+	EnvironmentServerTypeKubernetes = EnvironmentServerType("Kubernetes")
+	// Mulesoft Api Management server
 	EnvironmentServerType_MuleSoft_API_Management = EnvironmentServerType("MuleSoft API Management")
 )
 
@@ -700,13 +719,20 @@ func (in *environmentServerTypePtr) ToEnvironmentServerTypePtrOutputWithContext(
 type LifecycleStage string
 
 const (
-	LifecycleStageDesign      = LifecycleStage("design")
+	// design stage
+	LifecycleStageDesign = LifecycleStage("design")
+	// development stage
 	LifecycleStageDevelopment = LifecycleStage("development")
-	LifecycleStageTesting     = LifecycleStage("testing")
-	LifecycleStagePreview     = LifecycleStage("preview")
-	LifecycleStageProduction  = LifecycleStage("production")
-	LifecycleStageDeprecated  = LifecycleStage("deprecated")
-	LifecycleStageRetired     = LifecycleStage("retired")
+	// testing stage
+	LifecycleStageTesting = LifecycleStage("testing")
+	// In preview
+	LifecycleStagePreview = LifecycleStage("preview")
+	// In production
+	LifecycleStageProduction = LifecycleStage("production")
+	// deprecated stage
+	LifecycleStageDeprecated = LifecycleStage("deprecated")
+	// Retired stage
+	LifecycleStageRetired = LifecycleStage("retired")
 )
 
 func (LifecycleStage) ElementType() reflect.Type {
@@ -1046,9 +1072,12 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 type MetadataAssignmentEntity string
 
 const (
-	MetadataAssignmentEntityApi         = MetadataAssignmentEntity("api")
-	MetadataAssignmentEntityDeployment  = MetadataAssignmentEntity("deployment")
+	// Assigned to API
+	MetadataAssignmentEntityApi = MetadataAssignmentEntity("api")
+	// Assigned to Environment
 	MetadataAssignmentEntityEnvironment = MetadataAssignmentEntity("environment")
+	// Assigned to Deployment
+	MetadataAssignmentEntityDeployment = MetadataAssignmentEntity("deployment")
 )
 
 func (MetadataAssignmentEntity) ElementType() reflect.Type {
@@ -1174,8 +1203,8 @@ func (o MetadataAssignmentEntityPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // A concrete instance of `MetadataAssignmentEntityInput` can be one of the following:
 //
 //	MetadataAssignmentEntityApi
-//	MetadataAssignmentEntityDeployment
 //	MetadataAssignmentEntityEnvironment
+//	MetadataAssignmentEntityDeployment
 type MetadataAssignmentEntityInput interface {
 	pulumi.Input
 

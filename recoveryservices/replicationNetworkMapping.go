@@ -15,7 +15,7 @@ import (
 // Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10.
 //
-// Other available API versions: 2021-03-01, 2023-06-01.
+// Other available API versions: 2021-03-01, 2023-06-01, 2023-08-01.
 type ReplicationNetworkMapping struct {
 	pulumi.CustomResourceState
 
@@ -123,6 +123,9 @@ func NewReplicationNetworkMapping(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230601:ReplicationNetworkMapping"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20230801:ReplicationNetworkMapping"),
 		},
 	})
 	opts = append(opts, aliases)

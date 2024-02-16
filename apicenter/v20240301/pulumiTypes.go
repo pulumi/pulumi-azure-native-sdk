@@ -14,7 +14,7 @@ import (
 var _ = utilities.GetEnvOrDefault
 
 // API specification details.
-type ApiDefinitionPropertiesResponseSpecification struct {
+type ApiDefinitionPropertiesSpecificationResponse struct {
 	// Specification name.
 	Name *string `pulumi:"name"`
 	// Specification version.
@@ -22,30 +22,31 @@ type ApiDefinitionPropertiesResponseSpecification struct {
 }
 
 // API specification details.
-type ApiDefinitionPropertiesResponseSpecificationOutput struct{ *pulumi.OutputState }
+type ApiDefinitionPropertiesSpecificationResponseOutput struct{ *pulumi.OutputState }
 
-func (ApiDefinitionPropertiesResponseSpecificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiDefinitionPropertiesResponseSpecification)(nil)).Elem()
+func (ApiDefinitionPropertiesSpecificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiDefinitionPropertiesSpecificationResponse)(nil)).Elem()
 }
 
-func (o ApiDefinitionPropertiesResponseSpecificationOutput) ToApiDefinitionPropertiesResponseSpecificationOutput() ApiDefinitionPropertiesResponseSpecificationOutput {
+func (o ApiDefinitionPropertiesSpecificationResponseOutput) ToApiDefinitionPropertiesSpecificationResponseOutput() ApiDefinitionPropertiesSpecificationResponseOutput {
 	return o
 }
 
-func (o ApiDefinitionPropertiesResponseSpecificationOutput) ToApiDefinitionPropertiesResponseSpecificationOutputWithContext(ctx context.Context) ApiDefinitionPropertiesResponseSpecificationOutput {
+func (o ApiDefinitionPropertiesSpecificationResponseOutput) ToApiDefinitionPropertiesSpecificationResponseOutputWithContext(ctx context.Context) ApiDefinitionPropertiesSpecificationResponseOutput {
 	return o
 }
 
 // Specification name.
-func (o ApiDefinitionPropertiesResponseSpecificationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiDefinitionPropertiesResponseSpecification) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ApiDefinitionPropertiesSpecificationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiDefinitionPropertiesSpecificationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Specification version.
-func (o ApiDefinitionPropertiesResponseSpecificationOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiDefinitionPropertiesResponseSpecification) *string { return v.Version }).(pulumi.StringPtrOutput)
+func (o ApiDefinitionPropertiesSpecificationResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiDefinitionPropertiesSpecificationResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+// Contact information
 type Contact struct {
 	// Email address of the contact.
 	Email *string `pulumi:"email"`
@@ -66,6 +67,7 @@ type ContactInput interface {
 	ToContactOutputWithContext(context.Context) ContactOutput
 }
 
+// Contact information
 type ContactArgs struct {
 	// Email address of the contact.
 	Email pulumi.StringPtrInput `pulumi:"email"`
@@ -112,6 +114,7 @@ func (i ContactArray) ToContactArrayOutputWithContext(ctx context.Context) Conta
 	return pulumi.ToOutputWithContext(ctx, i).(ContactArrayOutput)
 }
 
+// Contact information
 type ContactOutput struct{ *pulumi.OutputState }
 
 func (ContactOutput) ElementType() reflect.Type {
@@ -161,6 +164,7 @@ func (o ContactArrayOutput) Index(i pulumi.IntInput) ContactOutput {
 	}).(ContactOutput)
 }
 
+// Contact information
 type ContactResponse struct {
 	// Email address of the contact.
 	Email *string `pulumi:"email"`
@@ -170,6 +174,7 @@ type ContactResponse struct {
 	Url *string `pulumi:"url"`
 }
 
+// Contact information
 type ContactResponseOutput struct{ *pulumi.OutputState }
 
 func (ContactResponseOutput) ElementType() reflect.Type {
@@ -219,6 +224,7 @@ func (o ContactResponseArrayOutput) Index(i pulumi.IntInput) ContactResponseOutp
 	}).(ContactResponseOutput)
 }
 
+// Server
 type DeploymentServer struct {
 	// Base runtime URLs for this deployment.
 	RuntimeUri []string `pulumi:"runtimeUri"`
@@ -235,6 +241,7 @@ type DeploymentServerInput interface {
 	ToDeploymentServerOutputWithContext(context.Context) DeploymentServerOutput
 }
 
+// Server
 type DeploymentServerArgs struct {
 	// Base runtime URLs for this deployment.
 	RuntimeUri pulumi.StringArrayInput `pulumi:"runtimeUri"`
@@ -293,6 +300,7 @@ func (i *deploymentServerPtrType) ToDeploymentServerPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentServerPtrOutput)
 }
 
+// Server
 type DeploymentServerOutput struct{ *pulumi.OutputState }
 
 func (DeploymentServerOutput) ElementType() reflect.Type {
@@ -356,11 +364,13 @@ func (o DeploymentServerPtrOutput) RuntimeUri() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Server
 type DeploymentServerResponse struct {
 	// Base runtime URLs for this deployment.
 	RuntimeUri []string `pulumi:"runtimeUri"`
 }
 
+// Server
 type DeploymentServerResponseOutput struct{ *pulumi.OutputState }
 
 func (DeploymentServerResponseOutput) ElementType() reflect.Type {
@@ -416,6 +426,7 @@ func (o DeploymentServerResponsePtrOutput) RuntimeUri() pulumi.StringArrayOutput
 
 // Server information of the environment.
 type EnvironmentServer struct {
+	// The location of the management portal
 	ManagementPortalUri []string `pulumi:"managementPortalUri"`
 	// Type of the server that represents the environment.
 	Type *string `pulumi:"type"`
@@ -434,6 +445,7 @@ type EnvironmentServerInput interface {
 
 // Server information of the environment.
 type EnvironmentServerArgs struct {
+	// The location of the management portal
 	ManagementPortalUri pulumi.StringArrayInput `pulumi:"managementPortalUri"`
 	// Type of the server that represents the environment.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -517,6 +529,7 @@ func (o EnvironmentServerOutput) ToEnvironmentServerPtrOutputWithContext(ctx con
 	}).(EnvironmentServerPtrOutput)
 }
 
+// The location of the management portal
 func (o EnvironmentServerOutput) ManagementPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentServer) []string { return v.ManagementPortalUri }).(pulumi.StringArrayOutput)
 }
@@ -550,6 +563,7 @@ func (o EnvironmentServerPtrOutput) Elem() EnvironmentServerOutput {
 	}).(EnvironmentServerOutput)
 }
 
+// The location of the management portal
 func (o EnvironmentServerPtrOutput) ManagementPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentServer) []string {
 		if v == nil {
@@ -571,6 +585,7 @@ func (o EnvironmentServerPtrOutput) Type() pulumi.StringPtrOutput {
 
 // Server information of the environment.
 type EnvironmentServerResponse struct {
+	// The location of the management portal
 	ManagementPortalUri []string `pulumi:"managementPortalUri"`
 	// Type of the server that represents the environment.
 	Type *string `pulumi:"type"`
@@ -591,6 +606,7 @@ func (o EnvironmentServerResponseOutput) ToEnvironmentServerResponseOutputWithCo
 	return o
 }
 
+// The location of the management portal
 func (o EnvironmentServerResponseOutput) ManagementPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentServerResponse) []string { return v.ManagementPortalUri }).(pulumi.StringArrayOutput)
 }
@@ -624,6 +640,7 @@ func (o EnvironmentServerResponsePtrOutput) Elem() EnvironmentServerResponseOutp
 	}).(EnvironmentServerResponseOutput)
 }
 
+// The location of the management portal
 func (o EnvironmentServerResponsePtrOutput) ManagementPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentServerResponse) []string {
 		if v == nil {
@@ -823,11 +840,13 @@ func (o ExternalDocumentationResponseArrayOutput) Index(i pulumi.IntInput) Exter
 
 // The license information for the API.
 type License struct {
-	// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+	// SPDX license information for the API. The identifier field is mutually
+	// exclusive of the URL field.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the license.
 	Name *string `pulumi:"name"`
-	// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+	// URL pointing to the license details. The URL field is mutually exclusive of the
+	// identifier field.
 	Url *string `pulumi:"url"`
 }
 
@@ -844,11 +863,13 @@ type LicenseInput interface {
 
 // The license information for the API.
 type LicenseArgs struct {
-	// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+	// SPDX license information for the API. The identifier field is mutually
+	// exclusive of the URL field.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// Name of the license.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+	// URL pointing to the license details. The URL field is mutually exclusive of the
+	// identifier field.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
@@ -930,7 +951,8 @@ func (o LicenseOutput) ToLicensePtrOutputWithContext(ctx context.Context) Licens
 	}).(LicensePtrOutput)
 }
 
-// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+// SPDX license information for the API. The identifier field is mutually
+// exclusive of the URL field.
 func (o LicenseOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v License) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
@@ -940,7 +962,8 @@ func (o LicenseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v License) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+// URL pointing to the license details. The URL field is mutually exclusive of the
+// identifier field.
 func (o LicenseOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v License) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -969,7 +992,8 @@ func (o LicensePtrOutput) Elem() LicenseOutput {
 	}).(LicenseOutput)
 }
 
-// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+// SPDX license information for the API. The identifier field is mutually
+// exclusive of the URL field.
 func (o LicensePtrOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *License) *string {
 		if v == nil {
@@ -989,7 +1013,8 @@ func (o LicensePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+// URL pointing to the license details. The URL field is mutually exclusive of the
+// identifier field.
 func (o LicensePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *License) *string {
 		if v == nil {
@@ -1001,11 +1026,13 @@ func (o LicensePtrOutput) Url() pulumi.StringPtrOutput {
 
 // The license information for the API.
 type LicenseResponse struct {
-	// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+	// SPDX license information for the API. The identifier field is mutually
+	// exclusive of the URL field.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the license.
 	Name *string `pulumi:"name"`
-	// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+	// URL pointing to the license details. The URL field is mutually exclusive of the
+	// identifier field.
 	Url *string `pulumi:"url"`
 }
 
@@ -1024,7 +1051,8 @@ func (o LicenseResponseOutput) ToLicenseResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+// SPDX license information for the API. The identifier field is mutually
+// exclusive of the URL field.
 func (o LicenseResponseOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LicenseResponse) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
@@ -1034,7 +1062,8 @@ func (o LicenseResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LicenseResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+// URL pointing to the license details. The URL field is mutually exclusive of the
+// identifier field.
 func (o LicenseResponseOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LicenseResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
@@ -1063,7 +1092,8 @@ func (o LicenseResponsePtrOutput) Elem() LicenseResponseOutput {
 	}).(LicenseResponseOutput)
 }
 
-// SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+// SPDX license information for the API. The identifier field is mutually
+// exclusive of the URL field.
 func (o LicenseResponsePtrOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LicenseResponse) *string {
 		if v == nil {
@@ -1083,7 +1113,8 @@ func (o LicenseResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+// URL pointing to the license details. The URL field is mutually exclusive of the
+// identifier field.
 func (o LicenseResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LicenseResponse) *string {
 		if v == nil {
@@ -1365,11 +1396,14 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// Assignment metadata
 type MetadataAssignment struct {
+	// Deprecated assignment
 	Deprecated *bool `pulumi:"deprecated"`
 	// The entities this metadata schema component gets applied to.
-	Entity   *string `pulumi:"entity"`
-	Required *bool   `pulumi:"required"`
+	Entity *string `pulumi:"entity"`
+	// Required assignment
+	Required *bool `pulumi:"required"`
 }
 
 // MetadataAssignmentInput is an input type that accepts MetadataAssignmentArgs and MetadataAssignmentOutput values.
@@ -1383,11 +1417,14 @@ type MetadataAssignmentInput interface {
 	ToMetadataAssignmentOutputWithContext(context.Context) MetadataAssignmentOutput
 }
 
+// Assignment metadata
 type MetadataAssignmentArgs struct {
+	// Deprecated assignment
 	Deprecated pulumi.BoolPtrInput `pulumi:"deprecated"`
 	// The entities this metadata schema component gets applied to.
-	Entity   pulumi.StringPtrInput `pulumi:"entity"`
-	Required pulumi.BoolPtrInput   `pulumi:"required"`
+	Entity pulumi.StringPtrInput `pulumi:"entity"`
+	// Required assignment
+	Required pulumi.BoolPtrInput `pulumi:"required"`
 }
 
 func (MetadataAssignmentArgs) ElementType() reflect.Type {
@@ -1427,6 +1464,7 @@ func (i MetadataAssignmentArray) ToMetadataAssignmentArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataAssignmentArrayOutput)
 }
 
+// Assignment metadata
 type MetadataAssignmentOutput struct{ *pulumi.OutputState }
 
 func (MetadataAssignmentOutput) ElementType() reflect.Type {
@@ -1441,6 +1479,7 @@ func (o MetadataAssignmentOutput) ToMetadataAssignmentOutputWithContext(ctx cont
 	return o
 }
 
+// Deprecated assignment
 func (o MetadataAssignmentOutput) Deprecated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetadataAssignment) *bool { return v.Deprecated }).(pulumi.BoolPtrOutput)
 }
@@ -1450,6 +1489,7 @@ func (o MetadataAssignmentOutput) Entity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataAssignment) *string { return v.Entity }).(pulumi.StringPtrOutput)
 }
 
+// Required assignment
 func (o MetadataAssignmentOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetadataAssignment) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
@@ -1474,13 +1514,17 @@ func (o MetadataAssignmentArrayOutput) Index(i pulumi.IntInput) MetadataAssignme
 	}).(MetadataAssignmentOutput)
 }
 
+// Assignment metadata
 type MetadataAssignmentResponse struct {
+	// Deprecated assignment
 	Deprecated *bool `pulumi:"deprecated"`
 	// The entities this metadata schema component gets applied to.
-	Entity   *string `pulumi:"entity"`
-	Required *bool   `pulumi:"required"`
+	Entity *string `pulumi:"entity"`
+	// Required assignment
+	Required *bool `pulumi:"required"`
 }
 
+// Assignment metadata
 type MetadataAssignmentResponseOutput struct{ *pulumi.OutputState }
 
 func (MetadataAssignmentResponseOutput) ElementType() reflect.Type {
@@ -1495,6 +1539,7 @@ func (o MetadataAssignmentResponseOutput) ToMetadataAssignmentResponseOutputWith
 	return o
 }
 
+// Deprecated assignment
 func (o MetadataAssignmentResponseOutput) Deprecated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetadataAssignmentResponse) *bool { return v.Deprecated }).(pulumi.BoolPtrOutput)
 }
@@ -1504,6 +1549,7 @@ func (o MetadataAssignmentResponseOutput) Entity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataAssignmentResponse) *string { return v.Entity }).(pulumi.StringPtrOutput)
 }
 
+// Required assignment
 func (o MetadataAssignmentResponseOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetadataAssignmentResponse) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
@@ -1528,7 +1574,9 @@ func (o MetadataAssignmentResponseArrayOutput) Index(i pulumi.IntInput) Metadata
 	}).(MetadataAssignmentResponseOutput)
 }
 
+// Onboarding information
 type Onboarding struct {
+	// The location of the development portal
 	DeveloperPortalUri []string `pulumi:"developerPortalUri"`
 	// Onboarding guide.
 	Instructions *string `pulumi:"instructions"`
@@ -1545,7 +1593,9 @@ type OnboardingInput interface {
 	ToOnboardingOutputWithContext(context.Context) OnboardingOutput
 }
 
+// Onboarding information
 type OnboardingArgs struct {
+	// The location of the development portal
 	DeveloperPortalUri pulumi.StringArrayInput `pulumi:"developerPortalUri"`
 	// Onboarding guide.
 	Instructions pulumi.StringPtrInput `pulumi:"instructions"`
@@ -1604,6 +1654,7 @@ func (i *onboardingPtrType) ToOnboardingPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(OnboardingPtrOutput)
 }
 
+// Onboarding information
 type OnboardingOutput struct{ *pulumi.OutputState }
 
 func (OnboardingOutput) ElementType() reflect.Type {
@@ -1628,6 +1679,7 @@ func (o OnboardingOutput) ToOnboardingPtrOutputWithContext(ctx context.Context) 
 	}).(OnboardingPtrOutput)
 }
 
+// The location of the development portal
 func (o OnboardingOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Onboarding) []string { return v.DeveloperPortalUri }).(pulumi.StringArrayOutput)
 }
@@ -1661,6 +1713,7 @@ func (o OnboardingPtrOutput) Elem() OnboardingOutput {
 	}).(OnboardingOutput)
 }
 
+// The location of the development portal
 func (o OnboardingPtrOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Onboarding) []string {
 		if v == nil {
@@ -1680,12 +1733,15 @@ func (o OnboardingPtrOutput) Instructions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Onboarding information
 type OnboardingResponse struct {
+	// The location of the development portal
 	DeveloperPortalUri []string `pulumi:"developerPortalUri"`
 	// Onboarding guide.
 	Instructions *string `pulumi:"instructions"`
 }
 
+// Onboarding information
 type OnboardingResponseOutput struct{ *pulumi.OutputState }
 
 func (OnboardingResponseOutput) ElementType() reflect.Type {
@@ -1700,6 +1756,7 @@ func (o OnboardingResponseOutput) ToOnboardingResponseOutputWithContext(ctx cont
 	return o
 }
 
+// The location of the development portal
 func (o OnboardingResponseOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OnboardingResponse) []string { return v.DeveloperPortalUri }).(pulumi.StringArrayOutput)
 }
@@ -1733,6 +1790,7 @@ func (o OnboardingResponsePtrOutput) Elem() OnboardingResponseOutput {
 	}).(OnboardingResponseOutput)
 }
 
+// The location of the development portal
 func (o OnboardingResponsePtrOutput) DeveloperPortalUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OnboardingResponse) []string {
 		if v == nil {
@@ -2067,7 +2125,7 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 }
 
 func init() {
-	pulumi.RegisterOutputType(ApiDefinitionPropertiesResponseSpecificationOutput{})
+	pulumi.RegisterOutputType(ApiDefinitionPropertiesSpecificationResponseOutput{})
 	pulumi.RegisterOutputType(ContactOutput{})
 	pulumi.RegisterOutputType(ContactArrayOutput{})
 	pulumi.RegisterOutputType(ContactResponseOutput{})

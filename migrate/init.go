@@ -21,12 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:migrate:AksAssessmentOperation":
+		r = &AksAssessmentOperation{}
 	case "azure-native:migrate:Assessment":
 		r = &Assessment{}
 	case "azure-native:migrate:AssessmentProjectsOperation":
 		r = &AssessmentProjectsOperation{}
+	case "azure-native:migrate:AssessmentsOperation":
+		r = &AssessmentsOperation{}
 	case "azure-native:migrate:AvsAssessmentsOperation":
 		r = &AvsAssessmentsOperation{}
+	case "azure-native:migrate:BusinessCaseOperation":
+		r = &BusinessCaseOperation{}
 	case "azure-native:migrate:Group":
 		r = &Group{}
 	case "azure-native:migrate:GroupsOperation":
@@ -77,6 +83,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VMwareCollector{}
 	case "azure-native:migrate:VmwareCollectorsOperation":
 		r = &VmwareCollectorsOperation{}
+	case "azure-native:migrate:WebAppAssessmentV2Operation":
+		r = &WebAppAssessmentV2Operation{}
+	case "azure-native:migrate:WebAppCollectorOperation":
+		r = &WebAppCollectorOperation{}
 	case "azure-native:migrate:WorkloadDeployment":
 		r = &WorkloadDeployment{}
 	case "azure-native:migrate:WorkloadInstance":

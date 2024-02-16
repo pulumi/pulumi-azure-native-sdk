@@ -62,7 +62,7 @@ func NewAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azureplaywrightservice:Account"),
 		},
 		{
-			Type: pulumi.String("azure-native:azureplaywrightservice/v20240201:Account"),
+			Type: pulumi.String("azure-native:azureplaywrightservice/v20240201preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)

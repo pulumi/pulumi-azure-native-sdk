@@ -58,6 +58,9 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices:InferenceEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:InferenceEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

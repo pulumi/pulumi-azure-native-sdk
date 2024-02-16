@@ -38,13 +38,15 @@ type LookupEnvironmentArgs struct {
 type LookupEnvironmentResult struct {
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
-	Description      *string     `pulumi:"description"`
+	// The environment description.
+	Description *string `pulumi:"description"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Environment kind.
 	Kind string `pulumi:"kind"`
 	// The name of the resource
-	Name       string              `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Environment onboarding information
 	Onboarding *OnboardingResponse `pulumi:"onboarding"`
 	// Server information of the environment.
 	Server *EnvironmentServerResponse `pulumi:"server"`
@@ -104,6 +106,7 @@ func (o LookupEnvironmentResultOutput) CustomProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) interface{} { return v.CustomProperties }).(pulumi.AnyOutput)
 }
 
+// The environment description.
 func (o LookupEnvironmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -123,6 +126,7 @@ func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Environment onboarding information
 func (o LookupEnvironmentResultOutput) Onboarding() OnboardingResponsePtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *OnboardingResponse { return v.Onboarding }).(OnboardingResponsePtrOutput)
 }

@@ -18,12 +18,14 @@ type Environment struct {
 	pulumi.CustomResourceState
 
 	// The custom metadata defined for API catalog entities.
-	CustomProperties pulumi.AnyOutput       `pulumi:"customProperties"`
-	Description      pulumi.StringPtrOutput `pulumi:"description"`
+	CustomProperties pulumi.AnyOutput `pulumi:"customProperties"`
+	// The environment description.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Environment kind.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the resource
-	Name       pulumi.StringOutput         `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Environment onboarding information
 	Onboarding OnboardingResponsePtrOutput `pulumi:"onboarding"`
 	// Server information of the environment.
 	Server EnvironmentServerResponsePtrOutput `pulumi:"server"`
@@ -98,11 +100,13 @@ func (EnvironmentState) ElementType() reflect.Type {
 type environmentArgs struct {
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
-	Description      *string     `pulumi:"description"`
+	// The environment description.
+	Description *string `pulumi:"description"`
 	// The name of the environment.
 	EnvironmentName *string `pulumi:"environmentName"`
 	// Environment kind.
-	Kind       string      `pulumi:"kind"`
+	Kind string `pulumi:"kind"`
+	// Environment onboarding information
 	Onboarding *Onboarding `pulumi:"onboarding"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -120,11 +124,13 @@ type environmentArgs struct {
 type EnvironmentArgs struct {
 	// The custom metadata defined for API catalog entities.
 	CustomProperties pulumi.Input
-	Description      pulumi.StringPtrInput
+	// The environment description.
+	Description pulumi.StringPtrInput
 	// The name of the environment.
 	EnvironmentName pulumi.StringPtrInput
 	// Environment kind.
-	Kind       pulumi.StringInput
+	Kind pulumi.StringInput
+	// Environment onboarding information
 	Onboarding OnboardingPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -180,6 +186,7 @@ func (o EnvironmentOutput) CustomProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Environment) pulumi.AnyOutput { return v.CustomProperties }).(pulumi.AnyOutput)
 }
 
+// The environment description.
 func (o EnvironmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -194,6 +201,7 @@ func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Environment onboarding information
 func (o EnvironmentOutput) Onboarding() OnboardingResponsePtrOutput {
 	return o.ApplyT(func(v *Environment) OnboardingResponsePtrOutput { return v.Onboarding }).(OnboardingResponsePtrOutput)
 }

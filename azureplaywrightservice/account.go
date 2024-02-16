@@ -15,7 +15,7 @@ import (
 // An account resource
 // Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2024-02-01.
+// Other available API versions: 2024-02-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -65,7 +65,7 @@ func NewAccount(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azureplaywrightservice/v20231001preview:Account"),
 		},
 		{
-			Type: pulumi.String("azure-native:azureplaywrightservice/v20240201:Account"),
+			Type: pulumi.String("azure-native:azureplaywrightservice/v20240201preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)

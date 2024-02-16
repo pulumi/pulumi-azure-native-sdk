@@ -86,6 +86,9 @@ func NewModelVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:ModelVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:ModelVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

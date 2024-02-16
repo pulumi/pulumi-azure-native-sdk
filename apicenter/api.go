@@ -17,11 +17,13 @@ import (
 type Api struct {
 	pulumi.CustomResourceState
 
+	// The set of contacts
 	Contacts ContactResponseArrayOutput `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties pulumi.AnyOutput `pulumi:"customProperties"`
 	// Description of the API.
-	Description           pulumi.StringPtrOutput                   `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The set of external documentation
 	ExternalDocumentation ExternalDocumentationResponseArrayOutput `pulumi:"externalDocumentation"`
 	// Kind of API. For example, REST or GraphQL.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -105,12 +107,14 @@ func (ApiState) ElementType() reflect.Type {
 
 type apiArgs struct {
 	// The name of the API.
-	ApiName  *string   `pulumi:"apiName"`
+	ApiName *string `pulumi:"apiName"`
+	// The set of contacts
 	Contacts []Contact `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
 	// Description of the API.
-	Description           *string                 `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// The set of external documentation
 	ExternalDocumentation []ExternalDocumentation `pulumi:"externalDocumentation"`
 	// Kind of API. For example, REST or GraphQL.
 	Kind string `pulumi:"kind"`
@@ -133,12 +137,14 @@ type apiArgs struct {
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
 	// The name of the API.
-	ApiName  pulumi.StringPtrInput
+	ApiName pulumi.StringPtrInput
+	// The set of contacts
 	Contacts ContactArrayInput
 	// The custom metadata defined for API catalog entities.
 	CustomProperties pulumi.Input
 	// Description of the API.
-	Description           pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// The set of external documentation
 	ExternalDocumentation ExternalDocumentationArrayInput
 	// Kind of API. For example, REST or GraphQL.
 	Kind pulumi.StringInput
@@ -195,6 +201,7 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
 }
 
+// The set of contacts
 func (o ApiOutput) Contacts() ContactResponseArrayOutput {
 	return o.ApplyT(func(v *Api) ContactResponseArrayOutput { return v.Contacts }).(ContactResponseArrayOutput)
 }
@@ -209,6 +216,7 @@ func (o ApiOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The set of external documentation
 func (o ApiOutput) ExternalDocumentation() ExternalDocumentationResponseArrayOutput {
 	return o.ApplyT(func(v *Api) ExternalDocumentationResponseArrayOutput { return v.ExternalDocumentation }).(ExternalDocumentationResponseArrayOutput)
 }

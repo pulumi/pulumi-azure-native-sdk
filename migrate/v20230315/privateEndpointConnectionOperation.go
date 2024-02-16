@@ -55,6 +55,9 @@ func NewPrivateEndpointConnectionOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20191001:PrivateEndpointConnectionOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:PrivateEndpointConnectionOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

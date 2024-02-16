@@ -13,6 +13,8 @@ import (
 
 // Retrieves the properties of an existing Azure Cosmos DB Throughput Pool
 // Azure REST API version: 2023-11-15-preview.
+//
+// Other available API versions: 2024-02-15-preview.
 func LookupThroughputPoolAccount(ctx *pulumi.Context, args *LookupThroughputPoolAccountArgs, opts ...pulumi.InvokeOption) (*LookupThroughputPoolAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupThroughputPoolAccountResult

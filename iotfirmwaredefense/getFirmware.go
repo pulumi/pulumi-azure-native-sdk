@@ -13,6 +13,8 @@ import (
 
 // Get firmware.
 // Azure REST API version: 2023-02-08-preview.
+//
+// Other available API versions: 2024-01-10.
 func LookupFirmware(ctx *pulumi.Context, args *LookupFirmwareArgs, opts ...pulumi.InvokeOption) (*LookupFirmwareResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirmwareResult

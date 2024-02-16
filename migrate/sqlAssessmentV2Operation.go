@@ -14,6 +14,8 @@ import (
 
 // SQL Assessment REST resource.
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2023-04-01-preview.
 type SqlAssessmentV2Operation struct {
 	pulumi.CustomResourceState
 
@@ -125,6 +127,9 @@ func NewSqlAssessmentV2Operation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:migrate/v20230315:SqlAssessmentV2Operation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:SqlAssessmentV2Operation"),
 		},
 	})
 	opts = append(opts, aliases)

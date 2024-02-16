@@ -14,7 +14,7 @@ import (
 // Gets the details of the specified storage classification mapping.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2023-06-01.
+// Other available API versions: 2023-06-01, 2023-08-01.
 func LookupReplicationStorageClassificationMapping(ctx *pulumi.Context, args *LookupReplicationStorageClassificationMappingArgs, opts ...pulumi.InvokeOption) (*LookupReplicationStorageClassificationMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationStorageClassificationMappingResult

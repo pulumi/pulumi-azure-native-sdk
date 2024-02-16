@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataVersion{}
 	case "azure-native:machinelearningservices:Datastore":
 		r = &Datastore{}
+	case "azure-native:machinelearningservices:EndpointDeployment":
+		r = &EndpointDeployment{}
 	case "azure-native:machinelearningservices:EnvironmentContainer":
 		r = &EnvironmentContainer{}
 	case "azure-native:machinelearningservices:EnvironmentSpecificationVersion":
@@ -77,6 +79,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MachineLearningDatastore{}
 	case "azure-native:machinelearningservices:ManagedNetworkSettingsRule":
 		r = &ManagedNetworkSettingsRule{}
+	case "azure-native:machinelearningservices:MarketplaceSubscription":
+		r = &MarketplaceSubscription{}
 	case "azure-native:machinelearningservices:ModelContainer":
 		r = &ModelContainer{}
 	case "azure-native:machinelearningservices:ModelVersion":

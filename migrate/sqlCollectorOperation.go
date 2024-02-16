@@ -14,6 +14,8 @@ import (
 
 // The SQL collector REST object.
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2023-04-01-preview.
 type SqlCollectorOperation struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewSqlCollectorOperation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:migrate/v20230315:SqlCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:SqlCollectorOperation"),
 		},
 	})
 	opts = append(opts, aliases)

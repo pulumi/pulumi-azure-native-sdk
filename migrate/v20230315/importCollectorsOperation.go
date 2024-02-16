@@ -52,6 +52,9 @@ func NewImportCollectorsOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20191001:ImportCollectorsOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:ImportCollectorsOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -2399,6 +2399,219 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ProvisioningState() pulumi.S
 	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
+// Open AI Integration details.
+type OpenAIIntegrationProperties struct {
+	// Value of API key for Open AI resource
+	Key *string `pulumi:"key"`
+}
+
+// OpenAIIntegrationPropertiesInput is an input type that accepts OpenAIIntegrationPropertiesArgs and OpenAIIntegrationPropertiesOutput values.
+// You can construct a concrete instance of `OpenAIIntegrationPropertiesInput` via:
+//
+//	OpenAIIntegrationPropertiesArgs{...}
+type OpenAIIntegrationPropertiesInput interface {
+	pulumi.Input
+
+	ToOpenAIIntegrationPropertiesOutput() OpenAIIntegrationPropertiesOutput
+	ToOpenAIIntegrationPropertiesOutputWithContext(context.Context) OpenAIIntegrationPropertiesOutput
+}
+
+// Open AI Integration details.
+type OpenAIIntegrationPropertiesArgs struct {
+	// Value of API key for Open AI resource
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (OpenAIIntegrationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIIntegrationProperties)(nil)).Elem()
+}
+
+func (i OpenAIIntegrationPropertiesArgs) ToOpenAIIntegrationPropertiesOutput() OpenAIIntegrationPropertiesOutput {
+	return i.ToOpenAIIntegrationPropertiesOutputWithContext(context.Background())
+}
+
+func (i OpenAIIntegrationPropertiesArgs) ToOpenAIIntegrationPropertiesOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenAIIntegrationPropertiesOutput)
+}
+
+func (i OpenAIIntegrationPropertiesArgs) ToOpenAIIntegrationPropertiesPtrOutput() OpenAIIntegrationPropertiesPtrOutput {
+	return i.ToOpenAIIntegrationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OpenAIIntegrationPropertiesArgs) ToOpenAIIntegrationPropertiesPtrOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenAIIntegrationPropertiesOutput).ToOpenAIIntegrationPropertiesPtrOutputWithContext(ctx)
+}
+
+// OpenAIIntegrationPropertiesPtrInput is an input type that accepts OpenAIIntegrationPropertiesArgs, OpenAIIntegrationPropertiesPtr and OpenAIIntegrationPropertiesPtrOutput values.
+// You can construct a concrete instance of `OpenAIIntegrationPropertiesPtrInput` via:
+//
+//	        OpenAIIntegrationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OpenAIIntegrationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOpenAIIntegrationPropertiesPtrOutput() OpenAIIntegrationPropertiesPtrOutput
+	ToOpenAIIntegrationPropertiesPtrOutputWithContext(context.Context) OpenAIIntegrationPropertiesPtrOutput
+}
+
+type openAIIntegrationPropertiesPtrType OpenAIIntegrationPropertiesArgs
+
+func OpenAIIntegrationPropertiesPtr(v *OpenAIIntegrationPropertiesArgs) OpenAIIntegrationPropertiesPtrInput {
+	return (*openAIIntegrationPropertiesPtrType)(v)
+}
+
+func (*openAIIntegrationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenAIIntegrationProperties)(nil)).Elem()
+}
+
+func (i *openAIIntegrationPropertiesPtrType) ToOpenAIIntegrationPropertiesPtrOutput() OpenAIIntegrationPropertiesPtrOutput {
+	return i.ToOpenAIIntegrationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *openAIIntegrationPropertiesPtrType) ToOpenAIIntegrationPropertiesPtrOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenAIIntegrationPropertiesPtrOutput)
+}
+
+// Open AI Integration details.
+type OpenAIIntegrationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (OpenAIIntegrationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIIntegrationProperties)(nil)).Elem()
+}
+
+func (o OpenAIIntegrationPropertiesOutput) ToOpenAIIntegrationPropertiesOutput() OpenAIIntegrationPropertiesOutput {
+	return o
+}
+
+func (o OpenAIIntegrationPropertiesOutput) ToOpenAIIntegrationPropertiesOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesOutput {
+	return o
+}
+
+func (o OpenAIIntegrationPropertiesOutput) ToOpenAIIntegrationPropertiesPtrOutput() OpenAIIntegrationPropertiesPtrOutput {
+	return o.ToOpenAIIntegrationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OpenAIIntegrationPropertiesOutput) ToOpenAIIntegrationPropertiesPtrOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenAIIntegrationProperties) *OpenAIIntegrationProperties {
+		return &v
+	}).(OpenAIIntegrationPropertiesPtrOutput)
+}
+
+// Value of API key for Open AI resource
+func (o OpenAIIntegrationPropertiesOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationProperties) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type OpenAIIntegrationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OpenAIIntegrationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OpenAIIntegrationProperties)(nil)).Elem()
+}
+
+func (o OpenAIIntegrationPropertiesPtrOutput) ToOpenAIIntegrationPropertiesPtrOutput() OpenAIIntegrationPropertiesPtrOutput {
+	return o
+}
+
+func (o OpenAIIntegrationPropertiesPtrOutput) ToOpenAIIntegrationPropertiesPtrOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesPtrOutput {
+	return o
+}
+
+func (o OpenAIIntegrationPropertiesPtrOutput) Elem() OpenAIIntegrationPropertiesOutput {
+	return o.ApplyT(func(v *OpenAIIntegrationProperties) OpenAIIntegrationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OpenAIIntegrationProperties
+		return ret
+	}).(OpenAIIntegrationPropertiesOutput)
+}
+
+// Value of API key for Open AI resource
+func (o OpenAIIntegrationPropertiesPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenAIIntegrationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Open AI Integration details.
+type OpenAIIntegrationPropertiesResponse struct {
+	// Value of API key for Open AI resource
+	Key *string `pulumi:"key"`
+	// Last Update Timestamp for key updation
+	LastRefreshAt string `pulumi:"lastRefreshAt"`
+	// The API endpoint for Open AI resource
+	OpenAIResourceEndpoint string `pulumi:"openAIResourceEndpoint"`
+	// The resource id of Open AI resource
+	OpenAIResourceId string `pulumi:"openAIResourceId"`
+}
+
+// Open AI Integration details.
+type OpenAIIntegrationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenAIIntegrationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIIntegrationPropertiesResponse)(nil)).Elem()
+}
+
+func (o OpenAIIntegrationPropertiesResponseOutput) ToOpenAIIntegrationPropertiesResponseOutput() OpenAIIntegrationPropertiesResponseOutput {
+	return o
+}
+
+func (o OpenAIIntegrationPropertiesResponseOutput) ToOpenAIIntegrationPropertiesResponseOutputWithContext(ctx context.Context) OpenAIIntegrationPropertiesResponseOutput {
+	return o
+}
+
+// Value of API key for Open AI resource
+func (o OpenAIIntegrationPropertiesResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Last Update Timestamp for key updation
+func (o OpenAIIntegrationPropertiesResponseOutput) LastRefreshAt() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) string { return v.LastRefreshAt }).(pulumi.StringOutput)
+}
+
+// The API endpoint for Open AI resource
+func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) string { return v.OpenAIResourceEndpoint }).(pulumi.StringOutput)
+}
+
+// The resource id of Open AI resource
+func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) string { return v.OpenAIResourceId }).(pulumi.StringOutput)
+}
+
+// Status of the OpenAI Integration
+type OpenAIIntegrationStatusResponsePropertiesResponse struct {
+	// Status of the OpenAI Integration
+	Status *string `pulumi:"status"`
+}
+
+// Status of the OpenAI Integration
+type OpenAIIntegrationStatusResponsePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenAIIntegrationStatusResponsePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIIntegrationStatusResponsePropertiesResponse)(nil)).Elem()
+}
+
+func (o OpenAIIntegrationStatusResponsePropertiesResponseOutput) ToOpenAIIntegrationStatusResponsePropertiesResponseOutput() OpenAIIntegrationStatusResponsePropertiesResponseOutput {
+	return o
+}
+
+func (o OpenAIIntegrationStatusResponsePropertiesResponseOutput) ToOpenAIIntegrationStatusResponsePropertiesResponseOutputWithContext(ctx context.Context) OpenAIIntegrationStatusResponsePropertiesResponseOutput {
+	return o
+}
+
+// Status of the OpenAI Integration
+func (o OpenAIIntegrationStatusResponsePropertiesResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationStatusResponsePropertiesResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
 // Partner Billing details associated with the resource.
 type PartnerBillingEntityResponse struct {
 	// The Elastic Organization Id.
@@ -3082,6 +3295,10 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesOutput{})
+	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OpenAIIntegrationStatusResponsePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PartnerBillingEntityResponseOutput{})
 	pulumi.RegisterOutputType(PartnerBillingEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})

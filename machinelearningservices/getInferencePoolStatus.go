@@ -12,6 +12,8 @@ import (
 )
 
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2024-01-01-preview.
 func GetInferencePoolStatus(ctx *pulumi.Context, args *GetInferencePoolStatusArgs, opts ...pulumi.InvokeOption) (*GetInferencePoolStatusResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetInferencePoolStatusResult

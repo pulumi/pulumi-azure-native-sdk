@@ -21,7 +21,7 @@ type ApiDefinition struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// API specification details.
-	Specification ApiDefinitionPropertiesResponseSpecificationOutput `pulumi:"specification"`
+	Specification ApiDefinitionPropertiesSpecificationResponseOutput `pulumi:"specification"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// API definition title.
@@ -180,8 +180,8 @@ func (o ApiDefinitionOutput) Name() pulumi.StringOutput {
 }
 
 // API specification details.
-func (o ApiDefinitionOutput) Specification() ApiDefinitionPropertiesResponseSpecificationOutput {
-	return o.ApplyT(func(v *ApiDefinition) ApiDefinitionPropertiesResponseSpecificationOutput { return v.Specification }).(ApiDefinitionPropertiesResponseSpecificationOutput)
+func (o ApiDefinitionOutput) Specification() ApiDefinitionPropertiesSpecificationResponseOutput {
+	return o.ApplyT(func(v *ApiDefinition) ApiDefinitionPropertiesSpecificationResponseOutput { return v.Specification }).(ApiDefinitionPropertiesSpecificationResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

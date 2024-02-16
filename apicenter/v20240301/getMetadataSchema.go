@@ -33,6 +33,7 @@ type LookupMetadataSchemaArgs struct {
 
 // Metadata schema entity. Used to define metadata for the entities in API catalog.
 type LookupMetadataSchemaResult struct {
+	// The assignees
 	AssignedTo []MetadataAssignmentResponse `pulumi:"assignedTo"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -87,6 +88,7 @@ func (o LookupMetadataSchemaResultOutput) ToLookupMetadataSchemaResultOutputWith
 	return o
 }
 
+// The assignees
 func (o LookupMetadataSchemaResultOutput) AssignedTo() MetadataAssignmentResponseArrayOutput {
 	return o.ApplyT(func(v LookupMetadataSchemaResult) []MetadataAssignmentResponse { return v.AssignedTo }).(MetadataAssignmentResponseArrayOutput)
 }

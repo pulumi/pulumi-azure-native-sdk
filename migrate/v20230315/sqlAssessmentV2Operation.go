@@ -125,6 +125,9 @@ func NewSqlAssessmentV2Operation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate:SqlAssessmentV2Operation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:SqlAssessmentV2Operation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

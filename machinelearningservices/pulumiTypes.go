@@ -955,6 +955,75 @@ func (o AccessKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() p
 	return o.ApplyT(func(v AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
+type AccountApiKeysResponse struct {
+	Key1 *string `pulumi:"key1"`
+	Key2 *string `pulumi:"key2"`
+}
+
+type AccountApiKeysResponseOutput struct{ *pulumi.OutputState }
+
+func (AccountApiKeysResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountApiKeysResponse)(nil)).Elem()
+}
+
+func (o AccountApiKeysResponseOutput) ToAccountApiKeysResponseOutput() AccountApiKeysResponseOutput {
+	return o
+}
+
+func (o AccountApiKeysResponseOutput) ToAccountApiKeysResponseOutputWithContext(ctx context.Context) AccountApiKeysResponseOutput {
+	return o
+}
+
+func (o AccountApiKeysResponseOutput) Key1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountApiKeysResponse) *string { return v.Key1 }).(pulumi.StringPtrOutput)
+}
+
+func (o AccountApiKeysResponseOutput) Key2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountApiKeysResponse) *string { return v.Key2 }).(pulumi.StringPtrOutput)
+}
+
+type AccountApiKeysResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AccountApiKeysResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountApiKeysResponse)(nil)).Elem()
+}
+
+func (o AccountApiKeysResponsePtrOutput) ToAccountApiKeysResponsePtrOutput() AccountApiKeysResponsePtrOutput {
+	return o
+}
+
+func (o AccountApiKeysResponsePtrOutput) ToAccountApiKeysResponsePtrOutputWithContext(ctx context.Context) AccountApiKeysResponsePtrOutput {
+	return o
+}
+
+func (o AccountApiKeysResponsePtrOutput) Elem() AccountApiKeysResponseOutput {
+	return o.ApplyT(func(v *AccountApiKeysResponse) AccountApiKeysResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccountApiKeysResponse
+		return ret
+	}).(AccountApiKeysResponseOutput)
+}
+
+func (o AccountApiKeysResponsePtrOutput) Key1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountApiKeysResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key1
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccountApiKeysResponsePtrOutput) Key2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountApiKeysResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key2
+	}).(pulumi.StringPtrOutput)
+}
+
 // Account key datastore credentials configuration.
 type AccountKeyDatastoreCredentials struct {
 	// Enum to determine the datastore credentials type.
@@ -13227,6 +13296,310 @@ func (o CodeVersionResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CodeVersionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+type CognitiveServicesSku struct {
+	Capacity *int    `pulumi:"capacity"`
+	Family   *string `pulumi:"family"`
+	Name     *string `pulumi:"name"`
+	Size     *string `pulumi:"size"`
+	Tier     *string `pulumi:"tier"`
+}
+
+// CognitiveServicesSkuInput is an input type that accepts CognitiveServicesSkuArgs and CognitiveServicesSkuOutput values.
+// You can construct a concrete instance of `CognitiveServicesSkuInput` via:
+//
+//	CognitiveServicesSkuArgs{...}
+type CognitiveServicesSkuInput interface {
+	pulumi.Input
+
+	ToCognitiveServicesSkuOutput() CognitiveServicesSkuOutput
+	ToCognitiveServicesSkuOutputWithContext(context.Context) CognitiveServicesSkuOutput
+}
+
+type CognitiveServicesSkuArgs struct {
+	Capacity pulumi.IntPtrInput    `pulumi:"capacity"`
+	Family   pulumi.StringPtrInput `pulumi:"family"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
+	Size     pulumi.StringPtrInput `pulumi:"size"`
+	Tier     pulumi.StringPtrInput `pulumi:"tier"`
+}
+
+func (CognitiveServicesSkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CognitiveServicesSku)(nil)).Elem()
+}
+
+func (i CognitiveServicesSkuArgs) ToCognitiveServicesSkuOutput() CognitiveServicesSkuOutput {
+	return i.ToCognitiveServicesSkuOutputWithContext(context.Background())
+}
+
+func (i CognitiveServicesSkuArgs) ToCognitiveServicesSkuOutputWithContext(ctx context.Context) CognitiveServicesSkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CognitiveServicesSkuOutput)
+}
+
+func (i CognitiveServicesSkuArgs) ToCognitiveServicesSkuPtrOutput() CognitiveServicesSkuPtrOutput {
+	return i.ToCognitiveServicesSkuPtrOutputWithContext(context.Background())
+}
+
+func (i CognitiveServicesSkuArgs) ToCognitiveServicesSkuPtrOutputWithContext(ctx context.Context) CognitiveServicesSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CognitiveServicesSkuOutput).ToCognitiveServicesSkuPtrOutputWithContext(ctx)
+}
+
+// CognitiveServicesSkuPtrInput is an input type that accepts CognitiveServicesSkuArgs, CognitiveServicesSkuPtr and CognitiveServicesSkuPtrOutput values.
+// You can construct a concrete instance of `CognitiveServicesSkuPtrInput` via:
+//
+//	        CognitiveServicesSkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type CognitiveServicesSkuPtrInput interface {
+	pulumi.Input
+
+	ToCognitiveServicesSkuPtrOutput() CognitiveServicesSkuPtrOutput
+	ToCognitiveServicesSkuPtrOutputWithContext(context.Context) CognitiveServicesSkuPtrOutput
+}
+
+type cognitiveServicesSkuPtrType CognitiveServicesSkuArgs
+
+func CognitiveServicesSkuPtr(v *CognitiveServicesSkuArgs) CognitiveServicesSkuPtrInput {
+	return (*cognitiveServicesSkuPtrType)(v)
+}
+
+func (*cognitiveServicesSkuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CognitiveServicesSku)(nil)).Elem()
+}
+
+func (i *cognitiveServicesSkuPtrType) ToCognitiveServicesSkuPtrOutput() CognitiveServicesSkuPtrOutput {
+	return i.ToCognitiveServicesSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *cognitiveServicesSkuPtrType) ToCognitiveServicesSkuPtrOutputWithContext(ctx context.Context) CognitiveServicesSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CognitiveServicesSkuPtrOutput)
+}
+
+type CognitiveServicesSkuOutput struct{ *pulumi.OutputState }
+
+func (CognitiveServicesSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CognitiveServicesSku)(nil)).Elem()
+}
+
+func (o CognitiveServicesSkuOutput) ToCognitiveServicesSkuOutput() CognitiveServicesSkuOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuOutput) ToCognitiveServicesSkuOutputWithContext(ctx context.Context) CognitiveServicesSkuOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuOutput) ToCognitiveServicesSkuPtrOutput() CognitiveServicesSkuPtrOutput {
+	return o.ToCognitiveServicesSkuPtrOutputWithContext(context.Background())
+}
+
+func (o CognitiveServicesSkuOutput) ToCognitiveServicesSkuPtrOutputWithContext(ctx context.Context) CognitiveServicesSkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CognitiveServicesSku) *CognitiveServicesSku {
+		return &v
+	}).(CognitiveServicesSkuPtrOutput)
+}
+
+func (o CognitiveServicesSkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+func (o CognitiveServicesSkuOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSku) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSku) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSku) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSku) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type CognitiveServicesSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (CognitiveServicesSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CognitiveServicesSku)(nil)).Elem()
+}
+
+func (o CognitiveServicesSkuPtrOutput) ToCognitiveServicesSkuPtrOutput() CognitiveServicesSkuPtrOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuPtrOutput) ToCognitiveServicesSkuPtrOutputWithContext(ctx context.Context) CognitiveServicesSkuPtrOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuPtrOutput) Elem() CognitiveServicesSkuOutput {
+	return o.ApplyT(func(v *CognitiveServicesSku) CognitiveServicesSku {
+		if v != nil {
+			return *v
+		}
+		var ret CognitiveServicesSku
+		return ret
+	}).(CognitiveServicesSkuOutput)
+}
+
+func (o CognitiveServicesSkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o CognitiveServicesSkuPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuPtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+type CognitiveServicesSkuResponse struct {
+	Capacity *int    `pulumi:"capacity"`
+	Family   *string `pulumi:"family"`
+	Name     *string `pulumi:"name"`
+	Size     *string `pulumi:"size"`
+	Tier     *string `pulumi:"tier"`
+}
+
+type CognitiveServicesSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (CognitiveServicesSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CognitiveServicesSkuResponse)(nil)).Elem()
+}
+
+func (o CognitiveServicesSkuResponseOutput) ToCognitiveServicesSkuResponseOutput() CognitiveServicesSkuResponseOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuResponseOutput) ToCognitiveServicesSkuResponseOutputWithContext(ctx context.Context) CognitiveServicesSkuResponseOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CognitiveServicesSkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type CognitiveServicesSkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CognitiveServicesSkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CognitiveServicesSkuResponse)(nil)).Elem()
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) ToCognitiveServicesSkuResponsePtrOutput() CognitiveServicesSkuResponsePtrOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) ToCognitiveServicesSkuResponsePtrOutputWithContext(ctx context.Context) CognitiveServicesSkuResponsePtrOutput {
+	return o
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) Elem() CognitiveServicesSkuResponseOutput {
+	return o.ApplyT(func(v *CognitiveServicesSkuResponse) CognitiveServicesSkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CognitiveServicesSkuResponse
+		return ret
+	}).(CognitiveServicesSkuResponseOutput)
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CognitiveServicesSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CognitiveServicesSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Column transformer parameters.
 type ColumnTransformer struct {
 	// Fields to apply transformer logic on.
@@ -17690,6 +18063,175 @@ func (o ContainerResourceSettingsResponsePtrOutput) Memory() pulumi.StringPtrOut
 			return nil
 		}
 		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContentSafetyEndpointDeploymentResourceProperties struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModel `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName *string               `pulumi:"raiPolicyName"`
+	Sku           *CognitiveServicesSku `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.ContentSafety'.
+	Type string `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+// ContentSafetyEndpointDeploymentResourcePropertiesInput is an input type that accepts ContentSafetyEndpointDeploymentResourcePropertiesArgs and ContentSafetyEndpointDeploymentResourcePropertiesOutput values.
+// You can construct a concrete instance of `ContentSafetyEndpointDeploymentResourcePropertiesInput` via:
+//
+//	ContentSafetyEndpointDeploymentResourcePropertiesArgs{...}
+type ContentSafetyEndpointDeploymentResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToContentSafetyEndpointDeploymentResourcePropertiesOutput() ContentSafetyEndpointDeploymentResourcePropertiesOutput
+	ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) ContentSafetyEndpointDeploymentResourcePropertiesOutput
+}
+
+type ContentSafetyEndpointDeploymentResourcePropertiesArgs struct {
+	// The failure reason if the creation failed.
+	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelInput `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
+	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.ContentSafety'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
+}
+
+func (ContentSafetyEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentSafetyEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (i ContentSafetyEndpointDeploymentResourcePropertiesArgs) ToContentSafetyEndpointDeploymentResourcePropertiesOutput() ContentSafetyEndpointDeploymentResourcePropertiesOutput {
+	return i.ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i ContentSafetyEndpointDeploymentResourcePropertiesArgs) ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ContentSafetyEndpointDeploymentResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentSafetyEndpointDeploymentResourcePropertiesOutput)
+}
+
+type ContentSafetyEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ContentSafetyEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentSafetyEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) ToContentSafetyEndpointDeploymentResourcePropertiesOutput() ContentSafetyEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ContentSafetyEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Model used for the endpoint deployment.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
+}
+
+// The name of RAI policy.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'Azure.ContentSafety'.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Deployment model version upgrade option.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
+type ContentSafetyEndpointDeploymentResourcePropertiesResponse struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelResponse `pulumi:"model"`
+	// Read-only provision state status property.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The name of RAI policy.
+	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
+	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.ContentSafety'.
+	Type string `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+type ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentSafetyEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ToContentSafetyEndpointDeploymentResourcePropertiesResponseOutput() ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ToContentSafetyEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Model used for the endpoint deployment.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
+		return v.Model
+	}).(EndpointDeploymentModelResponseOutput)
+}
+
+// Read-only provision state status property.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of RAI policy.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse {
+		return v.Sku
+	}).(CognitiveServicesSkuResponsePtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'Azure.ContentSafety'.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Deployment model version upgrade option.
+func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *string {
+		return v.VersionUpgradeOption
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26449,6 +26991,130 @@ func (o EndpointAuthKeysPtrOutput) SecondaryKey() pulumi.StringPtrOutput {
 		}
 		return v.SecondaryKey
 	}).(pulumi.StringPtrOutput)
+}
+
+type EndpointDeploymentModel struct {
+	// Model format
+	Format *string `pulumi:"format"`
+	// Model name.
+	Name *string `pulumi:"name"`
+	// Optional. Deployment model source ARM resource ID.
+	Source *string `pulumi:"source"`
+	// Model version.
+	Version *string `pulumi:"version"`
+}
+
+// EndpointDeploymentModelInput is an input type that accepts EndpointDeploymentModelArgs and EndpointDeploymentModelOutput values.
+// You can construct a concrete instance of `EndpointDeploymentModelInput` via:
+//
+//	EndpointDeploymentModelArgs{...}
+type EndpointDeploymentModelInput interface {
+	pulumi.Input
+
+	ToEndpointDeploymentModelOutput() EndpointDeploymentModelOutput
+	ToEndpointDeploymentModelOutputWithContext(context.Context) EndpointDeploymentModelOutput
+}
+
+type EndpointDeploymentModelArgs struct {
+	// Model format
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// Model name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. Deployment model source ARM resource ID.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Model version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (EndpointDeploymentModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentModel)(nil)).Elem()
+}
+
+func (i EndpointDeploymentModelArgs) ToEndpointDeploymentModelOutput() EndpointDeploymentModelOutput {
+	return i.ToEndpointDeploymentModelOutputWithContext(context.Background())
+}
+
+func (i EndpointDeploymentModelArgs) ToEndpointDeploymentModelOutputWithContext(ctx context.Context) EndpointDeploymentModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeploymentModelOutput)
+}
+
+type EndpointDeploymentModelOutput struct{ *pulumi.OutputState }
+
+func (EndpointDeploymentModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentModel)(nil)).Elem()
+}
+
+func (o EndpointDeploymentModelOutput) ToEndpointDeploymentModelOutput() EndpointDeploymentModelOutput {
+	return o
+}
+
+func (o EndpointDeploymentModelOutput) ToEndpointDeploymentModelOutputWithContext(ctx context.Context) EndpointDeploymentModelOutput {
+	return o
+}
+
+// Model format
+func (o EndpointDeploymentModelOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModel) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Model name.
+func (o EndpointDeploymentModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deployment model source ARM resource ID.
+func (o EndpointDeploymentModelOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModel) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Model version.
+func (o EndpointDeploymentModelOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModel) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type EndpointDeploymentModelResponse struct {
+	// Model format
+	Format *string `pulumi:"format"`
+	// Model name.
+	Name *string `pulumi:"name"`
+	// Optional. Deployment model source ARM resource ID.
+	Source *string `pulumi:"source"`
+	// Model version.
+	Version *string `pulumi:"version"`
+}
+
+type EndpointDeploymentModelResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointDeploymentModelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentModelResponse)(nil)).Elem()
+}
+
+func (o EndpointDeploymentModelResponseOutput) ToEndpointDeploymentModelResponseOutput() EndpointDeploymentModelResponseOutput {
+	return o
+}
+
+func (o EndpointDeploymentModelResponseOutput) ToEndpointDeploymentModelResponseOutputWithContext(ctx context.Context) EndpointDeploymentModelResponseOutput {
+	return o
+}
+
+// Model format
+func (o EndpointDeploymentModelResponseOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModelResponse) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Model name.
+func (o EndpointDeploymentModelResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModelResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deployment model source ARM resource ID.
+func (o EndpointDeploymentModelResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModelResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Model version.
+func (o EndpointDeploymentModelResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentModelResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Describes the endpoint configuration for the container
@@ -48891,6 +49557,110 @@ func (o ManagedOnlineDeploymentResponseOutput) ScaleSettings() pulumi.AnyOutput 
 	return o.ApplyT(func(v ManagedOnlineDeploymentResponse) interface{} { return v.ScaleSettings }).(pulumi.AnyOutput)
 }
 
+type ManagedOnlineEndpointDeploymentResourceProperties struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Kind of the deployment.
+	// Expected value is 'managedOnlineEndpoint'.
+	Type string `pulumi:"type"`
+}
+
+// ManagedOnlineEndpointDeploymentResourcePropertiesInput is an input type that accepts ManagedOnlineEndpointDeploymentResourcePropertiesArgs and ManagedOnlineEndpointDeploymentResourcePropertiesOutput values.
+// You can construct a concrete instance of `ManagedOnlineEndpointDeploymentResourcePropertiesInput` via:
+//
+//	ManagedOnlineEndpointDeploymentResourcePropertiesArgs{...}
+type ManagedOnlineEndpointDeploymentResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToManagedOnlineEndpointDeploymentResourcePropertiesOutput() ManagedOnlineEndpointDeploymentResourcePropertiesOutput
+	ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesOutput
+}
+
+type ManagedOnlineEndpointDeploymentResourcePropertiesArgs struct {
+	// The failure reason if the creation failed.
+	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
+	// Kind of the deployment.
+	// Expected value is 'managedOnlineEndpoint'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ManagedOnlineEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedOnlineEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (i ManagedOnlineEndpointDeploymentResourcePropertiesArgs) ToManagedOnlineEndpointDeploymentResourcePropertiesOutput() ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
+	return i.ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i ManagedOnlineEndpointDeploymentResourcePropertiesArgs) ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedOnlineEndpointDeploymentResourcePropertiesOutput)
+}
+
+type ManagedOnlineEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ManagedOnlineEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedOnlineEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesOutput() ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'managedOnlineEndpoint'.
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ManagedOnlineEndpointDeploymentResourcePropertiesResponse struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Read-only provision state status property.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Kind of the deployment.
+	// Expected value is 'managedOnlineEndpoint'.
+	Type string `pulumi:"type"`
+}
+
+type ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedOnlineEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput() ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Read-only provision state status property.
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'managedOnlineEndpoint'.
+func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -49161,6 +49931,141 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 		}
 		return v.UserAssignedIdentities
 	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type MarketplacePlanResponse struct {
+	// The Offer ID of the Marketplace Plan.
+	OfferId string `pulumi:"offerId"`
+	// The Plan ID of the Marketplace Plan.
+	PlanId string `pulumi:"planId"`
+	// The Publisher ID of the Marketplace Plan.
+	PublisherId string `pulumi:"publisherId"`
+}
+
+type MarketplacePlanResponseOutput struct{ *pulumi.OutputState }
+
+func (MarketplacePlanResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplacePlanResponse)(nil)).Elem()
+}
+
+func (o MarketplacePlanResponseOutput) ToMarketplacePlanResponseOutput() MarketplacePlanResponseOutput {
+	return o
+}
+
+func (o MarketplacePlanResponseOutput) ToMarketplacePlanResponseOutputWithContext(ctx context.Context) MarketplacePlanResponseOutput {
+	return o
+}
+
+// The Offer ID of the Marketplace Plan.
+func (o MarketplacePlanResponseOutput) OfferId() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplacePlanResponse) string { return v.OfferId }).(pulumi.StringOutput)
+}
+
+// The Plan ID of the Marketplace Plan.
+func (o MarketplacePlanResponseOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplacePlanResponse) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// The Publisher ID of the Marketplace Plan.
+func (o MarketplacePlanResponseOutput) PublisherId() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplacePlanResponse) string { return v.PublisherId }).(pulumi.StringOutput)
+}
+
+type MarketplaceSubscriptionType struct {
+	// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+	ModelId string `pulumi:"modelId"`
+}
+
+// MarketplaceSubscriptionTypeInput is an input type that accepts MarketplaceSubscriptionTypeArgs and MarketplaceSubscriptionTypeOutput values.
+// You can construct a concrete instance of `MarketplaceSubscriptionTypeInput` via:
+//
+//	MarketplaceSubscriptionTypeArgs{...}
+type MarketplaceSubscriptionTypeInput interface {
+	pulumi.Input
+
+	ToMarketplaceSubscriptionTypeOutput() MarketplaceSubscriptionTypeOutput
+	ToMarketplaceSubscriptionTypeOutputWithContext(context.Context) MarketplaceSubscriptionTypeOutput
+}
+
+type MarketplaceSubscriptionTypeArgs struct {
+	// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+	ModelId pulumi.StringInput `pulumi:"modelId"`
+}
+
+func (MarketplaceSubscriptionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceSubscriptionType)(nil)).Elem()
+}
+
+func (i MarketplaceSubscriptionTypeArgs) ToMarketplaceSubscriptionTypeOutput() MarketplaceSubscriptionTypeOutput {
+	return i.ToMarketplaceSubscriptionTypeOutputWithContext(context.Background())
+}
+
+func (i MarketplaceSubscriptionTypeArgs) ToMarketplaceSubscriptionTypeOutputWithContext(ctx context.Context) MarketplaceSubscriptionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarketplaceSubscriptionTypeOutput)
+}
+
+type MarketplaceSubscriptionTypeOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSubscriptionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceSubscriptionType)(nil)).Elem()
+}
+
+func (o MarketplaceSubscriptionTypeOutput) ToMarketplaceSubscriptionTypeOutput() MarketplaceSubscriptionTypeOutput {
+	return o
+}
+
+func (o MarketplaceSubscriptionTypeOutput) ToMarketplaceSubscriptionTypeOutputWithContext(ctx context.Context) MarketplaceSubscriptionTypeOutput {
+	return o
+}
+
+// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+func (o MarketplaceSubscriptionTypeOutput) ModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplaceSubscriptionType) string { return v.ModelId }).(pulumi.StringOutput)
+}
+
+type MarketplaceSubscriptionResponse struct {
+	// Marketplace Plan associated with the Marketplace Subscription.
+	MarketplacePlan MarketplacePlanResponse `pulumi:"marketplacePlan"`
+	// Current status of the Marketplace Subscription.
+	MarketplaceSubscriptionStatus string `pulumi:"marketplaceSubscriptionStatus"`
+	// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+	ModelId string `pulumi:"modelId"`
+	// Provisioning State of the Marketplace Subscription.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+type MarketplaceSubscriptionResponseOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceSubscriptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceSubscriptionResponse)(nil)).Elem()
+}
+
+func (o MarketplaceSubscriptionResponseOutput) ToMarketplaceSubscriptionResponseOutput() MarketplaceSubscriptionResponseOutput {
+	return o
+}
+
+func (o MarketplaceSubscriptionResponseOutput) ToMarketplaceSubscriptionResponseOutputWithContext(ctx context.Context) MarketplaceSubscriptionResponseOutput {
+	return o
+}
+
+// Marketplace Plan associated with the Marketplace Subscription.
+func (o MarketplaceSubscriptionResponseOutput) MarketplacePlan() MarketplacePlanResponseOutput {
+	return o.ApplyT(func(v MarketplaceSubscriptionResponse) MarketplacePlanResponse { return v.MarketplacePlan }).(MarketplacePlanResponseOutput)
+}
+
+// Current status of the Marketplace Subscription.
+func (o MarketplaceSubscriptionResponseOutput) MarketplaceSubscriptionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplaceSubscriptionResponse) string { return v.MarketplaceSubscriptionStatus }).(pulumi.StringOutput)
+}
+
+// [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+func (o MarketplaceSubscriptionResponseOutput) ModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplaceSubscriptionResponse) string { return v.ModelId }).(pulumi.StringOutput)
+}
+
+// Provisioning State of the Marketplace Subscription.
+func (o MarketplaceSubscriptionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplaceSubscriptionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Dto object representing compute resource
@@ -52747,6 +53652,171 @@ func (o OnlineRequestSettingsResponsePtrOutput) RequestTimeout() pulumi.StringPt
 		}
 		return v.RequestTimeout
 	}).(pulumi.StringPtrOutput)
+}
+
+type OpenAIEndpointDeploymentResourceProperties struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModel `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName *string               `pulumi:"raiPolicyName"`
+	Sku           *CognitiveServicesSku `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.OpenAI'.
+	Type string `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+// OpenAIEndpointDeploymentResourcePropertiesInput is an input type that accepts OpenAIEndpointDeploymentResourcePropertiesArgs and OpenAIEndpointDeploymentResourcePropertiesOutput values.
+// You can construct a concrete instance of `OpenAIEndpointDeploymentResourcePropertiesInput` via:
+//
+//	OpenAIEndpointDeploymentResourcePropertiesArgs{...}
+type OpenAIEndpointDeploymentResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToOpenAIEndpointDeploymentResourcePropertiesOutput() OpenAIEndpointDeploymentResourcePropertiesOutput
+	ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) OpenAIEndpointDeploymentResourcePropertiesOutput
+}
+
+type OpenAIEndpointDeploymentResourcePropertiesArgs struct {
+	// The failure reason if the creation failed.
+	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelInput `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
+	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.OpenAI'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
+}
+
+func (OpenAIEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (i OpenAIEndpointDeploymentResourcePropertiesArgs) ToOpenAIEndpointDeploymentResourcePropertiesOutput() OpenAIEndpointDeploymentResourcePropertiesOutput {
+	return i.ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i OpenAIEndpointDeploymentResourcePropertiesArgs) ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) OpenAIEndpointDeploymentResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OpenAIEndpointDeploymentResourcePropertiesOutput)
+}
+
+type OpenAIEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (OpenAIEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) ToOpenAIEndpointDeploymentResourcePropertiesOutput() OpenAIEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) OpenAIEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Model used for the endpoint deployment.
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
+}
+
+// The name of RAI policy.
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'Azure.OpenAI'.
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Deployment model version upgrade option.
+func (o OpenAIEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
+type OpenAIEndpointDeploymentResourcePropertiesResponse struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelResponse `pulumi:"model"`
+	// Read-only provision state status property.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The name of RAI policy.
+	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
+	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.OpenAI'.
+	Type string `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+type OpenAIEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OpenAIEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ToOpenAIEndpointDeploymentResourcePropertiesResponseOutput() OpenAIEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ToOpenAIEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) OpenAIEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Model used for the endpoint deployment.
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
+		return v.Model
+	}).(EndpointDeploymentModelResponseOutput)
+}
+
+// Read-only provision state status property.
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of RAI policy.
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'Azure.OpenAI'.
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Deployment model version upgrade option.
+func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
 // Reference to an asset via its path in a job output.
@@ -64323,6 +65393,171 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SpeechEndpointDeploymentResourceProperties struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModel `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName *string               `pulumi:"raiPolicyName"`
+	Sku           *CognitiveServicesSku `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.Speech'.
+	Type string `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+// SpeechEndpointDeploymentResourcePropertiesInput is an input type that accepts SpeechEndpointDeploymentResourcePropertiesArgs and SpeechEndpointDeploymentResourcePropertiesOutput values.
+// You can construct a concrete instance of `SpeechEndpointDeploymentResourcePropertiesInput` via:
+//
+//	SpeechEndpointDeploymentResourcePropertiesArgs{...}
+type SpeechEndpointDeploymentResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput
+	ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) SpeechEndpointDeploymentResourcePropertiesOutput
+}
+
+type SpeechEndpointDeploymentResourcePropertiesArgs struct {
+	// The failure reason if the creation failed.
+	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelInput `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
+	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.Speech'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
+}
+
+func (SpeechEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpeechEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (i SpeechEndpointDeploymentResourcePropertiesArgs) ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput {
+	return i.ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SpeechEndpointDeploymentResourcePropertiesArgs) ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpeechEndpointDeploymentResourcePropertiesOutput)
+}
+
+type SpeechEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SpeechEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpeechEndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Model used for the endpoint deployment.
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
+}
+
+// The name of RAI policy.
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'Azure.Speech'.
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Deployment model version upgrade option.
+func (o SpeechEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
+type SpeechEndpointDeploymentResourcePropertiesResponse struct {
+	// The failure reason if the creation failed.
+	FailureReason *string `pulumi:"failureReason"`
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelResponse `pulumi:"model"`
+	// Read-only provision state status property.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The name of RAI policy.
+	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
+	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
+	// Kind of the deployment.
+	// Expected value is 'Azure.Speech'.
+	Type string `pulumi:"type"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+type SpeechEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SpeechEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpeechEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ToSpeechEndpointDeploymentResourcePropertiesResponseOutput() SpeechEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ToSpeechEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+// The failure reason if the creation failed.
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
+}
+
+// Model used for the endpoint deployment.
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
+		return v.Model
+	}).(EndpointDeploymentModelResponseOutput)
+}
+
+// Read-only provision state status property.
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of RAI policy.
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
+}
+
+// Kind of the deployment.
+// Expected value is 'Azure.Speech'.
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Deployment model version upgrade option.
+func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
 // The ssl configuration for scoring
 type SslConfiguration struct {
 	// Cert data
@@ -67161,2725 +68396,6 @@ func (o SystemCreatedAcrAccountResponsePtrOutput) ArmResourceId() ArmResourceIdR
 	}).(ArmResourceIdResponsePtrOutput)
 }
 
-type SystemCreatedStorageAccount struct {
-	// Public blob access allowed
-	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
-	// This is populated once the storage account is created.
-	ArmResourceId *ArmResourceId `pulumi:"armResourceId"`
-	// HNS enabled for storage account
-	StorageAccountHnsEnabled *bool `pulumi:"storageAccountHnsEnabled"`
-	// Name of the storage account
-	StorageAccountName *string `pulumi:"storageAccountName"`
-	// Allowed values:
-	// "Standard_LRS",
-	// "Standard_GRS",
-	// "Standard_RAGRS",
-	// "Standard_ZRS",
-	// "Standard_GZRS",
-	// "Standard_RAGZRS",
-	// "Premium_LRS",
-	// "Premium_ZRS"
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-// SystemCreatedStorageAccountInput is an input type that accepts SystemCreatedStorageAccountArgs and SystemCreatedStorageAccountOutput values.
-// You can construct a concrete instance of `SystemCreatedStorageAccountInput` via:
-//
-//	SystemCreatedStorageAccountArgs{...}
-type SystemCreatedStorageAccountInput interface {
-	pulumi.Input
-
-	ToSystemCreatedStorageAccountOutput() SystemCreatedStorageAccountOutput
-	ToSystemCreatedStorageAccountOutputWithContext(context.Context) SystemCreatedStorageAccountOutput
-}
-
-type SystemCreatedStorageAccountArgs struct {
-	// Public blob access allowed
-	AllowBlobPublicAccess pulumi.BoolPtrInput `pulumi:"allowBlobPublicAccess"`
-	// This is populated once the storage account is created.
-	ArmResourceId ArmResourceIdPtrInput `pulumi:"armResourceId"`
-	// HNS enabled for storage account
-	StorageAccountHnsEnabled pulumi.BoolPtrInput `pulumi:"storageAccountHnsEnabled"`
-	// Name of the storage account
-	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
-	// Allowed values:
-	// "Standard_LRS",
-	// "Standard_GRS",
-	// "Standard_RAGRS",
-	// "Standard_ZRS",
-	// "Standard_GZRS",
-	// "Standard_RAGZRS",
-	// "Premium_LRS",
-	// "Premium_ZRS"
-	StorageAccountType pulumi.StringPtrInput `pulumi:"storageAccountType"`
-}
-
-func (SystemCreatedStorageAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemCreatedStorageAccount)(nil)).Elem()
-}
-
-func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountOutput() SystemCreatedStorageAccountOutput {
-	return i.ToSystemCreatedStorageAccountOutputWithContext(context.Background())
-}
-
-func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountOutputWithContext(ctx context.Context) SystemCreatedStorageAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountOutput)
-}
-
-func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
-	return i.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
-}
-
-func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountOutput).ToSystemCreatedStorageAccountPtrOutputWithContext(ctx)
-}
-
-// SystemCreatedStorageAccountPtrInput is an input type that accepts SystemCreatedStorageAccountArgs, SystemCreatedStorageAccountPtr and SystemCreatedStorageAccountPtrOutput values.
-// You can construct a concrete instance of `SystemCreatedStorageAccountPtrInput` via:
-//
-//	        SystemCreatedStorageAccountArgs{...}
-//
-//	or:
-//
-//	        nil
-type SystemCreatedStorageAccountPtrInput interface {
-	pulumi.Input
-
-	ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput
-	ToSystemCreatedStorageAccountPtrOutputWithContext(context.Context) SystemCreatedStorageAccountPtrOutput
-}
-
-type systemCreatedStorageAccountPtrType SystemCreatedStorageAccountArgs
-
-func SystemCreatedStorageAccountPtr(v *SystemCreatedStorageAccountArgs) SystemCreatedStorageAccountPtrInput {
-	return (*systemCreatedStorageAccountPtrType)(v)
-}
-
-func (*systemCreatedStorageAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemCreatedStorageAccount)(nil)).Elem()
-}
-
-func (i *systemCreatedStorageAccountPtrType) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
-	return i.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *systemCreatedStorageAccountPtrType) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountPtrOutput)
-}
-
-type SystemCreatedStorageAccountOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedStorageAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemCreatedStorageAccount)(nil)).Elem()
-}
-
-func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountOutput() SystemCreatedStorageAccountOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountOutputWithContext(ctx context.Context) SystemCreatedStorageAccountOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
-	return o.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
-}
-
-func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemCreatedStorageAccount) *SystemCreatedStorageAccount {
-		return &v
-	}).(SystemCreatedStorageAccountPtrOutput)
-}
-
-// Public blob access allowed
-func (o SystemCreatedStorageAccountOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccount) *bool { return v.AllowBlobPublicAccess }).(pulumi.BoolPtrOutput)
-}
-
-// This is populated once the storage account is created.
-func (o SystemCreatedStorageAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
-}
-
-// HNS enabled for storage account
-func (o SystemCreatedStorageAccountOutput) StorageAccountHnsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccount) *bool { return v.StorageAccountHnsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Name of the storage account
-func (o SystemCreatedStorageAccountOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccount) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
-}
-
-// Allowed values:
-// "Standard_LRS",
-// "Standard_GRS",
-// "Standard_RAGRS",
-// "Standard_ZRS",
-// "Standard_GZRS",
-// "Standard_RAGZRS",
-// "Premium_LRS",
-// "Premium_ZRS"
-func (o SystemCreatedStorageAccountOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccount) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type SystemCreatedStorageAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedStorageAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemCreatedStorageAccount)(nil)).Elem()
-}
-
-func (o SystemCreatedStorageAccountPtrOutput) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountPtrOutput) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountPtrOutput) Elem() SystemCreatedStorageAccountOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccount) SystemCreatedStorageAccount {
-		if v != nil {
-			return *v
-		}
-		var ret SystemCreatedStorageAccount
-		return ret
-	}).(SystemCreatedStorageAccountOutput)
-}
-
-// Public blob access allowed
-func (o SystemCreatedStorageAccountPtrOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccount) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowBlobPublicAccess
-	}).(pulumi.BoolPtrOutput)
-}
-
-// This is populated once the storage account is created.
-func (o SystemCreatedStorageAccountPtrOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccount) *ArmResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdPtrOutput)
-}
-
-// HNS enabled for storage account
-func (o SystemCreatedStorageAccountPtrOutput) StorageAccountHnsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccount) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountHnsEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name of the storage account
-func (o SystemCreatedStorageAccountPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Allowed values:
-// "Standard_LRS",
-// "Standard_GRS",
-// "Standard_RAGRS",
-// "Standard_ZRS",
-// "Standard_GZRS",
-// "Standard_RAGZRS",
-// "Premium_LRS",
-// "Premium_ZRS"
-func (o SystemCreatedStorageAccountPtrOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountType
-	}).(pulumi.StringPtrOutput)
-}
-
-type SystemCreatedStorageAccountResponse struct {
-	// Public blob access allowed
-	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
-	// This is populated once the storage account is created.
-	ArmResourceId *ArmResourceIdResponse `pulumi:"armResourceId"`
-	// HNS enabled for storage account
-	StorageAccountHnsEnabled *bool `pulumi:"storageAccountHnsEnabled"`
-	// Name of the storage account
-	StorageAccountName *string `pulumi:"storageAccountName"`
-	// Allowed values:
-	// "Standard_LRS",
-	// "Standard_GRS",
-	// "Standard_RAGRS",
-	// "Standard_ZRS",
-	// "Standard_GZRS",
-	// "Standard_RAGZRS",
-	// "Premium_LRS",
-	// "Premium_ZRS"
-	StorageAccountType *string `pulumi:"storageAccountType"`
-}
-
-type SystemCreatedStorageAccountResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedStorageAccountResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemCreatedStorageAccountResponse)(nil)).Elem()
-}
-
-func (o SystemCreatedStorageAccountResponseOutput) ToSystemCreatedStorageAccountResponseOutput() SystemCreatedStorageAccountResponseOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountResponseOutput) ToSystemCreatedStorageAccountResponseOutputWithContext(ctx context.Context) SystemCreatedStorageAccountResponseOutput {
-	return o
-}
-
-// Public blob access allowed
-func (o SystemCreatedStorageAccountResponseOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccountResponse) *bool { return v.AllowBlobPublicAccess }).(pulumi.BoolPtrOutput)
-}
-
-// This is populated once the storage account is created.
-func (o SystemCreatedStorageAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
-}
-
-// HNS enabled for storage account
-func (o SystemCreatedStorageAccountResponseOutput) StorageAccountHnsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccountResponse) *bool { return v.StorageAccountHnsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Name of the storage account
-func (o SystemCreatedStorageAccountResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccountResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
-}
-
-// Allowed values:
-// "Standard_LRS",
-// "Standard_GRS",
-// "Standard_RAGRS",
-// "Standard_ZRS",
-// "Standard_GZRS",
-// "Standard_RAGZRS",
-// "Premium_LRS",
-// "Premium_ZRS"
-func (o SystemCreatedStorageAccountResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedStorageAccountResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
-}
-
-type SystemCreatedStorageAccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedStorageAccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemCreatedStorageAccountResponse)(nil)).Elem()
-}
-
-func (o SystemCreatedStorageAccountResponsePtrOutput) ToSystemCreatedStorageAccountResponsePtrOutput() SystemCreatedStorageAccountResponsePtrOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountResponsePtrOutput) ToSystemCreatedStorageAccountResponsePtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountResponsePtrOutput {
-	return o
-}
-
-func (o SystemCreatedStorageAccountResponsePtrOutput) Elem() SystemCreatedStorageAccountResponseOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccountResponse) SystemCreatedStorageAccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemCreatedStorageAccountResponse
-		return ret
-	}).(SystemCreatedStorageAccountResponseOutput)
-}
-
-// Public blob access allowed
-func (o SystemCreatedStorageAccountResponsePtrOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccountResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowBlobPublicAccess
-	}).(pulumi.BoolPtrOutput)
-}
-
-// This is populated once the storage account is created.
-func (o SystemCreatedStorageAccountResponsePtrOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccountResponse) *ArmResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdResponsePtrOutput)
-}
-
-// HNS enabled for storage account
-func (o SystemCreatedStorageAccountResponsePtrOutput) StorageAccountHnsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccountResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountHnsEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name of the storage account
-func (o SystemCreatedStorageAccountResponsePtrOutput) StorageAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Allowed values:
-// "Standard_LRS",
-// "Standard_GRS",
-// "Standard_RAGRS",
-// "Standard_ZRS",
-// "Standard_GZRS",
-// "Standard_RAGZRS",
-// "Premium_LRS",
-// "Premium_ZRS"
-func (o SystemCreatedStorageAccountResponsePtrOutput) StorageAccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedStorageAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageAccountType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// A system service running on a compute.
-type SystemServiceResponse struct {
-	// Public IP address
-	PublicIpAddress string `pulumi:"publicIpAddress"`
-	// The type of this system service.
-	SystemServiceType string `pulumi:"systemServiceType"`
-	// The version for this type.
-	Version string `pulumi:"version"`
-}
-
-// A system service running on a compute.
-type SystemServiceResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemServiceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemServiceResponse)(nil)).Elem()
-}
-
-func (o SystemServiceResponseOutput) ToSystemServiceResponseOutput() SystemServiceResponseOutput {
-	return o
-}
-
-func (o SystemServiceResponseOutput) ToSystemServiceResponseOutputWithContext(ctx context.Context) SystemServiceResponseOutput {
-	return o
-}
-
-// Public IP address
-func (o SystemServiceResponseOutput) PublicIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemServiceResponse) string { return v.PublicIpAddress }).(pulumi.StringOutput)
-}
-
-// The type of this system service.
-func (o SystemServiceResponseOutput) SystemServiceType() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemServiceResponse) string { return v.SystemServiceType }).(pulumi.StringOutput)
-}
-
-// The version for this type.
-func (o SystemServiceResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemServiceResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type SystemServiceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SystemServiceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SystemServiceResponse)(nil)).Elem()
-}
-
-func (o SystemServiceResponseArrayOutput) ToSystemServiceResponseArrayOutput() SystemServiceResponseArrayOutput {
-	return o
-}
-
-func (o SystemServiceResponseArrayOutput) ToSystemServiceResponseArrayOutputWithContext(ctx context.Context) SystemServiceResponseArrayOutput {
-	return o
-}
-
-func (o SystemServiceResponseArrayOutput) Index(i pulumi.IntInput) SystemServiceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SystemServiceResponse {
-		return vs[0].([]SystemServiceResponse)[vs[1].(int)]
-	}).(SystemServiceResponseOutput)
-}
-
-// Featurization Configuration.
-type TableVerticalFeaturizationSettings struct {
-	// These transformers shall not be used in featurization.
-	BlockedTransformers []string `pulumi:"blockedTransformers"`
-	// Dictionary of column name and its type (int, float, string, datetime etc).
-	ColumnNameAndTypes map[string]string `pulumi:"columnNameAndTypes"`
-	// Dataset language, useful for the text data.
-	DatasetLanguage *string `pulumi:"datasetLanguage"`
-	// Determines whether to use Dnn based featurizers for data featurization.
-	EnableDnnFeaturization *bool `pulumi:"enableDnnFeaturization"`
-	// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-	// If 'Off' is selected then no featurization is done.
-	// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-	Mode *string `pulumi:"mode"`
-	// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-	TransformerParams map[string][]ColumnTransformer `pulumi:"transformerParams"`
-}
-
-// Defaults sets the appropriate defaults for TableVerticalFeaturizationSettings
-func (val *TableVerticalFeaturizationSettings) Defaults() *TableVerticalFeaturizationSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableDnnFeaturization == nil {
-		enableDnnFeaturization_ := false
-		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
-	}
-	if tmp.Mode == nil {
-		mode_ := "Auto"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-// TableVerticalFeaturizationSettingsInput is an input type that accepts TableVerticalFeaturizationSettingsArgs and TableVerticalFeaturizationSettingsOutput values.
-// You can construct a concrete instance of `TableVerticalFeaturizationSettingsInput` via:
-//
-//	TableVerticalFeaturizationSettingsArgs{...}
-type TableVerticalFeaturizationSettingsInput interface {
-	pulumi.Input
-
-	ToTableVerticalFeaturizationSettingsOutput() TableVerticalFeaturizationSettingsOutput
-	ToTableVerticalFeaturizationSettingsOutputWithContext(context.Context) TableVerticalFeaturizationSettingsOutput
-}
-
-// Featurization Configuration.
-type TableVerticalFeaturizationSettingsArgs struct {
-	// These transformers shall not be used in featurization.
-	BlockedTransformers pulumi.StringArrayInput `pulumi:"blockedTransformers"`
-	// Dictionary of column name and its type (int, float, string, datetime etc).
-	ColumnNameAndTypes pulumi.StringMapInput `pulumi:"columnNameAndTypes"`
-	// Dataset language, useful for the text data.
-	DatasetLanguage pulumi.StringPtrInput `pulumi:"datasetLanguage"`
-	// Determines whether to use Dnn based featurizers for data featurization.
-	EnableDnnFeaturization pulumi.BoolPtrInput `pulumi:"enableDnnFeaturization"`
-	// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-	// If 'Off' is selected then no featurization is done.
-	// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-	TransformerParams ColumnTransformerArrayMapInput `pulumi:"transformerParams"`
-}
-
-// Defaults sets the appropriate defaults for TableVerticalFeaturizationSettingsArgs
-func (val *TableVerticalFeaturizationSettingsArgs) Defaults() *TableVerticalFeaturizationSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableDnnFeaturization == nil {
-		tmp.EnableDnnFeaturization = pulumi.BoolPtr(false)
-	}
-	if tmp.Mode == nil {
-		tmp.Mode = pulumi.StringPtr("Auto")
-	}
-	return &tmp
-}
-func (TableVerticalFeaturizationSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableVerticalFeaturizationSettings)(nil)).Elem()
-}
-
-func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsOutput() TableVerticalFeaturizationSettingsOutput {
-	return i.ToTableVerticalFeaturizationSettingsOutputWithContext(context.Background())
-}
-
-func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalFeaturizationSettingsOutput)
-}
-
-func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
-	return i.ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalFeaturizationSettingsOutput).ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx)
-}
-
-// TableVerticalFeaturizationSettingsPtrInput is an input type that accepts TableVerticalFeaturizationSettingsArgs, TableVerticalFeaturizationSettingsPtr and TableVerticalFeaturizationSettingsPtrOutput values.
-// You can construct a concrete instance of `TableVerticalFeaturizationSettingsPtrInput` via:
-//
-//	        TableVerticalFeaturizationSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TableVerticalFeaturizationSettingsPtrInput interface {
-	pulumi.Input
-
-	ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput
-	ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Context) TableVerticalFeaturizationSettingsPtrOutput
-}
-
-type tableVerticalFeaturizationSettingsPtrType TableVerticalFeaturizationSettingsArgs
-
-func TableVerticalFeaturizationSettingsPtr(v *TableVerticalFeaturizationSettingsArgs) TableVerticalFeaturizationSettingsPtrInput {
-	return (*tableVerticalFeaturizationSettingsPtrType)(v)
-}
-
-func (*tableVerticalFeaturizationSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableVerticalFeaturizationSettings)(nil)).Elem()
-}
-
-func (i *tableVerticalFeaturizationSettingsPtrType) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
-	return i.ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *tableVerticalFeaturizationSettingsPtrType) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalFeaturizationSettingsPtrOutput)
-}
-
-// Featurization Configuration.
-type TableVerticalFeaturizationSettingsOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalFeaturizationSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableVerticalFeaturizationSettings)(nil)).Elem()
-}
-
-func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsOutput() TableVerticalFeaturizationSettingsOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
-	return o.ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableVerticalFeaturizationSettings) *TableVerticalFeaturizationSettings {
-		return &v
-	}).(TableVerticalFeaturizationSettingsPtrOutput)
-}
-
-// These transformers shall not be used in featurization.
-func (o TableVerticalFeaturizationSettingsOutput) BlockedTransformers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettings) []string { return v.BlockedTransformers }).(pulumi.StringArrayOutput)
-}
-
-// Dictionary of column name and its type (int, float, string, datetime etc).
-func (o TableVerticalFeaturizationSettingsOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettings) map[string]string { return v.ColumnNameAndTypes }).(pulumi.StringMapOutput)
-}
-
-// Dataset language, useful for the text data.
-func (o TableVerticalFeaturizationSettingsOutput) DatasetLanguage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettings) *string { return v.DatasetLanguage }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to use Dnn based featurizers for data featurization.
-func (o TableVerticalFeaturizationSettingsOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettings) *bool { return v.EnableDnnFeaturization }).(pulumi.BoolPtrOutput)
-}
-
-// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-// If 'Off' is selected then no featurization is done.
-// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-func (o TableVerticalFeaturizationSettingsOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-func (o TableVerticalFeaturizationSettingsOutput) TransformerParams() ColumnTransformerArrayMapOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettings) map[string][]ColumnTransformer { return v.TransformerParams }).(ColumnTransformerArrayMapOutput)
-}
-
-type TableVerticalFeaturizationSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalFeaturizationSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableVerticalFeaturizationSettings)(nil)).Elem()
-}
-
-func (o TableVerticalFeaturizationSettingsPtrOutput) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsPtrOutput) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsPtrOutput) Elem() TableVerticalFeaturizationSettingsOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) TableVerticalFeaturizationSettings {
-		if v != nil {
-			return *v
-		}
-		var ret TableVerticalFeaturizationSettings
-		return ret
-	}).(TableVerticalFeaturizationSettingsOutput)
-}
-
-// These transformers shall not be used in featurization.
-func (o TableVerticalFeaturizationSettingsPtrOutput) BlockedTransformers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BlockedTransformers
-	}).(pulumi.StringArrayOutput)
-}
-
-// Dictionary of column name and its type (int, float, string, datetime etc).
-func (o TableVerticalFeaturizationSettingsPtrOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ColumnNameAndTypes
-	}).(pulumi.StringMapOutput)
-}
-
-// Dataset language, useful for the text data.
-func (o TableVerticalFeaturizationSettingsPtrOutput) DatasetLanguage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DatasetLanguage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to use Dnn based featurizers for data featurization.
-func (o TableVerticalFeaturizationSettingsPtrOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableDnnFeaturization
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-// If 'Off' is selected then no featurization is done.
-// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-func (o TableVerticalFeaturizationSettingsPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-func (o TableVerticalFeaturizationSettingsPtrOutput) TransformerParams() ColumnTransformerArrayMapOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) map[string][]ColumnTransformer {
-		if v == nil {
-			return nil
-		}
-		return v.TransformerParams
-	}).(ColumnTransformerArrayMapOutput)
-}
-
-// Featurization Configuration.
-type TableVerticalFeaturizationSettingsResponse struct {
-	// These transformers shall not be used in featurization.
-	BlockedTransformers []string `pulumi:"blockedTransformers"`
-	// Dictionary of column name and its type (int, float, string, datetime etc).
-	ColumnNameAndTypes map[string]string `pulumi:"columnNameAndTypes"`
-	// Dataset language, useful for the text data.
-	DatasetLanguage *string `pulumi:"datasetLanguage"`
-	// Determines whether to use Dnn based featurizers for data featurization.
-	EnableDnnFeaturization *bool `pulumi:"enableDnnFeaturization"`
-	// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-	// If 'Off' is selected then no featurization is done.
-	// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-	Mode *string `pulumi:"mode"`
-	// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-	TransformerParams map[string][]ColumnTransformerResponse `pulumi:"transformerParams"`
-}
-
-// Defaults sets the appropriate defaults for TableVerticalFeaturizationSettingsResponse
-func (val *TableVerticalFeaturizationSettingsResponse) Defaults() *TableVerticalFeaturizationSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableDnnFeaturization == nil {
-		enableDnnFeaturization_ := false
-		tmp.EnableDnnFeaturization = &enableDnnFeaturization_
-	}
-	if tmp.Mode == nil {
-		mode_ := "Auto"
-		tmp.Mode = &mode_
-	}
-	return &tmp
-}
-
-// Featurization Configuration.
-type TableVerticalFeaturizationSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalFeaturizationSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableVerticalFeaturizationSettingsResponse)(nil)).Elem()
-}
-
-func (o TableVerticalFeaturizationSettingsResponseOutput) ToTableVerticalFeaturizationSettingsResponseOutput() TableVerticalFeaturizationSettingsResponseOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsResponseOutput) ToTableVerticalFeaturizationSettingsResponseOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsResponseOutput {
-	return o
-}
-
-// These transformers shall not be used in featurization.
-func (o TableVerticalFeaturizationSettingsResponseOutput) BlockedTransformers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) []string { return v.BlockedTransformers }).(pulumi.StringArrayOutput)
-}
-
-// Dictionary of column name and its type (int, float, string, datetime etc).
-func (o TableVerticalFeaturizationSettingsResponseOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) map[string]string { return v.ColumnNameAndTypes }).(pulumi.StringMapOutput)
-}
-
-// Dataset language, useful for the text data.
-func (o TableVerticalFeaturizationSettingsResponseOutput) DatasetLanguage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) *string { return v.DatasetLanguage }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to use Dnn based featurizers for data featurization.
-func (o TableVerticalFeaturizationSettingsResponseOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) *bool { return v.EnableDnnFeaturization }).(pulumi.BoolPtrOutput)
-}
-
-// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-// If 'Off' is selected then no featurization is done.
-// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-func (o TableVerticalFeaturizationSettingsResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-func (o TableVerticalFeaturizationSettingsResponseOutput) TransformerParams() ColumnTransformerResponseArrayMapOutput {
-	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) map[string][]ColumnTransformerResponse {
-		return v.TransformerParams
-	}).(ColumnTransformerResponseArrayMapOutput)
-}
-
-type TableVerticalFeaturizationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalFeaturizationSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableVerticalFeaturizationSettingsResponse)(nil)).Elem()
-}
-
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) ToTableVerticalFeaturizationSettingsResponsePtrOutput() TableVerticalFeaturizationSettingsResponsePtrOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) ToTableVerticalFeaturizationSettingsResponsePtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsResponsePtrOutput {
-	return o
-}
-
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) Elem() TableVerticalFeaturizationSettingsResponseOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) TableVerticalFeaturizationSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TableVerticalFeaturizationSettingsResponse
-		return ret
-	}).(TableVerticalFeaturizationSettingsResponseOutput)
-}
-
-// These transformers shall not be used in featurization.
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) BlockedTransformers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BlockedTransformers
-	}).(pulumi.StringArrayOutput)
-}
-
-// Dictionary of column name and its type (int, float, string, datetime etc).
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ColumnNameAndTypes
-	}).(pulumi.StringMapOutput)
-}
-
-// Dataset language, useful for the text data.
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) DatasetLanguage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DatasetLanguage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to use Dnn based featurizers for data featurization.
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableDnnFeaturization
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
-// If 'Off' is selected then no featurization is done.
-// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
-func (o TableVerticalFeaturizationSettingsResponsePtrOutput) TransformerParams() ColumnTransformerResponseArrayMapOutput {
-	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) map[string][]ColumnTransformerResponse {
-		if v == nil {
-			return nil
-		}
-		return v.TransformerParams
-	}).(ColumnTransformerResponseArrayMapOutput)
-}
-
-// Job execution constraints.
-type TableVerticalLimitSettings struct {
-	// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-	EnableEarlyTermination *bool `pulumi:"enableEarlyTermination"`
-	// Exit score for the AutoML job.
-	ExitScore *float64 `pulumi:"exitScore"`
-	// Maximum Concurrent iterations.
-	MaxConcurrentTrials *int `pulumi:"maxConcurrentTrials"`
-	// Max cores per iteration.
-	MaxCoresPerTrial *int `pulumi:"maxCoresPerTrial"`
-	// Number of iterations.
-	MaxTrials *int `pulumi:"maxTrials"`
-	// AutoML job timeout.
-	Timeout *string `pulumi:"timeout"`
-	// Iteration timeout.
-	TrialTimeout *string `pulumi:"trialTimeout"`
-}
-
-// Defaults sets the appropriate defaults for TableVerticalLimitSettings
-func (val *TableVerticalLimitSettings) Defaults() *TableVerticalLimitSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableEarlyTermination == nil {
-		enableEarlyTermination_ := true
-		tmp.EnableEarlyTermination = &enableEarlyTermination_
-	}
-	if tmp.MaxConcurrentTrials == nil {
-		maxConcurrentTrials_ := 1
-		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
-	}
-	if tmp.MaxCoresPerTrial == nil {
-		maxCoresPerTrial_ := -1
-		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
-	}
-	if tmp.MaxTrials == nil {
-		maxTrials_ := 1000
-		tmp.MaxTrials = &maxTrials_
-	}
-	if tmp.Timeout == nil {
-		timeout_ := "PT6H"
-		tmp.Timeout = &timeout_
-	}
-	if tmp.TrialTimeout == nil {
-		trialTimeout_ := "PT30M"
-		tmp.TrialTimeout = &trialTimeout_
-	}
-	return &tmp
-}
-
-// TableVerticalLimitSettingsInput is an input type that accepts TableVerticalLimitSettingsArgs and TableVerticalLimitSettingsOutput values.
-// You can construct a concrete instance of `TableVerticalLimitSettingsInput` via:
-//
-//	TableVerticalLimitSettingsArgs{...}
-type TableVerticalLimitSettingsInput interface {
-	pulumi.Input
-
-	ToTableVerticalLimitSettingsOutput() TableVerticalLimitSettingsOutput
-	ToTableVerticalLimitSettingsOutputWithContext(context.Context) TableVerticalLimitSettingsOutput
-}
-
-// Job execution constraints.
-type TableVerticalLimitSettingsArgs struct {
-	// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-	EnableEarlyTermination pulumi.BoolPtrInput `pulumi:"enableEarlyTermination"`
-	// Exit score for the AutoML job.
-	ExitScore pulumi.Float64PtrInput `pulumi:"exitScore"`
-	// Maximum Concurrent iterations.
-	MaxConcurrentTrials pulumi.IntPtrInput `pulumi:"maxConcurrentTrials"`
-	// Max cores per iteration.
-	MaxCoresPerTrial pulumi.IntPtrInput `pulumi:"maxCoresPerTrial"`
-	// Number of iterations.
-	MaxTrials pulumi.IntPtrInput `pulumi:"maxTrials"`
-	// AutoML job timeout.
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// Iteration timeout.
-	TrialTimeout pulumi.StringPtrInput `pulumi:"trialTimeout"`
-}
-
-// Defaults sets the appropriate defaults for TableVerticalLimitSettingsArgs
-func (val *TableVerticalLimitSettingsArgs) Defaults() *TableVerticalLimitSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableEarlyTermination == nil {
-		tmp.EnableEarlyTermination = pulumi.BoolPtr(true)
-	}
-	if tmp.MaxConcurrentTrials == nil {
-		tmp.MaxConcurrentTrials = pulumi.IntPtr(1)
-	}
-	if tmp.MaxCoresPerTrial == nil {
-		tmp.MaxCoresPerTrial = pulumi.IntPtr(-1)
-	}
-	if tmp.MaxTrials == nil {
-		tmp.MaxTrials = pulumi.IntPtr(1000)
-	}
-	if tmp.Timeout == nil {
-		tmp.Timeout = pulumi.StringPtr("PT6H")
-	}
-	if tmp.TrialTimeout == nil {
-		tmp.TrialTimeout = pulumi.StringPtr("PT30M")
-	}
-	return &tmp
-}
-func (TableVerticalLimitSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableVerticalLimitSettings)(nil)).Elem()
-}
-
-func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsOutput() TableVerticalLimitSettingsOutput {
-	return i.ToTableVerticalLimitSettingsOutputWithContext(context.Background())
-}
-
-func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsOutputWithContext(ctx context.Context) TableVerticalLimitSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalLimitSettingsOutput)
-}
-
-func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
-	return i.ToTableVerticalLimitSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalLimitSettingsOutput).ToTableVerticalLimitSettingsPtrOutputWithContext(ctx)
-}
-
-// TableVerticalLimitSettingsPtrInput is an input type that accepts TableVerticalLimitSettingsArgs, TableVerticalLimitSettingsPtr and TableVerticalLimitSettingsPtrOutput values.
-// You can construct a concrete instance of `TableVerticalLimitSettingsPtrInput` via:
-//
-//	        TableVerticalLimitSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TableVerticalLimitSettingsPtrInput interface {
-	pulumi.Input
-
-	ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput
-	ToTableVerticalLimitSettingsPtrOutputWithContext(context.Context) TableVerticalLimitSettingsPtrOutput
-}
-
-type tableVerticalLimitSettingsPtrType TableVerticalLimitSettingsArgs
-
-func TableVerticalLimitSettingsPtr(v *TableVerticalLimitSettingsArgs) TableVerticalLimitSettingsPtrInput {
-	return (*tableVerticalLimitSettingsPtrType)(v)
-}
-
-func (*tableVerticalLimitSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableVerticalLimitSettings)(nil)).Elem()
-}
-
-func (i *tableVerticalLimitSettingsPtrType) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
-	return i.ToTableVerticalLimitSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *tableVerticalLimitSettingsPtrType) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalLimitSettingsPtrOutput)
-}
-
-// Job execution constraints.
-type TableVerticalLimitSettingsOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalLimitSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableVerticalLimitSettings)(nil)).Elem()
-}
-
-func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsOutput() TableVerticalLimitSettingsOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsOutputWithContext(ctx context.Context) TableVerticalLimitSettingsOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
-	return o.ToTableVerticalLimitSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableVerticalLimitSettings) *TableVerticalLimitSettings {
-		return &v
-	}).(TableVerticalLimitSettingsPtrOutput)
-}
-
-// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-func (o TableVerticalLimitSettingsOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *bool { return v.EnableEarlyTermination }).(pulumi.BoolPtrOutput)
-}
-
-// Exit score for the AutoML job.
-func (o TableVerticalLimitSettingsOutput) ExitScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *float64 { return v.ExitScore }).(pulumi.Float64PtrOutput)
-}
-
-// Maximum Concurrent iterations.
-func (o TableVerticalLimitSettingsOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
-}
-
-// Max cores per iteration.
-func (o TableVerticalLimitSettingsOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxCoresPerTrial }).(pulumi.IntPtrOutput)
-}
-
-// Number of iterations.
-func (o TableVerticalLimitSettingsOutput) MaxTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxTrials }).(pulumi.IntPtrOutput)
-}
-
-// AutoML job timeout.
-func (o TableVerticalLimitSettingsOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-// Iteration timeout.
-func (o TableVerticalLimitSettingsOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettings) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
-}
-
-type TableVerticalLimitSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalLimitSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableVerticalLimitSettings)(nil)).Elem()
-}
-
-func (o TableVerticalLimitSettingsPtrOutput) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsPtrOutput) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsPtrOutput) Elem() TableVerticalLimitSettingsOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) TableVerticalLimitSettings {
-		if v != nil {
-			return *v
-		}
-		var ret TableVerticalLimitSettings
-		return ret
-	}).(TableVerticalLimitSettingsOutput)
-}
-
-// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-func (o TableVerticalLimitSettingsPtrOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableEarlyTermination
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Exit score for the AutoML job.
-func (o TableVerticalLimitSettingsPtrOutput) ExitScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.ExitScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Maximum Concurrent iterations.
-func (o TableVerticalLimitSettingsPtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxConcurrentTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// Max cores per iteration.
-func (o TableVerticalLimitSettingsPtrOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxCoresPerTrial
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of iterations.
-func (o TableVerticalLimitSettingsPtrOutput) MaxTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// AutoML job timeout.
-func (o TableVerticalLimitSettingsPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Iteration timeout.
-func (o TableVerticalLimitSettingsPtrOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TrialTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Job execution constraints.
-type TableVerticalLimitSettingsResponse struct {
-	// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-	EnableEarlyTermination *bool `pulumi:"enableEarlyTermination"`
-	// Exit score for the AutoML job.
-	ExitScore *float64 `pulumi:"exitScore"`
-	// Maximum Concurrent iterations.
-	MaxConcurrentTrials *int `pulumi:"maxConcurrentTrials"`
-	// Max cores per iteration.
-	MaxCoresPerTrial *int `pulumi:"maxCoresPerTrial"`
-	// Number of iterations.
-	MaxTrials *int `pulumi:"maxTrials"`
-	// AutoML job timeout.
-	Timeout *string `pulumi:"timeout"`
-	// Iteration timeout.
-	TrialTimeout *string `pulumi:"trialTimeout"`
-}
-
-// Defaults sets the appropriate defaults for TableVerticalLimitSettingsResponse
-func (val *TableVerticalLimitSettingsResponse) Defaults() *TableVerticalLimitSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.EnableEarlyTermination == nil {
-		enableEarlyTermination_ := true
-		tmp.EnableEarlyTermination = &enableEarlyTermination_
-	}
-	if tmp.MaxConcurrentTrials == nil {
-		maxConcurrentTrials_ := 1
-		tmp.MaxConcurrentTrials = &maxConcurrentTrials_
-	}
-	if tmp.MaxCoresPerTrial == nil {
-		maxCoresPerTrial_ := -1
-		tmp.MaxCoresPerTrial = &maxCoresPerTrial_
-	}
-	if tmp.MaxTrials == nil {
-		maxTrials_ := 1000
-		tmp.MaxTrials = &maxTrials_
-	}
-	if tmp.Timeout == nil {
-		timeout_ := "PT6H"
-		tmp.Timeout = &timeout_
-	}
-	if tmp.TrialTimeout == nil {
-		trialTimeout_ := "PT30M"
-		tmp.TrialTimeout = &trialTimeout_
-	}
-	return &tmp
-}
-
-// Job execution constraints.
-type TableVerticalLimitSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalLimitSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableVerticalLimitSettingsResponse)(nil)).Elem()
-}
-
-func (o TableVerticalLimitSettingsResponseOutput) ToTableVerticalLimitSettingsResponseOutput() TableVerticalLimitSettingsResponseOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsResponseOutput) ToTableVerticalLimitSettingsResponseOutputWithContext(ctx context.Context) TableVerticalLimitSettingsResponseOutput {
-	return o
-}
-
-// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-func (o TableVerticalLimitSettingsResponseOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *bool { return v.EnableEarlyTermination }).(pulumi.BoolPtrOutput)
-}
-
-// Exit score for the AutoML job.
-func (o TableVerticalLimitSettingsResponseOutput) ExitScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *float64 { return v.ExitScore }).(pulumi.Float64PtrOutput)
-}
-
-// Maximum Concurrent iterations.
-func (o TableVerticalLimitSettingsResponseOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
-}
-
-// Max cores per iteration.
-func (o TableVerticalLimitSettingsResponseOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxCoresPerTrial }).(pulumi.IntPtrOutput)
-}
-
-// Number of iterations.
-func (o TableVerticalLimitSettingsResponseOutput) MaxTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxTrials }).(pulumi.IntPtrOutput)
-}
-
-// AutoML job timeout.
-func (o TableVerticalLimitSettingsResponseOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-// Iteration timeout.
-func (o TableVerticalLimitSettingsResponseOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
-}
-
-type TableVerticalLimitSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TableVerticalLimitSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TableVerticalLimitSettingsResponse)(nil)).Elem()
-}
-
-func (o TableVerticalLimitSettingsResponsePtrOutput) ToTableVerticalLimitSettingsResponsePtrOutput() TableVerticalLimitSettingsResponsePtrOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsResponsePtrOutput) ToTableVerticalLimitSettingsResponsePtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsResponsePtrOutput {
-	return o
-}
-
-func (o TableVerticalLimitSettingsResponsePtrOutput) Elem() TableVerticalLimitSettingsResponseOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) TableVerticalLimitSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TableVerticalLimitSettingsResponse
-		return ret
-	}).(TableVerticalLimitSettingsResponseOutput)
-}
-
-// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
-func (o TableVerticalLimitSettingsResponsePtrOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableEarlyTermination
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Exit score for the AutoML job.
-func (o TableVerticalLimitSettingsResponsePtrOutput) ExitScore() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.ExitScore
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Maximum Concurrent iterations.
-func (o TableVerticalLimitSettingsResponsePtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxConcurrentTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// Max cores per iteration.
-func (o TableVerticalLimitSettingsResponsePtrOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxCoresPerTrial
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of iterations.
-func (o TableVerticalLimitSettingsResponsePtrOutput) MaxTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// AutoML job timeout.
-func (o TableVerticalLimitSettingsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Iteration timeout.
-func (o TableVerticalLimitSettingsResponsePtrOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TrialTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-type TargetUtilizationScaleSettings struct {
-	// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-	MaxInstances *int `pulumi:"maxInstances"`
-	// The minimum number of instances to always be present.
-	MinInstances *int `pulumi:"minInstances"`
-	// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-	PollingInterval *string `pulumi:"pollingInterval"`
-	// Expected value is 'TargetUtilization'.
-	ScaleType string `pulumi:"scaleType"`
-	// Target CPU usage for the autoscaler.
-	TargetUtilizationPercentage *int `pulumi:"targetUtilizationPercentage"`
-}
-
-// Defaults sets the appropriate defaults for TargetUtilizationScaleSettings
-func (val *TargetUtilizationScaleSettings) Defaults() *TargetUtilizationScaleSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxInstances == nil {
-		maxInstances_ := 1
-		tmp.MaxInstances = &maxInstances_
-	}
-	if tmp.MinInstances == nil {
-		minInstances_ := 1
-		tmp.MinInstances = &minInstances_
-	}
-	if tmp.PollingInterval == nil {
-		pollingInterval_ := "PT1S"
-		tmp.PollingInterval = &pollingInterval_
-	}
-	if tmp.TargetUtilizationPercentage == nil {
-		targetUtilizationPercentage_ := 70
-		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
-	}
-	return &tmp
-}
-
-// TargetUtilizationScaleSettingsInput is an input type that accepts TargetUtilizationScaleSettingsArgs and TargetUtilizationScaleSettingsOutput values.
-// You can construct a concrete instance of `TargetUtilizationScaleSettingsInput` via:
-//
-//	TargetUtilizationScaleSettingsArgs{...}
-type TargetUtilizationScaleSettingsInput interface {
-	pulumi.Input
-
-	ToTargetUtilizationScaleSettingsOutput() TargetUtilizationScaleSettingsOutput
-	ToTargetUtilizationScaleSettingsOutputWithContext(context.Context) TargetUtilizationScaleSettingsOutput
-}
-
-type TargetUtilizationScaleSettingsArgs struct {
-	// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
-	// The minimum number of instances to always be present.
-	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
-	// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-	PollingInterval pulumi.StringPtrInput `pulumi:"pollingInterval"`
-	// Expected value is 'TargetUtilization'.
-	ScaleType pulumi.StringInput `pulumi:"scaleType"`
-	// Target CPU usage for the autoscaler.
-	TargetUtilizationPercentage pulumi.IntPtrInput `pulumi:"targetUtilizationPercentage"`
-}
-
-// Defaults sets the appropriate defaults for TargetUtilizationScaleSettingsArgs
-func (val *TargetUtilizationScaleSettingsArgs) Defaults() *TargetUtilizationScaleSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxInstances == nil {
-		tmp.MaxInstances = pulumi.IntPtr(1)
-	}
-	if tmp.MinInstances == nil {
-		tmp.MinInstances = pulumi.IntPtr(1)
-	}
-	if tmp.PollingInterval == nil {
-		tmp.PollingInterval = pulumi.StringPtr("PT1S")
-	}
-	if tmp.TargetUtilizationPercentage == nil {
-		tmp.TargetUtilizationPercentage = pulumi.IntPtr(70)
-	}
-	return &tmp
-}
-func (TargetUtilizationScaleSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetUtilizationScaleSettings)(nil)).Elem()
-}
-
-func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsOutput() TargetUtilizationScaleSettingsOutput {
-	return i.ToTargetUtilizationScaleSettingsOutputWithContext(context.Background())
-}
-
-func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetUtilizationScaleSettingsOutput)
-}
-
-func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
-	return i.ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetUtilizationScaleSettingsOutput).ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx)
-}
-
-// TargetUtilizationScaleSettingsPtrInput is an input type that accepts TargetUtilizationScaleSettingsArgs, TargetUtilizationScaleSettingsPtr and TargetUtilizationScaleSettingsPtrOutput values.
-// You can construct a concrete instance of `TargetUtilizationScaleSettingsPtrInput` via:
-//
-//	        TargetUtilizationScaleSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type TargetUtilizationScaleSettingsPtrInput interface {
-	pulumi.Input
-
-	ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput
-	ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Context) TargetUtilizationScaleSettingsPtrOutput
-}
-
-type targetUtilizationScaleSettingsPtrType TargetUtilizationScaleSettingsArgs
-
-func TargetUtilizationScaleSettingsPtr(v *TargetUtilizationScaleSettingsArgs) TargetUtilizationScaleSettingsPtrInput {
-	return (*targetUtilizationScaleSettingsPtrType)(v)
-}
-
-func (*targetUtilizationScaleSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetUtilizationScaleSettings)(nil)).Elem()
-}
-
-func (i *targetUtilizationScaleSettingsPtrType) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
-	return i.ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *targetUtilizationScaleSettingsPtrType) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetUtilizationScaleSettingsPtrOutput)
-}
-
-type TargetUtilizationScaleSettingsOutput struct{ *pulumi.OutputState }
-
-func (TargetUtilizationScaleSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetUtilizationScaleSettings)(nil)).Elem()
-}
-
-func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsOutput() TargetUtilizationScaleSettingsOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
-	return o.ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetUtilizationScaleSettings) *TargetUtilizationScaleSettings {
-		return &v
-	}).(TargetUtilizationScaleSettingsPtrOutput)
-}
-
-// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-func (o TargetUtilizationScaleSettingsOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettings) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of instances to always be present.
-func (o TargetUtilizationScaleSettingsOutput) MinInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettings) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
-}
-
-// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-func (o TargetUtilizationScaleSettingsOutput) PollingInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettings) *string { return v.PollingInterval }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'TargetUtilization'.
-func (o TargetUtilizationScaleSettingsOutput) ScaleType() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettings) string { return v.ScaleType }).(pulumi.StringOutput)
-}
-
-// Target CPU usage for the autoscaler.
-func (o TargetUtilizationScaleSettingsOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettings) *int { return v.TargetUtilizationPercentage }).(pulumi.IntPtrOutput)
-}
-
-type TargetUtilizationScaleSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (TargetUtilizationScaleSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetUtilizationScaleSettings)(nil)).Elem()
-}
-
-func (o TargetUtilizationScaleSettingsPtrOutput) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsPtrOutput) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsPtrOutput) Elem() TargetUtilizationScaleSettingsOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettings) TargetUtilizationScaleSettings {
-		if v != nil {
-			return *v
-		}
-		var ret TargetUtilizationScaleSettings
-		return ret
-	}).(TargetUtilizationScaleSettingsOutput)
-}
-
-// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-func (o TargetUtilizationScaleSettingsPtrOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxInstances
-	}).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of instances to always be present.
-func (o TargetUtilizationScaleSettingsPtrOutput) MinInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinInstances
-	}).(pulumi.IntPtrOutput)
-}
-
-// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-func (o TargetUtilizationScaleSettingsPtrOutput) PollingInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PollingInterval
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'TargetUtilization'.
-func (o TargetUtilizationScaleSettingsPtrOutput) ScaleType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ScaleType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Target CPU usage for the autoscaler.
-func (o TargetUtilizationScaleSettingsPtrOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TargetUtilizationPercentage
-	}).(pulumi.IntPtrOutput)
-}
-
-type TargetUtilizationScaleSettingsResponse struct {
-	// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-	MaxInstances *int `pulumi:"maxInstances"`
-	// The minimum number of instances to always be present.
-	MinInstances *int `pulumi:"minInstances"`
-	// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-	PollingInterval *string `pulumi:"pollingInterval"`
-	// Expected value is 'TargetUtilization'.
-	ScaleType string `pulumi:"scaleType"`
-	// Target CPU usage for the autoscaler.
-	TargetUtilizationPercentage *int `pulumi:"targetUtilizationPercentage"`
-}
-
-// Defaults sets the appropriate defaults for TargetUtilizationScaleSettingsResponse
-func (val *TargetUtilizationScaleSettingsResponse) Defaults() *TargetUtilizationScaleSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.MaxInstances == nil {
-		maxInstances_ := 1
-		tmp.MaxInstances = &maxInstances_
-	}
-	if tmp.MinInstances == nil {
-		minInstances_ := 1
-		tmp.MinInstances = &minInstances_
-	}
-	if tmp.PollingInterval == nil {
-		pollingInterval_ := "PT1S"
-		tmp.PollingInterval = &pollingInterval_
-	}
-	if tmp.TargetUtilizationPercentage == nil {
-		targetUtilizationPercentage_ := 70
-		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
-	}
-	return &tmp
-}
-
-type TargetUtilizationScaleSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (TargetUtilizationScaleSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetUtilizationScaleSettingsResponse)(nil)).Elem()
-}
-
-func (o TargetUtilizationScaleSettingsResponseOutput) ToTargetUtilizationScaleSettingsResponseOutput() TargetUtilizationScaleSettingsResponseOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsResponseOutput) ToTargetUtilizationScaleSettingsResponseOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsResponseOutput {
-	return o
-}
-
-// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-func (o TargetUtilizationScaleSettingsResponseOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of instances to always be present.
-func (o TargetUtilizationScaleSettingsResponseOutput) MinInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
-}
-
-// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-func (o TargetUtilizationScaleSettingsResponseOutput) PollingInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *string { return v.PollingInterval }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'TargetUtilization'.
-func (o TargetUtilizationScaleSettingsResponseOutput) ScaleType() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) string { return v.ScaleType }).(pulumi.StringOutput)
-}
-
-// Target CPU usage for the autoscaler.
-func (o TargetUtilizationScaleSettingsResponseOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *int { return v.TargetUtilizationPercentage }).(pulumi.IntPtrOutput)
-}
-
-type TargetUtilizationScaleSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TargetUtilizationScaleSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TargetUtilizationScaleSettingsResponse)(nil)).Elem()
-}
-
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) ToTargetUtilizationScaleSettingsResponsePtrOutput() TargetUtilizationScaleSettingsResponsePtrOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) ToTargetUtilizationScaleSettingsResponsePtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsResponsePtrOutput {
-	return o
-}
-
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) Elem() TargetUtilizationScaleSettingsResponseOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) TargetUtilizationScaleSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TargetUtilizationScaleSettingsResponse
-		return ret
-	}).(TargetUtilizationScaleSettingsResponseOutput)
-}
-
-// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxInstances
-	}).(pulumi.IntPtrOutput)
-}
-
-// The minimum number of instances to always be present.
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) MinInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinInstances
-	}).(pulumi.IntPtrOutput)
-}
-
-// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) PollingInterval() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PollingInterval
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expected value is 'TargetUtilization'.
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) ScaleType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ScaleType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Target CPU usage for the autoscaler.
-func (o TargetUtilizationScaleSettingsResponsePtrOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.TargetUtilizationPercentage
-	}).(pulumi.IntPtrOutput)
-}
-
-// TensorFlow distribution configuration.
-type TensorFlow struct {
-	// Enum to determine the job distribution type.
-	// Expected value is 'TensorFlow'.
-	DistributionType string `pulumi:"distributionType"`
-	// Number of parameter server tasks.
-	ParameterServerCount *int `pulumi:"parameterServerCount"`
-	// Number of workers. If not specified, will default to the instance count.
-	WorkerCount *int `pulumi:"workerCount"`
-}
-
-// Defaults sets the appropriate defaults for TensorFlow
-func (val *TensorFlow) Defaults() *TensorFlow {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ParameterServerCount == nil {
-		parameterServerCount_ := 0
-		tmp.ParameterServerCount = &parameterServerCount_
-	}
-	return &tmp
-}
-
-// TensorFlowInput is an input type that accepts TensorFlowArgs and TensorFlowOutput values.
-// You can construct a concrete instance of `TensorFlowInput` via:
-//
-//	TensorFlowArgs{...}
-type TensorFlowInput interface {
-	pulumi.Input
-
-	ToTensorFlowOutput() TensorFlowOutput
-	ToTensorFlowOutputWithContext(context.Context) TensorFlowOutput
-}
-
-// TensorFlow distribution configuration.
-type TensorFlowArgs struct {
-	// Enum to determine the job distribution type.
-	// Expected value is 'TensorFlow'.
-	DistributionType pulumi.StringInput `pulumi:"distributionType"`
-	// Number of parameter server tasks.
-	ParameterServerCount pulumi.IntPtrInput `pulumi:"parameterServerCount"`
-	// Number of workers. If not specified, will default to the instance count.
-	WorkerCount pulumi.IntPtrInput `pulumi:"workerCount"`
-}
-
-// Defaults sets the appropriate defaults for TensorFlowArgs
-func (val *TensorFlowArgs) Defaults() *TensorFlowArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ParameterServerCount == nil {
-		tmp.ParameterServerCount = pulumi.IntPtr(0)
-	}
-	return &tmp
-}
-func (TensorFlowArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TensorFlow)(nil)).Elem()
-}
-
-func (i TensorFlowArgs) ToTensorFlowOutput() TensorFlowOutput {
-	return i.ToTensorFlowOutputWithContext(context.Background())
-}
-
-func (i TensorFlowArgs) ToTensorFlowOutputWithContext(ctx context.Context) TensorFlowOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TensorFlowOutput)
-}
-
-func (i TensorFlowArgs) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
-	return i.ToTensorFlowPtrOutputWithContext(context.Background())
-}
-
-func (i TensorFlowArgs) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TensorFlowOutput).ToTensorFlowPtrOutputWithContext(ctx)
-}
-
-// TensorFlowPtrInput is an input type that accepts TensorFlowArgs, TensorFlowPtr and TensorFlowPtrOutput values.
-// You can construct a concrete instance of `TensorFlowPtrInput` via:
-//
-//	        TensorFlowArgs{...}
-//
-//	or:
-//
-//	        nil
-type TensorFlowPtrInput interface {
-	pulumi.Input
-
-	ToTensorFlowPtrOutput() TensorFlowPtrOutput
-	ToTensorFlowPtrOutputWithContext(context.Context) TensorFlowPtrOutput
-}
-
-type tensorFlowPtrType TensorFlowArgs
-
-func TensorFlowPtr(v *TensorFlowArgs) TensorFlowPtrInput {
-	return (*tensorFlowPtrType)(v)
-}
-
-func (*tensorFlowPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TensorFlow)(nil)).Elem()
-}
-
-func (i *tensorFlowPtrType) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
-	return i.ToTensorFlowPtrOutputWithContext(context.Background())
-}
-
-func (i *tensorFlowPtrType) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TensorFlowPtrOutput)
-}
-
-// TensorFlow distribution configuration.
-type TensorFlowOutput struct{ *pulumi.OutputState }
-
-func (TensorFlowOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TensorFlow)(nil)).Elem()
-}
-
-func (o TensorFlowOutput) ToTensorFlowOutput() TensorFlowOutput {
-	return o
-}
-
-func (o TensorFlowOutput) ToTensorFlowOutputWithContext(ctx context.Context) TensorFlowOutput {
-	return o
-}
-
-func (o TensorFlowOutput) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
-	return o.ToTensorFlowPtrOutputWithContext(context.Background())
-}
-
-func (o TensorFlowOutput) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TensorFlow) *TensorFlow {
-		return &v
-	}).(TensorFlowPtrOutput)
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'TensorFlow'.
-func (o TensorFlowOutput) DistributionType() pulumi.StringOutput {
-	return o.ApplyT(func(v TensorFlow) string { return v.DistributionType }).(pulumi.StringOutput)
-}
-
-// Number of parameter server tasks.
-func (o TensorFlowOutput) ParameterServerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TensorFlow) *int { return v.ParameterServerCount }).(pulumi.IntPtrOutput)
-}
-
-// Number of workers. If not specified, will default to the instance count.
-func (o TensorFlowOutput) WorkerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TensorFlow) *int { return v.WorkerCount }).(pulumi.IntPtrOutput)
-}
-
-type TensorFlowPtrOutput struct{ *pulumi.OutputState }
-
-func (TensorFlowPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TensorFlow)(nil)).Elem()
-}
-
-func (o TensorFlowPtrOutput) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
-	return o
-}
-
-func (o TensorFlowPtrOutput) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
-	return o
-}
-
-func (o TensorFlowPtrOutput) Elem() TensorFlowOutput {
-	return o.ApplyT(func(v *TensorFlow) TensorFlow {
-		if v != nil {
-			return *v
-		}
-		var ret TensorFlow
-		return ret
-	}).(TensorFlowOutput)
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'TensorFlow'.
-func (o TensorFlowPtrOutput) DistributionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TensorFlow) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DistributionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of parameter server tasks.
-func (o TensorFlowPtrOutput) ParameterServerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TensorFlow) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ParameterServerCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of workers. If not specified, will default to the instance count.
-func (o TensorFlowPtrOutput) WorkerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TensorFlow) *int {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// TensorFlow distribution configuration.
-type TensorFlowResponse struct {
-	// Enum to determine the job distribution type.
-	// Expected value is 'TensorFlow'.
-	DistributionType string `pulumi:"distributionType"`
-	// Number of parameter server tasks.
-	ParameterServerCount *int `pulumi:"parameterServerCount"`
-	// Number of workers. If not specified, will default to the instance count.
-	WorkerCount *int `pulumi:"workerCount"`
-}
-
-// Defaults sets the appropriate defaults for TensorFlowResponse
-func (val *TensorFlowResponse) Defaults() *TensorFlowResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ParameterServerCount == nil {
-		parameterServerCount_ := 0
-		tmp.ParameterServerCount = &parameterServerCount_
-	}
-	return &tmp
-}
-
-// TensorFlow distribution configuration.
-type TensorFlowResponseOutput struct{ *pulumi.OutputState }
-
-func (TensorFlowResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TensorFlowResponse)(nil)).Elem()
-}
-
-func (o TensorFlowResponseOutput) ToTensorFlowResponseOutput() TensorFlowResponseOutput {
-	return o
-}
-
-func (o TensorFlowResponseOutput) ToTensorFlowResponseOutputWithContext(ctx context.Context) TensorFlowResponseOutput {
-	return o
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'TensorFlow'.
-func (o TensorFlowResponseOutput) DistributionType() pulumi.StringOutput {
-	return o.ApplyT(func(v TensorFlowResponse) string { return v.DistributionType }).(pulumi.StringOutput)
-}
-
-// Number of parameter server tasks.
-func (o TensorFlowResponseOutput) ParameterServerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TensorFlowResponse) *int { return v.ParameterServerCount }).(pulumi.IntPtrOutput)
-}
-
-// Number of workers. If not specified, will default to the instance count.
-func (o TensorFlowResponseOutput) WorkerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TensorFlowResponse) *int { return v.WorkerCount }).(pulumi.IntPtrOutput)
-}
-
-type TensorFlowResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (TensorFlowResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TensorFlowResponse)(nil)).Elem()
-}
-
-func (o TensorFlowResponsePtrOutput) ToTensorFlowResponsePtrOutput() TensorFlowResponsePtrOutput {
-	return o
-}
-
-func (o TensorFlowResponsePtrOutput) ToTensorFlowResponsePtrOutputWithContext(ctx context.Context) TensorFlowResponsePtrOutput {
-	return o
-}
-
-func (o TensorFlowResponsePtrOutput) Elem() TensorFlowResponseOutput {
-	return o.ApplyT(func(v *TensorFlowResponse) TensorFlowResponse {
-		if v != nil {
-			return *v
-		}
-		var ret TensorFlowResponse
-		return ret
-	}).(TensorFlowResponseOutput)
-}
-
-// Enum to determine the job distribution type.
-// Expected value is 'TensorFlow'.
-func (o TensorFlowResponsePtrOutput) DistributionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TensorFlowResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DistributionType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Number of parameter server tasks.
-func (o TensorFlowResponsePtrOutput) ParameterServerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TensorFlowResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ParameterServerCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of workers. If not specified, will default to the instance count.
-func (o TensorFlowResponsePtrOutput) WorkerCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TensorFlowResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.WorkerCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Text Classification task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassification struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification task.
-	PrimaryMetric *string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextClassification'.
-	TaskType string `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInput `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInput `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextClassification
-func (val *TextClassification) Defaults() *TextClassification {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	if tmp.PrimaryMetric == nil {
-		primaryMetric_ := "Accuracy"
-		tmp.PrimaryMetric = &primaryMetric_
-	}
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// TextClassificationInput is an input type that accepts TextClassificationArgs and TextClassificationOutput values.
-// You can construct a concrete instance of `TextClassificationInput` via:
-//
-//	TextClassificationArgs{...}
-type TextClassificationInput interface {
-	pulumi.Input
-
-	ToTextClassificationOutput() TextClassificationOutput
-	ToTextClassificationOutputWithContext(context.Context) TextClassificationOutput
-}
-
-// Text Classification task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationArgs struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification task.
-	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextClassification'.
-	TaskType pulumi.StringInput `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextClassificationArgs
-func (val *TextClassificationArgs) Defaults() *TextClassificationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	if tmp.LogVerbosity == nil {
-		tmp.LogVerbosity = pulumi.StringPtr("Info")
-	}
-	if tmp.PrimaryMetric == nil {
-		tmp.PrimaryMetric = pulumi.StringPtr("Accuracy")
-	}
-
-	return &tmp
-}
-func (TextClassificationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextClassification)(nil)).Elem()
-}
-
-func (i TextClassificationArgs) ToTextClassificationOutput() TextClassificationOutput {
-	return i.ToTextClassificationOutputWithContext(context.Background())
-}
-
-func (i TextClassificationArgs) ToTextClassificationOutputWithContext(ctx context.Context) TextClassificationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TextClassificationOutput)
-}
-
-// Text Classification task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationOutput struct{ *pulumi.OutputState }
-
-func (TextClassificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextClassification)(nil)).Elem()
-}
-
-func (o TextClassificationOutput) ToTextClassificationOutput() TextClassificationOutput {
-	return o
-}
-
-func (o TextClassificationOutput) ToTextClassificationOutputWithContext(ctx context.Context) TextClassificationOutput {
-	return o
-}
-
-// Featurization inputs needed for AutoML job.
-func (o TextClassificationOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsPtrOutput {
-	return o.ApplyT(func(v TextClassification) *NlpVerticalFeaturizationSettings { return v.FeaturizationSettings }).(NlpVerticalFeaturizationSettingsPtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o TextClassificationOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
-	return o.ApplyT(func(v TextClassification) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
-}
-
-// Log verbosity for the job.
-func (o TextClassificationOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassification) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Primary metric for Text-Classification task.
-func (o TextClassificationOutput) PrimaryMetric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassification) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o TextClassificationOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassification) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'TextClassification'.
-func (o TextClassificationOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v TextClassification) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// [Required] Training data input.
-func (o TextClassificationOutput) TrainingData() MLTableJobInputOutput {
-	return o.ApplyT(func(v TextClassification) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
-}
-
-// Validation data inputs.
-func (o TextClassificationOutput) ValidationData() MLTableJobInputPtrOutput {
-	return o.ApplyT(func(v TextClassification) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
-}
-
-// Text Classification Multilabel task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationMultilabel struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *NlpVerticalFeaturizationSettings `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *NlpVerticalLimitSettings `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextClassificationMultilabel'.
-	TaskType string `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInput `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInput `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextClassificationMultilabel
-func (val *TextClassificationMultilabel) Defaults() *TextClassificationMultilabel {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// TextClassificationMultilabelInput is an input type that accepts TextClassificationMultilabelArgs and TextClassificationMultilabelOutput values.
-// You can construct a concrete instance of `TextClassificationMultilabelInput` via:
-//
-//	TextClassificationMultilabelArgs{...}
-type TextClassificationMultilabelInput interface {
-	pulumi.Input
-
-	ToTextClassificationMultilabelOutput() TextClassificationMultilabelOutput
-	ToTextClassificationMultilabelOutputWithContext(context.Context) TextClassificationMultilabelOutput
-}
-
-// Text Classification Multilabel task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationMultilabelArgs struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextClassificationMultilabel'.
-	TaskType pulumi.StringInput `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextClassificationMultilabelArgs
-func (val *TextClassificationMultilabelArgs) Defaults() *TextClassificationMultilabelArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	if tmp.LogVerbosity == nil {
-		tmp.LogVerbosity = pulumi.StringPtr("Info")
-	}
-
-	return &tmp
-}
-func (TextClassificationMultilabelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextClassificationMultilabel)(nil)).Elem()
-}
-
-func (i TextClassificationMultilabelArgs) ToTextClassificationMultilabelOutput() TextClassificationMultilabelOutput {
-	return i.ToTextClassificationMultilabelOutputWithContext(context.Background())
-}
-
-func (i TextClassificationMultilabelArgs) ToTextClassificationMultilabelOutputWithContext(ctx context.Context) TextClassificationMultilabelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TextClassificationMultilabelOutput)
-}
-
-// Text Classification Multilabel task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationMultilabelOutput struct{ *pulumi.OutputState }
-
-func (TextClassificationMultilabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextClassificationMultilabel)(nil)).Elem()
-}
-
-func (o TextClassificationMultilabelOutput) ToTextClassificationMultilabelOutput() TextClassificationMultilabelOutput {
-	return o
-}
-
-func (o TextClassificationMultilabelOutput) ToTextClassificationMultilabelOutputWithContext(ctx context.Context) TextClassificationMultilabelOutput {
-	return o
-}
-
-// Featurization inputs needed for AutoML job.
-func (o TextClassificationMultilabelOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) *NlpVerticalFeaturizationSettings { return v.FeaturizationSettings }).(NlpVerticalFeaturizationSettingsPtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o TextClassificationMultilabelOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
-}
-
-// Log verbosity for the job.
-func (o TextClassificationMultilabelOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o TextClassificationMultilabelOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'TextClassificationMultilabel'.
-func (o TextClassificationMultilabelOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// [Required] Training data input.
-func (o TextClassificationMultilabelOutput) TrainingData() MLTableJobInputOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
-}
-
-// Validation data inputs.
-func (o TextClassificationMultilabelOutput) ValidationData() MLTableJobInputPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabel) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
-}
-
-// Text Classification Multilabel task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationMultilabelResponse struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification-Multilabel task.
-	// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
-	PrimaryMetric string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextClassificationMultilabel'.
-	TaskType string `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputResponse `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInputResponse `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextClassificationMultilabelResponse
-func (val *TextClassificationMultilabelResponse) Defaults() *TextClassificationMultilabelResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// Text Classification Multilabel task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationMultilabelResponseOutput struct{ *pulumi.OutputState }
-
-func (TextClassificationMultilabelResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextClassificationMultilabelResponse)(nil)).Elem()
-}
-
-func (o TextClassificationMultilabelResponseOutput) ToTextClassificationMultilabelResponseOutput() TextClassificationMultilabelResponseOutput {
-	return o
-}
-
-func (o TextClassificationMultilabelResponseOutput) ToTextClassificationMultilabelResponseOutputWithContext(ctx context.Context) TextClassificationMultilabelResponseOutput {
-	return o
-}
-
-// Featurization inputs needed for AutoML job.
-func (o TextClassificationMultilabelResponseOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpVerticalFeaturizationSettingsResponse {
-		return v.FeaturizationSettings
-	}).(NlpVerticalFeaturizationSettingsResponsePtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o TextClassificationMultilabelResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponsePtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
-}
-
-// Log verbosity for the job.
-func (o TextClassificationMultilabelResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Primary metric for Text-Classification-Multilabel task.
-// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
-func (o TextClassificationMultilabelResponseOutput) PrimaryMetric() pulumi.StringOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) string { return v.PrimaryMetric }).(pulumi.StringOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o TextClassificationMultilabelResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'TextClassificationMultilabel'.
-func (o TextClassificationMultilabelResponseOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// [Required] Training data input.
-func (o TextClassificationMultilabelResponseOutput) TrainingData() MLTableJobInputResponseOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
-}
-
-// Validation data inputs.
-func (o TextClassificationMultilabelResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
-	return o.ApplyT(func(v TextClassificationMultilabelResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
-}
-
-// Text Classification task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationResponse struct {
-	// Featurization inputs needed for AutoML job.
-	FeaturizationSettings *NlpVerticalFeaturizationSettingsResponse `pulumi:"featurizationSettings"`
-	// Execution constraints for AutoMLJob.
-	LimitSettings *NlpVerticalLimitSettingsResponse `pulumi:"limitSettings"`
-	// Log verbosity for the job.
-	LogVerbosity *string `pulumi:"logVerbosity"`
-	// Primary metric for Text-Classification task.
-	PrimaryMetric *string `pulumi:"primaryMetric"`
-	// Target column name: This is prediction values column.
-	// Also known as label column name in context of classification tasks.
-	TargetColumnName *string `pulumi:"targetColumnName"`
-	// AutoMLJob Task type.
-	// Expected value is 'TextClassification'.
-	TaskType string `pulumi:"taskType"`
-	// [Required] Training data input.
-	TrainingData MLTableJobInputResponse `pulumi:"trainingData"`
-	// Validation data inputs.
-	ValidationData *MLTableJobInputResponse `pulumi:"validationData"`
-}
-
-// Defaults sets the appropriate defaults for TextClassificationResponse
-func (val *TextClassificationResponse) Defaults() *TextClassificationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.LimitSettings = tmp.LimitSettings.Defaults()
-
-	if tmp.LogVerbosity == nil {
-		logVerbosity_ := "Info"
-		tmp.LogVerbosity = &logVerbosity_
-	}
-	if tmp.PrimaryMetric == nil {
-		primaryMetric_ := "Accuracy"
-		tmp.PrimaryMetric = &primaryMetric_
-	}
-	tmp.TrainingData = *tmp.TrainingData.Defaults()
-
-	tmp.ValidationData = tmp.ValidationData.Defaults()
-
-	return &tmp
-}
-
-// Text Classification task in AutoML NLP vertical.
-// NLP - Natural Language Processing.
-type TextClassificationResponseOutput struct{ *pulumi.OutputState }
-
-func (TextClassificationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextClassificationResponse)(nil)).Elem()
-}
-
-func (o TextClassificationResponseOutput) ToTextClassificationResponseOutput() TextClassificationResponseOutput {
-	return o
-}
-
-func (o TextClassificationResponseOutput) ToTextClassificationResponseOutputWithContext(ctx context.Context) TextClassificationResponseOutput {
-	return o
-}
-
-// Featurization inputs needed for AutoML job.
-func (o TextClassificationResponseOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v TextClassificationResponse) *NlpVerticalFeaturizationSettingsResponse {
-		return v.FeaturizationSettings
-	}).(NlpVerticalFeaturizationSettingsResponsePtrOutput)
-}
-
-// Execution constraints for AutoMLJob.
-func (o TextClassificationResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponsePtrOutput {
-	return o.ApplyT(func(v TextClassificationResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
-}
-
-// Log verbosity for the job.
-func (o TextClassificationResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
-}
-
-// Primary metric for Text-Classification task.
-func (o TextClassificationResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
-}
-
-// Target column name: This is prediction values column.
-// Also known as label column name in context of classification tasks.
-func (o TextClassificationResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextClassificationResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
-}
-
-// AutoMLJob Task type.
-// Expected value is 'TextClassification'.
-func (o TextClassificationResponseOutput) TaskType() pulumi.StringOutput {
-	return o.ApplyT(func(v TextClassificationResponse) string { return v.TaskType }).(pulumi.StringOutput)
-}
-
-// [Required] Training data input.
-func (o TextClassificationResponseOutput) TrainingData() MLTableJobInputResponseOutput {
-	return o.ApplyT(func(v TextClassificationResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
-}
-
-// Validation data inputs.
-func (o TextClassificationResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
-	return o.ApplyT(func(v TextClassificationResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
-}
-
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -69954,6 +68470,8 @@ func init() {
 	pulumi.RegisterOutputType(AKSSchemaResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(AKSSchemaResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AccessKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AccountApiKeysResponseOutput{})
+	pulumi.RegisterOutputType(AccountApiKeysResponsePtrOutput{})
 	pulumi.RegisterOutputType(AccountKeyDatastoreCredentialsOutput{})
 	pulumi.RegisterOutputType(AccountKeyDatastoreCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(AccountKeyDatastoreSecretsOutput{})
@@ -70096,6 +68614,10 @@ func init() {
 	pulumi.RegisterOutputType(CodeContainerResponseOutput{})
 	pulumi.RegisterOutputType(CodeVersionTypeOutput{})
 	pulumi.RegisterOutputType(CodeVersionResponseOutput{})
+	pulumi.RegisterOutputType(CognitiveServicesSkuOutput{})
+	pulumi.RegisterOutputType(CognitiveServicesSkuPtrOutput{})
+	pulumi.RegisterOutputType(CognitiveServicesSkuResponseOutput{})
+	pulumi.RegisterOutputType(CognitiveServicesSkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseOutput{})
@@ -70155,6 +68677,8 @@ func init() {
 	pulumi.RegisterOutputType(ContainerResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ContainerResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ContainerResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContentSafetyEndpointDeploymentResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CosmosDbSettingsOutput{})
 	pulumi.RegisterOutputType(CosmosDbSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CosmosDbSettingsResponseOutput{})
@@ -70277,6 +68801,8 @@ func init() {
 	pulumi.RegisterOutputType(EndpointArrayOutput{})
 	pulumi.RegisterOutputType(EndpointAuthKeysOutput{})
 	pulumi.RegisterOutputType(EndpointAuthKeysPtrOutput{})
+	pulumi.RegisterOutputType(EndpointDeploymentModelOutput{})
+	pulumi.RegisterOutputType(EndpointDeploymentModelResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointScheduleActionOutput{})
@@ -70503,10 +69029,15 @@ func init() {
 	pulumi.RegisterOutputType(ManagedIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedOnlineDeploymentOutput{})
 	pulumi.RegisterOutputType(ManagedOnlineDeploymentResponseOutput{})
+	pulumi.RegisterOutputType(ManagedOnlineEndpointDeploymentResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarketplacePlanResponseOutput{})
+	pulumi.RegisterOutputType(MarketplaceSubscriptionTypeOutput{})
+	pulumi.RegisterOutputType(MarketplaceSubscriptionResponseOutput{})
 	pulumi.RegisterOutputType(MaterializationComputeResourceOutput{})
 	pulumi.RegisterOutputType(MaterializationComputeResourcePtrOutput{})
 	pulumi.RegisterOutputType(MaterializationComputeResourceResponseOutput{})
@@ -70556,6 +69087,8 @@ func init() {
 	pulumi.RegisterOutputType(OnlineRequestSettingsPtrOutput{})
 	pulumi.RegisterOutputType(OnlineRequestSettingsResponseOutput{})
 	pulumi.RegisterOutputType(OnlineRequestSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(OpenAIEndpointDeploymentResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(OpenAIEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OutputPathAssetReferenceOutput{})
 	pulumi.RegisterOutputType(OutputPathAssetReferencePtrOutput{})
 	pulumi.RegisterOutputType(OutputPathAssetReferenceResponseOutput{})
@@ -70718,6 +69251,8 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SslConfigurationOutput{})
 	pulumi.RegisterOutputType(SslConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SslConfigurationResponseOutput{})
@@ -70749,33 +69284,6 @@ func init() {
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemCreatedStorageAccountOutput{})
-	pulumi.RegisterOutputType(SystemCreatedStorageAccountPtrOutput{})
-	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponseOutput{})
-	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(SystemServiceResponseOutput{})
-	pulumi.RegisterOutputType(SystemServiceResponseArrayOutput{})
-	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsOutput{})
-	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsPtrOutput{})
-	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsResponseOutput{})
-	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(TableVerticalLimitSettingsOutput{})
-	pulumi.RegisterOutputType(TableVerticalLimitSettingsPtrOutput{})
-	pulumi.RegisterOutputType(TableVerticalLimitSettingsResponseOutput{})
-	pulumi.RegisterOutputType(TableVerticalLimitSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsOutput{})
-	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsPtrOutput{})
-	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsResponseOutput{})
-	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(TensorFlowOutput{})
-	pulumi.RegisterOutputType(TensorFlowPtrOutput{})
-	pulumi.RegisterOutputType(TensorFlowResponseOutput{})
-	pulumi.RegisterOutputType(TensorFlowResponsePtrOutput{})
-	pulumi.RegisterOutputType(TextClassificationOutput{})
-	pulumi.RegisterOutputType(TextClassificationMultilabelOutput{})
-	pulumi.RegisterOutputType(TextClassificationMultilabelResponseOutput{})
-	pulumi.RegisterOutputType(TextClassificationResponseOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 }

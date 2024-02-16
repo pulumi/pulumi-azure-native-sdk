@@ -54,6 +54,9 @@ func NewServerCollectorsOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:migrate/v20191001:ServerCollectorsOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:ServerCollectorsOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

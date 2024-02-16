@@ -15,7 +15,7 @@ import (
 // The private endpoint connection of a workspace
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2023-09-15-preview.
+// Other available API versions: 2023-09-15-preview, 2024-02-01-preview.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +55,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20230915preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20240201preview:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

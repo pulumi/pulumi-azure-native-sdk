@@ -13,6 +13,8 @@ import (
 
 // Get firmware analysis workspace.
 // Azure REST API version: 2023-02-08-preview.
+//
+// Other available API versions: 2024-01-10.
 func LookupWorkspace(ctx *pulumi.Context, args *LookupWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceResult

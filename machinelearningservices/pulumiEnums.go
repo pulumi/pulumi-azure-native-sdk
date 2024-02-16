@@ -3168,6 +3168,174 @@ func (in *datastoreTypeArmPtr) ToDatastoreTypeArmPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(DatastoreTypeArmPtrOutput)
 }
 
+// Deployment model version upgrade option.
+type DeploymentModelVersionUpgradeOption string
+
+const (
+	DeploymentModelVersionUpgradeOptionOnceNewDefaultVersionAvailable = DeploymentModelVersionUpgradeOption("OnceNewDefaultVersionAvailable")
+	DeploymentModelVersionUpgradeOptionOnceCurrentVersionExpired      = DeploymentModelVersionUpgradeOption("OnceCurrentVersionExpired")
+	DeploymentModelVersionUpgradeOptionNoAutoUpgrade                  = DeploymentModelVersionUpgradeOption("NoAutoUpgrade")
+)
+
+func (DeploymentModelVersionUpgradeOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentModelVersionUpgradeOption)(nil)).Elem()
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToDeploymentModelVersionUpgradeOptionOutput() DeploymentModelVersionUpgradeOptionOutput {
+	return pulumi.ToOutput(e).(DeploymentModelVersionUpgradeOptionOutput)
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToDeploymentModelVersionUpgradeOptionOutputWithContext(ctx context.Context) DeploymentModelVersionUpgradeOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DeploymentModelVersionUpgradeOptionOutput)
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToDeploymentModelVersionUpgradeOptionPtrOutput() DeploymentModelVersionUpgradeOptionPtrOutput {
+	return e.ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(context.Background())
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(ctx context.Context) DeploymentModelVersionUpgradeOptionPtrOutput {
+	return DeploymentModelVersionUpgradeOption(e).ToDeploymentModelVersionUpgradeOptionOutputWithContext(ctx).ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(ctx)
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DeploymentModelVersionUpgradeOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DeploymentModelVersionUpgradeOptionOutput struct{ *pulumi.OutputState }
+
+func (DeploymentModelVersionUpgradeOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentModelVersionUpgradeOption)(nil)).Elem()
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToDeploymentModelVersionUpgradeOptionOutput() DeploymentModelVersionUpgradeOptionOutput {
+	return o
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToDeploymentModelVersionUpgradeOptionOutputWithContext(ctx context.Context) DeploymentModelVersionUpgradeOptionOutput {
+	return o
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToDeploymentModelVersionUpgradeOptionPtrOutput() DeploymentModelVersionUpgradeOptionPtrOutput {
+	return o.ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(ctx context.Context) DeploymentModelVersionUpgradeOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentModelVersionUpgradeOption) *DeploymentModelVersionUpgradeOption {
+		return &v
+	}).(DeploymentModelVersionUpgradeOptionPtrOutput)
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeploymentModelVersionUpgradeOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentModelVersionUpgradeOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeploymentModelVersionUpgradeOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentModelVersionUpgradeOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentModelVersionUpgradeOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentModelVersionUpgradeOption)(nil)).Elem()
+}
+
+func (o DeploymentModelVersionUpgradeOptionPtrOutput) ToDeploymentModelVersionUpgradeOptionPtrOutput() DeploymentModelVersionUpgradeOptionPtrOutput {
+	return o
+}
+
+func (o DeploymentModelVersionUpgradeOptionPtrOutput) ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(ctx context.Context) DeploymentModelVersionUpgradeOptionPtrOutput {
+	return o
+}
+
+func (o DeploymentModelVersionUpgradeOptionPtrOutput) Elem() DeploymentModelVersionUpgradeOptionOutput {
+	return o.ApplyT(func(v *DeploymentModelVersionUpgradeOption) DeploymentModelVersionUpgradeOption {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentModelVersionUpgradeOption
+		return ret
+	}).(DeploymentModelVersionUpgradeOptionOutput)
+}
+
+func (o DeploymentModelVersionUpgradeOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentModelVersionUpgradeOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DeploymentModelVersionUpgradeOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DeploymentModelVersionUpgradeOptionInput is an input type that accepts values of the DeploymentModelVersionUpgradeOption enum
+// A concrete instance of `DeploymentModelVersionUpgradeOptionInput` can be one of the following:
+//
+//	DeploymentModelVersionUpgradeOptionOnceNewDefaultVersionAvailable
+//	DeploymentModelVersionUpgradeOptionOnceCurrentVersionExpired
+//	DeploymentModelVersionUpgradeOptionNoAutoUpgrade
+type DeploymentModelVersionUpgradeOptionInput interface {
+	pulumi.Input
+
+	ToDeploymentModelVersionUpgradeOptionOutput() DeploymentModelVersionUpgradeOptionOutput
+	ToDeploymentModelVersionUpgradeOptionOutputWithContext(context.Context) DeploymentModelVersionUpgradeOptionOutput
+}
+
+var deploymentModelVersionUpgradeOptionPtrType = reflect.TypeOf((**DeploymentModelVersionUpgradeOption)(nil)).Elem()
+
+type DeploymentModelVersionUpgradeOptionPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentModelVersionUpgradeOptionPtrOutput() DeploymentModelVersionUpgradeOptionPtrOutput
+	ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(context.Context) DeploymentModelVersionUpgradeOptionPtrOutput
+}
+
+type deploymentModelVersionUpgradeOptionPtr string
+
+func DeploymentModelVersionUpgradeOptionPtr(v string) DeploymentModelVersionUpgradeOptionPtrInput {
+	return (*deploymentModelVersionUpgradeOptionPtr)(&v)
+}
+
+func (*deploymentModelVersionUpgradeOptionPtr) ElementType() reflect.Type {
+	return deploymentModelVersionUpgradeOptionPtrType
+}
+
+func (in *deploymentModelVersionUpgradeOptionPtr) ToDeploymentModelVersionUpgradeOptionPtrOutput() DeploymentModelVersionUpgradeOptionPtrOutput {
+	return pulumi.ToOutput(in).(DeploymentModelVersionUpgradeOptionPtrOutput)
+}
+
+func (in *deploymentModelVersionUpgradeOptionPtr) ToDeploymentModelVersionUpgradeOptionPtrOutputWithContext(ctx context.Context) DeploymentModelVersionUpgradeOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModelVersionUpgradeOptionPtrOutput)
+}
+
 // [Required] Specifies the type of distribution framework.
 type DistributionType string
 
@@ -14211,6 +14379,8 @@ func init() {
 	pulumi.RegisterOutputType(DatasetTypePtrOutput{})
 	pulumi.RegisterOutputType(DatastoreTypeArmOutput{})
 	pulumi.RegisterOutputType(DatastoreTypeArmPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentModelVersionUpgradeOptionOutput{})
+	pulumi.RegisterOutputType(DeploymentModelVersionUpgradeOptionPtrOutput{})
 	pulumi.RegisterOutputType(EgressPublicNetworkAccessTypeOutput{})
 	pulumi.RegisterOutputType(EgressPublicNetworkAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(EmailNotificationEnableTypeOutput{})

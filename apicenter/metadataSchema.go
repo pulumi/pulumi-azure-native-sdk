@@ -17,6 +17,7 @@ import (
 type MetadataSchema struct {
 	pulumi.CustomResourceState
 
+	// The assignees
 	AssignedTo MetadataAssignmentResponseArrayOutput `pulumi:"assignedTo"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -83,6 +84,7 @@ func (MetadataSchemaState) ElementType() reflect.Type {
 }
 
 type metadataSchemaArgs struct {
+	// The assignees
 	AssignedTo []MetadataAssignment `pulumi:"assignedTo"`
 	// The name of the metadata schema.
 	MetadataSchemaName *string `pulumi:"metadataSchemaName"`
@@ -96,6 +98,7 @@ type metadataSchemaArgs struct {
 
 // The set of arguments for constructing a MetadataSchema resource.
 type MetadataSchemaArgs struct {
+	// The assignees
 	AssignedTo MetadataAssignmentArrayInput
 	// The name of the metadata schema.
 	MetadataSchemaName pulumi.StringPtrInput
@@ -144,6 +147,7 @@ func (o MetadataSchemaOutput) ToMetadataSchemaOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The assignees
 func (o MetadataSchemaOutput) AssignedTo() MetadataAssignmentResponseArrayOutput {
 	return o.ApplyT(func(v *MetadataSchema) MetadataAssignmentResponseArrayOutput { return v.AssignedTo }).(MetadataAssignmentResponseArrayOutput)
 }
