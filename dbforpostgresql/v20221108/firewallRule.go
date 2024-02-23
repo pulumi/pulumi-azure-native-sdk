@@ -53,6 +53,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201005privatepreview:FirewallRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:FirewallRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -3256,6 +3256,176 @@ func (in *dynamicsSinkWriteBehaviorPtr) ToDynamicsSinkWriteBehaviorPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicsSinkWriteBehaviorPtrOutput)
 }
 
+// Type of expressions supported by the system. Type: string.
+type ExpressionV2Type string
+
+const (
+	ExpressionV2TypeConstant = ExpressionV2Type("Constant")
+	ExpressionV2TypeField    = ExpressionV2Type("Field")
+	ExpressionV2TypeUnary    = ExpressionV2Type("Unary")
+	ExpressionV2TypeBinary   = ExpressionV2Type("Binary")
+)
+
+func (ExpressionV2Type) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionV2Type)(nil)).Elem()
+}
+
+func (e ExpressionV2Type) ToExpressionV2TypeOutput() ExpressionV2TypeOutput {
+	return pulumi.ToOutput(e).(ExpressionV2TypeOutput)
+}
+
+func (e ExpressionV2Type) ToExpressionV2TypeOutputWithContext(ctx context.Context) ExpressionV2TypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExpressionV2TypeOutput)
+}
+
+func (e ExpressionV2Type) ToExpressionV2TypePtrOutput() ExpressionV2TypePtrOutput {
+	return e.ToExpressionV2TypePtrOutputWithContext(context.Background())
+}
+
+func (e ExpressionV2Type) ToExpressionV2TypePtrOutputWithContext(ctx context.Context) ExpressionV2TypePtrOutput {
+	return ExpressionV2Type(e).ToExpressionV2TypeOutputWithContext(ctx).ToExpressionV2TypePtrOutputWithContext(ctx)
+}
+
+func (e ExpressionV2Type) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExpressionV2Type) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExpressionV2Type) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExpressionV2Type) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExpressionV2TypeOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2TypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionV2Type)(nil)).Elem()
+}
+
+func (o ExpressionV2TypeOutput) ToExpressionV2TypeOutput() ExpressionV2TypeOutput {
+	return o
+}
+
+func (o ExpressionV2TypeOutput) ToExpressionV2TypeOutputWithContext(ctx context.Context) ExpressionV2TypeOutput {
+	return o
+}
+
+func (o ExpressionV2TypeOutput) ToExpressionV2TypePtrOutput() ExpressionV2TypePtrOutput {
+	return o.ToExpressionV2TypePtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionV2TypeOutput) ToExpressionV2TypePtrOutputWithContext(ctx context.Context) ExpressionV2TypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressionV2Type) *ExpressionV2Type {
+		return &v
+	}).(ExpressionV2TypePtrOutput)
+}
+
+func (o ExpressionV2TypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExpressionV2TypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExpressionV2Type) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExpressionV2TypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionV2TypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExpressionV2Type) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExpressionV2TypePtrOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2TypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressionV2Type)(nil)).Elem()
+}
+
+func (o ExpressionV2TypePtrOutput) ToExpressionV2TypePtrOutput() ExpressionV2TypePtrOutput {
+	return o
+}
+
+func (o ExpressionV2TypePtrOutput) ToExpressionV2TypePtrOutputWithContext(ctx context.Context) ExpressionV2TypePtrOutput {
+	return o
+}
+
+func (o ExpressionV2TypePtrOutput) Elem() ExpressionV2TypeOutput {
+	return o.ApplyT(func(v *ExpressionV2Type) ExpressionV2Type {
+		if v != nil {
+			return *v
+		}
+		var ret ExpressionV2Type
+		return ret
+	}).(ExpressionV2TypeOutput)
+}
+
+func (o ExpressionV2TypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionV2TypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExpressionV2Type) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExpressionV2TypeInput is an input type that accepts values of the ExpressionV2Type enum
+// A concrete instance of `ExpressionV2TypeInput` can be one of the following:
+//
+//	ExpressionV2TypeConstant
+//	ExpressionV2TypeField
+//	ExpressionV2TypeUnary
+//	ExpressionV2TypeBinary
+type ExpressionV2TypeInput interface {
+	pulumi.Input
+
+	ToExpressionV2TypeOutput() ExpressionV2TypeOutput
+	ToExpressionV2TypeOutputWithContext(context.Context) ExpressionV2TypeOutput
+}
+
+var expressionV2TypePtrType = reflect.TypeOf((**ExpressionV2Type)(nil)).Elem()
+
+type ExpressionV2TypePtrInput interface {
+	pulumi.Input
+
+	ToExpressionV2TypePtrOutput() ExpressionV2TypePtrOutput
+	ToExpressionV2TypePtrOutputWithContext(context.Context) ExpressionV2TypePtrOutput
+}
+
+type expressionV2TypePtr string
+
+func ExpressionV2TypePtr(v string) ExpressionV2TypePtrInput {
+	return (*expressionV2TypePtr)(&v)
+}
+
+func (*expressionV2TypePtr) ElementType() reflect.Type {
+	return expressionV2TypePtrType
+}
+
+func (in *expressionV2TypePtr) ToExpressionV2TypePtrOutput() ExpressionV2TypePtrOutput {
+	return pulumi.ToOutput(in).(ExpressionV2TypePtrOutput)
+}
+
+func (in *expressionV2TypePtr) ToExpressionV2TypePtrOutputWithContext(ctx context.Context) ExpressionV2TypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExpressionV2TypePtrOutput)
+}
+
 // The identity type.
 type FactoryIdentityType string
 
@@ -4262,6 +4432,172 @@ func (in *googleBigQueryAuthenticationTypePtr) ToGoogleBigQueryAuthenticationTyp
 
 func (in *googleBigQueryAuthenticationTypePtr) ToGoogleBigQueryAuthenticationTypePtrOutputWithContext(ctx context.Context) GoogleBigQueryAuthenticationTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleBigQueryAuthenticationTypePtrOutput)
+}
+
+// The OAuth 2.0 authentication mechanism used for authentication.
+type GoogleBigQueryV2AuthenticationType string
+
+const (
+	GoogleBigQueryV2AuthenticationTypeServiceAuthentication = GoogleBigQueryV2AuthenticationType("ServiceAuthentication")
+	GoogleBigQueryV2AuthenticationTypeUserAuthentication    = GoogleBigQueryV2AuthenticationType("UserAuthentication")
+)
+
+func (GoogleBigQueryV2AuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2AuthenticationType)(nil)).Elem()
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToGoogleBigQueryV2AuthenticationTypeOutput() GoogleBigQueryV2AuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(GoogleBigQueryV2AuthenticationTypeOutput)
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToGoogleBigQueryV2AuthenticationTypeOutputWithContext(ctx context.Context) GoogleBigQueryV2AuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleBigQueryV2AuthenticationTypeOutput)
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToGoogleBigQueryV2AuthenticationTypePtrOutput() GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return e.ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(ctx context.Context) GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return GoogleBigQueryV2AuthenticationType(e).ToGoogleBigQueryV2AuthenticationTypeOutputWithContext(ctx).ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleBigQueryV2AuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleBigQueryV2AuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2AuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2AuthenticationType)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToGoogleBigQueryV2AuthenticationTypeOutput() GoogleBigQueryV2AuthenticationTypeOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToGoogleBigQueryV2AuthenticationTypeOutputWithContext(ctx context.Context) GoogleBigQueryV2AuthenticationTypeOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToGoogleBigQueryV2AuthenticationTypePtrOutput() GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return o.ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(ctx context.Context) GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleBigQueryV2AuthenticationType) *GoogleBigQueryV2AuthenticationType {
+		return &v
+	}).(GoogleBigQueryV2AuthenticationTypePtrOutput)
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleBigQueryV2AuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleBigQueryV2AuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleBigQueryV2AuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleBigQueryV2AuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2AuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleBigQueryV2AuthenticationType)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2AuthenticationTypePtrOutput) ToGoogleBigQueryV2AuthenticationTypePtrOutput() GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2AuthenticationTypePtrOutput) ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(ctx context.Context) GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2AuthenticationTypePtrOutput) Elem() GoogleBigQueryV2AuthenticationTypeOutput {
+	return o.ApplyT(func(v *GoogleBigQueryV2AuthenticationType) GoogleBigQueryV2AuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleBigQueryV2AuthenticationType
+		return ret
+	}).(GoogleBigQueryV2AuthenticationTypeOutput)
+}
+
+func (o GoogleBigQueryV2AuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleBigQueryV2AuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleBigQueryV2AuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleBigQueryV2AuthenticationTypeInput is an input type that accepts values of the GoogleBigQueryV2AuthenticationType enum
+// A concrete instance of `GoogleBigQueryV2AuthenticationTypeInput` can be one of the following:
+//
+//	GoogleBigQueryV2AuthenticationTypeServiceAuthentication
+//	GoogleBigQueryV2AuthenticationTypeUserAuthentication
+type GoogleBigQueryV2AuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToGoogleBigQueryV2AuthenticationTypeOutput() GoogleBigQueryV2AuthenticationTypeOutput
+	ToGoogleBigQueryV2AuthenticationTypeOutputWithContext(context.Context) GoogleBigQueryV2AuthenticationTypeOutput
+}
+
+var googleBigQueryV2AuthenticationTypePtrType = reflect.TypeOf((**GoogleBigQueryV2AuthenticationType)(nil)).Elem()
+
+type GoogleBigQueryV2AuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleBigQueryV2AuthenticationTypePtrOutput() GoogleBigQueryV2AuthenticationTypePtrOutput
+	ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(context.Context) GoogleBigQueryV2AuthenticationTypePtrOutput
+}
+
+type googleBigQueryV2AuthenticationTypePtr string
+
+func GoogleBigQueryV2AuthenticationTypePtr(v string) GoogleBigQueryV2AuthenticationTypePtrInput {
+	return (*googleBigQueryV2AuthenticationTypePtr)(&v)
+}
+
+func (*googleBigQueryV2AuthenticationTypePtr) ElementType() reflect.Type {
+	return googleBigQueryV2AuthenticationTypePtrType
+}
+
+func (in *googleBigQueryV2AuthenticationTypePtr) ToGoogleBigQueryV2AuthenticationTypePtrOutput() GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleBigQueryV2AuthenticationTypePtrOutput)
+}
+
+func (in *googleBigQueryV2AuthenticationTypePtr) ToGoogleBigQueryV2AuthenticationTypePtrOutputWithContext(ctx context.Context) GoogleBigQueryV2AuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleBigQueryV2AuthenticationTypePtrOutput)
 }
 
 // The authentication mechanism to use to connect to the HBase server.
@@ -9996,6 +10332,172 @@ func (in *serviceNowAuthenticationTypePtr) ToServiceNowAuthenticationTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceNowAuthenticationTypePtrOutput)
 }
 
+// The authentication type to use.
+type ServiceNowV2AuthenticationType string
+
+const (
+	ServiceNowV2AuthenticationTypeBasic  = ServiceNowV2AuthenticationType("Basic")
+	ServiceNowV2AuthenticationTypeOAuth2 = ServiceNowV2AuthenticationType("OAuth2")
+)
+
+func (ServiceNowV2AuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNowV2AuthenticationType)(nil)).Elem()
+}
+
+func (e ServiceNowV2AuthenticationType) ToServiceNowV2AuthenticationTypeOutput() ServiceNowV2AuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(ServiceNowV2AuthenticationTypeOutput)
+}
+
+func (e ServiceNowV2AuthenticationType) ToServiceNowV2AuthenticationTypeOutputWithContext(ctx context.Context) ServiceNowV2AuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceNowV2AuthenticationTypeOutput)
+}
+
+func (e ServiceNowV2AuthenticationType) ToServiceNowV2AuthenticationTypePtrOutput() ServiceNowV2AuthenticationTypePtrOutput {
+	return e.ToServiceNowV2AuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ServiceNowV2AuthenticationType) ToServiceNowV2AuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceNowV2AuthenticationTypePtrOutput {
+	return ServiceNowV2AuthenticationType(e).ToServiceNowV2AuthenticationTypeOutputWithContext(ctx).ToServiceNowV2AuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e ServiceNowV2AuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceNowV2AuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServiceNowV2AuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceNowV2AuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServiceNowV2AuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (ServiceNowV2AuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNowV2AuthenticationType)(nil)).Elem()
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToServiceNowV2AuthenticationTypeOutput() ServiceNowV2AuthenticationTypeOutput {
+	return o
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToServiceNowV2AuthenticationTypeOutputWithContext(ctx context.Context) ServiceNowV2AuthenticationTypeOutput {
+	return o
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToServiceNowV2AuthenticationTypePtrOutput() ServiceNowV2AuthenticationTypePtrOutput {
+	return o.ToServiceNowV2AuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToServiceNowV2AuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceNowV2AuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNowV2AuthenticationType) *ServiceNowV2AuthenticationType {
+		return &v
+	}).(ServiceNowV2AuthenticationTypePtrOutput)
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceNowV2AuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNowV2AuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceNowV2AuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceNowV2AuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceNowV2AuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNowV2AuthenticationType)(nil)).Elem()
+}
+
+func (o ServiceNowV2AuthenticationTypePtrOutput) ToServiceNowV2AuthenticationTypePtrOutput() ServiceNowV2AuthenticationTypePtrOutput {
+	return o
+}
+
+func (o ServiceNowV2AuthenticationTypePtrOutput) ToServiceNowV2AuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceNowV2AuthenticationTypePtrOutput {
+	return o
+}
+
+func (o ServiceNowV2AuthenticationTypePtrOutput) Elem() ServiceNowV2AuthenticationTypeOutput {
+	return o.ApplyT(func(v *ServiceNowV2AuthenticationType) ServiceNowV2AuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceNowV2AuthenticationType
+		return ret
+	}).(ServiceNowV2AuthenticationTypeOutput)
+}
+
+func (o ServiceNowV2AuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNowV2AuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceNowV2AuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceNowV2AuthenticationTypeInput is an input type that accepts values of the ServiceNowV2AuthenticationType enum
+// A concrete instance of `ServiceNowV2AuthenticationTypeInput` can be one of the following:
+//
+//	ServiceNowV2AuthenticationTypeBasic
+//	ServiceNowV2AuthenticationTypeOAuth2
+type ServiceNowV2AuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToServiceNowV2AuthenticationTypeOutput() ServiceNowV2AuthenticationTypeOutput
+	ToServiceNowV2AuthenticationTypeOutputWithContext(context.Context) ServiceNowV2AuthenticationTypeOutput
+}
+
+var serviceNowV2AuthenticationTypePtrType = reflect.TypeOf((**ServiceNowV2AuthenticationType)(nil)).Elem()
+
+type ServiceNowV2AuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToServiceNowV2AuthenticationTypePtrOutput() ServiceNowV2AuthenticationTypePtrOutput
+	ToServiceNowV2AuthenticationTypePtrOutputWithContext(context.Context) ServiceNowV2AuthenticationTypePtrOutput
+}
+
+type serviceNowV2AuthenticationTypePtr string
+
+func ServiceNowV2AuthenticationTypePtr(v string) ServiceNowV2AuthenticationTypePtrInput {
+	return (*serviceNowV2AuthenticationTypePtr)(&v)
+}
+
+func (*serviceNowV2AuthenticationTypePtr) ElementType() reflect.Type {
+	return serviceNowV2AuthenticationTypePtrType
+}
+
+func (in *serviceNowV2AuthenticationTypePtr) ToServiceNowV2AuthenticationTypePtrOutput() ServiceNowV2AuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(ServiceNowV2AuthenticationTypePtrOutput)
+}
+
+func (in *serviceNowV2AuthenticationTypePtr) ToServiceNowV2AuthenticationTypePtrOutputWithContext(ctx context.Context) ServiceNowV2AuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceNowV2AuthenticationTypePtrOutput)
+}
+
 // The authentication type to be used to connect to the FTP server.
 type SftpAuthenticationType string
 
@@ -13379,6 +13881,8 @@ func init() {
 	pulumi.RegisterOutputType(DependencyConditionPtrOutput{})
 	pulumi.RegisterOutputType(DynamicsSinkWriteBehaviorOutput{})
 	pulumi.RegisterOutputType(DynamicsSinkWriteBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(ExpressionV2TypeOutput{})
+	pulumi.RegisterOutputType(ExpressionV2TypePtrOutput{})
 	pulumi.RegisterOutputType(FactoryIdentityTypeOutput{})
 	pulumi.RegisterOutputType(FactoryIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(FrequencyTypeOutput{})
@@ -13391,6 +13895,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleAdWordsAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleBigQueryAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(GoogleBigQueryAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2AuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2AuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HBaseAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(HBaseAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HDInsightActivityDebugInfoOptionOutput{})
@@ -13459,6 +13965,8 @@ func init() {
 	pulumi.RegisterOutputType(ScriptTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceNowAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(ServiceNowAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(ServiceNowV2AuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(ServiceNowV2AuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(SftpAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(SftpAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(SnowflakeAuthenticationTypeOutput{})

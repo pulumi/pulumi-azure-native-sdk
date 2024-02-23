@@ -13,6 +13,8 @@ import (
 
 // Dapr PubSub Event Subscription.
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-02-preview.
 func LookupDaprSubscription(ctx *pulumi.Context, args *LookupDaprSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupDaprSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDaprSubscriptionResult

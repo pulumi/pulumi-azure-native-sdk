@@ -53057,6 +53057,379 @@ func (o ExpressionResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ExpressionResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// Nested representation of a complex expression.
+type ExpressionV2 struct {
+	// List of nested expressions.
+	Operands []ExpressionV2 `pulumi:"operands"`
+	// Expression operator value Type: string.
+	Operator *string `pulumi:"operator"`
+	// Type of expressions supported by the system. Type: string.
+	Type *string `pulumi:"type"`
+	// Value for Constant/Field Type: string.
+	Value *string `pulumi:"value"`
+}
+
+// ExpressionV2Input is an input type that accepts ExpressionV2Args and ExpressionV2Output values.
+// You can construct a concrete instance of `ExpressionV2Input` via:
+//
+//	ExpressionV2Args{...}
+type ExpressionV2Input interface {
+	pulumi.Input
+
+	ToExpressionV2Output() ExpressionV2Output
+	ToExpressionV2OutputWithContext(context.Context) ExpressionV2Output
+}
+
+// Nested representation of a complex expression.
+type ExpressionV2Args struct {
+	// List of nested expressions.
+	Operands ExpressionV2ArrayInput `pulumi:"operands"`
+	// Expression operator value Type: string.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Type of expressions supported by the system. Type: string.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Value for Constant/Field Type: string.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ExpressionV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionV2)(nil)).Elem()
+}
+
+func (i ExpressionV2Args) ToExpressionV2Output() ExpressionV2Output {
+	return i.ToExpressionV2OutputWithContext(context.Background())
+}
+
+func (i ExpressionV2Args) ToExpressionV2OutputWithContext(ctx context.Context) ExpressionV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressionV2Output)
+}
+
+func (i ExpressionV2Args) ToExpressionV2PtrOutput() ExpressionV2PtrOutput {
+	return i.ToExpressionV2PtrOutputWithContext(context.Background())
+}
+
+func (i ExpressionV2Args) ToExpressionV2PtrOutputWithContext(ctx context.Context) ExpressionV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressionV2Output).ToExpressionV2PtrOutputWithContext(ctx)
+}
+
+// ExpressionV2PtrInput is an input type that accepts ExpressionV2Args, ExpressionV2Ptr and ExpressionV2PtrOutput values.
+// You can construct a concrete instance of `ExpressionV2PtrInput` via:
+//
+//	        ExpressionV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ExpressionV2PtrInput interface {
+	pulumi.Input
+
+	ToExpressionV2PtrOutput() ExpressionV2PtrOutput
+	ToExpressionV2PtrOutputWithContext(context.Context) ExpressionV2PtrOutput
+}
+
+type expressionV2PtrType ExpressionV2Args
+
+func ExpressionV2Ptr(v *ExpressionV2Args) ExpressionV2PtrInput {
+	return (*expressionV2PtrType)(v)
+}
+
+func (*expressionV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressionV2)(nil)).Elem()
+}
+
+func (i *expressionV2PtrType) ToExpressionV2PtrOutput() ExpressionV2PtrOutput {
+	return i.ToExpressionV2PtrOutputWithContext(context.Background())
+}
+
+func (i *expressionV2PtrType) ToExpressionV2PtrOutputWithContext(ctx context.Context) ExpressionV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressionV2PtrOutput)
+}
+
+// ExpressionV2ArrayInput is an input type that accepts ExpressionV2Array and ExpressionV2ArrayOutput values.
+// You can construct a concrete instance of `ExpressionV2ArrayInput` via:
+//
+//	ExpressionV2Array{ ExpressionV2Args{...} }
+type ExpressionV2ArrayInput interface {
+	pulumi.Input
+
+	ToExpressionV2ArrayOutput() ExpressionV2ArrayOutput
+	ToExpressionV2ArrayOutputWithContext(context.Context) ExpressionV2ArrayOutput
+}
+
+type ExpressionV2Array []ExpressionV2Input
+
+func (ExpressionV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressionV2)(nil)).Elem()
+}
+
+func (i ExpressionV2Array) ToExpressionV2ArrayOutput() ExpressionV2ArrayOutput {
+	return i.ToExpressionV2ArrayOutputWithContext(context.Background())
+}
+
+func (i ExpressionV2Array) ToExpressionV2ArrayOutputWithContext(ctx context.Context) ExpressionV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExpressionV2ArrayOutput)
+}
+
+// Nested representation of a complex expression.
+type ExpressionV2Output struct{ *pulumi.OutputState }
+
+func (ExpressionV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionV2)(nil)).Elem()
+}
+
+func (o ExpressionV2Output) ToExpressionV2Output() ExpressionV2Output {
+	return o
+}
+
+func (o ExpressionV2Output) ToExpressionV2OutputWithContext(ctx context.Context) ExpressionV2Output {
+	return o
+}
+
+func (o ExpressionV2Output) ToExpressionV2PtrOutput() ExpressionV2PtrOutput {
+	return o.ToExpressionV2PtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionV2Output) ToExpressionV2PtrOutputWithContext(ctx context.Context) ExpressionV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressionV2) *ExpressionV2 {
+		return &v
+	}).(ExpressionV2PtrOutput)
+}
+
+// List of nested expressions.
+func (o ExpressionV2Output) Operands() ExpressionV2ArrayOutput {
+	return o.ApplyT(func(v ExpressionV2) []ExpressionV2 { return v.Operands }).(ExpressionV2ArrayOutput)
+}
+
+// Expression operator value Type: string.
+func (o ExpressionV2Output) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Type of expressions supported by the system. Type: string.
+func (o ExpressionV2Output) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Value for Constant/Field Type: string.
+func (o ExpressionV2Output) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ExpressionV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressionV2)(nil)).Elem()
+}
+
+func (o ExpressionV2PtrOutput) ToExpressionV2PtrOutput() ExpressionV2PtrOutput {
+	return o
+}
+
+func (o ExpressionV2PtrOutput) ToExpressionV2PtrOutputWithContext(ctx context.Context) ExpressionV2PtrOutput {
+	return o
+}
+
+func (o ExpressionV2PtrOutput) Elem() ExpressionV2Output {
+	return o.ApplyT(func(v *ExpressionV2) ExpressionV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ExpressionV2
+		return ret
+	}).(ExpressionV2Output)
+}
+
+// List of nested expressions.
+func (o ExpressionV2PtrOutput) Operands() ExpressionV2ArrayOutput {
+	return o.ApplyT(func(v *ExpressionV2) []ExpressionV2 {
+		if v == nil {
+			return nil
+		}
+		return v.Operands
+	}).(ExpressionV2ArrayOutput)
+}
+
+// Expression operator value Type: string.
+func (o ExpressionV2PtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of expressions supported by the system. Type: string.
+func (o ExpressionV2PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value for Constant/Field Type: string.
+func (o ExpressionV2PtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExpressionV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressionV2)(nil)).Elem()
+}
+
+func (o ExpressionV2ArrayOutput) ToExpressionV2ArrayOutput() ExpressionV2ArrayOutput {
+	return o
+}
+
+func (o ExpressionV2ArrayOutput) ToExpressionV2ArrayOutputWithContext(ctx context.Context) ExpressionV2ArrayOutput {
+	return o
+}
+
+func (o ExpressionV2ArrayOutput) Index(i pulumi.IntInput) ExpressionV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressionV2 {
+		return vs[0].([]ExpressionV2)[vs[1].(int)]
+	}).(ExpressionV2Output)
+}
+
+// Nested representation of a complex expression.
+type ExpressionV2Response struct {
+	// List of nested expressions.
+	Operands []ExpressionV2Response `pulumi:"operands"`
+	// Expression operator value Type: string.
+	Operator *string `pulumi:"operator"`
+	// Type of expressions supported by the system. Type: string.
+	Type *string `pulumi:"type"`
+	// Value for Constant/Field Type: string.
+	Value *string `pulumi:"value"`
+}
+
+// Nested representation of a complex expression.
+type ExpressionV2ResponseOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionV2Response)(nil)).Elem()
+}
+
+func (o ExpressionV2ResponseOutput) ToExpressionV2ResponseOutput() ExpressionV2ResponseOutput {
+	return o
+}
+
+func (o ExpressionV2ResponseOutput) ToExpressionV2ResponseOutputWithContext(ctx context.Context) ExpressionV2ResponseOutput {
+	return o
+}
+
+// List of nested expressions.
+func (o ExpressionV2ResponseOutput) Operands() ExpressionV2ResponseArrayOutput {
+	return o.ApplyT(func(v ExpressionV2Response) []ExpressionV2Response { return v.Operands }).(ExpressionV2ResponseArrayOutput)
+}
+
+// Expression operator value Type: string.
+func (o ExpressionV2ResponseOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Type of expressions supported by the system. Type: string.
+func (o ExpressionV2ResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Value for Constant/Field Type: string.
+func (o ExpressionV2ResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ExpressionV2ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressionV2Response)(nil)).Elem()
+}
+
+func (o ExpressionV2ResponsePtrOutput) ToExpressionV2ResponsePtrOutput() ExpressionV2ResponsePtrOutput {
+	return o
+}
+
+func (o ExpressionV2ResponsePtrOutput) ToExpressionV2ResponsePtrOutputWithContext(ctx context.Context) ExpressionV2ResponsePtrOutput {
+	return o
+}
+
+func (o ExpressionV2ResponsePtrOutput) Elem() ExpressionV2ResponseOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) ExpressionV2Response {
+		if v != nil {
+			return *v
+		}
+		var ret ExpressionV2Response
+		return ret
+	}).(ExpressionV2ResponseOutput)
+}
+
+// List of nested expressions.
+func (o ExpressionV2ResponsePtrOutput) Operands() ExpressionV2ResponseArrayOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) []ExpressionV2Response {
+		if v == nil {
+			return nil
+		}
+		return v.Operands
+	}).(ExpressionV2ResponseArrayOutput)
+}
+
+// Expression operator value Type: string.
+func (o ExpressionV2ResponsePtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of expressions supported by the system. Type: string.
+func (o ExpressionV2ResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value for Constant/Field Type: string.
+func (o ExpressionV2ResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExpressionV2ResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExpressionV2ResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExpressionV2Response)(nil)).Elem()
+}
+
+func (o ExpressionV2ResponseArrayOutput) ToExpressionV2ResponseArrayOutput() ExpressionV2ResponseArrayOutput {
+	return o
+}
+
+func (o ExpressionV2ResponseArrayOutput) ToExpressionV2ResponseArrayOutputWithContext(ctx context.Context) ExpressionV2ResponseArrayOutput {
+	return o
+}
+
+func (o ExpressionV2ResponseArrayOutput) Index(i pulumi.IntInput) ExpressionV2ResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressionV2Response {
+		return vs[0].([]ExpressionV2Response)[vs[1].(int)]
+	}).(ExpressionV2ResponseOutput)
+}
+
 // Factory's GitHub repo information.
 type FactoryGitHubConfiguration struct {
 	// Account name.
@@ -60540,6 +60913,704 @@ func (o GoogleBigQuerySourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleBigQuerySourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Google BigQuery service linked service.
+type GoogleBigQueryV2LinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The OAuth 2.0 authentication mechanism used for authentication.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
+	ClientId interface{} `pulumi:"clientId"`
+	// The client secret of the google application used to acquire the refresh token.
+	ClientSecret interface{} `pulumi:"clientSecret"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The content of the .json key file that is used to authenticate the service account. Type: string (or Expression with resultType string).
+	KeyFileContent interface{} `pulumi:"keyFileContent"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The default BigQuery project id to query against. Type: string (or Expression with resultType string).
+	ProjectId interface{} `pulumi:"projectId"`
+	// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
+	RefreshToken interface{} `pulumi:"refreshToken"`
+	// Type of linked service.
+	// Expected value is 'GoogleBigQueryV2'.
+	Type string `pulumi:"type"`
+}
+
+// GoogleBigQueryV2LinkedServiceInput is an input type that accepts GoogleBigQueryV2LinkedServiceArgs and GoogleBigQueryV2LinkedServiceOutput values.
+// You can construct a concrete instance of `GoogleBigQueryV2LinkedServiceInput` via:
+//
+//	GoogleBigQueryV2LinkedServiceArgs{...}
+type GoogleBigQueryV2LinkedServiceInput interface {
+	pulumi.Input
+
+	ToGoogleBigQueryV2LinkedServiceOutput() GoogleBigQueryV2LinkedServiceOutput
+	ToGoogleBigQueryV2LinkedServiceOutputWithContext(context.Context) GoogleBigQueryV2LinkedServiceOutput
+}
+
+// Google BigQuery service linked service.
+type GoogleBigQueryV2LinkedServiceArgs struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The OAuth 2.0 authentication mechanism used for authentication.
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
+	ClientId pulumi.Input `pulumi:"clientId"`
+	// The client secret of the google application used to acquire the refresh token.
+	ClientSecret pulumi.Input `pulumi:"clientSecret"`
+	// The integration runtime reference.
+	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// Linked service description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The content of the .json key file that is used to authenticate the service account. Type: string (or Expression with resultType string).
+	KeyFileContent pulumi.Input `pulumi:"keyFileContent"`
+	// Parameters for linked service.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The default BigQuery project id to query against. Type: string (or Expression with resultType string).
+	ProjectId pulumi.Input `pulumi:"projectId"`
+	// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
+	RefreshToken pulumi.Input `pulumi:"refreshToken"`
+	// Type of linked service.
+	// Expected value is 'GoogleBigQueryV2'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GoogleBigQueryV2LinkedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2LinkedService)(nil)).Elem()
+}
+
+func (i GoogleBigQueryV2LinkedServiceArgs) ToGoogleBigQueryV2LinkedServiceOutput() GoogleBigQueryV2LinkedServiceOutput {
+	return i.ToGoogleBigQueryV2LinkedServiceOutputWithContext(context.Background())
+}
+
+func (i GoogleBigQueryV2LinkedServiceArgs) ToGoogleBigQueryV2LinkedServiceOutputWithContext(ctx context.Context) GoogleBigQueryV2LinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleBigQueryV2LinkedServiceOutput)
+}
+
+// Google BigQuery service linked service.
+type GoogleBigQueryV2LinkedServiceOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2LinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2LinkedService)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2LinkedServiceOutput) ToGoogleBigQueryV2LinkedServiceOutput() GoogleBigQueryV2LinkedServiceOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2LinkedServiceOutput) ToGoogleBigQueryV2LinkedServiceOutputWithContext(ctx context.Context) GoogleBigQueryV2LinkedServiceOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o GoogleBigQueryV2LinkedServiceOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The OAuth 2.0 authentication mechanism used for authentication.
+func (o GoogleBigQueryV2LinkedServiceOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2LinkedServiceOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The client secret of the google application used to acquire the refresh token.
+func (o GoogleBigQueryV2LinkedServiceOutput) ClientSecret() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) interface{} { return v.ClientSecret }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o GoogleBigQueryV2LinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// Linked service description.
+func (o GoogleBigQueryV2LinkedServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o GoogleBigQueryV2LinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The content of the .json key file that is used to authenticate the service account. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2LinkedServiceOutput) KeyFileContent() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) interface{} { return v.KeyFileContent }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o GoogleBigQueryV2LinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// The default BigQuery project id to query against. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2LinkedServiceOutput) ProjectId() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) interface{} { return v.ProjectId }).(pulumi.AnyOutput)
+}
+
+// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
+func (o GoogleBigQueryV2LinkedServiceOutput) RefreshToken() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) interface{} { return v.RefreshToken }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'GoogleBigQueryV2'.
+func (o GoogleBigQueryV2LinkedServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Google BigQuery service linked service.
+type GoogleBigQueryV2LinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The OAuth 2.0 authentication mechanism used for authentication.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
+	ClientId interface{} `pulumi:"clientId"`
+	// The client secret of the google application used to acquire the refresh token.
+	ClientSecret interface{} `pulumi:"clientSecret"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The content of the .json key file that is used to authenticate the service account. Type: string (or Expression with resultType string).
+	KeyFileContent interface{} `pulumi:"keyFileContent"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The default BigQuery project id to query against. Type: string (or Expression with resultType string).
+	ProjectId interface{} `pulumi:"projectId"`
+	// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
+	RefreshToken interface{} `pulumi:"refreshToken"`
+	// Type of linked service.
+	// Expected value is 'GoogleBigQueryV2'.
+	Type string `pulumi:"type"`
+}
+
+// Google BigQuery service linked service.
+type GoogleBigQueryV2LinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2LinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2LinkedServiceResponse)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) ToGoogleBigQueryV2LinkedServiceResponseOutput() GoogleBigQueryV2LinkedServiceResponseOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) ToGoogleBigQueryV2LinkedServiceResponseOutputWithContext(ctx context.Context) GoogleBigQueryV2LinkedServiceResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The OAuth 2.0 authentication mechanism used for authentication.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The client secret of the google application used to acquire the refresh token.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) ClientSecret() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) interface{} { return v.ClientSecret }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) *IntegrationRuntimeReferenceResponse {
+		return v.ConnectVia
+	}).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// Linked service description.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The content of the .json key file that is used to authenticate the service account. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) KeyFileContent() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) interface{} { return v.KeyFileContent }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) map[string]ParameterSpecificationResponse {
+		return v.Parameters
+	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// The default BigQuery project id to query against. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) ProjectId() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) interface{} { return v.ProjectId }).(pulumi.AnyOutput)
+}
+
+// The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) RefreshToken() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) interface{} { return v.RefreshToken }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'GoogleBigQueryV2'.
+func (o GoogleBigQueryV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Google BigQuery service dataset.
+type GoogleBigQueryV2ObjectDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The database name of the Google BigQuery. Type: string (or Expression with resultType string).
+	Dataset interface{} `pulumi:"dataset"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Google BigQuery. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'GoogleBigQueryV2Object'.
+	Type string `pulumi:"type"`
+}
+
+// GoogleBigQueryV2ObjectDatasetInput is an input type that accepts GoogleBigQueryV2ObjectDatasetArgs and GoogleBigQueryV2ObjectDatasetOutput values.
+// You can construct a concrete instance of `GoogleBigQueryV2ObjectDatasetInput` via:
+//
+//	GoogleBigQueryV2ObjectDatasetArgs{...}
+type GoogleBigQueryV2ObjectDatasetInput interface {
+	pulumi.Input
+
+	ToGoogleBigQueryV2ObjectDatasetOutput() GoogleBigQueryV2ObjectDatasetOutput
+	ToGoogleBigQueryV2ObjectDatasetOutputWithContext(context.Context) GoogleBigQueryV2ObjectDatasetOutput
+}
+
+// Google BigQuery service dataset.
+type GoogleBigQueryV2ObjectDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The database name of the Google BigQuery. Type: string (or Expression with resultType string).
+	Dataset pulumi.Input `pulumi:"dataset"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The table name of the Google BigQuery. Type: string (or Expression with resultType string).
+	Table pulumi.Input `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'GoogleBigQueryV2Object'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GoogleBigQueryV2ObjectDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2ObjectDataset)(nil)).Elem()
+}
+
+func (i GoogleBigQueryV2ObjectDatasetArgs) ToGoogleBigQueryV2ObjectDatasetOutput() GoogleBigQueryV2ObjectDatasetOutput {
+	return i.ToGoogleBigQueryV2ObjectDatasetOutputWithContext(context.Background())
+}
+
+func (i GoogleBigQueryV2ObjectDatasetArgs) ToGoogleBigQueryV2ObjectDatasetOutputWithContext(ctx context.Context) GoogleBigQueryV2ObjectDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleBigQueryV2ObjectDatasetOutput)
+}
+
+// Google BigQuery service dataset.
+type GoogleBigQueryV2ObjectDatasetOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2ObjectDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2ObjectDataset)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2ObjectDatasetOutput) ToGoogleBigQueryV2ObjectDatasetOutput() GoogleBigQueryV2ObjectDatasetOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2ObjectDatasetOutput) ToGoogleBigQueryV2ObjectDatasetOutputWithContext(ctx context.Context) GoogleBigQueryV2ObjectDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The database name of the Google BigQuery. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2ObjectDatasetOutput) Dataset() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) interface{} { return v.Dataset }).(pulumi.AnyOutput)
+}
+
+// Dataset description.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o GoogleBigQueryV2ObjectDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of the Google BigQuery. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2ObjectDatasetOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'GoogleBigQueryV2Object'.
+func (o GoogleBigQueryV2ObjectDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Google BigQuery service dataset.
+type GoogleBigQueryV2ObjectDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The database name of the Google BigQuery. Type: string (or Expression with resultType string).
+	Dataset interface{} `pulumi:"dataset"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name of the Google BigQuery. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'GoogleBigQueryV2Object'.
+	Type string `pulumi:"type"`
+}
+
+// Google BigQuery service dataset.
+type GoogleBigQueryV2ObjectDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2ObjectDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2ObjectDatasetResponse)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) ToGoogleBigQueryV2ObjectDatasetResponseOutput() GoogleBigQueryV2ObjectDatasetResponseOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) ToGoogleBigQueryV2ObjectDatasetResponseOutputWithContext(ctx context.Context) GoogleBigQueryV2ObjectDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The database name of the Google BigQuery. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Dataset() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) interface{} { return v.Dataset }).(pulumi.AnyOutput)
+}
+
+// Dataset description.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) LinkedServiceReferenceResponse {
+		return v.LinkedServiceName
+	}).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) map[string]ParameterSpecificationResponse {
+		return v.Parameters
+	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name of the Google BigQuery. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'GoogleBigQueryV2Object'.
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity Google BigQuery service source.
+type GoogleBigQueryV2Source struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GoogleBigQueryV2Source'.
+	Type string `pulumi:"type"`
+}
+
+// GoogleBigQueryV2SourceInput is an input type that accepts GoogleBigQueryV2SourceArgs and GoogleBigQueryV2SourceOutput values.
+// You can construct a concrete instance of `GoogleBigQueryV2SourceInput` via:
+//
+//	GoogleBigQueryV2SourceArgs{...}
+type GoogleBigQueryV2SourceInput interface {
+	pulumi.Input
+
+	ToGoogleBigQueryV2SourceOutput() GoogleBigQueryV2SourceOutput
+	ToGoogleBigQueryV2SourceOutputWithContext(context.Context) GoogleBigQueryV2SourceOutput
+}
+
+// A copy activity Google BigQuery service source.
+type GoogleBigQueryV2SourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GoogleBigQueryV2Source'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GoogleBigQueryV2SourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2Source)(nil)).Elem()
+}
+
+func (i GoogleBigQueryV2SourceArgs) ToGoogleBigQueryV2SourceOutput() GoogleBigQueryV2SourceOutput {
+	return i.ToGoogleBigQueryV2SourceOutputWithContext(context.Background())
+}
+
+func (i GoogleBigQueryV2SourceArgs) ToGoogleBigQueryV2SourceOutputWithContext(ctx context.Context) GoogleBigQueryV2SourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleBigQueryV2SourceOutput)
+}
+
+// A copy activity Google BigQuery service source.
+type GoogleBigQueryV2SourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2SourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2Source)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2SourceOutput) ToGoogleBigQueryV2SourceOutput() GoogleBigQueryV2SourceOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2SourceOutput) ToGoogleBigQueryV2SourceOutputWithContext(ctx context.Context) GoogleBigQueryV2SourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o GoogleBigQueryV2SourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o GoogleBigQueryV2SourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o GoogleBigQueryV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2SourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GoogleBigQueryV2SourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o GoogleBigQueryV2SourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GoogleBigQueryV2SourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'GoogleBigQueryV2Source'.
+func (o GoogleBigQueryV2SourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2Source) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity Google BigQuery service source.
+type GoogleBigQueryV2SourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'GoogleBigQueryV2Source'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity Google BigQuery service source.
+type GoogleBigQueryV2SourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleBigQueryV2SourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleBigQueryV2SourceResponse)(nil)).Elem()
+}
+
+func (o GoogleBigQueryV2SourceResponseOutput) ToGoogleBigQueryV2SourceResponseOutput() GoogleBigQueryV2SourceResponseOutput {
+	return o
+}
+
+func (o GoogleBigQueryV2SourceResponseOutput) ToGoogleBigQueryV2SourceResponseOutputWithContext(ctx context.Context) GoogleBigQueryV2SourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o GoogleBigQueryV2SourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o GoogleBigQueryV2SourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o GoogleBigQueryV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o GoogleBigQueryV2SourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GoogleBigQueryV2SourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o GoogleBigQueryV2SourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o GoogleBigQueryV2SourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'GoogleBigQueryV2Source'.
+func (o GoogleBigQueryV2SourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2SourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Linked service for Google Cloud Storage.
 type GoogleCloudStorageLinkedService struct {
 	// The access key identifier of the Google Cloud Storage Identity and Access Management (IAM) user. Type: string (or Expression with resultType string).
@@ -62683,1040 +63754,6 @@ func (o HBaseLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
-// HBase server dataset.
-type HBaseObjectDataset struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'HBaseObject'.
-	Type string `pulumi:"type"`
-}
-
-// HBaseObjectDatasetInput is an input type that accepts HBaseObjectDatasetArgs and HBaseObjectDatasetOutput values.
-// You can construct a concrete instance of `HBaseObjectDatasetInput` via:
-//
-//	HBaseObjectDatasetArgs{...}
-type HBaseObjectDatasetInput interface {
-	pulumi.Input
-
-	ToHBaseObjectDatasetOutput() HBaseObjectDatasetOutput
-	ToHBaseObjectDatasetOutputWithContext(context.Context) HBaseObjectDatasetOutput
-}
-
-// HBase server dataset.
-type HBaseObjectDatasetArgs struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// Dataset description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder DatasetFolderPtrInput `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema pulumi.Input `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure pulumi.Input `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
-	TableName pulumi.Input `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'HBaseObject'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (HBaseObjectDatasetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseObjectDataset)(nil)).Elem()
-}
-
-func (i HBaseObjectDatasetArgs) ToHBaseObjectDatasetOutput() HBaseObjectDatasetOutput {
-	return i.ToHBaseObjectDatasetOutputWithContext(context.Background())
-}
-
-func (i HBaseObjectDatasetArgs) ToHBaseObjectDatasetOutputWithContext(ctx context.Context) HBaseObjectDatasetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseObjectDatasetOutput)
-}
-
-// HBase server dataset.
-type HBaseObjectDatasetOutput struct{ *pulumi.OutputState }
-
-func (HBaseObjectDatasetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseObjectDataset)(nil)).Elem()
-}
-
-func (o HBaseObjectDatasetOutput) ToHBaseObjectDatasetOutput() HBaseObjectDatasetOutput {
-	return o
-}
-
-func (o HBaseObjectDatasetOutput) ToHBaseObjectDatasetOutputWithContext(ctx context.Context) HBaseObjectDatasetOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Dataset.
-func (o HBaseObjectDatasetOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Dataset description.
-func (o HBaseObjectDatasetOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o HBaseObjectDatasetOutput) Folder() DatasetFolderPtrOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
-}
-
-// Linked service reference.
-func (o HBaseObjectDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
-}
-
-// Parameters for dataset.
-func (o HBaseObjectDatasetOutput) Parameters() ParameterSpecificationMapOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
-}
-
-// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-func (o HBaseObjectDatasetOutput) Schema() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
-}
-
-// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-func (o HBaseObjectDatasetOutput) Structure() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
-}
-
-// The table name. Type: string (or Expression with resultType string).
-func (o HBaseObjectDatasetOutput) TableName() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) interface{} { return v.TableName }).(pulumi.AnyOutput)
-}
-
-// Type of dataset.
-// Expected value is 'HBaseObject'.
-func (o HBaseObjectDatasetOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseObjectDataset) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// HBase server dataset.
-type HBaseObjectDatasetResponse struct {
-	// List of tags that can be used for describing the Dataset.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Dataset description.
-	Description *string `pulumi:"description"`
-	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Parameters for dataset.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-	Schema interface{} `pulumi:"schema"`
-	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-	Structure interface{} `pulumi:"structure"`
-	// The table name. Type: string (or Expression with resultType string).
-	TableName interface{} `pulumi:"tableName"`
-	// Type of dataset.
-	// Expected value is 'HBaseObject'.
-	Type string `pulumi:"type"`
-}
-
-// HBase server dataset.
-type HBaseObjectDatasetResponseOutput struct{ *pulumi.OutputState }
-
-func (HBaseObjectDatasetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseObjectDatasetResponse)(nil)).Elem()
-}
-
-func (o HBaseObjectDatasetResponseOutput) ToHBaseObjectDatasetResponseOutput() HBaseObjectDatasetResponseOutput {
-	return o
-}
-
-func (o HBaseObjectDatasetResponseOutput) ToHBaseObjectDatasetResponseOutputWithContext(ctx context.Context) HBaseObjectDatasetResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Dataset.
-func (o HBaseObjectDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Dataset description.
-func (o HBaseObjectDatasetResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o HBaseObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
-}
-
-// Linked service reference.
-func (o HBaseObjectDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
-}
-
-// Parameters for dataset.
-func (o HBaseObjectDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
-func (o HBaseObjectDatasetResponseOutput) Schema() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
-}
-
-// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
-func (o HBaseObjectDatasetResponseOutput) Structure() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
-}
-
-// The table name. Type: string (or Expression with resultType string).
-func (o HBaseObjectDatasetResponseOutput) TableName() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) interface{} { return v.TableName }).(pulumi.AnyOutput)
-}
-
-// Type of dataset.
-// Expected value is 'HBaseObject'.
-func (o HBaseObjectDatasetResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseObjectDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// A copy activity HBase server source.
-type HBaseSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'HBaseSource'.
-	Type string `pulumi:"type"`
-}
-
-// HBaseSourceInput is an input type that accepts HBaseSourceArgs and HBaseSourceOutput values.
-// You can construct a concrete instance of `HBaseSourceInput` via:
-//
-//	HBaseSourceArgs{...}
-type HBaseSourceInput interface {
-	pulumi.Input
-
-	ToHBaseSourceOutput() HBaseSourceOutput
-	ToHBaseSourceOutputWithContext(context.Context) HBaseSourceOutput
-}
-
-// A copy activity HBase server source.
-type HBaseSourceArgs struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query pulumi.Input `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'HBaseSource'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (HBaseSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseSource)(nil)).Elem()
-}
-
-func (i HBaseSourceArgs) ToHBaseSourceOutput() HBaseSourceOutput {
-	return i.ToHBaseSourceOutputWithContext(context.Background())
-}
-
-func (i HBaseSourceArgs) ToHBaseSourceOutputWithContext(ctx context.Context) HBaseSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseSourceOutput)
-}
-
-// A copy activity HBase server source.
-type HBaseSourceOutput struct{ *pulumi.OutputState }
-
-func (HBaseSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseSource)(nil)).Elem()
-}
-
-func (o HBaseSourceOutput) ToHBaseSourceOutput() HBaseSourceOutput {
-	return o
-}
-
-func (o HBaseSourceOutput) ToHBaseSourceOutputWithContext(ctx context.Context) HBaseSourceOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o HBaseSourceOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o HBaseSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o HBaseSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// A query to retrieve data from source. Type: string (or Expression with resultType string).
-func (o HBaseSourceOutput) Query() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.Query }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o HBaseSourceOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o HBaseSourceOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o HBaseSourceOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'HBaseSource'.
-func (o HBaseSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// A copy activity HBase server source.
-type HBaseSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'HBaseSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity HBase server source.
-type HBaseSourceResponseOutput struct{ *pulumi.OutputState }
-
-func (HBaseSourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseSourceResponse)(nil)).Elem()
-}
-
-func (o HBaseSourceResponseOutput) ToHBaseSourceResponseOutput() HBaseSourceResponseOutput {
-	return o
-}
-
-func (o HBaseSourceResponseOutput) ToHBaseSourceResponseOutputWithContext(ctx context.Context) HBaseSourceResponseOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o HBaseSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o HBaseSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o HBaseSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// A query to retrieve data from source. Type: string (or Expression with resultType string).
-func (o HBaseSourceResponseOutput) Query() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o HBaseSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o HBaseSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o HBaseSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'HBaseSource'.
-func (o HBaseSourceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseSourceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// HDInsight Hive activity type.
-type HDInsightHiveActivity struct {
-	// User specified arguments to HDInsightActivity.
-	Arguments []interface{} `pulumi:"arguments"`
-	// Allows user to specify defines for Hive job request.
-	Defines map[string]interface{} `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn []ActivityDependency `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo *string `pulumi:"getDebugInfo"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *ActivityPolicy `pulumi:"policy"`
-	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
-	QueryTimeout *int `pulumi:"queryTimeout"`
-	// Script linked service reference.
-	ScriptLinkedService *LinkedServiceReference `pulumi:"scriptLinkedService"`
-	// Script path. Type: string (or Expression with resultType string).
-	ScriptPath interface{} `pulumi:"scriptPath"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Storage linked service references.
-	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightHive'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserProperty `pulumi:"userProperties"`
-	// User specified arguments under hivevar namespace.
-	Variables map[string]interface{} `pulumi:"variables"`
-}
-
-// HDInsightHiveActivityInput is an input type that accepts HDInsightHiveActivityArgs and HDInsightHiveActivityOutput values.
-// You can construct a concrete instance of `HDInsightHiveActivityInput` via:
-//
-//	HDInsightHiveActivityArgs{...}
-type HDInsightHiveActivityInput interface {
-	pulumi.Input
-
-	ToHDInsightHiveActivityOutput() HDInsightHiveActivityOutput
-	ToHDInsightHiveActivityOutputWithContext(context.Context) HDInsightHiveActivityOutput
-}
-
-// HDInsight Hive activity type.
-type HDInsightHiveActivityArgs struct {
-	// User specified arguments to HDInsightActivity.
-	Arguments pulumi.ArrayInput `pulumi:"arguments"`
-	// Allows user to specify defines for Hive job request.
-	Defines pulumi.MapInput `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
-	// Activity description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo pulumi.StringPtrInput `pulumi:"getDebugInfo"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy ActivityPolicyPtrInput `pulumi:"policy"`
-	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
-	QueryTimeout pulumi.IntPtrInput `pulumi:"queryTimeout"`
-	// Script linked service reference.
-	ScriptLinkedService LinkedServiceReferencePtrInput `pulumi:"scriptLinkedService"`
-	// Script path. Type: string (or Expression with resultType string).
-	ScriptPath pulumi.Input `pulumi:"scriptPath"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Storage linked service references.
-	StorageLinkedServices LinkedServiceReferenceArrayInput `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightHive'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Activity user properties.
-	UserProperties UserPropertyArrayInput `pulumi:"userProperties"`
-	// User specified arguments under hivevar namespace.
-	Variables pulumi.MapInput `pulumi:"variables"`
-}
-
-func (HDInsightHiveActivityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HDInsightHiveActivity)(nil)).Elem()
-}
-
-func (i HDInsightHiveActivityArgs) ToHDInsightHiveActivityOutput() HDInsightHiveActivityOutput {
-	return i.ToHDInsightHiveActivityOutputWithContext(context.Background())
-}
-
-func (i HDInsightHiveActivityArgs) ToHDInsightHiveActivityOutputWithContext(ctx context.Context) HDInsightHiveActivityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HDInsightHiveActivityOutput)
-}
-
-// HDInsight Hive activity type.
-type HDInsightHiveActivityOutput struct{ *pulumi.OutputState }
-
-func (HDInsightHiveActivityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HDInsightHiveActivity)(nil)).Elem()
-}
-
-func (o HDInsightHiveActivityOutput) ToHDInsightHiveActivityOutput() HDInsightHiveActivityOutput {
-	return o
-}
-
-func (o HDInsightHiveActivityOutput) ToHDInsightHiveActivityOutputWithContext(ctx context.Context) HDInsightHiveActivityOutput {
-	return o
-}
-
-// User specified arguments to HDInsightActivity.
-func (o HDInsightHiveActivityOutput) Arguments() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) []interface{} { return v.Arguments }).(pulumi.ArrayOutput)
-}
-
-// Allows user to specify defines for Hive job request.
-func (o HDInsightHiveActivityOutput) Defines() pulumi.MapOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) map[string]interface{} { return v.Defines }).(pulumi.MapOutput)
-}
-
-// Activity depends on condition.
-func (o HDInsightHiveActivityOutput) DependsOn() ActivityDependencyArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) []ActivityDependency { return v.DependsOn }).(ActivityDependencyArrayOutput)
-}
-
-// Activity description.
-func (o HDInsightHiveActivityOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Debug info option.
-func (o HDInsightHiveActivityOutput) GetDebugInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.GetDebugInfo }).(pulumi.StringPtrOutput)
-}
-
-// Linked service reference.
-func (o HDInsightHiveActivityOutput) LinkedServiceName() LinkedServiceReferencePtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferencePtrOutput)
-}
-
-// Activity name.
-func (o HDInsightHiveActivityOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-func (o HDInsightHiveActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
-}
-
-// Activity policy.
-func (o HDInsightHiveActivityOutput) Policy() ActivityPolicyPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *ActivityPolicy { return v.Policy }).(ActivityPolicyPtrOutput)
-}
-
-// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
-func (o HDInsightHiveActivityOutput) QueryTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *int { return v.QueryTimeout }).(pulumi.IntPtrOutput)
-}
-
-// Script linked service reference.
-func (o HDInsightHiveActivityOutput) ScriptLinkedService() LinkedServiceReferencePtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *LinkedServiceReference { return v.ScriptLinkedService }).(LinkedServiceReferencePtrOutput)
-}
-
-// Script path. Type: string (or Expression with resultType string).
-func (o HDInsightHiveActivityOutput) ScriptPath() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) interface{} { return v.ScriptPath }).(pulumi.AnyOutput)
-}
-
-// Activity state. This is an optional property and if not provided, the state will be Active by default.
-func (o HDInsightHiveActivityOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Storage linked service references.
-func (o HDInsightHiveActivityOutput) StorageLinkedServices() LinkedServiceReferenceArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) []LinkedServiceReference { return v.StorageLinkedServices }).(LinkedServiceReferenceArrayOutput)
-}
-
-// Type of activity.
-// Expected value is 'HDInsightHive'.
-func (o HDInsightHiveActivityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Activity user properties.
-func (o HDInsightHiveActivityOutput) UserProperties() UserPropertyArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) []UserProperty { return v.UserProperties }).(UserPropertyArrayOutput)
-}
-
-// User specified arguments under hivevar namespace.
-func (o HDInsightHiveActivityOutput) Variables() pulumi.MapOutput {
-	return o.ApplyT(func(v HDInsightHiveActivity) map[string]interface{} { return v.Variables }).(pulumi.MapOutput)
-}
-
-// HDInsight Hive activity type.
-type HDInsightHiveActivityResponse struct {
-	// User specified arguments to HDInsightActivity.
-	Arguments []interface{} `pulumi:"arguments"`
-	// Allows user to specify defines for Hive job request.
-	Defines map[string]interface{} `pulumi:"defines"`
-	// Activity depends on condition.
-	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Debug info option.
-	GetDebugInfo *string `pulumi:"getDebugInfo"`
-	// Linked service reference.
-	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *ActivityPolicyResponse `pulumi:"policy"`
-	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
-	QueryTimeout *int `pulumi:"queryTimeout"`
-	// Script linked service reference.
-	ScriptLinkedService *LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
-	// Script path. Type: string (or Expression with resultType string).
-	ScriptPath interface{} `pulumi:"scriptPath"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Storage linked service references.
-	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
-	// Type of activity.
-	// Expected value is 'HDInsightHive'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-	// User specified arguments under hivevar namespace.
-	Variables map[string]interface{} `pulumi:"variables"`
-}
-
-// HDInsight Hive activity type.
-type HDInsightHiveActivityResponseOutput struct{ *pulumi.OutputState }
-
-func (HDInsightHiveActivityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HDInsightHiveActivityResponse)(nil)).Elem()
-}
-
-func (o HDInsightHiveActivityResponseOutput) ToHDInsightHiveActivityResponseOutput() HDInsightHiveActivityResponseOutput {
-	return o
-}
-
-func (o HDInsightHiveActivityResponseOutput) ToHDInsightHiveActivityResponseOutputWithContext(ctx context.Context) HDInsightHiveActivityResponseOutput {
-	return o
-}
-
-// User specified arguments to HDInsightActivity.
-func (o HDInsightHiveActivityResponseOutput) Arguments() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) []interface{} { return v.Arguments }).(pulumi.ArrayOutput)
-}
-
-// Allows user to specify defines for Hive job request.
-func (o HDInsightHiveActivityResponseOutput) Defines() pulumi.MapOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) map[string]interface{} { return v.Defines }).(pulumi.MapOutput)
-}
-
-// Activity depends on condition.
-func (o HDInsightHiveActivityResponseOutput) DependsOn() ActivityDependencyResponseArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) []ActivityDependencyResponse { return v.DependsOn }).(ActivityDependencyResponseArrayOutput)
-}
-
-// Activity description.
-func (o HDInsightHiveActivityResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Debug info option.
-func (o HDInsightHiveActivityResponseOutput) GetDebugInfo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.GetDebugInfo }).(pulumi.StringPtrOutput)
-}
-
-// Linked service reference.
-func (o HDInsightHiveActivityResponseOutput) LinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponsePtrOutput)
-}
-
-// Activity name.
-func (o HDInsightHiveActivityResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-func (o HDInsightHiveActivityResponseOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
-}
-
-// Activity policy.
-func (o HDInsightHiveActivityResponseOutput) Policy() ActivityPolicyResponsePtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *ActivityPolicyResponse { return v.Policy }).(ActivityPolicyResponsePtrOutput)
-}
-
-// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
-func (o HDInsightHiveActivityResponseOutput) QueryTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *int { return v.QueryTimeout }).(pulumi.IntPtrOutput)
-}
-
-// Script linked service reference.
-func (o HDInsightHiveActivityResponseOutput) ScriptLinkedService() LinkedServiceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *LinkedServiceReferenceResponse { return v.ScriptLinkedService }).(LinkedServiceReferenceResponsePtrOutput)
-}
-
-// Script path. Type: string (or Expression with resultType string).
-func (o HDInsightHiveActivityResponseOutput) ScriptPath() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) interface{} { return v.ScriptPath }).(pulumi.AnyOutput)
-}
-
-// Activity state. This is an optional property and if not provided, the state will be Active by default.
-func (o HDInsightHiveActivityResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Storage linked service references.
-func (o HDInsightHiveActivityResponseOutput) StorageLinkedServices() LinkedServiceReferenceResponseArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) []LinkedServiceReferenceResponse { return v.StorageLinkedServices }).(LinkedServiceReferenceResponseArrayOutput)
-}
-
-// Type of activity.
-// Expected value is 'HDInsightHive'.
-func (o HDInsightHiveActivityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Activity user properties.
-func (o HDInsightHiveActivityResponseOutput) UserProperties() UserPropertyResponseArrayOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) []UserPropertyResponse { return v.UserProperties }).(UserPropertyResponseArrayOutput)
-}
-
-// User specified arguments under hivevar namespace.
-func (o HDInsightHiveActivityResponseOutput) Variables() pulumi.MapOutput {
-	return o.ApplyT(func(v HDInsightHiveActivityResponse) map[string]interface{} { return v.Variables }).(pulumi.MapOutput)
-}
-
-// HDInsight linked service.
-type HDInsightLinkedService struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// HDInsight cluster URI. Type: string (or Expression with resultType string).
-	ClusterUri interface{} `pulumi:"clusterUri"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
-	FileSystem interface{} `pulumi:"fileSystem"`
-	// A reference to the Azure SQL linked service that points to the HCatalog database.
-	HcatalogLinkedServiceName *LinkedServiceReference `pulumi:"hcatalogLinkedServiceName"`
-	// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
-	IsEspEnabled interface{} `pulumi:"isEspEnabled"`
-	// The Azure Storage linked service reference.
-	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// HDInsight cluster password.
-	Password interface{} `pulumi:"password"`
-	// Type of linked service.
-	// Expected value is 'HDInsight'.
-	Type string `pulumi:"type"`
-	// HDInsight cluster user name. Type: string (or Expression with resultType string).
-	UserName interface{} `pulumi:"userName"`
-}
-
-// HDInsightLinkedServiceInput is an input type that accepts HDInsightLinkedServiceArgs and HDInsightLinkedServiceOutput values.
-// You can construct a concrete instance of `HDInsightLinkedServiceInput` via:
-//
-//	HDInsightLinkedServiceArgs{...}
-type HDInsightLinkedServiceInput interface {
-	pulumi.Input
-
-	ToHDInsightLinkedServiceOutput() HDInsightLinkedServiceOutput
-	ToHDInsightLinkedServiceOutputWithContext(context.Context) HDInsightLinkedServiceOutput
-}
-
-// HDInsight linked service.
-type HDInsightLinkedServiceArgs struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// HDInsight cluster URI. Type: string (or Expression with resultType string).
-	ClusterUri pulumi.Input `pulumi:"clusterUri"`
-	// The integration runtime reference.
-	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// Linked service description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
-	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
-	FileSystem pulumi.Input `pulumi:"fileSystem"`
-	// A reference to the Azure SQL linked service that points to the HCatalog database.
-	HcatalogLinkedServiceName LinkedServiceReferencePtrInput `pulumi:"hcatalogLinkedServiceName"`
-	// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
-	IsEspEnabled pulumi.Input `pulumi:"isEspEnabled"`
-	// The Azure Storage linked service reference.
-	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
-	// Parameters for linked service.
-	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
-	// HDInsight cluster password.
-	Password pulumi.Input `pulumi:"password"`
-	// Type of linked service.
-	// Expected value is 'HDInsight'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// HDInsight cluster user name. Type: string (or Expression with resultType string).
-	UserName pulumi.Input `pulumi:"userName"`
-}
-
-func (HDInsightLinkedServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HDInsightLinkedService)(nil)).Elem()
-}
-
-func (i HDInsightLinkedServiceArgs) ToHDInsightLinkedServiceOutput() HDInsightLinkedServiceOutput {
-	return i.ToHDInsightLinkedServiceOutputWithContext(context.Background())
-}
-
-func (i HDInsightLinkedServiceArgs) ToHDInsightLinkedServiceOutputWithContext(ctx context.Context) HDInsightLinkedServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HDInsightLinkedServiceOutput)
-}
-
-// HDInsight linked service.
-type HDInsightLinkedServiceOutput struct{ *pulumi.OutputState }
-
-func (HDInsightLinkedServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HDInsightLinkedService)(nil)).Elem()
-}
-
-func (o HDInsightLinkedServiceOutput) ToHDInsightLinkedServiceOutput() HDInsightLinkedServiceOutput {
-	return o
-}
-
-func (o HDInsightLinkedServiceOutput) ToHDInsightLinkedServiceOutputWithContext(ctx context.Context) HDInsightLinkedServiceOutput {
-	return o
-}
-
-// List of tags that can be used for describing the linked service.
-func (o HDInsightLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// HDInsight cluster URI. Type: string (or Expression with resultType string).
-func (o HDInsightLinkedServiceOutput) ClusterUri() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.ClusterUri }).(pulumi.AnyOutput)
-}
-
-// The integration runtime reference.
-func (o HDInsightLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
-}
-
-// Linked service description.
-func (o HDInsightLinkedServiceOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-func (o HDInsightLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
-func (o HDInsightLinkedServiceOutput) FileSystem() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.FileSystem }).(pulumi.AnyOutput)
-}
-
-// A reference to the Azure SQL linked service that points to the HCatalog database.
-func (o HDInsightLinkedServiceOutput) HcatalogLinkedServiceName() LinkedServiceReferencePtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) *LinkedServiceReference { return v.HcatalogLinkedServiceName }).(LinkedServiceReferencePtrOutput)
-}
-
-// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
-func (o HDInsightLinkedServiceOutput) IsEspEnabled() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.IsEspEnabled }).(pulumi.AnyOutput)
-}
-
-// The Azure Storage linked service reference.
-func (o HDInsightLinkedServiceOutput) LinkedServiceName() LinkedServiceReferencePtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) *LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferencePtrOutput)
-}
-
-// Parameters for linked service.
-func (o HDInsightLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
-}
-
-// HDInsight cluster password.
-func (o HDInsightLinkedServiceOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
-}
-
-// Type of linked service.
-// Expected value is 'HDInsight'.
-func (o HDInsightLinkedServiceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// HDInsight cluster user name. Type: string (or Expression with resultType string).
-func (o HDInsightLinkedServiceOutput) UserName() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
-}
-
-// HDInsight linked service.
-type HDInsightLinkedServiceResponse struct {
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// HDInsight cluster URI. Type: string (or Expression with resultType string).
-	ClusterUri interface{} `pulumi:"clusterUri"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
-	FileSystem interface{} `pulumi:"fileSystem"`
-	// A reference to the Azure SQL linked service that points to the HCatalog database.
-	HcatalogLinkedServiceName *LinkedServiceReferenceResponse `pulumi:"hcatalogLinkedServiceName"`
-	// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
-	IsEspEnabled interface{} `pulumi:"isEspEnabled"`
-	// The Azure Storage linked service reference.
-	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// HDInsight cluster password.
-	Password interface{} `pulumi:"password"`
-	// Type of linked service.
-	// Expected value is 'HDInsight'.
-	Type string `pulumi:"type"`
-	// HDInsight cluster user name. Type: string (or Expression with resultType string).
-	UserName interface{} `pulumi:"userName"`
-}
-
-// HDInsight linked service.
-type HDInsightLinkedServiceResponseOutput struct{ *pulumi.OutputState }
-
-func (HDInsightLinkedServiceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HDInsightLinkedServiceResponse)(nil)).Elem()
-}
-
-func (o HDInsightLinkedServiceResponseOutput) ToHDInsightLinkedServiceResponseOutput() HDInsightLinkedServiceResponseOutput {
-	return o
-}
-
-func (o HDInsightLinkedServiceResponseOutput) ToHDInsightLinkedServiceResponseOutputWithContext(ctx context.Context) HDInsightLinkedServiceResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the linked service.
-func (o HDInsightLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// HDInsight cluster URI. Type: string (or Expression with resultType string).
-func (o HDInsightLinkedServiceResponseOutput) ClusterUri() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.ClusterUri }).(pulumi.AnyOutput)
-}
-
-// The integration runtime reference.
-func (o HDInsightLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
-}
-
-// Linked service description.
-func (o HDInsightLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-func (o HDInsightLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
-func (o HDInsightLinkedServiceResponseOutput) FileSystem() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.FileSystem }).(pulumi.AnyOutput)
-}
-
-// A reference to the Azure SQL linked service that points to the HCatalog database.
-func (o HDInsightLinkedServiceResponseOutput) HcatalogLinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *LinkedServiceReferenceResponse {
-		return v.HcatalogLinkedServiceName
-	}).(LinkedServiceReferenceResponsePtrOutput)
-}
-
-// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
-func (o HDInsightLinkedServiceResponseOutput) IsEspEnabled() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.IsEspEnabled }).(pulumi.AnyOutput)
-}
-
-// The Azure Storage linked service reference.
-func (o HDInsightLinkedServiceResponseOutput) LinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponsePtrOutput)
-}
-
-// Parameters for linked service.
-func (o HDInsightLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// HDInsight cluster password.
-func (o HDInsightLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
-}
-
-// Type of linked service.
-// Expected value is 'HDInsight'.
-func (o HDInsightLinkedServiceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// HDInsight cluster user name. Type: string (or Expression with resultType string).
-func (o HDInsightLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
-}
-
 type SSISExecutionParameterMapMap map[string]SSISExecutionParameterMapInput
 
 func (SSISExecutionParameterMapMap) ElementType() reflect.Type {
@@ -64301,6 +64338,12 @@ func init() {
 	pulumi.RegisterOutputType(ExecutionActivityResponseOutput{})
 	pulumi.RegisterOutputType(ExpressionOutput{})
 	pulumi.RegisterOutputType(ExpressionResponseOutput{})
+	pulumi.RegisterOutputType(ExpressionV2Output{})
+	pulumi.RegisterOutputType(ExpressionV2PtrOutput{})
+	pulumi.RegisterOutputType(ExpressionV2ArrayOutput{})
+	pulumi.RegisterOutputType(ExpressionV2ResponseOutput{})
+	pulumi.RegisterOutputType(ExpressionV2ResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExpressionV2ResponseArrayOutput{})
 	pulumi.RegisterOutputType(FactoryGitHubConfigurationOutput{})
 	pulumi.RegisterOutputType(FactoryGitHubConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(FactoryGitHubConfigurationResponseOutput{})
@@ -64369,6 +64412,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleBigQueryObjectDatasetResponseOutput{})
 	pulumi.RegisterOutputType(GoogleBigQuerySourceOutput{})
 	pulumi.RegisterOutputType(GoogleBigQuerySourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2LinkedServiceOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2LinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2ObjectDatasetOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2ObjectDatasetResponseOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2SourceOutput{})
+	pulumi.RegisterOutputType(GoogleBigQueryV2SourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudStorageLinkedServiceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudStorageLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudStorageLocationOutput{})
@@ -64387,14 +64436,6 @@ func init() {
 	pulumi.RegisterOutputType(GreenplumTableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(HBaseLinkedServiceOutput{})
 	pulumi.RegisterOutputType(HBaseLinkedServiceResponseOutput{})
-	pulumi.RegisterOutputType(HBaseObjectDatasetOutput{})
-	pulumi.RegisterOutputType(HBaseObjectDatasetResponseOutput{})
-	pulumi.RegisterOutputType(HBaseSourceOutput{})
-	pulumi.RegisterOutputType(HBaseSourceResponseOutput{})
-	pulumi.RegisterOutputType(HDInsightHiveActivityOutput{})
-	pulumi.RegisterOutputType(HDInsightHiveActivityResponseOutput{})
-	pulumi.RegisterOutputType(HDInsightLinkedServiceOutput{})
-	pulumi.RegisterOutputType(HDInsightLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterMapMapOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterResponseMapMapOutput{})
 }

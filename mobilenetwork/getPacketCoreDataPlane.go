@@ -14,7 +14,7 @@ import (
 // Gets information about the specified packet core data plane.
 // Azure REST API version: 2023-06-01.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
 func LookupPacketCoreDataPlane(ctx *pulumi.Context, args *LookupPacketCoreDataPlaneArgs, opts ...pulumi.InvokeOption) (*LookupPacketCoreDataPlaneResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPacketCoreDataPlaneResult

@@ -15,7 +15,7 @@ import (
 // Packet core control plane resource.
 // Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01.
+// Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
 type PacketCoreControlPlane struct {
 	pulumi.CustomResourceState
 
@@ -107,6 +107,9 @@ func NewPacketCoreControlPlane(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:PacketCoreControlPlane"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240201:PacketCoreControlPlane"),
 		},
 	})
 	opts = append(opts, aliases)

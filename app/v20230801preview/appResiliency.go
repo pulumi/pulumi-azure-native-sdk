@@ -53,6 +53,9 @@ func NewAppResiliency(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app:AppResiliency"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20231102preview:AppResiliency"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

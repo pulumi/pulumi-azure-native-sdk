@@ -81,6 +81,9 @@ func NewServerGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:ServerGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:ServerGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -61,6 +61,9 @@ func NewDataNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:DataNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240201:DataNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

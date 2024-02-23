@@ -13,6 +13,8 @@ import (
 
 // Gets information about a cluster such as compute and storage configuration and cluster lifecycle metadata such as cluster creation date and time.
 // Azure REST API version: 2022-11-08.
+//
+// Other available API versions: 2023-03-02-preview.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

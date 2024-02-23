@@ -15,7 +15,7 @@ import (
 // Storage resource for managedEnvironment.
 // Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2022-03-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview.
 type ManagedEnvironmentsStorage struct {
 	pulumi.CustomResourceState
 
@@ -69,6 +69,9 @@ func NewManagedEnvironmentsStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20230801preview:ManagedEnvironmentsStorage"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20231102preview:ManagedEnvironmentsStorage"),
 		},
 	})
 	opts = append(opts, aliases)

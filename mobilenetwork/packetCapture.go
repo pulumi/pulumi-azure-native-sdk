@@ -15,7 +15,7 @@ import (
 // Packet capture session resource.
 // Azure REST API version: 2023-06-01.
 //
-// Other available API versions: 2023-09-01.
+// Other available API versions: 2023-09-01, 2024-02-01.
 type PacketCapture struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewPacketCapture(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:PacketCapture"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240201:PacketCapture"),
 		},
 	})
 	opts = append(opts, aliases)

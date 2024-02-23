@@ -15,7 +15,7 @@ import (
 // SyncSet represents a SyncSet for an Azure Red Hat OpenShift Cluster.
 // Azure REST API version: 2022-09-04.
 //
-// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
+// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
 type SyncSet struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewSyncSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20230904:SyncSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift/v20231122:SyncSet"),
 		},
 	})
 	opts = append(opts, aliases)

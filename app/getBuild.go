@@ -13,6 +13,8 @@ import (
 
 // Get a BuildResource
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-02-preview.
 func LookupBuild(ctx *pulumi.Context, args *LookupBuildArgs, opts ...pulumi.InvokeOption) (*LookupBuildResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuildResult

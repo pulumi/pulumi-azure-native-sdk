@@ -67,6 +67,9 @@ func NewManagedEnvironmentsStorage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20230502preview:ManagedEnvironmentsStorage"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20231102preview:ManagedEnvironmentsStorage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
