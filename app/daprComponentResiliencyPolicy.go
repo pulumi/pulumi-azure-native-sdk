@@ -14,6 +14,8 @@ import (
 
 // Dapr Component Resiliency Policy.
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-02-preview.
 type DaprComponentResiliencyPolicy struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +50,9 @@ func NewDaprComponentResiliencyPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20230801preview:DaprComponentResiliencyPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20231102preview:DaprComponentResiliencyPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

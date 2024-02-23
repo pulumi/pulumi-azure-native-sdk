@@ -13,6 +13,1040 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// HBase server dataset.
+type HBaseObjectDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name. Type: string (or Expression with resultType string).
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'HBaseObject'.
+	Type string `pulumi:"type"`
+}
+
+// HBaseObjectDatasetInput is an input type that accepts HBaseObjectDatasetArgs and HBaseObjectDatasetOutput values.
+// You can construct a concrete instance of `HBaseObjectDatasetInput` via:
+//
+//	HBaseObjectDatasetArgs{...}
+type HBaseObjectDatasetInput interface {
+	pulumi.Input
+
+	ToHBaseObjectDatasetOutput() HBaseObjectDatasetOutput
+	ToHBaseObjectDatasetOutputWithContext(context.Context) HBaseObjectDatasetOutput
+}
+
+// HBase server dataset.
+type HBaseObjectDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The table name. Type: string (or Expression with resultType string).
+	TableName pulumi.Input `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'HBaseObject'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (HBaseObjectDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseObjectDataset)(nil)).Elem()
+}
+
+func (i HBaseObjectDatasetArgs) ToHBaseObjectDatasetOutput() HBaseObjectDatasetOutput {
+	return i.ToHBaseObjectDatasetOutputWithContext(context.Background())
+}
+
+func (i HBaseObjectDatasetArgs) ToHBaseObjectDatasetOutputWithContext(ctx context.Context) HBaseObjectDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseObjectDatasetOutput)
+}
+
+// HBase server dataset.
+type HBaseObjectDatasetOutput struct{ *pulumi.OutputState }
+
+func (HBaseObjectDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseObjectDataset)(nil)).Elem()
+}
+
+func (o HBaseObjectDatasetOutput) ToHBaseObjectDatasetOutput() HBaseObjectDatasetOutput {
+	return o
+}
+
+func (o HBaseObjectDatasetOutput) ToHBaseObjectDatasetOutputWithContext(ctx context.Context) HBaseObjectDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o HBaseObjectDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o HBaseObjectDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o HBaseObjectDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o HBaseObjectDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o HBaseObjectDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o HBaseObjectDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o HBaseObjectDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name. Type: string (or Expression with resultType string).
+func (o HBaseObjectDatasetOutput) TableName() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) interface{} { return v.TableName }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'HBaseObject'.
+func (o HBaseObjectDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HBaseObjectDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// HBase server dataset.
+type HBaseObjectDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The table name. Type: string (or Expression with resultType string).
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'HBaseObject'.
+	Type string `pulumi:"type"`
+}
+
+// HBase server dataset.
+type HBaseObjectDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (HBaseObjectDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseObjectDatasetResponse)(nil)).Elem()
+}
+
+func (o HBaseObjectDatasetResponseOutput) ToHBaseObjectDatasetResponseOutput() HBaseObjectDatasetResponseOutput {
+	return o
+}
+
+func (o HBaseObjectDatasetResponseOutput) ToHBaseObjectDatasetResponseOutputWithContext(ctx context.Context) HBaseObjectDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o HBaseObjectDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o HBaseObjectDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o HBaseObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o HBaseObjectDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o HBaseObjectDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o HBaseObjectDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o HBaseObjectDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The table name. Type: string (or Expression with resultType string).
+func (o HBaseObjectDatasetResponseOutput) TableName() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) interface{} { return v.TableName }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'HBaseObject'.
+func (o HBaseObjectDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HBaseObjectDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity HBase server source.
+type HBaseSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'HBaseSource'.
+	Type string `pulumi:"type"`
+}
+
+// HBaseSourceInput is an input type that accepts HBaseSourceArgs and HBaseSourceOutput values.
+// You can construct a concrete instance of `HBaseSourceInput` via:
+//
+//	HBaseSourceArgs{...}
+type HBaseSourceInput interface {
+	pulumi.Input
+
+	ToHBaseSourceOutput() HBaseSourceOutput
+	ToHBaseSourceOutputWithContext(context.Context) HBaseSourceOutput
+}
+
+// A copy activity HBase server source.
+type HBaseSourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'HBaseSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (HBaseSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseSource)(nil)).Elem()
+}
+
+func (i HBaseSourceArgs) ToHBaseSourceOutput() HBaseSourceOutput {
+	return i.ToHBaseSourceOutputWithContext(context.Background())
+}
+
+func (i HBaseSourceArgs) ToHBaseSourceOutputWithContext(ctx context.Context) HBaseSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HBaseSourceOutput)
+}
+
+// A copy activity HBase server source.
+type HBaseSourceOutput struct{ *pulumi.OutputState }
+
+func (HBaseSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseSource)(nil)).Elem()
+}
+
+func (o HBaseSourceOutput) ToHBaseSourceOutput() HBaseSourceOutput {
+	return o
+}
+
+func (o HBaseSourceOutput) ToHBaseSourceOutputWithContext(ctx context.Context) HBaseSourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o HBaseSourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o HBaseSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o HBaseSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o HBaseSourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o HBaseSourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o HBaseSourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o HBaseSourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'HBaseSource'.
+func (o HBaseSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HBaseSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity HBase server source.
+type HBaseSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// A query to retrieve data from source. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'HBaseSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity HBase server source.
+type HBaseSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (HBaseSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HBaseSourceResponse)(nil)).Elem()
+}
+
+func (o HBaseSourceResponseOutput) ToHBaseSourceResponseOutput() HBaseSourceResponseOutput {
+	return o
+}
+
+func (o HBaseSourceResponseOutput) ToHBaseSourceResponseOutputWithContext(ctx context.Context) HBaseSourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o HBaseSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o HBaseSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o HBaseSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// A query to retrieve data from source. Type: string (or Expression with resultType string).
+func (o HBaseSourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o HBaseSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o HBaseSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o HBaseSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'HBaseSource'.
+func (o HBaseSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HBaseSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// HDInsight Hive activity type.
+type HDInsightHiveActivity struct {
+	// User specified arguments to HDInsightActivity.
+	Arguments []interface{} `pulumi:"arguments"`
+	// Allows user to specify defines for Hive job request.
+	Defines map[string]interface{} `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn []ActivityDependency `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo *string `pulumi:"getDebugInfo"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *ActivityPolicy `pulumi:"policy"`
+	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
+	QueryTimeout *int `pulumi:"queryTimeout"`
+	// Script linked service reference.
+	ScriptLinkedService *LinkedServiceReference `pulumi:"scriptLinkedService"`
+	// Script path. Type: string (or Expression with resultType string).
+	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// Storage linked service references.
+	StorageLinkedServices []LinkedServiceReference `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightHive'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserProperty `pulumi:"userProperties"`
+	// User specified arguments under hivevar namespace.
+	Variables map[string]interface{} `pulumi:"variables"`
+}
+
+// HDInsightHiveActivityInput is an input type that accepts HDInsightHiveActivityArgs and HDInsightHiveActivityOutput values.
+// You can construct a concrete instance of `HDInsightHiveActivityInput` via:
+//
+//	HDInsightHiveActivityArgs{...}
+type HDInsightHiveActivityInput interface {
+	pulumi.Input
+
+	ToHDInsightHiveActivityOutput() HDInsightHiveActivityOutput
+	ToHDInsightHiveActivityOutputWithContext(context.Context) HDInsightHiveActivityOutput
+}
+
+// HDInsight Hive activity type.
+type HDInsightHiveActivityArgs struct {
+	// User specified arguments to HDInsightActivity.
+	Arguments pulumi.ArrayInput `pulumi:"arguments"`
+	// Allows user to specify defines for Hive job request.
+	Defines pulumi.MapInput `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
+	// Activity description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo pulumi.StringPtrInput `pulumi:"getDebugInfo"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy ActivityPolicyPtrInput `pulumi:"policy"`
+	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
+	QueryTimeout pulumi.IntPtrInput `pulumi:"queryTimeout"`
+	// Script linked service reference.
+	ScriptLinkedService LinkedServiceReferencePtrInput `pulumi:"scriptLinkedService"`
+	// Script path. Type: string (or Expression with resultType string).
+	ScriptPath pulumi.Input `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Storage linked service references.
+	StorageLinkedServices LinkedServiceReferenceArrayInput `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightHive'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Activity user properties.
+	UserProperties UserPropertyArrayInput `pulumi:"userProperties"`
+	// User specified arguments under hivevar namespace.
+	Variables pulumi.MapInput `pulumi:"variables"`
+}
+
+func (HDInsightHiveActivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightHiveActivity)(nil)).Elem()
+}
+
+func (i HDInsightHiveActivityArgs) ToHDInsightHiveActivityOutput() HDInsightHiveActivityOutput {
+	return i.ToHDInsightHiveActivityOutputWithContext(context.Background())
+}
+
+func (i HDInsightHiveActivityArgs) ToHDInsightHiveActivityOutputWithContext(ctx context.Context) HDInsightHiveActivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HDInsightHiveActivityOutput)
+}
+
+// HDInsight Hive activity type.
+type HDInsightHiveActivityOutput struct{ *pulumi.OutputState }
+
+func (HDInsightHiveActivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightHiveActivity)(nil)).Elem()
+}
+
+func (o HDInsightHiveActivityOutput) ToHDInsightHiveActivityOutput() HDInsightHiveActivityOutput {
+	return o
+}
+
+func (o HDInsightHiveActivityOutput) ToHDInsightHiveActivityOutputWithContext(ctx context.Context) HDInsightHiveActivityOutput {
+	return o
+}
+
+// User specified arguments to HDInsightActivity.
+func (o HDInsightHiveActivityOutput) Arguments() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) []interface{} { return v.Arguments }).(pulumi.ArrayOutput)
+}
+
+// Allows user to specify defines for Hive job request.
+func (o HDInsightHiveActivityOutput) Defines() pulumi.MapOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) map[string]interface{} { return v.Defines }).(pulumi.MapOutput)
+}
+
+// Activity depends on condition.
+func (o HDInsightHiveActivityOutput) DependsOn() ActivityDependencyArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) []ActivityDependency { return v.DependsOn }).(ActivityDependencyArrayOutput)
+}
+
+// Activity description.
+func (o HDInsightHiveActivityOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Debug info option.
+func (o HDInsightHiveActivityOutput) GetDebugInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.GetDebugInfo }).(pulumi.StringPtrOutput)
+}
+
+// Linked service reference.
+func (o HDInsightHiveActivityOutput) LinkedServiceName() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferencePtrOutput)
+}
+
+// Activity name.
+func (o HDInsightHiveActivityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+func (o HDInsightHiveActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
+}
+
+// Activity policy.
+func (o HDInsightHiveActivityOutput) Policy() ActivityPolicyPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *ActivityPolicy { return v.Policy }).(ActivityPolicyPtrOutput)
+}
+
+// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
+func (o HDInsightHiveActivityOutput) QueryTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *int { return v.QueryTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Script linked service reference.
+func (o HDInsightHiveActivityOutput) ScriptLinkedService() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *LinkedServiceReference { return v.ScriptLinkedService }).(LinkedServiceReferencePtrOutput)
+}
+
+// Script path. Type: string (or Expression with resultType string).
+func (o HDInsightHiveActivityOutput) ScriptPath() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) interface{} { return v.ScriptPath }).(pulumi.AnyOutput)
+}
+
+// Activity state. This is an optional property and if not provided, the state will be Active by default.
+func (o HDInsightHiveActivityOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Storage linked service references.
+func (o HDInsightHiveActivityOutput) StorageLinkedServices() LinkedServiceReferenceArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) []LinkedServiceReference { return v.StorageLinkedServices }).(LinkedServiceReferenceArrayOutput)
+}
+
+// Type of activity.
+// Expected value is 'HDInsightHive'.
+func (o HDInsightHiveActivityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Activity user properties.
+func (o HDInsightHiveActivityOutput) UserProperties() UserPropertyArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) []UserProperty { return v.UserProperties }).(UserPropertyArrayOutput)
+}
+
+// User specified arguments under hivevar namespace.
+func (o HDInsightHiveActivityOutput) Variables() pulumi.MapOutput {
+	return o.ApplyT(func(v HDInsightHiveActivity) map[string]interface{} { return v.Variables }).(pulumi.MapOutput)
+}
+
+// HDInsight Hive activity type.
+type HDInsightHiveActivityResponse struct {
+	// User specified arguments to HDInsightActivity.
+	Arguments []interface{} `pulumi:"arguments"`
+	// Allows user to specify defines for Hive job request.
+	Defines map[string]interface{} `pulumi:"defines"`
+	// Activity depends on condition.
+	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// Debug info option.
+	GetDebugInfo *string `pulumi:"getDebugInfo"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
+	QueryTimeout *int `pulumi:"queryTimeout"`
+	// Script linked service reference.
+	ScriptLinkedService *LinkedServiceReferenceResponse `pulumi:"scriptLinkedService"`
+	// Script path. Type: string (or Expression with resultType string).
+	ScriptPath interface{} `pulumi:"scriptPath"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// Storage linked service references.
+	StorageLinkedServices []LinkedServiceReferenceResponse `pulumi:"storageLinkedServices"`
+	// Type of activity.
+	// Expected value is 'HDInsightHive'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
+	// User specified arguments under hivevar namespace.
+	Variables map[string]interface{} `pulumi:"variables"`
+}
+
+// HDInsight Hive activity type.
+type HDInsightHiveActivityResponseOutput struct{ *pulumi.OutputState }
+
+func (HDInsightHiveActivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightHiveActivityResponse)(nil)).Elem()
+}
+
+func (o HDInsightHiveActivityResponseOutput) ToHDInsightHiveActivityResponseOutput() HDInsightHiveActivityResponseOutput {
+	return o
+}
+
+func (o HDInsightHiveActivityResponseOutput) ToHDInsightHiveActivityResponseOutputWithContext(ctx context.Context) HDInsightHiveActivityResponseOutput {
+	return o
+}
+
+// User specified arguments to HDInsightActivity.
+func (o HDInsightHiveActivityResponseOutput) Arguments() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) []interface{} { return v.Arguments }).(pulumi.ArrayOutput)
+}
+
+// Allows user to specify defines for Hive job request.
+func (o HDInsightHiveActivityResponseOutput) Defines() pulumi.MapOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) map[string]interface{} { return v.Defines }).(pulumi.MapOutput)
+}
+
+// Activity depends on condition.
+func (o HDInsightHiveActivityResponseOutput) DependsOn() ActivityDependencyResponseArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) []ActivityDependencyResponse { return v.DependsOn }).(ActivityDependencyResponseArrayOutput)
+}
+
+// Activity description.
+func (o HDInsightHiveActivityResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Debug info option.
+func (o HDInsightHiveActivityResponseOutput) GetDebugInfo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.GetDebugInfo }).(pulumi.StringPtrOutput)
+}
+
+// Linked service reference.
+func (o HDInsightHiveActivityResponseOutput) LinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Activity name.
+func (o HDInsightHiveActivityResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+func (o HDInsightHiveActivityResponseOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
+}
+
+// Activity policy.
+func (o HDInsightHiveActivityResponseOutput) Policy() ActivityPolicyResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *ActivityPolicyResponse { return v.Policy }).(ActivityPolicyResponsePtrOutput)
+}
+
+// Query timeout value (in minutes).  Effective when the HDInsight cluster is with ESP (Enterprise Security Package)
+func (o HDInsightHiveActivityResponseOutput) QueryTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *int { return v.QueryTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Script linked service reference.
+func (o HDInsightHiveActivityResponseOutput) ScriptLinkedService() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *LinkedServiceReferenceResponse { return v.ScriptLinkedService }).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Script path. Type: string (or Expression with resultType string).
+func (o HDInsightHiveActivityResponseOutput) ScriptPath() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) interface{} { return v.ScriptPath }).(pulumi.AnyOutput)
+}
+
+// Activity state. This is an optional property and if not provided, the state will be Active by default.
+func (o HDInsightHiveActivityResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Storage linked service references.
+func (o HDInsightHiveActivityResponseOutput) StorageLinkedServices() LinkedServiceReferenceResponseArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) []LinkedServiceReferenceResponse { return v.StorageLinkedServices }).(LinkedServiceReferenceResponseArrayOutput)
+}
+
+// Type of activity.
+// Expected value is 'HDInsightHive'.
+func (o HDInsightHiveActivityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Activity user properties.
+func (o HDInsightHiveActivityResponseOutput) UserProperties() UserPropertyResponseArrayOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) []UserPropertyResponse { return v.UserProperties }).(UserPropertyResponseArrayOutput)
+}
+
+// User specified arguments under hivevar namespace.
+func (o HDInsightHiveActivityResponseOutput) Variables() pulumi.MapOutput {
+	return o.ApplyT(func(v HDInsightHiveActivityResponse) map[string]interface{} { return v.Variables }).(pulumi.MapOutput)
+}
+
+// HDInsight linked service.
+type HDInsightLinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// HDInsight cluster URI. Type: string (or Expression with resultType string).
+	ClusterUri interface{} `pulumi:"clusterUri"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
+	FileSystem interface{} `pulumi:"fileSystem"`
+	// A reference to the Azure SQL linked service that points to the HCatalog database.
+	HcatalogLinkedServiceName *LinkedServiceReference `pulumi:"hcatalogLinkedServiceName"`
+	// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+	IsEspEnabled interface{} `pulumi:"isEspEnabled"`
+	// The Azure Storage linked service reference.
+	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// HDInsight cluster password.
+	Password interface{} `pulumi:"password"`
+	// Type of linked service.
+	// Expected value is 'HDInsight'.
+	Type string `pulumi:"type"`
+	// HDInsight cluster user name. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
+}
+
+// HDInsightLinkedServiceInput is an input type that accepts HDInsightLinkedServiceArgs and HDInsightLinkedServiceOutput values.
+// You can construct a concrete instance of `HDInsightLinkedServiceInput` via:
+//
+//	HDInsightLinkedServiceArgs{...}
+type HDInsightLinkedServiceInput interface {
+	pulumi.Input
+
+	ToHDInsightLinkedServiceOutput() HDInsightLinkedServiceOutput
+	ToHDInsightLinkedServiceOutputWithContext(context.Context) HDInsightLinkedServiceOutput
+}
+
+// HDInsight linked service.
+type HDInsightLinkedServiceArgs struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// HDInsight cluster URI. Type: string (or Expression with resultType string).
+	ClusterUri pulumi.Input `pulumi:"clusterUri"`
+	// The integration runtime reference.
+	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// Linked service description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
+	FileSystem pulumi.Input `pulumi:"fileSystem"`
+	// A reference to the Azure SQL linked service that points to the HCatalog database.
+	HcatalogLinkedServiceName LinkedServiceReferencePtrInput `pulumi:"hcatalogLinkedServiceName"`
+	// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+	IsEspEnabled pulumi.Input `pulumi:"isEspEnabled"`
+	// The Azure Storage linked service reference.
+	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
+	// Parameters for linked service.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// HDInsight cluster password.
+	Password pulumi.Input `pulumi:"password"`
+	// Type of linked service.
+	// Expected value is 'HDInsight'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// HDInsight cluster user name. Type: string (or Expression with resultType string).
+	UserName pulumi.Input `pulumi:"userName"`
+}
+
+func (HDInsightLinkedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightLinkedService)(nil)).Elem()
+}
+
+func (i HDInsightLinkedServiceArgs) ToHDInsightLinkedServiceOutput() HDInsightLinkedServiceOutput {
+	return i.ToHDInsightLinkedServiceOutputWithContext(context.Background())
+}
+
+func (i HDInsightLinkedServiceArgs) ToHDInsightLinkedServiceOutputWithContext(ctx context.Context) HDInsightLinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HDInsightLinkedServiceOutput)
+}
+
+// HDInsight linked service.
+type HDInsightLinkedServiceOutput struct{ *pulumi.OutputState }
+
+func (HDInsightLinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightLinkedService)(nil)).Elem()
+}
+
+func (o HDInsightLinkedServiceOutput) ToHDInsightLinkedServiceOutput() HDInsightLinkedServiceOutput {
+	return o
+}
+
+func (o HDInsightLinkedServiceOutput) ToHDInsightLinkedServiceOutputWithContext(ctx context.Context) HDInsightLinkedServiceOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o HDInsightLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// HDInsight cluster URI. Type: string (or Expression with resultType string).
+func (o HDInsightLinkedServiceOutput) ClusterUri() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.ClusterUri }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o HDInsightLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// Linked service description.
+func (o HDInsightLinkedServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o HDInsightLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
+func (o HDInsightLinkedServiceOutput) FileSystem() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.FileSystem }).(pulumi.AnyOutput)
+}
+
+// A reference to the Azure SQL linked service that points to the HCatalog database.
+func (o HDInsightLinkedServiceOutput) HcatalogLinkedServiceName() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *LinkedServiceReference { return v.HcatalogLinkedServiceName }).(LinkedServiceReferencePtrOutput)
+}
+
+// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+func (o HDInsightLinkedServiceOutput) IsEspEnabled() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.IsEspEnabled }).(pulumi.AnyOutput)
+}
+
+// The Azure Storage linked service reference.
+func (o HDInsightLinkedServiceOutput) LinkedServiceName() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferencePtrOutput)
+}
+
+// Parameters for linked service.
+func (o HDInsightLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// HDInsight cluster password.
+func (o HDInsightLinkedServiceOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'HDInsight'.
+func (o HDInsightLinkedServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// HDInsight cluster user name. Type: string (or Expression with resultType string).
+func (o HDInsightLinkedServiceOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// HDInsight linked service.
+type HDInsightLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// HDInsight cluster URI. Type: string (or Expression with resultType string).
+	ClusterUri interface{} `pulumi:"clusterUri"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
+	FileSystem interface{} `pulumi:"fileSystem"`
+	// A reference to the Azure SQL linked service that points to the HCatalog database.
+	HcatalogLinkedServiceName *LinkedServiceReferenceResponse `pulumi:"hcatalogLinkedServiceName"`
+	// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+	IsEspEnabled interface{} `pulumi:"isEspEnabled"`
+	// The Azure Storage linked service reference.
+	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// HDInsight cluster password.
+	Password interface{} `pulumi:"password"`
+	// Type of linked service.
+	// Expected value is 'HDInsight'.
+	Type string `pulumi:"type"`
+	// HDInsight cluster user name. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
+}
+
+// HDInsight linked service.
+type HDInsightLinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (HDInsightLinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightLinkedServiceResponse)(nil)).Elem()
+}
+
+func (o HDInsightLinkedServiceResponseOutput) ToHDInsightLinkedServiceResponseOutput() HDInsightLinkedServiceResponseOutput {
+	return o
+}
+
+func (o HDInsightLinkedServiceResponseOutput) ToHDInsightLinkedServiceResponseOutputWithContext(ctx context.Context) HDInsightLinkedServiceResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o HDInsightLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// HDInsight cluster URI. Type: string (or Expression with resultType string).
+func (o HDInsightLinkedServiceResponseOutput) ClusterUri() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.ClusterUri }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o HDInsightLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// Linked service description.
+func (o HDInsightLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o HDInsightLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2. Type: string (or Expression with resultType string).
+func (o HDInsightLinkedServiceResponseOutput) FileSystem() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.FileSystem }).(pulumi.AnyOutput)
+}
+
+// A reference to the Azure SQL linked service that points to the HCatalog database.
+func (o HDInsightLinkedServiceResponseOutput) HcatalogLinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *LinkedServiceReferenceResponse {
+		return v.HcatalogLinkedServiceName
+	}).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Specify if the HDInsight is created with ESP (Enterprise Security Package). Type: Boolean.
+func (o HDInsightLinkedServiceResponseOutput) IsEspEnabled() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.IsEspEnabled }).(pulumi.AnyOutput)
+}
+
+// The Azure Storage linked service reference.
+func (o HDInsightLinkedServiceResponseOutput) LinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Parameters for linked service.
+func (o HDInsightLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// HDInsight cluster password.
+func (o HDInsightLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'HDInsight'.
+func (o HDInsightLinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// HDInsight cluster user name. Type: string (or Expression with resultType string).
+func (o HDInsightLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
 // HDInsight MapReduce activity type.
 type HDInsightMapReduceActivity struct {
 	// User specified arguments to HDInsightActivity.
@@ -59937,895 +60971,15 @@ func (o ScriptActionResponseArrayOutput) Index(i pulumi.IntInput) ScriptActionRe
 	}).(ScriptActionResponseOutput)
 }
 
-// Script activity type.
-type ScriptActivity struct {
-	// Activity depends on condition.
-	DependsOn []ActivityDependency `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
-	// Log settings of script activity.
-	LogSettings *ScriptActivityTypePropertiesLogSettings `pulumi:"logSettings"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *ActivityPolicy `pulumi:"policy"`
-	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
-	// Array of script blocks. Type: array.
-	Scripts []ScriptActivityScriptBlock `pulumi:"scripts"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'Script'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserProperty `pulumi:"userProperties"`
-}
-
-// ScriptActivityInput is an input type that accepts ScriptActivityArgs and ScriptActivityOutput values.
-// You can construct a concrete instance of `ScriptActivityInput` via:
-//
-//	ScriptActivityArgs{...}
-type ScriptActivityInput interface {
-	pulumi.Input
-
-	ToScriptActivityOutput() ScriptActivityOutput
-	ToScriptActivityOutputWithContext(context.Context) ScriptActivityOutput
-}
-
-// Script activity type.
-type ScriptActivityArgs struct {
-	// Activity depends on condition.
-	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
-	// Activity description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
-	// Log settings of script activity.
-	LogSettings ScriptActivityTypePropertiesLogSettingsPtrInput `pulumi:"logSettings"`
-	// Activity name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy ActivityPolicyPtrInput `pulumi:"policy"`
-	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	ScriptBlockExecutionTimeout pulumi.Input `pulumi:"scriptBlockExecutionTimeout"`
-	// Array of script blocks. Type: array.
-	Scripts ScriptActivityScriptBlockArrayInput `pulumi:"scripts"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'Script'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Activity user properties.
-	UserProperties UserPropertyArrayInput `pulumi:"userProperties"`
-}
-
-func (ScriptActivityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivity)(nil)).Elem()
-}
-
-func (i ScriptActivityArgs) ToScriptActivityOutput() ScriptActivityOutput {
-	return i.ToScriptActivityOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityArgs) ToScriptActivityOutputWithContext(ctx context.Context) ScriptActivityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityOutput)
-}
-
-// Script activity type.
-type ScriptActivityOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivity)(nil)).Elem()
-}
-
-func (o ScriptActivityOutput) ToScriptActivityOutput() ScriptActivityOutput {
-	return o
-}
-
-func (o ScriptActivityOutput) ToScriptActivityOutputWithContext(ctx context.Context) ScriptActivityOutput {
-	return o
-}
-
-// Activity depends on condition.
-func (o ScriptActivityOutput) DependsOn() ActivityDependencyArrayOutput {
-	return o.ApplyT(func(v ScriptActivity) []ActivityDependency { return v.DependsOn }).(ActivityDependencyArrayOutput)
-}
-
-// Activity description.
-func (o ScriptActivityOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivity) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Linked service reference.
-func (o ScriptActivityOutput) LinkedServiceName() LinkedServiceReferenceOutput {
-	return o.ApplyT(func(v ScriptActivity) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
-}
-
-// Log settings of script activity.
-func (o ScriptActivityOutput) LogSettings() ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return o.ApplyT(func(v ScriptActivity) *ScriptActivityTypePropertiesLogSettings { return v.LogSettings }).(ScriptActivityTypePropertiesLogSettingsPtrOutput)
-}
-
-// Activity name.
-func (o ScriptActivityOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivity) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-func (o ScriptActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivity) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
-}
-
-// Activity policy.
-func (o ScriptActivityOutput) Policy() ActivityPolicyPtrOutput {
-	return o.ApplyT(func(v ScriptActivity) *ActivityPolicy { return v.Policy }).(ActivityPolicyPtrOutput)
-}
-
-// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o ScriptActivityOutput) ScriptBlockExecutionTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivity) interface{} { return v.ScriptBlockExecutionTimeout }).(pulumi.AnyOutput)
-}
-
-// Array of script blocks. Type: array.
-func (o ScriptActivityOutput) Scripts() ScriptActivityScriptBlockArrayOutput {
-	return o.ApplyT(func(v ScriptActivity) []ScriptActivityScriptBlock { return v.Scripts }).(ScriptActivityScriptBlockArrayOutput)
-}
-
-// Activity state. This is an optional property and if not provided, the state will be Active by default.
-func (o ScriptActivityOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivity) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Type of activity.
-// Expected value is 'Script'.
-func (o ScriptActivityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Activity user properties.
-func (o ScriptActivityOutput) UserProperties() UserPropertyArrayOutput {
-	return o.ApplyT(func(v ScriptActivity) []UserProperty { return v.UserProperties }).(UserPropertyArrayOutput)
-}
-
-// Parameters of a script block.
-type ScriptActivityParameter struct {
-	// The direction of the parameter.
-	Direction *string `pulumi:"direction"`
-	// The name of the parameter. Type: string (or Expression with resultType string).
-	Name interface{} `pulumi:"name"`
-	// The size of the output direction parameter.
-	Size *int `pulumi:"size"`
-	// The type of the parameter.
-	Type *string `pulumi:"type"`
-	// The value of the parameter. Type: string (or Expression with resultType string).
-	Value interface{} `pulumi:"value"`
-}
-
-// ScriptActivityParameterInput is an input type that accepts ScriptActivityParameterArgs and ScriptActivityParameterOutput values.
-// You can construct a concrete instance of `ScriptActivityParameterInput` via:
-//
-//	ScriptActivityParameterArgs{...}
-type ScriptActivityParameterInput interface {
-	pulumi.Input
-
-	ToScriptActivityParameterOutput() ScriptActivityParameterOutput
-	ToScriptActivityParameterOutputWithContext(context.Context) ScriptActivityParameterOutput
-}
-
-// Parameters of a script block.
-type ScriptActivityParameterArgs struct {
-	// The direction of the parameter.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// The name of the parameter. Type: string (or Expression with resultType string).
-	Name pulumi.Input `pulumi:"name"`
-	// The size of the output direction parameter.
-	Size pulumi.IntPtrInput `pulumi:"size"`
-	// The type of the parameter.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the parameter. Type: string (or Expression with resultType string).
-	Value pulumi.Input `pulumi:"value"`
-}
-
-func (ScriptActivityParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityParameter)(nil)).Elem()
-}
-
-func (i ScriptActivityParameterArgs) ToScriptActivityParameterOutput() ScriptActivityParameterOutput {
-	return i.ToScriptActivityParameterOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityParameterArgs) ToScriptActivityParameterOutputWithContext(ctx context.Context) ScriptActivityParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityParameterOutput)
-}
-
-// ScriptActivityParameterArrayInput is an input type that accepts ScriptActivityParameterArray and ScriptActivityParameterArrayOutput values.
-// You can construct a concrete instance of `ScriptActivityParameterArrayInput` via:
-//
-//	ScriptActivityParameterArray{ ScriptActivityParameterArgs{...} }
-type ScriptActivityParameterArrayInput interface {
-	pulumi.Input
-
-	ToScriptActivityParameterArrayOutput() ScriptActivityParameterArrayOutput
-	ToScriptActivityParameterArrayOutputWithContext(context.Context) ScriptActivityParameterArrayOutput
-}
-
-type ScriptActivityParameterArray []ScriptActivityParameterInput
-
-func (ScriptActivityParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActivityParameter)(nil)).Elem()
-}
-
-func (i ScriptActivityParameterArray) ToScriptActivityParameterArrayOutput() ScriptActivityParameterArrayOutput {
-	return i.ToScriptActivityParameterArrayOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityParameterArray) ToScriptActivityParameterArrayOutputWithContext(ctx context.Context) ScriptActivityParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityParameterArrayOutput)
-}
-
-// Parameters of a script block.
-type ScriptActivityParameterOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityParameter)(nil)).Elem()
-}
-
-func (o ScriptActivityParameterOutput) ToScriptActivityParameterOutput() ScriptActivityParameterOutput {
-	return o
-}
-
-func (o ScriptActivityParameterOutput) ToScriptActivityParameterOutputWithContext(ctx context.Context) ScriptActivityParameterOutput {
-	return o
-}
-
-// The direction of the parameter.
-func (o ScriptActivityParameterOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityParameter) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The name of the parameter. Type: string (or Expression with resultType string).
-func (o ScriptActivityParameterOutput) Name() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityParameter) interface{} { return v.Name }).(pulumi.AnyOutput)
-}
-
-// The size of the output direction parameter.
-func (o ScriptActivityParameterOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScriptActivityParameter) *int { return v.Size }).(pulumi.IntPtrOutput)
-}
-
-// The type of the parameter.
-func (o ScriptActivityParameterOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The value of the parameter. Type: string (or Expression with resultType string).
-func (o ScriptActivityParameterOutput) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityParameter) interface{} { return v.Value }).(pulumi.AnyOutput)
-}
-
-type ScriptActivityParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActivityParameter)(nil)).Elem()
-}
-
-func (o ScriptActivityParameterArrayOutput) ToScriptActivityParameterArrayOutput() ScriptActivityParameterArrayOutput {
-	return o
-}
-
-func (o ScriptActivityParameterArrayOutput) ToScriptActivityParameterArrayOutputWithContext(ctx context.Context) ScriptActivityParameterArrayOutput {
-	return o
-}
-
-func (o ScriptActivityParameterArrayOutput) Index(i pulumi.IntInput) ScriptActivityParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptActivityParameter {
-		return vs[0].([]ScriptActivityParameter)[vs[1].(int)]
-	}).(ScriptActivityParameterOutput)
-}
-
-// Parameters of a script block.
-type ScriptActivityParameterResponse struct {
-	// The direction of the parameter.
-	Direction *string `pulumi:"direction"`
-	// The name of the parameter. Type: string (or Expression with resultType string).
-	Name interface{} `pulumi:"name"`
-	// The size of the output direction parameter.
-	Size *int `pulumi:"size"`
-	// The type of the parameter.
-	Type *string `pulumi:"type"`
-	// The value of the parameter. Type: string (or Expression with resultType string).
-	Value interface{} `pulumi:"value"`
-}
-
-// Parameters of a script block.
-type ScriptActivityParameterResponseOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityParameterResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityParameterResponse)(nil)).Elem()
-}
-
-func (o ScriptActivityParameterResponseOutput) ToScriptActivityParameterResponseOutput() ScriptActivityParameterResponseOutput {
-	return o
-}
-
-func (o ScriptActivityParameterResponseOutput) ToScriptActivityParameterResponseOutputWithContext(ctx context.Context) ScriptActivityParameterResponseOutput {
-	return o
-}
-
-// The direction of the parameter.
-func (o ScriptActivityParameterResponseOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityParameterResponse) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// The name of the parameter. Type: string (or Expression with resultType string).
-func (o ScriptActivityParameterResponseOutput) Name() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityParameterResponse) interface{} { return v.Name }).(pulumi.AnyOutput)
-}
-
-// The size of the output direction parameter.
-func (o ScriptActivityParameterResponseOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScriptActivityParameterResponse) *int { return v.Size }).(pulumi.IntPtrOutput)
-}
-
-// The type of the parameter.
-func (o ScriptActivityParameterResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The value of the parameter. Type: string (or Expression with resultType string).
-func (o ScriptActivityParameterResponseOutput) Value() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityParameterResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
-}
-
-type ScriptActivityParameterResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityParameterResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActivityParameterResponse)(nil)).Elem()
-}
-
-func (o ScriptActivityParameterResponseArrayOutput) ToScriptActivityParameterResponseArrayOutput() ScriptActivityParameterResponseArrayOutput {
-	return o
-}
-
-func (o ScriptActivityParameterResponseArrayOutput) ToScriptActivityParameterResponseArrayOutputWithContext(ctx context.Context) ScriptActivityParameterResponseArrayOutput {
-	return o
-}
-
-func (o ScriptActivityParameterResponseArrayOutput) Index(i pulumi.IntInput) ScriptActivityParameterResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptActivityParameterResponse {
-		return vs[0].([]ScriptActivityParameterResponse)[vs[1].(int)]
-	}).(ScriptActivityParameterResponseOutput)
-}
-
-// Script activity type.
-type ScriptActivityResponse struct {
-	// Activity depends on condition.
-	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
-	// Activity description.
-	Description *string `pulumi:"description"`
-	// Linked service reference.
-	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
-	// Log settings of script activity.
-	LogSettings *ScriptActivityTypePropertiesResponseLogSettings `pulumi:"logSettings"`
-	// Activity name.
-	Name string `pulumi:"name"`
-	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
-	// Activity policy.
-	Policy *ActivityPolicyResponse `pulumi:"policy"`
-	// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	ScriptBlockExecutionTimeout interface{} `pulumi:"scriptBlockExecutionTimeout"`
-	// Array of script blocks. Type: array.
-	Scripts []ScriptActivityScriptBlockResponse `pulumi:"scripts"`
-	// Activity state. This is an optional property and if not provided, the state will be Active by default.
-	State *string `pulumi:"state"`
-	// Type of activity.
-	// Expected value is 'Script'.
-	Type string `pulumi:"type"`
-	// Activity user properties.
-	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
-}
-
-// Script activity type.
-type ScriptActivityResponseOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityResponse)(nil)).Elem()
-}
-
-func (o ScriptActivityResponseOutput) ToScriptActivityResponseOutput() ScriptActivityResponseOutput {
-	return o
-}
-
-func (o ScriptActivityResponseOutput) ToScriptActivityResponseOutputWithContext(ctx context.Context) ScriptActivityResponseOutput {
-	return o
-}
-
-// Activity depends on condition.
-func (o ScriptActivityResponseOutput) DependsOn() ActivityDependencyResponseArrayOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) []ActivityDependencyResponse { return v.DependsOn }).(ActivityDependencyResponseArrayOutput)
-}
-
-// Activity description.
-func (o ScriptActivityResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Linked service reference.
-func (o ScriptActivityResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
-}
-
-// Log settings of script activity.
-func (o ScriptActivityResponseOutput) LogSettings() ScriptActivityTypePropertiesResponseLogSettingsPtrOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) *ScriptActivityTypePropertiesResponseLogSettings { return v.LogSettings }).(ScriptActivityTypePropertiesResponseLogSettingsPtrOutput)
-}
-
-// Activity name.
-func (o ScriptActivityResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-func (o ScriptActivityResponseOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
-}
-
-// Activity policy.
-func (o ScriptActivityResponseOutput) Policy() ActivityPolicyResponsePtrOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) *ActivityPolicyResponse { return v.Policy }).(ActivityPolicyResponsePtrOutput)
-}
-
-// ScriptBlock execution timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o ScriptActivityResponseOutput) ScriptBlockExecutionTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) interface{} { return v.ScriptBlockExecutionTimeout }).(pulumi.AnyOutput)
-}
-
-// Array of script blocks. Type: array.
-func (o ScriptActivityResponseOutput) Scripts() ScriptActivityScriptBlockResponseArrayOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) []ScriptActivityScriptBlockResponse { return v.Scripts }).(ScriptActivityScriptBlockResponseArrayOutput)
-}
-
-// Activity state. This is an optional property and if not provided, the state will be Active by default.
-func (o ScriptActivityResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Type of activity.
-// Expected value is 'Script'.
-func (o ScriptActivityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Activity user properties.
-func (o ScriptActivityResponseOutput) UserProperties() UserPropertyResponseArrayOutput {
-	return o.ApplyT(func(v ScriptActivityResponse) []UserPropertyResponse { return v.UserProperties }).(UserPropertyResponseArrayOutput)
-}
-
-// Script block of scripts.
-type ScriptActivityScriptBlock struct {
-	// Array of script parameters. Type: array.
-	Parameters []ScriptActivityParameter `pulumi:"parameters"`
-	// The query text. Type: string (or Expression with resultType string).
-	Text interface{} `pulumi:"text"`
-	// The type of the query. Type: string.
-	Type string `pulumi:"type"`
-}
-
-// ScriptActivityScriptBlockInput is an input type that accepts ScriptActivityScriptBlockArgs and ScriptActivityScriptBlockOutput values.
-// You can construct a concrete instance of `ScriptActivityScriptBlockInput` via:
-//
-//	ScriptActivityScriptBlockArgs{...}
-type ScriptActivityScriptBlockInput interface {
-	pulumi.Input
-
-	ToScriptActivityScriptBlockOutput() ScriptActivityScriptBlockOutput
-	ToScriptActivityScriptBlockOutputWithContext(context.Context) ScriptActivityScriptBlockOutput
-}
-
-// Script block of scripts.
-type ScriptActivityScriptBlockArgs struct {
-	// Array of script parameters. Type: array.
-	Parameters ScriptActivityParameterArrayInput `pulumi:"parameters"`
-	// The query text. Type: string (or Expression with resultType string).
-	Text pulumi.Input `pulumi:"text"`
-	// The type of the query. Type: string.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (ScriptActivityScriptBlockArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityScriptBlock)(nil)).Elem()
-}
-
-func (i ScriptActivityScriptBlockArgs) ToScriptActivityScriptBlockOutput() ScriptActivityScriptBlockOutput {
-	return i.ToScriptActivityScriptBlockOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityScriptBlockArgs) ToScriptActivityScriptBlockOutputWithContext(ctx context.Context) ScriptActivityScriptBlockOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityScriptBlockOutput)
-}
-
-// ScriptActivityScriptBlockArrayInput is an input type that accepts ScriptActivityScriptBlockArray and ScriptActivityScriptBlockArrayOutput values.
-// You can construct a concrete instance of `ScriptActivityScriptBlockArrayInput` via:
-//
-//	ScriptActivityScriptBlockArray{ ScriptActivityScriptBlockArgs{...} }
-type ScriptActivityScriptBlockArrayInput interface {
-	pulumi.Input
-
-	ToScriptActivityScriptBlockArrayOutput() ScriptActivityScriptBlockArrayOutput
-	ToScriptActivityScriptBlockArrayOutputWithContext(context.Context) ScriptActivityScriptBlockArrayOutput
-}
-
-type ScriptActivityScriptBlockArray []ScriptActivityScriptBlockInput
-
-func (ScriptActivityScriptBlockArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActivityScriptBlock)(nil)).Elem()
-}
-
-func (i ScriptActivityScriptBlockArray) ToScriptActivityScriptBlockArrayOutput() ScriptActivityScriptBlockArrayOutput {
-	return i.ToScriptActivityScriptBlockArrayOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityScriptBlockArray) ToScriptActivityScriptBlockArrayOutputWithContext(ctx context.Context) ScriptActivityScriptBlockArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityScriptBlockArrayOutput)
-}
-
-// Script block of scripts.
-type ScriptActivityScriptBlockOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityScriptBlockOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityScriptBlock)(nil)).Elem()
-}
-
-func (o ScriptActivityScriptBlockOutput) ToScriptActivityScriptBlockOutput() ScriptActivityScriptBlockOutput {
-	return o
-}
-
-func (o ScriptActivityScriptBlockOutput) ToScriptActivityScriptBlockOutputWithContext(ctx context.Context) ScriptActivityScriptBlockOutput {
-	return o
-}
-
-// Array of script parameters. Type: array.
-func (o ScriptActivityScriptBlockOutput) Parameters() ScriptActivityParameterArrayOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlock) []ScriptActivityParameter { return v.Parameters }).(ScriptActivityParameterArrayOutput)
-}
-
-// The query text. Type: string (or Expression with resultType string).
-func (o ScriptActivityScriptBlockOutput) Text() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlock) interface{} { return v.Text }).(pulumi.AnyOutput)
-}
-
-// The type of the query. Type: string.
-func (o ScriptActivityScriptBlockOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlock) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ScriptActivityScriptBlockArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityScriptBlockArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActivityScriptBlock)(nil)).Elem()
-}
-
-func (o ScriptActivityScriptBlockArrayOutput) ToScriptActivityScriptBlockArrayOutput() ScriptActivityScriptBlockArrayOutput {
-	return o
-}
-
-func (o ScriptActivityScriptBlockArrayOutput) ToScriptActivityScriptBlockArrayOutputWithContext(ctx context.Context) ScriptActivityScriptBlockArrayOutput {
-	return o
-}
-
-func (o ScriptActivityScriptBlockArrayOutput) Index(i pulumi.IntInput) ScriptActivityScriptBlockOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptActivityScriptBlock {
-		return vs[0].([]ScriptActivityScriptBlock)[vs[1].(int)]
-	}).(ScriptActivityScriptBlockOutput)
-}
-
-// Script block of scripts.
-type ScriptActivityScriptBlockResponse struct {
-	// Array of script parameters. Type: array.
-	Parameters []ScriptActivityParameterResponse `pulumi:"parameters"`
-	// The query text. Type: string (or Expression with resultType string).
-	Text interface{} `pulumi:"text"`
-	// The type of the query. Type: string.
-	Type string `pulumi:"type"`
-}
-
-// Script block of scripts.
-type ScriptActivityScriptBlockResponseOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityScriptBlockResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityScriptBlockResponse)(nil)).Elem()
-}
-
-func (o ScriptActivityScriptBlockResponseOutput) ToScriptActivityScriptBlockResponseOutput() ScriptActivityScriptBlockResponseOutput {
-	return o
-}
-
-func (o ScriptActivityScriptBlockResponseOutput) ToScriptActivityScriptBlockResponseOutputWithContext(ctx context.Context) ScriptActivityScriptBlockResponseOutput {
-	return o
-}
-
-// Array of script parameters. Type: array.
-func (o ScriptActivityScriptBlockResponseOutput) Parameters() ScriptActivityParameterResponseArrayOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlockResponse) []ScriptActivityParameterResponse { return v.Parameters }).(ScriptActivityParameterResponseArrayOutput)
-}
-
-// The query text. Type: string (or Expression with resultType string).
-func (o ScriptActivityScriptBlockResponseOutput) Text() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlockResponse) interface{} { return v.Text }).(pulumi.AnyOutput)
-}
-
-// The type of the query. Type: string.
-func (o ScriptActivityScriptBlockResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlockResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ScriptActivityScriptBlockResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityScriptBlockResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActivityScriptBlockResponse)(nil)).Elem()
-}
-
-func (o ScriptActivityScriptBlockResponseArrayOutput) ToScriptActivityScriptBlockResponseArrayOutput() ScriptActivityScriptBlockResponseArrayOutput {
-	return o
-}
-
-func (o ScriptActivityScriptBlockResponseArrayOutput) ToScriptActivityScriptBlockResponseArrayOutputWithContext(ctx context.Context) ScriptActivityScriptBlockResponseArrayOutput {
-	return o
-}
-
-func (o ScriptActivityScriptBlockResponseArrayOutput) Index(i pulumi.IntInput) ScriptActivityScriptBlockResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptActivityScriptBlockResponse {
-		return vs[0].([]ScriptActivityScriptBlockResponse)[vs[1].(int)]
-	}).(ScriptActivityScriptBlockResponseOutput)
-}
-
-// Log settings of script activity.
-type ScriptActivityTypePropertiesLogSettings struct {
-	// The destination of logs. Type: string.
-	LogDestination string `pulumi:"logDestination"`
-	// Log location settings customer needs to provide when enabling log.
-	LogLocationSettings *LogLocationSettings `pulumi:"logLocationSettings"`
-}
-
-// ScriptActivityTypePropertiesLogSettingsInput is an input type that accepts ScriptActivityTypePropertiesLogSettingsArgs and ScriptActivityTypePropertiesLogSettingsOutput values.
-// You can construct a concrete instance of `ScriptActivityTypePropertiesLogSettingsInput` via:
-//
-//	ScriptActivityTypePropertiesLogSettingsArgs{...}
-type ScriptActivityTypePropertiesLogSettingsInput interface {
-	pulumi.Input
-
-	ToScriptActivityTypePropertiesLogSettingsOutput() ScriptActivityTypePropertiesLogSettingsOutput
-	ToScriptActivityTypePropertiesLogSettingsOutputWithContext(context.Context) ScriptActivityTypePropertiesLogSettingsOutput
-}
-
-// Log settings of script activity.
-type ScriptActivityTypePropertiesLogSettingsArgs struct {
-	// The destination of logs. Type: string.
-	LogDestination pulumi.StringInput `pulumi:"logDestination"`
-	// Log location settings customer needs to provide when enabling log.
-	LogLocationSettings LogLocationSettingsPtrInput `pulumi:"logLocationSettings"`
-}
-
-func (ScriptActivityTypePropertiesLogSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityTypePropertiesLogSettings)(nil)).Elem()
-}
-
-func (i ScriptActivityTypePropertiesLogSettingsArgs) ToScriptActivityTypePropertiesLogSettingsOutput() ScriptActivityTypePropertiesLogSettingsOutput {
-	return i.ToScriptActivityTypePropertiesLogSettingsOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityTypePropertiesLogSettingsArgs) ToScriptActivityTypePropertiesLogSettingsOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesLogSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityTypePropertiesLogSettingsOutput)
-}
-
-func (i ScriptActivityTypePropertiesLogSettingsArgs) ToScriptActivityTypePropertiesLogSettingsPtrOutput() ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return i.ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ScriptActivityTypePropertiesLogSettingsArgs) ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityTypePropertiesLogSettingsOutput).ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(ctx)
-}
-
-// ScriptActivityTypePropertiesLogSettingsPtrInput is an input type that accepts ScriptActivityTypePropertiesLogSettingsArgs, ScriptActivityTypePropertiesLogSettingsPtr and ScriptActivityTypePropertiesLogSettingsPtrOutput values.
-// You can construct a concrete instance of `ScriptActivityTypePropertiesLogSettingsPtrInput` via:
-//
-//	        ScriptActivityTypePropertiesLogSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type ScriptActivityTypePropertiesLogSettingsPtrInput interface {
-	pulumi.Input
-
-	ToScriptActivityTypePropertiesLogSettingsPtrOutput() ScriptActivityTypePropertiesLogSettingsPtrOutput
-	ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(context.Context) ScriptActivityTypePropertiesLogSettingsPtrOutput
-}
-
-type scriptActivityTypePropertiesLogSettingsPtrType ScriptActivityTypePropertiesLogSettingsArgs
-
-func ScriptActivityTypePropertiesLogSettingsPtr(v *ScriptActivityTypePropertiesLogSettingsArgs) ScriptActivityTypePropertiesLogSettingsPtrInput {
-	return (*scriptActivityTypePropertiesLogSettingsPtrType)(v)
-}
-
-func (*scriptActivityTypePropertiesLogSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptActivityTypePropertiesLogSettings)(nil)).Elem()
-}
-
-func (i *scriptActivityTypePropertiesLogSettingsPtrType) ToScriptActivityTypePropertiesLogSettingsPtrOutput() ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return i.ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *scriptActivityTypePropertiesLogSettingsPtrType) ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActivityTypePropertiesLogSettingsPtrOutput)
-}
-
-// Log settings of script activity.
-type ScriptActivityTypePropertiesLogSettingsOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityTypePropertiesLogSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityTypePropertiesLogSettings)(nil)).Elem()
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsOutput) ToScriptActivityTypePropertiesLogSettingsOutput() ScriptActivityTypePropertiesLogSettingsOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsOutput) ToScriptActivityTypePropertiesLogSettingsOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesLogSettingsOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsOutput) ToScriptActivityTypePropertiesLogSettingsPtrOutput() ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return o.ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsOutput) ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptActivityTypePropertiesLogSettings) *ScriptActivityTypePropertiesLogSettings {
-		return &v
-	}).(ScriptActivityTypePropertiesLogSettingsPtrOutput)
-}
-
-// The destination of logs. Type: string.
-func (o ScriptActivityTypePropertiesLogSettingsOutput) LogDestination() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityTypePropertiesLogSettings) string { return v.LogDestination }).(pulumi.StringOutput)
-}
-
-// Log location settings customer needs to provide when enabling log.
-func (o ScriptActivityTypePropertiesLogSettingsOutput) LogLocationSettings() LogLocationSettingsPtrOutput {
-	return o.ApplyT(func(v ScriptActivityTypePropertiesLogSettings) *LogLocationSettings { return v.LogLocationSettings }).(LogLocationSettingsPtrOutput)
-}
-
-type ScriptActivityTypePropertiesLogSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityTypePropertiesLogSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptActivityTypePropertiesLogSettings)(nil)).Elem()
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsPtrOutput) ToScriptActivityTypePropertiesLogSettingsPtrOutput() ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsPtrOutput) ToScriptActivityTypePropertiesLogSettingsPtrOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesLogSettingsPtrOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesLogSettingsPtrOutput) Elem() ScriptActivityTypePropertiesLogSettingsOutput {
-	return o.ApplyT(func(v *ScriptActivityTypePropertiesLogSettings) ScriptActivityTypePropertiesLogSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptActivityTypePropertiesLogSettings
-		return ret
-	}).(ScriptActivityTypePropertiesLogSettingsOutput)
-}
-
-// The destination of logs. Type: string.
-func (o ScriptActivityTypePropertiesLogSettingsPtrOutput) LogDestination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptActivityTypePropertiesLogSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogDestination
-	}).(pulumi.StringPtrOutput)
-}
-
-// Log location settings customer needs to provide when enabling log.
-func (o ScriptActivityTypePropertiesLogSettingsPtrOutput) LogLocationSettings() LogLocationSettingsPtrOutput {
-	return o.ApplyT(func(v *ScriptActivityTypePropertiesLogSettings) *LogLocationSettings {
-		if v == nil {
-			return nil
-		}
-		return v.LogLocationSettings
-	}).(LogLocationSettingsPtrOutput)
-}
-
-// Log settings of script activity.
-type ScriptActivityTypePropertiesResponseLogSettings struct {
-	// The destination of logs. Type: string.
-	LogDestination string `pulumi:"logDestination"`
-	// Log location settings customer needs to provide when enabling log.
-	LogLocationSettings *LogLocationSettingsResponse `pulumi:"logLocationSettings"`
-}
-
-// Log settings of script activity.
-type ScriptActivityTypePropertiesResponseLogSettingsOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityTypePropertiesResponseLogSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActivityTypePropertiesResponseLogSettings)(nil)).Elem()
-}
-
-func (o ScriptActivityTypePropertiesResponseLogSettingsOutput) ToScriptActivityTypePropertiesResponseLogSettingsOutput() ScriptActivityTypePropertiesResponseLogSettingsOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesResponseLogSettingsOutput) ToScriptActivityTypePropertiesResponseLogSettingsOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesResponseLogSettingsOutput {
-	return o
-}
-
-// The destination of logs. Type: string.
-func (o ScriptActivityTypePropertiesResponseLogSettingsOutput) LogDestination() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityTypePropertiesResponseLogSettings) string { return v.LogDestination }).(pulumi.StringOutput)
-}
-
-// Log location settings customer needs to provide when enabling log.
-func (o ScriptActivityTypePropertiesResponseLogSettingsOutput) LogLocationSettings() LogLocationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v ScriptActivityTypePropertiesResponseLogSettings) *LogLocationSettingsResponse {
-		return v.LogLocationSettings
-	}).(LogLocationSettingsResponsePtrOutput)
-}
-
-type ScriptActivityTypePropertiesResponseLogSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ScriptActivityTypePropertiesResponseLogSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ScriptActivityTypePropertiesResponseLogSettings)(nil)).Elem()
-}
-
-func (o ScriptActivityTypePropertiesResponseLogSettingsPtrOutput) ToScriptActivityTypePropertiesResponseLogSettingsPtrOutput() ScriptActivityTypePropertiesResponseLogSettingsPtrOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesResponseLogSettingsPtrOutput) ToScriptActivityTypePropertiesResponseLogSettingsPtrOutputWithContext(ctx context.Context) ScriptActivityTypePropertiesResponseLogSettingsPtrOutput {
-	return o
-}
-
-func (o ScriptActivityTypePropertiesResponseLogSettingsPtrOutput) Elem() ScriptActivityTypePropertiesResponseLogSettingsOutput {
-	return o.ApplyT(func(v *ScriptActivityTypePropertiesResponseLogSettings) ScriptActivityTypePropertiesResponseLogSettings {
-		if v != nil {
-			return *v
-		}
-		var ret ScriptActivityTypePropertiesResponseLogSettings
-		return ret
-	}).(ScriptActivityTypePropertiesResponseLogSettingsOutput)
-}
-
-// The destination of logs. Type: string.
-func (o ScriptActivityTypePropertiesResponseLogSettingsPtrOutput) LogDestination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScriptActivityTypePropertiesResponseLogSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LogDestination
-	}).(pulumi.StringPtrOutput)
-}
-
-// Log location settings customer needs to provide when enabling log.
-func (o ScriptActivityTypePropertiesResponseLogSettingsPtrOutput) LogLocationSettings() LogLocationSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *ScriptActivityTypePropertiesResponseLogSettings) *LogLocationSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LogLocationSettings
-	}).(LogLocationSettingsResponsePtrOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(HBaseObjectDatasetOutput{})
+	pulumi.RegisterOutputType(HBaseObjectDatasetResponseOutput{})
+	pulumi.RegisterOutputType(HBaseSourceOutput{})
+	pulumi.RegisterOutputType(HBaseSourceResponseOutput{})
+	pulumi.RegisterOutputType(HDInsightHiveActivityOutput{})
+	pulumi.RegisterOutputType(HDInsightHiveActivityResponseOutput{})
+	pulumi.RegisterOutputType(HDInsightLinkedServiceOutput{})
+	pulumi.RegisterOutputType(HDInsightLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(HDInsightMapReduceActivityOutput{})
 	pulumi.RegisterOutputType(HDInsightMapReduceActivityResponseOutput{})
 	pulumi.RegisterOutputType(HDInsightOnDemandLinkedServiceOutput{})
@@ -61477,18 +61631,4 @@ func init() {
 	pulumi.RegisterOutputType(ScriptActionArrayOutput{})
 	pulumi.RegisterOutputType(ScriptActionResponseOutput{})
 	pulumi.RegisterOutputType(ScriptActionResponseArrayOutput{})
-	pulumi.RegisterOutputType(ScriptActivityOutput{})
-	pulumi.RegisterOutputType(ScriptActivityParameterOutput{})
-	pulumi.RegisterOutputType(ScriptActivityParameterArrayOutput{})
-	pulumi.RegisterOutputType(ScriptActivityParameterResponseOutput{})
-	pulumi.RegisterOutputType(ScriptActivityParameterResponseArrayOutput{})
-	pulumi.RegisterOutputType(ScriptActivityResponseOutput{})
-	pulumi.RegisterOutputType(ScriptActivityScriptBlockOutput{})
-	pulumi.RegisterOutputType(ScriptActivityScriptBlockArrayOutput{})
-	pulumi.RegisterOutputType(ScriptActivityScriptBlockResponseOutput{})
-	pulumi.RegisterOutputType(ScriptActivityScriptBlockResponseArrayOutput{})
-	pulumi.RegisterOutputType(ScriptActivityTypePropertiesLogSettingsOutput{})
-	pulumi.RegisterOutputType(ScriptActivityTypePropertiesLogSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ScriptActivityTypePropertiesResponseLogSettingsOutput{})
-	pulumi.RegisterOutputType(ScriptActivityTypePropertiesResponseLogSettingsPtrOutput{})
 }

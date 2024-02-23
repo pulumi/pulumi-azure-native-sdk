@@ -95,6 +95,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201005privatepreview:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

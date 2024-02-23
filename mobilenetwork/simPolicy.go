@@ -15,7 +15,7 @@ import (
 // SIM policy resource.
 // Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
 type SimPolicy struct {
 	pulumi.CustomResourceState
 
@@ -85,6 +85,9 @@ func NewSimPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:SimPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240201:SimPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

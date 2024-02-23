@@ -1171,6 +1171,172 @@ func (in *cookieExpirationConventionPtr) ToCookieExpirationConventionPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(CookieExpirationConventionPtrOutput)
 }
 
+// Type of the .NET Component.
+type DotNetComponentType string
+
+const (
+	DotNetComponentTypeAspireDashboard         = DotNetComponentType("AspireDashboard")
+	DotNetComponentTypeAspireResourceServerApi = DotNetComponentType("AspireResourceServerApi")
+)
+
+func (DotNetComponentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentType)(nil)).Elem()
+}
+
+func (e DotNetComponentType) ToDotNetComponentTypeOutput() DotNetComponentTypeOutput {
+	return pulumi.ToOutput(e).(DotNetComponentTypeOutput)
+}
+
+func (e DotNetComponentType) ToDotNetComponentTypeOutputWithContext(ctx context.Context) DotNetComponentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DotNetComponentTypeOutput)
+}
+
+func (e DotNetComponentType) ToDotNetComponentTypePtrOutput() DotNetComponentTypePtrOutput {
+	return e.ToDotNetComponentTypePtrOutputWithContext(context.Background())
+}
+
+func (e DotNetComponentType) ToDotNetComponentTypePtrOutputWithContext(ctx context.Context) DotNetComponentTypePtrOutput {
+	return DotNetComponentType(e).ToDotNetComponentTypeOutputWithContext(ctx).ToDotNetComponentTypePtrOutputWithContext(ctx)
+}
+
+func (e DotNetComponentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DotNetComponentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DotNetComponentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DotNetComponentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DotNetComponentTypeOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentType)(nil)).Elem()
+}
+
+func (o DotNetComponentTypeOutput) ToDotNetComponentTypeOutput() DotNetComponentTypeOutput {
+	return o
+}
+
+func (o DotNetComponentTypeOutput) ToDotNetComponentTypeOutputWithContext(ctx context.Context) DotNetComponentTypeOutput {
+	return o
+}
+
+func (o DotNetComponentTypeOutput) ToDotNetComponentTypePtrOutput() DotNetComponentTypePtrOutput {
+	return o.ToDotNetComponentTypePtrOutputWithContext(context.Background())
+}
+
+func (o DotNetComponentTypeOutput) ToDotNetComponentTypePtrOutputWithContext(ctx context.Context) DotNetComponentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DotNetComponentType) *DotNetComponentType {
+		return &v
+	}).(DotNetComponentTypePtrOutput)
+}
+
+func (o DotNetComponentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DotNetComponentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DotNetComponentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DotNetComponentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DotNetComponentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DotNetComponentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DotNetComponentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DotNetComponentType)(nil)).Elem()
+}
+
+func (o DotNetComponentTypePtrOutput) ToDotNetComponentTypePtrOutput() DotNetComponentTypePtrOutput {
+	return o
+}
+
+func (o DotNetComponentTypePtrOutput) ToDotNetComponentTypePtrOutputWithContext(ctx context.Context) DotNetComponentTypePtrOutput {
+	return o
+}
+
+func (o DotNetComponentTypePtrOutput) Elem() DotNetComponentTypeOutput {
+	return o.ApplyT(func(v *DotNetComponentType) DotNetComponentType {
+		if v != nil {
+			return *v
+		}
+		var ret DotNetComponentType
+		return ret
+	}).(DotNetComponentTypeOutput)
+}
+
+func (o DotNetComponentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DotNetComponentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DotNetComponentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DotNetComponentTypeInput is an input type that accepts values of the DotNetComponentType enum
+// A concrete instance of `DotNetComponentTypeInput` can be one of the following:
+//
+//	DotNetComponentTypeAspireDashboard
+//	DotNetComponentTypeAspireResourceServerApi
+type DotNetComponentTypeInput interface {
+	pulumi.Input
+
+	ToDotNetComponentTypeOutput() DotNetComponentTypeOutput
+	ToDotNetComponentTypeOutputWithContext(context.Context) DotNetComponentTypeOutput
+}
+
+var dotNetComponentTypePtrType = reflect.TypeOf((**DotNetComponentType)(nil)).Elem()
+
+type DotNetComponentTypePtrInput interface {
+	pulumi.Input
+
+	ToDotNetComponentTypePtrOutput() DotNetComponentTypePtrOutput
+	ToDotNetComponentTypePtrOutputWithContext(context.Context) DotNetComponentTypePtrOutput
+}
+
+type dotNetComponentTypePtr string
+
+func DotNetComponentTypePtr(v string) DotNetComponentTypePtrInput {
+	return (*dotNetComponentTypePtr)(&v)
+}
+
+func (*dotNetComponentTypePtr) ElementType() reflect.Type {
+	return dotNetComponentTypePtrType
+}
+
+func (in *dotNetComponentTypePtr) ToDotNetComponentTypePtrOutput() DotNetComponentTypePtrOutput {
+	return pulumi.ToOutput(in).(DotNetComponentTypePtrOutput)
+}
+
+func (in *dotNetComponentTypePtr) ToDotNetComponentTypePtrOutputWithContext(ctx context.Context) DotNetComponentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DotNetComponentTypePtrOutput)
+}
+
 // The type of the extended location.
 type ExtendedLocationTypes string
 
@@ -1839,6 +2005,174 @@ func (in *ingressTransportMethodPtr) ToIngressTransportMethodPtrOutput() Ingress
 
 func (in *ingressTransportMethodPtr) ToIngressTransportMethodPtrOutputWithContext(ctx context.Context) IngressTransportMethodPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IngressTransportMethodPtrOutput)
+}
+
+// Type of the Java Component.
+type JavaComponentType string
+
+const (
+	JavaComponentTypeSpringBootAdmin   = JavaComponentType("SpringBootAdmin")
+	JavaComponentTypeSpringCloudEureka = JavaComponentType("SpringCloudEureka")
+	JavaComponentTypeSpringCloudConfig = JavaComponentType("SpringCloudConfig")
+)
+
+func (JavaComponentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentType)(nil)).Elem()
+}
+
+func (e JavaComponentType) ToJavaComponentTypeOutput() JavaComponentTypeOutput {
+	return pulumi.ToOutput(e).(JavaComponentTypeOutput)
+}
+
+func (e JavaComponentType) ToJavaComponentTypeOutputWithContext(ctx context.Context) JavaComponentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JavaComponentTypeOutput)
+}
+
+func (e JavaComponentType) ToJavaComponentTypePtrOutput() JavaComponentTypePtrOutput {
+	return e.ToJavaComponentTypePtrOutputWithContext(context.Background())
+}
+
+func (e JavaComponentType) ToJavaComponentTypePtrOutputWithContext(ctx context.Context) JavaComponentTypePtrOutput {
+	return JavaComponentType(e).ToJavaComponentTypeOutputWithContext(ctx).ToJavaComponentTypePtrOutputWithContext(ctx)
+}
+
+func (e JavaComponentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JavaComponentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JavaComponentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JavaComponentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JavaComponentTypeOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentType)(nil)).Elem()
+}
+
+func (o JavaComponentTypeOutput) ToJavaComponentTypeOutput() JavaComponentTypeOutput {
+	return o
+}
+
+func (o JavaComponentTypeOutput) ToJavaComponentTypeOutputWithContext(ctx context.Context) JavaComponentTypeOutput {
+	return o
+}
+
+func (o JavaComponentTypeOutput) ToJavaComponentTypePtrOutput() JavaComponentTypePtrOutput {
+	return o.ToJavaComponentTypePtrOutputWithContext(context.Background())
+}
+
+func (o JavaComponentTypeOutput) ToJavaComponentTypePtrOutputWithContext(ctx context.Context) JavaComponentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JavaComponentType) *JavaComponentType {
+		return &v
+	}).(JavaComponentTypePtrOutput)
+}
+
+func (o JavaComponentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JavaComponentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JavaComponentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JavaComponentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JavaComponentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JavaComponentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JavaComponentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaComponentType)(nil)).Elem()
+}
+
+func (o JavaComponentTypePtrOutput) ToJavaComponentTypePtrOutput() JavaComponentTypePtrOutput {
+	return o
+}
+
+func (o JavaComponentTypePtrOutput) ToJavaComponentTypePtrOutputWithContext(ctx context.Context) JavaComponentTypePtrOutput {
+	return o
+}
+
+func (o JavaComponentTypePtrOutput) Elem() JavaComponentTypeOutput {
+	return o.ApplyT(func(v *JavaComponentType) JavaComponentType {
+		if v != nil {
+			return *v
+		}
+		var ret JavaComponentType
+		return ret
+	}).(JavaComponentTypeOutput)
+}
+
+func (o JavaComponentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JavaComponentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JavaComponentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JavaComponentTypeInput is an input type that accepts values of the JavaComponentType enum
+// A concrete instance of `JavaComponentTypeInput` can be one of the following:
+//
+//	JavaComponentTypeSpringBootAdmin
+//	JavaComponentTypeSpringCloudEureka
+//	JavaComponentTypeSpringCloudConfig
+type JavaComponentTypeInput interface {
+	pulumi.Input
+
+	ToJavaComponentTypeOutput() JavaComponentTypeOutput
+	ToJavaComponentTypeOutputWithContext(context.Context) JavaComponentTypeOutput
+}
+
+var javaComponentTypePtrType = reflect.TypeOf((**JavaComponentType)(nil)).Elem()
+
+type JavaComponentTypePtrInput interface {
+	pulumi.Input
+
+	ToJavaComponentTypePtrOutput() JavaComponentTypePtrOutput
+	ToJavaComponentTypePtrOutputWithContext(context.Context) JavaComponentTypePtrOutput
+}
+
+type javaComponentTypePtr string
+
+func JavaComponentTypePtr(v string) JavaComponentTypePtrInput {
+	return (*javaComponentTypePtr)(&v)
+}
+
+func (*javaComponentTypePtr) ElementType() reflect.Type {
+	return javaComponentTypePtrType
+}
+
+func (in *javaComponentTypePtr) ToJavaComponentTypePtrOutput() JavaComponentTypePtrOutput {
+	return pulumi.ToOutput(in).(JavaComponentTypePtrOutput)
+}
+
+func (in *javaComponentTypePtr) ToJavaComponentTypePtrOutputWithContext(ctx context.Context) JavaComponentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JavaComponentTypePtrOutput)
 }
 
 // Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
@@ -3538,6 +3872,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientCredentialMethodPtrOutput{})
 	pulumi.RegisterOutputType(CookieExpirationConventionOutput{})
 	pulumi.RegisterOutputType(CookieExpirationConventionPtrOutput{})
+	pulumi.RegisterOutputType(DotNetComponentTypeOutput{})
+	pulumi.RegisterOutputType(DotNetComponentTypePtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationTypesOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationTypesPtrOutput{})
 	pulumi.RegisterOutputType(ForwardProxyConventionOutput{})
@@ -3546,6 +3882,8 @@ func init() {
 	pulumi.RegisterOutputType(IngressClientCertificateModePtrOutput{})
 	pulumi.RegisterOutputType(IngressTransportMethodOutput{})
 	pulumi.RegisterOutputType(IngressTransportMethodPtrOutput{})
+	pulumi.RegisterOutputType(JavaComponentTypeOutput{})
+	pulumi.RegisterOutputType(JavaComponentTypePtrOutput{})
 	pulumi.RegisterOutputType(LogLevelOutput{})
 	pulumi.RegisterOutputType(LogLevelPtrOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateDomainControlValidationOutput{})

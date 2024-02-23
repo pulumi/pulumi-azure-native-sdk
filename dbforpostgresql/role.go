@@ -14,6 +14,8 @@ import (
 
 // Represents a cluster role.
 // Azure REST API version: 2022-11-08.
+//
+// Other available API versions: 2023-03-02-preview.
 type Role struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewRole(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:Role"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:Role"),
 		},
 	})
 	opts = append(opts, aliases)

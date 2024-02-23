@@ -11979,6 +11979,330 @@ func (o DefaultAuthorizationPolicyResponsePtrOutput) AllowedPrincipals() Allowed
 	}).(AllowedPrincipalsResponsePtrOutput)
 }
 
+// Configuration properties for a .NET Component
+type DotNetComponentConfigurationProperty struct {
+	// The name of the property
+	PropertyName *string `pulumi:"propertyName"`
+	// The value of the property
+	Value *string `pulumi:"value"`
+}
+
+// DotNetComponentConfigurationPropertyInput is an input type that accepts DotNetComponentConfigurationPropertyArgs and DotNetComponentConfigurationPropertyOutput values.
+// You can construct a concrete instance of `DotNetComponentConfigurationPropertyInput` via:
+//
+//	DotNetComponentConfigurationPropertyArgs{...}
+type DotNetComponentConfigurationPropertyInput interface {
+	pulumi.Input
+
+	ToDotNetComponentConfigurationPropertyOutput() DotNetComponentConfigurationPropertyOutput
+	ToDotNetComponentConfigurationPropertyOutputWithContext(context.Context) DotNetComponentConfigurationPropertyOutput
+}
+
+// Configuration properties for a .NET Component
+type DotNetComponentConfigurationPropertyArgs struct {
+	// The name of the property
+	PropertyName pulumi.StringPtrInput `pulumi:"propertyName"`
+	// The value of the property
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DotNetComponentConfigurationPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (i DotNetComponentConfigurationPropertyArgs) ToDotNetComponentConfigurationPropertyOutput() DotNetComponentConfigurationPropertyOutput {
+	return i.ToDotNetComponentConfigurationPropertyOutputWithContext(context.Background())
+}
+
+func (i DotNetComponentConfigurationPropertyArgs) ToDotNetComponentConfigurationPropertyOutputWithContext(ctx context.Context) DotNetComponentConfigurationPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotNetComponentConfigurationPropertyOutput)
+}
+
+// DotNetComponentConfigurationPropertyArrayInput is an input type that accepts DotNetComponentConfigurationPropertyArray and DotNetComponentConfigurationPropertyArrayOutput values.
+// You can construct a concrete instance of `DotNetComponentConfigurationPropertyArrayInput` via:
+//
+//	DotNetComponentConfigurationPropertyArray{ DotNetComponentConfigurationPropertyArgs{...} }
+type DotNetComponentConfigurationPropertyArrayInput interface {
+	pulumi.Input
+
+	ToDotNetComponentConfigurationPropertyArrayOutput() DotNetComponentConfigurationPropertyArrayOutput
+	ToDotNetComponentConfigurationPropertyArrayOutputWithContext(context.Context) DotNetComponentConfigurationPropertyArrayOutput
+}
+
+type DotNetComponentConfigurationPropertyArray []DotNetComponentConfigurationPropertyInput
+
+func (DotNetComponentConfigurationPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DotNetComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (i DotNetComponentConfigurationPropertyArray) ToDotNetComponentConfigurationPropertyArrayOutput() DotNetComponentConfigurationPropertyArrayOutput {
+	return i.ToDotNetComponentConfigurationPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i DotNetComponentConfigurationPropertyArray) ToDotNetComponentConfigurationPropertyArrayOutputWithContext(ctx context.Context) DotNetComponentConfigurationPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotNetComponentConfigurationPropertyArrayOutput)
+}
+
+// Configuration properties for a .NET Component
+type DotNetComponentConfigurationPropertyOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentConfigurationPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (o DotNetComponentConfigurationPropertyOutput) ToDotNetComponentConfigurationPropertyOutput() DotNetComponentConfigurationPropertyOutput {
+	return o
+}
+
+func (o DotNetComponentConfigurationPropertyOutput) ToDotNetComponentConfigurationPropertyOutputWithContext(ctx context.Context) DotNetComponentConfigurationPropertyOutput {
+	return o
+}
+
+// The name of the property
+func (o DotNetComponentConfigurationPropertyOutput) PropertyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentConfigurationProperty) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property
+func (o DotNetComponentConfigurationPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentConfigurationProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DotNetComponentConfigurationPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentConfigurationPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DotNetComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (o DotNetComponentConfigurationPropertyArrayOutput) ToDotNetComponentConfigurationPropertyArrayOutput() DotNetComponentConfigurationPropertyArrayOutput {
+	return o
+}
+
+func (o DotNetComponentConfigurationPropertyArrayOutput) ToDotNetComponentConfigurationPropertyArrayOutputWithContext(ctx context.Context) DotNetComponentConfigurationPropertyArrayOutput {
+	return o
+}
+
+func (o DotNetComponentConfigurationPropertyArrayOutput) Index(i pulumi.IntInput) DotNetComponentConfigurationPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DotNetComponentConfigurationProperty {
+		return vs[0].([]DotNetComponentConfigurationProperty)[vs[1].(int)]
+	}).(DotNetComponentConfigurationPropertyOutput)
+}
+
+// Configuration properties for a .NET Component
+type DotNetComponentConfigurationPropertyResponse struct {
+	// The name of the property
+	PropertyName *string `pulumi:"propertyName"`
+	// The value of the property
+	Value *string `pulumi:"value"`
+}
+
+// Configuration properties for a .NET Component
+type DotNetComponentConfigurationPropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentConfigurationPropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentConfigurationPropertyResponse)(nil)).Elem()
+}
+
+func (o DotNetComponentConfigurationPropertyResponseOutput) ToDotNetComponentConfigurationPropertyResponseOutput() DotNetComponentConfigurationPropertyResponseOutput {
+	return o
+}
+
+func (o DotNetComponentConfigurationPropertyResponseOutput) ToDotNetComponentConfigurationPropertyResponseOutputWithContext(ctx context.Context) DotNetComponentConfigurationPropertyResponseOutput {
+	return o
+}
+
+// The name of the property
+func (o DotNetComponentConfigurationPropertyResponseOutput) PropertyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentConfigurationPropertyResponse) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property
+func (o DotNetComponentConfigurationPropertyResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentConfigurationPropertyResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DotNetComponentConfigurationPropertyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentConfigurationPropertyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DotNetComponentConfigurationPropertyResponse)(nil)).Elem()
+}
+
+func (o DotNetComponentConfigurationPropertyResponseArrayOutput) ToDotNetComponentConfigurationPropertyResponseArrayOutput() DotNetComponentConfigurationPropertyResponseArrayOutput {
+	return o
+}
+
+func (o DotNetComponentConfigurationPropertyResponseArrayOutput) ToDotNetComponentConfigurationPropertyResponseArrayOutputWithContext(ctx context.Context) DotNetComponentConfigurationPropertyResponseArrayOutput {
+	return o
+}
+
+func (o DotNetComponentConfigurationPropertyResponseArrayOutput) Index(i pulumi.IntInput) DotNetComponentConfigurationPropertyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DotNetComponentConfigurationPropertyResponse {
+		return vs[0].([]DotNetComponentConfigurationPropertyResponse)[vs[1].(int)]
+	}).(DotNetComponentConfigurationPropertyResponseOutput)
+}
+
+// Configuration to bind a .NET Component to another .NET Component
+type DotNetComponentServiceBind struct {
+	// Name of the service bind
+	Name *string `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId *string `pulumi:"serviceId"`
+}
+
+// DotNetComponentServiceBindInput is an input type that accepts DotNetComponentServiceBindArgs and DotNetComponentServiceBindOutput values.
+// You can construct a concrete instance of `DotNetComponentServiceBindInput` via:
+//
+//	DotNetComponentServiceBindArgs{...}
+type DotNetComponentServiceBindInput interface {
+	pulumi.Input
+
+	ToDotNetComponentServiceBindOutput() DotNetComponentServiceBindOutput
+	ToDotNetComponentServiceBindOutputWithContext(context.Context) DotNetComponentServiceBindOutput
+}
+
+// Configuration to bind a .NET Component to another .NET Component
+type DotNetComponentServiceBindArgs struct {
+	// Name of the service bind
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId pulumi.StringPtrInput `pulumi:"serviceId"`
+}
+
+func (DotNetComponentServiceBindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentServiceBind)(nil)).Elem()
+}
+
+func (i DotNetComponentServiceBindArgs) ToDotNetComponentServiceBindOutput() DotNetComponentServiceBindOutput {
+	return i.ToDotNetComponentServiceBindOutputWithContext(context.Background())
+}
+
+func (i DotNetComponentServiceBindArgs) ToDotNetComponentServiceBindOutputWithContext(ctx context.Context) DotNetComponentServiceBindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotNetComponentServiceBindOutput)
+}
+
+// DotNetComponentServiceBindArrayInput is an input type that accepts DotNetComponentServiceBindArray and DotNetComponentServiceBindArrayOutput values.
+// You can construct a concrete instance of `DotNetComponentServiceBindArrayInput` via:
+//
+//	DotNetComponentServiceBindArray{ DotNetComponentServiceBindArgs{...} }
+type DotNetComponentServiceBindArrayInput interface {
+	pulumi.Input
+
+	ToDotNetComponentServiceBindArrayOutput() DotNetComponentServiceBindArrayOutput
+	ToDotNetComponentServiceBindArrayOutputWithContext(context.Context) DotNetComponentServiceBindArrayOutput
+}
+
+type DotNetComponentServiceBindArray []DotNetComponentServiceBindInput
+
+func (DotNetComponentServiceBindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DotNetComponentServiceBind)(nil)).Elem()
+}
+
+func (i DotNetComponentServiceBindArray) ToDotNetComponentServiceBindArrayOutput() DotNetComponentServiceBindArrayOutput {
+	return i.ToDotNetComponentServiceBindArrayOutputWithContext(context.Background())
+}
+
+func (i DotNetComponentServiceBindArray) ToDotNetComponentServiceBindArrayOutputWithContext(ctx context.Context) DotNetComponentServiceBindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotNetComponentServiceBindArrayOutput)
+}
+
+// Configuration to bind a .NET Component to another .NET Component
+type DotNetComponentServiceBindOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentServiceBindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentServiceBind)(nil)).Elem()
+}
+
+func (o DotNetComponentServiceBindOutput) ToDotNetComponentServiceBindOutput() DotNetComponentServiceBindOutput {
+	return o
+}
+
+func (o DotNetComponentServiceBindOutput) ToDotNetComponentServiceBindOutputWithContext(ctx context.Context) DotNetComponentServiceBindOutput {
+	return o
+}
+
+// Name of the service bind
+func (o DotNetComponentServiceBindOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentServiceBind) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of the target service
+func (o DotNetComponentServiceBindOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentServiceBind) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+type DotNetComponentServiceBindArrayOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentServiceBindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DotNetComponentServiceBind)(nil)).Elem()
+}
+
+func (o DotNetComponentServiceBindArrayOutput) ToDotNetComponentServiceBindArrayOutput() DotNetComponentServiceBindArrayOutput {
+	return o
+}
+
+func (o DotNetComponentServiceBindArrayOutput) ToDotNetComponentServiceBindArrayOutputWithContext(ctx context.Context) DotNetComponentServiceBindArrayOutput {
+	return o
+}
+
+func (o DotNetComponentServiceBindArrayOutput) Index(i pulumi.IntInput) DotNetComponentServiceBindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DotNetComponentServiceBind {
+		return vs[0].([]DotNetComponentServiceBind)[vs[1].(int)]
+	}).(DotNetComponentServiceBindOutput)
+}
+
+// Configuration to bind a .NET Component to another .NET Component
+type DotNetComponentServiceBindResponse struct {
+	// Name of the service bind
+	Name *string `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId *string `pulumi:"serviceId"`
+}
+
+// Configuration to bind a .NET Component to another .NET Component
+type DotNetComponentServiceBindResponseOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentServiceBindResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotNetComponentServiceBindResponse)(nil)).Elem()
+}
+
+func (o DotNetComponentServiceBindResponseOutput) ToDotNetComponentServiceBindResponseOutput() DotNetComponentServiceBindResponseOutput {
+	return o
+}
+
+func (o DotNetComponentServiceBindResponseOutput) ToDotNetComponentServiceBindResponseOutputWithContext(ctx context.Context) DotNetComponentServiceBindResponseOutput {
+	return o
+}
+
+// Name of the service bind
+func (o DotNetComponentServiceBindResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentServiceBindResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of the target service
+func (o DotNetComponentServiceBindResponseOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DotNetComponentServiceBindResponse) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+type DotNetComponentServiceBindResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DotNetComponentServiceBindResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DotNetComponentServiceBindResponse)(nil)).Elem()
+}
+
+func (o DotNetComponentServiceBindResponseArrayOutput) ToDotNetComponentServiceBindResponseArrayOutput() DotNetComponentServiceBindResponseArrayOutput {
+	return o
+}
+
+func (o DotNetComponentServiceBindResponseArrayOutput) ToDotNetComponentServiceBindResponseArrayOutputWithContext(ctx context.Context) DotNetComponentServiceBindResponseArrayOutput {
+	return o
+}
+
+func (o DotNetComponentServiceBindResponseArrayOutput) Index(i pulumi.IntInput) DotNetComponentServiceBindResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DotNetComponentServiceBindResponse {
+		return vs[0].([]DotNetComponentServiceBindResponse)[vs[1].(int)]
+	}).(DotNetComponentServiceBindResponseOutput)
+}
+
 // Managed Environment resource SKU properties.
 type EnvironmentSkuProperties struct {
 	// Name of the Sku.
@@ -17956,6 +18280,330 @@ func (o IpSecurityRestrictionRuleResponseArrayOutput) Index(i pulumi.IntInput) I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpSecurityRestrictionRuleResponse {
 		return vs[0].([]IpSecurityRestrictionRuleResponse)[vs[1].(int)]
 	}).(IpSecurityRestrictionRuleResponseOutput)
+}
+
+// Configuration properties for a Java Component
+type JavaComponentConfigurationProperty struct {
+	// The name of the property
+	PropertyName *string `pulumi:"propertyName"`
+	// The value of the property
+	Value *string `pulumi:"value"`
+}
+
+// JavaComponentConfigurationPropertyInput is an input type that accepts JavaComponentConfigurationPropertyArgs and JavaComponentConfigurationPropertyOutput values.
+// You can construct a concrete instance of `JavaComponentConfigurationPropertyInput` via:
+//
+//	JavaComponentConfigurationPropertyArgs{...}
+type JavaComponentConfigurationPropertyInput interface {
+	pulumi.Input
+
+	ToJavaComponentConfigurationPropertyOutput() JavaComponentConfigurationPropertyOutput
+	ToJavaComponentConfigurationPropertyOutputWithContext(context.Context) JavaComponentConfigurationPropertyOutput
+}
+
+// Configuration properties for a Java Component
+type JavaComponentConfigurationPropertyArgs struct {
+	// The name of the property
+	PropertyName pulumi.StringPtrInput `pulumi:"propertyName"`
+	// The value of the property
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (JavaComponentConfigurationPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (i JavaComponentConfigurationPropertyArgs) ToJavaComponentConfigurationPropertyOutput() JavaComponentConfigurationPropertyOutput {
+	return i.ToJavaComponentConfigurationPropertyOutputWithContext(context.Background())
+}
+
+func (i JavaComponentConfigurationPropertyArgs) ToJavaComponentConfigurationPropertyOutputWithContext(ctx context.Context) JavaComponentConfigurationPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentConfigurationPropertyOutput)
+}
+
+// JavaComponentConfigurationPropertyArrayInput is an input type that accepts JavaComponentConfigurationPropertyArray and JavaComponentConfigurationPropertyArrayOutput values.
+// You can construct a concrete instance of `JavaComponentConfigurationPropertyArrayInput` via:
+//
+//	JavaComponentConfigurationPropertyArray{ JavaComponentConfigurationPropertyArgs{...} }
+type JavaComponentConfigurationPropertyArrayInput interface {
+	pulumi.Input
+
+	ToJavaComponentConfigurationPropertyArrayOutput() JavaComponentConfigurationPropertyArrayOutput
+	ToJavaComponentConfigurationPropertyArrayOutputWithContext(context.Context) JavaComponentConfigurationPropertyArrayOutput
+}
+
+type JavaComponentConfigurationPropertyArray []JavaComponentConfigurationPropertyInput
+
+func (JavaComponentConfigurationPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (i JavaComponentConfigurationPropertyArray) ToJavaComponentConfigurationPropertyArrayOutput() JavaComponentConfigurationPropertyArrayOutput {
+	return i.ToJavaComponentConfigurationPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i JavaComponentConfigurationPropertyArray) ToJavaComponentConfigurationPropertyArrayOutputWithContext(ctx context.Context) JavaComponentConfigurationPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentConfigurationPropertyArrayOutput)
+}
+
+// Configuration properties for a Java Component
+type JavaComponentConfigurationPropertyOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentConfigurationPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (o JavaComponentConfigurationPropertyOutput) ToJavaComponentConfigurationPropertyOutput() JavaComponentConfigurationPropertyOutput {
+	return o
+}
+
+func (o JavaComponentConfigurationPropertyOutput) ToJavaComponentConfigurationPropertyOutputWithContext(ctx context.Context) JavaComponentConfigurationPropertyOutput {
+	return o
+}
+
+// The name of the property
+func (o JavaComponentConfigurationPropertyOutput) PropertyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentConfigurationProperty) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property
+func (o JavaComponentConfigurationPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentConfigurationProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type JavaComponentConfigurationPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentConfigurationPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaComponentConfigurationProperty)(nil)).Elem()
+}
+
+func (o JavaComponentConfigurationPropertyArrayOutput) ToJavaComponentConfigurationPropertyArrayOutput() JavaComponentConfigurationPropertyArrayOutput {
+	return o
+}
+
+func (o JavaComponentConfigurationPropertyArrayOutput) ToJavaComponentConfigurationPropertyArrayOutputWithContext(ctx context.Context) JavaComponentConfigurationPropertyArrayOutput {
+	return o
+}
+
+func (o JavaComponentConfigurationPropertyArrayOutput) Index(i pulumi.IntInput) JavaComponentConfigurationPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaComponentConfigurationProperty {
+		return vs[0].([]JavaComponentConfigurationProperty)[vs[1].(int)]
+	}).(JavaComponentConfigurationPropertyOutput)
+}
+
+// Configuration properties for a Java Component
+type JavaComponentConfigurationPropertyResponse struct {
+	// The name of the property
+	PropertyName *string `pulumi:"propertyName"`
+	// The value of the property
+	Value *string `pulumi:"value"`
+}
+
+// Configuration properties for a Java Component
+type JavaComponentConfigurationPropertyResponseOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentConfigurationPropertyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentConfigurationPropertyResponse)(nil)).Elem()
+}
+
+func (o JavaComponentConfigurationPropertyResponseOutput) ToJavaComponentConfigurationPropertyResponseOutput() JavaComponentConfigurationPropertyResponseOutput {
+	return o
+}
+
+func (o JavaComponentConfigurationPropertyResponseOutput) ToJavaComponentConfigurationPropertyResponseOutputWithContext(ctx context.Context) JavaComponentConfigurationPropertyResponseOutput {
+	return o
+}
+
+// The name of the property
+func (o JavaComponentConfigurationPropertyResponseOutput) PropertyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentConfigurationPropertyResponse) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property
+func (o JavaComponentConfigurationPropertyResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentConfigurationPropertyResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type JavaComponentConfigurationPropertyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentConfigurationPropertyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaComponentConfigurationPropertyResponse)(nil)).Elem()
+}
+
+func (o JavaComponentConfigurationPropertyResponseArrayOutput) ToJavaComponentConfigurationPropertyResponseArrayOutput() JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o
+}
+
+func (o JavaComponentConfigurationPropertyResponseArrayOutput) ToJavaComponentConfigurationPropertyResponseArrayOutputWithContext(ctx context.Context) JavaComponentConfigurationPropertyResponseArrayOutput {
+	return o
+}
+
+func (o JavaComponentConfigurationPropertyResponseArrayOutput) Index(i pulumi.IntInput) JavaComponentConfigurationPropertyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaComponentConfigurationPropertyResponse {
+		return vs[0].([]JavaComponentConfigurationPropertyResponse)[vs[1].(int)]
+	}).(JavaComponentConfigurationPropertyResponseOutput)
+}
+
+// Configuration to bind a Java Component to another Java Component
+type JavaComponentServiceBind struct {
+	// Name of the service bind
+	Name *string `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId *string `pulumi:"serviceId"`
+}
+
+// JavaComponentServiceBindInput is an input type that accepts JavaComponentServiceBindArgs and JavaComponentServiceBindOutput values.
+// You can construct a concrete instance of `JavaComponentServiceBindInput` via:
+//
+//	JavaComponentServiceBindArgs{...}
+type JavaComponentServiceBindInput interface {
+	pulumi.Input
+
+	ToJavaComponentServiceBindOutput() JavaComponentServiceBindOutput
+	ToJavaComponentServiceBindOutputWithContext(context.Context) JavaComponentServiceBindOutput
+}
+
+// Configuration to bind a Java Component to another Java Component
+type JavaComponentServiceBindArgs struct {
+	// Name of the service bind
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId pulumi.StringPtrInput `pulumi:"serviceId"`
+}
+
+func (JavaComponentServiceBindArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentServiceBind)(nil)).Elem()
+}
+
+func (i JavaComponentServiceBindArgs) ToJavaComponentServiceBindOutput() JavaComponentServiceBindOutput {
+	return i.ToJavaComponentServiceBindOutputWithContext(context.Background())
+}
+
+func (i JavaComponentServiceBindArgs) ToJavaComponentServiceBindOutputWithContext(ctx context.Context) JavaComponentServiceBindOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentServiceBindOutput)
+}
+
+// JavaComponentServiceBindArrayInput is an input type that accepts JavaComponentServiceBindArray and JavaComponentServiceBindArrayOutput values.
+// You can construct a concrete instance of `JavaComponentServiceBindArrayInput` via:
+//
+//	JavaComponentServiceBindArray{ JavaComponentServiceBindArgs{...} }
+type JavaComponentServiceBindArrayInput interface {
+	pulumi.Input
+
+	ToJavaComponentServiceBindArrayOutput() JavaComponentServiceBindArrayOutput
+	ToJavaComponentServiceBindArrayOutputWithContext(context.Context) JavaComponentServiceBindArrayOutput
+}
+
+type JavaComponentServiceBindArray []JavaComponentServiceBindInput
+
+func (JavaComponentServiceBindArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaComponentServiceBind)(nil)).Elem()
+}
+
+func (i JavaComponentServiceBindArray) ToJavaComponentServiceBindArrayOutput() JavaComponentServiceBindArrayOutput {
+	return i.ToJavaComponentServiceBindArrayOutputWithContext(context.Background())
+}
+
+func (i JavaComponentServiceBindArray) ToJavaComponentServiceBindArrayOutputWithContext(ctx context.Context) JavaComponentServiceBindArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaComponentServiceBindArrayOutput)
+}
+
+// Configuration to bind a Java Component to another Java Component
+type JavaComponentServiceBindOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentServiceBindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentServiceBind)(nil)).Elem()
+}
+
+func (o JavaComponentServiceBindOutput) ToJavaComponentServiceBindOutput() JavaComponentServiceBindOutput {
+	return o
+}
+
+func (o JavaComponentServiceBindOutput) ToJavaComponentServiceBindOutputWithContext(ctx context.Context) JavaComponentServiceBindOutput {
+	return o
+}
+
+// Name of the service bind
+func (o JavaComponentServiceBindOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentServiceBind) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of the target service
+func (o JavaComponentServiceBindOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentServiceBind) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+type JavaComponentServiceBindArrayOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentServiceBindArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaComponentServiceBind)(nil)).Elem()
+}
+
+func (o JavaComponentServiceBindArrayOutput) ToJavaComponentServiceBindArrayOutput() JavaComponentServiceBindArrayOutput {
+	return o
+}
+
+func (o JavaComponentServiceBindArrayOutput) ToJavaComponentServiceBindArrayOutputWithContext(ctx context.Context) JavaComponentServiceBindArrayOutput {
+	return o
+}
+
+func (o JavaComponentServiceBindArrayOutput) Index(i pulumi.IntInput) JavaComponentServiceBindOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaComponentServiceBind {
+		return vs[0].([]JavaComponentServiceBind)[vs[1].(int)]
+	}).(JavaComponentServiceBindOutput)
+}
+
+// Configuration to bind a Java Component to another Java Component
+type JavaComponentServiceBindResponse struct {
+	// Name of the service bind
+	Name *string `pulumi:"name"`
+	// Resource id of the target service
+	ServiceId *string `pulumi:"serviceId"`
+}
+
+// Configuration to bind a Java Component to another Java Component
+type JavaComponentServiceBindResponseOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentServiceBindResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaComponentServiceBindResponse)(nil)).Elem()
+}
+
+func (o JavaComponentServiceBindResponseOutput) ToJavaComponentServiceBindResponseOutput() JavaComponentServiceBindResponseOutput {
+	return o
+}
+
+func (o JavaComponentServiceBindResponseOutput) ToJavaComponentServiceBindResponseOutputWithContext(ctx context.Context) JavaComponentServiceBindResponseOutput {
+	return o
+}
+
+// Name of the service bind
+func (o JavaComponentServiceBindResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentServiceBindResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource id of the target service
+func (o JavaComponentServiceBindResponseOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaComponentServiceBindResponse) *string { return v.ServiceId }).(pulumi.StringPtrOutput)
+}
+
+type JavaComponentServiceBindResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JavaComponentServiceBindResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JavaComponentServiceBindResponse)(nil)).Elem()
+}
+
+func (o JavaComponentServiceBindResponseArrayOutput) ToJavaComponentServiceBindResponseArrayOutput() JavaComponentServiceBindResponseArrayOutput {
+	return o
+}
+
+func (o JavaComponentServiceBindResponseArrayOutput) ToJavaComponentServiceBindResponseArrayOutputWithContext(ctx context.Context) JavaComponentServiceBindResponseArrayOutput {
+	return o
+}
+
+func (o JavaComponentServiceBindResponseArrayOutput) Index(i pulumi.IntInput) JavaComponentServiceBindResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JavaComponentServiceBindResponse {
+		return vs[0].([]JavaComponentServiceBindResponse)[vs[1].(int)]
+	}).(JavaComponentServiceBindResponseOutput)
 }
 
 // Non versioned Container Apps Job configuration properties
@@ -28716,6 +29364,14 @@ func init() {
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyResponseOutput{})
 	pulumi.RegisterOutputType(DefaultAuthorizationPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(DotNetComponentConfigurationPropertyOutput{})
+	pulumi.RegisterOutputType(DotNetComponentConfigurationPropertyArrayOutput{})
+	pulumi.RegisterOutputType(DotNetComponentConfigurationPropertyResponseOutput{})
+	pulumi.RegisterOutputType(DotNetComponentConfigurationPropertyResponseArrayOutput{})
+	pulumi.RegisterOutputType(DotNetComponentServiceBindOutput{})
+	pulumi.RegisterOutputType(DotNetComponentServiceBindArrayOutput{})
+	pulumi.RegisterOutputType(DotNetComponentServiceBindResponseOutput{})
+	pulumi.RegisterOutputType(DotNetComponentServiceBindResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentSkuPropertiesOutput{})
 	pulumi.RegisterOutputType(EnvironmentSkuPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentSkuPropertiesResponseOutput{})
@@ -28800,6 +29456,14 @@ func init() {
 	pulumi.RegisterOutputType(IpSecurityRestrictionRuleArrayOutput{})
 	pulumi.RegisterOutputType(IpSecurityRestrictionRuleResponseOutput{})
 	pulumi.RegisterOutputType(IpSecurityRestrictionRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyOutput{})
+	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyArrayOutput{})
+	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyResponseOutput{})
+	pulumi.RegisterOutputType(JavaComponentConfigurationPropertyResponseArrayOutput{})
+	pulumi.RegisterOutputType(JavaComponentServiceBindOutput{})
+	pulumi.RegisterOutputType(JavaComponentServiceBindArrayOutput{})
+	pulumi.RegisterOutputType(JavaComponentServiceBindResponseOutput{})
+	pulumi.RegisterOutputType(JavaComponentServiceBindResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobConfigurationOutput{})
 	pulumi.RegisterOutputType(JobConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(JobConfigurationEventTriggerConfigOutput{})

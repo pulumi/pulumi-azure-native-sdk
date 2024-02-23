@@ -53,6 +53,9 @@ func NewBuilder(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app:Builder"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20231102preview:Builder"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

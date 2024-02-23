@@ -14,6 +14,8 @@ import (
 
 // Represents a cluster.
 // Azure REST API version: 2022-11-08.
+//
+// Other available API versions: 2023-03-02-preview.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -98,6 +100,9 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20221108:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

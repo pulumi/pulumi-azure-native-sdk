@@ -51,6 +51,9 @@ func NewSyncIdentityProvider(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:redhatopenshift/v20230701preview:SyncIdentityProvider"),
 		},
+		{
+			Type: pulumi.String("azure-native:redhatopenshift/v20231122:SyncIdentityProvider"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

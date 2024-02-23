@@ -14,7 +14,7 @@ import (
 // Get the Vault details.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2020-02-02, 2023-06-01, 2023-08-01.
+// Other available API versions: 2020-02-02, 2023-06-01, 2023-08-01, 2024-01-01.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVaultResult

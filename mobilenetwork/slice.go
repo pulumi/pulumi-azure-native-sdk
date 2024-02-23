@@ -15,7 +15,7 @@ import (
 // Network slice resource. Must be created in the same location as its parent mobile network.
 // Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
+// Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
 type Slice struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewSlice(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:Slice"),
+		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240201:Slice"),
 		},
 	})
 	opts = append(opts, aliases)

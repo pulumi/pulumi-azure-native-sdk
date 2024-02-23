@@ -14,6 +14,8 @@ import (
 
 // Information about the SourceToCloud builder resource.
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-02-preview.
 type Builder struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +55,9 @@ func NewBuilder(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20230801preview:Builder"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20231102preview:Builder"),
 		},
 	})
 	opts = append(opts, aliases)

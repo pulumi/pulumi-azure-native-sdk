@@ -14,7 +14,7 @@ import (
 // Dapr Component.
 // Azure REST API version: 2022-10-01.
 //
-// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview, 2023-11-02-preview.
 func LookupDaprComponent(ctx *pulumi.Context, args *LookupDaprComponentArgs, opts ...pulumi.InvokeOption) (*LookupDaprComponentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDaprComponentResult

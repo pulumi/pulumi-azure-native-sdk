@@ -68,6 +68,9 @@ func NewCreator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:maps/v20231201preview:Creator"),
 		},
+		{
+			Type: pulumi.String("azure-native:maps/v20240101preview:Creator"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

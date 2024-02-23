@@ -46,6 +46,9 @@ func NewRole(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql:Role"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20230302preview:Role"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

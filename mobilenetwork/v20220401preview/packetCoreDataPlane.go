@@ -76,6 +76,9 @@ func NewPacketCoreDataPlane(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20230901:PacketCoreDataPlane"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240201:PacketCoreDataPlane"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
