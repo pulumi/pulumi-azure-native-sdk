@@ -17,20 +17,30 @@ import (
 type AssetEndpointProfile struct {
 	pulumi.CustomResourceState
 
+	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	AdditionalConfiguration pulumi.StringPtrOutput `pulumi:"additionalConfiguration"`
 	// The extended location.
-	ExtendedLocation AssetEndpointProfileResponseExtendedLocationOutput `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Asset Endpoint Profile resource properties.
-	Properties AssetEndpointProfilePropertiesResponseOutput `pulumi:"properties"`
+	// Provisioning state of the resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
+	TargetAddress pulumi.StringOutput `pulumi:"targetAddress"`
+	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+	TransportAuthentication TransportAuthenticationResponsePtrOutput `pulumi:"transportAuthentication"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Defines the client authentication mechanism to the server.
+	UserAuthentication UserAuthenticationResponsePtrOutput `pulumi:"userAuthentication"`
+	// Globally unique, immutable, non-reusable id.
+	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
 
 // NewAssetEndpointProfile registers a new resource with the given unique name, arguments, and options.
@@ -46,8 +56,11 @@ func NewAssetEndpointProfile(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.Properties != nil {
-		args.Properties = args.Properties.ToAssetEndpointProfilePropertiesPtrOutput().ApplyT(func(v *AssetEndpointProfileProperties) *AssetEndpointProfileProperties { return v.Defaults() }).(AssetEndpointProfilePropertiesPtrOutput)
+	if args.TargetAddress == nil {
+		return nil, errors.New("invalid value for required argument 'TargetAddress'")
+	}
+	if args.UserAuthentication != nil {
+		args.UserAuthentication = args.UserAuthentication.ToUserAuthenticationPtrOutput().ApplyT(func(v *UserAuthentication) *UserAuthentication { return v.Defaults() }).(UserAuthenticationPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -88,34 +101,46 @@ func (AssetEndpointProfileState) ElementType() reflect.Type {
 }
 
 type assetEndpointProfileArgs struct {
+	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
 	// Asset Endpoint Profile name parameter.
 	AssetEndpointProfileName *string `pulumi:"assetEndpointProfileName"`
 	// The extended location.
-	ExtendedLocation AssetEndpointProfileExtendedLocation `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Asset Endpoint Profile resource properties.
-	Properties *AssetEndpointProfileProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
+	TargetAddress string `pulumi:"targetAddress"`
+	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+	TransportAuthentication *TransportAuthentication `pulumi:"transportAuthentication"`
+	// Defines the client authentication mechanism to the server.
+	UserAuthentication *UserAuthentication `pulumi:"userAuthentication"`
 }
 
 // The set of arguments for constructing a AssetEndpointProfile resource.
 type AssetEndpointProfileArgs struct {
+	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+	AdditionalConfiguration pulumi.StringPtrInput
 	// Asset Endpoint Profile name parameter.
 	AssetEndpointProfileName pulumi.StringPtrInput
 	// The extended location.
-	ExtendedLocation AssetEndpointProfileExtendedLocationInput
+	ExtendedLocation ExtendedLocationInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Asset Endpoint Profile resource properties.
-	Properties AssetEndpointProfilePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
+	TargetAddress pulumi.StringInput
+	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+	TransportAuthentication TransportAuthenticationPtrInput
+	// Defines the client authentication mechanism to the server.
+	UserAuthentication UserAuthenticationPtrInput
 }
 
 func (AssetEndpointProfileArgs) ElementType() reflect.Type {
@@ -155,11 +180,14 @@ func (o AssetEndpointProfileOutput) ToAssetEndpointProfileOutputWithContext(ctx 
 	return o
 }
 
+// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+func (o AssetEndpointProfileOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringPtrOutput { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+}
+
 // The extended location.
-func (o AssetEndpointProfileOutput) ExtendedLocation() AssetEndpointProfileResponseExtendedLocationOutput {
-	return o.ApplyT(func(v *AssetEndpointProfile) AssetEndpointProfileResponseExtendedLocationOutput {
-		return v.ExtendedLocation
-	}).(AssetEndpointProfileResponseExtendedLocationOutput)
+func (o AssetEndpointProfileOutput) ExtendedLocation() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
 // The geo-location where the resource lives
@@ -172,9 +200,9 @@ func (o AssetEndpointProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Asset Endpoint Profile resource properties.
-func (o AssetEndpointProfileOutput) Properties() AssetEndpointProfilePropertiesResponseOutput {
-	return o.ApplyT(func(v *AssetEndpointProfile) AssetEndpointProfilePropertiesResponseOutput { return v.Properties }).(AssetEndpointProfilePropertiesResponseOutput)
+// Provisioning state of the resource.
+func (o AssetEndpointProfileOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -187,9 +215,31 @@ func (o AssetEndpointProfileOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
+func (o AssetEndpointProfileOutput) TargetAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringOutput { return v.TargetAddress }).(pulumi.StringOutput)
+}
+
+// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+func (o AssetEndpointProfileOutput) TransportAuthentication() TransportAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) TransportAuthenticationResponsePtrOutput {
+		return v.TransportAuthentication
+	}).(TransportAuthenticationResponsePtrOutput)
+}
+
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AssetEndpointProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Defines the client authentication mechanism to the server.
+func (o AssetEndpointProfileOutput) UserAuthentication() UserAuthenticationResponsePtrOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) UserAuthenticationResponsePtrOutput { return v.UserAuthentication }).(UserAuthenticationResponsePtrOutput)
+}
+
+// Globally unique, immutable, non-reusable id.
+func (o AssetEndpointProfileOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssetEndpointProfile) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
 func init() {

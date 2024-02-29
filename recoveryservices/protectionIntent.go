@@ -15,7 +15,7 @@ import (
 // Base class for backup ProtectionIntent.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01.
+// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01.
 type ProtectionIntent struct {
 	pulumi.CustomResourceState
 
@@ -121,6 +121,9 @@ func NewProtectionIntent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230801:ProtectionIntent"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240101:ProtectionIntent"),
 		},
 	})
 	opts = append(opts, aliases)

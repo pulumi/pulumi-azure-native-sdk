@@ -13,2079 +13,94 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// The extended location.
-type AssetEndpointProfileExtendedLocation struct {
-	// The extended location name.
-	Name *string `pulumi:"name"`
-	// The extended location type.
-	Type *string `pulumi:"type"`
+// Defines the asset status error properties.
+type AssetStatusErrorResponse struct {
+	// Error code for classification of errors (ex: 400, 404, 500, etc.).
+	Code *int `pulumi:"code"`
+	// Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
+	Message *string `pulumi:"message"`
 }
 
-// AssetEndpointProfileExtendedLocationInput is an input type that accepts AssetEndpointProfileExtendedLocationArgs and AssetEndpointProfileExtendedLocationOutput values.
-// You can construct a concrete instance of `AssetEndpointProfileExtendedLocationInput` via:
-//
-//	AssetEndpointProfileExtendedLocationArgs{...}
-type AssetEndpointProfileExtendedLocationInput interface {
-	pulumi.Input
+// Defines the asset status error properties.
+type AssetStatusErrorResponseOutput struct{ *pulumi.OutputState }
 
-	ToAssetEndpointProfileExtendedLocationOutput() AssetEndpointProfileExtendedLocationOutput
-	ToAssetEndpointProfileExtendedLocationOutputWithContext(context.Context) AssetEndpointProfileExtendedLocationOutput
+func (AssetStatusErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetStatusErrorResponse)(nil)).Elem()
 }
 
-// The extended location.
-type AssetEndpointProfileExtendedLocationArgs struct {
-	// The extended location name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The extended location type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (AssetEndpointProfileExtendedLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfileExtendedLocation)(nil)).Elem()
-}
-
-func (i AssetEndpointProfileExtendedLocationArgs) ToAssetEndpointProfileExtendedLocationOutput() AssetEndpointProfileExtendedLocationOutput {
-	return i.ToAssetEndpointProfileExtendedLocationOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfileExtendedLocationArgs) ToAssetEndpointProfileExtendedLocationOutputWithContext(ctx context.Context) AssetEndpointProfileExtendedLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfileExtendedLocationOutput)
-}
-
-// The extended location.
-type AssetEndpointProfileExtendedLocationOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfileExtendedLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfileExtendedLocation)(nil)).Elem()
-}
-
-func (o AssetEndpointProfileExtendedLocationOutput) ToAssetEndpointProfileExtendedLocationOutput() AssetEndpointProfileExtendedLocationOutput {
+func (o AssetStatusErrorResponseOutput) ToAssetStatusErrorResponseOutput() AssetStatusErrorResponseOutput {
 	return o
 }
 
-func (o AssetEndpointProfileExtendedLocationOutput) ToAssetEndpointProfileExtendedLocationOutputWithContext(ctx context.Context) AssetEndpointProfileExtendedLocationOutput {
+func (o AssetStatusErrorResponseOutput) ToAssetStatusErrorResponseOutputWithContext(ctx context.Context) AssetStatusErrorResponseOutput {
 	return o
 }
 
-// The extended location name.
-func (o AssetEndpointProfileExtendedLocationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Error code for classification of errors (ex: 400, 404, 500, etc.).
+func (o AssetStatusErrorResponseOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetStatusErrorResponse) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
-// The extended location type.
-func (o AssetEndpointProfileExtendedLocationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileExtendedLocation) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
+func (o AssetStatusErrorResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetStatusErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Defines the Asset Endpoint Profile properties.
-type AssetEndpointProfileProperties struct {
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
-	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-	TargetAddress string `pulumi:"targetAddress"`
-	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-	TransportAuthentication *AssetEndpointProfilePropertiesTransportAuthentication `pulumi:"transportAuthentication"`
-	// Defines the client authentication mechanism to the server.
-	UserAuthentication *AssetEndpointProfilePropertiesUserAuthentication `pulumi:"userAuthentication"`
+type AssetStatusErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AssetStatusErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AssetStatusErrorResponse)(nil)).Elem()
 }
 
-// Defaults sets the appropriate defaults for AssetEndpointProfileProperties
-func (val *AssetEndpointProfileProperties) Defaults() *AssetEndpointProfileProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.UserAuthentication = tmp.UserAuthentication.Defaults()
-
-	return &tmp
-}
-
-// AssetEndpointProfilePropertiesInput is an input type that accepts AssetEndpointProfilePropertiesArgs and AssetEndpointProfilePropertiesOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesInput` via:
-//
-//	AssetEndpointProfilePropertiesArgs{...}
-type AssetEndpointProfilePropertiesInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesOutput() AssetEndpointProfilePropertiesOutput
-	ToAssetEndpointProfilePropertiesOutputWithContext(context.Context) AssetEndpointProfilePropertiesOutput
-}
-
-// Defines the Asset Endpoint Profile properties.
-type AssetEndpointProfilePropertiesArgs struct {
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-	AdditionalConfiguration pulumi.StringPtrInput `pulumi:"additionalConfiguration"`
-	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-	TargetAddress pulumi.StringInput `pulumi:"targetAddress"`
-	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-	TransportAuthentication AssetEndpointProfilePropertiesTransportAuthenticationPtrInput `pulumi:"transportAuthentication"`
-	// Defines the client authentication mechanism to the server.
-	UserAuthentication AssetEndpointProfilePropertiesUserAuthenticationPtrInput `pulumi:"userAuthentication"`
-}
-
-// Defaults sets the appropriate defaults for AssetEndpointProfilePropertiesArgs
-func (val *AssetEndpointProfilePropertiesArgs) Defaults() *AssetEndpointProfilePropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	return &tmp
-}
-func (AssetEndpointProfilePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfileProperties)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesArgs) ToAssetEndpointProfilePropertiesOutput() AssetEndpointProfilePropertiesOutput {
-	return i.ToAssetEndpointProfilePropertiesOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesArgs) ToAssetEndpointProfilePropertiesOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOutput)
-}
-
-func (i AssetEndpointProfilePropertiesArgs) ToAssetEndpointProfilePropertiesPtrOutput() AssetEndpointProfilePropertiesPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesArgs) ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOutput).ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx)
-}
-
-// AssetEndpointProfilePropertiesPtrInput is an input type that accepts AssetEndpointProfilePropertiesArgs, AssetEndpointProfilePropertiesPtr and AssetEndpointProfilePropertiesPtrOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesPtrInput` via:
-//
-//	        AssetEndpointProfilePropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AssetEndpointProfilePropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesPtrOutput() AssetEndpointProfilePropertiesPtrOutput
-	ToAssetEndpointProfilePropertiesPtrOutputWithContext(context.Context) AssetEndpointProfilePropertiesPtrOutput
-}
-
-type assetEndpointProfilePropertiesPtrType AssetEndpointProfilePropertiesArgs
-
-func AssetEndpointProfilePropertiesPtr(v *AssetEndpointProfilePropertiesArgs) AssetEndpointProfilePropertiesPtrInput {
-	return (*assetEndpointProfilePropertiesPtrType)(v)
-}
-
-func (*assetEndpointProfilePropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfileProperties)(nil)).Elem()
-}
-
-func (i *assetEndpointProfilePropertiesPtrType) ToAssetEndpointProfilePropertiesPtrOutput() AssetEndpointProfilePropertiesPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *assetEndpointProfilePropertiesPtrType) ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesPtrOutput)
-}
-
-// Defines the Asset Endpoint Profile properties.
-type AssetEndpointProfilePropertiesOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfileProperties)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesOutput) ToAssetEndpointProfilePropertiesOutput() AssetEndpointProfilePropertiesOutput {
+func (o AssetStatusErrorResponseArrayOutput) ToAssetStatusErrorResponseArrayOutput() AssetStatusErrorResponseArrayOutput {
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesOutput) ToAssetEndpointProfilePropertiesOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOutput {
+func (o AssetStatusErrorResponseArrayOutput) ToAssetStatusErrorResponseArrayOutputWithContext(ctx context.Context) AssetStatusErrorResponseArrayOutput {
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesOutput) ToAssetEndpointProfilePropertiesPtrOutput() AssetEndpointProfilePropertiesPtrOutput {
-	return o.ToAssetEndpointProfilePropertiesPtrOutputWithContext(context.Background())
+func (o AssetStatusErrorResponseArrayOutput) Index(i pulumi.IntInput) AssetStatusErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetStatusErrorResponse {
+		return vs[0].([]AssetStatusErrorResponse)[vs[1].(int)]
+	}).(AssetStatusErrorResponseOutput)
 }
 
-func (o AssetEndpointProfilePropertiesOutput) ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfileProperties) *AssetEndpointProfileProperties {
-		return &v
-	}).(AssetEndpointProfilePropertiesPtrOutput)
+// Defines the asset status properties.
+type AssetStatusResponse struct {
+	// Array object to transfer and persist errors that originate from the Edge.
+	Errors []AssetStatusErrorResponse `pulumi:"errors"`
+	// A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
+	Version *int `pulumi:"version"`
 }
 
-// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-func (o AssetEndpointProfilePropertiesOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileProperties) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
+// Defines the asset status properties.
+type AssetStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (AssetStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetStatusResponse)(nil)).Elem()
 }
 
-// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-func (o AssetEndpointProfilePropertiesOutput) TargetAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfileProperties) string { return v.TargetAddress }).(pulumi.StringOutput)
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-func (o AssetEndpointProfilePropertiesOutput) TransportAuthentication() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileProperties) *AssetEndpointProfilePropertiesTransportAuthentication {
-		return v.TransportAuthentication
-	}).(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput)
-}
-
-// Defines the client authentication mechanism to the server.
-func (o AssetEndpointProfilePropertiesOutput) UserAuthentication() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileProperties) *AssetEndpointProfilePropertiesUserAuthentication {
-		return v.UserAuthentication
-	}).(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput)
-}
-
-type AssetEndpointProfilePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfileProperties)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesPtrOutput) ToAssetEndpointProfilePropertiesPtrOutput() AssetEndpointProfilePropertiesPtrOutput {
+func (o AssetStatusResponseOutput) ToAssetStatusResponseOutput() AssetStatusResponseOutput {
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesPtrOutput) ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesPtrOutput {
+func (o AssetStatusResponseOutput) ToAssetStatusResponseOutputWithContext(ctx context.Context) AssetStatusResponseOutput {
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesPtrOutput) Elem() AssetEndpointProfilePropertiesOutput {
-	return o.ApplyT(func(v *AssetEndpointProfileProperties) AssetEndpointProfileProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfileProperties
-		return ret
-	}).(AssetEndpointProfilePropertiesOutput)
+// Array object to transfer and persist errors that originate from the Edge.
+func (o AssetStatusResponseOutput) Errors() AssetStatusErrorResponseArrayOutput {
+	return o.ApplyT(func(v AssetStatusResponse) []AssetStatusErrorResponse { return v.Errors }).(AssetStatusErrorResponseArrayOutput)
 }
 
-// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-func (o AssetEndpointProfilePropertiesPtrOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfileProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalConfiguration
-	}).(pulumi.StringPtrOutput)
+// A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
+func (o AssetStatusResponseOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AssetStatusResponse) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
 
-// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-func (o AssetEndpointProfilePropertiesPtrOutput) TargetAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfileProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TargetAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-func (o AssetEndpointProfilePropertiesPtrOutput) TransportAuthentication() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfileProperties) *AssetEndpointProfilePropertiesTransportAuthentication {
-		if v == nil {
-			return nil
-		}
-		return v.TransportAuthentication
-	}).(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput)
-}
-
-// Defines the client authentication mechanism to the server.
-func (o AssetEndpointProfilePropertiesPtrOutput) UserAuthentication() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfileProperties) *AssetEndpointProfilePropertiesUserAuthentication {
-		if v == nil {
-			return nil
-		}
-		return v.UserAuthentication
-	}).(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput)
-}
-
-type AssetEndpointProfilePropertiesOwnCertificates struct {
-	// Secret Reference Name (Pfx or Pem password)
-	CertPasswordReference *string `pulumi:"certPasswordReference"`
-	// Secret Reference name (cert and private key).
-	CertSecretReference *string `pulumi:"certSecretReference"`
-	// Certificate thumbprint.
-	CertThumbprint *string `pulumi:"certThumbprint"`
-}
-
-// AssetEndpointProfilePropertiesOwnCertificatesInput is an input type that accepts AssetEndpointProfilePropertiesOwnCertificatesArgs and AssetEndpointProfilePropertiesOwnCertificatesOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesOwnCertificatesInput` via:
-//
-//	AssetEndpointProfilePropertiesOwnCertificatesArgs{...}
-type AssetEndpointProfilePropertiesOwnCertificatesInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesOwnCertificatesOutput() AssetEndpointProfilePropertiesOwnCertificatesOutput
-	ToAssetEndpointProfilePropertiesOwnCertificatesOutputWithContext(context.Context) AssetEndpointProfilePropertiesOwnCertificatesOutput
-}
-
-type AssetEndpointProfilePropertiesOwnCertificatesArgs struct {
-	// Secret Reference Name (Pfx or Pem password)
-	CertPasswordReference pulumi.StringPtrInput `pulumi:"certPasswordReference"`
-	// Secret Reference name (cert and private key).
-	CertSecretReference pulumi.StringPtrInput `pulumi:"certSecretReference"`
-	// Certificate thumbprint.
-	CertThumbprint pulumi.StringPtrInput `pulumi:"certThumbprint"`
-}
-
-func (AssetEndpointProfilePropertiesOwnCertificatesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesOwnCertificates)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesOwnCertificatesArgs) ToAssetEndpointProfilePropertiesOwnCertificatesOutput() AssetEndpointProfilePropertiesOwnCertificatesOutput {
-	return i.ToAssetEndpointProfilePropertiesOwnCertificatesOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesOwnCertificatesArgs) ToAssetEndpointProfilePropertiesOwnCertificatesOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOwnCertificatesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOwnCertificatesOutput)
-}
-
-// AssetEndpointProfilePropertiesOwnCertificatesArrayInput is an input type that accepts AssetEndpointProfilePropertiesOwnCertificatesArray and AssetEndpointProfilePropertiesOwnCertificatesArrayOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesOwnCertificatesArrayInput` via:
-//
-//	AssetEndpointProfilePropertiesOwnCertificatesArray{ AssetEndpointProfilePropertiesOwnCertificatesArgs{...} }
-type AssetEndpointProfilePropertiesOwnCertificatesArrayInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutput() AssetEndpointProfilePropertiesOwnCertificatesArrayOutput
-	ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutputWithContext(context.Context) AssetEndpointProfilePropertiesOwnCertificatesArrayOutput
-}
-
-type AssetEndpointProfilePropertiesOwnCertificatesArray []AssetEndpointProfilePropertiesOwnCertificatesInput
-
-func (AssetEndpointProfilePropertiesOwnCertificatesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetEndpointProfilePropertiesOwnCertificates)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesOwnCertificatesArray) ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutput() AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
-	return i.ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesOwnCertificatesArray) ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOwnCertificatesArrayOutput)
-}
-
-type AssetEndpointProfilePropertiesOwnCertificatesOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesOwnCertificatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesOwnCertificates)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) ToAssetEndpointProfilePropertiesOwnCertificatesOutput() AssetEndpointProfilePropertiesOwnCertificatesOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) ToAssetEndpointProfilePropertiesOwnCertificatesOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOwnCertificatesOutput {
-	return o
-}
-
-// Secret Reference Name (Pfx or Pem password)
-func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) CertPasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesOwnCertificates) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
-}
-
-// Secret Reference name (cert and private key).
-func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) CertSecretReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesOwnCertificates) *string { return v.CertSecretReference }).(pulumi.StringPtrOutput)
-}
-
-// Certificate thumbprint.
-func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) CertThumbprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesOwnCertificates) *string { return v.CertThumbprint }).(pulumi.StringPtrOutput)
-}
-
-type AssetEndpointProfilePropertiesOwnCertificatesArrayOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetEndpointProfilePropertiesOwnCertificates)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutput() AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) Index(i pulumi.IntInput) AssetEndpointProfilePropertiesOwnCertificatesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetEndpointProfilePropertiesOwnCertificates {
-		return vs[0].([]AssetEndpointProfilePropertiesOwnCertificates)[vs[1].(int)]
-	}).(AssetEndpointProfilePropertiesOwnCertificatesOutput)
-}
-
-// Defines the Asset Endpoint Profile properties.
-type AssetEndpointProfilePropertiesResponse struct {
-	// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
-	// Provisioning state of the resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-	TargetAddress string `pulumi:"targetAddress"`
-	// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-	TransportAuthentication *AssetEndpointProfilePropertiesResponseTransportAuthentication `pulumi:"transportAuthentication"`
-	// Defines the client authentication mechanism to the server.
-	UserAuthentication *AssetEndpointProfilePropertiesResponseUserAuthentication `pulumi:"userAuthentication"`
-	// Globally unique, immutable, non-reusable id.
-	Uuid string `pulumi:"uuid"`
-}
-
-// Defaults sets the appropriate defaults for AssetEndpointProfilePropertiesResponse
-func (val *AssetEndpointProfilePropertiesResponse) Defaults() *AssetEndpointProfilePropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.UserAuthentication = tmp.UserAuthentication.Defaults()
-
-	return &tmp
-}
-
-// Defines the Asset Endpoint Profile properties.
-type AssetEndpointProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesResponse)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseOutput) ToAssetEndpointProfilePropertiesResponseOutput() AssetEndpointProfilePropertiesResponseOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseOutput) ToAssetEndpointProfilePropertiesResponseOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseOutput {
-	return o
-}
-
-// Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-func (o AssetEndpointProfilePropertiesResponseOutput) AdditionalConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponse) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
-}
-
-// Provisioning state of the resource.
-func (o AssetEndpointProfilePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-func (o AssetEndpointProfilePropertiesResponseOutput) TargetAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponse) string { return v.TargetAddress }).(pulumi.StringOutput)
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-func (o AssetEndpointProfilePropertiesResponseOutput) TransportAuthentication() AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponse) *AssetEndpointProfilePropertiesResponseTransportAuthentication {
-		return v.TransportAuthentication
-	}).(AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput)
-}
-
-// Defines the client authentication mechanism to the server.
-func (o AssetEndpointProfilePropertiesResponseOutput) UserAuthentication() AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponse) *AssetEndpointProfilePropertiesResponseUserAuthentication {
-		return v.UserAuthentication
-	}).(AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput)
-}
-
-// Globally unique, immutable, non-reusable id.
-func (o AssetEndpointProfilePropertiesResponseOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponse) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type AssetEndpointProfilePropertiesResponseOwnCertificates struct {
-	// Secret Reference Name (Pfx or Pem password)
-	CertPasswordReference *string `pulumi:"certPasswordReference"`
-	// Secret Reference name (cert and private key).
-	CertSecretReference *string `pulumi:"certSecretReference"`
-	// Certificate thumbprint.
-	CertThumbprint *string `pulumi:"certThumbprint"`
-}
-
-type AssetEndpointProfilePropertiesResponseOwnCertificatesOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesResponseOwnCertificates)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) ToAssetEndpointProfilePropertiesResponseOwnCertificatesOutput() AssetEndpointProfilePropertiesResponseOwnCertificatesOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) ToAssetEndpointProfilePropertiesResponseOwnCertificatesOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseOwnCertificatesOutput {
-	return o
-}
-
-// Secret Reference Name (Pfx or Pem password)
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) CertPasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseOwnCertificates) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
-}
-
-// Secret Reference name (cert and private key).
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) CertSecretReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseOwnCertificates) *string { return v.CertSecretReference }).(pulumi.StringPtrOutput)
-}
-
-// Certificate thumbprint.
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) CertThumbprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseOwnCertificates) *string { return v.CertThumbprint }).(pulumi.StringPtrOutput)
-}
-
-type AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetEndpointProfilePropertiesResponseOwnCertificates)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) ToAssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput() AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) ToAssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) Index(i pulumi.IntInput) AssetEndpointProfilePropertiesResponseOwnCertificatesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetEndpointProfilePropertiesResponseOwnCertificates {
-		return vs[0].([]AssetEndpointProfilePropertiesResponseOwnCertificates)[vs[1].(int)]
-	}).(AssetEndpointProfilePropertiesResponseOwnCertificatesOutput)
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-type AssetEndpointProfilePropertiesResponseTransportAuthentication struct {
-	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-	OwnCertificates []AssetEndpointProfilePropertiesResponseOwnCertificates `pulumi:"ownCertificates"`
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-type AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesResponseTransportAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) ToAssetEndpointProfilePropertiesResponseTransportAuthenticationOutput() AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) ToAssetEndpointProfilePropertiesResponseTransportAuthenticationOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput {
-	return o
-}
-
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) OwnCertificates() AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseTransportAuthentication) []AssetEndpointProfilePropertiesResponseOwnCertificates {
-		return v.OwnCertificates
-	}).(AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput)
-}
-
-type AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesResponseTransportAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseTransportAuthentication) AssetEndpointProfilePropertiesResponseTransportAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesResponseTransportAuthentication
-		return ret
-	}).(AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput)
-}
-
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) OwnCertificates() AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseTransportAuthentication) []AssetEndpointProfilePropertiesResponseOwnCertificates {
-		if v == nil {
-			return nil
-		}
-		return v.OwnCertificates
-	}).(AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput)
-}
-
-// Defines the client authentication mechanism to the server.
-type AssetEndpointProfilePropertiesResponseUserAuthentication struct {
-	// Defines the mode to authenticate the user of the client at the server.
-	Mode string `pulumi:"mode"`
-	// Defines the username and password references when UsernamePassword user authentication mode is selected.
-	UsernamePasswordCredentials *AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
-	// Defines the certificate reference when Certificate user authentication mode is selected.
-	X509Credentials *AssetEndpointProfilePropertiesResponseX509Credentials `pulumi:"x509Credentials"`
-}
-
-// Defaults sets the appropriate defaults for AssetEndpointProfilePropertiesResponseUserAuthentication
-func (val *AssetEndpointProfilePropertiesResponseUserAuthentication) Defaults() *AssetEndpointProfilePropertiesResponseUserAuthentication {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.Mode) {
-		tmp.Mode = "Certificate"
-	}
-	return &tmp
-}
-
-// Defines the client authentication mechanism to the server.
-type AssetEndpointProfilePropertiesResponseUserAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesResponseUserAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) ToAssetEndpointProfilePropertiesResponseUserAuthenticationOutput() AssetEndpointProfilePropertiesResponseUserAuthenticationOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) ToAssetEndpointProfilePropertiesResponseUserAuthenticationOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseUserAuthenticationOutput {
-	return o
-}
-
-// Defines the mode to authenticate the user of the client at the server.
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUserAuthentication) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) UsernamePasswordCredentials() AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUserAuthentication) *AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials {
-		return v.UsernamePasswordCredentials
-	}).(AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) X509Credentials() AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUserAuthentication) *AssetEndpointProfilePropertiesResponseX509Credentials {
-		return v.X509Credentials
-	}).(AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput)
-}
-
-type AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesResponseUserAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesResponseUserAuthenticationOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUserAuthentication) AssetEndpointProfilePropertiesResponseUserAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesResponseUserAuthentication
-		return ret
-	}).(AssetEndpointProfilePropertiesResponseUserAuthenticationOutput)
-}
-
-// Defines the mode to authenticate the user of the client at the server.
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUserAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) UsernamePasswordCredentials() AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUserAuthentication) *AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials {
-		if v == nil {
-			return nil
-		}
-		return v.UsernamePasswordCredentials
-	}).(AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) X509Credentials() AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUserAuthentication) *AssetEndpointProfilePropertiesResponseX509Credentials {
-		if v == nil {
-			return nil
-		}
-		return v.X509Credentials
-	}).(AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-type AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials struct {
-	// A reference to secret containing the password.
-	PasswordReference string `pulumi:"passwordReference"`
-	// A reference to secret containing the username.
-	UsernameReference string `pulumi:"usernameReference"`
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-type AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) ToAssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput() AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) ToAssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput {
-	return o
-}
-
-// A reference to secret containing the password.
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) PasswordReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials) string {
-		return v.PasswordReference
-	}).(pulumi.StringOutput)
-}
-
-// A reference to secret containing the username.
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) UsernameReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials) string {
-		return v.UsernameReference
-	}).(pulumi.StringOutput)
-}
-
-type AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) ToAssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) ToAssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials) AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials
-		return ret
-	}).(AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput)
-}
-
-// A reference to secret containing the password.
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) PasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PasswordReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// A reference to secret containing the username.
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) UsernameReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UsernameReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-type AssetEndpointProfilePropertiesResponseX509Credentials struct {
-	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-	CertificateReference string `pulumi:"certificateReference"`
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-type AssetEndpointProfilePropertiesResponseX509CredentialsOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseX509CredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesResponseX509Credentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsOutput) ToAssetEndpointProfilePropertiesResponseX509CredentialsOutput() AssetEndpointProfilePropertiesResponseX509CredentialsOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsOutput) ToAssetEndpointProfilePropertiesResponseX509CredentialsOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseX509CredentialsOutput {
-	return o
-}
-
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsOutput) CertificateReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseX509Credentials) string { return v.CertificateReference }).(pulumi.StringOutput)
-}
-
-type AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesResponseX509Credentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) ToAssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput() AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) ToAssetEndpointProfilePropertiesResponseX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesResponseX509CredentialsOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseX509Credentials) AssetEndpointProfilePropertiesResponseX509Credentials {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesResponseX509Credentials
-		return ret
-	}).(AssetEndpointProfilePropertiesResponseX509CredentialsOutput)
-}
-
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) CertificateReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesResponseX509Credentials) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertificateReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-type AssetEndpointProfilePropertiesTransportAuthentication struct {
-	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-	OwnCertificates []AssetEndpointProfilePropertiesOwnCertificates `pulumi:"ownCertificates"`
-}
-
-// AssetEndpointProfilePropertiesTransportAuthenticationInput is an input type that accepts AssetEndpointProfilePropertiesTransportAuthenticationArgs and AssetEndpointProfilePropertiesTransportAuthenticationOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesTransportAuthenticationInput` via:
-//
-//	AssetEndpointProfilePropertiesTransportAuthenticationArgs{...}
-type AssetEndpointProfilePropertiesTransportAuthenticationInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesTransportAuthenticationOutput() AssetEndpointProfilePropertiesTransportAuthenticationOutput
-	ToAssetEndpointProfilePropertiesTransportAuthenticationOutputWithContext(context.Context) AssetEndpointProfilePropertiesTransportAuthenticationOutput
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-type AssetEndpointProfilePropertiesTransportAuthenticationArgs struct {
-	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-	OwnCertificates AssetEndpointProfilePropertiesOwnCertificatesArrayInput `pulumi:"ownCertificates"`
-}
-
-func (AssetEndpointProfilePropertiesTransportAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesTransportAuthentication)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToAssetEndpointProfilePropertiesTransportAuthenticationOutput() AssetEndpointProfilePropertiesTransportAuthenticationOutput {
-	return i.ToAssetEndpointProfilePropertiesTransportAuthenticationOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToAssetEndpointProfilePropertiesTransportAuthenticationOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesTransportAuthenticationOutput)
-}
-
-func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesTransportAuthenticationOutput).ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx)
-}
-
-// AssetEndpointProfilePropertiesTransportAuthenticationPtrInput is an input type that accepts AssetEndpointProfilePropertiesTransportAuthenticationArgs, AssetEndpointProfilePropertiesTransportAuthenticationPtr and AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesTransportAuthenticationPtrInput` via:
-//
-//	        AssetEndpointProfilePropertiesTransportAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type AssetEndpointProfilePropertiesTransportAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput
-	ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(context.Context) AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput
-}
-
-type assetEndpointProfilePropertiesTransportAuthenticationPtrType AssetEndpointProfilePropertiesTransportAuthenticationArgs
-
-func AssetEndpointProfilePropertiesTransportAuthenticationPtr(v *AssetEndpointProfilePropertiesTransportAuthenticationArgs) AssetEndpointProfilePropertiesTransportAuthenticationPtrInput {
-	return (*assetEndpointProfilePropertiesTransportAuthenticationPtrType)(v)
-}
-
-func (*assetEndpointProfilePropertiesTransportAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesTransportAuthentication)(nil)).Elem()
-}
-
-func (i *assetEndpointProfilePropertiesTransportAuthenticationPtrType) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *assetEndpointProfilePropertiesTransportAuthenticationPtrType) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput)
-}
-
-// Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-type AssetEndpointProfilePropertiesTransportAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesTransportAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesTransportAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationOutput() AssetEndpointProfilePropertiesTransportAuthenticationOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return o.ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfilePropertiesTransportAuthentication) *AssetEndpointProfilePropertiesTransportAuthentication {
-		return &v
-	}).(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput)
-}
-
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) OwnCertificates() AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesTransportAuthentication) []AssetEndpointProfilePropertiesOwnCertificates {
-		return v.OwnCertificates
-	}).(AssetEndpointProfilePropertiesOwnCertificatesArrayOutput)
-}
-
-type AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesTransportAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesTransportAuthenticationOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesTransportAuthentication) AssetEndpointProfilePropertiesTransportAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesTransportAuthentication
-		return ret
-	}).(AssetEndpointProfilePropertiesTransportAuthenticationOutput)
-}
-
-// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) OwnCertificates() AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesTransportAuthentication) []AssetEndpointProfilePropertiesOwnCertificates {
-		if v == nil {
-			return nil
-		}
-		return v.OwnCertificates
-	}).(AssetEndpointProfilePropertiesOwnCertificatesArrayOutput)
-}
-
-// Defines the client authentication mechanism to the server.
-type AssetEndpointProfilePropertiesUserAuthentication struct {
-	// Defines the mode to authenticate the user of the client at the server.
-	Mode string `pulumi:"mode"`
-	// Defines the username and password references when UsernamePassword user authentication mode is selected.
-	UsernamePasswordCredentials *AssetEndpointProfilePropertiesUsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
-	// Defines the certificate reference when Certificate user authentication mode is selected.
-	X509Credentials *AssetEndpointProfilePropertiesX509Credentials `pulumi:"x509Credentials"`
-}
-
-// Defaults sets the appropriate defaults for AssetEndpointProfilePropertiesUserAuthentication
-func (val *AssetEndpointProfilePropertiesUserAuthentication) Defaults() *AssetEndpointProfilePropertiesUserAuthentication {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if utilities.IsZero(tmp.Mode) {
-		tmp.Mode = "Certificate"
-	}
-	return &tmp
-}
-
-// AssetEndpointProfilePropertiesUserAuthenticationInput is an input type that accepts AssetEndpointProfilePropertiesUserAuthenticationArgs and AssetEndpointProfilePropertiesUserAuthenticationOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesUserAuthenticationInput` via:
-//
-//	AssetEndpointProfilePropertiesUserAuthenticationArgs{...}
-type AssetEndpointProfilePropertiesUserAuthenticationInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesUserAuthenticationOutput() AssetEndpointProfilePropertiesUserAuthenticationOutput
-	ToAssetEndpointProfilePropertiesUserAuthenticationOutputWithContext(context.Context) AssetEndpointProfilePropertiesUserAuthenticationOutput
-}
-
-// Defines the client authentication mechanism to the server.
-type AssetEndpointProfilePropertiesUserAuthenticationArgs struct {
-	// Defines the mode to authenticate the user of the client at the server.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// Defines the username and password references when UsernamePassword user authentication mode is selected.
-	UsernamePasswordCredentials AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
-	// Defines the certificate reference when Certificate user authentication mode is selected.
-	X509Credentials AssetEndpointProfilePropertiesX509CredentialsPtrInput `pulumi:"x509Credentials"`
-}
-
-// Defaults sets the appropriate defaults for AssetEndpointProfilePropertiesUserAuthenticationArgs
-func (val *AssetEndpointProfilePropertiesUserAuthenticationArgs) Defaults() *AssetEndpointProfilePropertiesUserAuthenticationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Mode == nil {
-		tmp.Mode = pulumi.String("Certificate")
-	}
-	return &tmp
-}
-func (AssetEndpointProfilePropertiesUserAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesUserAuthentication)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToAssetEndpointProfilePropertiesUserAuthenticationOutput() AssetEndpointProfilePropertiesUserAuthenticationOutput {
-	return i.ToAssetEndpointProfilePropertiesUserAuthenticationOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToAssetEndpointProfilePropertiesUserAuthenticationOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUserAuthenticationOutput)
-}
-
-func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUserAuthenticationOutput).ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx)
-}
-
-// AssetEndpointProfilePropertiesUserAuthenticationPtrInput is an input type that accepts AssetEndpointProfilePropertiesUserAuthenticationArgs, AssetEndpointProfilePropertiesUserAuthenticationPtr and AssetEndpointProfilePropertiesUserAuthenticationPtrOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesUserAuthenticationPtrInput` via:
-//
-//	        AssetEndpointProfilePropertiesUserAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type AssetEndpointProfilePropertiesUserAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput
-	ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(context.Context) AssetEndpointProfilePropertiesUserAuthenticationPtrOutput
-}
-
-type assetEndpointProfilePropertiesUserAuthenticationPtrType AssetEndpointProfilePropertiesUserAuthenticationArgs
-
-func AssetEndpointProfilePropertiesUserAuthenticationPtr(v *AssetEndpointProfilePropertiesUserAuthenticationArgs) AssetEndpointProfilePropertiesUserAuthenticationPtrInput {
-	return (*assetEndpointProfilePropertiesUserAuthenticationPtrType)(v)
-}
-
-func (*assetEndpointProfilePropertiesUserAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesUserAuthentication)(nil)).Elem()
-}
-
-func (i *assetEndpointProfilePropertiesUserAuthenticationPtrType) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *assetEndpointProfilePropertiesUserAuthenticationPtrType) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput)
-}
-
-// Defines the client authentication mechanism to the server.
-type AssetEndpointProfilePropertiesUserAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesUserAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesUserAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) ToAssetEndpointProfilePropertiesUserAuthenticationOutput() AssetEndpointProfilePropertiesUserAuthenticationOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) ToAssetEndpointProfilePropertiesUserAuthenticationOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return o.ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfilePropertiesUserAuthentication) *AssetEndpointProfilePropertiesUserAuthentication {
-		return &v
-	}).(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput)
-}
-
-// Defines the mode to authenticate the user of the client at the server.
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesUserAuthentication) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) UsernamePasswordCredentials() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesUserAuthentication) *AssetEndpointProfilePropertiesUsernamePasswordCredentials {
-		return v.UsernamePasswordCredentials
-	}).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) X509Credentials() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesUserAuthentication) *AssetEndpointProfilePropertiesX509Credentials {
-		return v.X509Credentials
-	}).(AssetEndpointProfilePropertiesX509CredentialsPtrOutput)
-}
-
-type AssetEndpointProfilePropertiesUserAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesUserAuthentication)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesUserAuthenticationOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUserAuthentication) AssetEndpointProfilePropertiesUserAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesUserAuthentication
-		return ret
-	}).(AssetEndpointProfilePropertiesUserAuthenticationOutput)
-}
-
-// Defines the mode to authenticate the user of the client at the server.
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUserAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) UsernamePasswordCredentials() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUserAuthentication) *AssetEndpointProfilePropertiesUsernamePasswordCredentials {
-		if v == nil {
-			return nil
-		}
-		return v.UsernamePasswordCredentials
-	}).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) X509Credentials() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUserAuthentication) *AssetEndpointProfilePropertiesX509Credentials {
-		if v == nil {
-			return nil
-		}
-		return v.X509Credentials
-	}).(AssetEndpointProfilePropertiesX509CredentialsPtrOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-type AssetEndpointProfilePropertiesUsernamePasswordCredentials struct {
-	// A reference to secret containing the password.
-	PasswordReference string `pulumi:"passwordReference"`
-	// A reference to secret containing the username.
-	UsernameReference string `pulumi:"usernameReference"`
-}
-
-// AssetEndpointProfilePropertiesUsernamePasswordCredentialsInput is an input type that accepts AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs and AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesUsernamePasswordCredentialsInput` via:
-//
-//	AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs{...}
-type AssetEndpointProfilePropertiesUsernamePasswordCredentialsInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput
-	ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutputWithContext(context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-type AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs struct {
-	// A reference to secret containing the password.
-	PasswordReference pulumi.StringInput `pulumi:"passwordReference"`
-	// A reference to secret containing the username.
-	UsernameReference pulumi.StringInput `pulumi:"usernameReference"`
-}
-
-func (AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesUsernamePasswordCredentials)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput {
-	return i.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput)
-}
-
-func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput).ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx)
-}
-
-// AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrInput is an input type that accepts AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs, AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtr and AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrInput` via:
-//
-//	        AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs{...}
-//
-//	or:
-//
-//	        nil
-type AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput
-	ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput
-}
-
-type assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs
-
-func AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtr(v *AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrInput {
-	return (*assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType)(v)
-}
-
-func (*assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesUsernamePasswordCredentials)(nil)).Elem()
-}
-
-func (i *assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
-}
-
-func (i *assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput)
-}
-
-// Defines the username and password references when UsernamePassword user authentication mode is selected.
-type AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesUsernamePasswordCredentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return o.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfilePropertiesUsernamePasswordCredentials) *AssetEndpointProfilePropertiesUsernamePasswordCredentials {
-		return &v
-	}).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput)
-}
-
-// A reference to secret containing the password.
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) PasswordReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesUsernamePasswordCredentials) string { return v.PasswordReference }).(pulumi.StringOutput)
-}
-
-// A reference to secret containing the username.
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) UsernameReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesUsernamePasswordCredentials) string { return v.UsernameReference }).(pulumi.StringOutput)
-}
-
-type AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesUsernamePasswordCredentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUsernamePasswordCredentials) AssetEndpointProfilePropertiesUsernamePasswordCredentials {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesUsernamePasswordCredentials
-		return ret
-	}).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput)
-}
-
-// A reference to secret containing the password.
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) PasswordReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUsernamePasswordCredentials) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PasswordReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// A reference to secret containing the username.
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) UsernameReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesUsernamePasswordCredentials) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.UsernameReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-type AssetEndpointProfilePropertiesX509Credentials struct {
-	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-	CertificateReference string `pulumi:"certificateReference"`
-}
-
-// AssetEndpointProfilePropertiesX509CredentialsInput is an input type that accepts AssetEndpointProfilePropertiesX509CredentialsArgs and AssetEndpointProfilePropertiesX509CredentialsOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesX509CredentialsInput` via:
-//
-//	AssetEndpointProfilePropertiesX509CredentialsArgs{...}
-type AssetEndpointProfilePropertiesX509CredentialsInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesX509CredentialsOutput() AssetEndpointProfilePropertiesX509CredentialsOutput
-	ToAssetEndpointProfilePropertiesX509CredentialsOutputWithContext(context.Context) AssetEndpointProfilePropertiesX509CredentialsOutput
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-type AssetEndpointProfilePropertiesX509CredentialsArgs struct {
-	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-	CertificateReference pulumi.StringInput `pulumi:"certificateReference"`
-}
-
-func (AssetEndpointProfilePropertiesX509CredentialsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesX509Credentials)(nil)).Elem()
-}
-
-func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToAssetEndpointProfilePropertiesX509CredentialsOutput() AssetEndpointProfilePropertiesX509CredentialsOutput {
-	return i.ToAssetEndpointProfilePropertiesX509CredentialsOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToAssetEndpointProfilePropertiesX509CredentialsOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesX509CredentialsOutput)
-}
-
-func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutput() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(context.Background())
-}
-
-func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesX509CredentialsOutput).ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx)
-}
-
-// AssetEndpointProfilePropertiesX509CredentialsPtrInput is an input type that accepts AssetEndpointProfilePropertiesX509CredentialsArgs, AssetEndpointProfilePropertiesX509CredentialsPtr and AssetEndpointProfilePropertiesX509CredentialsPtrOutput values.
-// You can construct a concrete instance of `AssetEndpointProfilePropertiesX509CredentialsPtrInput` via:
-//
-//	        AssetEndpointProfilePropertiesX509CredentialsArgs{...}
-//
-//	or:
-//
-//	        nil
-type AssetEndpointProfilePropertiesX509CredentialsPtrInput interface {
-	pulumi.Input
-
-	ToAssetEndpointProfilePropertiesX509CredentialsPtrOutput() AssetEndpointProfilePropertiesX509CredentialsPtrOutput
-	ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(context.Context) AssetEndpointProfilePropertiesX509CredentialsPtrOutput
-}
-
-type assetEndpointProfilePropertiesX509CredentialsPtrType AssetEndpointProfilePropertiesX509CredentialsArgs
-
-func AssetEndpointProfilePropertiesX509CredentialsPtr(v *AssetEndpointProfilePropertiesX509CredentialsArgs) AssetEndpointProfilePropertiesX509CredentialsPtrInput {
-	return (*assetEndpointProfilePropertiesX509CredentialsPtrType)(v)
-}
-
-func (*assetEndpointProfilePropertiesX509CredentialsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesX509Credentials)(nil)).Elem()
-}
-
-func (i *assetEndpointProfilePropertiesX509CredentialsPtrType) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutput() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return i.ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(context.Background())
-}
-
-func (i *assetEndpointProfilePropertiesX509CredentialsPtrType) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesX509CredentialsPtrOutput)
-}
-
-// Defines the certificate reference when Certificate user authentication mode is selected.
-type AssetEndpointProfilePropertiesX509CredentialsOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesX509CredentialsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfilePropertiesX509Credentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsOutput) ToAssetEndpointProfilePropertiesX509CredentialsOutput() AssetEndpointProfilePropertiesX509CredentialsOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsOutput) ToAssetEndpointProfilePropertiesX509CredentialsOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsOutput) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutput() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return o.ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(context.Background())
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsOutput) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfilePropertiesX509Credentials) *AssetEndpointProfilePropertiesX509Credentials {
-		return &v
-	}).(AssetEndpointProfilePropertiesX509CredentialsPtrOutput)
-}
-
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o AssetEndpointProfilePropertiesX509CredentialsOutput) CertificateReference() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetEndpointProfilePropertiesX509Credentials) string { return v.CertificateReference }).(pulumi.StringOutput)
-}
-
-type AssetEndpointProfilePropertiesX509CredentialsPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfilePropertiesX509CredentialsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetEndpointProfilePropertiesX509Credentials)(nil)).Elem()
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutput() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
-	return o
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesX509CredentialsOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesX509Credentials) AssetEndpointProfilePropertiesX509Credentials {
-		if v != nil {
-			return *v
-		}
-		var ret AssetEndpointProfilePropertiesX509Credentials
-		return ret
-	}).(AssetEndpointProfilePropertiesX509CredentialsOutput)
-}
-
-// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) CertificateReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetEndpointProfilePropertiesX509Credentials) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.CertificateReference
-	}).(pulumi.StringPtrOutput)
-}
-
-// The extended location.
-type AssetEndpointProfileResponseExtendedLocation struct {
-	// The extended location name.
-	Name *string `pulumi:"name"`
-	// The extended location type.
-	Type *string `pulumi:"type"`
-}
-
-// The extended location.
-type AssetEndpointProfileResponseExtendedLocationOutput struct{ *pulumi.OutputState }
-
-func (AssetEndpointProfileResponseExtendedLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetEndpointProfileResponseExtendedLocation)(nil)).Elem()
-}
-
-func (o AssetEndpointProfileResponseExtendedLocationOutput) ToAssetEndpointProfileResponseExtendedLocationOutput() AssetEndpointProfileResponseExtendedLocationOutput {
-	return o
-}
-
-func (o AssetEndpointProfileResponseExtendedLocationOutput) ToAssetEndpointProfileResponseExtendedLocationOutputWithContext(ctx context.Context) AssetEndpointProfileResponseExtendedLocationOutput {
-	return o
-}
-
-// The extended location name.
-func (o AssetEndpointProfileResponseExtendedLocationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileResponseExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The extended location type.
-func (o AssetEndpointProfileResponseExtendedLocationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetEndpointProfileResponseExtendedLocation) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The extended location.
-type AssetExtendedLocation struct {
-	// The extended location name.
-	Name *string `pulumi:"name"`
-	// The extended location type.
-	Type *string `pulumi:"type"`
-}
-
-// AssetExtendedLocationInput is an input type that accepts AssetExtendedLocationArgs and AssetExtendedLocationOutput values.
-// You can construct a concrete instance of `AssetExtendedLocationInput` via:
-//
-//	AssetExtendedLocationArgs{...}
-type AssetExtendedLocationInput interface {
-	pulumi.Input
-
-	ToAssetExtendedLocationOutput() AssetExtendedLocationOutput
-	ToAssetExtendedLocationOutputWithContext(context.Context) AssetExtendedLocationOutput
-}
-
-// The extended location.
-type AssetExtendedLocationArgs struct {
-	// The extended location name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The extended location type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (AssetExtendedLocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetExtendedLocation)(nil)).Elem()
-}
-
-func (i AssetExtendedLocationArgs) ToAssetExtendedLocationOutput() AssetExtendedLocationOutput {
-	return i.ToAssetExtendedLocationOutputWithContext(context.Background())
-}
-
-func (i AssetExtendedLocationArgs) ToAssetExtendedLocationOutputWithContext(ctx context.Context) AssetExtendedLocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetExtendedLocationOutput)
-}
-
-// The extended location.
-type AssetExtendedLocationOutput struct{ *pulumi.OutputState }
-
-func (AssetExtendedLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetExtendedLocation)(nil)).Elem()
-}
-
-func (o AssetExtendedLocationOutput) ToAssetExtendedLocationOutput() AssetExtendedLocationOutput {
-	return o
-}
-
-func (o AssetExtendedLocationOutput) ToAssetExtendedLocationOutputWithContext(ctx context.Context) AssetExtendedLocationOutput {
-	return o
-}
-
-// The extended location name.
-func (o AssetExtendedLocationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The extended location type.
-func (o AssetExtendedLocationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetExtendedLocation) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Asset resource properties.
-type AssetProperties struct {
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri string `pulumi:"assetEndpointProfileUri"`
-	// Resource path to asset type (model) definition.
-	AssetType *string `pulumi:"assetType"`
-	// A set of key-value pairs that contain custom attributes set by the customer.
-	Attributes interface{} `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-	DataPoints []AssetPropertiesDataPoints `pulumi:"dataPoints"`
-	// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-	DefaultDataPointsConfiguration *string `pulumi:"defaultDataPointsConfiguration"`
-	// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-	DefaultEventsConfiguration *string `pulumi:"defaultEventsConfiguration"`
-	// Human-readable description of the asset.
-	Description *string `pulumi:"description"`
-	// Human-readable display name.
-	DisplayName *string `pulumi:"displayName"`
-	// Reference to the documentation.
-	DocumentationUri *string `pulumi:"documentationUri"`
-	// Enabled/Disabled status of the asset.
-	Enabled *bool `pulumi:"enabled"`
-	// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-	Events []AssetPropertiesEvents `pulumi:"events"`
-	// Asset id provided by the customer.
-	ExternalAssetId *string `pulumi:"externalAssetId"`
-	// Revision number of the hardware.
-	HardwareRevision *string `pulumi:"hardwareRevision"`
-	// Asset manufacturer name.
-	Manufacturer *string `pulumi:"manufacturer"`
-	// Asset manufacturer URI.
-	ManufacturerUri *string `pulumi:"manufacturerUri"`
-	// Asset model name.
-	Model *string `pulumi:"model"`
-	// Asset product code.
-	ProductCode *string `pulumi:"productCode"`
-	// Asset serial number.
-	SerialNumber *string `pulumi:"serialNumber"`
-	// Revision number of the software.
-	SoftwareRevision *string `pulumi:"softwareRevision"`
-}
-
-// AssetPropertiesInput is an input type that accepts AssetPropertiesArgs and AssetPropertiesOutput values.
-// You can construct a concrete instance of `AssetPropertiesInput` via:
-//
-//	AssetPropertiesArgs{...}
-type AssetPropertiesInput interface {
-	pulumi.Input
-
-	ToAssetPropertiesOutput() AssetPropertiesOutput
-	ToAssetPropertiesOutputWithContext(context.Context) AssetPropertiesOutput
-}
-
-// Asset resource properties.
-type AssetPropertiesArgs struct {
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri pulumi.StringInput `pulumi:"assetEndpointProfileUri"`
-	// Resource path to asset type (model) definition.
-	AssetType pulumi.StringPtrInput `pulumi:"assetType"`
-	// A set of key-value pairs that contain custom attributes set by the customer.
-	Attributes pulumi.Input `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-	DataPoints AssetPropertiesDataPointsArrayInput `pulumi:"dataPoints"`
-	// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-	DefaultDataPointsConfiguration pulumi.StringPtrInput `pulumi:"defaultDataPointsConfiguration"`
-	// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-	DefaultEventsConfiguration pulumi.StringPtrInput `pulumi:"defaultEventsConfiguration"`
-	// Human-readable description of the asset.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Human-readable display name.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Reference to the documentation.
-	DocumentationUri pulumi.StringPtrInput `pulumi:"documentationUri"`
-	// Enabled/Disabled status of the asset.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-	Events AssetPropertiesEventsArrayInput `pulumi:"events"`
-	// Asset id provided by the customer.
-	ExternalAssetId pulumi.StringPtrInput `pulumi:"externalAssetId"`
-	// Revision number of the hardware.
-	HardwareRevision pulumi.StringPtrInput `pulumi:"hardwareRevision"`
-	// Asset manufacturer name.
-	Manufacturer pulumi.StringPtrInput `pulumi:"manufacturer"`
-	// Asset manufacturer URI.
-	ManufacturerUri pulumi.StringPtrInput `pulumi:"manufacturerUri"`
-	// Asset model name.
-	Model pulumi.StringPtrInput `pulumi:"model"`
-	// Asset product code.
-	ProductCode pulumi.StringPtrInput `pulumi:"productCode"`
-	// Asset serial number.
-	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
-	// Revision number of the software.
-	SoftwareRevision pulumi.StringPtrInput `pulumi:"softwareRevision"`
-}
-
-func (AssetPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetProperties)(nil)).Elem()
-}
-
-func (i AssetPropertiesArgs) ToAssetPropertiesOutput() AssetPropertiesOutput {
-	return i.ToAssetPropertiesOutputWithContext(context.Background())
-}
-
-func (i AssetPropertiesArgs) ToAssetPropertiesOutputWithContext(ctx context.Context) AssetPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesOutput)
-}
-
-func (i AssetPropertiesArgs) ToAssetPropertiesPtrOutput() AssetPropertiesPtrOutput {
-	return i.ToAssetPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i AssetPropertiesArgs) ToAssetPropertiesPtrOutputWithContext(ctx context.Context) AssetPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesOutput).ToAssetPropertiesPtrOutputWithContext(ctx)
-}
-
-// AssetPropertiesPtrInput is an input type that accepts AssetPropertiesArgs, AssetPropertiesPtr and AssetPropertiesPtrOutput values.
-// You can construct a concrete instance of `AssetPropertiesPtrInput` via:
-//
-//	        AssetPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AssetPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToAssetPropertiesPtrOutput() AssetPropertiesPtrOutput
-	ToAssetPropertiesPtrOutputWithContext(context.Context) AssetPropertiesPtrOutput
-}
-
-type assetPropertiesPtrType AssetPropertiesArgs
-
-func AssetPropertiesPtr(v *AssetPropertiesArgs) AssetPropertiesPtrInput {
-	return (*assetPropertiesPtrType)(v)
-}
-
-func (*assetPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetProperties)(nil)).Elem()
-}
-
-func (i *assetPropertiesPtrType) ToAssetPropertiesPtrOutput() AssetPropertiesPtrOutput {
-	return i.ToAssetPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *assetPropertiesPtrType) ToAssetPropertiesPtrOutputWithContext(ctx context.Context) AssetPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesPtrOutput)
-}
-
-// Asset resource properties.
-type AssetPropertiesOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetProperties)(nil)).Elem()
-}
-
-func (o AssetPropertiesOutput) ToAssetPropertiesOutput() AssetPropertiesOutput {
-	return o
-}
-
-func (o AssetPropertiesOutput) ToAssetPropertiesOutputWithContext(ctx context.Context) AssetPropertiesOutput {
-	return o
-}
-
-func (o AssetPropertiesOutput) ToAssetPropertiesPtrOutput() AssetPropertiesPtrOutput {
-	return o.ToAssetPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o AssetPropertiesOutput) ToAssetPropertiesPtrOutputWithContext(ctx context.Context) AssetPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetProperties) *AssetProperties {
-		return &v
-	}).(AssetPropertiesPtrOutput)
-}
-
-// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-func (o AssetPropertiesOutput) AssetEndpointProfileUri() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetProperties) string { return v.AssetEndpointProfileUri }).(pulumi.StringOutput)
-}
-
-// Resource path to asset type (model) definition.
-func (o AssetPropertiesOutput) AssetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.AssetType }).(pulumi.StringPtrOutput)
-}
-
-// A set of key-value pairs that contain custom attributes set by the customer.
-func (o AssetPropertiesOutput) Attributes() pulumi.AnyOutput {
-	return o.ApplyT(func(v AssetProperties) interface{} { return v.Attributes }).(pulumi.AnyOutput)
-}
-
-// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-func (o AssetPropertiesOutput) DataPoints() AssetPropertiesDataPointsArrayOutput {
-	return o.ApplyT(func(v AssetProperties) []AssetPropertiesDataPoints { return v.DataPoints }).(AssetPropertiesDataPointsArrayOutput)
-}
-
-// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-func (o AssetPropertiesOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.DefaultDataPointsConfiguration }).(pulumi.StringPtrOutput)
-}
-
-// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-func (o AssetPropertiesOutput) DefaultEventsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.DefaultEventsConfiguration }).(pulumi.StringPtrOutput)
-}
-
-// Human-readable description of the asset.
-func (o AssetPropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Human-readable display name.
-func (o AssetPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Reference to the documentation.
-func (o AssetPropertiesOutput) DocumentationUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.DocumentationUri }).(pulumi.StringPtrOutput)
-}
-
-// Enabled/Disabled status of the asset.
-func (o AssetPropertiesOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-func (o AssetPropertiesOutput) Events() AssetPropertiesEventsArrayOutput {
-	return o.ApplyT(func(v AssetProperties) []AssetPropertiesEvents { return v.Events }).(AssetPropertiesEventsArrayOutput)
-}
-
-// Asset id provided by the customer.
-func (o AssetPropertiesOutput) ExternalAssetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.ExternalAssetId }).(pulumi.StringPtrOutput)
-}
-
-// Revision number of the hardware.
-func (o AssetPropertiesOutput) HardwareRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.HardwareRevision }).(pulumi.StringPtrOutput)
-}
-
-// Asset manufacturer name.
-func (o AssetPropertiesOutput) Manufacturer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
-}
-
-// Asset manufacturer URI.
-func (o AssetPropertiesOutput) ManufacturerUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.ManufacturerUri }).(pulumi.StringPtrOutput)
-}
-
-// Asset model name.
-func (o AssetPropertiesOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.Model }).(pulumi.StringPtrOutput)
-}
-
-// Asset product code.
-func (o AssetPropertiesOutput) ProductCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
-}
-
-// Asset serial number.
-func (o AssetPropertiesOutput) SerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
-}
-
-// Revision number of the software.
-func (o AssetPropertiesOutput) SoftwareRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetProperties) *string { return v.SoftwareRevision }).(pulumi.StringPtrOutput)
-}
-
-type AssetPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssetProperties)(nil)).Elem()
-}
-
-func (o AssetPropertiesPtrOutput) ToAssetPropertiesPtrOutput() AssetPropertiesPtrOutput {
-	return o
-}
-
-func (o AssetPropertiesPtrOutput) ToAssetPropertiesPtrOutputWithContext(ctx context.Context) AssetPropertiesPtrOutput {
-	return o
-}
-
-func (o AssetPropertiesPtrOutput) Elem() AssetPropertiesOutput {
-	return o.ApplyT(func(v *AssetProperties) AssetProperties {
-		if v != nil {
-			return *v
-		}
-		var ret AssetProperties
-		return ret
-	}).(AssetPropertiesOutput)
-}
-
-// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-func (o AssetPropertiesPtrOutput) AssetEndpointProfileUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AssetEndpointProfileUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Resource path to asset type (model) definition.
-func (o AssetPropertiesPtrOutput) AssetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AssetType
-	}).(pulumi.StringPtrOutput)
-}
-
-// A set of key-value pairs that contain custom attributes set by the customer.
-func (o AssetPropertiesPtrOutput) Attributes() pulumi.AnyOutput {
-	return o.ApplyT(func(v *AssetProperties) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Attributes
-	}).(pulumi.AnyOutput)
-}
-
-// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-func (o AssetPropertiesPtrOutput) DataPoints() AssetPropertiesDataPointsArrayOutput {
-	return o.ApplyT(func(v *AssetProperties) []AssetPropertiesDataPoints {
-		if v == nil {
-			return nil
-		}
-		return v.DataPoints
-	}).(AssetPropertiesDataPointsArrayOutput)
-}
-
-// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-func (o AssetPropertiesPtrOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultDataPointsConfiguration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-func (o AssetPropertiesPtrOutput) DefaultEventsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultEventsConfiguration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Human-readable description of the asset.
-func (o AssetPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Human-readable display name.
-func (o AssetPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DisplayName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Reference to the documentation.
-func (o AssetPropertiesPtrOutput) DocumentationUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DocumentationUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Enabled/Disabled status of the asset.
-func (o AssetPropertiesPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-func (o AssetPropertiesPtrOutput) Events() AssetPropertiesEventsArrayOutput {
-	return o.ApplyT(func(v *AssetProperties) []AssetPropertiesEvents {
-		if v == nil {
-			return nil
-		}
-		return v.Events
-	}).(AssetPropertiesEventsArrayOutput)
-}
-
-// Asset id provided by the customer.
-func (o AssetPropertiesPtrOutput) ExternalAssetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ExternalAssetId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Revision number of the hardware.
-func (o AssetPropertiesPtrOutput) HardwareRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HardwareRevision
-	}).(pulumi.StringPtrOutput)
-}
-
-// Asset manufacturer name.
-func (o AssetPropertiesPtrOutput) Manufacturer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Manufacturer
-	}).(pulumi.StringPtrOutput)
-}
-
-// Asset manufacturer URI.
-func (o AssetPropertiesPtrOutput) ManufacturerUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ManufacturerUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// Asset model name.
-func (o AssetPropertiesPtrOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Model
-	}).(pulumi.StringPtrOutput)
-}
-
-// Asset product code.
-func (o AssetPropertiesPtrOutput) ProductCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Asset serial number.
-func (o AssetPropertiesPtrOutput) SerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SerialNumber
-	}).(pulumi.StringPtrOutput)
-}
-
-// Revision number of the software.
-func (o AssetPropertiesPtrOutput) SoftwareRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AssetProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SoftwareRevision
-	}).(pulumi.StringPtrOutput)
-}
-
-type AssetPropertiesDataPoints struct {
+// Defines the data point properties.
+type DataPoint struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
 	// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
@@ -2098,8 +113,8 @@ type AssetPropertiesDataPoints struct {
 	ObservabilityMode *string `pulumi:"observabilityMode"`
 }
 
-// Defaults sets the appropriate defaults for AssetPropertiesDataPoints
-func (val *AssetPropertiesDataPoints) Defaults() *AssetPropertiesDataPoints {
+// Defaults sets the appropriate defaults for DataPoint
+func (val *DataPoint) Defaults() *DataPoint {
 	if val == nil {
 		return nil
 	}
@@ -2111,18 +126,19 @@ func (val *AssetPropertiesDataPoints) Defaults() *AssetPropertiesDataPoints {
 	return &tmp
 }
 
-// AssetPropertiesDataPointsInput is an input type that accepts AssetPropertiesDataPointsArgs and AssetPropertiesDataPointsOutput values.
-// You can construct a concrete instance of `AssetPropertiesDataPointsInput` via:
+// DataPointInput is an input type that accepts DataPointArgs and DataPointOutput values.
+// You can construct a concrete instance of `DataPointInput` via:
 //
-//	AssetPropertiesDataPointsArgs{...}
-type AssetPropertiesDataPointsInput interface {
+//	DataPointArgs{...}
+type DataPointInput interface {
 	pulumi.Input
 
-	ToAssetPropertiesDataPointsOutput() AssetPropertiesDataPointsOutput
-	ToAssetPropertiesDataPointsOutputWithContext(context.Context) AssetPropertiesDataPointsOutput
+	ToDataPointOutput() DataPointOutput
+	ToDataPointOutputWithContext(context.Context) DataPointOutput
 }
 
-type AssetPropertiesDataPointsArgs struct {
+// Defines the data point properties.
+type DataPointArgs struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
 	// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
@@ -2135,8 +151,8 @@ type AssetPropertiesDataPointsArgs struct {
 	ObservabilityMode pulumi.StringPtrInput `pulumi:"observabilityMode"`
 }
 
-// Defaults sets the appropriate defaults for AssetPropertiesDataPointsArgs
-func (val *AssetPropertiesDataPointsArgs) Defaults() *AssetPropertiesDataPointsArgs {
+// Defaults sets the appropriate defaults for DataPointArgs
+func (val *DataPointArgs) Defaults() *DataPointArgs {
 	if val == nil {
 		return nil
 	}
@@ -2146,260 +162,105 @@ func (val *AssetPropertiesDataPointsArgs) Defaults() *AssetPropertiesDataPointsA
 	}
 	return &tmp
 }
-func (AssetPropertiesDataPointsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesDataPoints)(nil)).Elem()
+func (DataPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPoint)(nil)).Elem()
 }
 
-func (i AssetPropertiesDataPointsArgs) ToAssetPropertiesDataPointsOutput() AssetPropertiesDataPointsOutput {
-	return i.ToAssetPropertiesDataPointsOutputWithContext(context.Background())
+func (i DataPointArgs) ToDataPointOutput() DataPointOutput {
+	return i.ToDataPointOutputWithContext(context.Background())
 }
 
-func (i AssetPropertiesDataPointsArgs) ToAssetPropertiesDataPointsOutputWithContext(ctx context.Context) AssetPropertiesDataPointsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesDataPointsOutput)
+func (i DataPointArgs) ToDataPointOutputWithContext(ctx context.Context) DataPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPointOutput)
 }
 
-// AssetPropertiesDataPointsArrayInput is an input type that accepts AssetPropertiesDataPointsArray and AssetPropertiesDataPointsArrayOutput values.
-// You can construct a concrete instance of `AssetPropertiesDataPointsArrayInput` via:
+// DataPointArrayInput is an input type that accepts DataPointArray and DataPointArrayOutput values.
+// You can construct a concrete instance of `DataPointArrayInput` via:
 //
-//	AssetPropertiesDataPointsArray{ AssetPropertiesDataPointsArgs{...} }
-type AssetPropertiesDataPointsArrayInput interface {
+//	DataPointArray{ DataPointArgs{...} }
+type DataPointArrayInput interface {
 	pulumi.Input
 
-	ToAssetPropertiesDataPointsArrayOutput() AssetPropertiesDataPointsArrayOutput
-	ToAssetPropertiesDataPointsArrayOutputWithContext(context.Context) AssetPropertiesDataPointsArrayOutput
+	ToDataPointArrayOutput() DataPointArrayOutput
+	ToDataPointArrayOutputWithContext(context.Context) DataPointArrayOutput
 }
 
-type AssetPropertiesDataPointsArray []AssetPropertiesDataPointsInput
+type DataPointArray []DataPointInput
 
-func (AssetPropertiesDataPointsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesDataPoints)(nil)).Elem()
+func (DataPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataPoint)(nil)).Elem()
 }
 
-func (i AssetPropertiesDataPointsArray) ToAssetPropertiesDataPointsArrayOutput() AssetPropertiesDataPointsArrayOutput {
-	return i.ToAssetPropertiesDataPointsArrayOutputWithContext(context.Background())
+func (i DataPointArray) ToDataPointArrayOutput() DataPointArrayOutput {
+	return i.ToDataPointArrayOutputWithContext(context.Background())
 }
 
-func (i AssetPropertiesDataPointsArray) ToAssetPropertiesDataPointsArrayOutputWithContext(ctx context.Context) AssetPropertiesDataPointsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesDataPointsArrayOutput)
+func (i DataPointArray) ToDataPointArrayOutputWithContext(ctx context.Context) DataPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataPointArrayOutput)
 }
 
-type AssetPropertiesDataPointsOutput struct{ *pulumi.OutputState }
+// Defines the data point properties.
+type DataPointOutput struct{ *pulumi.OutputState }
 
-func (AssetPropertiesDataPointsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesDataPoints)(nil)).Elem()
+func (DataPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPoint)(nil)).Elem()
 }
 
-func (o AssetPropertiesDataPointsOutput) ToAssetPropertiesDataPointsOutput() AssetPropertiesDataPointsOutput {
+func (o DataPointOutput) ToDataPointOutput() DataPointOutput {
 	return o
 }
 
-func (o AssetPropertiesDataPointsOutput) ToAssetPropertiesDataPointsOutputWithContext(ctx context.Context) AssetPropertiesDataPointsOutput {
+func (o DataPointOutput) ToDataPointOutputWithContext(ctx context.Context) DataPointOutput {
 	return o
 }
 
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o AssetPropertiesDataPointsOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesDataPoints) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
+func (o DataPointOutput) CapabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPoint) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
 // Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-func (o AssetPropertiesDataPointsOutput) DataPointConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesDataPoints) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+func (o DataPointOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPoint) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
 }
 
 // The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
-func (o AssetPropertiesDataPointsOutput) DataSource() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetPropertiesDataPoints) string { return v.DataSource }).(pulumi.StringOutput)
+func (o DataPointOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v DataPoint) string { return v.DataSource }).(pulumi.StringOutput)
 }
 
 // The name of the data point.
-func (o AssetPropertiesDataPointsOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesDataPoints) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o DataPointOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPoint) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // An indication of how the data point should be mapped to OpenTelemetry.
-func (o AssetPropertiesDataPointsOutput) ObservabilityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesDataPoints) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
+func (o DataPointOutput) ObservabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPoint) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
 }
 
-type AssetPropertiesDataPointsArrayOutput struct{ *pulumi.OutputState }
+type DataPointArrayOutput struct{ *pulumi.OutputState }
 
-func (AssetPropertiesDataPointsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesDataPoints)(nil)).Elem()
+func (DataPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataPoint)(nil)).Elem()
 }
 
-func (o AssetPropertiesDataPointsArrayOutput) ToAssetPropertiesDataPointsArrayOutput() AssetPropertiesDataPointsArrayOutput {
+func (o DataPointArrayOutput) ToDataPointArrayOutput() DataPointArrayOutput {
 	return o
 }
 
-func (o AssetPropertiesDataPointsArrayOutput) ToAssetPropertiesDataPointsArrayOutputWithContext(ctx context.Context) AssetPropertiesDataPointsArrayOutput {
+func (o DataPointArrayOutput) ToDataPointArrayOutputWithContext(ctx context.Context) DataPointArrayOutput {
 	return o
 }
 
-func (o AssetPropertiesDataPointsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesDataPointsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesDataPoints {
-		return vs[0].([]AssetPropertiesDataPoints)[vs[1].(int)]
-	}).(AssetPropertiesDataPointsOutput)
+func (o DataPointArrayOutput) Index(i pulumi.IntInput) DataPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataPoint {
+		return vs[0].([]DataPoint)[vs[1].(int)]
+	}).(DataPointOutput)
 }
 
-type AssetPropertiesEvents struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId *string `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-	EventConfiguration *string `pulumi:"eventConfiguration"`
-	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-	EventNotifier string `pulumi:"eventNotifier"`
-	// The name of the event.
-	Name *string `pulumi:"name"`
-	// An indication of how the event should be mapped to OpenTelemetry.
-	ObservabilityMode *string `pulumi:"observabilityMode"`
-}
-
-// Defaults sets the appropriate defaults for AssetPropertiesEvents
-func (val *AssetPropertiesEvents) Defaults() *AssetPropertiesEvents {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ObservabilityMode == nil {
-		observabilityMode_ := "none"
-		tmp.ObservabilityMode = &observabilityMode_
-	}
-	return &tmp
-}
-
-// AssetPropertiesEventsInput is an input type that accepts AssetPropertiesEventsArgs and AssetPropertiesEventsOutput values.
-// You can construct a concrete instance of `AssetPropertiesEventsInput` via:
-//
-//	AssetPropertiesEventsArgs{...}
-type AssetPropertiesEventsInput interface {
-	pulumi.Input
-
-	ToAssetPropertiesEventsOutput() AssetPropertiesEventsOutput
-	ToAssetPropertiesEventsOutputWithContext(context.Context) AssetPropertiesEventsOutput
-}
-
-type AssetPropertiesEventsArgs struct {
-	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
-	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-	EventConfiguration pulumi.StringPtrInput `pulumi:"eventConfiguration"`
-	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-	EventNotifier pulumi.StringInput `pulumi:"eventNotifier"`
-	// The name of the event.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An indication of how the event should be mapped to OpenTelemetry.
-	ObservabilityMode pulumi.StringPtrInput `pulumi:"observabilityMode"`
-}
-
-// Defaults sets the appropriate defaults for AssetPropertiesEventsArgs
-func (val *AssetPropertiesEventsArgs) Defaults() *AssetPropertiesEventsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ObservabilityMode == nil {
-		tmp.ObservabilityMode = pulumi.StringPtr("none")
-	}
-	return &tmp
-}
-func (AssetPropertiesEventsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesEvents)(nil)).Elem()
-}
-
-func (i AssetPropertiesEventsArgs) ToAssetPropertiesEventsOutput() AssetPropertiesEventsOutput {
-	return i.ToAssetPropertiesEventsOutputWithContext(context.Background())
-}
-
-func (i AssetPropertiesEventsArgs) ToAssetPropertiesEventsOutputWithContext(ctx context.Context) AssetPropertiesEventsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesEventsOutput)
-}
-
-// AssetPropertiesEventsArrayInput is an input type that accepts AssetPropertiesEventsArray and AssetPropertiesEventsArrayOutput values.
-// You can construct a concrete instance of `AssetPropertiesEventsArrayInput` via:
-//
-//	AssetPropertiesEventsArray{ AssetPropertiesEventsArgs{...} }
-type AssetPropertiesEventsArrayInput interface {
-	pulumi.Input
-
-	ToAssetPropertiesEventsArrayOutput() AssetPropertiesEventsArrayOutput
-	ToAssetPropertiesEventsArrayOutputWithContext(context.Context) AssetPropertiesEventsArrayOutput
-}
-
-type AssetPropertiesEventsArray []AssetPropertiesEventsInput
-
-func (AssetPropertiesEventsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesEvents)(nil)).Elem()
-}
-
-func (i AssetPropertiesEventsArray) ToAssetPropertiesEventsArrayOutput() AssetPropertiesEventsArrayOutput {
-	return i.ToAssetPropertiesEventsArrayOutputWithContext(context.Background())
-}
-
-func (i AssetPropertiesEventsArray) ToAssetPropertiesEventsArrayOutputWithContext(ctx context.Context) AssetPropertiesEventsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesEventsArrayOutput)
-}
-
-type AssetPropertiesEventsOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesEventsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesEvents)(nil)).Elem()
-}
-
-func (o AssetPropertiesEventsOutput) ToAssetPropertiesEventsOutput() AssetPropertiesEventsOutput {
-	return o
-}
-
-func (o AssetPropertiesEventsOutput) ToAssetPropertiesEventsOutputWithContext(ctx context.Context) AssetPropertiesEventsOutput {
-	return o
-}
-
-// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o AssetPropertiesEventsOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesEvents) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
-}
-
-// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-func (o AssetPropertiesEventsOutput) EventConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesEvents) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
-}
-
-// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-func (o AssetPropertiesEventsOutput) EventNotifier() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetPropertiesEvents) string { return v.EventNotifier }).(pulumi.StringOutput)
-}
-
-// The name of the event.
-func (o AssetPropertiesEventsOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesEvents) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// An indication of how the event should be mapped to OpenTelemetry.
-func (o AssetPropertiesEventsOutput) ObservabilityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesEvents) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
-}
-
-type AssetPropertiesEventsArrayOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesEventsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesEvents)(nil)).Elem()
-}
-
-func (o AssetPropertiesEventsArrayOutput) ToAssetPropertiesEventsArrayOutput() AssetPropertiesEventsArrayOutput {
-	return o
-}
-
-func (o AssetPropertiesEventsArrayOutput) ToAssetPropertiesEventsArrayOutputWithContext(ctx context.Context) AssetPropertiesEventsArrayOutput {
-	return o
-}
-
-func (o AssetPropertiesEventsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesEventsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesEvents {
-		return vs[0].([]AssetPropertiesEvents)[vs[1].(int)]
-	}).(AssetPropertiesEventsOutput)
-}
-
-type AssetPropertiesResponseDataPoints struct {
+// Defines the data point properties.
+type DataPointResponse struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
 	// Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
@@ -2412,8 +273,8 @@ type AssetPropertiesResponseDataPoints struct {
 	ObservabilityMode *string `pulumi:"observabilityMode"`
 }
 
-// Defaults sets the appropriate defaults for AssetPropertiesResponseDataPoints
-func (val *AssetPropertiesResponseDataPoints) Defaults() *AssetPropertiesResponseDataPoints {
+// Defaults sets the appropriate defaults for DataPointResponse
+func (val *DataPointResponse) Defaults() *DataPointResponse {
 	if val == nil {
 		return nil
 	}
@@ -2425,117 +286,68 @@ func (val *AssetPropertiesResponseDataPoints) Defaults() *AssetPropertiesRespons
 	return &tmp
 }
 
-type AssetPropertiesResponseDataPointsOutput struct{ *pulumi.OutputState }
+// Defines the data point properties.
+type DataPointResponseOutput struct{ *pulumi.OutputState }
 
-func (AssetPropertiesResponseDataPointsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesResponseDataPoints)(nil)).Elem()
+func (DataPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataPointResponse)(nil)).Elem()
 }
 
-func (o AssetPropertiesResponseDataPointsOutput) ToAssetPropertiesResponseDataPointsOutput() AssetPropertiesResponseDataPointsOutput {
+func (o DataPointResponseOutput) ToDataPointResponseOutput() DataPointResponseOutput {
 	return o
 }
 
-func (o AssetPropertiesResponseDataPointsOutput) ToAssetPropertiesResponseDataPointsOutputWithContext(ctx context.Context) AssetPropertiesResponseDataPointsOutput {
+func (o DataPointResponseOutput) ToDataPointResponseOutputWithContext(ctx context.Context) DataPointResponseOutput {
 	return o
 }
 
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o AssetPropertiesResponseDataPointsOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseDataPoints) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
+func (o DataPointResponseOutput) CapabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPointResponse) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
 // Protocol-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-func (o AssetPropertiesResponseDataPointsOutput) DataPointConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseDataPoints) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
+func (o DataPointResponseOutput) DataPointConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPointResponse) *string { return v.DataPointConfiguration }).(pulumi.StringPtrOutput)
 }
 
 // The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset.
-func (o AssetPropertiesResponseDataPointsOutput) DataSource() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseDataPoints) string { return v.DataSource }).(pulumi.StringOutput)
+func (o DataPointResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v DataPointResponse) string { return v.DataSource }).(pulumi.StringOutput)
 }
 
 // The name of the data point.
-func (o AssetPropertiesResponseDataPointsOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseDataPoints) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o DataPointResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPointResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // An indication of how the data point should be mapped to OpenTelemetry.
-func (o AssetPropertiesResponseDataPointsOutput) ObservabilityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseDataPoints) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
+func (o DataPointResponseOutput) ObservabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataPointResponse) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
 }
 
-type AssetPropertiesResponseDataPointsArrayOutput struct{ *pulumi.OutputState }
+type DataPointResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (AssetPropertiesResponseDataPointsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesResponseDataPoints)(nil)).Elem()
+func (DataPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataPointResponse)(nil)).Elem()
 }
 
-func (o AssetPropertiesResponseDataPointsArrayOutput) ToAssetPropertiesResponseDataPointsArrayOutput() AssetPropertiesResponseDataPointsArrayOutput {
+func (o DataPointResponseArrayOutput) ToDataPointResponseArrayOutput() DataPointResponseArrayOutput {
 	return o
 }
 
-func (o AssetPropertiesResponseDataPointsArrayOutput) ToAssetPropertiesResponseDataPointsArrayOutputWithContext(ctx context.Context) AssetPropertiesResponseDataPointsArrayOutput {
+func (o DataPointResponseArrayOutput) ToDataPointResponseArrayOutputWithContext(ctx context.Context) DataPointResponseArrayOutput {
 	return o
 }
 
-func (o AssetPropertiesResponseDataPointsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesResponseDataPointsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesResponseDataPoints {
-		return vs[0].([]AssetPropertiesResponseDataPoints)[vs[1].(int)]
-	}).(AssetPropertiesResponseDataPointsOutput)
+func (o DataPointResponseArrayOutput) Index(i pulumi.IntInput) DataPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataPointResponse {
+		return vs[0].([]DataPointResponse)[vs[1].(int)]
+	}).(DataPointResponseOutput)
 }
 
-type AssetPropertiesResponseErrors struct {
-	// Error code for classification of errors (ex: 400, 404, 500, etc.).
-	Code *int `pulumi:"code"`
-	// Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
-	Message *string `pulumi:"message"`
-}
-
-type AssetPropertiesResponseErrorsOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesResponseErrorsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesResponseErrors)(nil)).Elem()
-}
-
-func (o AssetPropertiesResponseErrorsOutput) ToAssetPropertiesResponseErrorsOutput() AssetPropertiesResponseErrorsOutput {
-	return o
-}
-
-func (o AssetPropertiesResponseErrorsOutput) ToAssetPropertiesResponseErrorsOutputWithContext(ctx context.Context) AssetPropertiesResponseErrorsOutput {
-	return o
-}
-
-// Error code for classification of errors (ex: 400, 404, 500, etc.).
-func (o AssetPropertiesResponseErrorsOutput) Code() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseErrors) *int { return v.Code }).(pulumi.IntPtrOutput)
-}
-
-// Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
-func (o AssetPropertiesResponseErrorsOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseErrors) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type AssetPropertiesResponseErrorsArrayOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesResponseErrorsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesResponseErrors)(nil)).Elem()
-}
-
-func (o AssetPropertiesResponseErrorsArrayOutput) ToAssetPropertiesResponseErrorsArrayOutput() AssetPropertiesResponseErrorsArrayOutput {
-	return o
-}
-
-func (o AssetPropertiesResponseErrorsArrayOutput) ToAssetPropertiesResponseErrorsArrayOutputWithContext(ctx context.Context) AssetPropertiesResponseErrorsArrayOutput {
-	return o
-}
-
-func (o AssetPropertiesResponseErrorsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesResponseErrorsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesResponseErrors {
-		return vs[0].([]AssetPropertiesResponseErrors)[vs[1].(int)]
-	}).(AssetPropertiesResponseErrorsOutput)
-}
-
-type AssetPropertiesResponseEvents struct {
+// Defines the event properties.
+type Event struct {
 	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 	CapabilityId *string `pulumi:"capabilityId"`
 	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
@@ -2548,8 +360,8 @@ type AssetPropertiesResponseEvents struct {
 	ObservabilityMode *string `pulumi:"observabilityMode"`
 }
 
-// Defaults sets the appropriate defaults for AssetPropertiesResponseEvents
-func (val *AssetPropertiesResponseEvents) Defaults() *AssetPropertiesResponseEvents {
+// Defaults sets the appropriate defaults for Event
+func (val *Event) Defaults() *Event {
 	if val == nil {
 		return nil
 	}
@@ -2561,309 +373,499 @@ func (val *AssetPropertiesResponseEvents) Defaults() *AssetPropertiesResponseEve
 	return &tmp
 }
 
-type AssetPropertiesResponseEventsOutput struct{ *pulumi.OutputState }
+// EventInput is an input type that accepts EventArgs and EventOutput values.
+// You can construct a concrete instance of `EventInput` via:
+//
+//	EventArgs{...}
+type EventInput interface {
+	pulumi.Input
 
-func (AssetPropertiesResponseEventsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesResponseEvents)(nil)).Elem()
+	ToEventOutput() EventOutput
+	ToEventOutputWithContext(context.Context) EventOutput
 }
 
-func (o AssetPropertiesResponseEventsOutput) ToAssetPropertiesResponseEventsOutput() AssetPropertiesResponseEventsOutput {
+// Defines the event properties.
+type EventArgs struct {
+	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
+	CapabilityId pulumi.StringPtrInput `pulumi:"capabilityId"`
+	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration pulumi.StringPtrInput `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier pulumi.StringInput `pulumi:"eventNotifier"`
+	// The name of the event.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An indication of how the event should be mapped to OpenTelemetry.
+	ObservabilityMode pulumi.StringPtrInput `pulumi:"observabilityMode"`
+}
+
+// Defaults sets the appropriate defaults for EventArgs
+func (val *EventArgs) Defaults() *EventArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ObservabilityMode == nil {
+		tmp.ObservabilityMode = pulumi.StringPtr("none")
+	}
+	return &tmp
+}
+func (EventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Event)(nil)).Elem()
+}
+
+func (i EventArgs) ToEventOutput() EventOutput {
+	return i.ToEventOutputWithContext(context.Background())
+}
+
+func (i EventArgs) ToEventOutputWithContext(ctx context.Context) EventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventOutput)
+}
+
+// EventArrayInput is an input type that accepts EventArray and EventArrayOutput values.
+// You can construct a concrete instance of `EventArrayInput` via:
+//
+//	EventArray{ EventArgs{...} }
+type EventArrayInput interface {
+	pulumi.Input
+
+	ToEventArrayOutput() EventArrayOutput
+	ToEventArrayOutputWithContext(context.Context) EventArrayOutput
+}
+
+type EventArray []EventInput
+
+func (EventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Event)(nil)).Elem()
+}
+
+func (i EventArray) ToEventArrayOutput() EventArrayOutput {
+	return i.ToEventArrayOutputWithContext(context.Background())
+}
+
+func (i EventArray) ToEventArrayOutputWithContext(ctx context.Context) EventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventArrayOutput)
+}
+
+// Defines the event properties.
+type EventOutput struct{ *pulumi.OutputState }
+
+func (EventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Event)(nil)).Elem()
+}
+
+func (o EventOutput) ToEventOutput() EventOutput {
 	return o
 }
 
-func (o AssetPropertiesResponseEventsOutput) ToAssetPropertiesResponseEventsOutputWithContext(ctx context.Context) AssetPropertiesResponseEventsOutput {
+func (o EventOutput) ToEventOutputWithContext(ctx context.Context) EventOutput {
 	return o
 }
 
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
-func (o AssetPropertiesResponseEventsOutput) CapabilityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseEvents) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
+func (o EventOutput) CapabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Event) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
 }
 
 // Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
-func (o AssetPropertiesResponseEventsOutput) EventConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseEvents) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
+func (o EventOutput) EventConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Event) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
 }
 
 // The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
-func (o AssetPropertiesResponseEventsOutput) EventNotifier() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseEvents) string { return v.EventNotifier }).(pulumi.StringOutput)
+func (o EventOutput) EventNotifier() pulumi.StringOutput {
+	return o.ApplyT(func(v Event) string { return v.EventNotifier }).(pulumi.StringOutput)
 }
 
 // The name of the event.
-func (o AssetPropertiesResponseEventsOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseEvents) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o EventOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Event) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // An indication of how the event should be mapped to OpenTelemetry.
-func (o AssetPropertiesResponseEventsOutput) ObservabilityMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseEvents) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
+func (o EventOutput) ObservabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Event) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
 }
 
-type AssetPropertiesResponseEventsArrayOutput struct{ *pulumi.OutputState }
+type EventArrayOutput struct{ *pulumi.OutputState }
 
-func (AssetPropertiesResponseEventsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AssetPropertiesResponseEvents)(nil)).Elem()
+func (EventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Event)(nil)).Elem()
 }
 
-func (o AssetPropertiesResponseEventsArrayOutput) ToAssetPropertiesResponseEventsArrayOutput() AssetPropertiesResponseEventsArrayOutput {
+func (o EventArrayOutput) ToEventArrayOutput() EventArrayOutput {
 	return o
 }
 
-func (o AssetPropertiesResponseEventsArrayOutput) ToAssetPropertiesResponseEventsArrayOutputWithContext(ctx context.Context) AssetPropertiesResponseEventsArrayOutput {
+func (o EventArrayOutput) ToEventArrayOutputWithContext(ctx context.Context) EventArrayOutput {
 	return o
 }
 
-func (o AssetPropertiesResponseEventsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesResponseEventsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesResponseEvents {
-		return vs[0].([]AssetPropertiesResponseEvents)[vs[1].(int)]
-	}).(AssetPropertiesResponseEventsOutput)
+func (o EventArrayOutput) Index(i pulumi.IntInput) EventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Event {
+		return vs[0].([]Event)[vs[1].(int)]
+	}).(EventOutput)
 }
 
-// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-type AssetPropertiesResponseStatus struct {
-	// Array object to transfer and persist errors that originate from the Edge.
-	Errors []AssetPropertiesResponseErrors `pulumi:"errors"`
-	// A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-	Version *int `pulumi:"version"`
-}
-
-// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-type AssetPropertiesResponseStatusOutput struct{ *pulumi.OutputState }
-
-func (AssetPropertiesResponseStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetPropertiesResponseStatus)(nil)).Elem()
-}
-
-func (o AssetPropertiesResponseStatusOutput) ToAssetPropertiesResponseStatusOutput() AssetPropertiesResponseStatusOutput {
-	return o
-}
-
-func (o AssetPropertiesResponseStatusOutput) ToAssetPropertiesResponseStatusOutputWithContext(ctx context.Context) AssetPropertiesResponseStatusOutput {
-	return o
-}
-
-// Array object to transfer and persist errors that originate from the Edge.
-func (o AssetPropertiesResponseStatusOutput) Errors() AssetPropertiesResponseErrorsArrayOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseStatus) []AssetPropertiesResponseErrors { return v.Errors }).(AssetPropertiesResponseErrorsArrayOutput)
-}
-
-// A read only incremental counter indicating the number of times the configuration has been modified from the perspective of the current actual (Edge) state of the Asset. Edge would be the only writer of this value and would sync back up to the cloud. In steady state, this should equal version.
-func (o AssetPropertiesResponseStatusOutput) Version() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AssetPropertiesResponseStatus) *int { return v.Version }).(pulumi.IntPtrOutput)
-}
-
-// The extended location.
-type AssetResponseExtendedLocation struct {
-	// The extended location name.
+// Defines the event properties.
+type EventResponse struct {
+	// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
+	CapabilityId *string `pulumi:"capabilityId"`
+	// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+	EventConfiguration *string `pulumi:"eventConfiguration"`
+	// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+	EventNotifier string `pulumi:"eventNotifier"`
+	// The name of the event.
 	Name *string `pulumi:"name"`
-	// The extended location type.
-	Type *string `pulumi:"type"`
+	// An indication of how the event should be mapped to OpenTelemetry.
+	ObservabilityMode *string `pulumi:"observabilityMode"`
 }
 
-// The extended location.
-type AssetResponseExtendedLocationOutput struct{ *pulumi.OutputState }
-
-func (AssetResponseExtendedLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetResponseExtendedLocation)(nil)).Elem()
+// Defaults sets the appropriate defaults for EventResponse
+func (val *EventResponse) Defaults() *EventResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ObservabilityMode == nil {
+		observabilityMode_ := "none"
+		tmp.ObservabilityMode = &observabilityMode_
+	}
+	return &tmp
 }
 
-func (o AssetResponseExtendedLocationOutput) ToAssetResponseExtendedLocationOutput() AssetResponseExtendedLocationOutput {
+// Defines the event properties.
+type EventResponseOutput struct{ *pulumi.OutputState }
+
+func (EventResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventResponse)(nil)).Elem()
+}
+
+func (o EventResponseOutput) ToEventResponseOutput() EventResponseOutput {
 	return o
 }
 
-func (o AssetResponseExtendedLocationOutput) ToAssetResponseExtendedLocationOutputWithContext(ctx context.Context) AssetResponseExtendedLocationOutput {
+func (o EventResponseOutput) ToEventResponseOutputWithContext(ctx context.Context) EventResponseOutput {
+	return o
+}
+
+// The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
+func (o EventResponseOutput) CapabilityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventResponse) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
+}
+
+// Protocol-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize.
+func (o EventResponseOutput) EventConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventResponse) *string { return v.EventConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
+func (o EventResponseOutput) EventNotifier() pulumi.StringOutput {
+	return o.ApplyT(func(v EventResponse) string { return v.EventNotifier }).(pulumi.StringOutput)
+}
+
+// The name of the event.
+func (o EventResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// An indication of how the event should be mapped to OpenTelemetry.
+func (o EventResponseOutput) ObservabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventResponse) *string { return v.ObservabilityMode }).(pulumi.StringPtrOutput)
+}
+
+type EventResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EventResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventResponse)(nil)).Elem()
+}
+
+func (o EventResponseArrayOutput) ToEventResponseArrayOutput() EventResponseArrayOutput {
+	return o
+}
+
+func (o EventResponseArrayOutput) ToEventResponseArrayOutputWithContext(ctx context.Context) EventResponseArrayOutput {
+	return o
+}
+
+func (o EventResponseArrayOutput) Index(i pulumi.IntInput) EventResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventResponse {
+		return vs[0].([]EventResponse)[vs[1].(int)]
+	}).(EventResponseOutput)
+}
+
+// The extended location.
+type ExtendedLocation struct {
+	// The extended location name.
+	Name string `pulumi:"name"`
+	// The extended location type.
+	Type string `pulumi:"type"`
+}
+
+// ExtendedLocationInput is an input type that accepts ExtendedLocationArgs and ExtendedLocationOutput values.
+// You can construct a concrete instance of `ExtendedLocationInput` via:
+//
+//	ExtendedLocationArgs{...}
+type ExtendedLocationInput interface {
+	pulumi.Input
+
+	ToExtendedLocationOutput() ExtendedLocationOutput
+	ToExtendedLocationOutputWithContext(context.Context) ExtendedLocationOutput
+}
+
+// The extended location.
+type ExtendedLocationArgs struct {
+	// The extended location name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The extended location type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ExtendedLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocation)(nil)).Elem()
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationOutput() ExtendedLocationOutput {
+	return i.ToExtendedLocationOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
+}
+
+// The extended location.
+type ExtendedLocationOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationOutput() ExtendedLocationOutput {
+	return o
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
 	return o
 }
 
 // The extended location name.
-func (o AssetResponseExtendedLocationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocation) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The extended location type.
-func (o AssetResponseExtendedLocationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseExtendedLocation) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o ExtendedLocationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocation) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Asset resource properties.
-type AssetResponseProperties struct {
-	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-	AssetEndpointProfileUri string `pulumi:"assetEndpointProfileUri"`
-	// Resource path to asset type (model) definition.
-	AssetType *string `pulumi:"assetType"`
-	// A set of key-value pairs that contain custom attributes set by the customer.
-	Attributes interface{} `pulumi:"attributes"`
-	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-	DataPoints []AssetPropertiesResponseDataPoints `pulumi:"dataPoints"`
-	// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-	DefaultDataPointsConfiguration *string `pulumi:"defaultDataPointsConfiguration"`
-	// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-	DefaultEventsConfiguration *string `pulumi:"defaultEventsConfiguration"`
-	// Human-readable description of the asset.
-	Description *string `pulumi:"description"`
-	// Human-readable display name.
-	DisplayName *string `pulumi:"displayName"`
-	// Reference to the documentation.
-	DocumentationUri *string `pulumi:"documentationUri"`
-	// Enabled/Disabled status of the asset.
-	Enabled *bool `pulumi:"enabled"`
-	// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-	Events []AssetPropertiesResponseEvents `pulumi:"events"`
-	// Asset id provided by the customer.
-	ExternalAssetId *string `pulumi:"externalAssetId"`
-	// Revision number of the hardware.
-	HardwareRevision *string `pulumi:"hardwareRevision"`
-	// Asset manufacturer name.
-	Manufacturer *string `pulumi:"manufacturer"`
-	// Asset manufacturer URI.
-	ManufacturerUri *string `pulumi:"manufacturerUri"`
-	// Asset model name.
-	Model *string `pulumi:"model"`
-	// Asset product code.
-	ProductCode *string `pulumi:"productCode"`
-	// Provisioning state of the resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Asset serial number.
-	SerialNumber *string `pulumi:"serialNumber"`
-	// Revision number of the software.
-	SoftwareRevision *string `pulumi:"softwareRevision"`
-	// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-	Status AssetPropertiesResponseStatus `pulumi:"status"`
-	// Globally unique, immutable, non-reusable id.
-	Uuid string `pulumi:"uuid"`
-	// An integer that is incremented each time the resource is modified.
-	Version int `pulumi:"version"`
+// The extended location.
+type ExtendedLocationResponse struct {
+	// The extended location name.
+	Name string `pulumi:"name"`
+	// The extended location type.
+	Type string `pulumi:"type"`
 }
 
-// Asset resource properties.
-type AssetResponsePropertiesOutput struct{ *pulumi.OutputState }
+// The extended location.
+type ExtendedLocationResponseOutput struct{ *pulumi.OutputState }
 
-func (AssetResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssetResponseProperties)(nil)).Elem()
+func (ExtendedLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationResponse)(nil)).Elem()
 }
 
-func (o AssetResponsePropertiesOutput) ToAssetResponsePropertiesOutput() AssetResponsePropertiesOutput {
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() ExtendedLocationResponseOutput {
 	return o
 }
 
-func (o AssetResponsePropertiesOutput) ToAssetResponsePropertiesOutputWithContext(ctx context.Context) AssetResponsePropertiesOutput {
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
 	return o
 }
 
-// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-func (o AssetResponsePropertiesOutput) AssetEndpointProfileUri() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetResponseProperties) string { return v.AssetEndpointProfileUri }).(pulumi.StringOutput)
+// The extended location name.
+func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource path to asset type (model) definition.
-func (o AssetResponsePropertiesOutput) AssetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.AssetType }).(pulumi.StringPtrOutput)
+// The extended location type.
+func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// A set of key-value pairs that contain custom attributes set by the customer.
-func (o AssetResponsePropertiesOutput) Attributes() pulumi.AnyOutput {
-	return o.ApplyT(func(v AssetResponseProperties) interface{} { return v.Attributes }).(pulumi.AnyOutput)
+// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+type OwnCertificate struct {
+	// Secret Reference Name (Pfx or Pem password).
+	CertPasswordReference *string `pulumi:"certPasswordReference"`
+	// Secret Reference name (cert and private key).
+	CertSecretReference *string `pulumi:"certSecretReference"`
+	// Certificate thumbprint.
+	CertThumbprint *string `pulumi:"certThumbprint"`
 }
 
-// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-func (o AssetResponsePropertiesOutput) DataPoints() AssetPropertiesResponseDataPointsArrayOutput {
-	return o.ApplyT(func(v AssetResponseProperties) []AssetPropertiesResponseDataPoints { return v.DataPoints }).(AssetPropertiesResponseDataPointsArrayOutput)
+// OwnCertificateInput is an input type that accepts OwnCertificateArgs and OwnCertificateOutput values.
+// You can construct a concrete instance of `OwnCertificateInput` via:
+//
+//	OwnCertificateArgs{...}
+type OwnCertificateInput interface {
+	pulumi.Input
+
+	ToOwnCertificateOutput() OwnCertificateOutput
+	ToOwnCertificateOutputWithContext(context.Context) OwnCertificateOutput
 }
 
-// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-func (o AssetResponsePropertiesOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.DefaultDataPointsConfiguration }).(pulumi.StringPtrOutput)
+// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+type OwnCertificateArgs struct {
+	// Secret Reference Name (Pfx or Pem password).
+	CertPasswordReference pulumi.StringPtrInput `pulumi:"certPasswordReference"`
+	// Secret Reference name (cert and private key).
+	CertSecretReference pulumi.StringPtrInput `pulumi:"certSecretReference"`
+	// Certificate thumbprint.
+	CertThumbprint pulumi.StringPtrInput `pulumi:"certThumbprint"`
 }
 
-// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-func (o AssetResponsePropertiesOutput) DefaultEventsConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.DefaultEventsConfiguration }).(pulumi.StringPtrOutput)
+func (OwnCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OwnCertificate)(nil)).Elem()
 }
 
-// Human-readable description of the asset.
-func (o AssetResponsePropertiesOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (i OwnCertificateArgs) ToOwnCertificateOutput() OwnCertificateOutput {
+	return i.ToOwnCertificateOutputWithContext(context.Background())
 }
 
-// Human-readable display name.
-func (o AssetResponsePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (i OwnCertificateArgs) ToOwnCertificateOutputWithContext(ctx context.Context) OwnCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OwnCertificateOutput)
 }
 
-// Reference to the documentation.
-func (o AssetResponsePropertiesOutput) DocumentationUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.DocumentationUri }).(pulumi.StringPtrOutput)
+// OwnCertificateArrayInput is an input type that accepts OwnCertificateArray and OwnCertificateArrayOutput values.
+// You can construct a concrete instance of `OwnCertificateArrayInput` via:
+//
+//	OwnCertificateArray{ OwnCertificateArgs{...} }
+type OwnCertificateArrayInput interface {
+	pulumi.Input
+
+	ToOwnCertificateArrayOutput() OwnCertificateArrayOutput
+	ToOwnCertificateArrayOutputWithContext(context.Context) OwnCertificateArrayOutput
 }
 
-// Enabled/Disabled status of the asset.
-func (o AssetResponsePropertiesOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+type OwnCertificateArray []OwnCertificateInput
+
+func (OwnCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnCertificate)(nil)).Elem()
 }
 
-// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-func (o AssetResponsePropertiesOutput) Events() AssetPropertiesResponseEventsArrayOutput {
-	return o.ApplyT(func(v AssetResponseProperties) []AssetPropertiesResponseEvents { return v.Events }).(AssetPropertiesResponseEventsArrayOutput)
+func (i OwnCertificateArray) ToOwnCertificateArrayOutput() OwnCertificateArrayOutput {
+	return i.ToOwnCertificateArrayOutputWithContext(context.Background())
 }
 
-// Asset id provided by the customer.
-func (o AssetResponsePropertiesOutput) ExternalAssetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.ExternalAssetId }).(pulumi.StringPtrOutput)
+func (i OwnCertificateArray) ToOwnCertificateArrayOutputWithContext(ctx context.Context) OwnCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OwnCertificateArrayOutput)
 }
 
-// Revision number of the hardware.
-func (o AssetResponsePropertiesOutput) HardwareRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.HardwareRevision }).(pulumi.StringPtrOutput)
+// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+type OwnCertificateOutput struct{ *pulumi.OutputState }
+
+func (OwnCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OwnCertificate)(nil)).Elem()
 }
 
-// Asset manufacturer name.
-func (o AssetResponsePropertiesOutput) Manufacturer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
+func (o OwnCertificateOutput) ToOwnCertificateOutput() OwnCertificateOutput {
+	return o
 }
 
-// Asset manufacturer URI.
-func (o AssetResponsePropertiesOutput) ManufacturerUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.ManufacturerUri }).(pulumi.StringPtrOutput)
+func (o OwnCertificateOutput) ToOwnCertificateOutputWithContext(ctx context.Context) OwnCertificateOutput {
+	return o
 }
 
-// Asset model name.
-func (o AssetResponsePropertiesOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.Model }).(pulumi.StringPtrOutput)
+// Secret Reference Name (Pfx or Pem password).
+func (o OwnCertificateOutput) CertPasswordReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OwnCertificate) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
 }
 
-// Asset product code.
-func (o AssetResponsePropertiesOutput) ProductCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
+// Secret Reference name (cert and private key).
+func (o OwnCertificateOutput) CertSecretReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OwnCertificate) *string { return v.CertSecretReference }).(pulumi.StringPtrOutput)
 }
 
-// Provisioning state of the resource.
-func (o AssetResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
+// Certificate thumbprint.
+func (o OwnCertificateOutput) CertThumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OwnCertificate) *string { return v.CertThumbprint }).(pulumi.StringPtrOutput)
 }
 
-// Asset serial number.
-func (o AssetResponsePropertiesOutput) SerialNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+type OwnCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (OwnCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnCertificate)(nil)).Elem()
 }
 
-// Revision number of the software.
-func (o AssetResponsePropertiesOutput) SoftwareRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AssetResponseProperties) *string { return v.SoftwareRevision }).(pulumi.StringPtrOutput)
+func (o OwnCertificateArrayOutput) ToOwnCertificateArrayOutput() OwnCertificateArrayOutput {
+	return o
 }
 
-// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
-func (o AssetResponsePropertiesOutput) Status() AssetPropertiesResponseStatusOutput {
-	return o.ApplyT(func(v AssetResponseProperties) AssetPropertiesResponseStatus { return v.Status }).(AssetPropertiesResponseStatusOutput)
+func (o OwnCertificateArrayOutput) ToOwnCertificateArrayOutputWithContext(ctx context.Context) OwnCertificateArrayOutput {
+	return o
 }
 
-// Globally unique, immutable, non-reusable id.
-func (o AssetResponsePropertiesOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v AssetResponseProperties) string { return v.Uuid }).(pulumi.StringOutput)
+func (o OwnCertificateArrayOutput) Index(i pulumi.IntInput) OwnCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnCertificate {
+		return vs[0].([]OwnCertificate)[vs[1].(int)]
+	}).(OwnCertificateOutput)
 }
 
-// An integer that is incremented each time the resource is modified.
-func (o AssetResponsePropertiesOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v AssetResponseProperties) int { return v.Version }).(pulumi.IntOutput)
+// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+type OwnCertificateResponse struct {
+	// Secret Reference Name (Pfx or Pem password).
+	CertPasswordReference *string `pulumi:"certPasswordReference"`
+	// Secret Reference name (cert and private key).
+	CertSecretReference *string `pulumi:"certSecretReference"`
+	// Certificate thumbprint.
+	CertThumbprint *string `pulumi:"certThumbprint"`
+}
+
+// Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+type OwnCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (OwnCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OwnCertificateResponse)(nil)).Elem()
+}
+
+func (o OwnCertificateResponseOutput) ToOwnCertificateResponseOutput() OwnCertificateResponseOutput {
+	return o
+}
+
+func (o OwnCertificateResponseOutput) ToOwnCertificateResponseOutputWithContext(ctx context.Context) OwnCertificateResponseOutput {
+	return o
+}
+
+// Secret Reference Name (Pfx or Pem password).
+func (o OwnCertificateResponseOutput) CertPasswordReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OwnCertificateResponse) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
+}
+
+// Secret Reference name (cert and private key).
+func (o OwnCertificateResponseOutput) CertSecretReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OwnCertificateResponse) *string { return v.CertSecretReference }).(pulumi.StringPtrOutput)
+}
+
+// Certificate thumbprint.
+func (o OwnCertificateResponseOutput) CertThumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OwnCertificateResponse) *string { return v.CertThumbprint }).(pulumi.StringPtrOutput)
+}
+
+type OwnCertificateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OwnCertificateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OwnCertificateResponse)(nil)).Elem()
+}
+
+func (o OwnCertificateResponseArrayOutput) ToOwnCertificateResponseArrayOutput() OwnCertificateResponseArrayOutput {
+	return o
+}
+
+func (o OwnCertificateResponseArrayOutput) ToOwnCertificateResponseArrayOutputWithContext(ctx context.Context) OwnCertificateResponseArrayOutput {
+	return o
+}
+
+func (o OwnCertificateResponseArrayOutput) Index(i pulumi.IntInput) OwnCertificateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OwnCertificateResponse {
+		return vs[0].([]OwnCertificateResponse)[vs[1].(int)]
+	}).(OwnCertificateResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2927,47 +929,984 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Definition of the authentication mechanism for the southbound connector.
+type TransportAuthentication struct {
+	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+	OwnCertificates []OwnCertificate `pulumi:"ownCertificates"`
+}
+
+// TransportAuthenticationInput is an input type that accepts TransportAuthenticationArgs and TransportAuthenticationOutput values.
+// You can construct a concrete instance of `TransportAuthenticationInput` via:
+//
+//	TransportAuthenticationArgs{...}
+type TransportAuthenticationInput interface {
+	pulumi.Input
+
+	ToTransportAuthenticationOutput() TransportAuthenticationOutput
+	ToTransportAuthenticationOutputWithContext(context.Context) TransportAuthenticationOutput
+}
+
+// Definition of the authentication mechanism for the southbound connector.
+type TransportAuthenticationArgs struct {
+	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+	OwnCertificates OwnCertificateArrayInput `pulumi:"ownCertificates"`
+}
+
+func (TransportAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportAuthentication)(nil)).Elem()
+}
+
+func (i TransportAuthenticationArgs) ToTransportAuthenticationOutput() TransportAuthenticationOutput {
+	return i.ToTransportAuthenticationOutputWithContext(context.Background())
+}
+
+func (i TransportAuthenticationArgs) ToTransportAuthenticationOutputWithContext(ctx context.Context) TransportAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportAuthenticationOutput)
+}
+
+func (i TransportAuthenticationArgs) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
+	return i.ToTransportAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i TransportAuthenticationArgs) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportAuthenticationOutput).ToTransportAuthenticationPtrOutputWithContext(ctx)
+}
+
+// TransportAuthenticationPtrInput is an input type that accepts TransportAuthenticationArgs, TransportAuthenticationPtr and TransportAuthenticationPtrOutput values.
+// You can construct a concrete instance of `TransportAuthenticationPtrInput` via:
+//
+//	        TransportAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransportAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput
+	ToTransportAuthenticationPtrOutputWithContext(context.Context) TransportAuthenticationPtrOutput
+}
+
+type transportAuthenticationPtrType TransportAuthenticationArgs
+
+func TransportAuthenticationPtr(v *TransportAuthenticationArgs) TransportAuthenticationPtrInput {
+	return (*transportAuthenticationPtrType)(v)
+}
+
+func (*transportAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransportAuthentication)(nil)).Elem()
+}
+
+func (i *transportAuthenticationPtrType) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
+	return i.ToTransportAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *transportAuthenticationPtrType) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransportAuthenticationPtrOutput)
+}
+
+// Definition of the authentication mechanism for the southbound connector.
+type TransportAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (TransportAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportAuthentication)(nil)).Elem()
+}
+
+func (o TransportAuthenticationOutput) ToTransportAuthenticationOutput() TransportAuthenticationOutput {
+	return o
+}
+
+func (o TransportAuthenticationOutput) ToTransportAuthenticationOutputWithContext(ctx context.Context) TransportAuthenticationOutput {
+	return o
+}
+
+func (o TransportAuthenticationOutput) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
+	return o.ToTransportAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o TransportAuthenticationOutput) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransportAuthentication) *TransportAuthentication {
+		return &v
+	}).(TransportAuthenticationPtrOutput)
+}
+
+// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+func (o TransportAuthenticationOutput) OwnCertificates() OwnCertificateArrayOutput {
+	return o.ApplyT(func(v TransportAuthentication) []OwnCertificate { return v.OwnCertificates }).(OwnCertificateArrayOutput)
+}
+
+type TransportAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (TransportAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransportAuthentication)(nil)).Elem()
+}
+
+func (o TransportAuthenticationPtrOutput) ToTransportAuthenticationPtrOutput() TransportAuthenticationPtrOutput {
+	return o
+}
+
+func (o TransportAuthenticationPtrOutput) ToTransportAuthenticationPtrOutputWithContext(ctx context.Context) TransportAuthenticationPtrOutput {
+	return o
+}
+
+func (o TransportAuthenticationPtrOutput) Elem() TransportAuthenticationOutput {
+	return o.ApplyT(func(v *TransportAuthentication) TransportAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret TransportAuthentication
+		return ret
+	}).(TransportAuthenticationOutput)
+}
+
+// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+func (o TransportAuthenticationPtrOutput) OwnCertificates() OwnCertificateArrayOutput {
+	return o.ApplyT(func(v *TransportAuthentication) []OwnCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.OwnCertificates
+	}).(OwnCertificateArrayOutput)
+}
+
+// Definition of the authentication mechanism for the southbound connector.
+type TransportAuthenticationResponse struct {
+	// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+	OwnCertificates []OwnCertificateResponse `pulumi:"ownCertificates"`
+}
+
+// Definition of the authentication mechanism for the southbound connector.
+type TransportAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (TransportAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransportAuthenticationResponse)(nil)).Elem()
+}
+
+func (o TransportAuthenticationResponseOutput) ToTransportAuthenticationResponseOutput() TransportAuthenticationResponseOutput {
+	return o
+}
+
+func (o TransportAuthenticationResponseOutput) ToTransportAuthenticationResponseOutputWithContext(ctx context.Context) TransportAuthenticationResponseOutput {
+	return o
+}
+
+// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+func (o TransportAuthenticationResponseOutput) OwnCertificates() OwnCertificateResponseArrayOutput {
+	return o.ApplyT(func(v TransportAuthenticationResponse) []OwnCertificateResponse { return v.OwnCertificates }).(OwnCertificateResponseArrayOutput)
+}
+
+type TransportAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TransportAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransportAuthenticationResponse)(nil)).Elem()
+}
+
+func (o TransportAuthenticationResponsePtrOutput) ToTransportAuthenticationResponsePtrOutput() TransportAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o TransportAuthenticationResponsePtrOutput) ToTransportAuthenticationResponsePtrOutputWithContext(ctx context.Context) TransportAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o TransportAuthenticationResponsePtrOutput) Elem() TransportAuthenticationResponseOutput {
+	return o.ApplyT(func(v *TransportAuthenticationResponse) TransportAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TransportAuthenticationResponse
+		return ret
+	}).(TransportAuthenticationResponseOutput)
+}
+
+// Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+func (o TransportAuthenticationResponsePtrOutput) OwnCertificates() OwnCertificateResponseArrayOutput {
+	return o.ApplyT(func(v *TransportAuthenticationResponse) []OwnCertificateResponse {
+		if v == nil {
+			return nil
+		}
+		return v.OwnCertificates
+	}).(OwnCertificateResponseArrayOutput)
+}
+
+// Definition of the client authentication mechanism to the server.
+type UserAuthentication struct {
+	// Defines the mode to authenticate the user of the client at the server.
+	Mode string `pulumi:"mode"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials *UsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials *X509Credentials `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for UserAuthentication
+func (val *UserAuthentication) Defaults() *UserAuthentication {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.Mode) {
+		tmp.Mode = "Certificate"
+	}
+	return &tmp
+}
+
+// UserAuthenticationInput is an input type that accepts UserAuthenticationArgs and UserAuthenticationOutput values.
+// You can construct a concrete instance of `UserAuthenticationInput` via:
+//
+//	UserAuthenticationArgs{...}
+type UserAuthenticationInput interface {
+	pulumi.Input
+
+	ToUserAuthenticationOutput() UserAuthenticationOutput
+	ToUserAuthenticationOutputWithContext(context.Context) UserAuthenticationOutput
+}
+
+// Definition of the client authentication mechanism to the server.
+type UserAuthenticationArgs struct {
+	// Defines the mode to authenticate the user of the client at the server.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials UsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials X509CredentialsPtrInput `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for UserAuthenticationArgs
+func (val *UserAuthenticationArgs) Defaults() *UserAuthenticationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.String("Certificate")
+	}
+	return &tmp
+}
+func (UserAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAuthentication)(nil)).Elem()
+}
+
+func (i UserAuthenticationArgs) ToUserAuthenticationOutput() UserAuthenticationOutput {
+	return i.ToUserAuthenticationOutputWithContext(context.Background())
+}
+
+func (i UserAuthenticationArgs) ToUserAuthenticationOutputWithContext(ctx context.Context) UserAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAuthenticationOutput)
+}
+
+func (i UserAuthenticationArgs) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
+	return i.ToUserAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i UserAuthenticationArgs) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAuthenticationOutput).ToUserAuthenticationPtrOutputWithContext(ctx)
+}
+
+// UserAuthenticationPtrInput is an input type that accepts UserAuthenticationArgs, UserAuthenticationPtr and UserAuthenticationPtrOutput values.
+// You can construct a concrete instance of `UserAuthenticationPtrInput` via:
+//
+//	        UserAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput
+	ToUserAuthenticationPtrOutputWithContext(context.Context) UserAuthenticationPtrOutput
+}
+
+type userAuthenticationPtrType UserAuthenticationArgs
+
+func UserAuthenticationPtr(v *UserAuthenticationArgs) UserAuthenticationPtrInput {
+	return (*userAuthenticationPtrType)(v)
+}
+
+func (*userAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAuthentication)(nil)).Elem()
+}
+
+func (i *userAuthenticationPtrType) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
+	return i.ToUserAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *userAuthenticationPtrType) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAuthenticationPtrOutput)
+}
+
+// Definition of the client authentication mechanism to the server.
+type UserAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (UserAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAuthentication)(nil)).Elem()
+}
+
+func (o UserAuthenticationOutput) ToUserAuthenticationOutput() UserAuthenticationOutput {
+	return o
+}
+
+func (o UserAuthenticationOutput) ToUserAuthenticationOutputWithContext(ctx context.Context) UserAuthenticationOutput {
+	return o
+}
+
+func (o UserAuthenticationOutput) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
+	return o.ToUserAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o UserAuthenticationOutput) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAuthentication) *UserAuthentication {
+		return &v
+	}).(UserAuthenticationPtrOutput)
+}
+
+// Defines the mode to authenticate the user of the client at the server.
+func (o UserAuthenticationOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAuthentication) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o UserAuthenticationOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v UserAuthentication) *UsernamePasswordCredentials { return v.UsernamePasswordCredentials }).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o UserAuthenticationOutput) X509Credentials() X509CredentialsPtrOutput {
+	return o.ApplyT(func(v UserAuthentication) *X509Credentials { return v.X509Credentials }).(X509CredentialsPtrOutput)
+}
+
+type UserAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAuthentication)(nil)).Elem()
+}
+
+func (o UserAuthenticationPtrOutput) ToUserAuthenticationPtrOutput() UserAuthenticationPtrOutput {
+	return o
+}
+
+func (o UserAuthenticationPtrOutput) ToUserAuthenticationPtrOutputWithContext(ctx context.Context) UserAuthenticationPtrOutput {
+	return o
+}
+
+func (o UserAuthenticationPtrOutput) Elem() UserAuthenticationOutput {
+	return o.ApplyT(func(v *UserAuthentication) UserAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret UserAuthentication
+		return ret
+	}).(UserAuthenticationOutput)
+}
+
+// Defines the mode to authenticate the user of the client at the server.
+func (o UserAuthenticationPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o UserAuthenticationPtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v *UserAuthentication) *UsernamePasswordCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o UserAuthenticationPtrOutput) X509Credentials() X509CredentialsPtrOutput {
+	return o.ApplyT(func(v *UserAuthentication) *X509Credentials {
+		if v == nil {
+			return nil
+		}
+		return v.X509Credentials
+	}).(X509CredentialsPtrOutput)
+}
+
+// Definition of the client authentication mechanism to the server.
+type UserAuthenticationResponse struct {
+	// Defines the mode to authenticate the user of the client at the server.
+	Mode string `pulumi:"mode"`
+	// Defines the username and password references when UsernamePassword user authentication mode is selected.
+	UsernamePasswordCredentials *UsernamePasswordCredentialsResponse `pulumi:"usernamePasswordCredentials"`
+	// Defines the certificate reference when Certificate user authentication mode is selected.
+	X509Credentials *X509CredentialsResponse `pulumi:"x509Credentials"`
+}
+
+// Defaults sets the appropriate defaults for UserAuthenticationResponse
+func (val *UserAuthenticationResponse) Defaults() *UserAuthenticationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.Mode) {
+		tmp.Mode = "Certificate"
+	}
+	return &tmp
+}
+
+// Definition of the client authentication mechanism to the server.
+type UserAuthenticationResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAuthenticationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAuthenticationResponse)(nil)).Elem()
+}
+
+func (o UserAuthenticationResponseOutput) ToUserAuthenticationResponseOutput() UserAuthenticationResponseOutput {
+	return o
+}
+
+func (o UserAuthenticationResponseOutput) ToUserAuthenticationResponseOutputWithContext(ctx context.Context) UserAuthenticationResponseOutput {
+	return o
+}
+
+// Defines the mode to authenticate the user of the client at the server.
+func (o UserAuthenticationResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAuthenticationResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o UserAuthenticationResponseOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v UserAuthenticationResponse) *UsernamePasswordCredentialsResponse {
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponsePtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o UserAuthenticationResponseOutput) X509Credentials() X509CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v UserAuthenticationResponse) *X509CredentialsResponse { return v.X509Credentials }).(X509CredentialsResponsePtrOutput)
+}
+
+type UserAuthenticationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserAuthenticationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAuthenticationResponse)(nil)).Elem()
+}
+
+func (o UserAuthenticationResponsePtrOutput) ToUserAuthenticationResponsePtrOutput() UserAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o UserAuthenticationResponsePtrOutput) ToUserAuthenticationResponsePtrOutputWithContext(ctx context.Context) UserAuthenticationResponsePtrOutput {
+	return o
+}
+
+func (o UserAuthenticationResponsePtrOutput) Elem() UserAuthenticationResponseOutput {
+	return o.ApplyT(func(v *UserAuthenticationResponse) UserAuthenticationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserAuthenticationResponse
+		return ret
+	}).(UserAuthenticationResponseOutput)
+}
+
+// Defines the mode to authenticate the user of the client at the server.
+func (o UserAuthenticationResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAuthenticationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the username and password references when UsernamePassword user authentication mode is selected.
+func (o UserAuthenticationResponsePtrOutput) UsernamePasswordCredentials() UsernamePasswordCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *UserAuthenticationResponse) *UsernamePasswordCredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(UsernamePasswordCredentialsResponsePtrOutput)
+}
+
+// Defines the certificate reference when Certificate user authentication mode is selected.
+func (o UserAuthenticationResponsePtrOutput) X509Credentials() X509CredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *UserAuthenticationResponse) *X509CredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.X509Credentials
+	}).(X509CredentialsResponsePtrOutput)
+}
+
+// The credentials for authentication mode UsernamePassword.
+type UsernamePasswordCredentials struct {
+	// A reference to secret containing the password.
+	PasswordReference string `pulumi:"passwordReference"`
+	// A reference to secret containing the username.
+	UsernameReference string `pulumi:"usernameReference"`
+}
+
+// UsernamePasswordCredentialsInput is an input type that accepts UsernamePasswordCredentialsArgs and UsernamePasswordCredentialsOutput values.
+// You can construct a concrete instance of `UsernamePasswordCredentialsInput` via:
+//
+//	UsernamePasswordCredentialsArgs{...}
+type UsernamePasswordCredentialsInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput
+	ToUsernamePasswordCredentialsOutputWithContext(context.Context) UsernamePasswordCredentialsOutput
+}
+
+// The credentials for authentication mode UsernamePassword.
+type UsernamePasswordCredentialsArgs struct {
+	// A reference to secret containing the password.
+	PasswordReference pulumi.StringInput `pulumi:"passwordReference"`
+	// A reference to secret containing the username.
+	UsernameReference pulumi.StringInput `pulumi:"usernameReference"`
+}
+
+func (UsernamePasswordCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput {
+	return i.ToUsernamePasswordCredentialsOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsOutputWithContext(ctx context.Context) UsernamePasswordCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsOutput)
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return i.ToUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsOutput).ToUsernamePasswordCredentialsPtrOutputWithContext(ctx)
+}
+
+// UsernamePasswordCredentialsPtrInput is an input type that accepts UsernamePasswordCredentialsArgs, UsernamePasswordCredentialsPtr and UsernamePasswordCredentialsPtrOutput values.
+// You can construct a concrete instance of `UsernamePasswordCredentialsPtrInput` via:
+//
+//	        UsernamePasswordCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UsernamePasswordCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput
+	ToUsernamePasswordCredentialsPtrOutputWithContext(context.Context) UsernamePasswordCredentialsPtrOutput
+}
+
+type usernamePasswordCredentialsPtrType UsernamePasswordCredentialsArgs
+
+func UsernamePasswordCredentialsPtr(v *UsernamePasswordCredentialsArgs) UsernamePasswordCredentialsPtrInput {
+	return (*usernamePasswordCredentialsPtrType)(v)
+}
+
+func (*usernamePasswordCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i *usernamePasswordCredentialsPtrType) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return i.ToUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *usernamePasswordCredentialsPtrType) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// The credentials for authentication mode UsernamePassword.
+type UsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsOutputWithContext(ctx context.Context) UsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return o.ToUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UsernamePasswordCredentials) *UsernamePasswordCredentials {
+		return &v
+	}).(UsernamePasswordCredentialsPtrOutput)
+}
+
+// A reference to secret containing the password.
+func (o UsernamePasswordCredentialsOutput) PasswordReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.PasswordReference }).(pulumi.StringOutput)
+}
+
+// A reference to secret containing the username.
+func (o UsernamePasswordCredentialsOutput) UsernameReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.UsernameReference }).(pulumi.StringOutput)
+}
+
+type UsernamePasswordCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) ToUsernamePasswordCredentialsPtrOutput() UsernamePasswordCredentialsPtrOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) ToUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsPtrOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsPtrOutput) Elem() UsernamePasswordCredentialsOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentials) UsernamePasswordCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret UsernamePasswordCredentials
+		return ret
+	}).(UsernamePasswordCredentialsOutput)
+}
+
+// A reference to secret containing the password.
+func (o UsernamePasswordCredentialsPtrOutput) PasswordReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to secret containing the username.
+func (o UsernamePasswordCredentialsPtrOutput) UsernameReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UsernameReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// The credentials for authentication mode UsernamePassword.
+type UsernamePasswordCredentialsResponse struct {
+	// A reference to secret containing the password.
+	PasswordReference string `pulumi:"passwordReference"`
+	// A reference to secret containing the username.
+	UsernameReference string `pulumi:"usernameReference"`
+}
+
+// The credentials for authentication mode UsernamePassword.
+type UsernamePasswordCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentialsResponse)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentialsResponseOutput() UsernamePasswordCredentialsResponseOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentialsResponseOutputWithContext(ctx context.Context) UsernamePasswordCredentialsResponseOutput {
+	return o
+}
+
+// A reference to secret containing the password.
+func (o UsernamePasswordCredentialsResponseOutput) PasswordReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.PasswordReference }).(pulumi.StringOutput)
+}
+
+// A reference to secret containing the username.
+func (o UsernamePasswordCredentialsResponseOutput) UsernameReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.UsernameReference }).(pulumi.StringOutput)
+}
+
+type UsernamePasswordCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsernamePasswordCredentialsResponse)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsResponsePtrOutput) ToUsernamePasswordCredentialsResponsePtrOutput() UsernamePasswordCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsResponsePtrOutput) ToUsernamePasswordCredentialsResponsePtrOutputWithContext(ctx context.Context) UsernamePasswordCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsResponsePtrOutput) Elem() UsernamePasswordCredentialsResponseOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentialsResponse) UsernamePasswordCredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UsernamePasswordCredentialsResponse
+		return ret
+	}).(UsernamePasswordCredentialsResponseOutput)
+}
+
+// A reference to secret containing the password.
+func (o UsernamePasswordCredentialsResponsePtrOutput) PasswordReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PasswordReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to secret containing the username.
+func (o UsernamePasswordCredentialsResponsePtrOutput) UsernameReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UsernamePasswordCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UsernameReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// The x509 certificate for authentication mode Certificate.
+type X509Credentials struct {
+	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+	CertificateReference string `pulumi:"certificateReference"`
+}
+
+// X509CredentialsInput is an input type that accepts X509CredentialsArgs and X509CredentialsOutput values.
+// You can construct a concrete instance of `X509CredentialsInput` via:
+//
+//	X509CredentialsArgs{...}
+type X509CredentialsInput interface {
+	pulumi.Input
+
+	ToX509CredentialsOutput() X509CredentialsOutput
+	ToX509CredentialsOutputWithContext(context.Context) X509CredentialsOutput
+}
+
+// The x509 certificate for authentication mode Certificate.
+type X509CredentialsArgs struct {
+	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+	CertificateReference pulumi.StringInput `pulumi:"certificateReference"`
+}
+
+func (X509CredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*X509Credentials)(nil)).Elem()
+}
+
+func (i X509CredentialsArgs) ToX509CredentialsOutput() X509CredentialsOutput {
+	return i.ToX509CredentialsOutputWithContext(context.Background())
+}
+
+func (i X509CredentialsArgs) ToX509CredentialsOutputWithContext(ctx context.Context) X509CredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(X509CredentialsOutput)
+}
+
+func (i X509CredentialsArgs) ToX509CredentialsPtrOutput() X509CredentialsPtrOutput {
+	return i.ToX509CredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i X509CredentialsArgs) ToX509CredentialsPtrOutputWithContext(ctx context.Context) X509CredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(X509CredentialsOutput).ToX509CredentialsPtrOutputWithContext(ctx)
+}
+
+// X509CredentialsPtrInput is an input type that accepts X509CredentialsArgs, X509CredentialsPtr and X509CredentialsPtrOutput values.
+// You can construct a concrete instance of `X509CredentialsPtrInput` via:
+//
+//	        X509CredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type X509CredentialsPtrInput interface {
+	pulumi.Input
+
+	ToX509CredentialsPtrOutput() X509CredentialsPtrOutput
+	ToX509CredentialsPtrOutputWithContext(context.Context) X509CredentialsPtrOutput
+}
+
+type x509credentialsPtrType X509CredentialsArgs
+
+func X509CredentialsPtr(v *X509CredentialsArgs) X509CredentialsPtrInput {
+	return (*x509credentialsPtrType)(v)
+}
+
+func (*x509credentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**X509Credentials)(nil)).Elem()
+}
+
+func (i *x509credentialsPtrType) ToX509CredentialsPtrOutput() X509CredentialsPtrOutput {
+	return i.ToX509CredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *x509credentialsPtrType) ToX509CredentialsPtrOutputWithContext(ctx context.Context) X509CredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(X509CredentialsPtrOutput)
+}
+
+// The x509 certificate for authentication mode Certificate.
+type X509CredentialsOutput struct{ *pulumi.OutputState }
+
+func (X509CredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*X509Credentials)(nil)).Elem()
+}
+
+func (o X509CredentialsOutput) ToX509CredentialsOutput() X509CredentialsOutput {
+	return o
+}
+
+func (o X509CredentialsOutput) ToX509CredentialsOutputWithContext(ctx context.Context) X509CredentialsOutput {
+	return o
+}
+
+func (o X509CredentialsOutput) ToX509CredentialsPtrOutput() X509CredentialsPtrOutput {
+	return o.ToX509CredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o X509CredentialsOutput) ToX509CredentialsPtrOutputWithContext(ctx context.Context) X509CredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v X509Credentials) *X509Credentials {
+		return &v
+	}).(X509CredentialsPtrOutput)
+}
+
+// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsOutput) CertificateReference() pulumi.StringOutput {
+	return o.ApplyT(func(v X509Credentials) string { return v.CertificateReference }).(pulumi.StringOutput)
+}
+
+type X509CredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (X509CredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**X509Credentials)(nil)).Elem()
+}
+
+func (o X509CredentialsPtrOutput) ToX509CredentialsPtrOutput() X509CredentialsPtrOutput {
+	return o
+}
+
+func (o X509CredentialsPtrOutput) ToX509CredentialsPtrOutputWithContext(ctx context.Context) X509CredentialsPtrOutput {
+	return o
+}
+
+func (o X509CredentialsPtrOutput) Elem() X509CredentialsOutput {
+	return o.ApplyT(func(v *X509Credentials) X509Credentials {
+		if v != nil {
+			return *v
+		}
+		var ret X509Credentials
+		return ret
+	}).(X509CredentialsOutput)
+}
+
+// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsPtrOutput) CertificateReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *X509Credentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// The x509 certificate for authentication mode Certificate.
+type X509CredentialsResponse struct {
+	// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+	CertificateReference string `pulumi:"certificateReference"`
+}
+
+// The x509 certificate for authentication mode Certificate.
+type X509CredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (X509CredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*X509CredentialsResponse)(nil)).Elem()
+}
+
+func (o X509CredentialsResponseOutput) ToX509CredentialsResponseOutput() X509CredentialsResponseOutput {
+	return o
+}
+
+func (o X509CredentialsResponseOutput) ToX509CredentialsResponseOutputWithContext(ctx context.Context) X509CredentialsResponseOutput {
+	return o
+}
+
+// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsResponseOutput) CertificateReference() pulumi.StringOutput {
+	return o.ApplyT(func(v X509CredentialsResponse) string { return v.CertificateReference }).(pulumi.StringOutput)
+}
+
+type X509CredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (X509CredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**X509CredentialsResponse)(nil)).Elem()
+}
+
+func (o X509CredentialsResponsePtrOutput) ToX509CredentialsResponsePtrOutput() X509CredentialsResponsePtrOutput {
+	return o
+}
+
+func (o X509CredentialsResponsePtrOutput) ToX509CredentialsResponsePtrOutputWithContext(ctx context.Context) X509CredentialsResponsePtrOutput {
+	return o
+}
+
+func (o X509CredentialsResponsePtrOutput) Elem() X509CredentialsResponseOutput {
+	return o.ApplyT(func(v *X509CredentialsResponse) X509CredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret X509CredentialsResponse
+		return ret
+	}).(X509CredentialsResponseOutput)
+}
+
+// A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+func (o X509CredentialsResponsePtrOutput) CertificateReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *X509CredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateReference
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(AssetEndpointProfileExtendedLocationOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesOwnCertificatesOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesOwnCertificatesArrayOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseOwnCertificatesOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseUserAuthenticationOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseX509CredentialsOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesTransportAuthenticationOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesUserAuthenticationOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesX509CredentialsOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfilePropertiesX509CredentialsPtrOutput{})
-	pulumi.RegisterOutputType(AssetEndpointProfileResponseExtendedLocationOutput{})
-	pulumi.RegisterOutputType(AssetExtendedLocationOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesDataPointsOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesDataPointsArrayOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesEventsOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesEventsArrayOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseDataPointsOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseDataPointsArrayOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseErrorsOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseErrorsArrayOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseEventsOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseEventsArrayOutput{})
-	pulumi.RegisterOutputType(AssetPropertiesResponseStatusOutput{})
-	pulumi.RegisterOutputType(AssetResponseExtendedLocationOutput{})
-	pulumi.RegisterOutputType(AssetResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(AssetStatusErrorResponseOutput{})
+	pulumi.RegisterOutputType(AssetStatusErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(AssetStatusResponseOutput{})
+	pulumi.RegisterOutputType(DataPointOutput{})
+	pulumi.RegisterOutputType(DataPointArrayOutput{})
+	pulumi.RegisterOutputType(DataPointResponseOutput{})
+	pulumi.RegisterOutputType(DataPointResponseArrayOutput{})
+	pulumi.RegisterOutputType(EventOutput{})
+	pulumi.RegisterOutputType(EventArrayOutput{})
+	pulumi.RegisterOutputType(EventResponseOutput{})
+	pulumi.RegisterOutputType(EventResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(OwnCertificateOutput{})
+	pulumi.RegisterOutputType(OwnCertificateArrayOutput{})
+	pulumi.RegisterOutputType(OwnCertificateResponseOutput{})
+	pulumi.RegisterOutputType(OwnCertificateResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TransportAuthenticationOutput{})
+	pulumi.RegisterOutputType(TransportAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(TransportAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(TransportAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAuthenticationOutput{})
+	pulumi.RegisterOutputType(UserAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(UserAuthenticationResponseOutput{})
+	pulumi.RegisterOutputType(UserAuthenticationResponsePtrOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(X509CredentialsOutput{})
+	pulumi.RegisterOutputType(X509CredentialsPtrOutput{})
+	pulumi.RegisterOutputType(X509CredentialsResponseOutput{})
+	pulumi.RegisterOutputType(X509CredentialsResponsePtrOutput{})
 }

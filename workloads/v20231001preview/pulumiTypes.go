@@ -1193,6 +1193,102 @@ func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) Cent
 	}).(CentralServerVmDetailsResponseOutput)
 }
 
+// The SAP instance specific configuration data.
+type ConfigurationDataResponse struct {
+	// Provide the CPU value of the server. For example, 16, 32 etc.
+	Cpu int `pulumi:"cpu"`
+	// Provide the CPU clock speed of the server in MHz. This should be a non-zero value. For example, 2100.
+	CpuInMhz int `pulumi:"cpuInMhz"`
+	// Provide the CPU architecture type of the server. For example, Xeon Platinum 8171M, Xeon E5-2673 v3.
+	CpuType string `pulumi:"cpuType"`
+	// The database of this is a server instance. Applicable only if SAP instance type for this server instance is 'DB'.
+	DatabaseType string `pulumi:"databaseType"`
+	// Provide the HW manufacturer company of the server.  For example, Microsoft Corporation.
+	HardwareManufacturer string `pulumi:"hardwareManufacturer"`
+	// Specify if the Hardware is a physical server or virtual machine.
+	Model string `pulumi:"model"`
+	// Provide the RAM of the server. This should be a non-zero value. For example, 256.
+	Ram int `pulumi:"ram"`
+	// Provide the SAPS for each server of the SAP system. This should be a non-zero value. For example, 1000.
+	Saps int `pulumi:"saps"`
+	// Provide the target HANA database size you need. Applicable only if SAP instance type for this server instance is 'DB' and you are migrating an AnyDb database to SAP S/4HANA.
+	TargetHanaRamSizeGB int `pulumi:"targetHanaRamSizeGB"`
+	// Provide the total disk IOPS capacity. Add the disk volume for each individual disk and provide the sum total in this field.
+	TotalDiskIops int `pulumi:"totalDiskIops"`
+	// Provide the total disk volume capacity in GB. Add the disk volume for each individual disks and provide the total sum in this field.
+	TotalDiskSizeGB int `pulumi:"totalDiskSizeGB"`
+}
+
+// The SAP instance specific configuration data.
+type ConfigurationDataResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationDataResponse)(nil)).Elem()
+}
+
+func (o ConfigurationDataResponseOutput) ToConfigurationDataResponseOutput() ConfigurationDataResponseOutput {
+	return o
+}
+
+func (o ConfigurationDataResponseOutput) ToConfigurationDataResponseOutputWithContext(ctx context.Context) ConfigurationDataResponseOutput {
+	return o
+}
+
+// Provide the CPU value of the server. For example, 16, 32 etc.
+func (o ConfigurationDataResponseOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Provide the CPU clock speed of the server in MHz. This should be a non-zero value. For example, 2100.
+func (o ConfigurationDataResponseOutput) CpuInMhz() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.CpuInMhz }).(pulumi.IntOutput)
+}
+
+// Provide the CPU architecture type of the server. For example, Xeon Platinum 8171M, Xeon E5-2673 v3.
+func (o ConfigurationDataResponseOutput) CpuType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) string { return v.CpuType }).(pulumi.StringOutput)
+}
+
+// The database of this is a server instance. Applicable only if SAP instance type for this server instance is 'DB'.
+func (o ConfigurationDataResponseOutput) DatabaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) string { return v.DatabaseType }).(pulumi.StringOutput)
+}
+
+// Provide the HW manufacturer company of the server.  For example, Microsoft Corporation.
+func (o ConfigurationDataResponseOutput) HardwareManufacturer() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) string { return v.HardwareManufacturer }).(pulumi.StringOutput)
+}
+
+// Specify if the Hardware is a physical server or virtual machine.
+func (o ConfigurationDataResponseOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) string { return v.Model }).(pulumi.StringOutput)
+}
+
+// Provide the RAM of the server. This should be a non-zero value. For example, 256.
+func (o ConfigurationDataResponseOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+// Provide the SAPS for each server of the SAP system. This should be a non-zero value. For example, 1000.
+func (o ConfigurationDataResponseOutput) Saps() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.Saps }).(pulumi.IntOutput)
+}
+
+// Provide the target HANA database size you need. Applicable only if SAP instance type for this server instance is 'DB' and you are migrating an AnyDb database to SAP S/4HANA.
+func (o ConfigurationDataResponseOutput) TargetHanaRamSizeGB() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.TargetHanaRamSizeGB }).(pulumi.IntOutput)
+}
+
+// Provide the total disk IOPS capacity. Add the disk volume for each individual disk and provide the sum total in this field.
+func (o ConfigurationDataResponseOutput) TotalDiskIops() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.TotalDiskIops }).(pulumi.IntOutput)
+}
+
+// Provide the total disk volume capacity in GB. Add the disk volume for each individual disks and provide the total sum in this field.
+func (o ConfigurationDataResponseOutput) TotalDiskSizeGB() pulumi.IntOutput {
+	return o.ApplyT(func(v ConfigurationDataResponse) int { return v.TotalDiskSizeGB }).(pulumi.IntOutput)
+}
+
 // Error definition.
 type ConnectorErrorDefinitionResponse struct {
 	// Service specific error code which serves as the substatus for the HTTP error code.
@@ -5884,6 +5980,8 @@ type ErrorDefinitionResponse struct {
 	Details []ErrorDefinitionResponse `pulumi:"details"`
 	// Description of the error.
 	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
 }
 
 // Error definition.
@@ -5914,6 +6012,11 @@ func (o ErrorDefinitionResponseOutput) Details() ErrorDefinitionResponseArrayOut
 // Description of the error.
 func (o ErrorDefinitionResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDefinitionResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o ErrorDefinitionResponseOutput) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDefinitionResponse) string { return v.Recommendation }).(pulumi.StringOutput)
 }
 
 type ErrorDefinitionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -5967,6 +6070,16 @@ func (o ErrorDefinitionResponsePtrOutput) Message() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the recommendation.
+func (o ErrorDefinitionResponsePtrOutput) Recommendation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDefinitionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Recommendation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6196,6 +6309,48 @@ func (o ErrorResponseInnerErrorPtrOutput) InnerError() ErrorResponsePtrOutput {
 		}
 		return v.InnerError
 	}).(ErrorResponsePtrOutput)
+}
+
+// The SAP instance specific performance data for Excel import.
+type ExcelPerformanceDataResponse struct {
+	// The data source for this resource.
+	// Expected value is 'Excel'.
+	DataSource string `pulumi:"dataSource"`
+	// Provide the max CPU percentage load on the server. Omit the percentage symbol while filling this value.
+	MaxCpuLoad int `pulumi:"maxCpuLoad"`
+	// Provide the source Database size in GB. Applicable only if SAP instance type for this server instance is 'DB'.
+	TotalSourceDbSizeGB int `pulumi:"totalSourceDbSizeGB"`
+}
+
+// The SAP instance specific performance data for Excel import.
+type ExcelPerformanceDataResponseOutput struct{ *pulumi.OutputState }
+
+func (ExcelPerformanceDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExcelPerformanceDataResponse)(nil)).Elem()
+}
+
+func (o ExcelPerformanceDataResponseOutput) ToExcelPerformanceDataResponseOutput() ExcelPerformanceDataResponseOutput {
+	return o
+}
+
+func (o ExcelPerformanceDataResponseOutput) ToExcelPerformanceDataResponseOutputWithContext(ctx context.Context) ExcelPerformanceDataResponseOutput {
+	return o
+}
+
+// The data source for this resource.
+// Expected value is 'Excel'.
+func (o ExcelPerformanceDataResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v ExcelPerformanceDataResponse) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// Provide the max CPU percentage load on the server. Omit the percentage symbol while filling this value.
+func (o ExcelPerformanceDataResponseOutput) MaxCpuLoad() pulumi.IntOutput {
+	return o.ApplyT(func(v ExcelPerformanceDataResponse) int { return v.MaxCpuLoad }).(pulumi.IntOutput)
+}
+
+// Provide the source Database size in GB. Applicable only if SAP instance type for this server instance is 'DB'.
+func (o ExcelPerformanceDataResponseOutput) TotalSourceDbSizeGB() pulumi.IntOutput {
+	return o.ApplyT(func(v ExcelPerformanceDataResponse) int { return v.TotalSourceDbSizeGB }).(pulumi.IntOutput)
 }
 
 // Existing recovery services vault.
@@ -6438,6 +6593,242 @@ func (o ExistingRecoveryServicesVaultResponsePtrOutput) VaultType() pulumi.Strin
 			return nil
 		}
 		return &v.VaultType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location definition.
+type ExtendedLocation struct {
+	// The extended location name.
+	Name string `pulumi:"name"`
+	// The extended location type.
+	Type string `pulumi:"type"`
+}
+
+// ExtendedLocationInput is an input type that accepts ExtendedLocationArgs and ExtendedLocationOutput values.
+// You can construct a concrete instance of `ExtendedLocationInput` via:
+//
+//	ExtendedLocationArgs{...}
+type ExtendedLocationInput interface {
+	pulumi.Input
+
+	ToExtendedLocationOutput() ExtendedLocationOutput
+	ToExtendedLocationOutputWithContext(context.Context) ExtendedLocationOutput
+}
+
+// The extended location definition.
+type ExtendedLocationArgs struct {
+	// The extended location name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The extended location type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ExtendedLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocation)(nil)).Elem()
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationOutput() ExtendedLocationOutput {
+	return i.ToExtendedLocationOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i ExtendedLocationArgs) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput).ToExtendedLocationPtrOutputWithContext(ctx)
+}
+
+// ExtendedLocationPtrInput is an input type that accepts ExtendedLocationArgs, ExtendedLocationPtr and ExtendedLocationPtrOutput values.
+// You can construct a concrete instance of `ExtendedLocationPtrInput` via:
+//
+//	        ExtendedLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtendedLocationPtrInput interface {
+	pulumi.Input
+
+	ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput
+	ToExtendedLocationPtrOutputWithContext(context.Context) ExtendedLocationPtrOutput
+}
+
+type extendedLocationPtrType ExtendedLocationArgs
+
+func ExtendedLocationPtr(v *ExtendedLocationArgs) ExtendedLocationPtrInput {
+	return (*extendedLocationPtrType)(v)
+}
+
+func (*extendedLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
+}
+
+// The extended location definition.
+type ExtendedLocationOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationOutput() ExtendedLocationOutput {
+	return o
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
+	return o
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o.ToExtendedLocationPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedLocation) *ExtendedLocation {
+		return &v
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The extended location name.
+func (o ExtendedLocationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The extended location type.
+func (o ExtendedLocationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocation) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocation)(nil)).Elem()
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
+	return o
+}
+
+func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
+	return o.ApplyT(func(v *ExtendedLocation) ExtendedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocation
+		return ret
+	}).(ExtendedLocationOutput)
+}
+
+// The extended location name.
+func (o ExtendedLocationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type.
+func (o ExtendedLocationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location definition.
+type ExtendedLocationResponse struct {
+	// The extended location name.
+	Name string `pulumi:"name"`
+	// The extended location type.
+	Type string `pulumi:"type"`
+}
+
+// The extended location definition.
+type ExtendedLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() ExtendedLocationResponseOutput {
+	return o
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
+	return o
+}
+
+// The extended location name.
+func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The extended location type.
+func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// The extended location name.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location type.
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12379,6 +12770,34 @@ func (o MsSqlServerProviderInstancePropertiesResponsePtrOutput) SslPreference() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The SAP instance specific performance data for native discovery.
+type NativePerformanceDataResponse struct {
+	// The data source for this resource.
+	// Expected value is 'Native'.
+	DataSource string `pulumi:"dataSource"`
+}
+
+// The SAP instance specific performance data for native discovery.
+type NativePerformanceDataResponseOutput struct{ *pulumi.OutputState }
+
+func (NativePerformanceDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NativePerformanceDataResponse)(nil)).Elem()
+}
+
+func (o NativePerformanceDataResponseOutput) ToNativePerformanceDataResponseOutput() NativePerformanceDataResponseOutput {
+	return o
+}
+
+func (o NativePerformanceDataResponseOutput) ToNativePerformanceDataResponseOutputWithContext(ctx context.Context) NativePerformanceDataResponseOutput {
+	return o
+}
+
+// The data source for this resource.
+// Expected value is 'Native'.
+func (o NativePerformanceDataResponseOutput) DataSource() pulumi.StringOutput {
+	return o.ApplyT(func(v NativePerformanceDataResponse) string { return v.DataSource }).(pulumi.StringOutput)
+}
+
 // Defines the network configuration type for SAP system infrastructure that is being deployed
 type NetworkConfiguration struct {
 	// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
@@ -15085,6 +15504,53 @@ func (o SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput) Softwar
 		}
 		return &v.SoftwareVersion
 	}).(pulumi.StringPtrOutput)
+}
+
+// An error response from the SAP migrate resources.
+type SAPMigrateErrorResponse struct {
+	// Service specific error code which serves as the substatus for the HTTP error code.
+	Code string `pulumi:"code"`
+	// Internal error details.
+	Details []ErrorDefinitionResponse `pulumi:"details"`
+	// Description of the error.
+	Message string `pulumi:"message"`
+	// Description of the recommendation.
+	Recommendation string `pulumi:"recommendation"`
+}
+
+// An error response from the SAP migrate resources.
+type SAPMigrateErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (SAPMigrateErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPMigrateErrorResponse)(nil)).Elem()
+}
+
+func (o SAPMigrateErrorResponseOutput) ToSAPMigrateErrorResponseOutput() SAPMigrateErrorResponseOutput {
+	return o
+}
+
+func (o SAPMigrateErrorResponseOutput) ToSAPMigrateErrorResponseOutputWithContext(ctx context.Context) SAPMigrateErrorResponseOutput {
+	return o
+}
+
+// Service specific error code which serves as the substatus for the HTTP error code.
+func (o SAPMigrateErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Internal error details.
+func (o SAPMigrateErrorResponseOutput) Details() ErrorDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponse) []ErrorDefinitionResponse { return v.Details }).(ErrorDefinitionResponseArrayOutput)
+}
+
+// Description of the error.
+func (o SAPMigrateErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Description of the recommendation.
+func (o SAPMigrateErrorResponseOutput) Recommendation() pulumi.StringOutput {
+	return o.ApplyT(func(v SAPMigrateErrorResponse) string { return v.Recommendation }).(pulumi.StringOutput)
 }
 
 // The SAP supported SKU.
@@ -26020,6 +26486,7 @@ func init() {
 	pulumi.RegisterOutputType(CentralServerFullResourceNamesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CentralServerVmDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConfigurationDataResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorErrorDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorErrorDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(CreateAndMountFileShareConfigurationOutput{})
@@ -26101,10 +26568,15 @@ func init() {
 	pulumi.RegisterOutputType(ErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorResponseInnerErrorOutput{})
 	pulumi.RegisterOutputType(ErrorResponseInnerErrorPtrOutput{})
+	pulumi.RegisterOutputType(ExcelPerformanceDataResponseOutput{})
 	pulumi.RegisterOutputType(ExistingRecoveryServicesVaultOutput{})
 	pulumi.RegisterOutputType(ExistingRecoveryServicesVaultPtrOutput{})
 	pulumi.RegisterOutputType(ExistingRecoveryServicesVaultResponseOutput{})
 	pulumi.RegisterOutputType(ExistingRecoveryServicesVaultResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationOutput{})
 	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ExternalInstallationSoftwareConfigurationResponseOutput{})
@@ -26184,6 +26656,7 @@ func init() {
 	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MsSqlServerProviderInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(NativePerformanceDataResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigurationOutput{})
 	pulumi.RegisterOutputType(NetworkConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigurationResponseOutput{})
@@ -26225,6 +26698,7 @@ func init() {
 	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SAPInstallWithoutOSConfigSoftwareConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SAPMigrateErrorResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseOutput{})
 	pulumi.RegisterOutputType(SAPSupportedSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(SAPVirtualInstanceErrorResponseOutput{})
