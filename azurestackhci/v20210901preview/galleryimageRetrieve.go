@@ -94,6 +94,12 @@ func NewGalleryimageRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:galleryimageRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:GalleryimageRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:galleryimageRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

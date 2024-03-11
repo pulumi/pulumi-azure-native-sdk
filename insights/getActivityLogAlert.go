@@ -44,7 +44,7 @@ type LookupActivityLogAlertResult struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The resource Id.
 	Id string `pulumi:"id"`
-	// The location of the resource. Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
+	// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
 	Location *string `pulumi:"location"`
 	// The name of the resource.
 	Name string `pulumi:"name"`
@@ -137,7 +137,7 @@ func (o LookupActivityLogAlertResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource. Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
+// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
 func (o LookupActivityLogAlertResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }

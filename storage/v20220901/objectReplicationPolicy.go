@@ -85,6 +85,9 @@ func NewObjectReplicationPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20230101:ObjectReplicationPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230401:ObjectReplicationPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

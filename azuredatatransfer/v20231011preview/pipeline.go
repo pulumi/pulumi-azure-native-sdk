@@ -44,6 +44,9 @@ func NewPipeline(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer:Pipeline"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Pipeline"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

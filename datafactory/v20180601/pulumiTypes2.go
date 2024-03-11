@@ -13,6 +13,518 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Trigger that creates pipeline runs periodically, on schedule.
+type ScheduleTrigger struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Trigger description.
+	Description *string `pulumi:"description"`
+	// Pipelines that need to be started.
+	Pipelines []TriggerPipelineReference `pulumi:"pipelines"`
+	// Recurrence schedule configuration.
+	Recurrence ScheduleTriggerRecurrence `pulumi:"recurrence"`
+	// Trigger type.
+	// Expected value is 'ScheduleTrigger'.
+	Type string `pulumi:"type"`
+}
+
+// ScheduleTriggerInput is an input type that accepts ScheduleTriggerArgs and ScheduleTriggerOutput values.
+// You can construct a concrete instance of `ScheduleTriggerInput` via:
+//
+//	ScheduleTriggerArgs{...}
+type ScheduleTriggerInput interface {
+	pulumi.Input
+
+	ToScheduleTriggerOutput() ScheduleTriggerOutput
+	ToScheduleTriggerOutputWithContext(context.Context) ScheduleTriggerOutput
+}
+
+// Trigger that creates pipeline runs periodically, on schedule.
+type ScheduleTriggerArgs struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Trigger description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Pipelines that need to be started.
+	Pipelines TriggerPipelineReferenceArrayInput `pulumi:"pipelines"`
+	// Recurrence schedule configuration.
+	Recurrence ScheduleTriggerRecurrenceInput `pulumi:"recurrence"`
+	// Trigger type.
+	// Expected value is 'ScheduleTrigger'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ScheduleTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleTrigger)(nil)).Elem()
+}
+
+func (i ScheduleTriggerArgs) ToScheduleTriggerOutput() ScheduleTriggerOutput {
+	return i.ToScheduleTriggerOutputWithContext(context.Background())
+}
+
+func (i ScheduleTriggerArgs) ToScheduleTriggerOutputWithContext(ctx context.Context) ScheduleTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleTriggerOutput)
+}
+
+// Trigger that creates pipeline runs periodically, on schedule.
+type ScheduleTriggerOutput struct{ *pulumi.OutputState }
+
+func (ScheduleTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleTrigger)(nil)).Elem()
+}
+
+func (o ScheduleTriggerOutput) ToScheduleTriggerOutput() ScheduleTriggerOutput {
+	return o
+}
+
+func (o ScheduleTriggerOutput) ToScheduleTriggerOutputWithContext(ctx context.Context) ScheduleTriggerOutput {
+	return o
+}
+
+// List of tags that can be used for describing the trigger.
+func (o ScheduleTriggerOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ScheduleTrigger) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Trigger description.
+func (o ScheduleTriggerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTrigger) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Pipelines that need to be started.
+func (o ScheduleTriggerOutput) Pipelines() TriggerPipelineReferenceArrayOutput {
+	return o.ApplyT(func(v ScheduleTrigger) []TriggerPipelineReference { return v.Pipelines }).(TriggerPipelineReferenceArrayOutput)
+}
+
+// Recurrence schedule configuration.
+func (o ScheduleTriggerOutput) Recurrence() ScheduleTriggerRecurrenceOutput {
+	return o.ApplyT(func(v ScheduleTrigger) ScheduleTriggerRecurrence { return v.Recurrence }).(ScheduleTriggerRecurrenceOutput)
+}
+
+// Trigger type.
+// Expected value is 'ScheduleTrigger'.
+func (o ScheduleTriggerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleTrigger) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The workflow trigger recurrence.
+type ScheduleTriggerRecurrence struct {
+	// The end time.
+	EndTime *string `pulumi:"endTime"`
+	// The frequency.
+	Frequency *string `pulumi:"frequency"`
+	// The interval.
+	Interval *int `pulumi:"interval"`
+	// The recurrence schedule.
+	Schedule *RecurrenceSchedule `pulumi:"schedule"`
+	// The start time.
+	StartTime *string `pulumi:"startTime"`
+	// The time zone.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// ScheduleTriggerRecurrenceInput is an input type that accepts ScheduleTriggerRecurrenceArgs and ScheduleTriggerRecurrenceOutput values.
+// You can construct a concrete instance of `ScheduleTriggerRecurrenceInput` via:
+//
+//	ScheduleTriggerRecurrenceArgs{...}
+type ScheduleTriggerRecurrenceInput interface {
+	pulumi.Input
+
+	ToScheduleTriggerRecurrenceOutput() ScheduleTriggerRecurrenceOutput
+	ToScheduleTriggerRecurrenceOutputWithContext(context.Context) ScheduleTriggerRecurrenceOutput
+}
+
+// The workflow trigger recurrence.
+type ScheduleTriggerRecurrenceArgs struct {
+	// The end time.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// The frequency.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// The interval.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The recurrence schedule.
+	Schedule RecurrenceSchedulePtrInput `pulumi:"schedule"`
+	// The start time.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// The time zone.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (ScheduleTriggerRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleTriggerRecurrence)(nil)).Elem()
+}
+
+func (i ScheduleTriggerRecurrenceArgs) ToScheduleTriggerRecurrenceOutput() ScheduleTriggerRecurrenceOutput {
+	return i.ToScheduleTriggerRecurrenceOutputWithContext(context.Background())
+}
+
+func (i ScheduleTriggerRecurrenceArgs) ToScheduleTriggerRecurrenceOutputWithContext(ctx context.Context) ScheduleTriggerRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleTriggerRecurrenceOutput)
+}
+
+// The workflow trigger recurrence.
+type ScheduleTriggerRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (ScheduleTriggerRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleTriggerRecurrence)(nil)).Elem()
+}
+
+func (o ScheduleTriggerRecurrenceOutput) ToScheduleTriggerRecurrenceOutput() ScheduleTriggerRecurrenceOutput {
+	return o
+}
+
+func (o ScheduleTriggerRecurrenceOutput) ToScheduleTriggerRecurrenceOutputWithContext(ctx context.Context) ScheduleTriggerRecurrenceOutput {
+	return o
+}
+
+// The end time.
+func (o ScheduleTriggerRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The frequency.
+func (o ScheduleTriggerRecurrenceOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// The interval.
+func (o ScheduleTriggerRecurrenceOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrence) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The recurrence schedule.
+func (o ScheduleTriggerRecurrenceOutput) Schedule() RecurrenceSchedulePtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrence) *RecurrenceSchedule { return v.Schedule }).(RecurrenceSchedulePtrOutput)
+}
+
+// The start time.
+func (o ScheduleTriggerRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// The time zone.
+func (o ScheduleTriggerRecurrenceOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// The workflow trigger recurrence.
+type ScheduleTriggerRecurrenceResponse struct {
+	// The end time.
+	EndTime *string `pulumi:"endTime"`
+	// The frequency.
+	Frequency *string `pulumi:"frequency"`
+	// The interval.
+	Interval *int `pulumi:"interval"`
+	// The recurrence schedule.
+	Schedule *RecurrenceScheduleResponse `pulumi:"schedule"`
+	// The start time.
+	StartTime *string `pulumi:"startTime"`
+	// The time zone.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// The workflow trigger recurrence.
+type ScheduleTriggerRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleTriggerRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleTriggerRecurrenceResponse)(nil)).Elem()
+}
+
+func (o ScheduleTriggerRecurrenceResponseOutput) ToScheduleTriggerRecurrenceResponseOutput() ScheduleTriggerRecurrenceResponseOutput {
+	return o
+}
+
+func (o ScheduleTriggerRecurrenceResponseOutput) ToScheduleTriggerRecurrenceResponseOutputWithContext(ctx context.Context) ScheduleTriggerRecurrenceResponseOutput {
+	return o
+}
+
+// The end time.
+func (o ScheduleTriggerRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// The frequency.
+func (o ScheduleTriggerRecurrenceResponseOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// The interval.
+func (o ScheduleTriggerRecurrenceResponseOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The recurrence schedule.
+func (o ScheduleTriggerRecurrenceResponseOutput) Schedule() RecurrenceScheduleResponsePtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *RecurrenceScheduleResponse { return v.Schedule }).(RecurrenceScheduleResponsePtrOutput)
+}
+
+// The start time.
+func (o ScheduleTriggerRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// The time zone.
+func (o ScheduleTriggerRecurrenceResponseOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// Trigger that creates pipeline runs periodically, on schedule.
+type ScheduleTriggerResponse struct {
+	// List of tags that can be used for describing the trigger.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Trigger description.
+	Description *string `pulumi:"description"`
+	// Pipelines that need to be started.
+	Pipelines []TriggerPipelineReferenceResponse `pulumi:"pipelines"`
+	// Recurrence schedule configuration.
+	Recurrence ScheduleTriggerRecurrenceResponse `pulumi:"recurrence"`
+	// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+	RuntimeState string `pulumi:"runtimeState"`
+	// Trigger type.
+	// Expected value is 'ScheduleTrigger'.
+	Type string `pulumi:"type"`
+}
+
+// Trigger that creates pipeline runs periodically, on schedule.
+type ScheduleTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleTriggerResponse)(nil)).Elem()
+}
+
+func (o ScheduleTriggerResponseOutput) ToScheduleTriggerResponseOutput() ScheduleTriggerResponseOutput {
+	return o
+}
+
+func (o ScheduleTriggerResponseOutput) ToScheduleTriggerResponseOutputWithContext(ctx context.Context) ScheduleTriggerResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the trigger.
+func (o ScheduleTriggerResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ScheduleTriggerResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Trigger description.
+func (o ScheduleTriggerResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleTriggerResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Pipelines that need to be started.
+func (o ScheduleTriggerResponseOutput) Pipelines() TriggerPipelineReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ScheduleTriggerResponse) []TriggerPipelineReferenceResponse { return v.Pipelines }).(TriggerPipelineReferenceResponseArrayOutput)
+}
+
+// Recurrence schedule configuration.
+func (o ScheduleTriggerResponseOutput) Recurrence() ScheduleTriggerRecurrenceResponseOutput {
+	return o.ApplyT(func(v ScheduleTriggerResponse) ScheduleTriggerRecurrenceResponse { return v.Recurrence }).(ScheduleTriggerRecurrenceResponseOutput)
+}
+
+// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
+func (o ScheduleTriggerResponseOutput) RuntimeState() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleTriggerResponse) string { return v.RuntimeState }).(pulumi.StringOutput)
+}
+
+// Trigger type.
+// Expected value is 'ScheduleTrigger'.
+func (o ScheduleTriggerResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduleTriggerResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Custom script action to run on HDI ondemand cluster once it's up.
+type ScriptAction struct {
+	// The user provided name of the script action.
+	Name string `pulumi:"name"`
+	// The parameters for the script action.
+	Parameters *string `pulumi:"parameters"`
+	// The node types on which the script action should be executed.
+	Roles interface{} `pulumi:"roles"`
+	// The URI for the script action.
+	Uri string `pulumi:"uri"`
+}
+
+// ScriptActionInput is an input type that accepts ScriptActionArgs and ScriptActionOutput values.
+// You can construct a concrete instance of `ScriptActionInput` via:
+//
+//	ScriptActionArgs{...}
+type ScriptActionInput interface {
+	pulumi.Input
+
+	ToScriptActionOutput() ScriptActionOutput
+	ToScriptActionOutputWithContext(context.Context) ScriptActionOutput
+}
+
+// Custom script action to run on HDI ondemand cluster once it's up.
+type ScriptActionArgs struct {
+	// The user provided name of the script action.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The parameters for the script action.
+	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
+	// The node types on which the script action should be executed.
+	Roles pulumi.Input `pulumi:"roles"`
+	// The URI for the script action.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (ScriptActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptAction)(nil)).Elem()
+}
+
+func (i ScriptActionArgs) ToScriptActionOutput() ScriptActionOutput {
+	return i.ToScriptActionOutputWithContext(context.Background())
+}
+
+func (i ScriptActionArgs) ToScriptActionOutputWithContext(ctx context.Context) ScriptActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptActionOutput)
+}
+
+// ScriptActionArrayInput is an input type that accepts ScriptActionArray and ScriptActionArrayOutput values.
+// You can construct a concrete instance of `ScriptActionArrayInput` via:
+//
+//	ScriptActionArray{ ScriptActionArgs{...} }
+type ScriptActionArrayInput interface {
+	pulumi.Input
+
+	ToScriptActionArrayOutput() ScriptActionArrayOutput
+	ToScriptActionArrayOutputWithContext(context.Context) ScriptActionArrayOutput
+}
+
+type ScriptActionArray []ScriptActionInput
+
+func (ScriptActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScriptAction)(nil)).Elem()
+}
+
+func (i ScriptActionArray) ToScriptActionArrayOutput() ScriptActionArrayOutput {
+	return i.ToScriptActionArrayOutputWithContext(context.Background())
+}
+
+func (i ScriptActionArray) ToScriptActionArrayOutputWithContext(ctx context.Context) ScriptActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptActionArrayOutput)
+}
+
+// Custom script action to run on HDI ondemand cluster once it's up.
+type ScriptActionOutput struct{ *pulumi.OutputState }
+
+func (ScriptActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptAction)(nil)).Elem()
+}
+
+func (o ScriptActionOutput) ToScriptActionOutput() ScriptActionOutput {
+	return o
+}
+
+func (o ScriptActionOutput) ToScriptActionOutputWithContext(ctx context.Context) ScriptActionOutput {
+	return o
+}
+
+// The user provided name of the script action.
+func (o ScriptActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ScriptAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameters for the script action.
+func (o ScriptActionOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptAction) *string { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+// The node types on which the script action should be executed.
+func (o ScriptActionOutput) Roles() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptAction) interface{} { return v.Roles }).(pulumi.AnyOutput)
+}
+
+// The URI for the script action.
+func (o ScriptActionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ScriptAction) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ScriptActionArrayOutput struct{ *pulumi.OutputState }
+
+func (ScriptActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScriptAction)(nil)).Elem()
+}
+
+func (o ScriptActionArrayOutput) ToScriptActionArrayOutput() ScriptActionArrayOutput {
+	return o
+}
+
+func (o ScriptActionArrayOutput) ToScriptActionArrayOutputWithContext(ctx context.Context) ScriptActionArrayOutput {
+	return o
+}
+
+func (o ScriptActionArrayOutput) Index(i pulumi.IntInput) ScriptActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptAction {
+		return vs[0].([]ScriptAction)[vs[1].(int)]
+	}).(ScriptActionOutput)
+}
+
+// Custom script action to run on HDI ondemand cluster once it's up.
+type ScriptActionResponse struct {
+	// The user provided name of the script action.
+	Name string `pulumi:"name"`
+	// The parameters for the script action.
+	Parameters *string `pulumi:"parameters"`
+	// The node types on which the script action should be executed.
+	Roles interface{} `pulumi:"roles"`
+	// The URI for the script action.
+	Uri string `pulumi:"uri"`
+}
+
+// Custom script action to run on HDI ondemand cluster once it's up.
+type ScriptActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ScriptActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptActionResponse)(nil)).Elem()
+}
+
+func (o ScriptActionResponseOutput) ToScriptActionResponseOutput() ScriptActionResponseOutput {
+	return o
+}
+
+func (o ScriptActionResponseOutput) ToScriptActionResponseOutputWithContext(ctx context.Context) ScriptActionResponseOutput {
+	return o
+}
+
+// The user provided name of the script action.
+func (o ScriptActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ScriptActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameters for the script action.
+func (o ScriptActionResponseOutput) Parameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptActionResponse) *string { return v.Parameters }).(pulumi.StringPtrOutput)
+}
+
+// The node types on which the script action should be executed.
+func (o ScriptActionResponseOutput) Roles() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActionResponse) interface{} { return v.Roles }).(pulumi.AnyOutput)
+}
+
+// The URI for the script action.
+func (o ScriptActionResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v ScriptActionResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type ScriptActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScriptActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScriptActionResponse)(nil)).Elem()
+}
+
+func (o ScriptActionResponseArrayOutput) ToScriptActionResponseArrayOutput() ScriptActionResponseArrayOutput {
+	return o
+}
+
+func (o ScriptActionResponseArrayOutput) ToScriptActionResponseArrayOutputWithContext(ctx context.Context) ScriptActionResponseArrayOutput {
+	return o
+}
+
+func (o ScriptActionResponseArrayOutput) Index(i pulumi.IntInput) ScriptActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptActionResponse {
+		return vs[0].([]ScriptActionResponse)[vs[1].(int)]
+	}).(ScriptActionResponseOutput)
+}
+
 // Script activity type.
 type ScriptActivity struct {
 	// Activity depends on condition.
@@ -29383,6 +29895,14 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ScheduleTriggerOutput{})
+	pulumi.RegisterOutputType(ScheduleTriggerRecurrenceOutput{})
+	pulumi.RegisterOutputType(ScheduleTriggerRecurrenceResponseOutput{})
+	pulumi.RegisterOutputType(ScheduleTriggerResponseOutput{})
+	pulumi.RegisterOutputType(ScriptActionOutput{})
+	pulumi.RegisterOutputType(ScriptActionArrayOutput{})
+	pulumi.RegisterOutputType(ScriptActionResponseOutput{})
+	pulumi.RegisterOutputType(ScriptActionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ScriptActivityOutput{})
 	pulumi.RegisterOutputType(ScriptActivityParameterOutput{})
 	pulumi.RegisterOutputType(ScriptActivityParameterArrayOutput{})

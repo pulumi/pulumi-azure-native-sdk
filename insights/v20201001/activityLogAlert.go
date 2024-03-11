@@ -24,7 +24,7 @@ type ActivityLogAlert struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Indicates whether this Activity Log Alert rule is enabled. If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The location of the resource. Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
+	// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -116,7 +116,7 @@ type activityLogAlertArgs struct {
 	Description *string `pulumi:"description"`
 	// Indicates whether this Activity Log Alert rule is enabled. If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
 	Enabled *bool `pulumi:"enabled"`
-	// The location of the resource. Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
+	// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -138,7 +138,7 @@ type ActivityLogAlertArgs struct {
 	Description pulumi.StringPtrInput
 	// Indicates whether this Activity Log Alert rule is enabled. If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
 	Enabled pulumi.BoolPtrInput
-	// The location of the resource. Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
+	// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -205,7 +205,7 @@ func (o ActivityLogAlertOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActivityLogAlert) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The location of the resource. Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
+// The location of the resource. Azure Activity Log Alert rules are supported on Global, West Europe and North Europe regions.
 func (o ActivityLogAlertOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActivityLogAlert) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }

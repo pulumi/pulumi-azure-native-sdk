@@ -1364,6 +1364,181 @@ func (o OfferDetailResponseOutput) TermUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v OfferDetailResponse) string { return v.TermUnit }).(pulumi.StringOutput)
 }
 
+// Details of region record
+type RegionRecordResponse struct {
+	// Id of the cluster
+	Id *string `pulumi:"id"`
+	// Kind of the cluster
+	Kind *string `pulumi:"kind"`
+	// Metadata of the record
+	Metadata *SCMetadataEntityResponse `pulumi:"metadata"`
+	// Specification of the region
+	Spec *RegionSpecEntityResponse `pulumi:"spec"`
+}
+
+// Details of region record
+type RegionRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (RegionRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionRecordResponse)(nil)).Elem()
+}
+
+func (o RegionRecordResponseOutput) ToRegionRecordResponseOutput() RegionRecordResponseOutput {
+	return o
+}
+
+func (o RegionRecordResponseOutput) ToRegionRecordResponseOutputWithContext(ctx context.Context) RegionRecordResponseOutput {
+	return o
+}
+
+// Id of the cluster
+func (o RegionRecordResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionRecordResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the cluster
+func (o RegionRecordResponseOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionRecordResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Metadata of the record
+func (o RegionRecordResponseOutput) Metadata() SCMetadataEntityResponsePtrOutput {
+	return o.ApplyT(func(v RegionRecordResponse) *SCMetadataEntityResponse { return v.Metadata }).(SCMetadataEntityResponsePtrOutput)
+}
+
+// Specification of the region
+func (o RegionRecordResponseOutput) Spec() RegionSpecEntityResponsePtrOutput {
+	return o.ApplyT(func(v RegionRecordResponse) *RegionSpecEntityResponse { return v.Spec }).(RegionSpecEntityResponsePtrOutput)
+}
+
+type RegionRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionRecordResponse)(nil)).Elem()
+}
+
+func (o RegionRecordResponseArrayOutput) ToRegionRecordResponseArrayOutput() RegionRecordResponseArrayOutput {
+	return o
+}
+
+func (o RegionRecordResponseArrayOutput) ToRegionRecordResponseArrayOutputWithContext(ctx context.Context) RegionRecordResponseArrayOutput {
+	return o
+}
+
+func (o RegionRecordResponseArrayOutput) Index(i pulumi.IntInput) RegionRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionRecordResponse {
+		return vs[0].([]RegionRecordResponse)[vs[1].(int)]
+	}).(RegionRecordResponseOutput)
+}
+
+// Region spec details
+type RegionSpecEntityResponse struct {
+	// Cloud provider name
+	Cloud *string `pulumi:"cloud"`
+	// Display Name of the region
+	Name     *string  `pulumi:"name"`
+	Packages []string `pulumi:"packages"`
+	// Region name
+	RegionName *string `pulumi:"regionName"`
+}
+
+// Region spec details
+type RegionSpecEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (RegionSpecEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSpecEntityResponse)(nil)).Elem()
+}
+
+func (o RegionSpecEntityResponseOutput) ToRegionSpecEntityResponseOutput() RegionSpecEntityResponseOutput {
+	return o
+}
+
+func (o RegionSpecEntityResponseOutput) ToRegionSpecEntityResponseOutputWithContext(ctx context.Context) RegionSpecEntityResponseOutput {
+	return o
+}
+
+// Cloud provider name
+func (o RegionSpecEntityResponseOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionSpecEntityResponse) *string { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the region
+func (o RegionSpecEntityResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionSpecEntityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o RegionSpecEntityResponseOutput) Packages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionSpecEntityResponse) []string { return v.Packages }).(pulumi.StringArrayOutput)
+}
+
+// Region name
+func (o RegionSpecEntityResponseOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionSpecEntityResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
+}
+
+type RegionSpecEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionSpecEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSpecEntityResponse)(nil)).Elem()
+}
+
+func (o RegionSpecEntityResponsePtrOutput) ToRegionSpecEntityResponsePtrOutput() RegionSpecEntityResponsePtrOutput {
+	return o
+}
+
+func (o RegionSpecEntityResponsePtrOutput) ToRegionSpecEntityResponsePtrOutputWithContext(ctx context.Context) RegionSpecEntityResponsePtrOutput {
+	return o
+}
+
+func (o RegionSpecEntityResponsePtrOutput) Elem() RegionSpecEntityResponseOutput {
+	return o.ApplyT(func(v *RegionSpecEntityResponse) RegionSpecEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSpecEntityResponse
+		return ret
+	}).(RegionSpecEntityResponseOutput)
+}
+
+// Cloud provider name
+func (o RegionSpecEntityResponsePtrOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cloud
+	}).(pulumi.StringPtrOutput)
+}
+
+// Display Name of the region
+func (o RegionSpecEntityResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionSpecEntityResponsePtrOutput) Packages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionSpecEntityResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Packages
+	}).(pulumi.StringArrayOutput)
+}
+
+// Region name
+func (o RegionSpecEntityResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionSpecEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Record of the environment
 type RoleBindingRecordResponse struct {
 	// A CRN that specifies the scope and resource patterns necessary for the role to bind
@@ -1443,6 +1618,134 @@ func (o RoleBindingRecordResponseArrayOutput) Index(i pulumi.IntInput) RoleBindi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleBindingRecordResponse {
 		return vs[0].([]RoleBindingRecordResponse)[vs[1].(int)]
 	}).(RoleBindingRecordResponseOutput)
+}
+
+// Metadata of the data record
+type SCMetadataEntityResponse struct {
+	// Created Date Time
+	CreatedTimestamp *string `pulumi:"createdTimestamp"`
+	// Deleted Date time
+	DeletedTimestamp *string `pulumi:"deletedTimestamp"`
+	// Resource name of the record
+	ResourceName *string `pulumi:"resourceName"`
+	// Self lookup url
+	Self *string `pulumi:"self"`
+	// Updated Date time
+	UpdatedTimestamp *string `pulumi:"updatedTimestamp"`
+}
+
+// Metadata of the data record
+type SCMetadataEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (SCMetadataEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SCMetadataEntityResponse)(nil)).Elem()
+}
+
+func (o SCMetadataEntityResponseOutput) ToSCMetadataEntityResponseOutput() SCMetadataEntityResponseOutput {
+	return o
+}
+
+func (o SCMetadataEntityResponseOutput) ToSCMetadataEntityResponseOutputWithContext(ctx context.Context) SCMetadataEntityResponseOutput {
+	return o
+}
+
+// Created Date Time
+func (o SCMetadataEntityResponseOutput) CreatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntityResponse) *string { return v.CreatedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Deleted Date time
+func (o SCMetadataEntityResponseOutput) DeletedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntityResponse) *string { return v.DeletedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the record
+func (o SCMetadataEntityResponseOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntityResponse) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o SCMetadataEntityResponseOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntityResponse) *string { return v.Self }).(pulumi.StringPtrOutput)
+}
+
+// Updated Date time
+func (o SCMetadataEntityResponseOutput) UpdatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SCMetadataEntityResponse) *string { return v.UpdatedTimestamp }).(pulumi.StringPtrOutput)
+}
+
+type SCMetadataEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SCMetadataEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SCMetadataEntityResponse)(nil)).Elem()
+}
+
+func (o SCMetadataEntityResponsePtrOutput) ToSCMetadataEntityResponsePtrOutput() SCMetadataEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCMetadataEntityResponsePtrOutput) ToSCMetadataEntityResponsePtrOutputWithContext(ctx context.Context) SCMetadataEntityResponsePtrOutput {
+	return o
+}
+
+func (o SCMetadataEntityResponsePtrOutput) Elem() SCMetadataEntityResponseOutput {
+	return o.ApplyT(func(v *SCMetadataEntityResponse) SCMetadataEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SCMetadataEntityResponse
+		return ret
+	}).(SCMetadataEntityResponseOutput)
+}
+
+// Created Date Time
+func (o SCMetadataEntityResponsePtrOutput) CreatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deleted Date time
+func (o SCMetadataEntityResponsePtrOutput) DeletedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeletedTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name of the record
+func (o SCMetadataEntityResponsePtrOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Self lookup url
+func (o SCMetadataEntityResponsePtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Self
+	}).(pulumi.StringPtrOutput)
+}
+
+// Updated Date time
+func (o SCMetadataEntityResponsePtrOutput) UpdatedTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SCMetadataEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedTimestamp
+	}).(pulumi.StringPtrOutput)
 }
 
 // Record of the service account
@@ -1799,8 +2102,14 @@ func init() {
 	pulumi.RegisterOutputType(MetadataEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(OfferDetailOutput{})
 	pulumi.RegisterOutputType(OfferDetailResponseOutput{})
+	pulumi.RegisterOutputType(RegionRecordResponseOutput{})
+	pulumi.RegisterOutputType(RegionRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(RegionSpecEntityResponseOutput{})
+	pulumi.RegisterOutputType(RegionSpecEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoleBindingRecordResponseOutput{})
 	pulumi.RegisterOutputType(RoleBindingRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(SCMetadataEntityResponseOutput{})
+	pulumi.RegisterOutputType(SCMetadataEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountRecordResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAccountRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

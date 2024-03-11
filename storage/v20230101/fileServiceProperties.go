@@ -80,6 +80,9 @@ func NewFileServiceProperties(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20220901:FileServiceProperties"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230401:FileServiceProperties"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

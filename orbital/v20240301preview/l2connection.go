@@ -62,6 +62,9 @@ func NewL2Connection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:orbital:L2Connection"),
 		},
+		{
+			Type: pulumi.String("azure-native:orbital/v20240301:L2Connection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

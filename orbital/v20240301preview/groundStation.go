@@ -64,6 +64,9 @@ func NewGroundStation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:orbital:GroundStation"),
 		},
+		{
+			Type: pulumi.String("azure-native:orbital/v20240301:GroundStation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

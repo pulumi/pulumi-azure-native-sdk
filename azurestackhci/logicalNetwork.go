@@ -14,6 +14,8 @@ import (
 
 // The logical network resource definition.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-01-01.
 type LogicalNetwork struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +56,9 @@ func NewLogicalNetwork(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:LogicalNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:LogicalNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

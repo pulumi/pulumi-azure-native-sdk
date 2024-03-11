@@ -41543,6 +41543,876 @@ func (o PostgreSqlTableDatasetResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Linked service for PostgreSQLV2 data source.
+type PostgreSqlV2LinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+	ConnectionTimeout interface{} `pulumi:"connectionTimeout"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+	Encoding interface{} `pulumi:"encoding"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// When enabled, parameter values are logged when commands are executed. Type: boolean.
+	LogParameters interface{} `pulumi:"logParameters"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string. Type: string.
+	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// Whether connection pooling should be used. Type: boolean.
+	Pooling interface{} `pulumi:"pooling"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
+	// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+	ReadBufferSize interface{} `pulumi:"readBufferSize"`
+	// Sets the schema search path. Type: string.
+	Schema interface{} `pulumi:"schema"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
+	// Location of a client certificate to be sent to the server. Type: string.
+	SslCertificate interface{} `pulumi:"sslCertificate"`
+	// Location of a client key for a client certificate to be sent to the server. Type: string.
+	SslKey interface{} `pulumi:"sslKey"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+	SslMode interface{} `pulumi:"sslMode"`
+	// Password for a key for a client certificate. Type: string.
+	SslPassword interface{} `pulumi:"sslPassword"`
+	// Gets or sets the session timezone. Type: string.
+	Timezone interface{} `pulumi:"timezone"`
+	// Whether to trust the server certificate without validating it. Type: boolean.
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
+	// Type of linked service.
+	// Expected value is 'PostgreSqlV2'.
+	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Username interface{} `pulumi:"username"`
+}
+
+// PostgreSqlV2LinkedServiceInput is an input type that accepts PostgreSqlV2LinkedServiceArgs and PostgreSqlV2LinkedServiceOutput values.
+// You can construct a concrete instance of `PostgreSqlV2LinkedServiceInput` via:
+//
+//	PostgreSqlV2LinkedServiceArgs{...}
+type PostgreSqlV2LinkedServiceInput interface {
+	pulumi.Input
+
+	ToPostgreSqlV2LinkedServiceOutput() PostgreSqlV2LinkedServiceOutput
+	ToPostgreSqlV2LinkedServiceOutputWithContext(context.Context) PostgreSqlV2LinkedServiceOutput
+}
+
+// Linked service for PostgreSQLV2 data source.
+type PostgreSqlV2LinkedServiceArgs struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
+	// The integration runtime reference.
+	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+	ConnectionTimeout pulumi.Input `pulumi:"connectionTimeout"`
+	// Database name for connection. Type: string.
+	Database pulumi.Input `pulumi:"database"`
+	// Linked service description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+	Encoding pulumi.Input `pulumi:"encoding"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// When enabled, parameter values are logged when commands are executed. Type: boolean.
+	LogParameters pulumi.Input `pulumi:"logParameters"`
+	// Parameters for linked service.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string. Type: string.
+	Password AzureKeyVaultSecretReferencePtrInput `pulumi:"password"`
+	// Whether connection pooling should be used. Type: boolean.
+	Pooling pulumi.Input `pulumi:"pooling"`
+	// The port for the connection. Type: integer.
+	Port pulumi.Input `pulumi:"port"`
+	// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+	ReadBufferSize pulumi.Input `pulumi:"readBufferSize"`
+	// Sets the schema search path. Type: string.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Server name for connection. Type: string.
+	Server pulumi.Input `pulumi:"server"`
+	// Location of a client certificate to be sent to the server. Type: string.
+	SslCertificate pulumi.Input `pulumi:"sslCertificate"`
+	// Location of a client key for a client certificate to be sent to the server. Type: string.
+	SslKey pulumi.Input `pulumi:"sslKey"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+	SslMode pulumi.Input `pulumi:"sslMode"`
+	// Password for a key for a client certificate. Type: string.
+	SslPassword pulumi.Input `pulumi:"sslPassword"`
+	// Gets or sets the session timezone. Type: string.
+	Timezone pulumi.Input `pulumi:"timezone"`
+	// Whether to trust the server certificate without validating it. Type: boolean.
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
+	// Type of linked service.
+	// Expected value is 'PostgreSqlV2'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Username pulumi.Input `pulumi:"username"`
+}
+
+func (PostgreSqlV2LinkedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2LinkedService)(nil)).Elem()
+}
+
+func (i PostgreSqlV2LinkedServiceArgs) ToPostgreSqlV2LinkedServiceOutput() PostgreSqlV2LinkedServiceOutput {
+	return i.ToPostgreSqlV2LinkedServiceOutputWithContext(context.Background())
+}
+
+func (i PostgreSqlV2LinkedServiceArgs) ToPostgreSqlV2LinkedServiceOutputWithContext(ctx context.Context) PostgreSqlV2LinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgreSqlV2LinkedServiceOutput)
+}
+
+// Linked service for PostgreSQLV2 data source.
+type PostgreSqlV2LinkedServiceOutput struct{ *pulumi.OutputState }
+
+func (PostgreSqlV2LinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2LinkedService)(nil)).Elem()
+}
+
+func (o PostgreSqlV2LinkedServiceOutput) ToPostgreSqlV2LinkedServiceOutput() PostgreSqlV2LinkedServiceOutput {
+	return o
+}
+
+func (o PostgreSqlV2LinkedServiceOutput) ToPostgreSqlV2LinkedServiceOutputWithContext(ctx context.Context) PostgreSqlV2LinkedServiceOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o PostgreSqlV2LinkedServiceOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+func (o PostgreSqlV2LinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o PostgreSqlV2LinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+func (o PostgreSqlV2LinkedServiceOutput) ConnectionTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.ConnectionTimeout }).(pulumi.AnyOutput)
+}
+
+// Database name for connection. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
+// Linked service description.
+func (o PostgreSqlV2LinkedServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+func (o PostgreSqlV2LinkedServiceOutput) Encoding() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Encoding }).(pulumi.AnyOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// When enabled, parameter values are logged when commands are executed. Type: boolean.
+func (o PostgreSqlV2LinkedServiceOutput) LogParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.LogParameters }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o PostgreSqlV2LinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// The Azure key vault secret reference of password in connection string. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) Password() AzureKeyVaultSecretReferencePtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) *AzureKeyVaultSecretReference { return v.Password }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// Whether connection pooling should be used. Type: boolean.
+func (o PostgreSqlV2LinkedServiceOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The port for the connection. Type: integer.
+func (o PostgreSqlV2LinkedServiceOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+func (o PostgreSqlV2LinkedServiceOutput) ReadBufferSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.ReadBufferSize }).(pulumi.AnyOutput)
+}
+
+// Sets the schema search path. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Server name for connection. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Location of a client certificate to be sent to the server. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) SslCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.SslCertificate }).(pulumi.AnyOutput)
+}
+
+// Location of a client key for a client certificate to be sent to the server. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) SslKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.SslKey }).(pulumi.AnyOutput)
+}
+
+// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+func (o PostgreSqlV2LinkedServiceOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// Password for a key for a client certificate. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) SslPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.SslPassword }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the session timezone. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) Timezone() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Timezone }).(pulumi.AnyOutput)
+}
+
+// Whether to trust the server certificate without validating it. Type: boolean.
+func (o PostgreSqlV2LinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'PostgreSqlV2'.
+func (o PostgreSqlV2LinkedServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o PostgreSqlV2LinkedServiceOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Linked service for PostgreSQLV2 data source.
+type PostgreSqlV2LinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+	ConnectionTimeout interface{} `pulumi:"connectionTimeout"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+	Encoding interface{} `pulumi:"encoding"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// When enabled, parameter values are logged when commands are executed. Type: boolean.
+	LogParameters interface{} `pulumi:"logParameters"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The Azure key vault secret reference of password in connection string. Type: string.
+	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// Whether connection pooling should be used. Type: boolean.
+	Pooling interface{} `pulumi:"pooling"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
+	// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+	ReadBufferSize interface{} `pulumi:"readBufferSize"`
+	// Sets the schema search path. Type: string.
+	Schema interface{} `pulumi:"schema"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
+	// Location of a client certificate to be sent to the server. Type: string.
+	SslCertificate interface{} `pulumi:"sslCertificate"`
+	// Location of a client key for a client certificate to be sent to the server. Type: string.
+	SslKey interface{} `pulumi:"sslKey"`
+	// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+	SslMode interface{} `pulumi:"sslMode"`
+	// Password for a key for a client certificate. Type: string.
+	SslPassword interface{} `pulumi:"sslPassword"`
+	// Gets or sets the session timezone. Type: string.
+	Timezone interface{} `pulumi:"timezone"`
+	// Whether to trust the server certificate without validating it. Type: boolean.
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
+	// Type of linked service.
+	// Expected value is 'PostgreSqlV2'.
+	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Username interface{} `pulumi:"username"`
+}
+
+// Linked service for PostgreSQLV2 data source.
+type PostgreSqlV2LinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgreSqlV2LinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2LinkedServiceResponse)(nil)).Elem()
+}
+
+func (o PostgreSqlV2LinkedServiceResponseOutput) ToPostgreSqlV2LinkedServiceResponseOutput() PostgreSqlV2LinkedServiceResponseOutput {
+	return o
+}
+
+func (o PostgreSqlV2LinkedServiceResponseOutput) ToPostgreSqlV2LinkedServiceResponseOutputWithContext(ctx context.Context) PostgreSqlV2LinkedServiceResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+func (o PostgreSqlV2LinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o PostgreSqlV2LinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+func (o PostgreSqlV2LinkedServiceResponseOutput) ConnectionTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.ConnectionTimeout }).(pulumi.AnyOutput)
+}
+
+// Database name for connection. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
+// Linked service description.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+func (o PostgreSqlV2LinkedServiceResponseOutput) Encoding() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Encoding }).(pulumi.AnyOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// When enabled, parameter values are logged when commands are executed. Type: boolean.
+func (o PostgreSqlV2LinkedServiceResponseOutput) LogParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.LogParameters }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) map[string]ParameterSpecificationResponse {
+		return v.Parameters
+	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// The Azure key vault secret reference of password in connection string. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Password() AzureKeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Password }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Whether connection pooling should be used. Type: boolean.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The port for the connection. Type: integer.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
+// Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+func (o PostgreSqlV2LinkedServiceResponseOutput) ReadBufferSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.ReadBufferSize }).(pulumi.AnyOutput)
+}
+
+// Sets the schema search path. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Server name for connection. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Location of a client certificate to be sent to the server. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) SslCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.SslCertificate }).(pulumi.AnyOutput)
+}
+
+// Location of a client key for a client certificate to be sent to the server. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) SslKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.SslKey }).(pulumi.AnyOutput)
+}
+
+// SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+func (o PostgreSqlV2LinkedServiceResponseOutput) SslMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.SslMode }).(pulumi.AnyOutput)
+}
+
+// Password for a key for a client certificate. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) SslPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.SslPassword }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the session timezone. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Timezone() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Timezone }).(pulumi.AnyOutput)
+}
+
+// Whether to trust the server certificate without validating it. Type: boolean.
+func (o PostgreSqlV2LinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'PostgreSqlV2'.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// A copy activity source for PostgreSQL databases.
+type PostgreSqlV2Source struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Database query. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'PostgreSqlV2Source'.
+	Type string `pulumi:"type"`
+}
+
+// PostgreSqlV2SourceInput is an input type that accepts PostgreSqlV2SourceArgs and PostgreSqlV2SourceOutput values.
+// You can construct a concrete instance of `PostgreSqlV2SourceInput` via:
+//
+//	PostgreSqlV2SourceArgs{...}
+type PostgreSqlV2SourceInput interface {
+	pulumi.Input
+
+	ToPostgreSqlV2SourceOutput() PostgreSqlV2SourceOutput
+	ToPostgreSqlV2SourceOutputWithContext(context.Context) PostgreSqlV2SourceOutput
+}
+
+// A copy activity source for PostgreSQL databases.
+type PostgreSqlV2SourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// Database query. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'PostgreSqlV2Source'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PostgreSqlV2SourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2Source)(nil)).Elem()
+}
+
+func (i PostgreSqlV2SourceArgs) ToPostgreSqlV2SourceOutput() PostgreSqlV2SourceOutput {
+	return i.ToPostgreSqlV2SourceOutputWithContext(context.Background())
+}
+
+func (i PostgreSqlV2SourceArgs) ToPostgreSqlV2SourceOutputWithContext(ctx context.Context) PostgreSqlV2SourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgreSqlV2SourceOutput)
+}
+
+// A copy activity source for PostgreSQL databases.
+type PostgreSqlV2SourceOutput struct{ *pulumi.OutputState }
+
+func (PostgreSqlV2SourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2Source)(nil)).Elem()
+}
+
+func (o PostgreSqlV2SourceOutput) ToPostgreSqlV2SourceOutput() PostgreSqlV2SourceOutput {
+	return o
+}
+
+func (o PostgreSqlV2SourceOutput) ToPostgreSqlV2SourceOutputWithContext(ctx context.Context) PostgreSqlV2SourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o PostgreSqlV2SourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o PostgreSqlV2SourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o PostgreSqlV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Database query. Type: string (or Expression with resultType string).
+func (o PostgreSqlV2SourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o PostgreSqlV2SourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o PostgreSqlV2SourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o PostgreSqlV2SourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'PostgreSqlV2Source'.
+func (o PostgreSqlV2SourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlV2Source) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity source for PostgreSQL databases.
+type PostgreSqlV2SourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Database query. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'PostgreSqlV2Source'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity source for PostgreSQL databases.
+type PostgreSqlV2SourceResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgreSqlV2SourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2SourceResponse)(nil)).Elem()
+}
+
+func (o PostgreSqlV2SourceResponseOutput) ToPostgreSqlV2SourceResponseOutput() PostgreSqlV2SourceResponseOutput {
+	return o
+}
+
+func (o PostgreSqlV2SourceResponseOutput) ToPostgreSqlV2SourceResponseOutputWithContext(ctx context.Context) PostgreSqlV2SourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o PostgreSqlV2SourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o PostgreSqlV2SourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o PostgreSqlV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// Database query. Type: string (or Expression with resultType string).
+func (o PostgreSqlV2SourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o PostgreSqlV2SourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o PostgreSqlV2SourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o PostgreSqlV2SourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'PostgreSqlV2Source'.
+func (o PostgreSqlV2SourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlV2SourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The PostgreSQLV2 table dataset.
+type PostgreSqlV2TableDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The PostgreSQL table name. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'PostgreSqlV2Table'.
+	Type string `pulumi:"type"`
+}
+
+// PostgreSqlV2TableDatasetInput is an input type that accepts PostgreSqlV2TableDatasetArgs and PostgreSqlV2TableDatasetOutput values.
+// You can construct a concrete instance of `PostgreSqlV2TableDatasetInput` via:
+//
+//	PostgreSqlV2TableDatasetArgs{...}
+type PostgreSqlV2TableDatasetInput interface {
+	pulumi.Input
+
+	ToPostgreSqlV2TableDatasetOutput() PostgreSqlV2TableDatasetOutput
+	ToPostgreSqlV2TableDatasetOutputWithContext(context.Context) PostgreSqlV2TableDatasetOutput
+}
+
+// The PostgreSQLV2 table dataset.
+type PostgreSqlV2TableDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The PostgreSQL table name. Type: string (or Expression with resultType string).
+	Table pulumi.Input `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'PostgreSqlV2Table'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PostgreSqlV2TableDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2TableDataset)(nil)).Elem()
+}
+
+func (i PostgreSqlV2TableDatasetArgs) ToPostgreSqlV2TableDatasetOutput() PostgreSqlV2TableDatasetOutput {
+	return i.ToPostgreSqlV2TableDatasetOutputWithContext(context.Background())
+}
+
+func (i PostgreSqlV2TableDatasetArgs) ToPostgreSqlV2TableDatasetOutputWithContext(ctx context.Context) PostgreSqlV2TableDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgreSqlV2TableDatasetOutput)
+}
+
+// The PostgreSQLV2 table dataset.
+type PostgreSqlV2TableDatasetOutput struct{ *pulumi.OutputState }
+
+func (PostgreSqlV2TableDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2TableDataset)(nil)).Elem()
+}
+
+func (o PostgreSqlV2TableDatasetOutput) ToPostgreSqlV2TableDatasetOutput() PostgreSqlV2TableDatasetOutput {
+	return o
+}
+
+func (o PostgreSqlV2TableDatasetOutput) ToPostgreSqlV2TableDatasetOutputWithContext(ctx context.Context) PostgreSqlV2TableDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o PostgreSqlV2TableDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o PostgreSqlV2TableDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o PostgreSqlV2TableDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o PostgreSqlV2TableDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o PostgreSqlV2TableDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o PostgreSqlV2TableDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o PostgreSqlV2TableDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The PostgreSQL table name. Type: string (or Expression with resultType string).
+func (o PostgreSqlV2TableDatasetOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'PostgreSqlV2Table'.
+func (o PostgreSqlV2TableDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The PostgreSQLV2 table dataset.
+type PostgreSqlV2TableDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The PostgreSQL table name. Type: string (or Expression with resultType string).
+	Table interface{} `pulumi:"table"`
+	// Type of dataset.
+	// Expected value is 'PostgreSqlV2Table'.
+	Type string `pulumi:"type"`
+}
+
+// The PostgreSQLV2 table dataset.
+type PostgreSqlV2TableDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgreSqlV2TableDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgreSqlV2TableDatasetResponse)(nil)).Elem()
+}
+
+func (o PostgreSqlV2TableDatasetResponseOutput) ToPostgreSqlV2TableDatasetResponseOutput() PostgreSqlV2TableDatasetResponseOutput {
+	return o
+}
+
+func (o PostgreSqlV2TableDatasetResponseOutput) ToPostgreSqlV2TableDatasetResponseOutputWithContext(ctx context.Context) PostgreSqlV2TableDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o PostgreSqlV2TableDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o PostgreSqlV2TableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o PostgreSqlV2TableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o PostgreSqlV2TableDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o PostgreSqlV2TableDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) map[string]ParameterSpecificationResponse {
+		return v.Parameters
+	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o PostgreSqlV2TableDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o PostgreSqlV2TableDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The PostgreSQL table name. Type: string (or Expression with resultType string).
+func (o PostgreSqlV2TableDatasetResponseOutput) Table() pulumi.AnyOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) interface{} { return v.Table }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'PostgreSqlV2Table'.
+func (o PostgreSqlV2TableDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlV2TableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Power query sink.
 type PowerQuerySink struct {
 	// Dataset reference.
@@ -60459,518 +61329,6 @@ func (o SapTableSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SapTableSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Trigger that creates pipeline runs periodically, on schedule.
-type ScheduleTrigger struct {
-	// List of tags that can be used for describing the trigger.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Trigger description.
-	Description *string `pulumi:"description"`
-	// Pipelines that need to be started.
-	Pipelines []TriggerPipelineReference `pulumi:"pipelines"`
-	// Recurrence schedule configuration.
-	Recurrence ScheduleTriggerRecurrence `pulumi:"recurrence"`
-	// Trigger type.
-	// Expected value is 'ScheduleTrigger'.
-	Type string `pulumi:"type"`
-}
-
-// ScheduleTriggerInput is an input type that accepts ScheduleTriggerArgs and ScheduleTriggerOutput values.
-// You can construct a concrete instance of `ScheduleTriggerInput` via:
-//
-//	ScheduleTriggerArgs{...}
-type ScheduleTriggerInput interface {
-	pulumi.Input
-
-	ToScheduleTriggerOutput() ScheduleTriggerOutput
-	ToScheduleTriggerOutputWithContext(context.Context) ScheduleTriggerOutput
-}
-
-// Trigger that creates pipeline runs periodically, on schedule.
-type ScheduleTriggerArgs struct {
-	// List of tags that can be used for describing the trigger.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// Trigger description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Pipelines that need to be started.
-	Pipelines TriggerPipelineReferenceArrayInput `pulumi:"pipelines"`
-	// Recurrence schedule configuration.
-	Recurrence ScheduleTriggerRecurrenceInput `pulumi:"recurrence"`
-	// Trigger type.
-	// Expected value is 'ScheduleTrigger'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (ScheduleTriggerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleTrigger)(nil)).Elem()
-}
-
-func (i ScheduleTriggerArgs) ToScheduleTriggerOutput() ScheduleTriggerOutput {
-	return i.ToScheduleTriggerOutputWithContext(context.Background())
-}
-
-func (i ScheduleTriggerArgs) ToScheduleTriggerOutputWithContext(ctx context.Context) ScheduleTriggerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleTriggerOutput)
-}
-
-// Trigger that creates pipeline runs periodically, on schedule.
-type ScheduleTriggerOutput struct{ *pulumi.OutputState }
-
-func (ScheduleTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleTrigger)(nil)).Elem()
-}
-
-func (o ScheduleTriggerOutput) ToScheduleTriggerOutput() ScheduleTriggerOutput {
-	return o
-}
-
-func (o ScheduleTriggerOutput) ToScheduleTriggerOutputWithContext(ctx context.Context) ScheduleTriggerOutput {
-	return o
-}
-
-// List of tags that can be used for describing the trigger.
-func (o ScheduleTriggerOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v ScheduleTrigger) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Trigger description.
-func (o ScheduleTriggerOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTrigger) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Pipelines that need to be started.
-func (o ScheduleTriggerOutput) Pipelines() TriggerPipelineReferenceArrayOutput {
-	return o.ApplyT(func(v ScheduleTrigger) []TriggerPipelineReference { return v.Pipelines }).(TriggerPipelineReferenceArrayOutput)
-}
-
-// Recurrence schedule configuration.
-func (o ScheduleTriggerOutput) Recurrence() ScheduleTriggerRecurrenceOutput {
-	return o.ApplyT(func(v ScheduleTrigger) ScheduleTriggerRecurrence { return v.Recurrence }).(ScheduleTriggerRecurrenceOutput)
-}
-
-// Trigger type.
-// Expected value is 'ScheduleTrigger'.
-func (o ScheduleTriggerOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScheduleTrigger) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The workflow trigger recurrence.
-type ScheduleTriggerRecurrence struct {
-	// The end time.
-	EndTime *string `pulumi:"endTime"`
-	// The frequency.
-	Frequency *string `pulumi:"frequency"`
-	// The interval.
-	Interval *int `pulumi:"interval"`
-	// The recurrence schedule.
-	Schedule *RecurrenceSchedule `pulumi:"schedule"`
-	// The start time.
-	StartTime *string `pulumi:"startTime"`
-	// The time zone.
-	TimeZone *string `pulumi:"timeZone"`
-}
-
-// ScheduleTriggerRecurrenceInput is an input type that accepts ScheduleTriggerRecurrenceArgs and ScheduleTriggerRecurrenceOutput values.
-// You can construct a concrete instance of `ScheduleTriggerRecurrenceInput` via:
-//
-//	ScheduleTriggerRecurrenceArgs{...}
-type ScheduleTriggerRecurrenceInput interface {
-	pulumi.Input
-
-	ToScheduleTriggerRecurrenceOutput() ScheduleTriggerRecurrenceOutput
-	ToScheduleTriggerRecurrenceOutputWithContext(context.Context) ScheduleTriggerRecurrenceOutput
-}
-
-// The workflow trigger recurrence.
-type ScheduleTriggerRecurrenceArgs struct {
-	// The end time.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// The frequency.
-	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
-	// The interval.
-	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// The recurrence schedule.
-	Schedule RecurrenceSchedulePtrInput `pulumi:"schedule"`
-	// The start time.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The time zone.
-	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-}
-
-func (ScheduleTriggerRecurrenceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleTriggerRecurrence)(nil)).Elem()
-}
-
-func (i ScheduleTriggerRecurrenceArgs) ToScheduleTriggerRecurrenceOutput() ScheduleTriggerRecurrenceOutput {
-	return i.ToScheduleTriggerRecurrenceOutputWithContext(context.Background())
-}
-
-func (i ScheduleTriggerRecurrenceArgs) ToScheduleTriggerRecurrenceOutputWithContext(ctx context.Context) ScheduleTriggerRecurrenceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleTriggerRecurrenceOutput)
-}
-
-// The workflow trigger recurrence.
-type ScheduleTriggerRecurrenceOutput struct{ *pulumi.OutputState }
-
-func (ScheduleTriggerRecurrenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleTriggerRecurrence)(nil)).Elem()
-}
-
-func (o ScheduleTriggerRecurrenceOutput) ToScheduleTriggerRecurrenceOutput() ScheduleTriggerRecurrenceOutput {
-	return o
-}
-
-func (o ScheduleTriggerRecurrenceOutput) ToScheduleTriggerRecurrenceOutputWithContext(ctx context.Context) ScheduleTriggerRecurrenceOutput {
-	return o
-}
-
-// The end time.
-func (o ScheduleTriggerRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// The frequency.
-func (o ScheduleTriggerRecurrenceOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.Frequency }).(pulumi.StringPtrOutput)
-}
-
-// The interval.
-func (o ScheduleTriggerRecurrenceOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrence) *int { return v.Interval }).(pulumi.IntPtrOutput)
-}
-
-// The recurrence schedule.
-func (o ScheduleTriggerRecurrenceOutput) Schedule() RecurrenceSchedulePtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrence) *RecurrenceSchedule { return v.Schedule }).(RecurrenceSchedulePtrOutput)
-}
-
-// The start time.
-func (o ScheduleTriggerRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// The time zone.
-func (o ScheduleTriggerRecurrenceOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrence) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-// The workflow trigger recurrence.
-type ScheduleTriggerRecurrenceResponse struct {
-	// The end time.
-	EndTime *string `pulumi:"endTime"`
-	// The frequency.
-	Frequency *string `pulumi:"frequency"`
-	// The interval.
-	Interval *int `pulumi:"interval"`
-	// The recurrence schedule.
-	Schedule *RecurrenceScheduleResponse `pulumi:"schedule"`
-	// The start time.
-	StartTime *string `pulumi:"startTime"`
-	// The time zone.
-	TimeZone *string `pulumi:"timeZone"`
-}
-
-// The workflow trigger recurrence.
-type ScheduleTriggerRecurrenceResponseOutput struct{ *pulumi.OutputState }
-
-func (ScheduleTriggerRecurrenceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleTriggerRecurrenceResponse)(nil)).Elem()
-}
-
-func (o ScheduleTriggerRecurrenceResponseOutput) ToScheduleTriggerRecurrenceResponseOutput() ScheduleTriggerRecurrenceResponseOutput {
-	return o
-}
-
-func (o ScheduleTriggerRecurrenceResponseOutput) ToScheduleTriggerRecurrenceResponseOutputWithContext(ctx context.Context) ScheduleTriggerRecurrenceResponseOutput {
-	return o
-}
-
-// The end time.
-func (o ScheduleTriggerRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
-}
-
-// The frequency.
-func (o ScheduleTriggerRecurrenceResponseOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
-}
-
-// The interval.
-func (o ScheduleTriggerRecurrenceResponseOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *int { return v.Interval }).(pulumi.IntPtrOutput)
-}
-
-// The recurrence schedule.
-func (o ScheduleTriggerRecurrenceResponseOutput) Schedule() RecurrenceScheduleResponsePtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *RecurrenceScheduleResponse { return v.Schedule }).(RecurrenceScheduleResponsePtrOutput)
-}
-
-// The start time.
-func (o ScheduleTriggerRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
-}
-
-// The time zone.
-func (o ScheduleTriggerRecurrenceResponseOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerRecurrenceResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
-}
-
-// Trigger that creates pipeline runs periodically, on schedule.
-type ScheduleTriggerResponse struct {
-	// List of tags that can be used for describing the trigger.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Trigger description.
-	Description *string `pulumi:"description"`
-	// Pipelines that need to be started.
-	Pipelines []TriggerPipelineReferenceResponse `pulumi:"pipelines"`
-	// Recurrence schedule configuration.
-	Recurrence ScheduleTriggerRecurrenceResponse `pulumi:"recurrence"`
-	// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
-	RuntimeState string `pulumi:"runtimeState"`
-	// Trigger type.
-	// Expected value is 'ScheduleTrigger'.
-	Type string `pulumi:"type"`
-}
-
-// Trigger that creates pipeline runs periodically, on schedule.
-type ScheduleTriggerResponseOutput struct{ *pulumi.OutputState }
-
-func (ScheduleTriggerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleTriggerResponse)(nil)).Elem()
-}
-
-func (o ScheduleTriggerResponseOutput) ToScheduleTriggerResponseOutput() ScheduleTriggerResponseOutput {
-	return o
-}
-
-func (o ScheduleTriggerResponseOutput) ToScheduleTriggerResponseOutputWithContext(ctx context.Context) ScheduleTriggerResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the trigger.
-func (o ScheduleTriggerResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v ScheduleTriggerResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Trigger description.
-func (o ScheduleTriggerResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScheduleTriggerResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Pipelines that need to be started.
-func (o ScheduleTriggerResponseOutput) Pipelines() TriggerPipelineReferenceResponseArrayOutput {
-	return o.ApplyT(func(v ScheduleTriggerResponse) []TriggerPipelineReferenceResponse { return v.Pipelines }).(TriggerPipelineReferenceResponseArrayOutput)
-}
-
-// Recurrence schedule configuration.
-func (o ScheduleTriggerResponseOutput) Recurrence() ScheduleTriggerRecurrenceResponseOutput {
-	return o.ApplyT(func(v ScheduleTriggerResponse) ScheduleTriggerRecurrenceResponse { return v.Recurrence }).(ScheduleTriggerRecurrenceResponseOutput)
-}
-
-// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
-func (o ScheduleTriggerResponseOutput) RuntimeState() pulumi.StringOutput {
-	return o.ApplyT(func(v ScheduleTriggerResponse) string { return v.RuntimeState }).(pulumi.StringOutput)
-}
-
-// Trigger type.
-// Expected value is 'ScheduleTrigger'.
-func (o ScheduleTriggerResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScheduleTriggerResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Custom script action to run on HDI ondemand cluster once it's up.
-type ScriptAction struct {
-	// The user provided name of the script action.
-	Name string `pulumi:"name"`
-	// The parameters for the script action.
-	Parameters *string `pulumi:"parameters"`
-	// The node types on which the script action should be executed.
-	Roles interface{} `pulumi:"roles"`
-	// The URI for the script action.
-	Uri string `pulumi:"uri"`
-}
-
-// ScriptActionInput is an input type that accepts ScriptActionArgs and ScriptActionOutput values.
-// You can construct a concrete instance of `ScriptActionInput` via:
-//
-//	ScriptActionArgs{...}
-type ScriptActionInput interface {
-	pulumi.Input
-
-	ToScriptActionOutput() ScriptActionOutput
-	ToScriptActionOutputWithContext(context.Context) ScriptActionOutput
-}
-
-// Custom script action to run on HDI ondemand cluster once it's up.
-type ScriptActionArgs struct {
-	// The user provided name of the script action.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The parameters for the script action.
-	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
-	// The node types on which the script action should be executed.
-	Roles pulumi.Input `pulumi:"roles"`
-	// The URI for the script action.
-	Uri pulumi.StringInput `pulumi:"uri"`
-}
-
-func (ScriptActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptAction)(nil)).Elem()
-}
-
-func (i ScriptActionArgs) ToScriptActionOutput() ScriptActionOutput {
-	return i.ToScriptActionOutputWithContext(context.Background())
-}
-
-func (i ScriptActionArgs) ToScriptActionOutputWithContext(ctx context.Context) ScriptActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActionOutput)
-}
-
-// ScriptActionArrayInput is an input type that accepts ScriptActionArray and ScriptActionArrayOutput values.
-// You can construct a concrete instance of `ScriptActionArrayInput` via:
-//
-//	ScriptActionArray{ ScriptActionArgs{...} }
-type ScriptActionArrayInput interface {
-	pulumi.Input
-
-	ToScriptActionArrayOutput() ScriptActionArrayOutput
-	ToScriptActionArrayOutputWithContext(context.Context) ScriptActionArrayOutput
-}
-
-type ScriptActionArray []ScriptActionInput
-
-func (ScriptActionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptAction)(nil)).Elem()
-}
-
-func (i ScriptActionArray) ToScriptActionArrayOutput() ScriptActionArrayOutput {
-	return i.ToScriptActionArrayOutputWithContext(context.Background())
-}
-
-func (i ScriptActionArray) ToScriptActionArrayOutputWithContext(ctx context.Context) ScriptActionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScriptActionArrayOutput)
-}
-
-// Custom script action to run on HDI ondemand cluster once it's up.
-type ScriptActionOutput struct{ *pulumi.OutputState }
-
-func (ScriptActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptAction)(nil)).Elem()
-}
-
-func (o ScriptActionOutput) ToScriptActionOutput() ScriptActionOutput {
-	return o
-}
-
-func (o ScriptActionOutput) ToScriptActionOutputWithContext(ctx context.Context) ScriptActionOutput {
-	return o
-}
-
-// The user provided name of the script action.
-func (o ScriptActionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptAction) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The parameters for the script action.
-func (o ScriptActionOutput) Parameters() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptAction) *string { return v.Parameters }).(pulumi.StringPtrOutput)
-}
-
-// The node types on which the script action should be executed.
-func (o ScriptActionOutput) Roles() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptAction) interface{} { return v.Roles }).(pulumi.AnyOutput)
-}
-
-// The URI for the script action.
-func (o ScriptActionOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptAction) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type ScriptActionArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptActionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptAction)(nil)).Elem()
-}
-
-func (o ScriptActionArrayOutput) ToScriptActionArrayOutput() ScriptActionArrayOutput {
-	return o
-}
-
-func (o ScriptActionArrayOutput) ToScriptActionArrayOutputWithContext(ctx context.Context) ScriptActionArrayOutput {
-	return o
-}
-
-func (o ScriptActionArrayOutput) Index(i pulumi.IntInput) ScriptActionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptAction {
-		return vs[0].([]ScriptAction)[vs[1].(int)]
-	}).(ScriptActionOutput)
-}
-
-// Custom script action to run on HDI ondemand cluster once it's up.
-type ScriptActionResponse struct {
-	// The user provided name of the script action.
-	Name string `pulumi:"name"`
-	// The parameters for the script action.
-	Parameters *string `pulumi:"parameters"`
-	// The node types on which the script action should be executed.
-	Roles interface{} `pulumi:"roles"`
-	// The URI for the script action.
-	Uri string `pulumi:"uri"`
-}
-
-// Custom script action to run on HDI ondemand cluster once it's up.
-type ScriptActionResponseOutput struct{ *pulumi.OutputState }
-
-func (ScriptActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScriptActionResponse)(nil)).Elem()
-}
-
-func (o ScriptActionResponseOutput) ToScriptActionResponseOutput() ScriptActionResponseOutput {
-	return o
-}
-
-func (o ScriptActionResponseOutput) ToScriptActionResponseOutputWithContext(ctx context.Context) ScriptActionResponseOutput {
-	return o
-}
-
-// The user provided name of the script action.
-func (o ScriptActionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The parameters for the script action.
-func (o ScriptActionResponseOutput) Parameters() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScriptActionResponse) *string { return v.Parameters }).(pulumi.StringPtrOutput)
-}
-
-// The node types on which the script action should be executed.
-func (o ScriptActionResponseOutput) Roles() pulumi.AnyOutput {
-	return o.ApplyT(func(v ScriptActionResponse) interface{} { return v.Roles }).(pulumi.AnyOutput)
-}
-
-// The URI for the script action.
-func (o ScriptActionResponseOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActionResponse) string { return v.Uri }).(pulumi.StringOutput)
-}
-
-type ScriptActionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ScriptActionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScriptActionResponse)(nil)).Elem()
-}
-
-func (o ScriptActionResponseArrayOutput) ToScriptActionResponseArrayOutput() ScriptActionResponseArrayOutput {
-	return o
-}
-
-func (o ScriptActionResponseArrayOutput) ToScriptActionResponseArrayOutputWithContext(ctx context.Context) ScriptActionResponseArrayOutput {
-	return o
-}
-
-func (o ScriptActionResponseArrayOutput) Index(i pulumi.IntInput) ScriptActionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScriptActionResponse {
-		return vs[0].([]ScriptActionResponse)[vs[1].(int)]
-	}).(ScriptActionResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(HBaseObjectDatasetOutput{})
 	pulumi.RegisterOutputType(HBaseObjectDatasetResponseOutput{})
@@ -61426,6 +61784,12 @@ func init() {
 	pulumi.RegisterOutputType(PostgreSqlSourceResponseOutput{})
 	pulumi.RegisterOutputType(PostgreSqlTableDatasetOutput{})
 	pulumi.RegisterOutputType(PostgreSqlTableDatasetResponseOutput{})
+	pulumi.RegisterOutputType(PostgreSqlV2LinkedServiceOutput{})
+	pulumi.RegisterOutputType(PostgreSqlV2LinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(PostgreSqlV2SourceOutput{})
+	pulumi.RegisterOutputType(PostgreSqlV2SourceResponseOutput{})
+	pulumi.RegisterOutputType(PostgreSqlV2TableDatasetOutput{})
+	pulumi.RegisterOutputType(PostgreSqlV2TableDatasetResponseOutput{})
 	pulumi.RegisterOutputType(PowerQuerySinkOutput{})
 	pulumi.RegisterOutputType(PowerQuerySinkArrayOutput{})
 	pulumi.RegisterOutputType(PowerQuerySinkMapOutput{})
@@ -61623,12 +61987,4 @@ func init() {
 	pulumi.RegisterOutputType(SapTableResourceDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SapTableSourceOutput{})
 	pulumi.RegisterOutputType(SapTableSourceResponseOutput{})
-	pulumi.RegisterOutputType(ScheduleTriggerOutput{})
-	pulumi.RegisterOutputType(ScheduleTriggerRecurrenceOutput{})
-	pulumi.RegisterOutputType(ScheduleTriggerRecurrenceResponseOutput{})
-	pulumi.RegisterOutputType(ScheduleTriggerResponseOutput{})
-	pulumi.RegisterOutputType(ScriptActionOutput{})
-	pulumi.RegisterOutputType(ScriptActionArrayOutput{})
-	pulumi.RegisterOutputType(ScriptActionResponseOutput{})
-	pulumi.RegisterOutputType(ScriptActionResponseArrayOutput{})
 }

@@ -40,7 +40,7 @@ type ListCatalogDeploymentsArgs struct {
 // The response of a Deployment list operation.
 type ListCatalogDeploymentsResult struct {
 	// The link to the next page of items
-	NextLink *string `pulumi:"nextLink"`
+	NextLink string `pulumi:"nextLink"`
 	// The Deployment items on this page
 	Value []DeploymentResponse `pulumi:"value"`
 }
@@ -93,8 +93,8 @@ func (o ListCatalogDeploymentsResultOutput) ToListCatalogDeploymentsResultOutput
 }
 
 // The link to the next page of items
-func (o ListCatalogDeploymentsResultOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListCatalogDeploymentsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+func (o ListCatalogDeploymentsResultOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ListCatalogDeploymentsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
 // The Deployment items on this page

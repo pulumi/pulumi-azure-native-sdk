@@ -13,6 +13,8 @@ import (
 
 // Gets the specified L2 connection in a specified resource group.
 // Azure REST API version: 2024-03-01-preview.
+//
+// Other available API versions: 2024-03-01.
 func LookupL2Connection(ctx *pulumi.Context, args *LookupL2ConnectionArgs, opts ...pulumi.InvokeOption) (*LookupL2ConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL2ConnectionResult

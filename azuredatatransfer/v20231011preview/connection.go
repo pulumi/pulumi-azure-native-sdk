@@ -44,6 +44,9 @@ func NewConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer:Connection"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Connection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

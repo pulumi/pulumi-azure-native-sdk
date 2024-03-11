@@ -47,6 +47,9 @@ func NewEdgeSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:orbital:EdgeSite"),
 		},
+		{
+			Type: pulumi.String("azure-native:orbital/v20240301:EdgeSite"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

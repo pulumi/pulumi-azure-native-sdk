@@ -144,6 +144,9 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:MDATPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:MDATPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

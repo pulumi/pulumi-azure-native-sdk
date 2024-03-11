@@ -5992,6 +5992,590 @@ func (o DeploymentResponsePtrOutput) DeploymentTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An individual contact associated with this domain
+type EnrichmentDomainWhoisContactResponse struct {
+	// The city for this contact
+	City *string `pulumi:"city"`
+	// The country for this contact
+	Country *string `pulumi:"country"`
+	// The email address for this contact
+	Email *string `pulumi:"email"`
+	// The fax number for this contact
+	Fax *string `pulumi:"fax"`
+	// The name of this contact
+	Name *string `pulumi:"name"`
+	// The organization for this contact
+	Org *string `pulumi:"org"`
+	// The phone number for this contact
+	Phone *string `pulumi:"phone"`
+	// The postal code for this contact
+	Postal *string `pulumi:"postal"`
+	// The state for this contact
+	State *string `pulumi:"state"`
+	// A list describing the street address for this contact
+	Street []string `pulumi:"street"`
+}
+
+// An individual contact associated with this domain
+type EnrichmentDomainWhoisContactResponseOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisContactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrichmentDomainWhoisContactResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisContactResponseOutput) ToEnrichmentDomainWhoisContactResponseOutput() EnrichmentDomainWhoisContactResponseOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisContactResponseOutput) ToEnrichmentDomainWhoisContactResponseOutputWithContext(ctx context.Context) EnrichmentDomainWhoisContactResponseOutput {
+	return o
+}
+
+// The city for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// The country for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Country }).(pulumi.StringPtrOutput)
+}
+
+// The email address for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// The fax number for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Fax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Fax }).(pulumi.StringPtrOutput)
+}
+
+// The name of this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The organization for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Org }).(pulumi.StringPtrOutput)
+}
+
+// The phone number for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Phone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Phone }).(pulumi.StringPtrOutput)
+}
+
+// The postal code for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Postal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.Postal }).(pulumi.StringPtrOutput)
+}
+
+// The state for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// A list describing the street address for this contact
+func (o EnrichmentDomainWhoisContactResponseOutput) Street() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactResponse) []string { return v.Street }).(pulumi.StringArrayOutput)
+}
+
+type EnrichmentDomainWhoisContactResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisContactResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnrichmentDomainWhoisContactResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) ToEnrichmentDomainWhoisContactResponsePtrOutput() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) ToEnrichmentDomainWhoisContactResponsePtrOutputWithContext(ctx context.Context) EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Elem() EnrichmentDomainWhoisContactResponseOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) EnrichmentDomainWhoisContactResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnrichmentDomainWhoisContactResponse
+		return ret
+	}).(EnrichmentDomainWhoisContactResponseOutput)
+}
+
+// The city for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// The country for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fax number for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Fax() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fax
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+// The phone number for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Phone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Phone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The postal code for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Postal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Postal
+	}).(pulumi.StringPtrOutput)
+}
+
+// The state for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list describing the street address for this contact
+func (o EnrichmentDomainWhoisContactResponsePtrOutput) Street() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Street
+	}).(pulumi.StringArrayOutput)
+}
+
+// The set of contacts associated with this domain
+type EnrichmentDomainWhoisContactsResponse struct {
+	// The admin contact for this whois record
+	Admin *EnrichmentDomainWhoisContactResponse `pulumi:"admin"`
+	// The billing contact for this whois record
+	Billing *EnrichmentDomainWhoisContactResponse `pulumi:"billing"`
+	// The registrant contact for this whois record
+	Registrant *EnrichmentDomainWhoisContactResponse `pulumi:"registrant"`
+	// The technical contact for this whois record
+	Tech *EnrichmentDomainWhoisContactResponse `pulumi:"tech"`
+}
+
+// The set of contacts associated with this domain
+type EnrichmentDomainWhoisContactsResponseOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisContactsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrichmentDomainWhoisContactsResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisContactsResponseOutput) ToEnrichmentDomainWhoisContactsResponseOutput() EnrichmentDomainWhoisContactsResponseOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisContactsResponseOutput) ToEnrichmentDomainWhoisContactsResponseOutputWithContext(ctx context.Context) EnrichmentDomainWhoisContactsResponseOutput {
+	return o
+}
+
+// The admin contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponseOutput) Admin() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse { return v.Admin }).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The billing contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponseOutput) Billing() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse { return v.Billing }).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The registrant contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponseOutput) Registrant() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse {
+		return v.Registrant
+	}).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The technical contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponseOutput) Tech() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse { return v.Tech }).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+type EnrichmentDomainWhoisContactsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisContactsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnrichmentDomainWhoisContactsResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) ToEnrichmentDomainWhoisContactsResponsePtrOutput() EnrichmentDomainWhoisContactsResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) ToEnrichmentDomainWhoisContactsResponsePtrOutputWithContext(ctx context.Context) EnrichmentDomainWhoisContactsResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) Elem() EnrichmentDomainWhoisContactsResponseOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactsResponse) EnrichmentDomainWhoisContactsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnrichmentDomainWhoisContactsResponse
+		return ret
+	}).(EnrichmentDomainWhoisContactsResponseOutput)
+}
+
+// The admin contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) Admin() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Admin
+	}).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The billing contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) Billing() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Billing
+	}).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The registrant contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) Registrant() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Registrant
+	}).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The technical contact for this whois record
+func (o EnrichmentDomainWhoisContactsResponsePtrOutput) Tech() EnrichmentDomainWhoisContactResponsePtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisContactsResponse) *EnrichmentDomainWhoisContactResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Tech
+	}).(EnrichmentDomainWhoisContactResponsePtrOutput)
+}
+
+// The whois record for a given domain
+type EnrichmentDomainWhoisDetailsResponse struct {
+	// The set of contacts associated with this domain
+	Contacts *EnrichmentDomainWhoisContactsResponse `pulumi:"contacts"`
+	// A list of name servers associated with this domain
+	NameServers []string `pulumi:"nameServers"`
+	// The registrar associated with this domain
+	Registrar *EnrichmentDomainWhoisRegistrarDetailsResponse `pulumi:"registrar"`
+	// The set of status flags for this whois record
+	Statuses []string `pulumi:"statuses"`
+}
+
+// The whois record for a given domain
+type EnrichmentDomainWhoisDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrichmentDomainWhoisDetailsResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisDetailsResponseOutput) ToEnrichmentDomainWhoisDetailsResponseOutput() EnrichmentDomainWhoisDetailsResponseOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisDetailsResponseOutput) ToEnrichmentDomainWhoisDetailsResponseOutputWithContext(ctx context.Context) EnrichmentDomainWhoisDetailsResponseOutput {
+	return o
+}
+
+// The set of contacts associated with this domain
+func (o EnrichmentDomainWhoisDetailsResponseOutput) Contacts() EnrichmentDomainWhoisContactsResponsePtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisDetailsResponse) *EnrichmentDomainWhoisContactsResponse { return v.Contacts }).(EnrichmentDomainWhoisContactsResponsePtrOutput)
+}
+
+// A list of name servers associated with this domain
+func (o EnrichmentDomainWhoisDetailsResponseOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisDetailsResponse) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+// The registrar associated with this domain
+func (o EnrichmentDomainWhoisDetailsResponseOutput) Registrar() EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisDetailsResponse) *EnrichmentDomainWhoisRegistrarDetailsResponse {
+		return v.Registrar
+	}).(EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput)
+}
+
+// The set of status flags for this whois record
+func (o EnrichmentDomainWhoisDetailsResponseOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisDetailsResponse) []string { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+type EnrichmentDomainWhoisDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnrichmentDomainWhoisDetailsResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) ToEnrichmentDomainWhoisDetailsResponsePtrOutput() EnrichmentDomainWhoisDetailsResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) ToEnrichmentDomainWhoisDetailsResponsePtrOutputWithContext(ctx context.Context) EnrichmentDomainWhoisDetailsResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) Elem() EnrichmentDomainWhoisDetailsResponseOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisDetailsResponse) EnrichmentDomainWhoisDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnrichmentDomainWhoisDetailsResponse
+		return ret
+	}).(EnrichmentDomainWhoisDetailsResponseOutput)
+}
+
+// The set of contacts associated with this domain
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) Contacts() EnrichmentDomainWhoisContactsResponsePtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisDetailsResponse) *EnrichmentDomainWhoisContactsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Contacts
+	}).(EnrichmentDomainWhoisContactsResponsePtrOutput)
+}
+
+// A list of name servers associated with this domain
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisDetailsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The registrar associated with this domain
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) Registrar() EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisDetailsResponse) *EnrichmentDomainWhoisRegistrarDetailsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Registrar
+	}).(EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput)
+}
+
+// The set of status flags for this whois record
+func (o EnrichmentDomainWhoisDetailsResponsePtrOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisDetailsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// The registrar associated with this domain
+type EnrichmentDomainWhoisRegistrarDetailsResponse struct {
+	// This registrar's abuse contact email
+	AbuseContactEmail *string `pulumi:"abuseContactEmail"`
+	// This registrar's abuse contact phone number
+	AbuseContactPhone *string `pulumi:"abuseContactPhone"`
+	// This registrar's Internet Assigned Numbers Authority id
+	IanaId *string `pulumi:"ianaId"`
+	// The name of this registrar
+	Name *string `pulumi:"name"`
+	// This registrar's URL
+	Url *string `pulumi:"url"`
+	// The hostname of this registrar's whois server
+	WhoisServer *string `pulumi:"whoisServer"`
+}
+
+// The registrar associated with this domain
+type EnrichmentDomainWhoisRegistrarDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisRegistrarDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrichmentDomainWhoisRegistrarDetailsResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) ToEnrichmentDomainWhoisRegistrarDetailsResponseOutput() EnrichmentDomainWhoisRegistrarDetailsResponseOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) ToEnrichmentDomainWhoisRegistrarDetailsResponseOutputWithContext(ctx context.Context) EnrichmentDomainWhoisRegistrarDetailsResponseOutput {
+	return o
+}
+
+// This registrar's abuse contact email
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) AbuseContactEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisRegistrarDetailsResponse) *string { return v.AbuseContactEmail }).(pulumi.StringPtrOutput)
+}
+
+// This registrar's abuse contact phone number
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) AbuseContactPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisRegistrarDetailsResponse) *string { return v.AbuseContactPhone }).(pulumi.StringPtrOutput)
+}
+
+// This registrar's Internet Assigned Numbers Authority id
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) IanaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisRegistrarDetailsResponse) *string { return v.IanaId }).(pulumi.StringPtrOutput)
+}
+
+// The name of this registrar
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisRegistrarDetailsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// This registrar's URL
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisRegistrarDetailsResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The hostname of this registrar's whois server
+func (o EnrichmentDomainWhoisRegistrarDetailsResponseOutput) WhoisServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnrichmentDomainWhoisRegistrarDetailsResponse) *string { return v.WhoisServer }).(pulumi.StringPtrOutput)
+}
+
+type EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnrichmentDomainWhoisRegistrarDetailsResponse)(nil)).Elem()
+}
+
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) ToEnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput() EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) ToEnrichmentDomainWhoisRegistrarDetailsResponsePtrOutputWithContext(ctx context.Context) EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput {
+	return o
+}
+
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) Elem() EnrichmentDomainWhoisRegistrarDetailsResponseOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) EnrichmentDomainWhoisRegistrarDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnrichmentDomainWhoisRegistrarDetailsResponse
+		return ret
+	}).(EnrichmentDomainWhoisRegistrarDetailsResponseOutput)
+}
+
+// This registrar's abuse contact email
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) AbuseContactEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AbuseContactEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// This registrar's abuse contact phone number
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) AbuseContactPhone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AbuseContactPhone
+	}).(pulumi.StringPtrOutput)
+}
+
+// This registrar's Internet Assigned Numbers Authority id
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) IanaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IanaId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of this registrar
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// This registrar's URL
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hostname of this registrar's whois server
+func (o EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput) WhoisServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnrichmentDomainWhoisRegistrarDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WhoisServer
+	}).(pulumi.StringPtrOutput)
+}
+
 // Entity insight Item.
 type EntityInsightItemResponse struct {
 	// Query results for table insights query.
@@ -16485,6 +17069,14 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisContactResponseOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisContactResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisContactsResponseOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisContactsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisDetailsResponseOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisRegistrarDetailsResponseOutput{})
+	pulumi.RegisterOutputType(EnrichmentDomainWhoisRegistrarDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(EntityInsightItemResponseQueryTimeIntervalOutput{})

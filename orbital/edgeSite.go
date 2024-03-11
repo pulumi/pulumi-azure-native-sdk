@@ -14,6 +14,8 @@ import (
 
 // A customer's reference to a global communications site site.
 // Azure REST API version: 2024-03-01-preview.
+//
+// Other available API versions: 2024-03-01.
 type EdgeSite struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +47,9 @@ func NewEdgeSite(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:orbital/v20240301:EdgeSite"),
+		},
 		{
 			Type: pulumi.String("azure-native:orbital/v20240301preview:EdgeSite"),
 		},

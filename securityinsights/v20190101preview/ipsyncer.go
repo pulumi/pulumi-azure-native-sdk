@@ -121,6 +121,9 @@ func NewIPSyncer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:IPSyncer"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:IPSyncer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

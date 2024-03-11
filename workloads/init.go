@@ -37,8 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SAPDatabaseInstance{}
 	case "azure-native:workloads:SAPVirtualInstance":
 		r = &SAPVirtualInstance{}
+	case "azure-native:workloads:SapDiscoverySite":
+		r = &SapDiscoverySite{}
+	case "azure-native:workloads:SapInstance":
+		r = &SapInstance{}
 	case "azure-native:workloads:SapLandscapeMonitor":
 		r = &SapLandscapeMonitor{}
+	case "azure-native:workloads:ServerInstance":
+		r = &ServerInstance{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -99,6 +99,9 @@ func NewInstancePool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:InstancePool"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:InstancePool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

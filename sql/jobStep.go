@@ -15,7 +15,7 @@ import (
 // A job step.
 // Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2020-11-01-preview.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview.
 type JobStep struct {
 	pulumi.CustomResourceState
 
@@ -117,6 +117,9 @@ func NewJobStep(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:JobStep"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:JobStep"),
 		},
 	})
 	opts = append(opts, aliases)

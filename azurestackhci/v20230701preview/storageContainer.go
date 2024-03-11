@@ -59,6 +59,9 @@ func NewStorageContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:StorageContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:StorageContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

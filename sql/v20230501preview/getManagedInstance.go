@@ -97,11 +97,11 @@ type LookupManagedInstanceResult struct {
 	Sku *SkuResponse `pulumi:"sku"`
 	// The state of the managed instance.
 	State string `pulumi:"state"`
-	// Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageIOps *int `pulumi:"storageIOps"`
 	// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageSizeInGB *int `pulumi:"storageSizeInGB"`
-	// Storage throughput in MBps. Minimum value: 25. Maximum value: 4000. Increments of 1 MBps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage throughput MBps parameter is not supported in the instance create/update operation.
 	StorageThroughputMBps *int `pulumi:"storageThroughputMBps"`
 	// Subnet resource ID for the managed instance.
 	SubnetId *string `pulumi:"subnetId"`
@@ -329,7 +329,7 @@ func (o LookupManagedInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
 func (o LookupManagedInstanceResultOutput) StorageIOps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageIOps }).(pulumi.IntPtrOutput)
 }
@@ -339,7 +339,7 @@ func (o LookupManagedInstanceResultOutput) StorageSizeInGB() pulumi.IntPtrOutput
 	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageSizeInGB }).(pulumi.IntPtrOutput)
 }
 
-// Storage throughput in MBps. Minimum value: 25. Maximum value: 4000. Increments of 1 MBps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+// Storage throughput MBps parameter is not supported in the instance create/update operation.
 func (o LookupManagedInstanceResultOutput) StorageThroughputMBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageThroughputMBps }).(pulumi.IntPtrOutput)
 }
