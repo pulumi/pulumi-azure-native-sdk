@@ -13,6 +13,8 @@ import (
 
 // Gets pipeline resource.
 // Azure REST API version: 2023-10-11-preview.
+//
+// Other available API versions: 2024-01-25.
 func LookupPipeline(ctx *pulumi.Context, args *LookupPipelineArgs, opts ...pulumi.InvokeOption) (*LookupPipelineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineResult

@@ -14,7 +14,7 @@ import (
 // Gets information about the specified application package.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2017-09-01, 2023-11-01.
+// Other available API versions: 2017-09-01, 2023-11-01, 2024-02-01.
 func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackageArgs, opts ...pulumi.InvokeOption) (*LookupApplicationPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationPackageResult

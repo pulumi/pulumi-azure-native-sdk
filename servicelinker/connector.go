@@ -14,6 +14,8 @@ import (
 
 // Linker of source and target resource
 // Azure REST API version: 2022-11-01-preview.
+//
+// Other available API versions: 2023-04-01-preview.
 type Connector struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +61,9 @@ func NewConnector(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20221101preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20230401preview:Connector"),
 		},
 	})
 	opts = append(opts, aliases)

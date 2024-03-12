@@ -51,6 +51,9 @@ func NewFlow(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer:Flow"),
 		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Flow"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

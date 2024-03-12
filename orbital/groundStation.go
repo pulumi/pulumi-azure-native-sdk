@@ -14,6 +14,8 @@ import (
 
 // Ground Station contains one or more antennas.
 // Azure REST API version: 2024-03-01-preview.
+//
+// Other available API versions: 2024-03-01.
 type GroundStation struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +64,9 @@ func NewGroundStation(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:orbital/v20240301:GroundStation"),
+		},
 		{
 			Type: pulumi.String("azure-native:orbital/v20240301preview:GroundStation"),
 		},

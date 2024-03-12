@@ -123,6 +123,9 @@ func NewBookmarkRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:BookmarkRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:BookmarkRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

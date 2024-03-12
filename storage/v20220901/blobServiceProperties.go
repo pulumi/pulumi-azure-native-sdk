@@ -98,6 +98,9 @@ func NewBlobServiceProperties(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20230101:BlobServiceProperties"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230401:BlobServiceProperties"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

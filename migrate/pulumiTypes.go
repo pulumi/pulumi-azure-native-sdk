@@ -8507,8 +8507,12 @@ type ComputeSettings struct {
 	HyperthreadCoreToMemoryRatio float64 `pulumi:"hyperthreadCoreToMemoryRatio"`
 	// Compute Price.
 	Price float64 `pulumi:"price"`
+	// Linux Rhel Server licensing settings.
+	RhelLinuxServerLicensing LinuxServerLicensingSettings `pulumi:"rhelLinuxServerLicensing"`
 	// SQL Server licensing settings.
 	SqlServerLicensing []SqlServerLicensingSettings `pulumi:"sqlServerLicensing"`
+	// Linux Suse Server licensing settings.
+	SuseLinuxServerLicensing LinuxServerLicensingSettings `pulumi:"suseLinuxServerLicensing"`
 	// Virtualization software settings.
 	VirtualizationSoftwareSettings VirtualizationSoftwareSettings `pulumi:"virtualizationSoftwareSettings"`
 	// Windows Server licensing settings.
@@ -8532,8 +8536,12 @@ type ComputeSettingsArgs struct {
 	HyperthreadCoreToMemoryRatio pulumi.Float64Input `pulumi:"hyperthreadCoreToMemoryRatio"`
 	// Compute Price.
 	Price pulumi.Float64Input `pulumi:"price"`
+	// Linux Rhel Server licensing settings.
+	RhelLinuxServerLicensing LinuxServerLicensingSettingsInput `pulumi:"rhelLinuxServerLicensing"`
 	// SQL Server licensing settings.
 	SqlServerLicensing SqlServerLicensingSettingsArrayInput `pulumi:"sqlServerLicensing"`
+	// Linux Suse Server licensing settings.
+	SuseLinuxServerLicensing LinuxServerLicensingSettingsInput `pulumi:"suseLinuxServerLicensing"`
 	// Virtualization software settings.
 	VirtualizationSoftwareSettings VirtualizationSoftwareSettingsInput `pulumi:"virtualizationSoftwareSettings"`
 	// Windows Server licensing settings.
@@ -8628,9 +8636,19 @@ func (o ComputeSettingsOutput) Price() pulumi.Float64Output {
 	return o.ApplyT(func(v ComputeSettings) float64 { return v.Price }).(pulumi.Float64Output)
 }
 
+// Linux Rhel Server licensing settings.
+func (o ComputeSettingsOutput) RhelLinuxServerLicensing() LinuxServerLicensingSettingsOutput {
+	return o.ApplyT(func(v ComputeSettings) LinuxServerLicensingSettings { return v.RhelLinuxServerLicensing }).(LinuxServerLicensingSettingsOutput)
+}
+
 // SQL Server licensing settings.
 func (o ComputeSettingsOutput) SqlServerLicensing() SqlServerLicensingSettingsArrayOutput {
 	return o.ApplyT(func(v ComputeSettings) []SqlServerLicensingSettings { return v.SqlServerLicensing }).(SqlServerLicensingSettingsArrayOutput)
+}
+
+// Linux Suse Server licensing settings.
+func (o ComputeSettingsOutput) SuseLinuxServerLicensing() LinuxServerLicensingSettingsOutput {
+	return o.ApplyT(func(v ComputeSettings) LinuxServerLicensingSettings { return v.SuseLinuxServerLicensing }).(LinuxServerLicensingSettingsOutput)
 }
 
 // Virtualization software settings.
@@ -8687,6 +8705,16 @@ func (o ComputeSettingsPtrOutput) Price() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Linux Rhel Server licensing settings.
+func (o ComputeSettingsPtrOutput) RhelLinuxServerLicensing() LinuxServerLicensingSettingsPtrOutput {
+	return o.ApplyT(func(v *ComputeSettings) *LinuxServerLicensingSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.RhelLinuxServerLicensing
+	}).(LinuxServerLicensingSettingsPtrOutput)
+}
+
 // SQL Server licensing settings.
 func (o ComputeSettingsPtrOutput) SqlServerLicensing() SqlServerLicensingSettingsArrayOutput {
 	return o.ApplyT(func(v *ComputeSettings) []SqlServerLicensingSettings {
@@ -8695,6 +8723,16 @@ func (o ComputeSettingsPtrOutput) SqlServerLicensing() SqlServerLicensingSetting
 		}
 		return v.SqlServerLicensing
 	}).(SqlServerLicensingSettingsArrayOutput)
+}
+
+// Linux Suse Server licensing settings.
+func (o ComputeSettingsPtrOutput) SuseLinuxServerLicensing() LinuxServerLicensingSettingsPtrOutput {
+	return o.ApplyT(func(v *ComputeSettings) *LinuxServerLicensingSettings {
+		if v == nil {
+			return nil
+		}
+		return &v.SuseLinuxServerLicensing
+	}).(LinuxServerLicensingSettingsPtrOutput)
 }
 
 // Virtualization software settings.
@@ -8723,8 +8761,12 @@ type ComputeSettingsResponse struct {
 	HyperthreadCoreToMemoryRatio float64 `pulumi:"hyperthreadCoreToMemoryRatio"`
 	// Compute Price.
 	Price float64 `pulumi:"price"`
+	// Linux Rhel Server licensing settings.
+	RhelLinuxServerLicensing LinuxServerLicensingSettingsResponse `pulumi:"rhelLinuxServerLicensing"`
 	// SQL Server licensing settings.
 	SqlServerLicensing []SqlServerLicensingSettingsResponse `pulumi:"sqlServerLicensing"`
+	// Linux Suse Server licensing settings.
+	SuseLinuxServerLicensing LinuxServerLicensingSettingsResponse `pulumi:"suseLinuxServerLicensing"`
 	// Virtualization software settings.
 	VirtualizationSoftwareSettings VirtualizationSoftwareSettingsResponse `pulumi:"virtualizationSoftwareSettings"`
 	// Windows Server licensing settings.
@@ -8756,9 +8798,23 @@ func (o ComputeSettingsResponseOutput) Price() pulumi.Float64Output {
 	return o.ApplyT(func(v ComputeSettingsResponse) float64 { return v.Price }).(pulumi.Float64Output)
 }
 
+// Linux Rhel Server licensing settings.
+func (o ComputeSettingsResponseOutput) RhelLinuxServerLicensing() LinuxServerLicensingSettingsResponseOutput {
+	return o.ApplyT(func(v ComputeSettingsResponse) LinuxServerLicensingSettingsResponse {
+		return v.RhelLinuxServerLicensing
+	}).(LinuxServerLicensingSettingsResponseOutput)
+}
+
 // SQL Server licensing settings.
 func (o ComputeSettingsResponseOutput) SqlServerLicensing() SqlServerLicensingSettingsResponseArrayOutput {
 	return o.ApplyT(func(v ComputeSettingsResponse) []SqlServerLicensingSettingsResponse { return v.SqlServerLicensing }).(SqlServerLicensingSettingsResponseArrayOutput)
+}
+
+// Linux Suse Server licensing settings.
+func (o ComputeSettingsResponseOutput) SuseLinuxServerLicensing() LinuxServerLicensingSettingsResponseOutput {
+	return o.ApplyT(func(v ComputeSettingsResponse) LinuxServerLicensingSettingsResponse {
+		return v.SuseLinuxServerLicensing
+	}).(LinuxServerLicensingSettingsResponseOutput)
 }
 
 // Virtualization software settings.
@@ -8819,6 +8875,16 @@ func (o ComputeSettingsResponsePtrOutput) Price() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Linux Rhel Server licensing settings.
+func (o ComputeSettingsResponsePtrOutput) RhelLinuxServerLicensing() LinuxServerLicensingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *ComputeSettingsResponse) *LinuxServerLicensingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RhelLinuxServerLicensing
+	}).(LinuxServerLicensingSettingsResponsePtrOutput)
+}
+
 // SQL Server licensing settings.
 func (o ComputeSettingsResponsePtrOutput) SqlServerLicensing() SqlServerLicensingSettingsResponseArrayOutput {
 	return o.ApplyT(func(v *ComputeSettingsResponse) []SqlServerLicensingSettingsResponse {
@@ -8827,6 +8893,16 @@ func (o ComputeSettingsResponsePtrOutput) SqlServerLicensing() SqlServerLicensin
 		}
 		return v.SqlServerLicensing
 	}).(SqlServerLicensingSettingsResponseArrayOutput)
+}
+
+// Linux Suse Server licensing settings.
+func (o ComputeSettingsResponsePtrOutput) SuseLinuxServerLicensing() LinuxServerLicensingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *ComputeSettingsResponse) *LinuxServerLicensingSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.SuseLinuxServerLicensing
+	}).(LinuxServerLicensingSettingsResponsePtrOutput)
 }
 
 // Virtualization software settings.
@@ -17782,6 +17858,206 @@ func (o LaborSettingsResponsePtrOutput) VirtualMachinesPerAdmin() pulumi.IntPtrO
 		}
 		return &v.VirtualMachinesPerAdmin
 	}).(pulumi.IntPtrOutput)
+}
+
+// Linux Server licensing settings.
+type LinuxServerLicensingSettings struct {
+	// Licence Cost.
+	LicenseCost float64 `pulumi:"licenseCost"`
+}
+
+// LinuxServerLicensingSettingsInput is an input type that accepts LinuxServerLicensingSettingsArgs and LinuxServerLicensingSettingsOutput values.
+// You can construct a concrete instance of `LinuxServerLicensingSettingsInput` via:
+//
+//	LinuxServerLicensingSettingsArgs{...}
+type LinuxServerLicensingSettingsInput interface {
+	pulumi.Input
+
+	ToLinuxServerLicensingSettingsOutput() LinuxServerLicensingSettingsOutput
+	ToLinuxServerLicensingSettingsOutputWithContext(context.Context) LinuxServerLicensingSettingsOutput
+}
+
+// Linux Server licensing settings.
+type LinuxServerLicensingSettingsArgs struct {
+	// Licence Cost.
+	LicenseCost pulumi.Float64Input `pulumi:"licenseCost"`
+}
+
+func (LinuxServerLicensingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxServerLicensingSettings)(nil)).Elem()
+}
+
+func (i LinuxServerLicensingSettingsArgs) ToLinuxServerLicensingSettingsOutput() LinuxServerLicensingSettingsOutput {
+	return i.ToLinuxServerLicensingSettingsOutputWithContext(context.Background())
+}
+
+func (i LinuxServerLicensingSettingsArgs) ToLinuxServerLicensingSettingsOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxServerLicensingSettingsOutput)
+}
+
+func (i LinuxServerLicensingSettingsArgs) ToLinuxServerLicensingSettingsPtrOutput() LinuxServerLicensingSettingsPtrOutput {
+	return i.ToLinuxServerLicensingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i LinuxServerLicensingSettingsArgs) ToLinuxServerLicensingSettingsPtrOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxServerLicensingSettingsOutput).ToLinuxServerLicensingSettingsPtrOutputWithContext(ctx)
+}
+
+// LinuxServerLicensingSettingsPtrInput is an input type that accepts LinuxServerLicensingSettingsArgs, LinuxServerLicensingSettingsPtr and LinuxServerLicensingSettingsPtrOutput values.
+// You can construct a concrete instance of `LinuxServerLicensingSettingsPtrInput` via:
+//
+//	        LinuxServerLicensingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinuxServerLicensingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLinuxServerLicensingSettingsPtrOutput() LinuxServerLicensingSettingsPtrOutput
+	ToLinuxServerLicensingSettingsPtrOutputWithContext(context.Context) LinuxServerLicensingSettingsPtrOutput
+}
+
+type linuxServerLicensingSettingsPtrType LinuxServerLicensingSettingsArgs
+
+func LinuxServerLicensingSettingsPtr(v *LinuxServerLicensingSettingsArgs) LinuxServerLicensingSettingsPtrInput {
+	return (*linuxServerLicensingSettingsPtrType)(v)
+}
+
+func (*linuxServerLicensingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxServerLicensingSettings)(nil)).Elem()
+}
+
+func (i *linuxServerLicensingSettingsPtrType) ToLinuxServerLicensingSettingsPtrOutput() LinuxServerLicensingSettingsPtrOutput {
+	return i.ToLinuxServerLicensingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *linuxServerLicensingSettingsPtrType) ToLinuxServerLicensingSettingsPtrOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinuxServerLicensingSettingsPtrOutput)
+}
+
+// Linux Server licensing settings.
+type LinuxServerLicensingSettingsOutput struct{ *pulumi.OutputState }
+
+func (LinuxServerLicensingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxServerLicensingSettings)(nil)).Elem()
+}
+
+func (o LinuxServerLicensingSettingsOutput) ToLinuxServerLicensingSettingsOutput() LinuxServerLicensingSettingsOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsOutput) ToLinuxServerLicensingSettingsOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsOutput) ToLinuxServerLicensingSettingsPtrOutput() LinuxServerLicensingSettingsPtrOutput {
+	return o.ToLinuxServerLicensingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LinuxServerLicensingSettingsOutput) ToLinuxServerLicensingSettingsPtrOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxServerLicensingSettings) *LinuxServerLicensingSettings {
+		return &v
+	}).(LinuxServerLicensingSettingsPtrOutput)
+}
+
+// Licence Cost.
+func (o LinuxServerLicensingSettingsOutput) LicenseCost() pulumi.Float64Output {
+	return o.ApplyT(func(v LinuxServerLicensingSettings) float64 { return v.LicenseCost }).(pulumi.Float64Output)
+}
+
+type LinuxServerLicensingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxServerLicensingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxServerLicensingSettings)(nil)).Elem()
+}
+
+func (o LinuxServerLicensingSettingsPtrOutput) ToLinuxServerLicensingSettingsPtrOutput() LinuxServerLicensingSettingsPtrOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsPtrOutput) ToLinuxServerLicensingSettingsPtrOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsPtrOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsPtrOutput) Elem() LinuxServerLicensingSettingsOutput {
+	return o.ApplyT(func(v *LinuxServerLicensingSettings) LinuxServerLicensingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxServerLicensingSettings
+		return ret
+	}).(LinuxServerLicensingSettingsOutput)
+}
+
+// Licence Cost.
+func (o LinuxServerLicensingSettingsPtrOutput) LicenseCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LinuxServerLicensingSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseCost
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Linux Server licensing settings.
+type LinuxServerLicensingSettingsResponse struct {
+	// Licence Cost.
+	LicenseCost float64 `pulumi:"licenseCost"`
+}
+
+// Linux Server licensing settings.
+type LinuxServerLicensingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (LinuxServerLicensingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinuxServerLicensingSettingsResponse)(nil)).Elem()
+}
+
+func (o LinuxServerLicensingSettingsResponseOutput) ToLinuxServerLicensingSettingsResponseOutput() LinuxServerLicensingSettingsResponseOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsResponseOutput) ToLinuxServerLicensingSettingsResponseOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsResponseOutput {
+	return o
+}
+
+// Licence Cost.
+func (o LinuxServerLicensingSettingsResponseOutput) LicenseCost() pulumi.Float64Output {
+	return o.ApplyT(func(v LinuxServerLicensingSettingsResponse) float64 { return v.LicenseCost }).(pulumi.Float64Output)
+}
+
+type LinuxServerLicensingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LinuxServerLicensingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinuxServerLicensingSettingsResponse)(nil)).Elem()
+}
+
+func (o LinuxServerLicensingSettingsResponsePtrOutput) ToLinuxServerLicensingSettingsResponsePtrOutput() LinuxServerLicensingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsResponsePtrOutput) ToLinuxServerLicensingSettingsResponsePtrOutputWithContext(ctx context.Context) LinuxServerLicensingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LinuxServerLicensingSettingsResponsePtrOutput) Elem() LinuxServerLicensingSettingsResponseOutput {
+	return o.ApplyT(func(v *LinuxServerLicensingSettingsResponse) LinuxServerLicensingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinuxServerLicensingSettingsResponse
+		return ret
+	}).(LinuxServerLicensingSettingsResponseOutput)
+}
+
+// Licence Cost.
+func (o LinuxServerLicensingSettingsResponsePtrOutput) LicenseCost() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LinuxServerLicensingSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LicenseCost
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Defines reference to load balancer backend address pools.
@@ -37994,6 +38270,10 @@ func init() {
 	pulumi.RegisterOutputType(LaborSettingsPtrOutput{})
 	pulumi.RegisterOutputType(LaborSettingsResponseOutput{})
 	pulumi.RegisterOutputType(LaborSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinuxServerLicensingSettingsOutput{})
+	pulumi.RegisterOutputType(LinuxServerLicensingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LinuxServerLicensingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(LinuxServerLicensingSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceResponseOutput{})

@@ -14,6 +14,8 @@ import (
 
 // a dryrun job resource
 // Azure REST API version: 2022-11-01-preview.
+//
+// Other available API versions: 2023-04-01-preview.
 type ConnectorDryrun struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewConnectorDryrun(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20221101preview:ConnectorDryrun"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20230401preview:ConnectorDryrun"),
 		},
 	})
 	opts = append(opts, aliases)

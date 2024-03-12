@@ -94,6 +94,9 @@ func NewIncidentTask(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:IncidentTask"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:IncidentTask"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

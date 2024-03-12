@@ -14,7 +14,7 @@ import (
 // Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
 // Azure REST API version: 2023-03-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview.
 func LookupManagedClusterService(ctx *pulumi.Context, args *LookupManagedClusterServiceArgs, opts ...pulumi.InvokeOption) (*LookupManagedClusterServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedClusterServiceResult

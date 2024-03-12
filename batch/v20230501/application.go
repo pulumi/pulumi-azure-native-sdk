@@ -95,6 +95,9 @@ func NewApplication(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:batch/v20231101:Application"),
 		},
+		{
+			Type: pulumi.String("azure-native:batch/v20240201:Application"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

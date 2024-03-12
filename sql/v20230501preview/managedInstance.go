@@ -78,11 +78,11 @@ type ManagedInstance struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The state of the managed instance.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageIOps pulumi.IntPtrOutput `pulumi:"storageIOps"`
 	// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageSizeInGB pulumi.IntPtrOutput `pulumi:"storageSizeInGB"`
-	// Storage throughput in MBps. Minimum value: 25. Maximum value: 4000. Increments of 1 MBps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage throughput MBps parameter is not supported in the instance create/update operation.
 	StorageThroughputMBps pulumi.IntPtrOutput `pulumi:"storageThroughputMBps"`
 	// Subnet resource ID for the managed instance.
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
@@ -163,6 +163,9 @@ func NewManagedInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:ManagedInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:ManagedInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -259,11 +262,11 @@ type managedInstanceArgs struct {
 	Sku *Sku `pulumi:"sku"`
 	// The resource identifier of the source managed instance associated with create operation of this instance.
 	SourceManagedInstanceId *string `pulumi:"sourceManagedInstanceId"`
-	// Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageIOps *int `pulumi:"storageIOps"`
 	// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageSizeInGB *int `pulumi:"storageSizeInGB"`
-	// Storage throughput in MBps. Minimum value: 25. Maximum value: 4000. Increments of 1 MBps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage throughput MBps parameter is not supported in the instance create/update operation.
 	StorageThroughputMBps *int `pulumi:"storageThroughputMBps"`
 	// Subnet resource ID for the managed instance.
 	SubnetId *string `pulumi:"subnetId"`
@@ -344,11 +347,11 @@ type ManagedInstanceArgs struct {
 	Sku SkuPtrInput
 	// The resource identifier of the source managed instance associated with create operation of this instance.
 	SourceManagedInstanceId pulumi.StringPtrInput
-	// Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageIOps pulumi.IntPtrInput
 	// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageSizeInGB pulumi.IntPtrInput
-	// Storage throughput in MBps. Minimum value: 25. Maximum value: 4000. Increments of 1 MBps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+	// Storage throughput MBps parameter is not supported in the instance create/update operation.
 	StorageThroughputMBps pulumi.IntPtrInput
 	// Subnet resource ID for the managed instance.
 	SubnetId pulumi.StringPtrInput
@@ -563,7 +566,7 @@ func (o ManagedInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
 func (o ManagedInstanceOutput) StorageIOps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.StorageIOps }).(pulumi.IntPtrOutput)
 }
@@ -573,7 +576,7 @@ func (o ManagedInstanceOutput) StorageSizeInGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.StorageSizeInGB }).(pulumi.IntPtrOutput)
 }
 
-// Storage throughput in MBps. Minimum value: 25. Maximum value: 4000. Increments of 1 MBps allowed only. Maximum value depends on the selected hardware family and number of vCores.
+// Storage throughput MBps parameter is not supported in the instance create/update operation.
 func (o ManagedInstanceOutput) StorageThroughputMBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ManagedInstance) pulumi.IntPtrOutput { return v.StorageThroughputMBps }).(pulumi.IntPtrOutput)
 }

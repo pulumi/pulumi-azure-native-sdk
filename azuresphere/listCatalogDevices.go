@@ -43,7 +43,7 @@ type ListCatalogDevicesArgs struct {
 // The response of a Device list operation.
 type ListCatalogDevicesResult struct {
 	// The link to the next page of items
-	NextLink *string `pulumi:"nextLink"`
+	NextLink string `pulumi:"nextLink"`
 	// The Device items on this page
 	Value []DeviceResponse `pulumi:"value"`
 }
@@ -96,8 +96,8 @@ func (o ListCatalogDevicesResultOutput) ToListCatalogDevicesResultOutputWithCont
 }
 
 // The link to the next page of items
-func (o ListCatalogDevicesResultOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListCatalogDevicesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+func (o ListCatalogDevicesResultOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ListCatalogDevicesResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
 // The Device items on this page

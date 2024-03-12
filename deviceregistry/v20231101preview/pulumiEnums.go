@@ -14,11 +14,16 @@ import (
 type DataPointsObservabilityMode string
 
 const (
-	DataPointsObservabilityModeNone      = DataPointsObservabilityMode("none")
-	DataPointsObservabilityModeCounter   = DataPointsObservabilityMode("counter")
-	DataPointsObservabilityModeGauge     = DataPointsObservabilityMode("gauge")
+	// No mapping to OpenTelemetry.
+	DataPointsObservabilityModeNone = DataPointsObservabilityMode("none")
+	// Map as counter to OpenTelemetry.
+	DataPointsObservabilityModeCounter = DataPointsObservabilityMode("counter")
+	// Map as gauge to OpenTelemetry.
+	DataPointsObservabilityModeGauge = DataPointsObservabilityMode("gauge")
+	// Map as histogram to OpenTelemetry.
 	DataPointsObservabilityModeHistogram = DataPointsObservabilityMode("histogram")
-	DataPointsObservabilityModeLog       = DataPointsObservabilityMode("log")
+	// Map as log to OpenTelemetry.
+	DataPointsObservabilityModeLog = DataPointsObservabilityMode("log")
 )
 
 func (DataPointsObservabilityMode) ElementType() reflect.Type {
@@ -186,8 +191,10 @@ func (in *dataPointsObservabilityModePtr) ToDataPointsObservabilityModePtrOutput
 type EventsObservabilityMode string
 
 const (
+	// No mapping to OpenTelemetry.
 	EventsObservabilityModeNone = EventsObservabilityMode("none")
-	EventsObservabilityModeLog  = EventsObservabilityMode("log")
+	// Map as log to OpenTelemetry.
+	EventsObservabilityModeLog = EventsObservabilityMode("log")
 )
 
 func (EventsObservabilityMode) ElementType() reflect.Type {
@@ -349,125 +356,128 @@ func (in *eventsObservabilityModePtr) ToEventsObservabilityModePtrOutputWithCont
 }
 
 // Defines the mode to authenticate the user of the client at the server.
-type Mode string
+type UserAuthenticationMode string
 
 const (
-	ModeAnonymous        = Mode("Anonymous")
-	ModeCertificate      = Mode("Certificate")
-	ModeUsernamePassword = Mode("UsernamePassword")
+	// The user authentication mode is anonymous.
+	UserAuthenticationModeAnonymous = UserAuthenticationMode("Anonymous")
+	// The user authentication mode is an x509 certificate.
+	UserAuthenticationModeCertificate = UserAuthenticationMode("Certificate")
+	// The user authentication mode is a username and password.
+	UserAuthenticationModeUsernamePassword = UserAuthenticationMode("UsernamePassword")
 )
 
-func (Mode) ElementType() reflect.Type {
-	return reflect.TypeOf((*Mode)(nil)).Elem()
+func (UserAuthenticationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAuthenticationMode)(nil)).Elem()
 }
 
-func (e Mode) ToModeOutput() ModeOutput {
-	return pulumi.ToOutput(e).(ModeOutput)
+func (e UserAuthenticationMode) ToUserAuthenticationModeOutput() UserAuthenticationModeOutput {
+	return pulumi.ToOutput(e).(UserAuthenticationModeOutput)
 }
 
-func (e Mode) ToModeOutputWithContext(ctx context.Context) ModeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ModeOutput)
+func (e UserAuthenticationMode) ToUserAuthenticationModeOutputWithContext(ctx context.Context) UserAuthenticationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UserAuthenticationModeOutput)
 }
 
-func (e Mode) ToModePtrOutput() ModePtrOutput {
-	return e.ToModePtrOutputWithContext(context.Background())
+func (e UserAuthenticationMode) ToUserAuthenticationModePtrOutput() UserAuthenticationModePtrOutput {
+	return e.ToUserAuthenticationModePtrOutputWithContext(context.Background())
 }
 
-func (e Mode) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
-	return Mode(e).ToModeOutputWithContext(ctx).ToModePtrOutputWithContext(ctx)
+func (e UserAuthenticationMode) ToUserAuthenticationModePtrOutputWithContext(ctx context.Context) UserAuthenticationModePtrOutput {
+	return UserAuthenticationMode(e).ToUserAuthenticationModeOutputWithContext(ctx).ToUserAuthenticationModePtrOutputWithContext(ctx)
 }
 
-func (e Mode) ToStringOutput() pulumi.StringOutput {
+func (e UserAuthenticationMode) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e Mode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e UserAuthenticationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e Mode) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e UserAuthenticationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e Mode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e UserAuthenticationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type ModeOutput struct{ *pulumi.OutputState }
+type UserAuthenticationModeOutput struct{ *pulumi.OutputState }
 
-func (ModeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Mode)(nil)).Elem()
+func (UserAuthenticationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAuthenticationMode)(nil)).Elem()
 }
 
-func (o ModeOutput) ToModeOutput() ModeOutput {
+func (o UserAuthenticationModeOutput) ToUserAuthenticationModeOutput() UserAuthenticationModeOutput {
 	return o
 }
 
-func (o ModeOutput) ToModeOutputWithContext(ctx context.Context) ModeOutput {
+func (o UserAuthenticationModeOutput) ToUserAuthenticationModeOutputWithContext(ctx context.Context) UserAuthenticationModeOutput {
 	return o
 }
 
-func (o ModeOutput) ToModePtrOutput() ModePtrOutput {
-	return o.ToModePtrOutputWithContext(context.Background())
+func (o UserAuthenticationModeOutput) ToUserAuthenticationModePtrOutput() UserAuthenticationModePtrOutput {
+	return o.ToUserAuthenticationModePtrOutputWithContext(context.Background())
 }
 
-func (o ModeOutput) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Mode) *Mode {
+func (o UserAuthenticationModeOutput) ToUserAuthenticationModePtrOutputWithContext(ctx context.Context) UserAuthenticationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAuthenticationMode) *UserAuthenticationMode {
 		return &v
-	}).(ModePtrOutput)
+	}).(UserAuthenticationModePtrOutput)
 }
 
-func (o ModeOutput) ToStringOutput() pulumi.StringOutput {
+func (o UserAuthenticationModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o ModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Mode) string {
+func (o UserAuthenticationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserAuthenticationMode) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o ModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o UserAuthenticationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Mode) *string {
+func (o UserAuthenticationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UserAuthenticationMode) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type ModePtrOutput struct{ *pulumi.OutputState }
+type UserAuthenticationModePtrOutput struct{ *pulumi.OutputState }
 
-func (ModePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Mode)(nil)).Elem()
+func (UserAuthenticationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAuthenticationMode)(nil)).Elem()
 }
 
-func (o ModePtrOutput) ToModePtrOutput() ModePtrOutput {
+func (o UserAuthenticationModePtrOutput) ToUserAuthenticationModePtrOutput() UserAuthenticationModePtrOutput {
 	return o
 }
 
-func (o ModePtrOutput) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+func (o UserAuthenticationModePtrOutput) ToUserAuthenticationModePtrOutputWithContext(ctx context.Context) UserAuthenticationModePtrOutput {
 	return o
 }
 
-func (o ModePtrOutput) Elem() ModeOutput {
-	return o.ApplyT(func(v *Mode) Mode {
+func (o UserAuthenticationModePtrOutput) Elem() UserAuthenticationModeOutput {
+	return o.ApplyT(func(v *UserAuthenticationMode) UserAuthenticationMode {
 		if v != nil {
 			return *v
 		}
-		var ret Mode
+		var ret UserAuthenticationMode
 		return ret
-	}).(ModeOutput)
+	}).(UserAuthenticationModeOutput)
 }
 
-func (o ModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o UserAuthenticationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Mode) *string {
+func (o UserAuthenticationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UserAuthenticationMode) *string {
 		if e == nil {
 			return nil
 		}
@@ -476,44 +486,44 @@ func (o ModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ModeInput is an input type that accepts values of the Mode enum
-// A concrete instance of `ModeInput` can be one of the following:
+// UserAuthenticationModeInput is an input type that accepts values of the UserAuthenticationMode enum
+// A concrete instance of `UserAuthenticationModeInput` can be one of the following:
 //
-//	ModeAnonymous
-//	ModeCertificate
-//	ModeUsernamePassword
-type ModeInput interface {
+//	UserAuthenticationModeAnonymous
+//	UserAuthenticationModeCertificate
+//	UserAuthenticationModeUsernamePassword
+type UserAuthenticationModeInput interface {
 	pulumi.Input
 
-	ToModeOutput() ModeOutput
-	ToModeOutputWithContext(context.Context) ModeOutput
+	ToUserAuthenticationModeOutput() UserAuthenticationModeOutput
+	ToUserAuthenticationModeOutputWithContext(context.Context) UserAuthenticationModeOutput
 }
 
-var modePtrType = reflect.TypeOf((**Mode)(nil)).Elem()
+var userAuthenticationModePtrType = reflect.TypeOf((**UserAuthenticationMode)(nil)).Elem()
 
-type ModePtrInput interface {
+type UserAuthenticationModePtrInput interface {
 	pulumi.Input
 
-	ToModePtrOutput() ModePtrOutput
-	ToModePtrOutputWithContext(context.Context) ModePtrOutput
+	ToUserAuthenticationModePtrOutput() UserAuthenticationModePtrOutput
+	ToUserAuthenticationModePtrOutputWithContext(context.Context) UserAuthenticationModePtrOutput
 }
 
-type modePtr string
+type userAuthenticationModePtr string
 
-func ModePtr(v string) ModePtrInput {
-	return (*modePtr)(&v)
+func UserAuthenticationModePtr(v string) UserAuthenticationModePtrInput {
+	return (*userAuthenticationModePtr)(&v)
 }
 
-func (*modePtr) ElementType() reflect.Type {
-	return modePtrType
+func (*userAuthenticationModePtr) ElementType() reflect.Type {
+	return userAuthenticationModePtrType
 }
 
-func (in *modePtr) ToModePtrOutput() ModePtrOutput {
-	return pulumi.ToOutput(in).(ModePtrOutput)
+func (in *userAuthenticationModePtr) ToUserAuthenticationModePtrOutput() UserAuthenticationModePtrOutput {
+	return pulumi.ToOutput(in).(UserAuthenticationModePtrOutput)
 }
 
-func (in *modePtr) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ModePtrOutput)
+func (in *userAuthenticationModePtr) ToUserAuthenticationModePtrOutputWithContext(ctx context.Context) UserAuthenticationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UserAuthenticationModePtrOutput)
 }
 
 func init() {
@@ -521,6 +531,6 @@ func init() {
 	pulumi.RegisterOutputType(DataPointsObservabilityModePtrOutput{})
 	pulumi.RegisterOutputType(EventsObservabilityModeOutput{})
 	pulumi.RegisterOutputType(EventsObservabilityModePtrOutput{})
-	pulumi.RegisterOutputType(ModeOutput{})
-	pulumi.RegisterOutputType(ModePtrOutput{})
+	pulumi.RegisterOutputType(UserAuthenticationModeOutput{})
+	pulumi.RegisterOutputType(UserAuthenticationModePtrOutput{})
 }

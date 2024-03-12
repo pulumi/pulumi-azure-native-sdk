@@ -14,6 +14,8 @@ import (
 
 // Connects an edge site to an orbital gateway and describes what layer 2 traffic to forward between them.
 // Azure REST API version: 2024-03-01-preview.
+//
+// Other available API versions: 2024-03-01.
 type L2Connection struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewL2Connection(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'VlanId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:orbital/v20240301:L2Connection"),
+		},
 		{
 			Type: pulumi.String("azure-native:orbital/v20240301preview:L2Connection"),
 		},

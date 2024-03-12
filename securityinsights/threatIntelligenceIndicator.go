@@ -15,7 +15,7 @@ import (
 // Threat intelligence information object.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-01-01-preview.
 //
-// Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview.
+// Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview.
 type ThreatIntelligenceIndicator struct {
 	pulumi.CustomResourceState
 
@@ -135,6 +135,9 @@ func NewThreatIntelligenceIndicator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:ThreatIntelligenceIndicator"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240101preview:ThreatIntelligenceIndicator"),
 		},
 	})
 	opts = append(opts, aliases)

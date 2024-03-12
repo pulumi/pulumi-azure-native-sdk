@@ -45,7 +45,7 @@ type ListCatalogDeviceGroupsArgs struct {
 // The response of a DeviceGroup list operation.
 type ListCatalogDeviceGroupsResult struct {
 	// The link to the next page of items
-	NextLink *string `pulumi:"nextLink"`
+	NextLink string `pulumi:"nextLink"`
 	// The DeviceGroup items on this page
 	Value []DeviceGroupResponse `pulumi:"value"`
 }
@@ -100,8 +100,8 @@ func (o ListCatalogDeviceGroupsResultOutput) ToListCatalogDeviceGroupsResultOutp
 }
 
 // The link to the next page of items
-func (o ListCatalogDeviceGroupsResultOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListCatalogDeviceGroupsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+func (o ListCatalogDeviceGroupsResultOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v ListCatalogDeviceGroupsResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
 // The DeviceGroup items on this page

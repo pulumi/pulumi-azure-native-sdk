@@ -14,6 +14,8 @@ import (
 
 // The flow resource definition.
 // Azure REST API version: 2023-10-11-preview.
+//
+// Other available API versions: 2024-01-25.
 type Flow struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewFlow(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20231011preview:Flow"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Flow"),
 		},
 	})
 	opts = append(opts, aliases)

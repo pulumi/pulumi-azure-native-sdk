@@ -15,7 +15,7 @@ import (
 // Information about workspace.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2018-04-01.
 //
-// Other available API versions: 2023-09-15-preview, 2024-02-01-preview.
+// Other available API versions: 2023-09-15-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -98,9 +98,6 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20230915preview:Workspace"),
-		},
-		{
-			Type: pulumi.String("azure-native:databricks/v20240201preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)

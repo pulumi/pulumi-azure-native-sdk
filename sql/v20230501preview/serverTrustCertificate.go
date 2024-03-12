@@ -72,6 +72,9 @@ func NewServerTrustCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230201preview:ServerTrustCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:ServerTrustCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

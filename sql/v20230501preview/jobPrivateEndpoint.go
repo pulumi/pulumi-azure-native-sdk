@@ -49,6 +49,9 @@ func NewJobPrivateEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql:JobPrivateEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:JobPrivateEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,6 +14,8 @@ import (
 
 // The pipeline resource definition.
 // Azure REST API version: 2023-10-11-preview.
+//
+// Other available API versions: 2024-01-25.
 type Pipeline struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +46,9 @@ func NewPipeline(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20231011preview:Pipeline"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20240125:Pipeline"),
 		},
 	})
 	opts = append(opts, aliases)

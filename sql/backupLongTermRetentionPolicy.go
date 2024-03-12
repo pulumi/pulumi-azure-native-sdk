@@ -93,6 +93,9 @@ func NewBackupLongTermRetentionPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:BackupLongTermRetentionPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:BackupLongTermRetentionPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

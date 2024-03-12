@@ -15,7 +15,7 @@ import (
 // call the GetItemOperationResult API.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2023-06-01, 2023-08-01.
+// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01.
 func LookupProtectionIntent(ctx *pulumi.Context, args *LookupProtectionIntentArgs, opts ...pulumi.InvokeOption) (*LookupProtectionIntentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProtectionIntentResult

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieve a single asset.
+// Get a Asset
 func LookupAsset(ctx *pulumi.Context, args *LookupAssetArgs, opts ...pulumi.InvokeOption) (*LookupAssetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetResult
@@ -31,22 +31,66 @@ type LookupAssetArgs struct {
 
 // Asset definition.
 type LookupAssetResult struct {
+	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
+	AssetEndpointProfileUri string `pulumi:"assetEndpointProfileUri"`
+	// Resource path to asset type (model) definition.
+	AssetType *string `pulumi:"assetType"`
+	// A set of key-value pairs that contain custom attributes set by the customer.
+	Attributes interface{} `pulumi:"attributes"`
+	// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
+	DataPoints []DataPointResponse `pulumi:"dataPoints"`
+	// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+	DefaultDataPointsConfiguration *string `pulumi:"defaultDataPointsConfiguration"`
+	// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+	DefaultEventsConfiguration *string `pulumi:"defaultEventsConfiguration"`
+	// Human-readable description of the asset.
+	Description *string `pulumi:"description"`
+	// Human-readable display name.
+	DisplayName *string `pulumi:"displayName"`
+	// Reference to the documentation.
+	DocumentationUri *string `pulumi:"documentationUri"`
+	// Enabled/Disabled status of the asset.
+	Enabled *bool `pulumi:"enabled"`
+	// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
+	Events []EventResponse `pulumi:"events"`
 	// The extended location.
-	ExtendedLocation AssetResponseExtendedLocation `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Asset id provided by the customer.
+	ExternalAssetId *string `pulumi:"externalAssetId"`
+	// Revision number of the hardware.
+	HardwareRevision *string `pulumi:"hardwareRevision"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// Asset manufacturer name.
+	Manufacturer *string `pulumi:"manufacturer"`
+	// Asset manufacturer URI.
+	ManufacturerUri *string `pulumi:"manufacturerUri"`
+	// Asset model name.
+	Model *string `pulumi:"model"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Asset resource properties.
-	Properties AssetResponseProperties `pulumi:"properties"`
+	// Asset product code.
+	ProductCode *string `pulumi:"productCode"`
+	// Provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Asset serial number.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// Revision number of the software.
+	SoftwareRevision *string `pulumi:"softwareRevision"`
+	// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
+	Status AssetStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Globally unique, immutable, non-reusable id.
+	Uuid string `pulumi:"uuid"`
+	// An integer that is incremented each time the resource is modified.
+	Version int `pulumi:"version"`
 }
 
 func LookupAssetOutput(ctx *pulumi.Context, args LookupAssetOutputArgs, opts ...pulumi.InvokeOption) LookupAssetResultOutput {
@@ -88,9 +132,74 @@ func (o LookupAssetResultOutput) ToLookupAssetResultOutputWithContext(ctx contex
 	return o
 }
 
+// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
+func (o LookupAssetResultOutput) AssetEndpointProfileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.AssetEndpointProfileUri }).(pulumi.StringOutput)
+}
+
+// Resource path to asset type (model) definition.
+func (o LookupAssetResultOutput) AssetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.AssetType }).(pulumi.StringPtrOutput)
+}
+
+// A set of key-value pairs that contain custom attributes set by the customer.
+func (o LookupAssetResultOutput) Attributes() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupAssetResult) interface{} { return v.Attributes }).(pulumi.AnyOutput)
+}
+
+// Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
+func (o LookupAssetResultOutput) DataPoints() DataPointResponseArrayOutput {
+	return o.ApplyT(func(v LookupAssetResult) []DataPointResponse { return v.DataPoints }).(DataPointResponseArrayOutput)
+}
+
+// Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+func (o LookupAssetResultOutput) DefaultDataPointsConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultDataPointsConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
+func (o LookupAssetResultOutput) DefaultEventsConfiguration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.DefaultEventsConfiguration }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable description of the asset.
+func (o LookupAssetResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable display name.
+func (o LookupAssetResultOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the documentation.
+func (o LookupAssetResultOutput) DocumentationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.DocumentationUri }).(pulumi.StringPtrOutput)
+}
+
+// Enabled/Disabled status of the asset.
+func (o LookupAssetResultOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
+func (o LookupAssetResultOutput) Events() EventResponseArrayOutput {
+	return o.ApplyT(func(v LookupAssetResult) []EventResponse { return v.Events }).(EventResponseArrayOutput)
+}
+
 // The extended location.
-func (o LookupAssetResultOutput) ExtendedLocation() AssetResponseExtendedLocationOutput {
-	return o.ApplyT(func(v LookupAssetResult) AssetResponseExtendedLocation { return v.ExtendedLocation }).(AssetResponseExtendedLocationOutput)
+func (o LookupAssetResultOutput) ExtendedLocation() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v LookupAssetResult) ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
+}
+
+// Asset id provided by the customer.
+func (o LookupAssetResultOutput) ExternalAssetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.ExternalAssetId }).(pulumi.StringPtrOutput)
+}
+
+// Revision number of the hardware.
+func (o LookupAssetResultOutput) HardwareRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.HardwareRevision }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -103,14 +212,49 @@ func (o LookupAssetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Asset manufacturer name.
+func (o LookupAssetResultOutput) Manufacturer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
+}
+
+// Asset manufacturer URI.
+func (o LookupAssetResultOutput) ManufacturerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.ManufacturerUri }).(pulumi.StringPtrOutput)
+}
+
+// Asset model name.
+func (o LookupAssetResultOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o LookupAssetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Asset resource properties.
-func (o LookupAssetResultOutput) Properties() AssetResponsePropertiesOutput {
-	return o.ApplyT(func(v LookupAssetResult) AssetResponseProperties { return v.Properties }).(AssetResponsePropertiesOutput)
+// Asset product code.
+func (o LookupAssetResultOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of the resource.
+func (o LookupAssetResultOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Asset serial number.
+func (o LookupAssetResultOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+}
+
+// Revision number of the software.
+func (o LookupAssetResultOutput) SoftwareRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAssetResult) *string { return v.SoftwareRevision }).(pulumi.StringPtrOutput)
+}
+
+// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
+func (o LookupAssetResultOutput) Status() AssetStatusResponseOutput {
+	return o.ApplyT(func(v LookupAssetResult) AssetStatusResponse { return v.Status }).(AssetStatusResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -126,6 +270,16 @@ func (o LookupAssetResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAssetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssetResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Globally unique, immutable, non-reusable id.
+func (o LookupAssetResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssetResult) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// An integer that is incremented each time the resource is modified.
+func (o LookupAssetResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupAssetResult) int { return v.Version }).(pulumi.IntOutput)
 }
 
 func init() {

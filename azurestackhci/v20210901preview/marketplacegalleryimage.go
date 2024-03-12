@@ -86,6 +86,12 @@ func NewMarketplacegalleryimage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230901preview:marketplacegalleryimage"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:Marketplacegalleryimage"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240101:marketplacegalleryimage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

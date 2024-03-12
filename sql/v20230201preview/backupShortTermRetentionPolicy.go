@@ -88,6 +88,9 @@ func NewBackupShortTermRetentionPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:BackupShortTermRetentionPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:BackupShortTermRetentionPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -94,6 +94,9 @@ func NewLongTermRetentionPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20230501preview:LongTermRetentionPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20230801preview:LongTermRetentionPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
