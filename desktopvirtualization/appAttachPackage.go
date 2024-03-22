@@ -15,7 +15,7 @@ import (
 // Schema for App Attach Package properties.
 // Azure REST API version: 2023-10-04-preview.
 //
-// Other available API versions: 2023-11-01-preview, 2024-01-16-preview.
+// Other available API versions: 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview.
 type AppAttachPackage struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240116preview:AppAttachPackage"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20240306preview:AppAttachPackage"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -127,6 +127,9 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230301preview:Server"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:Server"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

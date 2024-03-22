@@ -14,7 +14,7 @@ import (
 // Gets the details of a registered vCenter server(Add vCenter server).
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2021-03-01, 2023-06-01, 2023-08-01.
+// Other available API versions: 2021-03-01, 2023-06-01, 2023-08-01, 2024-01-01.
 func LookupReplicationvCenter(ctx *pulumi.Context, args *LookupReplicationvCenterArgs, opts ...pulumi.InvokeOption) (*LookupReplicationvCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationvCenterResult

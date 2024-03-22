@@ -1072,9 +1072,7 @@ func (o ManagedClusterUpdateResponseOutput) Upgrade() ManagedClusterUpgradeSpecR
 type ManagedClusterUpgradeSpec struct {
 	// The Kubernetes version to upgrade the member clusters to.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
-	// The upgrade type.
-	// Full requires the KubernetesVersion property to be set.
-	// NodeImageOnly requires the KubernetesVersion property not to be set.
+	// ManagedClusterUpgradeType is the type of upgrade to be applied.
 	Type string `pulumi:"type"`
 }
 
@@ -1093,9 +1091,7 @@ type ManagedClusterUpgradeSpecInput interface {
 type ManagedClusterUpgradeSpecArgs struct {
 	// The Kubernetes version to upgrade the member clusters to.
 	KubernetesVersion pulumi.StringPtrInput `pulumi:"kubernetesVersion"`
-	// The upgrade type.
-	// Full requires the KubernetesVersion property to be set.
-	// NodeImageOnly requires the KubernetesVersion property not to be set.
+	// ManagedClusterUpgradeType is the type of upgrade to be applied.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1131,9 +1127,7 @@ func (o ManagedClusterUpgradeSpecOutput) KubernetesVersion() pulumi.StringPtrOut
 	return o.ApplyT(func(v ManagedClusterUpgradeSpec) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
-// The upgrade type.
-// Full requires the KubernetesVersion property to be set.
-// NodeImageOnly requires the KubernetesVersion property not to be set.
+// ManagedClusterUpgradeType is the type of upgrade to be applied.
 func (o ManagedClusterUpgradeSpecOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterUpgradeSpec) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1142,9 +1136,7 @@ func (o ManagedClusterUpgradeSpecOutput) Type() pulumi.StringOutput {
 type ManagedClusterUpgradeSpecResponse struct {
 	// The Kubernetes version to upgrade the member clusters to.
 	KubernetesVersion *string `pulumi:"kubernetesVersion"`
-	// The upgrade type.
-	// Full requires the KubernetesVersion property to be set.
-	// NodeImageOnly requires the KubernetesVersion property not to be set.
+	// ManagedClusterUpgradeType is the type of upgrade to be applied.
 	Type string `pulumi:"type"`
 }
 
@@ -1168,9 +1160,7 @@ func (o ManagedClusterUpgradeSpecResponseOutput) KubernetesVersion() pulumi.Stri
 	return o.ApplyT(func(v ManagedClusterUpgradeSpecResponse) *string { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
-// The upgrade type.
-// Full requires the KubernetesVersion property to be set.
-// NodeImageOnly requires the KubernetesVersion property not to be set.
+// ManagedClusterUpgradeType is the type of upgrade to be applied.
 func (o ManagedClusterUpgradeSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterUpgradeSpecResponse) string { return v.Type }).(pulumi.StringOutput)
 }

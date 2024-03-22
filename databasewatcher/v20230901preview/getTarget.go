@@ -45,8 +45,6 @@ type LookupTargetResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of authentication to use when connecting to a target.
 	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
-	// The target collection status.
-	TargetCollectionStatus *string `pulumi:"targetCollectionStatus"`
 	// Discriminator property for TargetProperties.
 	TargetType string `pulumi:"targetType"`
 	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
@@ -124,11 +122,6 @@ func (o LookupTargetResultOutput) SystemData() SystemDataResponseOutput {
 // The type of authentication to use when connecting to a target.
 func (o LookupTargetResultOutput) TargetAuthenticationType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetResult) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
-}
-
-// The target collection status.
-func (o LookupTargetResultOutput) TargetCollectionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTargetResult) *string { return v.TargetCollectionStatus }).(pulumi.StringPtrOutput)
 }
 
 // Discriminator property for TargetProperties.

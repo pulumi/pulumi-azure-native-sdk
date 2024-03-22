@@ -53,6 +53,9 @@ func NewFleetUpdateStrategy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20231015:FleetUpdateStrategy"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240202preview:FleetUpdateStrategy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

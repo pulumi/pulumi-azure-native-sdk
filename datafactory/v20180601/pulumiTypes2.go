@@ -3890,6 +3890,174 @@ func (o ServiceNowV2SourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNowV2SourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Service principal credential.
+type ServicePrincipalCredential struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// The app ID of the service principal used to authenticate
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate.
+	ServicePrincipalKey *AzureKeyVaultSecretReference `pulumi:"servicePrincipalKey"`
+	// The ID of the tenant to which the service principal belongs
+	Tenant interface{} `pulumi:"tenant"`
+	// Type of credential.
+	// Expected value is 'ServicePrincipal'.
+	Type string `pulumi:"type"`
+}
+
+// ServicePrincipalCredentialInput is an input type that accepts ServicePrincipalCredentialArgs and ServicePrincipalCredentialOutput values.
+// You can construct a concrete instance of `ServicePrincipalCredentialInput` via:
+//
+//	ServicePrincipalCredentialArgs{...}
+type ServicePrincipalCredentialInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCredentialOutput() ServicePrincipalCredentialOutput
+	ToServicePrincipalCredentialOutputWithContext(context.Context) ServicePrincipalCredentialOutput
+}
+
+// Service principal credential.
+type ServicePrincipalCredentialArgs struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Credential description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The app ID of the service principal used to authenticate
+	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate.
+	ServicePrincipalKey AzureKeyVaultSecretReferencePtrInput `pulumi:"servicePrincipalKey"`
+	// The ID of the tenant to which the service principal belongs
+	Tenant pulumi.Input `pulumi:"tenant"`
+	// Type of credential.
+	// Expected value is 'ServicePrincipal'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServicePrincipalCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCredential)(nil)).Elem()
+}
+
+func (i ServicePrincipalCredentialArgs) ToServicePrincipalCredentialOutput() ServicePrincipalCredentialOutput {
+	return i.ToServicePrincipalCredentialOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalCredentialArgs) ToServicePrincipalCredentialOutputWithContext(ctx context.Context) ServicePrincipalCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCredentialOutput)
+}
+
+// Service principal credential.
+type ServicePrincipalCredentialOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCredential)(nil)).Elem()
+}
+
+func (o ServicePrincipalCredentialOutput) ToServicePrincipalCredentialOutput() ServicePrincipalCredentialOutput {
+	return o
+}
+
+func (o ServicePrincipalCredentialOutput) ToServicePrincipalCredentialOutputWithContext(ctx context.Context) ServicePrincipalCredentialOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o ServicePrincipalCredentialOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalCredential) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o ServicePrincipalCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The app ID of the service principal used to authenticate
+func (o ServicePrincipalCredentialOutput) ServicePrincipalId() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServicePrincipalCredential) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
+}
+
+// The key of the service principal used to authenticate.
+func (o ServicePrincipalCredentialOutput) ServicePrincipalKey() AzureKeyVaultSecretReferencePtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCredential) *AzureKeyVaultSecretReference { return v.ServicePrincipalKey }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// The ID of the tenant to which the service principal belongs
+func (o ServicePrincipalCredentialOutput) Tenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServicePrincipalCredential) interface{} { return v.Tenant }).(pulumi.AnyOutput)
+}
+
+// Type of credential.
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Service principal credential.
+type ServicePrincipalCredentialResponse struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// The app ID of the service principal used to authenticate
+	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
+	// The key of the service principal used to authenticate.
+	ServicePrincipalKey *AzureKeyVaultSecretReferenceResponse `pulumi:"servicePrincipalKey"`
+	// The ID of the tenant to which the service principal belongs
+	Tenant interface{} `pulumi:"tenant"`
+	// Type of credential.
+	// Expected value is 'ServicePrincipal'.
+	Type string `pulumi:"type"`
+}
+
+// Service principal credential.
+type ServicePrincipalCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCredentialResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalCredentialResponseOutput) ToServicePrincipalCredentialResponseOutput() ServicePrincipalCredentialResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalCredentialResponseOutput) ToServicePrincipalCredentialResponseOutputWithContext(ctx context.Context) ServicePrincipalCredentialResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o ServicePrincipalCredentialResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalCredentialResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o ServicePrincipalCredentialResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The app ID of the service principal used to authenticate
+func (o ServicePrincipalCredentialResponseOutput) ServicePrincipalId() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServicePrincipalCredentialResponse) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
+}
+
+// The key of the service principal used to authenticate.
+func (o ServicePrincipalCredentialResponseOutput) ServicePrincipalKey() AzureKeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCredentialResponse) *AzureKeyVaultSecretReferenceResponse {
+		return v.ServicePrincipalKey
+	}).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// The ID of the tenant to which the service principal belongs
+func (o ServicePrincipalCredentialResponseOutput) Tenant() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServicePrincipalCredentialResponse) interface{} { return v.Tenant }).(pulumi.AnyOutput)
+}
+
+// Type of credential.
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalCredentialResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalCredentialResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Set value for a Variable.
 type SetVariableActivity struct {
 	// Activity depends on condition.
@@ -18490,6 +18658,124 @@ func (o SynapseSparkJobReferenceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SynapseSparkJobReferenceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// System Assigned Managed identity credential.
+type SystemAssignedManagedIdentityCredential struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// Type of credential.
+	// Expected value is 'SystemAssignedManagedIdentityCredential'.
+	Type string `pulumi:"type"`
+}
+
+// SystemAssignedManagedIdentityCredentialInput is an input type that accepts SystemAssignedManagedIdentityCredentialArgs and SystemAssignedManagedIdentityCredentialOutput values.
+// You can construct a concrete instance of `SystemAssignedManagedIdentityCredentialInput` via:
+//
+//	SystemAssignedManagedIdentityCredentialArgs{...}
+type SystemAssignedManagedIdentityCredentialInput interface {
+	pulumi.Input
+
+	ToSystemAssignedManagedIdentityCredentialOutput() SystemAssignedManagedIdentityCredentialOutput
+	ToSystemAssignedManagedIdentityCredentialOutputWithContext(context.Context) SystemAssignedManagedIdentityCredentialOutput
+}
+
+// System Assigned Managed identity credential.
+type SystemAssignedManagedIdentityCredentialArgs struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Credential description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Type of credential.
+	// Expected value is 'SystemAssignedManagedIdentityCredential'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SystemAssignedManagedIdentityCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedManagedIdentityCredential)(nil)).Elem()
+}
+
+func (i SystemAssignedManagedIdentityCredentialArgs) ToSystemAssignedManagedIdentityCredentialOutput() SystemAssignedManagedIdentityCredentialOutput {
+	return i.ToSystemAssignedManagedIdentityCredentialOutputWithContext(context.Background())
+}
+
+func (i SystemAssignedManagedIdentityCredentialArgs) ToSystemAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) SystemAssignedManagedIdentityCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedManagedIdentityCredentialOutput)
+}
+
+// System Assigned Managed identity credential.
+type SystemAssignedManagedIdentityCredentialOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedManagedIdentityCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedManagedIdentityCredential)(nil)).Elem()
+}
+
+func (o SystemAssignedManagedIdentityCredentialOutput) ToSystemAssignedManagedIdentityCredentialOutput() SystemAssignedManagedIdentityCredentialOutput {
+	return o
+}
+
+func (o SystemAssignedManagedIdentityCredentialOutput) ToSystemAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) SystemAssignedManagedIdentityCredentialOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o SystemAssignedManagedIdentityCredentialOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SystemAssignedManagedIdentityCredential) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o SystemAssignedManagedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedManagedIdentityCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of credential.
+// Expected value is 'SystemAssignedManagedIdentityCredential'.
+func (o SystemAssignedManagedIdentityCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedManagedIdentityCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// System Assigned Managed identity credential.
+type SystemAssignedManagedIdentityCredentialResponse struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// Type of credential.
+	// Expected value is 'SystemAssignedManagedIdentityCredential'.
+	Type string `pulumi:"type"`
+}
+
+// System Assigned Managed identity credential.
+type SystemAssignedManagedIdentityCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedManagedIdentityCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedManagedIdentityCredentialResponse)(nil)).Elem()
+}
+
+func (o SystemAssignedManagedIdentityCredentialResponseOutput) ToSystemAssignedManagedIdentityCredentialResponseOutput() SystemAssignedManagedIdentityCredentialResponseOutput {
+	return o
+}
+
+func (o SystemAssignedManagedIdentityCredentialResponseOutput) ToSystemAssignedManagedIdentityCredentialResponseOutputWithContext(ctx context.Context) SystemAssignedManagedIdentityCredentialResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o SystemAssignedManagedIdentityCredentialResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SystemAssignedManagedIdentityCredentialResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o SystemAssignedManagedIdentityCredentialResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemAssignedManagedIdentityCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of credential.
+// Expected value is 'SystemAssignedManagedIdentityCredential'.
+func (o SystemAssignedManagedIdentityCredentialResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemAssignedManagedIdentityCredentialResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Copy activity sources of tabular type.
 type TabularSource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -22501,6 +22787,124 @@ func (o UserAccessPolicyResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// User Assigned Managed identity credential.
+type UserAssignedManagedIdentityCredential struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// Type of credential.
+	// Expected value is 'UserAssignedManagedIdentityCredential'.
+	Type string `pulumi:"type"`
+}
+
+// UserAssignedManagedIdentityCredentialInput is an input type that accepts UserAssignedManagedIdentityCredentialArgs and UserAssignedManagedIdentityCredentialOutput values.
+// You can construct a concrete instance of `UserAssignedManagedIdentityCredentialInput` via:
+//
+//	UserAssignedManagedIdentityCredentialArgs{...}
+type UserAssignedManagedIdentityCredentialInput interface {
+	pulumi.Input
+
+	ToUserAssignedManagedIdentityCredentialOutput() UserAssignedManagedIdentityCredentialOutput
+	ToUserAssignedManagedIdentityCredentialOutputWithContext(context.Context) UserAssignedManagedIdentityCredentialOutput
+}
+
+// User Assigned Managed identity credential.
+type UserAssignedManagedIdentityCredentialArgs struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Credential description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Type of credential.
+	// Expected value is 'UserAssignedManagedIdentityCredential'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (UserAssignedManagedIdentityCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedManagedIdentityCredential)(nil)).Elem()
+}
+
+func (i UserAssignedManagedIdentityCredentialArgs) ToUserAssignedManagedIdentityCredentialOutput() UserAssignedManagedIdentityCredentialOutput {
+	return i.ToUserAssignedManagedIdentityCredentialOutputWithContext(context.Background())
+}
+
+func (i UserAssignedManagedIdentityCredentialArgs) ToUserAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) UserAssignedManagedIdentityCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedManagedIdentityCredentialOutput)
+}
+
+// User Assigned Managed identity credential.
+type UserAssignedManagedIdentityCredentialOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedManagedIdentityCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedManagedIdentityCredential)(nil)).Elem()
+}
+
+func (o UserAssignedManagedIdentityCredentialOutput) ToUserAssignedManagedIdentityCredentialOutput() UserAssignedManagedIdentityCredentialOutput {
+	return o
+}
+
+func (o UserAssignedManagedIdentityCredentialOutput) ToUserAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) UserAssignedManagedIdentityCredentialOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o UserAssignedManagedIdentityCredentialOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v UserAssignedManagedIdentityCredential) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o UserAssignedManagedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedManagedIdentityCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of credential.
+// Expected value is 'UserAssignedManagedIdentityCredential'.
+func (o UserAssignedManagedIdentityCredentialOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedManagedIdentityCredential) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// User Assigned Managed identity credential.
+type UserAssignedManagedIdentityCredentialResponse struct {
+	// List of tags that can be used for describing the Credential.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Credential description.
+	Description *string `pulumi:"description"`
+	// Type of credential.
+	// Expected value is 'UserAssignedManagedIdentityCredential'.
+	Type string `pulumi:"type"`
+}
+
+// User Assigned Managed identity credential.
+type UserAssignedManagedIdentityCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedManagedIdentityCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedManagedIdentityCredentialResponse)(nil)).Elem()
+}
+
+func (o UserAssignedManagedIdentityCredentialResponseOutput) ToUserAssignedManagedIdentityCredentialResponseOutput() UserAssignedManagedIdentityCredentialResponseOutput {
+	return o
+}
+
+func (o UserAssignedManagedIdentityCredentialResponseOutput) ToUserAssignedManagedIdentityCredentialResponseOutputWithContext(ctx context.Context) UserAssignedManagedIdentityCredentialResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Credential.
+func (o UserAssignedManagedIdentityCredentialResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v UserAssignedManagedIdentityCredentialResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Credential description.
+func (o UserAssignedManagedIdentityCredentialResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedManagedIdentityCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Type of credential.
+// Expected value is 'UserAssignedManagedIdentityCredential'.
+func (o UserAssignedManagedIdentityCredentialResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedManagedIdentityCredentialResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // User property.
 type UserProperty struct {
 	// User property name.
@@ -24976,7 +25380,7 @@ type WebActivity struct {
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation *bool `pulumi:"disableCertValidation"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers map[string]string `pulumi:"headers"`
+	Headers map[string]interface{} `pulumi:"headers"`
 	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
 	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
@@ -25032,7 +25436,7 @@ type WebActivityArgs struct {
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation pulumi.BoolPtrInput `pulumi:"disableCertValidation"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers pulumi.StringMapInput `pulumi:"headers"`
+	Headers pulumi.MapInput `pulumi:"headers"`
 	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
 	HttpRequestTimeout pulumi.Input `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
@@ -25123,8 +25527,8 @@ func (o WebActivityOutput) DisableCertValidation() pulumi.BoolPtrOutput {
 }
 
 // Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-func (o WebActivityOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WebActivity) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+func (o WebActivityOutput) Headers() pulumi.MapOutput {
+	return o.ApplyT(func(v WebActivity) map[string]interface{} { return v.Headers }).(pulumi.MapOutput)
 }
 
 // Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
@@ -25621,7 +26025,7 @@ type WebActivityResponse struct {
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation *bool `pulumi:"disableCertValidation"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers map[string]string `pulumi:"headers"`
+	Headers map[string]interface{} `pulumi:"headers"`
 	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
 	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
@@ -25700,8 +26104,8 @@ func (o WebActivityResponseOutput) DisableCertValidation() pulumi.BoolPtrOutput 
 }
 
 // Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-func (o WebActivityResponseOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WebActivityResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+func (o WebActivityResponseOutput) Headers() pulumi.MapOutput {
+	return o.ApplyT(func(v WebActivityResponse) map[string]interface{} { return v.Headers }).(pulumi.MapOutput)
 }
 
 // Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
@@ -26146,7 +26550,7 @@ type WebHookActivity struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers map[string]string `pulumi:"headers"`
+	Headers map[string]interface{} `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method string `pulumi:"method"`
 	// Activity name.
@@ -26192,7 +26596,7 @@ type WebHookActivityArgs struct {
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers pulumi.StringMapInput `pulumi:"headers"`
+	Headers pulumi.MapInput `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method pulumi.StringInput `pulumi:"method"`
 	// Activity name.
@@ -26264,8 +26668,8 @@ func (o WebHookActivityOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-func (o WebHookActivityOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WebHookActivity) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+func (o WebHookActivityOutput) Headers() pulumi.MapOutput {
+	return o.ApplyT(func(v WebHookActivity) map[string]interface{} { return v.Headers }).(pulumi.MapOutput)
 }
 
 // Rest API method for target endpoint.
@@ -26330,7 +26734,7 @@ type WebHookActivityResponse struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers map[string]string `pulumi:"headers"`
+	Headers map[string]interface{} `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method string `pulumi:"method"`
 	// Activity name.
@@ -26390,8 +26794,8 @@ func (o WebHookActivityResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-func (o WebHookActivityResponseOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WebHookActivityResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+func (o WebHookActivityResponseOutput) Headers() pulumi.MapOutput {
+	return o.ApplyT(func(v WebHookActivityResponse) map[string]interface{} { return v.Headers }).(pulumi.MapOutput)
 }
 
 // Rest API method for target endpoint.
@@ -29944,6 +30348,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceNowV2ObjectDatasetResponseOutput{})
 	pulumi.RegisterOutputType(ServiceNowV2SourceOutput{})
 	pulumi.RegisterOutputType(ServiceNowV2SourceResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCredentialOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCredentialResponseOutput{})
 	pulumi.RegisterOutputType(SetVariableActivityOutput{})
 	pulumi.RegisterOutputType(SetVariableActivityResponseOutput{})
 	pulumi.RegisterOutputType(SftpLocationOutput{})
@@ -30086,6 +30492,8 @@ func init() {
 	pulumi.RegisterOutputType(SynapseSparkJobDefinitionActivityResponseOutput{})
 	pulumi.RegisterOutputType(SynapseSparkJobReferenceOutput{})
 	pulumi.RegisterOutputType(SynapseSparkJobReferenceResponseOutput{})
+	pulumi.RegisterOutputType(SystemAssignedManagedIdentityCredentialOutput{})
+	pulumi.RegisterOutputType(SystemAssignedManagedIdentityCredentialResponseOutput{})
 	pulumi.RegisterOutputType(TabularSourceOutput{})
 	pulumi.RegisterOutputType(TabularSourceResponseOutput{})
 	pulumi.RegisterOutputType(TarGZipReadSettingsOutput{})
@@ -30134,6 +30542,8 @@ func init() {
 	pulumi.RegisterOutputType(UntilActivityResponseOutput{})
 	pulumi.RegisterOutputType(UserAccessPolicyResponseOutput{})
 	pulumi.RegisterOutputType(UserAccessPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedManagedIdentityCredentialOutput{})
+	pulumi.RegisterOutputType(UserAssignedManagedIdentityCredentialResponseOutput{})
 	pulumi.RegisterOutputType(UserPropertyOutput{})
 	pulumi.RegisterOutputType(UserPropertyArrayOutput{})
 	pulumi.RegisterOutputType(UserPropertyResponseOutput{})

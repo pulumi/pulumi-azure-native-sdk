@@ -15,7 +15,7 @@ import (
 // A cloud link resource
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2021-06-01.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type CloudLink struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewCloudLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:CloudLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:CloudLink"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -54,6 +54,9 @@ func NewAutomation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:security:Automation"),
 		},
+		{
+			Type: pulumi.String("azure-native:security/v20231201preview:Automation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -2534,15 +2534,13 @@ func (in *managedClusterSKUTierPtr) ToManagedClusterSKUTierPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedClusterSKUTierPtrOutput)
 }
 
-// The upgrade type.
-// Full requires the KubernetesVersion property to be set.
-// NodeImageOnly requires the KubernetesVersion property not to be set.
+// ManagedClusterUpgradeType is the type of upgrade to be applied.
 type ManagedClusterUpgradeType string
 
 const (
-	// Full upgrades the control plane and all agent pools of the target ManagedClusters.
+	// Full upgrades the control plane and all agent pools of the target ManagedClusters. Requires the ManagedClusterUpgradeSpec.KubernetesVersion property to be set.
 	ManagedClusterUpgradeTypeFull = ManagedClusterUpgradeType("Full")
-	// NodeImageOnly upgrades only the node images of the target ManagedClusters.
+	// NodeImageOnly upgrades only the node images of the target ManagedClusters. Requires the ManagedClusterUpgradeSpec.KubernetesVersion property to NOT be set.
 	ManagedClusterUpgradeTypeNodeImageOnly = ManagedClusterUpgradeType("NodeImageOnly")
 )
 

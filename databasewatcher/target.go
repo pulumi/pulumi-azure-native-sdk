@@ -27,8 +27,6 @@ type Target struct {
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of authentication to use when connecting to a target.
 	TargetAuthenticationType pulumi.StringOutput `pulumi:"targetAuthenticationType"`
-	// The target collection status.
-	TargetCollectionStatus pulumi.StringPtrOutput `pulumi:"targetCollectionStatus"`
 	// Discriminator property for TargetProperties.
 	TargetType pulumi.StringOutput `pulumi:"targetType"`
 	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
@@ -104,8 +102,6 @@ type targetArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The type of authentication to use when connecting to a target.
 	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
-	// The target collection status.
-	TargetCollectionStatus *string `pulumi:"targetCollectionStatus"`
 	// The target resource name.
 	TargetName *string `pulumi:"targetName"`
 	// Discriminator property for TargetProperties.
@@ -124,8 +120,6 @@ type TargetArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// The type of authentication to use when connecting to a target.
 	TargetAuthenticationType pulumi.StringInput
-	// The target collection status.
-	TargetCollectionStatus pulumi.StringPtrInput
 	// The target resource name.
 	TargetName pulumi.StringPtrInput
 	// Discriminator property for TargetProperties.
@@ -196,11 +190,6 @@ func (o TargetOutput) SystemData() SystemDataResponseOutput {
 // The type of authentication to use when connecting to a target.
 func (o TargetOutput) TargetAuthenticationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.TargetAuthenticationType }).(pulumi.StringOutput)
-}
-
-// The target collection status.
-func (o TargetOutput) TargetCollectionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.TargetCollectionStatus }).(pulumi.StringPtrOutput)
 }
 
 // Discriminator property for TargetProperties.

@@ -15,7 +15,7 @@ import (
 // Cluster pool.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2023-11-01-preview, 2024-05-01.
 type ClusterPool struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewClusterPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20231101preview:ClusterPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20240501:ClusterPool"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -19090,8 +19090,6 @@ type ManagedIdentityCredential struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// Credential description.
 	Description *string `pulumi:"description"`
-	// The resource id of user assigned managed identity
-	ResourceId *string `pulumi:"resourceId"`
 	// Type of credential.
 	// Expected value is 'ManagedIdentity'.
 	Type string `pulumi:"type"`
@@ -19114,8 +19112,6 @@ type ManagedIdentityCredentialArgs struct {
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
 	// Credential description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The resource id of user assigned managed identity
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// Type of credential.
 	// Expected value is 'ManagedIdentity'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -19158,11 +19154,6 @@ func (o ManagedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of user assigned managed identity
-func (o ManagedIdentityCredentialOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedIdentityCredential) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
 // Type of credential.
 // Expected value is 'ManagedIdentity'.
 func (o ManagedIdentityCredentialOutput) Type() pulumi.StringOutput {
@@ -19175,8 +19166,6 @@ type ManagedIdentityCredentialResponse struct {
 	Annotations []interface{} `pulumi:"annotations"`
 	// Credential description.
 	Description *string `pulumi:"description"`
-	// The resource id of user assigned managed identity
-	ResourceId *string `pulumi:"resourceId"`
 	// Type of credential.
 	// Expected value is 'ManagedIdentity'.
 	Type string `pulumi:"type"`
@@ -19205,11 +19194,6 @@ func (o ManagedIdentityCredentialResponseOutput) Annotations() pulumi.ArrayOutpu
 // Credential description.
 func (o ManagedIdentityCredentialResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentityCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of user assigned managed identity
-func (o ManagedIdentityCredentialResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedIdentityCredentialResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Type of credential.

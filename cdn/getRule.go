@@ -14,7 +14,7 @@ import (
 // Gets an existing delivery rule within a rule set.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2023-07-01-preview.
+// Other available API versions: 2023-07-01-preview, 2024-02-01.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult

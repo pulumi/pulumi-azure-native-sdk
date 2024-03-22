@@ -56,6 +56,9 @@ func NewAddon(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:Addon"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:Addon"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

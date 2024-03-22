@@ -14,7 +14,7 @@ import (
 // NSX Port Mirroring
 // Azure REST API version: 2022-05-01.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func LookupWorkloadNetworkPortMirroring(ctx *pulumi.Context, args *LookupWorkloadNetworkPortMirroringArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadNetworkPortMirroringResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadNetworkPortMirroringResult

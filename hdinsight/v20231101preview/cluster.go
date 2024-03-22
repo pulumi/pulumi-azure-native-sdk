@@ -67,6 +67,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20230601preview:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20240501:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

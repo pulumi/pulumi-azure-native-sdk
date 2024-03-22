@@ -14,7 +14,7 @@ import (
 // A cloud link resource
 // Azure REST API version: 2022-05-01.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 func LookupCloudLink(ctx *pulumi.Context, args *LookupCloudLinkArgs, opts ...pulumi.InvokeOption) (*LookupCloudLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudLinkResult

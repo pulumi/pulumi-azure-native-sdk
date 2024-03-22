@@ -15,7 +15,7 @@ import (
 // Schema for Application properties.
 // Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
 //
-// Other available API versions: 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview.
+// Other available API versions: 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -137,6 +137,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240116preview:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20240306preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)

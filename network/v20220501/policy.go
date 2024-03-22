@@ -74,6 +74,9 @@ func NewPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20210601:Policy"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240201:Policy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

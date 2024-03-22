@@ -15,7 +15,7 @@ import (
 // A cluster resource
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20.
 //
-// Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01.
+// Other available API versions: 2020-03-20, 2021-06-01, 2023-03-01, 2023-09-01.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +72,9 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

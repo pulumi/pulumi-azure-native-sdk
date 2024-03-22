@@ -78,6 +78,9 @@ func NewAFDCustomDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:AFDCustomDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240201:AFDCustomDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

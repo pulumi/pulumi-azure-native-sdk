@@ -155,6 +155,9 @@ func NewTIDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:TIDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:TIDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // A global reach connection resource
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type GlobalReachConnection struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewGlobalReachConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:GlobalReachConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:GlobalReachConnection"),
 		},
 	})
 	opts = append(opts, aliases)

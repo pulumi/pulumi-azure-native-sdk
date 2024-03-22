@@ -70,6 +70,9 @@ func NewWorkloadNetworkDnsService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20220501:WorkloadNetworkDnsService"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkDnsService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

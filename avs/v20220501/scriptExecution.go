@@ -81,6 +81,9 @@ func NewScriptExecution(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:ScriptExecution"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:ScriptExecution"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
