@@ -81,6 +81,9 @@ func NewRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:Rule"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240201:Rule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

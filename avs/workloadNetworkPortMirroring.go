@@ -15,7 +15,7 @@ import (
 // NSX Port Mirroring
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type WorkloadNetworkPortMirroring struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewWorkloadNetworkPortMirroring(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkPortMirroring"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkPortMirroring"),
 		},
 	})
 	opts = append(opts, aliases)

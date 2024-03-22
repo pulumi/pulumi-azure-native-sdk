@@ -68,6 +68,9 @@ func NewWorkloadNetworkPortMirroring(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20220501:WorkloadNetworkPortMirroring"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkPortMirroring"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

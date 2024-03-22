@@ -15,7 +15,7 @@ import (
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2021-12-01.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type PlacementPolicy struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewPlacementPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:PlacementPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:PlacementPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

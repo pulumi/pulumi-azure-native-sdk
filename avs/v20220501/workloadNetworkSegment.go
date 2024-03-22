@@ -68,6 +68,9 @@ func NewWorkloadNetworkSegment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkSegment"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkSegment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

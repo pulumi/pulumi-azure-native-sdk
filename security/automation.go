@@ -14,6 +14,8 @@ import (
 
 // The security automation resource.
 // Azure REST API version: 2019-01-01-preview. Prior API version in Azure Native 1.x: 2019-01-01-preview.
+//
+// Other available API versions: 2023-12-01-preview.
 type Automation struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +56,9 @@ func NewAutomation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:security/v20190101preview:Automation"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20231201preview:Automation"),
 		},
 	})
 	opts = append(opts, aliases)

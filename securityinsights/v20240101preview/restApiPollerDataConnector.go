@@ -170,6 +170,9 @@ func NewRestApiPollerDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:RestApiPollerDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:RestApiPollerDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

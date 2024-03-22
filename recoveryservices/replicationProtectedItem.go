@@ -15,7 +15,7 @@ import (
 // Replication protected item.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2018-07-10.
 //
-// Other available API versions: 2023-06-01, 2023-08-01.
+// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01.
 type ReplicationProtectedItem struct {
 	pulumi.CustomResourceState
 
@@ -123,6 +123,9 @@ func NewReplicationProtectedItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230801:ReplicationProtectedItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240101:ReplicationProtectedItem"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -43,6 +43,9 @@ func NewSecurityContact(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:security/v20170801preview:SecurityContact"),
 		},
+		{
+			Type: pulumi.String("azure-native:security/v20231201preview:SecurityContact"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

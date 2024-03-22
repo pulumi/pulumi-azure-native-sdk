@@ -20,8 +20,8 @@ type CredentialOperation struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Managed Identity Credential properties.
-	Properties ManagedIdentityCredentialResponseOutput `pulumi:"properties"`
+	// Properties of credentials.
+	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -85,8 +85,8 @@ type credentialOperationArgs struct {
 	CredentialName *string `pulumi:"credentialName"`
 	// The factory name.
 	FactoryName string `pulumi:"factoryName"`
-	// Managed Identity Credential properties.
-	Properties ManagedIdentityCredential `pulumi:"properties"`
+	// Properties of credentials.
+	Properties interface{} `pulumi:"properties"`
 	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -97,8 +97,8 @@ type CredentialOperationArgs struct {
 	CredentialName pulumi.StringPtrInput
 	// The factory name.
 	FactoryName pulumi.StringInput
-	// Managed Identity Credential properties.
-	Properties ManagedIdentityCredentialInput
+	// Properties of credentials.
+	Properties pulumi.Input
 	// The resource group name.
 	ResourceGroupName pulumi.StringInput
 }
@@ -150,9 +150,9 @@ func (o CredentialOperationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CredentialOperation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Managed Identity Credential properties.
-func (o CredentialOperationOutput) Properties() ManagedIdentityCredentialResponseOutput {
-	return o.ApplyT(func(v *CredentialOperation) ManagedIdentityCredentialResponseOutput { return v.Properties }).(ManagedIdentityCredentialResponseOutput)
+// Properties of credentials.
+func (o CredentialOperationOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *CredentialOperation) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // The resource type.

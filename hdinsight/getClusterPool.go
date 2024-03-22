@@ -14,7 +14,7 @@ import (
 // Gets a cluster pool.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-11-01-preview.
+// Other available API versions: 2023-11-01-preview, 2024-05-01.
 func LookupClusterPool(ctx *pulumi.Context, args *LookupClusterPoolArgs, opts ...pulumi.InvokeOption) (*LookupClusterPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterPoolResult

@@ -15,7 +15,7 @@ import (
 // SecurityPolicy association for AzureFrontDoor profile
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
 //
-// Other available API versions: 2023-07-01-preview.
+// Other available API versions: 2023-07-01-preview, 2024-02-01.
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,9 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:SecurityPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240201:SecurityPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

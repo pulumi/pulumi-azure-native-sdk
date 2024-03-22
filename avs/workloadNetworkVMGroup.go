@@ -15,7 +15,7 @@ import (
 // NSX VM Group
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type WorkloadNetworkVMGroup struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewWorkloadNetworkVMGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkVMGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkVMGroup"),
 		},
 	})
 	opts = append(opts, aliases)

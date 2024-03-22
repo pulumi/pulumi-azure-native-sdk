@@ -65,6 +65,9 @@ func NewDatastore(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:Datastore"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:Datastore"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

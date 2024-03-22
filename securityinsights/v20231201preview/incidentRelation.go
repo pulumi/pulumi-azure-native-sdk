@@ -147,6 +147,9 @@ func NewIncidentRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:IncidentRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20240301:IncidentRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -112,6 +112,9 @@ func NewPrivateCloud(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:PrivateCloud"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:PrivateCloud"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

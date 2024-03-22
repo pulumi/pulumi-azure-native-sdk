@@ -15,7 +15,7 @@ import (
 // NSX DHCP
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-07-17-preview.
 //
-// Other available API versions: 2021-01-01-preview, 2023-03-01.
+// Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
 type WorkloadNetworkDhcp struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewWorkloadNetworkDhcp(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkDhcp"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkDhcp"),
 		},
 	})
 	opts = append(opts, aliases)

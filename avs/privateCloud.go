@@ -15,7 +15,7 @@ import (
 // A private cloud resource
 // Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20.
 //
-// Other available API versions: 2023-03-01.
+// Other available API versions: 2023-03-01, 2023-09-01.
 type PrivateCloud struct {
 	pulumi.CustomResourceState
 
@@ -114,6 +114,9 @@ func NewPrivateCloud(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:PrivateCloud"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:PrivateCloud"),
 		},
 	})
 	opts = append(opts, aliases)

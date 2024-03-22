@@ -33,14 +33,31 @@ type LookupNotificationHubArgs struct {
 
 // Notification Hub Resource.
 type LookupNotificationHubResult struct {
+	// Description of a NotificationHub AdmCredential.
+	AdmCredential *AdmCredentialResponse `pulumi:"admCredential"`
+	// Description of a NotificationHub ApnsCredential.
+	ApnsCredential *ApnsCredentialResponse `pulumi:"apnsCredential"`
+	// Gets or sets the AuthorizationRules of the created NotificationHub
+	AuthorizationRules []SharedAccessAuthorizationRulePropertiesResponse `pulumi:"authorizationRules"`
+	// Description of a NotificationHub BaiduCredential.
+	BaiduCredential *BaiduCredentialResponse `pulumi:"baiduCredential"`
+	// Description of a NotificationHub BrowserCredential.
+	BrowserCredential     *BrowserCredentialResponse `pulumi:"browserCredential"`
+	DailyMaxActiveDevices float64                    `pulumi:"dailyMaxActiveDevices"`
+	// Description of a NotificationHub FcmV1Credential.
+	FcmV1Credential *FcmV1CredentialResponse `pulumi:"fcmV1Credential"`
+	// Description of a NotificationHub GcmCredential.
+	GcmCredential *GcmCredentialResponse `pulumi:"gcmCredential"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// Description of a NotificationHub MpnsCredential.
+	MpnsCredential *MpnsCredentialResponse `pulumi:"mpnsCredential"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// NotificationHub properties.
-	Properties NotificationHubPropertiesResponse `pulumi:"properties"`
+	// Gets or sets the RegistrationTtl of the created NotificationHub
+	RegistrationTtl *string `pulumi:"registrationTtl"`
 	// The Sku description for a namespace
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -49,6 +66,10 @@ type LookupNotificationHubResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Description of a NotificationHub WnsCredential.
+	WnsCredential *WnsCredentialResponse `pulumi:"wnsCredential"`
+	// Description of a NotificationHub XiaomiCredential.
+	XiaomiCredential *XiaomiCredentialResponse `pulumi:"xiaomiCredential"`
 }
 
 func LookupNotificationHubOutput(ctx *pulumi.Context, args LookupNotificationHubOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationHubResultOutput {
@@ -92,6 +113,47 @@ func (o LookupNotificationHubResultOutput) ToLookupNotificationHubResultOutputWi
 	return o
 }
 
+// Description of a NotificationHub AdmCredential.
+func (o LookupNotificationHubResultOutput) AdmCredential() AdmCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *AdmCredentialResponse { return v.AdmCredential }).(AdmCredentialResponsePtrOutput)
+}
+
+// Description of a NotificationHub ApnsCredential.
+func (o LookupNotificationHubResultOutput) ApnsCredential() ApnsCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *ApnsCredentialResponse { return v.ApnsCredential }).(ApnsCredentialResponsePtrOutput)
+}
+
+// Gets or sets the AuthorizationRules of the created NotificationHub
+func (o LookupNotificationHubResultOutput) AuthorizationRules() SharedAccessAuthorizationRulePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) []SharedAccessAuthorizationRulePropertiesResponse {
+		return v.AuthorizationRules
+	}).(SharedAccessAuthorizationRulePropertiesResponseArrayOutput)
+}
+
+// Description of a NotificationHub BaiduCredential.
+func (o LookupNotificationHubResultOutput) BaiduCredential() BaiduCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *BaiduCredentialResponse { return v.BaiduCredential }).(BaiduCredentialResponsePtrOutput)
+}
+
+// Description of a NotificationHub BrowserCredential.
+func (o LookupNotificationHubResultOutput) BrowserCredential() BrowserCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *BrowserCredentialResponse { return v.BrowserCredential }).(BrowserCredentialResponsePtrOutput)
+}
+
+func (o LookupNotificationHubResultOutput) DailyMaxActiveDevices() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupNotificationHubResult) float64 { return v.DailyMaxActiveDevices }).(pulumi.Float64Output)
+}
+
+// Description of a NotificationHub FcmV1Credential.
+func (o LookupNotificationHubResultOutput) FcmV1Credential() FcmV1CredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *FcmV1CredentialResponse { return v.FcmV1Credential }).(FcmV1CredentialResponsePtrOutput)
+}
+
+// Description of a NotificationHub GcmCredential.
+func (o LookupNotificationHubResultOutput) GcmCredential() GcmCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *GcmCredentialResponse { return v.GcmCredential }).(GcmCredentialResponsePtrOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNotificationHubResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Id }).(pulumi.StringOutput)
@@ -102,14 +164,19 @@ func (o LookupNotificationHubResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Description of a NotificationHub MpnsCredential.
+func (o LookupNotificationHubResultOutput) MpnsCredential() MpnsCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *MpnsCredentialResponse { return v.MpnsCredential }).(MpnsCredentialResponsePtrOutput)
+}
+
 // The name of the resource
 func (o LookupNotificationHubResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// NotificationHub properties.
-func (o LookupNotificationHubResultOutput) Properties() NotificationHubPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupNotificationHubResult) NotificationHubPropertiesResponse { return v.Properties }).(NotificationHubPropertiesResponseOutput)
+// Gets or sets the RegistrationTtl of the created NotificationHub
+func (o LookupNotificationHubResultOutput) RegistrationTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *string { return v.RegistrationTtl }).(pulumi.StringPtrOutput)
 }
 
 // The Sku description for a namespace
@@ -130,6 +197,16 @@ func (o LookupNotificationHubResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNotificationHubResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationHubResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Description of a NotificationHub WnsCredential.
+func (o LookupNotificationHubResultOutput) WnsCredential() WnsCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *WnsCredentialResponse { return v.WnsCredential }).(WnsCredentialResponsePtrOutput)
+}
+
+// Description of a NotificationHub XiaomiCredential.
+func (o LookupNotificationHubResultOutput) XiaomiCredential() XiaomiCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupNotificationHubResult) *XiaomiCredentialResponse { return v.XiaomiCredential }).(XiaomiCredentialResponsePtrOutput)
 }
 
 func init() {

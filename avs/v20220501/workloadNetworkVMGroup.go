@@ -64,6 +64,9 @@ func NewWorkloadNetworkVMGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:WorkloadNetworkVMGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkVMGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

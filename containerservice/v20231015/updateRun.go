@@ -78,6 +78,9 @@ func NewUpdateRun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230815preview:UpdateRun"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240202preview:UpdateRun"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

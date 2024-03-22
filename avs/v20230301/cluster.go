@@ -70,6 +70,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20220501:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

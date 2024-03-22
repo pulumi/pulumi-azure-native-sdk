@@ -48,6 +48,12 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	if args.ServerName == nil {
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:PrivateEndpointConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource PrivateEndpointConnection
 	err := ctx.RegisterResource("azure-native:dbforpostgresql/v20230601preview:PrivateEndpointConnection", name, args, &resource, opts...)

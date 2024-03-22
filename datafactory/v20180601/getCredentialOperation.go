@@ -39,8 +39,8 @@ type LookupCredentialOperationResult struct {
 	Id string `pulumi:"id"`
 	// The resource name.
 	Name string `pulumi:"name"`
-	// Managed Identity Credential properties.
-	Properties ManagedIdentityCredentialResponse `pulumi:"properties"`
+	// Properties of credentials.
+	Properties interface{} `pulumi:"properties"`
 	// The resource type.
 	Type string `pulumi:"type"`
 }
@@ -101,9 +101,9 @@ func (o LookupCredentialOperationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialOperationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Managed Identity Credential properties.
-func (o LookupCredentialOperationResultOutput) Properties() ManagedIdentityCredentialResponseOutput {
-	return o.ApplyT(func(v LookupCredentialOperationResult) ManagedIdentityCredentialResponse { return v.Properties }).(ManagedIdentityCredentialResponseOutput)
+// Properties of credentials.
+func (o LookupCredentialOperationResultOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupCredentialOperationResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // The resource type.

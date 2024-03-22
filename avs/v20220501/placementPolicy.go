@@ -50,6 +50,9 @@ func NewPlacementPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230301:PlacementPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20230901:PlacementPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
