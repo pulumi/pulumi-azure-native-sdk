@@ -93,22 +93,10 @@ func GetTenantId(ctx *pulumi.Context) string {
 
 // Allow Managed Service Identity be used for Authentication.
 func GetUseMsi(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "azure-native:useMsi")
-	if err == nil {
-		return v
-	}
-	var value bool
-	value = false
-	return value
+	return config.GetBool(ctx, "azure-native:useMsi")
 }
 
 // Allow OpenID Connect (OIDC) to be used for Authentication.
 func GetUseOidc(ctx *pulumi.Context) bool {
-	v, err := config.TryBool(ctx, "azure-native:useOidc")
-	if err == nil {
-		return v
-	}
-	var value bool
-	value = false
-	return value
+	return config.GetBool(ctx, "azure-native:useOidc")
 }
