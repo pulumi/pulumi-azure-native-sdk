@@ -14,6 +14,8 @@ import (
 
 // API entity.
 // Azure REST API version: 2024-03-01.
+//
+// Other available API versions: 2024-03-15-preview.
 type Api struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +72,9 @@ func NewApi(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240301:Api"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240315preview:Api"),
 		},
 	})
 	opts = append(opts, aliases)

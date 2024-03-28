@@ -21,12 +21,26 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:containerservice/v20240202preview:AgentPool":
+		r = &AgentPool{}
 	case "azure-native:containerservice/v20240202preview:Fleet":
 		r = &Fleet{}
 	case "azure-native:containerservice/v20240202preview:FleetMember":
 		r = &FleetMember{}
 	case "azure-native:containerservice/v20240202preview:FleetUpdateStrategy":
 		r = &FleetUpdateStrategy{}
+	case "azure-native:containerservice/v20240202preview:MaintenanceConfiguration":
+		r = &MaintenanceConfiguration{}
+	case "azure-native:containerservice/v20240202preview:ManagedCluster":
+		r = &ManagedCluster{}
+	case "azure-native:containerservice/v20240202preview:ManagedClusterSnapshot":
+		r = &ManagedClusterSnapshot{}
+	case "azure-native:containerservice/v20240202preview:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
+	case "azure-native:containerservice/v20240202preview:Snapshot":
+		r = &Snapshot{}
+	case "azure-native:containerservice/v20240202preview:TrustedAccessRoleBinding":
+		r = &TrustedAccessRoleBinding{}
 	case "azure-native:containerservice/v20240202preview:UpdateRun":
 		r = &UpdateRun{}
 	default:

@@ -62,6 +62,9 @@ func NewEnvironment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apicenter:Environment"),
 		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240315preview:Environment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

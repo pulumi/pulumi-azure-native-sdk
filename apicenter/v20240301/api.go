@@ -70,6 +70,9 @@ func NewApi(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apicenter:Api"),
 		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240315preview:Api"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,6 +14,8 @@ import (
 
 // Metadata schema entity. Used to define metadata for the entities in API catalog.
 // Azure REST API version: 2024-03-01.
+//
+// Other available API versions: 2024-03-15-preview.
 type MetadataSchema struct {
 	pulumi.CustomResourceState
 
@@ -48,6 +50,9 @@ func NewMetadataSchema(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apicenter/v20240301:MetadataSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apicenter/v20240315preview:MetadataSchema"),
 		},
 	})
 	opts = append(opts, aliases)

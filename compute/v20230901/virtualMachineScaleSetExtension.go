@@ -118,6 +118,9 @@ func NewVirtualMachineScaleSetExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230701:VirtualMachineScaleSetExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20240301:VirtualMachineScaleSetExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

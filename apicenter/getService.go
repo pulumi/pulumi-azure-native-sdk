@@ -14,7 +14,7 @@ import (
 // Get service
 // Azure REST API version: 2023-07-01-preview.
 //
-// Other available API versions: 2024-03-01.
+// Other available API versions: 2024-03-01, 2024-03-15-preview.
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServiceResult

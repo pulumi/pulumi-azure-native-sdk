@@ -13,6 +13,8 @@ import (
 
 // Returns details of the API version.
 // Azure REST API version: 2024-03-01.
+//
+// Other available API versions: 2024-03-15-preview.
 func LookupApiVersion(ctx *pulumi.Context, args *LookupApiVersionArgs, opts ...pulumi.InvokeOption) (*LookupApiVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiVersionResult
