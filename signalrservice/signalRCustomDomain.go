@@ -15,7 +15,7 @@ import (
 // A custom domain
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2022-02-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview.
 type SignalRCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -70,6 +70,9 @@ func NewSignalRCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20230801preview:SignalRCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20240101preview:SignalRCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

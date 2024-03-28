@@ -73,6 +73,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20231201:DppResourceGuardProxy"),
 		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20240301:DppResourceGuardProxy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

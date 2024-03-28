@@ -131,6 +131,9 @@ func NewVault(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240101:Vault"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240201:Vault"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

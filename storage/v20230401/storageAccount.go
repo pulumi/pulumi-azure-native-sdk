@@ -90,7 +90,7 @@ type StorageAccount struct {
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Gets the status of the storage account at the time the operation was called.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+	// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Maintains information about the network routing choice opted by the user for data transfer
 	RoutingPreference RoutingPreferenceResponsePtrOutput `pulumi:"routingPreference"`
@@ -605,7 +605,7 @@ func (o StorageAccountOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'.
+// Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account.
 func (o StorageAccountOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageAccount) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }

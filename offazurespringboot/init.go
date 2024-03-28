@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:offazurespringboot:Springbootapp":
+		r = &Springbootapp{}
 	case "azure-native:offazurespringboot:Springbootserver":
 		r = &Springbootserver{}
 	case "azure-native:offazurespringboot:Springbootsite":

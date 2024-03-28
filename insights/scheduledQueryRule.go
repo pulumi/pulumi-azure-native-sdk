@@ -15,7 +15,7 @@ import (
 // The scheduled query rule resource.
 // Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2018-04-16.
 //
-// Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview.
+// Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview, 2023-12-01.
 type ScheduledQueryRule struct {
 	pulumi.CustomResourceState
 
@@ -115,6 +115,9 @@ func NewScheduledQueryRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20230315preview:ScheduledQueryRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20231201:ScheduledQueryRule"),
 		},
 	})
 	opts = append(opts, aliases)

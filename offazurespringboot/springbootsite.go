@@ -53,6 +53,12 @@ func NewSpringbootsite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:springbootsite"),
 		},
+		{
+			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:Springbootsite"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootsite"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
