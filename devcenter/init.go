@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Pool{}
 	case "azure-native:devcenter:Project":
 		r = &Project{}
+	case "azure-native:devcenter:ProjectCatalog":
+		r = &ProjectCatalog{}
 	case "azure-native:devcenter:ProjectEnvironmentType":
 		r = &ProjectEnvironmentType{}
 	case "azure-native:devcenter:Schedule":

@@ -15,7 +15,7 @@ import (
 // Represents an attached NetworkConnection.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01.
 type AttachedNetworkByDevCenter struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +77,9 @@ func NewAttachedNetworkByDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20231001preview:AttachedNetworkByDevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240201:AttachedNetworkByDevCenter"),
 		},
 	})
 	opts = append(opts, aliases)
