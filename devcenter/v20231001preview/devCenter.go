@@ -73,6 +73,9 @@ func NewDevCenter(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20230801preview:DevCenter"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240201:DevCenter"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Indicates the type of sync that is configured for the catalog.
+type CatalogSyncType string
+
+const (
+	CatalogSyncTypeManual    = CatalogSyncType("Manual")
+	CatalogSyncTypeScheduled = CatalogSyncType("Scheduled")
+)
+
+func (CatalogSyncType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogSyncType)(nil)).Elem()
+}
+
+func (e CatalogSyncType) ToCatalogSyncTypeOutput() CatalogSyncTypeOutput {
+	return pulumi.ToOutput(e).(CatalogSyncTypeOutput)
+}
+
+func (e CatalogSyncType) ToCatalogSyncTypeOutputWithContext(ctx context.Context) CatalogSyncTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CatalogSyncTypeOutput)
+}
+
+func (e CatalogSyncType) ToCatalogSyncTypePtrOutput() CatalogSyncTypePtrOutput {
+	return e.ToCatalogSyncTypePtrOutputWithContext(context.Background())
+}
+
+func (e CatalogSyncType) ToCatalogSyncTypePtrOutputWithContext(ctx context.Context) CatalogSyncTypePtrOutput {
+	return CatalogSyncType(e).ToCatalogSyncTypeOutputWithContext(ctx).ToCatalogSyncTypePtrOutputWithContext(ctx)
+}
+
+func (e CatalogSyncType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CatalogSyncType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CatalogSyncType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CatalogSyncType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CatalogSyncTypeOutput struct{ *pulumi.OutputState }
+
+func (CatalogSyncTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogSyncType)(nil)).Elem()
+}
+
+func (o CatalogSyncTypeOutput) ToCatalogSyncTypeOutput() CatalogSyncTypeOutput {
+	return o
+}
+
+func (o CatalogSyncTypeOutput) ToCatalogSyncTypeOutputWithContext(ctx context.Context) CatalogSyncTypeOutput {
+	return o
+}
+
+func (o CatalogSyncTypeOutput) ToCatalogSyncTypePtrOutput() CatalogSyncTypePtrOutput {
+	return o.ToCatalogSyncTypePtrOutputWithContext(context.Background())
+}
+
+func (o CatalogSyncTypeOutput) ToCatalogSyncTypePtrOutputWithContext(ctx context.Context) CatalogSyncTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CatalogSyncType) *CatalogSyncType {
+		return &v
+	}).(CatalogSyncTypePtrOutput)
+}
+
+func (o CatalogSyncTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CatalogSyncTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CatalogSyncType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CatalogSyncTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogSyncTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CatalogSyncType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CatalogSyncTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CatalogSyncTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CatalogSyncType)(nil)).Elem()
+}
+
+func (o CatalogSyncTypePtrOutput) ToCatalogSyncTypePtrOutput() CatalogSyncTypePtrOutput {
+	return o
+}
+
+func (o CatalogSyncTypePtrOutput) ToCatalogSyncTypePtrOutputWithContext(ctx context.Context) CatalogSyncTypePtrOutput {
+	return o
+}
+
+func (o CatalogSyncTypePtrOutput) Elem() CatalogSyncTypeOutput {
+	return o.ApplyT(func(v *CatalogSyncType) CatalogSyncType {
+		if v != nil {
+			return *v
+		}
+		var ret CatalogSyncType
+		return ret
+	}).(CatalogSyncTypeOutput)
+}
+
+func (o CatalogSyncTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CatalogSyncTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CatalogSyncType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CatalogSyncTypeInput is an input type that accepts values of the CatalogSyncType enum
+// A concrete instance of `CatalogSyncTypeInput` can be one of the following:
+//
+//	CatalogSyncTypeManual
+//	CatalogSyncTypeScheduled
+type CatalogSyncTypeInput interface {
+	pulumi.Input
+
+	ToCatalogSyncTypeOutput() CatalogSyncTypeOutput
+	ToCatalogSyncTypeOutputWithContext(context.Context) CatalogSyncTypeOutput
+}
+
+var catalogSyncTypePtrType = reflect.TypeOf((**CatalogSyncType)(nil)).Elem()
+
+type CatalogSyncTypePtrInput interface {
+	pulumi.Input
+
+	ToCatalogSyncTypePtrOutput() CatalogSyncTypePtrOutput
+	ToCatalogSyncTypePtrOutputWithContext(context.Context) CatalogSyncTypePtrOutput
+}
+
+type catalogSyncTypePtr string
+
+func CatalogSyncTypePtr(v string) CatalogSyncTypePtrInput {
+	return (*catalogSyncTypePtr)(&v)
+}
+
+func (*catalogSyncTypePtr) ElementType() reflect.Type {
+	return catalogSyncTypePtrType
+}
+
+func (in *catalogSyncTypePtr) ToCatalogSyncTypePtrOutput() CatalogSyncTypePtrOutput {
+	return pulumi.ToOutput(in).(CatalogSyncTypePtrOutput)
+}
+
+func (in *catalogSyncTypePtr) ToCatalogSyncTypePtrOutputWithContext(ctx context.Context) CatalogSyncTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CatalogSyncTypePtrOutput)
+}
+
 // AAD Join type.
 type DomainJoinType string
 
@@ -1839,6 +2005,8 @@ func (in *stopOnDisconnectEnableStatusPtr) ToStopOnDisconnectEnableStatusPtrOutp
 }
 
 func init() {
+	pulumi.RegisterOutputType(CatalogSyncTypeOutput{})
+	pulumi.RegisterOutputType(CatalogSyncTypePtrOutput{})
 	pulumi.RegisterOutputType(DomainJoinTypeOutput{})
 	pulumi.RegisterOutputType(DomainJoinTypePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentTypeEnableStatusOutput{})

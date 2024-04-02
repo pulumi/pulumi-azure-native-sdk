@@ -69,6 +69,9 @@ func NewGallery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20231001preview:Gallery"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240201:Gallery"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

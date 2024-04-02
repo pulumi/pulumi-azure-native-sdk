@@ -69,6 +69,9 @@ func NewSecurityConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:security/v20231001preview:SecurityConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:security/v20240301preview:SecurityConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

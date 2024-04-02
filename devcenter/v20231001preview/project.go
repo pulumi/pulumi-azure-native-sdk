@@ -75,6 +75,9 @@ func NewProject(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20230801preview:Project"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240201:Project"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

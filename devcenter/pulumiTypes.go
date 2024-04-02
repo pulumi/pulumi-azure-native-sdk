@@ -1562,6 +1562,74 @@ func (o StopOnDisconnectConfigurationResponsePtrOutput) Status() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Stats of the synchronization.
+type SyncStatsResponse struct {
+	// Count of catalog items added during synchronization.
+	Added int `pulumi:"added"`
+	// Count of catalog items removed during synchronization.
+	Removed int `pulumi:"removed"`
+	// Indicates catalog item types that were synced.
+	SyncedCatalogItemTypes []string `pulumi:"syncedCatalogItemTypes"`
+	// Count of synchronization errors that occured during synchronization.
+	SynchronizationErrors int `pulumi:"synchronizationErrors"`
+	// Count of catalog items that were unchanged during synchronization.
+	Unchanged int `pulumi:"unchanged"`
+	// Count of catalog items updated during synchronization.
+	Updated int `pulumi:"updated"`
+	// Count of catalog items that had validation errors during synchronization.
+	ValidationErrors int `pulumi:"validationErrors"`
+}
+
+// Stats of the synchronization.
+type SyncStatsResponseOutput struct{ *pulumi.OutputState }
+
+func (SyncStatsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SyncStatsResponse)(nil)).Elem()
+}
+
+func (o SyncStatsResponseOutput) ToSyncStatsResponseOutput() SyncStatsResponseOutput {
+	return o
+}
+
+func (o SyncStatsResponseOutput) ToSyncStatsResponseOutputWithContext(ctx context.Context) SyncStatsResponseOutput {
+	return o
+}
+
+// Count of catalog items added during synchronization.
+func (o SyncStatsResponseOutput) Added() pulumi.IntOutput {
+	return o.ApplyT(func(v SyncStatsResponse) int { return v.Added }).(pulumi.IntOutput)
+}
+
+// Count of catalog items removed during synchronization.
+func (o SyncStatsResponseOutput) Removed() pulumi.IntOutput {
+	return o.ApplyT(func(v SyncStatsResponse) int { return v.Removed }).(pulumi.IntOutput)
+}
+
+// Indicates catalog item types that were synced.
+func (o SyncStatsResponseOutput) SyncedCatalogItemTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SyncStatsResponse) []string { return v.SyncedCatalogItemTypes }).(pulumi.StringArrayOutput)
+}
+
+// Count of synchronization errors that occured during synchronization.
+func (o SyncStatsResponseOutput) SynchronizationErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v SyncStatsResponse) int { return v.SynchronizationErrors }).(pulumi.IntOutput)
+}
+
+// Count of catalog items that were unchanged during synchronization.
+func (o SyncStatsResponseOutput) Unchanged() pulumi.IntOutput {
+	return o.ApplyT(func(v SyncStatsResponse) int { return v.Unchanged }).(pulumi.IntOutput)
+}
+
+// Count of catalog items updated during synchronization.
+func (o SyncStatsResponseOutput) Updated() pulumi.IntOutput {
+	return o.ApplyT(func(v SyncStatsResponse) int { return v.Updated }).(pulumi.IntOutput)
+}
+
+// Count of catalog items that had validation errors during synchronization.
+func (o SyncStatsResponseOutput) ValidationErrors() pulumi.IntOutput {
+	return o.ApplyT(func(v SyncStatsResponse) int { return v.ValidationErrors }).(pulumi.IntOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1854,6 +1922,7 @@ func init() {
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SyncStatsResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
