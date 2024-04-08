@@ -102,6 +102,9 @@ func NewDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20220901:Deployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20240301:Deployment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

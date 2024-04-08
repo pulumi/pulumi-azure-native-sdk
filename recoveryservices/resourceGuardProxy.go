@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01-preview.
 //
-// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01.
+// Other available API versions: 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01.
 type ResourceGuardProxy struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +102,9 @@ func NewResourceGuardProxy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240101:ResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240201:ResourceGuardProxy"),
 		},
 	})
 	opts = append(opts, aliases)

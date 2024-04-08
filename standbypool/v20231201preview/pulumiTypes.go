@@ -306,7 +306,7 @@ func (o StandbyContainerGroupPoolElasticityProfileResponseOutput) RefillPolicy()
 
 // Details of the elasticity profile.
 type StandbyVirtualMachinePoolElasticityProfile struct {
-	// Specifies maximum number of virtual machines in the standby virtual machine pool.
+	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity float64 `pulumi:"maxReadyCapacity"`
 }
 
@@ -323,7 +323,7 @@ type StandbyVirtualMachinePoolElasticityProfileInput interface {
 
 // Details of the elasticity profile.
 type StandbyVirtualMachinePoolElasticityProfileArgs struct {
-	// Specifies maximum number of virtual machines in the standby virtual machine pool.
+	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity pulumi.Float64Input `pulumi:"maxReadyCapacity"`
 }
 
@@ -405,7 +405,7 @@ func (o StandbyVirtualMachinePoolElasticityProfileOutput) ToStandbyVirtualMachin
 	}).(StandbyVirtualMachinePoolElasticityProfilePtrOutput)
 }
 
-// Specifies maximum number of virtual machines in the standby virtual machine pool.
+// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 func (o StandbyVirtualMachinePoolElasticityProfileOutput) MaxReadyCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfile) float64 { return v.MaxReadyCapacity }).(pulumi.Float64Output)
 }
@@ -434,7 +434,7 @@ func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) Elem() StandbyVirtu
 	}).(StandbyVirtualMachinePoolElasticityProfileOutput)
 }
 
-// Specifies maximum number of virtual machines in the standby virtual machine pool.
+// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) MaxReadyCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StandbyVirtualMachinePoolElasticityProfile) *float64 {
 		if v == nil {
@@ -446,7 +446,7 @@ func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) MaxReadyCapacity() 
 
 // Details of the elasticity profile.
 type StandbyVirtualMachinePoolElasticityProfileResponse struct {
-	// Specifies maximum number of virtual machines in the standby virtual machine pool.
+	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity float64 `pulumi:"maxReadyCapacity"`
 }
 
@@ -465,7 +465,7 @@ func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) ToStandbyVirtu
 	return o
 }
 
-// Specifies maximum number of virtual machines in the standby virtual machine pool.
+// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) MaxReadyCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfileResponse) float64 { return v.MaxReadyCapacity }).(pulumi.Float64Output)
 }
@@ -494,7 +494,7 @@ func (o StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput) Elem() Stan
 	}).(StandbyVirtualMachinePoolElasticityProfileResponseOutput)
 }
 
-// Specifies maximum number of virtual machines in the standby virtual machine pool.
+// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 func (o StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput) MaxReadyCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StandbyVirtualMachinePoolElasticityProfileResponse) *float64 {
 		if v == nil {

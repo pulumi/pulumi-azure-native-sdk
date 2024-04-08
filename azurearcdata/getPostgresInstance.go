@@ -13,6 +13,8 @@ import (
 
 // Retrieves a postgres Instance resource
 // Azure REST API version: 2023-01-15-preview.
+//
+// Other available API versions: 2024-01-01.
 func LookupPostgresInstance(ctx *pulumi.Context, args *LookupPostgresInstanceArgs, opts ...pulumi.InvokeOption) (*LookupPostgresInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresInstanceResult

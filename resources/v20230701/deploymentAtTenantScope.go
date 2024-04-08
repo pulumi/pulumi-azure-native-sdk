@@ -69,6 +69,9 @@ func NewDeploymentAtTenantScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources/v20220901:DeploymentAtTenantScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20240301:DeploymentAtTenantScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -13,6 +13,8 @@ import (
 
 // Definition of ARM tracked top level resource.
 // Azure REST API version: 2022-06-01.
+//
+// Other available API versions: 2023-03-11.
 func LookupDataCollectionRule(ctx *pulumi.Context, args *LookupDataCollectionRuleArgs, opts ...pulumi.InvokeOption) (*LookupDataCollectionRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataCollectionRuleResult

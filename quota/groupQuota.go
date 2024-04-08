@@ -34,8 +34,8 @@ func NewGroupQuota(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.MgId == nil {
-		return nil, errors.New("invalid value for required argument 'MgId'")
+	if args.ManagementGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ManagementGroupId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -79,7 +79,7 @@ type groupQuotaArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName *string `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	MgId string `pulumi:"mgId"`
+	ManagementGroupId string `pulumi:"managementGroupId"`
 	// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 	Properties *GroupQuotasEntityBase `pulumi:"properties"`
 }
@@ -89,7 +89,7 @@ type GroupQuotaArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName pulumi.StringPtrInput
 	// Management Group Id.
-	MgId pulumi.StringInput
+	ManagementGroupId pulumi.StringInput
 	// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 	Properties GroupQuotasEntityBasePtrInput
 }

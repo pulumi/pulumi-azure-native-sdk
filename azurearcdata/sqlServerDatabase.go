@@ -14,6 +14,8 @@ import (
 
 // Arc Sql Server database
 // Azure REST API version: 2023-01-15-preview.
+//
+// Other available API versions: 2024-01-01.
 type SqlServerDatabase struct {
 	pulumi.CustomResourceState
 
@@ -53,6 +55,9 @@ func NewSqlServerDatabase(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:SqlServerDatabase"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerDatabase"),
 		},
 	})
 	opts = append(opts, aliases)

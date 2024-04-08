@@ -13,6 +13,8 @@ import (
 
 // Retrieves an Active Directory connector resource
 // Azure REST API version: 2023-01-15-preview.
+//
+// Other available API versions: 2024-01-01.
 func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirectoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupActiveDirectoryConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActiveDirectoryConnectorResult

@@ -3005,6 +3005,8 @@ type NamespaceReplicaLocationResponse struct {
 	ClusterArmId *string `pulumi:"clusterArmId"`
 	// Azure regions where a replica of the namespace is maintained
 	LocationName *string `pulumi:"locationName"`
+	// state of Namespace replica.
+	ReplicaState string `pulumi:"replicaState"`
 	// GeoDR Role Types
 	RoleType *string `pulumi:"roleType"`
 }
@@ -3032,6 +3034,11 @@ func (o NamespaceReplicaLocationResponseOutput) ClusterArmId() pulumi.StringPtrO
 // Azure regions where a replica of the namespace is maintained
 func (o NamespaceReplicaLocationResponseOutput) LocationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NamespaceReplicaLocationResponse) *string { return v.LocationName }).(pulumi.StringPtrOutput)
+}
+
+// state of Namespace replica.
+func (o NamespaceReplicaLocationResponseOutput) ReplicaState() pulumi.StringOutput {
+	return o.ApplyT(func(v NamespaceReplicaLocationResponse) string { return v.ReplicaState }).(pulumi.StringOutput)
 }
 
 // GeoDR Role Types

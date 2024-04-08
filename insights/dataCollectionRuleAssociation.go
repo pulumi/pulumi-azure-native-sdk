@@ -14,6 +14,8 @@ import (
 
 // Definition of generic ARM proxy resource.
 // Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2019-11-01-preview.
+//
+// Other available API versions: 2023-03-11.
 type DataCollectionRuleAssociation struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +61,9 @@ func NewDataCollectionRuleAssociation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20220601:DataCollectionRuleAssociation"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230311:DataCollectionRuleAssociation"),
 		},
 	})
 	opts = append(opts, aliases)

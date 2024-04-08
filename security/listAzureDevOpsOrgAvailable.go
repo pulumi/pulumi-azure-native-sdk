@@ -13,6 +13,8 @@ import (
 
 // List of RP resources which supports pagination.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func ListAzureDevOpsOrgAvailable(ctx *pulumi.Context, args *ListAzureDevOpsOrgAvailableArgs, opts ...pulumi.InvokeOption) (*ListAzureDevOpsOrgAvailableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAzureDevOpsOrgAvailableResult

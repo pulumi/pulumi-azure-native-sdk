@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This represents a Azure subscriptionId that is associated with a GroupQuotaSEntity.
+// This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
 // Azure REST API version: 2023-06-01-preview.
 type GroupQuotaSubscription struct {
 	pulumi.CustomResourceState
@@ -36,8 +36,8 @@ func NewGroupQuotaSubscription(ctx *pulumi.Context,
 	if args.GroupQuotaName == nil {
 		return nil, errors.New("invalid value for required argument 'GroupQuotaName'")
 	}
-	if args.MgId == nil {
-		return nil, errors.New("invalid value for required argument 'MgId'")
+	if args.ManagementGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'ManagementGroupId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -81,7 +81,7 @@ type groupQuotaSubscriptionArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName string `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	MgId string `pulumi:"mgId"`
+	ManagementGroupId string `pulumi:"managementGroupId"`
 }
 
 // The set of arguments for constructing a GroupQuotaSubscription resource.
@@ -89,7 +89,7 @@ type GroupQuotaSubscriptionArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName pulumi.StringInput
 	// Management Group Id.
-	MgId pulumi.StringInput
+	ManagementGroupId pulumi.StringInput
 }
 
 func (GroupQuotaSubscriptionArgs) ElementType() reflect.Type {

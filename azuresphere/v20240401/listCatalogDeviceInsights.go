@@ -40,7 +40,7 @@ type ListCatalogDeviceInsightsArgs struct {
 // Paged collection of DeviceInsight items
 type ListCatalogDeviceInsightsResult struct {
 	// The link to the next page of items
-	NextLink string `pulumi:"nextLink"`
+	NextLink *string `pulumi:"nextLink"`
 	// The DeviceInsight items on this page
 	Value []DeviceInsightResponse `pulumi:"value"`
 }
@@ -93,8 +93,8 @@ func (o ListCatalogDeviceInsightsResultOutput) ToListCatalogDeviceInsightsResult
 }
 
 // The link to the next page of items
-func (o ListCatalogDeviceInsightsResultOutput) NextLink() pulumi.StringOutput {
-	return o.ApplyT(func(v ListCatalogDeviceInsightsResult) string { return v.NextLink }).(pulumi.StringOutput)
+func (o ListCatalogDeviceInsightsResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListCatalogDeviceInsightsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
 // The DeviceInsight items on this page

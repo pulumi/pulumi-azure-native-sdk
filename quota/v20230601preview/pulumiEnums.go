@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 type GroupingIdType string
 
 const (

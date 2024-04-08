@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresInstance{}
 	case "azure-native:azurearcdata:SqlManagedInstance":
 		r = &SqlManagedInstance{}
+	case "azure-native:azurearcdata:SqlServerAvailabilityGroup":
+		r = &SqlServerAvailabilityGroup{}
 	case "azure-native:azurearcdata:SqlServerDatabase":
 		r = &SqlServerDatabase{}
 	case "azure-native:azurearcdata:SqlServerInstance":

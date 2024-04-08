@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// LoadTest details
+// LoadTest details.
 type LoadTest struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +22,7 @@ type LoadTest struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// CMK Encryption property.
 	Encryption EncryptionPropertiesResponsePtrOutput `pulumi:"encryption"`
-	// The type of identity used for the resource.
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -97,9 +97,9 @@ type loadTestArgs struct {
 	Description *string `pulumi:"description"`
 	// CMK Encryption property.
 	Encryption *EncryptionProperties `pulumi:"encryption"`
-	// The type of identity used for the resource.
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// Load Test name.
+	// Load Test name
 	LoadTestName *string `pulumi:"loadTestName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -115,9 +115,9 @@ type LoadTestArgs struct {
 	Description pulumi.StringPtrInput
 	// CMK Encryption property.
 	Encryption EncryptionPropertiesPtrInput
-	// The type of identity used for the resource.
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
-	// Load Test name.
+	// Load Test name
 	LoadTestName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -179,7 +179,7 @@ func (o LoadTestOutput) Encryption() EncryptionPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *LoadTest) EncryptionPropertiesResponsePtrOutput { return v.Encryption }).(EncryptionPropertiesResponsePtrOutput)
 }
 
-// The type of identity used for the resource.
+// The managed service identities assigned to this resource.
 func (o LoadTestOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *LoadTest) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }

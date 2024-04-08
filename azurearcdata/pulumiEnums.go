@@ -176,6 +176,178 @@ func (in *accountProvisioningModePtr) ToAccountProvisioningModePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AccountProvisioningModePtrOutput)
 }
 
+// The aggregation type to use for the numerical columns in the dataset.
+type AggregationType string
+
+const (
+	AggregationTypeAverage = AggregationType("Average")
+	AggregationTypeMinimum = AggregationType("Minimum")
+	AggregationTypeMaximum = AggregationType("Maximum")
+	AggregationTypeSum     = AggregationType("Sum")
+	AggregationTypeCount   = AggregationType("Count")
+)
+
+func (AggregationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationType)(nil)).Elem()
+}
+
+func (e AggregationType) ToAggregationTypeOutput() AggregationTypeOutput {
+	return pulumi.ToOutput(e).(AggregationTypeOutput)
+}
+
+func (e AggregationType) ToAggregationTypeOutputWithContext(ctx context.Context) AggregationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AggregationTypeOutput)
+}
+
+func (e AggregationType) ToAggregationTypePtrOutput() AggregationTypePtrOutput {
+	return e.ToAggregationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AggregationType) ToAggregationTypePtrOutputWithContext(ctx context.Context) AggregationTypePtrOutput {
+	return AggregationType(e).ToAggregationTypeOutputWithContext(ctx).ToAggregationTypePtrOutputWithContext(ctx)
+}
+
+func (e AggregationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AggregationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AggregationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AggregationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AggregationTypeOutput struct{ *pulumi.OutputState }
+
+func (AggregationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationType)(nil)).Elem()
+}
+
+func (o AggregationTypeOutput) ToAggregationTypeOutput() AggregationTypeOutput {
+	return o
+}
+
+func (o AggregationTypeOutput) ToAggregationTypeOutputWithContext(ctx context.Context) AggregationTypeOutput {
+	return o
+}
+
+func (o AggregationTypeOutput) ToAggregationTypePtrOutput() AggregationTypePtrOutput {
+	return o.ToAggregationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AggregationTypeOutput) ToAggregationTypePtrOutputWithContext(ctx context.Context) AggregationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationType) *AggregationType {
+		return &v
+	}).(AggregationTypePtrOutput)
+}
+
+func (o AggregationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AggregationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AggregationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AggregationType)(nil)).Elem()
+}
+
+func (o AggregationTypePtrOutput) ToAggregationTypePtrOutput() AggregationTypePtrOutput {
+	return o
+}
+
+func (o AggregationTypePtrOutput) ToAggregationTypePtrOutputWithContext(ctx context.Context) AggregationTypePtrOutput {
+	return o
+}
+
+func (o AggregationTypePtrOutput) Elem() AggregationTypeOutput {
+	return o.ApplyT(func(v *AggregationType) AggregationType {
+		if v != nil {
+			return *v
+		}
+		var ret AggregationType
+		return ret
+	}).(AggregationTypeOutput)
+}
+
+func (o AggregationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AggregationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AggregationTypeInput is an input type that accepts values of the AggregationType enum
+// A concrete instance of `AggregationTypeInput` can be one of the following:
+//
+//	AggregationTypeAverage
+//	AggregationTypeMinimum
+//	AggregationTypeMaximum
+//	AggregationTypeSum
+//	AggregationTypeCount
+type AggregationTypeInput interface {
+	pulumi.Input
+
+	ToAggregationTypeOutput() AggregationTypeOutput
+	ToAggregationTypeOutputWithContext(context.Context) AggregationTypeOutput
+}
+
+var aggregationTypePtrType = reflect.TypeOf((**AggregationType)(nil)).Elem()
+
+type AggregationTypePtrInput interface {
+	pulumi.Input
+
+	ToAggregationTypePtrOutput() AggregationTypePtrOutput
+	ToAggregationTypePtrOutputWithContext(context.Context) AggregationTypePtrOutput
+}
+
+type aggregationTypePtr string
+
+func AggregationTypePtr(v string) AggregationTypePtrInput {
+	return (*aggregationTypePtr)(&v)
+}
+
+func (*aggregationTypePtr) ElementType() reflect.Type {
+	return aggregationTypePtrType
+}
+
+func (in *aggregationTypePtr) ToAggregationTypePtrOutput() AggregationTypePtrOutput {
+	return pulumi.ToOutput(in).(AggregationTypePtrOutput)
+}
+
+func (in *aggregationTypePtr) ToAggregationTypePtrOutputWithContext(ctx context.Context) AggregationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AggregationTypePtrOutput)
+}
+
 // The license type to apply for this managed instance.
 type ArcSqlManagedInstanceLicenseType string
 
@@ -2917,6 +3089,8 @@ func (in *sqlVersionPtr) ToSqlVersionPtrOutputWithContext(ctx context.Context) S
 func init() {
 	pulumi.RegisterOutputType(AccountProvisioningModeOutput{})
 	pulumi.RegisterOutputType(AccountProvisioningModePtrOutput{})
+	pulumi.RegisterOutputType(AggregationTypeOutput{})
+	pulumi.RegisterOutputType(AggregationTypePtrOutput{})
 	pulumi.RegisterOutputType(ArcSqlManagedInstanceLicenseTypeOutput{})
 	pulumi.RegisterOutputType(ArcSqlManagedInstanceLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(ArcSqlServerLicenseTypeOutput{})

@@ -74,6 +74,9 @@ func NewDataCollectionEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:insights/v20210901preview:DataCollectionEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230311:DataCollectionEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
