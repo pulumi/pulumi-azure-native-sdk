@@ -15,7 +15,7 @@ import (
 // Capacity pool resource
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2017-08-15, 2019-07-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01.
+// Other available API versions: 2017-08-15, 2019-07-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview.
 type Pool struct {
 	pulumi.CustomResourceState
 
@@ -172,6 +172,9 @@ func NewPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20230701:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230701preview:Pool"),
 		},
 	})
 	opts = append(opts, aliases)

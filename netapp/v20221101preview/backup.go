@@ -70,6 +70,9 @@ func NewBackup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20230501preview:Backup"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230701preview:Backup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

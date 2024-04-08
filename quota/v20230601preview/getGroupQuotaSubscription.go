@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the subscriptionId along with its provisioning state for being associated with the GroupQuotasEntity.
+// Returns the subscriptionIds along with its provisioning state for being associated with the GroupQuota. If the subscription is not a member of GroupQuota, it will return 404, else 200.
 func LookupGroupQuotaSubscription(ctx *pulumi.Context, args *LookupGroupQuotaSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupQuotaSubscriptionResult
@@ -26,10 +26,10 @@ type LookupGroupQuotaSubscriptionArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName string `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	MgId string `pulumi:"mgId"`
+	ManagementGroupId string `pulumi:"managementGroupId"`
 }
 
-// This represents a Azure subscriptionId that is associated with a GroupQuotaSEntity.
+// This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
 type LookupGroupQuotaSubscriptionResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -59,14 +59,14 @@ type LookupGroupQuotaSubscriptionOutputArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName pulumi.StringInput `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	MgId pulumi.StringInput `pulumi:"mgId"`
+	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
 }
 
 func (LookupGroupQuotaSubscriptionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupGroupQuotaSubscriptionArgs)(nil)).Elem()
 }
 
-// This represents a Azure subscriptionId that is associated with a GroupQuotaSEntity.
+// This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
 type LookupGroupQuotaSubscriptionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupGroupQuotaSubscriptionResultOutput) ElementType() reflect.Type {

@@ -13,6 +13,8 @@ import (
 
 // DevOps Configuration resource.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 func LookupDevOpsConfiguration(ctx *pulumi.Context, args *LookupDevOpsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDevOpsConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevOpsConfigurationResult

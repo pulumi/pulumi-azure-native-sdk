@@ -180,12 +180,14 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-// Managed identity type to use for accessing encryption key Url
+// Managed identity type to use for accessing encryption key Url.
 type Type string
 
 const (
+	// System assigned identity.
 	TypeSystemAssigned = Type("SystemAssigned")
-	TypeUserAssigned   = Type("UserAssigned")
+	// User assigned identity.
+	TypeUserAssigned = Type("UserAssigned")
 )
 
 func (Type) ElementType() reflect.Type {

@@ -21,6 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:recoveryservices/v20240201:PrivateEndpointConnection":
+		r = &PrivateEndpointConnection{}
+	case "azure-native:recoveryservices/v20240201:ProtectedItem":
+		r = &ProtectedItem{}
+	case "azure-native:recoveryservices/v20240201:ProtectionContainer":
+		r = &ProtectionContainer{}
+	case "azure-native:recoveryservices/v20240201:ProtectionIntent":
+		r = &ProtectionIntent{}
+	case "azure-native:recoveryservices/v20240201:ProtectionPolicy":
+		r = &ProtectionPolicy{}
+	case "azure-native:recoveryservices/v20240201:ResourceGuardProxy":
+		r = &ResourceGuardProxy{}
 	case "azure-native:recoveryservices/v20240201:Vault":
 		r = &Vault{}
 	default:

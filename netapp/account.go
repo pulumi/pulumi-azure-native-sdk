@@ -15,7 +15,7 @@ import (
 // NetApp account resource
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2019-07-01, 2022-05-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01.
+// Other available API versions: 2019-07-01, 2022-05-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -149,6 +149,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20230701:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230701preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)

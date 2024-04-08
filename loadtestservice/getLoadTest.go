@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a LoadTest resource.
+// Get a LoadTestResource
 // Azure REST API version: 2022-12-01.
 //
 // Other available API versions: 2021-12-01-preview.
@@ -26,13 +26,13 @@ func LookupLoadTest(ctx *pulumi.Context, args *LookupLoadTestArgs, opts ...pulum
 }
 
 type LookupLoadTestArgs struct {
-	// Load Test name.
+	// Load Test name
 	LoadTestName string `pulumi:"loadTestName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// LoadTest details
+// LoadTest details.
 type LookupLoadTestResult struct {
 	// Resource data plane URI.
 	DataPlaneURI string `pulumi:"dataPlaneURI"`
@@ -40,9 +40,9 @@ type LookupLoadTestResult struct {
 	Description *string `pulumi:"description"`
 	// CMK Encryption property.
 	Encryption *EncryptionPropertiesResponse `pulumi:"encryption"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The type of identity used for the resource.
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -72,7 +72,7 @@ func LookupLoadTestOutput(ctx *pulumi.Context, args LookupLoadTestOutputArgs, op
 }
 
 type LookupLoadTestOutputArgs struct {
-	// Load Test name.
+	// Load Test name
 	LoadTestName pulumi.StringInput `pulumi:"loadTestName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -82,7 +82,7 @@ func (LookupLoadTestOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupLoadTestArgs)(nil)).Elem()
 }
 
-// LoadTest details
+// LoadTest details.
 type LookupLoadTestResultOutput struct{ *pulumi.OutputState }
 
 func (LookupLoadTestResultOutput) ElementType() reflect.Type {
@@ -112,12 +112,12 @@ func (o LookupLoadTestResultOutput) Encryption() EncryptionPropertiesResponsePtr
 	return o.ApplyT(func(v LookupLoadTestResult) *EncryptionPropertiesResponse { return v.Encryption }).(EncryptionPropertiesResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupLoadTestResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadTestResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of identity used for the resource.
+// The managed service identities assigned to this resource.
 func (o LookupLoadTestResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupLoadTestResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }

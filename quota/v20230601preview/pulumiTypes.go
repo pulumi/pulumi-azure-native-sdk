@@ -13,10 +13,10 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Additional attribute to allow subscriptions to be part of the GroupQuota.
+// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
 type AdditionalAttributes struct {
 	Environment interface{} `pulumi:"environment"`
-	// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+	// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 	GroupId GroupingId `pulumi:"groupId"`
 }
 
@@ -31,10 +31,10 @@ type AdditionalAttributesInput interface {
 	ToAdditionalAttributesOutputWithContext(context.Context) AdditionalAttributesOutput
 }
 
-// Additional attribute to allow subscriptions to be part of the GroupQuota.
+// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
 type AdditionalAttributesArgs struct {
 	Environment pulumi.Input `pulumi:"environment"`
-	// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+	// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 	GroupId GroupingIdInput `pulumi:"groupId"`
 }
 
@@ -91,7 +91,7 @@ func (i *additionalAttributesPtrType) ToAdditionalAttributesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalAttributesPtrOutput)
 }
 
-// Additional attribute to allow subscriptions to be part of the GroupQuota.
+// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
 type AdditionalAttributesOutput struct{ *pulumi.OutputState }
 
 func (AdditionalAttributesOutput) ElementType() reflect.Type {
@@ -120,7 +120,7 @@ func (o AdditionalAttributesOutput) Environment() pulumi.AnyOutput {
 	return o.ApplyT(func(v AdditionalAttributes) interface{} { return v.Environment }).(pulumi.AnyOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 func (o AdditionalAttributesOutput) GroupId() GroupingIdOutput {
 	return o.ApplyT(func(v AdditionalAttributes) GroupingId { return v.GroupId }).(GroupingIdOutput)
 }
@@ -158,7 +158,7 @@ func (o AdditionalAttributesPtrOutput) Environment() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 func (o AdditionalAttributesPtrOutput) GroupId() GroupingIdPtrOutput {
 	return o.ApplyT(func(v *AdditionalAttributes) *GroupingId {
 		if v == nil {
@@ -168,14 +168,14 @@ func (o AdditionalAttributesPtrOutput) GroupId() GroupingIdPtrOutput {
 	}).(GroupingIdPtrOutput)
 }
 
-// Additional attribute to allow subscriptions to be part of the GroupQuota.
+// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
 type AdditionalAttributesResponse struct {
 	Environment interface{} `pulumi:"environment"`
-	// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+	// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 	GroupId GroupingIdResponse `pulumi:"groupId"`
 }
 
-// Additional attribute to allow subscriptions to be part of the GroupQuota.
+// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
 type AdditionalAttributesResponseOutput struct{ *pulumi.OutputState }
 
 func (AdditionalAttributesResponseOutput) ElementType() reflect.Type {
@@ -194,7 +194,7 @@ func (o AdditionalAttributesResponseOutput) Environment() pulumi.AnyOutput {
 	return o.ApplyT(func(v AdditionalAttributesResponse) interface{} { return v.Environment }).(pulumi.AnyOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 func (o AdditionalAttributesResponseOutput) GroupId() GroupingIdResponseOutput {
 	return o.ApplyT(func(v AdditionalAttributesResponse) GroupingIdResponse { return v.GroupId }).(GroupingIdResponseOutput)
 }
@@ -232,7 +232,7 @@ func (o AdditionalAttributesResponsePtrOutput) Environment() pulumi.AnyOutput {
 	}).(pulumi.AnyOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 func (o AdditionalAttributesResponsePtrOutput) GroupId() GroupingIdResponsePtrOutput {
 	return o.ApplyT(func(v *AdditionalAttributesResponse) *GroupingIdResponse {
 		if v == nil {
@@ -275,7 +275,7 @@ func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) SubscriptionId() pulum
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 type GroupQuotasEntityBase struct {
-	// Additional attributes to allow subscription, which can be added to the subscriptionIds.
+	// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
 	AdditionalAttributes *AdditionalAttributes `pulumi:"additionalAttributes"`
 	// Display name of the GroupQuota entity.
 	DisplayName *string `pulumi:"displayName"`
@@ -294,7 +294,7 @@ type GroupQuotasEntityBaseInput interface {
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 type GroupQuotasEntityBaseArgs struct {
-	// Additional attributes to allow subscription, which can be added to the subscriptionIds.
+	// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
 	AdditionalAttributes AdditionalAttributesPtrInput `pulumi:"additionalAttributes"`
 	// Display name of the GroupQuota entity.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
@@ -378,7 +378,7 @@ func (o GroupQuotasEntityBaseOutput) ToGroupQuotasEntityBasePtrOutputWithContext
 	}).(GroupQuotasEntityBasePtrOutput)
 }
 
-// Additional attributes to allow subscription, which can be added to the subscriptionIds.
+// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
 func (o GroupQuotasEntityBaseOutput) AdditionalAttributes() AdditionalAttributesPtrOutput {
 	return o.ApplyT(func(v GroupQuotasEntityBase) *AdditionalAttributes { return v.AdditionalAttributes }).(AdditionalAttributesPtrOutput)
 }
@@ -412,7 +412,7 @@ func (o GroupQuotasEntityBasePtrOutput) Elem() GroupQuotasEntityBaseOutput {
 	}).(GroupQuotasEntityBaseOutput)
 }
 
-// Additional attributes to allow subscription, which can be added to the subscriptionIds.
+// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
 func (o GroupQuotasEntityBasePtrOutput) AdditionalAttributes() AdditionalAttributesPtrOutput {
 	return o.ApplyT(func(v *GroupQuotasEntityBase) *AdditionalAttributes {
 		if v == nil {
@@ -434,7 +434,7 @@ func (o GroupQuotasEntityBasePtrOutput) DisplayName() pulumi.StringPtrOutput {
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 type GroupQuotasEntityBaseResponse struct {
-	// Additional attributes to allow subscription, which can be added to the subscriptionIds.
+	// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
 	AdditionalAttributes *AdditionalAttributesResponse `pulumi:"additionalAttributes"`
 	// Display name of the GroupQuota entity.
 	DisplayName *string `pulumi:"displayName"`
@@ -457,7 +457,7 @@ func (o GroupQuotasEntityBaseResponseOutput) ToGroupQuotasEntityBaseResponseOutp
 	return o
 }
 
-// Additional attributes to allow subscription, which can be added to the subscriptionIds.
+// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
 func (o GroupQuotasEntityBaseResponseOutput) AdditionalAttributes() AdditionalAttributesResponsePtrOutput {
 	return o.ApplyT(func(v GroupQuotasEntityBaseResponse) *AdditionalAttributesResponse { return v.AdditionalAttributes }).(AdditionalAttributesResponsePtrOutput)
 }
@@ -472,11 +472,11 @@ func (o GroupQuotasEntityBaseResponseOutput) ProvisioningState() pulumi.StringOu
 	return o.ApplyT(func(v GroupQuotasEntityBaseResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 type GroupingId struct {
-	// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+	// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 	GroupingIdType *string `pulumi:"groupingIdType"`
-	// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+	// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 	Value *string `pulumi:"value"`
 }
 
@@ -491,11 +491,11 @@ type GroupingIdInput interface {
 	ToGroupingIdOutputWithContext(context.Context) GroupingIdOutput
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 type GroupingIdArgs struct {
-	// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+	// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 	GroupingIdType pulumi.StringPtrInput `pulumi:"groupingIdType"`
-	// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+	// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -552,7 +552,7 @@ func (i *groupingIdPtrType) ToGroupingIdPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupingIdPtrOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 type GroupingIdOutput struct{ *pulumi.OutputState }
 
 func (GroupingIdOutput) ElementType() reflect.Type {
@@ -577,12 +577,12 @@ func (o GroupingIdOutput) ToGroupingIdPtrOutputWithContext(ctx context.Context) 
 	}).(GroupingIdPtrOutput)
 }
 
-// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 func (o GroupingIdOutput) GroupingIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupingId) *string { return v.GroupingIdType }).(pulumi.StringPtrOutput)
 }
 
-// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 func (o GroupingIdOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupingId) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -611,7 +611,7 @@ func (o GroupingIdPtrOutput) Elem() GroupingIdOutput {
 	}).(GroupingIdOutput)
 }
 
-// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 func (o GroupingIdPtrOutput) GroupingIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupingId) *string {
 		if v == nil {
@@ -621,7 +621,7 @@ func (o GroupingIdPtrOutput) GroupingIdType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 func (o GroupingIdPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupingId) *string {
 		if v == nil {
@@ -631,15 +631,15 @@ func (o GroupingIdPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 type GroupingIdResponse struct {
-	// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+	// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 	GroupingIdType *string `pulumi:"groupingIdType"`
-	// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+	// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 	Value *string `pulumi:"value"`
 }
 
-// The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
+// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
 type GroupingIdResponseOutput struct{ *pulumi.OutputState }
 
 func (GroupingIdResponseOutput) ElementType() reflect.Type {
@@ -654,12 +654,12 @@ func (o GroupingIdResponseOutput) ToGroupingIdResponseOutputWithContext(ctx cont
 	return o
 }
 
-// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 func (o GroupingIdResponseOutput) GroupingIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupingIdResponse) *string { return v.GroupingIdType }).(pulumi.StringPtrOutput)
 }
 
-// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 func (o GroupingIdResponseOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupingIdResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -688,7 +688,7 @@ func (o GroupingIdResponsePtrOutput) Elem() GroupingIdResponseOutput {
 	}).(GroupingIdResponseOutput)
 }
 
-// GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+// GroupingId type. It is a required property. More types of groupIds can be supported in future.
 func (o GroupingIdResponsePtrOutput) GroupingIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupingIdResponse) *string {
 		if v == nil {
@@ -698,7 +698,7 @@ func (o GroupingIdResponsePtrOutput) GroupingIdType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
 func (o GroupingIdResponsePtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupingIdResponse) *string {
 		if v == nil {

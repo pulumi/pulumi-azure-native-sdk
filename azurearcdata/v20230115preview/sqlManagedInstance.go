@@ -73,6 +73,9 @@ func NewSqlManagedInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:SqlManagedInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlManagedInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

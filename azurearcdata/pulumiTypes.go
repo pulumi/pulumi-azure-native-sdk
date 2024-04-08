@@ -1588,6 +1588,1216 @@ func (o ActiveDirectoryInformationPtrOutput) KeytabInformation() KeytabInformati
 	}).(KeytabInformationPtrOutput)
 }
 
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigure struct {
+	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+	BackupPriority *int `pulumi:"backupPriority"`
+	// Mirroring endpoint URL of availability group replica
+	EndpointUrl *string `pulumi:"endpointUrl"`
+	// Connectivity endpoint (URL) of the read only availability replica.
+	ReadOnlyRoutingUrl *string `pulumi:"readOnlyRoutingUrl"`
+	// Connectivity endpoint (URL) of the read write availability replica.
+	ReadWriteRoutingUrl *string `pulumi:"readWriteRoutingUrl"`
+	// The time-out period of availability group session replica, in seconds.
+	SessionTimeout *int `pulumi:"sessionTimeout"`
+}
+
+// AvailabilityGroupConfigureInput is an input type that accepts AvailabilityGroupConfigureArgs and AvailabilityGroupConfigureOutput values.
+// You can construct a concrete instance of `AvailabilityGroupConfigureInput` via:
+//
+//	AvailabilityGroupConfigureArgs{...}
+type AvailabilityGroupConfigureInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupConfigureOutput() AvailabilityGroupConfigureOutput
+	ToAvailabilityGroupConfigureOutputWithContext(context.Context) AvailabilityGroupConfigureOutput
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureArgs struct {
+	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+	BackupPriority pulumi.IntPtrInput `pulumi:"backupPriority"`
+	// Mirroring endpoint URL of availability group replica
+	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
+	// Connectivity endpoint (URL) of the read only availability replica.
+	ReadOnlyRoutingUrl pulumi.StringPtrInput `pulumi:"readOnlyRoutingUrl"`
+	// Connectivity endpoint (URL) of the read write availability replica.
+	ReadWriteRoutingUrl pulumi.StringPtrInput `pulumi:"readWriteRoutingUrl"`
+	// The time-out period of availability group session replica, in seconds.
+	SessionTimeout pulumi.IntPtrInput `pulumi:"sessionTimeout"`
+}
+
+func (AvailabilityGroupConfigureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigureOutput() AvailabilityGroupConfigureOutput {
+	return i.ToAvailabilityGroupConfigureOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigureOutputWithContext(ctx context.Context) AvailabilityGroupConfigureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupConfigureOutput)
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return i.ToAvailabilityGroupConfigurePtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupConfigureArgs) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupConfigureOutput).ToAvailabilityGroupConfigurePtrOutputWithContext(ctx)
+}
+
+// AvailabilityGroupConfigurePtrInput is an input type that accepts AvailabilityGroupConfigureArgs, AvailabilityGroupConfigurePtr and AvailabilityGroupConfigurePtrOutput values.
+// You can construct a concrete instance of `AvailabilityGroupConfigurePtrInput` via:
+//
+//	        AvailabilityGroupConfigureArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvailabilityGroupConfigurePtrInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput
+	ToAvailabilityGroupConfigurePtrOutputWithContext(context.Context) AvailabilityGroupConfigurePtrOutput
+}
+
+type availabilityGroupConfigurePtrType AvailabilityGroupConfigureArgs
+
+func AvailabilityGroupConfigurePtr(v *AvailabilityGroupConfigureArgs) AvailabilityGroupConfigurePtrInput {
+	return (*availabilityGroupConfigurePtrType)(v)
+}
+
+func (*availabilityGroupConfigurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (i *availabilityGroupConfigurePtrType) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return i.ToAvailabilityGroupConfigurePtrOutputWithContext(context.Background())
+}
+
+func (i *availabilityGroupConfigurePtrType) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigureOutput() AvailabilityGroupConfigureOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigureOutputWithContext(ctx context.Context) AvailabilityGroupConfigureOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return o.ToAvailabilityGroupConfigurePtrOutputWithContext(context.Background())
+}
+
+func (o AvailabilityGroupConfigureOutput) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilityGroupConfigure) *AvailabilityGroupConfigure {
+		return &v
+	}).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigureOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *int { return v.BackupPriority }).(pulumi.IntPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigureOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigureOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.ReadOnlyRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigureOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *string { return v.ReadWriteRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigureOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigure) *int { return v.SessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilityGroupConfigurePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupConfigure)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigurePtrOutput) ToAvailabilityGroupConfigurePtrOutput() AvailabilityGroupConfigurePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigurePtrOutput) ToAvailabilityGroupConfigurePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigurePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigurePtrOutput) Elem() AvailabilityGroupConfigureOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) AvailabilityGroupConfigure {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupConfigure
+		return ret
+	}).(AvailabilityGroupConfigureOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigurePtrOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupPriority
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigurePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigurePtrOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigurePtrOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadWriteRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigurePtrOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureResponse struct {
+	// The Availability Synchronization mode of the availability group replica.
+	AvailabilityModeDescription string `pulumi:"availabilityModeDescription"`
+	// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+	BackupPriority *int `pulumi:"backupPriority"`
+	// Mirroring endpoint URL of availability group replica
+	EndpointUrl *string `pulumi:"endpointUrl"`
+	// The failover mode of the availability group replica.
+	FailoverModeDescription string `pulumi:"failoverModeDescription"`
+	// Whether the availability allows all connections or only read-write connections.
+	PrimaryRoleAllowConnectionsDescription string `pulumi:"primaryRoleAllowConnectionsDescription"`
+	// Connectivity endpoint (URL) of the read only availability replica.
+	ReadOnlyRoutingUrl *string `pulumi:"readOnlyRoutingUrl"`
+	// Connectivity endpoint (URL) of the read write availability replica.
+	ReadWriteRoutingUrl *string `pulumi:"readWriteRoutingUrl"`
+	// Date that the replica was created.
+	ReplicaCreateDate string `pulumi:"replicaCreateDate"`
+	// Date that the replica was modified.
+	ReplicaModifyDate string `pulumi:"replicaModifyDate"`
+	// Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
+	SecondaryRoleAllowConnectionsDescription string `pulumi:"secondaryRoleAllowConnectionsDescription"`
+	// Describes seeding mode.
+	SeedingModeDescription string `pulumi:"seedingModeDescription"`
+	// The time-out period of availability group session replica, in seconds.
+	SessionTimeout *int `pulumi:"sessionTimeout"`
+}
+
+// The specifications of the availability group replica configuration
+type AvailabilityGroupConfigureResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupConfigureResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigureResponseOutput) ToAvailabilityGroupConfigureResponseOutput() AvailabilityGroupConfigureResponseOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureResponseOutput) ToAvailabilityGroupConfigureResponseOutputWithContext(ctx context.Context) AvailabilityGroupConfigureResponseOutput {
+	return o
+}
+
+// The Availability Synchronization mode of the availability group replica.
+func (o AvailabilityGroupConfigureResponseOutput) AvailabilityModeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.AvailabilityModeDescription }).(pulumi.StringOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigureResponseOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *int { return v.BackupPriority }).(pulumi.IntPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigureResponseOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// The failover mode of the availability group replica.
+func (o AvailabilityGroupConfigureResponseOutput) FailoverModeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.FailoverModeDescription }).(pulumi.StringOutput)
+}
+
+// Whether the availability allows all connections or only read-write connections.
+func (o AvailabilityGroupConfigureResponseOutput) PrimaryRoleAllowConnectionsDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.PrimaryRoleAllowConnectionsDescription }).(pulumi.StringOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigureResponseOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.ReadOnlyRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigureResponseOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *string { return v.ReadWriteRoutingUrl }).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was created.
+func (o AvailabilityGroupConfigureResponseOutput) ReplicaCreateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.ReplicaCreateDate }).(pulumi.StringOutput)
+}
+
+// Date that the replica was modified.
+func (o AvailabilityGroupConfigureResponseOutput) ReplicaModifyDate() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.ReplicaModifyDate }).(pulumi.StringOutput)
+}
+
+// Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
+func (o AvailabilityGroupConfigureResponseOutput) SecondaryRoleAllowConnectionsDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.SecondaryRoleAllowConnectionsDescription }).(pulumi.StringOutput)
+}
+
+// Describes seeding mode.
+func (o AvailabilityGroupConfigureResponseOutput) SeedingModeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) string { return v.SeedingModeDescription }).(pulumi.StringOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigureResponseOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupConfigureResponse) *int { return v.SessionTimeout }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilityGroupConfigureResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupConfigureResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupConfigureResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupConfigureResponsePtrOutput) ToAvailabilityGroupConfigureResponsePtrOutput() AvailabilityGroupConfigureResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureResponsePtrOutput) ToAvailabilityGroupConfigureResponsePtrOutputWithContext(ctx context.Context) AvailabilityGroupConfigureResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupConfigureResponsePtrOutput) Elem() AvailabilityGroupConfigureResponseOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) AvailabilityGroupConfigureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupConfigureResponse
+		return ret
+	}).(AvailabilityGroupConfigureResponseOutput)
+}
+
+// The Availability Synchronization mode of the availability group replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) AvailabilityModeDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailabilityModeDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+func (o AvailabilityGroupConfigureResponsePtrOutput) BackupPriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupPriority
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mirroring endpoint URL of availability group replica
+func (o AvailabilityGroupConfigureResponsePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The failover mode of the availability group replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) FailoverModeDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FailoverModeDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the availability allows all connections or only read-write connections.
+func (o AvailabilityGroupConfigureResponsePtrOutput) PrimaryRoleAllowConnectionsDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrimaryRoleAllowConnectionsDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read only availability replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ReadOnlyRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnlyRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Connectivity endpoint (URL) of the read write availability replica.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ReadWriteRoutingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadWriteRoutingUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was created.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ReplicaCreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicaCreateDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date that the replica was modified.
+func (o AvailabilityGroupConfigureResponsePtrOutput) ReplicaModifyDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicaModifyDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SecondaryRoleAllowConnectionsDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecondaryRoleAllowConnectionsDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes seeding mode.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SeedingModeDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SeedingModeDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time-out period of availability group session replica, in seconds.
+func (o AvailabilityGroupConfigureResponsePtrOutput) SessionTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupConfigureResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupInfo struct {
+	// Specifies whether this is a basic availability group.
+	BasicFeatures *bool `pulumi:"basicFeatures"`
+	// Specifies whether the availability group supports failover for database health conditions.
+	DbFailover *bool `pulumi:"dbFailover"`
+	// Specifies whether DTC support has been enabled for this availability group.
+	DtcSupport *bool `pulumi:"dtcSupport"`
+	// User-defined failure condition level under which an automatic failover must be triggered.
+	FailureConditionLevel *int `pulumi:"failureConditionLevel"`
+	// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
+	// SQL Server availability group contained system databases.
+	IsContained *bool `pulumi:"isContained"`
+	// Specifies whether this is a distributed availability group.
+	IsDistributed *bool `pulumi:"isDistributed"`
+	// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+	RequiredSynchronizedSecondariesToCommit *int `pulumi:"requiredSynchronizedSecondariesToCommit"`
+}
+
+// AvailabilityGroupInfoInput is an input type that accepts AvailabilityGroupInfoArgs and AvailabilityGroupInfoOutput values.
+// You can construct a concrete instance of `AvailabilityGroupInfoInput` via:
+//
+//	AvailabilityGroupInfoArgs{...}
+type AvailabilityGroupInfoInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupInfoOutput() AvailabilityGroupInfoOutput
+	ToAvailabilityGroupInfoOutputWithContext(context.Context) AvailabilityGroupInfoOutput
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupInfoArgs struct {
+	// Specifies whether this is a basic availability group.
+	BasicFeatures pulumi.BoolPtrInput `pulumi:"basicFeatures"`
+	// Specifies whether the availability group supports failover for database health conditions.
+	DbFailover pulumi.BoolPtrInput `pulumi:"dbFailover"`
+	// Specifies whether DTC support has been enabled for this availability group.
+	DtcSupport pulumi.BoolPtrInput `pulumi:"dtcSupport"`
+	// User-defined failure condition level under which an automatic failover must be triggered.
+	FailureConditionLevel pulumi.IntPtrInput `pulumi:"failureConditionLevel"`
+	// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+	HealthCheckTimeout pulumi.IntPtrInput `pulumi:"healthCheckTimeout"`
+	// SQL Server availability group contained system databases.
+	IsContained pulumi.BoolPtrInput `pulumi:"isContained"`
+	// Specifies whether this is a distributed availability group.
+	IsDistributed pulumi.BoolPtrInput `pulumi:"isDistributed"`
+	// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+	RequiredSynchronizedSecondariesToCommit pulumi.IntPtrInput `pulumi:"requiredSynchronizedSecondariesToCommit"`
+}
+
+func (AvailabilityGroupInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupInfo)(nil)).Elem()
+}
+
+func (i AvailabilityGroupInfoArgs) ToAvailabilityGroupInfoOutput() AvailabilityGroupInfoOutput {
+	return i.ToAvailabilityGroupInfoOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupInfoArgs) ToAvailabilityGroupInfoOutputWithContext(ctx context.Context) AvailabilityGroupInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupInfoOutput)
+}
+
+func (i AvailabilityGroupInfoArgs) ToAvailabilityGroupInfoPtrOutput() AvailabilityGroupInfoPtrOutput {
+	return i.ToAvailabilityGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilityGroupInfoArgs) ToAvailabilityGroupInfoPtrOutputWithContext(ctx context.Context) AvailabilityGroupInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupInfoOutput).ToAvailabilityGroupInfoPtrOutputWithContext(ctx)
+}
+
+// AvailabilityGroupInfoPtrInput is an input type that accepts AvailabilityGroupInfoArgs, AvailabilityGroupInfoPtr and AvailabilityGroupInfoPtrOutput values.
+// You can construct a concrete instance of `AvailabilityGroupInfoPtrInput` via:
+//
+//	        AvailabilityGroupInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvailabilityGroupInfoPtrInput interface {
+	pulumi.Input
+
+	ToAvailabilityGroupInfoPtrOutput() AvailabilityGroupInfoPtrOutput
+	ToAvailabilityGroupInfoPtrOutputWithContext(context.Context) AvailabilityGroupInfoPtrOutput
+}
+
+type availabilityGroupInfoPtrType AvailabilityGroupInfoArgs
+
+func AvailabilityGroupInfoPtr(v *AvailabilityGroupInfoArgs) AvailabilityGroupInfoPtrInput {
+	return (*availabilityGroupInfoPtrType)(v)
+}
+
+func (*availabilityGroupInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupInfo)(nil)).Elem()
+}
+
+func (i *availabilityGroupInfoPtrType) ToAvailabilityGroupInfoPtrOutput() AvailabilityGroupInfoPtrOutput {
+	return i.ToAvailabilityGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *availabilityGroupInfoPtrType) ToAvailabilityGroupInfoPtrOutputWithContext(ctx context.Context) AvailabilityGroupInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilityGroupInfoPtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupInfoOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupInfo)(nil)).Elem()
+}
+
+func (o AvailabilityGroupInfoOutput) ToAvailabilityGroupInfoOutput() AvailabilityGroupInfoOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoOutput) ToAvailabilityGroupInfoOutputWithContext(ctx context.Context) AvailabilityGroupInfoOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoOutput) ToAvailabilityGroupInfoPtrOutput() AvailabilityGroupInfoPtrOutput {
+	return o.ToAvailabilityGroupInfoPtrOutputWithContext(context.Background())
+}
+
+func (o AvailabilityGroupInfoOutput) ToAvailabilityGroupInfoPtrOutputWithContext(ctx context.Context) AvailabilityGroupInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilityGroupInfo) *AvailabilityGroupInfo {
+		return &v
+	}).(AvailabilityGroupInfoPtrOutput)
+}
+
+// Specifies whether this is a basic availability group.
+func (o AvailabilityGroupInfoOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *bool { return v.BasicFeatures }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the availability group supports failover for database health conditions.
+func (o AvailabilityGroupInfoOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *bool { return v.DbFailover }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether DTC support has been enabled for this availability group.
+func (o AvailabilityGroupInfoOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *bool { return v.DtcSupport }).(pulumi.BoolPtrOutput)
+}
+
+// User-defined failure condition level under which an automatic failover must be triggered.
+func (o AvailabilityGroupInfoOutput) FailureConditionLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *int { return v.FailureConditionLevel }).(pulumi.IntPtrOutput)
+}
+
+// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+func (o AvailabilityGroupInfoOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *int { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o AvailabilityGroupInfoOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *bool { return v.IsContained }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether this is a distributed availability group.
+func (o AvailabilityGroupInfoOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *bool { return v.IsDistributed }).(pulumi.BoolPtrOutput)
+}
+
+// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+func (o AvailabilityGroupInfoOutput) RequiredSynchronizedSecondariesToCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfo) *int { return v.RequiredSynchronizedSecondariesToCommit }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilityGroupInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupInfo)(nil)).Elem()
+}
+
+func (o AvailabilityGroupInfoPtrOutput) ToAvailabilityGroupInfoPtrOutput() AvailabilityGroupInfoPtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoPtrOutput) ToAvailabilityGroupInfoPtrOutputWithContext(ctx context.Context) AvailabilityGroupInfoPtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoPtrOutput) Elem() AvailabilityGroupInfoOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) AvailabilityGroupInfo {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupInfo
+		return ret
+	}).(AvailabilityGroupInfoOutput)
+}
+
+// Specifies whether this is a basic availability group.
+func (o AvailabilityGroupInfoPtrOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BasicFeatures
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the availability group supports failover for database health conditions.
+func (o AvailabilityGroupInfoPtrOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DbFailover
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether DTC support has been enabled for this availability group.
+func (o AvailabilityGroupInfoPtrOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DtcSupport
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User-defined failure condition level under which an automatic failover must be triggered.
+func (o AvailabilityGroupInfoPtrOutput) FailureConditionLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureConditionLevel
+	}).(pulumi.IntPtrOutput)
+}
+
+// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+func (o AvailabilityGroupInfoPtrOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o AvailabilityGroupInfoPtrOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsContained
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether this is a distributed availability group.
+func (o AvailabilityGroupInfoPtrOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsDistributed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+func (o AvailabilityGroupInfoPtrOutput) RequiredSynchronizedSecondariesToCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredSynchronizedSecondariesToCommit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupInfoResponse struct {
+	// Preferred location for performing backups on the availability databases in this availability group.
+	AutomatedBackupPreferenceDescription string `pulumi:"automatedBackupPreferenceDescription"`
+	// Specifies whether this is a basic availability group.
+	BasicFeatures *bool `pulumi:"basicFeatures"`
+	// SQL Server availability group cluster type description
+	ClusterTypeDescription string `pulumi:"clusterTypeDescription"`
+	// Specifies whether the availability group supports failover for database health conditions.
+	DbFailover *bool `pulumi:"dbFailover"`
+	// Specifies whether DTC support has been enabled for this availability group.
+	DtcSupport *bool `pulumi:"dtcSupport"`
+	// User-defined failure condition level under which an automatic failover must be triggered.
+	FailureConditionLevel *int `pulumi:"failureConditionLevel"`
+	// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
+	// SQL Server availability group contained system databases.
+	IsContained *bool `pulumi:"isContained"`
+	// Specifies whether this is a distributed availability group.
+	IsDistributed *bool `pulumi:"isDistributed"`
+	// Indicates the recovery health of the primary replica.
+	PrimaryRecoveryHealthDescription string `pulumi:"primaryRecoveryHealthDescription"`
+	// Name of the server instance that is hosting the current primary replica.
+	PrimaryReplica         string `pulumi:"primaryReplica"`
+	ReplicationPartnerType string `pulumi:"replicationPartnerType"`
+	// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+	RequiredSynchronizedSecondariesToCommit *int `pulumi:"requiredSynchronizedSecondariesToCommit"`
+	// Indicates the recovery health of a secondary replica.
+	SecondaryRecoveryHealthDescription string `pulumi:"secondaryRecoveryHealthDescription"`
+	// Reflects a roll-up of the synchronization health of all availability replicas in the availability group.
+	SynchronizationHealthDescription string `pulumi:"synchronizationHealthDescription"`
+	// SQL Server availability group current version.
+	Version int `pulumi:"version"`
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupInfoResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupInfoResponseOutput) ToAvailabilityGroupInfoResponseOutput() AvailabilityGroupInfoResponseOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoResponseOutput) ToAvailabilityGroupInfoResponseOutputWithContext(ctx context.Context) AvailabilityGroupInfoResponseOutput {
+	return o
+}
+
+// Preferred location for performing backups on the availability databases in this availability group.
+func (o AvailabilityGroupInfoResponseOutput) AutomatedBackupPreferenceDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.AutomatedBackupPreferenceDescription }).(pulumi.StringOutput)
+}
+
+// Specifies whether this is a basic availability group.
+func (o AvailabilityGroupInfoResponseOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *bool { return v.BasicFeatures }).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group cluster type description
+func (o AvailabilityGroupInfoResponseOutput) ClusterTypeDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.ClusterTypeDescription }).(pulumi.StringOutput)
+}
+
+// Specifies whether the availability group supports failover for database health conditions.
+func (o AvailabilityGroupInfoResponseOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *bool { return v.DbFailover }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether DTC support has been enabled for this availability group.
+func (o AvailabilityGroupInfoResponseOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *bool { return v.DtcSupport }).(pulumi.BoolPtrOutput)
+}
+
+// User-defined failure condition level under which an automatic failover must be triggered.
+func (o AvailabilityGroupInfoResponseOutput) FailureConditionLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *int { return v.FailureConditionLevel }).(pulumi.IntPtrOutput)
+}
+
+// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+func (o AvailabilityGroupInfoResponseOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *int { return v.HealthCheckTimeout }).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o AvailabilityGroupInfoResponseOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *bool { return v.IsContained }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether this is a distributed availability group.
+func (o AvailabilityGroupInfoResponseOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *bool { return v.IsDistributed }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the recovery health of the primary replica.
+func (o AvailabilityGroupInfoResponseOutput) PrimaryRecoveryHealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.PrimaryRecoveryHealthDescription }).(pulumi.StringOutput)
+}
+
+// Name of the server instance that is hosting the current primary replica.
+func (o AvailabilityGroupInfoResponseOutput) PrimaryReplica() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.PrimaryReplica }).(pulumi.StringOutput)
+}
+
+func (o AvailabilityGroupInfoResponseOutput) ReplicationPartnerType() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.ReplicationPartnerType }).(pulumi.StringOutput)
+}
+
+// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+func (o AvailabilityGroupInfoResponseOutput) RequiredSynchronizedSecondariesToCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) *int { return v.RequiredSynchronizedSecondariesToCommit }).(pulumi.IntPtrOutput)
+}
+
+// Indicates the recovery health of a secondary replica.
+func (o AvailabilityGroupInfoResponseOutput) SecondaryRecoveryHealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.SecondaryRecoveryHealthDescription }).(pulumi.StringOutput)
+}
+
+// Reflects a roll-up of the synchronization health of all availability replicas in the availability group.
+func (o AvailabilityGroupInfoResponseOutput) SynchronizationHealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) string { return v.SynchronizationHealthDescription }).(pulumi.StringOutput)
+}
+
+// SQL Server availability group current version.
+func (o AvailabilityGroupInfoResponseOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v AvailabilityGroupInfoResponse) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type AvailabilityGroupInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupInfoResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupInfoResponsePtrOutput) ToAvailabilityGroupInfoResponsePtrOutput() AvailabilityGroupInfoResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoResponsePtrOutput) ToAvailabilityGroupInfoResponsePtrOutputWithContext(ctx context.Context) AvailabilityGroupInfoResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupInfoResponsePtrOutput) Elem() AvailabilityGroupInfoResponseOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) AvailabilityGroupInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupInfoResponse
+		return ret
+	}).(AvailabilityGroupInfoResponseOutput)
+}
+
+// Preferred location for performing backups on the availability databases in this availability group.
+func (o AvailabilityGroupInfoResponsePtrOutput) AutomatedBackupPreferenceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AutomatedBackupPreferenceDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether this is a basic availability group.
+func (o AvailabilityGroupInfoResponsePtrOutput) BasicFeatures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BasicFeatures
+	}).(pulumi.BoolPtrOutput)
+}
+
+// SQL Server availability group cluster type description
+func (o AvailabilityGroupInfoResponsePtrOutput) ClusterTypeDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterTypeDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the availability group supports failover for database health conditions.
+func (o AvailabilityGroupInfoResponsePtrOutput) DbFailover() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DbFailover
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether DTC support has been enabled for this availability group.
+func (o AvailabilityGroupInfoResponsePtrOutput) DtcSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DtcSupport
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User-defined failure condition level under which an automatic failover must be triggered.
+func (o AvailabilityGroupInfoResponsePtrOutput) FailureConditionLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureConditionLevel
+	}).(pulumi.IntPtrOutput)
+}
+
+// Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+func (o AvailabilityGroupInfoResponsePtrOutput) HealthCheckTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// SQL Server availability group contained system databases.
+func (o AvailabilityGroupInfoResponsePtrOutput) IsContained() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsContained
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether this is a distributed availability group.
+func (o AvailabilityGroupInfoResponsePtrOutput) IsDistributed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsDistributed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the recovery health of the primary replica.
+func (o AvailabilityGroupInfoResponsePtrOutput) PrimaryRecoveryHealthDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrimaryRecoveryHealthDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the server instance that is hosting the current primary replica.
+func (o AvailabilityGroupInfoResponsePtrOutput) PrimaryReplica() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrimaryReplica
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AvailabilityGroupInfoResponsePtrOutput) ReplicationPartnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicationPartnerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of secondary replicas that must be in a synchronized state for a commit to complete.
+func (o AvailabilityGroupInfoResponsePtrOutput) RequiredSynchronizedSecondariesToCommit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredSynchronizedSecondariesToCommit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates the recovery health of a secondary replica.
+func (o AvailabilityGroupInfoResponsePtrOutput) SecondaryRecoveryHealthDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecondaryRecoveryHealthDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reflects a roll-up of the synchronization health of all availability replicas in the availability group.
+func (o AvailabilityGroupInfoResponsePtrOutput) SynchronizationHealthDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SynchronizationHealthDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// SQL Server availability group current version.
+func (o AvailabilityGroupInfoResponsePtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupInfoResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.IntPtrOutput)
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupStateResponse struct {
+	// Current Always On availability groups role of the availability group replica.
+	AvailabilityGroupReplicaRole string `pulumi:"availabilityGroupReplicaRole"`
+	// Whether a secondary replica is currently connected to the primary replica.
+	ConnectedStateDescription string `pulumi:"connectedStateDescription"`
+	// Text description of the last connection error of the availability group replica.
+	LastConnectErrorDescription string `pulumi:"lastConnectErrorDescription"`
+	// Date and time timestamp indicating when the last connect error occurred.
+	LastConnectErrorTimestamp string `pulumi:"lastConnectErrorTimestamp"`
+	// Current operational state of the availability group replica
+	OperationalStateDescription string `pulumi:"operationalStateDescription"`
+	// Recovery health of the availability group replica.
+	RecoveryHealthDescription string `pulumi:"recoveryHealthDescription"`
+	// Reflects a rollup of the database synchronization state (synchronization_state) of all joined availability databases (also known as replicas) and the availability mode of the replica (synchronous-commit or asynchronous-commit mode). The rollup will reflect the least healthy accumulated state the databases on the replica.
+	SynchronizationHealthDescription string `pulumi:"synchronizationHealthDescription"`
+}
+
+// The specifications of the availability group state
+type AvailabilityGroupStateResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilityGroupStateResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupStateResponseOutput) ToAvailabilityGroupStateResponseOutput() AvailabilityGroupStateResponseOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateResponseOutput) ToAvailabilityGroupStateResponseOutputWithContext(ctx context.Context) AvailabilityGroupStateResponseOutput {
+	return o
+}
+
+// Current Always On availability groups role of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) AvailabilityGroupReplicaRole() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.AvailabilityGroupReplicaRole }).(pulumi.StringOutput)
+}
+
+// Whether a secondary replica is currently connected to the primary replica.
+func (o AvailabilityGroupStateResponseOutput) ConnectedStateDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.ConnectedStateDescription }).(pulumi.StringOutput)
+}
+
+// Text description of the last connection error of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) LastConnectErrorDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.LastConnectErrorDescription }).(pulumi.StringOutput)
+}
+
+// Date and time timestamp indicating when the last connect error occurred.
+func (o AvailabilityGroupStateResponseOutput) LastConnectErrorTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.LastConnectErrorTimestamp }).(pulumi.StringOutput)
+}
+
+// Current operational state of the availability group replica
+func (o AvailabilityGroupStateResponseOutput) OperationalStateDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.OperationalStateDescription }).(pulumi.StringOutput)
+}
+
+// Recovery health of the availability group replica.
+func (o AvailabilityGroupStateResponseOutput) RecoveryHealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.RecoveryHealthDescription }).(pulumi.StringOutput)
+}
+
+// Reflects a rollup of the database synchronization state (synchronization_state) of all joined availability databases (also known as replicas) and the availability mode of the replica (synchronous-commit or asynchronous-commit mode). The rollup will reflect the least healthy accumulated state the databases on the replica.
+func (o AvailabilityGroupStateResponseOutput) SynchronizationHealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilityGroupStateResponse) string { return v.SynchronizationHealthDescription }).(pulumi.StringOutput)
+}
+
+type AvailabilityGroupStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilityGroupStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilityGroupStateResponse)(nil)).Elem()
+}
+
+func (o AvailabilityGroupStateResponsePtrOutput) ToAvailabilityGroupStateResponsePtrOutput() AvailabilityGroupStateResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateResponsePtrOutput) ToAvailabilityGroupStateResponsePtrOutputWithContext(ctx context.Context) AvailabilityGroupStateResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilityGroupStateResponsePtrOutput) Elem() AvailabilityGroupStateResponseOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) AvailabilityGroupStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilityGroupStateResponse
+		return ret
+	}).(AvailabilityGroupStateResponseOutput)
+}
+
+// Current Always On availability groups role of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) AvailabilityGroupReplicaRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AvailabilityGroupReplicaRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether a secondary replica is currently connected to the primary replica.
+func (o AvailabilityGroupStateResponsePtrOutput) ConnectedStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectedStateDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Text description of the last connection error of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) LastConnectErrorDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastConnectErrorDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Date and time timestamp indicating when the last connect error occurred.
+func (o AvailabilityGroupStateResponsePtrOutput) LastConnectErrorTimestamp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastConnectErrorTimestamp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current operational state of the availability group replica
+func (o AvailabilityGroupStateResponsePtrOutput) OperationalStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OperationalStateDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Recovery health of the availability group replica.
+func (o AvailabilityGroupStateResponsePtrOutput) RecoveryHealthDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RecoveryHealthDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reflects a rollup of the database synchronization state (synchronization_state) of all joined availability databases (also known as replicas) and the availability mode of the replica (synchronous-commit or asynchronous-commit mode). The rollup will reflect the least healthy accumulated state the databases on the replica.
+func (o AvailabilityGroupStateResponsePtrOutput) SynchronizationHealthDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilityGroupStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SynchronizationHealthDescription
+	}).(pulumi.StringPtrOutput)
+}
+
 // Username and password for basic login authentication.
 type BasicLoginInformation struct {
 	// Login password.
@@ -6125,6 +7335,405 @@ func (o PostgresInstanceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourceProperties struct {
+	// the database name.
+	DatabaseName *string `pulumi:"databaseName"`
+}
+
+// SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput is an input type that accepts SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs and SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput` via:
+//
+//	SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs{...}
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs struct {
+	// the database name.
+	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
+}
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return i.ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput)
+}
+
+// SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput is an input type that accepts SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray and SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput` via:
+//
+//	SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray{ SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs{...} }
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput
+	ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput
+}
+
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return i.ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArray) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput)
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return o
+}
+
+// the database name.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourceProperties) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupDatabaseReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupDatabaseReplicaResourceProperties {
+		return vs[0].([]SqlAvailabilityGroupDatabaseReplicaResourceProperties)[vs[1].(int)]
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse struct {
+	// the database name.
+	DatabaseName *string `pulumi:"databaseName"`
+	// Description of the database state of the availability replica.
+	DatabaseStateDescription string `pulumi:"databaseStateDescription"`
+	// Whether this replica is transaction committer.
+	IsCommitParticipant bool `pulumi:"isCommitParticipant"`
+	// Whether the availability database is local.
+	IsLocal bool `pulumi:"isLocal"`
+	// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+	IsPrimaryReplica bool `pulumi:"isPrimaryReplica"`
+	// Whether this data movement is suspended.
+	IsSuspended bool `pulumi:"isSuspended"`
+	// the database replica name.
+	ReplicaName string `pulumi:"replicaName"`
+	// Description of the database suspended state reason.
+	SuspendReasonDescription string `pulumi:"suspendReasonDescription"`
+	// Description of the health of database.
+	SynchronizationHealthDescription string `pulumi:"synchronizationHealthDescription"`
+	// Description of the data-movement state.
+	SynchronizationStateDescription string `pulumi:"synchronizationStateDescription"`
+}
+
+// The properties of Arc Sql availability group database replica resource
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+// the database name.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Description of the database state of the availability replica.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) DatabaseStateDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) string {
+		return v.DatabaseStateDescription
+	}).(pulumi.StringOutput)
+}
+
+// Whether this replica is transaction committer.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsCommitParticipant() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) bool {
+		return v.IsCommitParticipant
+	}).(pulumi.BoolOutput)
+}
+
+// Whether the availability database is local.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsLocal() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) bool { return v.IsLocal }).(pulumi.BoolOutput)
+}
+
+// Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsPrimaryReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) bool { return v.IsPrimaryReplica }).(pulumi.BoolOutput)
+}
+
+// Whether this data movement is suspended.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) IsSuspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) bool { return v.IsSuspended }).(pulumi.BoolOutput)
+}
+
+// the database replica name.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) ReplicaName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) string { return v.ReplicaName }).(pulumi.StringOutput)
+}
+
+// Description of the database suspended state reason.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) SuspendReasonDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) string {
+		return v.SuspendReasonDescription
+	}).(pulumi.StringOutput)
+}
+
+// Description of the health of database.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) SynchronizationHealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) string {
+		return v.SynchronizationHealthDescription
+	}).(pulumi.StringOutput)
+}
+
+// Description of the data-movement state.
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput) SynchronizationStateDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse) string {
+		return v.SynchronizationStateDescription
+	}).(pulumi.StringOutput)
+}
+
+type SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) ToSqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
+		return vs[0].([]SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse)[vs[1].(int)]
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput)
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourceProperties struct {
+	// null
+	Configure *AvailabilityGroupConfigure `pulumi:"configure"`
+	// the replica name.
+	ReplicaName *string `pulumi:"replicaName"`
+}
+
+// SqlAvailabilityGroupReplicaResourcePropertiesInput is an input type that accepts SqlAvailabilityGroupReplicaResourcePropertiesArgs and SqlAvailabilityGroupReplicaResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupReplicaResourcePropertiesInput` via:
+//
+//	SqlAvailabilityGroupReplicaResourcePropertiesArgs{...}
+type SqlAvailabilityGroupReplicaResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupReplicaResourcePropertiesOutput() SqlAvailabilityGroupReplicaResourcePropertiesOutput
+	ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(context.Context) SqlAvailabilityGroupReplicaResourcePropertiesOutput
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesArgs struct {
+	// null
+	Configure AvailabilityGroupConfigurePtrInput `pulumi:"configure"`
+	// the replica name.
+	ReplicaName pulumi.StringPtrInput `pulumi:"replicaName"`
+}
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupReplicaResourcePropertiesOutput() SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return i.ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupReplicaResourcePropertiesArgs) ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupReplicaResourcePropertiesOutput)
+}
+
+// SqlAvailabilityGroupReplicaResourcePropertiesArrayInput is an input type that accepts SqlAvailabilityGroupReplicaResourcePropertiesArray and SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput values.
+// You can construct a concrete instance of `SqlAvailabilityGroupReplicaResourcePropertiesArrayInput` via:
+//
+//	SqlAvailabilityGroupReplicaResourcePropertiesArray{ SqlAvailabilityGroupReplicaResourcePropertiesArgs{...} }
+type SqlAvailabilityGroupReplicaResourcePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput
+	ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutputWithContext(context.Context) SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput
+}
+
+type SqlAvailabilityGroupReplicaResourcePropertiesArray []SqlAvailabilityGroupReplicaResourcePropertiesInput
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupReplicaResourceProperties)(nil)).Elem()
+}
+
+func (i SqlAvailabilityGroupReplicaResourcePropertiesArray) ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput {
+	return i.ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i SqlAvailabilityGroupReplicaResourcePropertiesArray) ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput)
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesOutput() SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return o
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) Configure() AvailabilityGroupConfigurePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *AvailabilityGroupConfigure { return v.Configure }).(AvailabilityGroupConfigurePtrOutput)
+}
+
+// the replica name.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesOutput) ReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourceProperties) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+type SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupReplicaResourceProperties)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutput() SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupReplicaResourcePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupReplicaResourceProperties {
+		return vs[0].([]SqlAvailabilityGroupReplicaResourceProperties)[vs[1].(int)]
+	}).(SqlAvailabilityGroupReplicaResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesResponse struct {
+	// null
+	Configure *AvailabilityGroupConfigureResponse `pulumi:"configure"`
+	// ID GUID of the availability group.
+	ReplicaId string `pulumi:"replicaId"`
+	// the replica name.
+	ReplicaName *string `pulumi:"replicaName"`
+	// null
+	State *AvailabilityGroupStateResponse `pulumi:"state"`
+}
+
+// The properties of Arc Sql availability group replica resource
+type SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlAvailabilityGroupReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesResponseOutput() SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput {
+	return o
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) Configure() AvailabilityGroupConfigureResponsePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *AvailabilityGroupConfigureResponse {
+		return v.Configure
+	}).(AvailabilityGroupConfigureResponsePtrOutput)
+}
+
+// ID GUID of the availability group.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) string { return v.ReplicaId }).(pulumi.StringOutput)
+}
+
+// the replica name.
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) ReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *string { return v.ReplicaName }).(pulumi.StringPtrOutput)
+}
+
+// null
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput) State() AvailabilityGroupStateResponsePtrOutput {
+	return o.ApplyT(func(v SqlAvailabilityGroupReplicaResourcePropertiesResponse) *AvailabilityGroupStateResponse {
+		return v.State
+	}).(AvailabilityGroupStateResponsePtrOutput)
+}
+
+type SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlAvailabilityGroupReplicaResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput() SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput) ToSqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutputWithContext(ctx context.Context) SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput) Index(i pulumi.IntInput) SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlAvailabilityGroupReplicaResourcePropertiesResponse {
+		return vs[0].([]SqlAvailabilityGroupReplicaResourcePropertiesResponse)[vs[1].(int)]
+	}).(SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput)
+}
+
 // The raw kubernetes information.
 type SqlManagedInstanceK8sRaw struct {
 	// The kubernetes spec information.
@@ -7339,6 +8948,606 @@ func (o SqlManagedInstanceSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 		}
 		return v.Tier
 	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourceProperties struct {
+	// A list of Availability Group Database Replicas.
+	Databases *SqlServerAvailabilityGroupResourcePropertiesDatabases `pulumi:"databases"`
+	// Availability Group Info
+	Info *AvailabilityGroupInfo `pulumi:"info"`
+	// A list of Availability Group Replicas.
+	Replicas *SqlServerAvailabilityGroupResourcePropertiesReplicas `pulumi:"replicas"`
+}
+
+// SqlServerAvailabilityGroupResourcePropertiesInput is an input type that accepts SqlServerAvailabilityGroupResourcePropertiesArgs and SqlServerAvailabilityGroupResourcePropertiesOutput values.
+// You can construct a concrete instance of `SqlServerAvailabilityGroupResourcePropertiesInput` via:
+//
+//	SqlServerAvailabilityGroupResourcePropertiesArgs{...}
+type SqlServerAvailabilityGroupResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlServerAvailabilityGroupResourcePropertiesOutput() SqlServerAvailabilityGroupResourcePropertiesOutput
+	ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(context.Context) SqlServerAvailabilityGroupResourcePropertiesOutput
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesArgs struct {
+	// A list of Availability Group Database Replicas.
+	Databases SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrInput `pulumi:"databases"`
+	// Availability Group Info
+	Info AvailabilityGroupInfoPtrInput `pulumi:"info"`
+	// A list of Availability Group Replicas.
+	Replicas SqlServerAvailabilityGroupResourcePropertiesReplicasPtrInput `pulumi:"replicas"`
+}
+
+func (SqlServerAvailabilityGroupResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourceProperties)(nil)).Elem()
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesArgs) ToSqlServerAvailabilityGroupResourcePropertiesOutput() SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesArgs) ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesOutput)
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourceProperties)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) ToSqlServerAvailabilityGroupResourcePropertiesOutput() SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) ToSqlServerAvailabilityGroupResourcePropertiesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesOutput {
+	return o
+}
+
+// A list of Availability Group Database Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) Databases() SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) *SqlServerAvailabilityGroupResourcePropertiesDatabases {
+		return v.Databases
+	}).(SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput)
+}
+
+// Availability Group Info
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) Info() AvailabilityGroupInfoPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) *AvailabilityGroupInfo { return v.Info }).(AvailabilityGroupInfoPtrOutput)
+}
+
+// A list of Availability Group Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesOutput) Replicas() SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourceProperties) *SqlServerAvailabilityGroupResourcePropertiesReplicas {
+		return v.Replicas
+	}).(SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput)
+}
+
+// A list of Availability Group Database Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesDatabases struct {
+	// Array of Availability Group Database Replicas.
+	Value []SqlAvailabilityGroupDatabaseReplicaResourceProperties `pulumi:"value"`
+}
+
+// SqlServerAvailabilityGroupResourcePropertiesDatabasesInput is an input type that accepts SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs and SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput values.
+// You can construct a concrete instance of `SqlServerAvailabilityGroupResourcePropertiesDatabasesInput` via:
+//
+//	SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs{...}
+type SqlServerAvailabilityGroupResourcePropertiesDatabasesInput interface {
+	pulumi.Input
+
+	ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput
+	ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutputWithContext(context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput
+}
+
+// A list of Availability Group Database Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs struct {
+	// Array of Availability Group Database Replicas.
+	Value SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayInput `pulumi:"value"`
+}
+
+func (SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesDatabases)(nil)).Elem()
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutputWithContext(context.Background())
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput)
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput).ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(ctx)
+}
+
+// SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrInput is an input type that accepts SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs, SqlServerAvailabilityGroupResourcePropertiesDatabasesPtr and SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput values.
+// You can construct a concrete instance of `SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrInput` via:
+//
+//	        SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput
+	ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput
+}
+
+type sqlServerAvailabilityGroupResourcePropertiesDatabasesPtrType SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs
+
+func SqlServerAvailabilityGroupResourcePropertiesDatabasesPtr(v *SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs) SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrInput {
+	return (*sqlServerAvailabilityGroupResourcePropertiesDatabasesPtrType)(v)
+}
+
+func (*sqlServerAvailabilityGroupResourcePropertiesDatabasesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAvailabilityGroupResourcePropertiesDatabases)(nil)).Elem()
+}
+
+func (i *sqlServerAvailabilityGroupResourcePropertiesDatabasesPtrType) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerAvailabilityGroupResourcePropertiesDatabasesPtrType) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput)
+}
+
+// A list of Availability Group Database Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesDatabases)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return o.ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerAvailabilityGroupResourcePropertiesDatabases) *SqlServerAvailabilityGroupResourcePropertiesDatabases {
+		return &v
+	}).(SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput)
+}
+
+// Array of Availability Group Database Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput) Value() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesDatabases) []SqlAvailabilityGroupDatabaseReplicaResourceProperties {
+		return v.Value
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput)
+}
+
+type SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAvailabilityGroupResourcePropertiesDatabases)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput() SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput) Elem() SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesDatabases) SqlServerAvailabilityGroupResourcePropertiesDatabases {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAvailabilityGroupResourcePropertiesDatabases
+		return ret
+	}).(SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput)
+}
+
+// Array of Availability Group Database Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput) Value() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesDatabases) []SqlAvailabilityGroupDatabaseReplicaResourceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput)
+}
+
+// A list of Availability Group Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesReplicas struct {
+	// Array of Availability Group Replicas.
+	Value []SqlAvailabilityGroupReplicaResourceProperties `pulumi:"value"`
+}
+
+// SqlServerAvailabilityGroupResourcePropertiesReplicasInput is an input type that accepts SqlServerAvailabilityGroupResourcePropertiesReplicasArgs and SqlServerAvailabilityGroupResourcePropertiesReplicasOutput values.
+// You can construct a concrete instance of `SqlServerAvailabilityGroupResourcePropertiesReplicasInput` via:
+//
+//	SqlServerAvailabilityGroupResourcePropertiesReplicasArgs{...}
+type SqlServerAvailabilityGroupResourcePropertiesReplicasInput interface {
+	pulumi.Input
+
+	ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasOutput
+	ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutputWithContext(context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasOutput
+}
+
+// A list of Availability Group Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesReplicasArgs struct {
+	// Array of Availability Group Replicas.
+	Value SqlAvailabilityGroupReplicaResourcePropertiesArrayInput `pulumi:"value"`
+}
+
+func (SqlServerAvailabilityGroupResourcePropertiesReplicasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesReplicas)(nil)).Elem()
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesReplicasArgs) ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutputWithContext(context.Background())
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesReplicasArgs) ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesReplicasOutput)
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesReplicasArgs) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerAvailabilityGroupResourcePropertiesReplicasArgs) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesReplicasOutput).ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(ctx)
+}
+
+// SqlServerAvailabilityGroupResourcePropertiesReplicasPtrInput is an input type that accepts SqlServerAvailabilityGroupResourcePropertiesReplicasArgs, SqlServerAvailabilityGroupResourcePropertiesReplicasPtr and SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput values.
+// You can construct a concrete instance of `SqlServerAvailabilityGroupResourcePropertiesReplicasPtrInput` via:
+//
+//	        SqlServerAvailabilityGroupResourcePropertiesReplicasArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerAvailabilityGroupResourcePropertiesReplicasPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput
+	ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput
+}
+
+type sqlServerAvailabilityGroupResourcePropertiesReplicasPtrType SqlServerAvailabilityGroupResourcePropertiesReplicasArgs
+
+func SqlServerAvailabilityGroupResourcePropertiesReplicasPtr(v *SqlServerAvailabilityGroupResourcePropertiesReplicasArgs) SqlServerAvailabilityGroupResourcePropertiesReplicasPtrInput {
+	return (*sqlServerAvailabilityGroupResourcePropertiesReplicasPtrType)(v)
+}
+
+func (*sqlServerAvailabilityGroupResourcePropertiesReplicasPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAvailabilityGroupResourcePropertiesReplicas)(nil)).Elem()
+}
+
+func (i *sqlServerAvailabilityGroupResourcePropertiesReplicasPtrType) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return i.ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerAvailabilityGroupResourcePropertiesReplicasPtrType) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput)
+}
+
+// A list of Availability Group Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesReplicasOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesReplicasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesReplicas)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasOutput) ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasOutput) ToSqlServerAvailabilityGroupResourcePropertiesReplicasOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasOutput) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return o.ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasOutput) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerAvailabilityGroupResourcePropertiesReplicas) *SqlServerAvailabilityGroupResourcePropertiesReplicas {
+		return &v
+	}).(SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput)
+}
+
+// Array of Availability Group Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasOutput) Value() SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesReplicas) []SqlAvailabilityGroupReplicaResourceProperties {
+		return v.Value
+	}).(SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput)
+}
+
+type SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAvailabilityGroupResourcePropertiesReplicas)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput() SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput) Elem() SqlServerAvailabilityGroupResourcePropertiesReplicasOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesReplicas) SqlServerAvailabilityGroupResourcePropertiesReplicas {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAvailabilityGroupResourcePropertiesReplicas
+		return ret
+	}).(SqlServerAvailabilityGroupResourcePropertiesReplicasOutput)
+}
+
+// Array of Availability Group Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput) Value() SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesReplicas) []SqlAvailabilityGroupReplicaResourceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput)
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesResponse struct {
+	// ID GUID of the availability group.
+	AvailabilityGroupId string `pulumi:"availabilityGroupId"`
+	// Timestamp for when the data was collected from the client machine.
+	CollectionTimestamp string `pulumi:"collectionTimestamp"`
+	// A list of Availability Group Database Replicas.
+	Databases *SqlServerAvailabilityGroupResourcePropertiesResponseDatabases `pulumi:"databases"`
+	// Availability Group Info
+	Info *AvailabilityGroupInfoResponse `pulumi:"info"`
+	// the SQL Server Instance name.
+	InstanceName string `pulumi:"instanceName"`
+	// The provisioning state of the Arc-enabled SQL Server availability group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// A list of Availability Group Replicas.
+	Replicas *SqlServerAvailabilityGroupResourcePropertiesResponseReplicas `pulumi:"replicas"`
+	// the SQL server name.
+	ServerName string `pulumi:"serverName"`
+}
+
+// The properties of Arc Sql Server availability group resource
+type SqlServerAvailabilityGroupResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseOutput() SqlServerAvailabilityGroupResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesResponseOutput {
+	return o
+}
+
+// ID GUID of the availability group.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) AvailabilityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.AvailabilityGroupId }).(pulumi.StringOutput)
+}
+
+// Timestamp for when the data was collected from the client machine.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) CollectionTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.CollectionTimestamp }).(pulumi.StringOutput)
+}
+
+// A list of Availability Group Database Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) Databases() SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) *SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
+		return v.Databases
+	}).(SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput)
+}
+
+// Availability Group Info
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) Info() AvailabilityGroupInfoResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) *AvailabilityGroupInfoResponse {
+		return v.Info
+	}).(AvailabilityGroupInfoResponsePtrOutput)
+}
+
+// the SQL Server Instance name.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the Arc-enabled SQL Server availability group resource.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// A list of Availability Group Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) Replicas() SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) *SqlServerAvailabilityGroupResourcePropertiesResponseReplicas {
+		return v.Replicas
+	}).(SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput)
+}
+
+// the SQL server name.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseOutput) ServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponse) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+// A list of Availability Group Database Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesResponseDatabases struct {
+	// Link to retrieve next page of results.
+	NextLink string `pulumi:"nextLink"`
+	// Array of Availability Group Database Replicas.
+	Value []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse `pulumi:"value"`
+}
+
+// A list of Availability Group Database Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesResponseDatabases)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput() SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput {
+	return o
+}
+
+// Link to retrieve next page of results.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponseDatabases) string { return v.NextLink }).(pulumi.StringOutput)
+}
+
+// Array of Availability Group Database Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput) Value() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponseDatabases) []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
+		return v.Value
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput)
+}
+
+type SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAvailabilityGroupResourcePropertiesResponseDatabases)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput() SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput) Elem() SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesResponseDatabases) SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAvailabilityGroupResourcePropertiesResponseDatabases
+		return ret
+	}).(SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput)
+}
+
+// Link to retrieve next page of results.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesResponseDatabases) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NextLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of Availability Group Database Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput) Value() SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesResponseDatabases) []SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput)
+}
+
+// A list of Availability Group Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesResponseReplicas struct {
+	// Link to retrieve next page of results.
+	NextLink string `pulumi:"nextLink"`
+	// Array of Availability Group Replicas.
+	Value []SqlAvailabilityGroupReplicaResourcePropertiesResponse `pulumi:"value"`
+}
+
+// A list of Availability Group Replicas.
+type SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAvailabilityGroupResourcePropertiesResponseReplicas)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput() SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput {
+	return o
+}
+
+// Link to retrieve next page of results.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponseReplicas) string { return v.NextLink }).(pulumi.StringOutput)
+}
+
+// Array of Availability Group Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput) Value() SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v SqlServerAvailabilityGroupResourcePropertiesResponseReplicas) []SqlAvailabilityGroupReplicaResourcePropertiesResponse {
+		return v.Value
+	}).(SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput)
+}
+
+type SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAvailabilityGroupResourcePropertiesResponseReplicas)(nil)).Elem()
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput() SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) ToSqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutputWithContext(ctx context.Context) SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput {
+	return o
+}
+
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) Elem() SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesResponseReplicas) SqlServerAvailabilityGroupResourcePropertiesResponseReplicas {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAvailabilityGroupResourcePropertiesResponseReplicas
+		return ret
+	}).(SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput)
+}
+
+// Link to retrieve next page of results.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesResponseReplicas) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NextLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of Availability Group Replicas.
+func (o SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput) Value() SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *SqlServerAvailabilityGroupResourcePropertiesResponseReplicas) []SqlAvailabilityGroupReplicaResourcePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput)
 }
 
 // The properties of Arc Sql Server database resource
@@ -8803,6 +11012,59 @@ func (o SqlServerInstancePropertiesResponseOutput) Version() pulumi.StringPtrOut
 	return o.ApplyT(func(v SqlServerInstancePropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+// The telemetry column for the SQL Server instance.
+type SqlServerInstanceTelemetryColumnResponse struct {
+	// The name of the telemetry column.
+	Name *string `pulumi:"name"`
+	// The type of the telemetry column.
+	Type *string `pulumi:"type"`
+}
+
+// The telemetry column for the SQL Server instance.
+type SqlServerInstanceTelemetryColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerInstanceTelemetryColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerInstanceTelemetryColumnResponse)(nil)).Elem()
+}
+
+func (o SqlServerInstanceTelemetryColumnResponseOutput) ToSqlServerInstanceTelemetryColumnResponseOutput() SqlServerInstanceTelemetryColumnResponseOutput {
+	return o
+}
+
+func (o SqlServerInstanceTelemetryColumnResponseOutput) ToSqlServerInstanceTelemetryColumnResponseOutputWithContext(ctx context.Context) SqlServerInstanceTelemetryColumnResponseOutput {
+	return o
+}
+
+// The name of the telemetry column.
+func (o SqlServerInstanceTelemetryColumnResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceTelemetryColumnResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of the telemetry column.
+func (o SqlServerInstanceTelemetryColumnResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerInstanceTelemetryColumnResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerInstanceTelemetryColumnResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SqlServerInstanceTelemetryColumnResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SqlServerInstanceTelemetryColumnResponse)(nil)).Elem()
+}
+
+func (o SqlServerInstanceTelemetryColumnResponseArrayOutput) ToSqlServerInstanceTelemetryColumnResponseArrayOutput() SqlServerInstanceTelemetryColumnResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerInstanceTelemetryColumnResponseArrayOutput) ToSqlServerInstanceTelemetryColumnResponseArrayOutputWithContext(ctx context.Context) SqlServerInstanceTelemetryColumnResponseArrayOutput {
+	return o
+}
+
+func (o SqlServerInstanceTelemetryColumnResponseArrayOutput) Index(i pulumi.IntInput) SqlServerInstanceTelemetryColumnResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SqlServerInstanceTelemetryColumnResponse {
+		return vs[0].([]SqlServerInstanceTelemetryColumnResponse)[vs[1].(int)]
+	}).(SqlServerInstanceTelemetryColumnResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -9452,6 +11714,16 @@ func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryDomainControllersResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryInformationOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryInformationPtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigureOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigurePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigureResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupConfigureResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupInfoOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupInfoPtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupInfoResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupStateResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilityGroupStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationPtrOutput{})
 	pulumi.RegisterOutputType(BasicLoginInformationResponseOutput{})
@@ -9518,6 +11790,14 @@ func init() {
 	pulumi.RegisterOutputType(PostgresInstanceSkuPtrOutput{})
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponseOutput{})
 	pulumi.RegisterOutputType(PostgresInstanceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlAvailabilityGroupReplicaResourcePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawPtrOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceK8sRawResponseOutput{})
@@ -9532,6 +11812,16 @@ func init() {
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuPtrOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuResponseOutput{})
 	pulumi.RegisterOutputType(SqlManagedInstanceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesDatabasesOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesDatabasesPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesReplicasOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesReplicasPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesResponseDatabasesPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesResponseReplicasOutput{})
+	pulumi.RegisterOutputType(SqlServerAvailabilityGroupResourcePropertiesResponseReplicasPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesBackupInformationOutput{})
 	pulumi.RegisterOutputType(SqlServerDatabaseResourcePropertiesBackupInformationPtrOutput{})
@@ -9545,6 +11835,8 @@ func init() {
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SqlServerInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerInstanceTelemetryColumnResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerInstanceTelemetryColumnResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalOutput{})
 	pulumi.RegisterOutputType(UploadServicePrincipalPtrOutput{})

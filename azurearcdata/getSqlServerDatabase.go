@@ -13,6 +13,8 @@ import (
 
 // Retrieves an Arc Sql Server database.
 // Azure REST API version: 2023-01-15-preview.
+//
+// Other available API versions: 2024-01-01.
 func LookupSqlServerDatabase(ctx *pulumi.Context, args *LookupSqlServerDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerDatabaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerDatabaseResult

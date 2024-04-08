@@ -14,6 +14,8 @@ import (
 
 // A SqlServerInstance.
 // Azure REST API version: 2023-01-15-preview. Prior API version in Azure Native 1.x: 2021-06-01-preview.
+//
+// Other available API versions: 2024-01-01.
 type SqlServerInstance struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +64,9 @@ func NewSqlServerInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20230115preview:SqlServerInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerInstance"),
 		},
 	})
 	opts = append(opts, aliases)

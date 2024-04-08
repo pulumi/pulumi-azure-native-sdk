@@ -15,7 +15,7 @@ import (
 // Subvolume Information properties
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2021-10-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01.
+// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview.
 type Subvolume struct {
 	pulumi.CustomResourceState
 
@@ -82,6 +82,9 @@ func NewSubvolume(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20230701:Subvolume"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230701preview:Subvolume"),
 		},
 	})
 	opts = append(opts, aliases)

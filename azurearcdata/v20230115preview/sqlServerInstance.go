@@ -62,6 +62,9 @@ func NewSqlServerInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20220615preview:SqlServerInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20240101:SqlServerInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

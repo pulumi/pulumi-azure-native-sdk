@@ -14,6 +14,8 @@ import (
 
 // DevOps Configuration resource.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 type DevOpsConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +45,9 @@ func NewDevOpsConfiguration(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:security/v20230901preview:DevOpsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:security/v20240401:DevOpsConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

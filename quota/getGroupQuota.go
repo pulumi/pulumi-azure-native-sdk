@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on groupQuota can be access from the groupQuota APIs.
+// Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on group quota can be access from the group quota APIs.
 // Azure REST API version: 2023-06-01-preview.
 func LookupGroupQuota(ctx *pulumi.Context, args *LookupGroupQuotaArgs, opts ...pulumi.InvokeOption) (*LookupGroupQuotaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
@@ -27,7 +27,7 @@ type LookupGroupQuotaArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName string `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	MgId string `pulumi:"mgId"`
+	ManagementGroupId string `pulumi:"managementGroupId"`
 }
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
@@ -61,7 +61,7 @@ type LookupGroupQuotaOutputArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName pulumi.StringInput `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	MgId pulumi.StringInput `pulumi:"mgId"`
+	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
 }
 
 func (LookupGroupQuotaOutputArgs) ElementType() reflect.Type {
