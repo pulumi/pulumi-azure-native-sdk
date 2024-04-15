@@ -55,9 +55,6 @@ func NewPolicy(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.PolicySettings != nil {
-		args.PolicySettings = args.PolicySettings.ToFrontDoorPolicySettingsPtrOutput().ApplyT(func(v *FrontDoorPolicySettings) *FrontDoorPolicySettings { return v.Defaults() }).(FrontDoorPolicySettingsPtrOutput)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:network:Policy"),

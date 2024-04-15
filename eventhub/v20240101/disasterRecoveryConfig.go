@@ -77,6 +77,9 @@ func NewDisasterRecoveryConfig(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventhub/v20230101preview:DisasterRecoveryConfig"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240501preview:DisasterRecoveryConfig"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

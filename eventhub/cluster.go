@@ -15,7 +15,7 @@ import (
 // Single Event Hubs Cluster resource in List or Get operations.
 // Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2018-01-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +74,9 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240101:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240501preview:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)

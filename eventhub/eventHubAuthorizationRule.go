@@ -15,7 +15,7 @@ import (
 // Single item in a List or Get AuthorizationRule operation
 // Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
 //
-// Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
 type EventHubAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -83,6 +83,9 @@ func NewEventHubAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240101:EventHubAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240501preview:EventHubAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)

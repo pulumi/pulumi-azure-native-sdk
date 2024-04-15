@@ -183,6 +183,9 @@ func NewVirtualHub(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230901:VirtualHub"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:VirtualHub"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
