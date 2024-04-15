@@ -85,6 +85,9 @@ func NewScopeConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230901:ScopeConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:ScopeConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -243,6 +243,9 @@ func NewApplicationGateway(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230901:ApplicationGateway"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:ApplicationGateway"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

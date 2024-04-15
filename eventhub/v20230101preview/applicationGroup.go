@@ -61,6 +61,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240101:ApplicationGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240501preview:ApplicationGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // An Azure Video Indexer account.
 // Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-10-18-preview.
 //
-// Other available API versions: 2024-01-01.
+// Other available API versions: 2024-01-01, 2024-04-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +79,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:videoindexer/v20240101:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:videoindexer/v20240401preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -1307,7 +1307,7 @@ type FrontDoorPolicySettings struct {
 	CustomBlockResponseStatusCode *int `pulumi:"customBlockResponseStatusCode"`
 	// Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
 	EnabledState *string `pulumi:"enabledState"`
-	// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+	// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 	JavascriptChallengeExpirationInMinutes *int `pulumi:"javascriptChallengeExpirationInMinutes"`
 	// Describes if it is in detection mode or prevention mode at policy level.
 	Mode *string `pulumi:"mode"`
@@ -1319,19 +1319,6 @@ type FrontDoorPolicySettings struct {
 	ScrubbingRules []WebApplicationFirewallScrubbingRules `pulumi:"scrubbingRules"`
 	// State of the log scrubbing config. Default value is Enabled.
 	State *string `pulumi:"state"`
-}
-
-// Defaults sets the appropriate defaults for FrontDoorPolicySettings
-func (val *FrontDoorPolicySettings) Defaults() *FrontDoorPolicySettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.JavascriptChallengeExpirationInMinutes == nil {
-		javascriptChallengeExpirationInMinutes_ := 30
-		tmp.JavascriptChallengeExpirationInMinutes = &javascriptChallengeExpirationInMinutes_
-	}
-	return &tmp
 }
 
 // FrontDoorPolicySettingsInput is an input type that accepts FrontDoorPolicySettingsArgs and FrontDoorPolicySettingsOutput values.
@@ -1353,7 +1340,7 @@ type FrontDoorPolicySettingsArgs struct {
 	CustomBlockResponseStatusCode pulumi.IntPtrInput `pulumi:"customBlockResponseStatusCode"`
 	// Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
 	EnabledState pulumi.StringPtrInput `pulumi:"enabledState"`
-	// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+	// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 	JavascriptChallengeExpirationInMinutes pulumi.IntPtrInput `pulumi:"javascriptChallengeExpirationInMinutes"`
 	// Describes if it is in detection mode or prevention mode at policy level.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
@@ -1367,17 +1354,6 @@ type FrontDoorPolicySettingsArgs struct {
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
-// Defaults sets the appropriate defaults for FrontDoorPolicySettingsArgs
-func (val *FrontDoorPolicySettingsArgs) Defaults() *FrontDoorPolicySettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.JavascriptChallengeExpirationInMinutes == nil {
-		tmp.JavascriptChallengeExpirationInMinutes = pulumi.IntPtr(30)
-	}
-	return &tmp
-}
 func (FrontDoorPolicySettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*FrontDoorPolicySettings)(nil)).Elem()
 }
@@ -1471,7 +1447,7 @@ func (o FrontDoorPolicySettingsOutput) EnabledState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FrontDoorPolicySettings) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
 }
 
-// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 func (o FrontDoorPolicySettingsOutput) JavascriptChallengeExpirationInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FrontDoorPolicySettings) *int { return v.JavascriptChallengeExpirationInMinutes }).(pulumi.IntPtrOutput)
 }
@@ -1555,7 +1531,7 @@ func (o FrontDoorPolicySettingsPtrOutput) EnabledState() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 func (o FrontDoorPolicySettingsPtrOutput) JavascriptChallengeExpirationInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FrontDoorPolicySettings) *int {
 		if v == nil {
@@ -1623,7 +1599,7 @@ type FrontDoorPolicySettingsResponse struct {
 	CustomBlockResponseStatusCode *int `pulumi:"customBlockResponseStatusCode"`
 	// Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
 	EnabledState *string `pulumi:"enabledState"`
-	// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+	// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 	JavascriptChallengeExpirationInMinutes *int `pulumi:"javascriptChallengeExpirationInMinutes"`
 	// Describes if it is in detection mode or prevention mode at policy level.
 	Mode *string `pulumi:"mode"`
@@ -1635,19 +1611,6 @@ type FrontDoorPolicySettingsResponse struct {
 	ScrubbingRules []WebApplicationFirewallScrubbingRulesResponse `pulumi:"scrubbingRules"`
 	// State of the log scrubbing config. Default value is Enabled.
 	State *string `pulumi:"state"`
-}
-
-// Defaults sets the appropriate defaults for FrontDoorPolicySettingsResponse
-func (val *FrontDoorPolicySettingsResponse) Defaults() *FrontDoorPolicySettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.JavascriptChallengeExpirationInMinutes == nil {
-		javascriptChallengeExpirationInMinutes_ := 30
-		tmp.JavascriptChallengeExpirationInMinutes = &javascriptChallengeExpirationInMinutes_
-	}
-	return &tmp
 }
 
 // Defines top-level WebApplicationFirewallPolicy configuration settings.
@@ -1680,7 +1643,7 @@ func (o FrontDoorPolicySettingsResponseOutput) EnabledState() pulumi.StringPtrOu
 	return o.ApplyT(func(v FrontDoorPolicySettingsResponse) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
 }
 
-// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 func (o FrontDoorPolicySettingsResponseOutput) JavascriptChallengeExpirationInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FrontDoorPolicySettingsResponse) *int { return v.JavascriptChallengeExpirationInMinutes }).(pulumi.IntPtrOutput)
 }
@@ -1766,7 +1729,7 @@ func (o FrontDoorPolicySettingsResponsePtrOutput) EnabledState() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the JavaScript challenge cookie validity lifetime in minutes. Value must be an integer between 5 and 1440 with the default value being 30.
+// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
 func (o FrontDoorPolicySettingsResponsePtrOutput) JavascriptChallengeExpirationInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FrontDoorPolicySettingsResponse) *int {
 		if v == nil {

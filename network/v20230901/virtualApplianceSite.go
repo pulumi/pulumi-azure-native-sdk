@@ -101,6 +101,9 @@ func NewVirtualApplianceSite(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230601:VirtualApplianceSite"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:VirtualApplianceSite"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

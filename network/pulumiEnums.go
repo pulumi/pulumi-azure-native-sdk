@@ -11660,6 +11660,176 @@ func (in *firewallPolicyIDPSQuerySortOrderPtr) ToFirewallPolicyIDPSQuerySortOrde
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyIDPSQuerySortOrderPtrOutput)
 }
 
+// IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
+type FirewallPolicyIntrusionDetectionProfileType string
+
+const (
+	FirewallPolicyIntrusionDetectionProfileTypeBasic    = FirewallPolicyIntrusionDetectionProfileType("Basic")
+	FirewallPolicyIntrusionDetectionProfileTypeStandard = FirewallPolicyIntrusionDetectionProfileType("Standard")
+	FirewallPolicyIntrusionDetectionProfileTypeAdvanced = FirewallPolicyIntrusionDetectionProfileType("Advanced")
+	FirewallPolicyIntrusionDetectionProfileTypeExtended = FirewallPolicyIntrusionDetectionProfileType("Extended")
+)
+
+func (FirewallPolicyIntrusionDetectionProfileType) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyIntrusionDetectionProfileType)(nil)).Elem()
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToFirewallPolicyIntrusionDetectionProfileTypeOutput() FirewallPolicyIntrusionDetectionProfileTypeOutput {
+	return pulumi.ToOutput(e).(FirewallPolicyIntrusionDetectionProfileTypeOutput)
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToFirewallPolicyIntrusionDetectionProfileTypeOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionProfileTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FirewallPolicyIntrusionDetectionProfileTypeOutput)
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutput() FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return e.ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(context.Background())
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return FirewallPolicyIntrusionDetectionProfileType(e).ToFirewallPolicyIntrusionDetectionProfileTypeOutputWithContext(ctx).ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(ctx)
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FirewallPolicyIntrusionDetectionProfileType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FirewallPolicyIntrusionDetectionProfileTypeOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyIntrusionDetectionProfileTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallPolicyIntrusionDetectionProfileType)(nil)).Elem()
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToFirewallPolicyIntrusionDetectionProfileTypeOutput() FirewallPolicyIntrusionDetectionProfileTypeOutput {
+	return o
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToFirewallPolicyIntrusionDetectionProfileTypeOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionProfileTypeOutput {
+	return o
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutput() FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return o.ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyIntrusionDetectionProfileType) *FirewallPolicyIntrusionDetectionProfileType {
+		return &v
+	}).(FirewallPolicyIntrusionDetectionProfileTypePtrOutput)
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FirewallPolicyIntrusionDetectionProfileType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FirewallPolicyIntrusionDetectionProfileType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FirewallPolicyIntrusionDetectionProfileTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallPolicyIntrusionDetectionProfileTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallPolicyIntrusionDetectionProfileType)(nil)).Elem()
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypePtrOutput) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutput() FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return o
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypePtrOutput) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return o
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypePtrOutput) Elem() FirewallPolicyIntrusionDetectionProfileTypeOutput {
+	return o.ApplyT(func(v *FirewallPolicyIntrusionDetectionProfileType) FirewallPolicyIntrusionDetectionProfileType {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallPolicyIntrusionDetectionProfileType
+		return ret
+	}).(FirewallPolicyIntrusionDetectionProfileTypeOutput)
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallPolicyIntrusionDetectionProfileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FirewallPolicyIntrusionDetectionProfileType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FirewallPolicyIntrusionDetectionProfileTypeInput is an input type that accepts values of the FirewallPolicyIntrusionDetectionProfileType enum
+// A concrete instance of `FirewallPolicyIntrusionDetectionProfileTypeInput` can be one of the following:
+//
+//	FirewallPolicyIntrusionDetectionProfileTypeBasic
+//	FirewallPolicyIntrusionDetectionProfileTypeStandard
+//	FirewallPolicyIntrusionDetectionProfileTypeAdvanced
+//	FirewallPolicyIntrusionDetectionProfileTypeExtended
+type FirewallPolicyIntrusionDetectionProfileTypeInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyIntrusionDetectionProfileTypeOutput() FirewallPolicyIntrusionDetectionProfileTypeOutput
+	ToFirewallPolicyIntrusionDetectionProfileTypeOutputWithContext(context.Context) FirewallPolicyIntrusionDetectionProfileTypeOutput
+}
+
+var firewallPolicyIntrusionDetectionProfileTypePtrType = reflect.TypeOf((**FirewallPolicyIntrusionDetectionProfileType)(nil)).Elem()
+
+type FirewallPolicyIntrusionDetectionProfileTypePtrInput interface {
+	pulumi.Input
+
+	ToFirewallPolicyIntrusionDetectionProfileTypePtrOutput() FirewallPolicyIntrusionDetectionProfileTypePtrOutput
+	ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(context.Context) FirewallPolicyIntrusionDetectionProfileTypePtrOutput
+}
+
+type firewallPolicyIntrusionDetectionProfileTypePtr string
+
+func FirewallPolicyIntrusionDetectionProfileTypePtr(v string) FirewallPolicyIntrusionDetectionProfileTypePtrInput {
+	return (*firewallPolicyIntrusionDetectionProfileTypePtr)(&v)
+}
+
+func (*firewallPolicyIntrusionDetectionProfileTypePtr) ElementType() reflect.Type {
+	return firewallPolicyIntrusionDetectionProfileTypePtrType
+}
+
+func (in *firewallPolicyIntrusionDetectionProfileTypePtr) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutput() FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return pulumi.ToOutput(in).(FirewallPolicyIntrusionDetectionProfileTypePtrOutput)
+}
+
+func (in *firewallPolicyIntrusionDetectionProfileTypePtr) ToFirewallPolicyIntrusionDetectionProfileTypePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionProfileTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyIntrusionDetectionProfileTypePtrOutput)
+}
+
 // The rule bypass protocol.
 type FirewallPolicyIntrusionDetectionProtocol string
 
@@ -11830,7 +12000,7 @@ func (in *firewallPolicyIntrusionDetectionProtocolPtr) ToFirewallPolicyIntrusion
 	return pulumi.ToOutputWithContext(ctx, in).(FirewallPolicyIntrusionDetectionProtocolPtrOutput)
 }
 
-// Intrusion detection general state.
+// Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
 type FirewallPolicyIntrusionDetectionStateType string
 
 const (
@@ -34882,6 +35052,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallPolicyFilterRuleCollectionActionTypePtrOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyIDPSQuerySortOrderOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyIDPSQuerySortOrderPtrOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyIntrusionDetectionProfileTypeOutput{})
+	pulumi.RegisterOutputType(FirewallPolicyIntrusionDetectionProfileTypePtrOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyIntrusionDetectionProtocolOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyIntrusionDetectionProtocolPtrOutput{})
 	pulumi.RegisterOutputType(FirewallPolicyIntrusionDetectionStateTypeOutput{})

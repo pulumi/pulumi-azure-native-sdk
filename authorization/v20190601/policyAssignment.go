@@ -97,6 +97,9 @@ func NewPolicyAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:authorization/v20230401:PolicyAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20240401:PolicyAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

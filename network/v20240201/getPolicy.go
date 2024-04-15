@@ -19,7 +19,7 @@ func LookupPolicy(ctx *pulumi.Context, args *LookupPolicyArgs, opts ...pulumi.In
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupPolicyArgs struct {
@@ -60,17 +60,6 @@ type LookupPolicyResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type.
 	Type string `pulumi:"type"`
-}
-
-// Defaults sets the appropriate defaults for LookupPolicyResult
-func (val *LookupPolicyResult) Defaults() *LookupPolicyResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.PolicySettings = tmp.PolicySettings.Defaults()
-
-	return &tmp
 }
 
 func LookupPolicyOutput(ctx *pulumi.Context, args LookupPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupPolicyResultOutput {

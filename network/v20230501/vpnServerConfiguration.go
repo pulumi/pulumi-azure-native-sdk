@@ -142,6 +142,9 @@ func NewVpnServerConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230901:VpnServerConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20231101:VpnServerConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
