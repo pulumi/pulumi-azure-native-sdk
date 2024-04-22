@@ -15,7 +15,7 @@ import (
 // Base class for backup items.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-02-01.
 //
-// Other available API versions: 2016-06-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01.
+// Other available API versions: 2016-06-01, 2023-06-01, 2023-08-01, 2024-01-01, 2024-02-01, 2024-04-01.
 type ProtectedItem struct {
 	pulumi.CustomResourceState
 
@@ -145,6 +145,9 @@ func NewProtectedItem(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240201:ProtectedItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240401:ProtectedItem"),
 		},
 	})
 	opts = append(opts, aliases)

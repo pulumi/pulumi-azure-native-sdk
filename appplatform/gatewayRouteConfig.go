@@ -15,7 +15,7 @@ import (
 // Spring Cloud Gateway route config resource
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
 type GatewayRouteConfig struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +90,9 @@ func NewGatewayRouteConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:GatewayRouteConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240501preview:GatewayRouteConfig"),
 		},
 	})
 	opts = append(opts, aliases)

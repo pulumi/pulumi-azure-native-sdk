@@ -37,6 +37,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ComponentVersion{}
 	case "azure-native:machinelearningservices:Compute":
 		r = &Compute{}
+	case "azure-native:machinelearningservices:ConnectionDeployment":
+		r = &ConnectionDeployment{}
+	case "azure-native:machinelearningservices:ConnectionRaiBlocklist":
+		r = &ConnectionRaiBlocklist{}
+	case "azure-native:machinelearningservices:ConnectionRaiBlocklistItem":
+		r = &ConnectionRaiBlocklistItem{}
+	case "azure-native:machinelearningservices:ConnectionRaiPolicy":
+		r = &ConnectionRaiPolicy{}
 	case "azure-native:machinelearningservices:DataContainer":
 		r = &DataContainer{}
 	case "azure-native:machinelearningservices:DataVersion":
@@ -91,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OnlineEndpoint{}
 	case "azure-native:machinelearningservices:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:machinelearningservices:RaiPolicy":
+		r = &RaiPolicy{}
 	case "azure-native:machinelearningservices:Registry":
 		r = &Registry{}
 	case "azure-native:machinelearningservices:RegistryCodeContainer":

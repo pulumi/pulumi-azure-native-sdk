@@ -14,6 +14,8 @@ import (
 
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2024-01-01-preview.
+//
+// Other available API versions: 2024-04-01-preview.
 type MarketplaceSubscription struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewMarketplaceSubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:MarketplaceSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:MarketplaceSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

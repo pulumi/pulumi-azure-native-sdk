@@ -55,6 +55,9 @@ func NewAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Context
 		{
 			Type: pulumi.String("azure-native:web/v20230101:AppServiceEnvironmentAseCustomDnsSuffixConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:AppServiceEnvironmentAseCustomDnsSuffixConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

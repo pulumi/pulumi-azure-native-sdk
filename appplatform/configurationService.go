@@ -15,7 +15,7 @@ import (
 // Application Configuration Service resource
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01, 2024-01-01-preview, 2024-05-01-preview.
 type ConfigurationService struct {
 	pulumi.CustomResourceState
 
@@ -90,6 +90,9 @@ func NewConfigurationService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ConfigurationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240501preview:ConfigurationService"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -110,6 +110,9 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20220801preview:SqlVirtualMachine"),
 		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20231001:SqlVirtualMachine"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

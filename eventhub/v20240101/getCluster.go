@@ -57,8 +57,6 @@ type LookupClusterResult struct {
 	Type string `pulumi:"type"`
 	// The UTC time when the Event Hubs Cluster was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Properties of the cluster upgrade preferences.
-	UpgradePreferences *UpgradePreferencesResponse `pulumi:"upgradePreferences"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -163,11 +161,6 @@ func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 // The UTC time when the Event Hubs Cluster was last updated.
 func (o LookupClusterResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// Properties of the cluster upgrade preferences.
-func (o LookupClusterResultOutput) UpgradePreferences() UpgradePreferencesResponsePtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *UpgradePreferencesResponse { return v.UpgradePreferences }).(UpgradePreferencesResponsePtrOutput)
 }
 
 func init() {

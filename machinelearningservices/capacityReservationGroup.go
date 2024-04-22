@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2024-01-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
 type CapacityReservationGroup struct {
 	pulumi.CustomResourceState
 
@@ -57,6 +57,9 @@ func NewCapacityReservationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:CapacityReservationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:CapacityReservationGroup"),
 		},
 	})
 	opts = append(opts, aliases)

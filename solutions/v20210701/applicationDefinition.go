@@ -109,6 +109,9 @@ func NewApplicationDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:solutions/v20210201preview:ApplicationDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:solutions/v20231201preview:ApplicationDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

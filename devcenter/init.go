@@ -29,12 +29,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DevBoxDefinition{}
 	case "azure-native:devcenter:DevCenter":
 		r = &DevCenter{}
+	case "azure-native:devcenter:EncryptionSet":
+		r = &EncryptionSet{}
 	case "azure-native:devcenter:EnvironmentType":
 		r = &EnvironmentType{}
 	case "azure-native:devcenter:Gallery":
 		r = &Gallery{}
 	case "azure-native:devcenter:NetworkConnection":
 		r = &NetworkConnection{}
+	case "azure-native:devcenter:Plan":
+		r = &Plan{}
+	case "azure-native:devcenter:PlanMember":
+		r = &PlanMember{}
 	case "azure-native:devcenter:Pool":
 		r = &Pool{}
 	case "azure-native:devcenter:Project":

@@ -14,7 +14,7 @@ import (
 // Description for Get domain ownership identifier for web app.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2018-11-01, 2020-10-01, 2023-01-01.
+// Other available API versions: 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01.
 func LookupWebAppDomainOwnershipIdentifierSlot(ctx *pulumi.Context, args *LookupWebAppDomainOwnershipIdentifierSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDomainOwnershipIdentifierSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDomainOwnershipIdentifierSlotResult

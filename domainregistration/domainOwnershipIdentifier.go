@@ -15,7 +15,7 @@ import (
 // Domain ownership Identifier.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
 type DomainOwnershipIdentifier struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +84,9 @@ func NewDomainOwnershipIdentifier(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:domainregistration/v20230101:DomainOwnershipIdentifier"),
+		},
+		{
+			Type: pulumi.String("azure-native:domainregistration/v20231201:DomainOwnershipIdentifier"),
 		},
 	})
 	opts = append(opts, aliases)

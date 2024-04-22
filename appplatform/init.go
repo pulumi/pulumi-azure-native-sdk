@@ -65,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewayCustomDomain{}
 	case "azure-native:appplatform:GatewayRouteConfig":
 		r = &GatewayRouteConfig{}
+	case "azure-native:appplatform:Job":
+		r = &Job{}
 	case "azure-native:appplatform:MonitoringSetting":
 		r = &MonitoringSetting{}
 	case "azure-native:appplatform:Service":

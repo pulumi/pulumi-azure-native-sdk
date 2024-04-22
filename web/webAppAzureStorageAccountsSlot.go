@@ -15,7 +15,7 @@ import (
 // AzureStorageInfo dictionary resource.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
 type WebAppAzureStorageAccountsSlot struct {
 	pulumi.CustomResourceState
 
@@ -87,6 +87,9 @@ func NewWebAppAzureStorageAccountsSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebAppAzureStorageAccountsSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppAzureStorageAccountsSlot"),
 		},
 	})
 	opts = append(opts, aliases)

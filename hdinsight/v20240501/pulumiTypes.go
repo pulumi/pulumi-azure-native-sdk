@@ -2046,7 +2046,7 @@ func (o ClusterPoolResourcePropertiesLogAnalyticsProfilePtrOutput) WorkspaceId()
 
 // Cluster pool network profile.
 type ClusterPoolResourcePropertiesNetworkProfile struct {
-	// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+	// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 	ApiServerAuthorizedIpRanges []string `pulumi:"apiServerAuthorizedIpRanges"`
 	// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
 	EnablePrivateApiServer *bool `pulumi:"enablePrivateApiServer"`
@@ -2082,7 +2082,7 @@ type ClusterPoolResourcePropertiesNetworkProfileInput interface {
 
 // Cluster pool network profile.
 type ClusterPoolResourcePropertiesNetworkProfileArgs struct {
-	// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+	// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 	ApiServerAuthorizedIpRanges pulumi.StringArrayInput `pulumi:"apiServerAuthorizedIpRanges"`
 	// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
 	EnablePrivateApiServer pulumi.BoolPtrInput `pulumi:"enablePrivateApiServer"`
@@ -2181,7 +2181,7 @@ func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ToClusterPoolResource
 	}).(ClusterPoolResourcePropertiesNetworkProfilePtrOutput)
 }
 
-// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 func (o ClusterPoolResourcePropertiesNetworkProfileOutput) ApiServerAuthorizedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesNetworkProfile) []string { return v.ApiServerAuthorizedIpRanges }).(pulumi.StringArrayOutput)
 }
@@ -2225,7 +2225,7 @@ func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) Elem() ClusterPool
 	}).(ClusterPoolResourcePropertiesNetworkProfileOutput)
 }
 
-// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 func (o ClusterPoolResourcePropertiesNetworkProfilePtrOutput) ApiServerAuthorizedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterPoolResourcePropertiesNetworkProfile) []string {
 		if v == nil {
@@ -2479,7 +2479,7 @@ func (o ClusterPoolResourcePropertiesResponseLogAnalyticsProfilePtrOutput) Works
 
 // Cluster pool network profile.
 type ClusterPoolResourcePropertiesResponseNetworkProfile struct {
-	// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+	// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 	ApiServerAuthorizedIpRanges []string `pulumi:"apiServerAuthorizedIpRanges"`
 	// ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
 	EnablePrivateApiServer *bool `pulumi:"enablePrivateApiServer"`
@@ -2517,7 +2517,7 @@ func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ToClusterPool
 	return o
 }
 
-// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 func (o ClusterPoolResourcePropertiesResponseNetworkProfileOutput) ApiServerAuthorizedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseNetworkProfile) []string {
 		return v.ApiServerAuthorizedIpRanges
@@ -2563,7 +2563,7 @@ func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) Elem() Clu
 	}).(ClusterPoolResourcePropertiesResponseNetworkProfileOutput)
 }
 
-// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
 func (o ClusterPoolResourcePropertiesResponseNetworkProfilePtrOutput) ApiServerAuthorizedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterPoolResourcePropertiesResponseNetworkProfile) []string {
 		if v == nil {

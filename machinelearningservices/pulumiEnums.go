@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Level at which content is filtered.
+type AllowedContentLevel string
+
+const (
+	AllowedContentLevelLow    = AllowedContentLevel("Low")
+	AllowedContentLevelMedium = AllowedContentLevel("Medium")
+	AllowedContentLevelHigh   = AllowedContentLevel("High")
+)
+
+func (AllowedContentLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedContentLevel)(nil)).Elem()
+}
+
+func (e AllowedContentLevel) ToAllowedContentLevelOutput() AllowedContentLevelOutput {
+	return pulumi.ToOutput(e).(AllowedContentLevelOutput)
+}
+
+func (e AllowedContentLevel) ToAllowedContentLevelOutputWithContext(ctx context.Context) AllowedContentLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AllowedContentLevelOutput)
+}
+
+func (e AllowedContentLevel) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
+	return e.ToAllowedContentLevelPtrOutputWithContext(context.Background())
+}
+
+func (e AllowedContentLevel) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
+	return AllowedContentLevel(e).ToAllowedContentLevelOutputWithContext(ctx).ToAllowedContentLevelPtrOutputWithContext(ctx)
+}
+
+func (e AllowedContentLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllowedContentLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllowedContentLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AllowedContentLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AllowedContentLevelOutput struct{ *pulumi.OutputState }
+
+func (AllowedContentLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedContentLevel)(nil)).Elem()
+}
+
+func (o AllowedContentLevelOutput) ToAllowedContentLevelOutput() AllowedContentLevelOutput {
+	return o
+}
+
+func (o AllowedContentLevelOutput) ToAllowedContentLevelOutputWithContext(ctx context.Context) AllowedContentLevelOutput {
+	return o
+}
+
+func (o AllowedContentLevelOutput) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
+	return o.ToAllowedContentLevelPtrOutputWithContext(context.Background())
+}
+
+func (o AllowedContentLevelOutput) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedContentLevel) *AllowedContentLevel {
+		return &v
+	}).(AllowedContentLevelPtrOutput)
+}
+
+func (o AllowedContentLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AllowedContentLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllowedContentLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AllowedContentLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllowedContentLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllowedContentLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AllowedContentLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (AllowedContentLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AllowedContentLevel)(nil)).Elem()
+}
+
+func (o AllowedContentLevelPtrOutput) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
+	return o
+}
+
+func (o AllowedContentLevelPtrOutput) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
+	return o
+}
+
+func (o AllowedContentLevelPtrOutput) Elem() AllowedContentLevelOutput {
+	return o.ApplyT(func(v *AllowedContentLevel) AllowedContentLevel {
+		if v != nil {
+			return *v
+		}
+		var ret AllowedContentLevel
+		return ret
+	}).(AllowedContentLevelOutput)
+}
+
+func (o AllowedContentLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllowedContentLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllowedContentLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AllowedContentLevelInput is an input type that accepts values of the AllowedContentLevel enum
+// A concrete instance of `AllowedContentLevelInput` can be one of the following:
+//
+//	AllowedContentLevelLow
+//	AllowedContentLevelMedium
+//	AllowedContentLevelHigh
+type AllowedContentLevelInput interface {
+	pulumi.Input
+
+	ToAllowedContentLevelOutput() AllowedContentLevelOutput
+	ToAllowedContentLevelOutputWithContext(context.Context) AllowedContentLevelOutput
+}
+
+var allowedContentLevelPtrType = reflect.TypeOf((**AllowedContentLevel)(nil)).Elem()
+
+type AllowedContentLevelPtrInput interface {
+	pulumi.Input
+
+	ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput
+	ToAllowedContentLevelPtrOutputWithContext(context.Context) AllowedContentLevelPtrOutput
+}
+
+type allowedContentLevelPtr string
+
+func AllowedContentLevelPtr(v string) AllowedContentLevelPtrInput {
+	return (*allowedContentLevelPtr)(&v)
+}
+
+func (*allowedContentLevelPtr) ElementType() reflect.Type {
+	return allowedContentLevelPtrType
+}
+
+func (in *allowedContentLevelPtr) ToAllowedContentLevelPtrOutput() AllowedContentLevelPtrOutput {
+	return pulumi.ToOutput(in).(AllowedContentLevelPtrOutput)
+}
+
+func (in *allowedContentLevelPtr) ToAllowedContentLevelPtrOutputWithContext(ctx context.Context) AllowedContentLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AllowedContentLevelPtrOutput)
+}
+
 // Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
 type ApplicationSharingPolicy string
 
@@ -9267,6 +9435,506 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
+// Content source to apply the Content Filters.
+type RaiPolicyContentSource string
+
+const (
+	RaiPolicyContentSourcePrompt     = RaiPolicyContentSource("Prompt")
+	RaiPolicyContentSourceCompletion = RaiPolicyContentSource("Completion")
+)
+
+func (RaiPolicyContentSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentSource)(nil)).Elem()
+}
+
+func (e RaiPolicyContentSource) ToRaiPolicyContentSourceOutput() RaiPolicyContentSourceOutput {
+	return pulumi.ToOutput(e).(RaiPolicyContentSourceOutput)
+}
+
+func (e RaiPolicyContentSource) ToRaiPolicyContentSourceOutputWithContext(ctx context.Context) RaiPolicyContentSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RaiPolicyContentSourceOutput)
+}
+
+func (e RaiPolicyContentSource) ToRaiPolicyContentSourcePtrOutput() RaiPolicyContentSourcePtrOutput {
+	return e.ToRaiPolicyContentSourcePtrOutputWithContext(context.Background())
+}
+
+func (e RaiPolicyContentSource) ToRaiPolicyContentSourcePtrOutputWithContext(ctx context.Context) RaiPolicyContentSourcePtrOutput {
+	return RaiPolicyContentSource(e).ToRaiPolicyContentSourceOutputWithContext(ctx).ToRaiPolicyContentSourcePtrOutputWithContext(ctx)
+}
+
+func (e RaiPolicyContentSource) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RaiPolicyContentSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RaiPolicyContentSource) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RaiPolicyContentSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RaiPolicyContentSourceOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentSource)(nil)).Elem()
+}
+
+func (o RaiPolicyContentSourceOutput) ToRaiPolicyContentSourceOutput() RaiPolicyContentSourceOutput {
+	return o
+}
+
+func (o RaiPolicyContentSourceOutput) ToRaiPolicyContentSourceOutputWithContext(ctx context.Context) RaiPolicyContentSourceOutput {
+	return o
+}
+
+func (o RaiPolicyContentSourceOutput) ToRaiPolicyContentSourcePtrOutput() RaiPolicyContentSourcePtrOutput {
+	return o.ToRaiPolicyContentSourcePtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyContentSourceOutput) ToRaiPolicyContentSourcePtrOutputWithContext(ctx context.Context) RaiPolicyContentSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiPolicyContentSource) *RaiPolicyContentSource {
+		return &v
+	}).(RaiPolicyContentSourcePtrOutput)
+}
+
+func (o RaiPolicyContentSourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyContentSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RaiPolicyContentSource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RaiPolicyContentSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyContentSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RaiPolicyContentSource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyContentSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiPolicyContentSource)(nil)).Elem()
+}
+
+func (o RaiPolicyContentSourcePtrOutput) ToRaiPolicyContentSourcePtrOutput() RaiPolicyContentSourcePtrOutput {
+	return o
+}
+
+func (o RaiPolicyContentSourcePtrOutput) ToRaiPolicyContentSourcePtrOutputWithContext(ctx context.Context) RaiPolicyContentSourcePtrOutput {
+	return o
+}
+
+func (o RaiPolicyContentSourcePtrOutput) Elem() RaiPolicyContentSourceOutput {
+	return o.ApplyT(func(v *RaiPolicyContentSource) RaiPolicyContentSource {
+		if v != nil {
+			return *v
+		}
+		var ret RaiPolicyContentSource
+		return ret
+	}).(RaiPolicyContentSourceOutput)
+}
+
+func (o RaiPolicyContentSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyContentSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RaiPolicyContentSource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RaiPolicyContentSourceInput is an input type that accepts values of the RaiPolicyContentSource enum
+// A concrete instance of `RaiPolicyContentSourceInput` can be one of the following:
+//
+//	RaiPolicyContentSourcePrompt
+//	RaiPolicyContentSourceCompletion
+type RaiPolicyContentSourceInput interface {
+	pulumi.Input
+
+	ToRaiPolicyContentSourceOutput() RaiPolicyContentSourceOutput
+	ToRaiPolicyContentSourceOutputWithContext(context.Context) RaiPolicyContentSourceOutput
+}
+
+var raiPolicyContentSourcePtrType = reflect.TypeOf((**RaiPolicyContentSource)(nil)).Elem()
+
+type RaiPolicyContentSourcePtrInput interface {
+	pulumi.Input
+
+	ToRaiPolicyContentSourcePtrOutput() RaiPolicyContentSourcePtrOutput
+	ToRaiPolicyContentSourcePtrOutputWithContext(context.Context) RaiPolicyContentSourcePtrOutput
+}
+
+type raiPolicyContentSourcePtr string
+
+func RaiPolicyContentSourcePtr(v string) RaiPolicyContentSourcePtrInput {
+	return (*raiPolicyContentSourcePtr)(&v)
+}
+
+func (*raiPolicyContentSourcePtr) ElementType() reflect.Type {
+	return raiPolicyContentSourcePtrType
+}
+
+func (in *raiPolicyContentSourcePtr) ToRaiPolicyContentSourcePtrOutput() RaiPolicyContentSourcePtrOutput {
+	return pulumi.ToOutput(in).(RaiPolicyContentSourcePtrOutput)
+}
+
+func (in *raiPolicyContentSourcePtr) ToRaiPolicyContentSourcePtrOutputWithContext(ctx context.Context) RaiPolicyContentSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RaiPolicyContentSourcePtrOutput)
+}
+
+// Content Filters mode.
+type RaiPolicyMode string
+
+const (
+	RaiPolicyModeDefault  = RaiPolicyMode("Default")
+	RaiPolicyModeDeferred = RaiPolicyMode("Deferred")
+	RaiPolicyModeBlocking = RaiPolicyMode("Blocking")
+)
+
+func (RaiPolicyMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyMode)(nil)).Elem()
+}
+
+func (e RaiPolicyMode) ToRaiPolicyModeOutput() RaiPolicyModeOutput {
+	return pulumi.ToOutput(e).(RaiPolicyModeOutput)
+}
+
+func (e RaiPolicyMode) ToRaiPolicyModeOutputWithContext(ctx context.Context) RaiPolicyModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RaiPolicyModeOutput)
+}
+
+func (e RaiPolicyMode) ToRaiPolicyModePtrOutput() RaiPolicyModePtrOutput {
+	return e.ToRaiPolicyModePtrOutputWithContext(context.Background())
+}
+
+func (e RaiPolicyMode) ToRaiPolicyModePtrOutputWithContext(ctx context.Context) RaiPolicyModePtrOutput {
+	return RaiPolicyMode(e).ToRaiPolicyModeOutputWithContext(ctx).ToRaiPolicyModePtrOutputWithContext(ctx)
+}
+
+func (e RaiPolicyMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RaiPolicyMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RaiPolicyMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RaiPolicyMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RaiPolicyModeOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyMode)(nil)).Elem()
+}
+
+func (o RaiPolicyModeOutput) ToRaiPolicyModeOutput() RaiPolicyModeOutput {
+	return o
+}
+
+func (o RaiPolicyModeOutput) ToRaiPolicyModeOutputWithContext(ctx context.Context) RaiPolicyModeOutput {
+	return o
+}
+
+func (o RaiPolicyModeOutput) ToRaiPolicyModePtrOutput() RaiPolicyModePtrOutput {
+	return o.ToRaiPolicyModePtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyModeOutput) ToRaiPolicyModePtrOutputWithContext(ctx context.Context) RaiPolicyModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiPolicyMode) *RaiPolicyMode {
+		return &v
+	}).(RaiPolicyModePtrOutput)
+}
+
+func (o RaiPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RaiPolicyMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RaiPolicyModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RaiPolicyMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyModePtrOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiPolicyMode)(nil)).Elem()
+}
+
+func (o RaiPolicyModePtrOutput) ToRaiPolicyModePtrOutput() RaiPolicyModePtrOutput {
+	return o
+}
+
+func (o RaiPolicyModePtrOutput) ToRaiPolicyModePtrOutputWithContext(ctx context.Context) RaiPolicyModePtrOutput {
+	return o
+}
+
+func (o RaiPolicyModePtrOutput) Elem() RaiPolicyModeOutput {
+	return o.ApplyT(func(v *RaiPolicyMode) RaiPolicyMode {
+		if v != nil {
+			return *v
+		}
+		var ret RaiPolicyMode
+		return ret
+	}).(RaiPolicyModeOutput)
+}
+
+func (o RaiPolicyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RaiPolicyMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RaiPolicyModeInput is an input type that accepts values of the RaiPolicyMode enum
+// A concrete instance of `RaiPolicyModeInput` can be one of the following:
+//
+//	RaiPolicyModeDefault
+//	RaiPolicyModeDeferred
+//	RaiPolicyModeBlocking
+type RaiPolicyModeInput interface {
+	pulumi.Input
+
+	ToRaiPolicyModeOutput() RaiPolicyModeOutput
+	ToRaiPolicyModeOutputWithContext(context.Context) RaiPolicyModeOutput
+}
+
+var raiPolicyModePtrType = reflect.TypeOf((**RaiPolicyMode)(nil)).Elem()
+
+type RaiPolicyModePtrInput interface {
+	pulumi.Input
+
+	ToRaiPolicyModePtrOutput() RaiPolicyModePtrOutput
+	ToRaiPolicyModePtrOutputWithContext(context.Context) RaiPolicyModePtrOutput
+}
+
+type raiPolicyModePtr string
+
+func RaiPolicyModePtr(v string) RaiPolicyModePtrInput {
+	return (*raiPolicyModePtr)(&v)
+}
+
+func (*raiPolicyModePtr) ElementType() reflect.Type {
+	return raiPolicyModePtrType
+}
+
+func (in *raiPolicyModePtr) ToRaiPolicyModePtrOutput() RaiPolicyModePtrOutput {
+	return pulumi.ToOutput(in).(RaiPolicyModePtrOutput)
+}
+
+func (in *raiPolicyModePtr) ToRaiPolicyModePtrOutputWithContext(ctx context.Context) RaiPolicyModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RaiPolicyModePtrOutput)
+}
+
+// Content Filters policy type.
+type RaiPolicyType string
+
+const (
+	RaiPolicyTypeUserManaged   = RaiPolicyType("UserManaged")
+	RaiPolicyTypeSystemManaged = RaiPolicyType("SystemManaged")
+)
+
+func (RaiPolicyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyType)(nil)).Elem()
+}
+
+func (e RaiPolicyType) ToRaiPolicyTypeOutput() RaiPolicyTypeOutput {
+	return pulumi.ToOutput(e).(RaiPolicyTypeOutput)
+}
+
+func (e RaiPolicyType) ToRaiPolicyTypeOutputWithContext(ctx context.Context) RaiPolicyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RaiPolicyTypeOutput)
+}
+
+func (e RaiPolicyType) ToRaiPolicyTypePtrOutput() RaiPolicyTypePtrOutput {
+	return e.ToRaiPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (e RaiPolicyType) ToRaiPolicyTypePtrOutputWithContext(ctx context.Context) RaiPolicyTypePtrOutput {
+	return RaiPolicyType(e).ToRaiPolicyTypeOutputWithContext(ctx).ToRaiPolicyTypePtrOutputWithContext(ctx)
+}
+
+func (e RaiPolicyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RaiPolicyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RaiPolicyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RaiPolicyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RaiPolicyTypeOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyType)(nil)).Elem()
+}
+
+func (o RaiPolicyTypeOutput) ToRaiPolicyTypeOutput() RaiPolicyTypeOutput {
+	return o
+}
+
+func (o RaiPolicyTypeOutput) ToRaiPolicyTypeOutputWithContext(ctx context.Context) RaiPolicyTypeOutput {
+	return o
+}
+
+func (o RaiPolicyTypeOutput) ToRaiPolicyTypePtrOutput() RaiPolicyTypePtrOutput {
+	return o.ToRaiPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyTypeOutput) ToRaiPolicyTypePtrOutputWithContext(ctx context.Context) RaiPolicyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RaiPolicyType) *RaiPolicyType {
+		return &v
+	}).(RaiPolicyTypePtrOutput)
+}
+
+func (o RaiPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RaiPolicyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RaiPolicyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RaiPolicyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RaiPolicyType)(nil)).Elem()
+}
+
+func (o RaiPolicyTypePtrOutput) ToRaiPolicyTypePtrOutput() RaiPolicyTypePtrOutput {
+	return o
+}
+
+func (o RaiPolicyTypePtrOutput) ToRaiPolicyTypePtrOutputWithContext(ctx context.Context) RaiPolicyTypePtrOutput {
+	return o
+}
+
+func (o RaiPolicyTypePtrOutput) Elem() RaiPolicyTypeOutput {
+	return o.ApplyT(func(v *RaiPolicyType) RaiPolicyType {
+		if v != nil {
+			return *v
+		}
+		var ret RaiPolicyType
+		return ret
+	}).(RaiPolicyTypeOutput)
+}
+
+func (o RaiPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RaiPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RaiPolicyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RaiPolicyTypeInput is an input type that accepts values of the RaiPolicyType enum
+// A concrete instance of `RaiPolicyTypeInput` can be one of the following:
+//
+//	RaiPolicyTypeUserManaged
+//	RaiPolicyTypeSystemManaged
+type RaiPolicyTypeInput interface {
+	pulumi.Input
+
+	ToRaiPolicyTypeOutput() RaiPolicyTypeOutput
+	ToRaiPolicyTypeOutputWithContext(context.Context) RaiPolicyTypeOutput
+}
+
+var raiPolicyTypePtrType = reflect.TypeOf((**RaiPolicyType)(nil)).Elem()
+
+type RaiPolicyTypePtrInput interface {
+	pulumi.Input
+
+	ToRaiPolicyTypePtrOutput() RaiPolicyTypePtrOutput
+	ToRaiPolicyTypePtrOutputWithContext(context.Context) RaiPolicyTypePtrOutput
+}
+
+type raiPolicyTypePtr string
+
+func RaiPolicyTypePtr(v string) RaiPolicyTypePtrInput {
+	return (*raiPolicyTypePtr)(&v)
+}
+
+func (*raiPolicyTypePtr) ElementType() reflect.Type {
+	return raiPolicyTypePtrType
+}
+
+func (in *raiPolicyTypePtr) ToRaiPolicyTypePtrOutput() RaiPolicyTypePtrOutput {
+	return pulumi.ToOutput(in).(RaiPolicyTypePtrOutput)
+}
+
+func (in *raiPolicyTypePtr) ToRaiPolicyTypePtrOutputWithContext(ctx context.Context) RaiPolicyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RaiPolicyTypePtrOutput)
+}
+
 // The specific type of random algorithm
 type RandomSamplingAlgorithmRule string
 
@@ -14343,6 +15011,8 @@ func (in *weekDayPtr) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDay
 }
 
 func init() {
+	pulumi.RegisterOutputType(AllowedContentLevelOutput{})
+	pulumi.RegisterOutputType(AllowedContentLevelPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationSharingPolicyOutput{})
 	pulumi.RegisterOutputType(ApplicationSharingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AuthModeOutput{})
@@ -14449,6 +15119,12 @@ func init() {
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypeOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypePtrOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentSourceOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentSourcePtrOutput{})
+	pulumi.RegisterOutputType(RaiPolicyModeOutput{})
+	pulumi.RegisterOutputType(RaiPolicyModePtrOutput{})
+	pulumi.RegisterOutputType(RaiPolicyTypeOutput{})
+	pulumi.RegisterOutputType(RaiPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(RandomSamplingAlgorithmRuleOutput{})
 	pulumi.RegisterOutputType(RandomSamplingAlgorithmRulePtrOutput{})
 	pulumi.RegisterOutputType(RecurrenceFrequencyOutput{})

@@ -14,7 +14,7 @@ import (
 // Description for Get an App Service plan.
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2016-09-01, 2020-10-01, 2023-01-01.
+// Other available API versions: 2016-09-01, 2020-10-01, 2023-01-01, 2023-12-01.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServicePlanResult

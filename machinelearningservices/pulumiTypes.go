@@ -1186,6 +1186,143 @@ func (o AccountKeyDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountKeyDatastoreSecrets) string { return v.SecretsType }).(pulumi.StringOutput)
 }
 
+// Cognitive Services account Model.
+type AccountModelResponse struct {
+	// Base Model Identifier.
+	BaseModel *DeploymentModelResponse `pulumi:"baseModel"`
+	// The call rate limit Cognitive Services account.
+	CallRateLimit CallRateLimitResponse `pulumi:"callRateLimit"`
+	// The capabilities.
+	Capabilities map[string]string `pulumi:"capabilities"`
+	// Cognitive Services account ModelDeprecationInfo.
+	Deprecation *ModelDeprecationInfoResponse `pulumi:"deprecation"`
+	// The capabilities for finetune models.
+	FinetuneCapabilities map[string]string `pulumi:"finetuneCapabilities"`
+	// Deployment model format.
+	Format *string `pulumi:"format"`
+	// If the model is default version.
+	IsDefaultVersion *bool `pulumi:"isDefaultVersion"`
+	// Model lifecycle status.
+	LifecycleStatus *string `pulumi:"lifecycleStatus"`
+	// The max capacity.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// Deployment model name.
+	Name *string `pulumi:"name"`
+	// The list of Model Sku.
+	Skus []ModelSkuResponse `pulumi:"skus"`
+	// Optional. Deployment model source ARM resource ID.
+	Source *string `pulumi:"source"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+	Version *string `pulumi:"version"`
+}
+
+// Cognitive Services account Model.
+type AccountModelResponseOutput struct{ *pulumi.OutputState }
+
+func (AccountModelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountModelResponse)(nil)).Elem()
+}
+
+func (o AccountModelResponseOutput) ToAccountModelResponseOutput() AccountModelResponseOutput {
+	return o
+}
+
+func (o AccountModelResponseOutput) ToAccountModelResponseOutputWithContext(ctx context.Context) AccountModelResponseOutput {
+	return o
+}
+
+// Base Model Identifier.
+func (o AccountModelResponseOutput) BaseModel() DeploymentModelResponsePtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *DeploymentModelResponse { return v.BaseModel }).(DeploymentModelResponsePtrOutput)
+}
+
+// The call rate limit Cognitive Services account.
+func (o AccountModelResponseOutput) CallRateLimit() CallRateLimitResponseOutput {
+	return o.ApplyT(func(v AccountModelResponse) CallRateLimitResponse { return v.CallRateLimit }).(CallRateLimitResponseOutput)
+}
+
+// The capabilities.
+func (o AccountModelResponseOutput) Capabilities() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccountModelResponse) map[string]string { return v.Capabilities }).(pulumi.StringMapOutput)
+}
+
+// Cognitive Services account ModelDeprecationInfo.
+func (o AccountModelResponseOutput) Deprecation() ModelDeprecationInfoResponsePtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *ModelDeprecationInfoResponse { return v.Deprecation }).(ModelDeprecationInfoResponsePtrOutput)
+}
+
+// The capabilities for finetune models.
+func (o AccountModelResponseOutput) FinetuneCapabilities() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccountModelResponse) map[string]string { return v.FinetuneCapabilities }).(pulumi.StringMapOutput)
+}
+
+// Deployment model format.
+func (o AccountModelResponseOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// If the model is default version.
+func (o AccountModelResponseOutput) IsDefaultVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *bool { return v.IsDefaultVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Model lifecycle status.
+func (o AccountModelResponseOutput) LifecycleStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *string { return v.LifecycleStatus }).(pulumi.StringPtrOutput)
+}
+
+// The max capacity.
+func (o AccountModelResponseOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Deployment model name.
+func (o AccountModelResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The list of Model Sku.
+func (o AccountModelResponseOutput) Skus() ModelSkuResponseArrayOutput {
+	return o.ApplyT(func(v AccountModelResponse) []ModelSkuResponse { return v.Skus }).(ModelSkuResponseArrayOutput)
+}
+
+// Optional. Deployment model source ARM resource ID.
+func (o AccountModelResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o AccountModelResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v AccountModelResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+func (o AccountModelResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountModelResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AccountModelResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountModelResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountModelResponse)(nil)).Elem()
+}
+
+func (o AccountModelResponseArrayOutput) ToAccountModelResponseArrayOutput() AccountModelResponseArrayOutput {
+	return o
+}
+
+func (o AccountModelResponseArrayOutput) ToAccountModelResponseArrayOutputWithContext(ctx context.Context) AccountModelResponseArrayOutput {
+	return o
+}
+
+func (o AccountModelResponseArrayOutput) Index(i pulumi.IntInput) AccountModelResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountModelResponse {
+		return vs[0].([]AccountModelResponse)[vs[1].(int)]
+	}).(AccountModelResponseOutput)
+}
+
 // Details of ACR account to be used for the Registry
 type AcrDetails struct {
 	// Details of system created ACR account to be used for the Registry
@@ -11067,6 +11204,245 @@ func (o BuildContextResponsePtrOutput) DockerfilePath() pulumi.StringPtrOutput {
 		}
 		return v.DockerfilePath
 	}).(pulumi.StringPtrOutput)
+}
+
+// The call rate limit Cognitive Services account.
+type CallRateLimitResponse struct {
+	// The count value of Call Rate Limit.
+	Count *float64 `pulumi:"count"`
+	// The renewal period in seconds of Call Rate Limit.
+	RenewalPeriod *float64                 `pulumi:"renewalPeriod"`
+	Rules         []ThrottlingRuleResponse `pulumi:"rules"`
+}
+
+// The call rate limit Cognitive Services account.
+type CallRateLimitResponseOutput struct{ *pulumi.OutputState }
+
+func (CallRateLimitResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CallRateLimitResponse)(nil)).Elem()
+}
+
+func (o CallRateLimitResponseOutput) ToCallRateLimitResponseOutput() CallRateLimitResponseOutput {
+	return o
+}
+
+func (o CallRateLimitResponseOutput) ToCallRateLimitResponseOutputWithContext(ctx context.Context) CallRateLimitResponseOutput {
+	return o
+}
+
+// The count value of Call Rate Limit.
+func (o CallRateLimitResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CallRateLimitResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The renewal period in seconds of Call Rate Limit.
+func (o CallRateLimitResponseOutput) RenewalPeriod() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CallRateLimitResponse) *float64 { return v.RenewalPeriod }).(pulumi.Float64PtrOutput)
+}
+
+func (o CallRateLimitResponseOutput) Rules() ThrottlingRuleResponseArrayOutput {
+	return o.ApplyT(func(v CallRateLimitResponse) []ThrottlingRuleResponse { return v.Rules }).(ThrottlingRuleResponseArrayOutput)
+}
+
+type CallRateLimitResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CallRateLimitResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CallRateLimitResponse)(nil)).Elem()
+}
+
+func (o CallRateLimitResponsePtrOutput) ToCallRateLimitResponsePtrOutput() CallRateLimitResponsePtrOutput {
+	return o
+}
+
+func (o CallRateLimitResponsePtrOutput) ToCallRateLimitResponsePtrOutputWithContext(ctx context.Context) CallRateLimitResponsePtrOutput {
+	return o
+}
+
+func (o CallRateLimitResponsePtrOutput) Elem() CallRateLimitResponseOutput {
+	return o.ApplyT(func(v *CallRateLimitResponse) CallRateLimitResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CallRateLimitResponse
+		return ret
+	}).(CallRateLimitResponseOutput)
+}
+
+// The count value of Call Rate Limit.
+func (o CallRateLimitResponsePtrOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CallRateLimitResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The renewal period in seconds of Call Rate Limit.
+func (o CallRateLimitResponsePtrOutput) RenewalPeriod() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CallRateLimitResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RenewalPeriod
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CallRateLimitResponsePtrOutput) Rules() ThrottlingRuleResponseArrayOutput {
+	return o.ApplyT(func(v *CallRateLimitResponse) []ThrottlingRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ThrottlingRuleResponseArrayOutput)
+}
+
+type CallRateLimitResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CallRateLimitResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CallRateLimitResponse)(nil)).Elem()
+}
+
+func (o CallRateLimitResponseArrayOutput) ToCallRateLimitResponseArrayOutput() CallRateLimitResponseArrayOutput {
+	return o
+}
+
+func (o CallRateLimitResponseArrayOutput) ToCallRateLimitResponseArrayOutputWithContext(ctx context.Context) CallRateLimitResponseArrayOutput {
+	return o
+}
+
+func (o CallRateLimitResponseArrayOutput) Index(i pulumi.IntInput) CallRateLimitResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CallRateLimitResponse {
+		return vs[0].([]CallRateLimitResponse)[vs[1].(int)]
+	}).(CallRateLimitResponseOutput)
+}
+
+// The capacity configuration.
+type CapacityConfigResponse struct {
+	// The array of allowed values for capacity.
+	AllowedValues []int `pulumi:"allowedValues"`
+	// The default capacity.
+	Default *int `pulumi:"default"`
+	// The maximum capacity.
+	Maximum *int `pulumi:"maximum"`
+	// The minimum capacity.
+	Minimum *int `pulumi:"minimum"`
+	// The minimal incremental between allowed values for capacity.
+	Step *int `pulumi:"step"`
+}
+
+// The capacity configuration.
+type CapacityConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CapacityConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityConfigResponse)(nil)).Elem()
+}
+
+func (o CapacityConfigResponseOutput) ToCapacityConfigResponseOutput() CapacityConfigResponseOutput {
+	return o
+}
+
+func (o CapacityConfigResponseOutput) ToCapacityConfigResponseOutputWithContext(ctx context.Context) CapacityConfigResponseOutput {
+	return o
+}
+
+// The array of allowed values for capacity.
+func (o CapacityConfigResponseOutput) AllowedValues() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CapacityConfigResponse) []int { return v.AllowedValues }).(pulumi.IntArrayOutput)
+}
+
+// The default capacity.
+func (o CapacityConfigResponseOutput) Default() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityConfigResponse) *int { return v.Default }).(pulumi.IntPtrOutput)
+}
+
+// The maximum capacity.
+func (o CapacityConfigResponseOutput) Maximum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityConfigResponse) *int { return v.Maximum }).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity.
+func (o CapacityConfigResponseOutput) Minimum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityConfigResponse) *int { return v.Minimum }).(pulumi.IntPtrOutput)
+}
+
+// The minimal incremental between allowed values for capacity.
+func (o CapacityConfigResponseOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CapacityConfigResponse) *int { return v.Step }).(pulumi.IntPtrOutput)
+}
+
+type CapacityConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CapacityConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityConfigResponse)(nil)).Elem()
+}
+
+func (o CapacityConfigResponsePtrOutput) ToCapacityConfigResponsePtrOutput() CapacityConfigResponsePtrOutput {
+	return o
+}
+
+func (o CapacityConfigResponsePtrOutput) ToCapacityConfigResponsePtrOutputWithContext(ctx context.Context) CapacityConfigResponsePtrOutput {
+	return o
+}
+
+func (o CapacityConfigResponsePtrOutput) Elem() CapacityConfigResponseOutput {
+	return o.ApplyT(func(v *CapacityConfigResponse) CapacityConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CapacityConfigResponse
+		return ret
+	}).(CapacityConfigResponseOutput)
+}
+
+// The array of allowed values for capacity.
+func (o CapacityConfigResponsePtrOutput) AllowedValues() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *CapacityConfigResponse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedValues
+	}).(pulumi.IntArrayOutput)
+}
+
+// The default capacity.
+func (o CapacityConfigResponsePtrOutput) Default() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CapacityConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum capacity.
+func (o CapacityConfigResponsePtrOutput) Maximum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CapacityConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Maximum
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum capacity.
+func (o CapacityConfigResponsePtrOutput) Minimum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CapacityConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Minimum
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimal incremental between allowed values for capacity.
+func (o CapacityConfigResponsePtrOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CapacityConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Step
+	}).(pulumi.IntPtrOutput)
 }
 
 type CapacityReservationGroupType struct {
@@ -24816,6 +25192,134 @@ func (o DefaultScaleSettingsResponsePtrOutput) ScaleType() pulumi.StringPtrOutpu
 			return nil
 		}
 		return &v.ScaleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of Cognitive Services account deployment model.
+type DeploymentModelResponse struct {
+	// The call rate limit Cognitive Services account.
+	CallRateLimit CallRateLimitResponse `pulumi:"callRateLimit"`
+	// Deployment model format.
+	Format *string `pulumi:"format"`
+	// Deployment model name.
+	Name *string `pulumi:"name"`
+	// Optional. Deployment model source ARM resource ID.
+	Source *string `pulumi:"source"`
+	// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+	Version *string `pulumi:"version"`
+}
+
+// Properties of Cognitive Services account deployment model.
+type DeploymentModelResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentModelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentModelResponse)(nil)).Elem()
+}
+
+func (o DeploymentModelResponseOutput) ToDeploymentModelResponseOutput() DeploymentModelResponseOutput {
+	return o
+}
+
+func (o DeploymentModelResponseOutput) ToDeploymentModelResponseOutputWithContext(ctx context.Context) DeploymentModelResponseOutput {
+	return o
+}
+
+// The call rate limit Cognitive Services account.
+func (o DeploymentModelResponseOutput) CallRateLimit() CallRateLimitResponseOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) CallRateLimitResponse { return v.CallRateLimit }).(CallRateLimitResponseOutput)
+}
+
+// Deployment model format.
+func (o DeploymentModelResponseOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Deployment model name.
+func (o DeploymentModelResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deployment model source ARM resource ID.
+func (o DeploymentModelResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+func (o DeploymentModelResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentModelResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentModelResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentModelResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentModelResponse)(nil)).Elem()
+}
+
+func (o DeploymentModelResponsePtrOutput) ToDeploymentModelResponsePtrOutput() DeploymentModelResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentModelResponsePtrOutput) ToDeploymentModelResponsePtrOutputWithContext(ctx context.Context) DeploymentModelResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentModelResponsePtrOutput) Elem() DeploymentModelResponseOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) DeploymentModelResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentModelResponse
+		return ret
+	}).(DeploymentModelResponseOutput)
+}
+
+// The call rate limit Cognitive Services account.
+func (o DeploymentModelResponsePtrOutput) CallRateLimit() CallRateLimitResponsePtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *CallRateLimitResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CallRateLimit
+	}).(CallRateLimitResponsePtrOutput)
+}
+
+// Deployment model format.
+func (o DeploymentModelResponsePtrOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Format
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deployment model name.
+func (o DeploymentModelResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deployment model source ARM resource ID.
+func (o DeploymentModelResponsePtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+func (o DeploymentModelResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentModelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -51151,6 +51655,164 @@ func (o ModelContainerResponseOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ModelContainerResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Cognitive Services account ModelDeprecationInfo.
+type ModelDeprecationInfoResponse struct {
+	// The datetime of deprecation of the fineTune Model.
+	FineTune *string `pulumi:"fineTune"`
+	// The datetime of deprecation of the inference Model.
+	Inference *string `pulumi:"inference"`
+}
+
+// Cognitive Services account ModelDeprecationInfo.
+type ModelDeprecationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ModelDeprecationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelDeprecationInfoResponse)(nil)).Elem()
+}
+
+func (o ModelDeprecationInfoResponseOutput) ToModelDeprecationInfoResponseOutput() ModelDeprecationInfoResponseOutput {
+	return o
+}
+
+func (o ModelDeprecationInfoResponseOutput) ToModelDeprecationInfoResponseOutputWithContext(ctx context.Context) ModelDeprecationInfoResponseOutput {
+	return o
+}
+
+// The datetime of deprecation of the fineTune Model.
+func (o ModelDeprecationInfoResponseOutput) FineTune() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelDeprecationInfoResponse) *string { return v.FineTune }).(pulumi.StringPtrOutput)
+}
+
+// The datetime of deprecation of the inference Model.
+func (o ModelDeprecationInfoResponseOutput) Inference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelDeprecationInfoResponse) *string { return v.Inference }).(pulumi.StringPtrOutput)
+}
+
+type ModelDeprecationInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ModelDeprecationInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelDeprecationInfoResponse)(nil)).Elem()
+}
+
+func (o ModelDeprecationInfoResponsePtrOutput) ToModelDeprecationInfoResponsePtrOutput() ModelDeprecationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ModelDeprecationInfoResponsePtrOutput) ToModelDeprecationInfoResponsePtrOutputWithContext(ctx context.Context) ModelDeprecationInfoResponsePtrOutput {
+	return o
+}
+
+func (o ModelDeprecationInfoResponsePtrOutput) Elem() ModelDeprecationInfoResponseOutput {
+	return o.ApplyT(func(v *ModelDeprecationInfoResponse) ModelDeprecationInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ModelDeprecationInfoResponse
+		return ret
+	}).(ModelDeprecationInfoResponseOutput)
+}
+
+// The datetime of deprecation of the fineTune Model.
+func (o ModelDeprecationInfoResponsePtrOutput) FineTune() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDeprecationInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FineTune
+	}).(pulumi.StringPtrOutput)
+}
+
+// The datetime of deprecation of the inference Model.
+func (o ModelDeprecationInfoResponsePtrOutput) Inference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ModelDeprecationInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Inference
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes an available Cognitive Services Model SKU.
+type ModelSkuResponse struct {
+	// The capacity configuration.
+	Capacity *CapacityConfigResponse `pulumi:"capacity"`
+	// The list of connection ids.
+	ConnectionIds []string `pulumi:"connectionIds"`
+	// The datetime of deprecation of the model SKU.
+	DeprecationDate *string `pulumi:"deprecationDate"`
+	// The name of the model SKU.
+	Name *string `pulumi:"name"`
+	// The list of rateLimit.
+	RateLimits []CallRateLimitResponse `pulumi:"rateLimits"`
+	// The usage name of the model SKU.
+	UsageName *string `pulumi:"usageName"`
+}
+
+// Describes an available Cognitive Services Model SKU.
+type ModelSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (ModelSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelSkuResponse)(nil)).Elem()
+}
+
+func (o ModelSkuResponseOutput) ToModelSkuResponseOutput() ModelSkuResponseOutput {
+	return o
+}
+
+func (o ModelSkuResponseOutput) ToModelSkuResponseOutputWithContext(ctx context.Context) ModelSkuResponseOutput {
+	return o
+}
+
+// The capacity configuration.
+func (o ModelSkuResponseOutput) Capacity() CapacityConfigResponsePtrOutput {
+	return o.ApplyT(func(v ModelSkuResponse) *CapacityConfigResponse { return v.Capacity }).(CapacityConfigResponsePtrOutput)
+}
+
+// The list of connection ids.
+func (o ModelSkuResponseOutput) ConnectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ModelSkuResponse) []string { return v.ConnectionIds }).(pulumi.StringArrayOutput)
+}
+
+// The datetime of deprecation of the model SKU.
+func (o ModelSkuResponseOutput) DeprecationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelSkuResponse) *string { return v.DeprecationDate }).(pulumi.StringPtrOutput)
+}
+
+// The name of the model SKU.
+func (o ModelSkuResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The list of rateLimit.
+func (o ModelSkuResponseOutput) RateLimits() CallRateLimitResponseArrayOutput {
+	return o.ApplyT(func(v ModelSkuResponse) []CallRateLimitResponse { return v.RateLimits }).(CallRateLimitResponseArrayOutput)
+}
+
+// The usage name of the model SKU.
+func (o ModelSkuResponseOutput) UsageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelSkuResponse) *string { return v.UsageName }).(pulumi.StringPtrOutput)
+}
+
+type ModelSkuResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ModelSkuResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ModelSkuResponse)(nil)).Elem()
+}
+
+func (o ModelSkuResponseArrayOutput) ToModelSkuResponseArrayOutput() ModelSkuResponseArrayOutput {
+	return o
+}
+
+func (o ModelSkuResponseArrayOutput) ToModelSkuResponseArrayOutputWithContext(ctx context.Context) ModelSkuResponseArrayOutput {
+	return o
+}
+
+func (o ModelSkuResponseArrayOutput) Index(i pulumi.IntInput) ModelSkuResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ModelSkuResponse {
+		return vs[0].([]ModelSkuResponse)[vs[1].(int)]
+	}).(ModelSkuResponseOutput)
+}
+
 // Model asset version details.
 type ModelVersionType struct {
 	// The asset description text.
@@ -57117,6 +57779,702 @@ func (o PyTorchResponsePtrOutput) ProcessCountPerInstance() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfig struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName *string `pulumi:"blocklistName"`
+}
+
+// RaiBlocklistConfigInput is an input type that accepts RaiBlocklistConfigArgs and RaiBlocklistConfigOutput values.
+// You can construct a concrete instance of `RaiBlocklistConfigInput` via:
+//
+//	RaiBlocklistConfigArgs{...}
+type RaiBlocklistConfigInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput
+	ToRaiBlocklistConfigOutputWithContext(context.Context) RaiBlocklistConfigOutput
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigArgs struct {
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName pulumi.StringPtrInput `pulumi:"blocklistName"`
+}
+
+func (RaiBlocklistConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
+	return i.ToRaiBlocklistConfigOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistConfigArgs) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigOutput)
+}
+
+// RaiBlocklistConfigArrayInput is an input type that accepts RaiBlocklistConfigArray and RaiBlocklistConfigArrayOutput values.
+// You can construct a concrete instance of `RaiBlocklistConfigArrayInput` via:
+//
+//	RaiBlocklistConfigArray{ RaiBlocklistConfigArgs{...} }
+type RaiBlocklistConfigArrayInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput
+	ToRaiBlocklistConfigArrayOutputWithContext(context.Context) RaiBlocklistConfigArrayOutput
+}
+
+type RaiBlocklistConfigArray []RaiBlocklistConfigInput
+
+func (RaiBlocklistConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
+	return i.ToRaiBlocklistConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistConfigArray) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistConfigArrayOutput)
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutput() RaiBlocklistConfigOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigOutput) ToRaiBlocklistConfigOutputWithContext(ctx context.Context) RaiBlocklistConfigOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o RaiBlocklistConfigOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfig) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiBlocklistConfigOutput) BlocklistName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfig) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
+}
+
+type RaiBlocklistConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiBlocklistConfig)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutput() RaiBlocklistConfigArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigArrayOutput) ToRaiBlocklistConfigArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfig {
+		return vs[0].([]RaiBlocklistConfig)[vs[1].(int)]
+	}).(RaiBlocklistConfigOutput)
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigResponse struct {
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// Name of ContentFilter.
+	BlocklistName *string `pulumi:"blocklistName"`
+}
+
+// Azure OpenAI blocklist config.
+type RaiBlocklistConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistConfigResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutput() RaiBlocklistConfigResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseOutput) ToRaiBlocklistConfigResponseOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseOutput {
+	return o
+}
+
+// If blocking would occur.
+func (o RaiBlocklistConfigResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfigResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiBlocklistConfigResponseOutput) BlocklistName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistConfigResponse) *string { return v.BlocklistName }).(pulumi.StringPtrOutput)
+}
+
+type RaiBlocklistConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiBlocklistConfigResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutput() RaiBlocklistConfigResponseArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) ToRaiBlocklistConfigResponseArrayOutputWithContext(ctx context.Context) RaiBlocklistConfigResponseArrayOutput {
+	return o
+}
+
+func (o RaiBlocklistConfigResponseArrayOutput) Index(i pulumi.IntInput) RaiBlocklistConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiBlocklistConfigResponse {
+		return vs[0].([]RaiBlocklistConfigResponse)[vs[1].(int)]
+	}).(RaiBlocklistConfigResponseOutput)
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemProperties struct {
+	// If the pattern is a regex pattern.
+	IsRegex *bool `pulumi:"isRegex"`
+	// Pattern to match against.
+	Pattern *string `pulumi:"pattern"`
+}
+
+// RaiBlocklistItemPropertiesInput is an input type that accepts RaiBlocklistItemPropertiesArgs and RaiBlocklistItemPropertiesOutput values.
+// You can construct a concrete instance of `RaiBlocklistItemPropertiesInput` via:
+//
+//	RaiBlocklistItemPropertiesArgs{...}
+type RaiBlocklistItemPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput
+	ToRaiBlocklistItemPropertiesOutputWithContext(context.Context) RaiBlocklistItemPropertiesOutput
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesArgs struct {
+	// If the pattern is a regex pattern.
+	IsRegex pulumi.BoolPtrInput `pulumi:"isRegex"`
+	// Pattern to match against.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+}
+
+func (RaiBlocklistItemPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistItemProperties)(nil)).Elem()
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput {
+	return i.ToRaiBlocklistItemPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistItemPropertiesArgs) ToRaiBlocklistItemPropertiesOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistItemPropertiesOutput)
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistItemPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistItemProperties)(nil)).Elem()
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesOutput() RaiBlocklistItemPropertiesOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesOutput) ToRaiBlocklistItemPropertiesOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesOutput {
+	return o
+}
+
+// If the pattern is a regex pattern.
+func (o RaiBlocklistItemPropertiesOutput) IsRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemProperties) *bool { return v.IsRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Pattern to match against.
+func (o RaiBlocklistItemPropertiesOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemProperties) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesResponse struct {
+	// If the pattern is a regex pattern.
+	IsRegex *bool `pulumi:"isRegex"`
+	// Pattern to match against.
+	Pattern *string `pulumi:"pattern"`
+}
+
+// RAI Custom Blocklist Item properties.
+type RaiBlocklistItemPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistItemPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistItemPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistItemPropertiesResponseOutput) ToRaiBlocklistItemPropertiesResponseOutput() RaiBlocklistItemPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistItemPropertiesResponseOutput) ToRaiBlocklistItemPropertiesResponseOutputWithContext(ctx context.Context) RaiBlocklistItemPropertiesResponseOutput {
+	return o
+}
+
+// If the pattern is a regex pattern.
+func (o RaiBlocklistItemPropertiesResponseOutput) IsRegex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemPropertiesResponse) *bool { return v.IsRegex }).(pulumi.BoolPtrOutput)
+}
+
+// Pattern to match against.
+func (o RaiBlocklistItemPropertiesResponseOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistItemPropertiesResponse) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistProperties struct {
+	// Description of the block list.
+	Description *string `pulumi:"description"`
+}
+
+// RaiBlocklistPropertiesInput is an input type that accepts RaiBlocklistPropertiesArgs and RaiBlocklistPropertiesOutput values.
+// You can construct a concrete instance of `RaiBlocklistPropertiesInput` via:
+//
+//	RaiBlocklistPropertiesArgs{...}
+type RaiBlocklistPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput
+	ToRaiBlocklistPropertiesOutputWithContext(context.Context) RaiBlocklistPropertiesOutput
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesArgs struct {
+	// Description of the block list.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+}
+
+func (RaiBlocklistPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistProperties)(nil)).Elem()
+}
+
+func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput {
+	return i.ToRaiBlocklistPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiBlocklistPropertiesArgs) ToRaiBlocklistPropertiesOutputWithContext(ctx context.Context) RaiBlocklistPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistPropertiesOutput)
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistProperties)(nil)).Elem()
+}
+
+func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesOutput() RaiBlocklistPropertiesOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesOutput) ToRaiBlocklistPropertiesOutputWithContext(ctx context.Context) RaiBlocklistPropertiesOutput {
+	return o
+}
+
+// Description of the block list.
+func (o RaiBlocklistPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesResponse struct {
+	// Description of the block list.
+	Description *string `pulumi:"description"`
+}
+
+// RAI Custom Blocklist properties.
+type RaiBlocklistPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiBlocklistPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiBlocklistPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiBlocklistPropertiesResponseOutput) ToRaiBlocklistPropertiesResponseOutput() RaiBlocklistPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiBlocklistPropertiesResponseOutput) ToRaiBlocklistPropertiesResponseOutputWithContext(ctx context.Context) RaiBlocklistPropertiesResponseOutput {
+	return o
+}
+
+// Description of the block list.
+func (o RaiBlocklistPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiBlocklistPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilter struct {
+	// Level at which content is filtered.
+	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Name of ContentFilter.
+	Name *string `pulumi:"name"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// RaiPolicyContentFilterInput is an input type that accepts RaiPolicyContentFilterArgs and RaiPolicyContentFilterOutput values.
+// You can construct a concrete instance of `RaiPolicyContentFilterInput` via:
+//
+//	RaiPolicyContentFilterArgs{...}
+type RaiPolicyContentFilterInput interface {
+	pulumi.Input
+
+	ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput
+	ToRaiPolicyContentFilterOutputWithContext(context.Context) RaiPolicyContentFilterOutput
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterArgs struct {
+	// Level at which content is filtered.
+	AllowedContentLevel pulumi.StringPtrInput `pulumi:"allowedContentLevel"`
+	// If blocking would occur.
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Name of ContentFilter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Content source to apply the Content Filters.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (RaiPolicyContentFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (i RaiPolicyContentFilterArgs) ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput {
+	return i.ToRaiPolicyContentFilterOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyContentFilterArgs) ToRaiPolicyContentFilterOutputWithContext(ctx context.Context) RaiPolicyContentFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyContentFilterOutput)
+}
+
+// RaiPolicyContentFilterArrayInput is an input type that accepts RaiPolicyContentFilterArray and RaiPolicyContentFilterArrayOutput values.
+// You can construct a concrete instance of `RaiPolicyContentFilterArrayInput` via:
+//
+//	RaiPolicyContentFilterArray{ RaiPolicyContentFilterArgs{...} }
+type RaiPolicyContentFilterArrayInput interface {
+	pulumi.Input
+
+	ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput
+	ToRaiPolicyContentFilterArrayOutputWithContext(context.Context) RaiPolicyContentFilterArrayOutput
+}
+
+type RaiPolicyContentFilterArray []RaiPolicyContentFilterInput
+
+func (RaiPolicyContentFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (i RaiPolicyContentFilterArray) ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput {
+	return i.ToRaiPolicyContentFilterArrayOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyContentFilterArray) ToRaiPolicyContentFilterArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyContentFilterArrayOutput)
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutput() RaiPolicyContentFilterOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterOutput) ToRaiPolicyContentFilterOutputWithContext(ctx context.Context) RaiPolicyContentFilterOutput {
+	return o
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterOutput) AllowedContentLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
+}
+
+// If blocking would occur.
+func (o RaiPolicyContentFilterOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// If the ContentFilter is enabled.
+func (o RaiPolicyContentFilterOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiPolicyContentFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o RaiPolicyContentFilterOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilter) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyContentFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilter)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterArrayOutput) ToRaiPolicyContentFilterArrayOutput() RaiPolicyContentFilterArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterArrayOutput) ToRaiPolicyContentFilterArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilter {
+		return vs[0].([]RaiPolicyContentFilter)[vs[1].(int)]
+	}).(RaiPolicyContentFilterOutput)
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterResponse struct {
+	// Level at which content is filtered.
+	AllowedContentLevel *string `pulumi:"allowedContentLevel"`
+	// If blocking would occur.
+	Blocking *bool `pulumi:"blocking"`
+	// If the ContentFilter is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Name of ContentFilter.
+	Name *string `pulumi:"name"`
+	// Content source to apply the Content Filters.
+	Source *string `pulumi:"source"`
+}
+
+// Azure OpenAI Content Filter.
+type RaiPolicyContentFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyContentFilterResponse)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutput() RaiPolicyContentFilterResponseOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseOutput) ToRaiPolicyContentFilterResponseOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseOutput {
+	return o
+}
+
+// Level at which content is filtered.
+func (o RaiPolicyContentFilterResponseOutput) AllowedContentLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.AllowedContentLevel }).(pulumi.StringPtrOutput)
+}
+
+// If blocking would occur.
+func (o RaiPolicyContentFilterResponseOutput) Blocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
+}
+
+// If the ContentFilter is enabled.
+func (o RaiPolicyContentFilterResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Name of ContentFilter.
+func (o RaiPolicyContentFilterResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Content source to apply the Content Filters.
+func (o RaiPolicyContentFilterResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyContentFilterResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type RaiPolicyContentFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyContentFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RaiPolicyContentFilterResponse)(nil)).Elem()
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) ToRaiPolicyContentFilterResponseArrayOutput() RaiPolicyContentFilterResponseArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) ToRaiPolicyContentFilterResponseArrayOutputWithContext(ctx context.Context) RaiPolicyContentFilterResponseArrayOutput {
+	return o
+}
+
+func (o RaiPolicyContentFilterResponseArrayOutput) Index(i pulumi.IntInput) RaiPolicyContentFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RaiPolicyContentFilterResponse {
+		return vs[0].([]RaiPolicyContentFilterResponse)[vs[1].(int)]
+	}).(RaiPolicyContentFilterResponseOutput)
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyProperties struct {
+	// Name of the base Content Filters.
+	BasePolicyName       *string                  `pulumi:"basePolicyName"`
+	CompletionBlocklists []RaiBlocklistConfig     `pulumi:"completionBlocklists"`
+	ContentFilters       []RaiPolicyContentFilter `pulumi:"contentFilters"`
+	// Content Filters mode.
+	Mode             *string              `pulumi:"mode"`
+	PromptBlocklists []RaiBlocklistConfig `pulumi:"promptBlocklists"`
+	// Content Filters policy type.
+	Type *string `pulumi:"type"`
+}
+
+// RaiPolicyPropertiesInput is an input type that accepts RaiPolicyPropertiesArgs and RaiPolicyPropertiesOutput values.
+// You can construct a concrete instance of `RaiPolicyPropertiesInput` via:
+//
+//	RaiPolicyPropertiesArgs{...}
+type RaiPolicyPropertiesInput interface {
+	pulumi.Input
+
+	ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput
+	ToRaiPolicyPropertiesOutputWithContext(context.Context) RaiPolicyPropertiesOutput
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesArgs struct {
+	// Name of the base Content Filters.
+	BasePolicyName       pulumi.StringPtrInput            `pulumi:"basePolicyName"`
+	CompletionBlocklists RaiBlocklistConfigArrayInput     `pulumi:"completionBlocklists"`
+	ContentFilters       RaiPolicyContentFilterArrayInput `pulumi:"contentFilters"`
+	// Content Filters mode.
+	Mode             pulumi.StringPtrInput        `pulumi:"mode"`
+	PromptBlocklists RaiBlocklistConfigArrayInput `pulumi:"promptBlocklists"`
+	// Content Filters policy type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RaiPolicyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyProperties)(nil)).Elem()
+}
+
+func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput {
+	return i.ToRaiPolicyPropertiesOutputWithContext(context.Background())
+}
+
+func (i RaiPolicyPropertiesArgs) ToRaiPolicyPropertiesOutputWithContext(ctx context.Context) RaiPolicyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyPropertiesOutput)
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyProperties)(nil)).Elem()
+}
+
+func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesOutput() RaiPolicyPropertiesOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesOutput) ToRaiPolicyPropertiesOutputWithContext(ctx context.Context) RaiPolicyPropertiesOutput {
+	return o
+}
+
+// Name of the base Content Filters.
+func (o RaiPolicyPropertiesOutput) BasePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o RaiPolicyPropertiesOutput) CompletionBlocklists() RaiBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.CompletionBlocklists }).(RaiBlocklistConfigArrayOutput)
+}
+
+func (o RaiPolicyPropertiesOutput) ContentFilters() RaiPolicyContentFilterArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []RaiPolicyContentFilter { return v.ContentFilters }).(RaiPolicyContentFilterArrayOutput)
+}
+
+// Content Filters mode.
+func (o RaiPolicyPropertiesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o RaiPolicyPropertiesOutput) PromptBlocklists() RaiBlocklistConfigArrayOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) []RaiBlocklistConfig { return v.PromptBlocklists }).(RaiBlocklistConfigArrayOutput)
+}
+
+// Content Filters policy type.
+func (o RaiPolicyPropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesResponse struct {
+	// Name of the base Content Filters.
+	BasePolicyName       *string                          `pulumi:"basePolicyName"`
+	CompletionBlocklists []RaiBlocklistConfigResponse     `pulumi:"completionBlocklists"`
+	ContentFilters       []RaiPolicyContentFilterResponse `pulumi:"contentFilters"`
+	// Content Filters mode.
+	Mode             *string                      `pulumi:"mode"`
+	PromptBlocklists []RaiBlocklistConfigResponse `pulumi:"promptBlocklists"`
+	// Content Filters policy type.
+	Type *string `pulumi:"type"`
+}
+
+// Azure OpenAI Content Filters properties.
+type RaiPolicyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (RaiPolicyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RaiPolicyPropertiesResponse)(nil)).Elem()
+}
+
+func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutput() RaiPolicyPropertiesResponseOutput {
+	return o
+}
+
+func (o RaiPolicyPropertiesResponseOutput) ToRaiPolicyPropertiesResponseOutputWithContext(ctx context.Context) RaiPolicyPropertiesResponseOutput {
+	return o
+}
+
+// Name of the base Content Filters.
+func (o RaiPolicyPropertiesResponseOutput) BasePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.BasePolicyName }).(pulumi.StringPtrOutput)
+}
+
+func (o RaiPolicyPropertiesResponseOutput) CompletionBlocklists() RaiBlocklistConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.CompletionBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
+}
+
+func (o RaiPolicyPropertiesResponseOutput) ContentFilters() RaiPolicyContentFilterResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiPolicyContentFilterResponse { return v.ContentFilters }).(RaiPolicyContentFilterResponseArrayOutput)
+}
+
+// Content Filters mode.
+func (o RaiPolicyPropertiesResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o RaiPolicyPropertiesResponseOutput) PromptBlocklists() RaiBlocklistConfigResponseArrayOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) []RaiBlocklistConfigResponse { return v.PromptBlocklists }).(RaiBlocklistConfigResponseArrayOutput)
+}
+
+// Content Filters policy type.
+func (o RaiPolicyPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RaiPolicyPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // Defines a Sampling Algorithm that generates values randomly
 type RandomSamplingAlgorithm struct {
 	// The specific type of random algorithm
@@ -60893,6 +62251,53 @@ func (o RequestConfigurationResponsePtrOutput) RequestTimeout() pulumi.StringPtr
 		}
 		return v.RequestTimeout
 	}).(pulumi.StringPtrOutput)
+}
+
+type RequestMatchPatternResponse struct {
+	Method *string `pulumi:"method"`
+	Path   *string `pulumi:"path"`
+}
+
+type RequestMatchPatternResponseOutput struct{ *pulumi.OutputState }
+
+func (RequestMatchPatternResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestMatchPatternResponse)(nil)).Elem()
+}
+
+func (o RequestMatchPatternResponseOutput) ToRequestMatchPatternResponseOutput() RequestMatchPatternResponseOutput {
+	return o
+}
+
+func (o RequestMatchPatternResponseOutput) ToRequestMatchPatternResponseOutputWithContext(ctx context.Context) RequestMatchPatternResponseOutput {
+	return o
+}
+
+func (o RequestMatchPatternResponseOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RequestMatchPatternResponse) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+func (o RequestMatchPatternResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RequestMatchPatternResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type RequestMatchPatternResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RequestMatchPatternResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RequestMatchPatternResponse)(nil)).Elem()
+}
+
+func (o RequestMatchPatternResponseArrayOutput) ToRequestMatchPatternResponseArrayOutput() RequestMatchPatternResponseArrayOutput {
+	return o
+}
+
+func (o RequestMatchPatternResponseArrayOutput) ToRequestMatchPatternResponseArrayOutputWithContext(ctx context.Context) RequestMatchPatternResponseArrayOutput {
+	return o
+}
+
+func (o RequestMatchPatternResponseArrayOutput) Index(i pulumi.IntInput) RequestMatchPatternResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RequestMatchPatternResponse {
+		return vs[0].([]RequestMatchPatternResponse)[vs[1].(int)]
+	}).(RequestMatchPatternResponseOutput)
 }
 
 // Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
@@ -65558,2844 +66963,6 @@ func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgrade
 	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
-// The ssl configuration for scoring
-type SslConfiguration struct {
-	// Cert data
-	Cert *string `pulumi:"cert"`
-	// CNAME of the cert
-	Cname *string `pulumi:"cname"`
-	// Key data
-	Key *string `pulumi:"key"`
-	// Leaf domain label of public endpoint
-	LeafDomainLabel *string `pulumi:"leafDomainLabel"`
-	// Indicates whether to overwrite existing domain label.
-	OverwriteExistingDomain *bool `pulumi:"overwriteExistingDomain"`
-	// Enable or disable ssl for scoring
-	Status *string `pulumi:"status"`
-}
-
-// SslConfigurationInput is an input type that accepts SslConfigurationArgs and SslConfigurationOutput values.
-// You can construct a concrete instance of `SslConfigurationInput` via:
-//
-//	SslConfigurationArgs{...}
-type SslConfigurationInput interface {
-	pulumi.Input
-
-	ToSslConfigurationOutput() SslConfigurationOutput
-	ToSslConfigurationOutputWithContext(context.Context) SslConfigurationOutput
-}
-
-// The ssl configuration for scoring
-type SslConfigurationArgs struct {
-	// Cert data
-	Cert pulumi.StringPtrInput `pulumi:"cert"`
-	// CNAME of the cert
-	Cname pulumi.StringPtrInput `pulumi:"cname"`
-	// Key data
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Leaf domain label of public endpoint
-	LeafDomainLabel pulumi.StringPtrInput `pulumi:"leafDomainLabel"`
-	// Indicates whether to overwrite existing domain label.
-	OverwriteExistingDomain pulumi.BoolPtrInput `pulumi:"overwriteExistingDomain"`
-	// Enable or disable ssl for scoring
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (SslConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslConfiguration)(nil)).Elem()
-}
-
-func (i SslConfigurationArgs) ToSslConfigurationOutput() SslConfigurationOutput {
-	return i.ToSslConfigurationOutputWithContext(context.Background())
-}
-
-func (i SslConfigurationArgs) ToSslConfigurationOutputWithContext(ctx context.Context) SslConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationOutput)
-}
-
-func (i SslConfigurationArgs) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
-	return i.ToSslConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i SslConfigurationArgs) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationOutput).ToSslConfigurationPtrOutputWithContext(ctx)
-}
-
-// SslConfigurationPtrInput is an input type that accepts SslConfigurationArgs, SslConfigurationPtr and SslConfigurationPtrOutput values.
-// You can construct a concrete instance of `SslConfigurationPtrInput` via:
-//
-//	        SslConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type SslConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToSslConfigurationPtrOutput() SslConfigurationPtrOutput
-	ToSslConfigurationPtrOutputWithContext(context.Context) SslConfigurationPtrOutput
-}
-
-type sslConfigurationPtrType SslConfigurationArgs
-
-func SslConfigurationPtr(v *SslConfigurationArgs) SslConfigurationPtrInput {
-	return (*sslConfigurationPtrType)(v)
-}
-
-func (*sslConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslConfiguration)(nil)).Elem()
-}
-
-func (i *sslConfigurationPtrType) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
-	return i.ToSslConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *sslConfigurationPtrType) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationPtrOutput)
-}
-
-// The ssl configuration for scoring
-type SslConfigurationOutput struct{ *pulumi.OutputState }
-
-func (SslConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslConfiguration)(nil)).Elem()
-}
-
-func (o SslConfigurationOutput) ToSslConfigurationOutput() SslConfigurationOutput {
-	return o
-}
-
-func (o SslConfigurationOutput) ToSslConfigurationOutputWithContext(ctx context.Context) SslConfigurationOutput {
-	return o
-}
-
-func (o SslConfigurationOutput) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
-	return o.ToSslConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o SslConfigurationOutput) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfiguration) *SslConfiguration {
-		return &v
-	}).(SslConfigurationPtrOutput)
-}
-
-// Cert data
-func (o SslConfigurationOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfiguration) *string { return v.Cert }).(pulumi.StringPtrOutput)
-}
-
-// CNAME of the cert
-func (o SslConfigurationOutput) Cname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfiguration) *string { return v.Cname }).(pulumi.StringPtrOutput)
-}
-
-// Key data
-func (o SslConfigurationOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfiguration) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Leaf domain label of public endpoint
-func (o SslConfigurationOutput) LeafDomainLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfiguration) *string { return v.LeafDomainLabel }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to overwrite existing domain label.
-func (o SslConfigurationOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SslConfiguration) *bool { return v.OverwriteExistingDomain }).(pulumi.BoolPtrOutput)
-}
-
-// Enable or disable ssl for scoring
-func (o SslConfigurationOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfiguration) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SslConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (SslConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslConfiguration)(nil)).Elem()
-}
-
-func (o SslConfigurationPtrOutput) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
-	return o
-}
-
-func (o SslConfigurationPtrOutput) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
-	return o
-}
-
-func (o SslConfigurationPtrOutput) Elem() SslConfigurationOutput {
-	return o.ApplyT(func(v *SslConfiguration) SslConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret SslConfiguration
-		return ret
-	}).(SslConfigurationOutput)
-}
-
-// Cert data
-func (o SslConfigurationPtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Cert
-	}).(pulumi.StringPtrOutput)
-}
-
-// CNAME of the cert
-func (o SslConfigurationPtrOutput) Cname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Cname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Key data
-func (o SslConfigurationPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Leaf domain label of public endpoint
-func (o SslConfigurationPtrOutput) LeafDomainLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LeafDomainLabel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to overwrite existing domain label.
-func (o SslConfigurationPtrOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SslConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OverwriteExistingDomain
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable or disable ssl for scoring
-func (o SslConfigurationPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ssl configuration for scoring
-type SslConfigurationResponse struct {
-	// Cert data
-	Cert *string `pulumi:"cert"`
-	// CNAME of the cert
-	Cname *string `pulumi:"cname"`
-	// Key data
-	Key *string `pulumi:"key"`
-	// Leaf domain label of public endpoint
-	LeafDomainLabel *string `pulumi:"leafDomainLabel"`
-	// Indicates whether to overwrite existing domain label.
-	OverwriteExistingDomain *bool `pulumi:"overwriteExistingDomain"`
-	// Enable or disable ssl for scoring
-	Status *string `pulumi:"status"`
-}
-
-// The ssl configuration for scoring
-type SslConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (SslConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SslConfigurationResponse)(nil)).Elem()
-}
-
-func (o SslConfigurationResponseOutput) ToSslConfigurationResponseOutput() SslConfigurationResponseOutput {
-	return o
-}
-
-func (o SslConfigurationResponseOutput) ToSslConfigurationResponseOutputWithContext(ctx context.Context) SslConfigurationResponseOutput {
-	return o
-}
-
-// Cert data
-func (o SslConfigurationResponseOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Cert }).(pulumi.StringPtrOutput)
-}
-
-// CNAME of the cert
-func (o SslConfigurationResponseOutput) Cname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Cname }).(pulumi.StringPtrOutput)
-}
-
-// Key data
-func (o SslConfigurationResponseOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Leaf domain label of public endpoint
-func (o SslConfigurationResponseOutput) LeafDomainLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.LeafDomainLabel }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to overwrite existing domain label.
-func (o SslConfigurationResponseOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SslConfigurationResponse) *bool { return v.OverwriteExistingDomain }).(pulumi.BoolPtrOutput)
-}
-
-// Enable or disable ssl for scoring
-func (o SslConfigurationResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SslConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SslConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SslConfigurationResponse)(nil)).Elem()
-}
-
-func (o SslConfigurationResponsePtrOutput) ToSslConfigurationResponsePtrOutput() SslConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o SslConfigurationResponsePtrOutput) ToSslConfigurationResponsePtrOutputWithContext(ctx context.Context) SslConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o SslConfigurationResponsePtrOutput) Elem() SslConfigurationResponseOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) SslConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SslConfigurationResponse
-		return ret
-	}).(SslConfigurationResponseOutput)
-}
-
-// Cert data
-func (o SslConfigurationResponsePtrOutput) Cert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Cert
-	}).(pulumi.StringPtrOutput)
-}
-
-// CNAME of the cert
-func (o SslConfigurationResponsePtrOutput) Cname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Cname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Key data
-func (o SslConfigurationResponsePtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Leaf domain label of public endpoint
-func (o SslConfigurationResponsePtrOutput) LeafDomainLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LeafDomainLabel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether to overwrite existing domain label.
-func (o SslConfigurationResponsePtrOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OverwriteExistingDomain
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Enable or disable ssl for scoring
-func (o SslConfigurationResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// Advances setting to customize StackEnsemble run.
-type StackEnsembleSettings struct {
-	// Optional parameters to pass to the initializer of the meta-learner.
-	StackMetaLearnerKWargs interface{} `pulumi:"stackMetaLearnerKWargs"`
-	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-	StackMetaLearnerTrainPercentage *float64 `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.
-	StackMetaLearnerType *string `pulumi:"stackMetaLearnerType"`
-}
-
-// Defaults sets the appropriate defaults for StackEnsembleSettings
-func (val *StackEnsembleSettings) Defaults() *StackEnsembleSettings {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.StackMetaLearnerTrainPercentage == nil {
-		stackMetaLearnerTrainPercentage_ := 0.2
-		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
-	}
-	if tmp.StackMetaLearnerType == nil {
-		stackMetaLearnerType_ := "None"
-		tmp.StackMetaLearnerType = &stackMetaLearnerType_
-	}
-	return &tmp
-}
-
-// StackEnsembleSettingsInput is an input type that accepts StackEnsembleSettingsArgs and StackEnsembleSettingsOutput values.
-// You can construct a concrete instance of `StackEnsembleSettingsInput` via:
-//
-//	StackEnsembleSettingsArgs{...}
-type StackEnsembleSettingsInput interface {
-	pulumi.Input
-
-	ToStackEnsembleSettingsOutput() StackEnsembleSettingsOutput
-	ToStackEnsembleSettingsOutputWithContext(context.Context) StackEnsembleSettingsOutput
-}
-
-// Advances setting to customize StackEnsemble run.
-type StackEnsembleSettingsArgs struct {
-	// Optional parameters to pass to the initializer of the meta-learner.
-	StackMetaLearnerKWargs pulumi.Input `pulumi:"stackMetaLearnerKWargs"`
-	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-	StackMetaLearnerTrainPercentage pulumi.Float64PtrInput `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.
-	StackMetaLearnerType pulumi.StringPtrInput `pulumi:"stackMetaLearnerType"`
-}
-
-// Defaults sets the appropriate defaults for StackEnsembleSettingsArgs
-func (val *StackEnsembleSettingsArgs) Defaults() *StackEnsembleSettingsArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.StackMetaLearnerTrainPercentage == nil {
-		tmp.StackMetaLearnerTrainPercentage = pulumi.Float64Ptr(0.2)
-	}
-	if tmp.StackMetaLearnerType == nil {
-		tmp.StackMetaLearnerType = pulumi.StringPtr("None")
-	}
-	return &tmp
-}
-func (StackEnsembleSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackEnsembleSettings)(nil)).Elem()
-}
-
-func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsOutput() StackEnsembleSettingsOutput {
-	return i.ToStackEnsembleSettingsOutputWithContext(context.Background())
-}
-
-func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsOutputWithContext(ctx context.Context) StackEnsembleSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackEnsembleSettingsOutput)
-}
-
-func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
-	return i.ToStackEnsembleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackEnsembleSettingsOutput).ToStackEnsembleSettingsPtrOutputWithContext(ctx)
-}
-
-// StackEnsembleSettingsPtrInput is an input type that accepts StackEnsembleSettingsArgs, StackEnsembleSettingsPtr and StackEnsembleSettingsPtrOutput values.
-// You can construct a concrete instance of `StackEnsembleSettingsPtrInput` via:
-//
-//	        StackEnsembleSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type StackEnsembleSettingsPtrInput interface {
-	pulumi.Input
-
-	ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput
-	ToStackEnsembleSettingsPtrOutputWithContext(context.Context) StackEnsembleSettingsPtrOutput
-}
-
-type stackEnsembleSettingsPtrType StackEnsembleSettingsArgs
-
-func StackEnsembleSettingsPtr(v *StackEnsembleSettingsArgs) StackEnsembleSettingsPtrInput {
-	return (*stackEnsembleSettingsPtrType)(v)
-}
-
-func (*stackEnsembleSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackEnsembleSettings)(nil)).Elem()
-}
-
-func (i *stackEnsembleSettingsPtrType) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
-	return i.ToStackEnsembleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *stackEnsembleSettingsPtrType) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackEnsembleSettingsPtrOutput)
-}
-
-// Advances setting to customize StackEnsemble run.
-type StackEnsembleSettingsOutput struct{ *pulumi.OutputState }
-
-func (StackEnsembleSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackEnsembleSettings)(nil)).Elem()
-}
-
-func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsOutput() StackEnsembleSettingsOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsOutputWithContext(ctx context.Context) StackEnsembleSettingsOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
-	return o.ToStackEnsembleSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackEnsembleSettings) *StackEnsembleSettings {
-		return &v
-	}).(StackEnsembleSettingsPtrOutput)
-}
-
-// Optional parameters to pass to the initializer of the meta-learner.
-func (o StackEnsembleSettingsOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
-	return o.ApplyT(func(v StackEnsembleSettings) interface{} { return v.StackMetaLearnerKWargs }).(pulumi.AnyOutput)
-}
-
-// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-func (o StackEnsembleSettingsOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v StackEnsembleSettings) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
-}
-
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
-func (o StackEnsembleSettingsOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackEnsembleSettings) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
-}
-
-type StackEnsembleSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (StackEnsembleSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackEnsembleSettings)(nil)).Elem()
-}
-
-func (o StackEnsembleSettingsPtrOutput) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsPtrOutput) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsPtrOutput) Elem() StackEnsembleSettingsOutput {
-	return o.ApplyT(func(v *StackEnsembleSettings) StackEnsembleSettings {
-		if v != nil {
-			return *v
-		}
-		var ret StackEnsembleSettings
-		return ret
-	}).(StackEnsembleSettingsOutput)
-}
-
-// Optional parameters to pass to the initializer of the meta-learner.
-func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
-	return o.ApplyT(func(v *StackEnsembleSettings) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.StackMetaLearnerKWargs
-	}).(pulumi.AnyOutput)
-}
-
-// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *StackEnsembleSettings) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.StackMetaLearnerTrainPercentage
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
-func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StackEnsembleSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StackMetaLearnerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Advances setting to customize StackEnsemble run.
-type StackEnsembleSettingsResponse struct {
-	// Optional parameters to pass to the initializer of the meta-learner.
-	StackMetaLearnerKWargs interface{} `pulumi:"stackMetaLearnerKWargs"`
-	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-	StackMetaLearnerTrainPercentage *float64 `pulumi:"stackMetaLearnerTrainPercentage"`
-	// The meta-learner is a model trained on the output of the individual heterogeneous models.
-	StackMetaLearnerType *string `pulumi:"stackMetaLearnerType"`
-}
-
-// Defaults sets the appropriate defaults for StackEnsembleSettingsResponse
-func (val *StackEnsembleSettingsResponse) Defaults() *StackEnsembleSettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.StackMetaLearnerTrainPercentage == nil {
-		stackMetaLearnerTrainPercentage_ := 0.2
-		tmp.StackMetaLearnerTrainPercentage = &stackMetaLearnerTrainPercentage_
-	}
-	if tmp.StackMetaLearnerType == nil {
-		stackMetaLearnerType_ := "None"
-		tmp.StackMetaLearnerType = &stackMetaLearnerType_
-	}
-	return &tmp
-}
-
-// Advances setting to customize StackEnsemble run.
-type StackEnsembleSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (StackEnsembleSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackEnsembleSettingsResponse)(nil)).Elem()
-}
-
-func (o StackEnsembleSettingsResponseOutput) ToStackEnsembleSettingsResponseOutput() StackEnsembleSettingsResponseOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsResponseOutput) ToStackEnsembleSettingsResponseOutputWithContext(ctx context.Context) StackEnsembleSettingsResponseOutput {
-	return o
-}
-
-// Optional parameters to pass to the initializer of the meta-learner.
-func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
-	return o.ApplyT(func(v StackEnsembleSettingsResponse) interface{} { return v.StackMetaLearnerKWargs }).(pulumi.AnyOutput)
-}
-
-// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v StackEnsembleSettingsResponse) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
-}
-
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
-func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StackEnsembleSettingsResponse) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
-}
-
-type StackEnsembleSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StackEnsembleSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackEnsembleSettingsResponse)(nil)).Elem()
-}
-
-func (o StackEnsembleSettingsResponsePtrOutput) ToStackEnsembleSettingsResponsePtrOutput() StackEnsembleSettingsResponsePtrOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsResponsePtrOutput) ToStackEnsembleSettingsResponsePtrOutputWithContext(ctx context.Context) StackEnsembleSettingsResponsePtrOutput {
-	return o
-}
-
-func (o StackEnsembleSettingsResponsePtrOutput) Elem() StackEnsembleSettingsResponseOutput {
-	return o.ApplyT(func(v *StackEnsembleSettingsResponse) StackEnsembleSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StackEnsembleSettingsResponse
-		return ret
-	}).(StackEnsembleSettingsResponseOutput)
-}
-
-// Optional parameters to pass to the initializer of the meta-learner.
-func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
-	return o.ApplyT(func(v *StackEnsembleSettingsResponse) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.StackMetaLearnerKWargs
-	}).(pulumi.AnyOutput)
-}
-
-// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
-func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *StackEnsembleSettingsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.StackMetaLearnerTrainPercentage
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The meta-learner is a model trained on the output of the individual heterogeneous models.
-func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StackEnsembleSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StackMetaLearnerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Active message associated with project
-type StatusMessageResponse struct {
-	// Service-defined message code.
-	Code string `pulumi:"code"`
-	// Time in UTC at which the message was created.
-	CreatedDateTime string `pulumi:"createdDateTime"`
-	// Severity level of message.
-	Level string `pulumi:"level"`
-	// A human-readable representation of the message code.
-	Message string `pulumi:"message"`
-}
-
-// Active message associated with project
-type StatusMessageResponseOutput struct{ *pulumi.OutputState }
-
-func (StatusMessageResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StatusMessageResponse)(nil)).Elem()
-}
-
-func (o StatusMessageResponseOutput) ToStatusMessageResponseOutput() StatusMessageResponseOutput {
-	return o
-}
-
-func (o StatusMessageResponseOutput) ToStatusMessageResponseOutputWithContext(ctx context.Context) StatusMessageResponseOutput {
-	return o
-}
-
-// Service-defined message code.
-func (o StatusMessageResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v StatusMessageResponse) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// Time in UTC at which the message was created.
-func (o StatusMessageResponseOutput) CreatedDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v StatusMessageResponse) string { return v.CreatedDateTime }).(pulumi.StringOutput)
-}
-
-// Severity level of message.
-func (o StatusMessageResponseOutput) Level() pulumi.StringOutput {
-	return o.ApplyT(func(v StatusMessageResponse) string { return v.Level }).(pulumi.StringOutput)
-}
-
-// A human-readable representation of the message code.
-func (o StatusMessageResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v StatusMessageResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-type StatusMessageResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (StatusMessageResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StatusMessageResponse)(nil)).Elem()
-}
-
-func (o StatusMessageResponseArrayOutput) ToStatusMessageResponseArrayOutput() StatusMessageResponseArrayOutput {
-	return o
-}
-
-func (o StatusMessageResponseArrayOutput) ToStatusMessageResponseArrayOutputWithContext(ctx context.Context) StatusMessageResponseArrayOutput {
-	return o
-}
-
-func (o StatusMessageResponseArrayOutput) Index(i pulumi.IntInput) StatusMessageResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusMessageResponse {
-		return vs[0].([]StatusMessageResponse)[vs[1].(int)]
-	}).(StatusMessageResponseOutput)
-}
-
-// Details of storage account to be used for the Registry
-type StorageAccountDetails struct {
-	// Details of system created storage account to be used for the registry
-	SystemCreatedStorageAccount *SystemCreatedStorageAccount `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount *UserCreatedStorageAccount `pulumi:"userCreatedStorageAccount"`
-}
-
-// StorageAccountDetailsInput is an input type that accepts StorageAccountDetailsArgs and StorageAccountDetailsOutput values.
-// You can construct a concrete instance of `StorageAccountDetailsInput` via:
-//
-//	StorageAccountDetailsArgs{...}
-type StorageAccountDetailsInput interface {
-	pulumi.Input
-
-	ToStorageAccountDetailsOutput() StorageAccountDetailsOutput
-	ToStorageAccountDetailsOutputWithContext(context.Context) StorageAccountDetailsOutput
-}
-
-// Details of storage account to be used for the Registry
-type StorageAccountDetailsArgs struct {
-	// Details of system created storage account to be used for the registry
-	SystemCreatedStorageAccount SystemCreatedStorageAccountPtrInput `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount UserCreatedStorageAccountPtrInput `pulumi:"userCreatedStorageAccount"`
-}
-
-func (StorageAccountDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageAccountDetails)(nil)).Elem()
-}
-
-func (i StorageAccountDetailsArgs) ToStorageAccountDetailsOutput() StorageAccountDetailsOutput {
-	return i.ToStorageAccountDetailsOutputWithContext(context.Background())
-}
-
-func (i StorageAccountDetailsArgs) ToStorageAccountDetailsOutputWithContext(ctx context.Context) StorageAccountDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountDetailsOutput)
-}
-
-// StorageAccountDetailsArrayInput is an input type that accepts StorageAccountDetailsArray and StorageAccountDetailsArrayOutput values.
-// You can construct a concrete instance of `StorageAccountDetailsArrayInput` via:
-//
-//	StorageAccountDetailsArray{ StorageAccountDetailsArgs{...} }
-type StorageAccountDetailsArrayInput interface {
-	pulumi.Input
-
-	ToStorageAccountDetailsArrayOutput() StorageAccountDetailsArrayOutput
-	ToStorageAccountDetailsArrayOutputWithContext(context.Context) StorageAccountDetailsArrayOutput
-}
-
-type StorageAccountDetailsArray []StorageAccountDetailsInput
-
-func (StorageAccountDetailsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageAccountDetails)(nil)).Elem()
-}
-
-func (i StorageAccountDetailsArray) ToStorageAccountDetailsArrayOutput() StorageAccountDetailsArrayOutput {
-	return i.ToStorageAccountDetailsArrayOutputWithContext(context.Background())
-}
-
-func (i StorageAccountDetailsArray) ToStorageAccountDetailsArrayOutputWithContext(ctx context.Context) StorageAccountDetailsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountDetailsArrayOutput)
-}
-
-// Details of storage account to be used for the Registry
-type StorageAccountDetailsOutput struct{ *pulumi.OutputState }
-
-func (StorageAccountDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageAccountDetails)(nil)).Elem()
-}
-
-func (o StorageAccountDetailsOutput) ToStorageAccountDetailsOutput() StorageAccountDetailsOutput {
-	return o
-}
-
-func (o StorageAccountDetailsOutput) ToStorageAccountDetailsOutputWithContext(ctx context.Context) StorageAccountDetailsOutput {
-	return o
-}
-
-// Details of system created storage account to be used for the registry
-func (o StorageAccountDetailsOutput) SystemCreatedStorageAccount() SystemCreatedStorageAccountPtrOutput {
-	return o.ApplyT(func(v StorageAccountDetails) *SystemCreatedStorageAccount { return v.SystemCreatedStorageAccount }).(SystemCreatedStorageAccountPtrOutput)
-}
-
-// Details of user created storage account to be used for the registry
-func (o StorageAccountDetailsOutput) UserCreatedStorageAccount() UserCreatedStorageAccountPtrOutput {
-	return o.ApplyT(func(v StorageAccountDetails) *UserCreatedStorageAccount { return v.UserCreatedStorageAccount }).(UserCreatedStorageAccountPtrOutput)
-}
-
-type StorageAccountDetailsArrayOutput struct{ *pulumi.OutputState }
-
-func (StorageAccountDetailsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageAccountDetails)(nil)).Elem()
-}
-
-func (o StorageAccountDetailsArrayOutput) ToStorageAccountDetailsArrayOutput() StorageAccountDetailsArrayOutput {
-	return o
-}
-
-func (o StorageAccountDetailsArrayOutput) ToStorageAccountDetailsArrayOutputWithContext(ctx context.Context) StorageAccountDetailsArrayOutput {
-	return o
-}
-
-func (o StorageAccountDetailsArrayOutput) Index(i pulumi.IntInput) StorageAccountDetailsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAccountDetails {
-		return vs[0].([]StorageAccountDetails)[vs[1].(int)]
-	}).(StorageAccountDetailsOutput)
-}
-
-// Details of storage account to be used for the Registry
-type StorageAccountDetailsResponse struct {
-	// Details of system created storage account to be used for the registry
-	SystemCreatedStorageAccount *SystemCreatedStorageAccountResponse `pulumi:"systemCreatedStorageAccount"`
-	// Details of user created storage account to be used for the registry
-	UserCreatedStorageAccount *UserCreatedStorageAccountResponse `pulumi:"userCreatedStorageAccount"`
-}
-
-// Details of storage account to be used for the Registry
-type StorageAccountDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (StorageAccountDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageAccountDetailsResponse)(nil)).Elem()
-}
-
-func (o StorageAccountDetailsResponseOutput) ToStorageAccountDetailsResponseOutput() StorageAccountDetailsResponseOutput {
-	return o
-}
-
-func (o StorageAccountDetailsResponseOutput) ToStorageAccountDetailsResponseOutputWithContext(ctx context.Context) StorageAccountDetailsResponseOutput {
-	return o
-}
-
-// Details of system created storage account to be used for the registry
-func (o StorageAccountDetailsResponseOutput) SystemCreatedStorageAccount() SystemCreatedStorageAccountResponsePtrOutput {
-	return o.ApplyT(func(v StorageAccountDetailsResponse) *SystemCreatedStorageAccountResponse {
-		return v.SystemCreatedStorageAccount
-	}).(SystemCreatedStorageAccountResponsePtrOutput)
-}
-
-// Details of user created storage account to be used for the registry
-func (o StorageAccountDetailsResponseOutput) UserCreatedStorageAccount() UserCreatedStorageAccountResponsePtrOutput {
-	return o.ApplyT(func(v StorageAccountDetailsResponse) *UserCreatedStorageAccountResponse {
-		return v.UserCreatedStorageAccount
-	}).(UserCreatedStorageAccountResponsePtrOutput)
-}
-
-type StorageAccountDetailsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (StorageAccountDetailsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageAccountDetailsResponse)(nil)).Elem()
-}
-
-func (o StorageAccountDetailsResponseArrayOutput) ToStorageAccountDetailsResponseArrayOutput() StorageAccountDetailsResponseArrayOutput {
-	return o
-}
-
-func (o StorageAccountDetailsResponseArrayOutput) ToStorageAccountDetailsResponseArrayOutputWithContext(ctx context.Context) StorageAccountDetailsResponseArrayOutput {
-	return o
-}
-
-func (o StorageAccountDetailsResponseArrayOutput) Index(i pulumi.IntInput) StorageAccountDetailsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAccountDetailsResponse {
-		return vs[0].([]StorageAccountDetailsResponse)[vs[1].(int)]
-	}).(StorageAccountDetailsResponseOutput)
-}
-
-// Sweep job definition.
-type SweepJob struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// Early termination policies enable canceling poor-performing runs before they complete
-	EarlyTermination interface{} `pulumi:"earlyTermination"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Mapping of input data bindings used in the job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Sweep'.
-	JobType string `pulumi:"jobType"`
-	// Sweep Job limit.
-	Limits *SweepJobLimits `pulumi:"limits"`
-	// [Required] Optimization objective.
-	Objective Objective `pulumi:"objective"`
-	// Mapping of output data bindings used in the job.
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// [Required] The hyperparameter sampling algorithm
-	SamplingAlgorithm interface{} `pulumi:"samplingAlgorithm"`
-	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
-	SearchSpace interface{} `pulumi:"searchSpace"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobService `pulumi:"services"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-	// [Required] Trial component definition.
-	Trial TrialComponent `pulumi:"trial"`
-}
-
-// Defaults sets the appropriate defaults for SweepJob
-func (val *SweepJob) Defaults() *SweepJob {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	tmp.Trial = *tmp.Trial.Defaults()
-
-	return &tmp
-}
-
-// SweepJobInput is an input type that accepts SweepJobArgs and SweepJobOutput values.
-// You can construct a concrete instance of `SweepJobInput` via:
-//
-//	SweepJobArgs{...}
-type SweepJobInput interface {
-	pulumi.Input
-
-	ToSweepJobOutput() SweepJobOutput
-	ToSweepJobOutputWithContext(context.Context) SweepJobOutput
-}
-
-// Sweep job definition.
-type SweepJobArgs struct {
-	// ARM resource ID of the component resource.
-	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of job.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Early termination policies enable canceling poor-performing runs before they complete
-	EarlyTermination pulumi.Input `pulumi:"earlyTermination"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity pulumi.Input `pulumi:"identity"`
-	// Mapping of input data bindings used in the job.
-	Inputs pulumi.MapInput `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Sweep'.
-	JobType pulumi.StringInput `pulumi:"jobType"`
-	// Sweep Job limit.
-	Limits SweepJobLimitsPtrInput `pulumi:"limits"`
-	// [Required] Optimization objective.
-	Objective ObjectiveInput `pulumi:"objective"`
-	// Mapping of output data bindings used in the job.
-	Outputs pulumi.MapInput `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// [Required] The hyperparameter sampling algorithm
-	SamplingAlgorithm pulumi.Input `pulumi:"samplingAlgorithm"`
-	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
-	SearchSpace pulumi.Input `pulumi:"searchSpace"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services JobServiceMapInput `pulumi:"services"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// [Required] Trial component definition.
-	Trial TrialComponentInput `pulumi:"trial"`
-}
-
-// Defaults sets the appropriate defaults for SweepJobArgs
-func (val *SweepJobArgs) Defaults() *SweepJobArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		tmp.ExperimentName = pulumi.StringPtr("Default")
-	}
-	if tmp.IsArchived == nil {
-		tmp.IsArchived = pulumi.BoolPtr(false)
-	}
-
-	return &tmp
-}
-func (SweepJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SweepJob)(nil)).Elem()
-}
-
-func (i SweepJobArgs) ToSweepJobOutput() SweepJobOutput {
-	return i.ToSweepJobOutputWithContext(context.Background())
-}
-
-func (i SweepJobArgs) ToSweepJobOutputWithContext(ctx context.Context) SweepJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SweepJobOutput)
-}
-
-// Sweep job definition.
-type SweepJobOutput struct{ *pulumi.OutputState }
-
-func (SweepJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SweepJob)(nil)).Elem()
-}
-
-func (o SweepJobOutput) ToSweepJobOutput() SweepJobOutput {
-	return o
-}
-
-func (o SweepJobOutput) ToSweepJobOutputWithContext(ctx context.Context) SweepJobOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o SweepJobOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o SweepJobOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o SweepJobOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJob) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o SweepJobOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Early termination policies enable canceling poor-performing runs before they complete
-func (o SweepJobOutput) EarlyTermination() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJob) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o SweepJobOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o SweepJobOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Mapping of input data bindings used in the job.
-func (o SweepJobOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SweepJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o SweepJobOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SweepJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Sweep'.
-func (o SweepJobOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v SweepJob) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Sweep Job limit.
-func (o SweepJobOutput) Limits() SweepJobLimitsPtrOutput {
-	return o.ApplyT(func(v SweepJob) *SweepJobLimits { return v.Limits }).(SweepJobLimitsPtrOutput)
-}
-
-// [Required] Optimization objective.
-func (o SweepJobOutput) Objective() ObjectiveOutput {
-	return o.ApplyT(func(v SweepJob) Objective { return v.Objective }).(ObjectiveOutput)
-}
-
-// Mapping of output data bindings used in the job.
-func (o SweepJobOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SweepJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o SweepJobOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SweepJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// [Required] The hyperparameter sampling algorithm
-func (o SweepJobOutput) SamplingAlgorithm() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJob) interface{} { return v.SamplingAlgorithm }).(pulumi.AnyOutput)
-}
-
-// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
-func (o SweepJobOutput) SearchSpace() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJob) interface{} { return v.SearchSpace }).(pulumi.AnyOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o SweepJobOutput) Services() JobServiceMapOutput {
-	return o.ApplyT(func(v SweepJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o SweepJobOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SweepJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// [Required] Trial component definition.
-func (o SweepJobOutput) Trial() TrialComponentOutput {
-	return o.ApplyT(func(v SweepJob) TrialComponent { return v.Trial }).(TrialComponentOutput)
-}
-
-// Sweep Job limit class.
-type SweepJobLimits struct {
-	// Expected value is 'Sweep'.
-	JobLimitsType string `pulumi:"jobLimitsType"`
-	// Sweep Job max concurrent trials.
-	MaxConcurrentTrials *int `pulumi:"maxConcurrentTrials"`
-	// Sweep Job max total trials.
-	MaxTotalTrials *int `pulumi:"maxTotalTrials"`
-	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-	Timeout *string `pulumi:"timeout"`
-	// Sweep Job Trial timeout value.
-	TrialTimeout *string `pulumi:"trialTimeout"`
-}
-
-// SweepJobLimitsInput is an input type that accepts SweepJobLimitsArgs and SweepJobLimitsOutput values.
-// You can construct a concrete instance of `SweepJobLimitsInput` via:
-//
-//	SweepJobLimitsArgs{...}
-type SweepJobLimitsInput interface {
-	pulumi.Input
-
-	ToSweepJobLimitsOutput() SweepJobLimitsOutput
-	ToSweepJobLimitsOutputWithContext(context.Context) SweepJobLimitsOutput
-}
-
-// Sweep Job limit class.
-type SweepJobLimitsArgs struct {
-	// Expected value is 'Sweep'.
-	JobLimitsType pulumi.StringInput `pulumi:"jobLimitsType"`
-	// Sweep Job max concurrent trials.
-	MaxConcurrentTrials pulumi.IntPtrInput `pulumi:"maxConcurrentTrials"`
-	// Sweep Job max total trials.
-	MaxTotalTrials pulumi.IntPtrInput `pulumi:"maxTotalTrials"`
-	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// Sweep Job Trial timeout value.
-	TrialTimeout pulumi.StringPtrInput `pulumi:"trialTimeout"`
-}
-
-func (SweepJobLimitsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SweepJobLimits)(nil)).Elem()
-}
-
-func (i SweepJobLimitsArgs) ToSweepJobLimitsOutput() SweepJobLimitsOutput {
-	return i.ToSweepJobLimitsOutputWithContext(context.Background())
-}
-
-func (i SweepJobLimitsArgs) ToSweepJobLimitsOutputWithContext(ctx context.Context) SweepJobLimitsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsOutput)
-}
-
-func (i SweepJobLimitsArgs) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
-	return i.ToSweepJobLimitsPtrOutputWithContext(context.Background())
-}
-
-func (i SweepJobLimitsArgs) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsOutput).ToSweepJobLimitsPtrOutputWithContext(ctx)
-}
-
-// SweepJobLimitsPtrInput is an input type that accepts SweepJobLimitsArgs, SweepJobLimitsPtr and SweepJobLimitsPtrOutput values.
-// You can construct a concrete instance of `SweepJobLimitsPtrInput` via:
-//
-//	        SweepJobLimitsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SweepJobLimitsPtrInput interface {
-	pulumi.Input
-
-	ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput
-	ToSweepJobLimitsPtrOutputWithContext(context.Context) SweepJobLimitsPtrOutput
-}
-
-type sweepJobLimitsPtrType SweepJobLimitsArgs
-
-func SweepJobLimitsPtr(v *SweepJobLimitsArgs) SweepJobLimitsPtrInput {
-	return (*sweepJobLimitsPtrType)(v)
-}
-
-func (*sweepJobLimitsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SweepJobLimits)(nil)).Elem()
-}
-
-func (i *sweepJobLimitsPtrType) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
-	return i.ToSweepJobLimitsPtrOutputWithContext(context.Background())
-}
-
-func (i *sweepJobLimitsPtrType) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsPtrOutput)
-}
-
-// Sweep Job limit class.
-type SweepJobLimitsOutput struct{ *pulumi.OutputState }
-
-func (SweepJobLimitsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SweepJobLimits)(nil)).Elem()
-}
-
-func (o SweepJobLimitsOutput) ToSweepJobLimitsOutput() SweepJobLimitsOutput {
-	return o
-}
-
-func (o SweepJobLimitsOutput) ToSweepJobLimitsOutputWithContext(ctx context.Context) SweepJobLimitsOutput {
-	return o
-}
-
-func (o SweepJobLimitsOutput) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
-	return o.ToSweepJobLimitsPtrOutputWithContext(context.Background())
-}
-
-func (o SweepJobLimitsOutput) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SweepJobLimits) *SweepJobLimits {
-		return &v
-	}).(SweepJobLimitsPtrOutput)
-}
-
-// Expected value is 'Sweep'.
-func (o SweepJobLimitsOutput) JobLimitsType() pulumi.StringOutput {
-	return o.ApplyT(func(v SweepJobLimits) string { return v.JobLimitsType }).(pulumi.StringOutput)
-}
-
-// Sweep Job max concurrent trials.
-func (o SweepJobLimitsOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SweepJobLimits) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
-}
-
-// Sweep Job max total trials.
-func (o SweepJobLimitsOutput) MaxTotalTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SweepJobLimits) *int { return v.MaxTotalTrials }).(pulumi.IntPtrOutput)
-}
-
-// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-func (o SweepJobLimitsOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobLimits) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job Trial timeout value.
-func (o SweepJobLimitsOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobLimits) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
-}
-
-type SweepJobLimitsPtrOutput struct{ *pulumi.OutputState }
-
-func (SweepJobLimitsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SweepJobLimits)(nil)).Elem()
-}
-
-func (o SweepJobLimitsPtrOutput) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
-	return o
-}
-
-func (o SweepJobLimitsPtrOutput) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
-	return o
-}
-
-func (o SweepJobLimitsPtrOutput) Elem() SweepJobLimitsOutput {
-	return o.ApplyT(func(v *SweepJobLimits) SweepJobLimits {
-		if v != nil {
-			return *v
-		}
-		var ret SweepJobLimits
-		return ret
-	}).(SweepJobLimitsOutput)
-}
-
-// Expected value is 'Sweep'.
-func (o SweepJobLimitsPtrOutput) JobLimitsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimits) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobLimitsType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job max concurrent trials.
-func (o SweepJobLimitsPtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimits) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxConcurrentTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// Sweep Job max total trials.
-func (o SweepJobLimitsPtrOutput) MaxTotalTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimits) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTotalTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-func (o SweepJobLimitsPtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimits) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job Trial timeout value.
-func (o SweepJobLimitsPtrOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimits) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TrialTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job limit class.
-type SweepJobLimitsResponse struct {
-	// Expected value is 'Sweep'.
-	JobLimitsType string `pulumi:"jobLimitsType"`
-	// Sweep Job max concurrent trials.
-	MaxConcurrentTrials *int `pulumi:"maxConcurrentTrials"`
-	// Sweep Job max total trials.
-	MaxTotalTrials *int `pulumi:"maxTotalTrials"`
-	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-	Timeout *string `pulumi:"timeout"`
-	// Sweep Job Trial timeout value.
-	TrialTimeout *string `pulumi:"trialTimeout"`
-}
-
-// Sweep Job limit class.
-type SweepJobLimitsResponseOutput struct{ *pulumi.OutputState }
-
-func (SweepJobLimitsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SweepJobLimitsResponse)(nil)).Elem()
-}
-
-func (o SweepJobLimitsResponseOutput) ToSweepJobLimitsResponseOutput() SweepJobLimitsResponseOutput {
-	return o
-}
-
-func (o SweepJobLimitsResponseOutput) ToSweepJobLimitsResponseOutputWithContext(ctx context.Context) SweepJobLimitsResponseOutput {
-	return o
-}
-
-// Expected value is 'Sweep'.
-func (o SweepJobLimitsResponseOutput) JobLimitsType() pulumi.StringOutput {
-	return o.ApplyT(func(v SweepJobLimitsResponse) string { return v.JobLimitsType }).(pulumi.StringOutput)
-}
-
-// Sweep Job max concurrent trials.
-func (o SweepJobLimitsResponseOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SweepJobLimitsResponse) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
-}
-
-// Sweep Job max total trials.
-func (o SweepJobLimitsResponseOutput) MaxTotalTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SweepJobLimitsResponse) *int { return v.MaxTotalTrials }).(pulumi.IntPtrOutput)
-}
-
-// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-func (o SweepJobLimitsResponseOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobLimitsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job Trial timeout value.
-func (o SweepJobLimitsResponseOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobLimitsResponse) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
-}
-
-type SweepJobLimitsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SweepJobLimitsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SweepJobLimitsResponse)(nil)).Elem()
-}
-
-func (o SweepJobLimitsResponsePtrOutput) ToSweepJobLimitsResponsePtrOutput() SweepJobLimitsResponsePtrOutput {
-	return o
-}
-
-func (o SweepJobLimitsResponsePtrOutput) ToSweepJobLimitsResponsePtrOutputWithContext(ctx context.Context) SweepJobLimitsResponsePtrOutput {
-	return o
-}
-
-func (o SweepJobLimitsResponsePtrOutput) Elem() SweepJobLimitsResponseOutput {
-	return o.ApplyT(func(v *SweepJobLimitsResponse) SweepJobLimitsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SweepJobLimitsResponse
-		return ret
-	}).(SweepJobLimitsResponseOutput)
-}
-
-// Expected value is 'Sweep'.
-func (o SweepJobLimitsResponsePtrOutput) JobLimitsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.JobLimitsType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job max concurrent trials.
-func (o SweepJobLimitsResponsePtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimitsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxConcurrentTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// Sweep Job max total trials.
-func (o SweepJobLimitsResponsePtrOutput) MaxTotalTrials() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimitsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxTotalTrials
-	}).(pulumi.IntPtrOutput)
-}
-
-// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
-func (o SweepJobLimitsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Timeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sweep Job Trial timeout value.
-func (o SweepJobLimitsResponsePtrOutput) TrialTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TrialTimeout
-	}).(pulumi.StringPtrOutput)
-}
-
-// Sweep job definition.
-type SweepJobResponse struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// Early termination policies enable canceling poor-performing runs before they complete
-	EarlyTermination interface{} `pulumi:"earlyTermination"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Mapping of input data bindings used in the job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Sweep'.
-	JobType string `pulumi:"jobType"`
-	// Sweep Job limit.
-	Limits *SweepJobLimitsResponse `pulumi:"limits"`
-	// [Required] Optimization objective.
-	Objective ObjectiveResponse `pulumi:"objective"`
-	// Mapping of output data bindings used in the job.
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// [Required] The hyperparameter sampling algorithm
-	SamplingAlgorithm interface{} `pulumi:"samplingAlgorithm"`
-	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
-	SearchSpace interface{} `pulumi:"searchSpace"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobServiceResponse `pulumi:"services"`
-	// Status of the job.
-	Status string `pulumi:"status"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-	// [Required] Trial component definition.
-	Trial TrialComponentResponse `pulumi:"trial"`
-}
-
-// Defaults sets the appropriate defaults for SweepJobResponse
-func (val *SweepJobResponse) Defaults() *SweepJobResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	tmp.Trial = *tmp.Trial.Defaults()
-
-	return &tmp
-}
-
-// Sweep job definition.
-type SweepJobResponseOutput struct{ *pulumi.OutputState }
-
-func (SweepJobResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SweepJobResponse)(nil)).Elem()
-}
-
-func (o SweepJobResponseOutput) ToSweepJobResponseOutput() SweepJobResponseOutput {
-	return o
-}
-
-func (o SweepJobResponseOutput) ToSweepJobResponseOutputWithContext(ctx context.Context) SweepJobResponseOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o SweepJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o SweepJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o SweepJobResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o SweepJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// Early termination policies enable canceling poor-performing runs before they complete
-func (o SweepJobResponseOutput) EarlyTermination() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o SweepJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o SweepJobResponseOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Mapping of input data bindings used in the job.
-func (o SweepJobResponseOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SweepJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o SweepJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Sweep'.
-func (o SweepJobResponseOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v SweepJobResponse) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Sweep Job limit.
-func (o SweepJobResponseOutput) Limits() SweepJobLimitsResponsePtrOutput {
-	return o.ApplyT(func(v SweepJobResponse) *SweepJobLimitsResponse { return v.Limits }).(SweepJobLimitsResponsePtrOutput)
-}
-
-// [Required] Optimization objective.
-func (o SweepJobResponseOutput) Objective() ObjectiveResponseOutput {
-	return o.ApplyT(func(v SweepJobResponse) ObjectiveResponse { return v.Objective }).(ObjectiveResponseOutput)
-}
-
-// Mapping of output data bindings used in the job.
-func (o SweepJobResponseOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v SweepJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o SweepJobResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// [Required] The hyperparameter sampling algorithm
-func (o SweepJobResponseOutput) SamplingAlgorithm() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.SamplingAlgorithm }).(pulumi.AnyOutput)
-}
-
-// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
-func (o SweepJobResponseOutput) SearchSpace() pulumi.AnyOutput {
-	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.SearchSpace }).(pulumi.AnyOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o SweepJobResponseOutput) Services() JobServiceResponseMapOutput {
-	return o.ApplyT(func(v SweepJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
-}
-
-// Status of the job.
-func (o SweepJobResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v SweepJobResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o SweepJobResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// [Required] Trial component definition.
-func (o SweepJobResponseOutput) Trial() TrialComponentResponseOutput {
-	return o.ApplyT(func(v SweepJobResponse) TrialComponentResponse { return v.Trial }).(TrialComponentResponseOutput)
-}
-
-// A SynapseSpark compute.
-type SynapseSpark struct {
-	// Location for the underlying compute
-	ComputeLocation *string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'SynapseSpark'.
-	ComputeType string `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool                   `pulumi:"disableLocalAuth"`
-	Properties       *SynapseSparkProperties `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// SynapseSparkInput is an input type that accepts SynapseSparkArgs and SynapseSparkOutput values.
-// You can construct a concrete instance of `SynapseSparkInput` via:
-//
-//	SynapseSparkArgs{...}
-type SynapseSparkInput interface {
-	pulumi.Input
-
-	ToSynapseSparkOutput() SynapseSparkOutput
-	ToSynapseSparkOutputWithContext(context.Context) SynapseSparkOutput
-}
-
-// A SynapseSpark compute.
-type SynapseSparkArgs struct {
-	// Location for the underlying compute
-	ComputeLocation pulumi.StringPtrInput `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'SynapseSpark'.
-	ComputeType pulumi.StringInput `pulumi:"computeType"`
-	// The description of the Machine Learning compute.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth pulumi.BoolPtrInput            `pulumi:"disableLocalAuth"`
-	Properties       SynapseSparkPropertiesPtrInput `pulumi:"properties"`
-	// ARM resource id of the underlying compute
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-}
-
-func (SynapseSparkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSpark)(nil)).Elem()
-}
-
-func (i SynapseSparkArgs) ToSynapseSparkOutput() SynapseSparkOutput {
-	return i.ToSynapseSparkOutputWithContext(context.Background())
-}
-
-func (i SynapseSparkArgs) ToSynapseSparkOutputWithContext(ctx context.Context) SynapseSparkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkOutput)
-}
-
-func (i SynapseSparkArgs) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
-	return i.ToSynapseSparkPtrOutputWithContext(context.Background())
-}
-
-func (i SynapseSparkArgs) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkOutput).ToSynapseSparkPtrOutputWithContext(ctx)
-}
-
-// SynapseSparkPtrInput is an input type that accepts SynapseSparkArgs, SynapseSparkPtr and SynapseSparkPtrOutput values.
-// You can construct a concrete instance of `SynapseSparkPtrInput` via:
-//
-//	        SynapseSparkArgs{...}
-//
-//	or:
-//
-//	        nil
-type SynapseSparkPtrInput interface {
-	pulumi.Input
-
-	ToSynapseSparkPtrOutput() SynapseSparkPtrOutput
-	ToSynapseSparkPtrOutputWithContext(context.Context) SynapseSparkPtrOutput
-}
-
-type synapseSparkPtrType SynapseSparkArgs
-
-func SynapseSparkPtr(v *SynapseSparkArgs) SynapseSparkPtrInput {
-	return (*synapseSparkPtrType)(v)
-}
-
-func (*synapseSparkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSpark)(nil)).Elem()
-}
-
-func (i *synapseSparkPtrType) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
-	return i.ToSynapseSparkPtrOutputWithContext(context.Background())
-}
-
-func (i *synapseSparkPtrType) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPtrOutput)
-}
-
-// A SynapseSpark compute.
-type SynapseSparkOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSpark)(nil)).Elem()
-}
-
-func (o SynapseSparkOutput) ToSynapseSparkOutput() SynapseSparkOutput {
-	return o
-}
-
-func (o SynapseSparkOutput) ToSynapseSparkOutputWithContext(ctx context.Context) SynapseSparkOutput {
-	return o
-}
-
-func (o SynapseSparkOutput) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
-	return o.ToSynapseSparkPtrOutputWithContext(context.Background())
-}
-
-func (o SynapseSparkOutput) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynapseSpark) *SynapseSpark {
-		return &v
-	}).(SynapseSparkPtrOutput)
-}
-
-// Location for the underlying compute
-func (o SynapseSparkOutput) ComputeLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSpark) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
-}
-
-// The type of compute
-// Expected value is 'SynapseSpark'.
-func (o SynapseSparkOutput) ComputeType() pulumi.StringOutput {
-	return o.ApplyT(func(v SynapseSpark) string { return v.ComputeType }).(pulumi.StringOutput)
-}
-
-// The description of the Machine Learning compute.
-func (o SynapseSparkOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSpark) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-func (o SynapseSparkOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SynapseSpark) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
-}
-
-func (o SynapseSparkOutput) Properties() SynapseSparkPropertiesPtrOutput {
-	return o.ApplyT(func(v SynapseSpark) *SynapseSparkProperties { return v.Properties }).(SynapseSparkPropertiesPtrOutput)
-}
-
-// ARM resource id of the underlying compute
-func (o SynapseSparkOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSpark) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkPtrOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSpark)(nil)).Elem()
-}
-
-func (o SynapseSparkPtrOutput) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
-	return o
-}
-
-func (o SynapseSparkPtrOutput) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
-	return o
-}
-
-func (o SynapseSparkPtrOutput) Elem() SynapseSparkOutput {
-	return o.ApplyT(func(v *SynapseSpark) SynapseSpark {
-		if v != nil {
-			return *v
-		}
-		var ret SynapseSpark
-		return ret
-	}).(SynapseSparkOutput)
-}
-
-// Location for the underlying compute
-func (o SynapseSparkPtrOutput) ComputeLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSpark) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ComputeLocation
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of compute
-// Expected value is 'SynapseSpark'.
-func (o SynapseSparkPtrOutput) ComputeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSpark) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ComputeType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The description of the Machine Learning compute.
-func (o SynapseSparkPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSpark) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-func (o SynapseSparkPtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SynapseSpark) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.DisableLocalAuth
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o SynapseSparkPtrOutput) Properties() SynapseSparkPropertiesPtrOutput {
-	return o.ApplyT(func(v *SynapseSpark) *SynapseSparkProperties {
-		if v == nil {
-			return nil
-		}
-		return v.Properties
-	}).(SynapseSparkPropertiesPtrOutput)
-}
-
-// ARM resource id of the underlying compute
-func (o SynapseSparkPtrOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSpark) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkProperties struct {
-	// Auto pause properties.
-	AutoPauseProperties *AutoPauseProperties `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties *AutoScaleProperties `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize *string `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName *string `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion *string `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName *string `pulumi:"workspaceName"`
-}
-
-// SynapseSparkPropertiesInput is an input type that accepts SynapseSparkPropertiesArgs and SynapseSparkPropertiesOutput values.
-// You can construct a concrete instance of `SynapseSparkPropertiesInput` via:
-//
-//	SynapseSparkPropertiesArgs{...}
-type SynapseSparkPropertiesInput interface {
-	pulumi.Input
-
-	ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput
-	ToSynapseSparkPropertiesOutputWithContext(context.Context) SynapseSparkPropertiesOutput
-}
-
-type SynapseSparkPropertiesArgs struct {
-	// Auto pause properties.
-	AutoPauseProperties AutoPausePropertiesPtrInput `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties AutoScalePropertiesPtrInput `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize pulumi.StringPtrInput `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily pulumi.StringPtrInput `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName pulumi.StringPtrInput `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion pulumi.StringPtrInput `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
-}
-
-func (SynapseSparkPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSparkProperties)(nil)).Elem()
-}
-
-func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput {
-	return i.ToSynapseSparkPropertiesOutputWithContext(context.Background())
-}
-
-func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesOutputWithContext(ctx context.Context) SynapseSparkPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesOutput)
-}
-
-func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
-	return i.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesOutput).ToSynapseSparkPropertiesPtrOutputWithContext(ctx)
-}
-
-// SynapseSparkPropertiesPtrInput is an input type that accepts SynapseSparkPropertiesArgs, SynapseSparkPropertiesPtr and SynapseSparkPropertiesPtrOutput values.
-// You can construct a concrete instance of `SynapseSparkPropertiesPtrInput` via:
-//
-//	        SynapseSparkPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type SynapseSparkPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput
-	ToSynapseSparkPropertiesPtrOutputWithContext(context.Context) SynapseSparkPropertiesPtrOutput
-}
-
-type synapseSparkPropertiesPtrType SynapseSparkPropertiesArgs
-
-func SynapseSparkPropertiesPtr(v *SynapseSparkPropertiesArgs) SynapseSparkPropertiesPtrInput {
-	return (*synapseSparkPropertiesPtrType)(v)
-}
-
-func (*synapseSparkPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSparkProperties)(nil)).Elem()
-}
-
-func (i *synapseSparkPropertiesPtrType) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
-	return i.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *synapseSparkPropertiesPtrType) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesPtrOutput)
-}
-
-type SynapseSparkPropertiesOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSparkProperties)(nil)).Elem()
-}
-
-func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesOutputWithContext(ctx context.Context) SynapseSparkPropertiesOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
-	return o.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynapseSparkProperties) *SynapseSparkProperties {
-		return &v
-	}).(SynapseSparkPropertiesPtrOutput)
-}
-
-// Auto pause properties.
-func (o SynapseSparkPropertiesOutput) AutoPauseProperties() AutoPausePropertiesPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *AutoPauseProperties { return v.AutoPauseProperties }).(AutoPausePropertiesPtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkPropertiesOutput) AutoScaleProperties() AutoScalePropertiesPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *AutoScaleProperties { return v.AutoScaleProperties }).(AutoScalePropertiesPtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkPropertiesOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkPropertiesOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkPropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkPropertiesOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkPropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkPropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkPropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkPropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSparkProperties)(nil)).Elem()
-}
-
-func (o SynapseSparkPropertiesPtrOutput) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesPtrOutput) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
-	return o
-}
-
-func (o SynapseSparkPropertiesPtrOutput) Elem() SynapseSparkPropertiesOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) SynapseSparkProperties {
-		if v != nil {
-			return *v
-		}
-		var ret SynapseSparkProperties
-		return ret
-	}).(SynapseSparkPropertiesOutput)
-}
-
-// Auto pause properties.
-func (o SynapseSparkPropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *AutoPauseProperties {
-		if v == nil {
-			return nil
-		}
-		return v.AutoPauseProperties
-	}).(AutoPausePropertiesPtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkPropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *AutoScaleProperties {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScaleProperties
-	}).(AutoScalePropertiesPtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkPropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkPropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSizeFamily
-	}).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkPropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PoolName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkPropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkPropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkPropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkPropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceName
-	}).(pulumi.StringPtrOutput)
-}
-
-// A SynapseSpark compute.
-type SynapseSparkResponse struct {
-	// Location for the underlying compute
-	ComputeLocation *string `pulumi:"computeLocation"`
-	// The type of compute
-	// Expected value is 'SynapseSpark'.
-	ComputeType string `pulumi:"computeType"`
-	// The time at which the compute was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The description of the Machine Learning compute.
-	Description *string `pulumi:"description"`
-	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
-	// The time at which the compute was last modified.
-	ModifiedOn string                          `pulumi:"modifiedOn"`
-	Properties *SynapseSparkResponseProperties `pulumi:"properties"`
-	// Errors during provisioning
-	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
-	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// ARM resource id of the underlying compute
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// A SynapseSpark compute.
-type SynapseSparkResponseOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSparkResponse)(nil)).Elem()
-}
-
-func (o SynapseSparkResponseOutput) ToSynapseSparkResponseOutput() SynapseSparkResponseOutput {
-	return o
-}
-
-func (o SynapseSparkResponseOutput) ToSynapseSparkResponseOutputWithContext(ctx context.Context) SynapseSparkResponseOutput {
-	return o
-}
-
-// Location for the underlying compute
-func (o SynapseSparkResponseOutput) ComputeLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
-}
-
-// The type of compute
-// Expected value is 'SynapseSpark'.
-func (o SynapseSparkResponseOutput) ComputeType() pulumi.StringOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ComputeType }).(pulumi.StringOutput)
-}
-
-// The time at which the compute was created.
-func (o SynapseSparkResponseOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// The description of the Machine Learning compute.
-func (o SynapseSparkResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
-func (o SynapseSparkResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
-}
-
-// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
-func (o SynapseSparkResponseOutput) IsAttachedCompute() pulumi.BoolOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) bool { return v.IsAttachedCompute }).(pulumi.BoolOutput)
-}
-
-// The time at which the compute was last modified.
-func (o SynapseSparkResponseOutput) ModifiedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
-}
-
-func (o SynapseSparkResponseOutput) Properties() SynapseSparkResponsePropertiesPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkResponseProperties { return v.Properties }).(SynapseSparkResponsePropertiesPtrOutput)
-}
-
-// Errors during provisioning
-func (o SynapseSparkResponseOutput) ProvisioningErrors() ErrorResponseResponseArrayOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) []ErrorResponseResponse { return v.ProvisioningErrors }).(ErrorResponseResponseArrayOutput)
-}
-
-// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
-func (o SynapseSparkResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// ARM resource id of the underlying compute
-func (o SynapseSparkResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkResponseProperties struct {
-	// Auto pause properties.
-	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
-	// Auto scale properties.
-	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
-	// The number of compute nodes currently assigned to the compute.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Node size.
-	NodeSize *string `pulumi:"nodeSize"`
-	// Node size family.
-	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
-	// Pool name.
-	PoolName *string `pulumi:"poolName"`
-	// Name of the resource group in which workspace is located.
-	ResourceGroup *string `pulumi:"resourceGroup"`
-	// Spark version.
-	SparkVersion *string `pulumi:"sparkVersion"`
-	// Azure subscription identifier.
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Name of Azure Machine Learning workspace.
-	WorkspaceName *string `pulumi:"workspaceName"`
-}
-
-type SynapseSparkResponsePropertiesOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkResponsePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SynapseSparkResponseProperties)(nil)).Elem()
-}
-
-func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutput() SynapseSparkResponsePropertiesOutput {
-	return o
-}
-
-func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesOutput {
-	return o
-}
-
-// Auto pause properties.
-func (o SynapseSparkResponsePropertiesOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkResponsePropertiesOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkResponsePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkResponsePropertiesOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkResponsePropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkResponsePropertiesOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkResponsePropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkResponsePropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkResponsePropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkResponsePropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
-}
-
-type SynapseSparkResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (SynapseSparkResponsePropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SynapseSparkResponseProperties)(nil)).Elem()
-}
-
-func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutput() SynapseSparkResponsePropertiesPtrOutput {
-	return o
-}
-
-func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesPtrOutput {
-	return o
-}
-
-func (o SynapseSparkResponsePropertiesPtrOutput) Elem() SynapseSparkResponsePropertiesOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) SynapseSparkResponseProperties {
-		if v != nil {
-			return *v
-		}
-		var ret SynapseSparkResponseProperties
-		return ret
-	}).(SynapseSparkResponsePropertiesOutput)
-}
-
-// Auto pause properties.
-func (o SynapseSparkResponsePropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoPausePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AutoPauseProperties
-	}).(AutoPausePropertiesResponsePtrOutput)
-}
-
-// Auto scale properties.
-func (o SynapseSparkResponsePropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoScalePropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AutoScaleProperties
-	}).(AutoScalePropertiesResponsePtrOutput)
-}
-
-// The number of compute nodes currently assigned to the compute.
-func (o SynapseSparkResponsePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NodeCount
-	}).(pulumi.IntPtrOutput)
-}
-
-// Node size.
-func (o SynapseSparkResponsePropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSize
-	}).(pulumi.StringPtrOutput)
-}
-
-// Node size family.
-func (o SynapseSparkResponsePropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NodeSizeFamily
-	}).(pulumi.StringPtrOutput)
-}
-
-// Pool name.
-func (o SynapseSparkResponsePropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PoolName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource group in which workspace is located.
-func (o SynapseSparkResponsePropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceGroup
-	}).(pulumi.StringPtrOutput)
-}
-
-// Spark version.
-func (o SynapseSparkResponsePropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SparkVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure subscription identifier.
-func (o SynapseSparkResponsePropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of Azure Machine Learning workspace.
-func (o SynapseSparkResponsePropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.WorkspaceName
-	}).(pulumi.StringPtrOutput)
-}
-
-type SystemCreatedAcrAccount struct {
-	// Name of the ACR account
-	AcrAccountName *string `pulumi:"acrAccountName"`
-	// SKU of the ACR account
-	AcrAccountSku *string `pulumi:"acrAccountSku"`
-	// This is populated once the ACR account is created.
-	ArmResourceId *ArmResourceId `pulumi:"armResourceId"`
-}
-
-// SystemCreatedAcrAccountInput is an input type that accepts SystemCreatedAcrAccountArgs and SystemCreatedAcrAccountOutput values.
-// You can construct a concrete instance of `SystemCreatedAcrAccountInput` via:
-//
-//	SystemCreatedAcrAccountArgs{...}
-type SystemCreatedAcrAccountInput interface {
-	pulumi.Input
-
-	ToSystemCreatedAcrAccountOutput() SystemCreatedAcrAccountOutput
-	ToSystemCreatedAcrAccountOutputWithContext(context.Context) SystemCreatedAcrAccountOutput
-}
-
-type SystemCreatedAcrAccountArgs struct {
-	// Name of the ACR account
-	AcrAccountName pulumi.StringPtrInput `pulumi:"acrAccountName"`
-	// SKU of the ACR account
-	AcrAccountSku pulumi.StringPtrInput `pulumi:"acrAccountSku"`
-	// This is populated once the ACR account is created.
-	ArmResourceId ArmResourceIdPtrInput `pulumi:"armResourceId"`
-}
-
-func (SystemCreatedAcrAccountArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemCreatedAcrAccount)(nil)).Elem()
-}
-
-func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountOutput() SystemCreatedAcrAccountOutput {
-	return i.ToSystemCreatedAcrAccountOutputWithContext(context.Background())
-}
-
-func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountOutputWithContext(ctx context.Context) SystemCreatedAcrAccountOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountOutput)
-}
-
-func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
-	return i.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
-}
-
-func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountOutput).ToSystemCreatedAcrAccountPtrOutputWithContext(ctx)
-}
-
-// SystemCreatedAcrAccountPtrInput is an input type that accepts SystemCreatedAcrAccountArgs, SystemCreatedAcrAccountPtr and SystemCreatedAcrAccountPtrOutput values.
-// You can construct a concrete instance of `SystemCreatedAcrAccountPtrInput` via:
-//
-//	        SystemCreatedAcrAccountArgs{...}
-//
-//	or:
-//
-//	        nil
-type SystemCreatedAcrAccountPtrInput interface {
-	pulumi.Input
-
-	ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput
-	ToSystemCreatedAcrAccountPtrOutputWithContext(context.Context) SystemCreatedAcrAccountPtrOutput
-}
-
-type systemCreatedAcrAccountPtrType SystemCreatedAcrAccountArgs
-
-func SystemCreatedAcrAccountPtr(v *SystemCreatedAcrAccountArgs) SystemCreatedAcrAccountPtrInput {
-	return (*systemCreatedAcrAccountPtrType)(v)
-}
-
-func (*systemCreatedAcrAccountPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemCreatedAcrAccount)(nil)).Elem()
-}
-
-func (i *systemCreatedAcrAccountPtrType) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
-	return i.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
-}
-
-func (i *systemCreatedAcrAccountPtrType) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountPtrOutput)
-}
-
-type SystemCreatedAcrAccountOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedAcrAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemCreatedAcrAccount)(nil)).Elem()
-}
-
-func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountOutput() SystemCreatedAcrAccountOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountOutputWithContext(ctx context.Context) SystemCreatedAcrAccountOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
-	return o.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
-}
-
-func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemCreatedAcrAccount) *SystemCreatedAcrAccount {
-		return &v
-	}).(SystemCreatedAcrAccountPtrOutput)
-}
-
-// Name of the ACR account
-func (o SystemCreatedAcrAccountOutput) AcrAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedAcrAccount) *string { return v.AcrAccountName }).(pulumi.StringPtrOutput)
-}
-
-// SKU of the ACR account
-func (o SystemCreatedAcrAccountOutput) AcrAccountSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedAcrAccount) *string { return v.AcrAccountSku }).(pulumi.StringPtrOutput)
-}
-
-// This is populated once the ACR account is created.
-func (o SystemCreatedAcrAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v SystemCreatedAcrAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
-}
-
-type SystemCreatedAcrAccountPtrOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedAcrAccountPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemCreatedAcrAccount)(nil)).Elem()
-}
-
-func (o SystemCreatedAcrAccountPtrOutput) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountPtrOutput) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountPtrOutput) Elem() SystemCreatedAcrAccountOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccount) SystemCreatedAcrAccount {
-		if v != nil {
-			return *v
-		}
-		var ret SystemCreatedAcrAccount
-		return ret
-	}).(SystemCreatedAcrAccountOutput)
-}
-
-// Name of the ACR account
-func (o SystemCreatedAcrAccountPtrOutput) AcrAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcrAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// SKU of the ACR account
-func (o SystemCreatedAcrAccountPtrOutput) AcrAccountSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcrAccountSku
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is populated once the ACR account is created.
-func (o SystemCreatedAcrAccountPtrOutput) ArmResourceId() ArmResourceIdPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccount) *ArmResourceId {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdPtrOutput)
-}
-
-type SystemCreatedAcrAccountResponse struct {
-	// Name of the ACR account
-	AcrAccountName *string `pulumi:"acrAccountName"`
-	// SKU of the ACR account
-	AcrAccountSku *string `pulumi:"acrAccountSku"`
-	// This is populated once the ACR account is created.
-	ArmResourceId *ArmResourceIdResponse `pulumi:"armResourceId"`
-}
-
-type SystemCreatedAcrAccountResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedAcrAccountResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemCreatedAcrAccountResponse)(nil)).Elem()
-}
-
-func (o SystemCreatedAcrAccountResponseOutput) ToSystemCreatedAcrAccountResponseOutput() SystemCreatedAcrAccountResponseOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountResponseOutput) ToSystemCreatedAcrAccountResponseOutputWithContext(ctx context.Context) SystemCreatedAcrAccountResponseOutput {
-	return o
-}
-
-// Name of the ACR account
-func (o SystemCreatedAcrAccountResponseOutput) AcrAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *string { return v.AcrAccountName }).(pulumi.StringPtrOutput)
-}
-
-// SKU of the ACR account
-func (o SystemCreatedAcrAccountResponseOutput) AcrAccountSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *string { return v.AcrAccountSku }).(pulumi.StringPtrOutput)
-}
-
-// This is populated once the ACR account is created.
-func (o SystemCreatedAcrAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
-}
-
-type SystemCreatedAcrAccountResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemCreatedAcrAccountResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemCreatedAcrAccountResponse)(nil)).Elem()
-}
-
-func (o SystemCreatedAcrAccountResponsePtrOutput) ToSystemCreatedAcrAccountResponsePtrOutput() SystemCreatedAcrAccountResponsePtrOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountResponsePtrOutput) ToSystemCreatedAcrAccountResponsePtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountResponsePtrOutput {
-	return o
-}
-
-func (o SystemCreatedAcrAccountResponsePtrOutput) Elem() SystemCreatedAcrAccountResponseOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) SystemCreatedAcrAccountResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemCreatedAcrAccountResponse
-		return ret
-	}).(SystemCreatedAcrAccountResponseOutput)
-}
-
-// Name of the ACR account
-func (o SystemCreatedAcrAccountResponsePtrOutput) AcrAccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcrAccountName
-	}).(pulumi.StringPtrOutput)
-}
-
-// SKU of the ACR account
-func (o SystemCreatedAcrAccountResponsePtrOutput) AcrAccountSku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AcrAccountSku
-	}).(pulumi.StringPtrOutput)
-}
-
-// This is populated once the ACR account is created.
-func (o SystemCreatedAcrAccountResponsePtrOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
-	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) *ArmResourceIdResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ArmResourceId
-	}).(ArmResourceIdResponsePtrOutput)
-}
-
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -68475,6 +67042,8 @@ func init() {
 	pulumi.RegisterOutputType(AccountKeyDatastoreCredentialsOutput{})
 	pulumi.RegisterOutputType(AccountKeyDatastoreCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(AccountKeyDatastoreSecretsOutput{})
+	pulumi.RegisterOutputType(AccountModelResponseOutput{})
+	pulumi.RegisterOutputType(AccountModelResponseArrayOutput{})
 	pulumi.RegisterOutputType(AcrDetailsOutput{})
 	pulumi.RegisterOutputType(AcrDetailsArrayOutput{})
 	pulumi.RegisterOutputType(AcrDetailsResponseOutput{})
@@ -68593,6 +67162,11 @@ func init() {
 	pulumi.RegisterOutputType(BuildContextPtrOutput{})
 	pulumi.RegisterOutputType(BuildContextResponseOutput{})
 	pulumi.RegisterOutputType(BuildContextResponsePtrOutput{})
+	pulumi.RegisterOutputType(CallRateLimitResponseOutput{})
+	pulumi.RegisterOutputType(CallRateLimitResponsePtrOutput{})
+	pulumi.RegisterOutputType(CallRateLimitResponseArrayOutput{})
+	pulumi.RegisterOutputType(CapacityConfigResponseOutput{})
+	pulumi.RegisterOutputType(CapacityConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(CapacityReservationGroupTypeOutput{})
 	pulumi.RegisterOutputType(CapacityReservationGroupResponseOutput{})
 	pulumi.RegisterOutputType(CertificateDatastoreCredentialsOutput{})
@@ -68769,6 +67343,8 @@ func init() {
 	pulumi.RegisterOutputType(DefaultScaleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DefaultScaleSettingsResponseOutput{})
 	pulumi.RegisterOutputType(DefaultScaleSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentModelResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentModelResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentResourceConfigurationOutput{})
 	pulumi.RegisterOutputType(DeploymentResourceConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentResourceConfigurationResponseOutput{})
@@ -69052,6 +67628,10 @@ func init() {
 	pulumi.RegisterOutputType(MedianStoppingPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ModelContainerTypeOutput{})
 	pulumi.RegisterOutputType(ModelContainerResponseOutput{})
+	pulumi.RegisterOutputType(ModelDeprecationInfoResponseOutput{})
+	pulumi.RegisterOutputType(ModelDeprecationInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ModelSkuResponseOutput{})
+	pulumi.RegisterOutputType(ModelSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(ModelVersionTypeOutput{})
 	pulumi.RegisterOutputType(ModelVersionResponseOutput{})
 	pulumi.RegisterOutputType(MpiOutput{})
@@ -69136,6 +67716,20 @@ func init() {
 	pulumi.RegisterOutputType(PyTorchPtrOutput{})
 	pulumi.RegisterOutputType(PyTorchResponseOutput{})
 	pulumi.RegisterOutputType(PyTorchResponsePtrOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigArrayOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigResponseOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistItemPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiBlocklistPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterArrayOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseOutput{})
+	pulumi.RegisterOutputType(RaiPolicyContentFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(RaiPolicyPropertiesOutput{})
+	pulumi.RegisterOutputType(RaiPolicyPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RandomSamplingAlgorithmOutput{})
 	pulumi.RegisterOutputType(RandomSamplingAlgorithmResponseOutput{})
 	pulumi.RegisterOutputType(RecurrenceOutput{})
@@ -69179,6 +67773,8 @@ func init() {
 	pulumi.RegisterOutputType(RequestConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(RequestConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RequestConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(RequestMatchPatternResponseOutput{})
+	pulumi.RegisterOutputType(RequestMatchPatternResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceIdOutput{})
 	pulumi.RegisterOutputType(ResourceIdPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
@@ -69253,37 +67849,6 @@ func init() {
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SslConfigurationOutput{})
-	pulumi.RegisterOutputType(SslConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(SslConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(SslConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(StackEnsembleSettingsOutput{})
-	pulumi.RegisterOutputType(StackEnsembleSettingsPtrOutput{})
-	pulumi.RegisterOutputType(StackEnsembleSettingsResponseOutput{})
-	pulumi.RegisterOutputType(StackEnsembleSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(StatusMessageResponseOutput{})
-	pulumi.RegisterOutputType(StatusMessageResponseArrayOutput{})
-	pulumi.RegisterOutputType(StorageAccountDetailsOutput{})
-	pulumi.RegisterOutputType(StorageAccountDetailsArrayOutput{})
-	pulumi.RegisterOutputType(StorageAccountDetailsResponseOutput{})
-	pulumi.RegisterOutputType(StorageAccountDetailsResponseArrayOutput{})
-	pulumi.RegisterOutputType(SweepJobOutput{})
-	pulumi.RegisterOutputType(SweepJobLimitsOutput{})
-	pulumi.RegisterOutputType(SweepJobLimitsPtrOutput{})
-	pulumi.RegisterOutputType(SweepJobLimitsResponseOutput{})
-	pulumi.RegisterOutputType(SweepJobLimitsResponsePtrOutput{})
-	pulumi.RegisterOutputType(SweepJobResponseOutput{})
-	pulumi.RegisterOutputType(SynapseSparkOutput{})
-	pulumi.RegisterOutputType(SynapseSparkPtrOutput{})
-	pulumi.RegisterOutputType(SynapseSparkPropertiesOutput{})
-	pulumi.RegisterOutputType(SynapseSparkPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SynapseSparkResponseOutput{})
-	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SystemCreatedAcrAccountOutput{})
-	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
-	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})
-	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 }

@@ -85,6 +85,9 @@ func NewJitRequest(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:solutions/v20210201preview:JitRequest"),
 		},
+		{
+			Type: pulumi.String("azure-native:solutions/v20231201preview:JitRequest"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

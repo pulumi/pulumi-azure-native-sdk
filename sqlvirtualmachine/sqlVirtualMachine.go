@@ -15,7 +15,7 @@ import (
 // A SQL virtual machine.
 // Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2017-03-01-preview.
 //
-// Other available API versions: 2023-01-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-10-01.
 type SqlVirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -94,6 +94,9 @@ func NewSqlVirtualMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:SqlVirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20231001:SqlVirtualMachine"),
 		},
 	})
 	opts = append(opts, aliases)

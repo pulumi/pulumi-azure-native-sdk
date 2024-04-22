@@ -88,6 +88,9 @@ func NewWebAppMetadata(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppMetadata"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppMetadata"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -59,6 +59,8 @@ type LookupWebAppResult struct {
 	// Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise,
 	// the app is not served on those hostnames.
 	EnabledHostNames []string `pulumi:"enabledHostNames"`
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled *bool `pulumi:"endToEndEncryptionEnabled"`
 	// Extended Location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
@@ -283,6 +285,11 @@ func (o LookupWebAppResultOutput) Enabled() pulumi.BoolPtrOutput {
 // the app is not served on those hostnames.
 func (o LookupWebAppResultOutput) EnabledHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWebAppResult) []string { return v.EnabledHostNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether to use end to end encryption between the FrontEnd and the Worker
+func (o LookupWebAppResultOutput) EndToEndEncryptionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *bool { return v.EndToEndEncryptionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Extended Location.

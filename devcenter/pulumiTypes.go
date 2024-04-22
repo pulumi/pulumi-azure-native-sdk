@@ -172,6 +172,32 @@ func (o CatalogSyncErrorResponseArrayOutput) Index(i pulumi.IntInput) CatalogSyn
 	}).(CatalogSyncErrorResponseOutput)
 }
 
+// Project catalog settings for project catalogs under a project associated to this dev center.
+type DevCenterProjectCatalogSettingsResponse struct {
+	// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+	CatalogItemSyncEnableStatus *string `pulumi:"catalogItemSyncEnableStatus"`
+}
+
+// Project catalog settings for project catalogs under a project associated to this dev center.
+type DevCenterProjectCatalogSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DevCenterProjectCatalogSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevCenterProjectCatalogSettingsResponse)(nil)).Elem()
+}
+
+func (o DevCenterProjectCatalogSettingsResponseOutput) ToDevCenterProjectCatalogSettingsResponseOutput() DevCenterProjectCatalogSettingsResponseOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsResponseOutput) ToDevCenterProjectCatalogSettingsResponseOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsResponseOutput {
+	return o
+}
+
+// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+func (o DevCenterProjectCatalogSettingsResponseOutput) CatalogItemSyncEnableStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevCenterProjectCatalogSettingsResponse) *string { return v.CatalogItemSyncEnableStatus }).(pulumi.StringPtrOutput)
+}
+
 // A role that can be assigned to a user.
 type EnvironmentRoleResponse struct {
 	// This is a description of the Role Assignment.
@@ -1181,13 +1207,39 @@ func (o ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOu
 	}).(EnvironmentRoleResponseMapOutput)
 }
 
+// Network settings for the project.
+type ProjectNetworkSettingsResponse struct {
+	// Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
+	MicrosoftHostedNetworkEnableStatus string `pulumi:"microsoftHostedNetworkEnableStatus"`
+}
+
+// Network settings for the project.
+type ProjectNetworkSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ProjectNetworkSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectNetworkSettingsResponse)(nil)).Elem()
+}
+
+func (o ProjectNetworkSettingsResponseOutput) ToProjectNetworkSettingsResponseOutput() ProjectNetworkSettingsResponseOutput {
+	return o
+}
+
+func (o ProjectNetworkSettingsResponseOutput) ToProjectNetworkSettingsResponseOutputWithContext(ctx context.Context) ProjectNetworkSettingsResponseOutput {
+	return o
+}
+
+// Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
+func (o ProjectNetworkSettingsResponseOutput) MicrosoftHostedNetworkEnableStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectNetworkSettingsResponse) string { return v.MicrosoftHostedNetworkEnableStatus }).(pulumi.StringOutput)
+}
+
 // The resource model definition representing SKU
 type Sku struct {
 	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 	Capacity *int `pulumi:"capacity"`
 	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
 	Family *string `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
 	Name string `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
@@ -1212,7 +1264,7 @@ type SkuArgs struct {
 	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
 	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
 	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
 	Name pulumi.StringInput `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size pulumi.StringPtrInput `pulumi:"size"`
@@ -1232,6 +1284,47 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
+func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
+}
+
+// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
+// You can construct a concrete instance of `SkuPtrInput` via:
+//
+//	        SkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkuPtrInput interface {
+	pulumi.Input
+
+	ToSkuPtrOutput() SkuPtrOutput
+	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
+}
+
+type skuPtrType SkuArgs
+
+func SkuPtr(v *SkuArgs) SkuPtrInput {
+	return (*skuPtrType)(v)
+}
+
+func (*skuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
+}
+
 // The resource model definition representing SKU
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1247,6 +1340,16 @@ func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
 }
 
+func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
+		return &v
+	}).(SkuPtrOutput)
+}
+
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -1257,7 +1360,7 @@ func (o SkuOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU. Ex - P3. It is typically a letter+number code
+// The name of the SKU. E.g. P3. It is typically a letter+number code
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1272,13 +1375,87 @@ func (o SkuOutput) Tier() SkuTierPtrOutput {
 	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
 }
 
+type SkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) Elem() SkuOutput {
+	return o.ApplyT(func(v *Sku) Sku {
+		if v != nil {
+			return *v
+		}
+		var ret Sku
+		return ret
+	}).(SkuOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Sku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v *Sku) *SkuTier {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(SkuTierPtrOutput)
+}
+
 // The resource model definition representing SKU
 type SkuResponse struct {
 	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 	Capacity *int `pulumi:"capacity"`
 	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
 	Family *string `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
 	Name string `pulumi:"name"`
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
@@ -1311,7 +1488,7 @@ func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SKU. Ex - P3. It is typically a letter+number code
+// The name of the SKU. E.g. P3. It is typically a letter+number code
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1324,6 +1501,80 @@ func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type SkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
+	return o.ApplyT(func(v *SkuResponse) SkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuResponse
+		return ret
+	}).(SkuResponseOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
 }
 
 // Stop on disconnect configuration settings for Dev Boxes created in this pool.
@@ -1897,6 +2148,7 @@ func init() {
 	pulumi.RegisterOutputType(CatalogErrorDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseMapOutput{})
 	pulumi.RegisterOutputType(GitCatalogOutput{})
@@ -1916,8 +2168,11 @@ func init() {
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput{})
+	pulumi.RegisterOutputType(ProjectNetworkSettingsResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
+	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponseOutput{})

@@ -15,7 +15,7 @@ import (
 // Premier add-on.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01.
+// Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01, 2023-12-01.
 type WebAppPremierAddOnSlot struct {
 	pulumi.CustomResourceState
 
@@ -105,6 +105,9 @@ func NewWebAppPremierAddOnSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebAppPremierAddOnSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppPremierAddOnSlot"),
 		},
 	})
 	opts = append(opts, aliases)

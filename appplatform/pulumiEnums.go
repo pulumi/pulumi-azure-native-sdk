@@ -2048,6 +2048,13 @@ const (
 	StorageTypeStorageAccount = StorageType("StorageAccount")
 )
 
+// Type of job trigger
+type TriggerType string
+
+const (
+	TriggerTypeManual = TriggerType("Manual")
+)
+
 // The type of the underlying resource to mount as a persistent disk.
 type Type string
 

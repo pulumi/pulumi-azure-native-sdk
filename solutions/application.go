@@ -15,7 +15,7 @@ import (
 // Information about managed application.
 // Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01.
 //
-// Other available API versions: 2017-12-01, 2018-06-01.
+// Other available API versions: 2017-12-01, 2018-06-01, 2023-12-01-preview.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -117,6 +117,9 @@ func NewApplication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:solutions/v20210701:Application"),
+		},
+		{
+			Type: pulumi.String("azure-native:solutions/v20231201preview:Application"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -44,6 +44,8 @@ type WebAppSlot struct {
 	// Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise,
 	// the app is not served on those hostnames.
 	EnabledHostNames pulumi.StringArrayOutput `pulumi:"enabledHostNames"`
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled pulumi.BoolPtrOutput `pulumi:"endToEndEncryptionEnabled"`
 	// Extended Location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
@@ -216,6 +218,9 @@ func NewWebAppSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20220901:WebAppSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -274,6 +279,8 @@ type webAppSlotArgs struct {
 	DaprConfig *DaprConfig `pulumi:"daprConfig"`
 	// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
 	Enabled *bool `pulumi:"enabled"`
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled *bool `pulumi:"endToEndEncryptionEnabled"`
 	// Extended Location.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
@@ -362,6 +369,8 @@ type WebAppSlotArgs struct {
 	DaprConfig DaprConfigPtrInput
 	// <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline).
 	Enabled pulumi.BoolPtrInput
+	// Whether to use end to end encryption between the FrontEnd and the Worker
+	EndToEndEncryptionEnabled pulumi.BoolPtrInput
 	// Extended Location.
 	ExtendedLocation ExtendedLocationPtrInput
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
@@ -524,6 +533,11 @@ func (o WebAppSlotOutput) Enabled() pulumi.BoolPtrOutput {
 // the app is not served on those hostnames.
 func (o WebAppSlotOutput) EnabledHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebAppSlot) pulumi.StringArrayOutput { return v.EnabledHostNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether to use end to end encryption between the FrontEnd and the Worker
+func (o WebAppSlotOutput) EndToEndEncryptionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSlot) pulumi.BoolPtrOutput { return v.EndToEndEncryptionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Extended Location.

@@ -100,6 +100,9 @@ func NewWebAppSourceControl(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebAppSourceControl"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppSourceControl"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

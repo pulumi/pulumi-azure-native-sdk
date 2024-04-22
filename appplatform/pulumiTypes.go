@@ -9608,7 +9608,7 @@ type CustomContainer struct {
 	ContainerImage *string `pulumi:"containerImage"`
 	// Credential of the image registry
 	ImageRegistryCredential *ImageRegistryCredential `pulumi:"imageRegistryCredential"`
-	// Language framework of the container image uploaded
+	// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 	LanguageFramework *string `pulumi:"languageFramework"`
 	// The name of the registry that contains the container image
 	Server *string `pulumi:"server"`
@@ -9635,7 +9635,7 @@ type CustomContainerArgs struct {
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// Credential of the image registry
 	ImageRegistryCredential ImageRegistryCredentialPtrInput `pulumi:"imageRegistryCredential"`
-	// Language framework of the container image uploaded
+	// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 	LanguageFramework pulumi.StringPtrInput `pulumi:"languageFramework"`
 	// The name of the registry that contains the container image
 	Server pulumi.StringPtrInput `pulumi:"server"`
@@ -9739,7 +9739,7 @@ func (o CustomContainerOutput) ImageRegistryCredential() ImageRegistryCredential
 	return o.ApplyT(func(v CustomContainer) *ImageRegistryCredential { return v.ImageRegistryCredential }).(ImageRegistryCredentialPtrOutput)
 }
 
-// Language framework of the container image uploaded
+// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 func (o CustomContainerOutput) LanguageFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomContainer) *string { return v.LanguageFramework }).(pulumi.StringPtrOutput)
 }
@@ -9813,7 +9813,7 @@ func (o CustomContainerPtrOutput) ImageRegistryCredential() ImageRegistryCredent
 	}).(ImageRegistryCredentialPtrOutput)
 }
 
-// Language framework of the container image uploaded
+// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 func (o CustomContainerPtrOutput) LanguageFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomContainer) *string {
 		if v == nil {
@@ -9843,7 +9843,7 @@ type CustomContainerResponse struct {
 	ContainerImage *string `pulumi:"containerImage"`
 	// Credential of the image registry
 	ImageRegistryCredential *ImageRegistryCredentialResponse `pulumi:"imageRegistryCredential"`
-	// Language framework of the container image uploaded
+	// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 	LanguageFramework *string `pulumi:"languageFramework"`
 	// The name of the registry that contains the container image
 	Server *string `pulumi:"server"`
@@ -9884,7 +9884,7 @@ func (o CustomContainerResponseOutput) ImageRegistryCredential() ImageRegistryCr
 	return o.ApplyT(func(v CustomContainerResponse) *ImageRegistryCredentialResponse { return v.ImageRegistryCredential }).(ImageRegistryCredentialResponsePtrOutput)
 }
 
-// Language framework of the container image uploaded
+// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 func (o CustomContainerResponseOutput) LanguageFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomContainerResponse) *string { return v.LanguageFramework }).(pulumi.StringPtrOutput)
 }
@@ -9958,7 +9958,7 @@ func (o CustomContainerResponsePtrOutput) ImageRegistryCredential() ImageRegistr
 	}).(ImageRegistryCredentialResponsePtrOutput)
 }
 
-// Language framework of the container image uploaded
+// Language framework of the container image uploaded. Supported values: "springboot", "", null.
 func (o CustomContainerResponsePtrOutput) LanguageFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomContainerResponse) *string {
 		if v == nil {
@@ -13382,6 +13382,184 @@ func (o DevToolPortalSsoPropertiesResponsePtrOutput) Scopes() pulumi.StringArray
 		}
 		return v.Scopes
 	}).(pulumi.StringArrayOutput)
+}
+
+// Azure Spring Apps components' environment variable.
+type EnvVar struct {
+	// Environment variable name.
+	Name *string `pulumi:"name"`
+	// secret environment variable value.
+	SecretValue *string `pulumi:"secretValue"`
+	// Non-secret environment variable value.
+	Value *string `pulumi:"value"`
+}
+
+// EnvVarInput is an input type that accepts EnvVarArgs and EnvVarOutput values.
+// You can construct a concrete instance of `EnvVarInput` via:
+//
+//	EnvVarArgs{...}
+type EnvVarInput interface {
+	pulumi.Input
+
+	ToEnvVarOutput() EnvVarOutput
+	ToEnvVarOutputWithContext(context.Context) EnvVarOutput
+}
+
+// Azure Spring Apps components' environment variable.
+type EnvVarArgs struct {
+	// Environment variable name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// secret environment variable value.
+	SecretValue pulumi.StringPtrInput `pulumi:"secretValue"`
+	// Non-secret environment variable value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EnvVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVar)(nil)).Elem()
+}
+
+func (i EnvVarArgs) ToEnvVarOutput() EnvVarOutput {
+	return i.ToEnvVarOutputWithContext(context.Background())
+}
+
+func (i EnvVarArgs) ToEnvVarOutputWithContext(ctx context.Context) EnvVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvVarOutput)
+}
+
+// EnvVarArrayInput is an input type that accepts EnvVarArray and EnvVarArrayOutput values.
+// You can construct a concrete instance of `EnvVarArrayInput` via:
+//
+//	EnvVarArray{ EnvVarArgs{...} }
+type EnvVarArrayInput interface {
+	pulumi.Input
+
+	ToEnvVarArrayOutput() EnvVarArrayOutput
+	ToEnvVarArrayOutputWithContext(context.Context) EnvVarArrayOutput
+}
+
+type EnvVarArray []EnvVarInput
+
+func (EnvVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvVar)(nil)).Elem()
+}
+
+func (i EnvVarArray) ToEnvVarArrayOutput() EnvVarArrayOutput {
+	return i.ToEnvVarArrayOutputWithContext(context.Background())
+}
+
+func (i EnvVarArray) ToEnvVarArrayOutputWithContext(ctx context.Context) EnvVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvVarArrayOutput)
+}
+
+// Azure Spring Apps components' environment variable.
+type EnvVarOutput struct{ *pulumi.OutputState }
+
+func (EnvVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVar)(nil)).Elem()
+}
+
+func (o EnvVarOutput) ToEnvVarOutput() EnvVarOutput {
+	return o
+}
+
+func (o EnvVarOutput) ToEnvVarOutputWithContext(ctx context.Context) EnvVarOutput {
+	return o
+}
+
+// Environment variable name.
+func (o EnvVarOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvVar) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// secret environment variable value.
+func (o EnvVarOutput) SecretValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvVar) *string { return v.SecretValue }).(pulumi.StringPtrOutput)
+}
+
+// Non-secret environment variable value.
+func (o EnvVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvVar) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EnvVarArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvVar)(nil)).Elem()
+}
+
+func (o EnvVarArrayOutput) ToEnvVarArrayOutput() EnvVarArrayOutput {
+	return o
+}
+
+func (o EnvVarArrayOutput) ToEnvVarArrayOutputWithContext(ctx context.Context) EnvVarArrayOutput {
+	return o
+}
+
+func (o EnvVarArrayOutput) Index(i pulumi.IntInput) EnvVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvVar {
+		return vs[0].([]EnvVar)[vs[1].(int)]
+	}).(EnvVarOutput)
+}
+
+// Azure Spring Apps components' environment variable.
+type EnvVarResponse struct {
+	// Environment variable name.
+	Name *string `pulumi:"name"`
+	// secret environment variable value.
+	SecretValue *string `pulumi:"secretValue"`
+	// Non-secret environment variable value.
+	Value *string `pulumi:"value"`
+}
+
+// Azure Spring Apps components' environment variable.
+type EnvVarResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvVarResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvVarResponse)(nil)).Elem()
+}
+
+func (o EnvVarResponseOutput) ToEnvVarResponseOutput() EnvVarResponseOutput {
+	return o
+}
+
+func (o EnvVarResponseOutput) ToEnvVarResponseOutputWithContext(ctx context.Context) EnvVarResponseOutput {
+	return o
+}
+
+// Environment variable name.
+func (o EnvVarResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvVarResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// secret environment variable value.
+func (o EnvVarResponseOutput) SecretValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvVarResponse) *string { return v.SecretValue }).(pulumi.StringPtrOutput)
+}
+
+// Non-secret environment variable value.
+func (o EnvVarResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvVarResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EnvVarResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvVarResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvVarResponse)(nil)).Elem()
+}
+
+func (o EnvVarResponseArrayOutput) ToEnvVarResponseArrayOutput() EnvVarResponseArrayOutput {
+	return o
+}
+
+func (o EnvVarResponseArrayOutput) ToEnvVarResponseArrayOutputWithContext(ctx context.Context) EnvVarResponseArrayOutput {
+	return o
+}
+
+func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvVarResponse {
+		return vs[0].([]EnvVarResponse)[vs[1].(int)]
+	}).(EnvVarResponseOutput)
 }
 
 // The error code compose of code and message.
@@ -19258,6 +19436,881 @@ func (o JarUploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Job's execution template, containing configuration for an execution
+type JobExecutionTemplate struct {
+	// Arguments for the Job execution.
+	Args []string `pulumi:"args"`
+	// Environment variables of Job execution
+	EnvironmentVariables []EnvVar `pulumi:"environmentVariables"`
+	// The requested resource quantity for required CPU and Memory.
+	ResourceRequests *JobResourceRequests `pulumi:"resourceRequests"`
+}
+
+// Defaults sets the appropriate defaults for JobExecutionTemplate
+func (val *JobExecutionTemplate) Defaults() *JobExecutionTemplate {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.ResourceRequests = tmp.ResourceRequests.Defaults()
+
+	return &tmp
+}
+
+// JobExecutionTemplateInput is an input type that accepts JobExecutionTemplateArgs and JobExecutionTemplateOutput values.
+// You can construct a concrete instance of `JobExecutionTemplateInput` via:
+//
+//	JobExecutionTemplateArgs{...}
+type JobExecutionTemplateInput interface {
+	pulumi.Input
+
+	ToJobExecutionTemplateOutput() JobExecutionTemplateOutput
+	ToJobExecutionTemplateOutputWithContext(context.Context) JobExecutionTemplateOutput
+}
+
+// Job's execution template, containing configuration for an execution
+type JobExecutionTemplateArgs struct {
+	// Arguments for the Job execution.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Environment variables of Job execution
+	EnvironmentVariables EnvVarArrayInput `pulumi:"environmentVariables"`
+	// The requested resource quantity for required CPU and Memory.
+	ResourceRequests JobResourceRequestsPtrInput `pulumi:"resourceRequests"`
+}
+
+// Defaults sets the appropriate defaults for JobExecutionTemplateArgs
+func (val *JobExecutionTemplateArgs) Defaults() *JobExecutionTemplateArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (JobExecutionTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionTemplate)(nil)).Elem()
+}
+
+func (i JobExecutionTemplateArgs) ToJobExecutionTemplateOutput() JobExecutionTemplateOutput {
+	return i.ToJobExecutionTemplateOutputWithContext(context.Background())
+}
+
+func (i JobExecutionTemplateArgs) ToJobExecutionTemplateOutputWithContext(ctx context.Context) JobExecutionTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionTemplateOutput)
+}
+
+func (i JobExecutionTemplateArgs) ToJobExecutionTemplatePtrOutput() JobExecutionTemplatePtrOutput {
+	return i.ToJobExecutionTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i JobExecutionTemplateArgs) ToJobExecutionTemplatePtrOutputWithContext(ctx context.Context) JobExecutionTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionTemplateOutput).ToJobExecutionTemplatePtrOutputWithContext(ctx)
+}
+
+// JobExecutionTemplatePtrInput is an input type that accepts JobExecutionTemplateArgs, JobExecutionTemplatePtr and JobExecutionTemplatePtrOutput values.
+// You can construct a concrete instance of `JobExecutionTemplatePtrInput` via:
+//
+//	        JobExecutionTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobExecutionTemplatePtrInput interface {
+	pulumi.Input
+
+	ToJobExecutionTemplatePtrOutput() JobExecutionTemplatePtrOutput
+	ToJobExecutionTemplatePtrOutputWithContext(context.Context) JobExecutionTemplatePtrOutput
+}
+
+type jobExecutionTemplatePtrType JobExecutionTemplateArgs
+
+func JobExecutionTemplatePtr(v *JobExecutionTemplateArgs) JobExecutionTemplatePtrInput {
+	return (*jobExecutionTemplatePtrType)(v)
+}
+
+func (*jobExecutionTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionTemplate)(nil)).Elem()
+}
+
+func (i *jobExecutionTemplatePtrType) ToJobExecutionTemplatePtrOutput() JobExecutionTemplatePtrOutput {
+	return i.ToJobExecutionTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *jobExecutionTemplatePtrType) ToJobExecutionTemplatePtrOutputWithContext(ctx context.Context) JobExecutionTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionTemplatePtrOutput)
+}
+
+// Job's execution template, containing configuration for an execution
+type JobExecutionTemplateOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionTemplate)(nil)).Elem()
+}
+
+func (o JobExecutionTemplateOutput) ToJobExecutionTemplateOutput() JobExecutionTemplateOutput {
+	return o
+}
+
+func (o JobExecutionTemplateOutput) ToJobExecutionTemplateOutputWithContext(ctx context.Context) JobExecutionTemplateOutput {
+	return o
+}
+
+func (o JobExecutionTemplateOutput) ToJobExecutionTemplatePtrOutput() JobExecutionTemplatePtrOutput {
+	return o.ToJobExecutionTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o JobExecutionTemplateOutput) ToJobExecutionTemplatePtrOutputWithContext(ctx context.Context) JobExecutionTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobExecutionTemplate) *JobExecutionTemplate {
+		return &v
+	}).(JobExecutionTemplatePtrOutput)
+}
+
+// Arguments for the Job execution.
+func (o JobExecutionTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobExecutionTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables of Job execution
+func (o JobExecutionTemplateOutput) EnvironmentVariables() EnvVarArrayOutput {
+	return o.ApplyT(func(v JobExecutionTemplate) []EnvVar { return v.EnvironmentVariables }).(EnvVarArrayOutput)
+}
+
+// The requested resource quantity for required CPU and Memory.
+func (o JobExecutionTemplateOutput) ResourceRequests() JobResourceRequestsPtrOutput {
+	return o.ApplyT(func(v JobExecutionTemplate) *JobResourceRequests { return v.ResourceRequests }).(JobResourceRequestsPtrOutput)
+}
+
+type JobExecutionTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionTemplate)(nil)).Elem()
+}
+
+func (o JobExecutionTemplatePtrOutput) ToJobExecutionTemplatePtrOutput() JobExecutionTemplatePtrOutput {
+	return o
+}
+
+func (o JobExecutionTemplatePtrOutput) ToJobExecutionTemplatePtrOutputWithContext(ctx context.Context) JobExecutionTemplatePtrOutput {
+	return o
+}
+
+func (o JobExecutionTemplatePtrOutput) Elem() JobExecutionTemplateOutput {
+	return o.ApplyT(func(v *JobExecutionTemplate) JobExecutionTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret JobExecutionTemplate
+		return ret
+	}).(JobExecutionTemplateOutput)
+}
+
+// Arguments for the Job execution.
+func (o JobExecutionTemplatePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobExecutionTemplate) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables of Job execution
+func (o JobExecutionTemplatePtrOutput) EnvironmentVariables() EnvVarArrayOutput {
+	return o.ApplyT(func(v *JobExecutionTemplate) []EnvVar {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(EnvVarArrayOutput)
+}
+
+// The requested resource quantity for required CPU and Memory.
+func (o JobExecutionTemplatePtrOutput) ResourceRequests() JobResourceRequestsPtrOutput {
+	return o.ApplyT(func(v *JobExecutionTemplate) *JobResourceRequests {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceRequests
+	}).(JobResourceRequestsPtrOutput)
+}
+
+// Job's execution template, containing configuration for an execution
+type JobExecutionTemplateResponse struct {
+	// Arguments for the Job execution.
+	Args []string `pulumi:"args"`
+	// Environment variables of Job execution
+	EnvironmentVariables []EnvVarResponse `pulumi:"environmentVariables"`
+	// The requested resource quantity for required CPU and Memory.
+	ResourceRequests *JobResourceRequestsResponse `pulumi:"resourceRequests"`
+}
+
+// Defaults sets the appropriate defaults for JobExecutionTemplateResponse
+func (val *JobExecutionTemplateResponse) Defaults() *JobExecutionTemplateResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.ResourceRequests = tmp.ResourceRequests.Defaults()
+
+	return &tmp
+}
+
+// Job's execution template, containing configuration for an execution
+type JobExecutionTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (o JobExecutionTemplateResponseOutput) ToJobExecutionTemplateResponseOutput() JobExecutionTemplateResponseOutput {
+	return o
+}
+
+func (o JobExecutionTemplateResponseOutput) ToJobExecutionTemplateResponseOutputWithContext(ctx context.Context) JobExecutionTemplateResponseOutput {
+	return o
+}
+
+// Arguments for the Job execution.
+func (o JobExecutionTemplateResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobExecutionTemplateResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Environment variables of Job execution
+func (o JobExecutionTemplateResponseOutput) EnvironmentVariables() EnvVarResponseArrayOutput {
+	return o.ApplyT(func(v JobExecutionTemplateResponse) []EnvVarResponse { return v.EnvironmentVariables }).(EnvVarResponseArrayOutput)
+}
+
+// The requested resource quantity for required CPU and Memory.
+func (o JobExecutionTemplateResponseOutput) ResourceRequests() JobResourceRequestsResponsePtrOutput {
+	return o.ApplyT(func(v JobExecutionTemplateResponse) *JobResourceRequestsResponse { return v.ResourceRequests }).(JobResourceRequestsResponsePtrOutput)
+}
+
+type JobExecutionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionTemplateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (o JobExecutionTemplateResponsePtrOutput) ToJobExecutionTemplateResponsePtrOutput() JobExecutionTemplateResponsePtrOutput {
+	return o
+}
+
+func (o JobExecutionTemplateResponsePtrOutput) ToJobExecutionTemplateResponsePtrOutputWithContext(ctx context.Context) JobExecutionTemplateResponsePtrOutput {
+	return o
+}
+
+func (o JobExecutionTemplateResponsePtrOutput) Elem() JobExecutionTemplateResponseOutput {
+	return o.ApplyT(func(v *JobExecutionTemplateResponse) JobExecutionTemplateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobExecutionTemplateResponse
+		return ret
+	}).(JobExecutionTemplateResponseOutput)
+}
+
+// Arguments for the Job execution.
+func (o JobExecutionTemplateResponsePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobExecutionTemplateResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Environment variables of Job execution
+func (o JobExecutionTemplateResponsePtrOutput) EnvironmentVariables() EnvVarResponseArrayOutput {
+	return o.ApplyT(func(v *JobExecutionTemplateResponse) []EnvVarResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(EnvVarResponseArrayOutput)
+}
+
+// The requested resource quantity for required CPU and Memory.
+func (o JobExecutionTemplateResponsePtrOutput) ResourceRequests() JobResourceRequestsResponsePtrOutput {
+	return o.ApplyT(func(v *JobExecutionTemplateResponse) *JobResourceRequestsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceRequests
+	}).(JobResourceRequestsResponsePtrOutput)
+}
+
+// Job resource properties payload
+type JobResourceProperties struct {
+	// Referenced managed components collection
+	ManagedComponentReferences []ManagedComponentReference `pulumi:"managedComponentReferences"`
+	// Uploaded source information of the Job.
+	Source interface{} `pulumi:"source"`
+	// The template which is applied for all executions of the Job.
+	Template *JobExecutionTemplate `pulumi:"template"`
+	// The Job trigger related configuration.
+	TriggerConfig *ManualJobTriggerConfig `pulumi:"triggerConfig"`
+}
+
+// Defaults sets the appropriate defaults for JobResourceProperties
+func (val *JobResourceProperties) Defaults() *JobResourceProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Template = tmp.Template.Defaults()
+
+	tmp.TriggerConfig = tmp.TriggerConfig.Defaults()
+
+	return &tmp
+}
+
+// JobResourcePropertiesInput is an input type that accepts JobResourcePropertiesArgs and JobResourcePropertiesOutput values.
+// You can construct a concrete instance of `JobResourcePropertiesInput` via:
+//
+//	JobResourcePropertiesArgs{...}
+type JobResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToJobResourcePropertiesOutput() JobResourcePropertiesOutput
+	ToJobResourcePropertiesOutputWithContext(context.Context) JobResourcePropertiesOutput
+}
+
+// Job resource properties payload
+type JobResourcePropertiesArgs struct {
+	// Referenced managed components collection
+	ManagedComponentReferences ManagedComponentReferenceArrayInput `pulumi:"managedComponentReferences"`
+	// Uploaded source information of the Job.
+	Source pulumi.Input `pulumi:"source"`
+	// The template which is applied for all executions of the Job.
+	Template JobExecutionTemplatePtrInput `pulumi:"template"`
+	// The Job trigger related configuration.
+	TriggerConfig ManualJobTriggerConfigPtrInput `pulumi:"triggerConfig"`
+}
+
+// Defaults sets the appropriate defaults for JobResourcePropertiesArgs
+func (val *JobResourcePropertiesArgs) Defaults() *JobResourcePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (JobResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResourceProperties)(nil)).Elem()
+}
+
+func (i JobResourcePropertiesArgs) ToJobResourcePropertiesOutput() JobResourcePropertiesOutput {
+	return i.ToJobResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i JobResourcePropertiesArgs) ToJobResourcePropertiesOutputWithContext(ctx context.Context) JobResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobResourcePropertiesOutput)
+}
+
+func (i JobResourcePropertiesArgs) ToJobResourcePropertiesPtrOutput() JobResourcePropertiesPtrOutput {
+	return i.ToJobResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i JobResourcePropertiesArgs) ToJobResourcePropertiesPtrOutputWithContext(ctx context.Context) JobResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobResourcePropertiesOutput).ToJobResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// JobResourcePropertiesPtrInput is an input type that accepts JobResourcePropertiesArgs, JobResourcePropertiesPtr and JobResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `JobResourcePropertiesPtrInput` via:
+//
+//	        JobResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToJobResourcePropertiesPtrOutput() JobResourcePropertiesPtrOutput
+	ToJobResourcePropertiesPtrOutputWithContext(context.Context) JobResourcePropertiesPtrOutput
+}
+
+type jobResourcePropertiesPtrType JobResourcePropertiesArgs
+
+func JobResourcePropertiesPtr(v *JobResourcePropertiesArgs) JobResourcePropertiesPtrInput {
+	return (*jobResourcePropertiesPtrType)(v)
+}
+
+func (*jobResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobResourceProperties)(nil)).Elem()
+}
+
+func (i *jobResourcePropertiesPtrType) ToJobResourcePropertiesPtrOutput() JobResourcePropertiesPtrOutput {
+	return i.ToJobResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *jobResourcePropertiesPtrType) ToJobResourcePropertiesPtrOutputWithContext(ctx context.Context) JobResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobResourcePropertiesPtrOutput)
+}
+
+// Job resource properties payload
+type JobResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (JobResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResourceProperties)(nil)).Elem()
+}
+
+func (o JobResourcePropertiesOutput) ToJobResourcePropertiesOutput() JobResourcePropertiesOutput {
+	return o
+}
+
+func (o JobResourcePropertiesOutput) ToJobResourcePropertiesOutputWithContext(ctx context.Context) JobResourcePropertiesOutput {
+	return o
+}
+
+func (o JobResourcePropertiesOutput) ToJobResourcePropertiesPtrOutput() JobResourcePropertiesPtrOutput {
+	return o.ToJobResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o JobResourcePropertiesOutput) ToJobResourcePropertiesPtrOutputWithContext(ctx context.Context) JobResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobResourceProperties) *JobResourceProperties {
+		return &v
+	}).(JobResourcePropertiesPtrOutput)
+}
+
+// Referenced managed components collection
+func (o JobResourcePropertiesOutput) ManagedComponentReferences() ManagedComponentReferenceArrayOutput {
+	return o.ApplyT(func(v JobResourceProperties) []ManagedComponentReference { return v.ManagedComponentReferences }).(ManagedComponentReferenceArrayOutput)
+}
+
+// Uploaded source information of the Job.
+func (o JobResourcePropertiesOutput) Source() pulumi.AnyOutput {
+	return o.ApplyT(func(v JobResourceProperties) interface{} { return v.Source }).(pulumi.AnyOutput)
+}
+
+// The template which is applied for all executions of the Job.
+func (o JobResourcePropertiesOutput) Template() JobExecutionTemplatePtrOutput {
+	return o.ApplyT(func(v JobResourceProperties) *JobExecutionTemplate { return v.Template }).(JobExecutionTemplatePtrOutput)
+}
+
+// The Job trigger related configuration.
+func (o JobResourcePropertiesOutput) TriggerConfig() ManualJobTriggerConfigPtrOutput {
+	return o.ApplyT(func(v JobResourceProperties) *ManualJobTriggerConfig { return v.TriggerConfig }).(ManualJobTriggerConfigPtrOutput)
+}
+
+type JobResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (JobResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobResourceProperties)(nil)).Elem()
+}
+
+func (o JobResourcePropertiesPtrOutput) ToJobResourcePropertiesPtrOutput() JobResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o JobResourcePropertiesPtrOutput) ToJobResourcePropertiesPtrOutputWithContext(ctx context.Context) JobResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o JobResourcePropertiesPtrOutput) Elem() JobResourcePropertiesOutput {
+	return o.ApplyT(func(v *JobResourceProperties) JobResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret JobResourceProperties
+		return ret
+	}).(JobResourcePropertiesOutput)
+}
+
+// Referenced managed components collection
+func (o JobResourcePropertiesPtrOutput) ManagedComponentReferences() ManagedComponentReferenceArrayOutput {
+	return o.ApplyT(func(v *JobResourceProperties) []ManagedComponentReference {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedComponentReferences
+	}).(ManagedComponentReferenceArrayOutput)
+}
+
+// Uploaded source information of the Job.
+func (o JobResourcePropertiesPtrOutput) Source() pulumi.AnyOutput {
+	return o.ApplyT(func(v *JobResourceProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.AnyOutput)
+}
+
+// The template which is applied for all executions of the Job.
+func (o JobResourcePropertiesPtrOutput) Template() JobExecutionTemplatePtrOutput {
+	return o.ApplyT(func(v *JobResourceProperties) *JobExecutionTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(JobExecutionTemplatePtrOutput)
+}
+
+// The Job trigger related configuration.
+func (o JobResourcePropertiesPtrOutput) TriggerConfig() ManualJobTriggerConfigPtrOutput {
+	return o.ApplyT(func(v *JobResourceProperties) *ManualJobTriggerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TriggerConfig
+	}).(ManualJobTriggerConfigPtrOutput)
+}
+
+// Job resource properties payload
+type JobResourcePropertiesResponse struct {
+	// Referenced managed components collection
+	ManagedComponentReferences []ManagedComponentReferenceResponse `pulumi:"managedComponentReferences"`
+	// Provisioning state of the Job
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Uploaded source information of the Job.
+	Source interface{} `pulumi:"source"`
+	// The template which is applied for all executions of the Job.
+	Template *JobExecutionTemplateResponse `pulumi:"template"`
+	// The Job trigger related configuration.
+	TriggerConfig *ManualJobTriggerConfigResponse `pulumi:"triggerConfig"`
+}
+
+// Defaults sets the appropriate defaults for JobResourcePropertiesResponse
+func (val *JobResourcePropertiesResponse) Defaults() *JobResourcePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Template = tmp.Template.Defaults()
+
+	tmp.TriggerConfig = tmp.TriggerConfig.Defaults()
+
+	return &tmp
+}
+
+// Job resource properties payload
+type JobResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (JobResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o JobResourcePropertiesResponseOutput) ToJobResourcePropertiesResponseOutput() JobResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o JobResourcePropertiesResponseOutput) ToJobResourcePropertiesResponseOutputWithContext(ctx context.Context) JobResourcePropertiesResponseOutput {
+	return o
+}
+
+// Referenced managed components collection
+func (o JobResourcePropertiesResponseOutput) ManagedComponentReferences() ManagedComponentReferenceResponseArrayOutput {
+	return o.ApplyT(func(v JobResourcePropertiesResponse) []ManagedComponentReferenceResponse {
+		return v.ManagedComponentReferences
+	}).(ManagedComponentReferenceResponseArrayOutput)
+}
+
+// Provisioning state of the Job
+func (o JobResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v JobResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Uploaded source information of the Job.
+func (o JobResourcePropertiesResponseOutput) Source() pulumi.AnyOutput {
+	return o.ApplyT(func(v JobResourcePropertiesResponse) interface{} { return v.Source }).(pulumi.AnyOutput)
+}
+
+// The template which is applied for all executions of the Job.
+func (o JobResourcePropertiesResponseOutput) Template() JobExecutionTemplateResponsePtrOutput {
+	return o.ApplyT(func(v JobResourcePropertiesResponse) *JobExecutionTemplateResponse { return v.Template }).(JobExecutionTemplateResponsePtrOutput)
+}
+
+// The Job trigger related configuration.
+func (o JobResourcePropertiesResponseOutput) TriggerConfig() ManualJobTriggerConfigResponsePtrOutput {
+	return o.ApplyT(func(v JobResourcePropertiesResponse) *ManualJobTriggerConfigResponse { return v.TriggerConfig }).(ManualJobTriggerConfigResponsePtrOutput)
+}
+
+// Job resource request payload
+type JobResourceRequests struct {
+	// CPU allocated to each job execution instance.
+	Cpu *string `pulumi:"cpu"`
+	// Memory allocated to each job execution instance.
+	Memory *string `pulumi:"memory"`
+}
+
+// Defaults sets the appropriate defaults for JobResourceRequests
+func (val *JobResourceRequests) Defaults() *JobResourceRequests {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Cpu == nil {
+		cpu_ := "1"
+		tmp.Cpu = &cpu_
+	}
+	if tmp.Memory == nil {
+		memory_ := "2Gi"
+		tmp.Memory = &memory_
+	}
+	return &tmp
+}
+
+// JobResourceRequestsInput is an input type that accepts JobResourceRequestsArgs and JobResourceRequestsOutput values.
+// You can construct a concrete instance of `JobResourceRequestsInput` via:
+//
+//	JobResourceRequestsArgs{...}
+type JobResourceRequestsInput interface {
+	pulumi.Input
+
+	ToJobResourceRequestsOutput() JobResourceRequestsOutput
+	ToJobResourceRequestsOutputWithContext(context.Context) JobResourceRequestsOutput
+}
+
+// Job resource request payload
+type JobResourceRequestsArgs struct {
+	// CPU allocated to each job execution instance.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory allocated to each job execution instance.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+// Defaults sets the appropriate defaults for JobResourceRequestsArgs
+func (val *JobResourceRequestsArgs) Defaults() *JobResourceRequestsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Cpu == nil {
+		tmp.Cpu = pulumi.StringPtr("1")
+	}
+	if tmp.Memory == nil {
+		tmp.Memory = pulumi.StringPtr("2Gi")
+	}
+	return &tmp
+}
+func (JobResourceRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResourceRequests)(nil)).Elem()
+}
+
+func (i JobResourceRequestsArgs) ToJobResourceRequestsOutput() JobResourceRequestsOutput {
+	return i.ToJobResourceRequestsOutputWithContext(context.Background())
+}
+
+func (i JobResourceRequestsArgs) ToJobResourceRequestsOutputWithContext(ctx context.Context) JobResourceRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobResourceRequestsOutput)
+}
+
+func (i JobResourceRequestsArgs) ToJobResourceRequestsPtrOutput() JobResourceRequestsPtrOutput {
+	return i.ToJobResourceRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i JobResourceRequestsArgs) ToJobResourceRequestsPtrOutputWithContext(ctx context.Context) JobResourceRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobResourceRequestsOutput).ToJobResourceRequestsPtrOutputWithContext(ctx)
+}
+
+// JobResourceRequestsPtrInput is an input type that accepts JobResourceRequestsArgs, JobResourceRequestsPtr and JobResourceRequestsPtrOutput values.
+// You can construct a concrete instance of `JobResourceRequestsPtrInput` via:
+//
+//	        JobResourceRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobResourceRequestsPtrInput interface {
+	pulumi.Input
+
+	ToJobResourceRequestsPtrOutput() JobResourceRequestsPtrOutput
+	ToJobResourceRequestsPtrOutputWithContext(context.Context) JobResourceRequestsPtrOutput
+}
+
+type jobResourceRequestsPtrType JobResourceRequestsArgs
+
+func JobResourceRequestsPtr(v *JobResourceRequestsArgs) JobResourceRequestsPtrInput {
+	return (*jobResourceRequestsPtrType)(v)
+}
+
+func (*jobResourceRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobResourceRequests)(nil)).Elem()
+}
+
+func (i *jobResourceRequestsPtrType) ToJobResourceRequestsPtrOutput() JobResourceRequestsPtrOutput {
+	return i.ToJobResourceRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobResourceRequestsPtrType) ToJobResourceRequestsPtrOutputWithContext(ctx context.Context) JobResourceRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobResourceRequestsPtrOutput)
+}
+
+// Job resource request payload
+type JobResourceRequestsOutput struct{ *pulumi.OutputState }
+
+func (JobResourceRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResourceRequests)(nil)).Elem()
+}
+
+func (o JobResourceRequestsOutput) ToJobResourceRequestsOutput() JobResourceRequestsOutput {
+	return o
+}
+
+func (o JobResourceRequestsOutput) ToJobResourceRequestsOutputWithContext(ctx context.Context) JobResourceRequestsOutput {
+	return o
+}
+
+func (o JobResourceRequestsOutput) ToJobResourceRequestsPtrOutput() JobResourceRequestsPtrOutput {
+	return o.ToJobResourceRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o JobResourceRequestsOutput) ToJobResourceRequestsPtrOutputWithContext(ctx context.Context) JobResourceRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobResourceRequests) *JobResourceRequests {
+		return &v
+	}).(JobResourceRequestsPtrOutput)
+}
+
+// CPU allocated to each job execution instance.
+func (o JobResourceRequestsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobResourceRequests) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory allocated to each job execution instance.
+func (o JobResourceRequestsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobResourceRequests) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type JobResourceRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobResourceRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobResourceRequests)(nil)).Elem()
+}
+
+func (o JobResourceRequestsPtrOutput) ToJobResourceRequestsPtrOutput() JobResourceRequestsPtrOutput {
+	return o
+}
+
+func (o JobResourceRequestsPtrOutput) ToJobResourceRequestsPtrOutputWithContext(ctx context.Context) JobResourceRequestsPtrOutput {
+	return o
+}
+
+func (o JobResourceRequestsPtrOutput) Elem() JobResourceRequestsOutput {
+	return o.ApplyT(func(v *JobResourceRequests) JobResourceRequests {
+		if v != nil {
+			return *v
+		}
+		var ret JobResourceRequests
+		return ret
+	}).(JobResourceRequestsOutput)
+}
+
+// CPU allocated to each job execution instance.
+func (o JobResourceRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobResourceRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory allocated to each job execution instance.
+func (o JobResourceRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobResourceRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Job resource request payload
+type JobResourceRequestsResponse struct {
+	// CPU allocated to each job execution instance.
+	Cpu *string `pulumi:"cpu"`
+	// Memory allocated to each job execution instance.
+	Memory *string `pulumi:"memory"`
+}
+
+// Defaults sets the appropriate defaults for JobResourceRequestsResponse
+func (val *JobResourceRequestsResponse) Defaults() *JobResourceRequestsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Cpu == nil {
+		cpu_ := "1"
+		tmp.Cpu = &cpu_
+	}
+	if tmp.Memory == nil {
+		memory_ := "2Gi"
+		tmp.Memory = &memory_
+	}
+	return &tmp
+}
+
+// Job resource request payload
+type JobResourceRequestsResponseOutput struct{ *pulumi.OutputState }
+
+func (JobResourceRequestsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobResourceRequestsResponse)(nil)).Elem()
+}
+
+func (o JobResourceRequestsResponseOutput) ToJobResourceRequestsResponseOutput() JobResourceRequestsResponseOutput {
+	return o
+}
+
+func (o JobResourceRequestsResponseOutput) ToJobResourceRequestsResponseOutputWithContext(ctx context.Context) JobResourceRequestsResponseOutput {
+	return o
+}
+
+// CPU allocated to each job execution instance.
+func (o JobResourceRequestsResponseOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobResourceRequestsResponse) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory allocated to each job execution instance.
+func (o JobResourceRequestsResponseOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobResourceRequestsResponse) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type JobResourceRequestsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobResourceRequestsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobResourceRequestsResponse)(nil)).Elem()
+}
+
+func (o JobResourceRequestsResponsePtrOutput) ToJobResourceRequestsResponsePtrOutput() JobResourceRequestsResponsePtrOutput {
+	return o
+}
+
+func (o JobResourceRequestsResponsePtrOutput) ToJobResourceRequestsResponsePtrOutputWithContext(ctx context.Context) JobResourceRequestsResponsePtrOutput {
+	return o
+}
+
+func (o JobResourceRequestsResponsePtrOutput) Elem() JobResourceRequestsResponseOutput {
+	return o.ApplyT(func(v *JobResourceRequestsResponse) JobResourceRequestsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobResourceRequestsResponse
+		return ret
+	}).(JobResourceRequestsResponseOutput)
+}
+
+// CPU allocated to each job execution instance.
+func (o JobResourceRequestsResponsePtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobResourceRequestsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory allocated to each job execution instance.
+func (o JobResourceRequestsResponsePtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobResourceRequestsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of certificate imported from key vault.
 type KeyVaultCertificateProperties struct {
 	// The certificate version of key vault.
@@ -19826,6 +20879,152 @@ func (o LoadedCertificateResponseArrayOutput) Index(i pulumi.IntInput) LoadedCer
 	}).(LoadedCertificateResponseOutput)
 }
 
+// A reference to the managed component like Config Server.
+type ManagedComponentReference struct {
+	// Resource Id of the managed component
+	ResourceId string `pulumi:"resourceId"`
+}
+
+// ManagedComponentReferenceInput is an input type that accepts ManagedComponentReferenceArgs and ManagedComponentReferenceOutput values.
+// You can construct a concrete instance of `ManagedComponentReferenceInput` via:
+//
+//	ManagedComponentReferenceArgs{...}
+type ManagedComponentReferenceInput interface {
+	pulumi.Input
+
+	ToManagedComponentReferenceOutput() ManagedComponentReferenceOutput
+	ToManagedComponentReferenceOutputWithContext(context.Context) ManagedComponentReferenceOutput
+}
+
+// A reference to the managed component like Config Server.
+type ManagedComponentReferenceArgs struct {
+	// Resource Id of the managed component
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+}
+
+func (ManagedComponentReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedComponentReference)(nil)).Elem()
+}
+
+func (i ManagedComponentReferenceArgs) ToManagedComponentReferenceOutput() ManagedComponentReferenceOutput {
+	return i.ToManagedComponentReferenceOutputWithContext(context.Background())
+}
+
+func (i ManagedComponentReferenceArgs) ToManagedComponentReferenceOutputWithContext(ctx context.Context) ManagedComponentReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedComponentReferenceOutput)
+}
+
+// ManagedComponentReferenceArrayInput is an input type that accepts ManagedComponentReferenceArray and ManagedComponentReferenceArrayOutput values.
+// You can construct a concrete instance of `ManagedComponentReferenceArrayInput` via:
+//
+//	ManagedComponentReferenceArray{ ManagedComponentReferenceArgs{...} }
+type ManagedComponentReferenceArrayInput interface {
+	pulumi.Input
+
+	ToManagedComponentReferenceArrayOutput() ManagedComponentReferenceArrayOutput
+	ToManagedComponentReferenceArrayOutputWithContext(context.Context) ManagedComponentReferenceArrayOutput
+}
+
+type ManagedComponentReferenceArray []ManagedComponentReferenceInput
+
+func (ManagedComponentReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedComponentReference)(nil)).Elem()
+}
+
+func (i ManagedComponentReferenceArray) ToManagedComponentReferenceArrayOutput() ManagedComponentReferenceArrayOutput {
+	return i.ToManagedComponentReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedComponentReferenceArray) ToManagedComponentReferenceArrayOutputWithContext(ctx context.Context) ManagedComponentReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedComponentReferenceArrayOutput)
+}
+
+// A reference to the managed component like Config Server.
+type ManagedComponentReferenceOutput struct{ *pulumi.OutputState }
+
+func (ManagedComponentReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedComponentReference)(nil)).Elem()
+}
+
+func (o ManagedComponentReferenceOutput) ToManagedComponentReferenceOutput() ManagedComponentReferenceOutput {
+	return o
+}
+
+func (o ManagedComponentReferenceOutput) ToManagedComponentReferenceOutputWithContext(ctx context.Context) ManagedComponentReferenceOutput {
+	return o
+}
+
+// Resource Id of the managed component
+func (o ManagedComponentReferenceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedComponentReference) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type ManagedComponentReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedComponentReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedComponentReference)(nil)).Elem()
+}
+
+func (o ManagedComponentReferenceArrayOutput) ToManagedComponentReferenceArrayOutput() ManagedComponentReferenceArrayOutput {
+	return o
+}
+
+func (o ManagedComponentReferenceArrayOutput) ToManagedComponentReferenceArrayOutputWithContext(ctx context.Context) ManagedComponentReferenceArrayOutput {
+	return o
+}
+
+func (o ManagedComponentReferenceArrayOutput) Index(i pulumi.IntInput) ManagedComponentReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedComponentReference {
+		return vs[0].([]ManagedComponentReference)[vs[1].(int)]
+	}).(ManagedComponentReferenceOutput)
+}
+
+// A reference to the managed component like Config Server.
+type ManagedComponentReferenceResponse struct {
+	// Resource Id of the managed component
+	ResourceId string `pulumi:"resourceId"`
+}
+
+// A reference to the managed component like Config Server.
+type ManagedComponentReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedComponentReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedComponentReferenceResponse)(nil)).Elem()
+}
+
+func (o ManagedComponentReferenceResponseOutput) ToManagedComponentReferenceResponseOutput() ManagedComponentReferenceResponseOutput {
+	return o
+}
+
+func (o ManagedComponentReferenceResponseOutput) ToManagedComponentReferenceResponseOutputWithContext(ctx context.Context) ManagedComponentReferenceResponseOutput {
+	return o
+}
+
+// Resource Id of the managed component
+func (o ManagedComponentReferenceResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedComponentReferenceResponse) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type ManagedComponentReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedComponentReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedComponentReferenceResponse)(nil)).Elem()
+}
+
+func (o ManagedComponentReferenceResponseArrayOutput) ToManagedComponentReferenceResponseArrayOutput() ManagedComponentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o ManagedComponentReferenceResponseArrayOutput) ToManagedComponentReferenceResponseArrayOutputWithContext(ctx context.Context) ManagedComponentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o ManagedComponentReferenceResponseArrayOutput) Index(i pulumi.IntInput) ManagedComponentReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedComponentReferenceResponse {
+		return vs[0].([]ManagedComponentReferenceResponse)[vs[1].(int)]
+	}).(ManagedComponentReferenceResponseOutput)
+}
+
 // Managed identity properties retrieved from ARM request headers.
 type ManagedIdentityProperties struct {
 	// Principal Id of system-assigned managed identity.
@@ -20134,6 +21333,356 @@ func (o ManagedIdentityPropertiesResponsePtrOutput) UserAssignedIdentities() Use
 		}
 		return v.UserAssignedIdentities
 	}).(UserAssignedManagedIdentityResponseMapOutput)
+}
+
+// Configuration for manual triggered job
+type ManualJobTriggerConfig struct {
+	// Number of parallel replicas of a job execution can run.
+	Parallelism *int `pulumi:"parallelism"`
+	// Maximum number of retries before failing the job.
+	RetryLimit *int `pulumi:"retryLimit"`
+	// Maximum number of seconds an execution is allowed to run.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// Type of job trigger
+	// Expected value is 'Manual'.
+	TriggerType string `pulumi:"triggerType"`
+}
+
+// Defaults sets the appropriate defaults for ManualJobTriggerConfig
+func (val *ManualJobTriggerConfig) Defaults() *ManualJobTriggerConfig {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.TriggerType) {
+		tmp.TriggerType = "Manual"
+	}
+	return &tmp
+}
+
+// ManualJobTriggerConfigInput is an input type that accepts ManualJobTriggerConfigArgs and ManualJobTriggerConfigOutput values.
+// You can construct a concrete instance of `ManualJobTriggerConfigInput` via:
+//
+//	ManualJobTriggerConfigArgs{...}
+type ManualJobTriggerConfigInput interface {
+	pulumi.Input
+
+	ToManualJobTriggerConfigOutput() ManualJobTriggerConfigOutput
+	ToManualJobTriggerConfigOutputWithContext(context.Context) ManualJobTriggerConfigOutput
+}
+
+// Configuration for manual triggered job
+type ManualJobTriggerConfigArgs struct {
+	// Number of parallel replicas of a job execution can run.
+	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
+	// Maximum number of retries before failing the job.
+	RetryLimit pulumi.IntPtrInput `pulumi:"retryLimit"`
+	// Maximum number of seconds an execution is allowed to run.
+	TimeoutInSeconds pulumi.IntPtrInput `pulumi:"timeoutInSeconds"`
+	// Type of job trigger
+	// Expected value is 'Manual'.
+	TriggerType pulumi.StringInput `pulumi:"triggerType"`
+}
+
+// Defaults sets the appropriate defaults for ManualJobTriggerConfigArgs
+func (val *ManualJobTriggerConfigArgs) Defaults() *ManualJobTriggerConfigArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.TriggerType == nil {
+		tmp.TriggerType = pulumi.String("Manual")
+	}
+	return &tmp
+}
+func (ManualJobTriggerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManualJobTriggerConfig)(nil)).Elem()
+}
+
+func (i ManualJobTriggerConfigArgs) ToManualJobTriggerConfigOutput() ManualJobTriggerConfigOutput {
+	return i.ToManualJobTriggerConfigOutputWithContext(context.Background())
+}
+
+func (i ManualJobTriggerConfigArgs) ToManualJobTriggerConfigOutputWithContext(ctx context.Context) ManualJobTriggerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManualJobTriggerConfigOutput)
+}
+
+func (i ManualJobTriggerConfigArgs) ToManualJobTriggerConfigPtrOutput() ManualJobTriggerConfigPtrOutput {
+	return i.ToManualJobTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManualJobTriggerConfigArgs) ToManualJobTriggerConfigPtrOutputWithContext(ctx context.Context) ManualJobTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManualJobTriggerConfigOutput).ToManualJobTriggerConfigPtrOutputWithContext(ctx)
+}
+
+// ManualJobTriggerConfigPtrInput is an input type that accepts ManualJobTriggerConfigArgs, ManualJobTriggerConfigPtr and ManualJobTriggerConfigPtrOutput values.
+// You can construct a concrete instance of `ManualJobTriggerConfigPtrInput` via:
+//
+//	        ManualJobTriggerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManualJobTriggerConfigPtrInput interface {
+	pulumi.Input
+
+	ToManualJobTriggerConfigPtrOutput() ManualJobTriggerConfigPtrOutput
+	ToManualJobTriggerConfigPtrOutputWithContext(context.Context) ManualJobTriggerConfigPtrOutput
+}
+
+type manualJobTriggerConfigPtrType ManualJobTriggerConfigArgs
+
+func ManualJobTriggerConfigPtr(v *ManualJobTriggerConfigArgs) ManualJobTriggerConfigPtrInput {
+	return (*manualJobTriggerConfigPtrType)(v)
+}
+
+func (*manualJobTriggerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManualJobTriggerConfig)(nil)).Elem()
+}
+
+func (i *manualJobTriggerConfigPtrType) ToManualJobTriggerConfigPtrOutput() ManualJobTriggerConfigPtrOutput {
+	return i.ToManualJobTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *manualJobTriggerConfigPtrType) ToManualJobTriggerConfigPtrOutputWithContext(ctx context.Context) ManualJobTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManualJobTriggerConfigPtrOutput)
+}
+
+// Configuration for manual triggered job
+type ManualJobTriggerConfigOutput struct{ *pulumi.OutputState }
+
+func (ManualJobTriggerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManualJobTriggerConfig)(nil)).Elem()
+}
+
+func (o ManualJobTriggerConfigOutput) ToManualJobTriggerConfigOutput() ManualJobTriggerConfigOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigOutput) ToManualJobTriggerConfigOutputWithContext(ctx context.Context) ManualJobTriggerConfigOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigOutput) ToManualJobTriggerConfigPtrOutput() ManualJobTriggerConfigPtrOutput {
+	return o.ToManualJobTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManualJobTriggerConfigOutput) ToManualJobTriggerConfigPtrOutputWithContext(ctx context.Context) ManualJobTriggerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManualJobTriggerConfig) *ManualJobTriggerConfig {
+		return &v
+	}).(ManualJobTriggerConfigPtrOutput)
+}
+
+// Number of parallel replicas of a job execution can run.
+func (o ManualJobTriggerConfigOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfig) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of retries before failing the job.
+func (o ManualJobTriggerConfigOutput) RetryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfig) *int { return v.RetryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of seconds an execution is allowed to run.
+func (o ManualJobTriggerConfigOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfig) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Type of job trigger
+// Expected value is 'Manual'.
+func (o ManualJobTriggerConfigOutput) TriggerType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfig) string { return v.TriggerType }).(pulumi.StringOutput)
+}
+
+type ManualJobTriggerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManualJobTriggerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManualJobTriggerConfig)(nil)).Elem()
+}
+
+func (o ManualJobTriggerConfigPtrOutput) ToManualJobTriggerConfigPtrOutput() ManualJobTriggerConfigPtrOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigPtrOutput) ToManualJobTriggerConfigPtrOutputWithContext(ctx context.Context) ManualJobTriggerConfigPtrOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigPtrOutput) Elem() ManualJobTriggerConfigOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfig) ManualJobTriggerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManualJobTriggerConfig
+		return ret
+	}).(ManualJobTriggerConfigOutput)
+}
+
+// Number of parallel replicas of a job execution can run.
+func (o ManualJobTriggerConfigPtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of retries before failing the job.
+func (o ManualJobTriggerConfigPtrOutput) RetryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of seconds an execution is allowed to run.
+func (o ManualJobTriggerConfigPtrOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of job trigger
+// Expected value is 'Manual'.
+func (o ManualJobTriggerConfigPtrOutput) TriggerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TriggerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for manual triggered job
+type ManualJobTriggerConfigResponse struct {
+	// Number of parallel replicas of a job execution can run.
+	Parallelism *int `pulumi:"parallelism"`
+	// Maximum number of retries before failing the job.
+	RetryLimit *int `pulumi:"retryLimit"`
+	// Maximum number of seconds an execution is allowed to run.
+	TimeoutInSeconds *int `pulumi:"timeoutInSeconds"`
+	// Type of job trigger
+	// Expected value is 'Manual'.
+	TriggerType string `pulumi:"triggerType"`
+}
+
+// Defaults sets the appropriate defaults for ManualJobTriggerConfigResponse
+func (val *ManualJobTriggerConfigResponse) Defaults() *ManualJobTriggerConfigResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.TriggerType) {
+		tmp.TriggerType = "Manual"
+	}
+	return &tmp
+}
+
+// Configuration for manual triggered job
+type ManualJobTriggerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManualJobTriggerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManualJobTriggerConfigResponse)(nil)).Elem()
+}
+
+func (o ManualJobTriggerConfigResponseOutput) ToManualJobTriggerConfigResponseOutput() ManualJobTriggerConfigResponseOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigResponseOutput) ToManualJobTriggerConfigResponseOutputWithContext(ctx context.Context) ManualJobTriggerConfigResponseOutput {
+	return o
+}
+
+// Number of parallel replicas of a job execution can run.
+func (o ManualJobTriggerConfigResponseOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfigResponse) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of retries before failing the job.
+func (o ManualJobTriggerConfigResponseOutput) RetryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfigResponse) *int { return v.RetryLimit }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of seconds an execution is allowed to run.
+func (o ManualJobTriggerConfigResponseOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfigResponse) *int { return v.TimeoutInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Type of job trigger
+// Expected value is 'Manual'.
+func (o ManualJobTriggerConfigResponseOutput) TriggerType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManualJobTriggerConfigResponse) string { return v.TriggerType }).(pulumi.StringOutput)
+}
+
+type ManualJobTriggerConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManualJobTriggerConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManualJobTriggerConfigResponse)(nil)).Elem()
+}
+
+func (o ManualJobTriggerConfigResponsePtrOutput) ToManualJobTriggerConfigResponsePtrOutput() ManualJobTriggerConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigResponsePtrOutput) ToManualJobTriggerConfigResponsePtrOutputWithContext(ctx context.Context) ManualJobTriggerConfigResponsePtrOutput {
+	return o
+}
+
+func (o ManualJobTriggerConfigResponsePtrOutput) Elem() ManualJobTriggerConfigResponseOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfigResponse) ManualJobTriggerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManualJobTriggerConfigResponse
+		return ret
+	}).(ManualJobTriggerConfigResponseOutput)
+}
+
+// Number of parallel replicas of a job execution can run.
+func (o ManualJobTriggerConfigResponsePtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of retries before failing the job.
+func (o ManualJobTriggerConfigResponsePtrOutput) RetryLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of seconds an execution is allowed to run.
+func (o ManualJobTriggerConfigResponsePtrOutput) TimeoutInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of job trigger
+// Expected value is 'Manual'.
+func (o ManualJobTriggerConfigResponsePtrOutput) TriggerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManualJobTriggerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TriggerType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Purchasing 3rd Party product for one Azure Spring Apps instance
@@ -26644,6 +28193,393 @@ func (o UserAssignedManagedIdentityResponseMapOutput) MapIndex(k pulumi.StringIn
 	}).(UserAssignedManagedIdentityResponseOutput)
 }
 
+// Uploaded War binary for a deployment
+type WarUploadedUserSourceInfo struct {
+	// JVM parameter
+	JvmOptions *string `pulumi:"jvmOptions"`
+	// Relative path of the storage which stores the source
+	RelativePath *string `pulumi:"relativePath"`
+	// Runtime version of the war file
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+	// Server version, currently only Apache Tomcat is supported
+	ServerVersion *string `pulumi:"serverVersion"`
+	// Type of the source uploaded
+	// Expected value is 'War'.
+	Type string `pulumi:"type"`
+	// Version of the source
+	Version *string `pulumi:"version"`
+}
+
+// WarUploadedUserSourceInfoInput is an input type that accepts WarUploadedUserSourceInfoArgs and WarUploadedUserSourceInfoOutput values.
+// You can construct a concrete instance of `WarUploadedUserSourceInfoInput` via:
+//
+//	WarUploadedUserSourceInfoArgs{...}
+type WarUploadedUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToWarUploadedUserSourceInfoOutput() WarUploadedUserSourceInfoOutput
+	ToWarUploadedUserSourceInfoOutputWithContext(context.Context) WarUploadedUserSourceInfoOutput
+}
+
+// Uploaded War binary for a deployment
+type WarUploadedUserSourceInfoArgs struct {
+	// JVM parameter
+	JvmOptions pulumi.StringPtrInput `pulumi:"jvmOptions"`
+	// Relative path of the storage which stores the source
+	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
+	// Runtime version of the war file
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+	// Server version, currently only Apache Tomcat is supported
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
+	// Type of the source uploaded
+	// Expected value is 'War'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (WarUploadedUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i WarUploadedUserSourceInfoArgs) ToWarUploadedUserSourceInfoOutput() WarUploadedUserSourceInfoOutput {
+	return i.ToWarUploadedUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i WarUploadedUserSourceInfoArgs) ToWarUploadedUserSourceInfoOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarUploadedUserSourceInfoOutput)
+}
+
+func (i WarUploadedUserSourceInfoArgs) ToWarUploadedUserSourceInfoPtrOutput() WarUploadedUserSourceInfoPtrOutput {
+	return i.ToWarUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i WarUploadedUserSourceInfoArgs) ToWarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarUploadedUserSourceInfoOutput).ToWarUploadedUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// WarUploadedUserSourceInfoPtrInput is an input type that accepts WarUploadedUserSourceInfoArgs, WarUploadedUserSourceInfoPtr and WarUploadedUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `WarUploadedUserSourceInfoPtrInput` via:
+//
+//	        WarUploadedUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type WarUploadedUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToWarUploadedUserSourceInfoPtrOutput() WarUploadedUserSourceInfoPtrOutput
+	ToWarUploadedUserSourceInfoPtrOutputWithContext(context.Context) WarUploadedUserSourceInfoPtrOutput
+}
+
+type warUploadedUserSourceInfoPtrType WarUploadedUserSourceInfoArgs
+
+func WarUploadedUserSourceInfoPtr(v *WarUploadedUserSourceInfoArgs) WarUploadedUserSourceInfoPtrInput {
+	return (*warUploadedUserSourceInfoPtrType)(v)
+}
+
+func (*warUploadedUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i *warUploadedUserSourceInfoPtrType) ToWarUploadedUserSourceInfoPtrOutput() WarUploadedUserSourceInfoPtrOutput {
+	return i.ToWarUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *warUploadedUserSourceInfoPtrType) ToWarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WarUploadedUserSourceInfoPtrOutput)
+}
+
+// Uploaded War binary for a deployment
+type WarUploadedUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (WarUploadedUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o WarUploadedUserSourceInfoOutput) ToWarUploadedUserSourceInfoOutput() WarUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoOutput) ToWarUploadedUserSourceInfoOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoOutput) ToWarUploadedUserSourceInfoPtrOutput() WarUploadedUserSourceInfoPtrOutput {
+	return o.ToWarUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o WarUploadedUserSourceInfoOutput) ToWarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WarUploadedUserSourceInfo) *WarUploadedUserSourceInfo {
+		return &v
+	}).(WarUploadedUserSourceInfoPtrOutput)
+}
+
+// JVM parameter
+func (o WarUploadedUserSourceInfoOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfo) *string { return v.JvmOptions }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o WarUploadedUserSourceInfoOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfo) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the war file
+func (o WarUploadedUserSourceInfoOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfo) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Server version, currently only Apache Tomcat is supported
+func (o WarUploadedUserSourceInfoOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfo) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'War'.
+func (o WarUploadedUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o WarUploadedUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type WarUploadedUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (WarUploadedUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o WarUploadedUserSourceInfoPtrOutput) ToWarUploadedUserSourceInfoPtrOutput() WarUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoPtrOutput) ToWarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoPtrOutput) Elem() WarUploadedUserSourceInfoOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) WarUploadedUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret WarUploadedUserSourceInfo
+		return ret
+	}).(WarUploadedUserSourceInfoOutput)
+}
+
+// JVM parameter
+func (o WarUploadedUserSourceInfoPtrOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JvmOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o WarUploadedUserSourceInfoPtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the war file
+func (o WarUploadedUserSourceInfoPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server version, currently only Apache Tomcat is supported
+func (o WarUploadedUserSourceInfoPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'War'.
+func (o WarUploadedUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o WarUploadedUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uploaded War binary for a deployment
+type WarUploadedUserSourceInfoResponse struct {
+	// JVM parameter
+	JvmOptions *string `pulumi:"jvmOptions"`
+	// Relative path of the storage which stores the source
+	RelativePath *string `pulumi:"relativePath"`
+	// Runtime version of the war file
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+	// Server version, currently only Apache Tomcat is supported
+	ServerVersion *string `pulumi:"serverVersion"`
+	// Type of the source uploaded
+	// Expected value is 'War'.
+	Type string `pulumi:"type"`
+	// Version of the source
+	Version *string `pulumi:"version"`
+}
+
+// Uploaded War binary for a deployment
+type WarUploadedUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (WarUploadedUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o WarUploadedUserSourceInfoResponseOutput) ToWarUploadedUserSourceInfoResponseOutput() WarUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoResponseOutput) ToWarUploadedUserSourceInfoResponseOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+// JVM parameter
+func (o WarUploadedUserSourceInfoResponseOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfoResponse) *string { return v.JvmOptions }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o WarUploadedUserSourceInfoResponseOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfoResponse) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the war file
+func (o WarUploadedUserSourceInfoResponseOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfoResponse) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Server version, currently only Apache Tomcat is supported
+func (o WarUploadedUserSourceInfoResponseOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfoResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'War'.
+func (o WarUploadedUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o WarUploadedUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WarUploadedUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type WarUploadedUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WarUploadedUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WarUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o WarUploadedUserSourceInfoResponsePtrOutput) ToWarUploadedUserSourceInfoResponsePtrOutput() WarUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoResponsePtrOutput) ToWarUploadedUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) WarUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o WarUploadedUserSourceInfoResponsePtrOutput) Elem() WarUploadedUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) WarUploadedUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WarUploadedUserSourceInfoResponse
+		return ret
+	}).(WarUploadedUserSourceInfoResponseOutput)
+}
+
+// JVM parameter
+func (o WarUploadedUserSourceInfoResponsePtrOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JvmOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o WarUploadedUserSourceInfoResponsePtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the war file
+func (o WarUploadedUserSourceInfoResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server version, currently only Apache Tomcat is supported
+func (o WarUploadedUserSourceInfoResponsePtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'War'.
+func (o WarUploadedUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o WarUploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingOutput{})
 	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingPtrOutput{})
@@ -26838,6 +28774,10 @@ func init() {
 	pulumi.RegisterOutputType(DevToolPortalSsoPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DevToolPortalSsoPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DevToolPortalSsoPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnvVarOutput{})
+	pulumi.RegisterOutputType(EnvVarArrayOutput{})
+	pulumi.RegisterOutputType(EnvVarResponseOutput{})
+	pulumi.RegisterOutputType(EnvVarResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorOutput{})
 	pulumi.RegisterOutputType(ErrorPtrOutput{})
 	pulumi.RegisterOutputType(ErrorResponseOutput{})
@@ -26919,6 +28859,17 @@ func init() {
 	pulumi.RegisterOutputType(JarUploadedUserSourceInfoPtrOutput{})
 	pulumi.RegisterOutputType(JarUploadedUserSourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(JarUploadedUserSourceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobExecutionTemplateOutput{})
+	pulumi.RegisterOutputType(JobExecutionTemplatePtrOutput{})
+	pulumi.RegisterOutputType(JobExecutionTemplateResponseOutput{})
+	pulumi.RegisterOutputType(JobExecutionTemplateResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(JobResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(JobResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(JobResourceRequestsOutput{})
+	pulumi.RegisterOutputType(JobResourceRequestsPtrOutput{})
+	pulumi.RegisterOutputType(JobResourceRequestsResponseOutput{})
+	pulumi.RegisterOutputType(JobResourceRequestsResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultCertificatePropertiesOutput{})
 	pulumi.RegisterOutputType(KeyVaultCertificatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultCertificatePropertiesResponseOutput{})
@@ -26926,10 +28877,18 @@ func init() {
 	pulumi.RegisterOutputType(LoadedCertificateArrayOutput{})
 	pulumi.RegisterOutputType(LoadedCertificateResponseOutput{})
 	pulumi.RegisterOutputType(LoadedCertificateResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedComponentReferenceOutput{})
+	pulumi.RegisterOutputType(ManagedComponentReferenceArrayOutput{})
+	pulumi.RegisterOutputType(ManagedComponentReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ManagedComponentReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManualJobTriggerConfigOutput{})
+	pulumi.RegisterOutputType(ManualJobTriggerConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManualJobTriggerConfigResponseOutput{})
+	pulumi.RegisterOutputType(ManualJobTriggerConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(MarketplaceResourceOutput{})
 	pulumi.RegisterOutputType(MarketplaceResourcePtrOutput{})
 	pulumi.RegisterOutputType(MarketplaceResourceResponseOutput{})
@@ -27028,4 +28987,8 @@ func init() {
 	pulumi.RegisterOutputType(UploadedUserSourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(WarUploadedUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(WarUploadedUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(WarUploadedUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(WarUploadedUserSourceInfoResponsePtrOutput{})
 }

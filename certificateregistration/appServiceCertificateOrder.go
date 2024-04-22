@@ -15,7 +15,7 @@ import (
 // SSL certificate purchase order.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
 type AppServiceCertificateOrder struct {
 	pulumi.CustomResourceState
 
@@ -135,6 +135,9 @@ func NewAppServiceCertificateOrder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:certificateregistration/v20230101:AppServiceCertificateOrder"),
+		},
+		{
+			Type: pulumi.String("azure-native:certificateregistration/v20231201:AppServiceCertificateOrder"),
 		},
 	})
 	opts = append(opts, aliases)

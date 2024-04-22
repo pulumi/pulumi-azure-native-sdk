@@ -15,7 +15,7 @@ import (
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
 // Azure REST API version: 2023-01-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01.
 type DppResourceGuardProxy struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +78,9 @@ func NewDppResourceGuardProxy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20240301:DppResourceGuardProxy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20240401:DppResourceGuardProxy"),
 		},
 	})
 	opts = append(opts, aliases)
