@@ -62,6 +62,9 @@ func NewManagedCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20230801preview:ManagedCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240301:ManagedCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

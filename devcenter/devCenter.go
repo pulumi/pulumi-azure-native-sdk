@@ -15,7 +15,7 @@ import (
 // Represents a devcenter resource.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview.
 type DevCenter struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +74,9 @@ func NewDevCenter(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240201:DevCenter"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240501preview:DevCenter"),
 		},
 	})
 	opts = append(opts, aliases)

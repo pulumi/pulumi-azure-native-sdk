@@ -85,6 +85,9 @@ func NewKubeEnvironment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:KubeEnvironment"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:KubeEnvironment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

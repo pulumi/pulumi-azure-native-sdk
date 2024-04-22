@@ -92,6 +92,9 @@ func NewBatchEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:BatchEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:BatchEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

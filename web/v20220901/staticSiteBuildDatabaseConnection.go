@@ -63,6 +63,9 @@ func NewStaticSiteBuildDatabaseConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:StaticSiteBuildDatabaseConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:StaticSiteBuildDatabaseConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -204,6 +204,9 @@ func NewWebApp(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebApp"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebApp"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -75,6 +75,9 @@ func NewCustomizedAccelerator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231201:CustomizedAccelerator"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240501preview:CustomizedAccelerator"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

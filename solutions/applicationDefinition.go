@@ -15,7 +15,7 @@ import (
 // Information about managed application definition.
 // Azure REST API version: 2021-07-01. Prior API version in Azure Native 1.x: 2019-07-01.
 //
-// Other available API versions: 2017-12-01.
+// Other available API versions: 2017-12-01, 2023-12-01-preview.
 type ApplicationDefinition struct {
 	pulumi.CustomResourceState
 
@@ -111,6 +111,9 @@ func NewApplicationDefinition(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:solutions/v20210701:ApplicationDefinition"),
+		},
+		{
+			Type: pulumi.String("azure-native:solutions/v20231201preview:ApplicationDefinition"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,7 +14,7 @@ import (
 // Description for Get the named public certificate for an app (or deployment slot, if specified).
 // Azure REST API version: 2022-09-01.
 //
-// Other available API versions: 2020-10-01, 2023-01-01.
+// Other available API versions: 2020-10-01, 2023-01-01, 2023-12-01.
 func LookupWebAppPublicCertificate(ctx *pulumi.Context, args *LookupWebAppPublicCertificateArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPublicCertificateResult

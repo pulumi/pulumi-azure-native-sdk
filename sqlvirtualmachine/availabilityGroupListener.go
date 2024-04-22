@@ -15,7 +15,7 @@ import (
 // A SQL Server availability group listener.
 // Azure REST API version: 2022-02-01. Prior API version in Azure Native 1.x: 2017-03-01-preview.
 //
-// Other available API versions: 2023-01-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-10-01.
 type AvailabilityGroupListener struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +75,9 @@ func NewAvailabilityGroupListener(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sqlvirtualmachine/v20230101preview:AvailabilityGroupListener"),
+		},
+		{
+			Type: pulumi.String("azure-native:sqlvirtualmachine/v20231001:AvailabilityGroupListener"),
 		},
 	})
 	opts = append(opts, aliases)

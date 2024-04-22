@@ -103,6 +103,9 @@ func NewWebAppSourceControlSlot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebAppSourceControlSlot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppSourceControlSlot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

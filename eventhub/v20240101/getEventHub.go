@@ -59,6 +59,8 @@ type LookupEventHubResult struct {
 	Type string `pulumi:"type"`
 	// The exact time the message was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
+	// Gets and Sets Metadata of User.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 func LookupEventHubOutput(ctx *pulumi.Context, args LookupEventHubOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubResultOutput {
@@ -165,6 +167,11 @@ func (o LookupEventHubResultOutput) Type() pulumi.StringOutput {
 // The exact time the message was updated.
 func (o LookupEventHubResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEventHubResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Gets and Sets Metadata of User.
+func (o LookupEventHubResultOutput) UserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEventHubResult) *string { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }
 
 func init() {

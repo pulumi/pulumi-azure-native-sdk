@@ -70,6 +70,9 @@ func NewDevToolPortal(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:DevToolPortal"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240501preview:DevToolPortal"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

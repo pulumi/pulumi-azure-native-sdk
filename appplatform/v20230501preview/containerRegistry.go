@@ -58,6 +58,9 @@ func NewContainerRegistry(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20240101preview:ContainerRegistry"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20240501preview:ContainerRegistry"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

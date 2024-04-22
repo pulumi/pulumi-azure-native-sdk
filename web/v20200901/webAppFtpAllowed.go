@@ -81,6 +81,9 @@ func NewWebAppFtpAllowed(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20230101:WebAppFtpAllowed"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:WebAppFtpAllowed"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 // Gets a SQL virtual machine group.
 // Azure REST API version: 2022-02-01.
 //
-// Other available API versions: 2023-01-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-10-01.
 func LookupSqlVirtualMachineGroup(ctx *pulumi.Context, args *LookupSqlVirtualMachineGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlVirtualMachineGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlVirtualMachineGroupResult

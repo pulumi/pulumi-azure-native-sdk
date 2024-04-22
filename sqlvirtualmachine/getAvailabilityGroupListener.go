@@ -14,7 +14,7 @@ import (
 // Gets an availability group listener.
 // Azure REST API version: 2022-02-01.
 //
-// Other available API versions: 2023-01-01-preview.
+// Other available API versions: 2023-01-01-preview, 2023-10-01.
 func LookupAvailabilityGroupListener(ctx *pulumi.Context, args *LookupAvailabilityGroupListenerArgs, opts ...pulumi.InvokeOption) (*LookupAvailabilityGroupListenerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAvailabilityGroupListenerResult

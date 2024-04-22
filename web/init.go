@@ -133,6 +133,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppRelayServiceConnectionSlot{}
 	case "azure-native:web:WebAppScmAllowed":
 		r = &WebAppScmAllowed{}
+	case "azure-native:web:WebAppSiteContainer":
+		r = &WebAppSiteContainer{}
+	case "azure-native:web:WebAppSiteContainerSlot":
+		r = &WebAppSiteContainerSlot{}
 	case "azure-native:web:WebAppSiteExtension":
 		r = &WebAppSiteExtension{}
 	case "azure-native:web:WebAppSiteExtensionSlot":

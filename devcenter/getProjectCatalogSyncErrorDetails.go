@@ -13,6 +13,8 @@ import (
 
 // Gets project catalog synchronization error details
 // Azure REST API version: 2024-02-01.
+//
+// Other available API versions: 2024-05-01-preview.
 func GetProjectCatalogSyncErrorDetails(ctx *pulumi.Context, args *GetProjectCatalogSyncErrorDetailsArgs, opts ...pulumi.InvokeOption) (*GetProjectCatalogSyncErrorDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCatalogSyncErrorDetailsResult

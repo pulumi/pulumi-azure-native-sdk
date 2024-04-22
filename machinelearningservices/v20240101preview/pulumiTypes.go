@@ -64521,8 +64521,9 @@ func (o OnlineEndpointResponseOutput) Traffic() pulumi.IntMapOutput {
 type OnlineRequestSettings struct {
 	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
 	MaxConcurrentRequestsPerInstance *int `pulumi:"maxConcurrentRequestsPerInstance"`
-	// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+	// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 	// Defaults to 500ms.
+	// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 	MaxQueueWait *string `pulumi:"maxQueueWait"`
 	// The scoring timeout in ISO 8601 format.
 	// Defaults to 5000ms.
@@ -64565,8 +64566,9 @@ type OnlineRequestSettingsInput interface {
 type OnlineRequestSettingsArgs struct {
 	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
 	MaxConcurrentRequestsPerInstance pulumi.IntPtrInput `pulumi:"maxConcurrentRequestsPerInstance"`
-	// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+	// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 	// Defaults to 500ms.
+	// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 	MaxQueueWait pulumi.StringPtrInput `pulumi:"maxQueueWait"`
 	// The scoring timeout in ISO 8601 format.
 	// Defaults to 5000ms.
@@ -64673,8 +64675,9 @@ func (o OnlineRequestSettingsOutput) MaxConcurrentRequestsPerInstance() pulumi.I
 	return o.ApplyT(func(v OnlineRequestSettings) *int { return v.MaxConcurrentRequestsPerInstance }).(pulumi.IntPtrOutput)
 }
 
-// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 // Defaults to 500ms.
+// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 func (o OnlineRequestSettingsOutput) MaxQueueWait() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnlineRequestSettings) *string { return v.MaxQueueWait }).(pulumi.StringPtrOutput)
 }
@@ -64719,8 +64722,9 @@ func (o OnlineRequestSettingsPtrOutput) MaxConcurrentRequestsPerInstance() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 // Defaults to 500ms.
+// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 func (o OnlineRequestSettingsPtrOutput) MaxQueueWait() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnlineRequestSettings) *string {
 		if v == nil {
@@ -64745,8 +64749,9 @@ func (o OnlineRequestSettingsPtrOutput) RequestTimeout() pulumi.StringPtrOutput 
 type OnlineRequestSettingsResponse struct {
 	// The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
 	MaxConcurrentRequestsPerInstance *int `pulumi:"maxConcurrentRequestsPerInstance"`
-	// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+	// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 	// Defaults to 500ms.
+	// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 	MaxQueueWait *string `pulumi:"maxQueueWait"`
 	// The scoring timeout in ISO 8601 format.
 	// Defaults to 5000ms.
@@ -64794,8 +64799,9 @@ func (o OnlineRequestSettingsResponseOutput) MaxConcurrentRequestsPerInstance() 
 	return o.ApplyT(func(v OnlineRequestSettingsResponse) *int { return v.MaxConcurrentRequestsPerInstance }).(pulumi.IntPtrOutput)
 }
 
-// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 // Defaults to 500ms.
+// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 func (o OnlineRequestSettingsResponseOutput) MaxQueueWait() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OnlineRequestSettingsResponse) *string { return v.MaxQueueWait }).(pulumi.StringPtrOutput)
 }
@@ -64840,8 +64846,9 @@ func (o OnlineRequestSettingsResponsePtrOutput) MaxConcurrentRequestsPerInstance
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum amount of time a request will stay in the queue in ISO 8601 format.
+// (Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.
 // Defaults to 500ms.
+// (Now increase `request_timeout_ms` to account for any networking/queue delays)
 func (o OnlineRequestSettingsResponsePtrOutput) MaxQueueWait() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OnlineRequestSettingsResponse) *string {
 		if v == nil {

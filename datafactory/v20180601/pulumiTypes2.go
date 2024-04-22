@@ -1003,8 +1003,8 @@ type ScriptActivityScriptBlock struct {
 	Parameters []ScriptActivityParameter `pulumi:"parameters"`
 	// The query text. Type: string (or Expression with resultType string).
 	Text interface{} `pulumi:"text"`
-	// The type of the query. Type: string.
-	Type string `pulumi:"type"`
+	// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
+	Type interface{} `pulumi:"type"`
 }
 
 // ScriptActivityScriptBlockInput is an input type that accepts ScriptActivityScriptBlockArgs and ScriptActivityScriptBlockOutput values.
@@ -1024,8 +1024,8 @@ type ScriptActivityScriptBlockArgs struct {
 	Parameters ScriptActivityParameterArrayInput `pulumi:"parameters"`
 	// The query text. Type: string (or Expression with resultType string).
 	Text pulumi.Input `pulumi:"text"`
-	// The type of the query. Type: string.
-	Type pulumi.StringInput `pulumi:"type"`
+	// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
+	Type pulumi.Input `pulumi:"type"`
 }
 
 func (ScriptActivityScriptBlockArgs) ElementType() reflect.Type {
@@ -1090,9 +1090,9 @@ func (o ScriptActivityScriptBlockOutput) Text() pulumi.AnyOutput {
 	return o.ApplyT(func(v ScriptActivityScriptBlock) interface{} { return v.Text }).(pulumi.AnyOutput)
 }
 
-// The type of the query. Type: string.
-func (o ScriptActivityScriptBlockOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlock) string { return v.Type }).(pulumi.StringOutput)
+// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
+func (o ScriptActivityScriptBlockOutput) Type() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActivityScriptBlock) interface{} { return v.Type }).(pulumi.AnyOutput)
 }
 
 type ScriptActivityScriptBlockArrayOutput struct{ *pulumi.OutputState }
@@ -1121,8 +1121,8 @@ type ScriptActivityScriptBlockResponse struct {
 	Parameters []ScriptActivityParameterResponse `pulumi:"parameters"`
 	// The query text. Type: string (or Expression with resultType string).
 	Text interface{} `pulumi:"text"`
-	// The type of the query. Type: string.
-	Type string `pulumi:"type"`
+	// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
+	Type interface{} `pulumi:"type"`
 }
 
 // Script block of scripts.
@@ -1150,9 +1150,9 @@ func (o ScriptActivityScriptBlockResponseOutput) Text() pulumi.AnyOutput {
 	return o.ApplyT(func(v ScriptActivityScriptBlockResponse) interface{} { return v.Text }).(pulumi.AnyOutput)
 }
 
-// The type of the query. Type: string.
-func (o ScriptActivityScriptBlockResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ScriptActivityScriptBlockResponse) string { return v.Type }).(pulumi.StringOutput)
+// The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
+func (o ScriptActivityScriptBlockResponseOutput) Type() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScriptActivityScriptBlockResponse) interface{} { return v.Type }).(pulumi.AnyOutput)
 }
 
 type ScriptActivityScriptBlockResponseArrayOutput struct{ *pulumi.OutputState }
@@ -18658,124 +18658,6 @@ func (o SynapseSparkJobReferenceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SynapseSparkJobReferenceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// System Assigned Managed identity credential.
-type SystemAssignedManagedIdentityCredential struct {
-	// List of tags that can be used for describing the Credential.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Credential description.
-	Description *string `pulumi:"description"`
-	// Type of credential.
-	// Expected value is 'SystemAssignedManagedIdentityCredential'.
-	Type string `pulumi:"type"`
-}
-
-// SystemAssignedManagedIdentityCredentialInput is an input type that accepts SystemAssignedManagedIdentityCredentialArgs and SystemAssignedManagedIdentityCredentialOutput values.
-// You can construct a concrete instance of `SystemAssignedManagedIdentityCredentialInput` via:
-//
-//	SystemAssignedManagedIdentityCredentialArgs{...}
-type SystemAssignedManagedIdentityCredentialInput interface {
-	pulumi.Input
-
-	ToSystemAssignedManagedIdentityCredentialOutput() SystemAssignedManagedIdentityCredentialOutput
-	ToSystemAssignedManagedIdentityCredentialOutputWithContext(context.Context) SystemAssignedManagedIdentityCredentialOutput
-}
-
-// System Assigned Managed identity credential.
-type SystemAssignedManagedIdentityCredentialArgs struct {
-	// List of tags that can be used for describing the Credential.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// Credential description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Type of credential.
-	// Expected value is 'SystemAssignedManagedIdentityCredential'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SystemAssignedManagedIdentityCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedManagedIdentityCredential)(nil)).Elem()
-}
-
-func (i SystemAssignedManagedIdentityCredentialArgs) ToSystemAssignedManagedIdentityCredentialOutput() SystemAssignedManagedIdentityCredentialOutput {
-	return i.ToSystemAssignedManagedIdentityCredentialOutputWithContext(context.Background())
-}
-
-func (i SystemAssignedManagedIdentityCredentialArgs) ToSystemAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) SystemAssignedManagedIdentityCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedManagedIdentityCredentialOutput)
-}
-
-// System Assigned Managed identity credential.
-type SystemAssignedManagedIdentityCredentialOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedManagedIdentityCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedManagedIdentityCredential)(nil)).Elem()
-}
-
-func (o SystemAssignedManagedIdentityCredentialOutput) ToSystemAssignedManagedIdentityCredentialOutput() SystemAssignedManagedIdentityCredentialOutput {
-	return o
-}
-
-func (o SystemAssignedManagedIdentityCredentialOutput) ToSystemAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) SystemAssignedManagedIdentityCredentialOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Credential.
-func (o SystemAssignedManagedIdentityCredentialOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v SystemAssignedManagedIdentityCredential) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Credential description.
-func (o SystemAssignedManagedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemAssignedManagedIdentityCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Type of credential.
-// Expected value is 'SystemAssignedManagedIdentityCredential'.
-func (o SystemAssignedManagedIdentityCredentialOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedManagedIdentityCredential) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// System Assigned Managed identity credential.
-type SystemAssignedManagedIdentityCredentialResponse struct {
-	// List of tags that can be used for describing the Credential.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Credential description.
-	Description *string `pulumi:"description"`
-	// Type of credential.
-	// Expected value is 'SystemAssignedManagedIdentityCredential'.
-	Type string `pulumi:"type"`
-}
-
-// System Assigned Managed identity credential.
-type SystemAssignedManagedIdentityCredentialResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedManagedIdentityCredentialResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedManagedIdentityCredentialResponse)(nil)).Elem()
-}
-
-func (o SystemAssignedManagedIdentityCredentialResponseOutput) ToSystemAssignedManagedIdentityCredentialResponseOutput() SystemAssignedManagedIdentityCredentialResponseOutput {
-	return o
-}
-
-func (o SystemAssignedManagedIdentityCredentialResponseOutput) ToSystemAssignedManagedIdentityCredentialResponseOutputWithContext(ctx context.Context) SystemAssignedManagedIdentityCredentialResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Credential.
-func (o SystemAssignedManagedIdentityCredentialResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v SystemAssignedManagedIdentityCredentialResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Credential description.
-func (o SystemAssignedManagedIdentityCredentialResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemAssignedManagedIdentityCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Type of credential.
-// Expected value is 'SystemAssignedManagedIdentityCredential'.
-func (o SystemAssignedManagedIdentityCredentialResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedManagedIdentityCredentialResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 // Copy activity sources of tabular type.
 type TabularSource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -22785,124 +22667,6 @@ func (o UserAccessPolicyResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 		}
 		return v.StartTime
 	}).(pulumi.StringPtrOutput)
-}
-
-// User Assigned Managed identity credential.
-type UserAssignedManagedIdentityCredential struct {
-	// List of tags that can be used for describing the Credential.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Credential description.
-	Description *string `pulumi:"description"`
-	// Type of credential.
-	// Expected value is 'UserAssignedManagedIdentityCredential'.
-	Type string `pulumi:"type"`
-}
-
-// UserAssignedManagedIdentityCredentialInput is an input type that accepts UserAssignedManagedIdentityCredentialArgs and UserAssignedManagedIdentityCredentialOutput values.
-// You can construct a concrete instance of `UserAssignedManagedIdentityCredentialInput` via:
-//
-//	UserAssignedManagedIdentityCredentialArgs{...}
-type UserAssignedManagedIdentityCredentialInput interface {
-	pulumi.Input
-
-	ToUserAssignedManagedIdentityCredentialOutput() UserAssignedManagedIdentityCredentialOutput
-	ToUserAssignedManagedIdentityCredentialOutputWithContext(context.Context) UserAssignedManagedIdentityCredentialOutput
-}
-
-// User Assigned Managed identity credential.
-type UserAssignedManagedIdentityCredentialArgs struct {
-	// List of tags that can be used for describing the Credential.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// Credential description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Type of credential.
-	// Expected value is 'UserAssignedManagedIdentityCredential'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (UserAssignedManagedIdentityCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedManagedIdentityCredential)(nil)).Elem()
-}
-
-func (i UserAssignedManagedIdentityCredentialArgs) ToUserAssignedManagedIdentityCredentialOutput() UserAssignedManagedIdentityCredentialOutput {
-	return i.ToUserAssignedManagedIdentityCredentialOutputWithContext(context.Background())
-}
-
-func (i UserAssignedManagedIdentityCredentialArgs) ToUserAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) UserAssignedManagedIdentityCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedManagedIdentityCredentialOutput)
-}
-
-// User Assigned Managed identity credential.
-type UserAssignedManagedIdentityCredentialOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedManagedIdentityCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedManagedIdentityCredential)(nil)).Elem()
-}
-
-func (o UserAssignedManagedIdentityCredentialOutput) ToUserAssignedManagedIdentityCredentialOutput() UserAssignedManagedIdentityCredentialOutput {
-	return o
-}
-
-func (o UserAssignedManagedIdentityCredentialOutput) ToUserAssignedManagedIdentityCredentialOutputWithContext(ctx context.Context) UserAssignedManagedIdentityCredentialOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Credential.
-func (o UserAssignedManagedIdentityCredentialOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v UserAssignedManagedIdentityCredential) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Credential description.
-func (o UserAssignedManagedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserAssignedManagedIdentityCredential) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Type of credential.
-// Expected value is 'UserAssignedManagedIdentityCredential'.
-func (o UserAssignedManagedIdentityCredentialOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedManagedIdentityCredential) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// User Assigned Managed identity credential.
-type UserAssignedManagedIdentityCredentialResponse struct {
-	// List of tags that can be used for describing the Credential.
-	Annotations []interface{} `pulumi:"annotations"`
-	// Credential description.
-	Description *string `pulumi:"description"`
-	// Type of credential.
-	// Expected value is 'UserAssignedManagedIdentityCredential'.
-	Type string `pulumi:"type"`
-}
-
-// User Assigned Managed identity credential.
-type UserAssignedManagedIdentityCredentialResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedManagedIdentityCredentialResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedManagedIdentityCredentialResponse)(nil)).Elem()
-}
-
-func (o UserAssignedManagedIdentityCredentialResponseOutput) ToUserAssignedManagedIdentityCredentialResponseOutput() UserAssignedManagedIdentityCredentialResponseOutput {
-	return o
-}
-
-func (o UserAssignedManagedIdentityCredentialResponseOutput) ToUserAssignedManagedIdentityCredentialResponseOutputWithContext(ctx context.Context) UserAssignedManagedIdentityCredentialResponseOutput {
-	return o
-}
-
-// List of tags that can be used for describing the Credential.
-func (o UserAssignedManagedIdentityCredentialResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v UserAssignedManagedIdentityCredentialResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// Credential description.
-func (o UserAssignedManagedIdentityCredentialResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserAssignedManagedIdentityCredentialResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Type of credential.
-// Expected value is 'UserAssignedManagedIdentityCredential'.
-func (o UserAssignedManagedIdentityCredentialResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedManagedIdentityCredentialResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // User property.
@@ -30492,8 +30256,6 @@ func init() {
 	pulumi.RegisterOutputType(SynapseSparkJobDefinitionActivityResponseOutput{})
 	pulumi.RegisterOutputType(SynapseSparkJobReferenceOutput{})
 	pulumi.RegisterOutputType(SynapseSparkJobReferenceResponseOutput{})
-	pulumi.RegisterOutputType(SystemAssignedManagedIdentityCredentialOutput{})
-	pulumi.RegisterOutputType(SystemAssignedManagedIdentityCredentialResponseOutput{})
 	pulumi.RegisterOutputType(TabularSourceOutput{})
 	pulumi.RegisterOutputType(TabularSourceResponseOutput{})
 	pulumi.RegisterOutputType(TarGZipReadSettingsOutput{})
@@ -30542,8 +30304,6 @@ func init() {
 	pulumi.RegisterOutputType(UntilActivityResponseOutput{})
 	pulumi.RegisterOutputType(UserAccessPolicyResponseOutput{})
 	pulumi.RegisterOutputType(UserAccessPolicyResponsePtrOutput{})
-	pulumi.RegisterOutputType(UserAssignedManagedIdentityCredentialOutput{})
-	pulumi.RegisterOutputType(UserAssignedManagedIdentityCredentialResponseOutput{})
 	pulumi.RegisterOutputType(UserPropertyOutput{})
 	pulumi.RegisterOutputType(UserPropertyArrayOutput{})
 	pulumi.RegisterOutputType(UserPropertyResponseOutput{})

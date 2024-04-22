@@ -17466,6 +17466,163 @@ func (o EnvironmentVarResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentV
 	}).(EnvironmentVarResponseOutput)
 }
 
+type EnvironmentVariable struct {
+	// Environment variable name
+	Name string `pulumi:"name"`
+	// Environment variable value
+	Value string `pulumi:"value"`
+}
+
+// EnvironmentVariableInput is an input type that accepts EnvironmentVariableArgs and EnvironmentVariableOutput values.
+// You can construct a concrete instance of `EnvironmentVariableInput` via:
+//
+//	EnvironmentVariableArgs{...}
+type EnvironmentVariableInput interface {
+	pulumi.Input
+
+	ToEnvironmentVariableOutput() EnvironmentVariableOutput
+	ToEnvironmentVariableOutputWithContext(context.Context) EnvironmentVariableOutput
+}
+
+type EnvironmentVariableArgs struct {
+	// Environment variable name
+	Name pulumi.StringInput `pulumi:"name"`
+	// Environment variable value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (EnvironmentVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariable)(nil)).Elem()
+}
+
+func (i EnvironmentVariableArgs) ToEnvironmentVariableOutput() EnvironmentVariableOutput {
+	return i.ToEnvironmentVariableOutputWithContext(context.Background())
+}
+
+func (i EnvironmentVariableArgs) ToEnvironmentVariableOutputWithContext(ctx context.Context) EnvironmentVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableOutput)
+}
+
+// EnvironmentVariableArrayInput is an input type that accepts EnvironmentVariableArray and EnvironmentVariableArrayOutput values.
+// You can construct a concrete instance of `EnvironmentVariableArrayInput` via:
+//
+//	EnvironmentVariableArray{ EnvironmentVariableArgs{...} }
+type EnvironmentVariableArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentVariableArrayOutput() EnvironmentVariableArrayOutput
+	ToEnvironmentVariableArrayOutputWithContext(context.Context) EnvironmentVariableArrayOutput
+}
+
+type EnvironmentVariableArray []EnvironmentVariableInput
+
+func (EnvironmentVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariable)(nil)).Elem()
+}
+
+func (i EnvironmentVariableArray) ToEnvironmentVariableArrayOutput() EnvironmentVariableArrayOutput {
+	return i.ToEnvironmentVariableArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentVariableArray) ToEnvironmentVariableArrayOutputWithContext(ctx context.Context) EnvironmentVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableArrayOutput)
+}
+
+type EnvironmentVariableOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariable)(nil)).Elem()
+}
+
+func (o EnvironmentVariableOutput) ToEnvironmentVariableOutput() EnvironmentVariableOutput {
+	return o
+}
+
+func (o EnvironmentVariableOutput) ToEnvironmentVariableOutputWithContext(ctx context.Context) EnvironmentVariableOutput {
+	return o
+}
+
+// Environment variable name
+func (o EnvironmentVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Environment variable value
+func (o EnvironmentVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariable)(nil)).Elem()
+}
+
+func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutput() EnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutputWithContext(ctx context.Context) EnvironmentVariableArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariable {
+		return vs[0].([]EnvironmentVariable)[vs[1].(int)]
+	}).(EnvironmentVariableOutput)
+}
+
+type EnvironmentVariableResponse struct {
+	// Environment variable name
+	Name string `pulumi:"name"`
+	// Environment variable value
+	Value string `pulumi:"value"`
+}
+
+type EnvironmentVariableResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableResponse)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseOutput) ToEnvironmentVariableResponseOutput() EnvironmentVariableResponseOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseOutput) ToEnvironmentVariableResponseOutputWithContext(ctx context.Context) EnvironmentVariableResponseOutput {
+	return o
+}
+
+// Environment variable name
+func (o EnvironmentVariableResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Environment variable value
+func (o EnvironmentVariableResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type EnvironmentVariableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentVariableResponse)(nil)).Elem()
+}
+
+func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArrayOutput() EnvironmentVariableResponseArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseArrayOutput {
+	return o
+}
+
+func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariableResponse {
+		return vs[0].([]EnvironmentVariableResponse)[vs[1].(int)]
+	}).(EnvironmentVariableResponseOutput)
+}
+
 // Body of the error response returned from the API.
 type ErrorEntityResponse struct {
 	// Basic error code.
@@ -38579,6 +38736,195 @@ func (o VnetRouteResponseArrayOutput) Index(i pulumi.IntInput) VnetRouteResponse
 	}).(VnetRouteResponseOutput)
 }
 
+type VolumeMount struct {
+	// Target path on the container where volume is mounted on
+	ContainerMountPath string `pulumi:"containerMountPath"`
+	// Config Data to be mounted on the volume
+	Data *string `pulumi:"data"`
+	// Boolean to specify if the mount is read only on the container
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Sub path in the volume where volume is mounted from.
+	VolumeSubPath string `pulumi:"volumeSubPath"`
+}
+
+// VolumeMountInput is an input type that accepts VolumeMountArgs and VolumeMountOutput values.
+// You can construct a concrete instance of `VolumeMountInput` via:
+//
+//	VolumeMountArgs{...}
+type VolumeMountInput interface {
+	pulumi.Input
+
+	ToVolumeMountOutput() VolumeMountOutput
+	ToVolumeMountOutputWithContext(context.Context) VolumeMountOutput
+}
+
+type VolumeMountArgs struct {
+	// Target path on the container where volume is mounted on
+	ContainerMountPath pulumi.StringInput `pulumi:"containerMountPath"`
+	// Config Data to be mounted on the volume
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// Boolean to specify if the mount is read only on the container
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Sub path in the volume where volume is mounted from.
+	VolumeSubPath pulumi.StringInput `pulumi:"volumeSubPath"`
+}
+
+func (VolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeMount)(nil)).Elem()
+}
+
+func (i VolumeMountArgs) ToVolumeMountOutput() VolumeMountOutput {
+	return i.ToVolumeMountOutputWithContext(context.Background())
+}
+
+func (i VolumeMountArgs) ToVolumeMountOutputWithContext(ctx context.Context) VolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountOutput)
+}
+
+// VolumeMountArrayInput is an input type that accepts VolumeMountArray and VolumeMountArrayOutput values.
+// You can construct a concrete instance of `VolumeMountArrayInput` via:
+//
+//	VolumeMountArray{ VolumeMountArgs{...} }
+type VolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToVolumeMountArrayOutput() VolumeMountArrayOutput
+	ToVolumeMountArrayOutputWithContext(context.Context) VolumeMountArrayOutput
+}
+
+type VolumeMountArray []VolumeMountInput
+
+func (VolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeMount)(nil)).Elem()
+}
+
+func (i VolumeMountArray) ToVolumeMountArrayOutput() VolumeMountArrayOutput {
+	return i.ToVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeMountArray) ToVolumeMountArrayOutputWithContext(ctx context.Context) VolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeMountArrayOutput)
+}
+
+type VolumeMountOutput struct{ *pulumi.OutputState }
+
+func (VolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeMount)(nil)).Elem()
+}
+
+func (o VolumeMountOutput) ToVolumeMountOutput() VolumeMountOutput {
+	return o
+}
+
+func (o VolumeMountOutput) ToVolumeMountOutputWithContext(ctx context.Context) VolumeMountOutput {
+	return o
+}
+
+// Target path on the container where volume is mounted on
+func (o VolumeMountOutput) ContainerMountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMount) string { return v.ContainerMountPath }).(pulumi.StringOutput)
+}
+
+// Config Data to be mounted on the volume
+func (o VolumeMountOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeMount) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// Boolean to specify if the mount is read only on the container
+func (o VolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Sub path in the volume where volume is mounted from.
+func (o VolumeMountOutput) VolumeSubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMount) string { return v.VolumeSubPath }).(pulumi.StringOutput)
+}
+
+type VolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeMount)(nil)).Elem()
+}
+
+func (o VolumeMountArrayOutput) ToVolumeMountArrayOutput() VolumeMountArrayOutput {
+	return o
+}
+
+func (o VolumeMountArrayOutput) ToVolumeMountArrayOutputWithContext(ctx context.Context) VolumeMountArrayOutput {
+	return o
+}
+
+func (o VolumeMountArrayOutput) Index(i pulumi.IntInput) VolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeMount {
+		return vs[0].([]VolumeMount)[vs[1].(int)]
+	}).(VolumeMountOutput)
+}
+
+type VolumeMountResponse struct {
+	// Target path on the container where volume is mounted on
+	ContainerMountPath string `pulumi:"containerMountPath"`
+	// Config Data to be mounted on the volume
+	Data *string `pulumi:"data"`
+	// Boolean to specify if the mount is read only on the container
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Sub path in the volume where volume is mounted from.
+	VolumeSubPath string `pulumi:"volumeSubPath"`
+}
+
+type VolumeMountResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeMountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeMountResponse)(nil)).Elem()
+}
+
+func (o VolumeMountResponseOutput) ToVolumeMountResponseOutput() VolumeMountResponseOutput {
+	return o
+}
+
+func (o VolumeMountResponseOutput) ToVolumeMountResponseOutputWithContext(ctx context.Context) VolumeMountResponseOutput {
+	return o
+}
+
+// Target path on the container where volume is mounted on
+func (o VolumeMountResponseOutput) ContainerMountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMountResponse) string { return v.ContainerMountPath }).(pulumi.StringOutput)
+}
+
+// Config Data to be mounted on the volume
+func (o VolumeMountResponseOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeMountResponse) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// Boolean to specify if the mount is read only on the container
+func (o VolumeMountResponseOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeMountResponse) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Sub path in the volume where volume is mounted from.
+func (o VolumeMountResponseOutput) VolumeSubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeMountResponse) string { return v.VolumeSubPath }).(pulumi.StringOutput)
+}
+
+type VolumeMountResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeMountResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeMountResponse)(nil)).Elem()
+}
+
+func (o VolumeMountResponseArrayOutput) ToVolumeMountResponseArrayOutput() VolumeMountResponseArrayOutput {
+	return o
+}
+
+func (o VolumeMountResponseArrayOutput) ToVolumeMountResponseArrayOutputWithContext(ctx context.Context) VolumeMountResponseArrayOutput {
+	return o
+}
+
+func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeMountResponse {
+		return vs[0].([]VolumeMountResponse)[vs[1].(int)]
+	}).(VolumeMountResponseOutput)
+}
+
 // Additional workflow properties.
 type WorkflowEnvelopeResponseProperties struct {
 	// Gets or sets the files.
@@ -39649,6 +39995,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVarArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVarResponseArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorEntityResponseOutput{})
 	pulumi.RegisterOutputType(ErrorEntityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorEntityResponseArrayOutput{})
@@ -39937,6 +40287,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkProfileResponseOutput{})
 	pulumi.RegisterOutputType(VnetRouteResponseOutput{})
 	pulumi.RegisterOutputType(VnetRouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(VolumeMountOutput{})
+	pulumi.RegisterOutputType(VolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(VolumeMountResponseOutput{})
+	pulumi.RegisterOutputType(VolumeMountResponseArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowEnvelopeResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(WorkflowHealthResponseOutput{})
 	pulumi.RegisterOutputType(WorkflowHealthResponsePtrOutput{})

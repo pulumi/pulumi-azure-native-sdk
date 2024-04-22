@@ -176,6 +176,172 @@ func (in *catalogSyncTypePtr) ToCatalogSyncTypePtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(CatalogSyncTypePtrOutput)
 }
 
+// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
+type DevboxDisksEncryptionEnableStatus string
+
+const (
+	DevboxDisksEncryptionEnableStatusEnabled  = DevboxDisksEncryptionEnableStatus("Enabled")
+	DevboxDisksEncryptionEnableStatusDisabled = DevboxDisksEncryptionEnableStatus("Disabled")
+)
+
+func (DevboxDisksEncryptionEnableStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevboxDisksEncryptionEnableStatus)(nil)).Elem()
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToDevboxDisksEncryptionEnableStatusOutput() DevboxDisksEncryptionEnableStatusOutput {
+	return pulumi.ToOutput(e).(DevboxDisksEncryptionEnableStatusOutput)
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToDevboxDisksEncryptionEnableStatusOutputWithContext(ctx context.Context) DevboxDisksEncryptionEnableStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DevboxDisksEncryptionEnableStatusOutput)
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToDevboxDisksEncryptionEnableStatusPtrOutput() DevboxDisksEncryptionEnableStatusPtrOutput {
+	return e.ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(context.Background())
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(ctx context.Context) DevboxDisksEncryptionEnableStatusPtrOutput {
+	return DevboxDisksEncryptionEnableStatus(e).ToDevboxDisksEncryptionEnableStatusOutputWithContext(ctx).ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(ctx)
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DevboxDisksEncryptionEnableStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DevboxDisksEncryptionEnableStatusOutput struct{ *pulumi.OutputState }
+
+func (DevboxDisksEncryptionEnableStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevboxDisksEncryptionEnableStatus)(nil)).Elem()
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToDevboxDisksEncryptionEnableStatusOutput() DevboxDisksEncryptionEnableStatusOutput {
+	return o
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToDevboxDisksEncryptionEnableStatusOutputWithContext(ctx context.Context) DevboxDisksEncryptionEnableStatusOutput {
+	return o
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToDevboxDisksEncryptionEnableStatusPtrOutput() DevboxDisksEncryptionEnableStatusPtrOutput {
+	return o.ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(context.Background())
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(ctx context.Context) DevboxDisksEncryptionEnableStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevboxDisksEncryptionEnableStatus) *DevboxDisksEncryptionEnableStatus {
+		return &v
+	}).(DevboxDisksEncryptionEnableStatusPtrOutput)
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DevboxDisksEncryptionEnableStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DevboxDisksEncryptionEnableStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DevboxDisksEncryptionEnableStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DevboxDisksEncryptionEnableStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (DevboxDisksEncryptionEnableStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevboxDisksEncryptionEnableStatus)(nil)).Elem()
+}
+
+func (o DevboxDisksEncryptionEnableStatusPtrOutput) ToDevboxDisksEncryptionEnableStatusPtrOutput() DevboxDisksEncryptionEnableStatusPtrOutput {
+	return o
+}
+
+func (o DevboxDisksEncryptionEnableStatusPtrOutput) ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(ctx context.Context) DevboxDisksEncryptionEnableStatusPtrOutput {
+	return o
+}
+
+func (o DevboxDisksEncryptionEnableStatusPtrOutput) Elem() DevboxDisksEncryptionEnableStatusOutput {
+	return o.ApplyT(func(v *DevboxDisksEncryptionEnableStatus) DevboxDisksEncryptionEnableStatus {
+		if v != nil {
+			return *v
+		}
+		var ret DevboxDisksEncryptionEnableStatus
+		return ret
+	}).(DevboxDisksEncryptionEnableStatusOutput)
+}
+
+func (o DevboxDisksEncryptionEnableStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DevboxDisksEncryptionEnableStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DevboxDisksEncryptionEnableStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DevboxDisksEncryptionEnableStatusInput is an input type that accepts values of the DevboxDisksEncryptionEnableStatus enum
+// A concrete instance of `DevboxDisksEncryptionEnableStatusInput` can be one of the following:
+//
+//	DevboxDisksEncryptionEnableStatusEnabled
+//	DevboxDisksEncryptionEnableStatusDisabled
+type DevboxDisksEncryptionEnableStatusInput interface {
+	pulumi.Input
+
+	ToDevboxDisksEncryptionEnableStatusOutput() DevboxDisksEncryptionEnableStatusOutput
+	ToDevboxDisksEncryptionEnableStatusOutputWithContext(context.Context) DevboxDisksEncryptionEnableStatusOutput
+}
+
+var devboxDisksEncryptionEnableStatusPtrType = reflect.TypeOf((**DevboxDisksEncryptionEnableStatus)(nil)).Elem()
+
+type DevboxDisksEncryptionEnableStatusPtrInput interface {
+	pulumi.Input
+
+	ToDevboxDisksEncryptionEnableStatusPtrOutput() DevboxDisksEncryptionEnableStatusPtrOutput
+	ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(context.Context) DevboxDisksEncryptionEnableStatusPtrOutput
+}
+
+type devboxDisksEncryptionEnableStatusPtr string
+
+func DevboxDisksEncryptionEnableStatusPtr(v string) DevboxDisksEncryptionEnableStatusPtrInput {
+	return (*devboxDisksEncryptionEnableStatusPtr)(&v)
+}
+
+func (*devboxDisksEncryptionEnableStatusPtr) ElementType() reflect.Type {
+	return devboxDisksEncryptionEnableStatusPtrType
+}
+
+func (in *devboxDisksEncryptionEnableStatusPtr) ToDevboxDisksEncryptionEnableStatusPtrOutput() DevboxDisksEncryptionEnableStatusPtrOutput {
+	return pulumi.ToOutput(in).(DevboxDisksEncryptionEnableStatusPtrOutput)
+}
+
+func (in *devboxDisksEncryptionEnableStatusPtr) ToDevboxDisksEncryptionEnableStatusPtrOutputWithContext(ctx context.Context) DevboxDisksEncryptionEnableStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DevboxDisksEncryptionEnableStatusPtrOutput)
+}
+
 // AAD Join type.
 type DomainJoinType string
 
@@ -1174,6 +1340,172 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
+// The type of the member (user, group)
+type PlanMemberType string
+
+const (
+	PlanMemberTypeUser  = PlanMemberType("User")
+	PlanMemberTypeGroup = PlanMemberType("Group")
+)
+
+func (PlanMemberType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanMemberType)(nil)).Elem()
+}
+
+func (e PlanMemberType) ToPlanMemberTypeOutput() PlanMemberTypeOutput {
+	return pulumi.ToOutput(e).(PlanMemberTypeOutput)
+}
+
+func (e PlanMemberType) ToPlanMemberTypeOutputWithContext(ctx context.Context) PlanMemberTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PlanMemberTypeOutput)
+}
+
+func (e PlanMemberType) ToPlanMemberTypePtrOutput() PlanMemberTypePtrOutput {
+	return e.ToPlanMemberTypePtrOutputWithContext(context.Background())
+}
+
+func (e PlanMemberType) ToPlanMemberTypePtrOutputWithContext(ctx context.Context) PlanMemberTypePtrOutput {
+	return PlanMemberType(e).ToPlanMemberTypeOutputWithContext(ctx).ToPlanMemberTypePtrOutputWithContext(ctx)
+}
+
+func (e PlanMemberType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PlanMemberType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PlanMemberType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PlanMemberType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PlanMemberTypeOutput struct{ *pulumi.OutputState }
+
+func (PlanMemberTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanMemberType)(nil)).Elem()
+}
+
+func (o PlanMemberTypeOutput) ToPlanMemberTypeOutput() PlanMemberTypeOutput {
+	return o
+}
+
+func (o PlanMemberTypeOutput) ToPlanMemberTypeOutputWithContext(ctx context.Context) PlanMemberTypeOutput {
+	return o
+}
+
+func (o PlanMemberTypeOutput) ToPlanMemberTypePtrOutput() PlanMemberTypePtrOutput {
+	return o.ToPlanMemberTypePtrOutputWithContext(context.Background())
+}
+
+func (o PlanMemberTypeOutput) ToPlanMemberTypePtrOutputWithContext(ctx context.Context) PlanMemberTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlanMemberType) *PlanMemberType {
+		return &v
+	}).(PlanMemberTypePtrOutput)
+}
+
+func (o PlanMemberTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PlanMemberTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlanMemberType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PlanMemberTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PlanMemberTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlanMemberType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PlanMemberTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PlanMemberTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlanMemberType)(nil)).Elem()
+}
+
+func (o PlanMemberTypePtrOutput) ToPlanMemberTypePtrOutput() PlanMemberTypePtrOutput {
+	return o
+}
+
+func (o PlanMemberTypePtrOutput) ToPlanMemberTypePtrOutputWithContext(ctx context.Context) PlanMemberTypePtrOutput {
+	return o
+}
+
+func (o PlanMemberTypePtrOutput) Elem() PlanMemberTypeOutput {
+	return o.ApplyT(func(v *PlanMemberType) PlanMemberType {
+		if v != nil {
+			return *v
+		}
+		var ret PlanMemberType
+		return ret
+	}).(PlanMemberTypeOutput)
+}
+
+func (o PlanMemberTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PlanMemberTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PlanMemberType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PlanMemberTypeInput is an input type that accepts values of the PlanMemberType enum
+// A concrete instance of `PlanMemberTypeInput` can be one of the following:
+//
+//	PlanMemberTypeUser
+//	PlanMemberTypeGroup
+type PlanMemberTypeInput interface {
+	pulumi.Input
+
+	ToPlanMemberTypeOutput() PlanMemberTypeOutput
+	ToPlanMemberTypeOutputWithContext(context.Context) PlanMemberTypeOutput
+}
+
+var planMemberTypePtrType = reflect.TypeOf((**PlanMemberType)(nil)).Elem()
+
+type PlanMemberTypePtrInput interface {
+	pulumi.Input
+
+	ToPlanMemberTypePtrOutput() PlanMemberTypePtrOutput
+	ToPlanMemberTypePtrOutputWithContext(context.Context) PlanMemberTypePtrOutput
+}
+
+type planMemberTypePtr string
+
+func PlanMemberTypePtr(v string) PlanMemberTypePtrInput {
+	return (*planMemberTypePtr)(&v)
+}
+
+func (*planMemberTypePtr) ElementType() reflect.Type {
+	return planMemberTypePtrType
+}
+
+func (in *planMemberTypePtr) ToPlanMemberTypePtrOutput() PlanMemberTypePtrOutput {
+	return pulumi.ToOutput(in).(PlanMemberTypePtrOutput)
+}
+
+func (in *planMemberTypePtr) ToPlanMemberTypePtrOutputWithContext(ctx context.Context) PlanMemberTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PlanMemberTypePtrOutput)
+}
+
 // Indicates whether or not this scheduled task is enabled.
 type ScheduleEnableStatus string
 
@@ -2007,6 +2339,8 @@ func (in *stopOnDisconnectEnableStatusPtr) ToStopOnDisconnectEnableStatusPtrOutp
 func init() {
 	pulumi.RegisterOutputType(CatalogSyncTypeOutput{})
 	pulumi.RegisterOutputType(CatalogSyncTypePtrOutput{})
+	pulumi.RegisterOutputType(DevboxDisksEncryptionEnableStatusOutput{})
+	pulumi.RegisterOutputType(DevboxDisksEncryptionEnableStatusPtrOutput{})
 	pulumi.RegisterOutputType(DomainJoinTypeOutput{})
 	pulumi.RegisterOutputType(DomainJoinTypePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentTypeEnableStatusOutput{})
@@ -2019,6 +2353,8 @@ func init() {
 	pulumi.RegisterOutputType(LocalAdminStatusPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(PlanMemberTypeOutput{})
+	pulumi.RegisterOutputType(PlanMemberTypePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleEnableStatusOutput{})
 	pulumi.RegisterOutputType(ScheduleEnableStatusPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledFrequencyOutput{})

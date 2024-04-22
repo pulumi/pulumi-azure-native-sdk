@@ -40,8 +40,6 @@ type Cluster struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The UTC time when the Event Hubs Cluster was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Properties of the cluster upgrade preferences.
-	UpgradePreferences UpgradePreferencesResponsePtrOutput `pulumi:"upgradePreferences"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -126,8 +124,6 @@ type clusterArgs struct {
 	SupportsScaling *bool `pulumi:"supportsScaling"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Properties of the cluster upgrade preferences.
-	UpgradePreferences *UpgradePreferences `pulumi:"upgradePreferences"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -144,8 +140,6 @@ type ClusterArgs struct {
 	SupportsScaling pulumi.BoolPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Properties of the cluster upgrade preferences.
-	UpgradePreferences UpgradePreferencesPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -243,11 +237,6 @@ func (o ClusterOutput) Type() pulumi.StringOutput {
 // The UTC time when the Event Hubs Cluster was last updated.
 func (o ClusterOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// Properties of the cluster upgrade preferences.
-func (o ClusterOutput) UpgradePreferences() UpgradePreferencesResponsePtrOutput {
-	return o.ApplyT(func(v *Cluster) UpgradePreferencesResponsePtrOutput { return v.UpgradePreferences }).(UpgradePreferencesResponsePtrOutput)
 }
 
 func init() {

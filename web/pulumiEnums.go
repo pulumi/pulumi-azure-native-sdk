@@ -345,6 +345,176 @@ func (in *apiTypePtr) ToApiTypePtrOutputWithContext(ctx context.Context) ApiType
 	return pulumi.ToOutputWithContext(ctx, in).(ApiTypePtrOutput)
 }
 
+// Auth Type
+type AuthType string
+
+const (
+	AuthTypeAnonymous       = AuthType("Anonymous")
+	AuthTypeUserCredentials = AuthType("UserCredentials")
+	AuthTypeSystemIdentity  = AuthType("SystemIdentity")
+	AuthTypeUserAssigned    = AuthType("UserAssigned")
+)
+
+func (AuthType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthType)(nil)).Elem()
+}
+
+func (e AuthType) ToAuthTypeOutput() AuthTypeOutput {
+	return pulumi.ToOutput(e).(AuthTypeOutput)
+}
+
+func (e AuthType) ToAuthTypeOutputWithContext(ctx context.Context) AuthTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthTypeOutput)
+}
+
+func (e AuthType) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return e.ToAuthTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuthType) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return AuthType(e).ToAuthTypeOutputWithContext(ctx).ToAuthTypePtrOutputWithContext(ctx)
+}
+
+func (e AuthType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthTypeOutput struct{ *pulumi.OutputState }
+
+func (AuthTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthType)(nil)).Elem()
+}
+
+func (o AuthTypeOutput) ToAuthTypeOutput() AuthTypeOutput {
+	return o
+}
+
+func (o AuthTypeOutput) ToAuthTypeOutputWithContext(ctx context.Context) AuthTypeOutput {
+	return o
+}
+
+func (o AuthTypeOutput) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return o.ToAuthTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuthTypeOutput) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthType) *AuthType {
+		return &v
+	}).(AuthTypePtrOutput)
+}
+
+func (o AuthTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthType)(nil)).Elem()
+}
+
+func (o AuthTypePtrOutput) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return o
+}
+
+func (o AuthTypePtrOutput) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return o
+}
+
+func (o AuthTypePtrOutput) Elem() AuthTypeOutput {
+	return o.ApplyT(func(v *AuthType) AuthType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthType
+		return ret
+	}).(AuthTypeOutput)
+}
+
+func (o AuthTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthTypeInput is an input type that accepts values of the AuthType enum
+// A concrete instance of `AuthTypeInput` can be one of the following:
+//
+//	AuthTypeAnonymous
+//	AuthTypeUserCredentials
+//	AuthTypeSystemIdentity
+//	AuthTypeUserAssigned
+type AuthTypeInput interface {
+	pulumi.Input
+
+	ToAuthTypeOutput() AuthTypeOutput
+	ToAuthTypeOutputWithContext(context.Context) AuthTypeOutput
+}
+
+var authTypePtrType = reflect.TypeOf((**AuthType)(nil)).Elem()
+
+type AuthTypePtrInput interface {
+	pulumi.Input
+
+	ToAuthTypePtrOutput() AuthTypePtrOutput
+	ToAuthTypePtrOutputWithContext(context.Context) AuthTypePtrOutput
+}
+
+type authTypePtr string
+
+func AuthTypePtr(v string) AuthTypePtrInput {
+	return (*authTypePtr)(&v)
+}
+
+func (*authTypePtr) ElementType() reflect.Type {
+	return authTypePtrType
+}
+
+func (in *authTypePtr) ToAuthTypePtrOutput() AuthTypePtrOutput {
+	return pulumi.ToOutput(in).(AuthTypePtrOutput)
+}
+
+func (in *authTypePtr) ToAuthTypePtrOutputWithContext(ctx context.Context) AuthTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthTypePtrOutput)
+}
+
 // Predefined action to be taken.
 type AutoHealActionType string
 
@@ -6798,6 +6968,8 @@ func init() {
 	pulumi.RegisterOutputType(ActiveRevisionsModePtrOutput{})
 	pulumi.RegisterOutputType(ApiTypeOutput{})
 	pulumi.RegisterOutputType(ApiTypePtrOutput{})
+	pulumi.RegisterOutputType(AuthTypeOutput{})
+	pulumi.RegisterOutputType(AuthTypePtrOutput{})
 	pulumi.RegisterOutputType(AutoHealActionTypeOutput{})
 	pulumi.RegisterOutputType(AutoHealActionTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceTypeOutput{})

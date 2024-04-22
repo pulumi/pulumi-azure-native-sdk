@@ -15,7 +15,7 @@ import (
 // SSL certificate for an app.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2015-08-01, 2016-03-01, 2020-10-01, 2023-01-01.
+// Other available API versions: 2015-08-01, 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01.
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -129,6 +129,9 @@ func NewCertificate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20230101:Certificate"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20231201:Certificate"),
 		},
 	})
 	opts = append(opts, aliases)

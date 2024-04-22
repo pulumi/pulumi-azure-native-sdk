@@ -2533,6 +2533,10 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ProvisioningState() pulumi.S
 type OpenAIIntegrationProperties struct {
 	// Value of API key for Open AI resource
 	Key *string `pulumi:"key"`
+	// The API endpoint for Open AI resource
+	OpenAIResourceEndpoint *string `pulumi:"openAIResourceEndpoint"`
+	// The resource id of Open AI resource
+	OpenAIResourceId *string `pulumi:"openAIResourceId"`
 }
 
 // OpenAIIntegrationPropertiesInput is an input type that accepts OpenAIIntegrationPropertiesArgs and OpenAIIntegrationPropertiesOutput values.
@@ -2550,6 +2554,10 @@ type OpenAIIntegrationPropertiesInput interface {
 type OpenAIIntegrationPropertiesArgs struct {
 	// Value of API key for Open AI resource
 	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The API endpoint for Open AI resource
+	OpenAIResourceEndpoint pulumi.StringPtrInput `pulumi:"openAIResourceEndpoint"`
+	// The resource id of Open AI resource
+	OpenAIResourceId pulumi.StringPtrInput `pulumi:"openAIResourceId"`
 }
 
 func (OpenAIIntegrationPropertiesArgs) ElementType() reflect.Type {
@@ -2635,6 +2643,16 @@ func (o OpenAIIntegrationPropertiesOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenAIIntegrationProperties) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint for Open AI resource
+func (o OpenAIIntegrationPropertiesOutput) OpenAIResourceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationProperties) *string { return v.OpenAIResourceEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// The resource id of Open AI resource
+func (o OpenAIIntegrationPropertiesOutput) OpenAIResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationProperties) *string { return v.OpenAIResourceId }).(pulumi.StringPtrOutput)
+}
+
 type OpenAIIntegrationPropertiesPtrOutput struct{ *pulumi.OutputState }
 
 func (OpenAIIntegrationPropertiesPtrOutput) ElementType() reflect.Type {
@@ -2669,6 +2687,26 @@ func (o OpenAIIntegrationPropertiesPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The API endpoint for Open AI resource
+func (o OpenAIIntegrationPropertiesPtrOutput) OpenAIResourceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenAIIntegrationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpenAIResourceEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource id of Open AI resource
+func (o OpenAIIntegrationPropertiesPtrOutput) OpenAIResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OpenAIIntegrationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpenAIResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Open AI Integration details.
 type OpenAIIntegrationPropertiesResponse struct {
 	// Value of API key for Open AI resource
@@ -2676,9 +2714,9 @@ type OpenAIIntegrationPropertiesResponse struct {
 	// Last Update Timestamp for key updation
 	LastRefreshAt string `pulumi:"lastRefreshAt"`
 	// The API endpoint for Open AI resource
-	OpenAIResourceEndpoint string `pulumi:"openAIResourceEndpoint"`
+	OpenAIResourceEndpoint *string `pulumi:"openAIResourceEndpoint"`
 	// The resource id of Open AI resource
-	OpenAIResourceId string `pulumi:"openAIResourceId"`
+	OpenAIResourceId *string `pulumi:"openAIResourceId"`
 }
 
 // Open AI Integration details.
@@ -2707,13 +2745,13 @@ func (o OpenAIIntegrationPropertiesResponseOutput) LastRefreshAt() pulumi.String
 }
 
 // The API endpoint for Open AI resource
-func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) string { return v.OpenAIResourceEndpoint }).(pulumi.StringOutput)
+func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) *string { return v.OpenAIResourceEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // The resource id of Open AI resource
-func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) string { return v.OpenAIResourceId }).(pulumi.StringOutput)
+func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) *string { return v.OpenAIResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Status of the OpenAI Integration

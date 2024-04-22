@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2024-01-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
 type InferenceEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:InferenceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

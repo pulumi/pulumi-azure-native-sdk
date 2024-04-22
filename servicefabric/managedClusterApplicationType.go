@@ -15,7 +15,7 @@ import (
 // The application type name resource
 // Azure REST API version: 2023-03-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview, 2024-02-01-preview, 2024-04-01.
 type ManagedClusterApplicationType struct {
 	pulumi.CustomResourceState
 
@@ -97,6 +97,9 @@ func NewManagedClusterApplicationType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20240201preview:ManagedClusterApplicationType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20240401:ManagedClusterApplicationType"),
 		},
 	})
 	opts = append(opts, aliases)

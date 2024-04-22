@@ -13,6 +13,8 @@ import (
 )
 
 // Azure REST API version: 2024-01-01-preview.
+//
+// Other available API versions: 2024-04-01-preview.
 type EndpointDeployment struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +49,9 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:EndpointDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:EndpointDeployment"),
 		},
 	})
 	opts = append(opts, aliases)

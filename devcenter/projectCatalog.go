@@ -14,6 +14,8 @@ import (
 
 // Represents a catalog.
 // Azure REST API version: 2024-02-01.
+//
+// Other available API versions: 2024-05-01-preview.
 type ProjectCatalog struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +63,9 @@ func NewProjectCatalog(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240201:ProjectCatalog"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240501preview:ProjectCatalog"),
 		},
 	})
 	opts = append(opts, aliases)
