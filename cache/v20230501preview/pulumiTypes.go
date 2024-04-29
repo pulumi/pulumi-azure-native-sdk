@@ -594,6 +594,8 @@ type RedisCommonPropertiesRedisConfiguration struct {
 	MaxmemoryPolicy *string `pulumi:"maxmemoryPolicy"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
 	MaxmemoryReserved *string `pulumi:"maxmemoryReserved"`
+	// The keyspace events which should be monitored.
+	NotifyKeyspaceEvents *string `pulumi:"notifyKeyspaceEvents"`
 	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 	PreferredDataPersistenceAuthMethod *string `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
@@ -639,6 +641,8 @@ type RedisCommonPropertiesRedisConfigurationArgs struct {
 	MaxmemoryPolicy pulumi.StringPtrInput `pulumi:"maxmemoryPolicy"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
 	MaxmemoryReserved pulumi.StringPtrInput `pulumi:"maxmemoryReserved"`
+	// The keyspace events which should be monitored.
+	NotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"notifyKeyspaceEvents"`
 	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 	PreferredDataPersistenceAuthMethod pulumi.StringPtrInput `pulumi:"preferredDataPersistenceAuthMethod"`
 	// Specifies whether the rdb backup is enabled
@@ -774,6 +778,11 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) MaxmemoryPolicy() pulumi.
 // Value in megabytes reserved for non-cache usage per shard e.g. failover.
 func (o RedisCommonPropertiesRedisConfigurationOutput) MaxmemoryReserved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.MaxmemoryReserved }).(pulumi.StringPtrOutput)
+}
+
+// The keyspace events which should be monitored.
+func (o RedisCommonPropertiesRedisConfigurationOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesRedisConfiguration) *string { return v.NotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
 // Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
@@ -920,6 +929,16 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) MaxmemoryReserved() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The keyspace events which should be monitored.
+func (o RedisCommonPropertiesRedisConfigurationPtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyKeyspaceEvents
+	}).(pulumi.StringPtrOutput)
+}
+
 // Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) PreferredDataPersistenceAuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedisCommonPropertiesRedisConfiguration) *string {
@@ -1002,6 +1021,8 @@ type RedisCommonPropertiesResponseRedisConfiguration struct {
 	MaxmemoryPolicy *string `pulumi:"maxmemoryPolicy"`
 	// Value in megabytes reserved for non-cache usage per shard e.g. failover.
 	MaxmemoryReserved *string `pulumi:"maxmemoryReserved"`
+	// The keyspace events which should be monitored.
+	NotifyKeyspaceEvents *string `pulumi:"notifyKeyspaceEvents"`
 	// Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
 	PreferredDataArchiveAuthMethod string `pulumi:"preferredDataArchiveAuthMethod"`
 	// Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
@@ -1085,6 +1106,11 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxmemoryPolicy()
 // Value in megabytes reserved for non-cache usage per shard e.g. failover.
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) MaxmemoryReserved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.MaxmemoryReserved }).(pulumi.StringPtrOutput)
+}
+
+// The keyspace events which should be monitored.
+func (o RedisCommonPropertiesResponseRedisConfigurationOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.NotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
 }
 
 // Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
@@ -1252,6 +1278,16 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) MaxmemoryReser
 			return nil
 		}
 		return v.MaxmemoryReserved
+	}).(pulumi.StringPtrOutput)
+}
+
+// The keyspace events which should be monitored.
+func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisCommonPropertiesResponseRedisConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyKeyspaceEvents
 	}).(pulumi.StringPtrOutput)
 }
 

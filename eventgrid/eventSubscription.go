@@ -15,7 +15,7 @@ import (
 // Event Subscription
 // Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01.
 //
-// Other available API versions: 2017-06-15-preview, 2023-06-01-preview, 2023-12-15-preview.
+// Other available API versions: 2017-06-15-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
 type EventSubscription struct {
 	pulumi.CustomResourceState
 
@@ -126,6 +126,9 @@ func NewEventSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:EventSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20240601preview:EventSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

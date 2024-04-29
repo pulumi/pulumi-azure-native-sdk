@@ -16,6 +16,8 @@ import (
 type PolicyAssignment struct {
 	pulumi.CustomResourceState
 
+	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+	AssignmentType pulumi.StringPtrOutput `pulumi:"assignmentType"`
 	// This message will be part of response in case of policy violation.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy assignment.
@@ -24,8 +26,6 @@ type PolicyAssignment struct {
 	EnforcementMode pulumi.StringPtrOutput `pulumi:"enforcementMode"`
 	// The managed identity associated with the policy assignment.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
-	// A value indicating whether the policy assignment is for a system level policy assignment. Immutable.
-	IsSystemPolicy pulumi.BoolPtrOutput `pulumi:"isSystemPolicy"`
 	// The location of the policy assignment. Only required when utilizing managed identity.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
@@ -146,6 +146,8 @@ func (PolicyAssignmentState) ElementType() reflect.Type {
 }
 
 type policyAssignmentArgs struct {
+	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+	AssignmentType *string `pulumi:"assignmentType"`
 	// This message will be part of response in case of policy violation.
 	Description *string `pulumi:"description"`
 	// The display name of the policy assignment.
@@ -154,8 +156,6 @@ type policyAssignmentArgs struct {
 	EnforcementMode *string `pulumi:"enforcementMode"`
 	// The managed identity associated with the policy assignment.
 	Identity *Identity `pulumi:"identity"`
-	// A value indicating whether the policy assignment is for a system level policy assignment. Immutable.
-	IsSystemPolicy *bool `pulumi:"isSystemPolicy"`
 	// The location of the policy assignment. Only required when utilizing managed identity.
 	Location *string `pulumi:"location"`
 	// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
@@ -180,6 +180,8 @@ type policyAssignmentArgs struct {
 
 // The set of arguments for constructing a PolicyAssignment resource.
 type PolicyAssignmentArgs struct {
+	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+	AssignmentType pulumi.StringPtrInput
 	// This message will be part of response in case of policy violation.
 	Description pulumi.StringPtrInput
 	// The display name of the policy assignment.
@@ -188,8 +190,6 @@ type PolicyAssignmentArgs struct {
 	EnforcementMode pulumi.StringPtrInput
 	// The managed identity associated with the policy assignment.
 	Identity IdentityPtrInput
-	// A value indicating whether the policy assignment is for a system level policy assignment. Immutable.
-	IsSystemPolicy pulumi.BoolPtrInput
 	// The location of the policy assignment. Only required when utilizing managed identity.
 	Location pulumi.StringPtrInput
 	// The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
@@ -249,6 +249,11 @@ func (o PolicyAssignmentOutput) ToPolicyAssignmentOutputWithContext(ctx context.
 	return o
 }
 
+// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+func (o PolicyAssignmentOutput) AssignmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.AssignmentType }).(pulumi.StringPtrOutput)
+}
+
 // This message will be part of response in case of policy violation.
 func (o PolicyAssignmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -267,11 +272,6 @@ func (o PolicyAssignmentOutput) EnforcementMode() pulumi.StringPtrOutput {
 // The managed identity associated with the policy assignment.
 func (o PolicyAssignmentOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
-}
-
-// A value indicating whether the policy assignment is for a system level policy assignment. Immutable.
-func (o PolicyAssignmentOutput) IsSystemPolicy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicyAssignment) pulumi.BoolPtrOutput { return v.IsSystemPolicy }).(pulumi.BoolPtrOutput)
 }
 
 // The location of the policy assignment. Only required when utilizing managed identity.

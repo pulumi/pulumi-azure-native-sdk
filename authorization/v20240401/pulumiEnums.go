@@ -10,6 +10,176 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+type AssignmentType string
+
+const (
+	AssignmentTypeNotSpecified = AssignmentType("NotSpecified")
+	AssignmentTypeSystem       = AssignmentType("System")
+	AssignmentTypeSystemHidden = AssignmentType("SystemHidden")
+	AssignmentTypeCustom       = AssignmentType("Custom")
+)
+
+func (AssignmentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentType)(nil)).Elem()
+}
+
+func (e AssignmentType) ToAssignmentTypeOutput() AssignmentTypeOutput {
+	return pulumi.ToOutput(e).(AssignmentTypeOutput)
+}
+
+func (e AssignmentType) ToAssignmentTypeOutputWithContext(ctx context.Context) AssignmentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AssignmentTypeOutput)
+}
+
+func (e AssignmentType) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return e.ToAssignmentTypePtrOutputWithContext(context.Background())
+}
+
+func (e AssignmentType) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return AssignmentType(e).ToAssignmentTypeOutputWithContext(ctx).ToAssignmentTypePtrOutputWithContext(ctx)
+}
+
+func (e AssignmentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AssignmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AssignmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AssignmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AssignmentTypeOutput struct{ *pulumi.OutputState }
+
+func (AssignmentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentType)(nil)).Elem()
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypeOutput() AssignmentTypeOutput {
+	return o
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypeOutputWithContext(ctx context.Context) AssignmentTypeOutput {
+	return o
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return o.ToAssignmentTypePtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignmentType) *AssignmentType {
+		return &v
+	}).(AssignmentTypePtrOutput)
+}
+
+func (o AssignmentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssignmentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AssignmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssignmentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssignmentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AssignmentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentType)(nil)).Elem()
+}
+
+func (o AssignmentTypePtrOutput) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return o
+}
+
+func (o AssignmentTypePtrOutput) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return o
+}
+
+func (o AssignmentTypePtrOutput) Elem() AssignmentTypeOutput {
+	return o.ApplyT(func(v *AssignmentType) AssignmentType {
+		if v != nil {
+			return *v
+		}
+		var ret AssignmentType
+		return ret
+	}).(AssignmentTypeOutput)
+}
+
+func (o AssignmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AssignmentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AssignmentTypeInput is an input type that accepts values of the AssignmentType enum
+// A concrete instance of `AssignmentTypeInput` can be one of the following:
+//
+//	AssignmentTypeNotSpecified
+//	AssignmentTypeSystem
+//	AssignmentTypeSystemHidden
+//	AssignmentTypeCustom
+type AssignmentTypeInput interface {
+	pulumi.Input
+
+	ToAssignmentTypeOutput() AssignmentTypeOutput
+	ToAssignmentTypeOutputWithContext(context.Context) AssignmentTypeOutput
+}
+
+var assignmentTypePtrType = reflect.TypeOf((**AssignmentType)(nil)).Elem()
+
+type AssignmentTypePtrInput interface {
+	pulumi.Input
+
+	ToAssignmentTypePtrOutput() AssignmentTypePtrOutput
+	ToAssignmentTypePtrOutputWithContext(context.Context) AssignmentTypePtrOutput
+}
+
+type assignmentTypePtr string
+
+func AssignmentTypePtr(v string) AssignmentTypePtrInput {
+	return (*assignmentTypePtr)(&v)
+}
+
+func (*assignmentTypePtr) ElementType() reflect.Type {
+	return assignmentTypePtrType
+}
+
+func (in *assignmentTypePtr) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return pulumi.ToOutput(in).(AssignmentTypePtrOutput)
+}
+
+func (in *assignmentTypePtr) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AssignmentTypePtrOutput)
+}
+
 // The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 type EnforcementMode string
 
@@ -689,6 +859,8 @@ func (in *selectorKindPtr) ToSelectorKindPtrOutputWithContext(ctx context.Contex
 }
 
 func init() {
+	pulumi.RegisterOutputType(AssignmentTypeOutput{})
+	pulumi.RegisterOutputType(AssignmentTypePtrOutput{})
 	pulumi.RegisterOutputType(EnforcementModeOutput{})
 	pulumi.RegisterOutputType(EnforcementModePtrOutput{})
 	pulumi.RegisterOutputType(OverrideKindOutput{})

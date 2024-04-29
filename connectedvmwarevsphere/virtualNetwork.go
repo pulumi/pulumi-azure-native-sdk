@@ -15,7 +15,7 @@ import (
 // Define the virtualNetwork.
 // Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01.
+// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +76,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VirtualNetwork"),
 		},
 	})
 	opts = append(opts, aliases)

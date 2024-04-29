@@ -344,6 +344,172 @@ func (in *activityStatePtr) ToActivityStatePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ActivityStatePtrOutput)
 }
 
+// The type used for authentication. Type: string.
+type AmazonRdsForSqlAuthenticationType string
+
+const (
+	AmazonRdsForSqlAuthenticationTypeSQL     = AmazonRdsForSqlAuthenticationType("SQL")
+	AmazonRdsForSqlAuthenticationTypeWindows = AmazonRdsForSqlAuthenticationType("Windows")
+)
+
+func (AmazonRdsForSqlAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmazonRdsForSqlAuthenticationType)(nil)).Elem()
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToAmazonRdsForSqlAuthenticationTypeOutput() AmazonRdsForSqlAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AmazonRdsForSqlAuthenticationTypeOutput)
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToAmazonRdsForSqlAuthenticationTypeOutputWithContext(ctx context.Context) AmazonRdsForSqlAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AmazonRdsForSqlAuthenticationTypeOutput)
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToAmazonRdsForSqlAuthenticationTypePtrOutput() AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return e.ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return AmazonRdsForSqlAuthenticationType(e).ToAmazonRdsForSqlAuthenticationTypeOutputWithContext(ctx).ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AmazonRdsForSqlAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AmazonRdsForSqlAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AmazonRdsForSqlAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmazonRdsForSqlAuthenticationType)(nil)).Elem()
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToAmazonRdsForSqlAuthenticationTypeOutput() AmazonRdsForSqlAuthenticationTypeOutput {
+	return o
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToAmazonRdsForSqlAuthenticationTypeOutputWithContext(ctx context.Context) AmazonRdsForSqlAuthenticationTypeOutput {
+	return o
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToAmazonRdsForSqlAuthenticationTypePtrOutput() AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return o.ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmazonRdsForSqlAuthenticationType) *AmazonRdsForSqlAuthenticationType {
+		return &v
+	}).(AmazonRdsForSqlAuthenticationTypePtrOutput)
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmazonRdsForSqlAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForSqlAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmazonRdsForSqlAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AmazonRdsForSqlAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AmazonRdsForSqlAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmazonRdsForSqlAuthenticationType)(nil)).Elem()
+}
+
+func (o AmazonRdsForSqlAuthenticationTypePtrOutput) ToAmazonRdsForSqlAuthenticationTypePtrOutput() AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AmazonRdsForSqlAuthenticationTypePtrOutput) ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AmazonRdsForSqlAuthenticationTypePtrOutput) Elem() AmazonRdsForSqlAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AmazonRdsForSqlAuthenticationType) AmazonRdsForSqlAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AmazonRdsForSqlAuthenticationType
+		return ret
+	}).(AmazonRdsForSqlAuthenticationTypeOutput)
+}
+
+func (o AmazonRdsForSqlAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForSqlAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AmazonRdsForSqlAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AmazonRdsForSqlAuthenticationTypeInput is an input type that accepts values of the AmazonRdsForSqlAuthenticationType enum
+// A concrete instance of `AmazonRdsForSqlAuthenticationTypeInput` can be one of the following:
+//
+//	AmazonRdsForSqlAuthenticationTypeSQL
+//	AmazonRdsForSqlAuthenticationTypeWindows
+type AmazonRdsForSqlAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAmazonRdsForSqlAuthenticationTypeOutput() AmazonRdsForSqlAuthenticationTypeOutput
+	ToAmazonRdsForSqlAuthenticationTypeOutputWithContext(context.Context) AmazonRdsForSqlAuthenticationTypeOutput
+}
+
+var amazonRdsForSqlAuthenticationTypePtrType = reflect.TypeOf((**AmazonRdsForSqlAuthenticationType)(nil)).Elem()
+
+type AmazonRdsForSqlAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAmazonRdsForSqlAuthenticationTypePtrOutput() AmazonRdsForSqlAuthenticationTypePtrOutput
+	ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(context.Context) AmazonRdsForSqlAuthenticationTypePtrOutput
+}
+
+type amazonRdsForSqlAuthenticationTypePtr string
+
+func AmazonRdsForSqlAuthenticationTypePtr(v string) AmazonRdsForSqlAuthenticationTypePtrInput {
+	return (*amazonRdsForSqlAuthenticationTypePtr)(&v)
+}
+
+func (*amazonRdsForSqlAuthenticationTypePtr) ElementType() reflect.Type {
+	return amazonRdsForSqlAuthenticationTypePtrType
+}
+
+func (in *amazonRdsForSqlAuthenticationTypePtr) ToAmazonRdsForSqlAuthenticationTypePtrOutput() AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AmazonRdsForSqlAuthenticationTypePtrOutput)
+}
+
+func (in *amazonRdsForSqlAuthenticationTypePtr) ToAmazonRdsForSqlAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForSqlAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AmazonRdsForSqlAuthenticationTypePtrOutput)
+}
+
 // Rest API method for target endpoint.
 type AzureFunctionActivityMethod string
 
@@ -684,6 +850,516 @@ func (in *azureSearchIndexWriteBehaviorTypePtr) ToAzureSearchIndexWriteBehaviorT
 
 func (in *azureSearchIndexWriteBehaviorTypePtr) ToAzureSearchIndexWriteBehaviorTypePtrOutputWithContext(ctx context.Context) AzureSearchIndexWriteBehaviorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AzureSearchIndexWriteBehaviorTypePtrOutput)
+}
+
+// The type used for authentication. Type: string.
+type AzureSqlDWAuthenticationType string
+
+const (
+	AzureSqlDWAuthenticationTypeSQL                           = AzureSqlDWAuthenticationType("SQL")
+	AzureSqlDWAuthenticationTypeServicePrincipal              = AzureSqlDWAuthenticationType("ServicePrincipal")
+	AzureSqlDWAuthenticationTypeSystemAssignedManagedIdentity = AzureSqlDWAuthenticationType("SystemAssignedManagedIdentity")
+	AzureSqlDWAuthenticationTypeUserAssignedManagedIdentity   = AzureSqlDWAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (AzureSqlDWAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlDWAuthenticationType)(nil)).Elem()
+}
+
+func (e AzureSqlDWAuthenticationType) ToAzureSqlDWAuthenticationTypeOutput() AzureSqlDWAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AzureSqlDWAuthenticationTypeOutput)
+}
+
+func (e AzureSqlDWAuthenticationType) ToAzureSqlDWAuthenticationTypeOutputWithContext(ctx context.Context) AzureSqlDWAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureSqlDWAuthenticationTypeOutput)
+}
+
+func (e AzureSqlDWAuthenticationType) ToAzureSqlDWAuthenticationTypePtrOutput() AzureSqlDWAuthenticationTypePtrOutput {
+	return e.ToAzureSqlDWAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlDWAuthenticationType) ToAzureSqlDWAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDWAuthenticationTypePtrOutput {
+	return AzureSqlDWAuthenticationType(e).ToAzureSqlDWAuthenticationTypeOutputWithContext(ctx).ToAzureSqlDWAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AzureSqlDWAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlDWAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlDWAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlDWAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureSqlDWAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlDWAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlDWAuthenticationType)(nil)).Elem()
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToAzureSqlDWAuthenticationTypeOutput() AzureSqlDWAuthenticationTypeOutput {
+	return o
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToAzureSqlDWAuthenticationTypeOutputWithContext(ctx context.Context) AzureSqlDWAuthenticationTypeOutput {
+	return o
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToAzureSqlDWAuthenticationTypePtrOutput() AzureSqlDWAuthenticationTypePtrOutput {
+	return o.ToAzureSqlDWAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToAzureSqlDWAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDWAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureSqlDWAuthenticationType) *AzureSqlDWAuthenticationType {
+		return &v
+	}).(AzureSqlDWAuthenticationTypePtrOutput)
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlDWAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDWAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlDWAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureSqlDWAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlDWAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSqlDWAuthenticationType)(nil)).Elem()
+}
+
+func (o AzureSqlDWAuthenticationTypePtrOutput) ToAzureSqlDWAuthenticationTypePtrOutput() AzureSqlDWAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AzureSqlDWAuthenticationTypePtrOutput) ToAzureSqlDWAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDWAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AzureSqlDWAuthenticationTypePtrOutput) Elem() AzureSqlDWAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AzureSqlDWAuthenticationType) AzureSqlDWAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSqlDWAuthenticationType
+		return ret
+	}).(AzureSqlDWAuthenticationTypeOutput)
+}
+
+func (o AzureSqlDWAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDWAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureSqlDWAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureSqlDWAuthenticationTypeInput is an input type that accepts values of the AzureSqlDWAuthenticationType enum
+// A concrete instance of `AzureSqlDWAuthenticationTypeInput` can be one of the following:
+//
+//	AzureSqlDWAuthenticationTypeSQL
+//	AzureSqlDWAuthenticationTypeServicePrincipal
+//	AzureSqlDWAuthenticationTypeSystemAssignedManagedIdentity
+//	AzureSqlDWAuthenticationTypeUserAssignedManagedIdentity
+type AzureSqlDWAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAzureSqlDWAuthenticationTypeOutput() AzureSqlDWAuthenticationTypeOutput
+	ToAzureSqlDWAuthenticationTypeOutputWithContext(context.Context) AzureSqlDWAuthenticationTypeOutput
+}
+
+var azureSqlDWAuthenticationTypePtrType = reflect.TypeOf((**AzureSqlDWAuthenticationType)(nil)).Elem()
+
+type AzureSqlDWAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAzureSqlDWAuthenticationTypePtrOutput() AzureSqlDWAuthenticationTypePtrOutput
+	ToAzureSqlDWAuthenticationTypePtrOutputWithContext(context.Context) AzureSqlDWAuthenticationTypePtrOutput
+}
+
+type azureSqlDWAuthenticationTypePtr string
+
+func AzureSqlDWAuthenticationTypePtr(v string) AzureSqlDWAuthenticationTypePtrInput {
+	return (*azureSqlDWAuthenticationTypePtr)(&v)
+}
+
+func (*azureSqlDWAuthenticationTypePtr) ElementType() reflect.Type {
+	return azureSqlDWAuthenticationTypePtrType
+}
+
+func (in *azureSqlDWAuthenticationTypePtr) ToAzureSqlDWAuthenticationTypePtrOutput() AzureSqlDWAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureSqlDWAuthenticationTypePtrOutput)
+}
+
+func (in *azureSqlDWAuthenticationTypePtr) ToAzureSqlDWAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDWAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlDWAuthenticationTypePtrOutput)
+}
+
+// The type used for authentication. Type: string.
+type AzureSqlDatabaseAuthenticationType string
+
+const (
+	AzureSqlDatabaseAuthenticationTypeSQL                           = AzureSqlDatabaseAuthenticationType("SQL")
+	AzureSqlDatabaseAuthenticationTypeServicePrincipal              = AzureSqlDatabaseAuthenticationType("ServicePrincipal")
+	AzureSqlDatabaseAuthenticationTypeSystemAssignedManagedIdentity = AzureSqlDatabaseAuthenticationType("SystemAssignedManagedIdentity")
+	AzureSqlDatabaseAuthenticationTypeUserAssignedManagedIdentity   = AzureSqlDatabaseAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (AzureSqlDatabaseAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlDatabaseAuthenticationType)(nil)).Elem()
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToAzureSqlDatabaseAuthenticationTypeOutput() AzureSqlDatabaseAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AzureSqlDatabaseAuthenticationTypeOutput)
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToAzureSqlDatabaseAuthenticationTypeOutputWithContext(ctx context.Context) AzureSqlDatabaseAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureSqlDatabaseAuthenticationTypeOutput)
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToAzureSqlDatabaseAuthenticationTypePtrOutput() AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return e.ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return AzureSqlDatabaseAuthenticationType(e).ToAzureSqlDatabaseAuthenticationTypeOutputWithContext(ctx).ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlDatabaseAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureSqlDatabaseAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlDatabaseAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlDatabaseAuthenticationType)(nil)).Elem()
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToAzureSqlDatabaseAuthenticationTypeOutput() AzureSqlDatabaseAuthenticationTypeOutput {
+	return o
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToAzureSqlDatabaseAuthenticationTypeOutputWithContext(ctx context.Context) AzureSqlDatabaseAuthenticationTypeOutput {
+	return o
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToAzureSqlDatabaseAuthenticationTypePtrOutput() AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return o.ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureSqlDatabaseAuthenticationType) *AzureSqlDatabaseAuthenticationType {
+		return &v
+	}).(AzureSqlDatabaseAuthenticationTypePtrOutput)
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlDatabaseAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDatabaseAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlDatabaseAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureSqlDatabaseAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlDatabaseAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSqlDatabaseAuthenticationType)(nil)).Elem()
+}
+
+func (o AzureSqlDatabaseAuthenticationTypePtrOutput) ToAzureSqlDatabaseAuthenticationTypePtrOutput() AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AzureSqlDatabaseAuthenticationTypePtrOutput) ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AzureSqlDatabaseAuthenticationTypePtrOutput) Elem() AzureSqlDatabaseAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AzureSqlDatabaseAuthenticationType) AzureSqlDatabaseAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSqlDatabaseAuthenticationType
+		return ret
+	}).(AzureSqlDatabaseAuthenticationTypeOutput)
+}
+
+func (o AzureSqlDatabaseAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlDatabaseAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureSqlDatabaseAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureSqlDatabaseAuthenticationTypeInput is an input type that accepts values of the AzureSqlDatabaseAuthenticationType enum
+// A concrete instance of `AzureSqlDatabaseAuthenticationTypeInput` can be one of the following:
+//
+//	AzureSqlDatabaseAuthenticationTypeSQL
+//	AzureSqlDatabaseAuthenticationTypeServicePrincipal
+//	AzureSqlDatabaseAuthenticationTypeSystemAssignedManagedIdentity
+//	AzureSqlDatabaseAuthenticationTypeUserAssignedManagedIdentity
+type AzureSqlDatabaseAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAzureSqlDatabaseAuthenticationTypeOutput() AzureSqlDatabaseAuthenticationTypeOutput
+	ToAzureSqlDatabaseAuthenticationTypeOutputWithContext(context.Context) AzureSqlDatabaseAuthenticationTypeOutput
+}
+
+var azureSqlDatabaseAuthenticationTypePtrType = reflect.TypeOf((**AzureSqlDatabaseAuthenticationType)(nil)).Elem()
+
+type AzureSqlDatabaseAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAzureSqlDatabaseAuthenticationTypePtrOutput() AzureSqlDatabaseAuthenticationTypePtrOutput
+	ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(context.Context) AzureSqlDatabaseAuthenticationTypePtrOutput
+}
+
+type azureSqlDatabaseAuthenticationTypePtr string
+
+func AzureSqlDatabaseAuthenticationTypePtr(v string) AzureSqlDatabaseAuthenticationTypePtrInput {
+	return (*azureSqlDatabaseAuthenticationTypePtr)(&v)
+}
+
+func (*azureSqlDatabaseAuthenticationTypePtr) ElementType() reflect.Type {
+	return azureSqlDatabaseAuthenticationTypePtrType
+}
+
+func (in *azureSqlDatabaseAuthenticationTypePtr) ToAzureSqlDatabaseAuthenticationTypePtrOutput() AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureSqlDatabaseAuthenticationTypePtrOutput)
+}
+
+func (in *azureSqlDatabaseAuthenticationTypePtr) ToAzureSqlDatabaseAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlDatabaseAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlDatabaseAuthenticationTypePtrOutput)
+}
+
+// The type used for authentication. Type: string.
+type AzureSqlMIAuthenticationType string
+
+const (
+	AzureSqlMIAuthenticationTypeSQL                           = AzureSqlMIAuthenticationType("SQL")
+	AzureSqlMIAuthenticationTypeServicePrincipal              = AzureSqlMIAuthenticationType("ServicePrincipal")
+	AzureSqlMIAuthenticationTypeSystemAssignedManagedIdentity = AzureSqlMIAuthenticationType("SystemAssignedManagedIdentity")
+	AzureSqlMIAuthenticationTypeUserAssignedManagedIdentity   = AzureSqlMIAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (AzureSqlMIAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlMIAuthenticationType)(nil)).Elem()
+}
+
+func (e AzureSqlMIAuthenticationType) ToAzureSqlMIAuthenticationTypeOutput() AzureSqlMIAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AzureSqlMIAuthenticationTypeOutput)
+}
+
+func (e AzureSqlMIAuthenticationType) ToAzureSqlMIAuthenticationTypeOutputWithContext(ctx context.Context) AzureSqlMIAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureSqlMIAuthenticationTypeOutput)
+}
+
+func (e AzureSqlMIAuthenticationType) ToAzureSqlMIAuthenticationTypePtrOutput() AzureSqlMIAuthenticationTypePtrOutput {
+	return e.ToAzureSqlMIAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlMIAuthenticationType) ToAzureSqlMIAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlMIAuthenticationTypePtrOutput {
+	return AzureSqlMIAuthenticationType(e).ToAzureSqlMIAuthenticationTypeOutputWithContext(ctx).ToAzureSqlMIAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AzureSqlMIAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlMIAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureSqlMIAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureSqlMIAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureSqlMIAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlMIAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureSqlMIAuthenticationType)(nil)).Elem()
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToAzureSqlMIAuthenticationTypeOutput() AzureSqlMIAuthenticationTypeOutput {
+	return o
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToAzureSqlMIAuthenticationTypeOutputWithContext(ctx context.Context) AzureSqlMIAuthenticationTypeOutput {
+	return o
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToAzureSqlMIAuthenticationTypePtrOutput() AzureSqlMIAuthenticationTypePtrOutput {
+	return o.ToAzureSqlMIAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToAzureSqlMIAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlMIAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureSqlMIAuthenticationType) *AzureSqlMIAuthenticationType {
+		return &v
+	}).(AzureSqlMIAuthenticationTypePtrOutput)
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlMIAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlMIAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureSqlMIAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureSqlMIAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureSqlMIAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureSqlMIAuthenticationType)(nil)).Elem()
+}
+
+func (o AzureSqlMIAuthenticationTypePtrOutput) ToAzureSqlMIAuthenticationTypePtrOutput() AzureSqlMIAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AzureSqlMIAuthenticationTypePtrOutput) ToAzureSqlMIAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlMIAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AzureSqlMIAuthenticationTypePtrOutput) Elem() AzureSqlMIAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AzureSqlMIAuthenticationType) AzureSqlMIAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AzureSqlMIAuthenticationType
+		return ret
+	}).(AzureSqlMIAuthenticationTypeOutput)
+}
+
+func (o AzureSqlMIAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureSqlMIAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureSqlMIAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureSqlMIAuthenticationTypeInput is an input type that accepts values of the AzureSqlMIAuthenticationType enum
+// A concrete instance of `AzureSqlMIAuthenticationTypeInput` can be one of the following:
+//
+//	AzureSqlMIAuthenticationTypeSQL
+//	AzureSqlMIAuthenticationTypeServicePrincipal
+//	AzureSqlMIAuthenticationTypeSystemAssignedManagedIdentity
+//	AzureSqlMIAuthenticationTypeUserAssignedManagedIdentity
+type AzureSqlMIAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAzureSqlMIAuthenticationTypeOutput() AzureSqlMIAuthenticationTypeOutput
+	ToAzureSqlMIAuthenticationTypeOutputWithContext(context.Context) AzureSqlMIAuthenticationTypeOutput
+}
+
+var azureSqlMIAuthenticationTypePtrType = reflect.TypeOf((**AzureSqlMIAuthenticationType)(nil)).Elem()
+
+type AzureSqlMIAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAzureSqlMIAuthenticationTypePtrOutput() AzureSqlMIAuthenticationTypePtrOutput
+	ToAzureSqlMIAuthenticationTypePtrOutputWithContext(context.Context) AzureSqlMIAuthenticationTypePtrOutput
+}
+
+type azureSqlMIAuthenticationTypePtr string
+
+func AzureSqlMIAuthenticationTypePtr(v string) AzureSqlMIAuthenticationTypePtrInput {
+	return (*azureSqlMIAuthenticationTypePtr)(&v)
+}
+
+func (*azureSqlMIAuthenticationTypePtr) ElementType() reflect.Type {
+	return azureSqlMIAuthenticationTypePtrType
+}
+
+func (in *azureSqlMIAuthenticationTypePtr) ToAzureSqlMIAuthenticationTypePtrOutput() AzureSqlMIAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AzureSqlMIAuthenticationTypePtrOutput)
+}
+
+func (in *azureSqlMIAuthenticationTypePtr) ToAzureSqlMIAuthenticationTypePtrOutputWithContext(ctx context.Context) AzureSqlMIAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureSqlMIAuthenticationTypePtrOutput)
 }
 
 // The type used for authentication. Type: string.
@@ -11670,6 +12346,172 @@ func (in *sqlAlwaysEncryptedAkvAuthTypePtr) ToSqlAlwaysEncryptedAkvAuthTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(SqlAlwaysEncryptedAkvAuthTypePtrOutput)
 }
 
+// The type used for authentication. Type: string.
+type SqlServerAuthenticationType string
+
+const (
+	SqlServerAuthenticationTypeSQL     = SqlServerAuthenticationType("SQL")
+	SqlServerAuthenticationTypeWindows = SqlServerAuthenticationType("Windows")
+)
+
+func (SqlServerAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAuthenticationType)(nil)).Elem()
+}
+
+func (e SqlServerAuthenticationType) ToSqlServerAuthenticationTypeOutput() SqlServerAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(SqlServerAuthenticationTypeOutput)
+}
+
+func (e SqlServerAuthenticationType) ToSqlServerAuthenticationTypeOutputWithContext(ctx context.Context) SqlServerAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SqlServerAuthenticationTypeOutput)
+}
+
+func (e SqlServerAuthenticationType) ToSqlServerAuthenticationTypePtrOutput() SqlServerAuthenticationTypePtrOutput {
+	return e.ToSqlServerAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e SqlServerAuthenticationType) ToSqlServerAuthenticationTypePtrOutputWithContext(ctx context.Context) SqlServerAuthenticationTypePtrOutput {
+	return SqlServerAuthenticationType(e).ToSqlServerAuthenticationTypeOutputWithContext(ctx).ToSqlServerAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e SqlServerAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SqlServerAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SqlServerAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SqlServerAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SqlServerAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerAuthenticationType)(nil)).Elem()
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToSqlServerAuthenticationTypeOutput() SqlServerAuthenticationTypeOutput {
+	return o
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToSqlServerAuthenticationTypeOutputWithContext(ctx context.Context) SqlServerAuthenticationTypeOutput {
+	return o
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToSqlServerAuthenticationTypePtrOutput() SqlServerAuthenticationTypePtrOutput {
+	return o.ToSqlServerAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToSqlServerAuthenticationTypePtrOutputWithContext(ctx context.Context) SqlServerAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerAuthenticationType) *SqlServerAuthenticationType {
+		return &v
+	}).(SqlServerAuthenticationTypePtrOutput)
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SqlServerAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SqlServerAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SqlServerAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerAuthenticationType)(nil)).Elem()
+}
+
+func (o SqlServerAuthenticationTypePtrOutput) ToSqlServerAuthenticationTypePtrOutput() SqlServerAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o SqlServerAuthenticationTypePtrOutput) ToSqlServerAuthenticationTypePtrOutputWithContext(ctx context.Context) SqlServerAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o SqlServerAuthenticationTypePtrOutput) Elem() SqlServerAuthenticationTypeOutput {
+	return o.ApplyT(func(v *SqlServerAuthenticationType) SqlServerAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerAuthenticationType
+		return ret
+	}).(SqlServerAuthenticationTypeOutput)
+}
+
+func (o SqlServerAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SqlServerAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SqlServerAuthenticationTypeInput is an input type that accepts values of the SqlServerAuthenticationType enum
+// A concrete instance of `SqlServerAuthenticationTypeInput` can be one of the following:
+//
+//	SqlServerAuthenticationTypeSQL
+//	SqlServerAuthenticationTypeWindows
+type SqlServerAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToSqlServerAuthenticationTypeOutput() SqlServerAuthenticationTypeOutput
+	ToSqlServerAuthenticationTypeOutputWithContext(context.Context) SqlServerAuthenticationTypeOutput
+}
+
+var sqlServerAuthenticationTypePtrType = reflect.TypeOf((**SqlServerAuthenticationType)(nil)).Elem()
+
+type SqlServerAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToSqlServerAuthenticationTypePtrOutput() SqlServerAuthenticationTypePtrOutput
+	ToSqlServerAuthenticationTypePtrOutputWithContext(context.Context) SqlServerAuthenticationTypePtrOutput
+}
+
+type sqlServerAuthenticationTypePtr string
+
+func SqlServerAuthenticationTypePtr(v string) SqlServerAuthenticationTypePtrInput {
+	return (*sqlServerAuthenticationTypePtr)(&v)
+}
+
+func (*sqlServerAuthenticationTypePtr) ElementType() reflect.Type {
+	return sqlServerAuthenticationTypePtrType
+}
+
+func (in *sqlServerAuthenticationTypePtr) ToSqlServerAuthenticationTypePtrOutput() SqlServerAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(SqlServerAuthenticationTypePtrOutput)
+}
+
+func (in *sqlServerAuthenticationTypePtr) ToSqlServerAuthenticationTypePtrOutputWithContext(ctx context.Context) SqlServerAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SqlServerAuthenticationTypePtrOutput)
+}
+
 // The type of SSIS log location.
 type SsisLogLocationType string
 
@@ -13680,10 +14522,18 @@ func init() {
 	pulumi.RegisterOutputType(ActivityOnInactiveMarkAsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityStateOutput{})
 	pulumi.RegisterOutputType(ActivityStatePtrOutput{})
+	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureFunctionActivityMethodOutput{})
 	pulumi.RegisterOutputType(AzureFunctionActivityMethodPtrOutput{})
 	pulumi.RegisterOutputType(AzureSearchIndexWriteBehaviorTypeOutput{})
 	pulumi.RegisterOutputType(AzureSearchIndexWriteBehaviorTypePtrOutput{})
+	pulumi.RegisterOutputType(AzureSqlDWAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AzureSqlDWAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(AzureSqlDatabaseAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AzureSqlDatabaseAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(AzureSqlMIAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AzureSqlMIAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureStorageAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(AzureStorageAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(BigDataPoolReferenceTypeOutput{})
@@ -13815,6 +14665,8 @@ func init() {
 	pulumi.RegisterOutputType(SparkThriftTransportProtocolPtrOutput{})
 	pulumi.RegisterOutputType(SqlAlwaysEncryptedAkvAuthTypeOutput{})
 	pulumi.RegisterOutputType(SqlAlwaysEncryptedAkvAuthTypePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(SqlServerAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(SsisLogLocationTypeOutput{})
 	pulumi.RegisterOutputType(SsisLogLocationTypePtrOutput{})
 	pulumi.RegisterOutputType(SsisPackageLocationTypeOutput{})

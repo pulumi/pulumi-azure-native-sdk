@@ -14,7 +14,7 @@ import (
 // Implements cluster GET method.
 // Azure REST API version: 2022-07-15-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01.
+// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult

@@ -346,6 +346,176 @@ func (in *cacheIdentityTypePtr) ToCacheIdentityTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(CacheIdentityTypePtrOutput)
 }
 
+// How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes.
+type ConflictResolutionMode string
+
+const (
+	ConflictResolutionModeFail             = ConflictResolutionMode("Fail")
+	ConflictResolutionModeSkip             = ConflictResolutionMode("Skip")
+	ConflictResolutionModeOverwriteIfDirty = ConflictResolutionMode("OverwriteIfDirty")
+	ConflictResolutionModeOverwriteAlways  = ConflictResolutionMode("OverwriteAlways")
+)
+
+func (ConflictResolutionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConflictResolutionMode)(nil)).Elem()
+}
+
+func (e ConflictResolutionMode) ToConflictResolutionModeOutput() ConflictResolutionModeOutput {
+	return pulumi.ToOutput(e).(ConflictResolutionModeOutput)
+}
+
+func (e ConflictResolutionMode) ToConflictResolutionModeOutputWithContext(ctx context.Context) ConflictResolutionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConflictResolutionModeOutput)
+}
+
+func (e ConflictResolutionMode) ToConflictResolutionModePtrOutput() ConflictResolutionModePtrOutput {
+	return e.ToConflictResolutionModePtrOutputWithContext(context.Background())
+}
+
+func (e ConflictResolutionMode) ToConflictResolutionModePtrOutputWithContext(ctx context.Context) ConflictResolutionModePtrOutput {
+	return ConflictResolutionMode(e).ToConflictResolutionModeOutputWithContext(ctx).ToConflictResolutionModePtrOutputWithContext(ctx)
+}
+
+func (e ConflictResolutionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConflictResolutionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConflictResolutionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConflictResolutionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConflictResolutionModeOutput struct{ *pulumi.OutputState }
+
+func (ConflictResolutionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConflictResolutionMode)(nil)).Elem()
+}
+
+func (o ConflictResolutionModeOutput) ToConflictResolutionModeOutput() ConflictResolutionModeOutput {
+	return o
+}
+
+func (o ConflictResolutionModeOutput) ToConflictResolutionModeOutputWithContext(ctx context.Context) ConflictResolutionModeOutput {
+	return o
+}
+
+func (o ConflictResolutionModeOutput) ToConflictResolutionModePtrOutput() ConflictResolutionModePtrOutput {
+	return o.ToConflictResolutionModePtrOutputWithContext(context.Background())
+}
+
+func (o ConflictResolutionModeOutput) ToConflictResolutionModePtrOutputWithContext(ctx context.Context) ConflictResolutionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConflictResolutionMode) *ConflictResolutionMode {
+		return &v
+	}).(ConflictResolutionModePtrOutput)
+}
+
+func (o ConflictResolutionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConflictResolutionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConflictResolutionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConflictResolutionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConflictResolutionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConflictResolutionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConflictResolutionModePtrOutput struct{ *pulumi.OutputState }
+
+func (ConflictResolutionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConflictResolutionMode)(nil)).Elem()
+}
+
+func (o ConflictResolutionModePtrOutput) ToConflictResolutionModePtrOutput() ConflictResolutionModePtrOutput {
+	return o
+}
+
+func (o ConflictResolutionModePtrOutput) ToConflictResolutionModePtrOutputWithContext(ctx context.Context) ConflictResolutionModePtrOutput {
+	return o
+}
+
+func (o ConflictResolutionModePtrOutput) Elem() ConflictResolutionModeOutput {
+	return o.ApplyT(func(v *ConflictResolutionMode) ConflictResolutionMode {
+		if v != nil {
+			return *v
+		}
+		var ret ConflictResolutionMode
+		return ret
+	}).(ConflictResolutionModeOutput)
+}
+
+func (o ConflictResolutionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConflictResolutionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConflictResolutionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConflictResolutionModeInput is an input type that accepts values of the ConflictResolutionMode enum
+// A concrete instance of `ConflictResolutionModeInput` can be one of the following:
+//
+//	ConflictResolutionModeFail
+//	ConflictResolutionModeSkip
+//	ConflictResolutionModeOverwriteIfDirty
+//	ConflictResolutionModeOverwriteAlways
+type ConflictResolutionModeInput interface {
+	pulumi.Input
+
+	ToConflictResolutionModeOutput() ConflictResolutionModeOutput
+	ToConflictResolutionModeOutputWithContext(context.Context) ConflictResolutionModeOutput
+}
+
+var conflictResolutionModePtrType = reflect.TypeOf((**ConflictResolutionMode)(nil)).Elem()
+
+type ConflictResolutionModePtrInput interface {
+	pulumi.Input
+
+	ToConflictResolutionModePtrOutput() ConflictResolutionModePtrOutput
+	ToConflictResolutionModePtrOutputWithContext(context.Context) ConflictResolutionModePtrOutput
+}
+
+type conflictResolutionModePtr string
+
+func ConflictResolutionModePtr(v string) ConflictResolutionModePtrInput {
+	return (*conflictResolutionModePtr)(&v)
+}
+
+func (*conflictResolutionModePtr) ElementType() reflect.Type {
+	return conflictResolutionModePtrType
+}
+
+func (in *conflictResolutionModePtr) ToConflictResolutionModePtrOutput() ConflictResolutionModePtrOutput {
+	return pulumi.ToOutput(in).(ConflictResolutionModePtrOutput)
+}
+
+func (in *conflictResolutionModePtr) ToConflictResolutionModePtrOutputWithContext(ctx context.Context) ConflictResolutionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConflictResolutionModePtrOutput)
+}
+
 // Day of the week on which the maintenance window will occur.
 type MaintenanceDayOfWeekType string
 
@@ -1373,6 +1543,8 @@ func init() {
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypeOutput{})
 	pulumi.RegisterOutputType(CacheIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(ConflictResolutionModeOutput{})
+	pulumi.RegisterOutputType(ConflictResolutionModePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceDayOfWeekTypeOutput{})
 	pulumi.RegisterOutputType(MaintenanceDayOfWeekTypePtrOutput{})
 	pulumi.RegisterOutputType(NfsAccessRuleAccessOutput{})

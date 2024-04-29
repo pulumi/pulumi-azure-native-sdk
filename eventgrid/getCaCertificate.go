@@ -14,7 +14,7 @@ import (
 // Get properties of a CA certificate.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-15-preview.
+// Other available API versions: 2023-12-15-preview, 2024-06-01-preview.
 func LookupCaCertificate(ctx *pulumi.Context, args *LookupCaCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCaCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaCertificateResult

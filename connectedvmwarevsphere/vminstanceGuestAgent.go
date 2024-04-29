@@ -15,7 +15,7 @@ import (
 // Defines the GuestAgent.
 // Azure REST API version: 2023-03-01-preview.
 //
-// Other available API versions: 2023-10-01.
+// Other available API versions: 2023-10-01, 2023-12-01.
 type VMInstanceGuestAgent struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewVMInstanceGuestAgent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:VMInstanceGuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VMInstanceGuestAgent"),
 		},
 	})
 	opts = append(opts, aliases)

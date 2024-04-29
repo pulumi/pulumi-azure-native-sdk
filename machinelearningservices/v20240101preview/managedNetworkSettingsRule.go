@@ -58,6 +58,9 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:ManagedNetworkSettingsRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:ManagedNetworkSettingsRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:ManagedNetworkSettingsRule"),
 		},
 	})

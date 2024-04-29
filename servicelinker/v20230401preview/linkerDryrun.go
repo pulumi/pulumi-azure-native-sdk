@@ -49,6 +49,9 @@ func NewLinkerDryrun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20221101preview:LinkerDryrun"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20240401:LinkerDryrun"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -87,6 +87,9 @@ func NewDataContainer(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:DataContainer"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:DataContainer"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:DataContainer"),
 		},
 	})

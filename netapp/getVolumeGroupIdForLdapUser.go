@@ -14,7 +14,7 @@ import (
 // Returns the list of group Ids for a specific LDAP User
 // Azure REST API version: 2022-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01.
 func GetVolumeGroupIdForLdapUser(ctx *pulumi.Context, args *GetVolumeGroupIdForLdapUserArgs, opts ...pulumi.InvokeOption) (*GetVolumeGroupIdForLdapUserResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetVolumeGroupIdForLdapUserResult

@@ -14,6 +14,8 @@ import (
 
 // An action group resource.
 // Azure REST API version: 2023-01-01. Prior API version in Azure Native 1.x: 2019-06-01.
+//
+// Other available API versions: 2023-09-01-preview.
 type ActionGroup struct {
 	pulumi.CustomResourceState
 
@@ -96,6 +98,9 @@ func NewActionGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:insights/v20230101:ActionGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:insights/v20230901preview:ActionGroup"),
 		},
 	})
 	opts = append(opts, aliases)
