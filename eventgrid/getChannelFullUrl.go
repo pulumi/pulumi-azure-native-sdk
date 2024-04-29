@@ -14,7 +14,7 @@ import (
 // Get the full endpoint URL of a partner destination channel.
 // Azure REST API version: 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
 func GetChannelFullUrl(ctx *pulumi.Context, args *GetChannelFullUrlArgs, opts ...pulumi.InvokeOption) (*GetChannelFullUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetChannelFullUrlResult

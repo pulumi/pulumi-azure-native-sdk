@@ -56,6 +56,9 @@ func NewPermissionBinding(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:PermissionBinding"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PermissionBinding"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

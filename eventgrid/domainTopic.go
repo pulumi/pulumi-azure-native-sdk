@@ -15,7 +15,7 @@ import (
 // Domain Topic.
 // Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
 type DomainTopic struct {
 	pulumi.CustomResourceState
 
@@ -78,6 +78,9 @@ func NewDomainTopic(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:DomainTopic"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20240601preview:DomainTopic"),
 		},
 	})
 	opts = append(opts, aliases)

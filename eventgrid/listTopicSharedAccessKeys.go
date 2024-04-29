@@ -14,7 +14,7 @@ import (
 // List the two keys used to publish to a topic.
 // Azure REST API version: 2022-06-15.
 //
-// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview.
+// Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
 func ListTopicSharedAccessKeys(ctx *pulumi.Context, args *ListTopicSharedAccessKeysArgs, opts ...pulumi.InvokeOption) (*ListTopicSharedAccessKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListTopicSharedAccessKeysResult

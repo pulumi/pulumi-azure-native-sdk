@@ -15,7 +15,7 @@ import (
 // Scheduled action definition.
 // Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01.
+// Other available API versions: 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01.
 type ScheduledAction struct {
 	pulumi.CustomResourceState
 
@@ -84,6 +84,9 @@ func NewScheduledAction(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230401preview:ScheduledAction"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230701preview:ScheduledAction"),
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230801:ScheduledAction"),

@@ -62,6 +62,9 @@ func NewConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicelinker/v20221101preview:Connector"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicelinker/v20240401:Connector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

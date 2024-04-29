@@ -66,6 +66,9 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:FeaturestoreEntityVersion"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:FeaturestoreEntityVersion"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:FeaturestoreEntityVersion"),
 		},
 	})

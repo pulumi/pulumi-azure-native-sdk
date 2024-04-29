@@ -77,6 +77,9 @@ func NewRegistry(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:Registry"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:Registry"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:Registry"),
 		},
 	})

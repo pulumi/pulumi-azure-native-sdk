@@ -2207,18 +2207,58 @@ type AmazonRdsForSqlServerLinkedService struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedProperties `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
 	Password interface{} `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForSqlServer'.
 	Type string `pulumi:"type"`
@@ -2243,18 +2283,58 @@ type AmazonRdsForSqlServerLinkedServiceArgs struct {
 	AlwaysEncryptedSettings SqlAlwaysEncryptedPropertiesPtrInput `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent pulumi.Input `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount pulumi.Input `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval pulumi.Input `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout pulumi.Input `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt pulumi.Input `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner pulumi.Input `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate pulumi.Input `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity pulumi.Input `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout pulumi.Input `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize pulumi.Input `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize pulumi.Input `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover pulumi.Input `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets pulumi.Input `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize pulumi.Input `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
 	Password pulumi.Input `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling pulumi.Input `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server pulumi.Input `pulumi:"server"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForSqlServer'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2301,6 +2381,36 @@ func (o AmazonRdsForSqlServerLinkedServiceOutput) Annotations() pulumi.ArrayOutp
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AmazonRdsForSqlServerLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o AmazonRdsForSqlServerLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
@@ -2311,14 +2421,69 @@ func (o AmazonRdsForSqlServerLinkedServiceOutput) ConnectionString() pulumi.AnyO
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AmazonRdsForSqlServerLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForSqlServerLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -2329,6 +2494,21 @@ func (o AmazonRdsForSqlServerLinkedServiceOutput) Parameters() ParameterSpecific
 // The on-premises Windows authentication password.
 func (o AmazonRdsForSqlServerLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
@@ -2348,18 +2528,58 @@ type AmazonRdsForSqlServerLinkedServiceResponse struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedPropertiesResponse `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
 	Password interface{} `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForSqlServer'.
 	Type string `pulumi:"type"`
@@ -2394,6 +2614,36 @@ func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Annotations() pulumi.A
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) *IntegrationRuntimeReferenceResponse {
@@ -2406,14 +2656,69 @@ func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) ConnectionString() pul
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -2426,6 +2731,21 @@ func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Parameters() Parameter
 // The on-premises Windows authentication password.
 func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AmazonRdsForSqlServerLinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerLinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
@@ -24894,31 +25214,77 @@ func (o AzureSearchLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 type AzureSqlDWLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlDW'.
 	Type string `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
 }
 
 // AzureSqlDWLinkedServiceInput is an input type that accepts AzureSqlDWLinkedServiceArgs and AzureSqlDWLinkedServiceOutput values.
@@ -24936,31 +25302,77 @@ type AzureSqlDWLinkedServiceInput interface {
 type AzureSqlDWLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent pulumi.Input `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType pulumi.Input `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount pulumi.Input `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval pulumi.Input `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout pulumi.Input `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential CredentialReferencePtrInput `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt pulumi.Input `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner pulumi.Input `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate pulumi.Input `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity pulumi.Input `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout pulumi.Input `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize pulumi.Input `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize pulumi.Input `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover pulumi.Input `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets pulumi.Input `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize pulumi.Input `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password AzureKeyVaultSecretReferencePtrInput `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling pulumi.Input `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server pulumi.Input `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential pulumi.Input `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
 	ServicePrincipalKey pulumi.Input `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant pulumi.Input `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlDW'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName pulumi.Input `pulumi:"userName"`
 }
 
 func (AzureSqlDWLinkedServiceArgs) ElementType() reflect.Type {
@@ -24995,9 +25407,39 @@ func (o AzureSqlDWLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AzureSqlDWLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 func (o AzureSqlDWLinkedServiceOutput) AzureCloudType() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -25015,14 +25457,69 @@ func (o AzureSqlDWLinkedServiceOutput) Credential() CredentialReferencePtrOutput
 	return o.ApplyT(func(v AzureSqlDWLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureSqlDWLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AzureSqlDWLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -25033,6 +25530,26 @@ func (o AzureSqlDWLinkedServiceOutput) Parameters() ParameterSpecificationMapOut
 // The Azure key vault secret reference of password in connection string.
 func (o AzureSqlDWLinkedServiceOutput) Password() AzureKeyVaultSecretReferencePtrOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) *AzureKeyVaultSecretReference { return v.Password }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o AzureSqlDWLinkedServiceOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
 // The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
@@ -25050,41 +25567,97 @@ func (o AzureSqlDWLinkedServiceOutput) Tenant() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureSqlDW'.
 func (o AzureSqlDWLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
 // Azure SQL Data Warehouse linked service.
 type AzureSqlDWLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Data Warehouse.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlDW'.
 	Type string `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
 }
 
 // Azure SQL Data Warehouse linked service.
@@ -25107,9 +25680,39 @@ func (o AzureSqlDWLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput 
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AzureSqlDWLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 func (o AzureSqlDWLinkedServiceResponseOutput) AzureCloudType() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -25127,14 +25730,69 @@ func (o AzureSqlDWLinkedServiceResponseOutput) Credential() CredentialReferenceR
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureSqlDWLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AzureSqlDWLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceResponseOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceResponseOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceResponseOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDWLinkedServiceResponseOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -25145,6 +25803,26 @@ func (o AzureSqlDWLinkedServiceResponseOutput) Parameters() ParameterSpecificati
 // The Azure key vault secret reference of password in connection string.
 func (o AzureSqlDWLinkedServiceResponseOutput) Password() AzureKeyVaultSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Password }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceResponseOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o AzureSqlDWLinkedServiceResponseOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
 // The ID of the service principal used to authenticate against Azure SQL Data Warehouse. Type: string (or Expression with resultType string).
@@ -25162,10 +25840,20 @@ func (o AzureSqlDWLinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDWLinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureSqlDW'.
 func (o AzureSqlDWLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+func (o AzureSqlDWLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDWLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
 // The Azure SQL Data Warehouse dataset.
@@ -25404,31 +26092,77 @@ type AzureSqlDatabaseLinkedService struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedProperties `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Database. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Database.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlDatabase'.
 	Type string `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
 }
 
 // AzureSqlDatabaseLinkedServiceInput is an input type that accepts AzureSqlDatabaseLinkedServiceArgs and AzureSqlDatabaseLinkedServiceOutput values.
@@ -25448,31 +26182,77 @@ type AzureSqlDatabaseLinkedServiceArgs struct {
 	AlwaysEncryptedSettings SqlAlwaysEncryptedPropertiesPtrInput `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent pulumi.Input `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType pulumi.Input `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount pulumi.Input `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval pulumi.Input `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout pulumi.Input `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential CredentialReferencePtrInput `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt pulumi.Input `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner pulumi.Input `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate pulumi.Input `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity pulumi.Input `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout pulumi.Input `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize pulumi.Input `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize pulumi.Input `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover pulumi.Input `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets pulumi.Input `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize pulumi.Input `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password AzureKeyVaultSecretReferencePtrInput `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling pulumi.Input `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server pulumi.Input `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential pulumi.Input `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Database. Type: string (or Expression with resultType string).
 	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Database.
 	ServicePrincipalKey pulumi.Input `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant pulumi.Input `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlDatabase'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName pulumi.Input `pulumi:"userName"`
 }
 
 func (AzureSqlDatabaseLinkedServiceArgs) ElementType() reflect.Type {
@@ -25512,9 +26292,39 @@ func (o AzureSqlDatabaseLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AzureSqlDatabaseLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 func (o AzureSqlDatabaseLinkedServiceOutput) AzureCloudType() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -25532,14 +26342,69 @@ func (o AzureSqlDatabaseLinkedServiceOutput) Credential() CredentialReferencePtr
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureSqlDatabaseLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AzureSqlDatabaseLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -25550,6 +26415,26 @@ func (o AzureSqlDatabaseLinkedServiceOutput) Parameters() ParameterSpecification
 // The Azure key vault secret reference of password in connection string.
 func (o AzureSqlDatabaseLinkedServiceOutput) Password() AzureKeyVaultSecretReferencePtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) *AzureKeyVaultSecretReference { return v.Password }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o AzureSqlDatabaseLinkedServiceOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
 // The ID of the service principal used to authenticate against Azure SQL Database. Type: string (or Expression with resultType string).
@@ -25567,10 +26452,20 @@ func (o AzureSqlDatabaseLinkedServiceOutput) Tenant() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureSqlDatabase'.
 func (o AzureSqlDatabaseLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
 // Microsoft Azure SQL Database linked service.
@@ -25579,31 +26474,77 @@ type AzureSqlDatabaseLinkedServiceResponse struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedPropertiesResponse `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Database. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Database.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlDatabase'.
 	Type string `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
 }
 
 // Microsoft Azure SQL Database linked service.
@@ -25633,9 +26574,39 @@ func (o AzureSqlDatabaseLinkedServiceResponseOutput) Annotations() pulumi.ArrayO
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 func (o AzureSqlDatabaseLinkedServiceResponseOutput) AzureCloudType() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -25655,14 +26626,69 @@ func (o AzureSqlDatabaseLinkedServiceResponseOutput) Credential() CredentialRefe
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureSqlDatabaseLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AzureSqlDatabaseLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -25675,6 +26701,26 @@ func (o AzureSqlDatabaseLinkedServiceResponseOutput) Parameters() ParameterSpeci
 // The Azure key vault secret reference of password in connection string.
 func (o AzureSqlDatabaseLinkedServiceResponseOutput) Password() AzureKeyVaultSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Password }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
 // The ID of the service principal used to authenticate against Azure SQL Database. Type: string (or Expression with resultType string).
@@ -25692,10 +26738,20 @@ func (o AzureSqlDatabaseLinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureSqlDatabase'.
 func (o AzureSqlDatabaseLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+func (o AzureSqlDatabaseLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlDatabaseLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
 // Azure SQL Managed Instance linked service.
@@ -25704,31 +26760,77 @@ type AzureSqlMILinkedService struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedProperties `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReference `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Managed Instance. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Managed Instance.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlMI'.
 	Type string `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
 }
 
 // AzureSqlMILinkedServiceInput is an input type that accepts AzureSqlMILinkedServiceArgs and AzureSqlMILinkedServiceOutput values.
@@ -25748,31 +26850,77 @@ type AzureSqlMILinkedServiceArgs struct {
 	AlwaysEncryptedSettings SqlAlwaysEncryptedPropertiesPtrInput `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent pulumi.Input `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType pulumi.Input `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount pulumi.Input `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval pulumi.Input `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout pulumi.Input `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential CredentialReferencePtrInput `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt pulumi.Input `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner pulumi.Input `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate pulumi.Input `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity pulumi.Input `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout pulumi.Input `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize pulumi.Input `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize pulumi.Input `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover pulumi.Input `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets pulumi.Input `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize pulumi.Input `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password AzureKeyVaultSecretReferencePtrInput `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling pulumi.Input `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server pulumi.Input `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential pulumi.Input `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Managed Instance. Type: string (or Expression with resultType string).
 	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Managed Instance.
 	ServicePrincipalKey pulumi.Input `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant pulumi.Input `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlMI'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName pulumi.Input `pulumi:"userName"`
 }
 
 func (AzureSqlMILinkedServiceArgs) ElementType() reflect.Type {
@@ -25812,9 +26960,39 @@ func (o AzureSqlMILinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AzureSqlMILinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 func (o AzureSqlMILinkedServiceOutput) AzureCloudType() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -25832,14 +27010,69 @@ func (o AzureSqlMILinkedServiceOutput) Credential() CredentialReferencePtrOutput
 	return o.ApplyT(func(v AzureSqlMILinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureSqlMILinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AzureSqlMILinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -25850,6 +27083,26 @@ func (o AzureSqlMILinkedServiceOutput) Parameters() ParameterSpecificationMapOut
 // The Azure key vault secret reference of password in connection string.
 func (o AzureSqlMILinkedServiceOutput) Password() AzureKeyVaultSecretReferencePtrOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) *AzureKeyVaultSecretReference { return v.Password }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o AzureSqlMILinkedServiceOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
 // The ID of the service principal used to authenticate against Azure SQL Managed Instance. Type: string (or Expression with resultType string).
@@ -25867,10 +27120,20 @@ func (o AzureSqlMILinkedServiceOutput) Tenant() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureSqlMI'.
 func (o AzureSqlMILinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
 // Azure SQL Managed Instance linked service.
@@ -25879,31 +27142,77 @@ type AzureSqlMILinkedServiceResponse struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedPropertiesResponse `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 	AzureCloudType interface{} `pulumi:"azureCloudType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password *AzureKeyVaultSecretReferenceResponse `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+	ServicePrincipalCredential interface{} `pulumi:"servicePrincipalCredential"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
 	// The ID of the service principal used to authenticate against Azure SQL Managed Instance. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The key of the service principal used to authenticate against Azure SQL Managed Instance.
 	ServicePrincipalKey interface{} `pulumi:"servicePrincipalKey"`
 	// The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
 	Tenant interface{} `pulumi:"tenant"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'AzureSqlMI'.
 	Type string `pulumi:"type"`
+	// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
 }
 
 // Azure SQL Managed Instance linked service.
@@ -25933,9 +27242,39 @@ func (o AzureSqlMILinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput 
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o AzureSqlMILinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // Indicates the azure cloud type of the service principle auth. Allowed values are AzurePublic, AzureChina, AzureUsGovernment, AzureGermany. Default value is the data factory regions’ cloud type. Type: string (or Expression with resultType string).
 func (o AzureSqlMILinkedServiceResponseOutput) AzureCloudType() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.AzureCloudType }).(pulumi.AnyOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
 }
 
 // The integration runtime reference.
@@ -25953,14 +27292,69 @@ func (o AzureSqlMILinkedServiceResponseOutput) Credential() CredentialReferenceR
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureSqlMILinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AzureSqlMILinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceResponseOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceResponseOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceResponseOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o AzureSqlMILinkedServiceResponseOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -25971,6 +27365,26 @@ func (o AzureSqlMILinkedServiceResponseOutput) Parameters() ParameterSpecificati
 // The Azure key vault secret reference of password in connection string.
 func (o AzureSqlMILinkedServiceResponseOutput) Password() AzureKeyVaultSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Password }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceResponseOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+func (o AzureSqlMILinkedServiceResponseOutput) ServicePrincipalCredential() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.ServicePrincipalCredential }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
 }
 
 // The ID of the service principal used to authenticate against Azure SQL Managed Instance. Type: string (or Expression with resultType string).
@@ -25988,10 +27402,20 @@ func (o AzureSqlMILinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.Tenant }).(pulumi.AnyOutput)
 }
 
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o AzureSqlMILinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureSqlMI'.
 func (o AzureSqlMILinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name to be used when connecting to server. Type: string (or Expression with resultType string).
+func (o AzureSqlMILinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureSqlMILinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
 // The Azure SQL Managed Instance dataset.

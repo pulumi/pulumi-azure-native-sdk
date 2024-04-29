@@ -15,7 +15,7 @@ import (
 // Define the virtualMachineTemplate.
 // Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01.
+// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
 type VirtualMachineTemplate struct {
 	pulumi.CustomResourceState
 
@@ -100,6 +100,9 @@ func NewVirtualMachineTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:VirtualMachineTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VirtualMachineTemplate"),
 		},
 	})
 	opts = append(opts, aliases)
