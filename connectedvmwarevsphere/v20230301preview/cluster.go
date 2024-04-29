@@ -86,6 +86,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231001:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

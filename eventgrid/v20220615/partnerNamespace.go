@@ -87,6 +87,9 @@ func NewPartnerNamespace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:PartnerNamespace"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20240601preview:PartnerNamespace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // Channel info.
 // Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-10-15-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
 type Channel struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,9 @@ func NewChannel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20240601preview:Channel"),
 		},
 	})
 	opts = append(opts, aliases)

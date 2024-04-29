@@ -95,6 +95,9 @@ func NewBatchEndpoint(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:BatchEndpoint"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:BatchEndpoint"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:BatchEndpoint"),
 		},
 	})

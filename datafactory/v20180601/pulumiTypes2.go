@@ -12816,18 +12816,58 @@ type SqlServerLinkedService struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedProperties `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
 	Password interface{} `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'SqlServer'.
 	Type string `pulumi:"type"`
@@ -12852,18 +12892,58 @@ type SqlServerLinkedServiceArgs struct {
 	AlwaysEncryptedSettings SqlAlwaysEncryptedPropertiesPtrInput `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent pulumi.Input `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout pulumi.Input `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount pulumi.Input `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval pulumi.Input `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout pulumi.Input `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt pulumi.Input `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner pulumi.Input `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate pulumi.Input `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity pulumi.Input `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout pulumi.Input `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize pulumi.Input `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize pulumi.Input `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover pulumi.Input `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets pulumi.Input `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize pulumi.Input `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
 	Password pulumi.Input `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling pulumi.Input `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server pulumi.Input `pulumi:"server"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate pulumi.Input `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'SqlServer'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -12908,6 +12988,36 @@ func (o SqlServerLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o SqlServerLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o SqlServerLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
@@ -12918,14 +13028,69 @@ func (o SqlServerLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o SqlServerLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o SqlServerLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -12936,6 +13101,21 @@ func (o SqlServerLinkedServiceOutput) Parameters() ParameterSpecificationMapOutp
 // The on-premises Windows authentication password.
 func (o SqlServerLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
@@ -12955,18 +13135,58 @@ type SqlServerLinkedServiceResponse struct {
 	AlwaysEncryptedSettings *SqlAlwaysEncryptedPropertiesResponse `pulumi:"alwaysEncryptedSettings"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+	ApplicationIntent interface{} `pulumi:"applicationIntent"`
+	// The type used for authentication. Type: string.
+	AuthenticationType *string `pulumi:"authenticationType"`
+	// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	CommandTimeout interface{} `pulumi:"commandTimeout"`
+	// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+	ConnectRetryCount interface{} `pulumi:"connectRetryCount"`
+	// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+	ConnectRetryInterval interface{} `pulumi:"connectRetryInterval"`
+	// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+	ConnectTimeout interface{} `pulumi:"connectTimeout"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+	Encrypt interface{} `pulumi:"encrypt"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+	FailoverPartner interface{} `pulumi:"failoverPartner"`
+	// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+	HostNameInCertificate interface{} `pulumi:"hostNameInCertificate"`
+	// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	IntegratedSecurity interface{} `pulumi:"integratedSecurity"`
+	// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+	LoadBalanceTimeout interface{} `pulumi:"loadBalanceTimeout"`
+	// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MaxPoolSize interface{} `pulumi:"maxPoolSize"`
+	// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+	MinPoolSize interface{} `pulumi:"minPoolSize"`
+	// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultiSubnetFailover interface{} `pulumi:"multiSubnetFailover"`
+	// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	MultipleActiveResultSets interface{} `pulumi:"multipleActiveResultSets"`
+	// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+	PacketSize interface{} `pulumi:"packetSize"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The on-premises Windows authentication password.
 	Password interface{} `pulumi:"password"`
+	// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	Pooling interface{} `pulumi:"pooling"`
+	// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+	TrustServerCertificate interface{} `pulumi:"trustServerCertificate"`
 	// Type of linked service.
 	// Expected value is 'SqlServer'.
 	Type string `pulumi:"type"`
@@ -13001,6 +13221,36 @@ func (o SqlServerLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The application workload type when connecting to a server, used by recommended version. Possible values are ReadOnly and ReadWrite. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceResponseOutput) ApplicationIntent() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.ApplicationIntent }).(pulumi.AnyOutput)
+}
+
+// The type used for authentication. Type: string.
+func (o SqlServerLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The default wait time (in seconds) before terminating the attempt to execute a command and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) CommandTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.CommandTimeout }).(pulumi.AnyOutput)
+}
+
+// The number of re-connections attempted after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 0 and 255. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) ConnectRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.ConnectRetryCount }).(pulumi.AnyOutput)
+}
+
+// The amount of time (in seconds) between each re-connection attempt after identifying that there was an idle connection failure, used by recommended version. This must be an integer between 1 and 60. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) ConnectRetryInterval() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.ConnectRetryInterval }).(pulumi.AnyOutput)
+}
+
+// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) ConnectTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.ConnectTimeout }).(pulumi.AnyOutput)
+}
+
 // The integration runtime reference.
 func (o SqlServerLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
@@ -13011,14 +13261,69 @@ func (o SqlServerLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutpu
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o SqlServerLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicate whether TLS encryption is required for all data sent between the client and server, used by recommended version. Possible values are true/yes/mandatory, false/no/optional and strict. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceResponseOutput) Encrypt() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.Encrypt }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o SqlServerLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// The name or address of the partner server to connect to if the primary server is down, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceResponseOutput) FailoverPartner() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.FailoverPartner }).(pulumi.AnyOutput)
+}
+
+// The host name to use when validating the server certificate for the connection. When not specified, the server name from the Data Source is used for certificate validation, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceResponseOutput) HostNameInCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.HostNameInCertificate }).(pulumi.AnyOutput)
+}
+
+// Indicate whether User ID and Password are specified in the connection (when false) or whether the current Windows account credentials are used for authentication (when true), used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceResponseOutput) IntegratedSecurity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.IntegratedSecurity }).(pulumi.AnyOutput)
+}
+
+// The minimum time, in seconds, for the connection to live in the connection pool before being destroyed, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) LoadBalanceTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.LoadBalanceTimeout }).(pulumi.AnyOutput)
+}
+
+// The maximum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) MaxPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.MaxPoolSize }).(pulumi.AnyOutput)
+}
+
+// The minimum number of connections allowed in the connection pool for this specific connection string, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) MinPoolSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.MinPoolSize }).(pulumi.AnyOutput)
+}
+
+// If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceResponseOutput) MultiSubnetFailover() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.MultiSubnetFailover }).(pulumi.AnyOutput)
+}
+
+// When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceResponseOutput) MultipleActiveResultSets() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.MultipleActiveResultSets }).(pulumi.AnyOutput)
+}
+
+// The size in bytes of the network packets used to communicate with an instance of server, used by recommended version. Type: integer (or Expression with resultType integer).
+func (o SqlServerLinkedServiceResponseOutput) PacketSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.PacketSize }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -13029,6 +13334,21 @@ func (o SqlServerLinkedServiceResponseOutput) Parameters() ParameterSpecificatio
 // The on-premises Windows authentication password.
 func (o SqlServerLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the connection will be pooled or explicitly opened every time that the connection is requested, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceResponseOutput) Pooling() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.Pooling }).(pulumi.AnyOutput)
+}
+
+// The name or network address of the instance of SQL Server to which to connect, used by recommended version. Type: string (or Expression with resultType string).
+func (o SqlServerLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Indicate whether the channel will be encrypted while bypassing walking the certificate chain to validate trust, used by recommended version. Type: Boolean (or Expression with resultType boolean).
+func (o SqlServerLinkedServiceResponseOutput) TrustServerCertificate() pulumi.AnyOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.TrustServerCertificate }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.

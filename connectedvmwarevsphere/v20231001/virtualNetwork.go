@@ -74,6 +74,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20230301preview:VirtualNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:connectedvmwarevsphere/v20231201:VirtualNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

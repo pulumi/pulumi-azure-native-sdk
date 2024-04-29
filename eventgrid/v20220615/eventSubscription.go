@@ -124,6 +124,9 @@ func NewEventSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20231215preview:EventSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20240601preview:EventSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

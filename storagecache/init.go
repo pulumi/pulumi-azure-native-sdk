@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AmlFilesystem{}
 	case "azure-native:storagecache:Cache":
 		r = &Cache{}
+	case "azure-native:storagecache:ImportJob":
+		r = &ImportJob{}
 	case "azure-native:storagecache:StorageTarget":
 		r = &StorageTarget{}
 	default:

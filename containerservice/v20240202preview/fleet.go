@@ -71,6 +71,9 @@ func NewFleet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20231015:Fleet"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240401:Fleet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -105,6 +105,9 @@ func NewWorkspaceConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20231001:WorkspaceConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:WorkspaceConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:WorkspaceConnection"),
 		},
 	})

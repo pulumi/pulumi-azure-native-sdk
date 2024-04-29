@@ -14,7 +14,7 @@ import (
 // Get properties of a domain topic.
 // Azure REST API version: 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
 func LookupDomainTopic(ctx *pulumi.Context, args *LookupDomainTopicArgs, opts ...pulumi.InvokeOption) (*LookupDomainTopicResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainTopicResult

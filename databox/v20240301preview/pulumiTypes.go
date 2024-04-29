@@ -11285,8 +11285,6 @@ type Sku struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The sku family.
 	Family *string `pulumi:"family"`
-	// The display name of the sku.
-	Model *string `pulumi:"model"`
 	// The sku name.
 	Name string `pulumi:"name"`
 }
@@ -11308,8 +11306,6 @@ type SkuArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The sku family.
 	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The display name of the sku.
-	Model pulumi.StringPtrInput `pulumi:"model"`
 	// The sku name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -11351,11 +11347,6 @@ func (o SkuOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the sku.
-func (o SkuOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Model }).(pulumi.StringPtrOutput)
-}
-
 // The sku name.
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
@@ -11367,8 +11358,8 @@ type SkuResponse struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The sku family.
 	Family *string `pulumi:"family"`
-	// The display name of the sku.
-	Model *string `pulumi:"model"`
+	// The model name.
+	Model string `pulumi:"model"`
 	// The sku name.
 	Name string `pulumi:"name"`
 }
@@ -11398,9 +11389,9 @@ func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the sku.
-func (o SkuResponseOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Model }).(pulumi.StringPtrOutput)
+// The model name.
+func (o SkuResponseOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuResponse) string { return v.Model }).(pulumi.StringOutput)
 }
 
 // The sku name.
