@@ -13,6 +13,8 @@ import (
 
 // Returns the specified Azure Monitor Workspace
 // Azure REST API version: 2023-04-03.
+//
+// Other available API versions: 2023-10-01-preview.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureMonitorWorkspaceResult

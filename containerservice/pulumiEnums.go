@@ -4450,6 +4450,180 @@ func (in *openShiftContainerServiceVMSizePtr) ToOpenShiftContainerServiceVMSizeP
 	return pulumi.ToOutputWithContext(ctx, in).(OpenShiftContainerServiceVMSizePtrOutput)
 }
 
+// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+type Operator string
+
+const (
+	// The value of the key should be in the given list.
+	OperatorIn = Operator("In")
+	// The value of the key should not be in the given list.
+	OperatorNotIn = Operator("NotIn")
+	// The value of the key should exist.
+	OperatorExists = Operator("Exists")
+	// The value of the key should not exist.
+	OperatorDoesNotExist = Operator("DoesNotExist")
+)
+
+func (Operator) ElementType() reflect.Type {
+	return reflect.TypeOf((*Operator)(nil)).Elem()
+}
+
+func (e Operator) ToOperatorOutput() OperatorOutput {
+	return pulumi.ToOutput(e).(OperatorOutput)
+}
+
+func (e Operator) ToOperatorOutputWithContext(ctx context.Context) OperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OperatorOutput)
+}
+
+func (e Operator) ToOperatorPtrOutput() OperatorPtrOutput {
+	return e.ToOperatorPtrOutputWithContext(context.Background())
+}
+
+func (e Operator) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
+	return Operator(e).ToOperatorOutputWithContext(ctx).ToOperatorPtrOutputWithContext(ctx)
+}
+
+func (e Operator) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Operator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Operator) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Operator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OperatorOutput struct{ *pulumi.OutputState }
+
+func (OperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Operator)(nil)).Elem()
+}
+
+func (o OperatorOutput) ToOperatorOutput() OperatorOutput {
+	return o
+}
+
+func (o OperatorOutput) ToOperatorOutputWithContext(ctx context.Context) OperatorOutput {
+	return o
+}
+
+func (o OperatorOutput) ToOperatorPtrOutput() OperatorPtrOutput {
+	return o.ToOperatorPtrOutputWithContext(context.Background())
+}
+
+func (o OperatorOutput) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Operator) *Operator {
+		return &v
+	}).(OperatorPtrOutput)
+}
+
+func (o OperatorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Operator) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Operator) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OperatorPtrOutput struct{ *pulumi.OutputState }
+
+func (OperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Operator)(nil)).Elem()
+}
+
+func (o OperatorPtrOutput) ToOperatorPtrOutput() OperatorPtrOutput {
+	return o
+}
+
+func (o OperatorPtrOutput) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
+	return o
+}
+
+func (o OperatorPtrOutput) Elem() OperatorOutput {
+	return o.ApplyT(func(v *Operator) Operator {
+		if v != nil {
+			return *v
+		}
+		var ret Operator
+		return ret
+	}).(OperatorOutput)
+}
+
+func (o OperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Operator) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OperatorInput is an input type that accepts values of the Operator enum
+// A concrete instance of `OperatorInput` can be one of the following:
+//
+//	OperatorIn
+//	OperatorNotIn
+//	OperatorExists
+//	OperatorDoesNotExist
+type OperatorInput interface {
+	pulumi.Input
+
+	ToOperatorOutput() OperatorOutput
+	ToOperatorOutputWithContext(context.Context) OperatorOutput
+}
+
+var operatorPtrType = reflect.TypeOf((**Operator)(nil)).Elem()
+
+type OperatorPtrInput interface {
+	pulumi.Input
+
+	ToOperatorPtrOutput() OperatorPtrOutput
+	ToOperatorPtrOutputWithContext(context.Context) OperatorPtrOutput
+}
+
+type operatorPtr string
+
+func OperatorPtr(v string) OperatorPtrInput {
+	return (*operatorPtr)(&v)
+}
+
+func (*operatorPtr) ElementType() reflect.Type {
+	return operatorPtrType
+}
+
+func (in *operatorPtr) ToOperatorPtrOutput() OperatorPtrOutput {
+	return pulumi.ToOutput(in).(OperatorPtrOutput)
+}
+
+func (in *operatorPtr) ToOperatorPtrOutputWithContext(ctx context.Context) OperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OperatorPtrOutput)
+}
+
 // This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
 type OutboundType string
 
@@ -6204,6 +6378,8 @@ func init() {
 	pulumi.RegisterOutputType(OpenShiftAgentPoolProfileRolePtrOutput{})
 	pulumi.RegisterOutputType(OpenShiftContainerServiceVMSizeOutput{})
 	pulumi.RegisterOutputType(OpenShiftContainerServiceVMSizePtrOutput{})
+	pulumi.RegisterOutputType(OperatorOutput{})
+	pulumi.RegisterOutputType(OperatorPtrOutput{})
 	pulumi.RegisterOutputType(OutboundTypeOutput{})
 	pulumi.RegisterOutputType(OutboundTypePtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})

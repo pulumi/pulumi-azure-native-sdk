@@ -80,6 +80,9 @@ func NewDeploymentStackAtResourceGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources:DeploymentStackAtResourceGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20240301:DeploymentStackAtResourceGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
