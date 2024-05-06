@@ -92,6 +92,9 @@ func NewRedisEnterprise(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cache/v20240201:RedisEnterprise"),
 		},
+		{
+			Type: pulumi.String("azure-native:cache/v20240301preview:RedisEnterprise"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

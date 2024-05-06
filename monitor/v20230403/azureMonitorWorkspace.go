@@ -59,6 +59,9 @@ func NewAzureMonitorWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:monitor/v20210603preview:AzureMonitorWorkspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20231001preview:AzureMonitorWorkspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

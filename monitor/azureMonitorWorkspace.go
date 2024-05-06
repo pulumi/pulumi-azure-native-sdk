@@ -14,6 +14,8 @@ import (
 
 // An Azure Monitor Workspace definition
 // Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2021-06-03-preview.
+//
+// Other available API versions: 2023-10-01-preview.
 type AzureMonitorWorkspace struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +61,9 @@ func NewAzureMonitorWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:monitor/v20230403:AzureMonitorWorkspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:monitor/v20231001preview:AzureMonitorWorkspace"),
 		},
 	})
 	opts = append(opts, aliases)

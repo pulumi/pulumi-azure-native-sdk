@@ -10,6 +10,177 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// denySettings Mode that defines denied actions.
+type DenySettingsMode string
+
+const (
+	// Authorized users are able to read and modify the resources, but cannot delete.
+	DenySettingsModeDenyDelete = DenySettingsMode("denyDelete")
+	// Authorized users can read from a resource, but cannot modify or delete it.
+	DenySettingsModeDenyWriteAndDelete = DenySettingsMode("denyWriteAndDelete")
+	// No denyAssignments have been applied.
+	DenySettingsModeNone = DenySettingsMode("none")
+)
+
+func (DenySettingsMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenySettingsMode)(nil)).Elem()
+}
+
+func (e DenySettingsMode) ToDenySettingsModeOutput() DenySettingsModeOutput {
+	return pulumi.ToOutput(e).(DenySettingsModeOutput)
+}
+
+func (e DenySettingsMode) ToDenySettingsModeOutputWithContext(ctx context.Context) DenySettingsModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DenySettingsModeOutput)
+}
+
+func (e DenySettingsMode) ToDenySettingsModePtrOutput() DenySettingsModePtrOutput {
+	return e.ToDenySettingsModePtrOutputWithContext(context.Background())
+}
+
+func (e DenySettingsMode) ToDenySettingsModePtrOutputWithContext(ctx context.Context) DenySettingsModePtrOutput {
+	return DenySettingsMode(e).ToDenySettingsModeOutputWithContext(ctx).ToDenySettingsModePtrOutputWithContext(ctx)
+}
+
+func (e DenySettingsMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DenySettingsMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DenySettingsMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DenySettingsMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DenySettingsModeOutput struct{ *pulumi.OutputState }
+
+func (DenySettingsModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenySettingsMode)(nil)).Elem()
+}
+
+func (o DenySettingsModeOutput) ToDenySettingsModeOutput() DenySettingsModeOutput {
+	return o
+}
+
+func (o DenySettingsModeOutput) ToDenySettingsModeOutputWithContext(ctx context.Context) DenySettingsModeOutput {
+	return o
+}
+
+func (o DenySettingsModeOutput) ToDenySettingsModePtrOutput() DenySettingsModePtrOutput {
+	return o.ToDenySettingsModePtrOutputWithContext(context.Background())
+}
+
+func (o DenySettingsModeOutput) ToDenySettingsModePtrOutputWithContext(ctx context.Context) DenySettingsModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenySettingsMode) *DenySettingsMode {
+		return &v
+	}).(DenySettingsModePtrOutput)
+}
+
+func (o DenySettingsModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DenySettingsModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DenySettingsMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DenySettingsModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DenySettingsModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DenySettingsMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DenySettingsModePtrOutput struct{ *pulumi.OutputState }
+
+func (DenySettingsModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenySettingsMode)(nil)).Elem()
+}
+
+func (o DenySettingsModePtrOutput) ToDenySettingsModePtrOutput() DenySettingsModePtrOutput {
+	return o
+}
+
+func (o DenySettingsModePtrOutput) ToDenySettingsModePtrOutputWithContext(ctx context.Context) DenySettingsModePtrOutput {
+	return o
+}
+
+func (o DenySettingsModePtrOutput) Elem() DenySettingsModeOutput {
+	return o.ApplyT(func(v *DenySettingsMode) DenySettingsMode {
+		if v != nil {
+			return *v
+		}
+		var ret DenySettingsMode
+		return ret
+	}).(DenySettingsModeOutput)
+}
+
+func (o DenySettingsModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DenySettingsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DenySettingsMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DenySettingsModeInput is an input type that accepts values of the DenySettingsMode enum
+// A concrete instance of `DenySettingsModeInput` can be one of the following:
+//
+//	DenySettingsModeDenyDelete
+//	DenySettingsModeDenyWriteAndDelete
+//	DenySettingsModeNone
+type DenySettingsModeInput interface {
+	pulumi.Input
+
+	ToDenySettingsModeOutput() DenySettingsModeOutput
+	ToDenySettingsModeOutputWithContext(context.Context) DenySettingsModeOutput
+}
+
+var denySettingsModePtrType = reflect.TypeOf((**DenySettingsMode)(nil)).Elem()
+
+type DenySettingsModePtrInput interface {
+	pulumi.Input
+
+	ToDenySettingsModePtrOutput() DenySettingsModePtrOutput
+	ToDenySettingsModePtrOutputWithContext(context.Context) DenySettingsModePtrOutput
+}
+
+type denySettingsModePtr string
+
+func DenySettingsModePtr(v string) DenySettingsModePtrInput {
+	return (*denySettingsModePtr)(&v)
+}
+
+func (*denySettingsModePtr) ElementType() reflect.Type {
+	return denySettingsModePtrType
+}
+
+func (in *denySettingsModePtr) ToDenySettingsModePtrOutput() DenySettingsModePtrOutput {
+	return pulumi.ToOutput(in).(DenySettingsModePtrOutput)
+}
+
+func (in *denySettingsModePtr) ToDenySettingsModePtrOutputWithContext(ctx context.Context) DenySettingsModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DenySettingsModePtrOutput)
+}
+
 // The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources.
 type DeploymentMode string
 
@@ -174,6 +345,172 @@ func (in *deploymentModePtr) ToDeploymentModePtrOutput() DeploymentModePtrOutput
 
 func (in *deploymentModePtr) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DeploymentModePtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
+type DeploymentStacksDeleteDetachEnum string
+
+const (
+	DeploymentStacksDeleteDetachEnumDelete = DeploymentStacksDeleteDetachEnum("delete")
+	DeploymentStacksDeleteDetachEnumDetach = DeploymentStacksDeleteDetachEnum("detach")
+)
+
+func (DeploymentStacksDeleteDetachEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksDeleteDetachEnum)(nil)).Elem()
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToDeploymentStacksDeleteDetachEnumOutput() DeploymentStacksDeleteDetachEnumOutput {
+	return pulumi.ToOutput(e).(DeploymentStacksDeleteDetachEnumOutput)
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToDeploymentStacksDeleteDetachEnumOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DeploymentStacksDeleteDetachEnumOutput)
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToDeploymentStacksDeleteDetachEnumPtrOutput() DeploymentStacksDeleteDetachEnumPtrOutput {
+	return e.ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(context.Background())
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumPtrOutput {
+	return DeploymentStacksDeleteDetachEnum(e).ToDeploymentStacksDeleteDetachEnumOutputWithContext(ctx).ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx)
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DeploymentStacksDeleteDetachEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DeploymentStacksDeleteDetachEnumOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksDeleteDetachEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksDeleteDetachEnum)(nil)).Elem()
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToDeploymentStacksDeleteDetachEnumOutput() DeploymentStacksDeleteDetachEnumOutput {
+	return o
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToDeploymentStacksDeleteDetachEnumOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumOutput {
+	return o
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToDeploymentStacksDeleteDetachEnumPtrOutput() DeploymentStacksDeleteDetachEnumPtrOutput {
+	return o.ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStacksDeleteDetachEnum) *DeploymentStacksDeleteDetachEnum {
+		return &v
+	}).(DeploymentStacksDeleteDetachEnumPtrOutput)
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeploymentStacksDeleteDetachEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStacksDeleteDetachEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeploymentStacksDeleteDetachEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksDeleteDetachEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksDeleteDetachEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksDeleteDetachEnum)(nil)).Elem()
+}
+
+func (o DeploymentStacksDeleteDetachEnumPtrOutput) ToDeploymentStacksDeleteDetachEnumPtrOutput() DeploymentStacksDeleteDetachEnumPtrOutput {
+	return o
+}
+
+func (o DeploymentStacksDeleteDetachEnumPtrOutput) ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumPtrOutput {
+	return o
+}
+
+func (o DeploymentStacksDeleteDetachEnumPtrOutput) Elem() DeploymentStacksDeleteDetachEnumOutput {
+	return o.ApplyT(func(v *DeploymentStacksDeleteDetachEnum) DeploymentStacksDeleteDetachEnum {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStacksDeleteDetachEnum
+		return ret
+	}).(DeploymentStacksDeleteDetachEnumOutput)
+}
+
+func (o DeploymentStacksDeleteDetachEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStacksDeleteDetachEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DeploymentStacksDeleteDetachEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DeploymentStacksDeleteDetachEnumInput is an input type that accepts values of the DeploymentStacksDeleteDetachEnum enum
+// A concrete instance of `DeploymentStacksDeleteDetachEnumInput` can be one of the following:
+//
+//	DeploymentStacksDeleteDetachEnumDelete
+//	DeploymentStacksDeleteDetachEnumDetach
+type DeploymentStacksDeleteDetachEnumInput interface {
+	pulumi.Input
+
+	ToDeploymentStacksDeleteDetachEnumOutput() DeploymentStacksDeleteDetachEnumOutput
+	ToDeploymentStacksDeleteDetachEnumOutputWithContext(context.Context) DeploymentStacksDeleteDetachEnumOutput
+}
+
+var deploymentStacksDeleteDetachEnumPtrType = reflect.TypeOf((**DeploymentStacksDeleteDetachEnum)(nil)).Elem()
+
+type DeploymentStacksDeleteDetachEnumPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStacksDeleteDetachEnumPtrOutput() DeploymentStacksDeleteDetachEnumPtrOutput
+	ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(context.Context) DeploymentStacksDeleteDetachEnumPtrOutput
+}
+
+type deploymentStacksDeleteDetachEnumPtr string
+
+func DeploymentStacksDeleteDetachEnumPtr(v string) DeploymentStacksDeleteDetachEnumPtrInput {
+	return (*deploymentStacksDeleteDetachEnumPtr)(&v)
+}
+
+func (*deploymentStacksDeleteDetachEnumPtr) ElementType() reflect.Type {
+	return deploymentStacksDeleteDetachEnumPtrType
+}
+
+func (in *deploymentStacksDeleteDetachEnumPtr) ToDeploymentStacksDeleteDetachEnumPtrOutput() DeploymentStacksDeleteDetachEnumPtrOutput {
+	return pulumi.ToOutput(in).(DeploymentStacksDeleteDetachEnumPtrOutput)
+}
+
+func (in *deploymentStacksDeleteDetachEnumPtr) ToDeploymentStacksDeleteDetachEnumPtrOutputWithContext(ctx context.Context) DeploymentStacksDeleteDetachEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DeploymentStacksDeleteDetachEnumPtrOutput)
 }
 
 // The scope to be used for evaluation of parameters, variables and functions in a nested template.
@@ -845,8 +1182,12 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterOutputType(DenySettingsModeOutput{})
+	pulumi.RegisterOutputType(DenySettingsModePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentModeOutput{})
 	pulumi.RegisterOutputType(DeploymentModePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksDeleteDetachEnumOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksDeleteDetachEnumPtrOutput{})
 	pulumi.RegisterOutputType(ExpressionEvaluationOptionsScopeTypeOutput{})
 	pulumi.RegisterOutputType(ExpressionEvaluationOptionsScopeTypePtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationTypeOutput{})
