@@ -77,6 +77,9 @@ func NewDeploymentStackAtSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resources:DeploymentStackAtSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:resources/v20240301:DeploymentStackAtSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

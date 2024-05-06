@@ -17,7 +17,7 @@ var _ = utilities.GetEnvOrDefault
 type DenySettings struct {
 	// DenySettings will be applied to child scopes.
 	ApplyToChildScopes *bool `pulumi:"applyToChildScopes"`
-	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions []string `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
@@ -40,7 +40,7 @@ type DenySettingsInput interface {
 type DenySettingsArgs struct {
 	// DenySettings will be applied to child scopes.
 	ApplyToChildScopes pulumi.BoolPtrInput `pulumi:"applyToChildScopes"`
-	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions pulumi.StringArrayInput `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
@@ -80,7 +80,7 @@ func (o DenySettingsOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DenySettings) *bool { return v.ApplyToChildScopes }).(pulumi.BoolPtrOutput)
 }
 
-// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 func (o DenySettingsOutput) ExcludedActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DenySettings) []string { return v.ExcludedActions }).(pulumi.StringArrayOutput)
 }
@@ -99,7 +99,7 @@ func (o DenySettingsOutput) Mode() pulumi.StringOutput {
 type DenySettingsResponse struct {
 	// DenySettings will be applied to child scopes.
 	ApplyToChildScopes *bool `pulumi:"applyToChildScopes"`
-	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions []string `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
@@ -127,7 +127,7 @@ func (o DenySettingsResponseOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DenySettingsResponse) *bool { return v.ApplyToChildScopes }).(pulumi.BoolPtrOutput)
 }
 
-// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 func (o DenySettingsResponseOutput) ExcludedActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DenySettingsResponse) []string { return v.ExcludedActions }).(pulumi.StringArrayOutput)
 }

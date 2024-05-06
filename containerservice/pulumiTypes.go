@@ -3405,6 +3405,420 @@ func (o KubeletConfigResponsePtrOutput) TopologyManagerPolicy() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+type LabelSelector struct {
+	// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+	MatchExpressions []LabelSelectorRequirement `pulumi:"matchExpressions"`
+	// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+	MatchLabels []string `pulumi:"matchLabels"`
+}
+
+// LabelSelectorInput is an input type that accepts LabelSelectorArgs and LabelSelectorOutput values.
+// You can construct a concrete instance of `LabelSelectorInput` via:
+//
+//	LabelSelectorArgs{...}
+type LabelSelectorInput interface {
+	pulumi.Input
+
+	ToLabelSelectorOutput() LabelSelectorOutput
+	ToLabelSelectorOutputWithContext(context.Context) LabelSelectorOutput
+}
+
+// A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+type LabelSelectorArgs struct {
+	// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+	MatchExpressions LabelSelectorRequirementArrayInput `pulumi:"matchExpressions"`
+	// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+	MatchLabels pulumi.StringArrayInput `pulumi:"matchLabels"`
+}
+
+func (LabelSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelector)(nil)).Elem()
+}
+
+func (i LabelSelectorArgs) ToLabelSelectorOutput() LabelSelectorOutput {
+	return i.ToLabelSelectorOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorArgs) ToLabelSelectorOutputWithContext(ctx context.Context) LabelSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorOutput)
+}
+
+func (i LabelSelectorArgs) ToLabelSelectorPtrOutput() LabelSelectorPtrOutput {
+	return i.ToLabelSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorArgs) ToLabelSelectorPtrOutputWithContext(ctx context.Context) LabelSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorOutput).ToLabelSelectorPtrOutputWithContext(ctx)
+}
+
+// LabelSelectorPtrInput is an input type that accepts LabelSelectorArgs, LabelSelectorPtr and LabelSelectorPtrOutput values.
+// You can construct a concrete instance of `LabelSelectorPtrInput` via:
+//
+//	        LabelSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type LabelSelectorPtrInput interface {
+	pulumi.Input
+
+	ToLabelSelectorPtrOutput() LabelSelectorPtrOutput
+	ToLabelSelectorPtrOutputWithContext(context.Context) LabelSelectorPtrOutput
+}
+
+type labelSelectorPtrType LabelSelectorArgs
+
+func LabelSelectorPtr(v *LabelSelectorArgs) LabelSelectorPtrInput {
+	return (*labelSelectorPtrType)(v)
+}
+
+func (*labelSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LabelSelector)(nil)).Elem()
+}
+
+func (i *labelSelectorPtrType) ToLabelSelectorPtrOutput() LabelSelectorPtrOutput {
+	return i.ToLabelSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *labelSelectorPtrType) ToLabelSelectorPtrOutputWithContext(ctx context.Context) LabelSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorPtrOutput)
+}
+
+// A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+type LabelSelectorOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelector)(nil)).Elem()
+}
+
+func (o LabelSelectorOutput) ToLabelSelectorOutput() LabelSelectorOutput {
+	return o
+}
+
+func (o LabelSelectorOutput) ToLabelSelectorOutputWithContext(ctx context.Context) LabelSelectorOutput {
+	return o
+}
+
+func (o LabelSelectorOutput) ToLabelSelectorPtrOutput() LabelSelectorPtrOutput {
+	return o.ToLabelSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o LabelSelectorOutput) ToLabelSelectorPtrOutputWithContext(ctx context.Context) LabelSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LabelSelector) *LabelSelector {
+		return &v
+	}).(LabelSelectorPtrOutput)
+}
+
+// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+func (o LabelSelectorOutput) MatchExpressions() LabelSelectorRequirementArrayOutput {
+	return o.ApplyT(func(v LabelSelector) []LabelSelectorRequirement { return v.MatchExpressions }).(LabelSelectorRequirementArrayOutput)
+}
+
+// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+func (o LabelSelectorOutput) MatchLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LabelSelector) []string { return v.MatchLabels }).(pulumi.StringArrayOutput)
+}
+
+type LabelSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LabelSelector)(nil)).Elem()
+}
+
+func (o LabelSelectorPtrOutput) ToLabelSelectorPtrOutput() LabelSelectorPtrOutput {
+	return o
+}
+
+func (o LabelSelectorPtrOutput) ToLabelSelectorPtrOutputWithContext(ctx context.Context) LabelSelectorPtrOutput {
+	return o
+}
+
+func (o LabelSelectorPtrOutput) Elem() LabelSelectorOutput {
+	return o.ApplyT(func(v *LabelSelector) LabelSelector {
+		if v != nil {
+			return *v
+		}
+		var ret LabelSelector
+		return ret
+	}).(LabelSelectorOutput)
+}
+
+// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+func (o LabelSelectorPtrOutput) MatchExpressions() LabelSelectorRequirementArrayOutput {
+	return o.ApplyT(func(v *LabelSelector) []LabelSelectorRequirement {
+		if v == nil {
+			return nil
+		}
+		return v.MatchExpressions
+	}).(LabelSelectorRequirementArrayOutput)
+}
+
+// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+func (o LabelSelectorPtrOutput) MatchLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LabelSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchLabels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+type LabelSelectorRequirement struct {
+	// key is the label key that the selector applies to.
+	Key *string `pulumi:"key"`
+	// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+	Operator *string `pulumi:"operator"`
+	// values is an array of string values, the values array must be non-empty.
+	Values []string `pulumi:"values"`
+}
+
+// LabelSelectorRequirementInput is an input type that accepts LabelSelectorRequirementArgs and LabelSelectorRequirementOutput values.
+// You can construct a concrete instance of `LabelSelectorRequirementInput` via:
+//
+//	LabelSelectorRequirementArgs{...}
+type LabelSelectorRequirementInput interface {
+	pulumi.Input
+
+	ToLabelSelectorRequirementOutput() LabelSelectorRequirementOutput
+	ToLabelSelectorRequirementOutputWithContext(context.Context) LabelSelectorRequirementOutput
+}
+
+// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+type LabelSelectorRequirementArgs struct {
+	// key is the label key that the selector applies to.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// values is an array of string values, the values array must be non-empty.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (LabelSelectorRequirementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelectorRequirement)(nil)).Elem()
+}
+
+func (i LabelSelectorRequirementArgs) ToLabelSelectorRequirementOutput() LabelSelectorRequirementOutput {
+	return i.ToLabelSelectorRequirementOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorRequirementArgs) ToLabelSelectorRequirementOutputWithContext(ctx context.Context) LabelSelectorRequirementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorRequirementOutput)
+}
+
+// LabelSelectorRequirementArrayInput is an input type that accepts LabelSelectorRequirementArray and LabelSelectorRequirementArrayOutput values.
+// You can construct a concrete instance of `LabelSelectorRequirementArrayInput` via:
+//
+//	LabelSelectorRequirementArray{ LabelSelectorRequirementArgs{...} }
+type LabelSelectorRequirementArrayInput interface {
+	pulumi.Input
+
+	ToLabelSelectorRequirementArrayOutput() LabelSelectorRequirementArrayOutput
+	ToLabelSelectorRequirementArrayOutputWithContext(context.Context) LabelSelectorRequirementArrayOutput
+}
+
+type LabelSelectorRequirementArray []LabelSelectorRequirementInput
+
+func (LabelSelectorRequirementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorRequirement)(nil)).Elem()
+}
+
+func (i LabelSelectorRequirementArray) ToLabelSelectorRequirementArrayOutput() LabelSelectorRequirementArrayOutput {
+	return i.ToLabelSelectorRequirementArrayOutputWithContext(context.Background())
+}
+
+func (i LabelSelectorRequirementArray) ToLabelSelectorRequirementArrayOutputWithContext(ctx context.Context) LabelSelectorRequirementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LabelSelectorRequirementArrayOutput)
+}
+
+// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+type LabelSelectorRequirementOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorRequirementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelectorRequirement)(nil)).Elem()
+}
+
+func (o LabelSelectorRequirementOutput) ToLabelSelectorRequirementOutput() LabelSelectorRequirementOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementOutput) ToLabelSelectorRequirementOutputWithContext(ctx context.Context) LabelSelectorRequirementOutput {
+	return o
+}
+
+// key is the label key that the selector applies to.
+func (o LabelSelectorRequirementOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LabelSelectorRequirement) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+func (o LabelSelectorRequirementOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LabelSelectorRequirement) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// values is an array of string values, the values array must be non-empty.
+func (o LabelSelectorRequirementOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LabelSelectorRequirement) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type LabelSelectorRequirementArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorRequirementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorRequirement)(nil)).Elem()
+}
+
+func (o LabelSelectorRequirementArrayOutput) ToLabelSelectorRequirementArrayOutput() LabelSelectorRequirementArrayOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementArrayOutput) ToLabelSelectorRequirementArrayOutputWithContext(ctx context.Context) LabelSelectorRequirementArrayOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementArrayOutput) Index(i pulumi.IntInput) LabelSelectorRequirementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelSelectorRequirement {
+		return vs[0].([]LabelSelectorRequirement)[vs[1].(int)]
+	}).(LabelSelectorRequirementOutput)
+}
+
+// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+type LabelSelectorRequirementResponse struct {
+	// key is the label key that the selector applies to.
+	Key *string `pulumi:"key"`
+	// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+	Operator *string `pulumi:"operator"`
+	// values is an array of string values, the values array must be non-empty.
+	Values []string `pulumi:"values"`
+}
+
+// A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+type LabelSelectorRequirementResponseOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorRequirementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelectorRequirementResponse)(nil)).Elem()
+}
+
+func (o LabelSelectorRequirementResponseOutput) ToLabelSelectorRequirementResponseOutput() LabelSelectorRequirementResponseOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementResponseOutput) ToLabelSelectorRequirementResponseOutputWithContext(ctx context.Context) LabelSelectorRequirementResponseOutput {
+	return o
+}
+
+// key is the label key that the selector applies to.
+func (o LabelSelectorRequirementResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LabelSelectorRequirementResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+func (o LabelSelectorRequirementResponseOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LabelSelectorRequirementResponse) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// values is an array of string values, the values array must be non-empty.
+func (o LabelSelectorRequirementResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LabelSelectorRequirementResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type LabelSelectorRequirementResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorRequirementResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LabelSelectorRequirementResponse)(nil)).Elem()
+}
+
+func (o LabelSelectorRequirementResponseArrayOutput) ToLabelSelectorRequirementResponseArrayOutput() LabelSelectorRequirementResponseArrayOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementResponseArrayOutput) ToLabelSelectorRequirementResponseArrayOutputWithContext(ctx context.Context) LabelSelectorRequirementResponseArrayOutput {
+	return o
+}
+
+func (o LabelSelectorRequirementResponseArrayOutput) Index(i pulumi.IntInput) LabelSelectorRequirementResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LabelSelectorRequirementResponse {
+		return vs[0].([]LabelSelectorRequirementResponse)[vs[1].(int)]
+	}).(LabelSelectorRequirementResponseOutput)
+}
+
+// A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+type LabelSelectorResponse struct {
+	// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+	MatchExpressions []LabelSelectorRequirementResponse `pulumi:"matchExpressions"`
+	// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+	MatchLabels []string `pulumi:"matchLabels"`
+}
+
+// A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+type LabelSelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelSelectorResponse)(nil)).Elem()
+}
+
+func (o LabelSelectorResponseOutput) ToLabelSelectorResponseOutput() LabelSelectorResponseOutput {
+	return o
+}
+
+func (o LabelSelectorResponseOutput) ToLabelSelectorResponseOutputWithContext(ctx context.Context) LabelSelectorResponseOutput {
+	return o
+}
+
+// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+func (o LabelSelectorResponseOutput) MatchExpressions() LabelSelectorRequirementResponseArrayOutput {
+	return o.ApplyT(func(v LabelSelectorResponse) []LabelSelectorRequirementResponse { return v.MatchExpressions }).(LabelSelectorRequirementResponseArrayOutput)
+}
+
+// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+func (o LabelSelectorResponseOutput) MatchLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LabelSelectorResponse) []string { return v.MatchLabels }).(pulumi.StringArrayOutput)
+}
+
+type LabelSelectorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LabelSelectorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LabelSelectorResponse)(nil)).Elem()
+}
+
+func (o LabelSelectorResponsePtrOutput) ToLabelSelectorResponsePtrOutput() LabelSelectorResponsePtrOutput {
+	return o
+}
+
+func (o LabelSelectorResponsePtrOutput) ToLabelSelectorResponsePtrOutputWithContext(ctx context.Context) LabelSelectorResponsePtrOutput {
+	return o
+}
+
+func (o LabelSelectorResponsePtrOutput) Elem() LabelSelectorResponseOutput {
+	return o.ApplyT(func(v *LabelSelectorResponse) LabelSelectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LabelSelectorResponse
+		return ret
+	}).(LabelSelectorResponseOutput)
+}
+
+// matchExpressions is a list of label selector requirements. The requirements are ANDed.
+func (o LabelSelectorResponsePtrOutput) MatchExpressions() LabelSelectorRequirementResponseArrayOutput {
+	return o.ApplyT(func(v *LabelSelectorResponse) []LabelSelectorRequirementResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MatchExpressions
+	}).(LabelSelectorRequirementResponseArrayOutput)
+}
+
+// matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+func (o LabelSelectorResponsePtrOutput) MatchLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LabelSelectorResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchLabels
+	}).(pulumi.StringArrayOutput)
+}
+
 // See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
 type LinuxOSConfig struct {
 	// The size in MB of a swap file that will be created on each node.
@@ -20761,6 +21175,14 @@ func init() {
 	pulumi.RegisterOutputType(KubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(KubeletConfigResponseOutput{})
 	pulumi.RegisterOutputType(KubeletConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(LabelSelectorOutput{})
+	pulumi.RegisterOutputType(LabelSelectorPtrOutput{})
+	pulumi.RegisterOutputType(LabelSelectorRequirementOutput{})
+	pulumi.RegisterOutputType(LabelSelectorRequirementArrayOutput{})
+	pulumi.RegisterOutputType(LabelSelectorRequirementResponseOutput{})
+	pulumi.RegisterOutputType(LabelSelectorRequirementResponseArrayOutput{})
+	pulumi.RegisterOutputType(LabelSelectorResponseOutput{})
+	pulumi.RegisterOutputType(LabelSelectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinuxOSConfigOutput{})
 	pulumi.RegisterOutputType(LinuxOSConfigPtrOutput{})
 	pulumi.RegisterOutputType(LinuxOSConfigResponseOutput{})
