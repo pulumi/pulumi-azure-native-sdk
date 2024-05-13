@@ -24,8 +24,6 @@ type FlowLog struct {
 	FlowAnalyticsConfiguration TrafficAnalyticsPropertiesResponsePtrOutput `pulumi:"flowAnalyticsConfiguration"`
 	// Parameters that define the flow log format.
 	Format FlowLogFormatParametersResponsePtrOutput `pulumi:"format"`
-	// FlowLog resource Managed Identity
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
@@ -189,8 +187,6 @@ type flowLogArgs struct {
 	Format *FlowLogFormatParameters `pulumi:"format"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
-	// FlowLog resource Managed Identity
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// The name of the network watcher.
@@ -219,8 +215,6 @@ type FlowLogArgs struct {
 	Format FlowLogFormatParametersPtrInput
 	// Resource ID.
 	Id pulumi.StringPtrInput
-	// FlowLog resource Managed Identity
-	Identity ManagedServiceIdentityPtrInput
 	// Resource location.
 	Location pulumi.StringPtrInput
 	// The name of the network watcher.
@@ -292,11 +286,6 @@ func (o FlowLogOutput) FlowAnalyticsConfiguration() TrafficAnalyticsPropertiesRe
 // Parameters that define the flow log format.
 func (o FlowLogOutput) Format() FlowLogFormatParametersResponsePtrOutput {
 	return o.ApplyT(func(v *FlowLog) FlowLogFormatParametersResponsePtrOutput { return v.Format }).(FlowLogFormatParametersResponsePtrOutput)
-}
-
-// FlowLog resource Managed Identity
-func (o FlowLogOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *FlowLog) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Resource location.

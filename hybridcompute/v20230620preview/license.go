@@ -53,6 +53,9 @@ func NewLicense(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:License"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20240331preview:License"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

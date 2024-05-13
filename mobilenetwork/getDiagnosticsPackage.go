@@ -14,7 +14,7 @@ import (
 // Gets information about the specified diagnostics package.
 // Azure REST API version: 2023-06-01.
 //
-// Other available API versions: 2023-09-01, 2024-02-01.
+// Other available API versions: 2023-09-01, 2024-02-01, 2024-04-01.
 func LookupDiagnosticsPackage(ctx *pulumi.Context, args *LookupDiagnosticsPackageArgs, opts ...pulumi.InvokeOption) (*LookupDiagnosticsPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiagnosticsPackageResult

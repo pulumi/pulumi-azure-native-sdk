@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StorageAccount{}
 	case "azure-native:storage:StorageAccountStaticWebsite":
 		r = &StorageAccountStaticWebsite{}
+	case "azure-native:storage:StorageTaskAssignment":
+		r = &StorageTaskAssignment{}
 	case "azure-native:storage:Table":
 		r = &Table{}
 	case "azure-native:storage:TableServiceProperties":

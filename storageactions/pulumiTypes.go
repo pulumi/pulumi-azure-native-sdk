@@ -215,7 +215,7 @@ func (o ElseConditionResponsePtrOutput) Operations() StorageTaskOperationRespons
 
 // The if block of storage task operation
 type IfCondition struct {
-	// The condition predicate which is composed of object properties, eg: blob and container properties.
+	// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
 	Condition string `pulumi:"condition"`
 	// List of operations to execute when the condition predicate satisfies.
 	Operations []StorageTaskOperation `pulumi:"operations"`
@@ -234,7 +234,7 @@ type IfConditionInput interface {
 
 // The if block of storage task operation
 type IfConditionArgs struct {
-	// The condition predicate which is composed of object properties, eg: blob and container properties.
+	// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
 	Condition pulumi.StringInput `pulumi:"condition"`
 	// List of operations to execute when the condition predicate satisfies.
 	Operations StorageTaskOperationArrayInput `pulumi:"operations"`
@@ -267,7 +267,7 @@ func (o IfConditionOutput) ToIfConditionOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The condition predicate which is composed of object properties, eg: blob and container properties.
+// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
 func (o IfConditionOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v IfCondition) string { return v.Condition }).(pulumi.StringOutput)
 }
@@ -279,7 +279,7 @@ func (o IfConditionOutput) Operations() StorageTaskOperationArrayOutput {
 
 // The if block of storage task operation
 type IfConditionResponse struct {
-	// The condition predicate which is composed of object properties, eg: blob and container properties.
+	// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
 	Condition string `pulumi:"condition"`
 	// List of operations to execute when the condition predicate satisfies.
 	Operations []StorageTaskOperationResponse `pulumi:"operations"`
@@ -300,7 +300,7 @@ func (o IfConditionResponseOutput) ToIfConditionResponseOutputWithContext(ctx co
 	return o
 }
 
-// The condition predicate which is composed of object properties, eg: blob and container properties.
+// Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
 func (o IfConditionResponseOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v IfConditionResponse) string { return v.Condition }).(pulumi.StringOutput)
 }
@@ -349,47 +349,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
-}
-
-// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
-//
-//	        ManagedServiceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedServiceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
-	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
-}
-
-type managedServiceIdentityPtrType ManagedServiceIdentityArgs
-
-func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
-	return (*managedServiceIdentityPtrType)(v)
-}
-
-func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
-}
-
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -405,16 +364,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(
 	return o
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
-		return &v
-	}).(ManagedServiceIdentityPtrOutput)
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -423,50 +372,6 @@ func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
 func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentity
-		return ret
-	}).(ManagedServiceIdentityOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -514,70 +419,6 @@ func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
 func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentityResponse
-		return ret
-	}).(ManagedServiceIdentityResponseOutput)
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
 		return v.UserAssignedIdentities
 	}).(UserAssignedIdentityResponseMapOutput)
 }
@@ -995,9 +836,7 @@ func init() {
 	pulumi.RegisterOutputType(IfConditionOutput{})
 	pulumi.RegisterOutputType(IfConditionResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageTaskActionOutput{})
 	pulumi.RegisterOutputType(StorageTaskActionResponseOutput{})
 	pulumi.RegisterOutputType(StorageTaskOperationOutput{})
