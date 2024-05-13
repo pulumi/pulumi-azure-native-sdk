@@ -92,6 +92,12 @@ func NewVNetPeering(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databricks/v20230915preview:vNetPeering"),
 		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20240501:VNetPeering"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20240501:vNetPeering"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

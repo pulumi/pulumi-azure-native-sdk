@@ -78,6 +78,9 @@ func NewMobileNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240201:MobileNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240401:MobileNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

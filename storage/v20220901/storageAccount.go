@@ -208,6 +208,9 @@ func NewStorageAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:StorageAccount"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230501:StorageAccount"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

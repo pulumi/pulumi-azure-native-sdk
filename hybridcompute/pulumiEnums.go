@@ -176,6 +176,170 @@ func (in *assessmentModeTypesPtr) ToAssessmentModeTypesPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(AssessmentModeTypesPtrOutput)
 }
 
+// The type of the Gateway resource.
+type GatewayType string
+
+const (
+	GatewayTypePublic = GatewayType("Public")
+)
+
+func (GatewayType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayType)(nil)).Elem()
+}
+
+func (e GatewayType) ToGatewayTypeOutput() GatewayTypeOutput {
+	return pulumi.ToOutput(e).(GatewayTypeOutput)
+}
+
+func (e GatewayType) ToGatewayTypeOutputWithContext(ctx context.Context) GatewayTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayTypeOutput)
+}
+
+func (e GatewayType) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return e.ToGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (e GatewayType) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return GatewayType(e).ToGatewayTypeOutputWithContext(ctx).ToGatewayTypePtrOutputWithContext(ctx)
+}
+
+func (e GatewayType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayTypeOutput struct{ *pulumi.OutputState }
+
+func (GatewayTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayType)(nil)).Elem()
+}
+
+func (o GatewayTypeOutput) ToGatewayTypeOutput() GatewayTypeOutput {
+	return o
+}
+
+func (o GatewayTypeOutput) ToGatewayTypeOutputWithContext(ctx context.Context) GatewayTypeOutput {
+	return o
+}
+
+func (o GatewayTypeOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return o.ToGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTypeOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayType) *GatewayType {
+		return &v
+	}).(GatewayTypePtrOutput)
+}
+
+func (o GatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayType)(nil)).Elem()
+}
+
+func (o GatewayTypePtrOutput) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return o
+}
+
+func (o GatewayTypePtrOutput) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return o
+}
+
+func (o GatewayTypePtrOutput) Elem() GatewayTypeOutput {
+	return o.ApplyT(func(v *GatewayType) GatewayType {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayType
+		return ret
+	}).(GatewayTypeOutput)
+}
+
+func (o GatewayTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayTypeInput is an input type that accepts values of the GatewayType enum
+// A concrete instance of `GatewayTypeInput` can be one of the following:
+//
+//	GatewayTypePublic
+type GatewayTypeInput interface {
+	pulumi.Input
+
+	ToGatewayTypeOutput() GatewayTypeOutput
+	ToGatewayTypeOutputWithContext(context.Context) GatewayTypeOutput
+}
+
+var gatewayTypePtrType = reflect.TypeOf((**GatewayType)(nil)).Elem()
+
+type GatewayTypePtrInput interface {
+	pulumi.Input
+
+	ToGatewayTypePtrOutput() GatewayTypePtrOutput
+	ToGatewayTypePtrOutputWithContext(context.Context) GatewayTypePtrOutput
+}
+
+type gatewayTypePtr string
+
+func GatewayTypePtr(v string) GatewayTypePtrInput {
+	return (*gatewayTypePtr)(&v)
+}
+
+func (*gatewayTypePtr) ElementType() reflect.Type {
+	return gatewayTypePtrType
+}
+
+func (in *gatewayTypePtr) ToGatewayTypePtrOutput() GatewayTypePtrOutput {
+	return pulumi.ToOutput(in).(GatewayTypePtrOutput)
+}
+
+func (in *gatewayTypePtr) ToGatewayTypePtrOutputWithContext(ctx context.Context) GatewayTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayTypePtrOutput)
+}
+
 // Describes the license core type (pCore or vCore).
 type LicenseCoreType string
 
@@ -1677,6 +1841,8 @@ func (in *statusLevelTypesPtr) ToStatusLevelTypesPtrOutputWithContext(ctx contex
 func init() {
 	pulumi.RegisterOutputType(AssessmentModeTypesOutput{})
 	pulumi.RegisterOutputType(AssessmentModeTypesPtrOutput{})
+	pulumi.RegisterOutputType(GatewayTypeOutput{})
+	pulumi.RegisterOutputType(GatewayTypePtrOutput{})
 	pulumi.RegisterOutputType(LicenseCoreTypeOutput{})
 	pulumi.RegisterOutputType(LicenseCoreTypePtrOutput{})
 	pulumi.RegisterOutputType(LicenseEditionOutput{})

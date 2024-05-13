@@ -81,6 +81,9 @@ func NewBlobInventoryPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:BlobInventoryPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230501:BlobInventoryPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
