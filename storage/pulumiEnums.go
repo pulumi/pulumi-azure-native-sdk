@@ -3528,6 +3528,170 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
 }
 
+// Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+type IntervalUnit string
+
+const (
+	IntervalUnitDays = IntervalUnit("Days")
+)
+
+func (IntervalUnit) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntervalUnit)(nil)).Elem()
+}
+
+func (e IntervalUnit) ToIntervalUnitOutput() IntervalUnitOutput {
+	return pulumi.ToOutput(e).(IntervalUnitOutput)
+}
+
+func (e IntervalUnit) ToIntervalUnitOutputWithContext(ctx context.Context) IntervalUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IntervalUnitOutput)
+}
+
+func (e IntervalUnit) ToIntervalUnitPtrOutput() IntervalUnitPtrOutput {
+	return e.ToIntervalUnitPtrOutputWithContext(context.Background())
+}
+
+func (e IntervalUnit) ToIntervalUnitPtrOutputWithContext(ctx context.Context) IntervalUnitPtrOutput {
+	return IntervalUnit(e).ToIntervalUnitOutputWithContext(ctx).ToIntervalUnitPtrOutputWithContext(ctx)
+}
+
+func (e IntervalUnit) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IntervalUnit) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IntervalUnit) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IntervalUnit) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IntervalUnitOutput struct{ *pulumi.OutputState }
+
+func (IntervalUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntervalUnit)(nil)).Elem()
+}
+
+func (o IntervalUnitOutput) ToIntervalUnitOutput() IntervalUnitOutput {
+	return o
+}
+
+func (o IntervalUnitOutput) ToIntervalUnitOutputWithContext(ctx context.Context) IntervalUnitOutput {
+	return o
+}
+
+func (o IntervalUnitOutput) ToIntervalUnitPtrOutput() IntervalUnitPtrOutput {
+	return o.ToIntervalUnitPtrOutputWithContext(context.Background())
+}
+
+func (o IntervalUnitOutput) ToIntervalUnitPtrOutputWithContext(ctx context.Context) IntervalUnitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntervalUnit) *IntervalUnit {
+		return &v
+	}).(IntervalUnitPtrOutput)
+}
+
+func (o IntervalUnitOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IntervalUnitOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IntervalUnit) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IntervalUnitOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IntervalUnitOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IntervalUnit) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IntervalUnitPtrOutput struct{ *pulumi.OutputState }
+
+func (IntervalUnitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntervalUnit)(nil)).Elem()
+}
+
+func (o IntervalUnitPtrOutput) ToIntervalUnitPtrOutput() IntervalUnitPtrOutput {
+	return o
+}
+
+func (o IntervalUnitPtrOutput) ToIntervalUnitPtrOutputWithContext(ctx context.Context) IntervalUnitPtrOutput {
+	return o
+}
+
+func (o IntervalUnitPtrOutput) Elem() IntervalUnitOutput {
+	return o.ApplyT(func(v *IntervalUnit) IntervalUnit {
+		if v != nil {
+			return *v
+		}
+		var ret IntervalUnit
+		return ret
+	}).(IntervalUnitOutput)
+}
+
+func (o IntervalUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IntervalUnitPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IntervalUnit) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IntervalUnitInput is an input type that accepts values of the IntervalUnit enum
+// A concrete instance of `IntervalUnitInput` can be one of the following:
+//
+//	IntervalUnitDays
+type IntervalUnitInput interface {
+	pulumi.Input
+
+	ToIntervalUnitOutput() IntervalUnitOutput
+	ToIntervalUnitOutputWithContext(context.Context) IntervalUnitOutput
+}
+
+var intervalUnitPtrType = reflect.TypeOf((**IntervalUnit)(nil)).Elem()
+
+type IntervalUnitPtrInput interface {
+	pulumi.Input
+
+	ToIntervalUnitPtrOutput() IntervalUnitPtrOutput
+	ToIntervalUnitPtrOutputWithContext(context.Context) IntervalUnitPtrOutput
+}
+
+type intervalUnitPtr string
+
+func IntervalUnitPtr(v string) IntervalUnitPtrInput {
+	return (*intervalUnitPtr)(&v)
+}
+
+func (*intervalUnitPtr) ElementType() reflect.Type {
+	return intervalUnitPtrType
+}
+
+func (in *intervalUnitPtr) ToIntervalUnitPtrOutput() IntervalUnitPtrOutput {
+	return pulumi.ToOutput(in).(IntervalUnitPtrOutput)
+}
+
+func (in *intervalUnitPtr) ToIntervalUnitPtrOutputWithContext(ctx context.Context) IntervalUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IntervalUnitPtrOutput)
+}
+
 // The valid value is Inventory
 type InventoryRuleType string
 
@@ -7232,6 +7396,172 @@ func (in *statePtr) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOut
 	return pulumi.ToOutputWithContext(ctx, in).(StatePtrOutput)
 }
 
+// The trigger type of the storage task assignment execution
+type TriggerType string
+
+const (
+	TriggerTypeRunOnce    = TriggerType("RunOnce")
+	TriggerTypeOnSchedule = TriggerType("OnSchedule")
+)
+
+func (TriggerType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerType)(nil)).Elem()
+}
+
+func (e TriggerType) ToTriggerTypeOutput() TriggerTypeOutput {
+	return pulumi.ToOutput(e).(TriggerTypeOutput)
+}
+
+func (e TriggerType) ToTriggerTypeOutputWithContext(ctx context.Context) TriggerTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TriggerTypeOutput)
+}
+
+func (e TriggerType) ToTriggerTypePtrOutput() TriggerTypePtrOutput {
+	return e.ToTriggerTypePtrOutputWithContext(context.Background())
+}
+
+func (e TriggerType) ToTriggerTypePtrOutputWithContext(ctx context.Context) TriggerTypePtrOutput {
+	return TriggerType(e).ToTriggerTypeOutputWithContext(ctx).ToTriggerTypePtrOutputWithContext(ctx)
+}
+
+func (e TriggerType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TriggerType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TriggerType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TriggerType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TriggerTypeOutput struct{ *pulumi.OutputState }
+
+func (TriggerTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerType)(nil)).Elem()
+}
+
+func (o TriggerTypeOutput) ToTriggerTypeOutput() TriggerTypeOutput {
+	return o
+}
+
+func (o TriggerTypeOutput) ToTriggerTypeOutputWithContext(ctx context.Context) TriggerTypeOutput {
+	return o
+}
+
+func (o TriggerTypeOutput) ToTriggerTypePtrOutput() TriggerTypePtrOutput {
+	return o.ToTriggerTypePtrOutputWithContext(context.Background())
+}
+
+func (o TriggerTypeOutput) ToTriggerTypePtrOutputWithContext(ctx context.Context) TriggerTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerType) *TriggerType {
+		return &v
+	}).(TriggerTypePtrOutput)
+}
+
+func (o TriggerTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TriggerTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TriggerTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TriggerType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerType)(nil)).Elem()
+}
+
+func (o TriggerTypePtrOutput) ToTriggerTypePtrOutput() TriggerTypePtrOutput {
+	return o
+}
+
+func (o TriggerTypePtrOutput) ToTriggerTypePtrOutputWithContext(ctx context.Context) TriggerTypePtrOutput {
+	return o
+}
+
+func (o TriggerTypePtrOutput) Elem() TriggerTypeOutput {
+	return o.ApplyT(func(v *TriggerType) TriggerType {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerType
+		return ret
+	}).(TriggerTypeOutput)
+}
+
+func (o TriggerTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TriggerType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TriggerTypeInput is an input type that accepts values of the TriggerType enum
+// A concrete instance of `TriggerTypeInput` can be one of the following:
+//
+//	TriggerTypeRunOnce
+//	TriggerTypeOnSchedule
+type TriggerTypeInput interface {
+	pulumi.Input
+
+	ToTriggerTypeOutput() TriggerTypeOutput
+	ToTriggerTypeOutputWithContext(context.Context) TriggerTypeOutput
+}
+
+var triggerTypePtrType = reflect.TypeOf((**TriggerType)(nil)).Elem()
+
+type TriggerTypePtrInput interface {
+	pulumi.Input
+
+	ToTriggerTypePtrOutput() TriggerTypePtrOutput
+	ToTriggerTypePtrOutputWithContext(context.Context) TriggerTypePtrOutput
+}
+
+type triggerTypePtr string
+
+func TriggerTypePtr(v string) TriggerTypePtrInput {
+	return (*triggerTypePtr)(&v)
+}
+
+func (*triggerTypePtr) ElementType() reflect.Type {
+	return triggerTypePtrType
+}
+
+func (in *triggerTypePtr) ToTriggerTypePtrOutput() TriggerTypePtrOutput {
+	return pulumi.ToOutput(in).(TriggerTypePtrOutput)
+}
+
+func (in *triggerTypePtr) ToTriggerTypePtrOutputWithContext(ctx context.Context) TriggerTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TriggerTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessTierOutput{})
 	pulumi.RegisterOutputType(AccessTierPtrOutput{})
@@ -7275,6 +7605,8 @@ func init() {
 	pulumi.RegisterOutputType(HttpProtocolPtrOutput{})
 	pulumi.RegisterOutputType(IdentityTypeOutput{})
 	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(IntervalUnitOutput{})
+	pulumi.RegisterOutputType(IntervalUnitPtrOutput{})
 	pulumi.RegisterOutputType(InventoryRuleTypeOutput{})
 	pulumi.RegisterOutputType(InventoryRuleTypePtrOutput{})
 	pulumi.RegisterOutputType(KeySourceOutput{})
@@ -7319,4 +7651,6 @@ func init() {
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
 	pulumi.RegisterOutputType(StateOutput{})
 	pulumi.RegisterOutputType(StatePtrOutput{})
+	pulumi.RegisterOutputType(TriggerTypeOutput{})
+	pulumi.RegisterOutputType(TriggerTypePtrOutput{})
 }

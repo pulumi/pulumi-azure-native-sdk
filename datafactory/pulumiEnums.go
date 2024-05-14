@@ -3940,6 +3940,7 @@ const (
 	ExpressionV2TypeField    = ExpressionV2Type("Field")
 	ExpressionV2TypeUnary    = ExpressionV2Type("Unary")
 	ExpressionV2TypeBinary   = ExpressionV2Type("Binary")
+	ExpressionV2TypeNAry     = ExpressionV2Type("NAry")
 )
 
 func (ExpressionV2Type) ElementType() reflect.Type {
@@ -4068,6 +4069,7 @@ func (o ExpressionV2TypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 //	ExpressionV2TypeField
 //	ExpressionV2TypeUnary
 //	ExpressionV2TypeBinary
+//	ExpressionV2TypeNAry
 type ExpressionV2TypeInput interface {
 	pulumi.Input
 

@@ -33453,8 +33453,6 @@ type FlowLogResponse struct {
 	Format *FlowLogFormatParametersResponse `pulumi:"format"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
-	// FlowLog resource Managed Identity
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Resource name.
@@ -33526,11 +33524,6 @@ func (o FlowLogResponseOutput) Format() FlowLogFormatParametersResponsePtrOutput
 // Resource ID.
 func (o FlowLogResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowLogResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// FlowLog resource Managed Identity
-func (o FlowLogResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v FlowLogResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Resource location.

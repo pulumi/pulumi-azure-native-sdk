@@ -15,7 +15,7 @@ import (
 // Information about azure databricks accessConnector.
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview.
+// Other available API versions: 2022-04-01-preview, 2024-05-01.
 type AccessConnector struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewAccessConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20230501:AccessConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20240501:AccessConnector"),
 		},
 	})
 	opts = append(opts, aliases)

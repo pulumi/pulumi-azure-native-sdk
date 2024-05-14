@@ -47,6 +47,9 @@ func NewRaiPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cognitiveservices:RaiPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240401preview:RaiPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

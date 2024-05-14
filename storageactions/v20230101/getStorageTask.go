@@ -42,7 +42,7 @@ type LookupStorageTaskResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identity of the resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -124,8 +124,8 @@ func (o LookupStorageTaskResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identity of the resource.
-func (o LookupStorageTaskResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupStorageTaskResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupStorageTaskResultOutput) Identity() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v LookupStorageTaskResult) ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponseOutput)
 }
 
 // The geo-location where the resource lives

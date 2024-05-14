@@ -72,6 +72,9 @@ func NewPacketCapture(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240201:PacketCapture"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240401:PacketCapture"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

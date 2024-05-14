@@ -14,6 +14,8 @@ import (
 
 // Cognitive Services RaiBlocklist Item.
 // Azure REST API version: 2023-10-01-preview.
+//
+// Other available API versions: 2024-04-01-preview.
 type RaiBlocklistItem struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewRaiBlocklistItem(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20231001preview:RaiBlocklistItem"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240401preview:RaiBlocklistItem"),
 		},
 	})
 	opts = append(opts, aliases)

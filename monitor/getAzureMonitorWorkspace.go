@@ -53,7 +53,7 @@ type LookupAzureMonitorWorkspaceResult struct {
 	// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
-	PublicNetworkAccess string `pulumi:"publicNetworkAccess"`
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -151,8 +151,8 @@ func (o LookupAzureMonitorWorkspaceResultOutput) ProvisioningState() pulumi.Stri
 }
 
 // Gets or sets allow or disallow public network access to Azure Monitor Workspace
-func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.PublicNetworkAccess }).(pulumi.StringOutput)
+func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

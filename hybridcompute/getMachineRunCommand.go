@@ -13,6 +13,8 @@ import (
 
 // The operation to get a run command.
 // Azure REST API version: 2023-10-03-preview.
+//
+// Other available API versions: 2024-03-31-preview.
 func LookupMachineRunCommand(ctx *pulumi.Context, args *LookupMachineRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupMachineRunCommandResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineRunCommandResult

@@ -36,7 +36,7 @@ type AzureMonitorWorkspace struct {
 	// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
-	PublicNetworkAccess pulumi.StringOutput `pulumi:"publicNetworkAccess"`
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -104,6 +104,8 @@ type azureMonitorWorkspaceArgs struct {
 	AzureMonitorWorkspaceName *string `pulumi:"azureMonitorWorkspaceName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -116,6 +118,8 @@ type AzureMonitorWorkspaceArgs struct {
 	AzureMonitorWorkspaceName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -204,8 +208,8 @@ func (o AzureMonitorWorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Gets or sets allow or disallow public network access to Azure Monitor Workspace
-func (o AzureMonitorWorkspaceOutput) PublicNetworkAccess() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.PublicNetworkAccess }).(pulumi.StringOutput)
+func (o AzureMonitorWorkspaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

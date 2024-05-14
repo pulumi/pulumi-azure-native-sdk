@@ -16,6 +16,8 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Indicates whether the cluster was created using AAD authentication.
+	AadAuthEnabled pulumi.StringOutput `pulumi:"aadAuthEnabled"`
 	// The administrator's login name of the servers in the cluster.
 	AdministratorLogin pulumi.StringOutput `pulumi:"administratorLogin"`
 	// Authentication configuration of a cluster.
@@ -30,6 +32,8 @@ type Cluster struct {
 	CoordinatorStorageQuotaInMb pulumi.IntPtrOutput `pulumi:"coordinatorStorageQuotaInMb"`
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores pulumi.IntPtrOutput `pulumi:"coordinatorVCores"`
+	// The data encryption properties of a cluster.
+	DataEncryption DataEncryptionResponsePtrOutput `pulumi:"dataEncryption"`
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName pulumi.StringPtrOutput `pulumi:"databaseName"`
 	// The earliest restore point time (ISO8601 format) for the cluster.
@@ -40,6 +44,8 @@ type Cluster struct {
 	EnableHa pulumi.BoolPtrOutput `pulumi:"enableHa"`
 	// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 	EnableShardsOnCoordinator pulumi.BoolPtrOutput `pulumi:"enableShardsOnCoordinator"`
+	// Describes the identity of the cluster.
+	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maintenance window of a cluster.
@@ -56,6 +62,8 @@ type Cluster struct {
 	NodeStorageQuotaInMb pulumi.IntPtrOutput `pulumi:"nodeStorageQuotaInMb"`
 	// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	NodeVCores pulumi.IntPtrOutput `pulumi:"nodeVCores"`
+	// Indicates whether the cluster was created with a password or using AAD authentication.
+	PasswordEnabled pulumi.StringOutput `pulumi:"passwordEnabled"`
 	// Date and time in UTC (ISO8601 format) for cluster restore.
 	PointInTimeUTC pulumi.StringPtrOutput `pulumi:"pointInTimeUTC"`
 	// The major PostgreSQL version on all cluster servers.
@@ -155,6 +163,8 @@ type clusterArgs struct {
 	CoordinatorStorageQuotaInMb *int `pulumi:"coordinatorStorageQuotaInMb"`
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores *int `pulumi:"coordinatorVCores"`
+	// The data encryption properties of a cluster.
+	DataEncryption *DataEncryption `pulumi:"dataEncryption"`
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName *string `pulumi:"databaseName"`
 	// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
@@ -163,6 +173,8 @@ type clusterArgs struct {
 	EnableHa *bool `pulumi:"enableHa"`
 	// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 	EnableShardsOnCoordinator *bool `pulumi:"enableShardsOnCoordinator"`
+	// Describes the identity of the cluster.
+	Identity *IdentityProperties `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Maintenance window of a cluster.
@@ -211,6 +223,8 @@ type ClusterArgs struct {
 	CoordinatorStorageQuotaInMb pulumi.IntPtrInput
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores pulumi.IntPtrInput
+	// The data encryption properties of a cluster.
+	DataEncryption DataEncryptionPtrInput
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName pulumi.StringPtrInput
 	// If cluster backup is stored in another Azure region in addition to the copy of the backup stored in the cluster's region. Enabled only at the time of cluster creation.
@@ -219,6 +233,8 @@ type ClusterArgs struct {
 	EnableHa pulumi.BoolPtrInput
 	// If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 	EnableShardsOnCoordinator pulumi.BoolPtrInput
+	// Describes the identity of the cluster.
+	Identity IdentityPropertiesPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Maintenance window of a cluster.
@@ -286,6 +302,11 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Indicates whether the cluster was created using AAD authentication.
+func (o ClusterOutput) AadAuthEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AadAuthEnabled }).(pulumi.StringOutput)
+}
+
 // The administrator's login name of the servers in the cluster.
 func (o ClusterOutput) AdministratorLogin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AdministratorLogin }).(pulumi.StringOutput)
@@ -321,6 +342,11 @@ func (o ClusterOutput) CoordinatorVCores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.CoordinatorVCores }).(pulumi.IntPtrOutput)
 }
 
+// The data encryption properties of a cluster.
+func (o ClusterOutput) DataEncryption() DataEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) DataEncryptionResponsePtrOutput { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
+}
+
 // The database name of the cluster. Only one database per cluster is supported.
 func (o ClusterOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DatabaseName }).(pulumi.StringPtrOutput)
@@ -344,6 +370,11 @@ func (o ClusterOutput) EnableHa() pulumi.BoolPtrOutput {
 // If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed.
 func (o ClusterOutput) EnableShardsOnCoordinator() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableShardsOnCoordinator }).(pulumi.BoolPtrOutput)
+}
+
+// Describes the identity of the cluster.
+func (o ClusterOutput) Identity() IdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) IdentityPropertiesResponsePtrOutput { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -384,6 +415,11 @@ func (o ClusterOutput) NodeStorageQuotaInMb() pulumi.IntPtrOutput {
 // The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 func (o ClusterOutput) NodeVCores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeVCores }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the cluster was created with a password or using AAD authentication.
+func (o ClusterOutput) PasswordEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PasswordEnabled }).(pulumi.StringOutput)
 }
 
 // Date and time in UTC (ISO8601 format) for cluster restore.

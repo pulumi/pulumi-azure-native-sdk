@@ -120,6 +120,9 @@ func NewScalingPlanPersonalSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240306preview:ScalingPlanPersonalSchedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20240403:ScalingPlanPersonalSchedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

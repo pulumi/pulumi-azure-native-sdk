@@ -31,6 +31,8 @@ type LookupClusterArgs struct {
 
 // Represents a cluster.
 type LookupClusterResult struct {
+	// Indicates whether the cluster was created using AAD authentication.
+	AadAuthEnabled string `pulumi:"aadAuthEnabled"`
 	// The administrator's login name of the servers in the cluster.
 	AdministratorLogin string `pulumi:"administratorLogin"`
 	// Authentication configuration of a cluster.
@@ -45,6 +47,8 @@ type LookupClusterResult struct {
 	CoordinatorStorageQuotaInMb *int `pulumi:"coordinatorStorageQuotaInMb"`
 	// The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	CoordinatorVCores *int `pulumi:"coordinatorVCores"`
+	// The data encryption properties of a cluster.
+	DataEncryption *DataEncryptionResponse `pulumi:"dataEncryption"`
 	// The database name of the cluster. Only one database per cluster is supported.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The earliest restore point time (ISO8601 format) for the cluster.
@@ -57,6 +61,8 @@ type LookupClusterResult struct {
 	EnableShardsOnCoordinator *bool `pulumi:"enableShardsOnCoordinator"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Describes the identity of the cluster.
+	Identity *IdentityPropertiesResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Maintenance window of a cluster.
@@ -73,6 +79,8 @@ type LookupClusterResult struct {
 	NodeStorageQuotaInMb *int `pulumi:"nodeStorageQuotaInMb"`
 	// The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 	NodeVCores *int `pulumi:"nodeVCores"`
+	// Indicates whether the cluster was created with a password or using AAD authentication.
+	PasswordEnabled string `pulumi:"passwordEnabled"`
 	// Date and time in UTC (ISO8601 format) for cluster restore.
 	PointInTimeUTC *string `pulumi:"pointInTimeUTC"`
 	// The major PostgreSQL version on all cluster servers.
@@ -140,6 +148,11 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx co
 	return o
 }
 
+// Indicates whether the cluster was created using AAD authentication.
+func (o LookupClusterResultOutput) AadAuthEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AadAuthEnabled }).(pulumi.StringOutput)
+}
+
 // The administrator's login name of the servers in the cluster.
 func (o LookupClusterResultOutput) AdministratorLogin() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.AdministratorLogin }).(pulumi.StringOutput)
@@ -175,6 +188,11 @@ func (o LookupClusterResultOutput) CoordinatorVCores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *int { return v.CoordinatorVCores }).(pulumi.IntPtrOutput)
 }
 
+// The data encryption properties of a cluster.
+func (o LookupClusterResultOutput) DataEncryption() DataEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *DataEncryptionResponse { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
+}
+
 // The database name of the cluster. Only one database per cluster is supported.
 func (o LookupClusterResultOutput) DatabaseName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
@@ -203,6 +221,11 @@ func (o LookupClusterResultOutput) EnableShardsOnCoordinator() pulumi.BoolPtrOut
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Describes the identity of the cluster.
+func (o LookupClusterResultOutput) Identity() IdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *IdentityPropertiesResponse { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -243,6 +266,11 @@ func (o LookupClusterResultOutput) NodeStorageQuotaInMb() pulumi.IntPtrOutput {
 // The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information.
 func (o LookupClusterResultOutput) NodeVCores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *int { return v.NodeVCores }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the cluster was created with a password or using AAD authentication.
+func (o LookupClusterResultOutput) PasswordEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.PasswordEnabled }).(pulumi.StringOutput)
 }
 
 // Date and time in UTC (ISO8601 format) for cluster restore.

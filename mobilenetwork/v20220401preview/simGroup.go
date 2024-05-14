@@ -74,6 +74,9 @@ func NewSimGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:mobilenetwork/v20240201:SimGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:mobilenetwork/v20240401:SimGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
