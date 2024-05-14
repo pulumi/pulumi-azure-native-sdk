@@ -53733,7 +53733,9 @@ type SalesforceServiceCloudV2Source struct {
 	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Database query. Type: string (or Expression with resultType string).
+	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
@@ -53765,7 +53767,9 @@ type SalesforceServiceCloudV2SourceArgs struct {
 	IncludeDeletedObjects pulumi.Input `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// Database query. Type: string (or Expression with resultType string).
+	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
+	// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 	SOQLQuery pulumi.Input `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
@@ -53823,7 +53827,12 @@ func (o SalesforceServiceCloudV2SourceOutput) MaxConcurrentConnections() pulumi.
 	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
-// Database query. Type: string (or Expression with resultType string).
+// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+func (o SalesforceServiceCloudV2SourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 func (o SalesforceServiceCloudV2SourceOutput) SOQLQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2Source) interface{} { return v.SOQLQuery }).(pulumi.AnyOutput)
 }
@@ -53854,7 +53863,9 @@ type SalesforceServiceCloudV2SourceResponse struct {
 	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// Database query. Type: string (or Expression with resultType string).
+	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
+	// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
@@ -53900,7 +53911,12 @@ func (o SalesforceServiceCloudV2SourceResponseOutput) MaxConcurrentConnections()
 	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
-// Database query. Type: string (or Expression with resultType string).
+// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+func (o SalesforceServiceCloudV2SourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
+// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 func (o SalesforceServiceCloudV2SourceResponseOutput) SOQLQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2SourceResponse) interface{} { return v.SOQLQuery }).(pulumi.AnyOutput)
 }
@@ -55085,9 +55101,11 @@ type SalesforceV2Source struct {
 	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Database query. Type: string (or Expression with resultType string).
+	// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
@@ -55119,9 +55137,11 @@ type SalesforceV2SourceArgs struct {
 	IncludeDeletedObjects pulumi.Input `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+	Query pulumi.Input `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
-	// Database query. Type: string (or Expression with resultType string).
+	// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 	SOQLQuery pulumi.Input `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
@@ -55179,12 +55199,17 @@ func (o SalesforceV2SourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
+// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+func (o SalesforceV2SourceOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
 // Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 func (o SalesforceV2SourceOutput) QueryTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
 }
 
-// Database query. Type: string (or Expression with resultType string).
+// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 func (o SalesforceV2SourceOutput) SOQLQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2Source) interface{} { return v.SOQLQuery }).(pulumi.AnyOutput)
 }
@@ -55215,9 +55240,11 @@ type SalesforceV2SourceResponse struct {
 	IncludeDeletedObjects interface{} `pulumi:"includeDeletedObjects"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+	Query interface{} `pulumi:"query"`
 	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Database query. Type: string (or Expression with resultType string).
+	// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 	SOQLQuery interface{} `pulumi:"sOQLQuery"`
 	// Source retry count. Type: integer (or Expression with resultType integer).
 	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
@@ -55263,12 +55290,17 @@ func (o SalesforceV2SourceResponseOutput) MaxConcurrentConnections() pulumi.AnyO
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
+// You can only use Salesforce Object Query Language (SOQL) query with limitations. For SOQL limitations, see this article: https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/queries.htm#SOQL%20Considerations. If query is not specified, all the data of the Salesforce object specified in ObjectApiName/reportId in dataset will be retrieved. Type: string (or Expression with resultType string).
+func (o SalesforceV2SourceResponseOutput) Query() pulumi.AnyOutput {
+	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
+}
+
 // Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 func (o SalesforceV2SourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
 }
 
-// Database query. Type: string (or Expression with resultType string).
+// Deprecating, please use 'query' property instead. Type: string (or Expression with resultType string).
 func (o SalesforceV2SourceResponseOutput) SOQLQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceV2SourceResponse) interface{} { return v.SOQLQuery }).(pulumi.AnyOutput)
 }

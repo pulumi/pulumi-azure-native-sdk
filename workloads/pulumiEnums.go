@@ -10,6 +10,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The App Service plan tier.
+type AppServicePlanTier string
+
+const (
+	// Elastic Premium plan
+	AppServicePlanTierElasticPremium = AppServicePlanTier("ElasticPremium")
+	// Dedicated Premium V3 plan
+	AppServicePlanTierPremiumV3 = AppServicePlanTier("PremiumV3")
+)
+
 // The type of backup, VM, SQL or HANA.
 type BackupType string
 

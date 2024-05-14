@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CassandraResourceCassandraView{}
 	case "azure-native:documentdb:DatabaseAccount":
 		r = &DatabaseAccount{}
+	case "azure-native:documentdb:FirewallRule":
+		r = &FirewallRule{}
 	case "azure-native:documentdb:GraphResourceGraph":
 		r = &GraphResourceGraph{}
 	case "azure-native:documentdb:GremlinResourceGremlinDatabase":

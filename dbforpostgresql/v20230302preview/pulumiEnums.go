@@ -175,6 +175,336 @@ func (in *activeDirectoryAuthPtr) ToActiveDirectoryAuthPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ActiveDirectoryAuthPtrOutput)
 }
 
+type DataEncryptionType string
+
+const (
+	DataEncryptionTypeAzureKeyVault  = DataEncryptionType("AzureKeyVault")
+	DataEncryptionTypeSystemAssigned = DataEncryptionType("SystemAssigned")
+)
+
+func (DataEncryptionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataEncryptionType)(nil)).Elem()
+}
+
+func (e DataEncryptionType) ToDataEncryptionTypeOutput() DataEncryptionTypeOutput {
+	return pulumi.ToOutput(e).(DataEncryptionTypeOutput)
+}
+
+func (e DataEncryptionType) ToDataEncryptionTypeOutputWithContext(ctx context.Context) DataEncryptionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataEncryptionTypeOutput)
+}
+
+func (e DataEncryptionType) ToDataEncryptionTypePtrOutput() DataEncryptionTypePtrOutput {
+	return e.ToDataEncryptionTypePtrOutputWithContext(context.Background())
+}
+
+func (e DataEncryptionType) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
+	return DataEncryptionType(e).ToDataEncryptionTypeOutputWithContext(ctx).ToDataEncryptionTypePtrOutputWithContext(ctx)
+}
+
+func (e DataEncryptionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataEncryptionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DataEncryptionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DataEncryptionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DataEncryptionTypeOutput struct{ *pulumi.OutputState }
+
+func (DataEncryptionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataEncryptionType)(nil)).Elem()
+}
+
+func (o DataEncryptionTypeOutput) ToDataEncryptionTypeOutput() DataEncryptionTypeOutput {
+	return o
+}
+
+func (o DataEncryptionTypeOutput) ToDataEncryptionTypeOutputWithContext(ctx context.Context) DataEncryptionTypeOutput {
+	return o
+}
+
+func (o DataEncryptionTypeOutput) ToDataEncryptionTypePtrOutput() DataEncryptionTypePtrOutput {
+	return o.ToDataEncryptionTypePtrOutputWithContext(context.Background())
+}
+
+func (o DataEncryptionTypeOutput) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataEncryptionType) *DataEncryptionType {
+		return &v
+	}).(DataEncryptionTypePtrOutput)
+}
+
+func (o DataEncryptionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataEncryptionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataEncryptionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataEncryptionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataEncryptionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataEncryptionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataEncryptionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DataEncryptionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataEncryptionType)(nil)).Elem()
+}
+
+func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutput() DataEncryptionTypePtrOutput {
+	return o
+}
+
+func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
+	return o
+}
+
+func (o DataEncryptionTypePtrOutput) Elem() DataEncryptionTypeOutput {
+	return o.ApplyT(func(v *DataEncryptionType) DataEncryptionType {
+		if v != nil {
+			return *v
+		}
+		var ret DataEncryptionType
+		return ret
+	}).(DataEncryptionTypeOutput)
+}
+
+func (o DataEncryptionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataEncryptionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataEncryptionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DataEncryptionTypeInput is an input type that accepts values of the DataEncryptionType enum
+// A concrete instance of `DataEncryptionTypeInput` can be one of the following:
+//
+//	DataEncryptionTypeAzureKeyVault
+//	DataEncryptionTypeSystemAssigned
+type DataEncryptionTypeInput interface {
+	pulumi.Input
+
+	ToDataEncryptionTypeOutput() DataEncryptionTypeOutput
+	ToDataEncryptionTypeOutputWithContext(context.Context) DataEncryptionTypeOutput
+}
+
+var dataEncryptionTypePtrType = reflect.TypeOf((**DataEncryptionType)(nil)).Elem()
+
+type DataEncryptionTypePtrInput interface {
+	pulumi.Input
+
+	ToDataEncryptionTypePtrOutput() DataEncryptionTypePtrOutput
+	ToDataEncryptionTypePtrOutputWithContext(context.Context) DataEncryptionTypePtrOutput
+}
+
+type dataEncryptionTypePtr string
+
+func DataEncryptionTypePtr(v string) DataEncryptionTypePtrInput {
+	return (*dataEncryptionTypePtr)(&v)
+}
+
+func (*dataEncryptionTypePtr) ElementType() reflect.Type {
+	return dataEncryptionTypePtrType
+}
+
+func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutput() DataEncryptionTypePtrOutput {
+	return pulumi.ToOutput(in).(DataEncryptionTypePtrOutput)
+}
+
+func (in *dataEncryptionTypePtr) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataEncryptionTypePtrOutput)
+}
+
+type IdentityType string
+
+const (
+	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+)
+
+func (IdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (e IdentityType) ToIdentityTypeOutput() IdentityTypeOutput {
+	return pulumi.ToOutput(e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return e.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return IdentityType(e).ToIdentityTypeOutputWithContext(ctx).ToIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e IdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutput() IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityType) *IdentityType {
+		return &v
+	}).(IdentityTypePtrOutput)
+}
+
+func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {
+	return o.ApplyT(func(v *IdentityType) IdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityType
+		return ret
+	}).(IdentityTypeOutput)
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IdentityTypeInput is an input type that accepts values of the IdentityType enum
+// A concrete instance of `IdentityTypeInput` can be one of the following:
+//
+//	IdentityTypeUserAssigned
+//	IdentityTypeSystemAssigned
+type IdentityTypeInput interface {
+	pulumi.Input
+
+	ToIdentityTypeOutput() IdentityTypeOutput
+	ToIdentityTypeOutputWithContext(context.Context) IdentityTypeOutput
+}
+
+var identityTypePtrType = reflect.TypeOf((**IdentityType)(nil)).Elem()
+
+type IdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToIdentityTypePtrOutput() IdentityTypePtrOutput
+	ToIdentityTypePtrOutputWithContext(context.Context) IdentityTypePtrOutput
+}
+
+type identityTypePtr string
+
+func IdentityTypePtr(v string) IdentityTypePtrInput {
+	return (*identityTypePtr)(&v)
+}
+
+func (*identityTypePtr) ElementType() reflect.Type {
+	return identityTypePtrType
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(IdentityTypePtrOutput)
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
+}
+
 type PasswordAuth string
 
 const (
@@ -843,6 +1173,10 @@ func (in *roleTypePtr) ToRoleTypePtrOutputWithContext(ctx context.Context) RoleT
 func init() {
 	pulumi.RegisterOutputType(ActiveDirectoryAuthOutput{})
 	pulumi.RegisterOutputType(ActiveDirectoryAuthPtrOutput{})
+	pulumi.RegisterOutputType(DataEncryptionTypeOutput{})
+	pulumi.RegisterOutputType(DataEncryptionTypePtrOutput{})
+	pulumi.RegisterOutputType(IdentityTypeOutput{})
+	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(PasswordAuthOutput{})
 	pulumi.RegisterOutputType(PasswordAuthPtrOutput{})
 	pulumi.RegisterOutputType(PrincipalTypeOutput{})

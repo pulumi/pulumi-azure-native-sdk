@@ -54485,8 +54485,8 @@ func (o ExpressionResponseOutput) Value() pulumi.StringOutput {
 type ExpressionV2 struct {
 	// List of nested expressions.
 	Operands []ExpressionV2 `pulumi:"operands"`
-	// Expression operator value Type: string.
-	Operator *string `pulumi:"operator"`
+	// Expression operator value Type: list of strings.
+	Operators []string `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type *string `pulumi:"type"`
 	// Value for Constant/Field Type: string.
@@ -54508,8 +54508,8 @@ type ExpressionV2Input interface {
 type ExpressionV2Args struct {
 	// List of nested expressions.
 	Operands ExpressionV2ArrayInput `pulumi:"operands"`
-	// Expression operator value Type: string.
-	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Expression operator value Type: list of strings.
+	Operators pulumi.StringArrayInput `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Value for Constant/Field Type: string.
@@ -54624,9 +54624,9 @@ func (o ExpressionV2Output) Operands() ExpressionV2ArrayOutput {
 	return o.ApplyT(func(v ExpressionV2) []ExpressionV2 { return v.Operands }).(ExpressionV2ArrayOutput)
 }
 
-// Expression operator value Type: string.
-func (o ExpressionV2Output) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressionV2) *string { return v.Operator }).(pulumi.StringPtrOutput)
+// Expression operator value Type: list of strings.
+func (o ExpressionV2Output) Operators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExpressionV2) []string { return v.Operators }).(pulumi.StringArrayOutput)
 }
 
 // Type of expressions supported by the system. Type: string.
@@ -54673,14 +54673,14 @@ func (o ExpressionV2PtrOutput) Operands() ExpressionV2ArrayOutput {
 	}).(ExpressionV2ArrayOutput)
 }
 
-// Expression operator value Type: string.
-func (o ExpressionV2PtrOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExpressionV2) *string {
+// Expression operator value Type: list of strings.
+func (o ExpressionV2PtrOutput) Operators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExpressionV2) []string {
 		if v == nil {
 			return nil
 		}
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
+		return v.Operators
+	}).(pulumi.StringArrayOutput)
 }
 
 // Type of expressions supported by the system. Type: string.
@@ -54727,8 +54727,8 @@ func (o ExpressionV2ArrayOutput) Index(i pulumi.IntInput) ExpressionV2Output {
 type ExpressionV2Response struct {
 	// List of nested expressions.
 	Operands []ExpressionV2Response `pulumi:"operands"`
-	// Expression operator value Type: string.
-	Operator *string `pulumi:"operator"`
+	// Expression operator value Type: list of strings.
+	Operators []string `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type *string `pulumi:"type"`
 	// Value for Constant/Field Type: string.
@@ -54755,9 +54755,9 @@ func (o ExpressionV2ResponseOutput) Operands() ExpressionV2ResponseArrayOutput {
 	return o.ApplyT(func(v ExpressionV2Response) []ExpressionV2Response { return v.Operands }).(ExpressionV2ResponseArrayOutput)
 }
 
-// Expression operator value Type: string.
-func (o ExpressionV2ResponseOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Operator }).(pulumi.StringPtrOutput)
+// Expression operator value Type: list of strings.
+func (o ExpressionV2ResponseOutput) Operators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExpressionV2Response) []string { return v.Operators }).(pulumi.StringArrayOutput)
 }
 
 // Type of expressions supported by the system. Type: string.
@@ -54804,14 +54804,14 @@ func (o ExpressionV2ResponsePtrOutput) Operands() ExpressionV2ResponseArrayOutpu
 	}).(ExpressionV2ResponseArrayOutput)
 }
 
-// Expression operator value Type: string.
-func (o ExpressionV2ResponsePtrOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExpressionV2Response) *string {
+// Expression operator value Type: list of strings.
+func (o ExpressionV2ResponsePtrOutput) Operators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) []string {
 		if v == nil {
 			return nil
 		}
-		return v.Operator
-	}).(pulumi.StringPtrOutput)
+		return v.Operators
+	}).(pulumi.StringArrayOutput)
 }
 
 // Type of expressions supported by the system. Type: string.

@@ -235,6 +235,502 @@ func (o AuthConfigResponsePtrOutput) PasswordAuth() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The data encryption properties of a cluster.
+type DataEncryption struct {
+	// URI for the key in keyvault for data encryption of the primary server.
+	PrimaryKeyUri *string `pulumi:"primaryKeyUri"`
+	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
+	Type                          *string `pulumi:"type"`
+}
+
+// DataEncryptionInput is an input type that accepts DataEncryptionArgs and DataEncryptionOutput values.
+// You can construct a concrete instance of `DataEncryptionInput` via:
+//
+//	DataEncryptionArgs{...}
+type DataEncryptionInput interface {
+	pulumi.Input
+
+	ToDataEncryptionOutput() DataEncryptionOutput
+	ToDataEncryptionOutputWithContext(context.Context) DataEncryptionOutput
+}
+
+// The data encryption properties of a cluster.
+type DataEncryptionArgs struct {
+	// URI for the key in keyvault for data encryption of the primary server.
+	PrimaryKeyUri pulumi.StringPtrInput `pulumi:"primaryKeyUri"`
+	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+	PrimaryUserAssignedIdentityId pulumi.StringPtrInput `pulumi:"primaryUserAssignedIdentityId"`
+	Type                          pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DataEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataEncryption)(nil)).Elem()
+}
+
+func (i DataEncryptionArgs) ToDataEncryptionOutput() DataEncryptionOutput {
+	return i.ToDataEncryptionOutputWithContext(context.Background())
+}
+
+func (i DataEncryptionArgs) ToDataEncryptionOutputWithContext(ctx context.Context) DataEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataEncryptionOutput)
+}
+
+func (i DataEncryptionArgs) ToDataEncryptionPtrOutput() DataEncryptionPtrOutput {
+	return i.ToDataEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i DataEncryptionArgs) ToDataEncryptionPtrOutputWithContext(ctx context.Context) DataEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataEncryptionOutput).ToDataEncryptionPtrOutputWithContext(ctx)
+}
+
+// DataEncryptionPtrInput is an input type that accepts DataEncryptionArgs, DataEncryptionPtr and DataEncryptionPtrOutput values.
+// You can construct a concrete instance of `DataEncryptionPtrInput` via:
+//
+//	        DataEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToDataEncryptionPtrOutput() DataEncryptionPtrOutput
+	ToDataEncryptionPtrOutputWithContext(context.Context) DataEncryptionPtrOutput
+}
+
+type dataEncryptionPtrType DataEncryptionArgs
+
+func DataEncryptionPtr(v *DataEncryptionArgs) DataEncryptionPtrInput {
+	return (*dataEncryptionPtrType)(v)
+}
+
+func (*dataEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataEncryption)(nil)).Elem()
+}
+
+func (i *dataEncryptionPtrType) ToDataEncryptionPtrOutput() DataEncryptionPtrOutput {
+	return i.ToDataEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *dataEncryptionPtrType) ToDataEncryptionPtrOutputWithContext(ctx context.Context) DataEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataEncryptionPtrOutput)
+}
+
+// The data encryption properties of a cluster.
+type DataEncryptionOutput struct{ *pulumi.OutputState }
+
+func (DataEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataEncryption)(nil)).Elem()
+}
+
+func (o DataEncryptionOutput) ToDataEncryptionOutput() DataEncryptionOutput {
+	return o
+}
+
+func (o DataEncryptionOutput) ToDataEncryptionOutputWithContext(ctx context.Context) DataEncryptionOutput {
+	return o
+}
+
+func (o DataEncryptionOutput) ToDataEncryptionPtrOutput() DataEncryptionPtrOutput {
+	return o.ToDataEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o DataEncryptionOutput) ToDataEncryptionPtrOutputWithContext(ctx context.Context) DataEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataEncryption) *DataEncryption {
+		return &v
+	}).(DataEncryptionPtrOutput)
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o DataEncryptionOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o DataEncryptionOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataEncryption) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
+}
+
+func (o DataEncryptionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataEncryption) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type DataEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (DataEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataEncryption)(nil)).Elem()
+}
+
+func (o DataEncryptionPtrOutput) ToDataEncryptionPtrOutput() DataEncryptionPtrOutput {
+	return o
+}
+
+func (o DataEncryptionPtrOutput) ToDataEncryptionPtrOutputWithContext(ctx context.Context) DataEncryptionPtrOutput {
+	return o
+}
+
+func (o DataEncryptionPtrOutput) Elem() DataEncryptionOutput {
+	return o.ApplyT(func(v *DataEncryption) DataEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret DataEncryption
+		return ret
+	}).(DataEncryptionOutput)
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o DataEncryptionPtrOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o DataEncryptionPtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryUserAssignedIdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataEncryptionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The data encryption properties of a cluster.
+type DataEncryptionResponse struct {
+	// URI for the key in keyvault for data encryption of the primary server.
+	PrimaryKeyUri *string `pulumi:"primaryKeyUri"`
+	// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
+	Type                          *string `pulumi:"type"`
+}
+
+// The data encryption properties of a cluster.
+type DataEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (DataEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataEncryptionResponse)(nil)).Elem()
+}
+
+func (o DataEncryptionResponseOutput) ToDataEncryptionResponseOutput() DataEncryptionResponseOutput {
+	return o
+}
+
+func (o DataEncryptionResponseOutput) ToDataEncryptionResponseOutputWithContext(ctx context.Context) DataEncryptionResponseOutput {
+	return o
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o DataEncryptionResponseOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryKeyUri }).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o DataEncryptionResponseOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
+}
+
+func (o DataEncryptionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataEncryptionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type DataEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataEncryptionResponse)(nil)).Elem()
+}
+
+func (o DataEncryptionResponsePtrOutput) ToDataEncryptionResponsePtrOutput() DataEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o DataEncryptionResponsePtrOutput) ToDataEncryptionResponsePtrOutputWithContext(ctx context.Context) DataEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o DataEncryptionResponsePtrOutput) Elem() DataEncryptionResponseOutput {
+	return o.ApplyT(func(v *DataEncryptionResponse) DataEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataEncryptionResponse
+		return ret
+	}).(DataEncryptionResponseOutput)
+}
+
+// URI for the key in keyvault for data encryption of the primary server.
+func (o DataEncryptionResponsePtrOutput) PrimaryKeyUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryKeyUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id for the User assigned identity to be used for data encryption of the primary server.
+func (o DataEncryptionResponsePtrOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryUserAssignedIdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataEncryptionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the identity of the cluster.
+type IdentityProperties struct {
+	Type *string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// IdentityPropertiesInput is an input type that accepts IdentityPropertiesArgs and IdentityPropertiesOutput values.
+// You can construct a concrete instance of `IdentityPropertiesInput` via:
+//
+//	IdentityPropertiesArgs{...}
+type IdentityPropertiesInput interface {
+	pulumi.Input
+
+	ToIdentityPropertiesOutput() IdentityPropertiesOutput
+	ToIdentityPropertiesOutputWithContext(context.Context) IdentityPropertiesOutput
+}
+
+// Describes the identity of the cluster.
+type IdentityPropertiesArgs struct {
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (IdentityPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProperties)(nil)).Elem()
+}
+
+func (i IdentityPropertiesArgs) ToIdentityPropertiesOutput() IdentityPropertiesOutput {
+	return i.ToIdentityPropertiesOutputWithContext(context.Background())
+}
+
+func (i IdentityPropertiesArgs) ToIdentityPropertiesOutputWithContext(ctx context.Context) IdentityPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesOutput)
+}
+
+func (i IdentityPropertiesArgs) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
+	return i.ToIdentityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityPropertiesArgs) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesOutput).ToIdentityPropertiesPtrOutputWithContext(ctx)
+}
+
+// IdentityPropertiesPtrInput is an input type that accepts IdentityPropertiesArgs, IdentityPropertiesPtr and IdentityPropertiesPtrOutput values.
+// You can construct a concrete instance of `IdentityPropertiesPtrInput` via:
+//
+//	        IdentityPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput
+	ToIdentityPropertiesPtrOutputWithContext(context.Context) IdentityPropertiesPtrOutput
+}
+
+type identityPropertiesPtrType IdentityPropertiesArgs
+
+func IdentityPropertiesPtr(v *IdentityPropertiesArgs) IdentityPropertiesPtrInput {
+	return (*identityPropertiesPtrType)(v)
+}
+
+func (*identityPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProperties)(nil)).Elem()
+}
+
+func (i *identityPropertiesPtrType) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
+	return i.ToIdentityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *identityPropertiesPtrType) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesPtrOutput)
+}
+
+// Describes the identity of the cluster.
+type IdentityPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IdentityPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityProperties)(nil)).Elem()
+}
+
+func (o IdentityPropertiesOutput) ToIdentityPropertiesOutput() IdentityPropertiesOutput {
+	return o
+}
+
+func (o IdentityPropertiesOutput) ToIdentityPropertiesOutputWithContext(ctx context.Context) IdentityPropertiesOutput {
+	return o
+}
+
+func (o IdentityPropertiesOutput) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
+	return o.ToIdentityPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityPropertiesOutput) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityProperties) *IdentityProperties {
+		return &v
+	}).(IdentityPropertiesPtrOutput)
+}
+
+func (o IdentityPropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o IdentityPropertiesOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdentityProperties) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type IdentityPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityProperties)(nil)).Elem()
+}
+
+func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
+	return o
+}
+
+func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
+	return o
+}
+
+func (o IdentityPropertiesPtrOutput) Elem() IdentityPropertiesOutput {
+	return o.ApplyT(func(v *IdentityProperties) IdentityProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityProperties
+		return ret
+	}).(IdentityPropertiesOutput)
+}
+
+func (o IdentityPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o IdentityPropertiesPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdentityProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Describes the identity of the cluster.
+type IdentityPropertiesResponse struct {
+	Type *string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Describes the identity of the cluster.
+type IdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o IdentityPropertiesResponseOutput) ToIdentityPropertiesResponseOutput() IdentityPropertiesResponseOutput {
+	return o
+}
+
+func (o IdentityPropertiesResponseOutput) ToIdentityPropertiesResponseOutputWithContext(ctx context.Context) IdentityPropertiesResponseOutput {
+	return o
+}
+
+func (o IdentityPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o IdentityPropertiesResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v IdentityPropertiesResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type IdentityPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutput() IdentityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) IdentityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IdentityPropertiesResponsePtrOutput) Elem() IdentityPropertiesResponseOutput {
+	return o.ApplyT(func(v *IdentityPropertiesResponse) IdentityPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityPropertiesResponse
+		return ret
+	}).(IdentityPropertiesResponseOutput)
+}
+
+func (o IdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o IdentityPropertiesResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *IdentityPropertiesResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // Schedule settings for regular cluster updates.
 type MaintenanceWindow struct {
 	// Indicates whether custom maintenance window is enabled or not.
@@ -1036,11 +1532,72 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthConfigOutput{})
 	pulumi.RegisterOutputType(AuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuthConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(DataEncryptionOutput{})
+	pulumi.RegisterOutputType(DataEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(DataEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(DataEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityPropertiesOutput{})
+	pulumi.RegisterOutputType(IdentityPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IdentityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IdentityPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
@@ -1057,4 +1614,6 @@ func init() {
 	pulumi.RegisterOutputType(SimplePrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(SimplePrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

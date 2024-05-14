@@ -14,6 +14,8 @@ import (
 
 // Describes a Run Command
 // Azure REST API version: 2023-10-03-preview.
+//
+// Other available API versions: 2024-03-31-preview.
 type MachineRunCommand struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +76,9 @@ func NewMachineRunCommand(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:MachineRunCommand"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20240331preview:MachineRunCommand"),
 		},
 	})
 	opts = append(opts, aliases)

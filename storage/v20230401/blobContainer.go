@@ -127,6 +127,9 @@ func NewBlobContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20230101:BlobContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230501:BlobContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

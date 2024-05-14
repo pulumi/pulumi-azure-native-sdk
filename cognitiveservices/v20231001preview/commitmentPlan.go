@@ -68,6 +68,9 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20230501:CommitmentPlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240401preview:CommitmentPlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

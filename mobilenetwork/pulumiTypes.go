@@ -6503,6 +6503,115 @@ func (o ServiceResourceIdResponseArrayOutput) Index(i pulumi.IntInput) ServiceRe
 	}).(ServiceResourceIdResponseOutput)
 }
 
+// SIM group resource.
+type SimGroupResponse struct {
+	// A key to encrypt the SIM data that belongs to this SIM group.
+	EncryptionKey *KeyVaultKeyResponse `pulumi:"encryptionKey"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id string `pulumi:"id"`
+	// The identity used to retrieve the encryption key from Azure key vault.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
+	MobileNetwork *MobileNetworkResourceIdResponse `pulumi:"mobileNetwork"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The provisioning state of the SIM group resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// SIM group resource.
+type SimGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (SimGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimGroupResponse)(nil)).Elem()
+}
+
+func (o SimGroupResponseOutput) ToSimGroupResponseOutput() SimGroupResponseOutput {
+	return o
+}
+
+func (o SimGroupResponseOutput) ToSimGroupResponseOutputWithContext(ctx context.Context) SimGroupResponseOutput {
+	return o
+}
+
+// A key to encrypt the SIM data that belongs to this SIM group.
+func (o SimGroupResponseOutput) EncryptionKey() KeyVaultKeyResponsePtrOutput {
+	return o.ApplyT(func(v SimGroupResponse) *KeyVaultKeyResponse { return v.EncryptionKey }).(KeyVaultKeyResponsePtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+func (o SimGroupResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SimGroupResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity used to retrieve the encryption key from Azure key vault.
+func (o SimGroupResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v SimGroupResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// The geo-location where the resource lives
+func (o SimGroupResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v SimGroupResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
+func (o SimGroupResponseOutput) MobileNetwork() MobileNetworkResourceIdResponsePtrOutput {
+	return o.ApplyT(func(v SimGroupResponse) *MobileNetworkResourceIdResponse { return v.MobileNetwork }).(MobileNetworkResourceIdResponsePtrOutput)
+}
+
+// The name of the resource
+func (o SimGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SimGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the SIM group resource.
+func (o SimGroupResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SimGroupResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SimGroupResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v SimGroupResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
+func (o SimGroupResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SimGroupResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o SimGroupResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SimGroupResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SimGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SimGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SimGroupResponse)(nil)).Elem()
+}
+
+func (o SimGroupResponseArrayOutput) ToSimGroupResponseArrayOutput() SimGroupResponseArrayOutput {
+	return o
+}
+
+func (o SimGroupResponseArrayOutput) ToSimGroupResponseArrayOutputWithContext(ctx context.Context) SimGroupResponseArrayOutput {
+	return o
+}
+
+func (o SimGroupResponseArrayOutput) Index(i pulumi.IntInput) SimGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SimGroupResponse {
+		return vs[0].([]SimGroupResponse)[vs[1].(int)]
+	}).(SimGroupResponseOutput)
+}
+
 // Reference to a SIM policy resource.
 type SimPolicyResourceId struct {
 	// SIM policy resource ID.
@@ -7970,6 +8079,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceResourceIdArrayOutput{})
 	pulumi.RegisterOutputType(ServiceResourceIdResponseOutput{})
 	pulumi.RegisterOutputType(ServiceResourceIdResponseArrayOutput{})
+	pulumi.RegisterOutputType(SimGroupResponseOutput{})
+	pulumi.RegisterOutputType(SimGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(SimPolicyResourceIdOutput{})
 	pulumi.RegisterOutputType(SimPolicyResourceIdPtrOutput{})
 	pulumi.RegisterOutputType(SimPolicyResourceIdResponseOutput{})

@@ -15,7 +15,7 @@ import (
 // Cognitive Services account is an Azure resource representing the provisioned account, it's type, location and SKU.
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2017-04-18.
 //
-// Other available API versions: 2017-04-18, 2023-10-01-preview.
+// Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview.
 type Account struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +81,9 @@ func NewAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20231001preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240401preview:Account"),
 		},
 	})
 	opts = append(opts, aliases)

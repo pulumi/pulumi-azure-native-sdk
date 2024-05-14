@@ -75,6 +75,9 @@ func NewQueue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storage/v20230401:Queue"),
 		},
+		{
+			Type: pulumi.String("azure-native:storage/v20230501:Queue"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

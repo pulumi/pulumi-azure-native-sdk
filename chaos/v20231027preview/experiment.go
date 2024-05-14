@@ -73,6 +73,9 @@ func NewExperiment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:chaos/v20240101:Experiment"),
 		},
+		{
+			Type: pulumi.String("azure-native:chaos/v20240322preview:Experiment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

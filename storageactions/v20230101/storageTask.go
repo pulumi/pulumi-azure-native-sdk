@@ -25,7 +25,7 @@ type StorageTask struct {
 	// Storage Task is enabled when set to true and disabled when set to false
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The managed service identity of the resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponseOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -57,6 +57,9 @@ func NewStorageTask(ctx *pulumi.Context,
 	}
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.Identity == nil {
+		return nil, errors.New("invalid value for required argument 'Identity'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -107,7 +110,7 @@ type storageTaskArgs struct {
 	// Storage Task is enabled when set to true and disabled when set to false
 	Enabled bool `pulumi:"enabled"`
 	// The managed service identity of the resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -127,7 +130,7 @@ type StorageTaskArgs struct {
 	// Storage Task is enabled when set to true and disabled when set to false
 	Enabled pulumi.BoolInput
 	// The managed service identity of the resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -196,8 +199,8 @@ func (o StorageTaskOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The managed service identity of the resource.
-func (o StorageTaskOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *StorageTask) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o StorageTaskOutput) Identity() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *StorageTask) ManagedServiceIdentityResponseOutput { return v.Identity }).(ManagedServiceIdentityResponseOutput)
 }
 
 // The geo-location where the resource lives

@@ -43,8 +43,6 @@ type LookupFlowLogResult struct {
 	Format *FlowLogFormatParametersResponse `pulumi:"format"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
-	// FlowLog resource Managed Identity
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// Resource name.
@@ -142,11 +140,6 @@ func (o LookupFlowLogResultOutput) Format() FlowLogFormatParametersResponsePtrOu
 // Resource ID.
 func (o LookupFlowLogResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFlowLogResult) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// FlowLog resource Managed Identity
-func (o LookupFlowLogResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupFlowLogResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Resource location.
