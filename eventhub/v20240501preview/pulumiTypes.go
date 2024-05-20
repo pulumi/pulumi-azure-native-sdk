@@ -2557,6 +2557,206 @@ func (o KeyVaultPropertiesResponseArrayOutput) Index(i pulumi.IntInput) KeyVault
 	}).(KeyVaultPropertiesResponseOutput)
 }
 
+// Properties of MessageTimestamp Description
+type MessageTimestampDescription struct {
+	// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+	TimestampType *string `pulumi:"timestampType"`
+}
+
+// MessageTimestampDescriptionInput is an input type that accepts MessageTimestampDescriptionArgs and MessageTimestampDescriptionOutput values.
+// You can construct a concrete instance of `MessageTimestampDescriptionInput` via:
+//
+//	MessageTimestampDescriptionArgs{...}
+type MessageTimestampDescriptionInput interface {
+	pulumi.Input
+
+	ToMessageTimestampDescriptionOutput() MessageTimestampDescriptionOutput
+	ToMessageTimestampDescriptionOutputWithContext(context.Context) MessageTimestampDescriptionOutput
+}
+
+// Properties of MessageTimestamp Description
+type MessageTimestampDescriptionArgs struct {
+	// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+	TimestampType pulumi.StringPtrInput `pulumi:"timestampType"`
+}
+
+func (MessageTimestampDescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessageTimestampDescription)(nil)).Elem()
+}
+
+func (i MessageTimestampDescriptionArgs) ToMessageTimestampDescriptionOutput() MessageTimestampDescriptionOutput {
+	return i.ToMessageTimestampDescriptionOutputWithContext(context.Background())
+}
+
+func (i MessageTimestampDescriptionArgs) ToMessageTimestampDescriptionOutputWithContext(ctx context.Context) MessageTimestampDescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageTimestampDescriptionOutput)
+}
+
+func (i MessageTimestampDescriptionArgs) ToMessageTimestampDescriptionPtrOutput() MessageTimestampDescriptionPtrOutput {
+	return i.ToMessageTimestampDescriptionPtrOutputWithContext(context.Background())
+}
+
+func (i MessageTimestampDescriptionArgs) ToMessageTimestampDescriptionPtrOutputWithContext(ctx context.Context) MessageTimestampDescriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageTimestampDescriptionOutput).ToMessageTimestampDescriptionPtrOutputWithContext(ctx)
+}
+
+// MessageTimestampDescriptionPtrInput is an input type that accepts MessageTimestampDescriptionArgs, MessageTimestampDescriptionPtr and MessageTimestampDescriptionPtrOutput values.
+// You can construct a concrete instance of `MessageTimestampDescriptionPtrInput` via:
+//
+//	        MessageTimestampDescriptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MessageTimestampDescriptionPtrInput interface {
+	pulumi.Input
+
+	ToMessageTimestampDescriptionPtrOutput() MessageTimestampDescriptionPtrOutput
+	ToMessageTimestampDescriptionPtrOutputWithContext(context.Context) MessageTimestampDescriptionPtrOutput
+}
+
+type messageTimestampDescriptionPtrType MessageTimestampDescriptionArgs
+
+func MessageTimestampDescriptionPtr(v *MessageTimestampDescriptionArgs) MessageTimestampDescriptionPtrInput {
+	return (*messageTimestampDescriptionPtrType)(v)
+}
+
+func (*messageTimestampDescriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessageTimestampDescription)(nil)).Elem()
+}
+
+func (i *messageTimestampDescriptionPtrType) ToMessageTimestampDescriptionPtrOutput() MessageTimestampDescriptionPtrOutput {
+	return i.ToMessageTimestampDescriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *messageTimestampDescriptionPtrType) ToMessageTimestampDescriptionPtrOutputWithContext(ctx context.Context) MessageTimestampDescriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MessageTimestampDescriptionPtrOutput)
+}
+
+// Properties of MessageTimestamp Description
+type MessageTimestampDescriptionOutput struct{ *pulumi.OutputState }
+
+func (MessageTimestampDescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessageTimestampDescription)(nil)).Elem()
+}
+
+func (o MessageTimestampDescriptionOutput) ToMessageTimestampDescriptionOutput() MessageTimestampDescriptionOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionOutput) ToMessageTimestampDescriptionOutputWithContext(ctx context.Context) MessageTimestampDescriptionOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionOutput) ToMessageTimestampDescriptionPtrOutput() MessageTimestampDescriptionPtrOutput {
+	return o.ToMessageTimestampDescriptionPtrOutputWithContext(context.Background())
+}
+
+func (o MessageTimestampDescriptionOutput) ToMessageTimestampDescriptionPtrOutputWithContext(ctx context.Context) MessageTimestampDescriptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MessageTimestampDescription) *MessageTimestampDescription {
+		return &v
+	}).(MessageTimestampDescriptionPtrOutput)
+}
+
+// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+func (o MessageTimestampDescriptionOutput) TimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessageTimestampDescription) *string { return v.TimestampType }).(pulumi.StringPtrOutput)
+}
+
+type MessageTimestampDescriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (MessageTimestampDescriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessageTimestampDescription)(nil)).Elem()
+}
+
+func (o MessageTimestampDescriptionPtrOutput) ToMessageTimestampDescriptionPtrOutput() MessageTimestampDescriptionPtrOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionPtrOutput) ToMessageTimestampDescriptionPtrOutputWithContext(ctx context.Context) MessageTimestampDescriptionPtrOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionPtrOutput) Elem() MessageTimestampDescriptionOutput {
+	return o.ApplyT(func(v *MessageTimestampDescription) MessageTimestampDescription {
+		if v != nil {
+			return *v
+		}
+		var ret MessageTimestampDescription
+		return ret
+	}).(MessageTimestampDescriptionOutput)
+}
+
+// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+func (o MessageTimestampDescriptionPtrOutput) TimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessageTimestampDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of MessageTimestamp Description
+type MessageTimestampDescriptionResponse struct {
+	// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+	TimestampType *string `pulumi:"timestampType"`
+}
+
+// Properties of MessageTimestamp Description
+type MessageTimestampDescriptionResponseOutput struct{ *pulumi.OutputState }
+
+func (MessageTimestampDescriptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MessageTimestampDescriptionResponse)(nil)).Elem()
+}
+
+func (o MessageTimestampDescriptionResponseOutput) ToMessageTimestampDescriptionResponseOutput() MessageTimestampDescriptionResponseOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionResponseOutput) ToMessageTimestampDescriptionResponseOutputWithContext(ctx context.Context) MessageTimestampDescriptionResponseOutput {
+	return o
+}
+
+// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+func (o MessageTimestampDescriptionResponseOutput) TimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MessageTimestampDescriptionResponse) *string { return v.TimestampType }).(pulumi.StringPtrOutput)
+}
+
+type MessageTimestampDescriptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MessageTimestampDescriptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MessageTimestampDescriptionResponse)(nil)).Elem()
+}
+
+func (o MessageTimestampDescriptionResponsePtrOutput) ToMessageTimestampDescriptionResponsePtrOutput() MessageTimestampDescriptionResponsePtrOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionResponsePtrOutput) ToMessageTimestampDescriptionResponsePtrOutputWithContext(ctx context.Context) MessageTimestampDescriptionResponsePtrOutput {
+	return o
+}
+
+func (o MessageTimestampDescriptionResponsePtrOutput) Elem() MessageTimestampDescriptionResponseOutput {
+	return o.ApplyT(func(v *MessageTimestampDescriptionResponse) MessageTimestampDescriptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MessageTimestampDescriptionResponse
+		return ret
+	}).(MessageTimestampDescriptionResponseOutput)
+}
+
+// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
+func (o MessageTimestampDescriptionResponsePtrOutput) TimestampType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MessageTimestampDescriptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The response from the List namespace operation.
 type NWRuleSetIpRules struct {
 	// The IP Filter Action
@@ -3485,11 +3685,11 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 type RetentionDescription struct {
 	// Enumerates the possible values for cleanup policy
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+	// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 	MinCompactionLagInMins *float64 `pulumi:"minCompactionLagInMins"`
-	// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+	// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 	RetentionTimeInHours *float64 `pulumi:"retentionTimeInHours"`
-	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 	TombstoneRetentionTimeInHours *int `pulumi:"tombstoneRetentionTimeInHours"`
 }
 
@@ -3508,11 +3708,11 @@ type RetentionDescriptionInput interface {
 type RetentionDescriptionArgs struct {
 	// Enumerates the possible values for cleanup policy
 	CleanupPolicy pulumi.StringPtrInput `pulumi:"cleanupPolicy"`
-	// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+	// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 	MinCompactionLagInMins pulumi.Float64PtrInput `pulumi:"minCompactionLagInMins"`
-	// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+	// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 	RetentionTimeInHours pulumi.Float64PtrInput `pulumi:"retentionTimeInHours"`
-	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 	TombstoneRetentionTimeInHours pulumi.IntPtrInput `pulumi:"tombstoneRetentionTimeInHours"`
 }
 
@@ -3599,17 +3799,17 @@ func (o RetentionDescriptionOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 func (o RetentionDescriptionOutput) MinCompactionLagInMins() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *float64 { return v.MinCompactionLagInMins }).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 func (o RetentionDescriptionOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *float64 { return v.RetentionTimeInHours }).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionDescription) *int { return v.TombstoneRetentionTimeInHours }).(pulumi.IntPtrOutput)
 }
@@ -3648,7 +3848,7 @@ func (o RetentionDescriptionPtrOutput) CleanupPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 func (o RetentionDescriptionPtrOutput) MinCompactionLagInMins() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RetentionDescription) *float64 {
 		if v == nil {
@@ -3658,7 +3858,7 @@ func (o RetentionDescriptionPtrOutput) MinCompactionLagInMins() pulumi.Float64Pt
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 func (o RetentionDescriptionPtrOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RetentionDescription) *float64 {
 		if v == nil {
@@ -3668,7 +3868,7 @@ func (o RetentionDescriptionPtrOutput) RetentionTimeInHours() pulumi.Float64PtrO
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionPtrOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionDescription) *int {
 		if v == nil {
@@ -3682,11 +3882,11 @@ func (o RetentionDescriptionPtrOutput) TombstoneRetentionTimeInHours() pulumi.In
 type RetentionDescriptionResponse struct {
 	// Enumerates the possible values for cleanup policy
 	CleanupPolicy *string `pulumi:"cleanupPolicy"`
-	// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+	// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 	MinCompactionLagInMins *float64 `pulumi:"minCompactionLagInMins"`
-	// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+	// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 	RetentionTimeInHours *float64 `pulumi:"retentionTimeInHours"`
-	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+	// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 	TombstoneRetentionTimeInHours *int `pulumi:"tombstoneRetentionTimeInHours"`
 }
 
@@ -3710,17 +3910,17 @@ func (o RetentionDescriptionResponseOutput) CleanupPolicy() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RetentionDescriptionResponse) *string { return v.CleanupPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 func (o RetentionDescriptionResponseOutput) MinCompactionLagInMins() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RetentionDescriptionResponse) *float64 { return v.MinCompactionLagInMins }).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 func (o RetentionDescriptionResponseOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RetentionDescriptionResponse) *float64 { return v.RetentionTimeInHours }).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionResponseOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionDescriptionResponse) *int { return v.TombstoneRetentionTimeInHours }).(pulumi.IntPtrOutput)
 }
@@ -3759,7 +3959,7 @@ func (o RetentionDescriptionResponsePtrOutput) CleanupPolicy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
+// The minimum time a message will remain ineligible for compaction in the log. This value is used when cleanupPolicy is Compact or DeleteOrCompact.
 func (o RetentionDescriptionResponsePtrOutput) MinCompactionLagInMins() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RetentionDescriptionResponse) *float64 {
 		if v == nil {
@@ -3769,7 +3969,7 @@ func (o RetentionDescriptionResponsePtrOutput) MinCompactionLagInMins() pulumi.F
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the events for this Event Hub. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
+// Number of hours to retain the events for this Event Hub. This should be positive value upto namespace SKU max. -1 is a special case where retention time is infinite, but the size of an entity is restricted and its size depends on namespace SKU type.
 func (o RetentionDescriptionResponsePtrOutput) RetentionTimeInHours() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RetentionDescriptionResponse) *float64 {
 		if v == nil {
@@ -3779,7 +3979,7 @@ func (o RetentionDescriptionResponsePtrOutput) RetentionTimeInHours() pulumi.Flo
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
 func (o RetentionDescriptionResponsePtrOutput) TombstoneRetentionTimeInHours() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RetentionDescriptionResponse) *int {
 		if v == nil {
@@ -4806,6 +5006,10 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(MessageTimestampDescriptionOutput{})
+	pulumi.RegisterOutputType(MessageTimestampDescriptionPtrOutput{})
+	pulumi.RegisterOutputType(MessageTimestampDescriptionResponseOutput{})
+	pulumi.RegisterOutputType(MessageTimestampDescriptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(NWRuleSetIpRulesOutput{})
 	pulumi.RegisterOutputType(NWRuleSetIpRulesArrayOutput{})
 	pulumi.RegisterOutputType(NWRuleSetIpRulesResponseOutput{})

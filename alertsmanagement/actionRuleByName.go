@@ -57,6 +57,9 @@ func NewActionRuleByName(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20230501preview:ActionRuleByName"),
 		},
+		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20240301preview:ActionRuleByName"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

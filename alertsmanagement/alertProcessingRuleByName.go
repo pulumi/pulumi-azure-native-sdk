@@ -15,7 +15,7 @@ import (
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
 // Azure REST API version: 2021-08-08.
 //
-// Other available API versions: 2023-05-01-preview.
+// Other available API versions: 2023-05-01-preview, 2024-03-01-preview.
 type AlertProcessingRuleByName struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewAlertProcessingRuleByName(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20230501preview:AlertProcessingRuleByName"),
+		},
+		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20240301preview:AlertProcessingRuleByName"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -59,6 +59,9 @@ func NewAlertProcessingRuleByName(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:alertsmanagement/v20210808preview:AlertProcessingRuleByName"),
 		},
+		{
+			Type: pulumi.String("azure-native:alertsmanagement/v20240301preview:AlertProcessingRuleByName"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

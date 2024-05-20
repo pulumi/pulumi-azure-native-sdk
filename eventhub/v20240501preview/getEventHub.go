@@ -45,8 +45,8 @@ type LookupEventHubResult struct {
 	Location string `pulumi:"location"`
 	// Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 	MessageRetentionInDays *float64 `pulumi:"messageRetentionInDays"`
-	// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
-	MessageTimestampType *string `pulumi:"messageTimestampType"`
+	// Properties of MessageTimestamp Description
+	MessageTimestampDescription *MessageTimestampDescriptionResponse `pulumi:"messageTimestampDescription"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
@@ -138,9 +138,11 @@ func (o LookupEventHubResultOutput) MessageRetentionInDays() pulumi.Float64PtrOu
 	return o.ApplyT(func(v LookupEventHubResult) *float64 { return v.MessageRetentionInDays }).(pulumi.Float64PtrOutput)
 }
 
-// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
-func (o LookupEventHubResultOutput) MessageTimestampType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupEventHubResult) *string { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
+// Properties of MessageTimestamp Description
+func (o LookupEventHubResultOutput) MessageTimestampDescription() MessageTimestampDescriptionResponsePtrOutput {
+	return o.ApplyT(func(v LookupEventHubResult) *MessageTimestampDescriptionResponse {
+		return v.MessageTimestampDescription
+	}).(MessageTimestampDescriptionResponsePtrOutput)
 }
 
 // The name of the resource

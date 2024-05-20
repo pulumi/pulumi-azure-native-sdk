@@ -26,8 +26,8 @@ type EventHub struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 	MessageRetentionInDays pulumi.Float64PtrOutput `pulumi:"messageRetentionInDays"`
-	// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
-	MessageTimestampType pulumi.StringPtrOutput `pulumi:"messageTimestampType"`
+	// Properties of MessageTimestamp Description
+	MessageTimestampDescription MessageTimestampDescriptionResponsePtrOutput `pulumi:"messageTimestampDescription"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
@@ -139,8 +139,8 @@ type eventHubArgs struct {
 	EventHubName *string `pulumi:"eventHubName"`
 	// Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 	MessageRetentionInDays *float64 `pulumi:"messageRetentionInDays"`
-	// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
-	MessageTimestampType *string `pulumi:"messageTimestampType"`
+	// Properties of MessageTimestamp Description
+	MessageTimestampDescription *MessageTimestampDescription `pulumi:"messageTimestampDescription"`
 	// The Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
 	// Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
@@ -163,8 +163,8 @@ type EventHubArgs struct {
 	EventHubName pulumi.StringPtrInput
 	// Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 	MessageRetentionInDays pulumi.Float64PtrInput
-	// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
-	MessageTimestampType pulumi.StringPtrInput
+	// Properties of MessageTimestamp Description
+	MessageTimestampDescription MessageTimestampDescriptionPtrInput
 	// The Namespace name
 	NamespaceName pulumi.StringInput
 	// Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
@@ -241,9 +241,9 @@ func (o EventHubOutput) MessageRetentionInDays() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EventHub) pulumi.Float64PtrOutput { return v.MessageRetentionInDays }).(pulumi.Float64PtrOutput)
 }
 
-// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
-func (o EventHubOutput) MessageTimestampType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EventHub) pulumi.StringPtrOutput { return v.MessageTimestampType }).(pulumi.StringPtrOutput)
+// Properties of MessageTimestamp Description
+func (o EventHubOutput) MessageTimestampDescription() MessageTimestampDescriptionResponsePtrOutput {
+	return o.ApplyT(func(v *EventHub) MessageTimestampDescriptionResponsePtrOutput { return v.MessageTimestampDescription }).(MessageTimestampDescriptionResponsePtrOutput)
 }
 
 // The name of the resource
