@@ -31,6 +31,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProtectionIntent{}
 	case "azure-native:recoveryservices/v20240201:ProtectionPolicy":
 		r = &ProtectionPolicy{}
+	case "azure-native:recoveryservices/v20240201:ReplicationFabric":
+		r = &ReplicationFabric{}
+	case "azure-native:recoveryservices/v20240201:ReplicationMigrationItem":
+		r = &ReplicationMigrationItem{}
+	case "azure-native:recoveryservices/v20240201:ReplicationNetworkMapping":
+		r = &ReplicationNetworkMapping{}
+	case "azure-native:recoveryservices/v20240201:ReplicationPolicy":
+		r = &ReplicationPolicy{}
+	case "azure-native:recoveryservices/v20240201:ReplicationProtectedItem":
+		r = &ReplicationProtectedItem{}
+	case "azure-native:recoveryservices/v20240201:ReplicationProtectionCluster":
+		r = &ReplicationProtectionCluster{}
+	case "azure-native:recoveryservices/v20240201:ReplicationProtectionContainerMapping":
+		r = &ReplicationProtectionContainerMapping{}
+	case "azure-native:recoveryservices/v20240201:ReplicationRecoveryPlan":
+		r = &ReplicationRecoveryPlan{}
+	case "azure-native:recoveryservices/v20240201:ReplicationRecoveryServicesProvider":
+		r = &ReplicationRecoveryServicesProvider{}
+	case "azure-native:recoveryservices/v20240201:ReplicationStorageClassificationMapping":
+		r = &ReplicationStorageClassificationMapping{}
+	case "azure-native:recoveryservices/v20240201:ReplicationvCenter":
+		r = &ReplicationvCenter{}
 	case "azure-native:recoveryservices/v20240201:ResourceGuardProxy":
 		r = &ResourceGuardProxy{}
 	case "azure-native:recoveryservices/v20240201:Vault":

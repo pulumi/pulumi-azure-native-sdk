@@ -356,7 +356,7 @@ type CleanupPolicyRetentionDescription string
 const (
 	CleanupPolicyRetentionDescriptionDelete          = CleanupPolicyRetentionDescription("Delete")
 	CleanupPolicyRetentionDescriptionCompact         = CleanupPolicyRetentionDescription("Compact")
-	CleanupPolicyRetentionDescription_Delete_Compact = CleanupPolicyRetentionDescription("Delete,Compact")
+	CleanupPolicyRetentionDescriptionDeleteOrCompact = CleanupPolicyRetentionDescription("DeleteOrCompact")
 )
 
 func (CleanupPolicyRetentionDescription) ElementType() reflect.Type {
@@ -483,7 +483,7 @@ func (o CleanupPolicyRetentionDescriptionPtrOutput) ToStringPtrOutputWithContext
 //
 //	CleanupPolicyRetentionDescriptionDelete
 //	CleanupPolicyRetentionDescriptionCompact
-//	CleanupPolicyRetentionDescription_Delete_Compact
+//	CleanupPolicyRetentionDescriptionDeleteOrCompact
 type CleanupPolicyRetentionDescriptionInput interface {
 	pulumi.Input
 
@@ -3380,12 +3380,12 @@ func (in *skuTierPtr) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTier
 	return pulumi.ToOutputWithContext(ctx, in).(SkuTierPtrOutput)
 }
 
-// Denotes the type of timestamp the message will hold. Two types of timestamp types AppendTime, CreateTime. AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime for now and will full have runtime support later.
+// Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same.
 type TimestampType string
 
 const (
-	TimestampTypeAppendTime = TimestampType("AppendTime")
-	TimestampTypeCreateTime = TimestampType("CreateTime")
+	TimestampTypeLogAppend = TimestampType("LogAppend")
+	TimestampTypeCreate    = TimestampType("Create")
 )
 
 func (TimestampType) ElementType() reflect.Type {
@@ -3510,8 +3510,8 @@ func (o TimestampTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // TimestampTypeInput is an input type that accepts values of the TimestampType enum
 // A concrete instance of `TimestampTypeInput` can be one of the following:
 //
-//	TimestampTypeAppendTime
-//	TimestampTypeCreateTime
+//	TimestampTypeLogAppend
+//	TimestampTypeCreate
 type TimestampTypeInput interface {
 	pulumi.Input
 
