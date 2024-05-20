@@ -1972,6 +1972,349 @@ func (o A2AProtectedDiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) A2A
 }
 
 // A2A protected managed disk details.
+type A2AProtectedManagedDiskDetails struct {
+	// The disk level operations list.
+	AllowedDiskLevelOperation []string `pulumi:"allowedDiskLevelOperation"`
+	// The data pending at source virtual machine in MB.
+	DataPendingAtSourceAgentInMB *float64 `pulumi:"dataPendingAtSourceAgentInMB"`
+	// The data pending for replication in MB at staging account.
+	DataPendingInStagingStorageAccountInMB *float64 `pulumi:"dataPendingInStagingStorageAccountInMB"`
+	// The KeyVault resource id for secret (BEK).
+	DekKeyVaultArmId *string `pulumi:"dekKeyVaultArmId"`
+	// The disk capacity in bytes.
+	DiskCapacityInBytes *float64 `pulumi:"diskCapacityInBytes"`
+	// The managed disk Arm id.
+	DiskId *string `pulumi:"diskId"`
+	// The disk name.
+	DiskName *string `pulumi:"diskName"`
+	// The disk state.
+	DiskState *string `pulumi:"diskState"`
+	// The type of disk.
+	DiskType *string `pulumi:"diskType"`
+	// The failover name for the managed disk.
+	FailoverDiskName *string `pulumi:"failoverDiskName"`
+	// A value indicating whether vm has encrypted os disk or not.
+	IsDiskEncrypted *bool `pulumi:"isDiskEncrypted"`
+	// A value indicating whether disk key got encrypted or not.
+	IsDiskKeyEncrypted *bool `pulumi:"isDiskKeyEncrypted"`
+	// The KeyVault resource id for key (KEK).
+	KekKeyVaultArmId *string `pulumi:"kekKeyVaultArmId"`
+	// The key URL / identifier (KEK).
+	KeyIdentifier *string `pulumi:"keyIdentifier"`
+	// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+	MonitoringJobType *string `pulumi:"monitoringJobType"`
+	// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+	MonitoringPercentageCompletion *int `pulumi:"monitoringPercentageCompletion"`
+	// The primary disk encryption set Id.
+	PrimaryDiskEncryptionSetId *string `pulumi:"primaryDiskEncryptionSetId"`
+	// The primary staging storage account.
+	PrimaryStagingAzureStorageAccountId *string `pulumi:"primaryStagingAzureStorageAccountId"`
+	// The recovery disk encryption set Id.
+	RecoveryDiskEncryptionSetId *string `pulumi:"recoveryDiskEncryptionSetId"`
+	// Recovery original target disk Arm Id.
+	RecoveryOrignalTargetDiskId *string `pulumi:"recoveryOrignalTargetDiskId"`
+	// The replica disk type. Its an optional value and will be same as source disk type if not user provided.
+	RecoveryReplicaDiskAccountType *string `pulumi:"recoveryReplicaDiskAccountType"`
+	// Recovery replica disk Arm Id.
+	RecoveryReplicaDiskId *string `pulumi:"recoveryReplicaDiskId"`
+	// The recovery disk resource group Arm Id.
+	RecoveryResourceGroupId *string `pulumi:"recoveryResourceGroupId"`
+	// The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
+	RecoveryTargetDiskAccountType *string `pulumi:"recoveryTargetDiskAccountType"`
+	// Recovery target disk Arm Id.
+	RecoveryTargetDiskId *string `pulumi:"recoveryTargetDiskId"`
+	// A value indicating whether resync is required for this disk.
+	ResyncRequired *bool `pulumi:"resyncRequired"`
+	// The secret URL / identifier (BEK).
+	SecretIdentifier *string `pulumi:"secretIdentifier"`
+	// The test failover name for the managed disk.
+	TfoDiskName *string `pulumi:"tfoDiskName"`
+}
+
+// A2AProtectedManagedDiskDetailsInput is an input type that accepts A2AProtectedManagedDiskDetailsArgs and A2AProtectedManagedDiskDetailsOutput values.
+// You can construct a concrete instance of `A2AProtectedManagedDiskDetailsInput` via:
+//
+//	A2AProtectedManagedDiskDetailsArgs{...}
+type A2AProtectedManagedDiskDetailsInput interface {
+	pulumi.Input
+
+	ToA2AProtectedManagedDiskDetailsOutput() A2AProtectedManagedDiskDetailsOutput
+	ToA2AProtectedManagedDiskDetailsOutputWithContext(context.Context) A2AProtectedManagedDiskDetailsOutput
+}
+
+// A2A protected managed disk details.
+type A2AProtectedManagedDiskDetailsArgs struct {
+	// The disk level operations list.
+	AllowedDiskLevelOperation pulumi.StringArrayInput `pulumi:"allowedDiskLevelOperation"`
+	// The data pending at source virtual machine in MB.
+	DataPendingAtSourceAgentInMB pulumi.Float64PtrInput `pulumi:"dataPendingAtSourceAgentInMB"`
+	// The data pending for replication in MB at staging account.
+	DataPendingInStagingStorageAccountInMB pulumi.Float64PtrInput `pulumi:"dataPendingInStagingStorageAccountInMB"`
+	// The KeyVault resource id for secret (BEK).
+	DekKeyVaultArmId pulumi.StringPtrInput `pulumi:"dekKeyVaultArmId"`
+	// The disk capacity in bytes.
+	DiskCapacityInBytes pulumi.Float64PtrInput `pulumi:"diskCapacityInBytes"`
+	// The managed disk Arm id.
+	DiskId pulumi.StringPtrInput `pulumi:"diskId"`
+	// The disk name.
+	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
+	// The disk state.
+	DiskState pulumi.StringPtrInput `pulumi:"diskState"`
+	// The type of disk.
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// The failover name for the managed disk.
+	FailoverDiskName pulumi.StringPtrInput `pulumi:"failoverDiskName"`
+	// A value indicating whether vm has encrypted os disk or not.
+	IsDiskEncrypted pulumi.BoolPtrInput `pulumi:"isDiskEncrypted"`
+	// A value indicating whether disk key got encrypted or not.
+	IsDiskKeyEncrypted pulumi.BoolPtrInput `pulumi:"isDiskKeyEncrypted"`
+	// The KeyVault resource id for key (KEK).
+	KekKeyVaultArmId pulumi.StringPtrInput `pulumi:"kekKeyVaultArmId"`
+	// The key URL / identifier (KEK).
+	KeyIdentifier pulumi.StringPtrInput `pulumi:"keyIdentifier"`
+	// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+	MonitoringJobType pulumi.StringPtrInput `pulumi:"monitoringJobType"`
+	// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+	MonitoringPercentageCompletion pulumi.IntPtrInput `pulumi:"monitoringPercentageCompletion"`
+	// The primary disk encryption set Id.
+	PrimaryDiskEncryptionSetId pulumi.StringPtrInput `pulumi:"primaryDiskEncryptionSetId"`
+	// The primary staging storage account.
+	PrimaryStagingAzureStorageAccountId pulumi.StringPtrInput `pulumi:"primaryStagingAzureStorageAccountId"`
+	// The recovery disk encryption set Id.
+	RecoveryDiskEncryptionSetId pulumi.StringPtrInput `pulumi:"recoveryDiskEncryptionSetId"`
+	// Recovery original target disk Arm Id.
+	RecoveryOrignalTargetDiskId pulumi.StringPtrInput `pulumi:"recoveryOrignalTargetDiskId"`
+	// The replica disk type. Its an optional value and will be same as source disk type if not user provided.
+	RecoveryReplicaDiskAccountType pulumi.StringPtrInput `pulumi:"recoveryReplicaDiskAccountType"`
+	// Recovery replica disk Arm Id.
+	RecoveryReplicaDiskId pulumi.StringPtrInput `pulumi:"recoveryReplicaDiskId"`
+	// The recovery disk resource group Arm Id.
+	RecoveryResourceGroupId pulumi.StringPtrInput `pulumi:"recoveryResourceGroupId"`
+	// The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
+	RecoveryTargetDiskAccountType pulumi.StringPtrInput `pulumi:"recoveryTargetDiskAccountType"`
+	// Recovery target disk Arm Id.
+	RecoveryTargetDiskId pulumi.StringPtrInput `pulumi:"recoveryTargetDiskId"`
+	// A value indicating whether resync is required for this disk.
+	ResyncRequired pulumi.BoolPtrInput `pulumi:"resyncRequired"`
+	// The secret URL / identifier (BEK).
+	SecretIdentifier pulumi.StringPtrInput `pulumi:"secretIdentifier"`
+	// The test failover name for the managed disk.
+	TfoDiskName pulumi.StringPtrInput `pulumi:"tfoDiskName"`
+}
+
+func (A2AProtectedManagedDiskDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AProtectedManagedDiskDetails)(nil)).Elem()
+}
+
+func (i A2AProtectedManagedDiskDetailsArgs) ToA2AProtectedManagedDiskDetailsOutput() A2AProtectedManagedDiskDetailsOutput {
+	return i.ToA2AProtectedManagedDiskDetailsOutputWithContext(context.Background())
+}
+
+func (i A2AProtectedManagedDiskDetailsArgs) ToA2AProtectedManagedDiskDetailsOutputWithContext(ctx context.Context) A2AProtectedManagedDiskDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AProtectedManagedDiskDetailsOutput)
+}
+
+// A2AProtectedManagedDiskDetailsArrayInput is an input type that accepts A2AProtectedManagedDiskDetailsArray and A2AProtectedManagedDiskDetailsArrayOutput values.
+// You can construct a concrete instance of `A2AProtectedManagedDiskDetailsArrayInput` via:
+//
+//	A2AProtectedManagedDiskDetailsArray{ A2AProtectedManagedDiskDetailsArgs{...} }
+type A2AProtectedManagedDiskDetailsArrayInput interface {
+	pulumi.Input
+
+	ToA2AProtectedManagedDiskDetailsArrayOutput() A2AProtectedManagedDiskDetailsArrayOutput
+	ToA2AProtectedManagedDiskDetailsArrayOutputWithContext(context.Context) A2AProtectedManagedDiskDetailsArrayOutput
+}
+
+type A2AProtectedManagedDiskDetailsArray []A2AProtectedManagedDiskDetailsInput
+
+func (A2AProtectedManagedDiskDetailsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]A2AProtectedManagedDiskDetails)(nil)).Elem()
+}
+
+func (i A2AProtectedManagedDiskDetailsArray) ToA2AProtectedManagedDiskDetailsArrayOutput() A2AProtectedManagedDiskDetailsArrayOutput {
+	return i.ToA2AProtectedManagedDiskDetailsArrayOutputWithContext(context.Background())
+}
+
+func (i A2AProtectedManagedDiskDetailsArray) ToA2AProtectedManagedDiskDetailsArrayOutputWithContext(ctx context.Context) A2AProtectedManagedDiskDetailsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AProtectedManagedDiskDetailsArrayOutput)
+}
+
+// A2A protected managed disk details.
+type A2AProtectedManagedDiskDetailsOutput struct{ *pulumi.OutputState }
+
+func (A2AProtectedManagedDiskDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AProtectedManagedDiskDetails)(nil)).Elem()
+}
+
+func (o A2AProtectedManagedDiskDetailsOutput) ToA2AProtectedManagedDiskDetailsOutput() A2AProtectedManagedDiskDetailsOutput {
+	return o
+}
+
+func (o A2AProtectedManagedDiskDetailsOutput) ToA2AProtectedManagedDiskDetailsOutputWithContext(ctx context.Context) A2AProtectedManagedDiskDetailsOutput {
+	return o
+}
+
+// The disk level operations list.
+func (o A2AProtectedManagedDiskDetailsOutput) AllowedDiskLevelOperation() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) []string { return v.AllowedDiskLevelOperation }).(pulumi.StringArrayOutput)
+}
+
+// The data pending at source virtual machine in MB.
+func (o A2AProtectedManagedDiskDetailsOutput) DataPendingAtSourceAgentInMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *float64 { return v.DataPendingAtSourceAgentInMB }).(pulumi.Float64PtrOutput)
+}
+
+// The data pending for replication in MB at staging account.
+func (o A2AProtectedManagedDiskDetailsOutput) DataPendingInStagingStorageAccountInMB() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *float64 { return v.DataPendingInStagingStorageAccountInMB }).(pulumi.Float64PtrOutput)
+}
+
+// The KeyVault resource id for secret (BEK).
+func (o A2AProtectedManagedDiskDetailsOutput) DekKeyVaultArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.DekKeyVaultArmId }).(pulumi.StringPtrOutput)
+}
+
+// The disk capacity in bytes.
+func (o A2AProtectedManagedDiskDetailsOutput) DiskCapacityInBytes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *float64 { return v.DiskCapacityInBytes }).(pulumi.Float64PtrOutput)
+}
+
+// The managed disk Arm id.
+func (o A2AProtectedManagedDiskDetailsOutput) DiskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.DiskId }).(pulumi.StringPtrOutput)
+}
+
+// The disk name.
+func (o A2AProtectedManagedDiskDetailsOutput) DiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.DiskName }).(pulumi.StringPtrOutput)
+}
+
+// The disk state.
+func (o A2AProtectedManagedDiskDetailsOutput) DiskState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.DiskState }).(pulumi.StringPtrOutput)
+}
+
+// The type of disk.
+func (o A2AProtectedManagedDiskDetailsOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// The failover name for the managed disk.
+func (o A2AProtectedManagedDiskDetailsOutput) FailoverDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.FailoverDiskName }).(pulumi.StringPtrOutput)
+}
+
+// A value indicating whether vm has encrypted os disk or not.
+func (o A2AProtectedManagedDiskDetailsOutput) IsDiskEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *bool { return v.IsDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// A value indicating whether disk key got encrypted or not.
+func (o A2AProtectedManagedDiskDetailsOutput) IsDiskKeyEncrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *bool { return v.IsDiskKeyEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The KeyVault resource id for key (KEK).
+func (o A2AProtectedManagedDiskDetailsOutput) KekKeyVaultArmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.KekKeyVaultArmId }).(pulumi.StringPtrOutput)
+}
+
+// The key URL / identifier (KEK).
+func (o A2AProtectedManagedDiskDetailsOutput) KeyIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.KeyIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+func (o A2AProtectedManagedDiskDetailsOutput) MonitoringJobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.MonitoringJobType }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+func (o A2AProtectedManagedDiskDetailsOutput) MonitoringPercentageCompletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *int { return v.MonitoringPercentageCompletion }).(pulumi.IntPtrOutput)
+}
+
+// The primary disk encryption set Id.
+func (o A2AProtectedManagedDiskDetailsOutput) PrimaryDiskEncryptionSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.PrimaryDiskEncryptionSetId }).(pulumi.StringPtrOutput)
+}
+
+// The primary staging storage account.
+func (o A2AProtectedManagedDiskDetailsOutput) PrimaryStagingAzureStorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.PrimaryStagingAzureStorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// The recovery disk encryption set Id.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryDiskEncryptionSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryDiskEncryptionSetId }).(pulumi.StringPtrOutput)
+}
+
+// Recovery original target disk Arm Id.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryOrignalTargetDiskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryOrignalTargetDiskId }).(pulumi.StringPtrOutput)
+}
+
+// The replica disk type. Its an optional value and will be same as source disk type if not user provided.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryReplicaDiskAccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryReplicaDiskAccountType }).(pulumi.StringPtrOutput)
+}
+
+// Recovery replica disk Arm Id.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryReplicaDiskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryReplicaDiskId }).(pulumi.StringPtrOutput)
+}
+
+// The recovery disk resource group Arm Id.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryTargetDiskAccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryTargetDiskAccountType }).(pulumi.StringPtrOutput)
+}
+
+// Recovery target disk Arm Id.
+func (o A2AProtectedManagedDiskDetailsOutput) RecoveryTargetDiskId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.RecoveryTargetDiskId }).(pulumi.StringPtrOutput)
+}
+
+// A value indicating whether resync is required for this disk.
+func (o A2AProtectedManagedDiskDetailsOutput) ResyncRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *bool { return v.ResyncRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The secret URL / identifier (BEK).
+func (o A2AProtectedManagedDiskDetailsOutput) SecretIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.SecretIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The test failover name for the managed disk.
+func (o A2AProtectedManagedDiskDetailsOutput) TfoDiskName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AProtectedManagedDiskDetails) *string { return v.TfoDiskName }).(pulumi.StringPtrOutput)
+}
+
+type A2AProtectedManagedDiskDetailsArrayOutput struct{ *pulumi.OutputState }
+
+func (A2AProtectedManagedDiskDetailsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]A2AProtectedManagedDiskDetails)(nil)).Elem()
+}
+
+func (o A2AProtectedManagedDiskDetailsArrayOutput) ToA2AProtectedManagedDiskDetailsArrayOutput() A2AProtectedManagedDiskDetailsArrayOutput {
+	return o
+}
+
+func (o A2AProtectedManagedDiskDetailsArrayOutput) ToA2AProtectedManagedDiskDetailsArrayOutputWithContext(ctx context.Context) A2AProtectedManagedDiskDetailsArrayOutput {
+	return o
+}
+
+func (o A2AProtectedManagedDiskDetailsArrayOutput) Index(i pulumi.IntInput) A2AProtectedManagedDiskDetailsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) A2AProtectedManagedDiskDetails {
+		return vs[0].([]A2AProtectedManagedDiskDetails)[vs[1].(int)]
+	}).(A2AProtectedManagedDiskDetailsOutput)
+}
+
+// A2A protected managed disk details.
 type A2AProtectedManagedDiskDetailsResponse struct {
 	// The disk level operations list.
 	AllowedDiskLevelOperation []string `pulumi:"allowedDiskLevelOperation"`
@@ -3341,6 +3684,1720 @@ func (o A2AReplicationDetailsResponsePtrOutput) VmSyncedConfigDetails() AzureToA
 		}
 		return v.VmSyncedConfigDetails
 	}).(AzureToAzureVmSyncedConfigDetailsResponsePtrOutput)
+}
+
+// A2A provider specific settings.
+type A2AReplicationProtectionClusterDetails struct {
+	// The cluster management Id.
+	ClusterManagementId *string `pulumi:"clusterManagementId"`
+	// The recovery point Id to which the cluster was failed over.
+	FailoverRecoveryPointId *string `pulumi:"failoverRecoveryPointId"`
+	// The initial primary extended location.
+	InitialPrimaryExtendedLocation *ExtendedLocation `pulumi:"initialPrimaryExtendedLocation"`
+	// The initial primary fabric location.
+	InitialPrimaryFabricLocation *string `pulumi:"initialPrimaryFabricLocation"`
+	// The initial primary availability zone.
+	InitialPrimaryZone *string `pulumi:"initialPrimaryZone"`
+	// The initial recovery extended location.
+	InitialRecoveryExtendedLocation *ExtendedLocation `pulumi:"initialRecoveryExtendedLocation"`
+	// The initial recovery fabric location.
+	InitialRecoveryFabricLocation *string `pulumi:"initialRecoveryFabricLocation"`
+	// The initial recovery availability zone.
+	InitialRecoveryZone *string `pulumi:"initialRecoveryZone"`
+	// Gets the Instance type.
+	// Expected value is 'A2A'.
+	InstanceType string `pulumi:"instanceType"`
+	// The time (in UTC) when the last RPO value was calculated by Protection Service.
+	LastRpoCalculatedTime *string `pulumi:"lastRpoCalculatedTime"`
+	// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+	LifecycleId *string `pulumi:"lifecycleId"`
+	// Whether Multi VM group is auto created or specified by user.
+	MultiVmGroupCreateOption *string `pulumi:"multiVmGroupCreateOption"`
+	// The multi vm group Id.
+	MultiVmGroupId *string `pulumi:"multiVmGroupId"`
+	// The multi vm group name.
+	MultiVmGroupName *string `pulumi:"multiVmGroupName"`
+	// The primary availability zone.
+	PrimaryAvailabilityZone *string `pulumi:"primaryAvailabilityZone"`
+	// The primary Extended Location.
+	PrimaryExtendedLocation *ExtendedLocation `pulumi:"primaryExtendedLocation"`
+	// Primary fabric location.
+	PrimaryFabricLocation *string `pulumi:"primaryFabricLocation"`
+	// The recovery availability zone.
+	RecoveryAvailabilityZone *string `pulumi:"recoveryAvailabilityZone"`
+	// The recovery Extended Location.
+	RecoveryExtendedLocation *ExtendedLocation `pulumi:"recoveryExtendedLocation"`
+	// The recovery fabric location.
+	RecoveryFabricLocation *string `pulumi:"recoveryFabricLocation"`
+	// The last RPO value in seconds.
+	RpoInSeconds *float64 `pulumi:"rpoInSeconds"`
+}
+
+// A2AReplicationProtectionClusterDetailsInput is an input type that accepts A2AReplicationProtectionClusterDetailsArgs and A2AReplicationProtectionClusterDetailsOutput values.
+// You can construct a concrete instance of `A2AReplicationProtectionClusterDetailsInput` via:
+//
+//	A2AReplicationProtectionClusterDetailsArgs{...}
+type A2AReplicationProtectionClusterDetailsInput interface {
+	pulumi.Input
+
+	ToA2AReplicationProtectionClusterDetailsOutput() A2AReplicationProtectionClusterDetailsOutput
+	ToA2AReplicationProtectionClusterDetailsOutputWithContext(context.Context) A2AReplicationProtectionClusterDetailsOutput
+}
+
+// A2A provider specific settings.
+type A2AReplicationProtectionClusterDetailsArgs struct {
+	// The cluster management Id.
+	ClusterManagementId pulumi.StringPtrInput `pulumi:"clusterManagementId"`
+	// The recovery point Id to which the cluster was failed over.
+	FailoverRecoveryPointId pulumi.StringPtrInput `pulumi:"failoverRecoveryPointId"`
+	// The initial primary extended location.
+	InitialPrimaryExtendedLocation ExtendedLocationPtrInput `pulumi:"initialPrimaryExtendedLocation"`
+	// The initial primary fabric location.
+	InitialPrimaryFabricLocation pulumi.StringPtrInput `pulumi:"initialPrimaryFabricLocation"`
+	// The initial primary availability zone.
+	InitialPrimaryZone pulumi.StringPtrInput `pulumi:"initialPrimaryZone"`
+	// The initial recovery extended location.
+	InitialRecoveryExtendedLocation ExtendedLocationPtrInput `pulumi:"initialRecoveryExtendedLocation"`
+	// The initial recovery fabric location.
+	InitialRecoveryFabricLocation pulumi.StringPtrInput `pulumi:"initialRecoveryFabricLocation"`
+	// The initial recovery availability zone.
+	InitialRecoveryZone pulumi.StringPtrInput `pulumi:"initialRecoveryZone"`
+	// Gets the Instance type.
+	// Expected value is 'A2A'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The time (in UTC) when the last RPO value was calculated by Protection Service.
+	LastRpoCalculatedTime pulumi.StringPtrInput `pulumi:"lastRpoCalculatedTime"`
+	// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+	LifecycleId pulumi.StringPtrInput `pulumi:"lifecycleId"`
+	// Whether Multi VM group is auto created or specified by user.
+	MultiVmGroupCreateOption pulumi.StringPtrInput `pulumi:"multiVmGroupCreateOption"`
+	// The multi vm group Id.
+	MultiVmGroupId pulumi.StringPtrInput `pulumi:"multiVmGroupId"`
+	// The multi vm group name.
+	MultiVmGroupName pulumi.StringPtrInput `pulumi:"multiVmGroupName"`
+	// The primary availability zone.
+	PrimaryAvailabilityZone pulumi.StringPtrInput `pulumi:"primaryAvailabilityZone"`
+	// The primary Extended Location.
+	PrimaryExtendedLocation ExtendedLocationPtrInput `pulumi:"primaryExtendedLocation"`
+	// Primary fabric location.
+	PrimaryFabricLocation pulumi.StringPtrInput `pulumi:"primaryFabricLocation"`
+	// The recovery availability zone.
+	RecoveryAvailabilityZone pulumi.StringPtrInput `pulumi:"recoveryAvailabilityZone"`
+	// The recovery Extended Location.
+	RecoveryExtendedLocation ExtendedLocationPtrInput `pulumi:"recoveryExtendedLocation"`
+	// The recovery fabric location.
+	RecoveryFabricLocation pulumi.StringPtrInput `pulumi:"recoveryFabricLocation"`
+	// The last RPO value in seconds.
+	RpoInSeconds pulumi.Float64PtrInput `pulumi:"rpoInSeconds"`
+}
+
+func (A2AReplicationProtectionClusterDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AReplicationProtectionClusterDetails)(nil)).Elem()
+}
+
+func (i A2AReplicationProtectionClusterDetailsArgs) ToA2AReplicationProtectionClusterDetailsOutput() A2AReplicationProtectionClusterDetailsOutput {
+	return i.ToA2AReplicationProtectionClusterDetailsOutputWithContext(context.Background())
+}
+
+func (i A2AReplicationProtectionClusterDetailsArgs) ToA2AReplicationProtectionClusterDetailsOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AReplicationProtectionClusterDetailsOutput)
+}
+
+func (i A2AReplicationProtectionClusterDetailsArgs) ToA2AReplicationProtectionClusterDetailsPtrOutput() A2AReplicationProtectionClusterDetailsPtrOutput {
+	return i.ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i A2AReplicationProtectionClusterDetailsArgs) ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AReplicationProtectionClusterDetailsOutput).ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(ctx)
+}
+
+// A2AReplicationProtectionClusterDetailsPtrInput is an input type that accepts A2AReplicationProtectionClusterDetailsArgs, A2AReplicationProtectionClusterDetailsPtr and A2AReplicationProtectionClusterDetailsPtrOutput values.
+// You can construct a concrete instance of `A2AReplicationProtectionClusterDetailsPtrInput` via:
+//
+//	        A2AReplicationProtectionClusterDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type A2AReplicationProtectionClusterDetailsPtrInput interface {
+	pulumi.Input
+
+	ToA2AReplicationProtectionClusterDetailsPtrOutput() A2AReplicationProtectionClusterDetailsPtrOutput
+	ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(context.Context) A2AReplicationProtectionClusterDetailsPtrOutput
+}
+
+type a2areplicationProtectionClusterDetailsPtrType A2AReplicationProtectionClusterDetailsArgs
+
+func A2AReplicationProtectionClusterDetailsPtr(v *A2AReplicationProtectionClusterDetailsArgs) A2AReplicationProtectionClusterDetailsPtrInput {
+	return (*a2areplicationProtectionClusterDetailsPtrType)(v)
+}
+
+func (*a2areplicationProtectionClusterDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**A2AReplicationProtectionClusterDetails)(nil)).Elem()
+}
+
+func (i *a2areplicationProtectionClusterDetailsPtrType) ToA2AReplicationProtectionClusterDetailsPtrOutput() A2AReplicationProtectionClusterDetailsPtrOutput {
+	return i.ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *a2areplicationProtectionClusterDetailsPtrType) ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AReplicationProtectionClusterDetailsPtrOutput)
+}
+
+// A2A provider specific settings.
+type A2AReplicationProtectionClusterDetailsOutput struct{ *pulumi.OutputState }
+
+func (A2AReplicationProtectionClusterDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AReplicationProtectionClusterDetails)(nil)).Elem()
+}
+
+func (o A2AReplicationProtectionClusterDetailsOutput) ToA2AReplicationProtectionClusterDetailsOutput() A2AReplicationProtectionClusterDetailsOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsOutput) ToA2AReplicationProtectionClusterDetailsOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsOutput) ToA2AReplicationProtectionClusterDetailsPtrOutput() A2AReplicationProtectionClusterDetailsPtrOutput {
+	return o.ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o A2AReplicationProtectionClusterDetailsOutput) ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v A2AReplicationProtectionClusterDetails) *A2AReplicationProtectionClusterDetails {
+		return &v
+	}).(A2AReplicationProtectionClusterDetailsPtrOutput)
+}
+
+// The cluster management Id.
+func (o A2AReplicationProtectionClusterDetailsOutput) ClusterManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.ClusterManagementId }).(pulumi.StringPtrOutput)
+}
+
+// The recovery point Id to which the cluster was failed over.
+func (o A2AReplicationProtectionClusterDetailsOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.FailoverRecoveryPointId }).(pulumi.StringPtrOutput)
+}
+
+// The initial primary extended location.
+func (o A2AReplicationProtectionClusterDetailsOutput) InitialPrimaryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *ExtendedLocation {
+		return v.InitialPrimaryExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The initial primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsOutput) InitialPrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.InitialPrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The initial primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsOutput) InitialPrimaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.InitialPrimaryZone }).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery extended location.
+func (o A2AReplicationProtectionClusterDetailsOutput) InitialRecoveryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *ExtendedLocation {
+		return v.InitialRecoveryExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The initial recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsOutput) InitialRecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.InitialRecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsOutput) InitialRecoveryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.InitialRecoveryZone }).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2AReplicationProtectionClusterDetailsOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2AReplicationProtectionClusterDetailsOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.LastRpoCalculatedTime }).(pulumi.StringPtrOutput)
+}
+
+// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+func (o A2AReplicationProtectionClusterDetailsOutput) LifecycleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.LifecycleId }).(pulumi.StringPtrOutput)
+}
+
+// Whether Multi VM group is auto created or specified by user.
+func (o A2AReplicationProtectionClusterDetailsOutput) MultiVmGroupCreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.MultiVmGroupCreateOption }).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group Id.
+func (o A2AReplicationProtectionClusterDetailsOutput) MultiVmGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.MultiVmGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group name.
+func (o A2AReplicationProtectionClusterDetailsOutput) MultiVmGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.MultiVmGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsOutput) PrimaryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.PrimaryAvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The primary Extended Location.
+func (o A2AReplicationProtectionClusterDetailsOutput) PrimaryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *ExtendedLocation { return v.PrimaryExtendedLocation }).(ExtendedLocationPtrOutput)
+}
+
+// Primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.PrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsOutput) RecoveryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.RecoveryAvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The recovery Extended Location.
+func (o A2AReplicationProtectionClusterDetailsOutput) RecoveryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *ExtendedLocation { return v.RecoveryExtendedLocation }).(ExtendedLocationPtrOutput)
+}
+
+// The recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *string { return v.RecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2AReplicationProtectionClusterDetailsOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetails) *float64 { return v.RpoInSeconds }).(pulumi.Float64PtrOutput)
+}
+
+type A2AReplicationProtectionClusterDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (A2AReplicationProtectionClusterDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**A2AReplicationProtectionClusterDetails)(nil)).Elem()
+}
+
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) ToA2AReplicationProtectionClusterDetailsPtrOutput() A2AReplicationProtectionClusterDetailsPtrOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) ToA2AReplicationProtectionClusterDetailsPtrOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsPtrOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) Elem() A2AReplicationProtectionClusterDetailsOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) A2AReplicationProtectionClusterDetails {
+		if v != nil {
+			return *v
+		}
+		var ret A2AReplicationProtectionClusterDetails
+		return ret
+	}).(A2AReplicationProtectionClusterDetailsOutput)
+}
+
+// The cluster management Id.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) ClusterManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterManagementId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery point Id to which the cluster was failed over.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverRecoveryPointId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial primary extended location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InitialPrimaryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *ExtendedLocation {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPrimaryExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The initial primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InitialPrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InitialPrimaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPrimaryZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery extended location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InitialRecoveryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *ExtendedLocation {
+		if v == nil {
+			return nil
+		}
+		return v.InitialRecoveryExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The initial recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InitialRecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialRecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InitialRecoveryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialRecoveryZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRpoCalculatedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) LifecycleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Multi VM group is auto created or specified by user.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) MultiVmGroupCreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiVmGroupCreateOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group Id.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) MultiVmGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiVmGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group name.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) MultiVmGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiVmGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) PrimaryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryAvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary Extended Location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) PrimaryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *ExtendedLocation {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// Primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) RecoveryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryAvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery Extended Location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) RecoveryExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *ExtendedLocation {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2AReplicationProtectionClusterDetailsPtrOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetails) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RpoInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// A2A provider specific settings.
+type A2AReplicationProtectionClusterDetailsResponse struct {
+	// The cluster management Id.
+	ClusterManagementId *string `pulumi:"clusterManagementId"`
+	// The recovery point Id to which the cluster was failed over.
+	FailoverRecoveryPointId *string `pulumi:"failoverRecoveryPointId"`
+	// The initial primary extended location.
+	InitialPrimaryExtendedLocation *ExtendedLocationResponse `pulumi:"initialPrimaryExtendedLocation"`
+	// The initial primary fabric location.
+	InitialPrimaryFabricLocation *string `pulumi:"initialPrimaryFabricLocation"`
+	// The initial primary availability zone.
+	InitialPrimaryZone *string `pulumi:"initialPrimaryZone"`
+	// The initial recovery extended location.
+	InitialRecoveryExtendedLocation *ExtendedLocationResponse `pulumi:"initialRecoveryExtendedLocation"`
+	// The initial recovery fabric location.
+	InitialRecoveryFabricLocation *string `pulumi:"initialRecoveryFabricLocation"`
+	// The initial recovery availability zone.
+	InitialRecoveryZone *string `pulumi:"initialRecoveryZone"`
+	// Gets the Instance type.
+	// Expected value is 'A2A'.
+	InstanceType string `pulumi:"instanceType"`
+	// The time (in UTC) when the last RPO value was calculated by Protection Service.
+	LastRpoCalculatedTime *string `pulumi:"lastRpoCalculatedTime"`
+	// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+	LifecycleId *string `pulumi:"lifecycleId"`
+	// Whether Multi VM group is auto created or specified by user.
+	MultiVmGroupCreateOption *string `pulumi:"multiVmGroupCreateOption"`
+	// The multi vm group Id.
+	MultiVmGroupId *string `pulumi:"multiVmGroupId"`
+	// The multi vm group name.
+	MultiVmGroupName *string `pulumi:"multiVmGroupName"`
+	// The primary availability zone.
+	PrimaryAvailabilityZone *string `pulumi:"primaryAvailabilityZone"`
+	// The primary Extended Location.
+	PrimaryExtendedLocation *ExtendedLocationResponse `pulumi:"primaryExtendedLocation"`
+	// Primary fabric location.
+	PrimaryFabricLocation *string `pulumi:"primaryFabricLocation"`
+	// The recovery availability zone.
+	RecoveryAvailabilityZone *string `pulumi:"recoveryAvailabilityZone"`
+	// The recovery Extended Location.
+	RecoveryExtendedLocation *ExtendedLocationResponse `pulumi:"recoveryExtendedLocation"`
+	// The recovery fabric location.
+	RecoveryFabricLocation *string `pulumi:"recoveryFabricLocation"`
+	// The last RPO value in seconds.
+	RpoInSeconds *float64 `pulumi:"rpoInSeconds"`
+}
+
+// A2A provider specific settings.
+type A2AReplicationProtectionClusterDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (A2AReplicationProtectionClusterDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AReplicationProtectionClusterDetailsResponse)(nil)).Elem()
+}
+
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) ToA2AReplicationProtectionClusterDetailsResponseOutput() A2AReplicationProtectionClusterDetailsResponseOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) ToA2AReplicationProtectionClusterDetailsResponseOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsResponseOutput {
+	return o
+}
+
+// The cluster management Id.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) ClusterManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.ClusterManagementId }).(pulumi.StringPtrOutput)
+}
+
+// The recovery point Id to which the cluster was failed over.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.FailoverRecoveryPointId }).(pulumi.StringPtrOutput)
+}
+
+// The initial primary extended location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InitialPrimaryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		return v.InitialPrimaryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The initial primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InitialPrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.InitialPrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The initial primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InitialPrimaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.InitialPrimaryZone }).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery extended location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InitialRecoveryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		return v.InitialRecoveryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The initial recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InitialRecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.InitialRecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InitialRecoveryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.InitialRecoveryZone }).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.LastRpoCalculatedTime }).(pulumi.StringPtrOutput)
+}
+
+// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) LifecycleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.LifecycleId }).(pulumi.StringPtrOutput)
+}
+
+// Whether Multi VM group is auto created or specified by user.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) MultiVmGroupCreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.MultiVmGroupCreateOption }).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group Id.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) MultiVmGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.MultiVmGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group name.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) MultiVmGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.MultiVmGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) PrimaryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.PrimaryAvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The primary Extended Location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) PrimaryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		return v.PrimaryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// Primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.PrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) RecoveryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.RecoveryAvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The recovery Extended Location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) RecoveryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		return v.RecoveryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *string { return v.RecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2AReplicationProtectionClusterDetailsResponseOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2AReplicationProtectionClusterDetailsResponse) *float64 { return v.RpoInSeconds }).(pulumi.Float64PtrOutput)
+}
+
+type A2AReplicationProtectionClusterDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (A2AReplicationProtectionClusterDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**A2AReplicationProtectionClusterDetailsResponse)(nil)).Elem()
+}
+
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) ToA2AReplicationProtectionClusterDetailsResponsePtrOutput() A2AReplicationProtectionClusterDetailsResponsePtrOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) ToA2AReplicationProtectionClusterDetailsResponsePtrOutputWithContext(ctx context.Context) A2AReplicationProtectionClusterDetailsResponsePtrOutput {
+	return o
+}
+
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) Elem() A2AReplicationProtectionClusterDetailsResponseOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) A2AReplicationProtectionClusterDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret A2AReplicationProtectionClusterDetailsResponse
+		return ret
+	}).(A2AReplicationProtectionClusterDetailsResponseOutput)
+}
+
+// The cluster management Id.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) ClusterManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterManagementId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery point Id to which the cluster was failed over.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverRecoveryPointId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial primary extended location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InitialPrimaryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPrimaryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The initial primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InitialPrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InitialPrimaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPrimaryZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery extended location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InitialRecoveryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InitialRecoveryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The initial recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InitialRecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialRecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InitialRecoveryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialRecoveryZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRpoCalculatedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) LifecycleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LifecycleId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Multi VM group is auto created or specified by user.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) MultiVmGroupCreateOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiVmGroupCreateOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group Id.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) MultiVmGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiVmGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The multi vm group name.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) MultiVmGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MultiVmGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) PrimaryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryAvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary Extended Location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) PrimaryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// Primary fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery availability zone.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) RecoveryAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryAvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery Extended Location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) RecoveryExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The recovery fabric location.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2AReplicationProtectionClusterDetailsResponsePtrOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *A2AReplicationProtectionClusterDetailsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RpoInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Extended location of the resource.
+type A2ASharedDiskIRErrorDetailsResponse struct {
+	// The error code.
+	ErrorCode string `pulumi:"errorCode"`
+	// The error code enum.
+	ErrorCodeEnum string `pulumi:"errorCodeEnum"`
+	// The error message.
+	ErrorMessage string `pulumi:"errorMessage"`
+	// The possible causes.
+	PossibleCauses string `pulumi:"possibleCauses"`
+	// The recommended action.
+	RecommendedAction string `pulumi:"recommendedAction"`
+}
+
+// Extended location of the resource.
+type A2ASharedDiskIRErrorDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (A2ASharedDiskIRErrorDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2ASharedDiskIRErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) ToA2ASharedDiskIRErrorDetailsResponseOutput() A2ASharedDiskIRErrorDetailsResponseOutput {
+	return o
+}
+
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) ToA2ASharedDiskIRErrorDetailsResponseOutputWithContext(ctx context.Context) A2ASharedDiskIRErrorDetailsResponseOutput {
+	return o
+}
+
+// The error code.
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskIRErrorDetailsResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// The error code enum.
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) ErrorCodeEnum() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskIRErrorDetailsResponse) string { return v.ErrorCodeEnum }).(pulumi.StringOutput)
+}
+
+// The error message.
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskIRErrorDetailsResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// The possible causes.
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) PossibleCauses() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskIRErrorDetailsResponse) string { return v.PossibleCauses }).(pulumi.StringOutput)
+}
+
+// The recommended action.
+func (o A2ASharedDiskIRErrorDetailsResponseOutput) RecommendedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskIRErrorDetailsResponse) string { return v.RecommendedAction }).(pulumi.StringOutput)
+}
+
+type A2ASharedDiskIRErrorDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (A2ASharedDiskIRErrorDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]A2ASharedDiskIRErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o A2ASharedDiskIRErrorDetailsResponseArrayOutput) ToA2ASharedDiskIRErrorDetailsResponseArrayOutput() A2ASharedDiskIRErrorDetailsResponseArrayOutput {
+	return o
+}
+
+func (o A2ASharedDiskIRErrorDetailsResponseArrayOutput) ToA2ASharedDiskIRErrorDetailsResponseArrayOutputWithContext(ctx context.Context) A2ASharedDiskIRErrorDetailsResponseArrayOutput {
+	return o
+}
+
+func (o A2ASharedDiskIRErrorDetailsResponseArrayOutput) Index(i pulumi.IntInput) A2ASharedDiskIRErrorDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) A2ASharedDiskIRErrorDetailsResponse {
+		return vs[0].([]A2ASharedDiskIRErrorDetailsResponse)[vs[1].(int)]
+	}).(A2ASharedDiskIRErrorDetailsResponseOutput)
+}
+
+// A2A provider specific settings.
+type A2ASharedDiskReplicationDetails struct {
+	// The recovery point id to which the Virtual node was failed over.
+	FailoverRecoveryPointId *string `pulumi:"failoverRecoveryPointId"`
+	// Gets the Instance type.
+	// Expected value is 'A2A'.
+	InstanceType string `pulumi:"instanceType"`
+	// The time (in UTC) when the last RPO value was calculated by Protection Service.
+	LastRpoCalculatedTime *string `pulumi:"lastRpoCalculatedTime"`
+	// The management Id.
+	ManagementId *string `pulumi:"managementId"`
+	// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+	MonitoringJobType *string `pulumi:"monitoringJobType"`
+	// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+	MonitoringPercentageCompletion *int `pulumi:"monitoringPercentageCompletion"`
+	// Primary fabric location.
+	PrimaryFabricLocation *string `pulumi:"primaryFabricLocation"`
+	// The list of protected managed disks.
+	ProtectedManagedDisks []A2AProtectedManagedDiskDetails `pulumi:"protectedManagedDisks"`
+	// The recovery fabric location.
+	RecoveryFabricLocation *string `pulumi:"recoveryFabricLocation"`
+	// The last RPO value in seconds.
+	RpoInSeconds *float64 `pulumi:"rpoInSeconds"`
+	// The list of unprotected disks.
+	UnprotectedDisks []A2AUnprotectedDiskDetails `pulumi:"unprotectedDisks"`
+}
+
+// A2ASharedDiskReplicationDetailsInput is an input type that accepts A2ASharedDiskReplicationDetailsArgs and A2ASharedDiskReplicationDetailsOutput values.
+// You can construct a concrete instance of `A2ASharedDiskReplicationDetailsInput` via:
+//
+//	A2ASharedDiskReplicationDetailsArgs{...}
+type A2ASharedDiskReplicationDetailsInput interface {
+	pulumi.Input
+
+	ToA2ASharedDiskReplicationDetailsOutput() A2ASharedDiskReplicationDetailsOutput
+	ToA2ASharedDiskReplicationDetailsOutputWithContext(context.Context) A2ASharedDiskReplicationDetailsOutput
+}
+
+// A2A provider specific settings.
+type A2ASharedDiskReplicationDetailsArgs struct {
+	// The recovery point id to which the Virtual node was failed over.
+	FailoverRecoveryPointId pulumi.StringPtrInput `pulumi:"failoverRecoveryPointId"`
+	// Gets the Instance type.
+	// Expected value is 'A2A'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The time (in UTC) when the last RPO value was calculated by Protection Service.
+	LastRpoCalculatedTime pulumi.StringPtrInput `pulumi:"lastRpoCalculatedTime"`
+	// The management Id.
+	ManagementId pulumi.StringPtrInput `pulumi:"managementId"`
+	// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+	MonitoringJobType pulumi.StringPtrInput `pulumi:"monitoringJobType"`
+	// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+	MonitoringPercentageCompletion pulumi.IntPtrInput `pulumi:"monitoringPercentageCompletion"`
+	// Primary fabric location.
+	PrimaryFabricLocation pulumi.StringPtrInput `pulumi:"primaryFabricLocation"`
+	// The list of protected managed disks.
+	ProtectedManagedDisks A2AProtectedManagedDiskDetailsArrayInput `pulumi:"protectedManagedDisks"`
+	// The recovery fabric location.
+	RecoveryFabricLocation pulumi.StringPtrInput `pulumi:"recoveryFabricLocation"`
+	// The last RPO value in seconds.
+	RpoInSeconds pulumi.Float64PtrInput `pulumi:"rpoInSeconds"`
+	// The list of unprotected disks.
+	UnprotectedDisks A2AUnprotectedDiskDetailsArrayInput `pulumi:"unprotectedDisks"`
+}
+
+func (A2ASharedDiskReplicationDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2ASharedDiskReplicationDetails)(nil)).Elem()
+}
+
+func (i A2ASharedDiskReplicationDetailsArgs) ToA2ASharedDiskReplicationDetailsOutput() A2ASharedDiskReplicationDetailsOutput {
+	return i.ToA2ASharedDiskReplicationDetailsOutputWithContext(context.Background())
+}
+
+func (i A2ASharedDiskReplicationDetailsArgs) ToA2ASharedDiskReplicationDetailsOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2ASharedDiskReplicationDetailsOutput)
+}
+
+func (i A2ASharedDiskReplicationDetailsArgs) ToA2ASharedDiskReplicationDetailsPtrOutput() A2ASharedDiskReplicationDetailsPtrOutput {
+	return i.ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i A2ASharedDiskReplicationDetailsArgs) ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2ASharedDiskReplicationDetailsOutput).ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(ctx)
+}
+
+// A2ASharedDiskReplicationDetailsPtrInput is an input type that accepts A2ASharedDiskReplicationDetailsArgs, A2ASharedDiskReplicationDetailsPtr and A2ASharedDiskReplicationDetailsPtrOutput values.
+// You can construct a concrete instance of `A2ASharedDiskReplicationDetailsPtrInput` via:
+//
+//	        A2ASharedDiskReplicationDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type A2ASharedDiskReplicationDetailsPtrInput interface {
+	pulumi.Input
+
+	ToA2ASharedDiskReplicationDetailsPtrOutput() A2ASharedDiskReplicationDetailsPtrOutput
+	ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(context.Context) A2ASharedDiskReplicationDetailsPtrOutput
+}
+
+type a2asharedDiskReplicationDetailsPtrType A2ASharedDiskReplicationDetailsArgs
+
+func A2ASharedDiskReplicationDetailsPtr(v *A2ASharedDiskReplicationDetailsArgs) A2ASharedDiskReplicationDetailsPtrInput {
+	return (*a2asharedDiskReplicationDetailsPtrType)(v)
+}
+
+func (*a2asharedDiskReplicationDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**A2ASharedDiskReplicationDetails)(nil)).Elem()
+}
+
+func (i *a2asharedDiskReplicationDetailsPtrType) ToA2ASharedDiskReplicationDetailsPtrOutput() A2ASharedDiskReplicationDetailsPtrOutput {
+	return i.ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *a2asharedDiskReplicationDetailsPtrType) ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2ASharedDiskReplicationDetailsPtrOutput)
+}
+
+// A2A provider specific settings.
+type A2ASharedDiskReplicationDetailsOutput struct{ *pulumi.OutputState }
+
+func (A2ASharedDiskReplicationDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2ASharedDiskReplicationDetails)(nil)).Elem()
+}
+
+func (o A2ASharedDiskReplicationDetailsOutput) ToA2ASharedDiskReplicationDetailsOutput() A2ASharedDiskReplicationDetailsOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsOutput) ToA2ASharedDiskReplicationDetailsOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsOutput) ToA2ASharedDiskReplicationDetailsPtrOutput() A2ASharedDiskReplicationDetailsPtrOutput {
+	return o.ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o A2ASharedDiskReplicationDetailsOutput) ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v A2ASharedDiskReplicationDetails) *A2ASharedDiskReplicationDetails {
+		return &v
+	}).(A2ASharedDiskReplicationDetailsPtrOutput)
+}
+
+// The recovery point id to which the Virtual node was failed over.
+func (o A2ASharedDiskReplicationDetailsOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *string { return v.FailoverRecoveryPointId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2ASharedDiskReplicationDetailsOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2ASharedDiskReplicationDetailsOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *string { return v.LastRpoCalculatedTime }).(pulumi.StringPtrOutput)
+}
+
+// The management Id.
+func (o A2ASharedDiskReplicationDetailsOutput) ManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *string { return v.ManagementId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+func (o A2ASharedDiskReplicationDetailsOutput) MonitoringJobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *string { return v.MonitoringJobType }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+func (o A2ASharedDiskReplicationDetailsOutput) MonitoringPercentageCompletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *int { return v.MonitoringPercentageCompletion }).(pulumi.IntPtrOutput)
+}
+
+// Primary fabric location.
+func (o A2ASharedDiskReplicationDetailsOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *string { return v.PrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The list of protected managed disks.
+func (o A2ASharedDiskReplicationDetailsOutput) ProtectedManagedDisks() A2AProtectedManagedDiskDetailsArrayOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) []A2AProtectedManagedDiskDetails {
+		return v.ProtectedManagedDisks
+	}).(A2AProtectedManagedDiskDetailsArrayOutput)
+}
+
+// The recovery fabric location.
+func (o A2ASharedDiskReplicationDetailsOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *string { return v.RecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2ASharedDiskReplicationDetailsOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) *float64 { return v.RpoInSeconds }).(pulumi.Float64PtrOutput)
+}
+
+// The list of unprotected disks.
+func (o A2ASharedDiskReplicationDetailsOutput) UnprotectedDisks() A2AUnprotectedDiskDetailsArrayOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetails) []A2AUnprotectedDiskDetails { return v.UnprotectedDisks }).(A2AUnprotectedDiskDetailsArrayOutput)
+}
+
+type A2ASharedDiskReplicationDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (A2ASharedDiskReplicationDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**A2ASharedDiskReplicationDetails)(nil)).Elem()
+}
+
+func (o A2ASharedDiskReplicationDetailsPtrOutput) ToA2ASharedDiskReplicationDetailsPtrOutput() A2ASharedDiskReplicationDetailsPtrOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsPtrOutput) ToA2ASharedDiskReplicationDetailsPtrOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsPtrOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsPtrOutput) Elem() A2ASharedDiskReplicationDetailsOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) A2ASharedDiskReplicationDetails {
+		if v != nil {
+			return *v
+		}
+		var ret A2ASharedDiskReplicationDetails
+		return ret
+	}).(A2ASharedDiskReplicationDetailsOutput)
+}
+
+// The recovery point id to which the Virtual node was failed over.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverRecoveryPointId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRpoCalculatedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The management Id.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) ManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) MonitoringJobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringJobType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) MonitoringPercentageCompletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringPercentageCompletion
+	}).(pulumi.IntPtrOutput)
+}
+
+// Primary fabric location.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of protected managed disks.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) ProtectedManagedDisks() A2AProtectedManagedDiskDetailsArrayOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) []A2AProtectedManagedDiskDetails {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedManagedDisks
+	}).(A2AProtectedManagedDiskDetailsArrayOutput)
+}
+
+// The recovery fabric location.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RpoInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The list of unprotected disks.
+func (o A2ASharedDiskReplicationDetailsPtrOutput) UnprotectedDisks() A2AUnprotectedDiskDetailsArrayOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetails) []A2AUnprotectedDiskDetails {
+		if v == nil {
+			return nil
+		}
+		return v.UnprotectedDisks
+	}).(A2AUnprotectedDiskDetailsArrayOutput)
+}
+
+// A2A provider specific settings.
+type A2ASharedDiskReplicationDetailsResponse struct {
+	// The recovery point id to which the Virtual node was failed over.
+	FailoverRecoveryPointId *string `pulumi:"failoverRecoveryPointId"`
+	// Gets the Instance type.
+	// Expected value is 'A2A'.
+	InstanceType string `pulumi:"instanceType"`
+	// The time (in UTC) when the last RPO value was calculated by Protection Service.
+	LastRpoCalculatedTime *string `pulumi:"lastRpoCalculatedTime"`
+	// The management Id.
+	ManagementId *string `pulumi:"managementId"`
+	// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+	MonitoringJobType *string `pulumi:"monitoringJobType"`
+	// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+	MonitoringPercentageCompletion *int `pulumi:"monitoringPercentageCompletion"`
+	// Primary fabric location.
+	PrimaryFabricLocation *string `pulumi:"primaryFabricLocation"`
+	// The list of protected managed disks.
+	ProtectedManagedDisks []A2AProtectedManagedDiskDetailsResponse `pulumi:"protectedManagedDisks"`
+	// The recovery fabric location.
+	RecoveryFabricLocation *string `pulumi:"recoveryFabricLocation"`
+	// The last RPO value in seconds.
+	RpoInSeconds *float64 `pulumi:"rpoInSeconds"`
+	// The IR Errors.
+	SharedDiskIRErrors []A2ASharedDiskIRErrorDetailsResponse `pulumi:"sharedDiskIRErrors"`
+	// The list of unprotected disks.
+	UnprotectedDisks []A2AUnprotectedDiskDetailsResponse `pulumi:"unprotectedDisks"`
+}
+
+// A2A provider specific settings.
+type A2ASharedDiskReplicationDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (A2ASharedDiskReplicationDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2ASharedDiskReplicationDetailsResponse)(nil)).Elem()
+}
+
+func (o A2ASharedDiskReplicationDetailsResponseOutput) ToA2ASharedDiskReplicationDetailsResponseOutput() A2ASharedDiskReplicationDetailsResponseOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsResponseOutput) ToA2ASharedDiskReplicationDetailsResponseOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsResponseOutput {
+	return o
+}
+
+// The recovery point id to which the Virtual node was failed over.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *string { return v.FailoverRecoveryPointId }).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *string { return v.LastRpoCalculatedTime }).(pulumi.StringPtrOutput)
+}
+
+// The management Id.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) ManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *string { return v.ManagementId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) MonitoringJobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *string { return v.MonitoringJobType }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) MonitoringPercentageCompletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *int { return v.MonitoringPercentageCompletion }).(pulumi.IntPtrOutput)
+}
+
+// Primary fabric location.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *string { return v.PrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The list of protected managed disks.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) ProtectedManagedDisks() A2AProtectedManagedDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) []A2AProtectedManagedDiskDetailsResponse {
+		return v.ProtectedManagedDisks
+	}).(A2AProtectedManagedDiskDetailsResponseArrayOutput)
+}
+
+// The recovery fabric location.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *string { return v.RecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) *float64 { return v.RpoInSeconds }).(pulumi.Float64PtrOutput)
+}
+
+// The IR Errors.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) SharedDiskIRErrors() A2ASharedDiskIRErrorDetailsResponseArrayOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) []A2ASharedDiskIRErrorDetailsResponse {
+		return v.SharedDiskIRErrors
+	}).(A2ASharedDiskIRErrorDetailsResponseArrayOutput)
+}
+
+// The list of unprotected disks.
+func (o A2ASharedDiskReplicationDetailsResponseOutput) UnprotectedDisks() A2AUnprotectedDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v A2ASharedDiskReplicationDetailsResponse) []A2AUnprotectedDiskDetailsResponse {
+		return v.UnprotectedDisks
+	}).(A2AUnprotectedDiskDetailsResponseArrayOutput)
+}
+
+type A2ASharedDiskReplicationDetailsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (A2ASharedDiskReplicationDetailsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**A2ASharedDiskReplicationDetailsResponse)(nil)).Elem()
+}
+
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) ToA2ASharedDiskReplicationDetailsResponsePtrOutput() A2ASharedDiskReplicationDetailsResponsePtrOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) ToA2ASharedDiskReplicationDetailsResponsePtrOutputWithContext(ctx context.Context) A2ASharedDiskReplicationDetailsResponsePtrOutput {
+	return o
+}
+
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) Elem() A2ASharedDiskReplicationDetailsResponseOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) A2ASharedDiskReplicationDetailsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret A2ASharedDiskReplicationDetailsResponse
+		return ret
+	}).(A2ASharedDiskReplicationDetailsResponseOutput)
+}
+
+// The recovery point id to which the Virtual node was failed over.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) FailoverRecoveryPointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverRecoveryPointId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'A2A'.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time (in UTC) when the last RPO value was calculated by Protection Service.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) LastRpoCalculatedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastRpoCalculatedTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The management Id.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) ManagementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) MonitoringJobType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringJobType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) MonitoringPercentageCompletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringPercentageCompletion
+	}).(pulumi.IntPtrOutput)
+}
+
+// Primary fabric location.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of protected managed disks.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) ProtectedManagedDisks() A2AProtectedManagedDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) []A2AProtectedManagedDiskDetailsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedManagedDisks
+	}).(A2AProtectedManagedDiskDetailsResponseArrayOutput)
+}
+
+// The recovery fabric location.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last RPO value in seconds.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) RpoInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RpoInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The IR Errors.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) SharedDiskIRErrors() A2ASharedDiskIRErrorDetailsResponseArrayOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) []A2ASharedDiskIRErrorDetailsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SharedDiskIRErrors
+	}).(A2ASharedDiskIRErrorDetailsResponseArrayOutput)
+}
+
+// The list of unprotected disks.
+func (o A2ASharedDiskReplicationDetailsResponsePtrOutput) UnprotectedDisks() A2AUnprotectedDiskDetailsResponseArrayOutput {
+	return o.ApplyT(func(v *A2ASharedDiskReplicationDetailsResponse) []A2AUnprotectedDiskDetailsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UnprotectedDisks
+	}).(A2AUnprotectedDiskDetailsResponseArrayOutput)
+}
+
+// A2A unprotected disk details.
+type A2AUnprotectedDiskDetails struct {
+	// A value indicating whether the disk auto protection is enabled.
+	DiskAutoProtectionStatus *string `pulumi:"diskAutoProtectionStatus"`
+	// The source lun Id for the data disk.
+	DiskLunId *int `pulumi:"diskLunId"`
+}
+
+// A2AUnprotectedDiskDetailsInput is an input type that accepts A2AUnprotectedDiskDetailsArgs and A2AUnprotectedDiskDetailsOutput values.
+// You can construct a concrete instance of `A2AUnprotectedDiskDetailsInput` via:
+//
+//	A2AUnprotectedDiskDetailsArgs{...}
+type A2AUnprotectedDiskDetailsInput interface {
+	pulumi.Input
+
+	ToA2AUnprotectedDiskDetailsOutput() A2AUnprotectedDiskDetailsOutput
+	ToA2AUnprotectedDiskDetailsOutputWithContext(context.Context) A2AUnprotectedDiskDetailsOutput
+}
+
+// A2A unprotected disk details.
+type A2AUnprotectedDiskDetailsArgs struct {
+	// A value indicating whether the disk auto protection is enabled.
+	DiskAutoProtectionStatus pulumi.StringPtrInput `pulumi:"diskAutoProtectionStatus"`
+	// The source lun Id for the data disk.
+	DiskLunId pulumi.IntPtrInput `pulumi:"diskLunId"`
+}
+
+func (A2AUnprotectedDiskDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AUnprotectedDiskDetails)(nil)).Elem()
+}
+
+func (i A2AUnprotectedDiskDetailsArgs) ToA2AUnprotectedDiskDetailsOutput() A2AUnprotectedDiskDetailsOutput {
+	return i.ToA2AUnprotectedDiskDetailsOutputWithContext(context.Background())
+}
+
+func (i A2AUnprotectedDiskDetailsArgs) ToA2AUnprotectedDiskDetailsOutputWithContext(ctx context.Context) A2AUnprotectedDiskDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AUnprotectedDiskDetailsOutput)
+}
+
+// A2AUnprotectedDiskDetailsArrayInput is an input type that accepts A2AUnprotectedDiskDetailsArray and A2AUnprotectedDiskDetailsArrayOutput values.
+// You can construct a concrete instance of `A2AUnprotectedDiskDetailsArrayInput` via:
+//
+//	A2AUnprotectedDiskDetailsArray{ A2AUnprotectedDiskDetailsArgs{...} }
+type A2AUnprotectedDiskDetailsArrayInput interface {
+	pulumi.Input
+
+	ToA2AUnprotectedDiskDetailsArrayOutput() A2AUnprotectedDiskDetailsArrayOutput
+	ToA2AUnprotectedDiskDetailsArrayOutputWithContext(context.Context) A2AUnprotectedDiskDetailsArrayOutput
+}
+
+type A2AUnprotectedDiskDetailsArray []A2AUnprotectedDiskDetailsInput
+
+func (A2AUnprotectedDiskDetailsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]A2AUnprotectedDiskDetails)(nil)).Elem()
+}
+
+func (i A2AUnprotectedDiskDetailsArray) ToA2AUnprotectedDiskDetailsArrayOutput() A2AUnprotectedDiskDetailsArrayOutput {
+	return i.ToA2AUnprotectedDiskDetailsArrayOutputWithContext(context.Background())
+}
+
+func (i A2AUnprotectedDiskDetailsArray) ToA2AUnprotectedDiskDetailsArrayOutputWithContext(ctx context.Context) A2AUnprotectedDiskDetailsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(A2AUnprotectedDiskDetailsArrayOutput)
+}
+
+// A2A unprotected disk details.
+type A2AUnprotectedDiskDetailsOutput struct{ *pulumi.OutputState }
+
+func (A2AUnprotectedDiskDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*A2AUnprotectedDiskDetails)(nil)).Elem()
+}
+
+func (o A2AUnprotectedDiskDetailsOutput) ToA2AUnprotectedDiskDetailsOutput() A2AUnprotectedDiskDetailsOutput {
+	return o
+}
+
+func (o A2AUnprotectedDiskDetailsOutput) ToA2AUnprotectedDiskDetailsOutputWithContext(ctx context.Context) A2AUnprotectedDiskDetailsOutput {
+	return o
+}
+
+// A value indicating whether the disk auto protection is enabled.
+func (o A2AUnprotectedDiskDetailsOutput) DiskAutoProtectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v A2AUnprotectedDiskDetails) *string { return v.DiskAutoProtectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// The source lun Id for the data disk.
+func (o A2AUnprotectedDiskDetailsOutput) DiskLunId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v A2AUnprotectedDiskDetails) *int { return v.DiskLunId }).(pulumi.IntPtrOutput)
+}
+
+type A2AUnprotectedDiskDetailsArrayOutput struct{ *pulumi.OutputState }
+
+func (A2AUnprotectedDiskDetailsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]A2AUnprotectedDiskDetails)(nil)).Elem()
+}
+
+func (o A2AUnprotectedDiskDetailsArrayOutput) ToA2AUnprotectedDiskDetailsArrayOutput() A2AUnprotectedDiskDetailsArrayOutput {
+	return o
+}
+
+func (o A2AUnprotectedDiskDetailsArrayOutput) ToA2AUnprotectedDiskDetailsArrayOutputWithContext(ctx context.Context) A2AUnprotectedDiskDetailsArrayOutput {
+	return o
+}
+
+func (o A2AUnprotectedDiskDetailsArrayOutput) Index(i pulumi.IntInput) A2AUnprotectedDiskDetailsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) A2AUnprotectedDiskDetails {
+		return vs[0].([]A2AUnprotectedDiskDetails)[vs[1].(int)]
+	}).(A2AUnprotectedDiskDetailsOutput)
 }
 
 // A2A unprotected disk details.
@@ -23458,6 +25515,184 @@ func (o CurrentJobDetailsResponseOutput) StartTime() pulumi.StringOutput {
 }
 
 // Current scenario details of the protected entity.
+type CurrentScenarioDetails struct {
+	// ARM Id of the job being executed.
+	JobId *string `pulumi:"jobId"`
+	// Scenario name.
+	ScenarioName *string `pulumi:"scenarioName"`
+	// Start time of the workflow.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// CurrentScenarioDetailsInput is an input type that accepts CurrentScenarioDetailsArgs and CurrentScenarioDetailsOutput values.
+// You can construct a concrete instance of `CurrentScenarioDetailsInput` via:
+//
+//	CurrentScenarioDetailsArgs{...}
+type CurrentScenarioDetailsInput interface {
+	pulumi.Input
+
+	ToCurrentScenarioDetailsOutput() CurrentScenarioDetailsOutput
+	ToCurrentScenarioDetailsOutputWithContext(context.Context) CurrentScenarioDetailsOutput
+}
+
+// Current scenario details of the protected entity.
+type CurrentScenarioDetailsArgs struct {
+	// ARM Id of the job being executed.
+	JobId pulumi.StringPtrInput `pulumi:"jobId"`
+	// Scenario name.
+	ScenarioName pulumi.StringPtrInput `pulumi:"scenarioName"`
+	// Start time of the workflow.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (CurrentScenarioDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CurrentScenarioDetails)(nil)).Elem()
+}
+
+func (i CurrentScenarioDetailsArgs) ToCurrentScenarioDetailsOutput() CurrentScenarioDetailsOutput {
+	return i.ToCurrentScenarioDetailsOutputWithContext(context.Background())
+}
+
+func (i CurrentScenarioDetailsArgs) ToCurrentScenarioDetailsOutputWithContext(ctx context.Context) CurrentScenarioDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CurrentScenarioDetailsOutput)
+}
+
+func (i CurrentScenarioDetailsArgs) ToCurrentScenarioDetailsPtrOutput() CurrentScenarioDetailsPtrOutput {
+	return i.ToCurrentScenarioDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i CurrentScenarioDetailsArgs) ToCurrentScenarioDetailsPtrOutputWithContext(ctx context.Context) CurrentScenarioDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CurrentScenarioDetailsOutput).ToCurrentScenarioDetailsPtrOutputWithContext(ctx)
+}
+
+// CurrentScenarioDetailsPtrInput is an input type that accepts CurrentScenarioDetailsArgs, CurrentScenarioDetailsPtr and CurrentScenarioDetailsPtrOutput values.
+// You can construct a concrete instance of `CurrentScenarioDetailsPtrInput` via:
+//
+//	        CurrentScenarioDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CurrentScenarioDetailsPtrInput interface {
+	pulumi.Input
+
+	ToCurrentScenarioDetailsPtrOutput() CurrentScenarioDetailsPtrOutput
+	ToCurrentScenarioDetailsPtrOutputWithContext(context.Context) CurrentScenarioDetailsPtrOutput
+}
+
+type currentScenarioDetailsPtrType CurrentScenarioDetailsArgs
+
+func CurrentScenarioDetailsPtr(v *CurrentScenarioDetailsArgs) CurrentScenarioDetailsPtrInput {
+	return (*currentScenarioDetailsPtrType)(v)
+}
+
+func (*currentScenarioDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CurrentScenarioDetails)(nil)).Elem()
+}
+
+func (i *currentScenarioDetailsPtrType) ToCurrentScenarioDetailsPtrOutput() CurrentScenarioDetailsPtrOutput {
+	return i.ToCurrentScenarioDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *currentScenarioDetailsPtrType) ToCurrentScenarioDetailsPtrOutputWithContext(ctx context.Context) CurrentScenarioDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CurrentScenarioDetailsPtrOutput)
+}
+
+// Current scenario details of the protected entity.
+type CurrentScenarioDetailsOutput struct{ *pulumi.OutputState }
+
+func (CurrentScenarioDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CurrentScenarioDetails)(nil)).Elem()
+}
+
+func (o CurrentScenarioDetailsOutput) ToCurrentScenarioDetailsOutput() CurrentScenarioDetailsOutput {
+	return o
+}
+
+func (o CurrentScenarioDetailsOutput) ToCurrentScenarioDetailsOutputWithContext(ctx context.Context) CurrentScenarioDetailsOutput {
+	return o
+}
+
+func (o CurrentScenarioDetailsOutput) ToCurrentScenarioDetailsPtrOutput() CurrentScenarioDetailsPtrOutput {
+	return o.ToCurrentScenarioDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o CurrentScenarioDetailsOutput) ToCurrentScenarioDetailsPtrOutputWithContext(ctx context.Context) CurrentScenarioDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CurrentScenarioDetails) *CurrentScenarioDetails {
+		return &v
+	}).(CurrentScenarioDetailsPtrOutput)
+}
+
+// ARM Id of the job being executed.
+func (o CurrentScenarioDetailsOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CurrentScenarioDetails) *string { return v.JobId }).(pulumi.StringPtrOutput)
+}
+
+// Scenario name.
+func (o CurrentScenarioDetailsOutput) ScenarioName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CurrentScenarioDetails) *string { return v.ScenarioName }).(pulumi.StringPtrOutput)
+}
+
+// Start time of the workflow.
+func (o CurrentScenarioDetailsOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CurrentScenarioDetails) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type CurrentScenarioDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (CurrentScenarioDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CurrentScenarioDetails)(nil)).Elem()
+}
+
+func (o CurrentScenarioDetailsPtrOutput) ToCurrentScenarioDetailsPtrOutput() CurrentScenarioDetailsPtrOutput {
+	return o
+}
+
+func (o CurrentScenarioDetailsPtrOutput) ToCurrentScenarioDetailsPtrOutputWithContext(ctx context.Context) CurrentScenarioDetailsPtrOutput {
+	return o
+}
+
+func (o CurrentScenarioDetailsPtrOutput) Elem() CurrentScenarioDetailsOutput {
+	return o.ApplyT(func(v *CurrentScenarioDetails) CurrentScenarioDetails {
+		if v != nil {
+			return *v
+		}
+		var ret CurrentScenarioDetails
+		return ret
+	}).(CurrentScenarioDetailsOutput)
+}
+
+// ARM Id of the job being executed.
+func (o CurrentScenarioDetailsPtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CurrentScenarioDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scenario name.
+func (o CurrentScenarioDetailsPtrOutput) ScenarioName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CurrentScenarioDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScenarioName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time of the workflow.
+func (o CurrentScenarioDetailsPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CurrentScenarioDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current scenario details of the protected entity.
 type CurrentScenarioDetailsResponse struct {
 	// ARM Id of the job being executed.
 	JobId *string `pulumi:"jobId"`
@@ -30211,6 +32446,232 @@ func (o GenericProtectionPolicyResponseOutput) SubProtectionPolicy() SubProtecti
 // TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
 func (o GenericProtectionPolicyResponseOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenericProtectionPolicyResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+// Health Error.
+type HealthError struct {
+	// Error creation time (UTC).
+	CreationTimeUtc *string `pulumi:"creationTimeUtc"`
+	// Value indicating whether the health error is customer resolvable.
+	CustomerResolvability *string `pulumi:"customerResolvability"`
+	// ID of the entity.
+	EntityId *string `pulumi:"entityId"`
+	// Category of error.
+	ErrorCategory *string `pulumi:"errorCategory"`
+	// Error code.
+	ErrorCode *string `pulumi:"errorCode"`
+	// The health error unique id.
+	ErrorId *string `pulumi:"errorId"`
+	// Level of error.
+	ErrorLevel *string `pulumi:"errorLevel"`
+	// Error message.
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// Source of error.
+	ErrorSource *string `pulumi:"errorSource"`
+	// Type of error.
+	ErrorType *string `pulumi:"errorType"`
+	// The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+	InnerHealthErrors []InnerHealthError `pulumi:"innerHealthErrors"`
+	// Possible causes of error.
+	PossibleCauses *string `pulumi:"possibleCauses"`
+	// Recommended action to resolve error.
+	RecommendedAction *string `pulumi:"recommendedAction"`
+	// DRA error message.
+	RecoveryProviderErrorMessage *string `pulumi:"recoveryProviderErrorMessage"`
+	// Summary message of the entity.
+	SummaryMessage *string `pulumi:"summaryMessage"`
+}
+
+// HealthErrorInput is an input type that accepts HealthErrorArgs and HealthErrorOutput values.
+// You can construct a concrete instance of `HealthErrorInput` via:
+//
+//	HealthErrorArgs{...}
+type HealthErrorInput interface {
+	pulumi.Input
+
+	ToHealthErrorOutput() HealthErrorOutput
+	ToHealthErrorOutputWithContext(context.Context) HealthErrorOutput
+}
+
+// Health Error.
+type HealthErrorArgs struct {
+	// Error creation time (UTC).
+	CreationTimeUtc pulumi.StringPtrInput `pulumi:"creationTimeUtc"`
+	// Value indicating whether the health error is customer resolvable.
+	CustomerResolvability pulumi.StringPtrInput `pulumi:"customerResolvability"`
+	// ID of the entity.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+	// Category of error.
+	ErrorCategory pulumi.StringPtrInput `pulumi:"errorCategory"`
+	// Error code.
+	ErrorCode pulumi.StringPtrInput `pulumi:"errorCode"`
+	// The health error unique id.
+	ErrorId pulumi.StringPtrInput `pulumi:"errorId"`
+	// Level of error.
+	ErrorLevel pulumi.StringPtrInput `pulumi:"errorLevel"`
+	// Error message.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+	// Source of error.
+	ErrorSource pulumi.StringPtrInput `pulumi:"errorSource"`
+	// Type of error.
+	ErrorType pulumi.StringPtrInput `pulumi:"errorType"`
+	// The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+	InnerHealthErrors InnerHealthErrorArrayInput `pulumi:"innerHealthErrors"`
+	// Possible causes of error.
+	PossibleCauses pulumi.StringPtrInput `pulumi:"possibleCauses"`
+	// Recommended action to resolve error.
+	RecommendedAction pulumi.StringPtrInput `pulumi:"recommendedAction"`
+	// DRA error message.
+	RecoveryProviderErrorMessage pulumi.StringPtrInput `pulumi:"recoveryProviderErrorMessage"`
+	// Summary message of the entity.
+	SummaryMessage pulumi.StringPtrInput `pulumi:"summaryMessage"`
+}
+
+func (HealthErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthError)(nil)).Elem()
+}
+
+func (i HealthErrorArgs) ToHealthErrorOutput() HealthErrorOutput {
+	return i.ToHealthErrorOutputWithContext(context.Background())
+}
+
+func (i HealthErrorArgs) ToHealthErrorOutputWithContext(ctx context.Context) HealthErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthErrorOutput)
+}
+
+// HealthErrorArrayInput is an input type that accepts HealthErrorArray and HealthErrorArrayOutput values.
+// You can construct a concrete instance of `HealthErrorArrayInput` via:
+//
+//	HealthErrorArray{ HealthErrorArgs{...} }
+type HealthErrorArrayInput interface {
+	pulumi.Input
+
+	ToHealthErrorArrayOutput() HealthErrorArrayOutput
+	ToHealthErrorArrayOutputWithContext(context.Context) HealthErrorArrayOutput
+}
+
+type HealthErrorArray []HealthErrorInput
+
+func (HealthErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthError)(nil)).Elem()
+}
+
+func (i HealthErrorArray) ToHealthErrorArrayOutput() HealthErrorArrayOutput {
+	return i.ToHealthErrorArrayOutputWithContext(context.Background())
+}
+
+func (i HealthErrorArray) ToHealthErrorArrayOutputWithContext(ctx context.Context) HealthErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthErrorArrayOutput)
+}
+
+// Health Error.
+type HealthErrorOutput struct{ *pulumi.OutputState }
+
+func (HealthErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthError)(nil)).Elem()
+}
+
+func (o HealthErrorOutput) ToHealthErrorOutput() HealthErrorOutput {
+	return o
+}
+
+func (o HealthErrorOutput) ToHealthErrorOutputWithContext(ctx context.Context) HealthErrorOutput {
+	return o
+}
+
+// Error creation time (UTC).
+func (o HealthErrorOutput) CreationTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.CreationTimeUtc }).(pulumi.StringPtrOutput)
+}
+
+// Value indicating whether the health error is customer resolvable.
+func (o HealthErrorOutput) CustomerResolvability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.CustomerResolvability }).(pulumi.StringPtrOutput)
+}
+
+// ID of the entity.
+func (o HealthErrorOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+// Category of error.
+func (o HealthErrorOutput) ErrorCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorCategory }).(pulumi.StringPtrOutput)
+}
+
+// Error code.
+func (o HealthErrorOutput) ErrorCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+}
+
+// The health error unique id.
+func (o HealthErrorOutput) ErrorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorId }).(pulumi.StringPtrOutput)
+}
+
+// Level of error.
+func (o HealthErrorOutput) ErrorLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorLevel }).(pulumi.StringPtrOutput)
+}
+
+// Error message.
+func (o HealthErrorOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Source of error.
+func (o HealthErrorOutput) ErrorSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorSource }).(pulumi.StringPtrOutput)
+}
+
+// Type of error.
+func (o HealthErrorOutput) ErrorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.ErrorType }).(pulumi.StringPtrOutput)
+}
+
+// The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+func (o HealthErrorOutput) InnerHealthErrors() InnerHealthErrorArrayOutput {
+	return o.ApplyT(func(v HealthError) []InnerHealthError { return v.InnerHealthErrors }).(InnerHealthErrorArrayOutput)
+}
+
+// Possible causes of error.
+func (o HealthErrorOutput) PossibleCauses() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.PossibleCauses }).(pulumi.StringPtrOutput)
+}
+
+// Recommended action to resolve error.
+func (o HealthErrorOutput) RecommendedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.RecommendedAction }).(pulumi.StringPtrOutput)
+}
+
+// DRA error message.
+func (o HealthErrorOutput) RecoveryProviderErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.RecoveryProviderErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Summary message of the entity.
+func (o HealthErrorOutput) SummaryMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HealthError) *string { return v.SummaryMessage }).(pulumi.StringPtrOutput)
+}
+
+type HealthErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (HealthErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthError)(nil)).Elem()
+}
+
+func (o HealthErrorArrayOutput) ToHealthErrorArrayOutput() HealthErrorArrayOutput {
+	return o
+}
+
+func (o HealthErrorArrayOutput) ToHealthErrorArrayOutputWithContext(ctx context.Context) HealthErrorArrayOutput {
+	return o
+}
+
+func (o HealthErrorArrayOutput) Index(i pulumi.IntInput) HealthErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthError {
+		return vs[0].([]HealthError)[vs[1].(int)]
+	}).(HealthErrorOutput)
 }
 
 // Health Error.
@@ -46643,6 +49104,223 @@ func (o InitialReplicationDetailsResponsePtrOutput) InitialReplicationType() pul
 }
 
 // Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+type InnerHealthError struct {
+	// Error creation time (UTC).
+	CreationTimeUtc *string `pulumi:"creationTimeUtc"`
+	// Value indicating whether the health error is customer resolvable.
+	CustomerResolvability *string `pulumi:"customerResolvability"`
+	// ID of the entity.
+	EntityId *string `pulumi:"entityId"`
+	// Category of error.
+	ErrorCategory *string `pulumi:"errorCategory"`
+	// Error code.
+	ErrorCode *string `pulumi:"errorCode"`
+	// The health error unique id.
+	ErrorId *string `pulumi:"errorId"`
+	// Level of error.
+	ErrorLevel *string `pulumi:"errorLevel"`
+	// Error message.
+	ErrorMessage *string `pulumi:"errorMessage"`
+	// Source of error.
+	ErrorSource *string `pulumi:"errorSource"`
+	// Type of error.
+	ErrorType *string `pulumi:"errorType"`
+	// Possible causes of error.
+	PossibleCauses *string `pulumi:"possibleCauses"`
+	// Recommended action to resolve error.
+	RecommendedAction *string `pulumi:"recommendedAction"`
+	// DRA error message.
+	RecoveryProviderErrorMessage *string `pulumi:"recoveryProviderErrorMessage"`
+	// Summary message of the entity.
+	SummaryMessage *string `pulumi:"summaryMessage"`
+}
+
+// InnerHealthErrorInput is an input type that accepts InnerHealthErrorArgs and InnerHealthErrorOutput values.
+// You can construct a concrete instance of `InnerHealthErrorInput` via:
+//
+//	InnerHealthErrorArgs{...}
+type InnerHealthErrorInput interface {
+	pulumi.Input
+
+	ToInnerHealthErrorOutput() InnerHealthErrorOutput
+	ToInnerHealthErrorOutputWithContext(context.Context) InnerHealthErrorOutput
+}
+
+// Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+type InnerHealthErrorArgs struct {
+	// Error creation time (UTC).
+	CreationTimeUtc pulumi.StringPtrInput `pulumi:"creationTimeUtc"`
+	// Value indicating whether the health error is customer resolvable.
+	CustomerResolvability pulumi.StringPtrInput `pulumi:"customerResolvability"`
+	// ID of the entity.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+	// Category of error.
+	ErrorCategory pulumi.StringPtrInput `pulumi:"errorCategory"`
+	// Error code.
+	ErrorCode pulumi.StringPtrInput `pulumi:"errorCode"`
+	// The health error unique id.
+	ErrorId pulumi.StringPtrInput `pulumi:"errorId"`
+	// Level of error.
+	ErrorLevel pulumi.StringPtrInput `pulumi:"errorLevel"`
+	// Error message.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+	// Source of error.
+	ErrorSource pulumi.StringPtrInput `pulumi:"errorSource"`
+	// Type of error.
+	ErrorType pulumi.StringPtrInput `pulumi:"errorType"`
+	// Possible causes of error.
+	PossibleCauses pulumi.StringPtrInput `pulumi:"possibleCauses"`
+	// Recommended action to resolve error.
+	RecommendedAction pulumi.StringPtrInput `pulumi:"recommendedAction"`
+	// DRA error message.
+	RecoveryProviderErrorMessage pulumi.StringPtrInput `pulumi:"recoveryProviderErrorMessage"`
+	// Summary message of the entity.
+	SummaryMessage pulumi.StringPtrInput `pulumi:"summaryMessage"`
+}
+
+func (InnerHealthErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InnerHealthError)(nil)).Elem()
+}
+
+func (i InnerHealthErrorArgs) ToInnerHealthErrorOutput() InnerHealthErrorOutput {
+	return i.ToInnerHealthErrorOutputWithContext(context.Background())
+}
+
+func (i InnerHealthErrorArgs) ToInnerHealthErrorOutputWithContext(ctx context.Context) InnerHealthErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InnerHealthErrorOutput)
+}
+
+// InnerHealthErrorArrayInput is an input type that accepts InnerHealthErrorArray and InnerHealthErrorArrayOutput values.
+// You can construct a concrete instance of `InnerHealthErrorArrayInput` via:
+//
+//	InnerHealthErrorArray{ InnerHealthErrorArgs{...} }
+type InnerHealthErrorArrayInput interface {
+	pulumi.Input
+
+	ToInnerHealthErrorArrayOutput() InnerHealthErrorArrayOutput
+	ToInnerHealthErrorArrayOutputWithContext(context.Context) InnerHealthErrorArrayOutput
+}
+
+type InnerHealthErrorArray []InnerHealthErrorInput
+
+func (InnerHealthErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InnerHealthError)(nil)).Elem()
+}
+
+func (i InnerHealthErrorArray) ToInnerHealthErrorArrayOutput() InnerHealthErrorArrayOutput {
+	return i.ToInnerHealthErrorArrayOutputWithContext(context.Background())
+}
+
+func (i InnerHealthErrorArray) ToInnerHealthErrorArrayOutputWithContext(ctx context.Context) InnerHealthErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InnerHealthErrorArrayOutput)
+}
+
+// Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+type InnerHealthErrorOutput struct{ *pulumi.OutputState }
+
+func (InnerHealthErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InnerHealthError)(nil)).Elem()
+}
+
+func (o InnerHealthErrorOutput) ToInnerHealthErrorOutput() InnerHealthErrorOutput {
+	return o
+}
+
+func (o InnerHealthErrorOutput) ToInnerHealthErrorOutputWithContext(ctx context.Context) InnerHealthErrorOutput {
+	return o
+}
+
+// Error creation time (UTC).
+func (o InnerHealthErrorOutput) CreationTimeUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.CreationTimeUtc }).(pulumi.StringPtrOutput)
+}
+
+// Value indicating whether the health error is customer resolvable.
+func (o InnerHealthErrorOutput) CustomerResolvability() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.CustomerResolvability }).(pulumi.StringPtrOutput)
+}
+
+// ID of the entity.
+func (o InnerHealthErrorOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+// Category of error.
+func (o InnerHealthErrorOutput) ErrorCategory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorCategory }).(pulumi.StringPtrOutput)
+}
+
+// Error code.
+func (o InnerHealthErrorOutput) ErrorCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+}
+
+// The health error unique id.
+func (o InnerHealthErrorOutput) ErrorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorId }).(pulumi.StringPtrOutput)
+}
+
+// Level of error.
+func (o InnerHealthErrorOutput) ErrorLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorLevel }).(pulumi.StringPtrOutput)
+}
+
+// Error message.
+func (o InnerHealthErrorOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Source of error.
+func (o InnerHealthErrorOutput) ErrorSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorSource }).(pulumi.StringPtrOutput)
+}
+
+// Type of error.
+func (o InnerHealthErrorOutput) ErrorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.ErrorType }).(pulumi.StringPtrOutput)
+}
+
+// Possible causes of error.
+func (o InnerHealthErrorOutput) PossibleCauses() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.PossibleCauses }).(pulumi.StringPtrOutput)
+}
+
+// Recommended action to resolve error.
+func (o InnerHealthErrorOutput) RecommendedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.RecommendedAction }).(pulumi.StringPtrOutput)
+}
+
+// DRA error message.
+func (o InnerHealthErrorOutput) RecoveryProviderErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.RecoveryProviderErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Summary message of the entity.
+func (o InnerHealthErrorOutput) SummaryMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InnerHealthError) *string { return v.SummaryMessage }).(pulumi.StringPtrOutput)
+}
+
+type InnerHealthErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (InnerHealthErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InnerHealthError)(nil)).Elem()
+}
+
+func (o InnerHealthErrorArrayOutput) ToInnerHealthErrorArrayOutput() InnerHealthErrorArrayOutput {
+	return o
+}
+
+func (o InnerHealthErrorArrayOutput) ToInnerHealthErrorArrayOutputWithContext(ctx context.Context) InnerHealthErrorArrayOutput {
+	return o
+}
+
+func (o InnerHealthErrorArrayOutput) Index(i pulumi.IntInput) InnerHealthErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InnerHealthError {
+		return vs[0].([]InnerHealthError)[vs[1].(int)]
+	}).(InnerHealthErrorOutput)
+}
+
+// Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
 type InnerHealthErrorResponse struct {
 	// Error creation time (UTC).
 	CreationTimeUtc *string `pulumi:"creationTimeUtc"`
@@ -55550,6 +58228,200 @@ func (o RecoveryServicesProviderPropertiesResponseOutput) ServerVersion() pulumi
 	return o.ApplyT(func(v RecoveryServicesProviderPropertiesResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
+// Extended location of the resource.
+type RegisteredClusterNodes struct {
+	// The BIOS ID.
+	BiosId *string `pulumi:"biosId"`
+	// The cluster node name.
+	ClusterNodeFqdn *string `pulumi:"clusterNodeFqdn"`
+	// A value indicating whether this represents virtual entity hosting all the shared disks.
+	IsSharedDiskVirtualNode *bool `pulumi:"isSharedDiskVirtualNode"`
+	// The machine ID.
+	MachineId *string `pulumi:"machineId"`
+}
+
+// RegisteredClusterNodesInput is an input type that accepts RegisteredClusterNodesArgs and RegisteredClusterNodesOutput values.
+// You can construct a concrete instance of `RegisteredClusterNodesInput` via:
+//
+//	RegisteredClusterNodesArgs{...}
+type RegisteredClusterNodesInput interface {
+	pulumi.Input
+
+	ToRegisteredClusterNodesOutput() RegisteredClusterNodesOutput
+	ToRegisteredClusterNodesOutputWithContext(context.Context) RegisteredClusterNodesOutput
+}
+
+// Extended location of the resource.
+type RegisteredClusterNodesArgs struct {
+	// The BIOS ID.
+	BiosId pulumi.StringPtrInput `pulumi:"biosId"`
+	// The cluster node name.
+	ClusterNodeFqdn pulumi.StringPtrInput `pulumi:"clusterNodeFqdn"`
+	// A value indicating whether this represents virtual entity hosting all the shared disks.
+	IsSharedDiskVirtualNode pulumi.BoolPtrInput `pulumi:"isSharedDiskVirtualNode"`
+	// The machine ID.
+	MachineId pulumi.StringPtrInput `pulumi:"machineId"`
+}
+
+func (RegisteredClusterNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegisteredClusterNodes)(nil)).Elem()
+}
+
+func (i RegisteredClusterNodesArgs) ToRegisteredClusterNodesOutput() RegisteredClusterNodesOutput {
+	return i.ToRegisteredClusterNodesOutputWithContext(context.Background())
+}
+
+func (i RegisteredClusterNodesArgs) ToRegisteredClusterNodesOutputWithContext(ctx context.Context) RegisteredClusterNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegisteredClusterNodesOutput)
+}
+
+// RegisteredClusterNodesArrayInput is an input type that accepts RegisteredClusterNodesArray and RegisteredClusterNodesArrayOutput values.
+// You can construct a concrete instance of `RegisteredClusterNodesArrayInput` via:
+//
+//	RegisteredClusterNodesArray{ RegisteredClusterNodesArgs{...} }
+type RegisteredClusterNodesArrayInput interface {
+	pulumi.Input
+
+	ToRegisteredClusterNodesArrayOutput() RegisteredClusterNodesArrayOutput
+	ToRegisteredClusterNodesArrayOutputWithContext(context.Context) RegisteredClusterNodesArrayOutput
+}
+
+type RegisteredClusterNodesArray []RegisteredClusterNodesInput
+
+func (RegisteredClusterNodesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegisteredClusterNodes)(nil)).Elem()
+}
+
+func (i RegisteredClusterNodesArray) ToRegisteredClusterNodesArrayOutput() RegisteredClusterNodesArrayOutput {
+	return i.ToRegisteredClusterNodesArrayOutputWithContext(context.Background())
+}
+
+func (i RegisteredClusterNodesArray) ToRegisteredClusterNodesArrayOutputWithContext(ctx context.Context) RegisteredClusterNodesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegisteredClusterNodesArrayOutput)
+}
+
+// Extended location of the resource.
+type RegisteredClusterNodesOutput struct{ *pulumi.OutputState }
+
+func (RegisteredClusterNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegisteredClusterNodes)(nil)).Elem()
+}
+
+func (o RegisteredClusterNodesOutput) ToRegisteredClusterNodesOutput() RegisteredClusterNodesOutput {
+	return o
+}
+
+func (o RegisteredClusterNodesOutput) ToRegisteredClusterNodesOutputWithContext(ctx context.Context) RegisteredClusterNodesOutput {
+	return o
+}
+
+// The BIOS ID.
+func (o RegisteredClusterNodesOutput) BiosId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodes) *string { return v.BiosId }).(pulumi.StringPtrOutput)
+}
+
+// The cluster node name.
+func (o RegisteredClusterNodesOutput) ClusterNodeFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodes) *string { return v.ClusterNodeFqdn }).(pulumi.StringPtrOutput)
+}
+
+// A value indicating whether this represents virtual entity hosting all the shared disks.
+func (o RegisteredClusterNodesOutput) IsSharedDiskVirtualNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodes) *bool { return v.IsSharedDiskVirtualNode }).(pulumi.BoolPtrOutput)
+}
+
+// The machine ID.
+func (o RegisteredClusterNodesOutput) MachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodes) *string { return v.MachineId }).(pulumi.StringPtrOutput)
+}
+
+type RegisteredClusterNodesArrayOutput struct{ *pulumi.OutputState }
+
+func (RegisteredClusterNodesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegisteredClusterNodes)(nil)).Elem()
+}
+
+func (o RegisteredClusterNodesArrayOutput) ToRegisteredClusterNodesArrayOutput() RegisteredClusterNodesArrayOutput {
+	return o
+}
+
+func (o RegisteredClusterNodesArrayOutput) ToRegisteredClusterNodesArrayOutputWithContext(ctx context.Context) RegisteredClusterNodesArrayOutput {
+	return o
+}
+
+func (o RegisteredClusterNodesArrayOutput) Index(i pulumi.IntInput) RegisteredClusterNodesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegisteredClusterNodes {
+		return vs[0].([]RegisteredClusterNodes)[vs[1].(int)]
+	}).(RegisteredClusterNodesOutput)
+}
+
+// Extended location of the resource.
+type RegisteredClusterNodesResponse struct {
+	// The BIOS ID.
+	BiosId *string `pulumi:"biosId"`
+	// The cluster node name.
+	ClusterNodeFqdn *string `pulumi:"clusterNodeFqdn"`
+	// A value indicating whether this represents virtual entity hosting all the shared disks.
+	IsSharedDiskVirtualNode *bool `pulumi:"isSharedDiskVirtualNode"`
+	// The machine ID.
+	MachineId *string `pulumi:"machineId"`
+}
+
+// Extended location of the resource.
+type RegisteredClusterNodesResponseOutput struct{ *pulumi.OutputState }
+
+func (RegisteredClusterNodesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegisteredClusterNodesResponse)(nil)).Elem()
+}
+
+func (o RegisteredClusterNodesResponseOutput) ToRegisteredClusterNodesResponseOutput() RegisteredClusterNodesResponseOutput {
+	return o
+}
+
+func (o RegisteredClusterNodesResponseOutput) ToRegisteredClusterNodesResponseOutputWithContext(ctx context.Context) RegisteredClusterNodesResponseOutput {
+	return o
+}
+
+// The BIOS ID.
+func (o RegisteredClusterNodesResponseOutput) BiosId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodesResponse) *string { return v.BiosId }).(pulumi.StringPtrOutput)
+}
+
+// The cluster node name.
+func (o RegisteredClusterNodesResponseOutput) ClusterNodeFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodesResponse) *string { return v.ClusterNodeFqdn }).(pulumi.StringPtrOutput)
+}
+
+// A value indicating whether this represents virtual entity hosting all the shared disks.
+func (o RegisteredClusterNodesResponseOutput) IsSharedDiskVirtualNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodesResponse) *bool { return v.IsSharedDiskVirtualNode }).(pulumi.BoolPtrOutput)
+}
+
+// The machine ID.
+func (o RegisteredClusterNodesResponseOutput) MachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegisteredClusterNodesResponse) *string { return v.MachineId }).(pulumi.StringPtrOutput)
+}
+
+type RegisteredClusterNodesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RegisteredClusterNodesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegisteredClusterNodesResponse)(nil)).Elem()
+}
+
+func (o RegisteredClusterNodesResponseArrayOutput) ToRegisteredClusterNodesResponseArrayOutput() RegisteredClusterNodesResponseArrayOutput {
+	return o
+}
+
+func (o RegisteredClusterNodesResponseArrayOutput) ToRegisteredClusterNodesResponseArrayOutputWithContext(ctx context.Context) RegisteredClusterNodesResponseArrayOutput {
+	return o
+}
+
+func (o RegisteredClusterNodesResponseArrayOutput) Index(i pulumi.IntInput) RegisteredClusterNodesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegisteredClusterNodesResponse {
+		return vs[0].([]RegisteredClusterNodesResponse)[vs[1].(int)]
+	}).(RegisteredClusterNodesResponseOutput)
+}
+
 // Replication agent details.
 type ReplicationAgentDetailsResponse struct {
 	// The replication agent Bios Id.
@@ -55885,6 +58757,931 @@ func (o ReplicationProtectedItemPropertiesResponseOutput) TestFailoverState() pu
 // The Test failover state description.
 func (o ReplicationProtectedItemPropertiesResponseOutput) TestFailoverStateDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationProtectedItemPropertiesResponse) *string { return v.TestFailoverStateDescription }).(pulumi.StringPtrOutput)
+}
+
+// Replication protection cluster custom data details.
+type ReplicationProtectionClusterProperties struct {
+	// The Current active location of the Protection cluster.
+	ActiveLocation *string `pulumi:"activeLocation"`
+	// The Agent cluster Id.
+	AgentClusterId *string `pulumi:"agentClusterId"`
+	// The allowed operations on the Replication protection cluster.
+	AllowedOperations []string `pulumi:"allowedOperations"`
+	// A value indicating whether all nodes of the cluster are registered or not.
+	AreAllClusterNodesRegistered *bool `pulumi:"areAllClusterNodesRegistered"`
+	// The cluster FQDN.
+	ClusterFqdn *string `pulumi:"clusterFqdn"`
+	// The List of cluster Node FQDNs.
+	ClusterNodeFqdns []string `pulumi:"clusterNodeFqdns"`
+	// The List of Protected Item Id's.
+	ClusterProtectedItemIds []string `pulumi:"clusterProtectedItemIds"`
+	// The registered node details.
+	ClusterRegisteredNodes []RegisteredClusterNodes `pulumi:"clusterRegisteredNodes"`
+	// The current scenario.
+	CurrentScenario *CurrentScenarioDetails `pulumi:"currentScenario"`
+	// List of health errors.
+	HealthErrors []HealthError `pulumi:"healthErrors"`
+	// The last successful failover time.
+	LastSuccessfulFailoverTime *string `pulumi:"lastSuccessfulFailoverTime"`
+	// The last successful test failover time.
+	LastSuccessfulTestFailoverTime *string `pulumi:"lastSuccessfulTestFailoverTime"`
+	// The name of Policy governing this PE.
+	PolicyFriendlyName *string `pulumi:"policyFriendlyName"`
+	// The Policy Id.
+	PolicyId *string `pulumi:"policyId"`
+	// The friendly name of the primary fabric.
+	PrimaryFabricFriendlyName *string `pulumi:"primaryFabricFriendlyName"`
+	// The fabric provider of the primary fabric.
+	PrimaryFabricProvider *string `pulumi:"primaryFabricProvider"`
+	// The name of primary protection container friendly name.
+	PrimaryProtectionContainerFriendlyName *string `pulumi:"primaryProtectionContainerFriendlyName"`
+	// The type of protection cluster type.
+	ProtectionClusterType *string `pulumi:"protectionClusterType"`
+	// The protection status.
+	ProtectionState *string `pulumi:"protectionState"`
+	// The protection state description.
+	ProtectionStateDescription *string `pulumi:"protectionStateDescription"`
+	// The Replication cluster provider custom settings.
+	ProviderSpecificDetails *A2AReplicationProtectionClusterDetails `pulumi:"providerSpecificDetails"`
+	// The recovery container Id.
+	RecoveryContainerId *string `pulumi:"recoveryContainerId"`
+	// The friendly name of recovery fabric.
+	RecoveryFabricFriendlyName *string `pulumi:"recoveryFabricFriendlyName"`
+	// The Arm Id of recovery fabric.
+	RecoveryFabricId *string `pulumi:"recoveryFabricId"`
+	// The name of recovery container friendly name.
+	RecoveryProtectionContainerFriendlyName *string `pulumi:"recoveryProtectionContainerFriendlyName"`
+	// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+	ReplicationHealth *string `pulumi:"replicationHealth"`
+	// The shared disk properties.
+	SharedDiskProperties *SharedDiskReplicationItemProperties `pulumi:"sharedDiskProperties"`
+	// The Test failover state.
+	TestFailoverState *string `pulumi:"testFailoverState"`
+	// The Test failover state description.
+	TestFailoverStateDescription *string `pulumi:"testFailoverStateDescription"`
+}
+
+// ReplicationProtectionClusterPropertiesInput is an input type that accepts ReplicationProtectionClusterPropertiesArgs and ReplicationProtectionClusterPropertiesOutput values.
+// You can construct a concrete instance of `ReplicationProtectionClusterPropertiesInput` via:
+//
+//	ReplicationProtectionClusterPropertiesArgs{...}
+type ReplicationProtectionClusterPropertiesInput interface {
+	pulumi.Input
+
+	ToReplicationProtectionClusterPropertiesOutput() ReplicationProtectionClusterPropertiesOutput
+	ToReplicationProtectionClusterPropertiesOutputWithContext(context.Context) ReplicationProtectionClusterPropertiesOutput
+}
+
+// Replication protection cluster custom data details.
+type ReplicationProtectionClusterPropertiesArgs struct {
+	// The Current active location of the Protection cluster.
+	ActiveLocation pulumi.StringPtrInput `pulumi:"activeLocation"`
+	// The Agent cluster Id.
+	AgentClusterId pulumi.StringPtrInput `pulumi:"agentClusterId"`
+	// The allowed operations on the Replication protection cluster.
+	AllowedOperations pulumi.StringArrayInput `pulumi:"allowedOperations"`
+	// A value indicating whether all nodes of the cluster are registered or not.
+	AreAllClusterNodesRegistered pulumi.BoolPtrInput `pulumi:"areAllClusterNodesRegistered"`
+	// The cluster FQDN.
+	ClusterFqdn pulumi.StringPtrInput `pulumi:"clusterFqdn"`
+	// The List of cluster Node FQDNs.
+	ClusterNodeFqdns pulumi.StringArrayInput `pulumi:"clusterNodeFqdns"`
+	// The List of Protected Item Id's.
+	ClusterProtectedItemIds pulumi.StringArrayInput `pulumi:"clusterProtectedItemIds"`
+	// The registered node details.
+	ClusterRegisteredNodes RegisteredClusterNodesArrayInput `pulumi:"clusterRegisteredNodes"`
+	// The current scenario.
+	CurrentScenario CurrentScenarioDetailsPtrInput `pulumi:"currentScenario"`
+	// List of health errors.
+	HealthErrors HealthErrorArrayInput `pulumi:"healthErrors"`
+	// The last successful failover time.
+	LastSuccessfulFailoverTime pulumi.StringPtrInput `pulumi:"lastSuccessfulFailoverTime"`
+	// The last successful test failover time.
+	LastSuccessfulTestFailoverTime pulumi.StringPtrInput `pulumi:"lastSuccessfulTestFailoverTime"`
+	// The name of Policy governing this PE.
+	PolicyFriendlyName pulumi.StringPtrInput `pulumi:"policyFriendlyName"`
+	// The Policy Id.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// The friendly name of the primary fabric.
+	PrimaryFabricFriendlyName pulumi.StringPtrInput `pulumi:"primaryFabricFriendlyName"`
+	// The fabric provider of the primary fabric.
+	PrimaryFabricProvider pulumi.StringPtrInput `pulumi:"primaryFabricProvider"`
+	// The name of primary protection container friendly name.
+	PrimaryProtectionContainerFriendlyName pulumi.StringPtrInput `pulumi:"primaryProtectionContainerFriendlyName"`
+	// The type of protection cluster type.
+	ProtectionClusterType pulumi.StringPtrInput `pulumi:"protectionClusterType"`
+	// The protection status.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// The protection state description.
+	ProtectionStateDescription pulumi.StringPtrInput `pulumi:"protectionStateDescription"`
+	// The Replication cluster provider custom settings.
+	ProviderSpecificDetails A2AReplicationProtectionClusterDetailsPtrInput `pulumi:"providerSpecificDetails"`
+	// The recovery container Id.
+	RecoveryContainerId pulumi.StringPtrInput `pulumi:"recoveryContainerId"`
+	// The friendly name of recovery fabric.
+	RecoveryFabricFriendlyName pulumi.StringPtrInput `pulumi:"recoveryFabricFriendlyName"`
+	// The Arm Id of recovery fabric.
+	RecoveryFabricId pulumi.StringPtrInput `pulumi:"recoveryFabricId"`
+	// The name of recovery container friendly name.
+	RecoveryProtectionContainerFriendlyName pulumi.StringPtrInput `pulumi:"recoveryProtectionContainerFriendlyName"`
+	// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+	ReplicationHealth pulumi.StringPtrInput `pulumi:"replicationHealth"`
+	// The shared disk properties.
+	SharedDiskProperties SharedDiskReplicationItemPropertiesPtrInput `pulumi:"sharedDiskProperties"`
+	// The Test failover state.
+	TestFailoverState pulumi.StringPtrInput `pulumi:"testFailoverState"`
+	// The Test failover state description.
+	TestFailoverStateDescription pulumi.StringPtrInput `pulumi:"testFailoverStateDescription"`
+}
+
+func (ReplicationProtectionClusterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationProtectionClusterProperties)(nil)).Elem()
+}
+
+func (i ReplicationProtectionClusterPropertiesArgs) ToReplicationProtectionClusterPropertiesOutput() ReplicationProtectionClusterPropertiesOutput {
+	return i.ToReplicationProtectionClusterPropertiesOutputWithContext(context.Background())
+}
+
+func (i ReplicationProtectionClusterPropertiesArgs) ToReplicationProtectionClusterPropertiesOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationProtectionClusterPropertiesOutput)
+}
+
+func (i ReplicationProtectionClusterPropertiesArgs) ToReplicationProtectionClusterPropertiesPtrOutput() ReplicationProtectionClusterPropertiesPtrOutput {
+	return i.ToReplicationProtectionClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ReplicationProtectionClusterPropertiesArgs) ToReplicationProtectionClusterPropertiesPtrOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationProtectionClusterPropertiesOutput).ToReplicationProtectionClusterPropertiesPtrOutputWithContext(ctx)
+}
+
+// ReplicationProtectionClusterPropertiesPtrInput is an input type that accepts ReplicationProtectionClusterPropertiesArgs, ReplicationProtectionClusterPropertiesPtr and ReplicationProtectionClusterPropertiesPtrOutput values.
+// You can construct a concrete instance of `ReplicationProtectionClusterPropertiesPtrInput` via:
+//
+//	        ReplicationProtectionClusterPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReplicationProtectionClusterPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToReplicationProtectionClusterPropertiesPtrOutput() ReplicationProtectionClusterPropertiesPtrOutput
+	ToReplicationProtectionClusterPropertiesPtrOutputWithContext(context.Context) ReplicationProtectionClusterPropertiesPtrOutput
+}
+
+type replicationProtectionClusterPropertiesPtrType ReplicationProtectionClusterPropertiesArgs
+
+func ReplicationProtectionClusterPropertiesPtr(v *ReplicationProtectionClusterPropertiesArgs) ReplicationProtectionClusterPropertiesPtrInput {
+	return (*replicationProtectionClusterPropertiesPtrType)(v)
+}
+
+func (*replicationProtectionClusterPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationProtectionClusterProperties)(nil)).Elem()
+}
+
+func (i *replicationProtectionClusterPropertiesPtrType) ToReplicationProtectionClusterPropertiesPtrOutput() ReplicationProtectionClusterPropertiesPtrOutput {
+	return i.ToReplicationProtectionClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *replicationProtectionClusterPropertiesPtrType) ToReplicationProtectionClusterPropertiesPtrOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReplicationProtectionClusterPropertiesPtrOutput)
+}
+
+// Replication protection cluster custom data details.
+type ReplicationProtectionClusterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ReplicationProtectionClusterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationProtectionClusterProperties)(nil)).Elem()
+}
+
+func (o ReplicationProtectionClusterPropertiesOutput) ToReplicationProtectionClusterPropertiesOutput() ReplicationProtectionClusterPropertiesOutput {
+	return o
+}
+
+func (o ReplicationProtectionClusterPropertiesOutput) ToReplicationProtectionClusterPropertiesOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesOutput {
+	return o
+}
+
+func (o ReplicationProtectionClusterPropertiesOutput) ToReplicationProtectionClusterPropertiesPtrOutput() ReplicationProtectionClusterPropertiesPtrOutput {
+	return o.ToReplicationProtectionClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ReplicationProtectionClusterPropertiesOutput) ToReplicationProtectionClusterPropertiesPtrOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReplicationProtectionClusterProperties) *ReplicationProtectionClusterProperties {
+		return &v
+	}).(ReplicationProtectionClusterPropertiesPtrOutput)
+}
+
+// The Current active location of the Protection cluster.
+func (o ReplicationProtectionClusterPropertiesOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.ActiveLocation }).(pulumi.StringPtrOutput)
+}
+
+// The Agent cluster Id.
+func (o ReplicationProtectionClusterPropertiesOutput) AgentClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.AgentClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protection cluster.
+func (o ReplicationProtectionClusterPropertiesOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) []string { return v.AllowedOperations }).(pulumi.StringArrayOutput)
+}
+
+// A value indicating whether all nodes of the cluster are registered or not.
+func (o ReplicationProtectionClusterPropertiesOutput) AreAllClusterNodesRegistered() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *bool { return v.AreAllClusterNodesRegistered }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster FQDN.
+func (o ReplicationProtectionClusterPropertiesOutput) ClusterFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.ClusterFqdn }).(pulumi.StringPtrOutput)
+}
+
+// The List of cluster Node FQDNs.
+func (o ReplicationProtectionClusterPropertiesOutput) ClusterNodeFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) []string { return v.ClusterNodeFqdns }).(pulumi.StringArrayOutput)
+}
+
+// The List of Protected Item Id's.
+func (o ReplicationProtectionClusterPropertiesOutput) ClusterProtectedItemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) []string { return v.ClusterProtectedItemIds }).(pulumi.StringArrayOutput)
+}
+
+// The registered node details.
+func (o ReplicationProtectionClusterPropertiesOutput) ClusterRegisteredNodes() RegisteredClusterNodesArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) []RegisteredClusterNodes {
+		return v.ClusterRegisteredNodes
+	}).(RegisteredClusterNodesArrayOutput)
+}
+
+// The current scenario.
+func (o ReplicationProtectionClusterPropertiesOutput) CurrentScenario() CurrentScenarioDetailsPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *CurrentScenarioDetails { return v.CurrentScenario }).(CurrentScenarioDetailsPtrOutput)
+}
+
+// List of health errors.
+func (o ReplicationProtectionClusterPropertiesOutput) HealthErrors() HealthErrorArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) []HealthError { return v.HealthErrors }).(HealthErrorArrayOutput)
+}
+
+// The last successful failover time.
+func (o ReplicationProtectionClusterPropertiesOutput) LastSuccessfulFailoverTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.LastSuccessfulFailoverTime }).(pulumi.StringPtrOutput)
+}
+
+// The last successful test failover time.
+func (o ReplicationProtectionClusterPropertiesOutput) LastSuccessfulTestFailoverTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.LastSuccessfulTestFailoverTime }).(pulumi.StringPtrOutput)
+}
+
+// The name of Policy governing this PE.
+func (o ReplicationProtectionClusterPropertiesOutput) PolicyFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.PolicyFriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The Policy Id.
+func (o ReplicationProtectionClusterPropertiesOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The friendly name of the primary fabric.
+func (o ReplicationProtectionClusterPropertiesOutput) PrimaryFabricFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.PrimaryFabricFriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The fabric provider of the primary fabric.
+func (o ReplicationProtectionClusterPropertiesOutput) PrimaryFabricProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.PrimaryFabricProvider }).(pulumi.StringPtrOutput)
+}
+
+// The name of primary protection container friendly name.
+func (o ReplicationProtectionClusterPropertiesOutput) PrimaryProtectionContainerFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string {
+		return v.PrimaryProtectionContainerFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of protection cluster type.
+func (o ReplicationProtectionClusterPropertiesOutput) ProtectionClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.ProtectionClusterType }).(pulumi.StringPtrOutput)
+}
+
+// The protection status.
+func (o ReplicationProtectionClusterPropertiesOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// The protection state description.
+func (o ReplicationProtectionClusterPropertiesOutput) ProtectionStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.ProtectionStateDescription }).(pulumi.StringPtrOutput)
+}
+
+// The Replication cluster provider custom settings.
+func (o ReplicationProtectionClusterPropertiesOutput) ProviderSpecificDetails() A2AReplicationProtectionClusterDetailsPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *A2AReplicationProtectionClusterDetails {
+		return v.ProviderSpecificDetails
+	}).(A2AReplicationProtectionClusterDetailsPtrOutput)
+}
+
+// The recovery container Id.
+func (o ReplicationProtectionClusterPropertiesOutput) RecoveryContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.RecoveryContainerId }).(pulumi.StringPtrOutput)
+}
+
+// The friendly name of recovery fabric.
+func (o ReplicationProtectionClusterPropertiesOutput) RecoveryFabricFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.RecoveryFabricFriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The Arm Id of recovery fabric.
+func (o ReplicationProtectionClusterPropertiesOutput) RecoveryFabricId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.RecoveryFabricId }).(pulumi.StringPtrOutput)
+}
+
+// The name of recovery container friendly name.
+func (o ReplicationProtectionClusterPropertiesOutput) RecoveryProtectionContainerFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string {
+		return v.RecoveryProtectionContainerFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o ReplicationProtectionClusterPropertiesOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.ReplicationHealth }).(pulumi.StringPtrOutput)
+}
+
+// The shared disk properties.
+func (o ReplicationProtectionClusterPropertiesOutput) SharedDiskProperties() SharedDiskReplicationItemPropertiesPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *SharedDiskReplicationItemProperties {
+		return v.SharedDiskProperties
+	}).(SharedDiskReplicationItemPropertiesPtrOutput)
+}
+
+// The Test failover state.
+func (o ReplicationProtectionClusterPropertiesOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.TestFailoverState }).(pulumi.StringPtrOutput)
+}
+
+// The Test failover state description.
+func (o ReplicationProtectionClusterPropertiesOutput) TestFailoverStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterProperties) *string { return v.TestFailoverStateDescription }).(pulumi.StringPtrOutput)
+}
+
+type ReplicationProtectionClusterPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicationProtectionClusterPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationProtectionClusterProperties)(nil)).Elem()
+}
+
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ToReplicationProtectionClusterPropertiesPtrOutput() ReplicationProtectionClusterPropertiesPtrOutput {
+	return o
+}
+
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ToReplicationProtectionClusterPropertiesPtrOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesPtrOutput {
+	return o
+}
+
+func (o ReplicationProtectionClusterPropertiesPtrOutput) Elem() ReplicationProtectionClusterPropertiesOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) ReplicationProtectionClusterProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicationProtectionClusterProperties
+		return ret
+	}).(ReplicationProtectionClusterPropertiesOutput)
+}
+
+// The Current active location of the Protection cluster.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Agent cluster Id.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) AgentClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protection cluster.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOperations
+	}).(pulumi.StringArrayOutput)
+}
+
+// A value indicating whether all nodes of the cluster are registered or not.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) AreAllClusterNodesRegistered() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AreAllClusterNodesRegistered
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cluster FQDN.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ClusterFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterFqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The List of cluster Node FQDNs.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ClusterNodeFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterNodeFqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// The List of Protected Item Id's.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ClusterProtectedItemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterProtectedItemIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The registered node details.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ClusterRegisteredNodes() RegisteredClusterNodesArrayOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) []RegisteredClusterNodes {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterRegisteredNodes
+	}).(RegisteredClusterNodesArrayOutput)
+}
+
+// The current scenario.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) CurrentScenario() CurrentScenarioDetailsPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *CurrentScenarioDetails {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentScenario
+	}).(CurrentScenarioDetailsPtrOutput)
+}
+
+// List of health errors.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) HealthErrors() HealthErrorArrayOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) []HealthError {
+		if v == nil {
+			return nil
+		}
+		return v.HealthErrors
+	}).(HealthErrorArrayOutput)
+}
+
+// The last successful failover time.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) LastSuccessfulFailoverTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastSuccessfulFailoverTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last successful test failover time.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) LastSuccessfulTestFailoverTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastSuccessfulTestFailoverTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of Policy governing this PE.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) PolicyFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Policy Id.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The friendly name of the primary fabric.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) PrimaryFabricFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fabric provider of the primary fabric.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) PrimaryFabricProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricProvider
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of primary protection container friendly name.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) PrimaryProtectionContainerFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryProtectionContainerFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of protection cluster type.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ProtectionClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectionClusterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The protection status.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The protection state description.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ProtectionStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectionStateDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Replication cluster provider custom settings.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ProviderSpecificDetails() A2AReplicationProtectionClusterDetailsPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *A2AReplicationProtectionClusterDetails {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderSpecificDetails
+	}).(A2AReplicationProtectionClusterDetailsPtrOutput)
+}
+
+// The recovery container Id.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) RecoveryContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryContainerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The friendly name of recovery fabric.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) RecoveryFabricFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Arm Id of recovery fabric.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) RecoveryFabricId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of recovery container friendly name.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) RecoveryProtectionContainerFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryProtectionContainerFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationHealth
+	}).(pulumi.StringPtrOutput)
+}
+
+// The shared disk properties.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) SharedDiskProperties() SharedDiskReplicationItemPropertiesPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *SharedDiskReplicationItemProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SharedDiskProperties
+	}).(SharedDiskReplicationItemPropertiesPtrOutput)
+}
+
+// The Test failover state.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TestFailoverState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Test failover state description.
+func (o ReplicationProtectionClusterPropertiesPtrOutput) TestFailoverStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationProtectionClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TestFailoverStateDescription
+	}).(pulumi.StringPtrOutput)
+}
+
+// Replication protection cluster custom data details.
+type ReplicationProtectionClusterPropertiesResponse struct {
+	// The Current active location of the Protection cluster.
+	ActiveLocation *string `pulumi:"activeLocation"`
+	// The Agent cluster Id.
+	AgentClusterId *string `pulumi:"agentClusterId"`
+	// The allowed operations on the Replication protection cluster.
+	AllowedOperations []string `pulumi:"allowedOperations"`
+	// A value indicating whether all nodes of the cluster are registered or not.
+	AreAllClusterNodesRegistered *bool `pulumi:"areAllClusterNodesRegistered"`
+	// The cluster FQDN.
+	ClusterFqdn *string `pulumi:"clusterFqdn"`
+	// The List of cluster Node FQDNs.
+	ClusterNodeFqdns []string `pulumi:"clusterNodeFqdns"`
+	// The List of Protected Item Id's.
+	ClusterProtectedItemIds []string `pulumi:"clusterProtectedItemIds"`
+	// The registered node details.
+	ClusterRegisteredNodes []RegisteredClusterNodesResponse `pulumi:"clusterRegisteredNodes"`
+	// The current scenario.
+	CurrentScenario *CurrentScenarioDetailsResponse `pulumi:"currentScenario"`
+	// List of health errors.
+	HealthErrors []HealthErrorResponse `pulumi:"healthErrors"`
+	// The last successful failover time.
+	LastSuccessfulFailoverTime *string `pulumi:"lastSuccessfulFailoverTime"`
+	// The last successful test failover time.
+	LastSuccessfulTestFailoverTime *string `pulumi:"lastSuccessfulTestFailoverTime"`
+	// The name of Policy governing this PE.
+	PolicyFriendlyName *string `pulumi:"policyFriendlyName"`
+	// The Policy Id.
+	PolicyId *string `pulumi:"policyId"`
+	// The friendly name of the primary fabric.
+	PrimaryFabricFriendlyName *string `pulumi:"primaryFabricFriendlyName"`
+	// The fabric provider of the primary fabric.
+	PrimaryFabricProvider *string `pulumi:"primaryFabricProvider"`
+	// The name of primary protection container friendly name.
+	PrimaryProtectionContainerFriendlyName *string `pulumi:"primaryProtectionContainerFriendlyName"`
+	// The type of protection cluster type.
+	ProtectionClusterType *string `pulumi:"protectionClusterType"`
+	// The protection status.
+	ProtectionState *string `pulumi:"protectionState"`
+	// The protection state description.
+	ProtectionStateDescription *string `pulumi:"protectionStateDescription"`
+	// The Replication cluster provider custom settings.
+	ProviderSpecificDetails *A2AReplicationProtectionClusterDetailsResponse `pulumi:"providerSpecificDetails"`
+	// The provisioning state of the cluster.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The recovery container Id.
+	RecoveryContainerId *string `pulumi:"recoveryContainerId"`
+	// The friendly name of recovery fabric.
+	RecoveryFabricFriendlyName *string `pulumi:"recoveryFabricFriendlyName"`
+	// The Arm Id of recovery fabric.
+	RecoveryFabricId *string `pulumi:"recoveryFabricId"`
+	// The name of recovery container friendly name.
+	RecoveryProtectionContainerFriendlyName *string `pulumi:"recoveryProtectionContainerFriendlyName"`
+	// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+	ReplicationHealth *string `pulumi:"replicationHealth"`
+	// The shared disk properties.
+	SharedDiskProperties *SharedDiskReplicationItemPropertiesResponse `pulumi:"sharedDiskProperties"`
+	// The Test failover state.
+	TestFailoverState *string `pulumi:"testFailoverState"`
+	// The Test failover state description.
+	TestFailoverStateDescription *string `pulumi:"testFailoverStateDescription"`
+}
+
+// Replication protection cluster custom data details.
+type ReplicationProtectionClusterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplicationProtectionClusterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationProtectionClusterPropertiesResponse)(nil)).Elem()
+}
+
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ToReplicationProtectionClusterPropertiesResponseOutput() ReplicationProtectionClusterPropertiesResponseOutput {
+	return o
+}
+
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ToReplicationProtectionClusterPropertiesResponseOutputWithContext(ctx context.Context) ReplicationProtectionClusterPropertiesResponseOutput {
+	return o
+}
+
+// The Current active location of the Protection cluster.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.ActiveLocation }).(pulumi.StringPtrOutput)
+}
+
+// The Agent cluster Id.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) AgentClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.AgentClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protection cluster.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) []string { return v.AllowedOperations }).(pulumi.StringArrayOutput)
+}
+
+// A value indicating whether all nodes of the cluster are registered or not.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) AreAllClusterNodesRegistered() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *bool { return v.AreAllClusterNodesRegistered }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster FQDN.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ClusterFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.ClusterFqdn }).(pulumi.StringPtrOutput)
+}
+
+// The List of cluster Node FQDNs.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ClusterNodeFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) []string { return v.ClusterNodeFqdns }).(pulumi.StringArrayOutput)
+}
+
+// The List of Protected Item Id's.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ClusterProtectedItemIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) []string { return v.ClusterProtectedItemIds }).(pulumi.StringArrayOutput)
+}
+
+// The registered node details.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ClusterRegisteredNodes() RegisteredClusterNodesResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) []RegisteredClusterNodesResponse {
+		return v.ClusterRegisteredNodes
+	}).(RegisteredClusterNodesResponseArrayOutput)
+}
+
+// The current scenario.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) CurrentScenario() CurrentScenarioDetailsResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *CurrentScenarioDetailsResponse {
+		return v.CurrentScenario
+	}).(CurrentScenarioDetailsResponsePtrOutput)
+}
+
+// List of health errors.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) HealthErrors() HealthErrorResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) []HealthErrorResponse { return v.HealthErrors }).(HealthErrorResponseArrayOutput)
+}
+
+// The last successful failover time.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) LastSuccessfulFailoverTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.LastSuccessfulFailoverTime }).(pulumi.StringPtrOutput)
+}
+
+// The last successful test failover time.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) LastSuccessfulTestFailoverTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string {
+		return v.LastSuccessfulTestFailoverTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of Policy governing this PE.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) PolicyFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.PolicyFriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The Policy Id.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The friendly name of the primary fabric.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) PrimaryFabricFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.PrimaryFabricFriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The fabric provider of the primary fabric.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) PrimaryFabricProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.PrimaryFabricProvider }).(pulumi.StringPtrOutput)
+}
+
+// The name of primary protection container friendly name.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) PrimaryProtectionContainerFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string {
+		return v.PrimaryProtectionContainerFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of protection cluster type.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ProtectionClusterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.ProtectionClusterType }).(pulumi.StringPtrOutput)
+}
+
+// The protection status.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// The protection state description.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ProtectionStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.ProtectionStateDescription }).(pulumi.StringPtrOutput)
+}
+
+// The Replication cluster provider custom settings.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ProviderSpecificDetails() A2AReplicationProtectionClusterDetailsResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *A2AReplicationProtectionClusterDetailsResponse {
+		return v.ProviderSpecificDetails
+	}).(A2AReplicationProtectionClusterDetailsResponsePtrOutput)
+}
+
+// The provisioning state of the cluster.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The recovery container Id.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) RecoveryContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.RecoveryContainerId }).(pulumi.StringPtrOutput)
+}
+
+// The friendly name of recovery fabric.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) RecoveryFabricFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.RecoveryFabricFriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// The Arm Id of recovery fabric.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) RecoveryFabricId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.RecoveryFabricId }).(pulumi.StringPtrOutput)
+}
+
+// The name of recovery container friendly name.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) RecoveryProtectionContainerFriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string {
+		return v.RecoveryProtectionContainerFriendlyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.ReplicationHealth }).(pulumi.StringPtrOutput)
+}
+
+// The shared disk properties.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) SharedDiskProperties() SharedDiskReplicationItemPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *SharedDiskReplicationItemPropertiesResponse {
+		return v.SharedDiskProperties
+	}).(SharedDiskReplicationItemPropertiesResponsePtrOutput)
+}
+
+// The Test failover state.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.TestFailoverState }).(pulumi.StringPtrOutput)
+}
+
+// The Test failover state description.
+func (o ReplicationProtectionClusterPropertiesResponseOutput) TestFailoverStateDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationProtectionClusterPropertiesResponse) *string { return v.TestFailoverStateDescription }).(pulumi.StringPtrOutput)
 }
 
 // Reprotect agent details.
@@ -57542,6 +61339,464 @@ func (o SettingsResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Shared Disk Replication item custom data details.
+type SharedDiskReplicationItemProperties struct {
+	// The Current active location of the PE.
+	ActiveLocation *string `pulumi:"activeLocation"`
+	// The allowed operations on the Replication protected item.
+	AllowedOperations []string `pulumi:"allowedOperations"`
+	// The current scenario.
+	CurrentScenario *CurrentScenarioDetails `pulumi:"currentScenario"`
+	// List of health errors.
+	HealthErrors []HealthError `pulumi:"healthErrors"`
+	// The protection state of shared disk.
+	ProtectionState *string `pulumi:"protectionState"`
+	// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+	ReplicationHealth *string `pulumi:"replicationHealth"`
+	// The Replication provider custom settings.
+	SharedDiskProviderSpecificDetails *A2ASharedDiskReplicationDetails `pulumi:"sharedDiskProviderSpecificDetails"`
+	// The tfo state of shared disk.
+	TestFailoverState *string `pulumi:"testFailoverState"`
+}
+
+// SharedDiskReplicationItemPropertiesInput is an input type that accepts SharedDiskReplicationItemPropertiesArgs and SharedDiskReplicationItemPropertiesOutput values.
+// You can construct a concrete instance of `SharedDiskReplicationItemPropertiesInput` via:
+//
+//	SharedDiskReplicationItemPropertiesArgs{...}
+type SharedDiskReplicationItemPropertiesInput interface {
+	pulumi.Input
+
+	ToSharedDiskReplicationItemPropertiesOutput() SharedDiskReplicationItemPropertiesOutput
+	ToSharedDiskReplicationItemPropertiesOutputWithContext(context.Context) SharedDiskReplicationItemPropertiesOutput
+}
+
+// Shared Disk Replication item custom data details.
+type SharedDiskReplicationItemPropertiesArgs struct {
+	// The Current active location of the PE.
+	ActiveLocation pulumi.StringPtrInput `pulumi:"activeLocation"`
+	// The allowed operations on the Replication protected item.
+	AllowedOperations pulumi.StringArrayInput `pulumi:"allowedOperations"`
+	// The current scenario.
+	CurrentScenario CurrentScenarioDetailsPtrInput `pulumi:"currentScenario"`
+	// List of health errors.
+	HealthErrors HealthErrorArrayInput `pulumi:"healthErrors"`
+	// The protection state of shared disk.
+	ProtectionState pulumi.StringPtrInput `pulumi:"protectionState"`
+	// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+	ReplicationHealth pulumi.StringPtrInput `pulumi:"replicationHealth"`
+	// The Replication provider custom settings.
+	SharedDiskProviderSpecificDetails A2ASharedDiskReplicationDetailsPtrInput `pulumi:"sharedDiskProviderSpecificDetails"`
+	// The tfo state of shared disk.
+	TestFailoverState pulumi.StringPtrInput `pulumi:"testFailoverState"`
+}
+
+func (SharedDiskReplicationItemPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedDiskReplicationItemProperties)(nil)).Elem()
+}
+
+func (i SharedDiskReplicationItemPropertiesArgs) ToSharedDiskReplicationItemPropertiesOutput() SharedDiskReplicationItemPropertiesOutput {
+	return i.ToSharedDiskReplicationItemPropertiesOutputWithContext(context.Background())
+}
+
+func (i SharedDiskReplicationItemPropertiesArgs) ToSharedDiskReplicationItemPropertiesOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedDiskReplicationItemPropertiesOutput)
+}
+
+func (i SharedDiskReplicationItemPropertiesArgs) ToSharedDiskReplicationItemPropertiesPtrOutput() SharedDiskReplicationItemPropertiesPtrOutput {
+	return i.ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SharedDiskReplicationItemPropertiesArgs) ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedDiskReplicationItemPropertiesOutput).ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(ctx)
+}
+
+// SharedDiskReplicationItemPropertiesPtrInput is an input type that accepts SharedDiskReplicationItemPropertiesArgs, SharedDiskReplicationItemPropertiesPtr and SharedDiskReplicationItemPropertiesPtrOutput values.
+// You can construct a concrete instance of `SharedDiskReplicationItemPropertiesPtrInput` via:
+//
+//	        SharedDiskReplicationItemPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SharedDiskReplicationItemPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSharedDiskReplicationItemPropertiesPtrOutput() SharedDiskReplicationItemPropertiesPtrOutput
+	ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(context.Context) SharedDiskReplicationItemPropertiesPtrOutput
+}
+
+type sharedDiskReplicationItemPropertiesPtrType SharedDiskReplicationItemPropertiesArgs
+
+func SharedDiskReplicationItemPropertiesPtr(v *SharedDiskReplicationItemPropertiesArgs) SharedDiskReplicationItemPropertiesPtrInput {
+	return (*sharedDiskReplicationItemPropertiesPtrType)(v)
+}
+
+func (*sharedDiskReplicationItemPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedDiskReplicationItemProperties)(nil)).Elem()
+}
+
+func (i *sharedDiskReplicationItemPropertiesPtrType) ToSharedDiskReplicationItemPropertiesPtrOutput() SharedDiskReplicationItemPropertiesPtrOutput {
+	return i.ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sharedDiskReplicationItemPropertiesPtrType) ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedDiskReplicationItemPropertiesPtrOutput)
+}
+
+// Shared Disk Replication item custom data details.
+type SharedDiskReplicationItemPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SharedDiskReplicationItemPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedDiskReplicationItemProperties)(nil)).Elem()
+}
+
+func (o SharedDiskReplicationItemPropertiesOutput) ToSharedDiskReplicationItemPropertiesOutput() SharedDiskReplicationItemPropertiesOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesOutput) ToSharedDiskReplicationItemPropertiesOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesOutput) ToSharedDiskReplicationItemPropertiesPtrOutput() SharedDiskReplicationItemPropertiesPtrOutput {
+	return o.ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SharedDiskReplicationItemPropertiesOutput) ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedDiskReplicationItemProperties) *SharedDiskReplicationItemProperties {
+		return &v
+	}).(SharedDiskReplicationItemPropertiesPtrOutput)
+}
+
+// The Current active location of the PE.
+func (o SharedDiskReplicationItemPropertiesOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) *string { return v.ActiveLocation }).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protected item.
+func (o SharedDiskReplicationItemPropertiesOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) []string { return v.AllowedOperations }).(pulumi.StringArrayOutput)
+}
+
+// The current scenario.
+func (o SharedDiskReplicationItemPropertiesOutput) CurrentScenario() CurrentScenarioDetailsPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) *CurrentScenarioDetails { return v.CurrentScenario }).(CurrentScenarioDetailsPtrOutput)
+}
+
+// List of health errors.
+func (o SharedDiskReplicationItemPropertiesOutput) HealthErrors() HealthErrorArrayOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) []HealthError { return v.HealthErrors }).(HealthErrorArrayOutput)
+}
+
+// The protection state of shared disk.
+func (o SharedDiskReplicationItemPropertiesOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o SharedDiskReplicationItemPropertiesOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) *string { return v.ReplicationHealth }).(pulumi.StringPtrOutput)
+}
+
+// The Replication provider custom settings.
+func (o SharedDiskReplicationItemPropertiesOutput) SharedDiskProviderSpecificDetails() A2ASharedDiskReplicationDetailsPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) *A2ASharedDiskReplicationDetails {
+		return v.SharedDiskProviderSpecificDetails
+	}).(A2ASharedDiskReplicationDetailsPtrOutput)
+}
+
+// The tfo state of shared disk.
+func (o SharedDiskReplicationItemPropertiesOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemProperties) *string { return v.TestFailoverState }).(pulumi.StringPtrOutput)
+}
+
+type SharedDiskReplicationItemPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SharedDiskReplicationItemPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedDiskReplicationItemProperties)(nil)).Elem()
+}
+
+func (o SharedDiskReplicationItemPropertiesPtrOutput) ToSharedDiskReplicationItemPropertiesPtrOutput() SharedDiskReplicationItemPropertiesPtrOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesPtrOutput) ToSharedDiskReplicationItemPropertiesPtrOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesPtrOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesPtrOutput) Elem() SharedDiskReplicationItemPropertiesOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) SharedDiskReplicationItemProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SharedDiskReplicationItemProperties
+		return ret
+	}).(SharedDiskReplicationItemPropertiesOutput)
+}
+
+// The Current active location of the PE.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protected item.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOperations
+	}).(pulumi.StringArrayOutput)
+}
+
+// The current scenario.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) CurrentScenario() CurrentScenarioDetailsPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) *CurrentScenarioDetails {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentScenario
+	}).(CurrentScenarioDetailsPtrOutput)
+}
+
+// List of health errors.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) HealthErrors() HealthErrorArrayOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) []HealthError {
+		if v == nil {
+			return nil
+		}
+		return v.HealthErrors
+	}).(HealthErrorArrayOutput)
+}
+
+// The protection state of shared disk.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationHealth
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Replication provider custom settings.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) SharedDiskProviderSpecificDetails() A2ASharedDiskReplicationDetailsPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) *A2ASharedDiskReplicationDetails {
+		if v == nil {
+			return nil
+		}
+		return v.SharedDiskProviderSpecificDetails
+	}).(A2ASharedDiskReplicationDetailsPtrOutput)
+}
+
+// The tfo state of shared disk.
+func (o SharedDiskReplicationItemPropertiesPtrOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TestFailoverState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Shared Disk Replication item custom data details.
+type SharedDiskReplicationItemPropertiesResponse struct {
+	// The Current active location of the PE.
+	ActiveLocation *string `pulumi:"activeLocation"`
+	// The allowed operations on the Replication protected item.
+	AllowedOperations []string `pulumi:"allowedOperations"`
+	// The current scenario.
+	CurrentScenario *CurrentScenarioDetailsResponse `pulumi:"currentScenario"`
+	// List of health errors.
+	HealthErrors []HealthErrorResponse `pulumi:"healthErrors"`
+	// The protection state of shared disk.
+	ProtectionState *string `pulumi:"protectionState"`
+	// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+	ReplicationHealth *string `pulumi:"replicationHealth"`
+	// The Replication provider custom settings.
+	SharedDiskProviderSpecificDetails *A2ASharedDiskReplicationDetailsResponse `pulumi:"sharedDiskProviderSpecificDetails"`
+	// The tfo state of shared disk.
+	TestFailoverState *string `pulumi:"testFailoverState"`
+}
+
+// Shared Disk Replication item custom data details.
+type SharedDiskReplicationItemPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SharedDiskReplicationItemPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedDiskReplicationItemPropertiesResponse)(nil)).Elem()
+}
+
+func (o SharedDiskReplicationItemPropertiesResponseOutput) ToSharedDiskReplicationItemPropertiesResponseOutput() SharedDiskReplicationItemPropertiesResponseOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesResponseOutput) ToSharedDiskReplicationItemPropertiesResponseOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesResponseOutput {
+	return o
+}
+
+// The Current active location of the PE.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) *string { return v.ActiveLocation }).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protected item.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) []string { return v.AllowedOperations }).(pulumi.StringArrayOutput)
+}
+
+// The current scenario.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) CurrentScenario() CurrentScenarioDetailsResponsePtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) *CurrentScenarioDetailsResponse {
+		return v.CurrentScenario
+	}).(CurrentScenarioDetailsResponsePtrOutput)
+}
+
+// List of health errors.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) HealthErrors() HealthErrorResponseArrayOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) []HealthErrorResponse { return v.HealthErrors }).(HealthErrorResponseArrayOutput)
+}
+
+// The protection state of shared disk.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) *string { return v.ProtectionState }).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) *string { return v.ReplicationHealth }).(pulumi.StringPtrOutput)
+}
+
+// The Replication provider custom settings.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) SharedDiskProviderSpecificDetails() A2ASharedDiskReplicationDetailsResponsePtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) *A2ASharedDiskReplicationDetailsResponse {
+		return v.SharedDiskProviderSpecificDetails
+	}).(A2ASharedDiskReplicationDetailsResponsePtrOutput)
+}
+
+// The tfo state of shared disk.
+func (o SharedDiskReplicationItemPropertiesResponseOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedDiskReplicationItemPropertiesResponse) *string { return v.TestFailoverState }).(pulumi.StringPtrOutput)
+}
+
+type SharedDiskReplicationItemPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SharedDiskReplicationItemPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedDiskReplicationItemPropertiesResponse)(nil)).Elem()
+}
+
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) ToSharedDiskReplicationItemPropertiesResponsePtrOutput() SharedDiskReplicationItemPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) ToSharedDiskReplicationItemPropertiesResponsePtrOutputWithContext(ctx context.Context) SharedDiskReplicationItemPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) Elem() SharedDiskReplicationItemPropertiesResponseOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) SharedDiskReplicationItemPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SharedDiskReplicationItemPropertiesResponse
+		return ret
+	}).(SharedDiskReplicationItemPropertiesResponseOutput)
+}
+
+// The Current active location of the PE.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) ActiveLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActiveLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The allowed operations on the Replication protected item.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) AllowedOperations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedOperations
+	}).(pulumi.StringArrayOutput)
+}
+
+// The current scenario.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) CurrentScenario() CurrentScenarioDetailsResponsePtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) *CurrentScenarioDetailsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentScenario
+	}).(CurrentScenarioDetailsResponsePtrOutput)
+}
+
+// List of health errors.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) HealthErrors() HealthErrorResponseArrayOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) []HealthErrorResponse {
+		if v == nil {
+			return nil
+		}
+		return v.HealthErrors
+	}).(HealthErrorResponseArrayOutput)
+}
+
+// The protection state of shared disk.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) ProtectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectionState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) ReplicationHealth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationHealth
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Replication provider custom settings.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) SharedDiskProviderSpecificDetails() A2ASharedDiskReplicationDetailsResponsePtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) *A2ASharedDiskReplicationDetailsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SharedDiskProviderSpecificDetails
+	}).(A2ASharedDiskReplicationDetailsResponsePtrOutput)
+}
+
+// The tfo state of shared disk.
+func (o SharedDiskReplicationItemPropertiesResponsePtrOutput) TestFailoverState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SharedDiskReplicationItemPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TestFailoverState
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -66938,12 +71193,26 @@ func init() {
 	pulumi.RegisterOutputType(A2APolicyDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(A2AProtectedDiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(A2AProtectedDiskDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(A2AProtectedManagedDiskDetailsOutput{})
+	pulumi.RegisterOutputType(A2AProtectedManagedDiskDetailsArrayOutput{})
 	pulumi.RegisterOutputType(A2AProtectedManagedDiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(A2AProtectedManagedDiskDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(A2AProtectionContainerMappingDetailsResponseOutput{})
 	pulumi.RegisterOutputType(A2AProtectionContainerMappingDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(A2AReplicationDetailsResponseOutput{})
 	pulumi.RegisterOutputType(A2AReplicationDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(A2AReplicationProtectionClusterDetailsOutput{})
+	pulumi.RegisterOutputType(A2AReplicationProtectionClusterDetailsPtrOutput{})
+	pulumi.RegisterOutputType(A2AReplicationProtectionClusterDetailsResponseOutput{})
+	pulumi.RegisterOutputType(A2AReplicationProtectionClusterDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(A2ASharedDiskIRErrorDetailsResponseOutput{})
+	pulumi.RegisterOutputType(A2ASharedDiskIRErrorDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(A2ASharedDiskReplicationDetailsOutput{})
+	pulumi.RegisterOutputType(A2ASharedDiskReplicationDetailsPtrOutput{})
+	pulumi.RegisterOutputType(A2ASharedDiskReplicationDetailsResponseOutput{})
+	pulumi.RegisterOutputType(A2ASharedDiskReplicationDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(A2AUnprotectedDiskDetailsOutput{})
+	pulumi.RegisterOutputType(A2AUnprotectedDiskDetailsArrayOutput{})
 	pulumi.RegisterOutputType(A2AUnprotectedDiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(A2AUnprotectedDiskDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(A2AVmDiskInputDetailsOutput{})
@@ -67109,6 +71378,8 @@ func init() {
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreSettingsResponseOutput{})
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CurrentJobDetailsResponseOutput{})
+	pulumi.RegisterOutputType(CurrentScenarioDetailsOutput{})
+	pulumi.RegisterOutputType(CurrentScenarioDetailsPtrOutput{})
 	pulumi.RegisterOutputType(CurrentScenarioDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CurrentScenarioDetailsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DPMContainerExtendedInfoOutput{})
@@ -67190,6 +71461,8 @@ func init() {
 	pulumi.RegisterOutputType(GenericProtectionPolicyOutput{})
 	pulumi.RegisterOutputType(GenericProtectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GenericProtectionPolicyResponseOutput{})
+	pulumi.RegisterOutputType(HealthErrorOutput{})
+	pulumi.RegisterOutputType(HealthErrorArrayOutput{})
 	pulumi.RegisterOutputType(HealthErrorResponseOutput{})
 	pulumi.RegisterOutputType(HealthErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(HourlyScheduleOutput{})
@@ -67335,6 +71608,8 @@ func init() {
 	pulumi.RegisterOutputType(InMageVolumeExclusionOptionsArrayOutput{})
 	pulumi.RegisterOutputType(InitialReplicationDetailsResponseOutput{})
 	pulumi.RegisterOutputType(InitialReplicationDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(InnerHealthErrorOutput{})
+	pulumi.RegisterOutputType(InnerHealthErrorArrayOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(InputEndpointResponseOutput{})
@@ -67457,9 +71732,16 @@ func init() {
 	pulumi.RegisterOutputType(RecoveryPlanScriptActionDetailsOutput{})
 	pulumi.RegisterOutputType(RecoveryPlanScriptActionDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RecoveryServicesProviderPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(RegisteredClusterNodesOutput{})
+	pulumi.RegisterOutputType(RegisteredClusterNodesArrayOutput{})
+	pulumi.RegisterOutputType(RegisteredClusterNodesResponseOutput{})
+	pulumi.RegisterOutputType(RegisteredClusterNodesResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationAgentDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationAgentDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationProtectedItemPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ReplicationProtectionClusterPropertiesOutput{})
+	pulumi.RegisterOutputType(ReplicationProtectionClusterPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ReplicationProtectionClusterPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ReprotectAgentDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ReprotectAgentDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGuardOperationDetailOutput{})
@@ -67491,6 +71773,10 @@ func init() {
 	pulumi.RegisterOutputType(SettingsPtrOutput{})
 	pulumi.RegisterOutputType(SettingsResponseOutput{})
 	pulumi.RegisterOutputType(SettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SharedDiskReplicationItemPropertiesOutput{})
+	pulumi.RegisterOutputType(SharedDiskReplicationItemPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SharedDiskReplicationItemPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SharedDiskReplicationItemPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SimpleRetentionPolicyOutput{})
 	pulumi.RegisterOutputType(SimpleRetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SimpleRetentionPolicyResponseOutput{})

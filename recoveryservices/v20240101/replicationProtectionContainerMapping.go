@@ -124,6 +124,9 @@ func NewReplicationProtectionContainerMapping(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20230801:ReplicationProtectionContainerMapping"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240201:ReplicationProtectionContainerMapping"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

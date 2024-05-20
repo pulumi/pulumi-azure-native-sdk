@@ -14,7 +14,7 @@ import (
 // Get an alert processing rule by name.
 // Azure REST API version: 2021-08-08.
 //
-// Other available API versions: 2023-05-01-preview.
+// Other available API versions: 2023-05-01-preview, 2024-03-01-preview.
 func LookupAlertProcessingRuleByName(ctx *pulumi.Context, args *LookupAlertProcessingRuleByNameArgs, opts ...pulumi.InvokeOption) (*LookupAlertProcessingRuleByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertProcessingRuleByNameResult

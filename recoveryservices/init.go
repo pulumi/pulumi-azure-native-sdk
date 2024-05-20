@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ReplicationPolicy{}
 	case "azure-native:recoveryservices:ReplicationProtectedItem":
 		r = &ReplicationProtectedItem{}
+	case "azure-native:recoveryservices:ReplicationProtectionCluster":
+		r = &ReplicationProtectionCluster{}
 	case "azure-native:recoveryservices:ReplicationProtectionContainerMapping":
 		r = &ReplicationProtectionContainerMapping{}
 	case "azure-native:recoveryservices:ReplicationRecoveryPlan":

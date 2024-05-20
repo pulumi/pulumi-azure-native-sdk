@@ -507,6 +507,172 @@ func (in *alertsStatePtr) ToAlertsStatePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(AlertsStatePtrOutput)
 }
 
+// A value indicating whether the disk auto protection is enabled.
+type AutoProtectionOfDataDisk string
+
+const (
+	AutoProtectionOfDataDiskDisabled = AutoProtectionOfDataDisk("Disabled")
+	AutoProtectionOfDataDiskEnabled  = AutoProtectionOfDataDisk("Enabled")
+)
+
+func (AutoProtectionOfDataDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionOfDataDisk)(nil)).Elem()
+}
+
+func (e AutoProtectionOfDataDisk) ToAutoProtectionOfDataDiskOutput() AutoProtectionOfDataDiskOutput {
+	return pulumi.ToOutput(e).(AutoProtectionOfDataDiskOutput)
+}
+
+func (e AutoProtectionOfDataDisk) ToAutoProtectionOfDataDiskOutputWithContext(ctx context.Context) AutoProtectionOfDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AutoProtectionOfDataDiskOutput)
+}
+
+func (e AutoProtectionOfDataDisk) ToAutoProtectionOfDataDiskPtrOutput() AutoProtectionOfDataDiskPtrOutput {
+	return e.ToAutoProtectionOfDataDiskPtrOutputWithContext(context.Background())
+}
+
+func (e AutoProtectionOfDataDisk) ToAutoProtectionOfDataDiskPtrOutputWithContext(ctx context.Context) AutoProtectionOfDataDiskPtrOutput {
+	return AutoProtectionOfDataDisk(e).ToAutoProtectionOfDataDiskOutputWithContext(ctx).ToAutoProtectionOfDataDiskPtrOutputWithContext(ctx)
+}
+
+func (e AutoProtectionOfDataDisk) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoProtectionOfDataDisk) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoProtectionOfDataDisk) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AutoProtectionOfDataDisk) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AutoProtectionOfDataDiskOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionOfDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoProtectionOfDataDisk)(nil)).Elem()
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToAutoProtectionOfDataDiskOutput() AutoProtectionOfDataDiskOutput {
+	return o
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToAutoProtectionOfDataDiskOutputWithContext(ctx context.Context) AutoProtectionOfDataDiskOutput {
+	return o
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToAutoProtectionOfDataDiskPtrOutput() AutoProtectionOfDataDiskPtrOutput {
+	return o.ToAutoProtectionOfDataDiskPtrOutputWithContext(context.Background())
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToAutoProtectionOfDataDiskPtrOutputWithContext(ctx context.Context) AutoProtectionOfDataDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoProtectionOfDataDisk) *AutoProtectionOfDataDisk {
+		return &v
+	}).(AutoProtectionOfDataDiskPtrOutput)
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoProtectionOfDataDisk) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoProtectionOfDataDiskOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoProtectionOfDataDisk) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoProtectionOfDataDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoProtectionOfDataDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoProtectionOfDataDisk)(nil)).Elem()
+}
+
+func (o AutoProtectionOfDataDiskPtrOutput) ToAutoProtectionOfDataDiskPtrOutput() AutoProtectionOfDataDiskPtrOutput {
+	return o
+}
+
+func (o AutoProtectionOfDataDiskPtrOutput) ToAutoProtectionOfDataDiskPtrOutputWithContext(ctx context.Context) AutoProtectionOfDataDiskPtrOutput {
+	return o
+}
+
+func (o AutoProtectionOfDataDiskPtrOutput) Elem() AutoProtectionOfDataDiskOutput {
+	return o.ApplyT(func(v *AutoProtectionOfDataDisk) AutoProtectionOfDataDisk {
+		if v != nil {
+			return *v
+		}
+		var ret AutoProtectionOfDataDisk
+		return ret
+	}).(AutoProtectionOfDataDiskOutput)
+}
+
+func (o AutoProtectionOfDataDiskPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoProtectionOfDataDiskPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AutoProtectionOfDataDisk) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AutoProtectionOfDataDiskInput is an input type that accepts values of the AutoProtectionOfDataDisk enum
+// A concrete instance of `AutoProtectionOfDataDiskInput` can be one of the following:
+//
+//	AutoProtectionOfDataDiskDisabled
+//	AutoProtectionOfDataDiskEnabled
+type AutoProtectionOfDataDiskInput interface {
+	pulumi.Input
+
+	ToAutoProtectionOfDataDiskOutput() AutoProtectionOfDataDiskOutput
+	ToAutoProtectionOfDataDiskOutputWithContext(context.Context) AutoProtectionOfDataDiskOutput
+}
+
+var autoProtectionOfDataDiskPtrType = reflect.TypeOf((**AutoProtectionOfDataDisk)(nil)).Elem()
+
+type AutoProtectionOfDataDiskPtrInput interface {
+	pulumi.Input
+
+	ToAutoProtectionOfDataDiskPtrOutput() AutoProtectionOfDataDiskPtrOutput
+	ToAutoProtectionOfDataDiskPtrOutputWithContext(context.Context) AutoProtectionOfDataDiskPtrOutput
+}
+
+type autoProtectionOfDataDiskPtr string
+
+func AutoProtectionOfDataDiskPtr(v string) AutoProtectionOfDataDiskPtrInput {
+	return (*autoProtectionOfDataDiskPtr)(&v)
+}
+
+func (*autoProtectionOfDataDiskPtr) ElementType() reflect.Type {
+	return autoProtectionOfDataDiskPtrType
+}
+
+func (in *autoProtectionOfDataDiskPtr) ToAutoProtectionOfDataDiskPtrOutput() AutoProtectionOfDataDiskPtrOutput {
+	return pulumi.ToOutput(in).(AutoProtectionOfDataDiskPtrOutput)
+}
+
+func (in *autoProtectionOfDataDiskPtr) ToAutoProtectionOfDataDiskPtrOutputWithContext(ctx context.Context) AutoProtectionOfDataDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AutoProtectionOfDataDiskPtrOutput)
+}
+
 // A value indicating the type authentication to use for automation Account.
 type AutomationAccountAuthenticationType string
 
@@ -2102,6 +2268,172 @@ func (in *failoverDeploymentModelPtr) ToFailoverDeploymentModelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(FailoverDeploymentModelPtrOutput)
 }
 
+// Value indicating whether the health error is customer resolvable.
+type HealthErrorCustomerResolvability string
+
+const (
+	HealthErrorCustomerResolvabilityAllowed    = HealthErrorCustomerResolvability("Allowed")
+	HealthErrorCustomerResolvabilityNotAllowed = HealthErrorCustomerResolvability("NotAllowed")
+)
+
+func (HealthErrorCustomerResolvability) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthErrorCustomerResolvability)(nil)).Elem()
+}
+
+func (e HealthErrorCustomerResolvability) ToHealthErrorCustomerResolvabilityOutput() HealthErrorCustomerResolvabilityOutput {
+	return pulumi.ToOutput(e).(HealthErrorCustomerResolvabilityOutput)
+}
+
+func (e HealthErrorCustomerResolvability) ToHealthErrorCustomerResolvabilityOutputWithContext(ctx context.Context) HealthErrorCustomerResolvabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HealthErrorCustomerResolvabilityOutput)
+}
+
+func (e HealthErrorCustomerResolvability) ToHealthErrorCustomerResolvabilityPtrOutput() HealthErrorCustomerResolvabilityPtrOutput {
+	return e.ToHealthErrorCustomerResolvabilityPtrOutputWithContext(context.Background())
+}
+
+func (e HealthErrorCustomerResolvability) ToHealthErrorCustomerResolvabilityPtrOutputWithContext(ctx context.Context) HealthErrorCustomerResolvabilityPtrOutput {
+	return HealthErrorCustomerResolvability(e).ToHealthErrorCustomerResolvabilityOutputWithContext(ctx).ToHealthErrorCustomerResolvabilityPtrOutputWithContext(ctx)
+}
+
+func (e HealthErrorCustomerResolvability) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HealthErrorCustomerResolvability) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HealthErrorCustomerResolvability) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HealthErrorCustomerResolvability) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HealthErrorCustomerResolvabilityOutput struct{ *pulumi.OutputState }
+
+func (HealthErrorCustomerResolvabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthErrorCustomerResolvability)(nil)).Elem()
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToHealthErrorCustomerResolvabilityOutput() HealthErrorCustomerResolvabilityOutput {
+	return o
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToHealthErrorCustomerResolvabilityOutputWithContext(ctx context.Context) HealthErrorCustomerResolvabilityOutput {
+	return o
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToHealthErrorCustomerResolvabilityPtrOutput() HealthErrorCustomerResolvabilityPtrOutput {
+	return o.ToHealthErrorCustomerResolvabilityPtrOutputWithContext(context.Background())
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToHealthErrorCustomerResolvabilityPtrOutputWithContext(ctx context.Context) HealthErrorCustomerResolvabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthErrorCustomerResolvability) *HealthErrorCustomerResolvability {
+		return &v
+	}).(HealthErrorCustomerResolvabilityPtrOutput)
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HealthErrorCustomerResolvability) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HealthErrorCustomerResolvabilityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HealthErrorCustomerResolvability) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HealthErrorCustomerResolvabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (HealthErrorCustomerResolvabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HealthErrorCustomerResolvability)(nil)).Elem()
+}
+
+func (o HealthErrorCustomerResolvabilityPtrOutput) ToHealthErrorCustomerResolvabilityPtrOutput() HealthErrorCustomerResolvabilityPtrOutput {
+	return o
+}
+
+func (o HealthErrorCustomerResolvabilityPtrOutput) ToHealthErrorCustomerResolvabilityPtrOutputWithContext(ctx context.Context) HealthErrorCustomerResolvabilityPtrOutput {
+	return o
+}
+
+func (o HealthErrorCustomerResolvabilityPtrOutput) Elem() HealthErrorCustomerResolvabilityOutput {
+	return o.ApplyT(func(v *HealthErrorCustomerResolvability) HealthErrorCustomerResolvability {
+		if v != nil {
+			return *v
+		}
+		var ret HealthErrorCustomerResolvability
+		return ret
+	}).(HealthErrorCustomerResolvabilityOutput)
+}
+
+func (o HealthErrorCustomerResolvabilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HealthErrorCustomerResolvabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HealthErrorCustomerResolvability) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HealthErrorCustomerResolvabilityInput is an input type that accepts values of the HealthErrorCustomerResolvability enum
+// A concrete instance of `HealthErrorCustomerResolvabilityInput` can be one of the following:
+//
+//	HealthErrorCustomerResolvabilityAllowed
+//	HealthErrorCustomerResolvabilityNotAllowed
+type HealthErrorCustomerResolvabilityInput interface {
+	pulumi.Input
+
+	ToHealthErrorCustomerResolvabilityOutput() HealthErrorCustomerResolvabilityOutput
+	ToHealthErrorCustomerResolvabilityOutputWithContext(context.Context) HealthErrorCustomerResolvabilityOutput
+}
+
+var healthErrorCustomerResolvabilityPtrType = reflect.TypeOf((**HealthErrorCustomerResolvability)(nil)).Elem()
+
+type HealthErrorCustomerResolvabilityPtrInput interface {
+	pulumi.Input
+
+	ToHealthErrorCustomerResolvabilityPtrOutput() HealthErrorCustomerResolvabilityPtrOutput
+	ToHealthErrorCustomerResolvabilityPtrOutputWithContext(context.Context) HealthErrorCustomerResolvabilityPtrOutput
+}
+
+type healthErrorCustomerResolvabilityPtr string
+
+func HealthErrorCustomerResolvabilityPtr(v string) HealthErrorCustomerResolvabilityPtrInput {
+	return (*healthErrorCustomerResolvabilityPtr)(&v)
+}
+
+func (*healthErrorCustomerResolvabilityPtr) ElementType() reflect.Type {
+	return healthErrorCustomerResolvabilityPtrType
+}
+
+func (in *healthErrorCustomerResolvabilityPtr) ToHealthErrorCustomerResolvabilityPtrOutput() HealthErrorCustomerResolvabilityPtrOutput {
+	return pulumi.ToOutput(in).(HealthErrorCustomerResolvabilityPtrOutput)
+}
+
+func (in *healthErrorCustomerResolvabilityPtr) ToHealthErrorCustomerResolvabilityPtrOutputWithContext(ctx context.Context) HealthErrorCustomerResolvabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HealthErrorCustomerResolvabilityPtrOutput)
+}
+
 type IAASVMPolicyType string
 
 const (
@@ -3170,6 +3502,172 @@ func (o MonthOfYearArrayOutput) Index(i pulumi.IntInput) MonthOfYearOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonthOfYear {
 		return vs[0].([]MonthOfYear)[vs[1].(int)]
 	}).(MonthOfYearOutput)
+}
+
+// Whether Multi VM group is auto created or specified by user.
+type MultiVmGroupCreateOption string
+
+const (
+	MultiVmGroupCreateOptionAutoCreated   = MultiVmGroupCreateOption("AutoCreated")
+	MultiVmGroupCreateOptionUserSpecified = MultiVmGroupCreateOption("UserSpecified")
+)
+
+func (MultiVmGroupCreateOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiVmGroupCreateOption)(nil)).Elem()
+}
+
+func (e MultiVmGroupCreateOption) ToMultiVmGroupCreateOptionOutput() MultiVmGroupCreateOptionOutput {
+	return pulumi.ToOutput(e).(MultiVmGroupCreateOptionOutput)
+}
+
+func (e MultiVmGroupCreateOption) ToMultiVmGroupCreateOptionOutputWithContext(ctx context.Context) MultiVmGroupCreateOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MultiVmGroupCreateOptionOutput)
+}
+
+func (e MultiVmGroupCreateOption) ToMultiVmGroupCreateOptionPtrOutput() MultiVmGroupCreateOptionPtrOutput {
+	return e.ToMultiVmGroupCreateOptionPtrOutputWithContext(context.Background())
+}
+
+func (e MultiVmGroupCreateOption) ToMultiVmGroupCreateOptionPtrOutputWithContext(ctx context.Context) MultiVmGroupCreateOptionPtrOutput {
+	return MultiVmGroupCreateOption(e).ToMultiVmGroupCreateOptionOutputWithContext(ctx).ToMultiVmGroupCreateOptionPtrOutputWithContext(ctx)
+}
+
+func (e MultiVmGroupCreateOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiVmGroupCreateOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiVmGroupCreateOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MultiVmGroupCreateOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MultiVmGroupCreateOptionOutput struct{ *pulumi.OutputState }
+
+func (MultiVmGroupCreateOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiVmGroupCreateOption)(nil)).Elem()
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToMultiVmGroupCreateOptionOutput() MultiVmGroupCreateOptionOutput {
+	return o
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToMultiVmGroupCreateOptionOutputWithContext(ctx context.Context) MultiVmGroupCreateOptionOutput {
+	return o
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToMultiVmGroupCreateOptionPtrOutput() MultiVmGroupCreateOptionPtrOutput {
+	return o.ToMultiVmGroupCreateOptionPtrOutputWithContext(context.Background())
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToMultiVmGroupCreateOptionPtrOutputWithContext(ctx context.Context) MultiVmGroupCreateOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiVmGroupCreateOption) *MultiVmGroupCreateOption {
+		return &v
+	}).(MultiVmGroupCreateOptionPtrOutput)
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MultiVmGroupCreateOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MultiVmGroupCreateOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MultiVmGroupCreateOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiVmGroupCreateOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiVmGroupCreateOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiVmGroupCreateOption)(nil)).Elem()
+}
+
+func (o MultiVmGroupCreateOptionPtrOutput) ToMultiVmGroupCreateOptionPtrOutput() MultiVmGroupCreateOptionPtrOutput {
+	return o
+}
+
+func (o MultiVmGroupCreateOptionPtrOutput) ToMultiVmGroupCreateOptionPtrOutputWithContext(ctx context.Context) MultiVmGroupCreateOptionPtrOutput {
+	return o
+}
+
+func (o MultiVmGroupCreateOptionPtrOutput) Elem() MultiVmGroupCreateOptionOutput {
+	return o.ApplyT(func(v *MultiVmGroupCreateOption) MultiVmGroupCreateOption {
+		if v != nil {
+			return *v
+		}
+		var ret MultiVmGroupCreateOption
+		return ret
+	}).(MultiVmGroupCreateOptionOutput)
+}
+
+func (o MultiVmGroupCreateOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MultiVmGroupCreateOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MultiVmGroupCreateOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MultiVmGroupCreateOptionInput is an input type that accepts values of the MultiVmGroupCreateOption enum
+// A concrete instance of `MultiVmGroupCreateOptionInput` can be one of the following:
+//
+//	MultiVmGroupCreateOptionAutoCreated
+//	MultiVmGroupCreateOptionUserSpecified
+type MultiVmGroupCreateOptionInput interface {
+	pulumi.Input
+
+	ToMultiVmGroupCreateOptionOutput() MultiVmGroupCreateOptionOutput
+	ToMultiVmGroupCreateOptionOutputWithContext(context.Context) MultiVmGroupCreateOptionOutput
+}
+
+var multiVmGroupCreateOptionPtrType = reflect.TypeOf((**MultiVmGroupCreateOption)(nil)).Elem()
+
+type MultiVmGroupCreateOptionPtrInput interface {
+	pulumi.Input
+
+	ToMultiVmGroupCreateOptionPtrOutput() MultiVmGroupCreateOptionPtrOutput
+	ToMultiVmGroupCreateOptionPtrOutputWithContext(context.Context) MultiVmGroupCreateOptionPtrOutput
+}
+
+type multiVmGroupCreateOptionPtr string
+
+func MultiVmGroupCreateOptionPtr(v string) MultiVmGroupCreateOptionPtrInput {
+	return (*multiVmGroupCreateOptionPtr)(&v)
+}
+
+func (*multiVmGroupCreateOptionPtr) ElementType() reflect.Type {
+	return multiVmGroupCreateOptionPtrType
+}
+
+func (in *multiVmGroupCreateOptionPtr) ToMultiVmGroupCreateOptionPtrOutput() MultiVmGroupCreateOptionPtrOutput {
+	return pulumi.ToOutput(in).(MultiVmGroupCreateOptionPtrOutput)
+}
+
+func (in *multiVmGroupCreateOptionPtr) ToMultiVmGroupCreateOptionPtrOutputWithContext(ctx context.Context) MultiVmGroupCreateOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MultiVmGroupCreateOptionPtrOutput)
 }
 
 // Re-Do Operation
@@ -8079,6 +8577,8 @@ func init() {
 	pulumi.RegisterOutputType(AgentAutoUpdateStatusPtrOutput{})
 	pulumi.RegisterOutputType(AlertsStateOutput{})
 	pulumi.RegisterOutputType(AlertsStatePtrOutput{})
+	pulumi.RegisterOutputType(AutoProtectionOfDataDiskOutput{})
+	pulumi.RegisterOutputType(AutoProtectionOfDataDiskPtrOutput{})
 	pulumi.RegisterOutputType(AutomationAccountAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(AutomationAccountAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(BackupItemTypeOutput{})
@@ -8098,6 +8598,8 @@ func init() {
 	pulumi.RegisterOutputType(ExtendedLocationTypePtrOutput{})
 	pulumi.RegisterOutputType(FailoverDeploymentModelOutput{})
 	pulumi.RegisterOutputType(FailoverDeploymentModelPtrOutput{})
+	pulumi.RegisterOutputType(HealthErrorCustomerResolvabilityOutput{})
+	pulumi.RegisterOutputType(HealthErrorCustomerResolvabilityPtrOutput{})
 	pulumi.RegisterOutputType(IAASVMPolicyTypeOutput{})
 	pulumi.RegisterOutputType(IAASVMPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(ImmutabilityStateOutput{})
@@ -8111,6 +8613,8 @@ func init() {
 	pulumi.RegisterOutputType(MonthOfYearOutput{})
 	pulumi.RegisterOutputType(MonthOfYearPtrOutput{})
 	pulumi.RegisterOutputType(MonthOfYearArrayOutput{})
+	pulumi.RegisterOutputType(MultiVmGroupCreateOptionOutput{})
+	pulumi.RegisterOutputType(MultiVmGroupCreateOptionPtrOutput{})
 	pulumi.RegisterOutputType(OperationTypeOutput{})
 	pulumi.RegisterOutputType(OperationTypePtrOutput{})
 	pulumi.RegisterOutputType(PolicyTypeOutput{})
