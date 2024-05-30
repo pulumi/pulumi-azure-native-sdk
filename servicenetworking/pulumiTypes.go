@@ -320,6 +320,206 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Web Application Firewall Policy
+type WafPolicy struct {
+	// Resource ID of the WAF
+	Id string `pulumi:"id"`
+}
+
+// WafPolicyInput is an input type that accepts WafPolicyArgs and WafPolicyOutput values.
+// You can construct a concrete instance of `WafPolicyInput` via:
+//
+//	WafPolicyArgs{...}
+type WafPolicyInput interface {
+	pulumi.Input
+
+	ToWafPolicyOutput() WafPolicyOutput
+	ToWafPolicyOutputWithContext(context.Context) WafPolicyOutput
+}
+
+// Web Application Firewall Policy
+type WafPolicyArgs struct {
+	// Resource ID of the WAF
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (WafPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafPolicy)(nil)).Elem()
+}
+
+func (i WafPolicyArgs) ToWafPolicyOutput() WafPolicyOutput {
+	return i.ToWafPolicyOutputWithContext(context.Background())
+}
+
+func (i WafPolicyArgs) ToWafPolicyOutputWithContext(ctx context.Context) WafPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPolicyOutput)
+}
+
+func (i WafPolicyArgs) ToWafPolicyPtrOutput() WafPolicyPtrOutput {
+	return i.ToWafPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i WafPolicyArgs) ToWafPolicyPtrOutputWithContext(ctx context.Context) WafPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPolicyOutput).ToWafPolicyPtrOutputWithContext(ctx)
+}
+
+// WafPolicyPtrInput is an input type that accepts WafPolicyArgs, WafPolicyPtr and WafPolicyPtrOutput values.
+// You can construct a concrete instance of `WafPolicyPtrInput` via:
+//
+//	        WafPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafPolicyPtrInput interface {
+	pulumi.Input
+
+	ToWafPolicyPtrOutput() WafPolicyPtrOutput
+	ToWafPolicyPtrOutputWithContext(context.Context) WafPolicyPtrOutput
+}
+
+type wafPolicyPtrType WafPolicyArgs
+
+func WafPolicyPtr(v *WafPolicyArgs) WafPolicyPtrInput {
+	return (*wafPolicyPtrType)(v)
+}
+
+func (*wafPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafPolicy)(nil)).Elem()
+}
+
+func (i *wafPolicyPtrType) ToWafPolicyPtrOutput() WafPolicyPtrOutput {
+	return i.ToWafPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *wafPolicyPtrType) ToWafPolicyPtrOutputWithContext(ctx context.Context) WafPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPolicyPtrOutput)
+}
+
+// Web Application Firewall Policy
+type WafPolicyOutput struct{ *pulumi.OutputState }
+
+func (WafPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafPolicy)(nil)).Elem()
+}
+
+func (o WafPolicyOutput) ToWafPolicyOutput() WafPolicyOutput {
+	return o
+}
+
+func (o WafPolicyOutput) ToWafPolicyOutputWithContext(ctx context.Context) WafPolicyOutput {
+	return o
+}
+
+func (o WafPolicyOutput) ToWafPolicyPtrOutput() WafPolicyPtrOutput {
+	return o.ToWafPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o WafPolicyOutput) ToWafPolicyPtrOutputWithContext(ctx context.Context) WafPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafPolicy) *WafPolicy {
+		return &v
+	}).(WafPolicyPtrOutput)
+}
+
+// Resource ID of the WAF
+func (o WafPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WafPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type WafPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (WafPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafPolicy)(nil)).Elem()
+}
+
+func (o WafPolicyPtrOutput) ToWafPolicyPtrOutput() WafPolicyPtrOutput {
+	return o
+}
+
+func (o WafPolicyPtrOutput) ToWafPolicyPtrOutputWithContext(ctx context.Context) WafPolicyPtrOutput {
+	return o
+}
+
+func (o WafPolicyPtrOutput) Elem() WafPolicyOutput {
+	return o.ApplyT(func(v *WafPolicy) WafPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret WafPolicy
+		return ret
+	}).(WafPolicyOutput)
+}
+
+// Resource ID of the WAF
+func (o WafPolicyPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Web Application Firewall Policy
+type WafPolicyResponse struct {
+	// Resource ID of the WAF
+	Id string `pulumi:"id"`
+}
+
+// Web Application Firewall Policy
+type WafPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (WafPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafPolicyResponse)(nil)).Elem()
+}
+
+func (o WafPolicyResponseOutput) ToWafPolicyResponseOutput() WafPolicyResponseOutput {
+	return o
+}
+
+func (o WafPolicyResponseOutput) ToWafPolicyResponseOutputWithContext(ctx context.Context) WafPolicyResponseOutput {
+	return o
+}
+
+// Resource ID of the WAF
+func (o WafPolicyResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WafPolicyResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type WafPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WafPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafPolicyResponse)(nil)).Elem()
+}
+
+func (o WafPolicyResponsePtrOutput) ToWafPolicyResponsePtrOutput() WafPolicyResponsePtrOutput {
+	return o
+}
+
+func (o WafPolicyResponsePtrOutput) ToWafPolicyResponsePtrOutputWithContext(ctx context.Context) WafPolicyResponsePtrOutput {
+	return o
+}
+
+func (o WafPolicyResponsePtrOutput) Elem() WafPolicyResponseOutput {
+	return o.ApplyT(func(v *WafPolicyResponse) WafPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WafPolicyResponse
+		return ret
+	}).(WafPolicyResponseOutput)
+}
+
+// Resource ID of the WAF
+func (o WafPolicyResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AssociationSubnetOutput{})
 	pulumi.RegisterOutputType(AssociationSubnetPtrOutput{})
@@ -328,4 +528,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(WafPolicyOutput{})
+	pulumi.RegisterOutputType(WafPolicyPtrOutput{})
+	pulumi.RegisterOutputType(WafPolicyResponseOutput{})
+	pulumi.RegisterOutputType(WafPolicyResponsePtrOutput{})
 }

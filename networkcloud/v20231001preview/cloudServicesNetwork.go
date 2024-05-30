@@ -76,9 +76,6 @@ func NewCloudServicesNetwork(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:CloudServicesNetwork"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:CloudServicesNetwork"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:CloudServicesNetwork"),
 		},
 	})

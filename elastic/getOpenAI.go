@@ -14,7 +14,7 @@ import (
 // Capture properties of Open AI resource Integration.
 // Azure REST API version: 2024-03-01.
 //
-// Other available API versions: 2024-01-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-05-01-preview.
 func LookupOpenAI(ctx *pulumi.Context, args *LookupOpenAIArgs, opts ...pulumi.InvokeOption) (*LookupOpenAIResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenAIResult

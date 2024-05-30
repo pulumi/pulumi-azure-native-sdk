@@ -1832,6 +1832,8 @@ func (o ClusterPoolResourcePropertiesClusterPoolProfilePtrOutput) ClusterPoolVer
 
 // CLuster pool compute profile.
 type ClusterPoolResourcePropertiesComputeProfile struct {
+	// The list of Availability zones to use for AKS VMSS nodes.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The virtual machine SKU.
 	VmSize string `pulumi:"vmSize"`
 }
@@ -1849,6 +1851,8 @@ type ClusterPoolResourcePropertiesComputeProfileInput interface {
 
 // CLuster pool compute profile.
 type ClusterPoolResourcePropertiesComputeProfileArgs struct {
+	// The list of Availability zones to use for AKS VMSS nodes.
+	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// The virtual machine SKU.
 	VmSize pulumi.StringInput `pulumi:"vmSize"`
 }
@@ -1878,6 +1882,11 @@ func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToClusterPoolResource
 
 func (o ClusterPoolResourcePropertiesComputeProfileOutput) ToClusterPoolResourcePropertiesComputeProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesComputeProfileOutput {
 	return o
+}
+
+// The list of Availability zones to use for AKS VMSS nodes.
+func (o ClusterPoolResourcePropertiesComputeProfileOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesComputeProfile) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // The virtual machine SKU.
@@ -2369,6 +2378,8 @@ func (o ClusterPoolResourcePropertiesResponseClusterPoolProfilePtrOutput) Cluste
 
 // CLuster pool compute profile.
 type ClusterPoolResourcePropertiesResponseComputeProfile struct {
+	// The list of Availability zones to use for AKS VMSS nodes.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The number of virtual machines.
 	Count int `pulumi:"count"`
 	// The virtual machine SKU.
@@ -2388,6 +2399,11 @@ func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) ToClusterPool
 
 func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) ToClusterPoolResourcePropertiesResponseComputeProfileOutputWithContext(ctx context.Context) ClusterPoolResourcePropertiesResponseComputeProfileOutput {
 	return o
+}
+
+// The list of Availability zones to use for AKS VMSS nodes.
+func (o ClusterPoolResourcePropertiesResponseComputeProfileOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterPoolResourcePropertiesResponseComputeProfile) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // The number of virtual machines.
@@ -4013,6 +4029,8 @@ func (o ComparisonRuleResponseOutput) Threshold() pulumi.Float64Output {
 
 // The compute profile.
 type ComputeProfile struct {
+	// The list of Availability zones to use for AKS VMSS nodes.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The nodes definitions.
 	Nodes []NodeProfile `pulumi:"nodes"`
 }
@@ -4030,6 +4048,8 @@ type ComputeProfileInput interface {
 
 // The compute profile.
 type ComputeProfileArgs struct {
+	// The list of Availability zones to use for AKS VMSS nodes.
+	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// The nodes definitions.
 	Nodes NodeProfileArrayInput `pulumi:"nodes"`
 }
@@ -4061,6 +4081,11 @@ func (o ComputeProfileOutput) ToComputeProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The list of Availability zones to use for AKS VMSS nodes.
+func (o ComputeProfileOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeProfile) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
 // The nodes definitions.
 func (o ComputeProfileOutput) Nodes() NodeProfileArrayOutput {
 	return o.ApplyT(func(v ComputeProfile) []NodeProfile { return v.Nodes }).(NodeProfileArrayOutput)
@@ -4068,6 +4093,8 @@ func (o ComputeProfileOutput) Nodes() NodeProfileArrayOutput {
 
 // The compute profile.
 type ComputeProfileResponse struct {
+	// The list of Availability zones to use for AKS VMSS nodes.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The nodes definitions.
 	Nodes []NodeProfileResponse `pulumi:"nodes"`
 }
@@ -4085,6 +4112,11 @@ func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutput() ComputePr
 
 func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutputWithContext(ctx context.Context) ComputeProfileResponseOutput {
 	return o
+}
+
+// The list of Availability zones to use for AKS VMSS nodes.
+func (o ComputeProfileResponseOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ComputeProfileResponse) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
 // The nodes definitions.

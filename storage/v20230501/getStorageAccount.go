@@ -57,6 +57,8 @@ type LookupStorageAccountResult struct {
 	DefaultToOAuthAuthentication *bool `pulumi:"defaultToOAuthAuthentication"`
 	// Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 	DnsEndpointType *string `pulumi:"dnsEndpointType"`
+	// Enables extended group support with local users feature, if set to true
+	EnableExtendedGroups *bool `pulumi:"enableExtendedGroups"`
 	// Allows https traffic only to storage service if sets to true.
 	EnableHttpsTrafficOnly *bool `pulumi:"enableHttpsTrafficOnly"`
 	// NFS 3.0 protocol support enabled if set to true.
@@ -249,6 +251,11 @@ func (o LookupStorageAccountResultOutput) DefaultToOAuthAuthentication() pulumi.
 // Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 func (o LookupStorageAccountResultOutput) DnsEndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountResult) *string { return v.DnsEndpointType }).(pulumi.StringPtrOutput)
+}
+
+// Enables extended group support with local users feature, if set to true
+func (o LookupStorageAccountResultOutput) EnableExtendedGroups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupStorageAccountResult) *bool { return v.EnableExtendedGroups }).(pulumi.BoolPtrOutput)
 }
 
 // Allows https traffic only to storage service if sets to true.

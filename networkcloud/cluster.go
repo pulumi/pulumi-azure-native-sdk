@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -67,6 +67,10 @@ type Cluster struct {
 	NetworkFabricId pulumi.StringOutput `pulumi:"networkFabricId"`
 	// The provisioning state of the cluster.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The settings for cluster runtime protection.
+	RuntimeProtectionConfiguration RuntimeProtectionConfigurationResponsePtrOutput `pulumi:"runtimeProtectionConfiguration"`
+	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
+	SecretArchive ClusterSecretArchiveResponsePtrOutput `pulumi:"secretArchive"`
 	// The support end date of the runtime version of the cluster.
 	SupportExpiryDate pulumi.StringOutput `pulumi:"supportExpiryDate"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -75,6 +79,8 @@ type Cluster struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The strategy for updating the cluster.
+	UpdateStrategy ClusterUpdateStrategyResponsePtrOutput `pulumi:"updateStrategy"`
 	// The list of workload resource IDs that are hosted within this cluster.
 	WorkloadResourceIds pulumi.StringArrayOutput `pulumi:"workloadResourceIds"`
 }
@@ -104,10 +110,16 @@ func NewCluster(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.RuntimeProtectionConfiguration != nil {
+		args.RuntimeProtectionConfiguration = args.RuntimeProtectionConfiguration.ToRuntimeProtectionConfigurationPtrOutput().ApplyT(func(v *RuntimeProtectionConfiguration) *RuntimeProtectionConfiguration { return v.Defaults() }).(RuntimeProtectionConfigurationPtrOutput)
+	}
+	if args.SecretArchive != nil {
+		args.SecretArchive = args.SecretArchive.ToClusterSecretArchivePtrOutput().ApplyT(func(v *ClusterSecretArchive) *ClusterSecretArchive { return v.Defaults() }).(ClusterSecretArchivePtrOutput)
+	}
+	if args.UpdateStrategy != nil {
+		args.UpdateStrategy = args.UpdateStrategy.ToClusterUpdateStrategyPtrOutput().ApplyT(func(v *ClusterUpdateStrategy) *ClusterUpdateStrategy { return v.Defaults() }).(ClusterUpdateStrategyPtrOutput)
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:Cluster"),
-		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:Cluster"),
 		},
@@ -178,8 +190,14 @@ type clusterArgs struct {
 	NetworkFabricId string `pulumi:"networkFabricId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// The settings for cluster runtime protection.
+	RuntimeProtectionConfiguration *RuntimeProtectionConfiguration `pulumi:"runtimeProtectionConfiguration"`
+	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
+	SecretArchive *ClusterSecretArchive `pulumi:"secretArchive"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The strategy for updating the cluster.
+	UpdateStrategy *ClusterUpdateStrategy `pulumi:"updateStrategy"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -213,8 +231,14 @@ type ClusterArgs struct {
 	NetworkFabricId pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// The settings for cluster runtime protection.
+	RuntimeProtectionConfiguration RuntimeProtectionConfigurationPtrInput
+	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
+	SecretArchive ClusterSecretArchivePtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// The strategy for updating the cluster.
+	UpdateStrategy ClusterUpdateStrategyPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -377,6 +401,18 @@ func (o ClusterOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The settings for cluster runtime protection.
+func (o ClusterOutput) RuntimeProtectionConfiguration() RuntimeProtectionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) RuntimeProtectionConfigurationResponsePtrOutput {
+		return v.RuntimeProtectionConfiguration
+	}).(RuntimeProtectionConfigurationResponsePtrOutput)
+}
+
+// The configuration for use of a key vault to store secrets for later retrieval by the operator.
+func (o ClusterOutput) SecretArchive() ClusterSecretArchiveResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterSecretArchiveResponsePtrOutput { return v.SecretArchive }).(ClusterSecretArchiveResponsePtrOutput)
+}
+
 // The support end date of the runtime version of the cluster.
 func (o ClusterOutput) SupportExpiryDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SupportExpiryDate }).(pulumi.StringOutput)
@@ -395,6 +431,11 @@ func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ClusterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The strategy for updating the cluster.
+func (o ClusterOutput) UpdateStrategy() ClusterUpdateStrategyResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterUpdateStrategyResponsePtrOutput { return v.UpdateStrategy }).(ClusterUpdateStrategyResponsePtrOutput)
 }
 
 // The list of workload resource IDs that are hosted within this cluster.

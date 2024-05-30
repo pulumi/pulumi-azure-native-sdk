@@ -15,7 +15,7 @@ import (
 // Capture properties of Open AI resource Integration.
 // Azure REST API version: 2024-03-01.
 //
-// Other available API versions: 2024-01-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-05-01-preview.
 type OpenAI struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +46,9 @@ func NewOpenAI(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:elastic/v20240301:OpenAI"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20240501preview:OpenAI"),
 		},
 	})
 	opts = append(opts, aliases)

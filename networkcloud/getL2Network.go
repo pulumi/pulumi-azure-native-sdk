@@ -12,9 +12,9 @@ import (
 )
 
 // Get properties of the provided layer 2 (L2) network.
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 func LookupL2Network(ctx *pulumi.Context, args *LookupL2NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL2NetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL2NetworkResult

@@ -79,6 +79,9 @@ func NewPatchSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cache/v20240301:PatchSchedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:cache/v20240401preview:PatchSchedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

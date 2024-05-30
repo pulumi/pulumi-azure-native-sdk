@@ -15,7 +15,7 @@ import (
 // Response to get/put access policy.
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-08-01, 2024-03-01.
+// Other available API versions: 2023-08-01, 2024-03-01, 2024-04-01-preview.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewAccessPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20240301:AccessPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20240401preview:AccessPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

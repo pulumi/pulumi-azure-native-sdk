@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Job{}
 	case "azure-native:machinelearningservices/v20240401:ManagedNetworkSettingsRule":
 		r = &ManagedNetworkSettingsRule{}
+	case "azure-native:machinelearningservices/v20240401:MarketplaceSubscription":
+		r = &MarketplaceSubscription{}
 	case "azure-native:machinelearningservices/v20240401:ModelContainer":
 		r = &ModelContainer{}
 	case "azure-native:machinelearningservices/v20240401:ModelVersion":
@@ -91,6 +93,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegistryModelVersion{}
 	case "azure-native:machinelearningservices/v20240401:Schedule":
 		r = &Schedule{}
+	case "azure-native:machinelearningservices/v20240401:ServerlessEndpoint":
+		r = &ServerlessEndpoint{}
 	case "azure-native:machinelearningservices/v20240401:Workspace":
 		r = &Workspace{}
 	case "azure-native:machinelearningservices/v20240401:WorkspaceConnection":

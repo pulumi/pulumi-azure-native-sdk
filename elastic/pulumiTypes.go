@@ -2207,6 +2207,200 @@ func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) Monitored
 	}).(MonitoredResourceResponseOutput)
 }
 
+// The list of subscriptions and it's monitoring status by current Elastic monitor.
+type MonitoredSubscriptionType struct {
+	// The reason of not monitoring the subscription.
+	Error *string `pulumi:"error"`
+	// The state of monitoring.
+	Status *string `pulumi:"status"`
+	// The subscriptionId to be monitored.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Definition of the properties for a TagRules resource.
+	TagRules *MonitoringTagRulesProperties `pulumi:"tagRules"`
+}
+
+// MonitoredSubscriptionTypeInput is an input type that accepts MonitoredSubscriptionTypeArgs and MonitoredSubscriptionTypeOutput values.
+// You can construct a concrete instance of `MonitoredSubscriptionTypeInput` via:
+//
+//	MonitoredSubscriptionTypeArgs{...}
+type MonitoredSubscriptionTypeInput interface {
+	pulumi.Input
+
+	ToMonitoredSubscriptionTypeOutput() MonitoredSubscriptionTypeOutput
+	ToMonitoredSubscriptionTypeOutputWithContext(context.Context) MonitoredSubscriptionTypeOutput
+}
+
+// The list of subscriptions and it's monitoring status by current Elastic monitor.
+type MonitoredSubscriptionTypeArgs struct {
+	// The reason of not monitoring the subscription.
+	Error pulumi.StringPtrInput `pulumi:"error"`
+	// The state of monitoring.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The subscriptionId to be monitored.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Definition of the properties for a TagRules resource.
+	TagRules MonitoringTagRulesPropertiesPtrInput `pulumi:"tagRules"`
+}
+
+func (MonitoredSubscriptionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (i MonitoredSubscriptionTypeArgs) ToMonitoredSubscriptionTypeOutput() MonitoredSubscriptionTypeOutput {
+	return i.ToMonitoredSubscriptionTypeOutputWithContext(context.Background())
+}
+
+func (i MonitoredSubscriptionTypeArgs) ToMonitoredSubscriptionTypeOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionTypeOutput)
+}
+
+// MonitoredSubscriptionTypeArrayInput is an input type that accepts MonitoredSubscriptionTypeArray and MonitoredSubscriptionTypeArrayOutput values.
+// You can construct a concrete instance of `MonitoredSubscriptionTypeArrayInput` via:
+//
+//	MonitoredSubscriptionTypeArray{ MonitoredSubscriptionTypeArgs{...} }
+type MonitoredSubscriptionTypeArrayInput interface {
+	pulumi.Input
+
+	ToMonitoredSubscriptionTypeArrayOutput() MonitoredSubscriptionTypeArrayOutput
+	ToMonitoredSubscriptionTypeArrayOutputWithContext(context.Context) MonitoredSubscriptionTypeArrayOutput
+}
+
+type MonitoredSubscriptionTypeArray []MonitoredSubscriptionTypeInput
+
+func (MonitoredSubscriptionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (i MonitoredSubscriptionTypeArray) ToMonitoredSubscriptionTypeArrayOutput() MonitoredSubscriptionTypeArrayOutput {
+	return i.ToMonitoredSubscriptionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MonitoredSubscriptionTypeArray) ToMonitoredSubscriptionTypeArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionTypeArrayOutput)
+}
+
+// The list of subscriptions and it's monitoring status by current Elastic monitor.
+type MonitoredSubscriptionTypeOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionTypeOutput) ToMonitoredSubscriptionTypeOutput() MonitoredSubscriptionTypeOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeOutput) ToMonitoredSubscriptionTypeOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeOutput {
+	return o
+}
+
+// The reason of not monitoring the subscription.
+func (o MonitoredSubscriptionTypeOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// The state of monitoring.
+func (o MonitoredSubscriptionTypeOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subscriptionId to be monitored.
+func (o MonitoredSubscriptionTypeOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Definition of the properties for a TagRules resource.
+func (o MonitoredSubscriptionTypeOutput) TagRules() MonitoringTagRulesPropertiesPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionType) *MonitoringTagRulesProperties { return v.TagRules }).(MonitoringTagRulesPropertiesPtrOutput)
+}
+
+type MonitoredSubscriptionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredSubscriptionType)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) ToMonitoredSubscriptionTypeArrayOutput() MonitoredSubscriptionTypeArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) ToMonitoredSubscriptionTypeArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionTypeArrayOutput) Index(i pulumi.IntInput) MonitoredSubscriptionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredSubscriptionType {
+		return vs[0].([]MonitoredSubscriptionType)[vs[1].(int)]
+	}).(MonitoredSubscriptionTypeOutput)
+}
+
+// The list of subscriptions and it's monitoring status by current Elastic monitor.
+type MonitoredSubscriptionResponse struct {
+	// The reason of not monitoring the subscription.
+	Error *string `pulumi:"error"`
+	// The state of monitoring.
+	Status *string `pulumi:"status"`
+	// The subscriptionId to be monitored.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Definition of the properties for a TagRules resource.
+	TagRules *MonitoringTagRulesPropertiesResponse `pulumi:"tagRules"`
+}
+
+// The list of subscriptions and it's monitoring status by current Elastic monitor.
+type MonitoredSubscriptionResponseOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoredSubscriptionResponse)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionResponseOutput) ToMonitoredSubscriptionResponseOutput() MonitoredSubscriptionResponseOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseOutput) ToMonitoredSubscriptionResponseOutputWithContext(ctx context.Context) MonitoredSubscriptionResponseOutput {
+	return o
+}
+
+// The reason of not monitoring the subscription.
+func (o MonitoredSubscriptionResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// The state of monitoring.
+func (o MonitoredSubscriptionResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subscriptionId to be monitored.
+func (o MonitoredSubscriptionResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Definition of the properties for a TagRules resource.
+func (o MonitoredSubscriptionResponseOutput) TagRules() MonitoringTagRulesPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v MonitoredSubscriptionResponse) *MonitoringTagRulesPropertiesResponse { return v.TagRules }).(MonitoringTagRulesPropertiesResponsePtrOutput)
+}
+
+type MonitoredSubscriptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MonitoredSubscriptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MonitoredSubscriptionResponse)(nil)).Elem()
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) ToMonitoredSubscriptionResponseArrayOutput() MonitoredSubscriptionResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) ToMonitoredSubscriptionResponseArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionResponseArrayOutput {
+	return o
+}
+
+func (o MonitoredSubscriptionResponseArrayOutput) Index(i pulumi.IntInput) MonitoredSubscriptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredSubscriptionResponse {
+		return vs[0].([]MonitoredSubscriptionResponse)[vs[1].(int)]
+	}).(MonitoredSubscriptionResponseOutput)
+}
+
 // Definition of the properties for a TagRules resource.
 type MonitoringTagRulesProperties struct {
 	// Rules for sending logs.
@@ -2397,6 +2591,50 @@ func (o MonitoringTagRulesPropertiesResponseOutput) LogRules() LogRulesResponseP
 // Provisioning state of the monitoring tag rules.
 func (o MonitoringTagRulesPropertiesResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+type MonitoringTagRulesPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MonitoringTagRulesPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitoringTagRulesPropertiesResponse)(nil)).Elem()
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToMonitoringTagRulesPropertiesResponsePtrOutput() MonitoringTagRulesPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToMonitoringTagRulesPropertiesResponsePtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) Elem() MonitoringTagRulesPropertiesResponseOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) MonitoringTagRulesPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MonitoringTagRulesPropertiesResponse
+		return ret
+	}).(MonitoringTagRulesPropertiesResponseOutput)
+}
+
+// Rules for sending logs.
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) LogRules() LogRulesResponsePtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *LogRulesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LogRules
+	}).(LogRulesResponsePtrOutput)
+}
+
+// Provisioning state of the monitoring tag rules.
+func (o MonitoringTagRulesPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitoringTagRulesPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
 }
 
 // Open AI Integration details.
@@ -2944,6 +3182,198 @@ func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+type SubscriptionList struct {
+	// List of subscriptions and the state of the monitoring.
+	MonitoredSubscriptionList []MonitoredSubscriptionType `pulumi:"monitoredSubscriptionList"`
+	// The operation for the patch on the resource.
+	Operation *string `pulumi:"operation"`
+}
+
+// SubscriptionListInput is an input type that accepts SubscriptionListArgs and SubscriptionListOutput values.
+// You can construct a concrete instance of `SubscriptionListInput` via:
+//
+//	SubscriptionListArgs{...}
+type SubscriptionListInput interface {
+	pulumi.Input
+
+	ToSubscriptionListOutput() SubscriptionListOutput
+	ToSubscriptionListOutputWithContext(context.Context) SubscriptionListOutput
+}
+
+// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+type SubscriptionListArgs struct {
+	// List of subscriptions and the state of the monitoring.
+	MonitoredSubscriptionList MonitoredSubscriptionTypeArrayInput `pulumi:"monitoredSubscriptionList"`
+	// The operation for the patch on the resource.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+}
+
+func (SubscriptionListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionList)(nil)).Elem()
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListOutput() SubscriptionListOutput {
+	return i.ToSubscriptionListOutputWithContext(context.Background())
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListOutputWithContext(ctx context.Context) SubscriptionListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListOutput)
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return i.ToSubscriptionListPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionListArgs) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListOutput).ToSubscriptionListPtrOutputWithContext(ctx)
+}
+
+// SubscriptionListPtrInput is an input type that accepts SubscriptionListArgs, SubscriptionListPtr and SubscriptionListPtrOutput values.
+// You can construct a concrete instance of `SubscriptionListPtrInput` via:
+//
+//	        SubscriptionListArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionListPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionListPtrOutput() SubscriptionListPtrOutput
+	ToSubscriptionListPtrOutputWithContext(context.Context) SubscriptionListPtrOutput
+}
+
+type subscriptionListPtrType SubscriptionListArgs
+
+func SubscriptionListPtr(v *SubscriptionListArgs) SubscriptionListPtrInput {
+	return (*subscriptionListPtrType)(v)
+}
+
+func (*subscriptionListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionList)(nil)).Elem()
+}
+
+func (i *subscriptionListPtrType) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return i.ToSubscriptionListPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionListPtrType) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListPtrOutput)
+}
+
+// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+type SubscriptionListOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionList)(nil)).Elem()
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListOutput() SubscriptionListOutput {
+	return o
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListOutputWithContext(ctx context.Context) SubscriptionListOutput {
+	return o
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return o.ToSubscriptionListPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionListOutput) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionList) *SubscriptionList {
+		return &v
+	}).(SubscriptionListPtrOutput)
+}
+
+// List of subscriptions and the state of the monitoring.
+func (o SubscriptionListOutput) MonitoredSubscriptionList() MonitoredSubscriptionTypeArrayOutput {
+	return o.ApplyT(func(v SubscriptionList) []MonitoredSubscriptionType { return v.MonitoredSubscriptionList }).(MonitoredSubscriptionTypeArrayOutput)
+}
+
+// The operation for the patch on the resource.
+func (o SubscriptionListOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionList) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionListPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionList)(nil)).Elem()
+}
+
+func (o SubscriptionListPtrOutput) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
+	return o
+}
+
+func (o SubscriptionListPtrOutput) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
+	return o
+}
+
+func (o SubscriptionListPtrOutput) Elem() SubscriptionListOutput {
+	return o.ApplyT(func(v *SubscriptionList) SubscriptionList {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionList
+		return ret
+	}).(SubscriptionListOutput)
+}
+
+// List of subscriptions and the state of the monitoring.
+func (o SubscriptionListPtrOutput) MonitoredSubscriptionList() MonitoredSubscriptionTypeArrayOutput {
+	return o.ApplyT(func(v *SubscriptionList) []MonitoredSubscriptionType {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoredSubscriptionList
+	}).(MonitoredSubscriptionTypeArrayOutput)
+}
+
+// The operation for the patch on the resource.
+func (o SubscriptionListPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionList) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+type SubscriptionListResponse struct {
+	// List of subscriptions and the state of the monitoring.
+	MonitoredSubscriptionList []MonitoredSubscriptionResponse `pulumi:"monitoredSubscriptionList"`
+	// Provisioning State of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+type SubscriptionListResponseOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionListResponse)(nil)).Elem()
+}
+
+func (o SubscriptionListResponseOutput) ToSubscriptionListResponseOutput() SubscriptionListResponseOutput {
+	return o
+}
+
+func (o SubscriptionListResponseOutput) ToSubscriptionListResponseOutputWithContext(ctx context.Context) SubscriptionListResponseOutput {
+	return o
+}
+
+// List of subscriptions and the state of the monitoring.
+func (o SubscriptionListResponseOutput) MonitoredSubscriptionList() MonitoredSubscriptionResponseArrayOutput {
+	return o.ApplyT(func(v SubscriptionListResponse) []MonitoredSubscriptionResponse { return v.MonitoredSubscriptionList }).(MonitoredSubscriptionResponseArrayOutput)
+}
+
+// Provisioning State of the resource
+func (o SubscriptionListResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionListResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -3330,9 +3760,14 @@ func init() {
 	pulumi.RegisterOutputType(MonitorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceResponseOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionTypeOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionTypeArrayOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionResponseOutput{})
+	pulumi.RegisterOutputType(MonitoredSubscriptionResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesOutput{})
 	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesResponseOutput{})
@@ -3343,6 +3778,9 @@ func init() {
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionListOutput{})
+	pulumi.RegisterOutputType(SubscriptionListPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionListResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserApiKeyResponsePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(UserInfoOutput{})

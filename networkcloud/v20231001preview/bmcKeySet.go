@@ -80,9 +80,6 @@ func NewBmcKeySet(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:BmcKeySet"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:BmcKeySet"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:BmcKeySet"),
 		},
 	})

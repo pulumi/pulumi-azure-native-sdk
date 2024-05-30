@@ -15,7 +15,7 @@ import (
 // Response to an operation on access policy assignment
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-08-01, 2024-03-01.
+// Other available API versions: 2023-08-01, 2024-03-01, 2024-04-01-preview.
 type AccessPolicyAssignment struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewAccessPolicyAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cache/v20240301:AccessPolicyAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:cache/v20240401preview:AccessPolicyAssignment"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -55,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefenderForStorage{}
 	case "azure-native:security:DevOpsConfiguration":
 		r = &DevOpsConfiguration{}
+	case "azure-native:security:DevOpsPolicyAssignment":
+		r = &DevOpsPolicyAssignment{}
 	case "azure-native:security:DeviceSecurityGroup":
 		r = &DeviceSecurityGroup{}
 	case "azure-native:security:GovernanceAssignment":

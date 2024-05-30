@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type FrontendsInterface struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewFrontendsInterface(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:FrontendsInterface"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20240501preview:FrontendsInterface"),
 		},
 	})
 	opts = append(opts, aliases)

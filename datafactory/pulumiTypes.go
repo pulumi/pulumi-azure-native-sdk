@@ -48796,6 +48796,8 @@ type DynamicsCrmLinkedService struct {
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// The deployment type of the Dynamics CRM instance. 'Online' for Dynamics CRM Online and 'OnPremisesWithIfd' for Dynamics CRM on-premises with Ifd. Type: string (or Expression with resultType string).
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
@@ -48846,6 +48848,8 @@ type DynamicsCrmLinkedServiceArgs struct {
 	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// The deployment type of the Dynamics CRM instance. 'Online' for Dynamics CRM Online and 'OnPremisesWithIfd' for Dynamics CRM on-premises with Ifd. Type: string (or Expression with resultType string).
 	DeploymentType pulumi.Input `pulumi:"deploymentType"`
 	// Linked service description.
@@ -48917,6 +48921,11 @@ func (o DynamicsCrmLinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
 // The integration runtime reference.
 func (o DynamicsCrmLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// The credential reference containing authentication information.
+func (o DynamicsCrmLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v DynamicsCrmLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // The deployment type of the Dynamics CRM instance. 'Online' for Dynamics CRM Online and 'OnPremisesWithIfd' for Dynamics CRM on-premises with Ifd. Type: string (or Expression with resultType string).
@@ -48998,6 +49007,8 @@ type DynamicsCrmLinkedServiceResponse struct {
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// The deployment type of the Dynamics CRM instance. 'Online' for Dynamics CRM Online and 'OnPremisesWithIfd' for Dynamics CRM on-premises with Ifd. Type: string (or Expression with resultType string).
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
@@ -49057,6 +49068,11 @@ func (o DynamicsCrmLinkedServiceResponseOutput) AuthenticationType() pulumi.AnyO
 // The integration runtime reference.
 func (o DynamicsCrmLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// The credential reference containing authentication information.
+func (o DynamicsCrmLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v DynamicsCrmLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // The deployment type of the Dynamics CRM instance. 'Online' for Dynamics CRM Online and 'OnPremisesWithIfd' for Dynamics CRM on-premises with Ifd. Type: string (or Expression with resultType string).

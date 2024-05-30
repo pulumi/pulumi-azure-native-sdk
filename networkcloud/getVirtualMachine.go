@@ -12,9 +12,9 @@ import (
 )
 
 // Get properties of the provided virtual machine.
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 func LookupVirtualMachine(ctx *pulumi.Context, args *LookupVirtualMachineArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineResult
@@ -37,7 +37,7 @@ type LookupVirtualMachineResult struct {
 	AdminUsername string `pulumi:"adminUsername"`
 	// The cluster availability zone containing this virtual machine.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// The resource ID of the bare metal machine the virtual machine has landed to.
+	// The resource ID of the bare metal machine that hosts the virtual machine.
 	BareMetalMachineId string `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
 	BootMethod *string `pulumi:"bootMethod"`
@@ -172,7 +172,7 @@ func (o LookupVirtualMachineResultOutput) AvailabilityZone() pulumi.StringOutput
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The resource ID of the bare metal machine the virtual machine has landed to.
+// The resource ID of the bare metal machine that hosts the virtual machine.
 func (o LookupVirtualMachineResultOutput) BareMetalMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.BareMetalMachineId }).(pulumi.StringOutput)
 }

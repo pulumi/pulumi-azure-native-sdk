@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +22,7 @@ type VirtualMachine struct {
 	AdminUsername pulumi.StringOutput `pulumi:"adminUsername"`
 	// The cluster availability zone containing this virtual machine.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// The resource ID of the bare metal machine the virtual machine has landed to.
+	// The resource ID of the bare metal machine that hosts the virtual machine.
 	BareMetalMachineId pulumi.StringOutput `pulumi:"bareMetalMachineId"`
 	// Selects the boot method for the virtual machine.
 	BootMethod pulumi.StringPtrOutput `pulumi:"bootMethod"`
@@ -125,9 +125,6 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		args.VmDeviceModel = pulumi.StringPtr("T2")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:VirtualMachine"),
-		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:VirtualMachine"),
 		},
@@ -306,7 +303,7 @@ func (o VirtualMachineOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The resource ID of the bare metal machine the virtual machine has landed to.
+// The resource ID of the bare metal machine that hosts the virtual machine.
 func (o VirtualMachineOutput) BareMetalMachineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.BareMetalMachineId }).(pulumi.StringOutput)
 }

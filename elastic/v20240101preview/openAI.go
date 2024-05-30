@@ -44,6 +44,9 @@ func NewOpenAI(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20240301:OpenAI"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20240501preview:OpenAI"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:elastic:Monitor":
 		r = &Monitor{}
+	case "azure-native:elastic:MonitoredSubscription":
+		r = &MonitoredSubscription{}
 	case "azure-native:elastic:OpenAI":
 		r = &OpenAI{}
 	case "azure-native:elastic:TagRule":

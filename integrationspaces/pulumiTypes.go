@@ -1128,13 +1128,13 @@ func (o TrackingCorrelationContextResponsePtrOutput) Value() pulumi.StringPtrOut
 // The properties of tracking data store.
 type TrackingDataStore struct {
 	// The data store ingestion URI.
-	DataStoreIngestionUri string `pulumi:"dataStoreIngestionUri"`
+	DataStoreIngestionUri *string `pulumi:"dataStoreIngestionUri"`
 	// The data store resource id.
-	DataStoreResourceId string `pulumi:"dataStoreResourceId"`
+	DataStoreResourceId *string `pulumi:"dataStoreResourceId"`
 	// The data store URI.
-	DataStoreUri string `pulumi:"dataStoreUri"`
+	DataStoreUri *string `pulumi:"dataStoreUri"`
 	// The database name.
-	DatabaseName string `pulumi:"databaseName"`
+	DatabaseName *string `pulumi:"databaseName"`
 }
 
 // TrackingDataStoreInput is an input type that accepts TrackingDataStoreArgs and TrackingDataStoreOutput values.
@@ -1151,13 +1151,13 @@ type TrackingDataStoreInput interface {
 // The properties of tracking data store.
 type TrackingDataStoreArgs struct {
 	// The data store ingestion URI.
-	DataStoreIngestionUri pulumi.StringInput `pulumi:"dataStoreIngestionUri"`
+	DataStoreIngestionUri pulumi.StringPtrInput `pulumi:"dataStoreIngestionUri"`
 	// The data store resource id.
-	DataStoreResourceId pulumi.StringInput `pulumi:"dataStoreResourceId"`
+	DataStoreResourceId pulumi.StringPtrInput `pulumi:"dataStoreResourceId"`
 	// The data store URI.
-	DataStoreUri pulumi.StringInput `pulumi:"dataStoreUri"`
+	DataStoreUri pulumi.StringPtrInput `pulumi:"dataStoreUri"`
 	// The database name.
-	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
+	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
 }
 
 func (TrackingDataStoreArgs) ElementType() reflect.Type {
@@ -1213,23 +1213,23 @@ func (o TrackingDataStoreOutput) ToTrackingDataStoreOutputWithContext(ctx contex
 }
 
 // The data store ingestion URI.
-func (o TrackingDataStoreOutput) DataStoreIngestionUri() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStore) string { return v.DataStoreIngestionUri }).(pulumi.StringOutput)
+func (o TrackingDataStoreOutput) DataStoreIngestionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStore) *string { return v.DataStoreIngestionUri }).(pulumi.StringPtrOutput)
 }
 
 // The data store resource id.
-func (o TrackingDataStoreOutput) DataStoreResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStore) string { return v.DataStoreResourceId }).(pulumi.StringOutput)
+func (o TrackingDataStoreOutput) DataStoreResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStore) *string { return v.DataStoreResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The data store URI.
-func (o TrackingDataStoreOutput) DataStoreUri() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStore) string { return v.DataStoreUri }).(pulumi.StringOutput)
+func (o TrackingDataStoreOutput) DataStoreUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStore) *string { return v.DataStoreUri }).(pulumi.StringPtrOutput)
 }
 
 // The database name.
-func (o TrackingDataStoreOutput) DatabaseName() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStore) string { return v.DatabaseName }).(pulumi.StringOutput)
+func (o TrackingDataStoreOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStore) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
 
 type TrackingDataStoreMapOutput struct{ *pulumi.OutputState }
@@ -1255,13 +1255,13 @@ func (o TrackingDataStoreMapOutput) MapIndex(k pulumi.StringInput) TrackingDataS
 // The properties of tracking data store.
 type TrackingDataStoreResponse struct {
 	// The data store ingestion URI.
-	DataStoreIngestionUri string `pulumi:"dataStoreIngestionUri"`
+	DataStoreIngestionUri *string `pulumi:"dataStoreIngestionUri"`
 	// The data store resource id.
-	DataStoreResourceId string `pulumi:"dataStoreResourceId"`
+	DataStoreResourceId *string `pulumi:"dataStoreResourceId"`
 	// The data store URI.
-	DataStoreUri string `pulumi:"dataStoreUri"`
+	DataStoreUri *string `pulumi:"dataStoreUri"`
 	// The database name.
-	DatabaseName string `pulumi:"databaseName"`
+	DatabaseName *string `pulumi:"databaseName"`
 }
 
 // The properties of tracking data store.
@@ -1280,23 +1280,23 @@ func (o TrackingDataStoreResponseOutput) ToTrackingDataStoreResponseOutputWithCo
 }
 
 // The data store ingestion URI.
-func (o TrackingDataStoreResponseOutput) DataStoreIngestionUri() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStoreResponse) string { return v.DataStoreIngestionUri }).(pulumi.StringOutput)
+func (o TrackingDataStoreResponseOutput) DataStoreIngestionUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStoreResponse) *string { return v.DataStoreIngestionUri }).(pulumi.StringPtrOutput)
 }
 
 // The data store resource id.
-func (o TrackingDataStoreResponseOutput) DataStoreResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStoreResponse) string { return v.DataStoreResourceId }).(pulumi.StringOutput)
+func (o TrackingDataStoreResponseOutput) DataStoreResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStoreResponse) *string { return v.DataStoreResourceId }).(pulumi.StringPtrOutput)
 }
 
 // The data store URI.
-func (o TrackingDataStoreResponseOutput) DataStoreUri() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStoreResponse) string { return v.DataStoreUri }).(pulumi.StringOutput)
+func (o TrackingDataStoreResponseOutput) DataStoreUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStoreResponse) *string { return v.DataStoreUri }).(pulumi.StringPtrOutput)
 }
 
 // The database name.
-func (o TrackingDataStoreResponseOutput) DatabaseName() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackingDataStoreResponse) string { return v.DatabaseName }).(pulumi.StringOutput)
+func (o TrackingDataStoreResponseOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrackingDataStoreResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
 }
 
 type TrackingDataStoreResponseMapOutput struct{ *pulumi.OutputState }
