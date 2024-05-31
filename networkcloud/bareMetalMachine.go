@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 type BareMetalMachine struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,8 @@ type BareMetalMachine struct {
 	MachineDetails pulumi.StringOutput `pulumi:"machineDetails"`
 	// The OS-level hostname assigned to this machine.
 	MachineName pulumi.StringOutput `pulumi:"machineName"`
+	// The list of roles that are assigned to the cluster node running on this machine.
+	MachineRoles pulumi.StringArrayOutput `pulumi:"machineRoles"`
 	// The unique internal identifier of the bare metal machine SKU.
 	MachineSkuId pulumi.StringOutput `pulumi:"machineSkuId"`
 	// The name of the resource
@@ -74,6 +76,8 @@ type BareMetalMachine struct {
 	RackSlot pulumi.Float64Output `pulumi:"rackSlot"`
 	// The indicator of whether the bare metal machine is ready to receive workloads.
 	ReadyState pulumi.StringOutput `pulumi:"readyState"`
+	// The runtime protection status of the bare metal machine.
+	RuntimeProtectionStatus RuntimeProtectionStatusResponseOutput `pulumi:"runtimeProtectionStatus"`
 	// The serial number of the bare metal machine.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
 	// The discovered value of the machine's service tag.
@@ -132,9 +136,6 @@ func NewBareMetalMachine(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'SerialNumber'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:BareMetalMachine"),
-		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:BareMetalMachine"),
 		},
@@ -369,6 +370,11 @@ func (o BareMetalMachineOutput) MachineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.MachineName }).(pulumi.StringOutput)
 }
 
+// The list of roles that are assigned to the cluster node running on this machine.
+func (o BareMetalMachineOutput) MachineRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringArrayOutput { return v.MachineRoles }).(pulumi.StringArrayOutput)
+}
+
 // The unique internal identifier of the bare metal machine SKU.
 func (o BareMetalMachineOutput) MachineSkuId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.MachineSkuId }).(pulumi.StringOutput)
@@ -417,6 +423,11 @@ func (o BareMetalMachineOutput) RackSlot() pulumi.Float64Output {
 // The indicator of whether the bare metal machine is ready to receive workloads.
 func (o BareMetalMachineOutput) ReadyState() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachine) pulumi.StringOutput { return v.ReadyState }).(pulumi.StringOutput)
+}
+
+// The runtime protection status of the bare metal machine.
+func (o BareMetalMachineOutput) RuntimeProtectionStatus() RuntimeProtectionStatusResponseOutput {
+	return o.ApplyT(func(v *BareMetalMachine) RuntimeProtectionStatusResponseOutput { return v.RuntimeProtectionStatus }).(RuntimeProtectionStatusResponseOutput)
 }
 
 // The serial number of the bare metal machine.

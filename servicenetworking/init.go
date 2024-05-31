@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssociationsInterface{}
 	case "azure-native:servicenetworking:FrontendsInterface":
 		r = &FrontendsInterface{}
+	case "azure-native:servicenetworking:SecurityPoliciesInterface":
+		r = &SecurityPoliciesInterface{}
 	case "azure-native:servicenetworking:TrafficControllerInterface":
 		r = &TrafficControllerInterface{}
 	default:

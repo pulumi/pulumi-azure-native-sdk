@@ -340,6 +340,178 @@ func (in *monitoringStatusPtr) ToMonitoringStatusPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoringStatusPtrOutput)
 }
 
+// The operation for the patch on the resource.
+type Operation string
+
+const (
+	OperationAddBegin       = Operation("AddBegin")
+	OperationAddComplete    = Operation("AddComplete")
+	OperationDeleteBegin    = Operation("DeleteBegin")
+	OperationDeleteComplete = Operation("DeleteComplete")
+	OperationActive         = Operation("Active")
+)
+
+func (Operation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Operation)(nil)).Elem()
+}
+
+func (e Operation) ToOperationOutput() OperationOutput {
+	return pulumi.ToOutput(e).(OperationOutput)
+}
+
+func (e Operation) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OperationOutput)
+}
+
+func (e Operation) ToOperationPtrOutput() OperationPtrOutput {
+	return e.ToOperationPtrOutputWithContext(context.Background())
+}
+
+func (e Operation) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return Operation(e).ToOperationOutputWithContext(ctx).ToOperationPtrOutputWithContext(ctx)
+}
+
+func (e Operation) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Operation) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Operation) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Operation) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OperationOutput struct{ *pulumi.OutputState }
+
+func (OperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Operation)(nil)).Elem()
+}
+
+func (o OperationOutput) ToOperationOutput() OperationOutput {
+	return o
+}
+
+func (o OperationOutput) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
+	return o
+}
+
+func (o OperationOutput) ToOperationPtrOutput() OperationPtrOutput {
+	return o.ToOperationPtrOutputWithContext(context.Background())
+}
+
+func (o OperationOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Operation) *Operation {
+		return &v
+	}).(OperationPtrOutput)
+}
+
+func (o OperationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OperationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Operation) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OperationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OperationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Operation) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OperationPtrOutput struct{ *pulumi.OutputState }
+
+func (OperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Operation)(nil)).Elem()
+}
+
+func (o OperationPtrOutput) ToOperationPtrOutput() OperationPtrOutput {
+	return o
+}
+
+func (o OperationPtrOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return o
+}
+
+func (o OperationPtrOutput) Elem() OperationOutput {
+	return o.ApplyT(func(v *Operation) Operation {
+		if v != nil {
+			return *v
+		}
+		var ret Operation
+		return ret
+	}).(OperationOutput)
+}
+
+func (o OperationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OperationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Operation) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OperationInput is an input type that accepts values of the Operation enum
+// A concrete instance of `OperationInput` can be one of the following:
+//
+//	OperationAddBegin
+//	OperationAddComplete
+//	OperationDeleteBegin
+//	OperationDeleteComplete
+//	OperationActive
+type OperationInput interface {
+	pulumi.Input
+
+	ToOperationOutput() OperationOutput
+	ToOperationOutputWithContext(context.Context) OperationOutput
+}
+
+var operationPtrType = reflect.TypeOf((**Operation)(nil)).Elem()
+
+type OperationPtrInput interface {
+	pulumi.Input
+
+	ToOperationPtrOutput() OperationPtrOutput
+	ToOperationPtrOutputWithContext(context.Context) OperationPtrOutput
+}
+
+type operationPtr string
+
+func OperationPtr(v string) OperationPtrInput {
+	return (*operationPtr)(&v)
+}
+
+func (*operationPtr) ElementType() reflect.Type {
+	return operationPtrType
+}
+
+func (in *operationPtr) ToOperationPtrOutput() OperationPtrOutput {
+	return pulumi.ToOutput(in).(OperationPtrOutput)
+}
+
+func (in *operationPtr) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OperationPtrOutput)
+}
+
 // Provisioning state of the monitoring tag rules.
 type ProvisioningState string
 
@@ -520,6 +692,176 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
 }
 
+// The state of monitoring.
+type Status string
+
+const (
+	StatusInProgress = Status("InProgress")
+	StatusActive     = Status("Active")
+	StatusFailed     = Status("Failed")
+	StatusDeleting   = Status("Deleting")
+)
+
+func (Status) ElementType() reflect.Type {
+	return reflect.TypeOf((*Status)(nil)).Elem()
+}
+
+func (e Status) ToStatusOutput() StatusOutput {
+	return pulumi.ToOutput(e).(StatusOutput)
+}
+
+func (e Status) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StatusOutput)
+}
+
+func (e Status) ToStatusPtrOutput() StatusPtrOutput {
+	return e.ToStatusPtrOutputWithContext(context.Background())
+}
+
+func (e Status) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return Status(e).ToStatusOutputWithContext(ctx).ToStatusPtrOutputWithContext(ctx)
+}
+
+func (e Status) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Status) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Status) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Status) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StatusOutput struct{ *pulumi.OutputState }
+
+func (StatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Status)(nil)).Elem()
+}
+
+func (o StatusOutput) ToStatusOutput() StatusOutput {
+	return o
+}
+
+func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+	return o
+}
+
+func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
+	return o.ToStatusPtrOutputWithContext(context.Background())
+}
+
+func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Status) *Status {
+		return &v
+	}).(StatusPtrOutput)
+}
+
+func (o StatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Status) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Status) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatusPtrOutput struct{ *pulumi.OutputState }
+
+func (StatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Status)(nil)).Elem()
+}
+
+func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
+	return o
+}
+
+func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return o
+}
+
+func (o StatusPtrOutput) Elem() StatusOutput {
+	return o.ApplyT(func(v *Status) Status {
+		if v != nil {
+			return *v
+		}
+		var ret Status
+		return ret
+	}).(StatusOutput)
+}
+
+func (o StatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Status) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StatusInput is an input type that accepts values of the Status enum
+// A concrete instance of `StatusInput` can be one of the following:
+//
+//	StatusInProgress
+//	StatusActive
+//	StatusFailed
+//	StatusDeleting
+type StatusInput interface {
+	pulumi.Input
+
+	ToStatusOutput() StatusOutput
+	ToStatusOutputWithContext(context.Context) StatusOutput
+}
+
+var statusPtrType = reflect.TypeOf((**Status)(nil)).Elem()
+
+type StatusPtrInput interface {
+	pulumi.Input
+
+	ToStatusPtrOutput() StatusPtrOutput
+	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
+}
+
+type statusPtr string
+
+func StatusPtr(v string) StatusPtrInput {
+	return (*statusPtr)(&v)
+}
+
+func (*statusPtr) ElementType() reflect.Type {
+	return statusPtrType
+}
+
+func (in *statusPtr) ToStatusPtrOutput() StatusPtrOutput {
+	return pulumi.ToOutput(in).(StatusPtrOutput)
+}
+
+func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
+}
+
 // Valid actions for a filtering tag.
 type TagAction string
 
@@ -691,8 +1033,12 @@ func init() {
 	pulumi.RegisterOutputType(ManagedIdentityTypesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringStatusOutput{})
 	pulumi.RegisterOutputType(MonitoringStatusPtrOutput{})
+	pulumi.RegisterOutputType(OperationOutput{})
+	pulumi.RegisterOutputType(OperationPtrOutput{})
 	pulumi.RegisterOutputType(ProvisioningStateOutput{})
 	pulumi.RegisterOutputType(ProvisioningStatePtrOutput{})
+	pulumi.RegisterOutputType(StatusOutput{})
+	pulumi.RegisterOutputType(StatusPtrOutput{})
 	pulumi.RegisterOutputType(TagActionOutput{})
 	pulumi.RegisterOutputType(TagActionPtrOutput{})
 }

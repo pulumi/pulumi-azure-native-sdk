@@ -49,6 +49,9 @@ func NewMarketplaceSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:MarketplaceSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:MarketplaceSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

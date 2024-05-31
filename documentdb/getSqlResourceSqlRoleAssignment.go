@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Assignment with the given Id.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
 func LookupSqlResourceSqlRoleAssignment(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlRoleAssignmentResult

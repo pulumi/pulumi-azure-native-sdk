@@ -47,6 +47,9 @@ func NewMarketplaceSubscription(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices:MarketplaceSubscription"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240401:MarketplaceSubscription"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:MarketplaceSubscription"),
 		},
 	})

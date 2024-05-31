@@ -16391,6 +16391,595 @@ func (o DevOpsConfigurationPropertiesResponseOutput) TopLevelInventoryList() pul
 	return o.ApplyT(func(v DevOpsConfigurationPropertiesResponse) []string { return v.TopLevelInventoryList }).(pulumi.StringArrayOutput)
 }
 
+// Properties of the DevOps policy assignment resource.
+type DevOpsPolicyAssignmentProperties struct {
+	// Gets or sets time when the assignment was created in UTC.
+	AssignedAt *string `pulumi:"assignedAt"`
+	// The behavior of a policy on descendant resources.
+	DescendantBehavior *string `pulumi:"descendantBehavior"`
+	// Condensed information to identify a DevOps Policy resource.
+	Policy *DevOpsPolicyDescriptor `pulumi:"policy"`
+	// Gets or sets the Azure resource id.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// DevOpsPolicyAssignmentPropertiesInput is an input type that accepts DevOpsPolicyAssignmentPropertiesArgs and DevOpsPolicyAssignmentPropertiesOutput values.
+// You can construct a concrete instance of `DevOpsPolicyAssignmentPropertiesInput` via:
+//
+//	DevOpsPolicyAssignmentPropertiesArgs{...}
+type DevOpsPolicyAssignmentPropertiesInput interface {
+	pulumi.Input
+
+	ToDevOpsPolicyAssignmentPropertiesOutput() DevOpsPolicyAssignmentPropertiesOutput
+	ToDevOpsPolicyAssignmentPropertiesOutputWithContext(context.Context) DevOpsPolicyAssignmentPropertiesOutput
+}
+
+// Properties of the DevOps policy assignment resource.
+type DevOpsPolicyAssignmentPropertiesArgs struct {
+	// Gets or sets time when the assignment was created in UTC.
+	AssignedAt pulumi.StringPtrInput `pulumi:"assignedAt"`
+	// The behavior of a policy on descendant resources.
+	DescendantBehavior pulumi.StringPtrInput `pulumi:"descendantBehavior"`
+	// Condensed information to identify a DevOps Policy resource.
+	Policy DevOpsPolicyDescriptorPtrInput `pulumi:"policy"`
+	// Gets or sets the Azure resource id.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (DevOpsPolicyAssignmentPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsPolicyAssignmentProperties)(nil)).Elem()
+}
+
+func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesOutput() DevOpsPolicyAssignmentPropertiesOutput {
+	return i.ToDevOpsPolicyAssignmentPropertiesOutputWithContext(context.Background())
+}
+
+func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyAssignmentPropertiesOutput)
+}
+
+func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return i.ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DevOpsPolicyAssignmentPropertiesArgs) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyAssignmentPropertiesOutput).ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx)
+}
+
+// DevOpsPolicyAssignmentPropertiesPtrInput is an input type that accepts DevOpsPolicyAssignmentPropertiesArgs, DevOpsPolicyAssignmentPropertiesPtr and DevOpsPolicyAssignmentPropertiesPtrOutput values.
+// You can construct a concrete instance of `DevOpsPolicyAssignmentPropertiesPtrInput` via:
+//
+//	        DevOpsPolicyAssignmentPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DevOpsPolicyAssignmentPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput
+	ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput
+}
+
+type devOpsPolicyAssignmentPropertiesPtrType DevOpsPolicyAssignmentPropertiesArgs
+
+func DevOpsPolicyAssignmentPropertiesPtr(v *DevOpsPolicyAssignmentPropertiesArgs) DevOpsPolicyAssignmentPropertiesPtrInput {
+	return (*devOpsPolicyAssignmentPropertiesPtrType)(v)
+}
+
+func (*devOpsPolicyAssignmentPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevOpsPolicyAssignmentProperties)(nil)).Elem()
+}
+
+func (i *devOpsPolicyAssignmentPropertiesPtrType) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return i.ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *devOpsPolicyAssignmentPropertiesPtrType) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyAssignmentPropertiesPtrOutput)
+}
+
+// Properties of the DevOps policy assignment resource.
+type DevOpsPolicyAssignmentPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyAssignmentPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsPolicyAssignmentProperties)(nil)).Elem()
+}
+
+func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesOutput() DevOpsPolicyAssignmentPropertiesOutput {
+	return o
+}
+
+func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesOutput {
+	return o
+}
+
+func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return o.ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DevOpsPolicyAssignmentPropertiesOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevOpsPolicyAssignmentProperties) *DevOpsPolicyAssignmentProperties {
+		return &v
+	}).(DevOpsPolicyAssignmentPropertiesPtrOutput)
+}
+
+// Gets or sets time when the assignment was created in UTC.
+func (o DevOpsPolicyAssignmentPropertiesOutput) AssignedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *string { return v.AssignedAt }).(pulumi.StringPtrOutput)
+}
+
+// The behavior of a policy on descendant resources.
+func (o DevOpsPolicyAssignmentPropertiesOutput) DescendantBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *string { return v.DescendantBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Condensed information to identify a DevOps Policy resource.
+func (o DevOpsPolicyAssignmentPropertiesOutput) Policy() DevOpsPolicyDescriptorPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *DevOpsPolicyDescriptor { return v.Policy }).(DevOpsPolicyDescriptorPtrOutput)
+}
+
+// Gets or sets the Azure resource id.
+func (o DevOpsPolicyAssignmentPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type DevOpsPolicyAssignmentPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyAssignmentPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevOpsPolicyAssignmentProperties)(nil)).Elem()
+}
+
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutput() DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return o
+}
+
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) ToDevOpsPolicyAssignmentPropertiesPtrOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesPtrOutput {
+	return o
+}
+
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) Elem() DevOpsPolicyAssignmentPropertiesOutput {
+	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) DevOpsPolicyAssignmentProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DevOpsPolicyAssignmentProperties
+		return ret
+	}).(DevOpsPolicyAssignmentPropertiesOutput)
+}
+
+// Gets or sets time when the assignment was created in UTC.
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) AssignedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The behavior of a policy on descendant resources.
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) DescendantBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DescendantBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Condensed information to identify a DevOps Policy resource.
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) Policy() DevOpsPolicyDescriptorPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *DevOpsPolicyDescriptor {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(DevOpsPolicyDescriptorPtrOutput)
+}
+
+// Gets or sets the Azure resource id.
+func (o DevOpsPolicyAssignmentPropertiesPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyAssignmentProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of the DevOps policy assignment resource.
+type DevOpsPolicyAssignmentPropertiesResponse struct {
+	// Gets or sets time when the assignment was created in UTC.
+	AssignedAt *string `pulumi:"assignedAt"`
+	// The behavior of a policy on descendant resources.
+	DescendantBehavior *string `pulumi:"descendantBehavior"`
+	// Condensed information to identify a DevOps Policy resource.
+	Policy *DevOpsPolicyDescriptorResponse `pulumi:"policy"`
+	// The provisioning state of the resource.
+	//
+	// Pending - Provisioning pending.
+	// Failed - Provisioning failed.
+	// Succeeded - Successful provisioning.
+	// Canceled - Provisioning canceled.
+	// PendingDeletion - Deletion pending.
+	// DeletionSuccess - Deletion successful.
+	// DeletionFailure - Deletion failure.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Gets the resource status message.
+	ProvisioningStatusMessage string `pulumi:"provisioningStatusMessage"`
+	// Gets the time when resource was last checked.
+	ProvisioningStatusUpdateTimeUtc string `pulumi:"provisioningStatusUpdateTimeUtc"`
+	// Gets or sets the Azure resource id.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Properties of the DevOps policy assignment resource.
+type DevOpsPolicyAssignmentPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyAssignmentPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsPolicyAssignmentPropertiesResponse)(nil)).Elem()
+}
+
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ToDevOpsPolicyAssignmentPropertiesResponseOutput() DevOpsPolicyAssignmentPropertiesResponseOutput {
+	return o
+}
+
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ToDevOpsPolicyAssignmentPropertiesResponseOutputWithContext(ctx context.Context) DevOpsPolicyAssignmentPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets time when the assignment was created in UTC.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) AssignedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *string { return v.AssignedAt }).(pulumi.StringPtrOutput)
+}
+
+// The behavior of a policy on descendant resources.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) DescendantBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *string { return v.DescendantBehavior }).(pulumi.StringPtrOutput)
+}
+
+// Condensed information to identify a DevOps Policy resource.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) Policy() DevOpsPolicyDescriptorResponsePtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *DevOpsPolicyDescriptorResponse { return v.Policy }).(DevOpsPolicyDescriptorResponsePtrOutput)
+}
+
+// The provisioning state of the resource.
+//
+// Pending - Provisioning pending.
+// Failed - Provisioning failed.
+// Succeeded - Successful provisioning.
+// Canceled - Provisioning canceled.
+// PendingDeletion - Deletion pending.
+// DeletionSuccess - Deletion successful.
+// DeletionFailure - Deletion failure.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Gets the resource status message.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ProvisioningStatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) string { return v.ProvisioningStatusMessage }).(pulumi.StringOutput)
+}
+
+// Gets the time when resource was last checked.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ProvisioningStatusUpdateTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) string { return v.ProvisioningStatusUpdateTimeUtc }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Azure resource id.
+func (o DevOpsPolicyAssignmentPropertiesResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyAssignmentPropertiesResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Condensed information to identify a DevOps Policy resource.
+type DevOpsPolicyDescriptor struct {
+	// Gets or sets the policy GUID.
+	PolicyId *string `pulumi:"policyId"`
+	// Gets or sets the policy name.
+	PolicyName *string `pulumi:"policyName"`
+	// DevOps Policy resource types.
+	PolicyType *string `pulumi:"policyType"`
+	// Gets or sets the version.
+	PolicyVersion *string `pulumi:"policyVersion"`
+}
+
+// DevOpsPolicyDescriptorInput is an input type that accepts DevOpsPolicyDescriptorArgs and DevOpsPolicyDescriptorOutput values.
+// You can construct a concrete instance of `DevOpsPolicyDescriptorInput` via:
+//
+//	DevOpsPolicyDescriptorArgs{...}
+type DevOpsPolicyDescriptorInput interface {
+	pulumi.Input
+
+	ToDevOpsPolicyDescriptorOutput() DevOpsPolicyDescriptorOutput
+	ToDevOpsPolicyDescriptorOutputWithContext(context.Context) DevOpsPolicyDescriptorOutput
+}
+
+// Condensed information to identify a DevOps Policy resource.
+type DevOpsPolicyDescriptorArgs struct {
+	// Gets or sets the policy GUID.
+	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// Gets or sets the policy name.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
+	// DevOps Policy resource types.
+	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+	// Gets or sets the version.
+	PolicyVersion pulumi.StringPtrInput `pulumi:"policyVersion"`
+}
+
+func (DevOpsPolicyDescriptorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsPolicyDescriptor)(nil)).Elem()
+}
+
+func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorOutput() DevOpsPolicyDescriptorOutput {
+	return i.ToDevOpsPolicyDescriptorOutputWithContext(context.Background())
+}
+
+func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyDescriptorOutput)
+}
+
+func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
+	return i.ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i DevOpsPolicyDescriptorArgs) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyDescriptorOutput).ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx)
+}
+
+// DevOpsPolicyDescriptorPtrInput is an input type that accepts DevOpsPolicyDescriptorArgs, DevOpsPolicyDescriptorPtr and DevOpsPolicyDescriptorPtrOutput values.
+// You can construct a concrete instance of `DevOpsPolicyDescriptorPtrInput` via:
+//
+//	        DevOpsPolicyDescriptorArgs{...}
+//
+//	or:
+//
+//	        nil
+type DevOpsPolicyDescriptorPtrInput interface {
+	pulumi.Input
+
+	ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput
+	ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Context) DevOpsPolicyDescriptorPtrOutput
+}
+
+type devOpsPolicyDescriptorPtrType DevOpsPolicyDescriptorArgs
+
+func DevOpsPolicyDescriptorPtr(v *DevOpsPolicyDescriptorArgs) DevOpsPolicyDescriptorPtrInput {
+	return (*devOpsPolicyDescriptorPtrType)(v)
+}
+
+func (*devOpsPolicyDescriptorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevOpsPolicyDescriptor)(nil)).Elem()
+}
+
+func (i *devOpsPolicyDescriptorPtrType) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
+	return i.ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i *devOpsPolicyDescriptorPtrType) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevOpsPolicyDescriptorPtrOutput)
+}
+
+// Condensed information to identify a DevOps Policy resource.
+type DevOpsPolicyDescriptorOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyDescriptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsPolicyDescriptor)(nil)).Elem()
+}
+
+func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorOutput() DevOpsPolicyDescriptorOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
+	return o.ToDevOpsPolicyDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (o DevOpsPolicyDescriptorOutput) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevOpsPolicyDescriptor) *DevOpsPolicyDescriptor {
+		return &v
+	}).(DevOpsPolicyDescriptorPtrOutput)
+}
+
+// Gets or sets the policy GUID.
+func (o DevOpsPolicyDescriptorOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the policy name.
+func (o DevOpsPolicyDescriptorOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// DevOps Policy resource types.
+func (o DevOpsPolicyDescriptorOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the version.
+func (o DevOpsPolicyDescriptorOutput) PolicyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptor) *string { return v.PolicyVersion }).(pulumi.StringPtrOutput)
+}
+
+type DevOpsPolicyDescriptorPtrOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyDescriptorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevOpsPolicyDescriptor)(nil)).Elem()
+}
+
+func (o DevOpsPolicyDescriptorPtrOutput) ToDevOpsPolicyDescriptorPtrOutput() DevOpsPolicyDescriptorPtrOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorPtrOutput) ToDevOpsPolicyDescriptorPtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorPtrOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorPtrOutput) Elem() DevOpsPolicyDescriptorOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptor) DevOpsPolicyDescriptor {
+		if v != nil {
+			return *v
+		}
+		var ret DevOpsPolicyDescriptor
+		return ret
+	}).(DevOpsPolicyDescriptorOutput)
+}
+
+// Gets or sets the policy GUID.
+func (o DevOpsPolicyDescriptorPtrOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the policy name.
+func (o DevOpsPolicyDescriptorPtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// DevOps Policy resource types.
+func (o DevOpsPolicyDescriptorPtrOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the version.
+func (o DevOpsPolicyDescriptorPtrOutput) PolicyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Condensed information to identify a DevOps Policy resource.
+type DevOpsPolicyDescriptorResponse struct {
+	// Gets or sets the policy GUID.
+	PolicyId *string `pulumi:"policyId"`
+	// Gets or sets the policy name.
+	PolicyName *string `pulumi:"policyName"`
+	// DevOps Policy resource types.
+	PolicyType *string `pulumi:"policyType"`
+	// Gets or sets the version.
+	PolicyVersion *string `pulumi:"policyVersion"`
+}
+
+// Condensed information to identify a DevOps Policy resource.
+type DevOpsPolicyDescriptorResponseOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyDescriptorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevOpsPolicyDescriptorResponse)(nil)).Elem()
+}
+
+func (o DevOpsPolicyDescriptorResponseOutput) ToDevOpsPolicyDescriptorResponseOutput() DevOpsPolicyDescriptorResponseOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorResponseOutput) ToDevOpsPolicyDescriptorResponseOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorResponseOutput {
+	return o
+}
+
+// Gets or sets the policy GUID.
+func (o DevOpsPolicyDescriptorResponseOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the policy name.
+func (o DevOpsPolicyDescriptorResponseOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
+// DevOps Policy resource types.
+func (o DevOpsPolicyDescriptorResponseOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the version.
+func (o DevOpsPolicyDescriptorResponseOutput) PolicyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevOpsPolicyDescriptorResponse) *string { return v.PolicyVersion }).(pulumi.StringPtrOutput)
+}
+
+type DevOpsPolicyDescriptorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DevOpsPolicyDescriptorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevOpsPolicyDescriptorResponse)(nil)).Elem()
+}
+
+func (o DevOpsPolicyDescriptorResponsePtrOutput) ToDevOpsPolicyDescriptorResponsePtrOutput() DevOpsPolicyDescriptorResponsePtrOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorResponsePtrOutput) ToDevOpsPolicyDescriptorResponsePtrOutputWithContext(ctx context.Context) DevOpsPolicyDescriptorResponsePtrOutput {
+	return o
+}
+
+func (o DevOpsPolicyDescriptorResponsePtrOutput) Elem() DevOpsPolicyDescriptorResponseOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) DevOpsPolicyDescriptorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DevOpsPolicyDescriptorResponse
+		return ret
+	}).(DevOpsPolicyDescriptorResponseOutput)
+}
+
+// Gets or sets the policy GUID.
+func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the policy name.
+func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// DevOps Policy resource types.
+func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the version.
+func (o DevOpsPolicyDescriptorResponsePtrOutput) PolicyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevOpsPolicyDescriptorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // A plan's extension properties
 type Extension struct {
 	// Property values associated with the extension.
@@ -28465,6 +29054,13 @@ func init() {
 	pulumi.RegisterOutputType(DevOpsConfigurationPropertiesOutput{})
 	pulumi.RegisterOutputType(DevOpsConfigurationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DevOpsConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyAssignmentPropertiesOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyAssignmentPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyAssignmentPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyDescriptorOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyDescriptorPtrOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyDescriptorResponseOutput{})
+	pulumi.RegisterOutputType(DevOpsPolicyDescriptorResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExtensionOutput{})
 	pulumi.RegisterOutputType(ExtensionArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionResponseOutput{})

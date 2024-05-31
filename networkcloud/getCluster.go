@@ -12,9 +12,9 @@ import (
 )
 
 // Get properties of the provided cluster.
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -22,7 +22,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupClusterArgs struct {
@@ -84,6 +84,10 @@ type LookupClusterResult struct {
 	NetworkFabricId string `pulumi:"networkFabricId"`
 	// The provisioning state of the cluster.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// The settings for cluster runtime protection.
+	RuntimeProtectionConfiguration *RuntimeProtectionConfigurationResponse `pulumi:"runtimeProtectionConfiguration"`
+	// The configuration for use of a key vault to store secrets for later retrieval by the operator.
+	SecretArchive *ClusterSecretArchiveResponse `pulumi:"secretArchive"`
 	// The support end date of the runtime version of the cluster.
 	SupportExpiryDate string `pulumi:"supportExpiryDate"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -92,8 +96,25 @@ type LookupClusterResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// The strategy for updating the cluster.
+	UpdateStrategy *ClusterUpdateStrategyResponse `pulumi:"updateStrategy"`
 	// The list of workload resource IDs that are hosted within this cluster.
 	WorkloadResourceIds []string `pulumi:"workloadResourceIds"`
+}
+
+// Defaults sets the appropriate defaults for LookupClusterResult
+func (val *LookupClusterResult) Defaults() *LookupClusterResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.RuntimeProtectionConfiguration = tmp.RuntimeProtectionConfiguration.Defaults()
+
+	tmp.SecretArchive = tmp.SecretArchive.Defaults()
+
+	tmp.UpdateStrategy = tmp.UpdateStrategy.Defaults()
+
+	return &tmp
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -264,6 +285,18 @@ func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The settings for cluster runtime protection.
+func (o LookupClusterResultOutput) RuntimeProtectionConfiguration() RuntimeProtectionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *RuntimeProtectionConfigurationResponse {
+		return v.RuntimeProtectionConfiguration
+	}).(RuntimeProtectionConfigurationResponsePtrOutput)
+}
+
+// The configuration for use of a key vault to store secrets for later retrieval by the operator.
+func (o LookupClusterResultOutput) SecretArchive() ClusterSecretArchiveResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *ClusterSecretArchiveResponse { return v.SecretArchive }).(ClusterSecretArchiveResponsePtrOutput)
+}
+
 // The support end date of the runtime version of the cluster.
 func (o LookupClusterResultOutput) SupportExpiryDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.SupportExpiryDate }).(pulumi.StringOutput)
@@ -282,6 +315,11 @@ func (o LookupClusterResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The strategy for updating the cluster.
+func (o LookupClusterResultOutput) UpdateStrategy() ClusterUpdateStrategyResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *ClusterUpdateStrategyResponse { return v.UpdateStrategy }).(ClusterUpdateStrategyResponsePtrOutput)
 }
 
 // The list of workload resource IDs that are hosted within this cluster.

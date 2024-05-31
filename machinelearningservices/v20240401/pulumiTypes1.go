@@ -13,6 +13,1912 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Sweep Job limit class.
+type SweepJobLimits struct {
+	// Expected value is 'Sweep'.
+	JobLimitsType string `pulumi:"jobLimitsType"`
+	// Sweep Job max concurrent trials.
+	MaxConcurrentTrials *int `pulumi:"maxConcurrentTrials"`
+	// Sweep Job max total trials.
+	MaxTotalTrials *int `pulumi:"maxTotalTrials"`
+	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+	Timeout *string `pulumi:"timeout"`
+	// Sweep Job Trial timeout value.
+	TrialTimeout *string `pulumi:"trialTimeout"`
+}
+
+// SweepJobLimitsInput is an input type that accepts SweepJobLimitsArgs and SweepJobLimitsOutput values.
+// You can construct a concrete instance of `SweepJobLimitsInput` via:
+//
+//	SweepJobLimitsArgs{...}
+type SweepJobLimitsInput interface {
+	pulumi.Input
+
+	ToSweepJobLimitsOutput() SweepJobLimitsOutput
+	ToSweepJobLimitsOutputWithContext(context.Context) SweepJobLimitsOutput
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsArgs struct {
+	// Expected value is 'Sweep'.
+	JobLimitsType pulumi.StringInput `pulumi:"jobLimitsType"`
+	// Sweep Job max concurrent trials.
+	MaxConcurrentTrials pulumi.IntPtrInput `pulumi:"maxConcurrentTrials"`
+	// Sweep Job max total trials.
+	MaxTotalTrials pulumi.IntPtrInput `pulumi:"maxTotalTrials"`
+	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Sweep Job Trial timeout value.
+	TrialTimeout pulumi.StringPtrInput `pulumi:"trialTimeout"`
+}
+
+func (SweepJobLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobLimits)(nil)).Elem()
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsOutput() SweepJobLimitsOutput {
+	return i.ToSweepJobLimitsOutputWithContext(context.Background())
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsOutputWithContext(ctx context.Context) SweepJobLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsOutput)
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return i.ToSweepJobLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsOutput).ToSweepJobLimitsPtrOutputWithContext(ctx)
+}
+
+// SweepJobLimitsPtrInput is an input type that accepts SweepJobLimitsArgs, SweepJobLimitsPtr and SweepJobLimitsPtrOutput values.
+// You can construct a concrete instance of `SweepJobLimitsPtrInput` via:
+//
+//	        SweepJobLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SweepJobLimitsPtrInput interface {
+	pulumi.Input
+
+	ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput
+	ToSweepJobLimitsPtrOutputWithContext(context.Context) SweepJobLimitsPtrOutput
+}
+
+type sweepJobLimitsPtrType SweepJobLimitsArgs
+
+func SweepJobLimitsPtr(v *SweepJobLimitsArgs) SweepJobLimitsPtrInput {
+	return (*sweepJobLimitsPtrType)(v)
+}
+
+func (*sweepJobLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SweepJobLimits)(nil)).Elem()
+}
+
+func (i *sweepJobLimitsPtrType) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return i.ToSweepJobLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *sweepJobLimitsPtrType) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsPtrOutput)
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobLimits)(nil)).Elem()
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsOutput() SweepJobLimitsOutput {
+	return o
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsOutputWithContext(ctx context.Context) SweepJobLimitsOutput {
+	return o
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return o.ToSweepJobLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SweepJobLimits) *SweepJobLimits {
+		return &v
+	}).(SweepJobLimitsPtrOutput)
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsOutput) JobLimitsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobLimits) string { return v.JobLimitsType }).(pulumi.StringOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *int { return v.MaxTotalTrials }).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
+}
+
+type SweepJobLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SweepJobLimits)(nil)).Elem()
+}
+
+func (o SweepJobLimitsPtrOutput) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsPtrOutput) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsPtrOutput) Elem() SweepJobLimitsOutput {
+	return o.ApplyT(func(v *SweepJobLimits) SweepJobLimits {
+		if v != nil {
+			return *v
+		}
+		var ret SweepJobLimits
+		return ret
+	}).(SweepJobLimitsOutput)
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsPtrOutput) JobLimitsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobLimitsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsPtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsPtrOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTotalTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsPtrOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrialTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsResponse struct {
+	// Expected value is 'Sweep'.
+	JobLimitsType string `pulumi:"jobLimitsType"`
+	// Sweep Job max concurrent trials.
+	MaxConcurrentTrials *int `pulumi:"maxConcurrentTrials"`
+	// Sweep Job max total trials.
+	MaxTotalTrials *int `pulumi:"maxTotalTrials"`
+	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+	Timeout *string `pulumi:"timeout"`
+	// Sweep Job Trial timeout value.
+	TrialTimeout *string `pulumi:"trialTimeout"`
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsResponseOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobLimitsResponse)(nil)).Elem()
+}
+
+func (o SweepJobLimitsResponseOutput) ToSweepJobLimitsResponseOutput() SweepJobLimitsResponseOutput {
+	return o
+}
+
+func (o SweepJobLimitsResponseOutput) ToSweepJobLimitsResponseOutputWithContext(ctx context.Context) SweepJobLimitsResponseOutput {
+	return o
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsResponseOutput) JobLimitsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) string { return v.JobLimitsType }).(pulumi.StringOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsResponseOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsResponseOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *int { return v.MaxTotalTrials }).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsResponseOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsResponseOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
+}
+
+type SweepJobLimitsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SweepJobLimitsResponse)(nil)).Elem()
+}
+
+func (o SweepJobLimitsResponsePtrOutput) ToSweepJobLimitsResponsePtrOutput() SweepJobLimitsResponsePtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsResponsePtrOutput) ToSweepJobLimitsResponsePtrOutputWithContext(ctx context.Context) SweepJobLimitsResponsePtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsResponsePtrOutput) Elem() SweepJobLimitsResponseOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) SweepJobLimitsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SweepJobLimitsResponse
+		return ret
+	}).(SweepJobLimitsResponseOutput)
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsResponsePtrOutput) JobLimitsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobLimitsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsResponsePtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsResponsePtrOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTotalTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsResponsePtrOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrialTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep job definition.
+type SweepJobResponse struct {
+	// ARM resource ID of the component resource.
+	ComponentId *string `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId *string `pulumi:"computeId"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Display name of job.
+	DisplayName *string `pulumi:"displayName"`
+	// Early termination policies enable canceling poor-performing runs before they complete
+	EarlyTermination interface{} `pulumi:"earlyTermination"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName *string `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity interface{} `pulumi:"identity"`
+	// Mapping of input data bindings used in the job.
+	Inputs map[string]interface{} `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Sweep'.
+	JobType string `pulumi:"jobType"`
+	// Sweep Job limit.
+	Limits *SweepJobLimitsResponse `pulumi:"limits"`
+	// Notification setting for the job
+	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
+	// [Required] Optimization objective.
+	Objective ObjectiveResponse `pulumi:"objective"`
+	// Mapping of output data bindings used in the job.
+	Outputs map[string]interface{} `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Queue settings for the job
+	QueueSettings *QueueSettingsResponse `pulumi:"queueSettings"`
+	// [Required] The hyperparameter sampling algorithm
+	SamplingAlgorithm interface{} `pulumi:"samplingAlgorithm"`
+	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
+	SearchSpace interface{} `pulumi:"searchSpace"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services map[string]JobServiceResponse `pulumi:"services"`
+	// Status of the job.
+	Status string `pulumi:"status"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+	// [Required] Trial component definition.
+	Trial TrialComponentResponse `pulumi:"trial"`
+}
+
+// Defaults sets the appropriate defaults for SweepJobResponse
+func (val *SweepJobResponse) Defaults() *SweepJobResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		experimentName_ := "Default"
+		tmp.ExperimentName = &experimentName_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	tmp.QueueSettings = tmp.QueueSettings.Defaults()
+
+	tmp.Trial = *tmp.Trial.Defaults()
+
+	return &tmp
+}
+
+// Sweep job definition.
+type SweepJobResponseOutput struct{ *pulumi.OutputState }
+
+func (SweepJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobResponse)(nil)).Elem()
+}
+
+func (o SweepJobResponseOutput) ToSweepJobResponseOutput() SweepJobResponseOutput {
+	return o
+}
+
+func (o SweepJobResponseOutput) ToSweepJobResponseOutputWithContext(ctx context.Context) SweepJobResponseOutput {
+	return o
+}
+
+// ARM resource ID of the component resource.
+func (o SweepJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o SweepJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o SweepJobResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o SweepJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Early termination policies enable canceling poor-performing runs before they complete
+func (o SweepJobResponseOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o SweepJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o SweepJobResponseOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Mapping of input data bindings used in the job.
+func (o SweepJobResponseOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o SweepJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Sweep'.
+func (o SweepJobResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Sweep Job limit.
+func (o SweepJobResponseOutput) Limits() SweepJobLimitsResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *SweepJobLimitsResponse { return v.Limits }).(SweepJobLimitsResponsePtrOutput)
+}
+
+// Notification setting for the job
+func (o SweepJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
+}
+
+// [Required] Optimization objective.
+func (o SweepJobResponseOutput) Objective() ObjectiveResponseOutput {
+	return o.ApplyT(func(v SweepJobResponse) ObjectiveResponse { return v.Objective }).(ObjectiveResponseOutput)
+}
+
+// Mapping of output data bindings used in the job.
+func (o SweepJobResponseOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o SweepJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Queue settings for the job
+func (o SweepJobResponseOutput) QueueSettings() QueueSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *QueueSettingsResponse { return v.QueueSettings }).(QueueSettingsResponsePtrOutput)
+}
+
+// [Required] The hyperparameter sampling algorithm
+func (o SweepJobResponseOutput) SamplingAlgorithm() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.SamplingAlgorithm }).(pulumi.AnyOutput)
+}
+
+// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
+func (o SweepJobResponseOutput) SearchSpace() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.SearchSpace }).(pulumi.AnyOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o SweepJobResponseOutput) Services() JobServiceResponseMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
+}
+
+// Status of the job.
+func (o SweepJobResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o SweepJobResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// [Required] Trial component definition.
+func (o SweepJobResponseOutput) Trial() TrialComponentResponseOutput {
+	return o.ApplyT(func(v SweepJobResponse) TrialComponentResponse { return v.Trial }).(TrialComponentResponseOutput)
+}
+
+// A SynapseSpark compute.
+type SynapseSpark struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
+	// The type of compute
+	// Expected value is 'SynapseSpark'.
+	ComputeType string `pulumi:"computeType"`
+	// The description of the Machine Learning compute.
+	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool                   `pulumi:"disableLocalAuth"`
+	Properties       *SynapseSparkProperties `pulumi:"properties"`
+	// ARM resource id of the underlying compute
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// SynapseSparkInput is an input type that accepts SynapseSparkArgs and SynapseSparkOutput values.
+// You can construct a concrete instance of `SynapseSparkInput` via:
+//
+//	SynapseSparkArgs{...}
+type SynapseSparkInput interface {
+	pulumi.Input
+
+	ToSynapseSparkOutput() SynapseSparkOutput
+	ToSynapseSparkOutputWithContext(context.Context) SynapseSparkOutput
+}
+
+// A SynapseSpark compute.
+type SynapseSparkArgs struct {
+	// Location for the underlying compute
+	ComputeLocation pulumi.StringPtrInput `pulumi:"computeLocation"`
+	// The type of compute
+	// Expected value is 'SynapseSpark'.
+	ComputeType pulumi.StringInput `pulumi:"computeType"`
+	// The description of the Machine Learning compute.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth pulumi.BoolPtrInput            `pulumi:"disableLocalAuth"`
+	Properties       SynapseSparkPropertiesPtrInput `pulumi:"properties"`
+	// ARM resource id of the underlying compute
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (SynapseSparkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSpark)(nil)).Elem()
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkOutput() SynapseSparkOutput {
+	return i.ToSynapseSparkOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkOutputWithContext(ctx context.Context) SynapseSparkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkOutput)
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return i.ToSynapseSparkPtrOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkOutput).ToSynapseSparkPtrOutputWithContext(ctx)
+}
+
+// SynapseSparkPtrInput is an input type that accepts SynapseSparkArgs, SynapseSparkPtr and SynapseSparkPtrOutput values.
+// You can construct a concrete instance of `SynapseSparkPtrInput` via:
+//
+//	        SynapseSparkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SynapseSparkPtrInput interface {
+	pulumi.Input
+
+	ToSynapseSparkPtrOutput() SynapseSparkPtrOutput
+	ToSynapseSparkPtrOutputWithContext(context.Context) SynapseSparkPtrOutput
+}
+
+type synapseSparkPtrType SynapseSparkArgs
+
+func SynapseSparkPtr(v *SynapseSparkArgs) SynapseSparkPtrInput {
+	return (*synapseSparkPtrType)(v)
+}
+
+func (*synapseSparkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSpark)(nil)).Elem()
+}
+
+func (i *synapseSparkPtrType) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return i.ToSynapseSparkPtrOutputWithContext(context.Background())
+}
+
+func (i *synapseSparkPtrType) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPtrOutput)
+}
+
+// A SynapseSpark compute.
+type SynapseSparkOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSpark)(nil)).Elem()
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkOutput() SynapseSparkOutput {
+	return o
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkOutputWithContext(ctx context.Context) SynapseSparkOutput {
+	return o
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return o.ToSynapseSparkPtrOutputWithContext(context.Background())
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynapseSpark) *SynapseSpark {
+		return &v
+	}).(SynapseSparkPtrOutput)
+}
+
+// Location for the underlying compute
+func (o SynapseSparkOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'SynapseSpark'.
+func (o SynapseSparkOutput) ComputeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSpark) string { return v.ComputeType }).(pulumi.StringOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o SynapseSparkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o SynapseSparkOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o SynapseSparkOutput) Properties() SynapseSparkPropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *SynapseSparkProperties { return v.Properties }).(SynapseSparkPropertiesPtrOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o SynapseSparkOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSpark)(nil)).Elem()
+}
+
+func (o SynapseSparkPtrOutput) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPtrOutput) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPtrOutput) Elem() SynapseSparkOutput {
+	return o.ApplyT(func(v *SynapseSpark) SynapseSpark {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSpark
+		return ret
+	}).(SynapseSparkOutput)
+}
+
+// Location for the underlying compute
+func (o SynapseSparkPtrOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'SynapseSpark'.
+func (o SynapseSparkPtrOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o SynapseSparkPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o SynapseSparkPtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableLocalAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SynapseSparkPtrOutput) Properties() SynapseSparkPropertiesPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *SynapseSparkProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(SynapseSparkPropertiesPtrOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o SynapseSparkPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkProperties struct {
+	// Auto pause properties.
+	AutoPauseProperties *AutoPauseProperties `pulumi:"autoPauseProperties"`
+	// Auto scale properties.
+	AutoScaleProperties *AutoScaleProperties `pulumi:"autoScaleProperties"`
+	// The number of compute nodes currently assigned to the compute.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Node size.
+	NodeSize *string `pulumi:"nodeSize"`
+	// Node size family.
+	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
+	// Pool name.
+	PoolName *string `pulumi:"poolName"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Spark version.
+	SparkVersion *string `pulumi:"sparkVersion"`
+	// Azure subscription identifier.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+// SynapseSparkPropertiesInput is an input type that accepts SynapseSparkPropertiesArgs and SynapseSparkPropertiesOutput values.
+// You can construct a concrete instance of `SynapseSparkPropertiesInput` via:
+//
+//	SynapseSparkPropertiesArgs{...}
+type SynapseSparkPropertiesInput interface {
+	pulumi.Input
+
+	ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput
+	ToSynapseSparkPropertiesOutputWithContext(context.Context) SynapseSparkPropertiesOutput
+}
+
+type SynapseSparkPropertiesArgs struct {
+	// Auto pause properties.
+	AutoPauseProperties AutoPausePropertiesPtrInput `pulumi:"autoPauseProperties"`
+	// Auto scale properties.
+	AutoScaleProperties AutoScalePropertiesPtrInput `pulumi:"autoScaleProperties"`
+	// The number of compute nodes currently assigned to the compute.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// Node size.
+	NodeSize pulumi.StringPtrInput `pulumi:"nodeSize"`
+	// Node size family.
+	NodeSizeFamily pulumi.StringPtrInput `pulumi:"nodeSizeFamily"`
+	// Pool name.
+	PoolName pulumi.StringPtrInput `pulumi:"poolName"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Spark version.
+	SparkVersion pulumi.StringPtrInput `pulumi:"sparkVersion"`
+	// Azure subscription identifier.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
+}
+
+func (SynapseSparkPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkProperties)(nil)).Elem()
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput {
+	return i.ToSynapseSparkPropertiesOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesOutputWithContext(ctx context.Context) SynapseSparkPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesOutput)
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return i.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesOutput).ToSynapseSparkPropertiesPtrOutputWithContext(ctx)
+}
+
+// SynapseSparkPropertiesPtrInput is an input type that accepts SynapseSparkPropertiesArgs, SynapseSparkPropertiesPtr and SynapseSparkPropertiesPtrOutput values.
+// You can construct a concrete instance of `SynapseSparkPropertiesPtrInput` via:
+//
+//	        SynapseSparkPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SynapseSparkPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput
+	ToSynapseSparkPropertiesPtrOutputWithContext(context.Context) SynapseSparkPropertiesPtrOutput
+}
+
+type synapseSparkPropertiesPtrType SynapseSparkPropertiesArgs
+
+func SynapseSparkPropertiesPtr(v *SynapseSparkPropertiesArgs) SynapseSparkPropertiesPtrInput {
+	return (*synapseSparkPropertiesPtrType)(v)
+}
+
+func (*synapseSparkPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkProperties)(nil)).Elem()
+}
+
+func (i *synapseSparkPropertiesPtrType) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return i.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *synapseSparkPropertiesPtrType) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesPtrOutput)
+}
+
+type SynapseSparkPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesOutputWithContext(ctx context.Context) SynapseSparkPropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return o.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynapseSparkProperties) *SynapseSparkProperties {
+		return &v
+	}).(SynapseSparkPropertiesPtrOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkPropertiesOutput) AutoPauseProperties() AutoPausePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *AutoPauseProperties { return v.AutoPauseProperties }).(AutoPausePropertiesPtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkPropertiesOutput) AutoScaleProperties() AutoScalePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *AutoScaleProperties { return v.AutoScaleProperties }).(AutoScalePropertiesPtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkPropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkPropertiesOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkPropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkPropertiesOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkPropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkPropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkPropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkPropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkPropertiesPtrOutput) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesPtrOutput) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesPtrOutput) Elem() SynapseSparkPropertiesOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) SynapseSparkProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSparkProperties
+		return ret
+	}).(SynapseSparkPropertiesOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkPropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *AutoPauseProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseProperties
+	}).(AutoPausePropertiesPtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkPropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *AutoScaleProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleProperties
+	}).(AutoScalePropertiesPtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkPropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkPropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSizeFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkPropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkPropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkPropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkPropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkPropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A SynapseSpark compute.
+type SynapseSparkResponse struct {
+	// Location for the underlying compute
+	ComputeLocation *string `pulumi:"computeLocation"`
+	// The type of compute
+	// Expected value is 'SynapseSpark'.
+	ComputeType string `pulumi:"computeType"`
+	// The time at which the compute was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// The description of the Machine Learning compute.
+	Description *string `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
+	// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+	IsAttachedCompute bool `pulumi:"isAttachedCompute"`
+	// The time at which the compute was last modified.
+	ModifiedOn string                          `pulumi:"modifiedOn"`
+	Properties *SynapseSparkResponseProperties `pulumi:"properties"`
+	// Errors during provisioning
+	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
+	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// ARM resource id of the underlying compute
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// A SynapseSpark compute.
+type SynapseSparkResponseOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkResponse)(nil)).Elem()
+}
+
+func (o SynapseSparkResponseOutput) ToSynapseSparkResponseOutput() SynapseSparkResponseOutput {
+	return o
+}
+
+func (o SynapseSparkResponseOutput) ToSynapseSparkResponseOutputWithContext(ctx context.Context) SynapseSparkResponseOutput {
+	return o
+}
+
+// Location for the underlying compute
+func (o SynapseSparkResponseOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'SynapseSpark'.
+func (o SynapseSparkResponseOutput) ComputeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ComputeType }).(pulumi.StringOutput)
+}
+
+// The time at which the compute was created.
+func (o SynapseSparkResponseOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o SynapseSparkResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o SynapseSparkResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+func (o SynapseSparkResponseOutput) IsAttachedCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) bool { return v.IsAttachedCompute }).(pulumi.BoolOutput)
+}
+
+// The time at which the compute was last modified.
+func (o SynapseSparkResponseOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o SynapseSparkResponseOutput) Properties() SynapseSparkResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkResponseProperties { return v.Properties }).(SynapseSparkResponsePropertiesPtrOutput)
+}
+
+// Errors during provisioning
+func (o SynapseSparkResponseOutput) ProvisioningErrors() ErrorResponseResponseArrayOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) []ErrorResponseResponse { return v.ProvisioningErrors }).(ErrorResponseResponseArrayOutput)
+}
+
+// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+func (o SynapseSparkResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o SynapseSparkResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkResponseProperties struct {
+	// Auto pause properties.
+	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
+	// Auto scale properties.
+	AutoScaleProperties *AutoScalePropertiesResponse `pulumi:"autoScaleProperties"`
+	// The number of compute nodes currently assigned to the compute.
+	NodeCount *int `pulumi:"nodeCount"`
+	// Node size.
+	NodeSize *string `pulumi:"nodeSize"`
+	// Node size family.
+	NodeSizeFamily *string `pulumi:"nodeSizeFamily"`
+	// Pool name.
+	PoolName *string `pulumi:"poolName"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// Spark version.
+	SparkVersion *string `pulumi:"sparkVersion"`
+	// Azure subscription identifier.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+type SynapseSparkResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkResponseProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutput() SynapseSparkResponsePropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesOutput {
+	return o
+}
+
+// Auto pause properties.
+func (o SynapseSparkResponsePropertiesOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkResponsePropertiesOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkResponsePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkResponsePropertiesOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkResponsePropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkResponsePropertiesOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkResponsePropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkResponsePropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkResponsePropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkResponsePropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkResponseProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutput() SynapseSparkResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) Elem() SynapseSparkResponsePropertiesOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) SynapseSparkResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSparkResponseProperties
+		return ret
+	}).(SynapseSparkResponsePropertiesOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkResponsePropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoPausePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseProperties
+	}).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkResponsePropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoScalePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleProperties
+	}).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSizeFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkResponsePropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkResponsePropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkResponsePropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkResponsePropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkResponsePropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type SystemCreatedAcrAccount struct {
+	// Name of the ACR account
+	AcrAccountName *string `pulumi:"acrAccountName"`
+	// SKU of the ACR account
+	AcrAccountSku *string `pulumi:"acrAccountSku"`
+	// This is populated once the ACR account is created.
+	ArmResourceId *ArmResourceId `pulumi:"armResourceId"`
+}
+
+// SystemCreatedAcrAccountInput is an input type that accepts SystemCreatedAcrAccountArgs and SystemCreatedAcrAccountOutput values.
+// You can construct a concrete instance of `SystemCreatedAcrAccountInput` via:
+//
+//	SystemCreatedAcrAccountArgs{...}
+type SystemCreatedAcrAccountInput interface {
+	pulumi.Input
+
+	ToSystemCreatedAcrAccountOutput() SystemCreatedAcrAccountOutput
+	ToSystemCreatedAcrAccountOutputWithContext(context.Context) SystemCreatedAcrAccountOutput
+}
+
+type SystemCreatedAcrAccountArgs struct {
+	// Name of the ACR account
+	AcrAccountName pulumi.StringPtrInput `pulumi:"acrAccountName"`
+	// SKU of the ACR account
+	AcrAccountSku pulumi.StringPtrInput `pulumi:"acrAccountSku"`
+	// This is populated once the ACR account is created.
+	ArmResourceId ArmResourceIdPtrInput `pulumi:"armResourceId"`
+}
+
+func (SystemCreatedAcrAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemCreatedAcrAccount)(nil)).Elem()
+}
+
+func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountOutput() SystemCreatedAcrAccountOutput {
+	return i.ToSystemCreatedAcrAccountOutputWithContext(context.Background())
+}
+
+func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountOutputWithContext(ctx context.Context) SystemCreatedAcrAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountOutput)
+}
+
+func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
+	return i.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
+}
+
+func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountOutput).ToSystemCreatedAcrAccountPtrOutputWithContext(ctx)
+}
+
+// SystemCreatedAcrAccountPtrInput is an input type that accepts SystemCreatedAcrAccountArgs, SystemCreatedAcrAccountPtr and SystemCreatedAcrAccountPtrOutput values.
+// You can construct a concrete instance of `SystemCreatedAcrAccountPtrInput` via:
+//
+//	        SystemCreatedAcrAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemCreatedAcrAccountPtrInput interface {
+	pulumi.Input
+
+	ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput
+	ToSystemCreatedAcrAccountPtrOutputWithContext(context.Context) SystemCreatedAcrAccountPtrOutput
+}
+
+type systemCreatedAcrAccountPtrType SystemCreatedAcrAccountArgs
+
+func SystemCreatedAcrAccountPtr(v *SystemCreatedAcrAccountArgs) SystemCreatedAcrAccountPtrInput {
+	return (*systemCreatedAcrAccountPtrType)(v)
+}
+
+func (*systemCreatedAcrAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemCreatedAcrAccount)(nil)).Elem()
+}
+
+func (i *systemCreatedAcrAccountPtrType) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
+	return i.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *systemCreatedAcrAccountPtrType) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountPtrOutput)
+}
+
+type SystemCreatedAcrAccountOutput struct{ *pulumi.OutputState }
+
+func (SystemCreatedAcrAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemCreatedAcrAccount)(nil)).Elem()
+}
+
+func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountOutput() SystemCreatedAcrAccountOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountOutputWithContext(ctx context.Context) SystemCreatedAcrAccountOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
+	return o.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
+}
+
+func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemCreatedAcrAccount) *SystemCreatedAcrAccount {
+		return &v
+	}).(SystemCreatedAcrAccountPtrOutput)
+}
+
+// Name of the ACR account
+func (o SystemCreatedAcrAccountOutput) AcrAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemCreatedAcrAccount) *string { return v.AcrAccountName }).(pulumi.StringPtrOutput)
+}
+
+// SKU of the ACR account
+func (o SystemCreatedAcrAccountOutput) AcrAccountSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemCreatedAcrAccount) *string { return v.AcrAccountSku }).(pulumi.StringPtrOutput)
+}
+
+// This is populated once the ACR account is created.
+func (o SystemCreatedAcrAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
+	return o.ApplyT(func(v SystemCreatedAcrAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
+}
+
+type SystemCreatedAcrAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemCreatedAcrAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemCreatedAcrAccount)(nil)).Elem()
+}
+
+func (o SystemCreatedAcrAccountPtrOutput) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountPtrOutput) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountPtrOutput) Elem() SystemCreatedAcrAccountOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccount) SystemCreatedAcrAccount {
+		if v != nil {
+			return *v
+		}
+		var ret SystemCreatedAcrAccount
+		return ret
+	}).(SystemCreatedAcrAccountOutput)
+}
+
+// Name of the ACR account
+func (o SystemCreatedAcrAccountPtrOutput) AcrAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcrAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SKU of the ACR account
+func (o SystemCreatedAcrAccountPtrOutput) AcrAccountSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcrAccountSku
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is populated once the ACR account is created.
+func (o SystemCreatedAcrAccountPtrOutput) ArmResourceId() ArmResourceIdPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccount) *ArmResourceId {
+		if v == nil {
+			return nil
+		}
+		return v.ArmResourceId
+	}).(ArmResourceIdPtrOutput)
+}
+
+type SystemCreatedAcrAccountResponse struct {
+	// Name of the ACR account
+	AcrAccountName *string `pulumi:"acrAccountName"`
+	// SKU of the ACR account
+	AcrAccountSku *string `pulumi:"acrAccountSku"`
+	// This is populated once the ACR account is created.
+	ArmResourceId *ArmResourceIdResponse `pulumi:"armResourceId"`
+}
+
+type SystemCreatedAcrAccountResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemCreatedAcrAccountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemCreatedAcrAccountResponse)(nil)).Elem()
+}
+
+func (o SystemCreatedAcrAccountResponseOutput) ToSystemCreatedAcrAccountResponseOutput() SystemCreatedAcrAccountResponseOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountResponseOutput) ToSystemCreatedAcrAccountResponseOutputWithContext(ctx context.Context) SystemCreatedAcrAccountResponseOutput {
+	return o
+}
+
+// Name of the ACR account
+func (o SystemCreatedAcrAccountResponseOutput) AcrAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *string { return v.AcrAccountName }).(pulumi.StringPtrOutput)
+}
+
+// SKU of the ACR account
+func (o SystemCreatedAcrAccountResponseOutput) AcrAccountSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *string { return v.AcrAccountSku }).(pulumi.StringPtrOutput)
+}
+
+// This is populated once the ACR account is created.
+func (o SystemCreatedAcrAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
+	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
+}
+
+type SystemCreatedAcrAccountResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemCreatedAcrAccountResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemCreatedAcrAccountResponse)(nil)).Elem()
+}
+
+func (o SystemCreatedAcrAccountResponsePtrOutput) ToSystemCreatedAcrAccountResponsePtrOutput() SystemCreatedAcrAccountResponsePtrOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountResponsePtrOutput) ToSystemCreatedAcrAccountResponsePtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountResponsePtrOutput {
+	return o
+}
+
+func (o SystemCreatedAcrAccountResponsePtrOutput) Elem() SystemCreatedAcrAccountResponseOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) SystemCreatedAcrAccountResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemCreatedAcrAccountResponse
+		return ret
+	}).(SystemCreatedAcrAccountResponseOutput)
+}
+
+// Name of the ACR account
+func (o SystemCreatedAcrAccountResponsePtrOutput) AcrAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcrAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SKU of the ACR account
+func (o SystemCreatedAcrAccountResponsePtrOutput) AcrAccountSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcrAccountSku
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is populated once the ACR account is created.
+func (o SystemCreatedAcrAccountResponsePtrOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
+	return o.ApplyT(func(v *SystemCreatedAcrAccountResponse) *ArmResourceIdResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ArmResourceId
+	}).(ArmResourceIdResponsePtrOutput)
+}
+
+type SystemCreatedStorageAccount struct {
+	// Public blob access allowed
+	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
+	// This is populated once the storage account is created.
+	ArmResourceId *ArmResourceId `pulumi:"armResourceId"`
+	// HNS enabled for storage account
+	StorageAccountHnsEnabled *bool `pulumi:"storageAccountHnsEnabled"`
+	// Name of the storage account
+	StorageAccountName *string `pulumi:"storageAccountName"`
+	// Allowed values:
+	// "Standard_LRS",
+	// "Standard_GRS",
+	// "Standard_RAGRS",
+	// "Standard_ZRS",
+	// "Standard_GZRS",
+	// "Standard_RAGZRS",
+	// "Premium_LRS",
+	// "Premium_ZRS"
+	StorageAccountType *string `pulumi:"storageAccountType"`
+}
+
+// SystemCreatedStorageAccountInput is an input type that accepts SystemCreatedStorageAccountArgs and SystemCreatedStorageAccountOutput values.
+// You can construct a concrete instance of `SystemCreatedStorageAccountInput` via:
+//
+//	SystemCreatedStorageAccountArgs{...}
+type SystemCreatedStorageAccountInput interface {
+	pulumi.Input
+
+	ToSystemCreatedStorageAccountOutput() SystemCreatedStorageAccountOutput
+	ToSystemCreatedStorageAccountOutputWithContext(context.Context) SystemCreatedStorageAccountOutput
+}
+
+type SystemCreatedStorageAccountArgs struct {
+	// Public blob access allowed
+	AllowBlobPublicAccess pulumi.BoolPtrInput `pulumi:"allowBlobPublicAccess"`
+	// This is populated once the storage account is created.
+	ArmResourceId ArmResourceIdPtrInput `pulumi:"armResourceId"`
+	// HNS enabled for storage account
+	StorageAccountHnsEnabled pulumi.BoolPtrInput `pulumi:"storageAccountHnsEnabled"`
+	// Name of the storage account
+	StorageAccountName pulumi.StringPtrInput `pulumi:"storageAccountName"`
+	// Allowed values:
+	// "Standard_LRS",
+	// "Standard_GRS",
+	// "Standard_RAGRS",
+	// "Standard_ZRS",
+	// "Standard_GZRS",
+	// "Standard_RAGZRS",
+	// "Premium_LRS",
+	// "Premium_ZRS"
+	StorageAccountType pulumi.StringPtrInput `pulumi:"storageAccountType"`
+}
+
+func (SystemCreatedStorageAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemCreatedStorageAccount)(nil)).Elem()
+}
+
+func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountOutput() SystemCreatedStorageAccountOutput {
+	return i.ToSystemCreatedStorageAccountOutputWithContext(context.Background())
+}
+
+func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountOutputWithContext(ctx context.Context) SystemCreatedStorageAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountOutput)
+}
+
+func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
+	return i.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
+}
+
+func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountOutput).ToSystemCreatedStorageAccountPtrOutputWithContext(ctx)
+}
+
+// SystemCreatedStorageAccountPtrInput is an input type that accepts SystemCreatedStorageAccountArgs, SystemCreatedStorageAccountPtr and SystemCreatedStorageAccountPtrOutput values.
+// You can construct a concrete instance of `SystemCreatedStorageAccountPtrInput` via:
+//
+//	        SystemCreatedStorageAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type SystemCreatedStorageAccountPtrInput interface {
+	pulumi.Input
+
+	ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput
+	ToSystemCreatedStorageAccountPtrOutputWithContext(context.Context) SystemCreatedStorageAccountPtrOutput
+}
+
+type systemCreatedStorageAccountPtrType SystemCreatedStorageAccountArgs
+
+func SystemCreatedStorageAccountPtr(v *SystemCreatedStorageAccountArgs) SystemCreatedStorageAccountPtrInput {
+	return (*systemCreatedStorageAccountPtrType)(v)
+}
+
+func (*systemCreatedStorageAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemCreatedStorageAccount)(nil)).Elem()
+}
+
+func (i *systemCreatedStorageAccountPtrType) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
+	return i.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *systemCreatedStorageAccountPtrType) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountPtrOutput)
+}
+
+type SystemCreatedStorageAccountOutput struct{ *pulumi.OutputState }
+
+func (SystemCreatedStorageAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemCreatedStorageAccount)(nil)).Elem()
+}
+
+func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountOutput() SystemCreatedStorageAccountOutput {
+	return o
+}
+
+func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountOutputWithContext(ctx context.Context) SystemCreatedStorageAccountOutput {
+	return o
+}
+
+func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
+	return o.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
+}
+
+func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemCreatedStorageAccount) *SystemCreatedStorageAccount {
+		return &v
+	}).(SystemCreatedStorageAccountPtrOutput)
+}
+
+// Public blob access allowed
+func (o SystemCreatedStorageAccountOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemCreatedStorageAccount) *bool { return v.AllowBlobPublicAccess }).(pulumi.BoolPtrOutput)
+}
+
+// This is populated once the storage account is created.
+func (o SystemCreatedStorageAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
+	return o.ApplyT(func(v SystemCreatedStorageAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
+}
+
+// HNS enabled for storage account
+func (o SystemCreatedStorageAccountOutput) StorageAccountHnsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SystemCreatedStorageAccount) *bool { return v.StorageAccountHnsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the storage account
+func (o SystemCreatedStorageAccountOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemCreatedStorageAccount) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values:
+// "Standard_LRS",
+// "Standard_GRS",
+// "Standard_RAGRS",
+// "Standard_ZRS",
+// "Standard_GZRS",
+// "Standard_RAGZRS",
+// "Premium_LRS",
+// "Premium_ZRS"
+func (o SystemCreatedStorageAccountOutput) StorageAccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemCreatedStorageAccount) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
+}
+
+type SystemCreatedStorageAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (SystemCreatedStorageAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemCreatedStorageAccount)(nil)).Elem()
+}
+
+func (o SystemCreatedStorageAccountPtrOutput) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
+	return o
+}
+
+func (o SystemCreatedStorageAccountPtrOutput) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
+	return o
+}
+
+func (o SystemCreatedStorageAccountPtrOutput) Elem() SystemCreatedStorageAccountOutput {
+	return o.ApplyT(func(v *SystemCreatedStorageAccount) SystemCreatedStorageAccount {
+		if v != nil {
+			return *v
+		}
+		var ret SystemCreatedStorageAccount
+		return ret
+	}).(SystemCreatedStorageAccountOutput)
+}
+
+// Public blob access allowed
+func (o SystemCreatedStorageAccountPtrOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedStorageAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowBlobPublicAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// This is populated once the storage account is created.
+func (o SystemCreatedStorageAccountPtrOutput) ArmResourceId() ArmResourceIdPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedStorageAccount) *ArmResourceId {
+		if v == nil {
+			return nil
+		}
+		return v.ArmResourceId
+	}).(ArmResourceIdPtrOutput)
+}
+
+// HNS enabled for storage account
+func (o SystemCreatedStorageAccountPtrOutput) StorageAccountHnsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedStorageAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountHnsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of the storage account
+func (o SystemCreatedStorageAccountPtrOutput) StorageAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedStorageAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed values:
+// "Standard_LRS",
+// "Standard_GRS",
+// "Standard_RAGRS",
+// "Standard_ZRS",
+// "Standard_GZRS",
+// "Standard_RAGZRS",
+// "Premium_LRS",
+// "Premium_ZRS"
+func (o SystemCreatedStorageAccountPtrOutput) StorageAccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemCreatedStorageAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountType
+	}).(pulumi.StringPtrOutput)
+}
+
 type SystemCreatedStorageAccountResponse struct {
 	// Public blob access allowed
 	AllowBlobPublicAccess *bool `pulumi:"allowBlobPublicAccess"`
@@ -10264,6 +12170,24 @@ func (o WorkspaceHubConfigResponsePtrOutput) DefaultWorkspaceResourceGroup() pul
 }
 
 func init() {
+	pulumi.RegisterOutputType(SweepJobLimitsOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsPtrOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsResponseOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SweepJobResponseOutput{})
+	pulumi.RegisterOutputType(SynapseSparkOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPtrOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPropertiesOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponseOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SystemCreatedAcrAccountOutput{})
+	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
+	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})
+	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemCreatedStorageAccountOutput{})
+	pulumi.RegisterOutputType(SystemCreatedStorageAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

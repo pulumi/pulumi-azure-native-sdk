@@ -2379,6 +2379,657 @@ func (o ClusterCapacityResponseOutput) TotalMemoryGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ClusterCapacityResponse) *float64 { return v.TotalMemoryGB }).(pulumi.Float64PtrOutput)
 }
 
+type ClusterSecretArchive struct {
+	// The resource ID of the key vault to archive the secrets of the cluster.
+	KeyVaultId string `pulumi:"keyVaultId"`
+	// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+	UseKeyVault *string `pulumi:"useKeyVault"`
+}
+
+// Defaults sets the appropriate defaults for ClusterSecretArchive
+func (val *ClusterSecretArchive) Defaults() *ClusterSecretArchive {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UseKeyVault == nil {
+		useKeyVault_ := "False"
+		tmp.UseKeyVault = &useKeyVault_
+	}
+	return &tmp
+}
+
+// ClusterSecretArchiveInput is an input type that accepts ClusterSecretArchiveArgs and ClusterSecretArchiveOutput values.
+// You can construct a concrete instance of `ClusterSecretArchiveInput` via:
+//
+//	ClusterSecretArchiveArgs{...}
+type ClusterSecretArchiveInput interface {
+	pulumi.Input
+
+	ToClusterSecretArchiveOutput() ClusterSecretArchiveOutput
+	ToClusterSecretArchiveOutputWithContext(context.Context) ClusterSecretArchiveOutput
+}
+
+type ClusterSecretArchiveArgs struct {
+	// The resource ID of the key vault to archive the secrets of the cluster.
+	KeyVaultId pulumi.StringInput `pulumi:"keyVaultId"`
+	// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+	UseKeyVault pulumi.StringPtrInput `pulumi:"useKeyVault"`
+}
+
+// Defaults sets the appropriate defaults for ClusterSecretArchiveArgs
+func (val *ClusterSecretArchiveArgs) Defaults() *ClusterSecretArchiveArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UseKeyVault == nil {
+		tmp.UseKeyVault = pulumi.StringPtr("False")
+	}
+	return &tmp
+}
+func (ClusterSecretArchiveArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretArchive)(nil)).Elem()
+}
+
+func (i ClusterSecretArchiveArgs) ToClusterSecretArchiveOutput() ClusterSecretArchiveOutput {
+	return i.ToClusterSecretArchiveOutputWithContext(context.Background())
+}
+
+func (i ClusterSecretArchiveArgs) ToClusterSecretArchiveOutputWithContext(ctx context.Context) ClusterSecretArchiveOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretArchiveOutput)
+}
+
+func (i ClusterSecretArchiveArgs) ToClusterSecretArchivePtrOutput() ClusterSecretArchivePtrOutput {
+	return i.ToClusterSecretArchivePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterSecretArchiveArgs) ToClusterSecretArchivePtrOutputWithContext(ctx context.Context) ClusterSecretArchivePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretArchiveOutput).ToClusterSecretArchivePtrOutputWithContext(ctx)
+}
+
+// ClusterSecretArchivePtrInput is an input type that accepts ClusterSecretArchiveArgs, ClusterSecretArchivePtr and ClusterSecretArchivePtrOutput values.
+// You can construct a concrete instance of `ClusterSecretArchivePtrInput` via:
+//
+//	        ClusterSecretArchiveArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterSecretArchivePtrInput interface {
+	pulumi.Input
+
+	ToClusterSecretArchivePtrOutput() ClusterSecretArchivePtrOutput
+	ToClusterSecretArchivePtrOutputWithContext(context.Context) ClusterSecretArchivePtrOutput
+}
+
+type clusterSecretArchivePtrType ClusterSecretArchiveArgs
+
+func ClusterSecretArchivePtr(v *ClusterSecretArchiveArgs) ClusterSecretArchivePtrInput {
+	return (*clusterSecretArchivePtrType)(v)
+}
+
+func (*clusterSecretArchivePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretArchive)(nil)).Elem()
+}
+
+func (i *clusterSecretArchivePtrType) ToClusterSecretArchivePtrOutput() ClusterSecretArchivePtrOutput {
+	return i.ToClusterSecretArchivePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterSecretArchivePtrType) ToClusterSecretArchivePtrOutputWithContext(ctx context.Context) ClusterSecretArchivePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecretArchivePtrOutput)
+}
+
+type ClusterSecretArchiveOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretArchiveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretArchive)(nil)).Elem()
+}
+
+func (o ClusterSecretArchiveOutput) ToClusterSecretArchiveOutput() ClusterSecretArchiveOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveOutput) ToClusterSecretArchiveOutputWithContext(ctx context.Context) ClusterSecretArchiveOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveOutput) ToClusterSecretArchivePtrOutput() ClusterSecretArchivePtrOutput {
+	return o.ToClusterSecretArchivePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretArchiveOutput) ToClusterSecretArchivePtrOutputWithContext(ctx context.Context) ClusterSecretArchivePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSecretArchive) *ClusterSecretArchive {
+		return &v
+	}).(ClusterSecretArchivePtrOutput)
+}
+
+// The resource ID of the key vault to archive the secrets of the cluster.
+func (o ClusterSecretArchiveOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSecretArchive) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+func (o ClusterSecretArchiveOutput) UseKeyVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSecretArchive) *string { return v.UseKeyVault }).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecretArchivePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretArchivePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretArchive)(nil)).Elem()
+}
+
+func (o ClusterSecretArchivePtrOutput) ToClusterSecretArchivePtrOutput() ClusterSecretArchivePtrOutput {
+	return o
+}
+
+func (o ClusterSecretArchivePtrOutput) ToClusterSecretArchivePtrOutputWithContext(ctx context.Context) ClusterSecretArchivePtrOutput {
+	return o
+}
+
+func (o ClusterSecretArchivePtrOutput) Elem() ClusterSecretArchiveOutput {
+	return o.ApplyT(func(v *ClusterSecretArchive) ClusterSecretArchive {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSecretArchive
+		return ret
+	}).(ClusterSecretArchiveOutput)
+}
+
+// The resource ID of the key vault to archive the secrets of the cluster.
+func (o ClusterSecretArchivePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretArchive) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+func (o ClusterSecretArchivePtrOutput) UseKeyVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretArchive) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UseKeyVault
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecretArchiveResponse struct {
+	// The resource ID of the key vault to archive the secrets of the cluster.
+	KeyVaultId string `pulumi:"keyVaultId"`
+	// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+	UseKeyVault *string `pulumi:"useKeyVault"`
+}
+
+// Defaults sets the appropriate defaults for ClusterSecretArchiveResponse
+func (val *ClusterSecretArchiveResponse) Defaults() *ClusterSecretArchiveResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UseKeyVault == nil {
+		useKeyVault_ := "False"
+		tmp.UseKeyVault = &useKeyVault_
+	}
+	return &tmp
+}
+
+type ClusterSecretArchiveResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretArchiveResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretArchiveResponse)(nil)).Elem()
+}
+
+func (o ClusterSecretArchiveResponseOutput) ToClusterSecretArchiveResponseOutput() ClusterSecretArchiveResponseOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveResponseOutput) ToClusterSecretArchiveResponseOutputWithContext(ctx context.Context) ClusterSecretArchiveResponseOutput {
+	return o
+}
+
+// The resource ID of the key vault to archive the secrets of the cluster.
+func (o ClusterSecretArchiveResponseOutput) KeyVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterSecretArchiveResponse) string { return v.KeyVaultId }).(pulumi.StringOutput)
+}
+
+// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+func (o ClusterSecretArchiveResponseOutput) UseKeyVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSecretArchiveResponse) *string { return v.UseKeyVault }).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecretArchiveResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretArchiveResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretArchiveResponse)(nil)).Elem()
+}
+
+func (o ClusterSecretArchiveResponsePtrOutput) ToClusterSecretArchiveResponsePtrOutput() ClusterSecretArchiveResponsePtrOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveResponsePtrOutput) ToClusterSecretArchiveResponsePtrOutputWithContext(ctx context.Context) ClusterSecretArchiveResponsePtrOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveResponsePtrOutput) Elem() ClusterSecretArchiveResponseOutput {
+	return o.ApplyT(func(v *ClusterSecretArchiveResponse) ClusterSecretArchiveResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSecretArchiveResponse
+		return ret
+	}).(ClusterSecretArchiveResponseOutput)
+}
+
+// The resource ID of the key vault to archive the secrets of the cluster.
+func (o ClusterSecretArchiveResponsePtrOutput) KeyVaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretArchiveResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+func (o ClusterSecretArchiveResponsePtrOutput) UseKeyVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecretArchiveResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UseKeyVault
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterUpdateStrategy struct {
+	// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+	// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+	MaxUnavailable *float64 `pulumi:"maxUnavailable"`
+	// The mode of operation for runtime protection.
+	StrategyType string `pulumi:"strategyType"`
+	// Selection of how the threshold should be evaluated.
+	ThresholdType string `pulumi:"thresholdType"`
+	// The numeric threshold value.
+	ThresholdValue float64 `pulumi:"thresholdValue"`
+	// The time to wait between the increments of update defined by the strategy.
+	WaitTimeMinutes *float64 `pulumi:"waitTimeMinutes"`
+}
+
+// Defaults sets the appropriate defaults for ClusterUpdateStrategy
+func (val *ClusterUpdateStrategy) Defaults() *ClusterUpdateStrategy {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.WaitTimeMinutes == nil {
+		waitTimeMinutes_ := 15.0
+		tmp.WaitTimeMinutes = &waitTimeMinutes_
+	}
+	return &tmp
+}
+
+// ClusterUpdateStrategyInput is an input type that accepts ClusterUpdateStrategyArgs and ClusterUpdateStrategyOutput values.
+// You can construct a concrete instance of `ClusterUpdateStrategyInput` via:
+//
+//	ClusterUpdateStrategyArgs{...}
+type ClusterUpdateStrategyInput interface {
+	pulumi.Input
+
+	ToClusterUpdateStrategyOutput() ClusterUpdateStrategyOutput
+	ToClusterUpdateStrategyOutputWithContext(context.Context) ClusterUpdateStrategyOutput
+}
+
+type ClusterUpdateStrategyArgs struct {
+	// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+	// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+	MaxUnavailable pulumi.Float64PtrInput `pulumi:"maxUnavailable"`
+	// The mode of operation for runtime protection.
+	StrategyType pulumi.StringInput `pulumi:"strategyType"`
+	// Selection of how the threshold should be evaluated.
+	ThresholdType pulumi.StringInput `pulumi:"thresholdType"`
+	// The numeric threshold value.
+	ThresholdValue pulumi.Float64Input `pulumi:"thresholdValue"`
+	// The time to wait between the increments of update defined by the strategy.
+	WaitTimeMinutes pulumi.Float64PtrInput `pulumi:"waitTimeMinutes"`
+}
+
+// Defaults sets the appropriate defaults for ClusterUpdateStrategyArgs
+func (val *ClusterUpdateStrategyArgs) Defaults() *ClusterUpdateStrategyArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.WaitTimeMinutes == nil {
+		tmp.WaitTimeMinutes = pulumi.Float64Ptr(15.0)
+	}
+	return &tmp
+}
+func (ClusterUpdateStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdateStrategy)(nil)).Elem()
+}
+
+func (i ClusterUpdateStrategyArgs) ToClusterUpdateStrategyOutput() ClusterUpdateStrategyOutput {
+	return i.ToClusterUpdateStrategyOutputWithContext(context.Background())
+}
+
+func (i ClusterUpdateStrategyArgs) ToClusterUpdateStrategyOutputWithContext(ctx context.Context) ClusterUpdateStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpdateStrategyOutput)
+}
+
+func (i ClusterUpdateStrategyArgs) ToClusterUpdateStrategyPtrOutput() ClusterUpdateStrategyPtrOutput {
+	return i.ToClusterUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterUpdateStrategyArgs) ToClusterUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpdateStrategyOutput).ToClusterUpdateStrategyPtrOutputWithContext(ctx)
+}
+
+// ClusterUpdateStrategyPtrInput is an input type that accepts ClusterUpdateStrategyArgs, ClusterUpdateStrategyPtr and ClusterUpdateStrategyPtrOutput values.
+// You can construct a concrete instance of `ClusterUpdateStrategyPtrInput` via:
+//
+//	        ClusterUpdateStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterUpdateStrategyPtrInput interface {
+	pulumi.Input
+
+	ToClusterUpdateStrategyPtrOutput() ClusterUpdateStrategyPtrOutput
+	ToClusterUpdateStrategyPtrOutputWithContext(context.Context) ClusterUpdateStrategyPtrOutput
+}
+
+type clusterUpdateStrategyPtrType ClusterUpdateStrategyArgs
+
+func ClusterUpdateStrategyPtr(v *ClusterUpdateStrategyArgs) ClusterUpdateStrategyPtrInput {
+	return (*clusterUpdateStrategyPtrType)(v)
+}
+
+func (*clusterUpdateStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUpdateStrategy)(nil)).Elem()
+}
+
+func (i *clusterUpdateStrategyPtrType) ToClusterUpdateStrategyPtrOutput() ClusterUpdateStrategyPtrOutput {
+	return i.ToClusterUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterUpdateStrategyPtrType) ToClusterUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpdateStrategyPtrOutput)
+}
+
+type ClusterUpdateStrategyOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterUpdateStrategyOutput) ToClusterUpdateStrategyOutput() ClusterUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyOutput) ToClusterUpdateStrategyOutputWithContext(ctx context.Context) ClusterUpdateStrategyOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyOutput) ToClusterUpdateStrategyPtrOutput() ClusterUpdateStrategyPtrOutput {
+	return o.ToClusterUpdateStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterUpdateStrategyOutput) ToClusterUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUpdateStrategy) *ClusterUpdateStrategy {
+		return &v
+	}).(ClusterUpdateStrategyPtrOutput)
+}
+
+// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+func (o ClusterUpdateStrategyOutput) MaxUnavailable() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategy) *float64 { return v.MaxUnavailable }).(pulumi.Float64PtrOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o ClusterUpdateStrategyOutput) StrategyType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategy) string { return v.StrategyType }).(pulumi.StringOutput)
+}
+
+// Selection of how the threshold should be evaluated.
+func (o ClusterUpdateStrategyOutput) ThresholdType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategy) string { return v.ThresholdType }).(pulumi.StringOutput)
+}
+
+// The numeric threshold value.
+func (o ClusterUpdateStrategyOutput) ThresholdValue() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterUpdateStrategy) float64 { return v.ThresholdValue }).(pulumi.Float64Output)
+}
+
+// The time to wait between the increments of update defined by the strategy.
+func (o ClusterUpdateStrategyOutput) WaitTimeMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategy) *float64 { return v.WaitTimeMinutes }).(pulumi.Float64PtrOutput)
+}
+
+type ClusterUpdateStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUpdateStrategy)(nil)).Elem()
+}
+
+func (o ClusterUpdateStrategyPtrOutput) ToClusterUpdateStrategyPtrOutput() ClusterUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyPtrOutput) ToClusterUpdateStrategyPtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyPtrOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyPtrOutput) Elem() ClusterUpdateStrategyOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategy) ClusterUpdateStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterUpdateStrategy
+		return ret
+	}).(ClusterUpdateStrategyOutput)
+}
+
+// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+func (o ClusterUpdateStrategyPtrOutput) MaxUnavailable() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o ClusterUpdateStrategyPtrOutput) StrategyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StrategyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Selection of how the threshold should be evaluated.
+func (o ClusterUpdateStrategyPtrOutput) ThresholdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ThresholdType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The numeric threshold value.
+func (o ClusterUpdateStrategyPtrOutput) ThresholdValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ThresholdValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The time to wait between the increments of update defined by the strategy.
+func (o ClusterUpdateStrategyPtrOutput) WaitTimeMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.WaitTimeMinutes
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ClusterUpdateStrategyResponse struct {
+	// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+	// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+	MaxUnavailable *float64 `pulumi:"maxUnavailable"`
+	// The mode of operation for runtime protection.
+	StrategyType string `pulumi:"strategyType"`
+	// Selection of how the threshold should be evaluated.
+	ThresholdType string `pulumi:"thresholdType"`
+	// The numeric threshold value.
+	ThresholdValue float64 `pulumi:"thresholdValue"`
+	// The time to wait between the increments of update defined by the strategy.
+	WaitTimeMinutes *float64 `pulumi:"waitTimeMinutes"`
+}
+
+// Defaults sets the appropriate defaults for ClusterUpdateStrategyResponse
+func (val *ClusterUpdateStrategyResponse) Defaults() *ClusterUpdateStrategyResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.WaitTimeMinutes == nil {
+		waitTimeMinutes_ := 15.0
+		tmp.WaitTimeMinutes = &waitTimeMinutes_
+	}
+	return &tmp
+}
+
+type ClusterUpdateStrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateStrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdateStrategyResponse)(nil)).Elem()
+}
+
+func (o ClusterUpdateStrategyResponseOutput) ToClusterUpdateStrategyResponseOutput() ClusterUpdateStrategyResponseOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyResponseOutput) ToClusterUpdateStrategyResponseOutputWithContext(ctx context.Context) ClusterUpdateStrategyResponseOutput {
+	return o
+}
+
+// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+func (o ClusterUpdateStrategyResponseOutput) MaxUnavailable() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategyResponse) *float64 { return v.MaxUnavailable }).(pulumi.Float64PtrOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o ClusterUpdateStrategyResponseOutput) StrategyType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategyResponse) string { return v.StrategyType }).(pulumi.StringOutput)
+}
+
+// Selection of how the threshold should be evaluated.
+func (o ClusterUpdateStrategyResponseOutput) ThresholdType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategyResponse) string { return v.ThresholdType }).(pulumi.StringOutput)
+}
+
+// The numeric threshold value.
+func (o ClusterUpdateStrategyResponseOutput) ThresholdValue() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterUpdateStrategyResponse) float64 { return v.ThresholdValue }).(pulumi.Float64Output)
+}
+
+// The time to wait between the increments of update defined by the strategy.
+func (o ClusterUpdateStrategyResponseOutput) WaitTimeMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterUpdateStrategyResponse) *float64 { return v.WaitTimeMinutes }).(pulumi.Float64PtrOutput)
+}
+
+type ClusterUpdateStrategyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateStrategyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUpdateStrategyResponse)(nil)).Elem()
+}
+
+func (o ClusterUpdateStrategyResponsePtrOutput) ToClusterUpdateStrategyResponsePtrOutput() ClusterUpdateStrategyResponsePtrOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyResponsePtrOutput) ToClusterUpdateStrategyResponsePtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyResponsePtrOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyResponsePtrOutput) Elem() ClusterUpdateStrategyResponseOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyResponse) ClusterUpdateStrategyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterUpdateStrategyResponse
+		return ret
+	}).(ClusterUpdateStrategyResponseOutput)
+}
+
+// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+func (o ClusterUpdateStrategyResponsePtrOutput) MaxUnavailable() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o ClusterUpdateStrategyResponsePtrOutput) StrategyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StrategyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Selection of how the threshold should be evaluated.
+func (o ClusterUpdateStrategyResponsePtrOutput) ThresholdType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ThresholdType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The numeric threshold value.
+func (o ClusterUpdateStrategyResponsePtrOutput) ThresholdValue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.ThresholdValue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The time to wait between the increments of update defined by the strategy.
+func (o ClusterUpdateStrategyResponsePtrOutput) WaitTimeMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.WaitTimeMinutes
+	}).(pulumi.Float64PtrOutput)
+}
+
 type ControlPlaneNodeConfiguration struct {
 	// The administrator credentials to be used for the nodes in the control plane.
 	AdministratorConfiguration *AdministratorConfiguration `pulumi:"administratorConfiguration"`
@@ -4104,6 +4755,8 @@ type KeySetUser struct {
 	Description *string `pulumi:"description"`
 	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 	SshPublicKey SshPublicKey `pulumi:"sshPublicKey"`
+	// The user principal name (email format) used to validate this user's group membership.
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
 // KeySetUserInput is an input type that accepts KeySetUserArgs and KeySetUserOutput values.
@@ -4124,6 +4777,8 @@ type KeySetUserArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 	SshPublicKey SshPublicKeyInput `pulumi:"sshPublicKey"`
+	// The user principal name (email format) used to validate this user's group membership.
+	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
 }
 
 func (KeySetUserArgs) ElementType() reflect.Type {
@@ -4192,6 +4847,11 @@ func (o KeySetUserOutput) SshPublicKey() SshPublicKeyOutput {
 	return o.ApplyT(func(v KeySetUser) SshPublicKey { return v.SshPublicKey }).(SshPublicKeyOutput)
 }
 
+// The user principal name (email format) used to validate this user's group membership.
+func (o KeySetUserOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeySetUser) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
+}
+
 type KeySetUserArrayOutput struct{ *pulumi.OutputState }
 
 func (KeySetUserArrayOutput) ElementType() reflect.Type {
@@ -4219,6 +4879,8 @@ type KeySetUserResponse struct {
 	Description *string `pulumi:"description"`
 	// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 	SshPublicKey SshPublicKeyResponse `pulumi:"sshPublicKey"`
+	// The user principal name (email format) used to validate this user's group membership.
+	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
 type KeySetUserResponseOutput struct{ *pulumi.OutputState }
@@ -4248,6 +4910,11 @@ func (o KeySetUserResponseOutput) Description() pulumi.StringPtrOutput {
 // The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
 func (o KeySetUserResponseOutput) SshPublicKey() SshPublicKeyResponseOutput {
 	return o.ApplyT(func(v KeySetUserResponse) SshPublicKeyResponse { return v.SshPublicKey }).(SshPublicKeyResponseOutput)
+}
+
+// The user principal name (email format) used to validate this user's group membership.
+func (o KeySetUserResponseOutput) UserPrincipalName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeySetUserResponse) *string { return v.UserPrincipalName }).(pulumi.StringPtrOutput)
 }
 
 type KeySetUserResponseArrayOutput struct{ *pulumi.OutputState }
@@ -6336,6 +7003,290 @@ func (o RackDefinitionResponseArrayOutput) Index(i pulumi.IntInput) RackDefiniti
 	}).(RackDefinitionResponseOutput)
 }
 
+type RuntimeProtectionConfiguration struct {
+	// The mode of operation for runtime protection.
+	EnforcementLevel *string `pulumi:"enforcementLevel"`
+}
+
+// Defaults sets the appropriate defaults for RuntimeProtectionConfiguration
+func (val *RuntimeProtectionConfiguration) Defaults() *RuntimeProtectionConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnforcementLevel == nil {
+		enforcementLevel_ := "Disabled"
+		tmp.EnforcementLevel = &enforcementLevel_
+	}
+	return &tmp
+}
+
+// RuntimeProtectionConfigurationInput is an input type that accepts RuntimeProtectionConfigurationArgs and RuntimeProtectionConfigurationOutput values.
+// You can construct a concrete instance of `RuntimeProtectionConfigurationInput` via:
+//
+//	RuntimeProtectionConfigurationArgs{...}
+type RuntimeProtectionConfigurationInput interface {
+	pulumi.Input
+
+	ToRuntimeProtectionConfigurationOutput() RuntimeProtectionConfigurationOutput
+	ToRuntimeProtectionConfigurationOutputWithContext(context.Context) RuntimeProtectionConfigurationOutput
+}
+
+type RuntimeProtectionConfigurationArgs struct {
+	// The mode of operation for runtime protection.
+	EnforcementLevel pulumi.StringPtrInput `pulumi:"enforcementLevel"`
+}
+
+// Defaults sets the appropriate defaults for RuntimeProtectionConfigurationArgs
+func (val *RuntimeProtectionConfigurationArgs) Defaults() *RuntimeProtectionConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnforcementLevel == nil {
+		tmp.EnforcementLevel = pulumi.StringPtr("Disabled")
+	}
+	return &tmp
+}
+func (RuntimeProtectionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeProtectionConfiguration)(nil)).Elem()
+}
+
+func (i RuntimeProtectionConfigurationArgs) ToRuntimeProtectionConfigurationOutput() RuntimeProtectionConfigurationOutput {
+	return i.ToRuntimeProtectionConfigurationOutputWithContext(context.Background())
+}
+
+func (i RuntimeProtectionConfigurationArgs) ToRuntimeProtectionConfigurationOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeProtectionConfigurationOutput)
+}
+
+func (i RuntimeProtectionConfigurationArgs) ToRuntimeProtectionConfigurationPtrOutput() RuntimeProtectionConfigurationPtrOutput {
+	return i.ToRuntimeProtectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeProtectionConfigurationArgs) ToRuntimeProtectionConfigurationPtrOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeProtectionConfigurationOutput).ToRuntimeProtectionConfigurationPtrOutputWithContext(ctx)
+}
+
+// RuntimeProtectionConfigurationPtrInput is an input type that accepts RuntimeProtectionConfigurationArgs, RuntimeProtectionConfigurationPtr and RuntimeProtectionConfigurationPtrOutput values.
+// You can construct a concrete instance of `RuntimeProtectionConfigurationPtrInput` via:
+//
+//	        RuntimeProtectionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeProtectionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeProtectionConfigurationPtrOutput() RuntimeProtectionConfigurationPtrOutput
+	ToRuntimeProtectionConfigurationPtrOutputWithContext(context.Context) RuntimeProtectionConfigurationPtrOutput
+}
+
+type runtimeProtectionConfigurationPtrType RuntimeProtectionConfigurationArgs
+
+func RuntimeProtectionConfigurationPtr(v *RuntimeProtectionConfigurationArgs) RuntimeProtectionConfigurationPtrInput {
+	return (*runtimeProtectionConfigurationPtrType)(v)
+}
+
+func (*runtimeProtectionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeProtectionConfiguration)(nil)).Elem()
+}
+
+func (i *runtimeProtectionConfigurationPtrType) ToRuntimeProtectionConfigurationPtrOutput() RuntimeProtectionConfigurationPtrOutput {
+	return i.ToRuntimeProtectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeProtectionConfigurationPtrType) ToRuntimeProtectionConfigurationPtrOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeProtectionConfigurationPtrOutput)
+}
+
+type RuntimeProtectionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeProtectionConfiguration)(nil)).Elem()
+}
+
+func (o RuntimeProtectionConfigurationOutput) ToRuntimeProtectionConfigurationOutput() RuntimeProtectionConfigurationOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationOutput) ToRuntimeProtectionConfigurationOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationOutput) ToRuntimeProtectionConfigurationPtrOutput() RuntimeProtectionConfigurationPtrOutput {
+	return o.ToRuntimeProtectionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeProtectionConfigurationOutput) ToRuntimeProtectionConfigurationPtrOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeProtectionConfiguration) *RuntimeProtectionConfiguration {
+		return &v
+	}).(RuntimeProtectionConfigurationPtrOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o RuntimeProtectionConfigurationOutput) EnforcementLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeProtectionConfiguration) *string { return v.EnforcementLevel }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeProtectionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeProtectionConfiguration)(nil)).Elem()
+}
+
+func (o RuntimeProtectionConfigurationPtrOutput) ToRuntimeProtectionConfigurationPtrOutput() RuntimeProtectionConfigurationPtrOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationPtrOutput) ToRuntimeProtectionConfigurationPtrOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationPtrOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationPtrOutput) Elem() RuntimeProtectionConfigurationOutput {
+	return o.ApplyT(func(v *RuntimeProtectionConfiguration) RuntimeProtectionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeProtectionConfiguration
+		return ret
+	}).(RuntimeProtectionConfigurationOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o RuntimeProtectionConfigurationPtrOutput) EnforcementLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeProtectionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcementLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeProtectionConfigurationResponse struct {
+	// The mode of operation for runtime protection.
+	EnforcementLevel *string `pulumi:"enforcementLevel"`
+}
+
+// Defaults sets the appropriate defaults for RuntimeProtectionConfigurationResponse
+func (val *RuntimeProtectionConfigurationResponse) Defaults() *RuntimeProtectionConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnforcementLevel == nil {
+		enforcementLevel_ := "Disabled"
+		tmp.EnforcementLevel = &enforcementLevel_
+	}
+	return &tmp
+}
+
+type RuntimeProtectionConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeProtectionConfigurationResponse)(nil)).Elem()
+}
+
+func (o RuntimeProtectionConfigurationResponseOutput) ToRuntimeProtectionConfigurationResponseOutput() RuntimeProtectionConfigurationResponseOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationResponseOutput) ToRuntimeProtectionConfigurationResponseOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationResponseOutput {
+	return o
+}
+
+// The mode of operation for runtime protection.
+func (o RuntimeProtectionConfigurationResponseOutput) EnforcementLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuntimeProtectionConfigurationResponse) *string { return v.EnforcementLevel }).(pulumi.StringPtrOutput)
+}
+
+type RuntimeProtectionConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeProtectionConfigurationResponse)(nil)).Elem()
+}
+
+func (o RuntimeProtectionConfigurationResponsePtrOutput) ToRuntimeProtectionConfigurationResponsePtrOutput() RuntimeProtectionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationResponsePtrOutput) ToRuntimeProtectionConfigurationResponsePtrOutputWithContext(ctx context.Context) RuntimeProtectionConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o RuntimeProtectionConfigurationResponsePtrOutput) Elem() RuntimeProtectionConfigurationResponseOutput {
+	return o.ApplyT(func(v *RuntimeProtectionConfigurationResponse) RuntimeProtectionConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeProtectionConfigurationResponse
+		return ret
+	}).(RuntimeProtectionConfigurationResponseOutput)
+}
+
+// The mode of operation for runtime protection.
+func (o RuntimeProtectionConfigurationResponsePtrOutput) EnforcementLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuntimeProtectionConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcementLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeProtectionStatusResponse struct {
+	// The timestamp when the malware definitions were last updated.
+	DefinitionsLastUpdated string `pulumi:"definitionsLastUpdated"`
+	// The version of the malware definitions.
+	DefinitionsVersion string `pulumi:"definitionsVersion"`
+	// The timestamp of the most recently completed scan, or empty if there has never been a scan.
+	ScanCompletedTime string `pulumi:"scanCompletedTime"`
+	// The timestamp of the most recently scheduled scan, or empty if no scan has been scheduled.
+	ScanScheduledTime string `pulumi:"scanScheduledTime"`
+	// The timestamp of the most recently started scan, or empty if there has never been a scan.
+	ScanStartedTime string `pulumi:"scanStartedTime"`
+}
+
+type RuntimeProtectionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeProtectionStatusResponse)(nil)).Elem()
+}
+
+func (o RuntimeProtectionStatusResponseOutput) ToRuntimeProtectionStatusResponseOutput() RuntimeProtectionStatusResponseOutput {
+	return o
+}
+
+func (o RuntimeProtectionStatusResponseOutput) ToRuntimeProtectionStatusResponseOutputWithContext(ctx context.Context) RuntimeProtectionStatusResponseOutput {
+	return o
+}
+
+// The timestamp when the malware definitions were last updated.
+func (o RuntimeProtectionStatusResponseOutput) DefinitionsLastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeProtectionStatusResponse) string { return v.DefinitionsLastUpdated }).(pulumi.StringOutput)
+}
+
+// The version of the malware definitions.
+func (o RuntimeProtectionStatusResponseOutput) DefinitionsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeProtectionStatusResponse) string { return v.DefinitionsVersion }).(pulumi.StringOutput)
+}
+
+// The timestamp of the most recently completed scan, or empty if there has never been a scan.
+func (o RuntimeProtectionStatusResponseOutput) ScanCompletedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeProtectionStatusResponse) string { return v.ScanCompletedTime }).(pulumi.StringOutput)
+}
+
+// The timestamp of the most recently scheduled scan, or empty if no scan has been scheduled.
+func (o RuntimeProtectionStatusResponseOutput) ScanScheduledTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeProtectionStatusResponse) string { return v.ScanScheduledTime }).(pulumi.StringOutput)
+}
+
+// The timestamp of the most recently started scan, or empty if there has never been a scan.
+func (o RuntimeProtectionStatusResponseOutput) ScanStartedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeProtectionStatusResponse) string { return v.ScanStartedTime }).(pulumi.StringOutput)
+}
+
 type ServiceLoadBalancerBgpPeer struct {
 	// The indicator of BFD enablement for this BgpPeer.
 	BfdEnabled *string `pulumi:"bfdEnabled"`
@@ -8184,6 +9135,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAvailableVersionResponseOutput{})
 	pulumi.RegisterOutputType(ClusterAvailableVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(ClusterCapacityResponseOutput{})
+	pulumi.RegisterOutputType(ClusterSecretArchiveOutput{})
+	pulumi.RegisterOutputType(ClusterSecretArchivePtrOutput{})
+	pulumi.RegisterOutputType(ClusterSecretArchiveResponseOutput{})
+	pulumi.RegisterOutputType(ClusterSecretArchiveResponsePtrOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateStrategyOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateStrategyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateStrategyResponseOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateStrategyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ControlPlaneNodeConfigurationOutput{})
 	pulumi.RegisterOutputType(ControlPlaneNodeConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(EgressEndpointOutput{})
@@ -8255,6 +9214,11 @@ func init() {
 	pulumi.RegisterOutputType(RackDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(RackDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(RackDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionConfigurationOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionStatusResponseOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerArrayOutput{})
 	pulumi.RegisterOutputType(ServiceLoadBalancerBgpPeerResponseOutput{})

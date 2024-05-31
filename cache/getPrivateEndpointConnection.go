@@ -14,7 +14,7 @@ import (
 // Gets the specified private endpoint connection associated with the redis cache.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2023-05-01-preview, 2023-08-01, 2024-03-01.
+// Other available API versions: 2023-05-01-preview, 2023-08-01, 2024-03-01, 2024-04-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

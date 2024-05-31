@@ -87,9 +87,6 @@ func NewBareMetalMachineKeySet(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:BareMetalMachineKeySet"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:BareMetalMachineKeySet"),
-		},
-		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:BareMetalMachineKeySet"),
 		},
 	})

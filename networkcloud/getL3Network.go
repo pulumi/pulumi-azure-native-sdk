@@ -12,9 +12,9 @@ import (
 )
 
 // Get properties of the provided layer 3 (L3) network.
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 func LookupL3Network(ctx *pulumi.Context, args *LookupL3NetworkArgs, opts ...pulumi.InvokeOption) (*LookupL3NetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupL3NetworkResult

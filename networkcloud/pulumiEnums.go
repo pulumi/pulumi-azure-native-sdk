@@ -1174,6 +1174,172 @@ func (in *cloudServicesNetworkEnableDefaultEgressEndpointsPtr) ToCloudServicesNe
 	return pulumi.ToOutputWithContext(ctx, in).(CloudServicesNetworkEnableDefaultEgressEndpointsPtrOutput)
 }
 
+// The indicator if the specified key vault should be used to archive the secrets of the cluster.
+type ClusterSecretArchiveEnabled string
+
+const (
+	ClusterSecretArchiveEnabledTrue  = ClusterSecretArchiveEnabled("True")
+	ClusterSecretArchiveEnabledFalse = ClusterSecretArchiveEnabled("False")
+)
+
+func (ClusterSecretArchiveEnabled) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretArchiveEnabled)(nil)).Elem()
+}
+
+func (e ClusterSecretArchiveEnabled) ToClusterSecretArchiveEnabledOutput() ClusterSecretArchiveEnabledOutput {
+	return pulumi.ToOutput(e).(ClusterSecretArchiveEnabledOutput)
+}
+
+func (e ClusterSecretArchiveEnabled) ToClusterSecretArchiveEnabledOutputWithContext(ctx context.Context) ClusterSecretArchiveEnabledOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterSecretArchiveEnabledOutput)
+}
+
+func (e ClusterSecretArchiveEnabled) ToClusterSecretArchiveEnabledPtrOutput() ClusterSecretArchiveEnabledPtrOutput {
+	return e.ToClusterSecretArchiveEnabledPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterSecretArchiveEnabled) ToClusterSecretArchiveEnabledPtrOutputWithContext(ctx context.Context) ClusterSecretArchiveEnabledPtrOutput {
+	return ClusterSecretArchiveEnabled(e).ToClusterSecretArchiveEnabledOutputWithContext(ctx).ToClusterSecretArchiveEnabledPtrOutputWithContext(ctx)
+}
+
+func (e ClusterSecretArchiveEnabled) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterSecretArchiveEnabled) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterSecretArchiveEnabled) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterSecretArchiveEnabled) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterSecretArchiveEnabledOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretArchiveEnabledOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecretArchiveEnabled)(nil)).Elem()
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToClusterSecretArchiveEnabledOutput() ClusterSecretArchiveEnabledOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToClusterSecretArchiveEnabledOutputWithContext(ctx context.Context) ClusterSecretArchiveEnabledOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToClusterSecretArchiveEnabledPtrOutput() ClusterSecretArchiveEnabledPtrOutput {
+	return o.ToClusterSecretArchiveEnabledPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToClusterSecretArchiveEnabledPtrOutputWithContext(ctx context.Context) ClusterSecretArchiveEnabledPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSecretArchiveEnabled) *ClusterSecretArchiveEnabled {
+		return &v
+	}).(ClusterSecretArchiveEnabledPtrOutput)
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterSecretArchiveEnabled) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretArchiveEnabledOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterSecretArchiveEnabled) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecretArchiveEnabledPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecretArchiveEnabledPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecretArchiveEnabled)(nil)).Elem()
+}
+
+func (o ClusterSecretArchiveEnabledPtrOutput) ToClusterSecretArchiveEnabledPtrOutput() ClusterSecretArchiveEnabledPtrOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveEnabledPtrOutput) ToClusterSecretArchiveEnabledPtrOutputWithContext(ctx context.Context) ClusterSecretArchiveEnabledPtrOutput {
+	return o
+}
+
+func (o ClusterSecretArchiveEnabledPtrOutput) Elem() ClusterSecretArchiveEnabledOutput {
+	return o.ApplyT(func(v *ClusterSecretArchiveEnabled) ClusterSecretArchiveEnabled {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSecretArchiveEnabled
+		return ret
+	}).(ClusterSecretArchiveEnabledOutput)
+}
+
+func (o ClusterSecretArchiveEnabledPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecretArchiveEnabledPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterSecretArchiveEnabled) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterSecretArchiveEnabledInput is an input type that accepts values of the ClusterSecretArchiveEnabled enum
+// A concrete instance of `ClusterSecretArchiveEnabledInput` can be one of the following:
+//
+//	ClusterSecretArchiveEnabledTrue
+//	ClusterSecretArchiveEnabledFalse
+type ClusterSecretArchiveEnabledInput interface {
+	pulumi.Input
+
+	ToClusterSecretArchiveEnabledOutput() ClusterSecretArchiveEnabledOutput
+	ToClusterSecretArchiveEnabledOutputWithContext(context.Context) ClusterSecretArchiveEnabledOutput
+}
+
+var clusterSecretArchiveEnabledPtrType = reflect.TypeOf((**ClusterSecretArchiveEnabled)(nil)).Elem()
+
+type ClusterSecretArchiveEnabledPtrInput interface {
+	pulumi.Input
+
+	ToClusterSecretArchiveEnabledPtrOutput() ClusterSecretArchiveEnabledPtrOutput
+	ToClusterSecretArchiveEnabledPtrOutputWithContext(context.Context) ClusterSecretArchiveEnabledPtrOutput
+}
+
+type clusterSecretArchiveEnabledPtr string
+
+func ClusterSecretArchiveEnabledPtr(v string) ClusterSecretArchiveEnabledPtrInput {
+	return (*clusterSecretArchiveEnabledPtr)(&v)
+}
+
+func (*clusterSecretArchiveEnabledPtr) ElementType() reflect.Type {
+	return clusterSecretArchiveEnabledPtrType
+}
+
+func (in *clusterSecretArchiveEnabledPtr) ToClusterSecretArchiveEnabledPtrOutput() ClusterSecretArchiveEnabledPtrOutput {
+	return pulumi.ToOutput(in).(ClusterSecretArchiveEnabledPtrOutput)
+}
+
+func (in *clusterSecretArchiveEnabledPtr) ToClusterSecretArchiveEnabledPtrOutputWithContext(ctx context.Context) ClusterSecretArchiveEnabledPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterSecretArchiveEnabledPtrOutput)
+}
+
 // The type of rack configuration for the cluster.
 type ClusterType string
 
@@ -1338,6 +1504,170 @@ func (in *clusterTypePtr) ToClusterTypePtrOutput() ClusterTypePtrOutput {
 
 func (in *clusterTypePtr) ToClusterTypePtrOutputWithContext(ctx context.Context) ClusterTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterTypePtrOutput)
+}
+
+// The mode of operation for runtime protection.
+type ClusterUpdateStrategyType string
+
+const (
+	ClusterUpdateStrategyTypeRack = ClusterUpdateStrategyType("Rack")
+)
+
+func (ClusterUpdateStrategyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdateStrategyType)(nil)).Elem()
+}
+
+func (e ClusterUpdateStrategyType) ToClusterUpdateStrategyTypeOutput() ClusterUpdateStrategyTypeOutput {
+	return pulumi.ToOutput(e).(ClusterUpdateStrategyTypeOutput)
+}
+
+func (e ClusterUpdateStrategyType) ToClusterUpdateStrategyTypeOutputWithContext(ctx context.Context) ClusterUpdateStrategyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClusterUpdateStrategyTypeOutput)
+}
+
+func (e ClusterUpdateStrategyType) ToClusterUpdateStrategyTypePtrOutput() ClusterUpdateStrategyTypePtrOutput {
+	return e.ToClusterUpdateStrategyTypePtrOutputWithContext(context.Background())
+}
+
+func (e ClusterUpdateStrategyType) ToClusterUpdateStrategyTypePtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyTypePtrOutput {
+	return ClusterUpdateStrategyType(e).ToClusterUpdateStrategyTypeOutputWithContext(ctx).ToClusterUpdateStrategyTypePtrOutputWithContext(ctx)
+}
+
+func (e ClusterUpdateStrategyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterUpdateStrategyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClusterUpdateStrategyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClusterUpdateStrategyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClusterUpdateStrategyTypeOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateStrategyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUpdateStrategyType)(nil)).Elem()
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToClusterUpdateStrategyTypeOutput() ClusterUpdateStrategyTypeOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToClusterUpdateStrategyTypeOutputWithContext(ctx context.Context) ClusterUpdateStrategyTypeOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToClusterUpdateStrategyTypePtrOutput() ClusterUpdateStrategyTypePtrOutput {
+	return o.ToClusterUpdateStrategyTypePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToClusterUpdateStrategyTypePtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUpdateStrategyType) *ClusterUpdateStrategyType {
+		return &v
+	}).(ClusterUpdateStrategyTypePtrOutput)
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterUpdateStrategyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterUpdateStrategyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClusterUpdateStrategyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterUpdateStrategyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterUpdateStrategyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUpdateStrategyType)(nil)).Elem()
+}
+
+func (o ClusterUpdateStrategyTypePtrOutput) ToClusterUpdateStrategyTypePtrOutput() ClusterUpdateStrategyTypePtrOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyTypePtrOutput) ToClusterUpdateStrategyTypePtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyTypePtrOutput {
+	return o
+}
+
+func (o ClusterUpdateStrategyTypePtrOutput) Elem() ClusterUpdateStrategyTypeOutput {
+	return o.ApplyT(func(v *ClusterUpdateStrategyType) ClusterUpdateStrategyType {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterUpdateStrategyType
+		return ret
+	}).(ClusterUpdateStrategyTypeOutput)
+}
+
+func (o ClusterUpdateStrategyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterUpdateStrategyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClusterUpdateStrategyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClusterUpdateStrategyTypeInput is an input type that accepts values of the ClusterUpdateStrategyType enum
+// A concrete instance of `ClusterUpdateStrategyTypeInput` can be one of the following:
+//
+//	ClusterUpdateStrategyTypeRack
+type ClusterUpdateStrategyTypeInput interface {
+	pulumi.Input
+
+	ToClusterUpdateStrategyTypeOutput() ClusterUpdateStrategyTypeOutput
+	ToClusterUpdateStrategyTypeOutputWithContext(context.Context) ClusterUpdateStrategyTypeOutput
+}
+
+var clusterUpdateStrategyTypePtrType = reflect.TypeOf((**ClusterUpdateStrategyType)(nil)).Elem()
+
+type ClusterUpdateStrategyTypePtrInput interface {
+	pulumi.Input
+
+	ToClusterUpdateStrategyTypePtrOutput() ClusterUpdateStrategyTypePtrOutput
+	ToClusterUpdateStrategyTypePtrOutputWithContext(context.Context) ClusterUpdateStrategyTypePtrOutput
+}
+
+type clusterUpdateStrategyTypePtr string
+
+func ClusterUpdateStrategyTypePtr(v string) ClusterUpdateStrategyTypePtrInput {
+	return (*clusterUpdateStrategyTypePtr)(&v)
+}
+
+func (*clusterUpdateStrategyTypePtr) ElementType() reflect.Type {
+	return clusterUpdateStrategyTypePtrType
+}
+
+func (in *clusterUpdateStrategyTypePtr) ToClusterUpdateStrategyTypePtrOutput() ClusterUpdateStrategyTypePtrOutput {
+	return pulumi.ToOutput(in).(ClusterUpdateStrategyTypePtrOutput)
+}
+
+func (in *clusterUpdateStrategyTypePtr) ToClusterUpdateStrategyTypePtrOutputWithContext(ctx context.Context) ClusterUpdateStrategyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClusterUpdateStrategyTypePtrOutput)
 }
 
 // The indicator of whether the console access is enabled.
@@ -3173,6 +3503,178 @@ func (in *osDiskDeleteOptionPtr) ToOsDiskDeleteOptionPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(OsDiskDeleteOptionPtrOutput)
 }
 
+// The mode of operation for runtime protection.
+type RuntimeProtectionEnforcementLevel string
+
+const (
+	RuntimeProtectionEnforcementLevelAudit    = RuntimeProtectionEnforcementLevel("Audit")
+	RuntimeProtectionEnforcementLevelDisabled = RuntimeProtectionEnforcementLevel("Disabled")
+	RuntimeProtectionEnforcementLevelOnDemand = RuntimeProtectionEnforcementLevel("OnDemand")
+	RuntimeProtectionEnforcementLevelPassive  = RuntimeProtectionEnforcementLevel("Passive")
+	RuntimeProtectionEnforcementLevelRealTime = RuntimeProtectionEnforcementLevel("RealTime")
+)
+
+func (RuntimeProtectionEnforcementLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeProtectionEnforcementLevel)(nil)).Elem()
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToRuntimeProtectionEnforcementLevelOutput() RuntimeProtectionEnforcementLevelOutput {
+	return pulumi.ToOutput(e).(RuntimeProtectionEnforcementLevelOutput)
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToRuntimeProtectionEnforcementLevelOutputWithContext(ctx context.Context) RuntimeProtectionEnforcementLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RuntimeProtectionEnforcementLevelOutput)
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToRuntimeProtectionEnforcementLevelPtrOutput() RuntimeProtectionEnforcementLevelPtrOutput {
+	return e.ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(context.Background())
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(ctx context.Context) RuntimeProtectionEnforcementLevelPtrOutput {
+	return RuntimeProtectionEnforcementLevel(e).ToRuntimeProtectionEnforcementLevelOutputWithContext(ctx).ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(ctx)
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RuntimeProtectionEnforcementLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RuntimeProtectionEnforcementLevelOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionEnforcementLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeProtectionEnforcementLevel)(nil)).Elem()
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToRuntimeProtectionEnforcementLevelOutput() RuntimeProtectionEnforcementLevelOutput {
+	return o
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToRuntimeProtectionEnforcementLevelOutputWithContext(ctx context.Context) RuntimeProtectionEnforcementLevelOutput {
+	return o
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToRuntimeProtectionEnforcementLevelPtrOutput() RuntimeProtectionEnforcementLevelPtrOutput {
+	return o.ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(ctx context.Context) RuntimeProtectionEnforcementLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeProtectionEnforcementLevel) *RuntimeProtectionEnforcementLevel {
+		return &v
+	}).(RuntimeProtectionEnforcementLevelPtrOutput)
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuntimeProtectionEnforcementLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeProtectionEnforcementLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuntimeProtectionEnforcementLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuntimeProtectionEnforcementLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeProtectionEnforcementLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeProtectionEnforcementLevel)(nil)).Elem()
+}
+
+func (o RuntimeProtectionEnforcementLevelPtrOutput) ToRuntimeProtectionEnforcementLevelPtrOutput() RuntimeProtectionEnforcementLevelPtrOutput {
+	return o
+}
+
+func (o RuntimeProtectionEnforcementLevelPtrOutput) ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(ctx context.Context) RuntimeProtectionEnforcementLevelPtrOutput {
+	return o
+}
+
+func (o RuntimeProtectionEnforcementLevelPtrOutput) Elem() RuntimeProtectionEnforcementLevelOutput {
+	return o.ApplyT(func(v *RuntimeProtectionEnforcementLevel) RuntimeProtectionEnforcementLevel {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeProtectionEnforcementLevel
+		return ret
+	}).(RuntimeProtectionEnforcementLevelOutput)
+}
+
+func (o RuntimeProtectionEnforcementLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeProtectionEnforcementLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RuntimeProtectionEnforcementLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RuntimeProtectionEnforcementLevelInput is an input type that accepts values of the RuntimeProtectionEnforcementLevel enum
+// A concrete instance of `RuntimeProtectionEnforcementLevelInput` can be one of the following:
+//
+//	RuntimeProtectionEnforcementLevelAudit
+//	RuntimeProtectionEnforcementLevelDisabled
+//	RuntimeProtectionEnforcementLevelOnDemand
+//	RuntimeProtectionEnforcementLevelPassive
+//	RuntimeProtectionEnforcementLevelRealTime
+type RuntimeProtectionEnforcementLevelInput interface {
+	pulumi.Input
+
+	ToRuntimeProtectionEnforcementLevelOutput() RuntimeProtectionEnforcementLevelOutput
+	ToRuntimeProtectionEnforcementLevelOutputWithContext(context.Context) RuntimeProtectionEnforcementLevelOutput
+}
+
+var runtimeProtectionEnforcementLevelPtrType = reflect.TypeOf((**RuntimeProtectionEnforcementLevel)(nil)).Elem()
+
+type RuntimeProtectionEnforcementLevelPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeProtectionEnforcementLevelPtrOutput() RuntimeProtectionEnforcementLevelPtrOutput
+	ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(context.Context) RuntimeProtectionEnforcementLevelPtrOutput
+}
+
+type runtimeProtectionEnforcementLevelPtr string
+
+func RuntimeProtectionEnforcementLevelPtr(v string) RuntimeProtectionEnforcementLevelPtrInput {
+	return (*runtimeProtectionEnforcementLevelPtr)(&v)
+}
+
+func (*runtimeProtectionEnforcementLevelPtr) ElementType() reflect.Type {
+	return runtimeProtectionEnforcementLevelPtrType
+}
+
+func (in *runtimeProtectionEnforcementLevelPtr) ToRuntimeProtectionEnforcementLevelPtrOutput() RuntimeProtectionEnforcementLevelPtrOutput {
+	return pulumi.ToOutput(in).(RuntimeProtectionEnforcementLevelPtrOutput)
+}
+
+func (in *runtimeProtectionEnforcementLevelPtr) ToRuntimeProtectionEnforcementLevelPtrOutputWithContext(ctx context.Context) RuntimeProtectionEnforcementLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RuntimeProtectionEnforcementLevelPtrOutput)
+}
+
 // Selection of how the type evaluation is applied to the cluster calculation.
 type ValidationThresholdGrouping string
 
@@ -4852,8 +5354,12 @@ func init() {
 	pulumi.RegisterOutputType(BmcKeySetPrivilegeLevelPtrOutput{})
 	pulumi.RegisterOutputType(CloudServicesNetworkEnableDefaultEgressEndpointsOutput{})
 	pulumi.RegisterOutputType(CloudServicesNetworkEnableDefaultEgressEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSecretArchiveEnabledOutput{})
+	pulumi.RegisterOutputType(ClusterSecretArchiveEnabledPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTypeOutput{})
 	pulumi.RegisterOutputType(ClusterTypePtrOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateStrategyTypeOutput{})
+	pulumi.RegisterOutputType(ClusterUpdateStrategyTypePtrOutput{})
 	pulumi.RegisterOutputType(ConsoleEnabledOutput{})
 	pulumi.RegisterOutputType(ConsoleEnabledPtrOutput{})
 	pulumi.RegisterOutputType(DefaultGatewayOutput{})
@@ -4876,6 +5382,8 @@ func init() {
 	pulumi.RegisterOutputType(OsDiskCreateOptionPtrOutput{})
 	pulumi.RegisterOutputType(OsDiskDeleteOptionOutput{})
 	pulumi.RegisterOutputType(OsDiskDeleteOptionPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionEnforcementLevelOutput{})
+	pulumi.RegisterOutputType(RuntimeProtectionEnforcementLevelPtrOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdGroupingOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdGroupingPtrOutput{})
 	pulumi.RegisterOutputType(ValidationThresholdTypeOutput{})

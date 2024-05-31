@@ -46,6 +46,9 @@ func NewDevOpsConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:security/v20230901preview:DevOpsConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:security/v20240515preview:DevOpsConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

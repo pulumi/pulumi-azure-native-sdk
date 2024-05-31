@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
+// Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
 //
-// Other available API versions: 2023-07-01, 2023-10-01-preview.
+// Other available API versions: 2023-07-01.
 type L3Network struct {
 	pulumi.CustomResourceState
 
@@ -93,9 +93,6 @@ func NewL3Network(ctx *pulumi.Context,
 		args.IpAllocationType = pulumi.StringPtr("DualStack")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:L3Network"),
-		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:L3Network"),
 		},

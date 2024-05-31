@@ -88,6 +88,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cache/v20230801:FirewallRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:cache/v20240401preview:FirewallRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

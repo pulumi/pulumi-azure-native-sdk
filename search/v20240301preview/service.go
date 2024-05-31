@@ -112,6 +112,9 @@ func NewService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:search/v20231101:Service"),
 		},
+		{
+			Type: pulumi.String("azure-native:search/v20240601preview:Service"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // Describes an Azure Cognitive Search service and its current state.
 // Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-08-01.
 //
-// Other available API versions: 2021-04-01-preview, 2023-11-01, 2024-03-01-preview.
+// Other available API versions: 2021-04-01-preview, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +108,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:search/v20240301preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:search/v20240601preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)

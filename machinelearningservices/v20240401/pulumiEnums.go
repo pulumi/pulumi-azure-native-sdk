@@ -3557,6 +3557,172 @@ func (in *containerTypePtr) ToContainerTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ContainerTypePtrOutput)
 }
 
+// [Required] Specifies the status of content safety.
+type ContentSafetyStatus string
+
+const (
+	ContentSafetyStatusEnabled  = ContentSafetyStatus("Enabled")
+	ContentSafetyStatusDisabled = ContentSafetyStatus("Disabled")
+)
+
+func (ContentSafetyStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentSafetyStatus)(nil)).Elem()
+}
+
+func (e ContentSafetyStatus) ToContentSafetyStatusOutput() ContentSafetyStatusOutput {
+	return pulumi.ToOutput(e).(ContentSafetyStatusOutput)
+}
+
+func (e ContentSafetyStatus) ToContentSafetyStatusOutputWithContext(ctx context.Context) ContentSafetyStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ContentSafetyStatusOutput)
+}
+
+func (e ContentSafetyStatus) ToContentSafetyStatusPtrOutput() ContentSafetyStatusPtrOutput {
+	return e.ToContentSafetyStatusPtrOutputWithContext(context.Background())
+}
+
+func (e ContentSafetyStatus) ToContentSafetyStatusPtrOutputWithContext(ctx context.Context) ContentSafetyStatusPtrOutput {
+	return ContentSafetyStatus(e).ToContentSafetyStatusOutputWithContext(ctx).ToContentSafetyStatusPtrOutputWithContext(ctx)
+}
+
+func (e ContentSafetyStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContentSafetyStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContentSafetyStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ContentSafetyStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ContentSafetyStatusOutput struct{ *pulumi.OutputState }
+
+func (ContentSafetyStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentSafetyStatus)(nil)).Elem()
+}
+
+func (o ContentSafetyStatusOutput) ToContentSafetyStatusOutput() ContentSafetyStatusOutput {
+	return o
+}
+
+func (o ContentSafetyStatusOutput) ToContentSafetyStatusOutputWithContext(ctx context.Context) ContentSafetyStatusOutput {
+	return o
+}
+
+func (o ContentSafetyStatusOutput) ToContentSafetyStatusPtrOutput() ContentSafetyStatusPtrOutput {
+	return o.ToContentSafetyStatusPtrOutputWithContext(context.Background())
+}
+
+func (o ContentSafetyStatusOutput) ToContentSafetyStatusPtrOutputWithContext(ctx context.Context) ContentSafetyStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentSafetyStatus) *ContentSafetyStatus {
+		return &v
+	}).(ContentSafetyStatusPtrOutput)
+}
+
+func (o ContentSafetyStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ContentSafetyStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContentSafetyStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ContentSafetyStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContentSafetyStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContentSafetyStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContentSafetyStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ContentSafetyStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentSafetyStatus)(nil)).Elem()
+}
+
+func (o ContentSafetyStatusPtrOutput) ToContentSafetyStatusPtrOutput() ContentSafetyStatusPtrOutput {
+	return o
+}
+
+func (o ContentSafetyStatusPtrOutput) ToContentSafetyStatusPtrOutputWithContext(ctx context.Context) ContentSafetyStatusPtrOutput {
+	return o
+}
+
+func (o ContentSafetyStatusPtrOutput) Elem() ContentSafetyStatusOutput {
+	return o.ApplyT(func(v *ContentSafetyStatus) ContentSafetyStatus {
+		if v != nil {
+			return *v
+		}
+		var ret ContentSafetyStatus
+		return ret
+	}).(ContentSafetyStatusOutput)
+}
+
+func (o ContentSafetyStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContentSafetyStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ContentSafetyStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ContentSafetyStatusInput is an input type that accepts values of the ContentSafetyStatus enum
+// A concrete instance of `ContentSafetyStatusInput` can be one of the following:
+//
+//	ContentSafetyStatusEnabled
+//	ContentSafetyStatusDisabled
+type ContentSafetyStatusInput interface {
+	pulumi.Input
+
+	ToContentSafetyStatusOutput() ContentSafetyStatusOutput
+	ToContentSafetyStatusOutputWithContext(context.Context) ContentSafetyStatusOutput
+}
+
+var contentSafetyStatusPtrType = reflect.TypeOf((**ContentSafetyStatus)(nil)).Elem()
+
+type ContentSafetyStatusPtrInput interface {
+	pulumi.Input
+
+	ToContentSafetyStatusPtrOutput() ContentSafetyStatusPtrOutput
+	ToContentSafetyStatusPtrOutputWithContext(context.Context) ContentSafetyStatusPtrOutput
+}
+
+type contentSafetyStatusPtr string
+
+func ContentSafetyStatusPtr(v string) ContentSafetyStatusPtrInput {
+	return (*contentSafetyStatusPtr)(&v)
+}
+
+func (*contentSafetyStatusPtr) ElementType() reflect.Type {
+	return contentSafetyStatusPtrType
+}
+
+func (in *contentSafetyStatusPtr) ToContentSafetyStatusPtrOutput() ContentSafetyStatusPtrOutput {
+	return pulumi.ToOutput(in).(ContentSafetyStatusPtrOutput)
+}
+
+func (in *contentSafetyStatusPtr) ToContentSafetyStatusPtrOutputWithContext(ctx context.Context) ContentSafetyStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ContentSafetyStatusPtrOutput)
+}
+
 // [Required] Credential type used to authentication with storage.
 type CredentialsType string
 
@@ -13190,6 +13356,170 @@ const (
 	SecretsTypeServicePrincipal = SecretsType("ServicePrincipal")
 )
 
+// [Required] Specifies the authentication mode for the Serverless endpoint.
+type ServerlessInferenceEndpointAuthMode string
+
+const (
+	ServerlessInferenceEndpointAuthModeKey = ServerlessInferenceEndpointAuthMode("Key")
+)
+
+func (ServerlessInferenceEndpointAuthMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessInferenceEndpointAuthMode)(nil)).Elem()
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToServerlessInferenceEndpointAuthModeOutput() ServerlessInferenceEndpointAuthModeOutput {
+	return pulumi.ToOutput(e).(ServerlessInferenceEndpointAuthModeOutput)
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToServerlessInferenceEndpointAuthModeOutputWithContext(ctx context.Context) ServerlessInferenceEndpointAuthModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServerlessInferenceEndpointAuthModeOutput)
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToServerlessInferenceEndpointAuthModePtrOutput() ServerlessInferenceEndpointAuthModePtrOutput {
+	return e.ToServerlessInferenceEndpointAuthModePtrOutputWithContext(context.Background())
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToServerlessInferenceEndpointAuthModePtrOutputWithContext(ctx context.Context) ServerlessInferenceEndpointAuthModePtrOutput {
+	return ServerlessInferenceEndpointAuthMode(e).ToServerlessInferenceEndpointAuthModeOutputWithContext(ctx).ToServerlessInferenceEndpointAuthModePtrOutputWithContext(ctx)
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServerlessInferenceEndpointAuthMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServerlessInferenceEndpointAuthModeOutput struct{ *pulumi.OutputState }
+
+func (ServerlessInferenceEndpointAuthModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessInferenceEndpointAuthMode)(nil)).Elem()
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToServerlessInferenceEndpointAuthModeOutput() ServerlessInferenceEndpointAuthModeOutput {
+	return o
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToServerlessInferenceEndpointAuthModeOutputWithContext(ctx context.Context) ServerlessInferenceEndpointAuthModeOutput {
+	return o
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToServerlessInferenceEndpointAuthModePtrOutput() ServerlessInferenceEndpointAuthModePtrOutput {
+	return o.ToServerlessInferenceEndpointAuthModePtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToServerlessInferenceEndpointAuthModePtrOutputWithContext(ctx context.Context) ServerlessInferenceEndpointAuthModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessInferenceEndpointAuthMode) *ServerlessInferenceEndpointAuthMode {
+		return &v
+	}).(ServerlessInferenceEndpointAuthModePtrOutput)
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServerlessInferenceEndpointAuthMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessInferenceEndpointAuthModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServerlessInferenceEndpointAuthMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerlessInferenceEndpointAuthModePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessInferenceEndpointAuthModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessInferenceEndpointAuthMode)(nil)).Elem()
+}
+
+func (o ServerlessInferenceEndpointAuthModePtrOutput) ToServerlessInferenceEndpointAuthModePtrOutput() ServerlessInferenceEndpointAuthModePtrOutput {
+	return o
+}
+
+func (o ServerlessInferenceEndpointAuthModePtrOutput) ToServerlessInferenceEndpointAuthModePtrOutputWithContext(ctx context.Context) ServerlessInferenceEndpointAuthModePtrOutput {
+	return o
+}
+
+func (o ServerlessInferenceEndpointAuthModePtrOutput) Elem() ServerlessInferenceEndpointAuthModeOutput {
+	return o.ApplyT(func(v *ServerlessInferenceEndpointAuthMode) ServerlessInferenceEndpointAuthMode {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessInferenceEndpointAuthMode
+		return ret
+	}).(ServerlessInferenceEndpointAuthModeOutput)
+}
+
+func (o ServerlessInferenceEndpointAuthModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessInferenceEndpointAuthModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServerlessInferenceEndpointAuthMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServerlessInferenceEndpointAuthModeInput is an input type that accepts values of the ServerlessInferenceEndpointAuthMode enum
+// A concrete instance of `ServerlessInferenceEndpointAuthModeInput` can be one of the following:
+//
+//	ServerlessInferenceEndpointAuthModeKey
+type ServerlessInferenceEndpointAuthModeInput interface {
+	pulumi.Input
+
+	ToServerlessInferenceEndpointAuthModeOutput() ServerlessInferenceEndpointAuthModeOutput
+	ToServerlessInferenceEndpointAuthModeOutputWithContext(context.Context) ServerlessInferenceEndpointAuthModeOutput
+}
+
+var serverlessInferenceEndpointAuthModePtrType = reflect.TypeOf((**ServerlessInferenceEndpointAuthMode)(nil)).Elem()
+
+type ServerlessInferenceEndpointAuthModePtrInput interface {
+	pulumi.Input
+
+	ToServerlessInferenceEndpointAuthModePtrOutput() ServerlessInferenceEndpointAuthModePtrOutput
+	ToServerlessInferenceEndpointAuthModePtrOutputWithContext(context.Context) ServerlessInferenceEndpointAuthModePtrOutput
+}
+
+type serverlessInferenceEndpointAuthModePtr string
+
+func ServerlessInferenceEndpointAuthModePtr(v string) ServerlessInferenceEndpointAuthModePtrInput {
+	return (*serverlessInferenceEndpointAuthModePtr)(&v)
+}
+
+func (*serverlessInferenceEndpointAuthModePtr) ElementType() reflect.Type {
+	return serverlessInferenceEndpointAuthModePtrType
+}
+
+func (in *serverlessInferenceEndpointAuthModePtr) ToServerlessInferenceEndpointAuthModePtrOutput() ServerlessInferenceEndpointAuthModePtrOutput {
+	return pulumi.ToOutput(in).(ServerlessInferenceEndpointAuthModePtrOutput)
+}
+
+func (in *serverlessInferenceEndpointAuthModePtr) ToServerlessInferenceEndpointAuthModePtrOutputWithContext(ctx context.Context) ServerlessInferenceEndpointAuthModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServerlessInferenceEndpointAuthModePtrOutput)
+}
+
 // Indicates which identity to use to authenticate service data access to customer's storage.
 type ServiceDataAccessAuthIdentity string
 
@@ -15711,6 +16041,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionCategoryPtrOutput{})
 	pulumi.RegisterOutputType(ContainerTypeOutput{})
 	pulumi.RegisterOutputType(ContainerTypePtrOutput{})
+	pulumi.RegisterOutputType(ContentSafetyStatusOutput{})
+	pulumi.RegisterOutputType(ContentSafetyStatusPtrOutput{})
 	pulumi.RegisterOutputType(DataCollectionModeOutput{})
 	pulumi.RegisterOutputType(DataCollectionModePtrOutput{})
 	pulumi.RegisterOutputType(DataTypeOutput{})
@@ -15821,6 +16153,8 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleStatusOutput{})
 	pulumi.RegisterOutputType(ScheduleStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessInferenceEndpointAuthModeOutput{})
+	pulumi.RegisterOutputType(ServerlessInferenceEndpointAuthModePtrOutput{})
 	pulumi.RegisterOutputType(ServiceDataAccessAuthIdentityOutput{})
 	pulumi.RegisterOutputType(ServiceDataAccessAuthIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ShortSeriesHandlingConfigurationOutput{})

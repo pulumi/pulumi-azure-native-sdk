@@ -15,7 +15,7 @@ import (
 // Represents a server.
 // Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
 //
-// Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30.
+// Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -115,6 +115,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20231230:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20240201preview:Server"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -60,6 +60,9 @@ func NewAssociationsInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicenetworking/v20230501preview:AssociationsInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicenetworking/v20240501preview:AssociationsInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

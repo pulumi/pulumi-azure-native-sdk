@@ -15,7 +15,7 @@ import (
 // Properties for the database account.
 // Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-04-01-preview.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview, 2024-02-15-preview, 2024-05-15, 2024-05-15-preview.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -103,6 +103,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240515:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240515preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)

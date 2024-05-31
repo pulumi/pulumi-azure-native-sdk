@@ -47,9 +47,6 @@ func NewApplication(ctx *pulumi.Context,
 	if args.SpaceName == nil {
 		return nil, errors.New("invalid value for required argument 'SpaceName'")
 	}
-	if args.TrackingDataStores == nil {
-		return nil, errors.New("invalid value for required argument 'TrackingDataStores'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:integrationspaces:Application"),

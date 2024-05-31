@@ -31,7 +31,7 @@ type LookupFrontendsInterfaceArgs struct {
 	TrafficControllerName string `pulumi:"trafficControllerName"`
 }
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type LookupFrontendsInterfaceResult struct {
 	// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
 	Fqdn string `pulumi:"fqdn"`
@@ -77,7 +77,7 @@ func (LookupFrontendsInterfaceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupFrontendsInterfaceArgs)(nil)).Elem()
 }
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type LookupFrontendsInterfaceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupFrontendsInterfaceResultOutput) ElementType() reflect.Type {
