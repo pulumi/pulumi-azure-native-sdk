@@ -15,7 +15,7 @@ import (
 // Resource representation of a workflow
 // Azure REST API version: 2022-10-11-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview.
 //
-// Other available API versions: 2023-08-01.
+// Other available API versions: 2023-08-01, 2024-05-01-preview.
 type Workflow struct {
 	pulumi.CustomResourceState
 
@@ -102,6 +102,9 @@ func NewWorkflow(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devhub/v20230801:Workflow"),
+		},
+		{
+			Type: pulumi.String("azure-native:devhub/v20240501preview:Workflow"),
 		},
 	})
 	opts = append(opts, aliases)

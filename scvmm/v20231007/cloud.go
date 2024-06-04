@@ -18,7 +18,7 @@ type Cloud struct {
 
 	// Capacity of the cloud.
 	CloudCapacity CloudCapacityResponseOutput `pulumi:"cloudCapacity"`
-	// Name of the cloud in VMMServer.
+	// Name of the cloud in VmmServer.
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
@@ -31,7 +31,7 @@ type Cloud struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// List of QoS policies available for the cloud.
-	StorageQoSPolicies StorageQoSPolicyResponseArrayOutput `pulumi:"storageQoSPolicies"`
+	StorageQosPolicies StorageQosPolicyResponseArrayOutput `pulumi:"storageQosPolicies"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -185,7 +185,7 @@ func (o CloudOutput) CloudCapacity() CloudCapacityResponseOutput {
 	return o.ApplyT(func(v *Cloud) CloudCapacityResponseOutput { return v.CloudCapacity }).(CloudCapacityResponseOutput)
 }
 
-// Name of the cloud in VMMServer.
+// Name of the cloud in VmmServer.
 func (o CloudOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cloud) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
 }
@@ -216,8 +216,8 @@ func (o CloudOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // List of QoS policies available for the cloud.
-func (o CloudOutput) StorageQoSPolicies() StorageQoSPolicyResponseArrayOutput {
-	return o.ApplyT(func(v *Cloud) StorageQoSPolicyResponseArrayOutput { return v.StorageQoSPolicies }).(StorageQoSPolicyResponseArrayOutput)
+func (o CloudOutput) StorageQosPolicies() StorageQosPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *Cloud) StorageQosPolicyResponseArrayOutput { return v.StorageQosPolicies }).(StorageQosPolicyResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

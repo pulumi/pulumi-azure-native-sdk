@@ -18,8 +18,8 @@ type VmmServer struct {
 
 	// Gets the connection status to the vmmServer.
 	ConnectionStatus pulumi.StringOutput `pulumi:"connectionStatus"`
-	// Credentials to connect to VMMServer.
-	Credentials VMMCredentialResponsePtrOutput `pulumi:"credentials"`
+	// Credentials to connect to VmmServer.
+	Credentials VmmCredentialResponsePtrOutput `pulumi:"credentials"`
 	// Gets any error message if connection to vmmServer is having any issue.
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
 	// The extended location.
@@ -110,8 +110,8 @@ func (VmmServerState) ElementType() reflect.Type {
 }
 
 type vmmServerArgs struct {
-	// Credentials to connect to VMMServer.
-	Credentials *VMMCredential `pulumi:"credentials"`
+	// Credentials to connect to VmmServer.
+	Credentials *VmmCredential `pulumi:"credentials"`
 	// The extended location.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
 	// Fqdn is the hostname/ip of the vmmServer.
@@ -124,14 +124,14 @@ type vmmServerArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Name of the VMMServer.
+	// Name of the VmmServer.
 	VmmServerName *string `pulumi:"vmmServerName"`
 }
 
 // The set of arguments for constructing a VmmServer resource.
 type VmmServerArgs struct {
-	// Credentials to connect to VMMServer.
-	Credentials VMMCredentialPtrInput
+	// Credentials to connect to VmmServer.
+	Credentials VmmCredentialPtrInput
 	// The extended location.
 	ExtendedLocation ExtendedLocationInput
 	// Fqdn is the hostname/ip of the vmmServer.
@@ -144,7 +144,7 @@ type VmmServerArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Name of the VMMServer.
+	// Name of the VmmServer.
 	VmmServerName pulumi.StringPtrInput
 }
 
@@ -190,9 +190,9 @@ func (o VmmServerOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmmServer) pulumi.StringOutput { return v.ConnectionStatus }).(pulumi.StringOutput)
 }
 
-// Credentials to connect to VMMServer.
-func (o VmmServerOutput) Credentials() VMMCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *VmmServer) VMMCredentialResponsePtrOutput { return v.Credentials }).(VMMCredentialResponsePtrOutput)
+// Credentials to connect to VmmServer.
+func (o VmmServerOutput) Credentials() VmmCredentialResponsePtrOutput {
+	return o.ApplyT(func(v *VmmServer) VmmCredentialResponsePtrOutput { return v.Credentials }).(VmmCredentialResponsePtrOutput)
 }
 
 // Gets any error message if connection to vmmServer is having any issue.

@@ -17,6 +17,7 @@ const (
 	AccessTierHot     = AccessTier("Hot")
 	AccessTierCool    = AccessTier("Cool")
 	AccessTierPremium = AccessTier("Premium")
+	AccessTierCold    = AccessTier("Cold")
 )
 
 func (AccessTier) ElementType() reflect.Type {
@@ -144,6 +145,7 @@ func (o AccessTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	AccessTierHot
 //	AccessTierCool
 //	AccessTierPremium
+//	AccessTierCold
 type AccessTierInput interface {
 	pulumi.Input
 
@@ -4200,6 +4202,7 @@ const (
 	MinimumTlsVersion_TLS1_0 = MinimumTlsVersion("TLS1_0")
 	MinimumTlsVersion_TLS1_1 = MinimumTlsVersion("TLS1_1")
 	MinimumTlsVersion_TLS1_2 = MinimumTlsVersion("TLS1_2")
+	MinimumTlsVersion_TLS1_3 = MinimumTlsVersion("TLS1_3")
 )
 
 func (MinimumTlsVersion) ElementType() reflect.Type {
@@ -4327,6 +4330,7 @@ func (o MinimumTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 //	MinimumTlsVersion_TLS1_0
 //	MinimumTlsVersion_TLS1_1
 //	MinimumTlsVersion_TLS1_2
+//	MinimumTlsVersion_TLS1_3
 type MinimumTlsVersionInput interface {
 	pulumi.Input
 

@@ -540,6 +540,369 @@ func (o ResourceMetadataResponseArrayOutput) Index(i pulumi.IntInput) ResourceMe
 	}).(ResourceMetadataResponseOutput)
 }
 
+// Scoping answer.
+type ScopingAnswer struct {
+	// Question answer value list.
+	Answers []string `pulumi:"answers"`
+	// Question id.
+	QuestionId string `pulumi:"questionId"`
+}
+
+// ScopingAnswerInput is an input type that accepts ScopingAnswerArgs and ScopingAnswerOutput values.
+// You can construct a concrete instance of `ScopingAnswerInput` via:
+//
+//	ScopingAnswerArgs{...}
+type ScopingAnswerInput interface {
+	pulumi.Input
+
+	ToScopingAnswerOutput() ScopingAnswerOutput
+	ToScopingAnswerOutputWithContext(context.Context) ScopingAnswerOutput
+}
+
+// Scoping answer.
+type ScopingAnswerArgs struct {
+	// Question answer value list.
+	Answers pulumi.StringArrayInput `pulumi:"answers"`
+	// Question id.
+	QuestionId pulumi.StringInput `pulumi:"questionId"`
+}
+
+func (ScopingAnswerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopingAnswer)(nil)).Elem()
+}
+
+func (i ScopingAnswerArgs) ToScopingAnswerOutput() ScopingAnswerOutput {
+	return i.ToScopingAnswerOutputWithContext(context.Background())
+}
+
+func (i ScopingAnswerArgs) ToScopingAnswerOutputWithContext(ctx context.Context) ScopingAnswerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopingAnswerOutput)
+}
+
+// ScopingAnswerArrayInput is an input type that accepts ScopingAnswerArray and ScopingAnswerArrayOutput values.
+// You can construct a concrete instance of `ScopingAnswerArrayInput` via:
+//
+//	ScopingAnswerArray{ ScopingAnswerArgs{...} }
+type ScopingAnswerArrayInput interface {
+	pulumi.Input
+
+	ToScopingAnswerArrayOutput() ScopingAnswerArrayOutput
+	ToScopingAnswerArrayOutputWithContext(context.Context) ScopingAnswerArrayOutput
+}
+
+type ScopingAnswerArray []ScopingAnswerInput
+
+func (ScopingAnswerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopingAnswer)(nil)).Elem()
+}
+
+func (i ScopingAnswerArray) ToScopingAnswerArrayOutput() ScopingAnswerArrayOutput {
+	return i.ToScopingAnswerArrayOutputWithContext(context.Background())
+}
+
+func (i ScopingAnswerArray) ToScopingAnswerArrayOutputWithContext(ctx context.Context) ScopingAnswerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopingAnswerArrayOutput)
+}
+
+// Scoping answer.
+type ScopingAnswerOutput struct{ *pulumi.OutputState }
+
+func (ScopingAnswerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopingAnswer)(nil)).Elem()
+}
+
+func (o ScopingAnswerOutput) ToScopingAnswerOutput() ScopingAnswerOutput {
+	return o
+}
+
+func (o ScopingAnswerOutput) ToScopingAnswerOutputWithContext(ctx context.Context) ScopingAnswerOutput {
+	return o
+}
+
+// Question answer value list.
+func (o ScopingAnswerOutput) Answers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScopingAnswer) []string { return v.Answers }).(pulumi.StringArrayOutput)
+}
+
+// Question id.
+func (o ScopingAnswerOutput) QuestionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopingAnswer) string { return v.QuestionId }).(pulumi.StringOutput)
+}
+
+type ScopingAnswerArrayOutput struct{ *pulumi.OutputState }
+
+func (ScopingAnswerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopingAnswer)(nil)).Elem()
+}
+
+func (o ScopingAnswerArrayOutput) ToScopingAnswerArrayOutput() ScopingAnswerArrayOutput {
+	return o
+}
+
+func (o ScopingAnswerArrayOutput) ToScopingAnswerArrayOutputWithContext(ctx context.Context) ScopingAnswerArrayOutput {
+	return o
+}
+
+func (o ScopingAnswerArrayOutput) Index(i pulumi.IntInput) ScopingAnswerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScopingAnswer {
+		return vs[0].([]ScopingAnswer)[vs[1].(int)]
+	}).(ScopingAnswerOutput)
+}
+
+// Scoping answer.
+type ScopingAnswerResponse struct {
+	// Question answer value list.
+	Answers []string `pulumi:"answers"`
+	// Question id.
+	QuestionId string `pulumi:"questionId"`
+}
+
+// Scoping answer.
+type ScopingAnswerResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopingAnswerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopingAnswerResponse)(nil)).Elem()
+}
+
+func (o ScopingAnswerResponseOutput) ToScopingAnswerResponseOutput() ScopingAnswerResponseOutput {
+	return o
+}
+
+func (o ScopingAnswerResponseOutput) ToScopingAnswerResponseOutputWithContext(ctx context.Context) ScopingAnswerResponseOutput {
+	return o
+}
+
+// Question answer value list.
+func (o ScopingAnswerResponseOutput) Answers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScopingAnswerResponse) []string { return v.Answers }).(pulumi.StringArrayOutput)
+}
+
+// Question id.
+func (o ScopingAnswerResponseOutput) QuestionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopingAnswerResponse) string { return v.QuestionId }).(pulumi.StringOutput)
+}
+
+type ScopingAnswerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScopingAnswerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopingAnswerResponse)(nil)).Elem()
+}
+
+func (o ScopingAnswerResponseArrayOutput) ToScopingAnswerResponseArrayOutput() ScopingAnswerResponseArrayOutput {
+	return o
+}
+
+func (o ScopingAnswerResponseArrayOutput) ToScopingAnswerResponseArrayOutputWithContext(ctx context.Context) ScopingAnswerResponseArrayOutput {
+	return o
+}
+
+func (o ScopingAnswerResponseArrayOutput) Index(i pulumi.IntInput) ScopingAnswerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScopingAnswerResponse {
+		return vs[0].([]ScopingAnswerResponse)[vs[1].(int)]
+	}).(ScopingAnswerResponseOutput)
+}
+
+// The definition of a scoping question.
+type ScopingQuestionResponse struct {
+	// Input type of the question answer.
+	InputType string `pulumi:"inputType"`
+	// Option id list.
+	OptionIds []string `pulumi:"optionIds"`
+	// Question id.
+	QuestionId string `pulumi:"questionId"`
+	// The rule of the question.
+	Rules []string `pulumi:"rules"`
+	// The answer value to show the sub questions.
+	ShowSubQuestionsValue string `pulumi:"showSubQuestionsValue"`
+	// Superior question id.
+	SuperiorQuestionId string `pulumi:"superiorQuestionId"`
+}
+
+// The definition of a scoping question.
+type ScopingQuestionResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopingQuestionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopingQuestionResponse)(nil)).Elem()
+}
+
+func (o ScopingQuestionResponseOutput) ToScopingQuestionResponseOutput() ScopingQuestionResponseOutput {
+	return o
+}
+
+func (o ScopingQuestionResponseOutput) ToScopingQuestionResponseOutputWithContext(ctx context.Context) ScopingQuestionResponseOutput {
+	return o
+}
+
+// Input type of the question answer.
+func (o ScopingQuestionResponseOutput) InputType() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopingQuestionResponse) string { return v.InputType }).(pulumi.StringOutput)
+}
+
+// Option id list.
+func (o ScopingQuestionResponseOutput) OptionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScopingQuestionResponse) []string { return v.OptionIds }).(pulumi.StringArrayOutput)
+}
+
+// Question id.
+func (o ScopingQuestionResponseOutput) QuestionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopingQuestionResponse) string { return v.QuestionId }).(pulumi.StringOutput)
+}
+
+// The rule of the question.
+func (o ScopingQuestionResponseOutput) Rules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScopingQuestionResponse) []string { return v.Rules }).(pulumi.StringArrayOutput)
+}
+
+// The answer value to show the sub questions.
+func (o ScopingQuestionResponseOutput) ShowSubQuestionsValue() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopingQuestionResponse) string { return v.ShowSubQuestionsValue }).(pulumi.StringOutput)
+}
+
+// Superior question id.
+func (o ScopingQuestionResponseOutput) SuperiorQuestionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopingQuestionResponse) string { return v.SuperiorQuestionId }).(pulumi.StringOutput)
+}
+
+type ScopingQuestionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScopingQuestionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopingQuestionResponse)(nil)).Elem()
+}
+
+func (o ScopingQuestionResponseArrayOutput) ToScopingQuestionResponseArrayOutput() ScopingQuestionResponseArrayOutput {
+	return o
+}
+
+func (o ScopingQuestionResponseArrayOutput) ToScopingQuestionResponseArrayOutputWithContext(ctx context.Context) ScopingQuestionResponseArrayOutput {
+	return o
+}
+
+func (o ScopingQuestionResponseArrayOutput) Index(i pulumi.IntInput) ScopingQuestionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScopingQuestionResponse {
+		return vs[0].([]ScopingQuestionResponse)[vs[1].(int)]
+	}).(ScopingQuestionResponseOutput)
+}
+
+// Single status.
+type StatusItemResponse struct {
+	// Status name - e.g. "Active", "Failed".
+	StatusName *string `pulumi:"statusName"`
+	// Status value. e.g. "100", or "100%".
+	StatusValue *string `pulumi:"statusValue"`
+}
+
+// Single status.
+type StatusItemResponseOutput struct{ *pulumi.OutputState }
+
+func (StatusItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusItemResponse)(nil)).Elem()
+}
+
+func (o StatusItemResponseOutput) ToStatusItemResponseOutput() StatusItemResponseOutput {
+	return o
+}
+
+func (o StatusItemResponseOutput) ToStatusItemResponseOutputWithContext(ctx context.Context) StatusItemResponseOutput {
+	return o
+}
+
+// Status name - e.g. "Active", "Failed".
+func (o StatusItemResponseOutput) StatusName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatusItemResponse) *string { return v.StatusName }).(pulumi.StringPtrOutput)
+}
+
+// Status value. e.g. "100", or "100%".
+func (o StatusItemResponseOutput) StatusValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatusItemResponse) *string { return v.StatusValue }).(pulumi.StringPtrOutput)
+}
+
+type StatusItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusItemResponse)(nil)).Elem()
+}
+
+func (o StatusItemResponseArrayOutput) ToStatusItemResponseArrayOutput() StatusItemResponseArrayOutput {
+	return o
+}
+
+func (o StatusItemResponseArrayOutput) ToStatusItemResponseArrayOutputWithContext(ctx context.Context) StatusItemResponseArrayOutput {
+	return o
+}
+
+func (o StatusItemResponseArrayOutput) Index(i pulumi.IntInput) StatusItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusItemResponse {
+		return vs[0].([]StatusItemResponse)[vs[1].(int)]
+	}).(StatusItemResponseOutput)
+}
+
+// The information of 'bring your own storage' account binding to the report
+type StorageInfoResponse struct {
+	// 'bring your own storage' account name
+	AccountName *string `pulumi:"accountName"`
+	// The region of 'bring your own storage' account
+	Location *string `pulumi:"location"`
+	// The resourceGroup which 'bring your own storage' account belongs to
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// The subscription id which 'bring your own storage' account belongs to
+	SubscriptionId *string `pulumi:"subscriptionId"`
+}
+
+// The information of 'bring your own storage' account binding to the report
+type StorageInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageInfoResponse)(nil)).Elem()
+}
+
+func (o StorageInfoResponseOutput) ToStorageInfoResponseOutput() StorageInfoResponseOutput {
+	return o
+}
+
+func (o StorageInfoResponseOutput) ToStorageInfoResponseOutputWithContext(ctx context.Context) StorageInfoResponseOutput {
+	return o
+}
+
+// 'bring your own storage' account name
+func (o StorageInfoResponseOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfoResponse) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+}
+
+// The region of 'bring your own storage' account
+func (o StorageInfoResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfoResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The resourceGroup which 'bring your own storage' account belongs to
+func (o StorageInfoResponseOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfoResponse) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// The subscription id which 'bring your own storage' account belongs to
+func (o StorageInfoResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageInfoResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+type StorageInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageInfoResponse)(nil)).Elem()
+}
+
+func (o StorageInfoResponseArrayOutput) ToStorageInfoResponseArrayOutput() StorageInfoResponseArrayOutput {
+	return o
+}
+
+func (o StorageInfoResponseArrayOutput) ToStorageInfoResponseArrayOutputWithContext(ctx context.Context) StorageInfoResponseArrayOutput {
+	return o
+}
+
+func (o StorageInfoResponseArrayOutput) Index(i pulumi.IntInput) StorageInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageInfoResponse {
+		return vs[0].([]StorageInfoResponse)[vs[1].(int)]
+	}).(StorageInfoResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -611,5 +974,15 @@ func init() {
 	pulumi.RegisterOutputType(ResourceMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ResourceMetadataResponseOutput{})
 	pulumi.RegisterOutputType(ResourceMetadataResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScopingAnswerOutput{})
+	pulumi.RegisterOutputType(ScopingAnswerArrayOutput{})
+	pulumi.RegisterOutputType(ScopingAnswerResponseOutput{})
+	pulumi.RegisterOutputType(ScopingAnswerResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScopingQuestionResponseOutput{})
+	pulumi.RegisterOutputType(ScopingQuestionResponseArrayOutput{})
+	pulumi.RegisterOutputType(StatusItemResponseOutput{})
+	pulumi.RegisterOutputType(StatusItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(StorageInfoResponseOutput{})
+	pulumi.RegisterOutputType(StorageInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

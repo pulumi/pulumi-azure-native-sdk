@@ -27,7 +27,7 @@ type LookupInventoryItemArgs struct {
 	InventoryItemResourceName string `pulumi:"inventoryItemResourceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the VMMServer.
+	// Name of the VmmServer.
 	VmmServerName string `pulumi:"vmmServerName"`
 }
 
@@ -35,7 +35,7 @@ type LookupInventoryItemArgs struct {
 type LookupInventoryItemResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Gets the Managed Object name in VMM for the inventory item.
+	// Gets the Managed Object name in Vmm for the inventory item.
 	InventoryItemName string `pulumi:"inventoryItemName"`
 	// They inventory type.
 	InventoryType string `pulumi:"inventoryType"`
@@ -51,7 +51,7 @@ type LookupInventoryItemResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Gets the UUID (which is assigned by VMM) for the inventory item.
+	// Gets the UUID (which is assigned by Vmm) for the inventory item.
 	Uuid string `pulumi:"uuid"`
 }
 
@@ -73,7 +73,7 @@ type LookupInventoryItemOutputArgs struct {
 	InventoryItemResourceName pulumi.StringInput `pulumi:"inventoryItemResourceName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the VMMServer.
+	// Name of the VmmServer.
 	VmmServerName pulumi.StringInput `pulumi:"vmmServerName"`
 }
 
@@ -101,7 +101,7 @@ func (o LookupInventoryItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Gets the Managed Object name in VMM for the inventory item.
+// Gets the Managed Object name in Vmm for the inventory item.
 func (o LookupInventoryItemResultOutput) InventoryItemName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.InventoryItemName }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupInventoryItemResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Gets the UUID (which is assigned by VMM) for the inventory item.
+// Gets the UUID (which is assigned by Vmm) for the inventory item.
 func (o LookupInventoryItemResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryItemResult) string { return v.Uuid }).(pulumi.StringOutput)
 }

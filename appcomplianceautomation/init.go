@@ -21,8 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:appcomplianceautomation:Evidence":
+		r = &Evidence{}
 	case "azure-native:appcomplianceautomation:Report":
 		r = &Report{}
+	case "azure-native:appcomplianceautomation:ScopingConfiguration":
+		r = &ScopingConfiguration{}
+	case "azure-native:appcomplianceautomation:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

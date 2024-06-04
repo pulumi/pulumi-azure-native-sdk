@@ -889,6 +889,559 @@ func (o GitHubWorkflowProfileResponseOidcCredentialsPtrOutput) AzureTenantId() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type IacTemplateDetails struct {
+	// Count of the product
+	Count *int `pulumi:"count"`
+	// Naming convention of this product
+	NamingConvention *string `pulumi:"namingConvention"`
+	// The name of the products.
+	ProductName *string `pulumi:"productName"`
+}
+
+// IacTemplateDetailsInput is an input type that accepts IacTemplateDetailsArgs and IacTemplateDetailsOutput values.
+// You can construct a concrete instance of `IacTemplateDetailsInput` via:
+//
+//	IacTemplateDetailsArgs{...}
+type IacTemplateDetailsInput interface {
+	pulumi.Input
+
+	ToIacTemplateDetailsOutput() IacTemplateDetailsOutput
+	ToIacTemplateDetailsOutputWithContext(context.Context) IacTemplateDetailsOutput
+}
+
+type IacTemplateDetailsArgs struct {
+	// Count of the product
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Naming convention of this product
+	NamingConvention pulumi.StringPtrInput `pulumi:"namingConvention"`
+	// The name of the products.
+	ProductName pulumi.StringPtrInput `pulumi:"productName"`
+}
+
+func (IacTemplateDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacTemplateDetails)(nil)).Elem()
+}
+
+func (i IacTemplateDetailsArgs) ToIacTemplateDetailsOutput() IacTemplateDetailsOutput {
+	return i.ToIacTemplateDetailsOutputWithContext(context.Background())
+}
+
+func (i IacTemplateDetailsArgs) ToIacTemplateDetailsOutputWithContext(ctx context.Context) IacTemplateDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacTemplateDetailsOutput)
+}
+
+// IacTemplateDetailsArrayInput is an input type that accepts IacTemplateDetailsArray and IacTemplateDetailsArrayOutput values.
+// You can construct a concrete instance of `IacTemplateDetailsArrayInput` via:
+//
+//	IacTemplateDetailsArray{ IacTemplateDetailsArgs{...} }
+type IacTemplateDetailsArrayInput interface {
+	pulumi.Input
+
+	ToIacTemplateDetailsArrayOutput() IacTemplateDetailsArrayOutput
+	ToIacTemplateDetailsArrayOutputWithContext(context.Context) IacTemplateDetailsArrayOutput
+}
+
+type IacTemplateDetailsArray []IacTemplateDetailsInput
+
+func (IacTemplateDetailsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacTemplateDetails)(nil)).Elem()
+}
+
+func (i IacTemplateDetailsArray) ToIacTemplateDetailsArrayOutput() IacTemplateDetailsArrayOutput {
+	return i.ToIacTemplateDetailsArrayOutputWithContext(context.Background())
+}
+
+func (i IacTemplateDetailsArray) ToIacTemplateDetailsArrayOutputWithContext(ctx context.Context) IacTemplateDetailsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacTemplateDetailsArrayOutput)
+}
+
+type IacTemplateDetailsOutput struct{ *pulumi.OutputState }
+
+func (IacTemplateDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacTemplateDetails)(nil)).Elem()
+}
+
+func (o IacTemplateDetailsOutput) ToIacTemplateDetailsOutput() IacTemplateDetailsOutput {
+	return o
+}
+
+func (o IacTemplateDetailsOutput) ToIacTemplateDetailsOutputWithContext(ctx context.Context) IacTemplateDetailsOutput {
+	return o
+}
+
+// Count of the product
+func (o IacTemplateDetailsOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IacTemplateDetails) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Naming convention of this product
+func (o IacTemplateDetailsOutput) NamingConvention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateDetails) *string { return v.NamingConvention }).(pulumi.StringPtrOutput)
+}
+
+// The name of the products.
+func (o IacTemplateDetailsOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateDetails) *string { return v.ProductName }).(pulumi.StringPtrOutput)
+}
+
+type IacTemplateDetailsArrayOutput struct{ *pulumi.OutputState }
+
+func (IacTemplateDetailsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacTemplateDetails)(nil)).Elem()
+}
+
+func (o IacTemplateDetailsArrayOutput) ToIacTemplateDetailsArrayOutput() IacTemplateDetailsArrayOutput {
+	return o
+}
+
+func (o IacTemplateDetailsArrayOutput) ToIacTemplateDetailsArrayOutputWithContext(ctx context.Context) IacTemplateDetailsArrayOutput {
+	return o
+}
+
+func (o IacTemplateDetailsArrayOutput) Index(i pulumi.IntInput) IacTemplateDetailsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacTemplateDetails {
+		return vs[0].([]IacTemplateDetails)[vs[1].(int)]
+	}).(IacTemplateDetailsOutput)
+}
+
+type IacTemplateDetailsResponse struct {
+	// Count of the product
+	Count *int `pulumi:"count"`
+	// Naming convention of this product
+	NamingConvention *string `pulumi:"namingConvention"`
+	// The name of the products.
+	ProductName *string `pulumi:"productName"`
+}
+
+type IacTemplateDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (IacTemplateDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacTemplateDetailsResponse)(nil)).Elem()
+}
+
+func (o IacTemplateDetailsResponseOutput) ToIacTemplateDetailsResponseOutput() IacTemplateDetailsResponseOutput {
+	return o
+}
+
+func (o IacTemplateDetailsResponseOutput) ToIacTemplateDetailsResponseOutputWithContext(ctx context.Context) IacTemplateDetailsResponseOutput {
+	return o
+}
+
+// Count of the product
+func (o IacTemplateDetailsResponseOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IacTemplateDetailsResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Naming convention of this product
+func (o IacTemplateDetailsResponseOutput) NamingConvention() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateDetailsResponse) *string { return v.NamingConvention }).(pulumi.StringPtrOutput)
+}
+
+// The name of the products.
+func (o IacTemplateDetailsResponseOutput) ProductName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateDetailsResponse) *string { return v.ProductName }).(pulumi.StringPtrOutput)
+}
+
+type IacTemplateDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IacTemplateDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacTemplateDetailsResponse)(nil)).Elem()
+}
+
+func (o IacTemplateDetailsResponseArrayOutput) ToIacTemplateDetailsResponseArrayOutput() IacTemplateDetailsResponseArrayOutput {
+	return o
+}
+
+func (o IacTemplateDetailsResponseArrayOutput) ToIacTemplateDetailsResponseArrayOutputWithContext(ctx context.Context) IacTemplateDetailsResponseArrayOutput {
+	return o
+}
+
+func (o IacTemplateDetailsResponseArrayOutput) Index(i pulumi.IntInput) IacTemplateDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacTemplateDetailsResponse {
+		return vs[0].([]IacTemplateDetailsResponse)[vs[1].(int)]
+	}).(IacTemplateDetailsResponseOutput)
+}
+
+// Properties of a IacTemplate.
+type IacTemplateProperties struct {
+	// the sample instance name of the template
+	InstanceName *string `pulumi:"instanceName"`
+	// the source stage of the template
+	InstanceStage *string `pulumi:"instanceStage"`
+	// the source store of the template
+	SourceResourceId *string              `pulumi:"sourceResourceId"`
+	TemplateDetails  []IacTemplateDetails `pulumi:"templateDetails"`
+	// Template Name
+	TemplateName *string `pulumi:"templateName"`
+}
+
+// IacTemplatePropertiesInput is an input type that accepts IacTemplatePropertiesArgs and IacTemplatePropertiesOutput values.
+// You can construct a concrete instance of `IacTemplatePropertiesInput` via:
+//
+//	IacTemplatePropertiesArgs{...}
+type IacTemplatePropertiesInput interface {
+	pulumi.Input
+
+	ToIacTemplatePropertiesOutput() IacTemplatePropertiesOutput
+	ToIacTemplatePropertiesOutputWithContext(context.Context) IacTemplatePropertiesOutput
+}
+
+// Properties of a IacTemplate.
+type IacTemplatePropertiesArgs struct {
+	// the sample instance name of the template
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
+	// the source stage of the template
+	InstanceStage pulumi.StringPtrInput `pulumi:"instanceStage"`
+	// the source store of the template
+	SourceResourceId pulumi.StringPtrInput        `pulumi:"sourceResourceId"`
+	TemplateDetails  IacTemplateDetailsArrayInput `pulumi:"templateDetails"`
+	// Template Name
+	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
+}
+
+func (IacTemplatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacTemplateProperties)(nil)).Elem()
+}
+
+func (i IacTemplatePropertiesArgs) ToIacTemplatePropertiesOutput() IacTemplatePropertiesOutput {
+	return i.ToIacTemplatePropertiesOutputWithContext(context.Background())
+}
+
+func (i IacTemplatePropertiesArgs) ToIacTemplatePropertiesOutputWithContext(ctx context.Context) IacTemplatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacTemplatePropertiesOutput)
+}
+
+// IacTemplatePropertiesArrayInput is an input type that accepts IacTemplatePropertiesArray and IacTemplatePropertiesArrayOutput values.
+// You can construct a concrete instance of `IacTemplatePropertiesArrayInput` via:
+//
+//	IacTemplatePropertiesArray{ IacTemplatePropertiesArgs{...} }
+type IacTemplatePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToIacTemplatePropertiesArrayOutput() IacTemplatePropertiesArrayOutput
+	ToIacTemplatePropertiesArrayOutputWithContext(context.Context) IacTemplatePropertiesArrayOutput
+}
+
+type IacTemplatePropertiesArray []IacTemplatePropertiesInput
+
+func (IacTemplatePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacTemplateProperties)(nil)).Elem()
+}
+
+func (i IacTemplatePropertiesArray) ToIacTemplatePropertiesArrayOutput() IacTemplatePropertiesArrayOutput {
+	return i.ToIacTemplatePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i IacTemplatePropertiesArray) ToIacTemplatePropertiesArrayOutputWithContext(ctx context.Context) IacTemplatePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacTemplatePropertiesArrayOutput)
+}
+
+// Properties of a IacTemplate.
+type IacTemplatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (IacTemplatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacTemplateProperties)(nil)).Elem()
+}
+
+func (o IacTemplatePropertiesOutput) ToIacTemplatePropertiesOutput() IacTemplatePropertiesOutput {
+	return o
+}
+
+func (o IacTemplatePropertiesOutput) ToIacTemplatePropertiesOutputWithContext(ctx context.Context) IacTemplatePropertiesOutput {
+	return o
+}
+
+// the sample instance name of the template
+func (o IacTemplatePropertiesOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateProperties) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// the source stage of the template
+func (o IacTemplatePropertiesOutput) InstanceStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateProperties) *string { return v.InstanceStage }).(pulumi.StringPtrOutput)
+}
+
+// the source store of the template
+func (o IacTemplatePropertiesOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateProperties) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o IacTemplatePropertiesOutput) TemplateDetails() IacTemplateDetailsArrayOutput {
+	return o.ApplyT(func(v IacTemplateProperties) []IacTemplateDetails { return v.TemplateDetails }).(IacTemplateDetailsArrayOutput)
+}
+
+// Template Name
+func (o IacTemplatePropertiesOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplateProperties) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+type IacTemplatePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (IacTemplatePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacTemplateProperties)(nil)).Elem()
+}
+
+func (o IacTemplatePropertiesArrayOutput) ToIacTemplatePropertiesArrayOutput() IacTemplatePropertiesArrayOutput {
+	return o
+}
+
+func (o IacTemplatePropertiesArrayOutput) ToIacTemplatePropertiesArrayOutputWithContext(ctx context.Context) IacTemplatePropertiesArrayOutput {
+	return o
+}
+
+func (o IacTemplatePropertiesArrayOutput) Index(i pulumi.IntInput) IacTemplatePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacTemplateProperties {
+		return vs[0].([]IacTemplateProperties)[vs[1].(int)]
+	}).(IacTemplatePropertiesOutput)
+}
+
+// Properties of a IacTemplate.
+type IacTemplatePropertiesResponse struct {
+	// the sample instance name of the template
+	InstanceName *string `pulumi:"instanceName"`
+	// the source stage of the template
+	InstanceStage *string `pulumi:"instanceStage"`
+	// Determines the authorization status of requests.
+	QuickStartTemplateType string `pulumi:"quickStartTemplateType"`
+	// the source store of the template
+	SourceResourceId *string                      `pulumi:"sourceResourceId"`
+	TemplateDetails  []IacTemplateDetailsResponse `pulumi:"templateDetails"`
+	// Template Name
+	TemplateName *string `pulumi:"templateName"`
+}
+
+// Properties of a IacTemplate.
+type IacTemplatePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IacTemplatePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacTemplatePropertiesResponse)(nil)).Elem()
+}
+
+func (o IacTemplatePropertiesResponseOutput) ToIacTemplatePropertiesResponseOutput() IacTemplatePropertiesResponseOutput {
+	return o
+}
+
+func (o IacTemplatePropertiesResponseOutput) ToIacTemplatePropertiesResponseOutputWithContext(ctx context.Context) IacTemplatePropertiesResponseOutput {
+	return o
+}
+
+// the sample instance name of the template
+func (o IacTemplatePropertiesResponseOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
+// the source stage of the template
+func (o IacTemplatePropertiesResponseOutput) InstanceStage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) *string { return v.InstanceStage }).(pulumi.StringPtrOutput)
+}
+
+// Determines the authorization status of requests.
+func (o IacTemplatePropertiesResponseOutput) QuickStartTemplateType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) string { return v.QuickStartTemplateType }).(pulumi.StringOutput)
+}
+
+// the source store of the template
+func (o IacTemplatePropertiesResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o IacTemplatePropertiesResponseOutput) TemplateDetails() IacTemplateDetailsResponseArrayOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) []IacTemplateDetailsResponse { return v.TemplateDetails }).(IacTemplateDetailsResponseArrayOutput)
+}
+
+// Template Name
+func (o IacTemplatePropertiesResponseOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacTemplatePropertiesResponse) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+type IacTemplatePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IacTemplatePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacTemplatePropertiesResponse)(nil)).Elem()
+}
+
+func (o IacTemplatePropertiesResponseArrayOutput) ToIacTemplatePropertiesResponseArrayOutput() IacTemplatePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o IacTemplatePropertiesResponseArrayOutput) ToIacTemplatePropertiesResponseArrayOutputWithContext(ctx context.Context) IacTemplatePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o IacTemplatePropertiesResponseArrayOutput) Index(i pulumi.IntInput) IacTemplatePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacTemplatePropertiesResponse {
+		return vs[0].([]IacTemplatePropertiesResponse)[vs[1].(int)]
+	}).(IacTemplatePropertiesResponseOutput)
+}
+
+// Properties of a Stage.
+type StageProperties struct {
+	Dependencies   []string `pulumi:"dependencies"`
+	GitEnvironment *string  `pulumi:"gitEnvironment"`
+	// Stage Name
+	StageName *string `pulumi:"stageName"`
+}
+
+// StagePropertiesInput is an input type that accepts StagePropertiesArgs and StagePropertiesOutput values.
+// You can construct a concrete instance of `StagePropertiesInput` via:
+//
+//	StagePropertiesArgs{...}
+type StagePropertiesInput interface {
+	pulumi.Input
+
+	ToStagePropertiesOutput() StagePropertiesOutput
+	ToStagePropertiesOutputWithContext(context.Context) StagePropertiesOutput
+}
+
+// Properties of a Stage.
+type StagePropertiesArgs struct {
+	Dependencies   pulumi.StringArrayInput `pulumi:"dependencies"`
+	GitEnvironment pulumi.StringPtrInput   `pulumi:"gitEnvironment"`
+	// Stage Name
+	StageName pulumi.StringPtrInput `pulumi:"stageName"`
+}
+
+func (StagePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageProperties)(nil)).Elem()
+}
+
+func (i StagePropertiesArgs) ToStagePropertiesOutput() StagePropertiesOutput {
+	return i.ToStagePropertiesOutputWithContext(context.Background())
+}
+
+func (i StagePropertiesArgs) ToStagePropertiesOutputWithContext(ctx context.Context) StagePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StagePropertiesOutput)
+}
+
+// StagePropertiesArrayInput is an input type that accepts StagePropertiesArray and StagePropertiesArrayOutput values.
+// You can construct a concrete instance of `StagePropertiesArrayInput` via:
+//
+//	StagePropertiesArray{ StagePropertiesArgs{...} }
+type StagePropertiesArrayInput interface {
+	pulumi.Input
+
+	ToStagePropertiesArrayOutput() StagePropertiesArrayOutput
+	ToStagePropertiesArrayOutputWithContext(context.Context) StagePropertiesArrayOutput
+}
+
+type StagePropertiesArray []StagePropertiesInput
+
+func (StagePropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StageProperties)(nil)).Elem()
+}
+
+func (i StagePropertiesArray) ToStagePropertiesArrayOutput() StagePropertiesArrayOutput {
+	return i.ToStagePropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i StagePropertiesArray) ToStagePropertiesArrayOutputWithContext(ctx context.Context) StagePropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StagePropertiesArrayOutput)
+}
+
+// Properties of a Stage.
+type StagePropertiesOutput struct{ *pulumi.OutputState }
+
+func (StagePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StageProperties)(nil)).Elem()
+}
+
+func (o StagePropertiesOutput) ToStagePropertiesOutput() StagePropertiesOutput {
+	return o
+}
+
+func (o StagePropertiesOutput) ToStagePropertiesOutputWithContext(ctx context.Context) StagePropertiesOutput {
+	return o
+}
+
+func (o StagePropertiesOutput) Dependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StageProperties) []string { return v.Dependencies }).(pulumi.StringArrayOutput)
+}
+
+func (o StagePropertiesOutput) GitEnvironment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StageProperties) *string { return v.GitEnvironment }).(pulumi.StringPtrOutput)
+}
+
+// Stage Name
+func (o StagePropertiesOutput) StageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StageProperties) *string { return v.StageName }).(pulumi.StringPtrOutput)
+}
+
+type StagePropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (StagePropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StageProperties)(nil)).Elem()
+}
+
+func (o StagePropertiesArrayOutput) ToStagePropertiesArrayOutput() StagePropertiesArrayOutput {
+	return o
+}
+
+func (o StagePropertiesArrayOutput) ToStagePropertiesArrayOutputWithContext(ctx context.Context) StagePropertiesArrayOutput {
+	return o
+}
+
+func (o StagePropertiesArrayOutput) Index(i pulumi.IntInput) StagePropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StageProperties {
+		return vs[0].([]StageProperties)[vs[1].(int)]
+	}).(StagePropertiesOutput)
+}
+
+// Properties of a Stage.
+type StagePropertiesResponse struct {
+	Dependencies   []string `pulumi:"dependencies"`
+	GitEnvironment *string  `pulumi:"gitEnvironment"`
+	// Stage Name
+	StageName *string `pulumi:"stageName"`
+}
+
+// Properties of a Stage.
+type StagePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (StagePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StagePropertiesResponse)(nil)).Elem()
+}
+
+func (o StagePropertiesResponseOutput) ToStagePropertiesResponseOutput() StagePropertiesResponseOutput {
+	return o
+}
+
+func (o StagePropertiesResponseOutput) ToStagePropertiesResponseOutputWithContext(ctx context.Context) StagePropertiesResponseOutput {
+	return o
+}
+
+func (o StagePropertiesResponseOutput) Dependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StagePropertiesResponse) []string { return v.Dependencies }).(pulumi.StringArrayOutput)
+}
+
+func (o StagePropertiesResponseOutput) GitEnvironment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StagePropertiesResponse) *string { return v.GitEnvironment }).(pulumi.StringPtrOutput)
+}
+
+// Stage Name
+func (o StagePropertiesResponseOutput) StageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StagePropertiesResponse) *string { return v.StageName }).(pulumi.StringPtrOutput)
+}
+
+type StagePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StagePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StagePropertiesResponse)(nil)).Elem()
+}
+
+func (o StagePropertiesResponseArrayOutput) ToStagePropertiesResponseArrayOutput() StagePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o StagePropertiesResponseArrayOutput) ToStagePropertiesResponseArrayOutputWithContext(ctx context.Context) StagePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o StagePropertiesResponseArrayOutput) Index(i pulumi.IntInput) StagePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StagePropertiesResponse {
+		return vs[0].([]StagePropertiesResponse)[vs[1].(int)]
+	}).(StagePropertiesResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1209,6 +1762,18 @@ func init() {
 	pulumi.RegisterOutputType(GitHubWorkflowProfileOidcCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOidcCredentialsOutput{})
 	pulumi.RegisterOutputType(GitHubWorkflowProfileResponseOidcCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(IacTemplateDetailsOutput{})
+	pulumi.RegisterOutputType(IacTemplateDetailsArrayOutput{})
+	pulumi.RegisterOutputType(IacTemplateDetailsResponseOutput{})
+	pulumi.RegisterOutputType(IacTemplateDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(IacTemplatePropertiesOutput{})
+	pulumi.RegisterOutputType(IacTemplatePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(IacTemplatePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IacTemplatePropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(StagePropertiesOutput{})
+	pulumi.RegisterOutputType(StagePropertiesArrayOutput{})
+	pulumi.RegisterOutputType(StagePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(StagePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(WorkflowRunOutput{})
 	pulumi.RegisterOutputType(WorkflowRunPtrOutput{})

@@ -15,7 +15,7 @@ import (
 // Represents a trigger that can invoke an image template build.
 // Azure REST API version: 2022-07-01.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2024-02-01.
 type Trigger struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +55,9 @@ func NewTrigger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:virtualmachineimages/v20230701:Trigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:virtualmachineimages/v20240201:Trigger"),
 		},
 	})
 	opts = append(opts, aliases)

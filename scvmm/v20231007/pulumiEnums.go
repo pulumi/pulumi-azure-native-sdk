@@ -14,8 +14,10 @@ import (
 type AllocationMethod string
 
 const (
+	// Dynamically allocated address.
 	AllocationMethodDynamic = AllocationMethod("Dynamic")
-	AllocationMethodStatic  = AllocationMethod("Static")
+	// Statically allocated address.
+	AllocationMethodStatic = AllocationMethod("Static")
 )
 
 func (AllocationMethod) ElementType() reflect.Type {
@@ -180,8 +182,10 @@ func (in *allocationMethodPtr) ToAllocationMethodPtrOutputWithContext(ctx contex
 type CreateDiffDisk string
 
 const (
+	// Enable create diff disk.
+	CreateDiffDiskTrue = CreateDiffDisk("true")
+	// Disable create diff disk.
 	CreateDiffDiskFalse = CreateDiffDisk("false")
-	CreateDiffDiskTrue  = CreateDiffDisk("true")
 )
 
 func (CreateDiffDisk) ElementType() reflect.Type {
@@ -306,8 +310,8 @@ func (o CreateDiffDiskPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // CreateDiffDiskInput is an input type that accepts values of the CreateDiffDisk enum
 // A concrete instance of `CreateDiffDiskInput` can be one of the following:
 //
-//	CreateDiffDiskFalse
 //	CreateDiffDiskTrue
+//	CreateDiffDiskFalse
 type CreateDiffDiskInput interface {
 	pulumi.Input
 
@@ -346,8 +350,10 @@ func (in *createDiffDiskPtr) ToCreateDiffDiskPtrOutputWithContext(ctx context.Co
 type DynamicMemoryEnabled string
 
 const (
+	// Enable dynamic memory.
+	DynamicMemoryEnabledTrue = DynamicMemoryEnabled("true")
+	// Disable dynamic memory.
 	DynamicMemoryEnabledFalse = DynamicMemoryEnabled("false")
-	DynamicMemoryEnabledTrue  = DynamicMemoryEnabled("true")
 )
 
 func (DynamicMemoryEnabled) ElementType() reflect.Type {
@@ -472,8 +478,8 @@ func (o DynamicMemoryEnabledPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // DynamicMemoryEnabledInput is an input type that accepts values of the DynamicMemoryEnabled enum
 // A concrete instance of `DynamicMemoryEnabledInput` can be one of the following:
 //
-//	DynamicMemoryEnabledFalse
 //	DynamicMemoryEnabledTrue
+//	DynamicMemoryEnabledFalse
 type DynamicMemoryEnabledInput interface {
 	pulumi.Input
 
@@ -512,10 +518,14 @@ func (in *dynamicMemoryEnabledPtr) ToDynamicMemoryEnabledPtrOutputWithContext(ct
 type InventoryType string
 
 const (
-	InventoryTypeCloud                  = InventoryType("Cloud")
-	InventoryTypeVirtualNetwork         = InventoryType("VirtualNetwork")
+	// Cloud inventory type
+	InventoryTypeCloud = InventoryType("Cloud")
+	// VirtualNetwork inventory type
+	InventoryTypeVirtualNetwork = InventoryType("VirtualNetwork")
+	// VirtualMachine inventory type
+	InventoryTypeVirtualMachine = InventoryType("VirtualMachine")
+	// VirtualMachineTemplate inventory type
 	InventoryTypeVirtualMachineTemplate = InventoryType("VirtualMachineTemplate")
-	InventoryTypeVirtualMachine         = InventoryType("VirtualMachine")
 )
 
 func (InventoryType) ElementType() reflect.Type {
@@ -642,8 +652,8 @@ func (o InventoryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 //
 //	InventoryTypeCloud
 //	InventoryTypeVirtualNetwork
-//	InventoryTypeVirtualMachineTemplate
 //	InventoryTypeVirtualMachine
+//	InventoryTypeVirtualMachineTemplate
 type InventoryTypeInput interface {
 	pulumi.Input
 
@@ -682,8 +692,10 @@ func (in *inventoryTypePtr) ToInventoryTypePtrOutputWithContext(ctx context.Cont
 type LimitCpuForMigration string
 
 const (
+	// Enable limit CPU for migration.
+	LimitCpuForMigrationTrue = LimitCpuForMigration("true")
+	// Disable limit CPU for migration.
 	LimitCpuForMigrationFalse = LimitCpuForMigration("false")
-	LimitCpuForMigrationTrue  = LimitCpuForMigration("true")
 )
 
 func (LimitCpuForMigration) ElementType() reflect.Type {
@@ -808,8 +820,8 @@ func (o LimitCpuForMigrationPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // LimitCpuForMigrationInput is an input type that accepts values of the LimitCpuForMigration enum
 // A concrete instance of `LimitCpuForMigrationInput` can be one of the following:
 //
-//	LimitCpuForMigrationFalse
 //	LimitCpuForMigrationTrue
+//	LimitCpuForMigrationFalse
 type LimitCpuForMigrationInput interface {
 	pulumi.Input
 
@@ -848,9 +860,12 @@ func (in *limitCpuForMigrationPtr) ToLimitCpuForMigrationPtrOutputWithContext(ct
 type ProvisioningAction string
 
 const (
-	ProvisioningActionInstall   = ProvisioningAction("install")
+	// Install guest agent.
+	ProvisioningActionInstall = ProvisioningAction("install")
+	// Uninstall guest agent.
 	ProvisioningActionUninstall = ProvisioningAction("uninstall")
-	ProvisioningActionRepair    = ProvisioningAction("repair")
+	// Repair guest agent.
+	ProvisioningActionRepair = ProvisioningAction("repair")
 )
 
 func (ProvisioningAction) ElementType() reflect.Type {

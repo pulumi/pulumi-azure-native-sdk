@@ -33,7 +33,7 @@ type LookupCloudArgs struct {
 type LookupCloudResult struct {
 	// Capacity of the cloud.
 	CloudCapacity CloudCapacityResponse `pulumi:"cloudCapacity"`
-	// Name of the cloud in VMMServer.
+	// Name of the cloud in VmmServer.
 	CloudName string `pulumi:"cloudName"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
@@ -48,7 +48,7 @@ type LookupCloudResult struct {
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// List of QoS policies available for the cloud.
-	StorageQoSPolicies []StorageQoSPolicyResponse `pulumi:"storageQoSPolicies"`
+	StorageQosPolicies []StorageQosPolicyResponse `pulumi:"storageQosPolicies"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -105,7 +105,7 @@ func (o LookupCloudResultOutput) CloudCapacity() CloudCapacityResponseOutput {
 	return o.ApplyT(func(v LookupCloudResult) CloudCapacityResponse { return v.CloudCapacity }).(CloudCapacityResponseOutput)
 }
 
-// Name of the cloud in VMMServer.
+// Name of the cloud in VmmServer.
 func (o LookupCloudResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
@@ -141,8 +141,8 @@ func (o LookupCloudResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // List of QoS policies available for the cloud.
-func (o LookupCloudResultOutput) StorageQoSPolicies() StorageQoSPolicyResponseArrayOutput {
-	return o.ApplyT(func(v LookupCloudResult) []StorageQoSPolicyResponse { return v.StorageQoSPolicies }).(StorageQoSPolicyResponseArrayOutput)
+func (o LookupCloudResultOutput) StorageQosPolicies() StorageQosPolicyResponseArrayOutput {
+	return o.ApplyT(func(v LookupCloudResult) []StorageQosPolicyResponse { return v.StorageQosPolicies }).(StorageQosPolicyResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

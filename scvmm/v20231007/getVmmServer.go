@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Implements VMMServer GET method.
+// Implements VmmServer GET method.
 func LookupVmmServer(ctx *pulumi.Context, args *LookupVmmServerArgs, opts ...pulumi.InvokeOption) (*LookupVmmServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVmmServerResult
@@ -25,7 +25,7 @@ func LookupVmmServer(ctx *pulumi.Context, args *LookupVmmServerArgs, opts ...pul
 type LookupVmmServerArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the VMMServer.
+	// Name of the VmmServer.
 	VmmServerName string `pulumi:"vmmServerName"`
 }
 
@@ -33,8 +33,8 @@ type LookupVmmServerArgs struct {
 type LookupVmmServerResult struct {
 	// Gets the connection status to the vmmServer.
 	ConnectionStatus string `pulumi:"connectionStatus"`
-	// Credentials to connect to VMMServer.
-	Credentials *VMMCredentialResponse `pulumi:"credentials"`
+	// Credentials to connect to VmmServer.
+	Credentials *VmmCredentialResponse `pulumi:"credentials"`
 	// Gets any error message if connection to vmmServer is having any issue.
 	ErrorMessage string `pulumi:"errorMessage"`
 	// The extended location.
@@ -79,7 +79,7 @@ func LookupVmmServerOutput(ctx *pulumi.Context, args LookupVmmServerOutputArgs, 
 type LookupVmmServerOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the VMMServer.
+	// Name of the VmmServer.
 	VmmServerName pulumi.StringInput `pulumi:"vmmServerName"`
 }
 
@@ -107,9 +107,9 @@ func (o LookupVmmServerResultOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVmmServerResult) string { return v.ConnectionStatus }).(pulumi.StringOutput)
 }
 
-// Credentials to connect to VMMServer.
-func (o LookupVmmServerResultOutput) Credentials() VMMCredentialResponsePtrOutput {
-	return o.ApplyT(func(v LookupVmmServerResult) *VMMCredentialResponse { return v.Credentials }).(VMMCredentialResponsePtrOutput)
+// Credentials to connect to VmmServer.
+func (o LookupVmmServerResultOutput) Credentials() VmmCredentialResponsePtrOutput {
+	return o.ApplyT(func(v LookupVmmServerResult) *VmmCredentialResponse { return v.Credentials }).(VmmCredentialResponsePtrOutput)
 }
 
 // Gets any error message if connection to vmmServer is having any issue.

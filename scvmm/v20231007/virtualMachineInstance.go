@@ -17,7 +17,7 @@ type VirtualMachineInstance struct {
 	pulumi.CustomResourceState
 
 	// Availability Sets in vm.
-	AvailabilitySets VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput `pulumi:"availabilitySets"`
+	AvailabilitySets AvailabilitySetListItemResponseArrayOutput `pulumi:"availabilitySets"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -29,7 +29,7 @@ type VirtualMachineInstance struct {
 	// Network properties.
 	NetworkProfile NetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
 	// OS properties.
-	OsProfile OsProfileForVMInstanceResponsePtrOutput `pulumi:"osProfile"`
+	OsProfile OsProfileForVmInstanceResponsePtrOutput `pulumi:"osProfile"`
 	// Gets the power state of the virtual machine.
 	PowerState pulumi.StringOutput `pulumi:"powerState"`
 	// Provisioning state of the resource.
@@ -98,7 +98,7 @@ func (VirtualMachineInstanceState) ElementType() reflect.Type {
 
 type virtualMachineInstanceArgs struct {
 	// Availability Sets in vm.
-	AvailabilitySets []VirtualMachineInstancePropertiesAvailabilitySets `pulumi:"availabilitySets"`
+	AvailabilitySets []AvailabilitySetListItem `pulumi:"availabilitySets"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocation `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -108,8 +108,8 @@ type virtualMachineInstanceArgs struct {
 	// Network properties.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
 	// OS properties.
-	OsProfile *OsProfileForVMInstance `pulumi:"osProfile"`
-	// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+	OsProfile *OsProfileForVmInstance `pulumi:"osProfile"`
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// Storage properties.
 	StorageProfile *StorageProfile `pulumi:"storageProfile"`
@@ -118,7 +118,7 @@ type virtualMachineInstanceArgs struct {
 // The set of arguments for constructing a VirtualMachineInstance resource.
 type VirtualMachineInstanceArgs struct {
 	// Availability Sets in vm.
-	AvailabilitySets VirtualMachineInstancePropertiesAvailabilitySetsArrayInput
+	AvailabilitySets AvailabilitySetListItemArrayInput
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationInput
 	// Hardware properties.
@@ -128,8 +128,8 @@ type VirtualMachineInstanceArgs struct {
 	// Network properties.
 	NetworkProfile NetworkProfilePtrInput
 	// OS properties.
-	OsProfile OsProfileForVMInstancePtrInput
-	// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+	OsProfile OsProfileForVmInstancePtrInput
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput
 	// Storage properties.
 	StorageProfile StorageProfilePtrInput
@@ -173,10 +173,8 @@ func (o VirtualMachineInstanceOutput) ToVirtualMachineInstanceOutputWithContext(
 }
 
 // Availability Sets in vm.
-func (o VirtualMachineInstanceOutput) AvailabilitySets() VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
-		return v.AvailabilitySets
-	}).(VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput)
+func (o VirtualMachineInstanceOutput) AvailabilitySets() AvailabilitySetListItemResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) AvailabilitySetListItemResponseArrayOutput { return v.AvailabilitySets }).(AvailabilitySetListItemResponseArrayOutput)
 }
 
 // Gets or sets the extended location.
@@ -205,8 +203,8 @@ func (o VirtualMachineInstanceOutput) NetworkProfile() NetworkProfileResponsePtr
 }
 
 // OS properties.
-func (o VirtualMachineInstanceOutput) OsProfile() OsProfileForVMInstanceResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) OsProfileForVMInstanceResponsePtrOutput { return v.OsProfile }).(OsProfileForVMInstanceResponsePtrOutput)
+func (o VirtualMachineInstanceOutput) OsProfile() OsProfileForVmInstanceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) OsProfileForVmInstanceResponsePtrOutput { return v.OsProfile }).(OsProfileForVmInstanceResponsePtrOutput)
 }
 
 // Gets the power state of the virtual machine.
