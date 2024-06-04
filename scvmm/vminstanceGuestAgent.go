@@ -14,8 +14,6 @@ import (
 
 // Defines the GuestAgent.
 // Azure REST API version: 2023-04-01-preview.
-//
-// Other available API versions: 2023-10-07.
 type VMInstanceGuestAgent struct {
 	pulumi.CustomResourceState
 

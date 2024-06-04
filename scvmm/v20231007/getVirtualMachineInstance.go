@@ -23,14 +23,14 @@ func LookupVirtualMachineInstance(ctx *pulumi.Context, args *LookupVirtualMachin
 }
 
 type LookupVirtualMachineInstanceArgs struct {
-	// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // Define the virtualMachineInstance.
 type LookupVirtualMachineInstanceResult struct {
 	// Availability Sets in vm.
-	AvailabilitySets []VirtualMachineInstancePropertiesResponseAvailabilitySets `pulumi:"availabilitySets"`
+	AvailabilitySets []AvailabilitySetListItemResponse `pulumi:"availabilitySets"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -44,7 +44,7 @@ type LookupVirtualMachineInstanceResult struct {
 	// Network properties.
 	NetworkProfile *NetworkProfileResponse `pulumi:"networkProfile"`
 	// OS properties.
-	OsProfile *OsProfileForVMInstanceResponse `pulumi:"osProfile"`
+	OsProfile *OsProfileForVmInstanceResponse `pulumi:"osProfile"`
 	// Gets the power state of the virtual machine.
 	PowerState string `pulumi:"powerState"`
 	// Provisioning state of the resource.
@@ -71,7 +71,7 @@ func LookupVirtualMachineInstanceOutput(ctx *pulumi.Context, args LookupVirtualM
 }
 
 type LookupVirtualMachineInstanceOutputArgs struct {
-	// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -95,10 +95,10 @@ func (o LookupVirtualMachineInstanceResultOutput) ToLookupVirtualMachineInstance
 }
 
 // Availability Sets in vm.
-func (o LookupVirtualMachineInstanceResultOutput) AvailabilitySets() VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
-	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) []VirtualMachineInstancePropertiesResponseAvailabilitySets {
+func (o LookupVirtualMachineInstanceResultOutput) AvailabilitySets() AvailabilitySetListItemResponseArrayOutput {
+	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) []AvailabilitySetListItemResponse {
 		return v.AvailabilitySets
-	}).(VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput)
+	}).(AvailabilitySetListItemResponseArrayOutput)
 }
 
 // Gets or sets the extended location.
@@ -134,8 +134,8 @@ func (o LookupVirtualMachineInstanceResultOutput) NetworkProfile() NetworkProfil
 }
 
 // OS properties.
-func (o LookupVirtualMachineInstanceResultOutput) OsProfile() OsProfileForVMInstanceResponsePtrOutput {
-	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) *OsProfileForVMInstanceResponse { return v.OsProfile }).(OsProfileForVMInstanceResponsePtrOutput)
+func (o LookupVirtualMachineInstanceResultOutput) OsProfile() OsProfileForVmInstanceResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) *OsProfileForVmInstanceResponse { return v.OsProfile }).(OsProfileForVmInstanceResponsePtrOutput)
 }
 
 // Gets the power state of the virtual machine.

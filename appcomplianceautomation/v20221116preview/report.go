@@ -40,6 +40,9 @@ func NewReport(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appcomplianceautomation:Report"),
 		},
+		{
+			Type: pulumi.String("azure-native:appcomplianceautomation/v20240627:Report"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

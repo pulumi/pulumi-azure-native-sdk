@@ -14,6 +14,8 @@ import (
 
 // A class represent an AppComplianceAutomation report resource.
 // Azure REST API version: 2022-11-16-preview. Prior API version in Azure Native 1.x: 2022-11-16-preview.
+//
+// Other available API versions: 2024-06-27.
 type Report struct {
 	pulumi.CustomResourceState
 
@@ -40,6 +42,9 @@ func NewReport(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:appcomplianceautomation/v20221116preview:Report"),
+		},
+		{
+			Type: pulumi.String("azure-native:appcomplianceautomation/v20240627:Report"),
 		},
 	})
 	opts = append(opts, aliases)

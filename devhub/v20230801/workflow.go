@@ -100,6 +100,9 @@ func NewWorkflow(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devhub/v20221011preview:Workflow"),
 		},
+		{
+			Type: pulumi.String("azure-native:devhub/v20240501preview:Workflow"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
