@@ -45,6 +45,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MarketplaceGalleryImage{}
 	case "azure-native:azurestackhci:NetworkInterface":
 		r = &NetworkInterface{}
+	case "azure-native:azurestackhci:NetworkSecurityGroup":
+		r = &NetworkSecurityGroup{}
+	case "azure-native:azurestackhci:SecurityRule":
+		r = &SecurityRule{}
 	case "azure-native:azurestackhci:SecuritySetting":
 		r = &SecuritySetting{}
 	case "azure-native:azurestackhci:StorageContainer":

@@ -53,6 +53,9 @@ func NewProductApiLink(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:ProductApiLink"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ProductApiLink"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

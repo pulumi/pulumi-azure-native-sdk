@@ -80,6 +80,9 @@ func NewWorkspaceSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

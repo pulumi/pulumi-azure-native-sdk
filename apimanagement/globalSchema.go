@@ -15,7 +15,7 @@ import (
 // Global Schema Contract details.
 // Azure REST API version: 2022-08-01.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
 type GlobalSchema struct {
 	pulumi.CustomResourceState
 
@@ -71,6 +71,9 @@ func NewGlobalSchema(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:GlobalSchema"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:GlobalSchema"),
 		},
 	})
 	opts = append(opts, aliases)

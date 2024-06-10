@@ -92,6 +92,9 @@ func NewTagByProduct(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:TagByProduct"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:TagByProduct"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

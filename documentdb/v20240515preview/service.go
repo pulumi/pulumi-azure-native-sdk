@@ -37,9 +37,6 @@ func NewService(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.ServiceType == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceType'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:documentdb:Service"),
@@ -144,32 +141,24 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// Cosmos DB database account name.
 	AccountName string `pulumi:"accountName"`
-	// Instance count for the service.
-	InstanceCount *int `pulumi:"instanceCount"`
-	// Instance type for the service.
-	InstanceSize *string `pulumi:"instanceSize"`
+	// Properties in ServiceResourceCreateUpdateParameters.
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Cosmos DB service name.
 	ServiceName *string `pulumi:"serviceName"`
-	// ServiceType for the service.
-	ServiceType string `pulumi:"serviceType"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
 	// Cosmos DB database account name.
 	AccountName pulumi.StringInput
-	// Instance count for the service.
-	InstanceCount pulumi.IntPtrInput
-	// Instance type for the service.
-	InstanceSize pulumi.StringPtrInput
+	// Properties in ServiceResourceCreateUpdateParameters.
+	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Cosmos DB service name.
 	ServiceName pulumi.StringPtrInput
-	// ServiceType for the service.
-	ServiceType pulumi.StringInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

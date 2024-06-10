@@ -15,7 +15,7 @@ import (
 // Policy Contract details.
 // Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview.
+// Other available API versions: 2018-06-01-preview, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
 type Policy struct {
 	pulumi.CustomResourceState
 
@@ -99,6 +99,9 @@ func NewPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:Policy"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:Policy"),
 		},
 	})
 	opts = append(opts, aliases)

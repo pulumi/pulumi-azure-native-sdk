@@ -46,6 +46,9 @@ func NewPolicyRestriction(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement:PolicyRestriction"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:PolicyRestriction"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

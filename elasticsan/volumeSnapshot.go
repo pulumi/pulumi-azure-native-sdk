@@ -14,6 +14,8 @@ import (
 
 // Response for Volume Snapshot request.
 // Azure REST API version: 2023-01-01.
+//
+// Other available API versions: 2024-05-01.
 type VolumeSnapshot struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +57,9 @@ func NewVolumeSnapshot(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20230101:VolumeSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20240501:VolumeSnapshot"),
 		},
 	})
 	opts = append(opts, aliases)

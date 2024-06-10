@@ -121,6 +121,9 @@ func NewApiOperation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:ApiOperation"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ApiOperation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

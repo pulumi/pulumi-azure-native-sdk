@@ -3055,6 +3055,170 @@ func (in *ftpsStatePtr) ToFtpsStatePtrOutputWithContext(ctx context.Context) Ftp
 	return pulumi.ToOutputWithContext(ctx, in).(FtpsStatePtrOutput)
 }
 
+// Property to select Azure Storage type. Available options: blobContainer.
+type FunctionsDeploymentStorageType string
+
+const (
+	FunctionsDeploymentStorageTypeBlobContainer = FunctionsDeploymentStorageType("blobContainer")
+)
+
+func (FunctionsDeploymentStorageType) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionsDeploymentStorageType)(nil)).Elem()
+}
+
+func (e FunctionsDeploymentStorageType) ToFunctionsDeploymentStorageTypeOutput() FunctionsDeploymentStorageTypeOutput {
+	return pulumi.ToOutput(e).(FunctionsDeploymentStorageTypeOutput)
+}
+
+func (e FunctionsDeploymentStorageType) ToFunctionsDeploymentStorageTypeOutputWithContext(ctx context.Context) FunctionsDeploymentStorageTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FunctionsDeploymentStorageTypeOutput)
+}
+
+func (e FunctionsDeploymentStorageType) ToFunctionsDeploymentStorageTypePtrOutput() FunctionsDeploymentStorageTypePtrOutput {
+	return e.ToFunctionsDeploymentStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (e FunctionsDeploymentStorageType) ToFunctionsDeploymentStorageTypePtrOutputWithContext(ctx context.Context) FunctionsDeploymentStorageTypePtrOutput {
+	return FunctionsDeploymentStorageType(e).ToFunctionsDeploymentStorageTypeOutputWithContext(ctx).ToFunctionsDeploymentStorageTypePtrOutputWithContext(ctx)
+}
+
+func (e FunctionsDeploymentStorageType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FunctionsDeploymentStorageType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FunctionsDeploymentStorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FunctionsDeploymentStorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FunctionsDeploymentStorageTypeOutput struct{ *pulumi.OutputState }
+
+func (FunctionsDeploymentStorageTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionsDeploymentStorageType)(nil)).Elem()
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToFunctionsDeploymentStorageTypeOutput() FunctionsDeploymentStorageTypeOutput {
+	return o
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToFunctionsDeploymentStorageTypeOutputWithContext(ctx context.Context) FunctionsDeploymentStorageTypeOutput {
+	return o
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToFunctionsDeploymentStorageTypePtrOutput() FunctionsDeploymentStorageTypePtrOutput {
+	return o.ToFunctionsDeploymentStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToFunctionsDeploymentStorageTypePtrOutputWithContext(ctx context.Context) FunctionsDeploymentStorageTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionsDeploymentStorageType) *FunctionsDeploymentStorageType {
+		return &v
+	}).(FunctionsDeploymentStorageTypePtrOutput)
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionsDeploymentStorageType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionsDeploymentStorageTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionsDeploymentStorageType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionsDeploymentStorageTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionsDeploymentStorageTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionsDeploymentStorageType)(nil)).Elem()
+}
+
+func (o FunctionsDeploymentStorageTypePtrOutput) ToFunctionsDeploymentStorageTypePtrOutput() FunctionsDeploymentStorageTypePtrOutput {
+	return o
+}
+
+func (o FunctionsDeploymentStorageTypePtrOutput) ToFunctionsDeploymentStorageTypePtrOutputWithContext(ctx context.Context) FunctionsDeploymentStorageTypePtrOutput {
+	return o
+}
+
+func (o FunctionsDeploymentStorageTypePtrOutput) Elem() FunctionsDeploymentStorageTypeOutput {
+	return o.ApplyT(func(v *FunctionsDeploymentStorageType) FunctionsDeploymentStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret FunctionsDeploymentStorageType
+		return ret
+	}).(FunctionsDeploymentStorageTypeOutput)
+}
+
+func (o FunctionsDeploymentStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionsDeploymentStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FunctionsDeploymentStorageType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FunctionsDeploymentStorageTypeInput is an input type that accepts values of the FunctionsDeploymentStorageType enum
+// A concrete instance of `FunctionsDeploymentStorageTypeInput` can be one of the following:
+//
+//	FunctionsDeploymentStorageTypeBlobContainer
+type FunctionsDeploymentStorageTypeInput interface {
+	pulumi.Input
+
+	ToFunctionsDeploymentStorageTypeOutput() FunctionsDeploymentStorageTypeOutput
+	ToFunctionsDeploymentStorageTypeOutputWithContext(context.Context) FunctionsDeploymentStorageTypeOutput
+}
+
+var functionsDeploymentStorageTypePtrType = reflect.TypeOf((**FunctionsDeploymentStorageType)(nil)).Elem()
+
+type FunctionsDeploymentStorageTypePtrInput interface {
+	pulumi.Input
+
+	ToFunctionsDeploymentStorageTypePtrOutput() FunctionsDeploymentStorageTypePtrOutput
+	ToFunctionsDeploymentStorageTypePtrOutputWithContext(context.Context) FunctionsDeploymentStorageTypePtrOutput
+}
+
+type functionsDeploymentStorageTypePtr string
+
+func FunctionsDeploymentStorageTypePtr(v string) FunctionsDeploymentStorageTypePtrInput {
+	return (*functionsDeploymentStorageTypePtr)(&v)
+}
+
+func (*functionsDeploymentStorageTypePtr) ElementType() reflect.Type {
+	return functionsDeploymentStorageTypePtrType
+}
+
+func (in *functionsDeploymentStorageTypePtr) ToFunctionsDeploymentStorageTypePtrOutput() FunctionsDeploymentStorageTypePtrOutput {
+	return pulumi.ToOutput(in).(FunctionsDeploymentStorageTypePtrOutput)
+}
+
+func (in *functionsDeploymentStorageTypePtr) ToFunctionsDeploymentStorageTypePtrOutputWithContext(ctx context.Context) FunctionsDeploymentStorageTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FunctionsDeploymentStorageTypePtrOutput)
+}
+
 // Hostname type.
 type HostNameType string
 
@@ -5786,11 +5950,11 @@ func (in *stagingEnvironmentPolicyPtr) ToStagingEnvironmentPolicyPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(StagingEnvironmentPolicyPtrOutput)
 }
 
-// Property to select Azure Storage type. Available options: blobContainer.
 type StorageType string
 
 const (
-	StorageTypeBlobContainer = StorageType("blobContainer")
+	StorageTypeLocalNode         = StorageType("LocalNode")
+	StorageTypeNetworkFileSystem = StorageType("NetworkFileSystem")
 )
 
 func (StorageType) ElementType() reflect.Type {
@@ -5915,7 +6079,8 @@ func (o StorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // StorageTypeInput is an input type that accepts values of the StorageType enum
 // A concrete instance of `StorageTypeInput` can be one of the following:
 //
-//	StorageTypeBlobContainer
+//	StorageTypeLocalNode
+//	StorageTypeNetworkFileSystem
 type StorageTypeInput interface {
 	pulumi.Input
 
@@ -6693,6 +6858,8 @@ func init() {
 	pulumi.RegisterOutputType(FrontEndServiceTypePtrOutput{})
 	pulumi.RegisterOutputType(FtpsStateOutput{})
 	pulumi.RegisterOutputType(FtpsStatePtrOutput{})
+	pulumi.RegisterOutputType(FunctionsDeploymentStorageTypeOutput{})
+	pulumi.RegisterOutputType(FunctionsDeploymentStorageTypePtrOutput{})
 	pulumi.RegisterOutputType(HostNameTypeOutput{})
 	pulumi.RegisterOutputType(HostNameTypePtrOutput{})
 	pulumi.RegisterOutputType(HostTypeOutput{})

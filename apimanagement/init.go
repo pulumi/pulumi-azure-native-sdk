@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Api{}
 	case "azure-native:apimanagement:ApiDiagnostic":
 		r = &ApiDiagnostic{}
+	case "azure-native:apimanagement:ApiGateway":
+		r = &ApiGateway{}
+	case "azure-native:apimanagement:ApiGatewayConfigConnection":
+		r = &ApiGatewayConfigConnection{}
 	case "azure-native:apimanagement:ApiIssue":
 		r = &ApiIssue{}
 	case "azure-native:apimanagement:ApiIssueAttachment":
@@ -149,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Workspace{}
 	case "azure-native:apimanagement:WorkspaceApi":
 		r = &WorkspaceApi{}
+	case "azure-native:apimanagement:WorkspaceApiDiagnostic":
+		r = &WorkspaceApiDiagnostic{}
 	case "azure-native:apimanagement:WorkspaceApiOperation":
 		r = &WorkspaceApiOperation{}
 	case "azure-native:apimanagement:WorkspaceApiOperationPolicy":
@@ -161,12 +167,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkspaceApiSchema{}
 	case "azure-native:apimanagement:WorkspaceApiVersionSet":
 		r = &WorkspaceApiVersionSet{}
+	case "azure-native:apimanagement:WorkspaceBackend":
+		r = &WorkspaceBackend{}
+	case "azure-native:apimanagement:WorkspaceCertificate":
+		r = &WorkspaceCertificate{}
+	case "azure-native:apimanagement:WorkspaceDiagnostic":
+		r = &WorkspaceDiagnostic{}
 	case "azure-native:apimanagement:WorkspaceGlobalSchema":
 		r = &WorkspaceGlobalSchema{}
 	case "azure-native:apimanagement:WorkspaceGroup":
 		r = &WorkspaceGroup{}
 	case "azure-native:apimanagement:WorkspaceGroupUser":
 		r = &WorkspaceGroupUser{}
+	case "azure-native:apimanagement:WorkspaceLogger":
+		r = &WorkspaceLogger{}
 	case "azure-native:apimanagement:WorkspaceNamedValue":
 		r = &WorkspaceNamedValue{}
 	case "azure-native:apimanagement:WorkspaceNotificationRecipientEmail":

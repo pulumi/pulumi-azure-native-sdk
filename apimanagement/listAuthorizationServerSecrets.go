@@ -14,7 +14,7 @@ import (
 // Gets the client secret details of the authorization server.
 // Azure REST API version: 2022-08-01.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
 func ListAuthorizationServerSecrets(ctx *pulumi.Context, args *ListAuthorizationServerSecretsArgs, opts ...pulumi.InvokeOption) (*ListAuthorizationServerSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAuthorizationServerSecretsResult

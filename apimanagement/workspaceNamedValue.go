@@ -15,7 +15,7 @@ import (
 // NamedValue details.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
 type WorkspaceNamedValue struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewWorkspaceNamedValue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceNamedValue"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceNamedValue"),
 		},
 	})
 	opts = append(opts, aliases)
