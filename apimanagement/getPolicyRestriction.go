@@ -13,6 +13,8 @@ import (
 
 // Get the policy restriction of the Api Management service.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-09-01-preview.
 func LookupPolicyRestriction(ctx *pulumi.Context, args *LookupPolicyRestrictionArgs, opts ...pulumi.InvokeOption) (*LookupPolicyRestrictionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicyRestrictionResult

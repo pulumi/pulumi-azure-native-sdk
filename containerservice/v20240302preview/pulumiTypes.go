@@ -249,7 +249,7 @@ func (o AbsoluteMonthlyScheduleResponsePtrOutput) IntervalMonths() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 type AdvancedNetworking struct {
 	// Observability profile to enable advanced network metrics and flow logs with historical contexts.
 	Observability *AdvancedNetworkingObservability `pulumi:"observability"`
@@ -266,7 +266,7 @@ type AdvancedNetworkingInput interface {
 	ToAdvancedNetworkingOutputWithContext(context.Context) AdvancedNetworkingOutput
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 type AdvancedNetworkingArgs struct {
 	// Observability profile to enable advanced network metrics and flow logs with historical contexts.
 	Observability AdvancedNetworkingObservabilityPtrInput `pulumi:"observability"`
@@ -325,7 +325,7 @@ func (i *advancedNetworkingPtrType) ToAdvancedNetworkingPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AdvancedNetworkingPtrOutput)
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 type AdvancedNetworkingOutput struct{ *pulumi.OutputState }
 
 func (AdvancedNetworkingOutput) ElementType() reflect.Type {
@@ -589,13 +589,13 @@ func (o AdvancedNetworkingObservabilityResponsePtrOutput) Enabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 type AdvancedNetworkingResponse struct {
 	// Observability profile to enable advanced network metrics and flow logs with historical contexts.
 	Observability *AdvancedNetworkingObservabilityResponse `pulumi:"observability"`
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 type AdvancedNetworkingResponseOutput struct{ *pulumi.OutputState }
 
 func (AdvancedNetworkingResponseOutput) ElementType() reflect.Type {
@@ -3075,7 +3075,7 @@ func (o ContainerServiceLinuxProfileResponsePtrOutput) Ssh() ContainerServiceSsh
 
 // Profile of network configuration.
 type ContainerServiceNetworkProfile struct {
-	// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+	// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 	AdvancedNetworking *AdvancedNetworking `pulumi:"advancedNetworking"`
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 	DnsServiceIP *string `pulumi:"dnsServiceIP"`
@@ -3157,7 +3157,7 @@ type ContainerServiceNetworkProfileInput interface {
 
 // Profile of network configuration.
 type ContainerServiceNetworkProfileArgs struct {
-	// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+	// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 	AdvancedNetworking AdvancedNetworkingPtrInput `pulumi:"advancedNetworking"`
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 	DnsServiceIP pulumi.StringPtrInput `pulumi:"dnsServiceIP"`
@@ -3296,7 +3296,7 @@ func (o ContainerServiceNetworkProfileOutput) ToContainerServiceNetworkProfilePt
 	}).(ContainerServiceNetworkProfilePtrOutput)
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 func (o ContainerServiceNetworkProfileOutput) AdvancedNetworking() AdvancedNetworkingPtrOutput {
 	return o.ApplyT(func(v ContainerServiceNetworkProfile) *AdvancedNetworking { return v.AdvancedNetworking }).(AdvancedNetworkingPtrOutput)
 }
@@ -3421,7 +3421,7 @@ func (o ContainerServiceNetworkProfilePtrOutput) Elem() ContainerServiceNetworkP
 	}).(ContainerServiceNetworkProfileOutput)
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 func (o ContainerServiceNetworkProfilePtrOutput) AdvancedNetworking() AdvancedNetworkingPtrOutput {
 	return o.ApplyT(func(v *ContainerServiceNetworkProfile) *AdvancedNetworking {
 		if v == nil {
@@ -3990,7 +3990,7 @@ func (o ContainerServiceNetworkProfileKubeProxyConfigPtrOutput) Mode() pulumi.St
 
 // Profile of network configuration.
 type ContainerServiceNetworkProfileResponse struct {
-	// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+	// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 	AdvancedNetworking *AdvancedNetworkingResponse `pulumi:"advancedNetworking"`
 	// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 	DnsServiceIP *string `pulumi:"dnsServiceIP"`
@@ -4074,7 +4074,7 @@ func (o ContainerServiceNetworkProfileResponseOutput) ToContainerServiceNetworkP
 	return o
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 func (o ContainerServiceNetworkProfileResponseOutput) AdvancedNetworking() AdvancedNetworkingResponsePtrOutput {
 	return o.ApplyT(func(v ContainerServiceNetworkProfileResponse) *AdvancedNetworkingResponse {
 		return v.AdvancedNetworking
@@ -4203,7 +4203,7 @@ func (o ContainerServiceNetworkProfileResponsePtrOutput) Elem() ContainerService
 	}).(ContainerServiceNetworkProfileResponseOutput)
 }
 
-// Advanced Networking profile for enabling observability on a cluster. For more information see aka.ms/aksadvancednetworking.
+// Advanced Networking profile for enabling observability on a cluster. Note that enabling advanced networking features may incur additional costs. For more information see aka.ms/aksadvancednetworking.
 func (o ContainerServiceNetworkProfileResponsePtrOutput) AdvancedNetworking() AdvancedNetworkingResponsePtrOutput {
 	return o.ApplyT(func(v *ContainerServiceNetworkProfileResponse) *AdvancedNetworkingResponse {
 		if v == nil {

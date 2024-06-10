@@ -15,7 +15,7 @@ import (
 // API Version Set Contract details.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
 type WorkspaceApiVersionSet struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewWorkspaceApiVersionSet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceApiVersionSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceApiVersionSet"),
 		},
 	})
 	opts = append(opts, aliases)

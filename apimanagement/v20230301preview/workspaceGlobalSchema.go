@@ -57,6 +57,9 @@ func NewWorkspaceGlobalSchema(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceGlobalSchema"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceGlobalSchema"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

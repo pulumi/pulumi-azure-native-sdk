@@ -15,7 +15,7 @@ import (
 // The storage container resource definition.
 // Azure REST API version: 2022-12-15-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview.
 type StorageContainer struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewStorageContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240101:StorageContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240201preview:StorageContainer"),
 		},
 	})
 	opts = append(opts, aliases)

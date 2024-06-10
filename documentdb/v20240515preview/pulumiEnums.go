@@ -2850,6 +2850,172 @@ func (in *databaseAccountOfferTypePtr) ToDatabaseAccountOfferTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DatabaseAccountOfferTypePtrOutput)
 }
 
+// DedicatedGatewayType for the service.
+type DedicatedGatewayType string
+
+const (
+	DedicatedGatewayTypeIntegratedCache  = DedicatedGatewayType("IntegratedCache")
+	DedicatedGatewayTypeDistributedQuery = DedicatedGatewayType("DistributedQuery")
+)
+
+func (DedicatedGatewayType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedGatewayType)(nil)).Elem()
+}
+
+func (e DedicatedGatewayType) ToDedicatedGatewayTypeOutput() DedicatedGatewayTypeOutput {
+	return pulumi.ToOutput(e).(DedicatedGatewayTypeOutput)
+}
+
+func (e DedicatedGatewayType) ToDedicatedGatewayTypeOutputWithContext(ctx context.Context) DedicatedGatewayTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DedicatedGatewayTypeOutput)
+}
+
+func (e DedicatedGatewayType) ToDedicatedGatewayTypePtrOutput() DedicatedGatewayTypePtrOutput {
+	return e.ToDedicatedGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (e DedicatedGatewayType) ToDedicatedGatewayTypePtrOutputWithContext(ctx context.Context) DedicatedGatewayTypePtrOutput {
+	return DedicatedGatewayType(e).ToDedicatedGatewayTypeOutputWithContext(ctx).ToDedicatedGatewayTypePtrOutputWithContext(ctx)
+}
+
+func (e DedicatedGatewayType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DedicatedGatewayType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DedicatedGatewayType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DedicatedGatewayType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DedicatedGatewayTypeOutput struct{ *pulumi.OutputState }
+
+func (DedicatedGatewayTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedGatewayType)(nil)).Elem()
+}
+
+func (o DedicatedGatewayTypeOutput) ToDedicatedGatewayTypeOutput() DedicatedGatewayTypeOutput {
+	return o
+}
+
+func (o DedicatedGatewayTypeOutput) ToDedicatedGatewayTypeOutputWithContext(ctx context.Context) DedicatedGatewayTypeOutput {
+	return o
+}
+
+func (o DedicatedGatewayTypeOutput) ToDedicatedGatewayTypePtrOutput() DedicatedGatewayTypePtrOutput {
+	return o.ToDedicatedGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (o DedicatedGatewayTypeOutput) ToDedicatedGatewayTypePtrOutputWithContext(ctx context.Context) DedicatedGatewayTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DedicatedGatewayType) *DedicatedGatewayType {
+		return &v
+	}).(DedicatedGatewayTypePtrOutput)
+}
+
+func (o DedicatedGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DedicatedGatewayTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DedicatedGatewayType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DedicatedGatewayTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DedicatedGatewayTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DedicatedGatewayType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DedicatedGatewayTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DedicatedGatewayTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DedicatedGatewayType)(nil)).Elem()
+}
+
+func (o DedicatedGatewayTypePtrOutput) ToDedicatedGatewayTypePtrOutput() DedicatedGatewayTypePtrOutput {
+	return o
+}
+
+func (o DedicatedGatewayTypePtrOutput) ToDedicatedGatewayTypePtrOutputWithContext(ctx context.Context) DedicatedGatewayTypePtrOutput {
+	return o
+}
+
+func (o DedicatedGatewayTypePtrOutput) Elem() DedicatedGatewayTypeOutput {
+	return o.ApplyT(func(v *DedicatedGatewayType) DedicatedGatewayType {
+		if v != nil {
+			return *v
+		}
+		var ret DedicatedGatewayType
+		return ret
+	}).(DedicatedGatewayTypeOutput)
+}
+
+func (o DedicatedGatewayTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DedicatedGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DedicatedGatewayType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DedicatedGatewayTypeInput is an input type that accepts values of the DedicatedGatewayType enum
+// A concrete instance of `DedicatedGatewayTypeInput` can be one of the following:
+//
+//	DedicatedGatewayTypeIntegratedCache
+//	DedicatedGatewayTypeDistributedQuery
+type DedicatedGatewayTypeInput interface {
+	pulumi.Input
+
+	ToDedicatedGatewayTypeOutput() DedicatedGatewayTypeOutput
+	ToDedicatedGatewayTypeOutputWithContext(context.Context) DedicatedGatewayTypeOutput
+}
+
+var dedicatedGatewayTypePtrType = reflect.TypeOf((**DedicatedGatewayType)(nil)).Elem()
+
+type DedicatedGatewayTypePtrInput interface {
+	pulumi.Input
+
+	ToDedicatedGatewayTypePtrOutput() DedicatedGatewayTypePtrOutput
+	ToDedicatedGatewayTypePtrOutputWithContext(context.Context) DedicatedGatewayTypePtrOutput
+}
+
+type dedicatedGatewayTypePtr string
+
+func DedicatedGatewayTypePtr(v string) DedicatedGatewayTypePtrInput {
+	return (*dedicatedGatewayTypePtr)(&v)
+}
+
+func (*dedicatedGatewayTypePtr) ElementType() reflect.Type {
+	return dedicatedGatewayTypePtrType
+}
+
+func (in *dedicatedGatewayTypePtr) ToDedicatedGatewayTypePtrOutput() DedicatedGatewayTypePtrOutput {
+	return pulumi.ToOutput(in).(DedicatedGatewayTypePtrOutput)
+}
+
+func (in *dedicatedGatewayTypePtr) ToDedicatedGatewayTypePtrOutputWithContext(ctx context.Context) DedicatedGatewayTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DedicatedGatewayTypePtrOutput)
+}
+
 // The default consistency level and configuration settings of the Cosmos DB account.
 type DefaultConsistencyLevel string
 
@@ -5888,166 +6054,6 @@ const (
 	ServiceTypeMaterializedViewsBuilder = ServiceType("MaterializedViewsBuilder")
 )
 
-func (ServiceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceType)(nil)).Elem()
-}
-
-func (e ServiceType) ToServiceTypeOutput() ServiceTypeOutput {
-	return pulumi.ToOutput(e).(ServiceTypeOutput)
-}
-
-func (e ServiceType) ToServiceTypeOutputWithContext(ctx context.Context) ServiceTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ServiceTypeOutput)
-}
-
-func (e ServiceType) ToServiceTypePtrOutput() ServiceTypePtrOutput {
-	return e.ToServiceTypePtrOutputWithContext(context.Background())
-}
-
-func (e ServiceType) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
-	return ServiceType(e).ToServiceTypeOutputWithContext(ctx).ToServiceTypePtrOutputWithContext(ctx)
-}
-
-func (e ServiceType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServiceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ServiceType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ServiceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ServiceTypeOutput struct{ *pulumi.OutputState }
-
-func (ServiceTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceType)(nil)).Elem()
-}
-
-func (o ServiceTypeOutput) ToServiceTypeOutput() ServiceTypeOutput {
-	return o
-}
-
-func (o ServiceTypeOutput) ToServiceTypeOutputWithContext(ctx context.Context) ServiceTypeOutput {
-	return o
-}
-
-func (o ServiceTypeOutput) ToServiceTypePtrOutput() ServiceTypePtrOutput {
-	return o.ToServiceTypePtrOutputWithContext(context.Background())
-}
-
-func (o ServiceTypeOutput) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceType) *ServiceType {
-		return &v
-	}).(ServiceTypePtrOutput)
-}
-
-func (o ServiceTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ServiceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ServiceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ServiceTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceType)(nil)).Elem()
-}
-
-func (o ServiceTypePtrOutput) ToServiceTypePtrOutput() ServiceTypePtrOutput {
-	return o
-}
-
-func (o ServiceTypePtrOutput) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
-	return o
-}
-
-func (o ServiceTypePtrOutput) Elem() ServiceTypeOutput {
-	return o.ApplyT(func(v *ServiceType) ServiceType {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceType
-		return ret
-	}).(ServiceTypeOutput)
-}
-
-func (o ServiceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ServiceTypeInput is an input type that accepts values of the ServiceType enum
-// A concrete instance of `ServiceTypeInput` can be one of the following:
-//
-//	ServiceTypeSqlDedicatedGateway
-//	ServiceTypeDataTransfer
-//	ServiceTypeGraphAPICompute
-//	ServiceTypeMaterializedViewsBuilder
-type ServiceTypeInput interface {
-	pulumi.Input
-
-	ToServiceTypeOutput() ServiceTypeOutput
-	ToServiceTypeOutputWithContext(context.Context) ServiceTypeOutput
-}
-
-var serviceTypePtrType = reflect.TypeOf((**ServiceType)(nil)).Elem()
-
-type ServiceTypePtrInput interface {
-	pulumi.Input
-
-	ToServiceTypePtrOutput() ServiceTypePtrOutput
-	ToServiceTypePtrOutputWithContext(context.Context) ServiceTypePtrOutput
-}
-
-type serviceTypePtr string
-
-func ServiceTypePtr(v string) ServiceTypePtrInput {
-	return (*serviceTypePtr)(&v)
-}
-
-func (*serviceTypePtr) ElementType() reflect.Type {
-	return serviceTypePtrType
-}
-
-func (in *serviceTypePtr) ToServiceTypePtrOutput() ServiceTypePtrOutput {
-	return pulumi.ToOutput(in).(ServiceTypePtrOutput)
-}
-
-func (in *serviceTypePtr) ToServiceTypePtrOutputWithContext(ctx context.Context) ServiceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ServiceTypePtrOutput)
-}
-
 // Indicates the spatial type of index.
 type SpatialType string
 
@@ -6591,6 +6597,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseAccountKindPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseAccountOfferTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseAccountOfferTypePtrOutput{})
+	pulumi.RegisterOutputType(DedicatedGatewayTypeOutput{})
+	pulumi.RegisterOutputType(DedicatedGatewayTypePtrOutput{})
 	pulumi.RegisterOutputType(DefaultConsistencyLevelOutput{})
 	pulumi.RegisterOutputType(DefaultConsistencyLevelPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPriorityLevelOutput{})
@@ -6627,8 +6635,6 @@ func init() {
 	pulumi.RegisterOutputType(ServerVersionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceSizeOutput{})
 	pulumi.RegisterOutputType(ServiceSizePtrOutput{})
-	pulumi.RegisterOutputType(ServiceTypeOutput{})
-	pulumi.RegisterOutputType(ServiceTypePtrOutput{})
 	pulumi.RegisterOutputType(SpatialTypeOutput{})
 	pulumi.RegisterOutputType(SpatialTypePtrOutput{})
 	pulumi.RegisterOutputType(TriggerOperationOutput{})

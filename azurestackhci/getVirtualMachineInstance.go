@@ -14,7 +14,7 @@ import (
 // Gets a virtual machine instance
 // Azure REST API version: 2023-07-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2024-01-01.
+// Other available API versions: 2023-09-01-preview, 2024-01-01, 2024-02-01-preview.
 func LookupVirtualMachineInstance(ctx *pulumi.Context, args *LookupVirtualMachineInstanceArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineInstanceResult

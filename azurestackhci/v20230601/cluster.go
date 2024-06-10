@@ -144,6 +144,9 @@ func NewCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240215preview:Cluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240401:Cluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

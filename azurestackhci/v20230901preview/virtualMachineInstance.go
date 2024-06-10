@@ -87,6 +87,9 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240101:VirtualMachineInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240201preview:VirtualMachineInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,6 +14,8 @@ import (
 
 // Policy restriction contract details.
 // Azure REST API version: 2023-05-01-preview.
+//
+// Other available API versions: 2023-09-01-preview.
 type PolicyRestriction struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewPolicyRestriction(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:PolicyRestriction"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230901preview:PolicyRestriction"),
 		},
 	})
 	opts = append(opts, aliases)

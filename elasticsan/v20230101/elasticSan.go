@@ -81,6 +81,9 @@ func NewElasticSan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elasticsan/v20221201preview:ElasticSan"),
 		},
+		{
+			Type: pulumi.String("azure-native:elasticsan/v20240501:ElasticSan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

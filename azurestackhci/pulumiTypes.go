@@ -6333,6 +6333,52 @@ func (o IpPoolsResponseArrayOutput) Index(i pulumi.IntInput) IpPoolsResponseOutp
 	}).(IpPoolsResponseOutput)
 }
 
+// The ARM ID for a Logical Network.
+type LogicalNetworkArmReferenceResponse struct {
+	// The ARM ID for a Logical Network.
+	Id *string `pulumi:"id"`
+}
+
+// The ARM ID for a Logical Network.
+type LogicalNetworkArmReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkArmReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogicalNetworkArmReferenceResponse)(nil)).Elem()
+}
+
+func (o LogicalNetworkArmReferenceResponseOutput) ToLogicalNetworkArmReferenceResponseOutput() LogicalNetworkArmReferenceResponseOutput {
+	return o
+}
+
+func (o LogicalNetworkArmReferenceResponseOutput) ToLogicalNetworkArmReferenceResponseOutputWithContext(ctx context.Context) LogicalNetworkArmReferenceResponseOutput {
+	return o
+}
+
+// The ARM ID for a Logical Network.
+func (o LogicalNetworkArmReferenceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogicalNetworkArmReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type LogicalNetworkArmReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LogicalNetworkArmReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogicalNetworkArmReferenceResponse)(nil)).Elem()
+}
+
+func (o LogicalNetworkArmReferenceResponseArrayOutput) ToLogicalNetworkArmReferenceResponseArrayOutput() LogicalNetworkArmReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LogicalNetworkArmReferenceResponseArrayOutput) ToLogicalNetworkArmReferenceResponseArrayOutputWithContext(ctx context.Context) LogicalNetworkArmReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LogicalNetworkArmReferenceResponseArrayOutput) Index(i pulumi.IntInput) LogicalNetworkArmReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogicalNetworkArmReferenceResponse {
+		return vs[0].([]LogicalNetworkArmReferenceResponse)[vs[1].(int)]
+	}).(LogicalNetworkArmReferenceResponseOutput)
+}
+
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
 type LogicalNetworkPropertiesDhcpOptions struct {
 	// The list of DNS servers IP addresses.
@@ -7078,6 +7124,52 @@ func (o MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput) Status
 		}
 		return v.Status
 	}).(pulumi.StringPtrOutput)
+}
+
+// The ARM ID for a Network Interface.
+type NetworkInterfaceArmReferenceResponse struct {
+	// The ARM ID for a Network Interface.
+	Id *string `pulumi:"id"`
+}
+
+// The ARM ID for a Network Interface.
+type NetworkInterfaceArmReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceArmReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceArmReferenceResponse)(nil)).Elem()
+}
+
+func (o NetworkInterfaceArmReferenceResponseOutput) ToNetworkInterfaceArmReferenceResponseOutput() NetworkInterfaceArmReferenceResponseOutput {
+	return o
+}
+
+func (o NetworkInterfaceArmReferenceResponseOutput) ToNetworkInterfaceArmReferenceResponseOutputWithContext(ctx context.Context) NetworkInterfaceArmReferenceResponseOutput {
+	return o
+}
+
+// The ARM ID for a Network Interface.
+func (o NetworkInterfaceArmReferenceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceArmReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type NetworkInterfaceArmReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceArmReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkInterfaceArmReferenceResponse)(nil)).Elem()
+}
+
+func (o NetworkInterfaceArmReferenceResponseArrayOutput) ToNetworkInterfaceArmReferenceResponseArrayOutput() NetworkInterfaceArmReferenceResponseArrayOutput {
+	return o
+}
+
+func (o NetworkInterfaceArmReferenceResponseArrayOutput) ToNetworkInterfaceArmReferenceResponseArrayOutputWithContext(ctx context.Context) NetworkInterfaceArmReferenceResponseArrayOutput {
+	return o
+}
+
+func (o NetworkInterfaceArmReferenceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceArmReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInterfaceArmReferenceResponse {
+		return vs[0].([]NetworkInterfaceArmReferenceResponse)[vs[1].(int)]
+	}).(NetworkInterfaceArmReferenceResponseOutput)
 }
 
 // The observed state of network interfaces
@@ -21571,6 +21663,8 @@ func init() {
 	pulumi.RegisterOutputType(IpPoolsArrayOutput{})
 	pulumi.RegisterOutputType(IpPoolsResponseOutput{})
 	pulumi.RegisterOutputType(IpPoolsResponseArrayOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkArmReferenceResponseOutput{})
+	pulumi.RegisterOutputType(LogicalNetworkArmReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesDhcpOptionsPtrOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkPropertiesResponseDhcpOptionsOutput{})
@@ -21587,6 +21681,8 @@ func init() {
 	pulumi.RegisterOutputType(MarketplaceGalleryImageStatusResponseDownloadStatusPtrOutput{})
 	pulumi.RegisterOutputType(MarketplaceGalleryImageStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(MarketplaceGalleryImageStatusResponseProvisioningStatusPtrOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceArmReferenceResponseOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceArmReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStatusResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStatusResponseProvisioningStatusOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStatusResponseProvisioningStatusPtrOutput{})

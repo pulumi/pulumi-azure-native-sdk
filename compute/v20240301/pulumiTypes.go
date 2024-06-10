@@ -17558,12 +17558,14 @@ func (o ScheduledEventsProfileResponsePtrOutput) TerminateNotificationProfile() 
 	}).(TerminateNotificationProfileResponsePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 type SecurityPostureReference struct {
-	// List of virtual machine extensions to exclude when applying the Security Posture.
-	ExcludeExtensions []VirtualMachineExtensionType `pulumi:"excludeExtensions"`
-	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-	Id *string `pulumi:"id"`
+	// The list of virtual machine extension names to exclude when applying the security posture.
+	ExcludeExtensions []string `pulumi:"excludeExtensions"`
+	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+	Id string `pulumi:"id"`
+	// Whether the security posture can be overridden by the user.
+	IsOverridable *bool `pulumi:"isOverridable"`
 }
 
 // SecurityPostureReferenceInput is an input type that accepts SecurityPostureReferenceArgs and SecurityPostureReferenceOutput values.
@@ -17577,12 +17579,14 @@ type SecurityPostureReferenceInput interface {
 	ToSecurityPostureReferenceOutputWithContext(context.Context) SecurityPostureReferenceOutput
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 type SecurityPostureReferenceArgs struct {
-	// List of virtual machine extensions to exclude when applying the Security Posture.
-	ExcludeExtensions VirtualMachineExtensionTypeArrayInput `pulumi:"excludeExtensions"`
-	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The list of virtual machine extension names to exclude when applying the security posture.
+	ExcludeExtensions pulumi.StringArrayInput `pulumi:"excludeExtensions"`
+	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the security posture can be overridden by the user.
+	IsOverridable pulumi.BoolPtrInput `pulumi:"isOverridable"`
 }
 
 func (SecurityPostureReferenceArgs) ElementType() reflect.Type {
@@ -17638,7 +17642,7 @@ func (i *securityPostureReferencePtrType) ToSecurityPostureReferencePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPostureReferencePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 type SecurityPostureReferenceOutput struct{ *pulumi.OutputState }
 
 func (SecurityPostureReferenceOutput) ElementType() reflect.Type {
@@ -17663,14 +17667,19 @@ func (o SecurityPostureReferenceOutput) ToSecurityPostureReferencePtrOutputWithC
 	}).(SecurityPostureReferencePtrOutput)
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferenceOutput) ExcludeExtensions() VirtualMachineExtensionTypeArrayOutput {
-	return o.ApplyT(func(v SecurityPostureReference) []VirtualMachineExtensionType { return v.ExcludeExtensions }).(VirtualMachineExtensionTypeArrayOutput)
+// The list of virtual machine extension names to exclude when applying the security posture.
+func (o SecurityPostureReferenceOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPostureReference) []string { return v.ExcludeExtensions }).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-func (o SecurityPostureReferenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPostureReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+func (o SecurityPostureReferenceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPostureReference) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferenceOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPostureReference) *bool { return v.IsOverridable }).(pulumi.BoolPtrOutput)
 }
 
 type SecurityPostureReferencePtrOutput struct{ *pulumi.OutputState }
@@ -17697,35 +17706,47 @@ func (o SecurityPostureReferencePtrOutput) Elem() SecurityPostureReferenceOutput
 	}).(SecurityPostureReferenceOutput)
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferencePtrOutput) ExcludeExtensions() VirtualMachineExtensionTypeArrayOutput {
-	return o.ApplyT(func(v *SecurityPostureReference) []VirtualMachineExtensionType {
+// The list of virtual machine extension names to exclude when applying the security posture.
+func (o SecurityPostureReferencePtrOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPostureReference) []string {
 		if v == nil {
 			return nil
 		}
 		return v.ExcludeExtensions
-	}).(VirtualMachineExtensionTypeArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
 func (o SecurityPostureReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPostureReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return &v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-type SecurityPostureReferenceResponse struct {
-	// List of virtual machine extensions to exclude when applying the Security Posture.
-	ExcludeExtensions []VirtualMachineExtensionResponse `pulumi:"excludeExtensions"`
-	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-	Id *string `pulumi:"id"`
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferencePtrOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPostureReference) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsOverridable
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
+type SecurityPostureReferenceResponse struct {
+	// The list of virtual machine extension names to exclude when applying the security posture.
+	ExcludeExtensions []string `pulumi:"excludeExtensions"`
+	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+	Id string `pulumi:"id"`
+	// Whether the security posture can be overridden by the user.
+	IsOverridable *bool `pulumi:"isOverridable"`
+}
+
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 type SecurityPostureReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityPostureReferenceResponseOutput) ElementType() reflect.Type {
@@ -17740,14 +17761,19 @@ func (o SecurityPostureReferenceResponseOutput) ToSecurityPostureReferenceRespon
 	return o
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferenceResponseOutput) ExcludeExtensions() VirtualMachineExtensionResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPostureReferenceResponse) []VirtualMachineExtensionResponse { return v.ExcludeExtensions }).(VirtualMachineExtensionResponseArrayOutput)
+// The list of virtual machine extension names to exclude when applying the security posture.
+func (o SecurityPostureReferenceResponseOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPostureReferenceResponse) []string { return v.ExcludeExtensions }).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-func (o SecurityPostureReferenceResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPostureReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
+func (o SecurityPostureReferenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPostureReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferenceResponseOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPostureReferenceResponse) *bool { return v.IsOverridable }).(pulumi.BoolPtrOutput)
 }
 
 type SecurityPostureReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -17774,24 +17800,34 @@ func (o SecurityPostureReferenceResponsePtrOutput) Elem() SecurityPostureReferen
 	}).(SecurityPostureReferenceResponseOutput)
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferenceResponsePtrOutput) ExcludeExtensions() VirtualMachineExtensionResponseArrayOutput {
-	return o.ApplyT(func(v *SecurityPostureReferenceResponse) []VirtualMachineExtensionResponse {
+// The list of virtual machine extension names to exclude when applying the security posture.
+func (o SecurityPostureReferenceResponsePtrOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPostureReferenceResponse) []string {
 		if v == nil {
 			return nil
 		}
 		return v.ExcludeExtensions
-	}).(VirtualMachineExtensionResponseArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
 func (o SecurityPostureReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPostureReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return &v.Id
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferenceResponsePtrOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPostureReferenceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsOverridable
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the Security profile settings for the virtual machine or virtual machine scale set.
@@ -22389,223 +22425,6 @@ func (o VirtualMachineAgentInstanceViewResponsePtrOutput) VmAgentVersion() pulum
 		}
 		return v.VmAgentVersion
 	}).(pulumi.StringPtrOutput)
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionType struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// How the extension handler should be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// The virtual machine extension instance view.
-	InstanceView *VirtualMachineExtensionInstanceView `pulumi:"instanceView"`
-	// Resource location
-	Location *string `pulumi:"location"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings interface{} `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
-	// The name of the extension handler publisher.
-	Publisher *string `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings interface{} `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures *bool `pulumi:"suppressFailures"`
-	// Resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type *string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
-}
-
-// VirtualMachineExtensionTypeInput is an input type that accepts VirtualMachineExtensionTypeArgs and VirtualMachineExtensionTypeOutput values.
-// You can construct a concrete instance of `VirtualMachineExtensionTypeInput` via:
-//
-//	VirtualMachineExtensionTypeArgs{...}
-type VirtualMachineExtensionTypeInput interface {
-	pulumi.Input
-
-	ToVirtualMachineExtensionTypeOutput() VirtualMachineExtensionTypeOutput
-	ToVirtualMachineExtensionTypeOutputWithContext(context.Context) VirtualMachineExtensionTypeOutput
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionTypeArgs struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion pulumi.BoolPtrInput `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
-	// How the extension handler should be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag pulumi.StringPtrInput `pulumi:"forceUpdateTag"`
-	// The virtual machine extension instance view.
-	InstanceView VirtualMachineExtensionInstanceViewPtrInput `pulumi:"instanceView"`
-	// Resource location
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions pulumi.StringArrayInput `pulumi:"provisionAfterExtensions"`
-	// The name of the extension handler publisher.
-	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings pulumi.Input `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures pulumi.BoolPtrInput `pulumi:"suppressFailures"`
-	// Resource tags
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
-}
-
-func (VirtualMachineExtensionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtensionType)(nil)).Elem()
-}
-
-func (i VirtualMachineExtensionTypeArgs) ToVirtualMachineExtensionTypeOutput() VirtualMachineExtensionTypeOutput {
-	return i.ToVirtualMachineExtensionTypeOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineExtensionTypeArgs) ToVirtualMachineExtensionTypeOutputWithContext(ctx context.Context) VirtualMachineExtensionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionTypeOutput)
-}
-
-// VirtualMachineExtensionTypeArrayInput is an input type that accepts VirtualMachineExtensionTypeArray and VirtualMachineExtensionTypeArrayOutput values.
-// You can construct a concrete instance of `VirtualMachineExtensionTypeArrayInput` via:
-//
-//	VirtualMachineExtensionTypeArray{ VirtualMachineExtensionTypeArgs{...} }
-type VirtualMachineExtensionTypeArrayInput interface {
-	pulumi.Input
-
-	ToVirtualMachineExtensionTypeArrayOutput() VirtualMachineExtensionTypeArrayOutput
-	ToVirtualMachineExtensionTypeArrayOutputWithContext(context.Context) VirtualMachineExtensionTypeArrayOutput
-}
-
-type VirtualMachineExtensionTypeArray []VirtualMachineExtensionTypeInput
-
-func (VirtualMachineExtensionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachineExtensionType)(nil)).Elem()
-}
-
-func (i VirtualMachineExtensionTypeArray) ToVirtualMachineExtensionTypeArrayOutput() VirtualMachineExtensionTypeArrayOutput {
-	return i.ToVirtualMachineExtensionTypeArrayOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineExtensionTypeArray) ToVirtualMachineExtensionTypeArrayOutputWithContext(ctx context.Context) VirtualMachineExtensionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionTypeArrayOutput)
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionTypeOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtensionType)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionTypeOutput) ToVirtualMachineExtensionTypeOutput() VirtualMachineExtensionTypeOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionTypeOutput) ToVirtualMachineExtensionTypeOutputWithContext(ctx context.Context) VirtualMachineExtensionTypeOutput {
-	return o
-}
-
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o VirtualMachineExtensionTypeOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-func (o VirtualMachineExtensionTypeOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// How the extension handler should be forced to update even if the extension configuration has not changed.
-func (o VirtualMachineExtensionTypeOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
-// The virtual machine extension instance view.
-func (o VirtualMachineExtensionTypeOutput) InstanceView() VirtualMachineExtensionInstanceViewPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *VirtualMachineExtensionInstanceView { return v.InstanceView }).(VirtualMachineExtensionInstanceViewPtrOutput)
-}
-
-// Resource location
-func (o VirtualMachineExtensionTypeOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o VirtualMachineExtensionTypeOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineExtensionTypeOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferencePtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *KeyVaultSecretReference { return v.ProtectedSettingsFromKeyVault }).(KeyVaultSecretReferencePtrOutput)
-}
-
-// Collection of extension names after which this extension needs to be provisioned.
-func (o VirtualMachineExtensionTypeOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
-}
-
-// The name of the extension handler publisher.
-func (o VirtualMachineExtensionTypeOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o VirtualMachineExtensionTypeOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-func (o VirtualMachineExtensionTypeOutput) SuppressFailures() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
-}
-
-// Resource tags
-func (o VirtualMachineExtensionTypeOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineExtensionTypeOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionTypeOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionType) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachineExtensionTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachineExtensionType)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionTypeArrayOutput) ToVirtualMachineExtensionTypeArrayOutput() VirtualMachineExtensionTypeArrayOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionTypeArrayOutput) ToVirtualMachineExtensionTypeArrayOutputWithContext(ctx context.Context) VirtualMachineExtensionTypeArrayOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionTypeArrayOutput) Index(i pulumi.IntInput) VirtualMachineExtensionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineExtensionType {
-		return vs[0].([]VirtualMachineExtensionType)[vs[1].(int)]
-	}).(VirtualMachineExtensionTypeOutput)
 }
 
 // The instance view of a virtual machine extension handler.
@@ -31166,7 +30985,7 @@ type VirtualMachineScaleSetVMProfile struct {
 	Priority *string `pulumi:"priority"`
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfile `pulumi:"scheduledEventsProfile"`
-	// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+	// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 	SecurityPostureReference *SecurityPostureReference `pulumi:"securityPostureReference"`
 	// Specifies the Security related profile settings for the virtual machines in the scale set.
 	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
@@ -31215,7 +31034,7 @@ type VirtualMachineScaleSetVMProfileArgs struct {
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile ScheduledEventsProfilePtrInput `pulumi:"scheduledEventsProfile"`
-	// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+	// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 	SecurityPostureReference SecurityPostureReferencePtrInput `pulumi:"securityPostureReference"`
 	// Specifies the Security related profile settings for the virtual machines in the scale set.
 	SecurityProfile SecurityProfilePtrInput `pulumi:"securityProfile"`
@@ -31369,7 +31188,7 @@ func (o VirtualMachineScaleSetVMProfileOutput) ScheduledEventsProfile() Schedule
 	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *ScheduledEventsProfile { return v.ScheduledEventsProfile }).(ScheduledEventsProfilePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 func (o VirtualMachineScaleSetVMProfileOutput) SecurityPostureReference() SecurityPostureReferencePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *SecurityPostureReference { return v.SecurityPostureReference }).(SecurityPostureReferencePtrOutput)
 }
@@ -31538,7 +31357,7 @@ func (o VirtualMachineScaleSetVMProfilePtrOutput) ScheduledEventsProfile() Sched
 	}).(ScheduledEventsProfilePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 func (o VirtualMachineScaleSetVMProfilePtrOutput) SecurityPostureReference() SecurityPostureReferencePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMProfile) *SecurityPostureReference {
 		if v == nil {
@@ -31614,7 +31433,7 @@ type VirtualMachineScaleSetVMProfileResponse struct {
 	Priority *string `pulumi:"priority"`
 	// Specifies Scheduled Event related configurations.
 	ScheduledEventsProfile *ScheduledEventsProfileResponse `pulumi:"scheduledEventsProfile"`
-	// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+	// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 	SecurityPostureReference *SecurityPostureReferenceResponse `pulumi:"securityPostureReference"`
 	// Specifies the Security related profile settings for the virtual machines in the scale set.
 	SecurityProfile *SecurityProfileResponse `pulumi:"securityProfile"`
@@ -31719,7 +31538,7 @@ func (o VirtualMachineScaleSetVMProfileResponseOutput) ScheduledEventsProfile() 
 	}).(ScheduledEventsProfileResponsePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 func (o VirtualMachineScaleSetVMProfileResponseOutput) SecurityPostureReference() SecurityPostureReferenceResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *SecurityPostureReferenceResponse {
 		return v.SecurityPostureReference
@@ -31899,7 +31718,7 @@ func (o VirtualMachineScaleSetVMProfileResponsePtrOutput) ScheduledEventsProfile
 	}).(ScheduledEventsProfileResponsePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used in the scale set. Minimum api-version: 2023-03-01
 func (o VirtualMachineScaleSetVMProfileResponsePtrOutput) SecurityPostureReference() SecurityPostureReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetVMProfileResponse) *SecurityPostureReferenceResponse {
 		if v == nil {
@@ -33585,8 +33404,6 @@ func init() {
 	pulumi.RegisterOutputType(VirtualHardDiskResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentInstanceViewResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentInstanceViewResponsePtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionTypeOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionTypeArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineExtensionHandlerInstanceViewResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineExtensionHandlerInstanceViewResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineExtensionInstanceViewOutput{})

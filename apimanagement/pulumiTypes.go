@@ -1007,6 +1007,103 @@ func (o ApiLicenseInformationResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// API Management gateway resource SKU properties.
+type ApiManagementGatewaySkuProperties struct {
+	// Capacity of the SKU (number of deployed units of the SKU)
+	Capacity *int `pulumi:"capacity"`
+	// Name of the Sku.
+	Name string `pulumi:"name"`
+}
+
+// ApiManagementGatewaySkuPropertiesInput is an input type that accepts ApiManagementGatewaySkuPropertiesArgs and ApiManagementGatewaySkuPropertiesOutput values.
+// You can construct a concrete instance of `ApiManagementGatewaySkuPropertiesInput` via:
+//
+//	ApiManagementGatewaySkuPropertiesArgs{...}
+type ApiManagementGatewaySkuPropertiesInput interface {
+	pulumi.Input
+
+	ToApiManagementGatewaySkuPropertiesOutput() ApiManagementGatewaySkuPropertiesOutput
+	ToApiManagementGatewaySkuPropertiesOutputWithContext(context.Context) ApiManagementGatewaySkuPropertiesOutput
+}
+
+// API Management gateway resource SKU properties.
+type ApiManagementGatewaySkuPropertiesArgs struct {
+	// Capacity of the SKU (number of deployed units of the SKU)
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// Name of the Sku.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ApiManagementGatewaySkuPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiManagementGatewaySkuProperties)(nil)).Elem()
+}
+
+func (i ApiManagementGatewaySkuPropertiesArgs) ToApiManagementGatewaySkuPropertiesOutput() ApiManagementGatewaySkuPropertiesOutput {
+	return i.ToApiManagementGatewaySkuPropertiesOutputWithContext(context.Background())
+}
+
+func (i ApiManagementGatewaySkuPropertiesArgs) ToApiManagementGatewaySkuPropertiesOutputWithContext(ctx context.Context) ApiManagementGatewaySkuPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiManagementGatewaySkuPropertiesOutput)
+}
+
+// API Management gateway resource SKU properties.
+type ApiManagementGatewaySkuPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ApiManagementGatewaySkuPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiManagementGatewaySkuProperties)(nil)).Elem()
+}
+
+func (o ApiManagementGatewaySkuPropertiesOutput) ToApiManagementGatewaySkuPropertiesOutput() ApiManagementGatewaySkuPropertiesOutput {
+	return o
+}
+
+func (o ApiManagementGatewaySkuPropertiesOutput) ToApiManagementGatewaySkuPropertiesOutputWithContext(ctx context.Context) ApiManagementGatewaySkuPropertiesOutput {
+	return o
+}
+
+// Capacity of the SKU (number of deployed units of the SKU)
+func (o ApiManagementGatewaySkuPropertiesOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApiManagementGatewaySkuProperties) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// Name of the Sku.
+func (o ApiManagementGatewaySkuPropertiesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiManagementGatewaySkuProperties) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// API Management gateway resource SKU properties.
+type ApiManagementGatewaySkuPropertiesResponse struct {
+	// Capacity of the SKU (number of deployed units of the SKU)
+	Capacity *int `pulumi:"capacity"`
+	// Name of the Sku.
+	Name string `pulumi:"name"`
+}
+
+// API Management gateway resource SKU properties.
+type ApiManagementGatewaySkuPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiManagementGatewaySkuPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiManagementGatewaySkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o ApiManagementGatewaySkuPropertiesResponseOutput) ToApiManagementGatewaySkuPropertiesResponseOutput() ApiManagementGatewaySkuPropertiesResponseOutput {
+	return o
+}
+
+func (o ApiManagementGatewaySkuPropertiesResponseOutput) ToApiManagementGatewaySkuPropertiesResponseOutputWithContext(ctx context.Context) ApiManagementGatewaySkuPropertiesResponseOutput {
+	return o
+}
+
+// Capacity of the SKU (number of deployed units of the SKU)
+func (o ApiManagementGatewaySkuPropertiesResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApiManagementGatewaySkuPropertiesResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// Name of the Sku.
+func (o ApiManagementGatewaySkuPropertiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiManagementGatewaySkuPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // Identity properties of the Api Management service resource.
 type ApiManagementServiceIdentity struct {
 	// The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
@@ -3308,6 +3405,601 @@ func (o BackendAuthorizationHeaderCredentialsResponsePtrOutput) Scheme() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type BackendBaseParametersPool struct {
+	// The list of backend entities belonging to a pool.
+	Services []BackendPoolItem `pulumi:"services"`
+}
+
+// BackendBaseParametersPoolInput is an input type that accepts BackendBaseParametersPoolArgs and BackendBaseParametersPoolOutput values.
+// You can construct a concrete instance of `BackendBaseParametersPoolInput` via:
+//
+//	BackendBaseParametersPoolArgs{...}
+type BackendBaseParametersPoolInput interface {
+	pulumi.Input
+
+	ToBackendBaseParametersPoolOutput() BackendBaseParametersPoolOutput
+	ToBackendBaseParametersPoolOutputWithContext(context.Context) BackendBaseParametersPoolOutput
+}
+
+type BackendBaseParametersPoolArgs struct {
+	// The list of backend entities belonging to a pool.
+	Services BackendPoolItemArrayInput `pulumi:"services"`
+}
+
+func (BackendBaseParametersPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBaseParametersPool)(nil)).Elem()
+}
+
+func (i BackendBaseParametersPoolArgs) ToBackendBaseParametersPoolOutput() BackendBaseParametersPoolOutput {
+	return i.ToBackendBaseParametersPoolOutputWithContext(context.Background())
+}
+
+func (i BackendBaseParametersPoolArgs) ToBackendBaseParametersPoolOutputWithContext(ctx context.Context) BackendBaseParametersPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBaseParametersPoolOutput)
+}
+
+func (i BackendBaseParametersPoolArgs) ToBackendBaseParametersPoolPtrOutput() BackendBaseParametersPoolPtrOutput {
+	return i.ToBackendBaseParametersPoolPtrOutputWithContext(context.Background())
+}
+
+func (i BackendBaseParametersPoolArgs) ToBackendBaseParametersPoolPtrOutputWithContext(ctx context.Context) BackendBaseParametersPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBaseParametersPoolOutput).ToBackendBaseParametersPoolPtrOutputWithContext(ctx)
+}
+
+// BackendBaseParametersPoolPtrInput is an input type that accepts BackendBaseParametersPoolArgs, BackendBaseParametersPoolPtr and BackendBaseParametersPoolPtrOutput values.
+// You can construct a concrete instance of `BackendBaseParametersPoolPtrInput` via:
+//
+//	        BackendBaseParametersPoolArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackendBaseParametersPoolPtrInput interface {
+	pulumi.Input
+
+	ToBackendBaseParametersPoolPtrOutput() BackendBaseParametersPoolPtrOutput
+	ToBackendBaseParametersPoolPtrOutputWithContext(context.Context) BackendBaseParametersPoolPtrOutput
+}
+
+type backendBaseParametersPoolPtrType BackendBaseParametersPoolArgs
+
+func BackendBaseParametersPoolPtr(v *BackendBaseParametersPoolArgs) BackendBaseParametersPoolPtrInput {
+	return (*backendBaseParametersPoolPtrType)(v)
+}
+
+func (*backendBaseParametersPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendBaseParametersPool)(nil)).Elem()
+}
+
+func (i *backendBaseParametersPoolPtrType) ToBackendBaseParametersPoolPtrOutput() BackendBaseParametersPoolPtrOutput {
+	return i.ToBackendBaseParametersPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *backendBaseParametersPoolPtrType) ToBackendBaseParametersPoolPtrOutputWithContext(ctx context.Context) BackendBaseParametersPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBaseParametersPoolPtrOutput)
+}
+
+type BackendBaseParametersPoolOutput struct{ *pulumi.OutputState }
+
+func (BackendBaseParametersPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBaseParametersPool)(nil)).Elem()
+}
+
+func (o BackendBaseParametersPoolOutput) ToBackendBaseParametersPoolOutput() BackendBaseParametersPoolOutput {
+	return o
+}
+
+func (o BackendBaseParametersPoolOutput) ToBackendBaseParametersPoolOutputWithContext(ctx context.Context) BackendBaseParametersPoolOutput {
+	return o
+}
+
+func (o BackendBaseParametersPoolOutput) ToBackendBaseParametersPoolPtrOutput() BackendBaseParametersPoolPtrOutput {
+	return o.ToBackendBaseParametersPoolPtrOutputWithContext(context.Background())
+}
+
+func (o BackendBaseParametersPoolOutput) ToBackendBaseParametersPoolPtrOutputWithContext(ctx context.Context) BackendBaseParametersPoolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendBaseParametersPool) *BackendBaseParametersPool {
+		return &v
+	}).(BackendBaseParametersPoolPtrOutput)
+}
+
+// The list of backend entities belonging to a pool.
+func (o BackendBaseParametersPoolOutput) Services() BackendPoolItemArrayOutput {
+	return o.ApplyT(func(v BackendBaseParametersPool) []BackendPoolItem { return v.Services }).(BackendPoolItemArrayOutput)
+}
+
+type BackendBaseParametersPoolPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendBaseParametersPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendBaseParametersPool)(nil)).Elem()
+}
+
+func (o BackendBaseParametersPoolPtrOutput) ToBackendBaseParametersPoolPtrOutput() BackendBaseParametersPoolPtrOutput {
+	return o
+}
+
+func (o BackendBaseParametersPoolPtrOutput) ToBackendBaseParametersPoolPtrOutputWithContext(ctx context.Context) BackendBaseParametersPoolPtrOutput {
+	return o
+}
+
+func (o BackendBaseParametersPoolPtrOutput) Elem() BackendBaseParametersPoolOutput {
+	return o.ApplyT(func(v *BackendBaseParametersPool) BackendBaseParametersPool {
+		if v != nil {
+			return *v
+		}
+		var ret BackendBaseParametersPool
+		return ret
+	}).(BackendBaseParametersPoolOutput)
+}
+
+// The list of backend entities belonging to a pool.
+func (o BackendBaseParametersPoolPtrOutput) Services() BackendPoolItemArrayOutput {
+	return o.ApplyT(func(v *BackendBaseParametersPool) []BackendPoolItem {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(BackendPoolItemArrayOutput)
+}
+
+type BackendBaseParametersResponsePool struct {
+	// The list of backend entities belonging to a pool.
+	Services []BackendPoolItemResponse `pulumi:"services"`
+}
+
+type BackendBaseParametersResponsePoolOutput struct{ *pulumi.OutputState }
+
+func (BackendBaseParametersResponsePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBaseParametersResponsePool)(nil)).Elem()
+}
+
+func (o BackendBaseParametersResponsePoolOutput) ToBackendBaseParametersResponsePoolOutput() BackendBaseParametersResponsePoolOutput {
+	return o
+}
+
+func (o BackendBaseParametersResponsePoolOutput) ToBackendBaseParametersResponsePoolOutputWithContext(ctx context.Context) BackendBaseParametersResponsePoolOutput {
+	return o
+}
+
+// The list of backend entities belonging to a pool.
+func (o BackendBaseParametersResponsePoolOutput) Services() BackendPoolItemResponseArrayOutput {
+	return o.ApplyT(func(v BackendBaseParametersResponsePool) []BackendPoolItemResponse { return v.Services }).(BackendPoolItemResponseArrayOutput)
+}
+
+type BackendBaseParametersResponsePoolPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendBaseParametersResponsePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendBaseParametersResponsePool)(nil)).Elem()
+}
+
+func (o BackendBaseParametersResponsePoolPtrOutput) ToBackendBaseParametersResponsePoolPtrOutput() BackendBaseParametersResponsePoolPtrOutput {
+	return o
+}
+
+func (o BackendBaseParametersResponsePoolPtrOutput) ToBackendBaseParametersResponsePoolPtrOutputWithContext(ctx context.Context) BackendBaseParametersResponsePoolPtrOutput {
+	return o
+}
+
+func (o BackendBaseParametersResponsePoolPtrOutput) Elem() BackendBaseParametersResponsePoolOutput {
+	return o.ApplyT(func(v *BackendBaseParametersResponsePool) BackendBaseParametersResponsePool {
+		if v != nil {
+			return *v
+		}
+		var ret BackendBaseParametersResponsePool
+		return ret
+	}).(BackendBaseParametersResponsePoolOutput)
+}
+
+// The list of backend entities belonging to a pool.
+func (o BackendBaseParametersResponsePoolPtrOutput) Services() BackendPoolItemResponseArrayOutput {
+	return o.ApplyT(func(v *BackendBaseParametersResponsePool) []BackendPoolItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(BackendPoolItemResponseArrayOutput)
+}
+
+// The configuration of the backend circuit breaker
+type BackendCircuitBreaker struct {
+	// The rules for tripping the backend.
+	Rules []CircuitBreakerRule `pulumi:"rules"`
+}
+
+// BackendCircuitBreakerInput is an input type that accepts BackendCircuitBreakerArgs and BackendCircuitBreakerOutput values.
+// You can construct a concrete instance of `BackendCircuitBreakerInput` via:
+//
+//	BackendCircuitBreakerArgs{...}
+type BackendCircuitBreakerInput interface {
+	pulumi.Input
+
+	ToBackendCircuitBreakerOutput() BackendCircuitBreakerOutput
+	ToBackendCircuitBreakerOutputWithContext(context.Context) BackendCircuitBreakerOutput
+}
+
+// The configuration of the backend circuit breaker
+type BackendCircuitBreakerArgs struct {
+	// The rules for tripping the backend.
+	Rules CircuitBreakerRuleArrayInput `pulumi:"rules"`
+}
+
+func (BackendCircuitBreakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendCircuitBreaker)(nil)).Elem()
+}
+
+func (i BackendCircuitBreakerArgs) ToBackendCircuitBreakerOutput() BackendCircuitBreakerOutput {
+	return i.ToBackendCircuitBreakerOutputWithContext(context.Background())
+}
+
+func (i BackendCircuitBreakerArgs) ToBackendCircuitBreakerOutputWithContext(ctx context.Context) BackendCircuitBreakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCircuitBreakerOutput)
+}
+
+func (i BackendCircuitBreakerArgs) ToBackendCircuitBreakerPtrOutput() BackendCircuitBreakerPtrOutput {
+	return i.ToBackendCircuitBreakerPtrOutputWithContext(context.Background())
+}
+
+func (i BackendCircuitBreakerArgs) ToBackendCircuitBreakerPtrOutputWithContext(ctx context.Context) BackendCircuitBreakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCircuitBreakerOutput).ToBackendCircuitBreakerPtrOutputWithContext(ctx)
+}
+
+// BackendCircuitBreakerPtrInput is an input type that accepts BackendCircuitBreakerArgs, BackendCircuitBreakerPtr and BackendCircuitBreakerPtrOutput values.
+// You can construct a concrete instance of `BackendCircuitBreakerPtrInput` via:
+//
+//	        BackendCircuitBreakerArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackendCircuitBreakerPtrInput interface {
+	pulumi.Input
+
+	ToBackendCircuitBreakerPtrOutput() BackendCircuitBreakerPtrOutput
+	ToBackendCircuitBreakerPtrOutputWithContext(context.Context) BackendCircuitBreakerPtrOutput
+}
+
+type backendCircuitBreakerPtrType BackendCircuitBreakerArgs
+
+func BackendCircuitBreakerPtr(v *BackendCircuitBreakerArgs) BackendCircuitBreakerPtrInput {
+	return (*backendCircuitBreakerPtrType)(v)
+}
+
+func (*backendCircuitBreakerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendCircuitBreaker)(nil)).Elem()
+}
+
+func (i *backendCircuitBreakerPtrType) ToBackendCircuitBreakerPtrOutput() BackendCircuitBreakerPtrOutput {
+	return i.ToBackendCircuitBreakerPtrOutputWithContext(context.Background())
+}
+
+func (i *backendCircuitBreakerPtrType) ToBackendCircuitBreakerPtrOutputWithContext(ctx context.Context) BackendCircuitBreakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendCircuitBreakerPtrOutput)
+}
+
+// The configuration of the backend circuit breaker
+type BackendCircuitBreakerOutput struct{ *pulumi.OutputState }
+
+func (BackendCircuitBreakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendCircuitBreaker)(nil)).Elem()
+}
+
+func (o BackendCircuitBreakerOutput) ToBackendCircuitBreakerOutput() BackendCircuitBreakerOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerOutput) ToBackendCircuitBreakerOutputWithContext(ctx context.Context) BackendCircuitBreakerOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerOutput) ToBackendCircuitBreakerPtrOutput() BackendCircuitBreakerPtrOutput {
+	return o.ToBackendCircuitBreakerPtrOutputWithContext(context.Background())
+}
+
+func (o BackendCircuitBreakerOutput) ToBackendCircuitBreakerPtrOutputWithContext(ctx context.Context) BackendCircuitBreakerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendCircuitBreaker) *BackendCircuitBreaker {
+		return &v
+	}).(BackendCircuitBreakerPtrOutput)
+}
+
+// The rules for tripping the backend.
+func (o BackendCircuitBreakerOutput) Rules() CircuitBreakerRuleArrayOutput {
+	return o.ApplyT(func(v BackendCircuitBreaker) []CircuitBreakerRule { return v.Rules }).(CircuitBreakerRuleArrayOutput)
+}
+
+type BackendCircuitBreakerPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendCircuitBreakerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendCircuitBreaker)(nil)).Elem()
+}
+
+func (o BackendCircuitBreakerPtrOutput) ToBackendCircuitBreakerPtrOutput() BackendCircuitBreakerPtrOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerPtrOutput) ToBackendCircuitBreakerPtrOutputWithContext(ctx context.Context) BackendCircuitBreakerPtrOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerPtrOutput) Elem() BackendCircuitBreakerOutput {
+	return o.ApplyT(func(v *BackendCircuitBreaker) BackendCircuitBreaker {
+		if v != nil {
+			return *v
+		}
+		var ret BackendCircuitBreaker
+		return ret
+	}).(BackendCircuitBreakerOutput)
+}
+
+// The rules for tripping the backend.
+func (o BackendCircuitBreakerPtrOutput) Rules() CircuitBreakerRuleArrayOutput {
+	return o.ApplyT(func(v *BackendCircuitBreaker) []CircuitBreakerRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(CircuitBreakerRuleArrayOutput)
+}
+
+// The configuration of the backend circuit breaker
+type BackendCircuitBreakerResponse struct {
+	// The rules for tripping the backend.
+	Rules []CircuitBreakerRuleResponse `pulumi:"rules"`
+}
+
+// The configuration of the backend circuit breaker
+type BackendCircuitBreakerResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendCircuitBreakerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendCircuitBreakerResponse)(nil)).Elem()
+}
+
+func (o BackendCircuitBreakerResponseOutput) ToBackendCircuitBreakerResponseOutput() BackendCircuitBreakerResponseOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerResponseOutput) ToBackendCircuitBreakerResponseOutputWithContext(ctx context.Context) BackendCircuitBreakerResponseOutput {
+	return o
+}
+
+// The rules for tripping the backend.
+func (o BackendCircuitBreakerResponseOutput) Rules() CircuitBreakerRuleResponseArrayOutput {
+	return o.ApplyT(func(v BackendCircuitBreakerResponse) []CircuitBreakerRuleResponse { return v.Rules }).(CircuitBreakerRuleResponseArrayOutput)
+}
+
+type BackendCircuitBreakerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendCircuitBreakerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendCircuitBreakerResponse)(nil)).Elem()
+}
+
+func (o BackendCircuitBreakerResponsePtrOutput) ToBackendCircuitBreakerResponsePtrOutput() BackendCircuitBreakerResponsePtrOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerResponsePtrOutput) ToBackendCircuitBreakerResponsePtrOutputWithContext(ctx context.Context) BackendCircuitBreakerResponsePtrOutput {
+	return o
+}
+
+func (o BackendCircuitBreakerResponsePtrOutput) Elem() BackendCircuitBreakerResponseOutput {
+	return o.ApplyT(func(v *BackendCircuitBreakerResponse) BackendCircuitBreakerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackendCircuitBreakerResponse
+		return ret
+	}).(BackendCircuitBreakerResponseOutput)
+}
+
+// The rules for tripping the backend.
+func (o BackendCircuitBreakerResponsePtrOutput) Rules() CircuitBreakerRuleResponseArrayOutput {
+	return o.ApplyT(func(v *BackendCircuitBreakerResponse) []CircuitBreakerRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(CircuitBreakerRuleResponseArrayOutput)
+}
+
+// Information regarding how the gateway should integrate with backend systems.
+type BackendConfiguration struct {
+	// The default hostname of the data-plane gateway to which requests can be sent.
+	Subnet *BackendSubnetConfiguration `pulumi:"subnet"`
+}
+
+// BackendConfigurationInput is an input type that accepts BackendConfigurationArgs and BackendConfigurationOutput values.
+// You can construct a concrete instance of `BackendConfigurationInput` via:
+//
+//	BackendConfigurationArgs{...}
+type BackendConfigurationInput interface {
+	pulumi.Input
+
+	ToBackendConfigurationOutput() BackendConfigurationOutput
+	ToBackendConfigurationOutputWithContext(context.Context) BackendConfigurationOutput
+}
+
+// Information regarding how the gateway should integrate with backend systems.
+type BackendConfigurationArgs struct {
+	// The default hostname of the data-plane gateway to which requests can be sent.
+	Subnet BackendSubnetConfigurationPtrInput `pulumi:"subnet"`
+}
+
+func (BackendConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendConfiguration)(nil)).Elem()
+}
+
+func (i BackendConfigurationArgs) ToBackendConfigurationOutput() BackendConfigurationOutput {
+	return i.ToBackendConfigurationOutputWithContext(context.Background())
+}
+
+func (i BackendConfigurationArgs) ToBackendConfigurationOutputWithContext(ctx context.Context) BackendConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendConfigurationOutput)
+}
+
+func (i BackendConfigurationArgs) ToBackendConfigurationPtrOutput() BackendConfigurationPtrOutput {
+	return i.ToBackendConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BackendConfigurationArgs) ToBackendConfigurationPtrOutputWithContext(ctx context.Context) BackendConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendConfigurationOutput).ToBackendConfigurationPtrOutputWithContext(ctx)
+}
+
+// BackendConfigurationPtrInput is an input type that accepts BackendConfigurationArgs, BackendConfigurationPtr and BackendConfigurationPtrOutput values.
+// You can construct a concrete instance of `BackendConfigurationPtrInput` via:
+//
+//	        BackendConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackendConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBackendConfigurationPtrOutput() BackendConfigurationPtrOutput
+	ToBackendConfigurationPtrOutputWithContext(context.Context) BackendConfigurationPtrOutput
+}
+
+type backendConfigurationPtrType BackendConfigurationArgs
+
+func BackendConfigurationPtr(v *BackendConfigurationArgs) BackendConfigurationPtrInput {
+	return (*backendConfigurationPtrType)(v)
+}
+
+func (*backendConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendConfiguration)(nil)).Elem()
+}
+
+func (i *backendConfigurationPtrType) ToBackendConfigurationPtrOutput() BackendConfigurationPtrOutput {
+	return i.ToBackendConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *backendConfigurationPtrType) ToBackendConfigurationPtrOutputWithContext(ctx context.Context) BackendConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendConfigurationPtrOutput)
+}
+
+// Information regarding how the gateway should integrate with backend systems.
+type BackendConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BackendConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendConfiguration)(nil)).Elem()
+}
+
+func (o BackendConfigurationOutput) ToBackendConfigurationOutput() BackendConfigurationOutput {
+	return o
+}
+
+func (o BackendConfigurationOutput) ToBackendConfigurationOutputWithContext(ctx context.Context) BackendConfigurationOutput {
+	return o
+}
+
+func (o BackendConfigurationOutput) ToBackendConfigurationPtrOutput() BackendConfigurationPtrOutput {
+	return o.ToBackendConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BackendConfigurationOutput) ToBackendConfigurationPtrOutputWithContext(ctx context.Context) BackendConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendConfiguration) *BackendConfiguration {
+		return &v
+	}).(BackendConfigurationPtrOutput)
+}
+
+// The default hostname of the data-plane gateway to which requests can be sent.
+func (o BackendConfigurationOutput) Subnet() BackendSubnetConfigurationPtrOutput {
+	return o.ApplyT(func(v BackendConfiguration) *BackendSubnetConfiguration { return v.Subnet }).(BackendSubnetConfigurationPtrOutput)
+}
+
+type BackendConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendConfiguration)(nil)).Elem()
+}
+
+func (o BackendConfigurationPtrOutput) ToBackendConfigurationPtrOutput() BackendConfigurationPtrOutput {
+	return o
+}
+
+func (o BackendConfigurationPtrOutput) ToBackendConfigurationPtrOutputWithContext(ctx context.Context) BackendConfigurationPtrOutput {
+	return o
+}
+
+func (o BackendConfigurationPtrOutput) Elem() BackendConfigurationOutput {
+	return o.ApplyT(func(v *BackendConfiguration) BackendConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BackendConfiguration
+		return ret
+	}).(BackendConfigurationOutput)
+}
+
+// The default hostname of the data-plane gateway to which requests can be sent.
+func (o BackendConfigurationPtrOutput) Subnet() BackendSubnetConfigurationPtrOutput {
+	return o.ApplyT(func(v *BackendConfiguration) *BackendSubnetConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(BackendSubnetConfigurationPtrOutput)
+}
+
+// Information regarding how the gateway should integrate with backend systems.
+type BackendConfigurationResponse struct {
+	// The default hostname of the data-plane gateway to which requests can be sent.
+	Subnet *BackendSubnetConfigurationResponse `pulumi:"subnet"`
+}
+
+// Information regarding how the gateway should integrate with backend systems.
+type BackendConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackendConfigurationResponseOutput) ToBackendConfigurationResponseOutput() BackendConfigurationResponseOutput {
+	return o
+}
+
+func (o BackendConfigurationResponseOutput) ToBackendConfigurationResponseOutputWithContext(ctx context.Context) BackendConfigurationResponseOutput {
+	return o
+}
+
+// The default hostname of the data-plane gateway to which requests can be sent.
+func (o BackendConfigurationResponseOutput) Subnet() BackendSubnetConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v BackendConfigurationResponse) *BackendSubnetConfigurationResponse { return v.Subnet }).(BackendSubnetConfigurationResponsePtrOutput)
+}
+
+type BackendConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackendConfigurationResponsePtrOutput) ToBackendConfigurationResponsePtrOutput() BackendConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackendConfigurationResponsePtrOutput) ToBackendConfigurationResponsePtrOutputWithContext(ctx context.Context) BackendConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackendConfigurationResponsePtrOutput) Elem() BackendConfigurationResponseOutput {
+	return o.ApplyT(func(v *BackendConfigurationResponse) BackendConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackendConfigurationResponse
+		return ret
+	}).(BackendConfigurationResponseOutput)
+}
+
+// The default hostname of the data-plane gateway to which requests can be sent.
+func (o BackendConfigurationResponsePtrOutput) Subnet() BackendSubnetConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *BackendConfigurationResponse) *BackendSubnetConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(BackendSubnetConfigurationResponsePtrOutput)
+}
+
 // Details of the Credentials used to connect to Backend.
 type BackendCredentialsContract struct {
 	// Authorization header authentication
@@ -3652,6 +4344,184 @@ func (o BackendCredentialsContractResponsePtrOutput) Query() pulumi.StringArrayM
 		}
 		return v.Query
 	}).(pulumi.StringArrayMapOutput)
+}
+
+// Backend pool service information
+type BackendPoolItem struct {
+	// The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+	Id string `pulumi:"id"`
+	// The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+	Priority *int `pulumi:"priority"`
+	// The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+	Weight *int `pulumi:"weight"`
+}
+
+// BackendPoolItemInput is an input type that accepts BackendPoolItemArgs and BackendPoolItemOutput values.
+// You can construct a concrete instance of `BackendPoolItemInput` via:
+//
+//	BackendPoolItemArgs{...}
+type BackendPoolItemInput interface {
+	pulumi.Input
+
+	ToBackendPoolItemOutput() BackendPoolItemOutput
+	ToBackendPoolItemOutputWithContext(context.Context) BackendPoolItemOutput
+}
+
+// Backend pool service information
+type BackendPoolItemArgs struct {
+	// The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (BackendPoolItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPoolItem)(nil)).Elem()
+}
+
+func (i BackendPoolItemArgs) ToBackendPoolItemOutput() BackendPoolItemOutput {
+	return i.ToBackendPoolItemOutputWithContext(context.Background())
+}
+
+func (i BackendPoolItemArgs) ToBackendPoolItemOutputWithContext(ctx context.Context) BackendPoolItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendPoolItemOutput)
+}
+
+// BackendPoolItemArrayInput is an input type that accepts BackendPoolItemArray and BackendPoolItemArrayOutput values.
+// You can construct a concrete instance of `BackendPoolItemArrayInput` via:
+//
+//	BackendPoolItemArray{ BackendPoolItemArgs{...} }
+type BackendPoolItemArrayInput interface {
+	pulumi.Input
+
+	ToBackendPoolItemArrayOutput() BackendPoolItemArrayOutput
+	ToBackendPoolItemArrayOutputWithContext(context.Context) BackendPoolItemArrayOutput
+}
+
+type BackendPoolItemArray []BackendPoolItemInput
+
+func (BackendPoolItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendPoolItem)(nil)).Elem()
+}
+
+func (i BackendPoolItemArray) ToBackendPoolItemArrayOutput() BackendPoolItemArrayOutput {
+	return i.ToBackendPoolItemArrayOutputWithContext(context.Background())
+}
+
+func (i BackendPoolItemArray) ToBackendPoolItemArrayOutputWithContext(ctx context.Context) BackendPoolItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendPoolItemArrayOutput)
+}
+
+// Backend pool service information
+type BackendPoolItemOutput struct{ *pulumi.OutputState }
+
+func (BackendPoolItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPoolItem)(nil)).Elem()
+}
+
+func (o BackendPoolItemOutput) ToBackendPoolItemOutput() BackendPoolItemOutput {
+	return o
+}
+
+func (o BackendPoolItemOutput) ToBackendPoolItemOutputWithContext(ctx context.Context) BackendPoolItemOutput {
+	return o
+}
+
+// The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+func (o BackendPoolItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendPoolItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+func (o BackendPoolItemOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendPoolItem) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+func (o BackendPoolItemOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendPoolItem) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type BackendPoolItemArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendPoolItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendPoolItem)(nil)).Elem()
+}
+
+func (o BackendPoolItemArrayOutput) ToBackendPoolItemArrayOutput() BackendPoolItemArrayOutput {
+	return o
+}
+
+func (o BackendPoolItemArrayOutput) ToBackendPoolItemArrayOutputWithContext(ctx context.Context) BackendPoolItemArrayOutput {
+	return o
+}
+
+func (o BackendPoolItemArrayOutput) Index(i pulumi.IntInput) BackendPoolItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendPoolItem {
+		return vs[0].([]BackendPoolItem)[vs[1].(int)]
+	}).(BackendPoolItemOutput)
+}
+
+// Backend pool service information
+type BackendPoolItemResponse struct {
+	// The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+	Id string `pulumi:"id"`
+	// The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+	Priority *int `pulumi:"priority"`
+	// The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+	Weight *int `pulumi:"weight"`
+}
+
+// Backend pool service information
+type BackendPoolItemResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendPoolItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendPoolItemResponse)(nil)).Elem()
+}
+
+func (o BackendPoolItemResponseOutput) ToBackendPoolItemResponseOutput() BackendPoolItemResponseOutput {
+	return o
+}
+
+func (o BackendPoolItemResponseOutput) ToBackendPoolItemResponseOutputWithContext(ctx context.Context) BackendPoolItemResponseOutput {
+	return o
+}
+
+// The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+func (o BackendPoolItemResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendPoolItemResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+func (o BackendPoolItemResponseOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendPoolItemResponse) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+func (o BackendPoolItemResponseOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendPoolItemResponse) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type BackendPoolItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendPoolItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendPoolItemResponse)(nil)).Elem()
+}
+
+func (o BackendPoolItemResponseArrayOutput) ToBackendPoolItemResponseArrayOutput() BackendPoolItemResponseArrayOutput {
+	return o
+}
+
+func (o BackendPoolItemResponseArrayOutput) ToBackendPoolItemResponseArrayOutputWithContext(ctx context.Context) BackendPoolItemResponseArrayOutput {
+	return o
+}
+
+func (o BackendPoolItemResponseArrayOutput) Index(i pulumi.IntInput) BackendPoolItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendPoolItemResponse {
+		return vs[0].([]BackendPoolItemResponse)[vs[1].(int)]
+	}).(BackendPoolItemResponseOutput)
 }
 
 // Properties specific to the Backend Type.
@@ -4474,6 +5344,206 @@ func (o BackendServiceFabricClusterPropertiesResponsePtrOutput) ServerX509Names(
 		}
 		return v.ServerX509Names
 	}).(X509CertificateNameResponseArrayOutput)
+}
+
+// Information regarding how the subnet to which the gateway should be injected.
+type BackendSubnetConfiguration struct {
+	// The ARM ID of the subnet in which the backend systems are hosted.
+	Id *string `pulumi:"id"`
+}
+
+// BackendSubnetConfigurationInput is an input type that accepts BackendSubnetConfigurationArgs and BackendSubnetConfigurationOutput values.
+// You can construct a concrete instance of `BackendSubnetConfigurationInput` via:
+//
+//	BackendSubnetConfigurationArgs{...}
+type BackendSubnetConfigurationInput interface {
+	pulumi.Input
+
+	ToBackendSubnetConfigurationOutput() BackendSubnetConfigurationOutput
+	ToBackendSubnetConfigurationOutputWithContext(context.Context) BackendSubnetConfigurationOutput
+}
+
+// Information regarding how the subnet to which the gateway should be injected.
+type BackendSubnetConfigurationArgs struct {
+	// The ARM ID of the subnet in which the backend systems are hosted.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (BackendSubnetConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendSubnetConfiguration)(nil)).Elem()
+}
+
+func (i BackendSubnetConfigurationArgs) ToBackendSubnetConfigurationOutput() BackendSubnetConfigurationOutput {
+	return i.ToBackendSubnetConfigurationOutputWithContext(context.Background())
+}
+
+func (i BackendSubnetConfigurationArgs) ToBackendSubnetConfigurationOutputWithContext(ctx context.Context) BackendSubnetConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendSubnetConfigurationOutput)
+}
+
+func (i BackendSubnetConfigurationArgs) ToBackendSubnetConfigurationPtrOutput() BackendSubnetConfigurationPtrOutput {
+	return i.ToBackendSubnetConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i BackendSubnetConfigurationArgs) ToBackendSubnetConfigurationPtrOutputWithContext(ctx context.Context) BackendSubnetConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendSubnetConfigurationOutput).ToBackendSubnetConfigurationPtrOutputWithContext(ctx)
+}
+
+// BackendSubnetConfigurationPtrInput is an input type that accepts BackendSubnetConfigurationArgs, BackendSubnetConfigurationPtr and BackendSubnetConfigurationPtrOutput values.
+// You can construct a concrete instance of `BackendSubnetConfigurationPtrInput` via:
+//
+//	        BackendSubnetConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackendSubnetConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToBackendSubnetConfigurationPtrOutput() BackendSubnetConfigurationPtrOutput
+	ToBackendSubnetConfigurationPtrOutputWithContext(context.Context) BackendSubnetConfigurationPtrOutput
+}
+
+type backendSubnetConfigurationPtrType BackendSubnetConfigurationArgs
+
+func BackendSubnetConfigurationPtr(v *BackendSubnetConfigurationArgs) BackendSubnetConfigurationPtrInput {
+	return (*backendSubnetConfigurationPtrType)(v)
+}
+
+func (*backendSubnetConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendSubnetConfiguration)(nil)).Elem()
+}
+
+func (i *backendSubnetConfigurationPtrType) ToBackendSubnetConfigurationPtrOutput() BackendSubnetConfigurationPtrOutput {
+	return i.ToBackendSubnetConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *backendSubnetConfigurationPtrType) ToBackendSubnetConfigurationPtrOutputWithContext(ctx context.Context) BackendSubnetConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendSubnetConfigurationPtrOutput)
+}
+
+// Information regarding how the subnet to which the gateway should be injected.
+type BackendSubnetConfigurationOutput struct{ *pulumi.OutputState }
+
+func (BackendSubnetConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendSubnetConfiguration)(nil)).Elem()
+}
+
+func (o BackendSubnetConfigurationOutput) ToBackendSubnetConfigurationOutput() BackendSubnetConfigurationOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationOutput) ToBackendSubnetConfigurationOutputWithContext(ctx context.Context) BackendSubnetConfigurationOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationOutput) ToBackendSubnetConfigurationPtrOutput() BackendSubnetConfigurationPtrOutput {
+	return o.ToBackendSubnetConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o BackendSubnetConfigurationOutput) ToBackendSubnetConfigurationPtrOutputWithContext(ctx context.Context) BackendSubnetConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendSubnetConfiguration) *BackendSubnetConfiguration {
+		return &v
+	}).(BackendSubnetConfigurationPtrOutput)
+}
+
+// The ARM ID of the subnet in which the backend systems are hosted.
+func (o BackendSubnetConfigurationOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendSubnetConfiguration) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type BackendSubnetConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendSubnetConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendSubnetConfiguration)(nil)).Elem()
+}
+
+func (o BackendSubnetConfigurationPtrOutput) ToBackendSubnetConfigurationPtrOutput() BackendSubnetConfigurationPtrOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationPtrOutput) ToBackendSubnetConfigurationPtrOutputWithContext(ctx context.Context) BackendSubnetConfigurationPtrOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationPtrOutput) Elem() BackendSubnetConfigurationOutput {
+	return o.ApplyT(func(v *BackendSubnetConfiguration) BackendSubnetConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret BackendSubnetConfiguration
+		return ret
+	}).(BackendSubnetConfigurationOutput)
+}
+
+// The ARM ID of the subnet in which the backend systems are hosted.
+func (o BackendSubnetConfigurationPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendSubnetConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information regarding how the subnet to which the gateway should be injected.
+type BackendSubnetConfigurationResponse struct {
+	// The ARM ID of the subnet in which the backend systems are hosted.
+	Id *string `pulumi:"id"`
+}
+
+// Information regarding how the subnet to which the gateway should be injected.
+type BackendSubnetConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendSubnetConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendSubnetConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackendSubnetConfigurationResponseOutput) ToBackendSubnetConfigurationResponseOutput() BackendSubnetConfigurationResponseOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationResponseOutput) ToBackendSubnetConfigurationResponseOutputWithContext(ctx context.Context) BackendSubnetConfigurationResponseOutput {
+	return o
+}
+
+// The ARM ID of the subnet in which the backend systems are hosted.
+func (o BackendSubnetConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendSubnetConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type BackendSubnetConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendSubnetConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendSubnetConfigurationResponse)(nil)).Elem()
+}
+
+func (o BackendSubnetConfigurationResponsePtrOutput) ToBackendSubnetConfigurationResponsePtrOutput() BackendSubnetConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationResponsePtrOutput) ToBackendSubnetConfigurationResponsePtrOutputWithContext(ctx context.Context) BackendSubnetConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o BackendSubnetConfigurationResponsePtrOutput) Elem() BackendSubnetConfigurationResponseOutput {
+	return o.ApplyT(func(v *BackendSubnetConfigurationResponse) BackendSubnetConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackendSubnetConfigurationResponse
+		return ret
+	}).(BackendSubnetConfigurationResponseOutput)
+}
+
+// The ARM ID of the subnet in which the backend systems are hosted.
+func (o BackendSubnetConfigurationResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendSubnetConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties controlling TLS Certificate Validation.
@@ -5426,6 +6496,546 @@ func (o CertificateInformationResponsePtrOutput) Thumbprint() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The trip conditions of the circuit breaker
+type CircuitBreakerFailureCondition struct {
+	// The threshold for opening the circuit.
+	Count *float64 `pulumi:"count"`
+	// The error reasons which are considered as failure.
+	ErrorReasons []string `pulumi:"errorReasons"`
+	// The interval during which the failures are counted.
+	Interval *string `pulumi:"interval"`
+	// The threshold for opening the circuit.
+	Percentage *float64 `pulumi:"percentage"`
+	// The status code ranges which are considered as failure.
+	StatusCodeRanges []FailureStatusCodeRange `pulumi:"statusCodeRanges"`
+}
+
+// CircuitBreakerFailureConditionInput is an input type that accepts CircuitBreakerFailureConditionArgs and CircuitBreakerFailureConditionOutput values.
+// You can construct a concrete instance of `CircuitBreakerFailureConditionInput` via:
+//
+//	CircuitBreakerFailureConditionArgs{...}
+type CircuitBreakerFailureConditionInput interface {
+	pulumi.Input
+
+	ToCircuitBreakerFailureConditionOutput() CircuitBreakerFailureConditionOutput
+	ToCircuitBreakerFailureConditionOutputWithContext(context.Context) CircuitBreakerFailureConditionOutput
+}
+
+// The trip conditions of the circuit breaker
+type CircuitBreakerFailureConditionArgs struct {
+	// The threshold for opening the circuit.
+	Count pulumi.Float64PtrInput `pulumi:"count"`
+	// The error reasons which are considered as failure.
+	ErrorReasons pulumi.StringArrayInput `pulumi:"errorReasons"`
+	// The interval during which the failures are counted.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// The threshold for opening the circuit.
+	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
+	// The status code ranges which are considered as failure.
+	StatusCodeRanges FailureStatusCodeRangeArrayInput `pulumi:"statusCodeRanges"`
+}
+
+func (CircuitBreakerFailureConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerFailureCondition)(nil)).Elem()
+}
+
+func (i CircuitBreakerFailureConditionArgs) ToCircuitBreakerFailureConditionOutput() CircuitBreakerFailureConditionOutput {
+	return i.ToCircuitBreakerFailureConditionOutputWithContext(context.Background())
+}
+
+func (i CircuitBreakerFailureConditionArgs) ToCircuitBreakerFailureConditionOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerFailureConditionOutput)
+}
+
+func (i CircuitBreakerFailureConditionArgs) ToCircuitBreakerFailureConditionPtrOutput() CircuitBreakerFailureConditionPtrOutput {
+	return i.ToCircuitBreakerFailureConditionPtrOutputWithContext(context.Background())
+}
+
+func (i CircuitBreakerFailureConditionArgs) ToCircuitBreakerFailureConditionPtrOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerFailureConditionOutput).ToCircuitBreakerFailureConditionPtrOutputWithContext(ctx)
+}
+
+// CircuitBreakerFailureConditionPtrInput is an input type that accepts CircuitBreakerFailureConditionArgs, CircuitBreakerFailureConditionPtr and CircuitBreakerFailureConditionPtrOutput values.
+// You can construct a concrete instance of `CircuitBreakerFailureConditionPtrInput` via:
+//
+//	        CircuitBreakerFailureConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CircuitBreakerFailureConditionPtrInput interface {
+	pulumi.Input
+
+	ToCircuitBreakerFailureConditionPtrOutput() CircuitBreakerFailureConditionPtrOutput
+	ToCircuitBreakerFailureConditionPtrOutputWithContext(context.Context) CircuitBreakerFailureConditionPtrOutput
+}
+
+type circuitBreakerFailureConditionPtrType CircuitBreakerFailureConditionArgs
+
+func CircuitBreakerFailureConditionPtr(v *CircuitBreakerFailureConditionArgs) CircuitBreakerFailureConditionPtrInput {
+	return (*circuitBreakerFailureConditionPtrType)(v)
+}
+
+func (*circuitBreakerFailureConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CircuitBreakerFailureCondition)(nil)).Elem()
+}
+
+func (i *circuitBreakerFailureConditionPtrType) ToCircuitBreakerFailureConditionPtrOutput() CircuitBreakerFailureConditionPtrOutput {
+	return i.ToCircuitBreakerFailureConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *circuitBreakerFailureConditionPtrType) ToCircuitBreakerFailureConditionPtrOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerFailureConditionPtrOutput)
+}
+
+// The trip conditions of the circuit breaker
+type CircuitBreakerFailureConditionOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerFailureConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerFailureCondition)(nil)).Elem()
+}
+
+func (o CircuitBreakerFailureConditionOutput) ToCircuitBreakerFailureConditionOutput() CircuitBreakerFailureConditionOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionOutput) ToCircuitBreakerFailureConditionOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionOutput) ToCircuitBreakerFailureConditionPtrOutput() CircuitBreakerFailureConditionPtrOutput {
+	return o.ToCircuitBreakerFailureConditionPtrOutputWithContext(context.Background())
+}
+
+func (o CircuitBreakerFailureConditionOutput) ToCircuitBreakerFailureConditionPtrOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CircuitBreakerFailureCondition) *CircuitBreakerFailureCondition {
+		return &v
+	}).(CircuitBreakerFailureConditionPtrOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureCondition) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The error reasons which are considered as failure.
+func (o CircuitBreakerFailureConditionOutput) ErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureCondition) []string { return v.ErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+// The interval during which the failures are counted.
+func (o CircuitBreakerFailureConditionOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureCondition) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureCondition) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
+}
+
+// The status code ranges which are considered as failure.
+func (o CircuitBreakerFailureConditionOutput) StatusCodeRanges() FailureStatusCodeRangeArrayOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureCondition) []FailureStatusCodeRange { return v.StatusCodeRanges }).(FailureStatusCodeRangeArrayOutput)
+}
+
+type CircuitBreakerFailureConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerFailureConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CircuitBreakerFailureCondition)(nil)).Elem()
+}
+
+func (o CircuitBreakerFailureConditionPtrOutput) ToCircuitBreakerFailureConditionPtrOutput() CircuitBreakerFailureConditionPtrOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionPtrOutput) ToCircuitBreakerFailureConditionPtrOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionPtrOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionPtrOutput) Elem() CircuitBreakerFailureConditionOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureCondition) CircuitBreakerFailureCondition {
+		if v != nil {
+			return *v
+		}
+		var ret CircuitBreakerFailureCondition
+		return ret
+	}).(CircuitBreakerFailureConditionOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionPtrOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureCondition) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The error reasons which are considered as failure.
+func (o CircuitBreakerFailureConditionPtrOutput) ErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorReasons
+	}).(pulumi.StringArrayOutput)
+}
+
+// The interval during which the failures are counted.
+func (o CircuitBreakerFailureConditionPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureCondition) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The status code ranges which are considered as failure.
+func (o CircuitBreakerFailureConditionPtrOutput) StatusCodeRanges() FailureStatusCodeRangeArrayOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureCondition) []FailureStatusCodeRange {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCodeRanges
+	}).(FailureStatusCodeRangeArrayOutput)
+}
+
+// The trip conditions of the circuit breaker
+type CircuitBreakerFailureConditionResponse struct {
+	// The threshold for opening the circuit.
+	Count *float64 `pulumi:"count"`
+	// The error reasons which are considered as failure.
+	ErrorReasons []string `pulumi:"errorReasons"`
+	// The interval during which the failures are counted.
+	Interval *string `pulumi:"interval"`
+	// The threshold for opening the circuit.
+	Percentage *float64 `pulumi:"percentage"`
+	// The status code ranges which are considered as failure.
+	StatusCodeRanges []FailureStatusCodeRangeResponse `pulumi:"statusCodeRanges"`
+}
+
+// The trip conditions of the circuit breaker
+type CircuitBreakerFailureConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerFailureConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerFailureConditionResponse)(nil)).Elem()
+}
+
+func (o CircuitBreakerFailureConditionResponseOutput) ToCircuitBreakerFailureConditionResponseOutput() CircuitBreakerFailureConditionResponseOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionResponseOutput) ToCircuitBreakerFailureConditionResponseOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionResponseOutput {
+	return o
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureConditionResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The error reasons which are considered as failure.
+func (o CircuitBreakerFailureConditionResponseOutput) ErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureConditionResponse) []string { return v.ErrorReasons }).(pulumi.StringArrayOutput)
+}
+
+// The interval during which the failures are counted.
+func (o CircuitBreakerFailureConditionResponseOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureConditionResponse) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionResponseOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureConditionResponse) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
+}
+
+// The status code ranges which are considered as failure.
+func (o CircuitBreakerFailureConditionResponseOutput) StatusCodeRanges() FailureStatusCodeRangeResponseArrayOutput {
+	return o.ApplyT(func(v CircuitBreakerFailureConditionResponse) []FailureStatusCodeRangeResponse {
+		return v.StatusCodeRanges
+	}).(FailureStatusCodeRangeResponseArrayOutput)
+}
+
+type CircuitBreakerFailureConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerFailureConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CircuitBreakerFailureConditionResponse)(nil)).Elem()
+}
+
+func (o CircuitBreakerFailureConditionResponsePtrOutput) ToCircuitBreakerFailureConditionResponsePtrOutput() CircuitBreakerFailureConditionResponsePtrOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionResponsePtrOutput) ToCircuitBreakerFailureConditionResponsePtrOutputWithContext(ctx context.Context) CircuitBreakerFailureConditionResponsePtrOutput {
+	return o
+}
+
+func (o CircuitBreakerFailureConditionResponsePtrOutput) Elem() CircuitBreakerFailureConditionResponseOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureConditionResponse) CircuitBreakerFailureConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CircuitBreakerFailureConditionResponse
+		return ret
+	}).(CircuitBreakerFailureConditionResponseOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionResponsePtrOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureConditionResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The error reasons which are considered as failure.
+func (o CircuitBreakerFailureConditionResponsePtrOutput) ErrorReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorReasons
+	}).(pulumi.StringArrayOutput)
+}
+
+// The interval during which the failures are counted.
+func (o CircuitBreakerFailureConditionResponsePtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold for opening the circuit.
+func (o CircuitBreakerFailureConditionResponsePtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureConditionResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The status code ranges which are considered as failure.
+func (o CircuitBreakerFailureConditionResponsePtrOutput) StatusCodeRanges() FailureStatusCodeRangeResponseArrayOutput {
+	return o.ApplyT(func(v *CircuitBreakerFailureConditionResponse) []FailureStatusCodeRangeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCodeRanges
+	}).(FailureStatusCodeRangeResponseArrayOutput)
+}
+
+// Rule configuration to trip the backend.
+type CircuitBreakerRule struct {
+	// flag to accept Retry-After header from the backend.
+	AcceptRetryAfter *bool `pulumi:"acceptRetryAfter"`
+	// The conditions for tripping the circuit breaker.
+	FailureCondition *CircuitBreakerFailureCondition `pulumi:"failureCondition"`
+	// The rule name.
+	Name *string `pulumi:"name"`
+	// The duration for which the circuit will be tripped.
+	TripDuration *string `pulumi:"tripDuration"`
+}
+
+// CircuitBreakerRuleInput is an input type that accepts CircuitBreakerRuleArgs and CircuitBreakerRuleOutput values.
+// You can construct a concrete instance of `CircuitBreakerRuleInput` via:
+//
+//	CircuitBreakerRuleArgs{...}
+type CircuitBreakerRuleInput interface {
+	pulumi.Input
+
+	ToCircuitBreakerRuleOutput() CircuitBreakerRuleOutput
+	ToCircuitBreakerRuleOutputWithContext(context.Context) CircuitBreakerRuleOutput
+}
+
+// Rule configuration to trip the backend.
+type CircuitBreakerRuleArgs struct {
+	// flag to accept Retry-After header from the backend.
+	AcceptRetryAfter pulumi.BoolPtrInput `pulumi:"acceptRetryAfter"`
+	// The conditions for tripping the circuit breaker.
+	FailureCondition CircuitBreakerFailureConditionPtrInput `pulumi:"failureCondition"`
+	// The rule name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The duration for which the circuit will be tripped.
+	TripDuration pulumi.StringPtrInput `pulumi:"tripDuration"`
+}
+
+func (CircuitBreakerRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerRule)(nil)).Elem()
+}
+
+func (i CircuitBreakerRuleArgs) ToCircuitBreakerRuleOutput() CircuitBreakerRuleOutput {
+	return i.ToCircuitBreakerRuleOutputWithContext(context.Background())
+}
+
+func (i CircuitBreakerRuleArgs) ToCircuitBreakerRuleOutputWithContext(ctx context.Context) CircuitBreakerRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerRuleOutput)
+}
+
+// CircuitBreakerRuleArrayInput is an input type that accepts CircuitBreakerRuleArray and CircuitBreakerRuleArrayOutput values.
+// You can construct a concrete instance of `CircuitBreakerRuleArrayInput` via:
+//
+//	CircuitBreakerRuleArray{ CircuitBreakerRuleArgs{...} }
+type CircuitBreakerRuleArrayInput interface {
+	pulumi.Input
+
+	ToCircuitBreakerRuleArrayOutput() CircuitBreakerRuleArrayOutput
+	ToCircuitBreakerRuleArrayOutputWithContext(context.Context) CircuitBreakerRuleArrayOutput
+}
+
+type CircuitBreakerRuleArray []CircuitBreakerRuleInput
+
+func (CircuitBreakerRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CircuitBreakerRule)(nil)).Elem()
+}
+
+func (i CircuitBreakerRuleArray) ToCircuitBreakerRuleArrayOutput() CircuitBreakerRuleArrayOutput {
+	return i.ToCircuitBreakerRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CircuitBreakerRuleArray) ToCircuitBreakerRuleArrayOutputWithContext(ctx context.Context) CircuitBreakerRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CircuitBreakerRuleArrayOutput)
+}
+
+// Rule configuration to trip the backend.
+type CircuitBreakerRuleOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerRule)(nil)).Elem()
+}
+
+func (o CircuitBreakerRuleOutput) ToCircuitBreakerRuleOutput() CircuitBreakerRuleOutput {
+	return o
+}
+
+func (o CircuitBreakerRuleOutput) ToCircuitBreakerRuleOutputWithContext(ctx context.Context) CircuitBreakerRuleOutput {
+	return o
+}
+
+// flag to accept Retry-After header from the backend.
+func (o CircuitBreakerRuleOutput) AcceptRetryAfter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRule) *bool { return v.AcceptRetryAfter }).(pulumi.BoolPtrOutput)
+}
+
+// The conditions for tripping the circuit breaker.
+func (o CircuitBreakerRuleOutput) FailureCondition() CircuitBreakerFailureConditionPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRule) *CircuitBreakerFailureCondition { return v.FailureCondition }).(CircuitBreakerFailureConditionPtrOutput)
+}
+
+// The rule name.
+func (o CircuitBreakerRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The duration for which the circuit will be tripped.
+func (o CircuitBreakerRuleOutput) TripDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRule) *string { return v.TripDuration }).(pulumi.StringPtrOutput)
+}
+
+type CircuitBreakerRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CircuitBreakerRule)(nil)).Elem()
+}
+
+func (o CircuitBreakerRuleArrayOutput) ToCircuitBreakerRuleArrayOutput() CircuitBreakerRuleArrayOutput {
+	return o
+}
+
+func (o CircuitBreakerRuleArrayOutput) ToCircuitBreakerRuleArrayOutputWithContext(ctx context.Context) CircuitBreakerRuleArrayOutput {
+	return o
+}
+
+func (o CircuitBreakerRuleArrayOutput) Index(i pulumi.IntInput) CircuitBreakerRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CircuitBreakerRule {
+		return vs[0].([]CircuitBreakerRule)[vs[1].(int)]
+	}).(CircuitBreakerRuleOutput)
+}
+
+// Rule configuration to trip the backend.
+type CircuitBreakerRuleResponse struct {
+	// flag to accept Retry-After header from the backend.
+	AcceptRetryAfter *bool `pulumi:"acceptRetryAfter"`
+	// The conditions for tripping the circuit breaker.
+	FailureCondition *CircuitBreakerFailureConditionResponse `pulumi:"failureCondition"`
+	// The rule name.
+	Name *string `pulumi:"name"`
+	// The duration for which the circuit will be tripped.
+	TripDuration *string `pulumi:"tripDuration"`
+}
+
+// Rule configuration to trip the backend.
+type CircuitBreakerRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CircuitBreakerRuleResponse)(nil)).Elem()
+}
+
+func (o CircuitBreakerRuleResponseOutput) ToCircuitBreakerRuleResponseOutput() CircuitBreakerRuleResponseOutput {
+	return o
+}
+
+func (o CircuitBreakerRuleResponseOutput) ToCircuitBreakerRuleResponseOutputWithContext(ctx context.Context) CircuitBreakerRuleResponseOutput {
+	return o
+}
+
+// flag to accept Retry-After header from the backend.
+func (o CircuitBreakerRuleResponseOutput) AcceptRetryAfter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRuleResponse) *bool { return v.AcceptRetryAfter }).(pulumi.BoolPtrOutput)
+}
+
+// The conditions for tripping the circuit breaker.
+func (o CircuitBreakerRuleResponseOutput) FailureCondition() CircuitBreakerFailureConditionResponsePtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRuleResponse) *CircuitBreakerFailureConditionResponse { return v.FailureCondition }).(CircuitBreakerFailureConditionResponsePtrOutput)
+}
+
+// The rule name.
+func (o CircuitBreakerRuleResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRuleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The duration for which the circuit will be tripped.
+func (o CircuitBreakerRuleResponseOutput) TripDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CircuitBreakerRuleResponse) *string { return v.TripDuration }).(pulumi.StringPtrOutput)
+}
+
+type CircuitBreakerRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CircuitBreakerRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CircuitBreakerRuleResponse)(nil)).Elem()
+}
+
+func (o CircuitBreakerRuleResponseArrayOutput) ToCircuitBreakerRuleResponseArrayOutput() CircuitBreakerRuleResponseArrayOutput {
+	return o
+}
+
+func (o CircuitBreakerRuleResponseArrayOutput) ToCircuitBreakerRuleResponseArrayOutputWithContext(ctx context.Context) CircuitBreakerRuleResponseArrayOutput {
+	return o
+}
+
+func (o CircuitBreakerRuleResponseArrayOutput) Index(i pulumi.IntInput) CircuitBreakerRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CircuitBreakerRuleResponse {
+		return vs[0].([]CircuitBreakerRuleResponse)[vs[1].(int)]
+	}).(CircuitBreakerRuleResponseOutput)
+}
+
 type DataMasking struct {
 	// Masking settings for headers
 	Headers []DataMaskingEntity `pulumi:"headers"`
@@ -5990,6 +7600,288 @@ func (o EmailTemplateParametersContractPropertiesResponseArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailTemplateParametersContractPropertiesResponse {
 		return vs[0].([]EmailTemplateParametersContractPropertiesResponse)[vs[1].(int)]
 	}).(EmailTemplateParametersContractPropertiesResponseOutput)
+}
+
+// The failure http status code range
+type FailureStatusCodeRange struct {
+	// The maximum http status code.
+	Max *int `pulumi:"max"`
+	// The minimum http status code.
+	Min *int `pulumi:"min"`
+}
+
+// FailureStatusCodeRangeInput is an input type that accepts FailureStatusCodeRangeArgs and FailureStatusCodeRangeOutput values.
+// You can construct a concrete instance of `FailureStatusCodeRangeInput` via:
+//
+//	FailureStatusCodeRangeArgs{...}
+type FailureStatusCodeRangeInput interface {
+	pulumi.Input
+
+	ToFailureStatusCodeRangeOutput() FailureStatusCodeRangeOutput
+	ToFailureStatusCodeRangeOutputWithContext(context.Context) FailureStatusCodeRangeOutput
+}
+
+// The failure http status code range
+type FailureStatusCodeRangeArgs struct {
+	// The maximum http status code.
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// The minimum http status code.
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (FailureStatusCodeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureStatusCodeRange)(nil)).Elem()
+}
+
+func (i FailureStatusCodeRangeArgs) ToFailureStatusCodeRangeOutput() FailureStatusCodeRangeOutput {
+	return i.ToFailureStatusCodeRangeOutputWithContext(context.Background())
+}
+
+func (i FailureStatusCodeRangeArgs) ToFailureStatusCodeRangeOutputWithContext(ctx context.Context) FailureStatusCodeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureStatusCodeRangeOutput)
+}
+
+// FailureStatusCodeRangeArrayInput is an input type that accepts FailureStatusCodeRangeArray and FailureStatusCodeRangeArrayOutput values.
+// You can construct a concrete instance of `FailureStatusCodeRangeArrayInput` via:
+//
+//	FailureStatusCodeRangeArray{ FailureStatusCodeRangeArgs{...} }
+type FailureStatusCodeRangeArrayInput interface {
+	pulumi.Input
+
+	ToFailureStatusCodeRangeArrayOutput() FailureStatusCodeRangeArrayOutput
+	ToFailureStatusCodeRangeArrayOutputWithContext(context.Context) FailureStatusCodeRangeArrayOutput
+}
+
+type FailureStatusCodeRangeArray []FailureStatusCodeRangeInput
+
+func (FailureStatusCodeRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FailureStatusCodeRange)(nil)).Elem()
+}
+
+func (i FailureStatusCodeRangeArray) ToFailureStatusCodeRangeArrayOutput() FailureStatusCodeRangeArrayOutput {
+	return i.ToFailureStatusCodeRangeArrayOutputWithContext(context.Background())
+}
+
+func (i FailureStatusCodeRangeArray) ToFailureStatusCodeRangeArrayOutputWithContext(ctx context.Context) FailureStatusCodeRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FailureStatusCodeRangeArrayOutput)
+}
+
+// The failure http status code range
+type FailureStatusCodeRangeOutput struct{ *pulumi.OutputState }
+
+func (FailureStatusCodeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureStatusCodeRange)(nil)).Elem()
+}
+
+func (o FailureStatusCodeRangeOutput) ToFailureStatusCodeRangeOutput() FailureStatusCodeRangeOutput {
+	return o
+}
+
+func (o FailureStatusCodeRangeOutput) ToFailureStatusCodeRangeOutputWithContext(ctx context.Context) FailureStatusCodeRangeOutput {
+	return o
+}
+
+// The maximum http status code.
+func (o FailureStatusCodeRangeOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FailureStatusCodeRange) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// The minimum http status code.
+func (o FailureStatusCodeRangeOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FailureStatusCodeRange) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type FailureStatusCodeRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (FailureStatusCodeRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FailureStatusCodeRange)(nil)).Elem()
+}
+
+func (o FailureStatusCodeRangeArrayOutput) ToFailureStatusCodeRangeArrayOutput() FailureStatusCodeRangeArrayOutput {
+	return o
+}
+
+func (o FailureStatusCodeRangeArrayOutput) ToFailureStatusCodeRangeArrayOutputWithContext(ctx context.Context) FailureStatusCodeRangeArrayOutput {
+	return o
+}
+
+func (o FailureStatusCodeRangeArrayOutput) Index(i pulumi.IntInput) FailureStatusCodeRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FailureStatusCodeRange {
+		return vs[0].([]FailureStatusCodeRange)[vs[1].(int)]
+	}).(FailureStatusCodeRangeOutput)
+}
+
+// The failure http status code range
+type FailureStatusCodeRangeResponse struct {
+	// The maximum http status code.
+	Max *int `pulumi:"max"`
+	// The minimum http status code.
+	Min *int `pulumi:"min"`
+}
+
+// The failure http status code range
+type FailureStatusCodeRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (FailureStatusCodeRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FailureStatusCodeRangeResponse)(nil)).Elem()
+}
+
+func (o FailureStatusCodeRangeResponseOutput) ToFailureStatusCodeRangeResponseOutput() FailureStatusCodeRangeResponseOutput {
+	return o
+}
+
+func (o FailureStatusCodeRangeResponseOutput) ToFailureStatusCodeRangeResponseOutputWithContext(ctx context.Context) FailureStatusCodeRangeResponseOutput {
+	return o
+}
+
+// The maximum http status code.
+func (o FailureStatusCodeRangeResponseOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FailureStatusCodeRangeResponse) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// The minimum http status code.
+func (o FailureStatusCodeRangeResponseOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FailureStatusCodeRangeResponse) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type FailureStatusCodeRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FailureStatusCodeRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FailureStatusCodeRangeResponse)(nil)).Elem()
+}
+
+func (o FailureStatusCodeRangeResponseArrayOutput) ToFailureStatusCodeRangeResponseArrayOutput() FailureStatusCodeRangeResponseArrayOutput {
+	return o
+}
+
+func (o FailureStatusCodeRangeResponseArrayOutput) ToFailureStatusCodeRangeResponseArrayOutputWithContext(ctx context.Context) FailureStatusCodeRangeResponseArrayOutput {
+	return o
+}
+
+func (o FailureStatusCodeRangeResponseArrayOutput) Index(i pulumi.IntInput) FailureStatusCodeRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FailureStatusCodeRangeResponse {
+		return vs[0].([]FailureStatusCodeRangeResponse)[vs[1].(int)]
+	}).(FailureStatusCodeRangeResponseOutput)
+}
+
+// Information regarding how the gateway should be exposed.
+type FrontendConfigurationResponse struct {
+	// The default hostname of the data-plane gateway to which requests can be sent. This is only applicable for API gateway with Standard SKU.
+	DefaultHostname string `pulumi:"defaultHostname"`
+}
+
+// Information regarding how the gateway should be exposed.
+type FrontendConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (FrontendConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FrontendConfigurationResponse)(nil)).Elem()
+}
+
+func (o FrontendConfigurationResponseOutput) ToFrontendConfigurationResponseOutput() FrontendConfigurationResponseOutput {
+	return o
+}
+
+func (o FrontendConfigurationResponseOutput) ToFrontendConfigurationResponseOutputWithContext(ctx context.Context) FrontendConfigurationResponseOutput {
+	return o
+}
+
+// The default hostname of the data-plane gateway to which requests can be sent. This is only applicable for API gateway with Standard SKU.
+func (o FrontendConfigurationResponseOutput) DefaultHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v FrontendConfigurationResponse) string { return v.DefaultHostname }).(pulumi.StringOutput)
+}
+
+type FrontendConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FrontendConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FrontendConfigurationResponse)(nil)).Elem()
+}
+
+func (o FrontendConfigurationResponsePtrOutput) ToFrontendConfigurationResponsePtrOutput() FrontendConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o FrontendConfigurationResponsePtrOutput) ToFrontendConfigurationResponsePtrOutputWithContext(ctx context.Context) FrontendConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o FrontendConfigurationResponsePtrOutput) Elem() FrontendConfigurationResponseOutput {
+	return o.ApplyT(func(v *FrontendConfigurationResponse) FrontendConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret FrontendConfigurationResponse
+		return ret
+	}).(FrontendConfigurationResponseOutput)
+}
+
+// The default hostname of the data-plane gateway to which requests can be sent. This is only applicable for API gateway with Standard SKU.
+func (o FrontendConfigurationResponsePtrOutput) DefaultHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FrontendConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultHostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
+type GatewayConfigurationApiResponse struct {
+	// Hostname to which the agent connects to propagate configuration to the cloud.
+	Hostname string `pulumi:"hostname"`
+}
+
+// Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
+type GatewayConfigurationApiResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigurationApiResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayConfigurationApiResponse)(nil)).Elem()
+}
+
+func (o GatewayConfigurationApiResponseOutput) ToGatewayConfigurationApiResponseOutput() GatewayConfigurationApiResponseOutput {
+	return o
+}
+
+func (o GatewayConfigurationApiResponseOutput) ToGatewayConfigurationApiResponseOutputWithContext(ctx context.Context) GatewayConfigurationApiResponseOutput {
+	return o
+}
+
+// Hostname to which the agent connects to propagate configuration to the cloud.
+func (o GatewayConfigurationApiResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayConfigurationApiResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+type GatewayConfigurationApiResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigurationApiResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayConfigurationApiResponse)(nil)).Elem()
+}
+
+func (o GatewayConfigurationApiResponsePtrOutput) ToGatewayConfigurationApiResponsePtrOutput() GatewayConfigurationApiResponsePtrOutput {
+	return o
+}
+
+func (o GatewayConfigurationApiResponsePtrOutput) ToGatewayConfigurationApiResponsePtrOutputWithContext(ctx context.Context) GatewayConfigurationApiResponsePtrOutput {
+	return o
+}
+
+func (o GatewayConfigurationApiResponsePtrOutput) Elem() GatewayConfigurationApiResponseOutput {
+	return o.ApplyT(func(v *GatewayConfigurationApiResponse) GatewayConfigurationApiResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayConfigurationApiResponse
+		return ret
+	}).(GatewayConfigurationApiResponseOutput)
+}
+
+// Hostname to which the agent connects to propagate configuration to the cloud.
+func (o GatewayConfigurationApiResponsePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayConfigurationApiResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
 }
 
 // Group contract Properties.
@@ -11635,6 +13527,8 @@ func init() {
 	pulumi.RegisterOutputType(ApiLicenseInformationPtrOutput{})
 	pulumi.RegisterOutputType(ApiLicenseInformationResponseOutput{})
 	pulumi.RegisterOutputType(ApiLicenseInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApiManagementGatewaySkuPropertiesOutput{})
+	pulumi.RegisterOutputType(ApiManagementGatewaySkuPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ApiManagementServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ApiManagementServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ApiManagementServiceIdentityResponseOutput{})
@@ -11671,10 +13565,26 @@ func init() {
 	pulumi.RegisterOutputType(BackendAuthorizationHeaderCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(BackendAuthorizationHeaderCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(BackendAuthorizationHeaderCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackendBaseParametersPoolOutput{})
+	pulumi.RegisterOutputType(BackendBaseParametersPoolPtrOutput{})
+	pulumi.RegisterOutputType(BackendBaseParametersResponsePoolOutput{})
+	pulumi.RegisterOutputType(BackendBaseParametersResponsePoolPtrOutput{})
+	pulumi.RegisterOutputType(BackendCircuitBreakerOutput{})
+	pulumi.RegisterOutputType(BackendCircuitBreakerPtrOutput{})
+	pulumi.RegisterOutputType(BackendCircuitBreakerResponseOutput{})
+	pulumi.RegisterOutputType(BackendCircuitBreakerResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackendConfigurationOutput{})
+	pulumi.RegisterOutputType(BackendConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BackendConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(BackendConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackendCredentialsContractOutput{})
 	pulumi.RegisterOutputType(BackendCredentialsContractPtrOutput{})
 	pulumi.RegisterOutputType(BackendCredentialsContractResponseOutput{})
 	pulumi.RegisterOutputType(BackendCredentialsContractResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackendPoolItemOutput{})
+	pulumi.RegisterOutputType(BackendPoolItemArrayOutput{})
+	pulumi.RegisterOutputType(BackendPoolItemResponseOutput{})
+	pulumi.RegisterOutputType(BackendPoolItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackendPropertiesOutput{})
 	pulumi.RegisterOutputType(BackendPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BackendPropertiesResponseOutput{})
@@ -11686,6 +13596,10 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceFabricClusterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceFabricClusterPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(BackendServiceFabricClusterPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackendSubnetConfigurationOutput{})
+	pulumi.RegisterOutputType(BackendSubnetConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(BackendSubnetConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(BackendSubnetConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackendTlsPropertiesOutput{})
 	pulumi.RegisterOutputType(BackendTlsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BackendTlsPropertiesResponseOutput{})
@@ -11702,6 +13616,14 @@ func init() {
 	pulumi.RegisterOutputType(CertificateInformationPtrOutput{})
 	pulumi.RegisterOutputType(CertificateInformationResponseOutput{})
 	pulumi.RegisterOutputType(CertificateInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerFailureConditionOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerFailureConditionPtrOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerFailureConditionResponseOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerFailureConditionResponsePtrOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerRuleOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerRuleArrayOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerRuleResponseOutput{})
+	pulumi.RegisterOutputType(CircuitBreakerRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataMaskingOutput{})
 	pulumi.RegisterOutputType(DataMaskingPtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingEntityOutput{})
@@ -11714,6 +13636,14 @@ func init() {
 	pulumi.RegisterOutputType(EmailTemplateParametersContractPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(EmailTemplateParametersContractPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EmailTemplateParametersContractPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(FailureStatusCodeRangeOutput{})
+	pulumi.RegisterOutputType(FailureStatusCodeRangeArrayOutput{})
+	pulumi.RegisterOutputType(FailureStatusCodeRangeResponseOutput{})
+	pulumi.RegisterOutputType(FailureStatusCodeRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(FrontendConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(FrontendConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayConfigurationApiResponseOutput{})
+	pulumi.RegisterOutputType(GatewayConfigurationApiResponsePtrOutput{})
 	pulumi.RegisterOutputType(GroupContractPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GroupContractPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(HostnameConfigurationOutput{})

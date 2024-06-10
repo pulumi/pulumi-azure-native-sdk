@@ -56,6 +56,9 @@ func NewSecuritySetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240215preview:SecuritySetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240401:SecuritySetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -1238,6 +1238,174 @@ func (in *backendProtocolPtr) ToBackendProtocolPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(BackendProtocolPtrOutput)
 }
 
+// Type of the backend. A backend can be either Single or Pool.
+type BackendType string
+
+const (
+	// supports single backend
+	BackendTypeSingle = BackendType("Single")
+	// supports pool backend
+	BackendTypePool = BackendType("Pool")
+)
+
+func (BackendType) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendType)(nil)).Elem()
+}
+
+func (e BackendType) ToBackendTypeOutput() BackendTypeOutput {
+	return pulumi.ToOutput(e).(BackendTypeOutput)
+}
+
+func (e BackendType) ToBackendTypeOutputWithContext(ctx context.Context) BackendTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendTypeOutput)
+}
+
+func (e BackendType) ToBackendTypePtrOutput() BackendTypePtrOutput {
+	return e.ToBackendTypePtrOutputWithContext(context.Background())
+}
+
+func (e BackendType) ToBackendTypePtrOutputWithContext(ctx context.Context) BackendTypePtrOutput {
+	return BackendType(e).ToBackendTypeOutputWithContext(ctx).ToBackendTypePtrOutputWithContext(ctx)
+}
+
+func (e BackendType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendTypeOutput struct{ *pulumi.OutputState }
+
+func (BackendTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendType)(nil)).Elem()
+}
+
+func (o BackendTypeOutput) ToBackendTypeOutput() BackendTypeOutput {
+	return o
+}
+
+func (o BackendTypeOutput) ToBackendTypeOutputWithContext(ctx context.Context) BackendTypeOutput {
+	return o
+}
+
+func (o BackendTypeOutput) ToBackendTypePtrOutput() BackendTypePtrOutput {
+	return o.ToBackendTypePtrOutputWithContext(context.Background())
+}
+
+func (o BackendTypeOutput) ToBackendTypePtrOutputWithContext(ctx context.Context) BackendTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendType) *BackendType {
+		return &v
+	}).(BackendTypePtrOutput)
+}
+
+func (o BackendTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendTypePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendType)(nil)).Elem()
+}
+
+func (o BackendTypePtrOutput) ToBackendTypePtrOutput() BackendTypePtrOutput {
+	return o
+}
+
+func (o BackendTypePtrOutput) ToBackendTypePtrOutputWithContext(ctx context.Context) BackendTypePtrOutput {
+	return o
+}
+
+func (o BackendTypePtrOutput) Elem() BackendTypeOutput {
+	return o.ApplyT(func(v *BackendType) BackendType {
+		if v != nil {
+			return *v
+		}
+		var ret BackendType
+		return ret
+	}).(BackendTypeOutput)
+}
+
+func (o BackendTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendTypeInput is an input type that accepts values of the BackendType enum
+// A concrete instance of `BackendTypeInput` can be one of the following:
+//
+//	BackendTypeSingle
+//	BackendTypePool
+type BackendTypeInput interface {
+	pulumi.Input
+
+	ToBackendTypeOutput() BackendTypeOutput
+	ToBackendTypeOutputWithContext(context.Context) BackendTypeOutput
+}
+
+var backendTypePtrType = reflect.TypeOf((**BackendType)(nil)).Elem()
+
+type BackendTypePtrInput interface {
+	pulumi.Input
+
+	ToBackendTypePtrOutput() BackendTypePtrOutput
+	ToBackendTypePtrOutputWithContext(context.Context) BackendTypePtrOutput
+}
+
+type backendTypePtr string
+
+func BackendTypePtr(v string) BackendTypePtrInput {
+	return (*backendTypePtr)(&v)
+}
+
+func (*backendTypePtr) ElementType() reflect.Type {
+	return backendTypePtrType
+}
+
+func (in *backendTypePtr) ToBackendTypePtrOutput() BackendTypePtrOutput {
+	return pulumi.ToOutput(in).(BackendTypePtrOutput)
+}
+
+func (in *backendTypePtr) ToBackendTypePtrOutputWithContext(ctx context.Context) BackendTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendTypePtrOutput)
+}
+
 type BearerTokenSendingMethod string
 
 const (
@@ -7733,6 +7901,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthorizationTypePtrOutput{})
 	pulumi.RegisterOutputType(BackendProtocolOutput{})
 	pulumi.RegisterOutputType(BackendProtocolPtrOutput{})
+	pulumi.RegisterOutputType(BackendTypeOutput{})
+	pulumi.RegisterOutputType(BackendTypePtrOutput{})
 	pulumi.RegisterOutputType(BearerTokenSendingMethodOutput{})
 	pulumi.RegisterOutputType(BearerTokenSendingMethodPtrOutput{})
 	pulumi.RegisterOutputType(BearerTokenSendingMethodsOutput{})
