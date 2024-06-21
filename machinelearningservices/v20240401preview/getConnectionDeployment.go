@@ -36,8 +36,9 @@ type LookupConnectionDeploymentResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
-	Name       string      `pulumi:"name"`
-	Properties interface{} `pulumi:"properties"`
+	Name       string                                       `pulumi:"name"`
+	Properties EndpointDeploymentResourcePropertiesResponse `pulumi:"properties"`
+	Sku        *CognitiveServicesSkuResponse                `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,8 +97,14 @@ func (o LookupConnectionDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupConnectionDeploymentResultOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v LookupConnectionDeploymentResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
+func (o LookupConnectionDeploymentResultOutput) Properties() EndpointDeploymentResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupConnectionDeploymentResult) EndpointDeploymentResourcePropertiesResponse {
+		return v.Properties
+	}).(EndpointDeploymentResourcePropertiesResponseOutput)
+}
+
+func (o LookupConnectionDeploymentResultOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupConnectionDeploymentResult) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

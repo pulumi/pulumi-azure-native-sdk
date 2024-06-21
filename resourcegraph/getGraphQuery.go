@@ -14,7 +14,7 @@ import (
 // Get a single graph query by its resourceName.
 // Azure REST API version: 2020-04-01-preview.
 //
-// Other available API versions: 2018-09-01-preview.
+// Other available API versions: 2018-09-01-preview, 2019-04-01, 2021-03-01, 2022-10-01.
 func LookupGraphQuery(ctx *pulumi.Context, args *LookupGraphQueryArgs, opts ...pulumi.InvokeOption) (*LookupGraphQueryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGraphQueryResult

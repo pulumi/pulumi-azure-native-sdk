@@ -35,7 +35,7 @@ type LookupAzureMonitorWorkspaceResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings IngestionSettingsResponse `pulumi:"defaultIngestionSettings"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -44,7 +44,7 @@ type LookupAzureMonitorWorkspaceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections []AzureResourceManagerPrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets allow or disallow public network access to workspace
@@ -106,7 +106,7 @@ func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() Inge
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) IngestionSettingsResponse { return v.DefaultIngestionSettings }).(IngestionSettingsResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAzureMonitorWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -127,10 +127,10 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) []AzureResourceManagerPrivateEndpointConnectionResponse {
+func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.

@@ -58,6 +58,15 @@ func NewGraphQuery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:resourcegraph/v20180901preview:GraphQuery"),
 		},
+		{
+			Type: pulumi.String("azure-native:resourcegraph/v20190401:GraphQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourcegraph/v20210301:GraphQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourcegraph/v20221001:GraphQuery"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -27621,6 +27621,121 @@ func (o EndpointDeploymentModelResponseOutput) Version() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v EndpointDeploymentModelResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
+type EndpointDeploymentResourceProperties struct {
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModel `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName *string `pulumi:"raiPolicyName"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+// EndpointDeploymentResourcePropertiesInput is an input type that accepts EndpointDeploymentResourcePropertiesArgs and EndpointDeploymentResourcePropertiesOutput values.
+// You can construct a concrete instance of `EndpointDeploymentResourcePropertiesInput` via:
+//
+//	EndpointDeploymentResourcePropertiesArgs{...}
+type EndpointDeploymentResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToEndpointDeploymentResourcePropertiesOutput() EndpointDeploymentResourcePropertiesOutput
+	ToEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) EndpointDeploymentResourcePropertiesOutput
+}
+
+type EndpointDeploymentResourcePropertiesArgs struct {
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelInput `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName pulumi.StringPtrInput `pulumi:"raiPolicyName"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
+}
+
+func (EndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (i EndpointDeploymentResourcePropertiesArgs) ToEndpointDeploymentResourcePropertiesOutput() EndpointDeploymentResourcePropertiesOutput {
+	return i.ToEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i EndpointDeploymentResourcePropertiesArgs) ToEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) EndpointDeploymentResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeploymentResourcePropertiesOutput)
+}
+
+type EndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (EndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (o EndpointDeploymentResourcePropertiesOutput) ToEndpointDeploymentResourcePropertiesOutput() EndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+func (o EndpointDeploymentResourcePropertiesOutput) ToEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) EndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+// Model used for the endpoint deployment.
+func (o EndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
+}
+
+// The name of RAI policy.
+func (o EndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Deployment model version upgrade option.
+func (o EndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
+type EndpointDeploymentResourcePropertiesResponse struct {
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelResponse `pulumi:"model"`
+	// Read-only provision state status property.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The name of RAI policy.
+	RaiPolicyName *string `pulumi:"raiPolicyName"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+type EndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointDeploymentResourcePropertiesResponseOutput) ToEndpointDeploymentResourcePropertiesResponseOutput() EndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointDeploymentResourcePropertiesResponseOutput) ToEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) EndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+// Model used for the endpoint deployment.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse { return v.Model }).(EndpointDeploymentModelResponseOutput)
+}
+
+// Read-only provision state status property.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of RAI policy.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Deployment model version upgrade option.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
 // Describes the endpoint configuration for the container
 type EndpointResponse struct {
 	// Host IP over which the application is exposed from the container
@@ -66798,171 +66913,6 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type SpeechEndpointDeploymentResourceProperties struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModel `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName *string               `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSku `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.Speech'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-// SpeechEndpointDeploymentResourcePropertiesInput is an input type that accepts SpeechEndpointDeploymentResourcePropertiesArgs and SpeechEndpointDeploymentResourcePropertiesOutput values.
-// You can construct a concrete instance of `SpeechEndpointDeploymentResourcePropertiesInput` via:
-//
-//	SpeechEndpointDeploymentResourcePropertiesArgs{...}
-type SpeechEndpointDeploymentResourcePropertiesInput interface {
-	pulumi.Input
-
-	ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput
-	ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) SpeechEndpointDeploymentResourcePropertiesOutput
-}
-
-type SpeechEndpointDeploymentResourcePropertiesArgs struct {
-	// The failure reason if the creation failed.
-	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelInput `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
-	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.Speech'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
-}
-
-func (SpeechEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpeechEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (i SpeechEndpointDeploymentResourcePropertiesArgs) ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput {
-	return i.ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
-}
-
-func (i SpeechEndpointDeploymentResourcePropertiesArgs) ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpeechEndpointDeploymentResourcePropertiesOutput)
-}
-
-type SpeechEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
-
-func (SpeechEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpeechEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
-}
-
-// The name of RAI policy.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.Speech'.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
-}
-
-type SpeechEndpointDeploymentResourcePropertiesResponse struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelResponse `pulumi:"model"`
-	// Read-only provision state status property.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The name of RAI policy.
-	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.Speech'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-type SpeechEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SpeechEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpeechEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ToSpeechEndpointDeploymentResourcePropertiesResponseOutput() SpeechEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ToSpeechEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
-		return v.Model
-	}).(EndpointDeploymentModelResponseOutput)
-}
-
-// Read-only provision state status property.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of RAI policy.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.Speech'.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
-}
-
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -67379,6 +67329,8 @@ func init() {
 	pulumi.RegisterOutputType(EndpointAuthKeysPtrOutput{})
 	pulumi.RegisterOutputType(EndpointDeploymentModelOutput{})
 	pulumi.RegisterOutputType(EndpointDeploymentModelResponseOutput{})
+	pulumi.RegisterOutputType(EndpointDeploymentResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(EndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointScheduleActionOutput{})
@@ -67847,8 +67799,6 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesOutput{})
-	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 }

@@ -14,7 +14,7 @@ import (
 // Get details of the specified snapshot
 // Azure REST API version: 2022-11-01.
 //
-// Other available API versions: 2017-08-15, 2019-06-01, 2019-10-01, 2019-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01.
+// Other available API versions: 2017-08-15, 2019-06-01, 2019-10-01, 2019-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview.
 func LookupSnapshot(ctx *pulumi.Context, args *LookupSnapshotArgs, opts ...pulumi.InvokeOption) (*LookupSnapshotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSnapshotResult

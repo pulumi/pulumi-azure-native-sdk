@@ -14,7 +14,7 @@ import (
 // Gets flow resource.
 // Azure REST API version: 2023-10-11-preview.
 //
-// Other available API versions: 2024-01-25.
+// Other available API versions: 2024-01-25, 2024-05-07.
 func LookupFlow(ctx *pulumi.Context, args *LookupFlowArgs, opts ...pulumi.InvokeOption) (*LookupFlowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlowResult

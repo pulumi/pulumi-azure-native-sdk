@@ -123,6 +123,9 @@ func NewMSIXPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240306preview:MSIXPackage"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:MSIXPackage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

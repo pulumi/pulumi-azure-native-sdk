@@ -14,7 +14,7 @@ import (
 // Gets details from a list of feature names.
 // Azure REST API version: 2021-12-01.
 //
-// Other available API versions: 2023-05-01-preview.
+// Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
 func ListFeatureSubscription(ctx *pulumi.Context, args *ListFeatureSubscriptionArgs, opts ...pulumi.InvokeOption) (*ListFeatureSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeatureSubscriptionResult

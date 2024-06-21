@@ -63,6 +63,9 @@ func NewKafkaConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:purview/v20211201:KafkaConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:purview/v20240401preview:KafkaConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -55,6 +55,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20231001:Endpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20240701:Endpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

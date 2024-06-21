@@ -127,6 +127,9 @@ func NewReplicationNetworkMapping(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240201:ReplicationNetworkMapping"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationNetworkMapping"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

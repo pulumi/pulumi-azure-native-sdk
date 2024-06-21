@@ -15,7 +15,7 @@ import (
 // Backup Vault information
 // Azure REST API version: 2022-11-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-07-01-preview, 2023-11-01.
+// Other available API versions: 2023-05-01-preview, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview.
 type BackupVault struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewBackupVault(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20231101:BackupVault"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20231101preview:BackupVault"),
 		},
 	})
 	opts = append(opts, aliases)

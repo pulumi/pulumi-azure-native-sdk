@@ -38,7 +38,7 @@ type LookupWorkloadNetworkDnsZoneResult struct {
 	// DNS Server IP array of the DNS Zone.
 	DnsServerIps []string `pulumi:"dnsServerIps"`
 	// Number of DNS Services using the DNS zone.
-	DnsServices *int `pulumi:"dnsServices"`
+	DnsServices *float64 `pulumi:"dnsServices"`
 	// Domain names of the DNS Zone.
 	Domain []string `pulumi:"domain"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -109,8 +109,8 @@ func (o LookupWorkloadNetworkDnsZoneResultOutput) DnsServerIps() pulumi.StringAr
 }
 
 // Number of DNS Services using the DNS zone.
-func (o LookupWorkloadNetworkDnsZoneResultOutput) DnsServices() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) *int { return v.DnsServices }).(pulumi.IntPtrOutput)
+func (o LookupWorkloadNetworkDnsZoneResultOutput) DnsServices() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkDnsZoneResult) *float64 { return v.DnsServices }).(pulumi.Float64PtrOutput)
 }
 
 // Domain names of the DNS Zone.

@@ -10205,6 +10205,194 @@ func (o WorkspaceConnectionAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkspaceConnectionAccountKey struct {
+	Key *string `pulumi:"key"`
+}
+
+// WorkspaceConnectionAccountKeyInput is an input type that accepts WorkspaceConnectionAccountKeyArgs and WorkspaceConnectionAccountKeyOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionAccountKeyInput` via:
+//
+//	WorkspaceConnectionAccountKeyArgs{...}
+type WorkspaceConnectionAccountKeyInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput
+	ToWorkspaceConnectionAccountKeyOutputWithContext(context.Context) WorkspaceConnectionAccountKeyOutput
+}
+
+type WorkspaceConnectionAccountKeyArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (WorkspaceConnectionAccountKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput {
+	return i.ToWorkspaceConnectionAccountKeyOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyOutput)
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return i.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyOutput).ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionAccountKeyPtrInput is an input type that accepts WorkspaceConnectionAccountKeyArgs, WorkspaceConnectionAccountKeyPtr and WorkspaceConnectionAccountKeyPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionAccountKeyPtrInput` via:
+//
+//	        WorkspaceConnectionAccountKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionAccountKeyPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput
+	ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Context) WorkspaceConnectionAccountKeyPtrOutput
+}
+
+type workspaceConnectionAccountKeyPtrType WorkspaceConnectionAccountKeyArgs
+
+func WorkspaceConnectionAccountKeyPtr(v *WorkspaceConnectionAccountKeyArgs) WorkspaceConnectionAccountKeyPtrInput {
+	return (*workspaceConnectionAccountKeyPtrType)(v)
+}
+
+func (*workspaceConnectionAccountKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return i.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return o.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionAccountKey) *WorkspaceConnectionAccountKey {
+		return &v
+	}).(WorkspaceConnectionAccountKeyPtrOutput)
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccountKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) Elem() WorkspaceConnectionAccountKeyOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKey) WorkspaceConnectionAccountKey {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionAccountKey
+		return ret
+	}).(WorkspaceConnectionAccountKeyOutput)
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyResponse struct {
+	Key *string `pulumi:"key"`
+}
+
+type WorkspaceConnectionAccountKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccountKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyResponseOutput) ToWorkspaceConnectionAccountKeyResponseOutput() WorkspaceConnectionAccountKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponseOutput) ToWorkspaceConnectionAccountKeyResponseOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccountKeyResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccountKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) ToWorkspaceConnectionAccountKeyResponsePtrOutput() WorkspaceConnectionAccountKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) ToWorkspaceConnectionAccountKeyResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) Elem() WorkspaceConnectionAccountKeyResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKeyResponse) WorkspaceConnectionAccountKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionAccountKeyResponse
+		return ret
+	}).(WorkspaceConnectionAccountKeyResponseOutput)
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 // Api key object for workspace connection credential.
 type WorkspaceConnectionApiKey struct {
 	Key *string `pulumi:"key"`
@@ -12292,6 +12480,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyResponseOutput{})

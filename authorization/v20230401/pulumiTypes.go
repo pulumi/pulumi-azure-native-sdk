@@ -1554,6 +1554,8 @@ func (o PolicyDefinitionGroupResponseArrayOutput) Index(i pulumi.IntInput) Polic
 
 // The policy definition reference.
 type PolicyDefinitionReference struct {
+	// The version of the policy definition to use.
+	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// The name of the groups that this policy definition reference belongs to.
 	GroupNames []string `pulumi:"groupNames"`
 	// The parameter values for the referenced policy rule. The keys are the parameter names.
@@ -1577,6 +1579,8 @@ type PolicyDefinitionReferenceInput interface {
 
 // The policy definition reference.
 type PolicyDefinitionReferenceArgs struct {
+	// The version of the policy definition to use.
+	DefinitionVersion pulumi.StringPtrInput `pulumi:"definitionVersion"`
 	// The name of the groups that this policy definition reference belongs to.
 	GroupNames pulumi.StringArrayInput `pulumi:"groupNames"`
 	// The parameter values for the referenced policy rule. The keys are the parameter names.
@@ -1639,6 +1643,11 @@ func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutputWithCo
 	return o
 }
 
+// The version of the policy definition to use.
+func (o PolicyDefinitionReferenceOutput) DefinitionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionReference) *string { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
+}
+
 // The name of the groups that this policy definition reference belongs to.
 func (o PolicyDefinitionReferenceOutput) GroupNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyDefinitionReference) []string { return v.GroupNames }).(pulumi.StringArrayOutput)
@@ -1681,6 +1690,8 @@ func (o PolicyDefinitionReferenceArrayOutput) Index(i pulumi.IntInput) PolicyDef
 
 // The policy definition reference.
 type PolicyDefinitionReferenceResponse struct {
+	// The version of the policy definition to use.
+	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// The name of the groups that this policy definition reference belongs to.
 	GroupNames []string `pulumi:"groupNames"`
 	// The parameter values for the referenced policy rule. The keys are the parameter names.
@@ -1704,6 +1715,11 @@ func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResp
 
 func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResponseOutputWithContext(ctx context.Context) PolicyDefinitionReferenceResponseOutput {
 	return o
+}
+
+// The version of the policy definition to use.
+func (o PolicyDefinitionReferenceResponseOutput) DefinitionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDefinitionReferenceResponse) *string { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
 }
 
 // The name of the groups that this policy definition reference belongs to.

@@ -102,6 +102,9 @@ func NewScalingPlanPooledSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240403:ScalingPlanPooledSchedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:ScalingPlanPooledSchedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

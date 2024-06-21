@@ -14,7 +14,7 @@ import (
 // Gets an Endpoint resource.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2023-07-01-preview, 2023-10-01.
+// Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
 func LookupEndpoint(ctx *pulumi.Context, args *LookupEndpointArgs, opts ...pulumi.InvokeOption) (*LookupEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEndpointResult

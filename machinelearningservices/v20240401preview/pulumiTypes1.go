@@ -13,629 +13,6 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettings struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser *AssignedUser `pulumi:"assignedUser"`
-}
-
-// PersonalComputeInstanceSettingsInput is an input type that accepts PersonalComputeInstanceSettingsArgs and PersonalComputeInstanceSettingsOutput values.
-// You can construct a concrete instance of `PersonalComputeInstanceSettingsInput` via:
-//
-//	PersonalComputeInstanceSettingsArgs{...}
-type PersonalComputeInstanceSettingsInput interface {
-	pulumi.Input
-
-	ToPersonalComputeInstanceSettingsOutput() PersonalComputeInstanceSettingsOutput
-	ToPersonalComputeInstanceSettingsOutputWithContext(context.Context) PersonalComputeInstanceSettingsOutput
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsArgs struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser AssignedUserPtrInput `pulumi:"assignedUser"`
-}
-
-func (PersonalComputeInstanceSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PersonalComputeInstanceSettings)(nil)).Elem()
-}
-
-func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsOutput() PersonalComputeInstanceSettingsOutput {
-	return i.ToPersonalComputeInstanceSettingsOutputWithContext(context.Background())
-}
-
-func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PersonalComputeInstanceSettingsOutput)
-}
-
-func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
-	return i.ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PersonalComputeInstanceSettingsOutput).ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx)
-}
-
-// PersonalComputeInstanceSettingsPtrInput is an input type that accepts PersonalComputeInstanceSettingsArgs, PersonalComputeInstanceSettingsPtr and PersonalComputeInstanceSettingsPtrOutput values.
-// You can construct a concrete instance of `PersonalComputeInstanceSettingsPtrInput` via:
-//
-//	        PersonalComputeInstanceSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type PersonalComputeInstanceSettingsPtrInput interface {
-	pulumi.Input
-
-	ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput
-	ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Context) PersonalComputeInstanceSettingsPtrOutput
-}
-
-type personalComputeInstanceSettingsPtrType PersonalComputeInstanceSettingsArgs
-
-func PersonalComputeInstanceSettingsPtr(v *PersonalComputeInstanceSettingsArgs) PersonalComputeInstanceSettingsPtrInput {
-	return (*personalComputeInstanceSettingsPtrType)(v)
-}
-
-func (*personalComputeInstanceSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersonalComputeInstanceSettings)(nil)).Elem()
-}
-
-func (i *personalComputeInstanceSettingsPtrType) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
-	return i.ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *personalComputeInstanceSettingsPtrType) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PersonalComputeInstanceSettingsPtrOutput)
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PersonalComputeInstanceSettings)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsOutput() PersonalComputeInstanceSettingsOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
-	return o.ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersonalComputeInstanceSettings) *PersonalComputeInstanceSettings {
-		return &v
-	}).(PersonalComputeInstanceSettingsPtrOutput)
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsOutput) AssignedUser() AssignedUserPtrOutput {
-	return o.ApplyT(func(v PersonalComputeInstanceSettings) *AssignedUser { return v.AssignedUser }).(AssignedUserPtrOutput)
-}
-
-type PersonalComputeInstanceSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersonalComputeInstanceSettings)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsPtrOutput) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsPtrOutput) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsPtrOutput) Elem() PersonalComputeInstanceSettingsOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettings) PersonalComputeInstanceSettings {
-		if v != nil {
-			return *v
-		}
-		var ret PersonalComputeInstanceSettings
-		return ret
-	}).(PersonalComputeInstanceSettingsOutput)
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsPtrOutput) AssignedUser() AssignedUserPtrOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettings) *AssignedUser {
-		if v == nil {
-			return nil
-		}
-		return v.AssignedUser
-	}).(AssignedUserPtrOutput)
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponse struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser *AssignedUserResponse `pulumi:"assignedUser"`
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PersonalComputeInstanceSettingsResponse)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutput() PersonalComputeInstanceSettingsResponseOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponseOutput {
-	return o
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsResponseOutput) AssignedUser() AssignedUserResponsePtrOutput {
-	return o.ApplyT(func(v PersonalComputeInstanceSettingsResponse) *AssignedUserResponse { return v.AssignedUser }).(AssignedUserResponsePtrOutput)
-}
-
-type PersonalComputeInstanceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersonalComputeInstanceSettingsResponse)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutput() PersonalComputeInstanceSettingsResponsePtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponsePtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) Elem() PersonalComputeInstanceSettingsResponseOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) PersonalComputeInstanceSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PersonalComputeInstanceSettingsResponse
-		return ret
-	}).(PersonalComputeInstanceSettingsResponseOutput)
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) AssignedUser() AssignedUserResponsePtrOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) *AssignedUserResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AssignedUser
-	}).(AssignedUserResponsePtrOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJob struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType string `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs map[string]interface{} `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Configuration for secrets to be made available during runtime.
-	SecretsConfiguration map[string]SecretConfiguration `pulumi:"secretsConfiguration"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobService `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings interface{} `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId *string `pulumi:"sourceJobId"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJob
-func (val *PipelineJob) Defaults() *PipelineJob {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// PipelineJobInput is an input type that accepts PipelineJobArgs and PipelineJobOutput values.
-// You can construct a concrete instance of `PipelineJobInput` via:
-//
-//	PipelineJobArgs{...}
-type PipelineJobInput interface {
-	pulumi.Input
-
-	ToPipelineJobOutput() PipelineJobOutput
-	ToPipelineJobOutputWithContext(context.Context) PipelineJobOutput
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobArgs struct {
-	// ARM resource ID of the component resource.
-	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of job.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity pulumi.Input `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs pulumi.MapInput `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType pulumi.StringInput `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs pulumi.MapInput `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs pulumi.MapInput `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// Configuration for secrets to be made available during runtime.
-	SecretsConfiguration SecretConfigurationMapInput `pulumi:"secretsConfiguration"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services JobServiceMapInput `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings pulumi.Input `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId pulumi.StringPtrInput `pulumi:"sourceJobId"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJobArgs
-func (val *PipelineJobArgs) Defaults() *PipelineJobArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		tmp.ExperimentName = pulumi.StringPtr("Default")
-	}
-	if tmp.IsArchived == nil {
-		tmp.IsArchived = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
-func (PipelineJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
-}
-
-func (i PipelineJobArgs) ToPipelineJobOutput() PipelineJobOutput {
-	return i.ToPipelineJobOutputWithContext(context.Background())
-}
-
-func (i PipelineJobArgs) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobOutput struct{ *pulumi.OutputState }
-
-func (PipelineJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
-}
-
-func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
-	return o
-}
-
-func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o PipelineJobOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o PipelineJobOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o PipelineJobOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o PipelineJobOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o PipelineJobOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o PipelineJobOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Inputs for the pipeline job.
-func (o PipelineJobOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o PipelineJobOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Pipeline'.
-func (o PipelineJobOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJob) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Jobs construct the Pipeline Job.
-func (o PipelineJobOutput) Jobs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
-}
-
-// Notification setting for the job
-func (o PipelineJobOutput) NotificationSetting() NotificationSettingPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
-}
-
-// Outputs for the pipeline job
-func (o PipelineJobOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o PipelineJobOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Configuration for secrets to be made available during runtime.
-func (o PipelineJobOutput) SecretsConfiguration() SecretConfigurationMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]SecretConfiguration { return v.SecretsConfiguration }).(SecretConfigurationMapOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o PipelineJobOutput) Services() JobServiceMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
-}
-
-// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-func (o PipelineJobOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJob) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// ARM resource ID of source job.
-func (o PipelineJobOutput) SourceJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o PipelineJobOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobResponse struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType string `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs map[string]interface{} `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// Configuration for secrets to be made available during runtime.
-	SecretsConfiguration map[string]SecretConfigurationResponse `pulumi:"secretsConfiguration"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobServiceResponse `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings interface{} `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId *string `pulumi:"sourceJobId"`
-	// Status of the job.
-	Status string `pulumi:"status"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJobResponse
-func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobResponseOutput struct{ *pulumi.OutputState }
-
-func (PipelineJobResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJobResponse)(nil)).Elem()
-}
-
-func (o PipelineJobResponseOutput) ToPipelineJobResponseOutput() PipelineJobResponseOutput {
-	return o
-}
-
-func (o PipelineJobResponseOutput) ToPipelineJobResponseOutputWithContext(ctx context.Context) PipelineJobResponseOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o PipelineJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o PipelineJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o PipelineJobResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o PipelineJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o PipelineJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o PipelineJobResponseOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Inputs for the pipeline job.
-func (o PipelineJobResponseOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o PipelineJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Pipeline'.
-func (o PipelineJobResponseOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJobResponse) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Jobs construct the Pipeline Job.
-func (o PipelineJobResponseOutput) Jobs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
-}
-
-// Notification setting for the job
-func (o PipelineJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
-}
-
-// Outputs for the pipeline job
-func (o PipelineJobResponseOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o PipelineJobResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// Configuration for secrets to be made available during runtime.
-func (o PipelineJobResponseOutput) SecretsConfiguration() SecretConfigurationResponseMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]SecretConfigurationResponse { return v.SecretsConfiguration }).(SecretConfigurationResponseMapOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o PipelineJobResponseOutput) Services() JobServiceResponseMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
-}
-
-// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-func (o PipelineJobResponseOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// ARM resource ID of source job.
-func (o PipelineJobResponseOutput) SourceJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
-}
-
-// Status of the job.
-func (o PipelineJobResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJobResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o PipelineJobResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
 // Environment configuration options.
 type PoolEnvironmentConfiguration struct {
 	// ARM resource ID of the environment specification for the inference pool.
@@ -15128,171 +14505,6 @@ func (o SparkResourceConfigurationResponsePtrOutput) RuntimeVersion() pulumi.Str
 		}
 		return v.RuntimeVersion
 	}).(pulumi.StringPtrOutput)
-}
-
-type SpeechEndpointDeploymentResourceProperties struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModel `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName *string               `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSku `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.Speech'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-// SpeechEndpointDeploymentResourcePropertiesInput is an input type that accepts SpeechEndpointDeploymentResourcePropertiesArgs and SpeechEndpointDeploymentResourcePropertiesOutput values.
-// You can construct a concrete instance of `SpeechEndpointDeploymentResourcePropertiesInput` via:
-//
-//	SpeechEndpointDeploymentResourcePropertiesArgs{...}
-type SpeechEndpointDeploymentResourcePropertiesInput interface {
-	pulumi.Input
-
-	ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput
-	ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) SpeechEndpointDeploymentResourcePropertiesOutput
-}
-
-type SpeechEndpointDeploymentResourcePropertiesArgs struct {
-	// The failure reason if the creation failed.
-	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelInput `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
-	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.Speech'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
-}
-
-func (SpeechEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpeechEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (i SpeechEndpointDeploymentResourcePropertiesArgs) ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput {
-	return i.ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
-}
-
-func (i SpeechEndpointDeploymentResourcePropertiesArgs) ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpeechEndpointDeploymentResourcePropertiesOutput)
-}
-
-type SpeechEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
-
-func (SpeechEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpeechEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) ToSpeechEndpointDeploymentResourcePropertiesOutput() SpeechEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) ToSpeechEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
-}
-
-// The name of RAI policy.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.Speech'.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o SpeechEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
-}
-
-type SpeechEndpointDeploymentResourcePropertiesResponse struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelResponse `pulumi:"model"`
-	// Read-only provision state status property.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The name of RAI policy.
-	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.Speech'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-type SpeechEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (SpeechEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpeechEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ToSpeechEndpointDeploymentResourcePropertiesResponseOutput() SpeechEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ToSpeechEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) SpeechEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
-		return v.Model
-	}).(EndpointDeploymentModelResponseOutput)
-}
-
-// Read-only provision state status property.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of RAI policy.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.Speech'.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o SpeechEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpeechEndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
 // The ssl configuration for scoring
@@ -29963,6 +29175,194 @@ func (o WorkspaceConnectionAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkspaceConnectionAccountKey struct {
+	Key *string `pulumi:"key"`
+}
+
+// WorkspaceConnectionAccountKeyInput is an input type that accepts WorkspaceConnectionAccountKeyArgs and WorkspaceConnectionAccountKeyOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionAccountKeyInput` via:
+//
+//	WorkspaceConnectionAccountKeyArgs{...}
+type WorkspaceConnectionAccountKeyInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput
+	ToWorkspaceConnectionAccountKeyOutputWithContext(context.Context) WorkspaceConnectionAccountKeyOutput
+}
+
+type WorkspaceConnectionAccountKeyArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (WorkspaceConnectionAccountKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput {
+	return i.ToWorkspaceConnectionAccountKeyOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyOutput)
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return i.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionAccountKeyArgs) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyOutput).ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionAccountKeyPtrInput is an input type that accepts WorkspaceConnectionAccountKeyArgs, WorkspaceConnectionAccountKeyPtr and WorkspaceConnectionAccountKeyPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionAccountKeyPtrInput` via:
+//
+//	        WorkspaceConnectionAccountKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionAccountKeyPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput
+	ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Context) WorkspaceConnectionAccountKeyPtrOutput
+}
+
+type workspaceConnectionAccountKeyPtrType WorkspaceConnectionAccountKeyArgs
+
+func WorkspaceConnectionAccountKeyPtr(v *WorkspaceConnectionAccountKeyArgs) WorkspaceConnectionAccountKeyPtrInput {
+	return (*workspaceConnectionAccountKeyPtrType)(v)
+}
+
+func (*workspaceConnectionAccountKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return i.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionAccountKeyPtrType) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccountKeyPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyOutput() WorkspaceConnectionAccountKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return o.ToWorkspaceConnectionAccountKeyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionAccountKey) *WorkspaceConnectionAccountKey {
+		return &v
+	}).(WorkspaceConnectionAccountKeyPtrOutput)
+}
+
+func (o WorkspaceConnectionAccountKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccountKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccountKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) ToWorkspaceConnectionAccountKeyPtrOutput() WorkspaceConnectionAccountKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) ToWorkspaceConnectionAccountKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) Elem() WorkspaceConnectionAccountKeyOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKey) WorkspaceConnectionAccountKey {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionAccountKey
+		return ret
+	}).(WorkspaceConnectionAccountKeyOutput)
+}
+
+func (o WorkspaceConnectionAccountKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyResponse struct {
+	Key *string `pulumi:"key"`
+}
+
+type WorkspaceConnectionAccountKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccountKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyResponseOutput) ToWorkspaceConnectionAccountKeyResponseOutput() WorkspaceConnectionAccountKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponseOutput) ToWorkspaceConnectionAccountKeyResponseOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccountKeyResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccountKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccountKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccountKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) ToWorkspaceConnectionAccountKeyResponsePtrOutput() WorkspaceConnectionAccountKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) ToWorkspaceConnectionAccountKeyResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccountKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) Elem() WorkspaceConnectionAccountKeyResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKeyResponse) WorkspaceConnectionAccountKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionAccountKeyResponse
+		return ret
+	}).(WorkspaceConnectionAccountKeyResponseOutput)
+}
+
+func (o WorkspaceConnectionAccountKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccountKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 // Api key object for workspace connection credential.
 type WorkspaceConnectionApiKey struct {
 	Key *string `pulumi:"key"`
@@ -32005,12 +31405,6 @@ func (o WorkspacePrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.
 }
 
 func init() {
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsOutput{})
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsPtrOutput{})
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponseOutput{})
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(PipelineJobOutput{})
-	pulumi.RegisterOutputType(PipelineJobResponseOutput{})
 	pulumi.RegisterOutputType(PoolEnvironmentConfigurationOutput{})
 	pulumi.RegisterOutputType(PoolEnvironmentConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PoolEnvironmentConfigurationResponseOutput{})
@@ -32209,8 +31603,6 @@ func init() {
 	pulumi.RegisterOutputType(SparkResourceConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SparkResourceConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(SparkResourceConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesOutput{})
-	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SslConfigurationOutput{})
 	pulumi.RegisterOutputType(SslConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(SslConfigurationResponseOutput{})
@@ -32372,6 +31764,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccountKeyResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyResponseOutput{})
