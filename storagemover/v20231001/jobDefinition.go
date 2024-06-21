@@ -90,6 +90,9 @@ func NewJobDefinition(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagemover/v20230701preview:JobDefinition"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20240701:JobDefinition"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

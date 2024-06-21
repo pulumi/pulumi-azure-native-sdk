@@ -1330,10 +1330,10 @@ type AccountKeyAuthTypeWorkspaceConnectionProperties struct {
 	// Expected value is 'AccountKey'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                                   `pulumi:"category"`
-	Credentials   *WorkspaceConnectionSharedAccessSignature `pulumi:"credentials"`
-	ExpiryTime    *string                                   `pulumi:"expiryTime"`
-	IsSharedToAll *bool                                     `pulumi:"isSharedToAll"`
+	Category      *string                        `pulumi:"category"`
+	Credentials   *WorkspaceConnectionAccountKey `pulumi:"credentials"`
+	ExpiryTime    *string                        `pulumi:"expiryTime"`
+	IsSharedToAll *bool                          `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
 	Metadata       map[string]string `pulumi:"metadata"`
 	SharedUserList []string          `pulumi:"sharedUserList"`
@@ -1361,10 +1361,10 @@ type AccountKeyAuthTypeWorkspaceConnectionPropertiesArgs struct {
 	// Expected value is 'AccountKey'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput                            `pulumi:"category"`
-	Credentials   WorkspaceConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
-	ExpiryTime    pulumi.StringPtrInput                            `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                              `pulumi:"isSharedToAll"`
+	Category      pulumi.StringPtrInput                 `pulumi:"category"`
+	Credentials   WorkspaceConnectionAccountKeyPtrInput `pulumi:"credentials"`
+	ExpiryTime    pulumi.StringPtrInput                 `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput                   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
 	Metadata       pulumi.StringMapInput   `pulumi:"metadata"`
 	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
@@ -1413,10 +1413,10 @@ func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi
 	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionSharedAccessSignaturePtrOutput {
-	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionSharedAccessSignature {
+func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionAccountKeyPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionAccountKey {
 		return v.Credentials
-	}).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
+	}).(WorkspaceConnectionAccountKeyPtrOutput)
 }
 
 func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
@@ -1456,10 +1456,10 @@ type AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Expected value is 'AccountKey'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category                *string                                           `pulumi:"category"`
-	CreatedByWorkspaceArmId string                                            `pulumi:"createdByWorkspaceArmId"`
-	Credentials             *WorkspaceConnectionSharedAccessSignatureResponse `pulumi:"credentials"`
-	ExpiryTime              *string                                           `pulumi:"expiryTime"`
+	Category                *string                                `pulumi:"category"`
+	CreatedByWorkspaceArmId string                                 `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *WorkspaceConnectionAccountKeyResponse `pulumi:"credentials"`
+	ExpiryTime              *string                                `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
@@ -1505,10 +1505,10 @@ func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedBy
 	}).(pulumi.StringOutput)
 }
 
-func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionSharedAccessSignatureResponsePtrOutput {
-	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionSharedAccessSignatureResponse {
+func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionAccountKeyResponsePtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionAccountKeyResponse {
 		return v.Credentials
-	}).(WorkspaceConnectionSharedAccessSignatureResponsePtrOutput)
+	}).(WorkspaceConnectionAccountKeyResponsePtrOutput)
 }
 
 func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {

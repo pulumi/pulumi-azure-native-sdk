@@ -7136,6 +7136,188 @@ func (o DataTransferRegionalServiceResourceResponseArrayOutput) Index(i pulumi.I
 	}).(DataTransferRegionalServiceResourceResponseOutput)
 }
 
+// Properties for Create or Update request for DataTransferServiceResource
+type DataTransferServiceResourceCreateUpdateProperties struct {
+	// Instance count for the service.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize *string `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'DataTransfer'.
+	ServiceType string `pulumi:"serviceType"`
+}
+
+// DataTransferServiceResourceCreateUpdatePropertiesInput is an input type that accepts DataTransferServiceResourceCreateUpdatePropertiesArgs and DataTransferServiceResourceCreateUpdatePropertiesOutput values.
+// You can construct a concrete instance of `DataTransferServiceResourceCreateUpdatePropertiesInput` via:
+//
+//	DataTransferServiceResourceCreateUpdatePropertiesArgs{...}
+type DataTransferServiceResourceCreateUpdatePropertiesInput interface {
+	pulumi.Input
+
+	ToDataTransferServiceResourceCreateUpdatePropertiesOutput() DataTransferServiceResourceCreateUpdatePropertiesOutput
+	ToDataTransferServiceResourceCreateUpdatePropertiesOutputWithContext(context.Context) DataTransferServiceResourceCreateUpdatePropertiesOutput
+}
+
+// Properties for Create or Update request for DataTransferServiceResource
+type DataTransferServiceResourceCreateUpdatePropertiesArgs struct {
+	// Instance count for the service.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize pulumi.StringPtrInput `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'DataTransfer'.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+}
+
+func (DataTransferServiceResourceCreateUpdatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i DataTransferServiceResourceCreateUpdatePropertiesArgs) ToDataTransferServiceResourceCreateUpdatePropertiesOutput() DataTransferServiceResourceCreateUpdatePropertiesOutput {
+	return i.ToDataTransferServiceResourceCreateUpdatePropertiesOutputWithContext(context.Background())
+}
+
+func (i DataTransferServiceResourceCreateUpdatePropertiesArgs) ToDataTransferServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) DataTransferServiceResourceCreateUpdatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferServiceResourceCreateUpdatePropertiesOutput)
+}
+
+func (i DataTransferServiceResourceCreateUpdatePropertiesArgs) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutput() DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DataTransferServiceResourceCreateUpdatePropertiesArgs) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferServiceResourceCreateUpdatePropertiesOutput).ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx)
+}
+
+// DataTransferServiceResourceCreateUpdatePropertiesPtrInput is an input type that accepts DataTransferServiceResourceCreateUpdatePropertiesArgs, DataTransferServiceResourceCreateUpdatePropertiesPtr and DataTransferServiceResourceCreateUpdatePropertiesPtrOutput values.
+// You can construct a concrete instance of `DataTransferServiceResourceCreateUpdatePropertiesPtrInput` via:
+//
+//	        DataTransferServiceResourceCreateUpdatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataTransferServiceResourceCreateUpdatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutput() DataTransferServiceResourceCreateUpdatePropertiesPtrOutput
+	ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Context) DataTransferServiceResourceCreateUpdatePropertiesPtrOutput
+}
+
+type dataTransferServiceResourceCreateUpdatePropertiesPtrType DataTransferServiceResourceCreateUpdatePropertiesArgs
+
+func DataTransferServiceResourceCreateUpdatePropertiesPtr(v *DataTransferServiceResourceCreateUpdatePropertiesArgs) DataTransferServiceResourceCreateUpdatePropertiesPtrInput {
+	return (*dataTransferServiceResourceCreateUpdatePropertiesPtrType)(v)
+}
+
+func (*dataTransferServiceResourceCreateUpdatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i *dataTransferServiceResourceCreateUpdatePropertiesPtrType) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutput() DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferServiceResourceCreateUpdatePropertiesPtrType) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Properties for Create or Update request for DataTransferServiceResource
+type DataTransferServiceResourceCreateUpdatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (DataTransferServiceResourceCreateUpdatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) ToDataTransferServiceResourceCreateUpdatePropertiesOutput() DataTransferServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) ToDataTransferServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) DataTransferServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutput() DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataTransferServiceResourceCreateUpdateProperties) *DataTransferServiceResourceCreateUpdateProperties {
+		return &v
+	}).(DataTransferServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Instance count for the service.
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataTransferServiceResourceCreateUpdateProperties) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataTransferServiceResourceCreateUpdateProperties) *string { return v.InstanceSize }).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'DataTransfer'.
+func (o DataTransferServiceResourceCreateUpdatePropertiesOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DataTransferServiceResourceCreateUpdateProperties) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+type DataTransferServiceResourceCreateUpdatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutput() DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) ToDataTransferServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) DataTransferServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) Elem() DataTransferServiceResourceCreateUpdatePropertiesOutput {
+	return o.ApplyT(func(v *DataTransferServiceResourceCreateUpdateProperties) DataTransferServiceResourceCreateUpdateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DataTransferServiceResourceCreateUpdateProperties
+		return ret
+	}).(DataTransferServiceResourceCreateUpdatePropertiesOutput)
+}
+
+// Instance count for the service.
+func (o DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataTransferServiceResourceCreateUpdateProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'DataTransfer'.
+func (o DataTransferServiceResourceCreateUpdatePropertiesPtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataTransferServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties for DataTransferServiceResource.
 type DataTransferServiceResourcePropertiesResponse struct {
 	// Time of the last state change (ISO-8601 format).
@@ -7747,6 +7929,188 @@ func (o GraphAPIComputeRegionalServiceResourceResponseArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GraphAPIComputeRegionalServiceResourceResponse {
 		return vs[0].([]GraphAPIComputeRegionalServiceResourceResponse)[vs[1].(int)]
 	}).(GraphAPIComputeRegionalServiceResourceResponseOutput)
+}
+
+// Properties for Create or Update request for GraphAPIComputeServiceResource
+type GraphAPIComputeServiceResourceCreateUpdateProperties struct {
+	// Instance count for the service.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize *string `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'GraphAPICompute'.
+	ServiceType string `pulumi:"serviceType"`
+}
+
+// GraphAPIComputeServiceResourceCreateUpdatePropertiesInput is an input type that accepts GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs and GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput values.
+// You can construct a concrete instance of `GraphAPIComputeServiceResourceCreateUpdatePropertiesInput` via:
+//
+//	GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs{...}
+type GraphAPIComputeServiceResourceCreateUpdatePropertiesInput interface {
+	pulumi.Input
+
+	ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput
+	ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutputWithContext(context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput
+}
+
+// Properties for Create or Update request for GraphAPIComputeServiceResource
+type GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs struct {
+	// Instance count for the service.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize pulumi.StringPtrInput `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'GraphAPICompute'.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+}
+
+func (GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphAPIComputeServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput {
+	return i.ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutputWithContext(context.Background())
+}
+
+func (i GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput)
+}
+
+func (i GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput).ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx)
+}
+
+// GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrInput is an input type that accepts GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs, GraphAPIComputeServiceResourceCreateUpdatePropertiesPtr and GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput values.
+// You can construct a concrete instance of `GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrInput` via:
+//
+//	        GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput
+	ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput
+}
+
+type graphAPIComputeServiceResourceCreateUpdatePropertiesPtrType GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs
+
+func GraphAPIComputeServiceResourceCreateUpdatePropertiesPtr(v *GraphAPIComputeServiceResourceCreateUpdatePropertiesArgs) GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrInput {
+	return (*graphAPIComputeServiceResourceCreateUpdatePropertiesPtrType)(v)
+}
+
+func (*graphAPIComputeServiceResourceCreateUpdatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphAPIComputeServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i *graphAPIComputeServiceResourceCreateUpdatePropertiesPtrType) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *graphAPIComputeServiceResourceCreateUpdatePropertiesPtrType) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Properties for Create or Update request for GraphAPIComputeServiceResource
+type GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GraphAPIComputeServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GraphAPIComputeServiceResourceCreateUpdateProperties) *GraphAPIComputeServiceResourceCreateUpdateProperties {
+		return &v
+	}).(GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Instance count for the service.
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GraphAPIComputeServiceResourceCreateUpdateProperties) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GraphAPIComputeServiceResourceCreateUpdateProperties) *string { return v.InstanceSize }).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'GraphAPICompute'.
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GraphAPIComputeServiceResourceCreateUpdateProperties) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+type GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GraphAPIComputeServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput() GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) ToGraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) Elem() GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput {
+	return o.ApplyT(func(v *GraphAPIComputeServiceResourceCreateUpdateProperties) GraphAPIComputeServiceResourceCreateUpdateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GraphAPIComputeServiceResourceCreateUpdateProperties
+		return ret
+	}).(GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput)
+}
+
+// Instance count for the service.
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GraphAPIComputeServiceResourceCreateUpdateProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GraphAPIComputeServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'GraphAPICompute'.
+func (o GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GraphAPIComputeServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties for GraphAPIComputeServiceResource.
@@ -10537,6 +10901,188 @@ func (o MaterializedViewsBuilderRegionalServiceResourceResponseArrayOutput) Inde
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaterializedViewsBuilderRegionalServiceResourceResponse {
 		return vs[0].([]MaterializedViewsBuilderRegionalServiceResourceResponse)[vs[1].(int)]
 	}).(MaterializedViewsBuilderRegionalServiceResourceResponseOutput)
+}
+
+// Properties for Create or Update request for MaterializedViewsBuilderServiceResource
+type MaterializedViewsBuilderServiceResourceCreateUpdateProperties struct {
+	// Instance count for the service.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize *string `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'MaterializedViewsBuilder'.
+	ServiceType string `pulumi:"serviceType"`
+}
+
+// MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesInput is an input type that accepts MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs and MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput values.
+// You can construct a concrete instance of `MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesInput` via:
+//
+//	MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs{...}
+type MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesInput interface {
+	pulumi.Input
+
+	ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput
+	ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutputWithContext(context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput
+}
+
+// Properties for Create or Update request for MaterializedViewsBuilderServiceResource
+type MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs struct {
+	// Instance count for the service.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize pulumi.StringPtrInput `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'MaterializedViewsBuilder'.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+}
+
+func (MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaterializedViewsBuilderServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput {
+	return i.ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutputWithContext(context.Background())
+}
+
+func (i MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput)
+}
+
+func (i MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput).ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx)
+}
+
+// MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrInput is an input type that accepts MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs, MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtr and MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput values.
+// You can construct a concrete instance of `MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrInput` via:
+//
+//	        MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput
+	ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput
+}
+
+type materializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrType MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs
+
+func MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtr(v *MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesArgs) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrInput {
+	return (*materializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrType)(v)
+}
+
+func (*materializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaterializedViewsBuilderServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i *materializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrType) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *materializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrType) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Properties for Create or Update request for MaterializedViewsBuilderServiceResource
+type MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaterializedViewsBuilderServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaterializedViewsBuilderServiceResourceCreateUpdateProperties) *MaterializedViewsBuilderServiceResourceCreateUpdateProperties {
+		return &v
+	}).(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Instance count for the service.
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MaterializedViewsBuilderServiceResourceCreateUpdateProperties) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaterializedViewsBuilderServiceResourceCreateUpdateProperties) *string { return v.InstanceSize }).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'MaterializedViewsBuilder'.
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v MaterializedViewsBuilderServiceResourceCreateUpdateProperties) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+type MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaterializedViewsBuilderServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) ToMaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) Elem() MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput {
+	return o.ApplyT(func(v *MaterializedViewsBuilderServiceResourceCreateUpdateProperties) MaterializedViewsBuilderServiceResourceCreateUpdateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MaterializedViewsBuilderServiceResourceCreateUpdateProperties
+		return ret
+	}).(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput)
+}
+
+// Instance count for the service.
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MaterializedViewsBuilderServiceResourceCreateUpdateProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaterializedViewsBuilderServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'MaterializedViewsBuilder'.
+func (o MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaterializedViewsBuilderServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties for MaterializedViewsBuilderServiceResource.
@@ -15669,6 +16215,209 @@ func (o SqlDedicatedGatewayRegionalServiceResourceResponseArrayOutput) Index(i p
 	}).(SqlDedicatedGatewayRegionalServiceResourceResponseOutput)
 }
 
+// Properties for Create or Update request for SqlDedicatedGatewayServiceResource
+type SqlDedicatedGatewayServiceResourceCreateUpdateProperties struct {
+	// DedicatedGatewayType for the service.
+	DedicatedGatewayType *string `pulumi:"dedicatedGatewayType"`
+	// Instance count for the service.
+	InstanceCount *int `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize *string `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'SqlDedicatedGateway'.
+	ServiceType string `pulumi:"serviceType"`
+}
+
+// SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesInput is an input type that accepts SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs and SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput values.
+// You can construct a concrete instance of `SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesInput` via:
+//
+//	SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs{...}
+type SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesInput interface {
+	pulumi.Input
+
+	ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput
+	ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutputWithContext(context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput
+}
+
+// Properties for Create or Update request for SqlDedicatedGatewayServiceResource
+type SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs struct {
+	// DedicatedGatewayType for the service.
+	DedicatedGatewayType pulumi.StringPtrInput `pulumi:"dedicatedGatewayType"`
+	// Instance count for the service.
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
+	// Instance type for the service.
+	InstanceSize pulumi.StringPtrInput `pulumi:"instanceSize"`
+	// ServiceType for the service.
+	// Expected value is 'SqlDedicatedGateway'.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+}
+
+func (SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDedicatedGatewayServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput {
+	return i.ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput)
+}
+
+func (i SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput).ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrInput is an input type that accepts SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs, SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtr and SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrInput` via:
+//
+//	        SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput
+	ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput
+}
+
+type sqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrType SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs
+
+func SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtr(v *SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesArgs) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrInput {
+	return (*sqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrType)(v)
+}
+
+func (*sqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDedicatedGatewayServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (i *sqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrType) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return i.ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrType) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// Properties for Create or Update request for SqlDedicatedGatewayServiceResource
+type SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDedicatedGatewayServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutputWithContext(ctx context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput {
+	return o
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
+		return &v
+	}).(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput)
+}
+
+// DedicatedGatewayType for the service.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) DedicatedGatewayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *string {
+		return v.DedicatedGatewayType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance count for the service.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *string { return v.InstanceSize }).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'SqlDedicatedGateway'.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDedicatedGatewayServiceResourceCreateUpdateProperties) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+type SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDedicatedGatewayServiceResourceCreateUpdateProperties)(nil)).Elem()
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) ToSqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutputWithContext(ctx context.Context) SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput {
+	return o
+}
+
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) Elem() SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput {
+	return o.ApplyT(func(v *SqlDedicatedGatewayServiceResourceCreateUpdateProperties) SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqlDedicatedGatewayServiceResourceCreateUpdateProperties
+		return ret
+	}).(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput)
+}
+
+// DedicatedGatewayType for the service.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) DedicatedGatewayType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DedicatedGatewayType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance count for the service.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Instance type for the service.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceType for the service.
+// Expected value is 'SqlDedicatedGateway'.
+func (o SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDedicatedGatewayServiceResourceCreateUpdateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties for SqlDedicatedGatewayServiceResource.
 type SqlDedicatedGatewayServiceResourcePropertiesResponse struct {
 	// Time of the last state change (ISO-8601 format).
@@ -17413,6 +18162,8 @@ func init() {
 	pulumi.RegisterOutputType(DataCenterResourceResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(DataTransferRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(DataTransferRegionalServiceResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(DataTransferServiceResourceCreateUpdatePropertiesOutput{})
+	pulumi.RegisterOutputType(DataTransferServiceResourceCreateUpdatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferServiceResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseAccountConnectionStringResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseAccountConnectionStringResponseArrayOutput{})
@@ -17429,6 +18180,8 @@ func init() {
 	pulumi.RegisterOutputType(FailoverPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(GraphAPIComputeServiceResourceCreateUpdatePropertiesOutput{})
+	pulumi.RegisterOutputType(GraphAPIComputeServiceResourceCreateUpdatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeServiceResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GremlinDatabaseGetPropertiesResponseOptionsOutput{})
 	pulumi.RegisterOutputType(GremlinDatabaseGetPropertiesResponseOptionsPtrOutput{})
@@ -17476,6 +18229,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(MaterializedViewsBuilderRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(MaterializedViewsBuilderRegionalServiceResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesOutput{})
+	pulumi.RegisterOutputType(MaterializedViewsBuilderServiceResourceCreateUpdatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MaterializedViewsBuilderServiceResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MongoDBCollectionGetPropertiesResponseOptionsOutput{})
 	pulumi.RegisterOutputType(MongoDBCollectionGetPropertiesResponseOptionsPtrOutput{})
@@ -17563,6 +18318,8 @@ func init() {
 	pulumi.RegisterOutputType(SqlDatabaseResourceOutput{})
 	pulumi.RegisterOutputType(SqlDedicatedGatewayRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(SqlDedicatedGatewayRegionalServiceResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesOutput{})
+	pulumi.RegisterOutputType(SqlDedicatedGatewayServiceResourceCreateUpdatePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SqlDedicatedGatewayServiceResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SqlStoredProcedureGetPropertiesResponseResourceOutput{})
 	pulumi.RegisterOutputType(SqlStoredProcedureGetPropertiesResponseResourcePtrOutput{})

@@ -13,6 +13,332 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// A copy activity source for SAP Table source.
+type SapTableSource struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// Specifies the maximum number of rows that will be retrieved at a time when retrieving data from SAP Table. Type: integer (or Expression with resultType integer).
+	BatchSize interface{} `pulumi:"batchSize"`
+	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// The settings that will be leveraged for SAP table source partitioning.
+	PartitionSettings *SapTablePartitionSettings `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).
+	RfcTableFields interface{} `pulumi:"rfcTableFields"`
+	// The options for the filtering of the SAP Table. For example, COLUMN0 EQ SOME VALUE. Type: string (or Expression with resultType string).
+	RfcTableOptions interface{} `pulumi:"rfcTableOptions"`
+	// The number of rows to be retrieved. Type: integer(or Expression with resultType integer).
+	RowCount interface{} `pulumi:"rowCount"`
+	// The number of rows that will be skipped. Type: integer (or Expression with resultType integer).
+	RowSkips interface{} `pulumi:"rowSkips"`
+	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SapTableSource'.
+	Type string `pulumi:"type"`
+}
+
+// SapTableSourceInput is an input type that accepts SapTableSourceArgs and SapTableSourceOutput values.
+// You can construct a concrete instance of `SapTableSourceInput` via:
+//
+//	SapTableSourceArgs{...}
+type SapTableSourceInput interface {
+	pulumi.Input
+
+	ToSapTableSourceOutput() SapTableSourceOutput
+	ToSapTableSourceOutputWithContext(context.Context) SapTableSourceOutput
+}
+
+// A copy activity source for SAP Table source.
+type SapTableSourceArgs struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
+	// Specifies the maximum number of rows that will be retrieved at a time when retrieving data from SAP Table. Type: integer (or Expression with resultType integer).
+	BatchSize pulumi.Input `pulumi:"batchSize"`
+	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+	CustomRfcReadTableFunctionModule pulumi.Input `pulumi:"customRfcReadTableFunctionModule"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
+	PartitionOption pulumi.Input `pulumi:"partitionOption"`
+	// The settings that will be leveraged for SAP table source partitioning.
+	PartitionSettings SapTablePartitionSettingsPtrInput `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
+	// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).
+	RfcTableFields pulumi.Input `pulumi:"rfcTableFields"`
+	// The options for the filtering of the SAP Table. For example, COLUMN0 EQ SOME VALUE. Type: string (or Expression with resultType string).
+	RfcTableOptions pulumi.Input `pulumi:"rfcTableOptions"`
+	// The number of rows to be retrieved. Type: integer(or Expression with resultType integer).
+	RowCount pulumi.Input `pulumi:"rowCount"`
+	// The number of rows that will be skipped. Type: integer (or Expression with resultType integer).
+	RowSkips pulumi.Input `pulumi:"rowSkips"`
+	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+	SapDataColumnDelimiter pulumi.Input `pulumi:"sapDataColumnDelimiter"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SapTableSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SapTableSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableSource)(nil)).Elem()
+}
+
+func (i SapTableSourceArgs) ToSapTableSourceOutput() SapTableSourceOutput {
+	return i.ToSapTableSourceOutputWithContext(context.Background())
+}
+
+func (i SapTableSourceArgs) ToSapTableSourceOutputWithContext(ctx context.Context) SapTableSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapTableSourceOutput)
+}
+
+// A copy activity source for SAP Table source.
+type SapTableSourceOutput struct{ *pulumi.OutputState }
+
+func (SapTableSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableSource)(nil)).Elem()
+}
+
+func (o SapTableSourceOutput) ToSapTableSourceOutput() SapTableSourceOutput {
+	return o
+}
+
+func (o SapTableSourceOutput) ToSapTableSourceOutputWithContext(ctx context.Context) SapTableSourceOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o SapTableSourceOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// Specifies the maximum number of rows that will be retrieved at a time when retrieving data from SAP Table. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceOutput) BatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.BatchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+func (o SapTableSourceOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SapTableSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
+func (o SapTableSourceOutput) PartitionOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.PartitionOption }).(pulumi.AnyOutput)
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+func (o SapTableSourceOutput) PartitionSettings() SapTablePartitionSettingsPtrOutput {
+	return o.ApplyT(func(v SapTableSource) *SapTablePartitionSettings { return v.PartitionSettings }).(SapTablePartitionSettingsPtrOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapTableSourceOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).
+func (o SapTableSourceOutput) RfcTableFields() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.RfcTableFields }).(pulumi.AnyOutput)
+}
+
+// The options for the filtering of the SAP Table. For example, COLUMN0 EQ SOME VALUE. Type: string (or Expression with resultType string).
+func (o SapTableSourceOutput) RfcTableOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.RfcTableOptions }).(pulumi.AnyOutput)
+}
+
+// The number of rows to be retrieved. Type: integer(or Expression with resultType integer).
+func (o SapTableSourceOutput) RowCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.RowCount }).(pulumi.AnyOutput)
+}
+
+// The number of rows that will be skipped. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceOutput) RowSkips() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.RowSkips }).(pulumi.AnyOutput)
+}
+
+// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+func (o SapTableSourceOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapTableSourceOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'SapTableSource'.
+func (o SapTableSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapTableSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A copy activity source for SAP Table source.
+type SapTableSourceResponse struct {
+	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	AdditionalColumns interface{} `pulumi:"additionalColumns"`
+	// Specifies the maximum number of rows that will be retrieved at a time when retrieving data from SAP Table. Type: integer (or Expression with resultType integer).
+	BatchSize interface{} `pulumi:"batchSize"`
+	// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+	CustomRfcReadTableFunctionModule interface{} `pulumi:"customRfcReadTableFunctionModule"`
+	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
+	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
+	PartitionOption interface{} `pulumi:"partitionOption"`
+	// The settings that will be leveraged for SAP table source partitioning.
+	PartitionSettings *SapTablePartitionSettingsResponse `pulumi:"partitionSettings"`
+	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	QueryTimeout interface{} `pulumi:"queryTimeout"`
+	// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).
+	RfcTableFields interface{} `pulumi:"rfcTableFields"`
+	// The options for the filtering of the SAP Table. For example, COLUMN0 EQ SOME VALUE. Type: string (or Expression with resultType string).
+	RfcTableOptions interface{} `pulumi:"rfcTableOptions"`
+	// The number of rows to be retrieved. Type: integer(or Expression with resultType integer).
+	RowCount interface{} `pulumi:"rowCount"`
+	// The number of rows that will be skipped. Type: integer (or Expression with resultType integer).
+	RowSkips interface{} `pulumi:"rowSkips"`
+	// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+	SapDataColumnDelimiter interface{} `pulumi:"sapDataColumnDelimiter"`
+	// Source retry count. Type: integer (or Expression with resultType integer).
+	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
+	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
+	// Copy source type.
+	// Expected value is 'SapTableSource'.
+	Type string `pulumi:"type"`
+}
+
+// A copy activity source for SAP Table source.
+type SapTableSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SapTableSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableSourceResponse)(nil)).Elem()
+}
+
+func (o SapTableSourceResponseOutput) ToSapTableSourceResponseOutput() SapTableSourceResponseOutput {
+	return o
+}
+
+func (o SapTableSourceResponseOutput) ToSapTableSourceResponseOutputWithContext(ctx context.Context) SapTableSourceResponseOutput {
+	return o
+}
+
+// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+func (o SapTableSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
+}
+
+// Specifies the maximum number of rows that will be retrieved at a time when retrieving data from SAP Table. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceResponseOutput) BatchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.BatchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies the custom RFC function module that will be used to read data from SAP Table. Type: string (or Expression with resultType string).
+func (o SapTableSourceResponseOutput) CustomRfcReadTableFunctionModule() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.CustomRfcReadTableFunctionModule }).(pulumi.AnyOutput)
+}
+
+// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+func (o SapTableSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
+}
+
+// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
+func (o SapTableSourceResponseOutput) PartitionOption() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.PartitionOption }).(pulumi.AnyOutput)
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+func (o SapTableSourceResponseOutput) PartitionSettings() SapTablePartitionSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) *SapTablePartitionSettingsResponse { return v.PartitionSettings }).(SapTablePartitionSettingsResponsePtrOutput)
+}
+
+// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapTableSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
+}
+
+// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).
+func (o SapTableSourceResponseOutput) RfcTableFields() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.RfcTableFields }).(pulumi.AnyOutput)
+}
+
+// The options for the filtering of the SAP Table. For example, COLUMN0 EQ SOME VALUE. Type: string (or Expression with resultType string).
+func (o SapTableSourceResponseOutput) RfcTableOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.RfcTableOptions }).(pulumi.AnyOutput)
+}
+
+// The number of rows to be retrieved. Type: integer(or Expression with resultType integer).
+func (o SapTableSourceResponseOutput) RowCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.RowCount }).(pulumi.AnyOutput)
+}
+
+// The number of rows that will be skipped. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceResponseOutput) RowSkips() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.RowSkips }).(pulumi.AnyOutput)
+}
+
+// The single character that will be used as delimiter passed to SAP RFC as well as splitting the output data retrieved. Type: string (or Expression with resultType string).
+func (o SapTableSourceResponseOutput) SapDataColumnDelimiter() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.SapDataColumnDelimiter }).(pulumi.AnyOutput)
+}
+
+// Source retry count. Type: integer (or Expression with resultType integer).
+func (o SapTableSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
+}
+
+// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+func (o SapTableSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
+}
+
+// Copy source type.
+// Expected value is 'SapTableSource'.
+func (o SapTableSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapTableSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Trigger that creates pipeline runs periodically, on schedule.
 type ScheduleTrigger struct {
 	// List of tags that can be used for describing the trigger.
@@ -7740,6 +8066,8 @@ type SnowflakeExportCopyCommand struct {
 	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
 	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
 	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+	StorageIntegration interface{} `pulumi:"storageIntegration"`
 	// The export setting type.
 	// Expected value is 'SnowflakeExportCopyCommand'.
 	Type string `pulumi:"type"`
@@ -7762,6 +8090,8 @@ type SnowflakeExportCopyCommandArgs struct {
 	AdditionalCopyOptions pulumi.MapInput `pulumi:"additionalCopyOptions"`
 	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
 	AdditionalFormatOptions pulumi.MapInput `pulumi:"additionalFormatOptions"`
+	// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+	StorageIntegration pulumi.Input `pulumi:"storageIntegration"`
 	// The export setting type.
 	// Expected value is 'SnowflakeExportCopyCommand'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -7804,6 +8134,11 @@ func (o SnowflakeExportCopyCommandOutput) AdditionalFormatOptions() pulumi.MapOu
 	return o.ApplyT(func(v SnowflakeExportCopyCommand) map[string]interface{} { return v.AdditionalFormatOptions }).(pulumi.MapOutput)
 }
 
+// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+func (o SnowflakeExportCopyCommandOutput) StorageIntegration() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeExportCopyCommand) interface{} { return v.StorageIntegration }).(pulumi.AnyOutput)
+}
+
 // The export setting type.
 // Expected value is 'SnowflakeExportCopyCommand'.
 func (o SnowflakeExportCopyCommandOutput) Type() pulumi.StringOutput {
@@ -7816,6 +8151,8 @@ type SnowflakeExportCopyCommandResponse struct {
 	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
 	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "OVERWRITE": "TRUE", "MAX_FILE_SIZE": "'FALSE'" }
 	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+	StorageIntegration interface{} `pulumi:"storageIntegration"`
 	// The export setting type.
 	// Expected value is 'SnowflakeExportCopyCommand'.
 	Type string `pulumi:"type"`
@@ -7846,6 +8183,11 @@ func (o SnowflakeExportCopyCommandResponseOutput) AdditionalFormatOptions() pulu
 	return o.ApplyT(func(v SnowflakeExportCopyCommandResponse) map[string]interface{} { return v.AdditionalFormatOptions }).(pulumi.MapOutput)
 }
 
+// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+func (o SnowflakeExportCopyCommandResponseOutput) StorageIntegration() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeExportCopyCommandResponse) interface{} { return v.StorageIntegration }).(pulumi.AnyOutput)
+}
+
 // The export setting type.
 // Expected value is 'SnowflakeExportCopyCommand'.
 func (o SnowflakeExportCopyCommandResponseOutput) Type() pulumi.StringOutput {
@@ -7858,6 +8200,8 @@ type SnowflakeImportCopyCommand struct {
 	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
 	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
 	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+	StorageIntegration interface{} `pulumi:"storageIntegration"`
 	// The import setting type.
 	// Expected value is 'SnowflakeImportCopyCommand'.
 	Type string `pulumi:"type"`
@@ -7880,6 +8224,8 @@ type SnowflakeImportCopyCommandArgs struct {
 	AdditionalCopyOptions pulumi.MapInput `pulumi:"additionalCopyOptions"`
 	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
 	AdditionalFormatOptions pulumi.MapInput `pulumi:"additionalFormatOptions"`
+	// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+	StorageIntegration pulumi.Input `pulumi:"storageIntegration"`
 	// The import setting type.
 	// Expected value is 'SnowflakeImportCopyCommand'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -7973,6 +8319,11 @@ func (o SnowflakeImportCopyCommandOutput) AdditionalFormatOptions() pulumi.MapOu
 	return o.ApplyT(func(v SnowflakeImportCopyCommand) map[string]interface{} { return v.AdditionalFormatOptions }).(pulumi.MapOutput)
 }
 
+// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+func (o SnowflakeImportCopyCommandOutput) StorageIntegration() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeImportCopyCommand) interface{} { return v.StorageIntegration }).(pulumi.AnyOutput)
+}
+
 // The import setting type.
 // Expected value is 'SnowflakeImportCopyCommand'.
 func (o SnowflakeImportCopyCommandOutput) Type() pulumi.StringOutput {
@@ -8023,6 +8374,16 @@ func (o SnowflakeImportCopyCommandPtrOutput) AdditionalFormatOptions() pulumi.Ma
 	}).(pulumi.MapOutput)
 }
 
+// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+func (o SnowflakeImportCopyCommandPtrOutput) StorageIntegration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SnowflakeImportCopyCommand) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.StorageIntegration
+	}).(pulumi.AnyOutput)
+}
+
 // The import setting type.
 // Expected value is 'SnowflakeImportCopyCommand'.
 func (o SnowflakeImportCopyCommandPtrOutput) Type() pulumi.StringPtrOutput {
@@ -8040,6 +8401,8 @@ type SnowflakeImportCopyCommandResponse struct {
 	AdditionalCopyOptions map[string]interface{} `pulumi:"additionalCopyOptions"`
 	// Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
 	AdditionalFormatOptions map[string]interface{} `pulumi:"additionalFormatOptions"`
+	// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+	StorageIntegration interface{} `pulumi:"storageIntegration"`
 	// The import setting type.
 	// Expected value is 'SnowflakeImportCopyCommand'.
 	Type string `pulumi:"type"`
@@ -8068,6 +8431,11 @@ func (o SnowflakeImportCopyCommandResponseOutput) AdditionalCopyOptions() pulumi
 // Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
 func (o SnowflakeImportCopyCommandResponseOutput) AdditionalFormatOptions() pulumi.MapOutput {
 	return o.ApplyT(func(v SnowflakeImportCopyCommandResponse) map[string]interface{} { return v.AdditionalFormatOptions }).(pulumi.MapOutput)
+}
+
+// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+func (o SnowflakeImportCopyCommandResponseOutput) StorageIntegration() pulumi.AnyOutput {
+	return o.ApplyT(func(v SnowflakeImportCopyCommandResponse) interface{} { return v.StorageIntegration }).(pulumi.AnyOutput)
 }
 
 // The import setting type.
@@ -8118,6 +8486,16 @@ func (o SnowflakeImportCopyCommandResponsePtrOutput) AdditionalFormatOptions() p
 		}
 		return v.AdditionalFormatOptions
 	}).(pulumi.MapOutput)
+}
+
+// The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+func (o SnowflakeImportCopyCommandResponsePtrOutput) StorageIntegration() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SnowflakeImportCopyCommandResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.StorageIntegration
+	}).(pulumi.AnyOutput)
 }
 
 // The import setting type.
@@ -12832,6 +13210,8 @@ type SqlServerLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
@@ -12908,6 +13288,8 @@ type SqlServerLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
 	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
@@ -13026,6 +13408,11 @@ func (o SqlServerLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePt
 // The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o SqlServerLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v SqlServerLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The credential reference containing authentication information.
+func (o SqlServerLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v SqlServerLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
 // The name of the database, used by recommended version. Type: string (or Expression with resultType string).
@@ -13151,6 +13538,8 @@ type SqlServerLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// The name of the database, used by recommended version. Type: string (or Expression with resultType string).
 	Database interface{} `pulumi:"database"`
 	// Linked service description.
@@ -13259,6 +13648,11 @@ func (o SqlServerLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeRef
 // The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o SqlServerLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v SqlServerLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// The credential reference containing authentication information.
+func (o SqlServerLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v SqlServerLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
 // The name of the database, used by recommended version. Type: string (or Expression with resultType string).
@@ -30383,6 +30777,8 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(SapTableSourceOutput{})
+	pulumi.RegisterOutputType(SapTableSourceResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleTriggerOutput{})
 	pulumi.RegisterOutputType(ScheduleTriggerRecurrenceOutput{})
 	pulumi.RegisterOutputType(ScheduleTriggerRecurrenceResponseOutput{})

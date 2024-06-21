@@ -15,7 +15,7 @@ import (
 // Graph Query entity definition.
 // Azure REST API version: 2020-04-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
 //
-// Other available API versions: 2018-09-01-preview.
+// Other available API versions: 2018-09-01-preview, 2019-04-01, 2021-03-01, 2022-10-01.
 type GraphQuery struct {
 	pulumi.CustomResourceState
 
@@ -59,7 +59,16 @@ func NewGraphQuery(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:resourcegraph/v20180901preview:GraphQuery"),
 		},
 		{
+			Type: pulumi.String("azure-native:resourcegraph/v20190401:GraphQuery"),
+		},
+		{
 			Type: pulumi.String("azure-native:resourcegraph/v20200401preview:GraphQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourcegraph/v20210301:GraphQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:resourcegraph/v20221001:GraphQuery"),
 		},
 	})
 	opts = append(opts, aliases)

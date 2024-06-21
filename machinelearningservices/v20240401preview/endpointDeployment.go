@@ -16,8 +16,9 @@ type EndpointDeployment struct {
 	pulumi.CustomResourceState
 
 	// The name of the resource
-	Name       pulumi.StringOutput `pulumi:"name"`
-	Properties pulumi.AnyOutput    `pulumi:"properties"`
+	Name       pulumi.StringOutput                                `pulumi:"name"`
+	Properties EndpointDeploymentResourcePropertiesResponseOutput `pulumi:"properties"`
+	Sku        CognitiveServicesSkuResponsePtrOutput              `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -88,10 +89,11 @@ type endpointDeploymentArgs struct {
 	// Name of the deployment resource
 	DeploymentName *string `pulumi:"deploymentName"`
 	// Name of the endpoint resource.
-	EndpointName string      `pulumi:"endpointName"`
-	Properties   interface{} `pulumi:"properties"`
+	EndpointName string                               `pulumi:"endpointName"`
+	Properties   EndpointDeploymentResourceProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string `pulumi:"resourceGroupName"`
+	ResourceGroupName string                `pulumi:"resourceGroupName"`
+	Sku               *CognitiveServicesSku `pulumi:"sku"`
 	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -102,9 +104,10 @@ type EndpointDeploymentArgs struct {
 	DeploymentName pulumi.StringPtrInput
 	// Name of the endpoint resource.
 	EndpointName pulumi.StringInput
-	Properties   pulumi.Input
+	Properties   EndpointDeploymentResourcePropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	Sku               CognitiveServicesSkuPtrInput
 	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
@@ -151,8 +154,12 @@ func (o EndpointDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o EndpointDeploymentOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *EndpointDeployment) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
+func (o EndpointDeploymentOutput) Properties() EndpointDeploymentResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v *EndpointDeployment) EndpointDeploymentResourcePropertiesResponseOutput { return v.Properties }).(EndpointDeploymentResourcePropertiesResponseOutput)
+}
+
+func (o EndpointDeploymentOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
+	return o.ApplyT(func(v *EndpointDeployment) CognitiveServicesSkuResponsePtrOutput { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

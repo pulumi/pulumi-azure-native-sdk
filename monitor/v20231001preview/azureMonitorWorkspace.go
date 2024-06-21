@@ -27,7 +27,7 @@ type AzureMonitorWorkspace struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Gets or sets allow or disallow public network access to workspace
@@ -180,10 +180,10 @@ func (o AzureMonitorWorkspaceOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o AzureMonitorWorkspaceOutput) PrivateEndpointConnections() AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *AzureMonitorWorkspace) AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput {
+func (o AzureMonitorWorkspaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state of the Azure Monitor workspace. Set to Succeeded if everything is healthy.

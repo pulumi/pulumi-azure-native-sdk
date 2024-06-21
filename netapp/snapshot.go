@@ -15,7 +15,7 @@ import (
 // Snapshot of a Volume
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2017-08-15, 2019-06-01, 2019-10-01, 2019-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01.
+// Other available API versions: 2017-08-15, 2019-06-01, 2019-10-01, 2019-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
@@ -153,6 +153,9 @@ func NewSnapshot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20231101:Snapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20231101preview:Snapshot"),
 		},
 	})
 	opts = append(opts, aliases)

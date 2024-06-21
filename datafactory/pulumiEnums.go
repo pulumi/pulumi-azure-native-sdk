@@ -12352,8 +12352,9 @@ func (in *sqlAlwaysEncryptedAkvAuthTypePtr) ToSqlAlwaysEncryptedAkvAuthTypePtrOu
 type SqlServerAuthenticationType string
 
 const (
-	SqlServerAuthenticationTypeSQL     = SqlServerAuthenticationType("SQL")
-	SqlServerAuthenticationTypeWindows = SqlServerAuthenticationType("Windows")
+	SqlServerAuthenticationTypeSQL                         = SqlServerAuthenticationType("SQL")
+	SqlServerAuthenticationTypeWindows                     = SqlServerAuthenticationType("Windows")
+	SqlServerAuthenticationTypeUserAssignedManagedIdentity = SqlServerAuthenticationType("UserAssignedManagedIdentity")
 )
 
 func (SqlServerAuthenticationType) ElementType() reflect.Type {
@@ -12480,6 +12481,7 @@ func (o SqlServerAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx c
 //
 //	SqlServerAuthenticationTypeSQL
 //	SqlServerAuthenticationTypeWindows
+//	SqlServerAuthenticationTypeUserAssignedManagedIdentity
 type SqlServerAuthenticationTypeInput interface {
 	pulumi.Input
 

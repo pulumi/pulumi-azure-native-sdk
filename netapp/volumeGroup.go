@@ -15,7 +15,7 @@ import (
 // Volume group resource for create
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2021-10-01.
 //
-// Other available API versions: 2021-10-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01.
+// Other available API versions: 2021-10-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview.
 type VolumeGroup struct {
 	pulumi.CustomResourceState
 
@@ -85,6 +85,9 @@ func NewVolumeGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20231101:VolumeGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20231101preview:VolumeGroup"),
 		},
 	})
 	opts = append(opts, aliases)

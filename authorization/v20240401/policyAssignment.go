@@ -18,6 +18,8 @@ type PolicyAssignment struct {
 
 	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
 	AssignmentType pulumi.StringPtrOutput `pulumi:"assignmentType"`
+	// The version of the policy definition to use.
+	DefinitionVersion pulumi.StringPtrOutput `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy assignment.
@@ -148,6 +150,8 @@ func (PolicyAssignmentState) ElementType() reflect.Type {
 type policyAssignmentArgs struct {
 	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
 	AssignmentType *string `pulumi:"assignmentType"`
+	// The version of the policy definition to use.
+	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description *string `pulumi:"description"`
 	// The display name of the policy assignment.
@@ -182,6 +186,8 @@ type policyAssignmentArgs struct {
 type PolicyAssignmentArgs struct {
 	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
 	AssignmentType pulumi.StringPtrInput
+	// The version of the policy definition to use.
+	DefinitionVersion pulumi.StringPtrInput
 	// This message will be part of response in case of policy violation.
 	Description pulumi.StringPtrInput
 	// The display name of the policy assignment.
@@ -252,6 +258,11 @@ func (o PolicyAssignmentOutput) ToPolicyAssignmentOutputWithContext(ctx context.
 // The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
 func (o PolicyAssignmentOutput) AssignmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.AssignmentType }).(pulumi.StringPtrOutput)
+}
+
+// The version of the policy definition to use.
+func (o PolicyAssignmentOutput) DefinitionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyAssignment) pulumi.StringPtrOutput { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
 }
 
 // This message will be part of response in case of policy violation.

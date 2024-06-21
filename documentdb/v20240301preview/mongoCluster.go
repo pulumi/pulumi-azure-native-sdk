@@ -31,7 +31,7 @@ type MongoCluster struct {
 	// The list of node group specs in the cluster.
 	NodeGroupSpecs NodeGroupSpecResponseArrayOutput `pulumi:"nodeGroupSpecs"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the mongo cluster.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether or not public endpoint access is allowed for this mongo cluster.
@@ -233,10 +233,10 @@ func (o MongoClusterOutput) NodeGroupSpecs() NodeGroupSpecResponseArrayOutput {
 }
 
 // List of private endpoint connections.
-func (o MongoClusterOutput) PrivateEndpointConnections() AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *MongoCluster) AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput {
+func (o MongoClusterOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *MongoCluster) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(AzureResourceManagerPrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state of the mongo cluster.

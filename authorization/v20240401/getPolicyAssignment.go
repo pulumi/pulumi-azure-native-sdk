@@ -33,6 +33,8 @@ type LookupPolicyAssignmentArgs struct {
 type LookupPolicyAssignmentResult struct {
 	// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
 	AssignmentType *string `pulumi:"assignmentType"`
+	// The version of the policy definition to use.
+	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description *string `pulumi:"description"`
 	// The display name of the policy assignment.
@@ -124,6 +126,11 @@ func (o LookupPolicyAssignmentResultOutput) ToLookupPolicyAssignmentResultOutput
 // The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
 func (o LookupPolicyAssignmentResultOutput) AssignmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.AssignmentType }).(pulumi.StringPtrOutput)
+}
+
+// The version of the policy definition to use.
+func (o LookupPolicyAssignmentResultOutput) DefinitionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
 }
 
 // This message will be part of response in case of policy violation.

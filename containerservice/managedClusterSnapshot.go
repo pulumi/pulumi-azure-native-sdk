@@ -15,7 +15,7 @@ import (
 // A managed cluster snapshot resource.
 // Azure REST API version: 2023-05-02-preview. Prior API version in Azure Native 1.x: 2022-02-02-preview.
 //
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview.
+// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview, 2023-11-02-preview, 2024-01-02-preview, 2024-02-02-preview, 2024-03-02-preview, 2024-04-02-preview.
 type ManagedClusterSnapshot struct {
 	pulumi.CustomResourceState
 
@@ -122,6 +122,9 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240302preview:ManagedClusterSnapshot"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240402preview:ManagedClusterSnapshot"),
 		},
 	})
 	opts = append(opts, aliases)

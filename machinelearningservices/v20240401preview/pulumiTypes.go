@@ -1335,10 +1335,10 @@ type AccountKeyAuthTypeWorkspaceConnectionProperties struct {
 	// Expected value is 'AccountKey'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category      *string                                   `pulumi:"category"`
-	Credentials   *WorkspaceConnectionSharedAccessSignature `pulumi:"credentials"`
-	ExpiryTime    *string                                   `pulumi:"expiryTime"`
-	IsSharedToAll *bool                                     `pulumi:"isSharedToAll"`
+	Category      *string                        `pulumi:"category"`
+	Credentials   *WorkspaceConnectionAccountKey `pulumi:"credentials"`
+	ExpiryTime    *string                        `pulumi:"expiryTime"`
+	IsSharedToAll *bool                          `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
 	Metadata       map[string]string `pulumi:"metadata"`
 	SharedUserList []string          `pulumi:"sharedUserList"`
@@ -1362,10 +1362,10 @@ type AccountKeyAuthTypeWorkspaceConnectionPropertiesArgs struct {
 	// Expected value is 'AccountKey'.
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Category of the connection
-	Category      pulumi.StringPtrInput                            `pulumi:"category"`
-	Credentials   WorkspaceConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
-	ExpiryTime    pulumi.StringPtrInput                            `pulumi:"expiryTime"`
-	IsSharedToAll pulumi.BoolPtrInput                              `pulumi:"isSharedToAll"`
+	Category      pulumi.StringPtrInput                 `pulumi:"category"`
+	Credentials   WorkspaceConnectionAccountKeyPtrInput `pulumi:"credentials"`
+	ExpiryTime    pulumi.StringPtrInput                 `pulumi:"expiryTime"`
+	IsSharedToAll pulumi.BoolPtrInput                   `pulumi:"isSharedToAll"`
 	// Store user metadata for this connection
 	Metadata       pulumi.StringMapInput   `pulumi:"metadata"`
 	SharedUserList pulumi.StringArrayInput `pulumi:"sharedUserList"`
@@ -1410,10 +1410,10 @@ func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi
 	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionSharedAccessSignaturePtrOutput {
-	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionSharedAccessSignature {
+func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionAccountKeyPtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionAccountKey {
 		return v.Credentials
-	}).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
+	}).(WorkspaceConnectionAccountKeyPtrOutput)
 }
 
 func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
@@ -1443,10 +1443,10 @@ type AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Expected value is 'AccountKey'.
 	AuthType string `pulumi:"authType"`
 	// Category of the connection
-	Category                *string                                           `pulumi:"category"`
-	CreatedByWorkspaceArmId string                                            `pulumi:"createdByWorkspaceArmId"`
-	Credentials             *WorkspaceConnectionSharedAccessSignatureResponse `pulumi:"credentials"`
-	ExpiryTime              *string                                           `pulumi:"expiryTime"`
+	Category                *string                                `pulumi:"category"`
+	CreatedByWorkspaceArmId string                                 `pulumi:"createdByWorkspaceArmId"`
+	Credentials             *WorkspaceConnectionAccountKeyResponse `pulumi:"credentials"`
+	ExpiryTime              *string                                `pulumi:"expiryTime"`
 	// Group based on connection category
 	Group         string `pulumi:"group"`
 	IsSharedToAll *bool  `pulumi:"isSharedToAll"`
@@ -1488,10 +1488,10 @@ func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedBy
 	}).(pulumi.StringOutput)
 }
 
-func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionSharedAccessSignatureResponsePtrOutput {
-	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionSharedAccessSignatureResponse {
+func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionAccountKeyResponsePtrOutput {
+	return o.ApplyT(func(v AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionAccountKeyResponse {
 		return v.Credentials
-	}).(WorkspaceConnectionSharedAccessSignatureResponsePtrOutput)
+	}).(WorkspaceConnectionAccountKeyResponsePtrOutput)
 }
 
 func (o AccountKeyAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
@@ -20951,175 +20951,6 @@ func (o ContainerResourceSettingsResponsePtrOutput) Memory() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-type ContentSafetyEndpointDeploymentResourceProperties struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModel `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName *string               `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSku `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.ContentSafety'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-// ContentSafetyEndpointDeploymentResourcePropertiesInput is an input type that accepts ContentSafetyEndpointDeploymentResourcePropertiesArgs and ContentSafetyEndpointDeploymentResourcePropertiesOutput values.
-// You can construct a concrete instance of `ContentSafetyEndpointDeploymentResourcePropertiesInput` via:
-//
-//	ContentSafetyEndpointDeploymentResourcePropertiesArgs{...}
-type ContentSafetyEndpointDeploymentResourcePropertiesInput interface {
-	pulumi.Input
-
-	ToContentSafetyEndpointDeploymentResourcePropertiesOutput() ContentSafetyEndpointDeploymentResourcePropertiesOutput
-	ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) ContentSafetyEndpointDeploymentResourcePropertiesOutput
-}
-
-type ContentSafetyEndpointDeploymentResourcePropertiesArgs struct {
-	// The failure reason if the creation failed.
-	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelInput `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
-	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.ContentSafety'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
-}
-
-func (ContentSafetyEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentSafetyEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (i ContentSafetyEndpointDeploymentResourcePropertiesArgs) ToContentSafetyEndpointDeploymentResourcePropertiesOutput() ContentSafetyEndpointDeploymentResourcePropertiesOutput {
-	return i.ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
-}
-
-func (i ContentSafetyEndpointDeploymentResourcePropertiesArgs) ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ContentSafetyEndpointDeploymentResourcePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContentSafetyEndpointDeploymentResourcePropertiesOutput)
-}
-
-type ContentSafetyEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
-
-func (ContentSafetyEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentSafetyEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) ToContentSafetyEndpointDeploymentResourcePropertiesOutput() ContentSafetyEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) ToContentSafetyEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ContentSafetyEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
-}
-
-// The name of RAI policy.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.ContentSafety'.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
-}
-
-type ContentSafetyEndpointDeploymentResourcePropertiesResponse struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelResponse `pulumi:"model"`
-	// Read-only provision state status property.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The name of RAI policy.
-	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.ContentSafety'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-type ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContentSafetyEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ToContentSafetyEndpointDeploymentResourcePropertiesResponseOutput() ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ToContentSafetyEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
-		return v.Model
-	}).(EndpointDeploymentModelResponseOutput)
-}
-
-// Read-only provision state status property.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of RAI policy.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse {
-		return v.Sku
-	}).(CognitiveServicesSkuResponsePtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.ContentSafety'.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContentSafetyEndpointDeploymentResourcePropertiesResponse) *string {
-		return v.VersionUpgradeOption
-	}).(pulumi.StringPtrOutput)
-}
-
 type CosmosDbSettings struct {
 	CollectionsThroughput *int `pulumi:"collectionsThroughput"`
 }
@@ -30091,6 +29922,121 @@ func (o EndpointDeploymentModelResponseOutput) Source() pulumi.StringPtrOutput {
 // Model version.
 func (o EndpointDeploymentModelResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointDeploymentModelResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type EndpointDeploymentResourceProperties struct {
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModel `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName *string `pulumi:"raiPolicyName"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+// EndpointDeploymentResourcePropertiesInput is an input type that accepts EndpointDeploymentResourcePropertiesArgs and EndpointDeploymentResourcePropertiesOutput values.
+// You can construct a concrete instance of `EndpointDeploymentResourcePropertiesInput` via:
+//
+//	EndpointDeploymentResourcePropertiesArgs{...}
+type EndpointDeploymentResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToEndpointDeploymentResourcePropertiesOutput() EndpointDeploymentResourcePropertiesOutput
+	ToEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) EndpointDeploymentResourcePropertiesOutput
+}
+
+type EndpointDeploymentResourcePropertiesArgs struct {
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelInput `pulumi:"model"`
+	// The name of RAI policy.
+	RaiPolicyName pulumi.StringPtrInput `pulumi:"raiPolicyName"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
+}
+
+func (EndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (i EndpointDeploymentResourcePropertiesArgs) ToEndpointDeploymentResourcePropertiesOutput() EndpointDeploymentResourcePropertiesOutput {
+	return i.ToEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i EndpointDeploymentResourcePropertiesArgs) ToEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) EndpointDeploymentResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointDeploymentResourcePropertiesOutput)
+}
+
+type EndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (EndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentResourceProperties)(nil)).Elem()
+}
+
+func (o EndpointDeploymentResourcePropertiesOutput) ToEndpointDeploymentResourcePropertiesOutput() EndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+func (o EndpointDeploymentResourcePropertiesOutput) ToEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) EndpointDeploymentResourcePropertiesOutput {
+	return o
+}
+
+// Model used for the endpoint deployment.
+func (o EndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
+}
+
+// The name of RAI policy.
+func (o EndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Deployment model version upgrade option.
+func (o EndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
+}
+
+type EndpointDeploymentResourcePropertiesResponse struct {
+	// Model used for the endpoint deployment.
+	Model EndpointDeploymentModelResponse `pulumi:"model"`
+	// Read-only provision state status property.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The name of RAI policy.
+	RaiPolicyName *string `pulumi:"raiPolicyName"`
+	// Deployment model version upgrade option.
+	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
+}
+
+type EndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointDeploymentResourcePropertiesResponseOutput) ToEndpointDeploymentResourcePropertiesResponseOutput() EndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointDeploymentResourcePropertiesResponseOutput) ToEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) EndpointDeploymentResourcePropertiesResponseOutput {
+	return o
+}
+
+// Model used for the endpoint deployment.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse { return v.Model }).(EndpointDeploymentModelResponseOutput)
+}
+
+// Read-only provision state status property.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of RAI policy.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Deployment model version upgrade option.
+func (o EndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
 type EndpointResponse struct {
@@ -57007,110 +56953,6 @@ func (o ManagedOnlineDeploymentResponseOutput) ScaleSettings() pulumi.AnyOutput 
 	return o.ApplyT(func(v ManagedOnlineDeploymentResponse) interface{} { return v.ScaleSettings }).(pulumi.AnyOutput)
 }
 
-type ManagedOnlineEndpointDeploymentResourceProperties struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Kind of the deployment.
-	// Expected value is 'managedOnlineEndpoint'.
-	Type string `pulumi:"type"`
-}
-
-// ManagedOnlineEndpointDeploymentResourcePropertiesInput is an input type that accepts ManagedOnlineEndpointDeploymentResourcePropertiesArgs and ManagedOnlineEndpointDeploymentResourcePropertiesOutput values.
-// You can construct a concrete instance of `ManagedOnlineEndpointDeploymentResourcePropertiesInput` via:
-//
-//	ManagedOnlineEndpointDeploymentResourcePropertiesArgs{...}
-type ManagedOnlineEndpointDeploymentResourcePropertiesInput interface {
-	pulumi.Input
-
-	ToManagedOnlineEndpointDeploymentResourcePropertiesOutput() ManagedOnlineEndpointDeploymentResourcePropertiesOutput
-	ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesOutput
-}
-
-type ManagedOnlineEndpointDeploymentResourcePropertiesArgs struct {
-	// The failure reason if the creation failed.
-	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// Kind of the deployment.
-	// Expected value is 'managedOnlineEndpoint'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (ManagedOnlineEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedOnlineEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (i ManagedOnlineEndpointDeploymentResourcePropertiesArgs) ToManagedOnlineEndpointDeploymentResourcePropertiesOutput() ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
-	return i.ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
-}
-
-func (i ManagedOnlineEndpointDeploymentResourcePropertiesArgs) ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedOnlineEndpointDeploymentResourcePropertiesOutput)
-}
-
-type ManagedOnlineEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
-
-func (ManagedOnlineEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedOnlineEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesOutput() ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'managedOnlineEndpoint'.
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ManagedOnlineEndpointDeploymentResourcePropertiesResponse struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Read-only provision state status property.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Kind of the deployment.
-	// Expected value is 'managedOnlineEndpoint'.
-	Type string `pulumi:"type"`
-}
-
-type ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedOnlineEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput() ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ToManagedOnlineEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Read-only provision state status property.
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'managedOnlineEndpoint'.
-func (o ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedOnlineEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 // Details for managed resource group assigned identities.
 type ManagedResourceGroupAssignedIdentities struct {
 	// Identity principal Id
@@ -65566,171 +65408,6 @@ func (o OnlineRequestSettingsResponsePtrOutput) RequestTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type OpenAIEndpointDeploymentResourceProperties struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModel `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName *string               `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSku `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.OpenAI'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-// OpenAIEndpointDeploymentResourcePropertiesInput is an input type that accepts OpenAIEndpointDeploymentResourcePropertiesArgs and OpenAIEndpointDeploymentResourcePropertiesOutput values.
-// You can construct a concrete instance of `OpenAIEndpointDeploymentResourcePropertiesInput` via:
-//
-//	OpenAIEndpointDeploymentResourcePropertiesArgs{...}
-type OpenAIEndpointDeploymentResourcePropertiesInput interface {
-	pulumi.Input
-
-	ToOpenAIEndpointDeploymentResourcePropertiesOutput() OpenAIEndpointDeploymentResourcePropertiesOutput
-	ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(context.Context) OpenAIEndpointDeploymentResourcePropertiesOutput
-}
-
-type OpenAIEndpointDeploymentResourcePropertiesArgs struct {
-	// The failure reason if the creation failed.
-	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelInput `pulumi:"model"`
-	// The name of RAI policy.
-	RaiPolicyName pulumi.StringPtrInput        `pulumi:"raiPolicyName"`
-	Sku           CognitiveServicesSkuPtrInput `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.OpenAI'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption pulumi.StringPtrInput `pulumi:"versionUpgradeOption"`
-}
-
-func (OpenAIEndpointDeploymentResourcePropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenAIEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (i OpenAIEndpointDeploymentResourcePropertiesArgs) ToOpenAIEndpointDeploymentResourcePropertiesOutput() OpenAIEndpointDeploymentResourcePropertiesOutput {
-	return i.ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(context.Background())
-}
-
-func (i OpenAIEndpointDeploymentResourcePropertiesArgs) ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) OpenAIEndpointDeploymentResourcePropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OpenAIEndpointDeploymentResourcePropertiesOutput)
-}
-
-type OpenAIEndpointDeploymentResourcePropertiesOutput struct{ *pulumi.OutputState }
-
-func (OpenAIEndpointDeploymentResourcePropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenAIEndpointDeploymentResourceProperties)(nil)).Elem()
-}
-
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) ToOpenAIEndpointDeploymentResourcePropertiesOutput() OpenAIEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) ToOpenAIEndpointDeploymentResourcePropertiesOutputWithContext(ctx context.Context) OpenAIEndpointDeploymentResourcePropertiesOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) Model() EndpointDeploymentModelOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) EndpointDeploymentModel { return v.Model }).(EndpointDeploymentModelOutput)
-}
-
-// The name of RAI policy.
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) Sku() CognitiveServicesSkuPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *CognitiveServicesSku { return v.Sku }).(CognitiveServicesSkuPtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.OpenAI'.
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o OpenAIEndpointDeploymentResourcePropertiesOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourceProperties) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
-}
-
-type OpenAIEndpointDeploymentResourcePropertiesResponse struct {
-	// The failure reason if the creation failed.
-	FailureReason *string `pulumi:"failureReason"`
-	// Model used for the endpoint deployment.
-	Model EndpointDeploymentModelResponse `pulumi:"model"`
-	// Read-only provision state status property.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The name of RAI policy.
-	RaiPolicyName *string                       `pulumi:"raiPolicyName"`
-	Sku           *CognitiveServicesSkuResponse `pulumi:"sku"`
-	// Kind of the deployment.
-	// Expected value is 'Azure.OpenAI'.
-	Type string `pulumi:"type"`
-	// Deployment model version upgrade option.
-	VersionUpgradeOption *string `pulumi:"versionUpgradeOption"`
-}
-
-type OpenAIEndpointDeploymentResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OpenAIEndpointDeploymentResourcePropertiesResponse)(nil)).Elem()
-}
-
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ToOpenAIEndpointDeploymentResourcePropertiesResponseOutput() OpenAIEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ToOpenAIEndpointDeploymentResourcePropertiesResponseOutputWithContext(ctx context.Context) OpenAIEndpointDeploymentResourcePropertiesResponseOutput {
-	return o
-}
-
-// The failure reason if the creation failed.
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) FailureReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
-}
-
-// Model used for the endpoint deployment.
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) Model() EndpointDeploymentModelResponseOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) EndpointDeploymentModelResponse {
-		return v.Model
-	}).(EndpointDeploymentModelResponseOutput)
-}
-
-// Read-only provision state status property.
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of RAI policy.
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) RaiPolicyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *string { return v.RaiPolicyName }).(pulumi.StringPtrOutput)
-}
-
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) Sku() CognitiveServicesSkuResponsePtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *CognitiveServicesSkuResponse { return v.Sku }).(CognitiveServicesSkuResponsePtrOutput)
-}
-
-// Kind of the deployment.
-// Expected value is 'Azure.OpenAI'.
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Deployment model version upgrade option.
-func (o OpenAIEndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OpenAIEndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
-}
-
 // Returns metadata about the os patching.
 type OsPatchingStatusResponse struct {
 	// Time of the latest os patching.
@@ -66369,6 +66046,629 @@ func (o PasswordResponseArrayOutput) Index(i pulumi.IntInput) PasswordResponseOu
 	}).(PasswordResponseOutput)
 }
 
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettings struct {
+	// A user explicitly assigned to a personal compute instance.
+	AssignedUser *AssignedUser `pulumi:"assignedUser"`
+}
+
+// PersonalComputeInstanceSettingsInput is an input type that accepts PersonalComputeInstanceSettingsArgs and PersonalComputeInstanceSettingsOutput values.
+// You can construct a concrete instance of `PersonalComputeInstanceSettingsInput` via:
+//
+//	PersonalComputeInstanceSettingsArgs{...}
+type PersonalComputeInstanceSettingsInput interface {
+	pulumi.Input
+
+	ToPersonalComputeInstanceSettingsOutput() PersonalComputeInstanceSettingsOutput
+	ToPersonalComputeInstanceSettingsOutputWithContext(context.Context) PersonalComputeInstanceSettingsOutput
+}
+
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettingsArgs struct {
+	// A user explicitly assigned to a personal compute instance.
+	AssignedUser AssignedUserPtrInput `pulumi:"assignedUser"`
+}
+
+func (PersonalComputeInstanceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersonalComputeInstanceSettings)(nil)).Elem()
+}
+
+func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsOutput() PersonalComputeInstanceSettingsOutput {
+	return i.ToPersonalComputeInstanceSettingsOutputWithContext(context.Background())
+}
+
+func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersonalComputeInstanceSettingsOutput)
+}
+
+func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
+	return i.ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PersonalComputeInstanceSettingsArgs) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersonalComputeInstanceSettingsOutput).ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx)
+}
+
+// PersonalComputeInstanceSettingsPtrInput is an input type that accepts PersonalComputeInstanceSettingsArgs, PersonalComputeInstanceSettingsPtr and PersonalComputeInstanceSettingsPtrOutput values.
+// You can construct a concrete instance of `PersonalComputeInstanceSettingsPtrInput` via:
+//
+//	        PersonalComputeInstanceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PersonalComputeInstanceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput
+	ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Context) PersonalComputeInstanceSettingsPtrOutput
+}
+
+type personalComputeInstanceSettingsPtrType PersonalComputeInstanceSettingsArgs
+
+func PersonalComputeInstanceSettingsPtr(v *PersonalComputeInstanceSettingsArgs) PersonalComputeInstanceSettingsPtrInput {
+	return (*personalComputeInstanceSettingsPtrType)(v)
+}
+
+func (*personalComputeInstanceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersonalComputeInstanceSettings)(nil)).Elem()
+}
+
+func (i *personalComputeInstanceSettingsPtrType) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
+	return i.ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *personalComputeInstanceSettingsPtrType) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PersonalComputeInstanceSettingsPtrOutput)
+}
+
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettingsOutput struct{ *pulumi.OutputState }
+
+func (PersonalComputeInstanceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersonalComputeInstanceSettings)(nil)).Elem()
+}
+
+func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsOutput() PersonalComputeInstanceSettingsOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
+	return o.ToPersonalComputeInstanceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PersonalComputeInstanceSettingsOutput) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PersonalComputeInstanceSettings) *PersonalComputeInstanceSettings {
+		return &v
+	}).(PersonalComputeInstanceSettingsPtrOutput)
+}
+
+// A user explicitly assigned to a personal compute instance.
+func (o PersonalComputeInstanceSettingsOutput) AssignedUser() AssignedUserPtrOutput {
+	return o.ApplyT(func(v PersonalComputeInstanceSettings) *AssignedUser { return v.AssignedUser }).(AssignedUserPtrOutput)
+}
+
+type PersonalComputeInstanceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PersonalComputeInstanceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersonalComputeInstanceSettings)(nil)).Elem()
+}
+
+func (o PersonalComputeInstanceSettingsPtrOutput) ToPersonalComputeInstanceSettingsPtrOutput() PersonalComputeInstanceSettingsPtrOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsPtrOutput) ToPersonalComputeInstanceSettingsPtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsPtrOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsPtrOutput) Elem() PersonalComputeInstanceSettingsOutput {
+	return o.ApplyT(func(v *PersonalComputeInstanceSettings) PersonalComputeInstanceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PersonalComputeInstanceSettings
+		return ret
+	}).(PersonalComputeInstanceSettingsOutput)
+}
+
+// A user explicitly assigned to a personal compute instance.
+func (o PersonalComputeInstanceSettingsPtrOutput) AssignedUser() AssignedUserPtrOutput {
+	return o.ApplyT(func(v *PersonalComputeInstanceSettings) *AssignedUser {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedUser
+	}).(AssignedUserPtrOutput)
+}
+
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettingsResponse struct {
+	// A user explicitly assigned to a personal compute instance.
+	AssignedUser *AssignedUserResponse `pulumi:"assignedUser"`
+}
+
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PersonalComputeInstanceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersonalComputeInstanceSettingsResponse)(nil)).Elem()
+}
+
+func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutput() PersonalComputeInstanceSettingsResponseOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponseOutput {
+	return o
+}
+
+// A user explicitly assigned to a personal compute instance.
+func (o PersonalComputeInstanceSettingsResponseOutput) AssignedUser() AssignedUserResponsePtrOutput {
+	return o.ApplyT(func(v PersonalComputeInstanceSettingsResponse) *AssignedUserResponse { return v.AssignedUser }).(AssignedUserResponsePtrOutput)
+}
+
+type PersonalComputeInstanceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PersonalComputeInstanceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersonalComputeInstanceSettingsResponse)(nil)).Elem()
+}
+
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutput() PersonalComputeInstanceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) Elem() PersonalComputeInstanceSettingsResponseOutput {
+	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) PersonalComputeInstanceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PersonalComputeInstanceSettingsResponse
+		return ret
+	}).(PersonalComputeInstanceSettingsResponseOutput)
+}
+
+// A user explicitly assigned to a personal compute instance.
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) AssignedUser() AssignedUserResponsePtrOutput {
+	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) *AssignedUserResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedUser
+	}).(AssignedUserResponsePtrOutput)
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJob struct {
+	// ARM resource ID of the component resource.
+	ComponentId *string `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId *string `pulumi:"computeId"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Display name of job.
+	DisplayName *string `pulumi:"displayName"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName *string `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity interface{} `pulumi:"identity"`
+	// Inputs for the pipeline job.
+	Inputs map[string]interface{} `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Pipeline'.
+	JobType string `pulumi:"jobType"`
+	// Jobs construct the Pipeline Job.
+	Jobs map[string]interface{} `pulumi:"jobs"`
+	// Notification setting for the job
+	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
+	// Outputs for the pipeline job
+	Outputs map[string]interface{} `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Configuration for secrets to be made available during runtime.
+	SecretsConfiguration map[string]SecretConfiguration `pulumi:"secretsConfiguration"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services map[string]JobService `pulumi:"services"`
+	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+	Settings interface{} `pulumi:"settings"`
+	// ARM resource ID of source job.
+	SourceJobId *string `pulumi:"sourceJobId"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for PipelineJob
+func (val *PipelineJob) Defaults() *PipelineJob {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		experimentName_ := "Default"
+		tmp.ExperimentName = &experimentName_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+// PipelineJobInput is an input type that accepts PipelineJobArgs and PipelineJobOutput values.
+// You can construct a concrete instance of `PipelineJobInput` via:
+//
+//	PipelineJobArgs{...}
+type PipelineJobInput interface {
+	pulumi.Input
+
+	ToPipelineJobOutput() PipelineJobOutput
+	ToPipelineJobOutputWithContext(context.Context) PipelineJobOutput
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobArgs struct {
+	// ARM resource ID of the component resource.
+	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of job.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity pulumi.Input `pulumi:"identity"`
+	// Inputs for the pipeline job.
+	Inputs pulumi.MapInput `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Pipeline'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// Jobs construct the Pipeline Job.
+	Jobs pulumi.MapInput `pulumi:"jobs"`
+	// Notification setting for the job
+	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
+	// Outputs for the pipeline job
+	Outputs pulumi.MapInput `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Configuration for secrets to be made available during runtime.
+	SecretsConfiguration SecretConfigurationMapInput `pulumi:"secretsConfiguration"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services JobServiceMapInput `pulumi:"services"`
+	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+	Settings pulumi.Input `pulumi:"settings"`
+	// ARM resource ID of source job.
+	SourceJobId pulumi.StringPtrInput `pulumi:"sourceJobId"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for PipelineJobArgs
+func (val *PipelineJobArgs) Defaults() *PipelineJobArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		tmp.ExperimentName = pulumi.StringPtr("Default")
+	}
+	if tmp.IsArchived == nil {
+		tmp.IsArchived = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (PipelineJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
+}
+
+func (i PipelineJobArgs) ToPipelineJobOutput() PipelineJobOutput {
+	return i.ToPipelineJobOutputWithContext(context.Background())
+}
+
+func (i PipelineJobArgs) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
+	return o
+}
+
+// ARM resource ID of the component resource.
+func (o PipelineJobOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o PipelineJobOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o PipelineJobOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o PipelineJobOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o PipelineJobOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o PipelineJobOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Inputs for the pipeline job.
+func (o PipelineJobOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o PipelineJobOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Pipeline'.
+func (o PipelineJobOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJob) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Jobs construct the Pipeline Job.
+func (o PipelineJobOutput) Jobs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
+}
+
+// Notification setting for the job
+func (o PipelineJobOutput) NotificationSetting() NotificationSettingPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
+}
+
+// Outputs for the pipeline job
+func (o PipelineJobOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o PipelineJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configuration for secrets to be made available during runtime.
+func (o PipelineJobOutput) SecretsConfiguration() SecretConfigurationMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]SecretConfiguration { return v.SecretsConfiguration }).(SecretConfigurationMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o PipelineJobOutput) Services() JobServiceMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
+}
+
+// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+func (o PipelineJobOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJob) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// ARM resource ID of source job.
+func (o PipelineJobOutput) SourceJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o PipelineJobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobResponse struct {
+	// ARM resource ID of the component resource.
+	ComponentId *string `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId *string `pulumi:"computeId"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Display name of job.
+	DisplayName *string `pulumi:"displayName"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName *string `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity interface{} `pulumi:"identity"`
+	// Inputs for the pipeline job.
+	Inputs map[string]interface{} `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Pipeline'.
+	JobType string `pulumi:"jobType"`
+	// Jobs construct the Pipeline Job.
+	Jobs map[string]interface{} `pulumi:"jobs"`
+	// Notification setting for the job
+	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
+	// Outputs for the pipeline job
+	Outputs map[string]interface{} `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Configuration for secrets to be made available during runtime.
+	SecretsConfiguration map[string]SecretConfigurationResponse `pulumi:"secretsConfiguration"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services map[string]JobServiceResponse `pulumi:"services"`
+	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+	Settings interface{} `pulumi:"settings"`
+	// ARM resource ID of source job.
+	SourceJobId *string `pulumi:"sourceJobId"`
+	// Status of the job.
+	Status string `pulumi:"status"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for PipelineJobResponse
+func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		experimentName_ := "Default"
+		tmp.ExperimentName = &experimentName_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobResponse)(nil)).Elem()
+}
+
+func (o PipelineJobResponseOutput) ToPipelineJobResponseOutput() PipelineJobResponseOutput {
+	return o
+}
+
+func (o PipelineJobResponseOutput) ToPipelineJobResponseOutputWithContext(ctx context.Context) PipelineJobResponseOutput {
+	return o
+}
+
+// ARM resource ID of the component resource.
+func (o PipelineJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o PipelineJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o PipelineJobResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o PipelineJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o PipelineJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o PipelineJobResponseOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Inputs for the pipeline job.
+func (o PipelineJobResponseOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o PipelineJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Pipeline'.
+func (o PipelineJobResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Jobs construct the Pipeline Job.
+func (o PipelineJobResponseOutput) Jobs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
+}
+
+// Notification setting for the job
+func (o PipelineJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
+}
+
+// Outputs for the pipeline job
+func (o PipelineJobResponseOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o PipelineJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Configuration for secrets to be made available during runtime.
+func (o PipelineJobResponseOutput) SecretsConfiguration() SecretConfigurationResponseMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]SecretConfigurationResponse { return v.SecretsConfiguration }).(SecretConfigurationResponseMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o PipelineJobResponseOutput) Services() JobServiceResponseMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
+}
+
+// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+func (o PipelineJobResponseOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// ARM resource ID of source job.
+func (o PipelineJobResponseOutput) SourceJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
+}
+
+// Status of the job.
+func (o PipelineJobResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o PipelineJobResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -66699,8 +66999,6 @@ func init() {
 	pulumi.RegisterOutputType(ContainerResourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ContainerResourceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ContainerResourceSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(ContentSafetyEndpointDeploymentResourcePropertiesOutput{})
-	pulumi.RegisterOutputType(ContentSafetyEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CosmosDbSettingsOutput{})
 	pulumi.RegisterOutputType(CosmosDbSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CosmosDbSettingsResponseOutput{})
@@ -66818,6 +67116,8 @@ func init() {
 	pulumi.RegisterOutputType(EndpointAuthKeysPtrOutput{})
 	pulumi.RegisterOutputType(EndpointDeploymentModelOutput{})
 	pulumi.RegisterOutputType(EndpointDeploymentModelResponseOutput{})
+	pulumi.RegisterOutputType(EndpointDeploymentResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(EndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointScheduleActionOutput{})
@@ -67095,8 +67395,6 @@ func init() {
 	pulumi.RegisterOutputType(ManagedNetworkSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedOnlineDeploymentOutput{})
 	pulumi.RegisterOutputType(ManagedOnlineDeploymentResponseOutput{})
-	pulumi.RegisterOutputType(ManagedOnlineEndpointDeploymentResourcePropertiesOutput{})
-	pulumi.RegisterOutputType(ManagedOnlineEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupAssignedIdentitiesOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupAssignedIdentitiesArrayOutput{})
 	pulumi.RegisterOutputType(ManagedResourceGroupAssignedIdentitiesResponseOutput{})
@@ -67221,8 +67519,6 @@ func init() {
 	pulumi.RegisterOutputType(OnlineRequestSettingsPtrOutput{})
 	pulumi.RegisterOutputType(OnlineRequestSettingsResponseOutput{})
 	pulumi.RegisterOutputType(OnlineRequestSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(OpenAIEndpointDeploymentResourcePropertiesOutput{})
-	pulumi.RegisterOutputType(OpenAIEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OsPatchingStatusResponseOutput{})
 	pulumi.RegisterOutputType(OsPatchingStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(OutputPathAssetReferenceOutput{})
@@ -67233,6 +67529,12 @@ func init() {
 	pulumi.RegisterOutputType(PATAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PasswordResponseOutput{})
 	pulumi.RegisterOutputType(PasswordResponseArrayOutput{})
+	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsOutput{})
+	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobOutput{})
+	pulumi.RegisterOutputType(PipelineJobResponseOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 }

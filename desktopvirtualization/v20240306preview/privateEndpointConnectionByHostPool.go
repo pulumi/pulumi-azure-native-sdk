@@ -83,6 +83,9 @@ func NewPrivateEndpointConnectionByHostPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20240403:PrivateEndpointConnectionByHostPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20240408preview:PrivateEndpointConnectionByHostPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

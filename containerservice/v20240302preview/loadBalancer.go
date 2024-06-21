@@ -59,6 +59,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice:LoadBalancer"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240402preview:LoadBalancer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

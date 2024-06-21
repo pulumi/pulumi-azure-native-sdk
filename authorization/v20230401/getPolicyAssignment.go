@@ -31,6 +31,8 @@ type LookupPolicyAssignmentArgs struct {
 
 // The policy assignment.
 type LookupPolicyAssignmentResult struct {
+	// The version of the policy definition to use.
+	DefinitionVersion *string `pulumi:"definitionVersion"`
 	// This message will be part of response in case of policy violation.
 	Description *string `pulumi:"description"`
 	// The display name of the policy assignment.
@@ -117,6 +119,11 @@ func (o LookupPolicyAssignmentResultOutput) ToLookupPolicyAssignmentResultOutput
 
 func (o LookupPolicyAssignmentResultOutput) ToLookupPolicyAssignmentResultOutputWithContext(ctx context.Context) LookupPolicyAssignmentResultOutput {
 	return o
+}
+
+// The version of the policy definition to use.
+func (o LookupPolicyAssignmentResultOutput) DefinitionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicyAssignmentResult) *string { return v.DefinitionVersion }).(pulumi.StringPtrOutput)
 }
 
 // This message will be part of response in case of policy violation.

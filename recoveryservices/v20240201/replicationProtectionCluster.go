@@ -47,6 +47,9 @@ func NewReplicationProtectionCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:recoveryservices:ReplicationProtectionCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationProtectionCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

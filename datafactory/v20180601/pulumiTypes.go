@@ -35080,6 +35080,278 @@ func (o ConnectionStatePropertiesResponsePtrOutput) Status() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Continuation settings for execute data flow activity.
+type ContinuationSettingsReference struct {
+	// Continuation TTL in minutes.
+	ContinuationTtlInMinutes interface{} `pulumi:"continuationTtlInMinutes"`
+	// Customized checkpoint key.
+	CustomizedCheckpointKey interface{} `pulumi:"customizedCheckpointKey"`
+	// Idle condition.
+	IdleCondition interface{} `pulumi:"idleCondition"`
+}
+
+// ContinuationSettingsReferenceInput is an input type that accepts ContinuationSettingsReferenceArgs and ContinuationSettingsReferenceOutput values.
+// You can construct a concrete instance of `ContinuationSettingsReferenceInput` via:
+//
+//	ContinuationSettingsReferenceArgs{...}
+type ContinuationSettingsReferenceInput interface {
+	pulumi.Input
+
+	ToContinuationSettingsReferenceOutput() ContinuationSettingsReferenceOutput
+	ToContinuationSettingsReferenceOutputWithContext(context.Context) ContinuationSettingsReferenceOutput
+}
+
+// Continuation settings for execute data flow activity.
+type ContinuationSettingsReferenceArgs struct {
+	// Continuation TTL in minutes.
+	ContinuationTtlInMinutes pulumi.Input `pulumi:"continuationTtlInMinutes"`
+	// Customized checkpoint key.
+	CustomizedCheckpointKey pulumi.Input `pulumi:"customizedCheckpointKey"`
+	// Idle condition.
+	IdleCondition pulumi.Input `pulumi:"idleCondition"`
+}
+
+func (ContinuationSettingsReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuationSettingsReference)(nil)).Elem()
+}
+
+func (i ContinuationSettingsReferenceArgs) ToContinuationSettingsReferenceOutput() ContinuationSettingsReferenceOutput {
+	return i.ToContinuationSettingsReferenceOutputWithContext(context.Background())
+}
+
+func (i ContinuationSettingsReferenceArgs) ToContinuationSettingsReferenceOutputWithContext(ctx context.Context) ContinuationSettingsReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuationSettingsReferenceOutput)
+}
+
+func (i ContinuationSettingsReferenceArgs) ToContinuationSettingsReferencePtrOutput() ContinuationSettingsReferencePtrOutput {
+	return i.ToContinuationSettingsReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ContinuationSettingsReferenceArgs) ToContinuationSettingsReferencePtrOutputWithContext(ctx context.Context) ContinuationSettingsReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuationSettingsReferenceOutput).ToContinuationSettingsReferencePtrOutputWithContext(ctx)
+}
+
+// ContinuationSettingsReferencePtrInput is an input type that accepts ContinuationSettingsReferenceArgs, ContinuationSettingsReferencePtr and ContinuationSettingsReferencePtrOutput values.
+// You can construct a concrete instance of `ContinuationSettingsReferencePtrInput` via:
+//
+//	        ContinuationSettingsReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContinuationSettingsReferencePtrInput interface {
+	pulumi.Input
+
+	ToContinuationSettingsReferencePtrOutput() ContinuationSettingsReferencePtrOutput
+	ToContinuationSettingsReferencePtrOutputWithContext(context.Context) ContinuationSettingsReferencePtrOutput
+}
+
+type continuationSettingsReferencePtrType ContinuationSettingsReferenceArgs
+
+func ContinuationSettingsReferencePtr(v *ContinuationSettingsReferenceArgs) ContinuationSettingsReferencePtrInput {
+	return (*continuationSettingsReferencePtrType)(v)
+}
+
+func (*continuationSettingsReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuationSettingsReference)(nil)).Elem()
+}
+
+func (i *continuationSettingsReferencePtrType) ToContinuationSettingsReferencePtrOutput() ContinuationSettingsReferencePtrOutput {
+	return i.ToContinuationSettingsReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *continuationSettingsReferencePtrType) ToContinuationSettingsReferencePtrOutputWithContext(ctx context.Context) ContinuationSettingsReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuationSettingsReferencePtrOutput)
+}
+
+// Continuation settings for execute data flow activity.
+type ContinuationSettingsReferenceOutput struct{ *pulumi.OutputState }
+
+func (ContinuationSettingsReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuationSettingsReference)(nil)).Elem()
+}
+
+func (o ContinuationSettingsReferenceOutput) ToContinuationSettingsReferenceOutput() ContinuationSettingsReferenceOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferenceOutput) ToContinuationSettingsReferenceOutputWithContext(ctx context.Context) ContinuationSettingsReferenceOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferenceOutput) ToContinuationSettingsReferencePtrOutput() ContinuationSettingsReferencePtrOutput {
+	return o.ToContinuationSettingsReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ContinuationSettingsReferenceOutput) ToContinuationSettingsReferencePtrOutputWithContext(ctx context.Context) ContinuationSettingsReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContinuationSettingsReference) *ContinuationSettingsReference {
+		return &v
+	}).(ContinuationSettingsReferencePtrOutput)
+}
+
+// Continuation TTL in minutes.
+func (o ContinuationSettingsReferenceOutput) ContinuationTtlInMinutes() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContinuationSettingsReference) interface{} { return v.ContinuationTtlInMinutes }).(pulumi.AnyOutput)
+}
+
+// Customized checkpoint key.
+func (o ContinuationSettingsReferenceOutput) CustomizedCheckpointKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContinuationSettingsReference) interface{} { return v.CustomizedCheckpointKey }).(pulumi.AnyOutput)
+}
+
+// Idle condition.
+func (o ContinuationSettingsReferenceOutput) IdleCondition() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContinuationSettingsReference) interface{} { return v.IdleCondition }).(pulumi.AnyOutput)
+}
+
+type ContinuationSettingsReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ContinuationSettingsReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuationSettingsReference)(nil)).Elem()
+}
+
+func (o ContinuationSettingsReferencePtrOutput) ToContinuationSettingsReferencePtrOutput() ContinuationSettingsReferencePtrOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferencePtrOutput) ToContinuationSettingsReferencePtrOutputWithContext(ctx context.Context) ContinuationSettingsReferencePtrOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferencePtrOutput) Elem() ContinuationSettingsReferenceOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReference) ContinuationSettingsReference {
+		if v != nil {
+			return *v
+		}
+		var ret ContinuationSettingsReference
+		return ret
+	}).(ContinuationSettingsReferenceOutput)
+}
+
+// Continuation TTL in minutes.
+func (o ContinuationSettingsReferencePtrOutput) ContinuationTtlInMinutes() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReference) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ContinuationTtlInMinutes
+	}).(pulumi.AnyOutput)
+}
+
+// Customized checkpoint key.
+func (o ContinuationSettingsReferencePtrOutput) CustomizedCheckpointKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReference) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.CustomizedCheckpointKey
+	}).(pulumi.AnyOutput)
+}
+
+// Idle condition.
+func (o ContinuationSettingsReferencePtrOutput) IdleCondition() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReference) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.IdleCondition
+	}).(pulumi.AnyOutput)
+}
+
+// Continuation settings for execute data flow activity.
+type ContinuationSettingsReferenceResponse struct {
+	// Continuation TTL in minutes.
+	ContinuationTtlInMinutes interface{} `pulumi:"continuationTtlInMinutes"`
+	// Customized checkpoint key.
+	CustomizedCheckpointKey interface{} `pulumi:"customizedCheckpointKey"`
+	// Idle condition.
+	IdleCondition interface{} `pulumi:"idleCondition"`
+}
+
+// Continuation settings for execute data flow activity.
+type ContinuationSettingsReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ContinuationSettingsReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuationSettingsReferenceResponse)(nil)).Elem()
+}
+
+func (o ContinuationSettingsReferenceResponseOutput) ToContinuationSettingsReferenceResponseOutput() ContinuationSettingsReferenceResponseOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferenceResponseOutput) ToContinuationSettingsReferenceResponseOutputWithContext(ctx context.Context) ContinuationSettingsReferenceResponseOutput {
+	return o
+}
+
+// Continuation TTL in minutes.
+func (o ContinuationSettingsReferenceResponseOutput) ContinuationTtlInMinutes() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContinuationSettingsReferenceResponse) interface{} { return v.ContinuationTtlInMinutes }).(pulumi.AnyOutput)
+}
+
+// Customized checkpoint key.
+func (o ContinuationSettingsReferenceResponseOutput) CustomizedCheckpointKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContinuationSettingsReferenceResponse) interface{} { return v.CustomizedCheckpointKey }).(pulumi.AnyOutput)
+}
+
+// Idle condition.
+func (o ContinuationSettingsReferenceResponseOutput) IdleCondition() pulumi.AnyOutput {
+	return o.ApplyT(func(v ContinuationSettingsReferenceResponse) interface{} { return v.IdleCondition }).(pulumi.AnyOutput)
+}
+
+type ContinuationSettingsReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContinuationSettingsReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuationSettingsReferenceResponse)(nil)).Elem()
+}
+
+func (o ContinuationSettingsReferenceResponsePtrOutput) ToContinuationSettingsReferenceResponsePtrOutput() ContinuationSettingsReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferenceResponsePtrOutput) ToContinuationSettingsReferenceResponsePtrOutputWithContext(ctx context.Context) ContinuationSettingsReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ContinuationSettingsReferenceResponsePtrOutput) Elem() ContinuationSettingsReferenceResponseOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReferenceResponse) ContinuationSettingsReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContinuationSettingsReferenceResponse
+		return ret
+	}).(ContinuationSettingsReferenceResponseOutput)
+}
+
+// Continuation TTL in minutes.
+func (o ContinuationSettingsReferenceResponsePtrOutput) ContinuationTtlInMinutes() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReferenceResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ContinuationTtlInMinutes
+	}).(pulumi.AnyOutput)
+}
+
+// Customized checkpoint key.
+func (o ContinuationSettingsReferenceResponsePtrOutput) CustomizedCheckpointKey() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReferenceResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.CustomizedCheckpointKey
+	}).(pulumi.AnyOutput)
+}
+
+// Idle condition.
+func (o ContinuationSettingsReferenceResponsePtrOutput) IdleCondition() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ContinuationSettingsReferenceResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.IdleCondition
+	}).(pulumi.AnyOutput)
+}
+
 // Base class for all control activities like IfCondition, ForEach , Until.
 type ControlActivity struct {
 	// Activity depends on condition.
@@ -52376,6 +52648,8 @@ func (o ExcelSourceResponseOutput) Type() pulumi.StringOutput {
 type ExecuteDataFlowActivity struct {
 	// Compute properties for data flow activity.
 	Compute *ExecuteDataFlowActivityTypePropertiesCompute `pulumi:"compute"`
+	// Continuation settings for execute data flow activity.
+	ContinuationSettings *ContinuationSettingsReference `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
 	ContinueOnError interface{} `pulumi:"continueOnError"`
 	// Data flow reference.
@@ -52426,6 +52700,8 @@ type ExecuteDataFlowActivityInput interface {
 type ExecuteDataFlowActivityArgs struct {
 	// Compute properties for data flow activity.
 	Compute ExecuteDataFlowActivityTypePropertiesComputePtrInput `pulumi:"compute"`
+	// Continuation settings for execute data flow activity.
+	ContinuationSettings ContinuationSettingsReferencePtrInput `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
 	ContinueOnError pulumi.Input `pulumi:"continueOnError"`
 	// Data flow reference.
@@ -52491,6 +52767,11 @@ func (o ExecuteDataFlowActivityOutput) ToExecuteDataFlowActivityOutputWithContex
 // Compute properties for data flow activity.
 func (o ExecuteDataFlowActivityOutput) Compute() ExecuteDataFlowActivityTypePropertiesComputePtrOutput {
 	return o.ApplyT(func(v ExecuteDataFlowActivity) *ExecuteDataFlowActivityTypePropertiesCompute { return v.Compute }).(ExecuteDataFlowActivityTypePropertiesComputePtrOutput)
+}
+
+// Continuation settings for execute data flow activity.
+func (o ExecuteDataFlowActivityOutput) ContinuationSettings() ContinuationSettingsReferencePtrOutput {
+	return o.ApplyT(func(v ExecuteDataFlowActivity) *ContinuationSettingsReference { return v.ContinuationSettings }).(ContinuationSettingsReferencePtrOutput)
 }
 
 // Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -52578,6 +52859,8 @@ func (o ExecuteDataFlowActivityOutput) UserProperties() UserPropertyArrayOutput 
 type ExecuteDataFlowActivityResponse struct {
 	// Compute properties for data flow activity.
 	Compute *ExecuteDataFlowActivityTypePropertiesResponseCompute `pulumi:"compute"`
+	// Continuation settings for execute data flow activity.
+	ContinuationSettings *ContinuationSettingsReferenceResponse `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
 	ContinueOnError interface{} `pulumi:"continueOnError"`
 	// Data flow reference.
@@ -52633,6 +52916,13 @@ func (o ExecuteDataFlowActivityResponseOutput) Compute() ExecuteDataFlowActivity
 	return o.ApplyT(func(v ExecuteDataFlowActivityResponse) *ExecuteDataFlowActivityTypePropertiesResponseCompute {
 		return v.Compute
 	}).(ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput)
+}
+
+// Continuation settings for execute data flow activity.
+func (o ExecuteDataFlowActivityResponseOutput) ContinuationSettings() ContinuationSettingsReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ExecuteDataFlowActivityResponse) *ContinuationSettingsReferenceResponse {
+		return v.ContinuationSettings
+	}).(ContinuationSettingsReferenceResponsePtrOutput)
 }
 
 // Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -53826,6 +54116,8 @@ func (o ExecuteSSISPackageActivityResponseOutput) UserProperties() UserPropertyR
 type ExecuteWranglingDataflowActivity struct {
 	// Compute properties for data flow activity.
 	Compute *ExecuteDataFlowActivityTypePropertiesCompute `pulumi:"compute"`
+	// Continuation settings for execute data flow activity.
+	ContinuationSettings *ContinuationSettingsReference `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
 	ContinueOnError interface{} `pulumi:"continueOnError"`
 	// Data flow reference.
@@ -53878,6 +54170,8 @@ type ExecuteWranglingDataflowActivityInput interface {
 type ExecuteWranglingDataflowActivityArgs struct {
 	// Compute properties for data flow activity.
 	Compute ExecuteDataFlowActivityTypePropertiesComputePtrInput `pulumi:"compute"`
+	// Continuation settings for execute data flow activity.
+	ContinuationSettings ContinuationSettingsReferencePtrInput `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
 	ContinueOnError pulumi.Input `pulumi:"continueOnError"`
 	// Data flow reference.
@@ -53947,6 +54241,11 @@ func (o ExecuteWranglingDataflowActivityOutput) Compute() ExecuteDataFlowActivit
 	return o.ApplyT(func(v ExecuteWranglingDataflowActivity) *ExecuteDataFlowActivityTypePropertiesCompute {
 		return v.Compute
 	}).(ExecuteDataFlowActivityTypePropertiesComputePtrOutput)
+}
+
+// Continuation settings for execute data flow activity.
+func (o ExecuteWranglingDataflowActivityOutput) ContinuationSettings() ContinuationSettingsReferencePtrOutput {
+	return o.ApplyT(func(v ExecuteWranglingDataflowActivity) *ContinuationSettingsReference { return v.ContinuationSettings }).(ContinuationSettingsReferencePtrOutput)
 }
 
 // Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -54039,6 +54338,8 @@ func (o ExecuteWranglingDataflowActivityOutput) UserProperties() UserPropertyArr
 type ExecuteWranglingDataflowActivityResponse struct {
 	// Compute properties for data flow activity.
 	Compute *ExecuteDataFlowActivityTypePropertiesResponseCompute `pulumi:"compute"`
+	// Continuation settings for execute data flow activity.
+	ContinuationSettings *ContinuationSettingsReferenceResponse `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
 	ContinueOnError interface{} `pulumi:"continueOnError"`
 	// Data flow reference.
@@ -54096,6 +54397,13 @@ func (o ExecuteWranglingDataflowActivityResponseOutput) Compute() ExecuteDataFlo
 	return o.ApplyT(func(v ExecuteWranglingDataflowActivityResponse) *ExecuteDataFlowActivityTypePropertiesResponseCompute {
 		return v.Compute
 	}).(ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput)
+}
+
+// Continuation settings for execute data flow activity.
+func (o ExecuteWranglingDataflowActivityResponseOutput) ContinuationSettings() ContinuationSettingsReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ExecuteWranglingDataflowActivityResponse) *ContinuationSettingsReferenceResponse {
+		return v.ContinuationSettings
+	}).(ContinuationSettingsReferenceResponsePtrOutput)
 }
 
 // Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -64868,332 +65176,6 @@ func (o GreenplumTableDatasetResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GreenplumTableDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// HBase server linked service.
-type HBaseLinkedService struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
-	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication mechanism to use to connect to the HBase server.
-	AuthenticationType string `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
-	Host interface{} `pulumi:"host"`
-	// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
-	HttpPath interface{} `pulumi:"httpPath"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// The password corresponding to the user name.
-	Password interface{} `pulumi:"password"`
-	// The TCP port that the HBase instance uses to listen for client connections. The default value is 9090.
-	Port interface{} `pulumi:"port"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
-	// Type of linked service.
-	// Expected value is 'HBase'.
-	Type string `pulumi:"type"`
-	// The user name used to connect to the HBase instance.
-	Username interface{} `pulumi:"username"`
-}
-
-// HBaseLinkedServiceInput is an input type that accepts HBaseLinkedServiceArgs and HBaseLinkedServiceOutput values.
-// You can construct a concrete instance of `HBaseLinkedServiceInput` via:
-//
-//	HBaseLinkedServiceArgs{...}
-type HBaseLinkedServiceInput interface {
-	pulumi.Input
-
-	ToHBaseLinkedServiceOutput() HBaseLinkedServiceOutput
-	ToHBaseLinkedServiceOutputWithContext(context.Context) HBaseLinkedServiceOutput
-}
-
-// HBase server linked service.
-type HBaseLinkedServiceArgs struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-	AllowHostNameCNMismatch pulumi.Input `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
-	AllowSelfSignedServerCert pulumi.Input `pulumi:"allowSelfSignedServerCert"`
-	// List of tags that can be used for describing the linked service.
-	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// The authentication mechanism to use to connect to the HBase server.
-	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// Linked service description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-	EnableSsl pulumi.Input `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
-	// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
-	Host pulumi.Input `pulumi:"host"`
-	// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
-	HttpPath pulumi.Input `pulumi:"httpPath"`
-	// Parameters for linked service.
-	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
-	// The password corresponding to the user name.
-	Password pulumi.Input `pulumi:"password"`
-	// The TCP port that the HBase instance uses to listen for client connections. The default value is 9090.
-	Port pulumi.Input `pulumi:"port"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-	TrustedCertPath pulumi.Input `pulumi:"trustedCertPath"`
-	// Type of linked service.
-	// Expected value is 'HBase'.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The user name used to connect to the HBase instance.
-	Username pulumi.Input `pulumi:"username"`
-}
-
-func (HBaseLinkedServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseLinkedService)(nil)).Elem()
-}
-
-func (i HBaseLinkedServiceArgs) ToHBaseLinkedServiceOutput() HBaseLinkedServiceOutput {
-	return i.ToHBaseLinkedServiceOutputWithContext(context.Background())
-}
-
-func (i HBaseLinkedServiceArgs) ToHBaseLinkedServiceOutputWithContext(ctx context.Context) HBaseLinkedServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HBaseLinkedServiceOutput)
-}
-
-// HBase server linked service.
-type HBaseLinkedServiceOutput struct{ *pulumi.OutputState }
-
-func (HBaseLinkedServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseLinkedService)(nil)).Elem()
-}
-
-func (o HBaseLinkedServiceOutput) ToHBaseLinkedServiceOutput() HBaseLinkedServiceOutput {
-	return o
-}
-
-func (o HBaseLinkedServiceOutput) ToHBaseLinkedServiceOutputWithContext(ctx context.Context) HBaseLinkedServiceOutput {
-	return o
-}
-
-// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-func (o HBaseLinkedServiceOutput) AllowHostNameCNMismatch() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.AllowHostNameCNMismatch }).(pulumi.AnyOutput)
-}
-
-// Specifies whether to allow self-signed certificates from the server. The default value is false.
-func (o HBaseLinkedServiceOutput) AllowSelfSignedServerCert() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.AllowSelfSignedServerCert }).(pulumi.AnyOutput)
-}
-
-// List of tags that can be used for describing the linked service.
-func (o HBaseLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HBaseLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// The authentication mechanism to use to connect to the HBase server.
-func (o HBaseLinkedServiceOutput) AuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseLinkedService) string { return v.AuthenticationType }).(pulumi.StringOutput)
-}
-
-// The integration runtime reference.
-func (o HBaseLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
-	return o.ApplyT(func(v HBaseLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
-}
-
-// Linked service description.
-func (o HBaseLinkedServiceOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HBaseLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-func (o HBaseLinkedServiceOutput) EnableSsl() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
-}
-
-// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-func (o HBaseLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HBaseLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
-func (o HBaseLinkedServiceOutput) Host() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.Host }).(pulumi.AnyOutput)
-}
-
-// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
-func (o HBaseLinkedServiceOutput) HttpPath() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.HttpPath }).(pulumi.AnyOutput)
-}
-
-// Parameters for linked service.
-func (o HBaseLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
-	return o.ApplyT(func(v HBaseLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
-}
-
-// The password corresponding to the user name.
-func (o HBaseLinkedServiceOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
-}
-
-// The TCP port that the HBase instance uses to listen for client connections. The default value is 9090.
-func (o HBaseLinkedServiceOutput) Port() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
-}
-
-// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-func (o HBaseLinkedServiceOutput) TrustedCertPath() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.TrustedCertPath }).(pulumi.AnyOutput)
-}
-
-// Type of linked service.
-// Expected value is 'HBase'.
-func (o HBaseLinkedServiceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseLinkedService) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name used to connect to the HBase instance.
-func (o HBaseLinkedServiceOutput) Username() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
-}
-
-// HBase server linked service.
-type HBaseLinkedServiceResponse struct {
-	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-	AllowHostNameCNMismatch interface{} `pulumi:"allowHostNameCNMismatch"`
-	// Specifies whether to allow self-signed certificates from the server. The default value is false.
-	AllowSelfSignedServerCert interface{} `pulumi:"allowSelfSignedServerCert"`
-	// List of tags that can be used for describing the linked service.
-	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication mechanism to use to connect to the HBase server.
-	AuthenticationType string `pulumi:"authenticationType"`
-	// The integration runtime reference.
-	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// Linked service description.
-	Description *string `pulumi:"description"`
-	// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-	EnableSsl interface{} `pulumi:"enableSsl"`
-	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
-	Host interface{} `pulumi:"host"`
-	// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
-	HttpPath interface{} `pulumi:"httpPath"`
-	// Parameters for linked service.
-	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// The password corresponding to the user name.
-	Password interface{} `pulumi:"password"`
-	// The TCP port that the HBase instance uses to listen for client connections. The default value is 9090.
-	Port interface{} `pulumi:"port"`
-	// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-	TrustedCertPath interface{} `pulumi:"trustedCertPath"`
-	// Type of linked service.
-	// Expected value is 'HBase'.
-	Type string `pulumi:"type"`
-	// The user name used to connect to the HBase instance.
-	Username interface{} `pulumi:"username"`
-}
-
-// HBase server linked service.
-type HBaseLinkedServiceResponseOutput struct{ *pulumi.OutputState }
-
-func (HBaseLinkedServiceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HBaseLinkedServiceResponse)(nil)).Elem()
-}
-
-func (o HBaseLinkedServiceResponseOutput) ToHBaseLinkedServiceResponseOutput() HBaseLinkedServiceResponseOutput {
-	return o
-}
-
-func (o HBaseLinkedServiceResponseOutput) ToHBaseLinkedServiceResponseOutputWithContext(ctx context.Context) HBaseLinkedServiceResponseOutput {
-	return o
-}
-
-// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
-func (o HBaseLinkedServiceResponseOutput) AllowHostNameCNMismatch() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.AllowHostNameCNMismatch }).(pulumi.AnyOutput)
-}
-
-// Specifies whether to allow self-signed certificates from the server. The default value is false.
-func (o HBaseLinkedServiceResponseOutput) AllowSelfSignedServerCert() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.AllowSelfSignedServerCert }).(pulumi.AnyOutput)
-}
-
-// List of tags that can be used for describing the linked service.
-func (o HBaseLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
-}
-
-// The authentication mechanism to use to connect to the HBase server.
-func (o HBaseLinkedServiceResponseOutput) AuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) string { return v.AuthenticationType }).(pulumi.StringOutput)
-}
-
-// The integration runtime reference.
-func (o HBaseLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
-}
-
-// Linked service description.
-func (o HBaseLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
-func (o HBaseLinkedServiceResponseOutput) EnableSsl() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.EnableSsl }).(pulumi.AnyOutput)
-}
-
-// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-func (o HBaseLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
-}
-
-// The IP address or host name of the HBase server. (i.e. 192.168.222.160)
-func (o HBaseLinkedServiceResponseOutput) Host() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.Host }).(pulumi.AnyOutput)
-}
-
-// The partial URL corresponding to the HBase server. (i.e. /gateway/sandbox/hbase/version)
-func (o HBaseLinkedServiceResponseOutput) HttpPath() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.HttpPath }).(pulumi.AnyOutput)
-}
-
-// Parameters for linked service.
-func (o HBaseLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
-}
-
-// The password corresponding to the user name.
-func (o HBaseLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
-}
-
-// The TCP port that the HBase instance uses to listen for client connections. The default value is 9090.
-func (o HBaseLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
-}
-
-// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
-func (o HBaseLinkedServiceResponseOutput) TrustedCertPath() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.TrustedCertPath }).(pulumi.AnyOutput)
-}
-
-// Type of linked service.
-// Expected value is 'HBase'.
-func (o HBaseLinkedServiceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The user name used to connect to the HBase instance.
-func (o HBaseLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
-	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
-}
-
 type SSISExecutionParameterMapMap map[string]SSISExecutionParameterMapInput
 
 func (SSISExecutionParameterMapMap) ElementType() reflect.Type {
@@ -65572,6 +65554,10 @@ func init() {
 	pulumi.RegisterOutputType(ConcurSourceResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContinuationSettingsReferenceOutput{})
+	pulumi.RegisterOutputType(ContinuationSettingsReferencePtrOutput{})
+	pulumi.RegisterOutputType(ContinuationSettingsReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ContinuationSettingsReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ControlActivityOutput{})
 	pulumi.RegisterOutputType(ControlActivityResponseOutput{})
 	pulumi.RegisterOutputType(CopyActivityOutput{})
@@ -65874,8 +65860,6 @@ func init() {
 	pulumi.RegisterOutputType(GreenplumSourceResponseOutput{})
 	pulumi.RegisterOutputType(GreenplumTableDatasetOutput{})
 	pulumi.RegisterOutputType(GreenplumTableDatasetResponseOutput{})
-	pulumi.RegisterOutputType(HBaseLinkedServiceOutput{})
-	pulumi.RegisterOutputType(HBaseLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterMapMapOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterResponseMapMapOutput{})
 }

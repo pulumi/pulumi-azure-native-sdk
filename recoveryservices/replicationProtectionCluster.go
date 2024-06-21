@@ -14,6 +14,8 @@ import (
 
 // Replication protection Cluster.
 // Azure REST API version: 2024-02-01.
+//
+// Other available API versions: 2024-04-01.
 type ReplicationProtectionCluster struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +49,9 @@ func NewReplicationProtectionCluster(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20240201:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20240401:ReplicationProtectionCluster"),
 		},
 	})
 	opts = append(opts, aliases)
