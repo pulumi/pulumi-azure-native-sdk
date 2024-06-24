@@ -14,6 +14,8 @@ import (
 
 // The request to update subscriptions needed to be monitored by the Elastic monitor resource.
 // Azure REST API version: 2024-05-01-preview.
+//
+// Other available API versions: 2024-06-15-preview.
 type MonitoredSubscription struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +43,9 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:elastic/v20240501preview:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20240615preview:MonitoredSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,6 +14,8 @@ import (
 
 // Contains a list of references of UrlSigningKey type secret objects.
 // Azure REST API version: 2023-07-01-preview.
+//
+// Other available API versions: 2024-05-01-preview.
 type KeyGroup struct {
 	pulumi.CustomResourceState
 
@@ -46,6 +48,9 @@ func NewKeyGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:KeyGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240501preview:KeyGroup"),
 		},
 	})
 	opts = append(opts, aliases)

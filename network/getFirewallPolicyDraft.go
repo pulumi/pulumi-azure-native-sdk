@@ -13,6 +13,8 @@ import (
 
 // Get a draft Firewall Policy.
 // Azure REST API version: 2023-11-01.
+//
+// Other available API versions: 2024-01-01.
 func LookupFirewallPolicyDraft(ctx *pulumi.Context, args *LookupFirewallPolicyDraftArgs, opts ...pulumi.InvokeOption) (*LookupFirewallPolicyDraftResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallPolicyDraftResult

@@ -14,7 +14,7 @@ import (
 // Get the verification id of a subscription used for verifying custom domains
 // Azure REST API version: 2023-05-02-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-03-01.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-03-01.
 func GetCustomDomainVerificationId(ctx *pulumi.Context, args *GetCustomDomainVerificationIdArgs, opts ...pulumi.InvokeOption) (*GetCustomDomainVerificationIdResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomDomainVerificationIdResult

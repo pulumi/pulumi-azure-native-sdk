@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ContainerApp{}
 	case "azure-native:app:ContainerAppsAuthConfig":
 		r = &ContainerAppsAuthConfig{}
+	case "azure-native:app:ContainerAppsSessionPool":
+		r = &ContainerAppsSessionPool{}
 	case "azure-native:app:ContainerAppsSourceControl":
 		r = &ContainerAppsSourceControl{}
 	case "azure-native:app:DaprComponent":
@@ -55,10 +57,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JavaComponent{}
 	case "azure-native:app:Job":
 		r = &Job{}
+	case "azure-native:app:LogicApp":
+		r = &LogicApp{}
 	case "azure-native:app:ManagedCertificate":
 		r = &ManagedCertificate{}
 	case "azure-native:app:ManagedEnvironment":
 		r = &ManagedEnvironment{}
+	case "azure-native:app:ManagedEnvironmentPrivateEndpointConnection":
+		r = &ManagedEnvironmentPrivateEndpointConnection{}
 	case "azure-native:app:ManagedEnvironmentsStorage":
 		r = &ManagedEnvironmentsStorage{}
 	default:

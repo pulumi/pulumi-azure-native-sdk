@@ -14,7 +14,7 @@ import (
 // Get the access keys of the resource.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-06-01-preview, 2021-09-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01.
+// Other available API versions: 2021-04-01-preview, 2021-06-01-preview, 2021-09-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview.
 func ListWebPubSubKeys(ctx *pulumi.Context, args *ListWebPubSubKeysArgs, opts ...pulumi.InvokeOption) (*ListWebPubSubKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebPubSubKeysResult

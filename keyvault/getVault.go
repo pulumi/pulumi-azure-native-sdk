@@ -14,7 +14,7 @@ import (
 // Gets the specified Azure key vault.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2018-02-14-preview, 2023-07-01.
+// Other available API versions: 2018-02-14-preview, 2023-07-01, 2024-04-01-preview.
 func LookupVault(ctx *pulumi.Context, args *LookupVaultArgs, opts ...pulumi.InvokeOption) (*LookupVaultResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVaultResult

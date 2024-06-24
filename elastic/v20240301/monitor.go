@@ -96,6 +96,9 @@ func NewMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20240501preview:Monitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20240615preview:Monitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

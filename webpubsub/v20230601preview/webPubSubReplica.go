@@ -61,6 +61,9 @@ func NewWebPubSubReplica(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240301:WebPubSubReplica"),
 		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20240401preview:WebPubSubReplica"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

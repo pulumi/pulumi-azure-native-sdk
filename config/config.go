@@ -61,7 +61,7 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:msiEndpoint")
 }
 
-// Your cloud service or provider’s bearer token to exchange for an OIDC ID token.
+// Your cloud service or provider's bearer token to exchange for an OIDC ID token.
 func GetOidcRequestToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:oidcRequestToken")
 }
@@ -74,6 +74,11 @@ func GetOidcRequestUrl(ctx *pulumi.Context) string {
 // The OIDC token to exchange for an Azure token.
 func GetOidcToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:oidcToken")
+}
+
+// The path to a file containing an OIDC token to exchange for an Azure token.
+func GetOidcTokenFilePath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azure-native:oidcTokenFilePath")
 }
 
 // A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.

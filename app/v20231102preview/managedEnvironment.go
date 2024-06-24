@@ -112,6 +112,9 @@ func NewManagedEnvironment(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20230801preview:ManagedEnvironment"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20240202preview:ManagedEnvironment"),
+		},
+		{
 			Type: pulumi.String("azure-native:app/v20240301:ManagedEnvironment"),
 		},
 	})

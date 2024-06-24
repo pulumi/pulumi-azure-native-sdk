@@ -78,6 +78,9 @@ func NewManagedHsm(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:keyvault/v20230201:ManagedHsm"),
 		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20240401preview:ManagedHsm"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

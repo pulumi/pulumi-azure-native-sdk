@@ -176,6 +176,9 @@ func NewSignalR(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20240101preview:SignalR"),
 		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20240401preview:SignalR"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

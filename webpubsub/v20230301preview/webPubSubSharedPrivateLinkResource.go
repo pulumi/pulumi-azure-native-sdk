@@ -87,6 +87,9 @@ func NewWebPubSubSharedPrivateLinkResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240301:WebPubSubSharedPrivateLinkResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20240401preview:WebPubSubSharedPrivateLinkResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
