@@ -13,6 +13,8 @@ import (
 
 // Gets applicable inherited settings for this project.
 // Azure REST API version: 2024-05-01-preview.
+//
+// Other available API versions: 2024-06-01-preview.
 func GetProjectInheritedSettings(ctx *pulumi.Context, args *GetProjectInheritedSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectInheritedSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectInheritedSettingsResult

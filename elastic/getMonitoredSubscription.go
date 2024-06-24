@@ -13,6 +13,8 @@ import (
 
 // The request to update subscriptions needed to be monitored by the Elastic monitor resource.
 // Azure REST API version: 2024-05-01-preview.
+//
+// Other available API versions: 2024-06-15-preview.
 func LookupMonitoredSubscription(ctx *pulumi.Context, args *LookupMonitoredSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupMonitoredSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitoredSubscriptionResult

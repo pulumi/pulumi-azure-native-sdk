@@ -86,6 +86,9 @@ func NewOriginGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:OriginGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240501preview:OriginGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

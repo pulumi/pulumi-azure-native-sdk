@@ -84,6 +84,9 @@ func NewConnectedEnvironmentsDaprComponent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:app/v20231102preview:ConnectedEnvironmentsDaprComponent"),
 		},
+		{
+			Type: pulumi.String("azure-native:app/v20240202preview:ConnectedEnvironmentsDaprComponent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

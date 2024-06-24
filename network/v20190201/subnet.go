@@ -219,6 +219,9 @@ func NewSubnet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:Subnet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240101:Subnet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

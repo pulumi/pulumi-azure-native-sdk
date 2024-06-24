@@ -8285,6 +8285,280 @@ func (o CorsPolicyResponsePtrOutput) MaxAge() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Custom container configuration.
+type CustomContainerTemplate struct {
+	// List of container definitions for the sessions of the session pool.
+	Containers []SessionContainer `pulumi:"containers"`
+	// Session pool ingress configuration.
+	Ingress *SessionIngress `pulumi:"ingress"`
+	// Private container registry credentials for containers used by the sessions of the session pool.
+	RegistryCredentials *SessionRegistryCredentials `pulumi:"registryCredentials"`
+}
+
+// CustomContainerTemplateInput is an input type that accepts CustomContainerTemplateArgs and CustomContainerTemplateOutput values.
+// You can construct a concrete instance of `CustomContainerTemplateInput` via:
+//
+//	CustomContainerTemplateArgs{...}
+type CustomContainerTemplateInput interface {
+	pulumi.Input
+
+	ToCustomContainerTemplateOutput() CustomContainerTemplateOutput
+	ToCustomContainerTemplateOutputWithContext(context.Context) CustomContainerTemplateOutput
+}
+
+// Custom container configuration.
+type CustomContainerTemplateArgs struct {
+	// List of container definitions for the sessions of the session pool.
+	Containers SessionContainerArrayInput `pulumi:"containers"`
+	// Session pool ingress configuration.
+	Ingress SessionIngressPtrInput `pulumi:"ingress"`
+	// Private container registry credentials for containers used by the sessions of the session pool.
+	RegistryCredentials SessionRegistryCredentialsPtrInput `pulumi:"registryCredentials"`
+}
+
+func (CustomContainerTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerTemplate)(nil)).Elem()
+}
+
+func (i CustomContainerTemplateArgs) ToCustomContainerTemplateOutput() CustomContainerTemplateOutput {
+	return i.ToCustomContainerTemplateOutputWithContext(context.Background())
+}
+
+func (i CustomContainerTemplateArgs) ToCustomContainerTemplateOutputWithContext(ctx context.Context) CustomContainerTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerTemplateOutput)
+}
+
+func (i CustomContainerTemplateArgs) ToCustomContainerTemplatePtrOutput() CustomContainerTemplatePtrOutput {
+	return i.ToCustomContainerTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i CustomContainerTemplateArgs) ToCustomContainerTemplatePtrOutputWithContext(ctx context.Context) CustomContainerTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerTemplateOutput).ToCustomContainerTemplatePtrOutputWithContext(ctx)
+}
+
+// CustomContainerTemplatePtrInput is an input type that accepts CustomContainerTemplateArgs, CustomContainerTemplatePtr and CustomContainerTemplatePtrOutput values.
+// You can construct a concrete instance of `CustomContainerTemplatePtrInput` via:
+//
+//	        CustomContainerTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomContainerTemplatePtrInput interface {
+	pulumi.Input
+
+	ToCustomContainerTemplatePtrOutput() CustomContainerTemplatePtrOutput
+	ToCustomContainerTemplatePtrOutputWithContext(context.Context) CustomContainerTemplatePtrOutput
+}
+
+type customContainerTemplatePtrType CustomContainerTemplateArgs
+
+func CustomContainerTemplatePtr(v *CustomContainerTemplateArgs) CustomContainerTemplatePtrInput {
+	return (*customContainerTemplatePtrType)(v)
+}
+
+func (*customContainerTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerTemplate)(nil)).Elem()
+}
+
+func (i *customContainerTemplatePtrType) ToCustomContainerTemplatePtrOutput() CustomContainerTemplatePtrOutput {
+	return i.ToCustomContainerTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *customContainerTemplatePtrType) ToCustomContainerTemplatePtrOutputWithContext(ctx context.Context) CustomContainerTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerTemplatePtrOutput)
+}
+
+// Custom container configuration.
+type CustomContainerTemplateOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerTemplate)(nil)).Elem()
+}
+
+func (o CustomContainerTemplateOutput) ToCustomContainerTemplateOutput() CustomContainerTemplateOutput {
+	return o
+}
+
+func (o CustomContainerTemplateOutput) ToCustomContainerTemplateOutputWithContext(ctx context.Context) CustomContainerTemplateOutput {
+	return o
+}
+
+func (o CustomContainerTemplateOutput) ToCustomContainerTemplatePtrOutput() CustomContainerTemplatePtrOutput {
+	return o.ToCustomContainerTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o CustomContainerTemplateOutput) ToCustomContainerTemplatePtrOutputWithContext(ctx context.Context) CustomContainerTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomContainerTemplate) *CustomContainerTemplate {
+		return &v
+	}).(CustomContainerTemplatePtrOutput)
+}
+
+// List of container definitions for the sessions of the session pool.
+func (o CustomContainerTemplateOutput) Containers() SessionContainerArrayOutput {
+	return o.ApplyT(func(v CustomContainerTemplate) []SessionContainer { return v.Containers }).(SessionContainerArrayOutput)
+}
+
+// Session pool ingress configuration.
+func (o CustomContainerTemplateOutput) Ingress() SessionIngressPtrOutput {
+	return o.ApplyT(func(v CustomContainerTemplate) *SessionIngress { return v.Ingress }).(SessionIngressPtrOutput)
+}
+
+// Private container registry credentials for containers used by the sessions of the session pool.
+func (o CustomContainerTemplateOutput) RegistryCredentials() SessionRegistryCredentialsPtrOutput {
+	return o.ApplyT(func(v CustomContainerTemplate) *SessionRegistryCredentials { return v.RegistryCredentials }).(SessionRegistryCredentialsPtrOutput)
+}
+
+type CustomContainerTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerTemplate)(nil)).Elem()
+}
+
+func (o CustomContainerTemplatePtrOutput) ToCustomContainerTemplatePtrOutput() CustomContainerTemplatePtrOutput {
+	return o
+}
+
+func (o CustomContainerTemplatePtrOutput) ToCustomContainerTemplatePtrOutputWithContext(ctx context.Context) CustomContainerTemplatePtrOutput {
+	return o
+}
+
+func (o CustomContainerTemplatePtrOutput) Elem() CustomContainerTemplateOutput {
+	return o.ApplyT(func(v *CustomContainerTemplate) CustomContainerTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret CustomContainerTemplate
+		return ret
+	}).(CustomContainerTemplateOutput)
+}
+
+// List of container definitions for the sessions of the session pool.
+func (o CustomContainerTemplatePtrOutput) Containers() SessionContainerArrayOutput {
+	return o.ApplyT(func(v *CustomContainerTemplate) []SessionContainer {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(SessionContainerArrayOutput)
+}
+
+// Session pool ingress configuration.
+func (o CustomContainerTemplatePtrOutput) Ingress() SessionIngressPtrOutput {
+	return o.ApplyT(func(v *CustomContainerTemplate) *SessionIngress {
+		if v == nil {
+			return nil
+		}
+		return v.Ingress
+	}).(SessionIngressPtrOutput)
+}
+
+// Private container registry credentials for containers used by the sessions of the session pool.
+func (o CustomContainerTemplatePtrOutput) RegistryCredentials() SessionRegistryCredentialsPtrOutput {
+	return o.ApplyT(func(v *CustomContainerTemplate) *SessionRegistryCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
+	}).(SessionRegistryCredentialsPtrOutput)
+}
+
+// Custom container configuration.
+type CustomContainerTemplateResponse struct {
+	// List of container definitions for the sessions of the session pool.
+	Containers []SessionContainerResponse `pulumi:"containers"`
+	// Session pool ingress configuration.
+	Ingress *SessionIngressResponse `pulumi:"ingress"`
+	// Private container registry credentials for containers used by the sessions of the session pool.
+	RegistryCredentials *SessionRegistryCredentialsResponse `pulumi:"registryCredentials"`
+}
+
+// Custom container configuration.
+type CustomContainerTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerTemplateResponse)(nil)).Elem()
+}
+
+func (o CustomContainerTemplateResponseOutput) ToCustomContainerTemplateResponseOutput() CustomContainerTemplateResponseOutput {
+	return o
+}
+
+func (o CustomContainerTemplateResponseOutput) ToCustomContainerTemplateResponseOutputWithContext(ctx context.Context) CustomContainerTemplateResponseOutput {
+	return o
+}
+
+// List of container definitions for the sessions of the session pool.
+func (o CustomContainerTemplateResponseOutput) Containers() SessionContainerResponseArrayOutput {
+	return o.ApplyT(func(v CustomContainerTemplateResponse) []SessionContainerResponse { return v.Containers }).(SessionContainerResponseArrayOutput)
+}
+
+// Session pool ingress configuration.
+func (o CustomContainerTemplateResponseOutput) Ingress() SessionIngressResponsePtrOutput {
+	return o.ApplyT(func(v CustomContainerTemplateResponse) *SessionIngressResponse { return v.Ingress }).(SessionIngressResponsePtrOutput)
+}
+
+// Private container registry credentials for containers used by the sessions of the session pool.
+func (o CustomContainerTemplateResponseOutput) RegistryCredentials() SessionRegistryCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v CustomContainerTemplateResponse) *SessionRegistryCredentialsResponse {
+		return v.RegistryCredentials
+	}).(SessionRegistryCredentialsResponsePtrOutput)
+}
+
+type CustomContainerTemplateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerTemplateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerTemplateResponse)(nil)).Elem()
+}
+
+func (o CustomContainerTemplateResponsePtrOutput) ToCustomContainerTemplateResponsePtrOutput() CustomContainerTemplateResponsePtrOutput {
+	return o
+}
+
+func (o CustomContainerTemplateResponsePtrOutput) ToCustomContainerTemplateResponsePtrOutputWithContext(ctx context.Context) CustomContainerTemplateResponsePtrOutput {
+	return o
+}
+
+func (o CustomContainerTemplateResponsePtrOutput) Elem() CustomContainerTemplateResponseOutput {
+	return o.ApplyT(func(v *CustomContainerTemplateResponse) CustomContainerTemplateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomContainerTemplateResponse
+		return ret
+	}).(CustomContainerTemplateResponseOutput)
+}
+
+// List of container definitions for the sessions of the session pool.
+func (o CustomContainerTemplateResponsePtrOutput) Containers() SessionContainerResponseArrayOutput {
+	return o.ApplyT(func(v *CustomContainerTemplateResponse) []SessionContainerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Containers
+	}).(SessionContainerResponseArrayOutput)
+}
+
+// Session pool ingress configuration.
+func (o CustomContainerTemplateResponsePtrOutput) Ingress() SessionIngressResponsePtrOutput {
+	return o.ApplyT(func(v *CustomContainerTemplateResponse) *SessionIngressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Ingress
+	}).(SessionIngressResponsePtrOutput)
+}
+
+// Private container registry credentials for containers used by the sessions of the session pool.
+func (o CustomContainerTemplateResponsePtrOutput) RegistryCredentials() SessionRegistryCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *CustomContainerTemplateResponse) *SessionRegistryCredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryCredentials
+	}).(SessionRegistryCredentialsResponsePtrOutput)
+}
+
 // Custom Domain of a Container App
 type CustomDomain struct {
 	// Custom Domain binding type.
@@ -12303,6 +12577,242 @@ func (o DotNetComponentServiceBindResponseArrayOutput) Index(i pulumi.IntInput) 
 	}).(DotNetComponentServiceBindResponseOutput)
 }
 
+// Dynamic pool configuration.
+type DynamicPoolConfiguration struct {
+	// The cooldown period of a session in seconds.
+	CooldownPeriodInSeconds *int `pulumi:"cooldownPeriodInSeconds"`
+	// The execution type of the session pool.
+	ExecutionType *string `pulumi:"executionType"`
+}
+
+// DynamicPoolConfigurationInput is an input type that accepts DynamicPoolConfigurationArgs and DynamicPoolConfigurationOutput values.
+// You can construct a concrete instance of `DynamicPoolConfigurationInput` via:
+//
+//	DynamicPoolConfigurationArgs{...}
+type DynamicPoolConfigurationInput interface {
+	pulumi.Input
+
+	ToDynamicPoolConfigurationOutput() DynamicPoolConfigurationOutput
+	ToDynamicPoolConfigurationOutputWithContext(context.Context) DynamicPoolConfigurationOutput
+}
+
+// Dynamic pool configuration.
+type DynamicPoolConfigurationArgs struct {
+	// The cooldown period of a session in seconds.
+	CooldownPeriodInSeconds pulumi.IntPtrInput `pulumi:"cooldownPeriodInSeconds"`
+	// The execution type of the session pool.
+	ExecutionType pulumi.StringPtrInput `pulumi:"executionType"`
+}
+
+func (DynamicPoolConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicPoolConfiguration)(nil)).Elem()
+}
+
+func (i DynamicPoolConfigurationArgs) ToDynamicPoolConfigurationOutput() DynamicPoolConfigurationOutput {
+	return i.ToDynamicPoolConfigurationOutputWithContext(context.Background())
+}
+
+func (i DynamicPoolConfigurationArgs) ToDynamicPoolConfigurationOutputWithContext(ctx context.Context) DynamicPoolConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicPoolConfigurationOutput)
+}
+
+func (i DynamicPoolConfigurationArgs) ToDynamicPoolConfigurationPtrOutput() DynamicPoolConfigurationPtrOutput {
+	return i.ToDynamicPoolConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DynamicPoolConfigurationArgs) ToDynamicPoolConfigurationPtrOutputWithContext(ctx context.Context) DynamicPoolConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicPoolConfigurationOutput).ToDynamicPoolConfigurationPtrOutputWithContext(ctx)
+}
+
+// DynamicPoolConfigurationPtrInput is an input type that accepts DynamicPoolConfigurationArgs, DynamicPoolConfigurationPtr and DynamicPoolConfigurationPtrOutput values.
+// You can construct a concrete instance of `DynamicPoolConfigurationPtrInput` via:
+//
+//	        DynamicPoolConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DynamicPoolConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDynamicPoolConfigurationPtrOutput() DynamicPoolConfigurationPtrOutput
+	ToDynamicPoolConfigurationPtrOutputWithContext(context.Context) DynamicPoolConfigurationPtrOutput
+}
+
+type dynamicPoolConfigurationPtrType DynamicPoolConfigurationArgs
+
+func DynamicPoolConfigurationPtr(v *DynamicPoolConfigurationArgs) DynamicPoolConfigurationPtrInput {
+	return (*dynamicPoolConfigurationPtrType)(v)
+}
+
+func (*dynamicPoolConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicPoolConfiguration)(nil)).Elem()
+}
+
+func (i *dynamicPoolConfigurationPtrType) ToDynamicPoolConfigurationPtrOutput() DynamicPoolConfigurationPtrOutput {
+	return i.ToDynamicPoolConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *dynamicPoolConfigurationPtrType) ToDynamicPoolConfigurationPtrOutputWithContext(ctx context.Context) DynamicPoolConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicPoolConfigurationPtrOutput)
+}
+
+// Dynamic pool configuration.
+type DynamicPoolConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DynamicPoolConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicPoolConfiguration)(nil)).Elem()
+}
+
+func (o DynamicPoolConfigurationOutput) ToDynamicPoolConfigurationOutput() DynamicPoolConfigurationOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationOutput) ToDynamicPoolConfigurationOutputWithContext(ctx context.Context) DynamicPoolConfigurationOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationOutput) ToDynamicPoolConfigurationPtrOutput() DynamicPoolConfigurationPtrOutput {
+	return o.ToDynamicPoolConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DynamicPoolConfigurationOutput) ToDynamicPoolConfigurationPtrOutputWithContext(ctx context.Context) DynamicPoolConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicPoolConfiguration) *DynamicPoolConfiguration {
+		return &v
+	}).(DynamicPoolConfigurationPtrOutput)
+}
+
+// The cooldown period of a session in seconds.
+func (o DynamicPoolConfigurationOutput) CooldownPeriodInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DynamicPoolConfiguration) *int { return v.CooldownPeriodInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The execution type of the session pool.
+func (o DynamicPoolConfigurationOutput) ExecutionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicPoolConfiguration) *string { return v.ExecutionType }).(pulumi.StringPtrOutput)
+}
+
+type DynamicPoolConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicPoolConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicPoolConfiguration)(nil)).Elem()
+}
+
+func (o DynamicPoolConfigurationPtrOutput) ToDynamicPoolConfigurationPtrOutput() DynamicPoolConfigurationPtrOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationPtrOutput) ToDynamicPoolConfigurationPtrOutputWithContext(ctx context.Context) DynamicPoolConfigurationPtrOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationPtrOutput) Elem() DynamicPoolConfigurationOutput {
+	return o.ApplyT(func(v *DynamicPoolConfiguration) DynamicPoolConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicPoolConfiguration
+		return ret
+	}).(DynamicPoolConfigurationOutput)
+}
+
+// The cooldown period of a session in seconds.
+func (o DynamicPoolConfigurationPtrOutput) CooldownPeriodInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DynamicPoolConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CooldownPeriodInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The execution type of the session pool.
+func (o DynamicPoolConfigurationPtrOutput) ExecutionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicPoolConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dynamic pool configuration.
+type DynamicPoolConfigurationResponse struct {
+	// The cooldown period of a session in seconds.
+	CooldownPeriodInSeconds *int `pulumi:"cooldownPeriodInSeconds"`
+	// The execution type of the session pool.
+	ExecutionType *string `pulumi:"executionType"`
+}
+
+// Dynamic pool configuration.
+type DynamicPoolConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicPoolConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicPoolConfigurationResponse)(nil)).Elem()
+}
+
+func (o DynamicPoolConfigurationResponseOutput) ToDynamicPoolConfigurationResponseOutput() DynamicPoolConfigurationResponseOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationResponseOutput) ToDynamicPoolConfigurationResponseOutputWithContext(ctx context.Context) DynamicPoolConfigurationResponseOutput {
+	return o
+}
+
+// The cooldown period of a session in seconds.
+func (o DynamicPoolConfigurationResponseOutput) CooldownPeriodInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DynamicPoolConfigurationResponse) *int { return v.CooldownPeriodInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The execution type of the session pool.
+func (o DynamicPoolConfigurationResponseOutput) ExecutionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicPoolConfigurationResponse) *string { return v.ExecutionType }).(pulumi.StringPtrOutput)
+}
+
+type DynamicPoolConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicPoolConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DynamicPoolConfigurationResponse)(nil)).Elem()
+}
+
+func (o DynamicPoolConfigurationResponsePtrOutput) ToDynamicPoolConfigurationResponsePtrOutput() DynamicPoolConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationResponsePtrOutput) ToDynamicPoolConfigurationResponsePtrOutputWithContext(ctx context.Context) DynamicPoolConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o DynamicPoolConfigurationResponsePtrOutput) Elem() DynamicPoolConfigurationResponseOutput {
+	return o.ApplyT(func(v *DynamicPoolConfigurationResponse) DynamicPoolConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DynamicPoolConfigurationResponse
+		return ret
+	}).(DynamicPoolConfigurationResponseOutput)
+}
+
+// The cooldown period of a session in seconds.
+func (o DynamicPoolConfigurationResponsePtrOutput) CooldownPeriodInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DynamicPoolConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CooldownPeriodInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The execution type of the session pool.
+func (o DynamicPoolConfigurationResponsePtrOutput) ExecutionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DynamicPoolConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutionType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Managed Environment resource SKU properties.
 type EnvironmentSkuProperties struct {
 	// Name of the Sku.
@@ -12841,6 +13351,205 @@ func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) Environ
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariableResponse {
 		return vs[0].([]EnvironmentVariableResponse)[vs[1].(int)]
 	}).(EnvironmentVariableResponseOutput)
+}
+
+// Body of the error response returned from the API.
+type ErrorEntityResponse struct {
+	// Basic error code.
+	Code *string `pulumi:"code"`
+	// Error Details.
+	Details []ErrorEntityResponse `pulumi:"details"`
+	// Type of error.
+	ExtendedCode *string `pulumi:"extendedCode"`
+	// Inner errors.
+	InnerErrors []ErrorEntityResponse `pulumi:"innerErrors"`
+	// Any details of the error.
+	Message *string `pulumi:"message"`
+	// Message template.
+	MessageTemplate *string `pulumi:"messageTemplate"`
+	// Parameters for the template.
+	Parameters []string `pulumi:"parameters"`
+	// The error target.
+	Target *string `pulumi:"target"`
+}
+
+// Body of the error response returned from the API.
+type ErrorEntityResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorEntityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorEntityResponse)(nil)).Elem()
+}
+
+func (o ErrorEntityResponseOutput) ToErrorEntityResponseOutput() ErrorEntityResponseOutput {
+	return o
+}
+
+func (o ErrorEntityResponseOutput) ToErrorEntityResponseOutputWithContext(ctx context.Context) ErrorEntityResponseOutput {
+	return o
+}
+
+// Basic error code.
+func (o ErrorEntityResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Error Details.
+func (o ErrorEntityResponseOutput) Details() ErrorEntityResponseArrayOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) []ErrorEntityResponse { return v.Details }).(ErrorEntityResponseArrayOutput)
+}
+
+// Type of error.
+func (o ErrorEntityResponseOutput) ExtendedCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) *string { return v.ExtendedCode }).(pulumi.StringPtrOutput)
+}
+
+// Inner errors.
+func (o ErrorEntityResponseOutput) InnerErrors() ErrorEntityResponseArrayOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) []ErrorEntityResponse { return v.InnerErrors }).(ErrorEntityResponseArrayOutput)
+}
+
+// Any details of the error.
+func (o ErrorEntityResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Message template.
+func (o ErrorEntityResponseOutput) MessageTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) *string { return v.MessageTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Parameters for the template.
+func (o ErrorEntityResponseOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+// The error target.
+func (o ErrorEntityResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ErrorEntityResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type ErrorEntityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorEntityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorEntityResponse)(nil)).Elem()
+}
+
+func (o ErrorEntityResponsePtrOutput) ToErrorEntityResponsePtrOutput() ErrorEntityResponsePtrOutput {
+	return o
+}
+
+func (o ErrorEntityResponsePtrOutput) ToErrorEntityResponsePtrOutputWithContext(ctx context.Context) ErrorEntityResponsePtrOutput {
+	return o
+}
+
+func (o ErrorEntityResponsePtrOutput) Elem() ErrorEntityResponseOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) ErrorEntityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorEntityResponse
+		return ret
+	}).(ErrorEntityResponseOutput)
+}
+
+// Basic error code.
+func (o ErrorEntityResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error Details.
+func (o ErrorEntityResponsePtrOutput) Details() ErrorEntityResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) []ErrorEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorEntityResponseArrayOutput)
+}
+
+// Type of error.
+func (o ErrorEntityResponsePtrOutput) ExtendedCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Inner errors.
+func (o ErrorEntityResponsePtrOutput) InnerErrors() ErrorEntityResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) []ErrorEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InnerErrors
+	}).(ErrorEntityResponseArrayOutput)
+}
+
+// Any details of the error.
+func (o ErrorEntityResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message template.
+func (o ErrorEntityResponsePtrOutput) MessageTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters for the template.
+func (o ErrorEntityResponsePtrOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringArrayOutput)
+}
+
+// The error target.
+func (o ErrorEntityResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorEntityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorEntityResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorEntityResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorEntityResponse)(nil)).Elem()
+}
+
+func (o ErrorEntityResponseArrayOutput) ToErrorEntityResponseArrayOutput() ErrorEntityResponseArrayOutput {
+	return o
+}
+
+func (o ErrorEntityResponseArrayOutput) ToErrorEntityResponseArrayOutputWithContext(ctx context.Context) ErrorEntityResponseArrayOutput {
+	return o
+}
+
+func (o ErrorEntityResponseArrayOutput) Index(i pulumi.IntInput) ErrorEntityResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorEntityResponse {
+		return vs[0].([]ErrorEntityResponse)[vs[1].(int)]
+	}).(ErrorEntityResponseOutput)
 }
 
 // The complex type of the extended location.
@@ -24348,6 +25057,179 @@ func (o PreBuildStepResponseArrayOutput) Index(i pulumi.IntInput) PreBuildStepRe
 	}).(PreBuildStepResponseOutput)
 }
 
+// The Private Endpoint resource.
+type PrivateEndpointResponse struct {
+	// The ARM identifier for Private Endpoint
+	Id string `pulumi:"id"`
+}
+
+// The Private Endpoint resource.
+type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
+	return o
+}
+
+// The ARM identifier for Private Endpoint
+func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointResponseOutput)
+}
+
+// The ARM identifier for Private Endpoint
+func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionState struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description *string `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
+//
+//	PrivateLinkServiceConnectionStateArgs{...}
+type PrivateLinkServiceConnectionStateInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
+	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateArgs struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateResponse struct {
+	// A message indicating if changes on the service provider require any updates on the consumer.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// The reason for approval/rejection of the connection.
+	Description *string `pulumi:"description"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
 // Container App container Azure Queue based scaling rule.
 type QueueScaleRule struct {
 	// Authentication secrets for the queue scale rule.
@@ -25271,6 +26153,242 @@ func (o ScalePtrOutput) Rules() ScaleRuleArrayOutput {
 	}).(ScaleRuleArrayOutput)
 }
 
+// Scale configuration.
+type ScaleConfiguration struct {
+	// The maximum count of sessions at the same time.
+	MaxConcurrentSessions *int `pulumi:"maxConcurrentSessions"`
+	// The minimum count of ready session instances.
+	ReadySessionInstances *int `pulumi:"readySessionInstances"`
+}
+
+// ScaleConfigurationInput is an input type that accepts ScaleConfigurationArgs and ScaleConfigurationOutput values.
+// You can construct a concrete instance of `ScaleConfigurationInput` via:
+//
+//	ScaleConfigurationArgs{...}
+type ScaleConfigurationInput interface {
+	pulumi.Input
+
+	ToScaleConfigurationOutput() ScaleConfigurationOutput
+	ToScaleConfigurationOutputWithContext(context.Context) ScaleConfigurationOutput
+}
+
+// Scale configuration.
+type ScaleConfigurationArgs struct {
+	// The maximum count of sessions at the same time.
+	MaxConcurrentSessions pulumi.IntPtrInput `pulumi:"maxConcurrentSessions"`
+	// The minimum count of ready session instances.
+	ReadySessionInstances pulumi.IntPtrInput `pulumi:"readySessionInstances"`
+}
+
+func (ScaleConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleConfiguration)(nil)).Elem()
+}
+
+func (i ScaleConfigurationArgs) ToScaleConfigurationOutput() ScaleConfigurationOutput {
+	return i.ToScaleConfigurationOutputWithContext(context.Background())
+}
+
+func (i ScaleConfigurationArgs) ToScaleConfigurationOutputWithContext(ctx context.Context) ScaleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleConfigurationOutput)
+}
+
+func (i ScaleConfigurationArgs) ToScaleConfigurationPtrOutput() ScaleConfigurationPtrOutput {
+	return i.ToScaleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ScaleConfigurationArgs) ToScaleConfigurationPtrOutputWithContext(ctx context.Context) ScaleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleConfigurationOutput).ToScaleConfigurationPtrOutputWithContext(ctx)
+}
+
+// ScaleConfigurationPtrInput is an input type that accepts ScaleConfigurationArgs, ScaleConfigurationPtr and ScaleConfigurationPtrOutput values.
+// You can construct a concrete instance of `ScaleConfigurationPtrInput` via:
+//
+//	        ScaleConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScaleConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToScaleConfigurationPtrOutput() ScaleConfigurationPtrOutput
+	ToScaleConfigurationPtrOutputWithContext(context.Context) ScaleConfigurationPtrOutput
+}
+
+type scaleConfigurationPtrType ScaleConfigurationArgs
+
+func ScaleConfigurationPtr(v *ScaleConfigurationArgs) ScaleConfigurationPtrInput {
+	return (*scaleConfigurationPtrType)(v)
+}
+
+func (*scaleConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleConfiguration)(nil)).Elem()
+}
+
+func (i *scaleConfigurationPtrType) ToScaleConfigurationPtrOutput() ScaleConfigurationPtrOutput {
+	return i.ToScaleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *scaleConfigurationPtrType) ToScaleConfigurationPtrOutputWithContext(ctx context.Context) ScaleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleConfigurationPtrOutput)
+}
+
+// Scale configuration.
+type ScaleConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ScaleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleConfiguration)(nil)).Elem()
+}
+
+func (o ScaleConfigurationOutput) ToScaleConfigurationOutput() ScaleConfigurationOutput {
+	return o
+}
+
+func (o ScaleConfigurationOutput) ToScaleConfigurationOutputWithContext(ctx context.Context) ScaleConfigurationOutput {
+	return o
+}
+
+func (o ScaleConfigurationOutput) ToScaleConfigurationPtrOutput() ScaleConfigurationPtrOutput {
+	return o.ToScaleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ScaleConfigurationOutput) ToScaleConfigurationPtrOutputWithContext(ctx context.Context) ScaleConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScaleConfiguration) *ScaleConfiguration {
+		return &v
+	}).(ScaleConfigurationPtrOutput)
+}
+
+// The maximum count of sessions at the same time.
+func (o ScaleConfigurationOutput) MaxConcurrentSessions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleConfiguration) *int { return v.MaxConcurrentSessions }).(pulumi.IntPtrOutput)
+}
+
+// The minimum count of ready session instances.
+func (o ScaleConfigurationOutput) ReadySessionInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleConfiguration) *int { return v.ReadySessionInstances }).(pulumi.IntPtrOutput)
+}
+
+type ScaleConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ScaleConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleConfiguration)(nil)).Elem()
+}
+
+func (o ScaleConfigurationPtrOutput) ToScaleConfigurationPtrOutput() ScaleConfigurationPtrOutput {
+	return o
+}
+
+func (o ScaleConfigurationPtrOutput) ToScaleConfigurationPtrOutputWithContext(ctx context.Context) ScaleConfigurationPtrOutput {
+	return o
+}
+
+func (o ScaleConfigurationPtrOutput) Elem() ScaleConfigurationOutput {
+	return o.ApplyT(func(v *ScaleConfiguration) ScaleConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ScaleConfiguration
+		return ret
+	}).(ScaleConfigurationOutput)
+}
+
+// The maximum count of sessions at the same time.
+func (o ScaleConfigurationPtrOutput) MaxConcurrentSessions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentSessions
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum count of ready session instances.
+func (o ScaleConfigurationPtrOutput) ReadySessionInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReadySessionInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// Scale configuration.
+type ScaleConfigurationResponse struct {
+	// The maximum count of sessions at the same time.
+	MaxConcurrentSessions *int `pulumi:"maxConcurrentSessions"`
+	// The minimum count of ready session instances.
+	ReadySessionInstances *int `pulumi:"readySessionInstances"`
+}
+
+// Scale configuration.
+type ScaleConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ScaleConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleConfigurationResponse)(nil)).Elem()
+}
+
+func (o ScaleConfigurationResponseOutput) ToScaleConfigurationResponseOutput() ScaleConfigurationResponseOutput {
+	return o
+}
+
+func (o ScaleConfigurationResponseOutput) ToScaleConfigurationResponseOutputWithContext(ctx context.Context) ScaleConfigurationResponseOutput {
+	return o
+}
+
+// The maximum count of sessions at the same time.
+func (o ScaleConfigurationResponseOutput) MaxConcurrentSessions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleConfigurationResponse) *int { return v.MaxConcurrentSessions }).(pulumi.IntPtrOutput)
+}
+
+// The minimum count of ready session instances.
+func (o ScaleConfigurationResponseOutput) ReadySessionInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleConfigurationResponse) *int { return v.ReadySessionInstances }).(pulumi.IntPtrOutput)
+}
+
+type ScaleConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScaleConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleConfigurationResponse)(nil)).Elem()
+}
+
+func (o ScaleConfigurationResponsePtrOutput) ToScaleConfigurationResponsePtrOutput() ScaleConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ScaleConfigurationResponsePtrOutput) ToScaleConfigurationResponsePtrOutputWithContext(ctx context.Context) ScaleConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ScaleConfigurationResponsePtrOutput) Elem() ScaleConfigurationResponseOutput {
+	return o.ApplyT(func(v *ScaleConfigurationResponse) ScaleConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScaleConfigurationResponse
+		return ret
+	}).(ScaleConfigurationResponseOutput)
+}
+
+// The maximum count of sessions at the same time.
+func (o ScaleConfigurationResponsePtrOutput) MaxConcurrentSessions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentSessions
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum count of ready session instances.
+func (o ScaleConfigurationResponsePtrOutput) ReadySessionInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReadySessionInstances
+	}).(pulumi.IntPtrOutput)
+}
+
 // Container App scaling configurations.
 type ScaleResponse struct {
 	// Optional. Maximum number of container replicas. Defaults to 10 if not set.
@@ -26097,6 +27215,1295 @@ func (o SecretVolumeItemResponseArrayOutput) Index(i pulumi.IntInput) SecretVolu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretVolumeItemResponse {
 		return vs[0].([]SecretVolumeItemResponse)[vs[1].(int)]
 	}).(SecretVolumeItemResponseOutput)
+}
+
+// Container definitions for the sessions of the session pool.
+type SessionContainer struct {
+	// Container start command arguments.
+	Args []string `pulumi:"args"`
+	// Container start command.
+	Command []string `pulumi:"command"`
+	// Container environment variables.
+	Env []EnvironmentVar `pulumi:"env"`
+	// Container image tag.
+	Image *string `pulumi:"image"`
+	// Custom container name.
+	Name *string `pulumi:"name"`
+	// Container resource requirements.
+	Resources *SessionContainerResources `pulumi:"resources"`
+}
+
+// SessionContainerInput is an input type that accepts SessionContainerArgs and SessionContainerOutput values.
+// You can construct a concrete instance of `SessionContainerInput` via:
+//
+//	SessionContainerArgs{...}
+type SessionContainerInput interface {
+	pulumi.Input
+
+	ToSessionContainerOutput() SessionContainerOutput
+	ToSessionContainerOutputWithContext(context.Context) SessionContainerOutput
+}
+
+// Container definitions for the sessions of the session pool.
+type SessionContainerArgs struct {
+	// Container start command arguments.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Container start command.
+	Command pulumi.StringArrayInput `pulumi:"command"`
+	// Container environment variables.
+	Env EnvironmentVarArrayInput `pulumi:"env"`
+	// Container image tag.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// Custom container name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Container resource requirements.
+	Resources SessionContainerResourcesPtrInput `pulumi:"resources"`
+}
+
+func (SessionContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionContainer)(nil)).Elem()
+}
+
+func (i SessionContainerArgs) ToSessionContainerOutput() SessionContainerOutput {
+	return i.ToSessionContainerOutputWithContext(context.Background())
+}
+
+func (i SessionContainerArgs) ToSessionContainerOutputWithContext(ctx context.Context) SessionContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionContainerOutput)
+}
+
+// SessionContainerArrayInput is an input type that accepts SessionContainerArray and SessionContainerArrayOutput values.
+// You can construct a concrete instance of `SessionContainerArrayInput` via:
+//
+//	SessionContainerArray{ SessionContainerArgs{...} }
+type SessionContainerArrayInput interface {
+	pulumi.Input
+
+	ToSessionContainerArrayOutput() SessionContainerArrayOutput
+	ToSessionContainerArrayOutputWithContext(context.Context) SessionContainerArrayOutput
+}
+
+type SessionContainerArray []SessionContainerInput
+
+func (SessionContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionContainer)(nil)).Elem()
+}
+
+func (i SessionContainerArray) ToSessionContainerArrayOutput() SessionContainerArrayOutput {
+	return i.ToSessionContainerArrayOutputWithContext(context.Background())
+}
+
+func (i SessionContainerArray) ToSessionContainerArrayOutputWithContext(ctx context.Context) SessionContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionContainerArrayOutput)
+}
+
+// Container definitions for the sessions of the session pool.
+type SessionContainerOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionContainer)(nil)).Elem()
+}
+
+func (o SessionContainerOutput) ToSessionContainerOutput() SessionContainerOutput {
+	return o
+}
+
+func (o SessionContainerOutput) ToSessionContainerOutputWithContext(ctx context.Context) SessionContainerOutput {
+	return o
+}
+
+// Container start command arguments.
+func (o SessionContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SessionContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Container start command.
+func (o SessionContainerOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SessionContainer) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// Container environment variables.
+func (o SessionContainerOutput) Env() EnvironmentVarArrayOutput {
+	return o.ApplyT(func(v SessionContainer) []EnvironmentVar { return v.Env }).(EnvironmentVarArrayOutput)
+}
+
+// Container image tag.
+func (o SessionContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Custom container name.
+func (o SessionContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Container resource requirements.
+func (o SessionContainerOutput) Resources() SessionContainerResourcesPtrOutput {
+	return o.ApplyT(func(v SessionContainer) *SessionContainerResources { return v.Resources }).(SessionContainerResourcesPtrOutput)
+}
+
+type SessionContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionContainer)(nil)).Elem()
+}
+
+func (o SessionContainerArrayOutput) ToSessionContainerArrayOutput() SessionContainerArrayOutput {
+	return o
+}
+
+func (o SessionContainerArrayOutput) ToSessionContainerArrayOutputWithContext(ctx context.Context) SessionContainerArrayOutput {
+	return o
+}
+
+func (o SessionContainerArrayOutput) Index(i pulumi.IntInput) SessionContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionContainer {
+		return vs[0].([]SessionContainer)[vs[1].(int)]
+	}).(SessionContainerOutput)
+}
+
+// Container resource requirements for sessions of the session pool.
+type SessionContainerResources struct {
+	// Required CPU in cores, e.g. 0.5
+	Cpu *float64 `pulumi:"cpu"`
+	// Required memory, e.g. "250Mb"
+	Memory *string `pulumi:"memory"`
+}
+
+// SessionContainerResourcesInput is an input type that accepts SessionContainerResourcesArgs and SessionContainerResourcesOutput values.
+// You can construct a concrete instance of `SessionContainerResourcesInput` via:
+//
+//	SessionContainerResourcesArgs{...}
+type SessionContainerResourcesInput interface {
+	pulumi.Input
+
+	ToSessionContainerResourcesOutput() SessionContainerResourcesOutput
+	ToSessionContainerResourcesOutputWithContext(context.Context) SessionContainerResourcesOutput
+}
+
+// Container resource requirements for sessions of the session pool.
+type SessionContainerResourcesArgs struct {
+	// Required CPU in cores, e.g. 0.5
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Required memory, e.g. "250Mb"
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (SessionContainerResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionContainerResources)(nil)).Elem()
+}
+
+func (i SessionContainerResourcesArgs) ToSessionContainerResourcesOutput() SessionContainerResourcesOutput {
+	return i.ToSessionContainerResourcesOutputWithContext(context.Background())
+}
+
+func (i SessionContainerResourcesArgs) ToSessionContainerResourcesOutputWithContext(ctx context.Context) SessionContainerResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionContainerResourcesOutput)
+}
+
+func (i SessionContainerResourcesArgs) ToSessionContainerResourcesPtrOutput() SessionContainerResourcesPtrOutput {
+	return i.ToSessionContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i SessionContainerResourcesArgs) ToSessionContainerResourcesPtrOutputWithContext(ctx context.Context) SessionContainerResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionContainerResourcesOutput).ToSessionContainerResourcesPtrOutputWithContext(ctx)
+}
+
+// SessionContainerResourcesPtrInput is an input type that accepts SessionContainerResourcesArgs, SessionContainerResourcesPtr and SessionContainerResourcesPtrOutput values.
+// You can construct a concrete instance of `SessionContainerResourcesPtrInput` via:
+//
+//	        SessionContainerResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionContainerResourcesPtrInput interface {
+	pulumi.Input
+
+	ToSessionContainerResourcesPtrOutput() SessionContainerResourcesPtrOutput
+	ToSessionContainerResourcesPtrOutputWithContext(context.Context) SessionContainerResourcesPtrOutput
+}
+
+type sessionContainerResourcesPtrType SessionContainerResourcesArgs
+
+func SessionContainerResourcesPtr(v *SessionContainerResourcesArgs) SessionContainerResourcesPtrInput {
+	return (*sessionContainerResourcesPtrType)(v)
+}
+
+func (*sessionContainerResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionContainerResources)(nil)).Elem()
+}
+
+func (i *sessionContainerResourcesPtrType) ToSessionContainerResourcesPtrOutput() SessionContainerResourcesPtrOutput {
+	return i.ToSessionContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionContainerResourcesPtrType) ToSessionContainerResourcesPtrOutputWithContext(ctx context.Context) SessionContainerResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionContainerResourcesPtrOutput)
+}
+
+// Container resource requirements for sessions of the session pool.
+type SessionContainerResourcesOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionContainerResources)(nil)).Elem()
+}
+
+func (o SessionContainerResourcesOutput) ToSessionContainerResourcesOutput() SessionContainerResourcesOutput {
+	return o
+}
+
+func (o SessionContainerResourcesOutput) ToSessionContainerResourcesOutputWithContext(ctx context.Context) SessionContainerResourcesOutput {
+	return o
+}
+
+func (o SessionContainerResourcesOutput) ToSessionContainerResourcesPtrOutput() SessionContainerResourcesPtrOutput {
+	return o.ToSessionContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o SessionContainerResourcesOutput) ToSessionContainerResourcesPtrOutputWithContext(ctx context.Context) SessionContainerResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionContainerResources) *SessionContainerResources {
+		return &v
+	}).(SessionContainerResourcesPtrOutput)
+}
+
+// Required CPU in cores, e.g. 0.5
+func (o SessionContainerResourcesOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SessionContainerResources) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// Required memory, e.g. "250Mb"
+func (o SessionContainerResourcesOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionContainerResources) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type SessionContainerResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionContainerResources)(nil)).Elem()
+}
+
+func (o SessionContainerResourcesPtrOutput) ToSessionContainerResourcesPtrOutput() SessionContainerResourcesPtrOutput {
+	return o
+}
+
+func (o SessionContainerResourcesPtrOutput) ToSessionContainerResourcesPtrOutputWithContext(ctx context.Context) SessionContainerResourcesPtrOutput {
+	return o
+}
+
+func (o SessionContainerResourcesPtrOutput) Elem() SessionContainerResourcesOutput {
+	return o.ApplyT(func(v *SessionContainerResources) SessionContainerResources {
+		if v != nil {
+			return *v
+		}
+		var ret SessionContainerResources
+		return ret
+	}).(SessionContainerResourcesOutput)
+}
+
+// Required CPU in cores, e.g. 0.5
+func (o SessionContainerResourcesPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SessionContainerResources) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required memory, e.g. "250Mb"
+func (o SessionContainerResourcesPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionContainerResources) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container resource requirements for sessions of the session pool.
+type SessionContainerResourcesResponse struct {
+	// Required CPU in cores, e.g. 0.5
+	Cpu *float64 `pulumi:"cpu"`
+	// Required memory, e.g. "250Mb"
+	Memory *string `pulumi:"memory"`
+}
+
+// Container resource requirements for sessions of the session pool.
+type SessionContainerResourcesResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerResourcesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionContainerResourcesResponse)(nil)).Elem()
+}
+
+func (o SessionContainerResourcesResponseOutput) ToSessionContainerResourcesResponseOutput() SessionContainerResourcesResponseOutput {
+	return o
+}
+
+func (o SessionContainerResourcesResponseOutput) ToSessionContainerResourcesResponseOutputWithContext(ctx context.Context) SessionContainerResourcesResponseOutput {
+	return o
+}
+
+// Required CPU in cores, e.g. 0.5
+func (o SessionContainerResourcesResponseOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SessionContainerResourcesResponse) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// Required memory, e.g. "250Mb"
+func (o SessionContainerResourcesResponseOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionContainerResourcesResponse) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type SessionContainerResourcesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerResourcesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionContainerResourcesResponse)(nil)).Elem()
+}
+
+func (o SessionContainerResourcesResponsePtrOutput) ToSessionContainerResourcesResponsePtrOutput() SessionContainerResourcesResponsePtrOutput {
+	return o
+}
+
+func (o SessionContainerResourcesResponsePtrOutput) ToSessionContainerResourcesResponsePtrOutputWithContext(ctx context.Context) SessionContainerResourcesResponsePtrOutput {
+	return o
+}
+
+func (o SessionContainerResourcesResponsePtrOutput) Elem() SessionContainerResourcesResponseOutput {
+	return o.ApplyT(func(v *SessionContainerResourcesResponse) SessionContainerResourcesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SessionContainerResourcesResponse
+		return ret
+	}).(SessionContainerResourcesResponseOutput)
+}
+
+// Required CPU in cores, e.g. 0.5
+func (o SessionContainerResourcesResponsePtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SessionContainerResourcesResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required memory, e.g. "250Mb"
+func (o SessionContainerResourcesResponsePtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionContainerResourcesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container definitions for the sessions of the session pool.
+type SessionContainerResponse struct {
+	// Container start command arguments.
+	Args []string `pulumi:"args"`
+	// Container start command.
+	Command []string `pulumi:"command"`
+	// Container environment variables.
+	Env []EnvironmentVarResponse `pulumi:"env"`
+	// Container image tag.
+	Image *string `pulumi:"image"`
+	// Custom container name.
+	Name *string `pulumi:"name"`
+	// Container resource requirements.
+	Resources *SessionContainerResourcesResponse `pulumi:"resources"`
+}
+
+// Container definitions for the sessions of the session pool.
+type SessionContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionContainerResponse)(nil)).Elem()
+}
+
+func (o SessionContainerResponseOutput) ToSessionContainerResponseOutput() SessionContainerResponseOutput {
+	return o
+}
+
+func (o SessionContainerResponseOutput) ToSessionContainerResponseOutputWithContext(ctx context.Context) SessionContainerResponseOutput {
+	return o
+}
+
+// Container start command arguments.
+func (o SessionContainerResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SessionContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Container start command.
+func (o SessionContainerResponseOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SessionContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// Container environment variables.
+func (o SessionContainerResponseOutput) Env() EnvironmentVarResponseArrayOutput {
+	return o.ApplyT(func(v SessionContainerResponse) []EnvironmentVarResponse { return v.Env }).(EnvironmentVarResponseArrayOutput)
+}
+
+// Container image tag.
+func (o SessionContainerResponseOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionContainerResponse) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Custom container name.
+func (o SessionContainerResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionContainerResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Container resource requirements.
+func (o SessionContainerResponseOutput) Resources() SessionContainerResourcesResponsePtrOutput {
+	return o.ApplyT(func(v SessionContainerResponse) *SessionContainerResourcesResponse { return v.Resources }).(SessionContainerResourcesResponsePtrOutput)
+}
+
+type SessionContainerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionContainerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionContainerResponse)(nil)).Elem()
+}
+
+func (o SessionContainerResponseArrayOutput) ToSessionContainerResponseArrayOutput() SessionContainerResponseArrayOutput {
+	return o
+}
+
+func (o SessionContainerResponseArrayOutput) ToSessionContainerResponseArrayOutputWithContext(ctx context.Context) SessionContainerResponseArrayOutput {
+	return o
+}
+
+func (o SessionContainerResponseArrayOutput) Index(i pulumi.IntInput) SessionContainerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionContainerResponse {
+		return vs[0].([]SessionContainerResponse)[vs[1].(int)]
+	}).(SessionContainerResponseOutput)
+}
+
+// Session pool ingress configuration.
+type SessionIngress struct {
+	// Target port in containers for traffic from ingress
+	TargetPort *int `pulumi:"targetPort"`
+}
+
+// SessionIngressInput is an input type that accepts SessionIngressArgs and SessionIngressOutput values.
+// You can construct a concrete instance of `SessionIngressInput` via:
+//
+//	SessionIngressArgs{...}
+type SessionIngressInput interface {
+	pulumi.Input
+
+	ToSessionIngressOutput() SessionIngressOutput
+	ToSessionIngressOutputWithContext(context.Context) SessionIngressOutput
+}
+
+// Session pool ingress configuration.
+type SessionIngressArgs struct {
+	// Target port in containers for traffic from ingress
+	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+}
+
+func (SessionIngressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionIngress)(nil)).Elem()
+}
+
+func (i SessionIngressArgs) ToSessionIngressOutput() SessionIngressOutput {
+	return i.ToSessionIngressOutputWithContext(context.Background())
+}
+
+func (i SessionIngressArgs) ToSessionIngressOutputWithContext(ctx context.Context) SessionIngressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionIngressOutput)
+}
+
+func (i SessionIngressArgs) ToSessionIngressPtrOutput() SessionIngressPtrOutput {
+	return i.ToSessionIngressPtrOutputWithContext(context.Background())
+}
+
+func (i SessionIngressArgs) ToSessionIngressPtrOutputWithContext(ctx context.Context) SessionIngressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionIngressOutput).ToSessionIngressPtrOutputWithContext(ctx)
+}
+
+// SessionIngressPtrInput is an input type that accepts SessionIngressArgs, SessionIngressPtr and SessionIngressPtrOutput values.
+// You can construct a concrete instance of `SessionIngressPtrInput` via:
+//
+//	        SessionIngressArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionIngressPtrInput interface {
+	pulumi.Input
+
+	ToSessionIngressPtrOutput() SessionIngressPtrOutput
+	ToSessionIngressPtrOutputWithContext(context.Context) SessionIngressPtrOutput
+}
+
+type sessionIngressPtrType SessionIngressArgs
+
+func SessionIngressPtr(v *SessionIngressArgs) SessionIngressPtrInput {
+	return (*sessionIngressPtrType)(v)
+}
+
+func (*sessionIngressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionIngress)(nil)).Elem()
+}
+
+func (i *sessionIngressPtrType) ToSessionIngressPtrOutput() SessionIngressPtrOutput {
+	return i.ToSessionIngressPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionIngressPtrType) ToSessionIngressPtrOutputWithContext(ctx context.Context) SessionIngressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionIngressPtrOutput)
+}
+
+// Session pool ingress configuration.
+type SessionIngressOutput struct{ *pulumi.OutputState }
+
+func (SessionIngressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionIngress)(nil)).Elem()
+}
+
+func (o SessionIngressOutput) ToSessionIngressOutput() SessionIngressOutput {
+	return o
+}
+
+func (o SessionIngressOutput) ToSessionIngressOutputWithContext(ctx context.Context) SessionIngressOutput {
+	return o
+}
+
+func (o SessionIngressOutput) ToSessionIngressPtrOutput() SessionIngressPtrOutput {
+	return o.ToSessionIngressPtrOutputWithContext(context.Background())
+}
+
+func (o SessionIngressOutput) ToSessionIngressPtrOutputWithContext(ctx context.Context) SessionIngressPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionIngress) *SessionIngress {
+		return &v
+	}).(SessionIngressPtrOutput)
+}
+
+// Target port in containers for traffic from ingress
+func (o SessionIngressOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SessionIngress) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+type SessionIngressPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionIngressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionIngress)(nil)).Elem()
+}
+
+func (o SessionIngressPtrOutput) ToSessionIngressPtrOutput() SessionIngressPtrOutput {
+	return o
+}
+
+func (o SessionIngressPtrOutput) ToSessionIngressPtrOutputWithContext(ctx context.Context) SessionIngressPtrOutput {
+	return o
+}
+
+func (o SessionIngressPtrOutput) Elem() SessionIngressOutput {
+	return o.ApplyT(func(v *SessionIngress) SessionIngress {
+		if v != nil {
+			return *v
+		}
+		var ret SessionIngress
+		return ret
+	}).(SessionIngressOutput)
+}
+
+// Target port in containers for traffic from ingress
+func (o SessionIngressPtrOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SessionIngress) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Session pool ingress configuration.
+type SessionIngressResponse struct {
+	// Target port in containers for traffic from ingress
+	TargetPort *int `pulumi:"targetPort"`
+}
+
+// Session pool ingress configuration.
+type SessionIngressResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionIngressResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionIngressResponse)(nil)).Elem()
+}
+
+func (o SessionIngressResponseOutput) ToSessionIngressResponseOutput() SessionIngressResponseOutput {
+	return o
+}
+
+func (o SessionIngressResponseOutput) ToSessionIngressResponseOutputWithContext(ctx context.Context) SessionIngressResponseOutput {
+	return o
+}
+
+// Target port in containers for traffic from ingress
+func (o SessionIngressResponseOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SessionIngressResponse) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
+}
+
+type SessionIngressResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SessionIngressResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionIngressResponse)(nil)).Elem()
+}
+
+func (o SessionIngressResponsePtrOutput) ToSessionIngressResponsePtrOutput() SessionIngressResponsePtrOutput {
+	return o
+}
+
+func (o SessionIngressResponsePtrOutput) ToSessionIngressResponsePtrOutputWithContext(ctx context.Context) SessionIngressResponsePtrOutput {
+	return o
+}
+
+func (o SessionIngressResponsePtrOutput) Elem() SessionIngressResponseOutput {
+	return o.ApplyT(func(v *SessionIngressResponse) SessionIngressResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SessionIngressResponse
+		return ret
+	}).(SessionIngressResponseOutput)
+}
+
+// Target port in containers for traffic from ingress
+func (o SessionIngressResponsePtrOutput) TargetPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SessionIngressResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Session network configuration.
+type SessionNetworkConfiguration struct {
+	// Network status for the sessions.
+	Status *string `pulumi:"status"`
+}
+
+// SessionNetworkConfigurationInput is an input type that accepts SessionNetworkConfigurationArgs and SessionNetworkConfigurationOutput values.
+// You can construct a concrete instance of `SessionNetworkConfigurationInput` via:
+//
+//	SessionNetworkConfigurationArgs{...}
+type SessionNetworkConfigurationInput interface {
+	pulumi.Input
+
+	ToSessionNetworkConfigurationOutput() SessionNetworkConfigurationOutput
+	ToSessionNetworkConfigurationOutputWithContext(context.Context) SessionNetworkConfigurationOutput
+}
+
+// Session network configuration.
+type SessionNetworkConfigurationArgs struct {
+	// Network status for the sessions.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (SessionNetworkConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionNetworkConfiguration)(nil)).Elem()
+}
+
+func (i SessionNetworkConfigurationArgs) ToSessionNetworkConfigurationOutput() SessionNetworkConfigurationOutput {
+	return i.ToSessionNetworkConfigurationOutputWithContext(context.Background())
+}
+
+func (i SessionNetworkConfigurationArgs) ToSessionNetworkConfigurationOutputWithContext(ctx context.Context) SessionNetworkConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionNetworkConfigurationOutput)
+}
+
+func (i SessionNetworkConfigurationArgs) ToSessionNetworkConfigurationPtrOutput() SessionNetworkConfigurationPtrOutput {
+	return i.ToSessionNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SessionNetworkConfigurationArgs) ToSessionNetworkConfigurationPtrOutputWithContext(ctx context.Context) SessionNetworkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionNetworkConfigurationOutput).ToSessionNetworkConfigurationPtrOutputWithContext(ctx)
+}
+
+// SessionNetworkConfigurationPtrInput is an input type that accepts SessionNetworkConfigurationArgs, SessionNetworkConfigurationPtr and SessionNetworkConfigurationPtrOutput values.
+// You can construct a concrete instance of `SessionNetworkConfigurationPtrInput` via:
+//
+//	        SessionNetworkConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionNetworkConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSessionNetworkConfigurationPtrOutput() SessionNetworkConfigurationPtrOutput
+	ToSessionNetworkConfigurationPtrOutputWithContext(context.Context) SessionNetworkConfigurationPtrOutput
+}
+
+type sessionNetworkConfigurationPtrType SessionNetworkConfigurationArgs
+
+func SessionNetworkConfigurationPtr(v *SessionNetworkConfigurationArgs) SessionNetworkConfigurationPtrInput {
+	return (*sessionNetworkConfigurationPtrType)(v)
+}
+
+func (*sessionNetworkConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionNetworkConfiguration)(nil)).Elem()
+}
+
+func (i *sessionNetworkConfigurationPtrType) ToSessionNetworkConfigurationPtrOutput() SessionNetworkConfigurationPtrOutput {
+	return i.ToSessionNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionNetworkConfigurationPtrType) ToSessionNetworkConfigurationPtrOutputWithContext(ctx context.Context) SessionNetworkConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionNetworkConfigurationPtrOutput)
+}
+
+// Session network configuration.
+type SessionNetworkConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SessionNetworkConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionNetworkConfiguration)(nil)).Elem()
+}
+
+func (o SessionNetworkConfigurationOutput) ToSessionNetworkConfigurationOutput() SessionNetworkConfigurationOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationOutput) ToSessionNetworkConfigurationOutputWithContext(ctx context.Context) SessionNetworkConfigurationOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationOutput) ToSessionNetworkConfigurationPtrOutput() SessionNetworkConfigurationPtrOutput {
+	return o.ToSessionNetworkConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SessionNetworkConfigurationOutput) ToSessionNetworkConfigurationPtrOutputWithContext(ctx context.Context) SessionNetworkConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionNetworkConfiguration) *SessionNetworkConfiguration {
+		return &v
+	}).(SessionNetworkConfigurationPtrOutput)
+}
+
+// Network status for the sessions.
+func (o SessionNetworkConfigurationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionNetworkConfiguration) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SessionNetworkConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionNetworkConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionNetworkConfiguration)(nil)).Elem()
+}
+
+func (o SessionNetworkConfigurationPtrOutput) ToSessionNetworkConfigurationPtrOutput() SessionNetworkConfigurationPtrOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationPtrOutput) ToSessionNetworkConfigurationPtrOutputWithContext(ctx context.Context) SessionNetworkConfigurationPtrOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationPtrOutput) Elem() SessionNetworkConfigurationOutput {
+	return o.ApplyT(func(v *SessionNetworkConfiguration) SessionNetworkConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SessionNetworkConfiguration
+		return ret
+	}).(SessionNetworkConfigurationOutput)
+}
+
+// Network status for the sessions.
+func (o SessionNetworkConfigurationPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionNetworkConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session network configuration.
+type SessionNetworkConfigurationResponse struct {
+	// Network status for the sessions.
+	Status *string `pulumi:"status"`
+}
+
+// Session network configuration.
+type SessionNetworkConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionNetworkConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionNetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o SessionNetworkConfigurationResponseOutput) ToSessionNetworkConfigurationResponseOutput() SessionNetworkConfigurationResponseOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationResponseOutput) ToSessionNetworkConfigurationResponseOutputWithContext(ctx context.Context) SessionNetworkConfigurationResponseOutput {
+	return o
+}
+
+// Network status for the sessions.
+func (o SessionNetworkConfigurationResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionNetworkConfigurationResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SessionNetworkConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SessionNetworkConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionNetworkConfigurationResponse)(nil)).Elem()
+}
+
+func (o SessionNetworkConfigurationResponsePtrOutput) ToSessionNetworkConfigurationResponsePtrOutput() SessionNetworkConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationResponsePtrOutput) ToSessionNetworkConfigurationResponsePtrOutputWithContext(ctx context.Context) SessionNetworkConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SessionNetworkConfigurationResponsePtrOutput) Elem() SessionNetworkConfigurationResponseOutput {
+	return o.ApplyT(func(v *SessionNetworkConfigurationResponse) SessionNetworkConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SessionNetworkConfigurationResponse
+		return ret
+	}).(SessionNetworkConfigurationResponseOutput)
+}
+
+// Network status for the sessions.
+func (o SessionNetworkConfigurationResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionNetworkConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret definition.
+type SessionPoolSecret struct {
+	// Secret Name.
+	Name *string `pulumi:"name"`
+	// Secret Value.
+	Value *string `pulumi:"value"`
+}
+
+// SessionPoolSecretInput is an input type that accepts SessionPoolSecretArgs and SessionPoolSecretOutput values.
+// You can construct a concrete instance of `SessionPoolSecretInput` via:
+//
+//	SessionPoolSecretArgs{...}
+type SessionPoolSecretInput interface {
+	pulumi.Input
+
+	ToSessionPoolSecretOutput() SessionPoolSecretOutput
+	ToSessionPoolSecretOutputWithContext(context.Context) SessionPoolSecretOutput
+}
+
+// Secret definition.
+type SessionPoolSecretArgs struct {
+	// Secret Name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Secret Value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SessionPoolSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionPoolSecret)(nil)).Elem()
+}
+
+func (i SessionPoolSecretArgs) ToSessionPoolSecretOutput() SessionPoolSecretOutput {
+	return i.ToSessionPoolSecretOutputWithContext(context.Background())
+}
+
+func (i SessionPoolSecretArgs) ToSessionPoolSecretOutputWithContext(ctx context.Context) SessionPoolSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionPoolSecretOutput)
+}
+
+// SessionPoolSecretArrayInput is an input type that accepts SessionPoolSecretArray and SessionPoolSecretArrayOutput values.
+// You can construct a concrete instance of `SessionPoolSecretArrayInput` via:
+//
+//	SessionPoolSecretArray{ SessionPoolSecretArgs{...} }
+type SessionPoolSecretArrayInput interface {
+	pulumi.Input
+
+	ToSessionPoolSecretArrayOutput() SessionPoolSecretArrayOutput
+	ToSessionPoolSecretArrayOutputWithContext(context.Context) SessionPoolSecretArrayOutput
+}
+
+type SessionPoolSecretArray []SessionPoolSecretInput
+
+func (SessionPoolSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionPoolSecret)(nil)).Elem()
+}
+
+func (i SessionPoolSecretArray) ToSessionPoolSecretArrayOutput() SessionPoolSecretArrayOutput {
+	return i.ToSessionPoolSecretArrayOutputWithContext(context.Background())
+}
+
+func (i SessionPoolSecretArray) ToSessionPoolSecretArrayOutputWithContext(ctx context.Context) SessionPoolSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionPoolSecretArrayOutput)
+}
+
+// Secret definition.
+type SessionPoolSecretOutput struct{ *pulumi.OutputState }
+
+func (SessionPoolSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionPoolSecret)(nil)).Elem()
+}
+
+func (o SessionPoolSecretOutput) ToSessionPoolSecretOutput() SessionPoolSecretOutput {
+	return o
+}
+
+func (o SessionPoolSecretOutput) ToSessionPoolSecretOutputWithContext(ctx context.Context) SessionPoolSecretOutput {
+	return o
+}
+
+// Secret Name.
+func (o SessionPoolSecretOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionPoolSecret) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Secret Value.
+func (o SessionPoolSecretOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionPoolSecret) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SessionPoolSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionPoolSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionPoolSecret)(nil)).Elem()
+}
+
+func (o SessionPoolSecretArrayOutput) ToSessionPoolSecretArrayOutput() SessionPoolSecretArrayOutput {
+	return o
+}
+
+func (o SessionPoolSecretArrayOutput) ToSessionPoolSecretArrayOutputWithContext(ctx context.Context) SessionPoolSecretArrayOutput {
+	return o
+}
+
+func (o SessionPoolSecretArrayOutput) Index(i pulumi.IntInput) SessionPoolSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionPoolSecret {
+		return vs[0].([]SessionPoolSecret)[vs[1].(int)]
+	}).(SessionPoolSecretOutput)
+}
+
+// Secret definition.
+type SessionPoolSecretResponse struct {
+	// Secret Name.
+	Name *string `pulumi:"name"`
+}
+
+// Secret definition.
+type SessionPoolSecretResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionPoolSecretResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionPoolSecretResponse)(nil)).Elem()
+}
+
+func (o SessionPoolSecretResponseOutput) ToSessionPoolSecretResponseOutput() SessionPoolSecretResponseOutput {
+	return o
+}
+
+func (o SessionPoolSecretResponseOutput) ToSessionPoolSecretResponseOutputWithContext(ctx context.Context) SessionPoolSecretResponseOutput {
+	return o
+}
+
+// Secret Name.
+func (o SessionPoolSecretResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionPoolSecretResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type SessionPoolSecretResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SessionPoolSecretResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SessionPoolSecretResponse)(nil)).Elem()
+}
+
+func (o SessionPoolSecretResponseArrayOutput) ToSessionPoolSecretResponseArrayOutput() SessionPoolSecretResponseArrayOutput {
+	return o
+}
+
+func (o SessionPoolSecretResponseArrayOutput) ToSessionPoolSecretResponseArrayOutputWithContext(ctx context.Context) SessionPoolSecretResponseArrayOutput {
+	return o
+}
+
+func (o SessionPoolSecretResponseArrayOutput) Index(i pulumi.IntInput) SessionPoolSecretResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SessionPoolSecretResponse {
+		return vs[0].([]SessionPoolSecretResponse)[vs[1].(int)]
+	}).(SessionPoolSecretResponseOutput)
+}
+
+// Session pool private registry credentials.
+type SessionRegistryCredentials struct {
+	// The name of the secret that contains the registry login password
+	PasswordSecretRef *string `pulumi:"passwordSecretRef"`
+	// Container registry server.
+	RegistryServer *string `pulumi:"registryServer"`
+	// Container registry username.
+	Username *string `pulumi:"username"`
+}
+
+// SessionRegistryCredentialsInput is an input type that accepts SessionRegistryCredentialsArgs and SessionRegistryCredentialsOutput values.
+// You can construct a concrete instance of `SessionRegistryCredentialsInput` via:
+//
+//	SessionRegistryCredentialsArgs{...}
+type SessionRegistryCredentialsInput interface {
+	pulumi.Input
+
+	ToSessionRegistryCredentialsOutput() SessionRegistryCredentialsOutput
+	ToSessionRegistryCredentialsOutputWithContext(context.Context) SessionRegistryCredentialsOutput
+}
+
+// Session pool private registry credentials.
+type SessionRegistryCredentialsArgs struct {
+	// The name of the secret that contains the registry login password
+	PasswordSecretRef pulumi.StringPtrInput `pulumi:"passwordSecretRef"`
+	// Container registry server.
+	RegistryServer pulumi.StringPtrInput `pulumi:"registryServer"`
+	// Container registry username.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (SessionRegistryCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionRegistryCredentials)(nil)).Elem()
+}
+
+func (i SessionRegistryCredentialsArgs) ToSessionRegistryCredentialsOutput() SessionRegistryCredentialsOutput {
+	return i.ToSessionRegistryCredentialsOutputWithContext(context.Background())
+}
+
+func (i SessionRegistryCredentialsArgs) ToSessionRegistryCredentialsOutputWithContext(ctx context.Context) SessionRegistryCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionRegistryCredentialsOutput)
+}
+
+func (i SessionRegistryCredentialsArgs) ToSessionRegistryCredentialsPtrOutput() SessionRegistryCredentialsPtrOutput {
+	return i.ToSessionRegistryCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i SessionRegistryCredentialsArgs) ToSessionRegistryCredentialsPtrOutputWithContext(ctx context.Context) SessionRegistryCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionRegistryCredentialsOutput).ToSessionRegistryCredentialsPtrOutputWithContext(ctx)
+}
+
+// SessionRegistryCredentialsPtrInput is an input type that accepts SessionRegistryCredentialsArgs, SessionRegistryCredentialsPtr and SessionRegistryCredentialsPtrOutput values.
+// You can construct a concrete instance of `SessionRegistryCredentialsPtrInput` via:
+//
+//	        SessionRegistryCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SessionRegistryCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToSessionRegistryCredentialsPtrOutput() SessionRegistryCredentialsPtrOutput
+	ToSessionRegistryCredentialsPtrOutputWithContext(context.Context) SessionRegistryCredentialsPtrOutput
+}
+
+type sessionRegistryCredentialsPtrType SessionRegistryCredentialsArgs
+
+func SessionRegistryCredentialsPtr(v *SessionRegistryCredentialsArgs) SessionRegistryCredentialsPtrInput {
+	return (*sessionRegistryCredentialsPtrType)(v)
+}
+
+func (*sessionRegistryCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionRegistryCredentials)(nil)).Elem()
+}
+
+func (i *sessionRegistryCredentialsPtrType) ToSessionRegistryCredentialsPtrOutput() SessionRegistryCredentialsPtrOutput {
+	return i.ToSessionRegistryCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *sessionRegistryCredentialsPtrType) ToSessionRegistryCredentialsPtrOutputWithContext(ctx context.Context) SessionRegistryCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SessionRegistryCredentialsPtrOutput)
+}
+
+// Session pool private registry credentials.
+type SessionRegistryCredentialsOutput struct{ *pulumi.OutputState }
+
+func (SessionRegistryCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionRegistryCredentials)(nil)).Elem()
+}
+
+func (o SessionRegistryCredentialsOutput) ToSessionRegistryCredentialsOutput() SessionRegistryCredentialsOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsOutput) ToSessionRegistryCredentialsOutputWithContext(ctx context.Context) SessionRegistryCredentialsOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsOutput) ToSessionRegistryCredentialsPtrOutput() SessionRegistryCredentialsPtrOutput {
+	return o.ToSessionRegistryCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o SessionRegistryCredentialsOutput) ToSessionRegistryCredentialsPtrOutputWithContext(ctx context.Context) SessionRegistryCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionRegistryCredentials) *SessionRegistryCredentials {
+		return &v
+	}).(SessionRegistryCredentialsPtrOutput)
+}
+
+// The name of the secret that contains the registry login password
+func (o SessionRegistryCredentialsOutput) PasswordSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.PasswordSecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Container registry server.
+func (o SessionRegistryCredentialsOutput) RegistryServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.RegistryServer }).(pulumi.StringPtrOutput)
+}
+
+// Container registry username.
+func (o SessionRegistryCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type SessionRegistryCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (SessionRegistryCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionRegistryCredentials)(nil)).Elem()
+}
+
+func (o SessionRegistryCredentialsPtrOutput) ToSessionRegistryCredentialsPtrOutput() SessionRegistryCredentialsPtrOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsPtrOutput) ToSessionRegistryCredentialsPtrOutputWithContext(ctx context.Context) SessionRegistryCredentialsPtrOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsPtrOutput) Elem() SessionRegistryCredentialsOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentials) SessionRegistryCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret SessionRegistryCredentials
+		return ret
+	}).(SessionRegistryCredentialsOutput)
+}
+
+// The name of the secret that contains the registry login password
+func (o SessionRegistryCredentialsPtrOutput) PasswordSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container registry server.
+func (o SessionRegistryCredentialsPtrOutput) RegistryServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container registry username.
+func (o SessionRegistryCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session pool private registry credentials.
+type SessionRegistryCredentialsResponse struct {
+	// The name of the secret that contains the registry login password
+	PasswordSecretRef *string `pulumi:"passwordSecretRef"`
+	// Container registry server.
+	RegistryServer *string `pulumi:"registryServer"`
+	// Container registry username.
+	Username *string `pulumi:"username"`
+}
+
+// Session pool private registry credentials.
+type SessionRegistryCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (SessionRegistryCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionRegistryCredentialsResponse)(nil)).Elem()
+}
+
+func (o SessionRegistryCredentialsResponseOutput) ToSessionRegistryCredentialsResponseOutput() SessionRegistryCredentialsResponseOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsResponseOutput) ToSessionRegistryCredentialsResponseOutputWithContext(ctx context.Context) SessionRegistryCredentialsResponseOutput {
+	return o
+}
+
+// The name of the secret that contains the registry login password
+func (o SessionRegistryCredentialsResponseOutput) PasswordSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.PasswordSecretRef }).(pulumi.StringPtrOutput)
+}
+
+// Container registry server.
+func (o SessionRegistryCredentialsResponseOutput) RegistryServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.RegistryServer }).(pulumi.StringPtrOutput)
+}
+
+// Container registry username.
+func (o SessionRegistryCredentialsResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SessionRegistryCredentialsResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type SessionRegistryCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SessionRegistryCredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SessionRegistryCredentialsResponse)(nil)).Elem()
+}
+
+func (o SessionRegistryCredentialsResponsePtrOutput) ToSessionRegistryCredentialsResponsePtrOutput() SessionRegistryCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsResponsePtrOutput) ToSessionRegistryCredentialsResponsePtrOutputWithContext(ctx context.Context) SessionRegistryCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o SessionRegistryCredentialsResponsePtrOutput) Elem() SessionRegistryCredentialsResponseOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) SessionRegistryCredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SessionRegistryCredentialsResponse
+		return ret
+	}).(SessionRegistryCredentialsResponseOutput)
+}
+
+// The name of the secret that contains the registry login password
+func (o SessionRegistryCredentialsResponsePtrOutput) PasswordSecretRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container registry server.
+func (o SessionRegistryCredentialsResponsePtrOutput) RegistryServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegistryServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container registry username.
+func (o SessionRegistryCredentialsResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SessionRegistryCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -29000,6 +31407,123 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 	}).(VolumeResponseOutput)
 }
 
+// Additional workflow properties.
+type WorkflowEnvelopeResponseProperties struct {
+	// Gets or sets the files.
+	Files interface{} `pulumi:"files"`
+	// Gets or sets the state of the workflow.
+	FlowState *string `pulumi:"flowState"`
+	// Gets or sets workflow health.
+	Health *WorkflowHealthResponse `pulumi:"health"`
+}
+
+// Additional workflow properties.
+type WorkflowEnvelopeResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (WorkflowEnvelopeResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowEnvelopeResponseProperties)(nil)).Elem()
+}
+
+func (o WorkflowEnvelopeResponsePropertiesOutput) ToWorkflowEnvelopeResponsePropertiesOutput() WorkflowEnvelopeResponsePropertiesOutput {
+	return o
+}
+
+func (o WorkflowEnvelopeResponsePropertiesOutput) ToWorkflowEnvelopeResponsePropertiesOutputWithContext(ctx context.Context) WorkflowEnvelopeResponsePropertiesOutput {
+	return o
+}
+
+// Gets or sets the files.
+func (o WorkflowEnvelopeResponsePropertiesOutput) Files() pulumi.AnyOutput {
+	return o.ApplyT(func(v WorkflowEnvelopeResponseProperties) interface{} { return v.Files }).(pulumi.AnyOutput)
+}
+
+// Gets or sets the state of the workflow.
+func (o WorkflowEnvelopeResponsePropertiesOutput) FlowState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowEnvelopeResponseProperties) *string { return v.FlowState }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets workflow health.
+func (o WorkflowEnvelopeResponsePropertiesOutput) Health() WorkflowHealthResponsePtrOutput {
+	return o.ApplyT(func(v WorkflowEnvelopeResponseProperties) *WorkflowHealthResponse { return v.Health }).(WorkflowHealthResponsePtrOutput)
+}
+
+// Represents the workflow health.
+type WorkflowHealthResponse struct {
+	// Gets or sets the workflow error.
+	Error *ErrorEntityResponse `pulumi:"error"`
+	// Gets or sets the workflow health state.
+	State string `pulumi:"state"`
+}
+
+// Represents the workflow health.
+type WorkflowHealthResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkflowHealthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowHealthResponse)(nil)).Elem()
+}
+
+func (o WorkflowHealthResponseOutput) ToWorkflowHealthResponseOutput() WorkflowHealthResponseOutput {
+	return o
+}
+
+func (o WorkflowHealthResponseOutput) ToWorkflowHealthResponseOutputWithContext(ctx context.Context) WorkflowHealthResponseOutput {
+	return o
+}
+
+// Gets or sets the workflow error.
+func (o WorkflowHealthResponseOutput) Error() ErrorEntityResponsePtrOutput {
+	return o.ApplyT(func(v WorkflowHealthResponse) *ErrorEntityResponse { return v.Error }).(ErrorEntityResponsePtrOutput)
+}
+
+// Gets or sets the workflow health state.
+func (o WorkflowHealthResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowHealthResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type WorkflowHealthResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowHealthResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowHealthResponse)(nil)).Elem()
+}
+
+func (o WorkflowHealthResponsePtrOutput) ToWorkflowHealthResponsePtrOutput() WorkflowHealthResponsePtrOutput {
+	return o
+}
+
+func (o WorkflowHealthResponsePtrOutput) ToWorkflowHealthResponsePtrOutputWithContext(ctx context.Context) WorkflowHealthResponsePtrOutput {
+	return o
+}
+
+func (o WorkflowHealthResponsePtrOutput) Elem() WorkflowHealthResponseOutput {
+	return o.ApplyT(func(v *WorkflowHealthResponse) WorkflowHealthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowHealthResponse
+		return ret
+	}).(WorkflowHealthResponseOutput)
+}
+
+// Gets or sets the workflow error.
+func (o WorkflowHealthResponsePtrOutput) Error() ErrorEntityResponsePtrOutput {
+	return o.ApplyT(func(v *WorkflowHealthResponse) *ErrorEntityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Error
+	}).(ErrorEntityResponsePtrOutput)
+}
+
+// Gets or sets the workflow health state.
+func (o WorkflowHealthResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowHealthResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 // Workload profile to scope container app execution.
 type WorkloadProfile struct {
 	// The maximum capacity.
@@ -29303,6 +31827,10 @@ func init() {
 	pulumi.RegisterOutputType(CorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CorsPolicyResponseOutput{})
 	pulumi.RegisterOutputType(CorsPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomContainerTemplateOutput{})
+	pulumi.RegisterOutputType(CustomContainerTemplatePtrOutput{})
+	pulumi.RegisterOutputType(CustomContainerTemplateResponseOutput{})
+	pulumi.RegisterOutputType(CustomContainerTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainOutput{})
 	pulumi.RegisterOutputType(CustomDomainArrayOutput{})
 	pulumi.RegisterOutputType(CustomDomainConfigurationOutput{})
@@ -29372,6 +31900,10 @@ func init() {
 	pulumi.RegisterOutputType(DotNetComponentServiceBindArrayOutput{})
 	pulumi.RegisterOutputType(DotNetComponentServiceBindResponseOutput{})
 	pulumi.RegisterOutputType(DotNetComponentServiceBindResponseArrayOutput{})
+	pulumi.RegisterOutputType(DynamicPoolConfigurationOutput{})
+	pulumi.RegisterOutputType(DynamicPoolConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DynamicPoolConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(DynamicPoolConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentSkuPropertiesOutput{})
 	pulumi.RegisterOutputType(EnvironmentSkuPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentSkuPropertiesResponseOutput{})
@@ -29384,6 +31916,9 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorEntityResponseOutput{})
+	pulumi.RegisterOutputType(ErrorEntityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorEntityResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
@@ -29550,6 +32085,10 @@ func init() {
 	pulumi.RegisterOutputType(PreBuildStepArrayOutput{})
 	pulumi.RegisterOutputType(PreBuildStepResponseOutput{})
 	pulumi.RegisterOutputType(PreBuildStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(QueueScaleRuleOutput{})
 	pulumi.RegisterOutputType(QueueScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(QueueScaleRuleResponseOutput{})
@@ -29564,6 +32103,10 @@ func init() {
 	pulumi.RegisterOutputType(RegistryInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScaleOutput{})
 	pulumi.RegisterOutputType(ScalePtrOutput{})
+	pulumi.RegisterOutputType(ScaleConfigurationOutput{})
+	pulumi.RegisterOutputType(ScaleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ScaleConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ScaleConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScaleResponseOutput{})
 	pulumi.RegisterOutputType(ScaleResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScaleRuleOutput{})
@@ -29582,6 +32125,30 @@ func init() {
 	pulumi.RegisterOutputType(SecretVolumeItemArrayOutput{})
 	pulumi.RegisterOutputType(SecretVolumeItemResponseOutput{})
 	pulumi.RegisterOutputType(SecretVolumeItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(SessionContainerOutput{})
+	pulumi.RegisterOutputType(SessionContainerArrayOutput{})
+	pulumi.RegisterOutputType(SessionContainerResourcesOutput{})
+	pulumi.RegisterOutputType(SessionContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(SessionContainerResourcesResponseOutput{})
+	pulumi.RegisterOutputType(SessionContainerResourcesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SessionContainerResponseOutput{})
+	pulumi.RegisterOutputType(SessionContainerResponseArrayOutput{})
+	pulumi.RegisterOutputType(SessionIngressOutput{})
+	pulumi.RegisterOutputType(SessionIngressPtrOutput{})
+	pulumi.RegisterOutputType(SessionIngressResponseOutput{})
+	pulumi.RegisterOutputType(SessionIngressResponsePtrOutput{})
+	pulumi.RegisterOutputType(SessionNetworkConfigurationOutput{})
+	pulumi.RegisterOutputType(SessionNetworkConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SessionNetworkConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SessionNetworkConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SessionPoolSecretOutput{})
+	pulumi.RegisterOutputType(SessionPoolSecretArrayOutput{})
+	pulumi.RegisterOutputType(SessionPoolSecretResponseOutput{})
+	pulumi.RegisterOutputType(SessionPoolSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(SessionRegistryCredentialsOutput{})
+	pulumi.RegisterOutputType(SessionRegistryCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(SessionRegistryCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(SessionRegistryCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TcpConnectionPoolOutput{})
 	pulumi.RegisterOutputType(TcpConnectionPoolPtrOutput{})
@@ -29629,6 +32196,9 @@ func init() {
 	pulumi.RegisterOutputType(VolumeMountResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeResponseOutput{})
 	pulumi.RegisterOutputType(VolumeResponseArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowEnvelopeResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(WorkflowHealthResponseOutput{})
+	pulumi.RegisterOutputType(WorkflowHealthResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadProfileOutput{})
 	pulumi.RegisterOutputType(WorkloadProfileArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadProfileResponseOutput{})

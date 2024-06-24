@@ -71,6 +71,9 @@ func NewWebPubSubCustomDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:webpubsub/v20240101preview:WebPubSubCustomDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:webpubsub/v20240401preview:WebPubSubCustomDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

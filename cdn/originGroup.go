@@ -15,7 +15,7 @@ import (
 // Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview.
 type OriginGroup struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +88,9 @@ func NewOriginGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240201:OriginGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240501preview:OriginGroup"),
 		},
 	})
 	opts = append(opts, aliases)

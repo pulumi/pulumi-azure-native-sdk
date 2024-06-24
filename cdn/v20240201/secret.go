@@ -66,6 +66,9 @@ func NewSecret(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:Secret"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240501preview:Secret"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -94,6 +94,9 @@ func NewContainerApp(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:app/v20231102preview:ContainerApp"),
 		},
 		{
+			Type: pulumi.String("azure-native:app/v20240202preview:ContainerApp"),
+		},
+		{
 			Type: pulumi.String("azure-native:app/v20240301:ContainerApp"),
 		},
 	})

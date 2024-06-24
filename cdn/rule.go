@@ -15,7 +15,7 @@ import (
 // Friendly Rules name mapping to the any Rules or secret related information.
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-09-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview.
 type Rule struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +86,9 @@ func NewRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cdn/v20240201:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240501preview:Rule"),
 		},
 	})
 	opts = append(opts, aliases)

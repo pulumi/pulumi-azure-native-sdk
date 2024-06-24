@@ -41,6 +41,9 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic:MonitoredSubscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20240615preview:MonitoredSubscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -74,6 +74,9 @@ func NewSignalRCustomDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:signalrservice/v20240301:SignalRCustomDomain"),
 		},
+		{
+			Type: pulumi.String("azure-native:signalrservice/v20240401preview:SignalRCustomDomain"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

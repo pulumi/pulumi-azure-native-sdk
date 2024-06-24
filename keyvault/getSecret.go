@@ -14,7 +14,7 @@ import (
 // Gets the specified secret.  NOTE: This API is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2024-04-01-preview.
 func LookupSecret(ctx *pulumi.Context, args *LookupSecretArgs, opts ...pulumi.InvokeOption) (*LookupSecretResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretResult

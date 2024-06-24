@@ -13,6 +13,59 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// A name/value pair to describe a capability.
+type CapabilityResponse struct {
+	// Name of the capability.
+	Name string `pulumi:"name"`
+	// Value of the capability.
+	Value string `pulumi:"value"`
+}
+
+// A name/value pair to describe a capability.
+type CapabilityResponseOutput struct{ *pulumi.OutputState }
+
+func (CapabilityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapabilityResponse)(nil)).Elem()
+}
+
+func (o CapabilityResponseOutput) ToCapabilityResponseOutput() CapabilityResponseOutput {
+	return o
+}
+
+func (o CapabilityResponseOutput) ToCapabilityResponseOutputWithContext(ctx context.Context) CapabilityResponseOutput {
+	return o
+}
+
+// Name of the capability.
+func (o CapabilityResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v CapabilityResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Value of the capability.
+func (o CapabilityResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CapabilityResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CapabilityResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CapabilityResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CapabilityResponse)(nil)).Elem()
+}
+
+func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutput() CapabilityResponseArrayOutput {
+	return o
+}
+
+func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutputWithContext(ctx context.Context) CapabilityResponseArrayOutput {
+	return o
+}
+
+func (o CapabilityResponseArrayOutput) Index(i pulumi.IntInput) CapabilityResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CapabilityResponse {
+		return vs[0].([]CapabilityResponse)[vs[1].(int)]
+	}).(CapabilityResponseOutput)
+}
+
 // An individual conflict error.
 type CatalogConflictErrorResponse struct {
 	// Name of the conflicting catalog item.
@@ -196,6 +249,101 @@ func (o DevCenterProjectCatalogSettingsResponseOutput) ToDevCenterProjectCatalog
 // Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
 func (o DevCenterProjectCatalogSettingsResponseOutput) CatalogItemSyncEnableStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevCenterProjectCatalogSettingsResponse) *string { return v.CatalogItemSyncEnableStatus }).(pulumi.StringPtrOutput)
+}
+
+// The resource model definition representing SKU for DevCenter resources
+type DevCenterSkuResponse struct {
+	// Collection of name/value pairs to describe the SKU capabilities.
+	Capabilities []CapabilityResponse `pulumi:"capabilities"`
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// SKU supported locations.
+	Locations []string `pulumi:"locations"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The name of the resource type
+	ResourceType string `pulumi:"resourceType"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *string `pulumi:"tier"`
+}
+
+// The resource model definition representing SKU for DevCenter resources
+type DevCenterSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (DevCenterSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevCenterSkuResponse)(nil)).Elem()
+}
+
+func (o DevCenterSkuResponseOutput) ToDevCenterSkuResponseOutput() DevCenterSkuResponseOutput {
+	return o
+}
+
+func (o DevCenterSkuResponseOutput) ToDevCenterSkuResponseOutputWithContext(ctx context.Context) DevCenterSkuResponseOutput {
+	return o
+}
+
+// Collection of name/value pairs to describe the SKU capabilities.
+func (o DevCenterSkuResponseOutput) Capabilities() CapabilityResponseArrayOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) []CapabilityResponse { return v.Capabilities }).(CapabilityResponseArrayOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o DevCenterSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o DevCenterSkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// SKU supported locations.
+func (o DevCenterSkuResponseOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o DevCenterSkuResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the resource type
+func (o DevCenterSkuResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o DevCenterSkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o DevCenterSkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevCenterSkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type DevCenterSkuResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DevCenterSkuResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevCenterSkuResponse)(nil)).Elem()
+}
+
+func (o DevCenterSkuResponseArrayOutput) ToDevCenterSkuResponseArrayOutput() DevCenterSkuResponseArrayOutput {
+	return o
+}
+
+func (o DevCenterSkuResponseArrayOutput) ToDevCenterSkuResponseArrayOutputWithContext(ctx context.Context) DevCenterSkuResponseArrayOutput {
+	return o
+}
+
+func (o DevCenterSkuResponseArrayOutput) Index(i pulumi.IntInput) DevCenterSkuResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevCenterSkuResponse {
+		return vs[0].([]DevCenterSkuResponse)[vs[1].(int)]
+	}).(DevCenterSkuResponseOutput)
 }
 
 // A role that can be assigned to a user.
@@ -2142,6 +2290,8 @@ func (o UserRoleAssignmentResponseMapOutput) MapIndex(k pulumi.StringInput) User
 }
 
 func init() {
+	pulumi.RegisterOutputType(CapabilityResponseOutput{})
+	pulumi.RegisterOutputType(CapabilityResponseArrayOutput{})
 	pulumi.RegisterOutputType(CatalogConflictErrorResponseOutput{})
 	pulumi.RegisterOutputType(CatalogConflictErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(CatalogErrorDetailsResponseOutput{})
@@ -2149,6 +2299,8 @@ func init() {
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DevCenterSkuResponseOutput{})
+	pulumi.RegisterOutputType(DevCenterSkuResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseMapOutput{})
 	pulumi.RegisterOutputType(GitCatalogOutput{})

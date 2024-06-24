@@ -148,6 +148,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20230701preview:Endpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240501preview:Endpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

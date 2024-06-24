@@ -157,6 +157,9 @@ func NewVirtualWAN(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20231101:VirtualWAN"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240101:VirtualWAN"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

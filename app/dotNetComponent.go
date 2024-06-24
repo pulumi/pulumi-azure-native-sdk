@@ -14,6 +14,8 @@ import (
 
 // .NET Component.
 // Azure REST API version: 2023-11-02-preview.
+//
+// Other available API versions: 2024-02-02-preview.
 type DotNetComponent struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewDotNetComponent(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20231102preview:DotNetComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20240202preview:DotNetComponent"),
 		},
 	})
 	opts = append(opts, aliases)
