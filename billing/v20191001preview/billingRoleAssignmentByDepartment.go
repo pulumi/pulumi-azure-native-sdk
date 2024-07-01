@@ -59,6 +59,9 @@ func NewBillingRoleAssignmentByDepartment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:billing:BillingRoleAssignmentByDepartment"),
 		},
+		{
+			Type: pulumi.String("azure-native:billing/v20240401:BillingRoleAssignmentByDepartment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

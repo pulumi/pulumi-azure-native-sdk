@@ -15,7 +15,7 @@ import (
 // Represents a Configuration.
 // Azure REST API version: 2022-01-01. Prior API version in Azure Native 1.x: 2017-12-01.
 //
-// Other available API versions: 2017-12-01, 2020-07-01-privatepreview, 2023-06-01-preview, 2023-06-30.
+// Other available API versions: 2017-12-01, 2020-07-01-privatepreview, 2023-06-01-preview, 2023-06-30, 2023-12-30.
 type Configuration struct {
 	pulumi.CustomResourceState
 
@@ -86,6 +86,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20230630:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20231230:Configuration"),
 		},
 	})
 	opts = append(opts, aliases)

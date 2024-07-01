@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:loadtestservice:LoadTest":
 		r = &LoadTest{}
+	case "azure-native:loadtestservice:LoadTestMapping":
+		r = &LoadTestMapping{}
+	case "azure-native:loadtestservice:LoadTestProfileMapping":
+		r = &LoadTestProfileMapping{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

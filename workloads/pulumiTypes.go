@@ -13,22 +13,6 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Configuration details of app service plan
-type AppServicePlanConfiguration struct {
-	// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
-	Capacity *int `pulumi:"capacity"`
-	// The App Service plan tier.
-	Tier *string `pulumi:"tier"`
-}
-
-// Configuration details of app service plan
-type AppServicePlanConfigurationResponse struct {
-	// The number of workers in app service plan. If this is not set or set to 0, auto scale will be configured for the app service plan, otherwise, instance count is set to this number.
-	Capacity *int `pulumi:"capacity"`
-	// The App Service plan tier.
-	Tier *string `pulumi:"tier"`
-}
-
 // Gets or sets the application server configuration.
 type ApplicationServerConfiguration struct {
 	// The number of app server instances.
@@ -5988,14 +5972,6 @@ func (o EnqueueServerPropertiesResponsePtrOutput) Port() pulumi.Float64PtrOutput
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The resource management error additional info.
-type ErrorAdditionalInfoResponse struct {
-	// The additional info.
-	Info interface{} `pulumi:"info"`
-	// The additional info type.
-	Type string `pulumi:"type"`
-}
-
 // Error definition.
 type ErrorDefinitionResponse struct {
 	// Service specific error code which serves as the substatus for the HTTP error code.
@@ -6125,20 +6101,6 @@ func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefini
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponse {
 		return vs[0].([]ErrorDefinitionResponse)[vs[1].(int)]
 	}).(ErrorDefinitionResponseOutput)
-}
-
-// The error detail.
-type ErrorDetailResponse struct {
-	// The error additional info.
-	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
-	// The error code.
-	Code string `pulumi:"code"`
-	// The error details.
-	Details []ErrorDetailResponse `pulumi:"details"`
-	// The error message.
-	Message string `pulumi:"message"`
-	// The error target.
-	Target string `pulumi:"target"`
 }
 
 // Standard error object.
@@ -11127,38 +11089,6 @@ func (o ManagedRGConfigurationResponsePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
-}
-
-// Managed resource group configuration
-type ManagedResourceGroupConfiguration struct {
-	// Managed resource group name
-	Name *string `pulumi:"name"`
-}
-
-// Managed resource group configuration
-type ManagedResourceGroupConfigurationResponse struct {
-	// Managed resource group name
-	Name *string `pulumi:"name"`
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Defines the SAP Message Server properties.

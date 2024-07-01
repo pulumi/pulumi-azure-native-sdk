@@ -15,7 +15,7 @@ import (
 // LoadTest details.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
 //
-// Other available API versions: 2021-12-01-preview.
+// Other available API versions: 2021-12-01-preview, 2023-12-01-preview.
 type LoadTest struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,9 @@ func NewLoadTest(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20221201:LoadTest"),
+		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTest"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -15,7 +15,7 @@ import (
 // Represents a Administrator.
 // Azure REST API version: 2022-01-01.
 //
-// Other available API versions: 2023-06-01-preview, 2023-06-30.
+// Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
 type AzureADAdministrator struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +62,9 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20230630:AzureADAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20231230:AzureADAdministrator"),
 		},
 	})
 	opts = append(opts, aliases)

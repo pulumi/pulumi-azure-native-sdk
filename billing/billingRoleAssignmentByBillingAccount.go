@@ -14,6 +14,8 @@ import (
 
 // The role assignment
 // Azure REST API version: 2019-10-01-preview. Prior API version in Azure Native 1.x: 2019-10-01-preview.
+//
+// Other available API versions: 2024-04-01.
 type BillingRoleAssignmentByBillingAccount struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +58,9 @@ func NewBillingRoleAssignmentByBillingAccount(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:billing/v20191001preview:BillingRoleAssignmentByBillingAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:billing/v20240401:BillingRoleAssignmentByBillingAccount"),
 		},
 	})
 	opts = append(opts, aliases)
