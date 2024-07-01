@@ -14,7 +14,7 @@ import (
 // Gets information about an azure ad administrator.
 // Azure REST API version: 2022-01-01.
 //
-// Other available API versions: 2023-06-01-preview, 2023-06-30.
+// Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
 func LookupAzureADAdministrator(ctx *pulumi.Context, args *LookupAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupAzureADAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureADAdministratorResult

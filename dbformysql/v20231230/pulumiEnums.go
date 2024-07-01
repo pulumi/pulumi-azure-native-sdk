@@ -10,6 +10,336 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Type of the sever administrator.
+type AdministratorType string
+
+const (
+	AdministratorTypeActiveDirectory = AdministratorType("ActiveDirectory")
+)
+
+func (AdministratorType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdministratorType)(nil)).Elem()
+}
+
+func (e AdministratorType) ToAdministratorTypeOutput() AdministratorTypeOutput {
+	return pulumi.ToOutput(e).(AdministratorTypeOutput)
+}
+
+func (e AdministratorType) ToAdministratorTypeOutputWithContext(ctx context.Context) AdministratorTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AdministratorTypeOutput)
+}
+
+func (e AdministratorType) ToAdministratorTypePtrOutput() AdministratorTypePtrOutput {
+	return e.ToAdministratorTypePtrOutputWithContext(context.Background())
+}
+
+func (e AdministratorType) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
+	return AdministratorType(e).ToAdministratorTypeOutputWithContext(ctx).ToAdministratorTypePtrOutputWithContext(ctx)
+}
+
+func (e AdministratorType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdministratorType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdministratorType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AdministratorType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AdministratorTypeOutput struct{ *pulumi.OutputState }
+
+func (AdministratorTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdministratorType)(nil)).Elem()
+}
+
+func (o AdministratorTypeOutput) ToAdministratorTypeOutput() AdministratorTypeOutput {
+	return o
+}
+
+func (o AdministratorTypeOutput) ToAdministratorTypeOutputWithContext(ctx context.Context) AdministratorTypeOutput {
+	return o
+}
+
+func (o AdministratorTypeOutput) ToAdministratorTypePtrOutput() AdministratorTypePtrOutput {
+	return o.ToAdministratorTypePtrOutputWithContext(context.Background())
+}
+
+func (o AdministratorTypeOutput) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdministratorType) *AdministratorType {
+		return &v
+	}).(AdministratorTypePtrOutput)
+}
+
+func (o AdministratorTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AdministratorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdministratorType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AdministratorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdministratorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdministratorType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AdministratorTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AdministratorTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdministratorType)(nil)).Elem()
+}
+
+func (o AdministratorTypePtrOutput) ToAdministratorTypePtrOutput() AdministratorTypePtrOutput {
+	return o
+}
+
+func (o AdministratorTypePtrOutput) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
+	return o
+}
+
+func (o AdministratorTypePtrOutput) Elem() AdministratorTypeOutput {
+	return o.ApplyT(func(v *AdministratorType) AdministratorType {
+		if v != nil {
+			return *v
+		}
+		var ret AdministratorType
+		return ret
+	}).(AdministratorTypeOutput)
+}
+
+func (o AdministratorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdministratorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AdministratorType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AdministratorTypeInput is an input type that accepts values of the AdministratorType enum
+// A concrete instance of `AdministratorTypeInput` can be one of the following:
+//
+//	AdministratorTypeActiveDirectory
+type AdministratorTypeInput interface {
+	pulumi.Input
+
+	ToAdministratorTypeOutput() AdministratorTypeOutput
+	ToAdministratorTypeOutputWithContext(context.Context) AdministratorTypeOutput
+}
+
+var administratorTypePtrType = reflect.TypeOf((**AdministratorType)(nil)).Elem()
+
+type AdministratorTypePtrInput interface {
+	pulumi.Input
+
+	ToAdministratorTypePtrOutput() AdministratorTypePtrOutput
+	ToAdministratorTypePtrOutputWithContext(context.Context) AdministratorTypePtrOutput
+}
+
+type administratorTypePtr string
+
+func AdministratorTypePtr(v string) AdministratorTypePtrInput {
+	return (*administratorTypePtr)(&v)
+}
+
+func (*administratorTypePtr) ElementType() reflect.Type {
+	return administratorTypePtrType
+}
+
+func (in *administratorTypePtr) ToAdministratorTypePtrOutput() AdministratorTypePtrOutput {
+	return pulumi.ToOutput(in).(AdministratorTypePtrOutput)
+}
+
+func (in *administratorTypePtr) ToAdministratorTypePtrOutputWithContext(ctx context.Context) AdministratorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AdministratorTypePtrOutput)
+}
+
+// Source of the configuration.
+type ConfigurationSource string
+
+const (
+	ConfigurationSource_System_Default = ConfigurationSource("system-default")
+	ConfigurationSource_User_Override  = ConfigurationSource("user-override")
+)
+
+func (ConfigurationSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationSource)(nil)).Elem()
+}
+
+func (e ConfigurationSource) ToConfigurationSourceOutput() ConfigurationSourceOutput {
+	return pulumi.ToOutput(e).(ConfigurationSourceOutput)
+}
+
+func (e ConfigurationSource) ToConfigurationSourceOutputWithContext(ctx context.Context) ConfigurationSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConfigurationSourceOutput)
+}
+
+func (e ConfigurationSource) ToConfigurationSourcePtrOutput() ConfigurationSourcePtrOutput {
+	return e.ToConfigurationSourcePtrOutputWithContext(context.Background())
+}
+
+func (e ConfigurationSource) ToConfigurationSourcePtrOutputWithContext(ctx context.Context) ConfigurationSourcePtrOutput {
+	return ConfigurationSource(e).ToConfigurationSourceOutputWithContext(ctx).ToConfigurationSourcePtrOutputWithContext(ctx)
+}
+
+func (e ConfigurationSource) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfigurationSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfigurationSource) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConfigurationSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConfigurationSourceOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationSource)(nil)).Elem()
+}
+
+func (o ConfigurationSourceOutput) ToConfigurationSourceOutput() ConfigurationSourceOutput {
+	return o
+}
+
+func (o ConfigurationSourceOutput) ToConfigurationSourceOutputWithContext(ctx context.Context) ConfigurationSourceOutput {
+	return o
+}
+
+func (o ConfigurationSourceOutput) ToConfigurationSourcePtrOutput() ConfigurationSourcePtrOutput {
+	return o.ToConfigurationSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationSourceOutput) ToConfigurationSourcePtrOutputWithContext(ctx context.Context) ConfigurationSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationSource) *ConfigurationSource {
+		return &v
+	}).(ConfigurationSourcePtrOutput)
+}
+
+func (o ConfigurationSourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConfigurationSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigurationSource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConfigurationSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfigurationSource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationSource)(nil)).Elem()
+}
+
+func (o ConfigurationSourcePtrOutput) ToConfigurationSourcePtrOutput() ConfigurationSourcePtrOutput {
+	return o
+}
+
+func (o ConfigurationSourcePtrOutput) ToConfigurationSourcePtrOutputWithContext(ctx context.Context) ConfigurationSourcePtrOutput {
+	return o
+}
+
+func (o ConfigurationSourcePtrOutput) Elem() ConfigurationSourceOutput {
+	return o.ApplyT(func(v *ConfigurationSource) ConfigurationSource {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationSource
+		return ret
+	}).(ConfigurationSourceOutput)
+}
+
+func (o ConfigurationSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConfigurationSource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConfigurationSourceInput is an input type that accepts values of the ConfigurationSource enum
+// A concrete instance of `ConfigurationSourceInput` can be one of the following:
+//
+//	ConfigurationSource_System_Default
+//	ConfigurationSource_User_Override
+type ConfigurationSourceInput interface {
+	pulumi.Input
+
+	ToConfigurationSourceOutput() ConfigurationSourceOutput
+	ToConfigurationSourceOutputWithContext(context.Context) ConfigurationSourceOutput
+}
+
+var configurationSourcePtrType = reflect.TypeOf((**ConfigurationSource)(nil)).Elem()
+
+type ConfigurationSourcePtrInput interface {
+	pulumi.Input
+
+	ToConfigurationSourcePtrOutput() ConfigurationSourcePtrOutput
+	ToConfigurationSourcePtrOutputWithContext(context.Context) ConfigurationSourcePtrOutput
+}
+
+type configurationSourcePtr string
+
+func ConfigurationSourcePtr(v string) ConfigurationSourcePtrInput {
+	return (*configurationSourcePtr)(&v)
+}
+
+func (*configurationSourcePtr) ElementType() reflect.Type {
+	return configurationSourcePtrType
+}
+
+func (in *configurationSourcePtr) ToConfigurationSourcePtrOutput() ConfigurationSourcePtrOutput {
+	return pulumi.ToOutput(in).(ConfigurationSourcePtrOutput)
+}
+
+func (in *configurationSourcePtr) ToConfigurationSourcePtrOutputWithContext(ctx context.Context) ConfigurationSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConfigurationSourcePtrOutput)
+}
+
 // The mode to create a new MySQL server.
 type CreateMode string
 
@@ -1511,6 +1841,10 @@ func (in *serverVersionPtr) ToServerVersionPtrOutputWithContext(ctx context.Cont
 }
 
 func init() {
+	pulumi.RegisterOutputType(AdministratorTypeOutput{})
+	pulumi.RegisterOutputType(AdministratorTypePtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationSourceOutput{})
+	pulumi.RegisterOutputType(ConfigurationSourcePtrOutput{})
 	pulumi.RegisterOutputType(CreateModeOutput{})
 	pulumi.RegisterOutputType(CreateModePtrOutput{})
 	pulumi.RegisterOutputType(DataEncryptionTypeOutput{})

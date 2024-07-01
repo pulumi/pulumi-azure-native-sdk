@@ -100,6 +100,9 @@ func NewSchedule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240501preview:Schedule"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240701preview:Schedule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

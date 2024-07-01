@@ -56,6 +56,9 @@ func NewLoadTest(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20221201:LoadTest"),
 		},
+		{
+			Type: pulumi.String("azure-native:loadtestservice/v20231201preview:LoadTest"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
