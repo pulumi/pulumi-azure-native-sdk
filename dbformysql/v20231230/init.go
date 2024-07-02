@@ -21,6 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:dbformysql/v20231230:AzureADAdministrator":
+		r = &AzureADAdministrator{}
+	case "azure-native:dbformysql/v20231230:Configuration":
+		r = &Configuration{}
+	case "azure-native:dbformysql/v20231230:Database":
+		r = &Database{}
+	case "azure-native:dbformysql/v20231230:FirewallRule":
+		r = &FirewallRule{}
 	case "azure-native:dbformysql/v20231230:Server":
 		r = &Server{}
 	default:

@@ -14,7 +14,7 @@ import (
 // Gets a devcenter plan.
 // Azure REST API version: 2024-05-01-preview.
 //
-// Other available API versions: 2024-06-01-preview.
+// Other available API versions: 2024-06-01-preview, 2024-07-01-preview.
 func LookupPlan(ctx *pulumi.Context, args *LookupPlanArgs, opts ...pulumi.InvokeOption) (*LookupPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPlanResult

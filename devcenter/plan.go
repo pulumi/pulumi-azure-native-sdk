@@ -15,7 +15,7 @@ import (
 // Represents a devcenter plan resource.
 // Azure REST API version: 2024-05-01-preview.
 //
-// Other available API versions: 2024-06-01-preview.
+// Other available API versions: 2024-06-01-preview, 2024-07-01-preview.
 type Plan struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +51,9 @@ func NewPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240601preview:Plan"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240701preview:Plan"),
 		},
 	})
 	opts = append(opts, aliases)

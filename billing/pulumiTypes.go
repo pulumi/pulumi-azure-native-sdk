@@ -13,8 +13,386 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// An associated tenant.
+type AssociatedTenantProperties struct {
+	// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
+	BillingManagementState *string `pulumi:"billingManagementState"`
+	// The name of the associated tenant.
+	DisplayName *string `pulumi:"displayName"`
+	// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
+	ProvisioningManagementState *string `pulumi:"provisioningManagementState"`
+	// The ID that uniquely identifies a tenant.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// AssociatedTenantPropertiesInput is an input type that accepts AssociatedTenantPropertiesArgs and AssociatedTenantPropertiesOutput values.
+// You can construct a concrete instance of `AssociatedTenantPropertiesInput` via:
+//
+//	AssociatedTenantPropertiesArgs{...}
+type AssociatedTenantPropertiesInput interface {
+	pulumi.Input
+
+	ToAssociatedTenantPropertiesOutput() AssociatedTenantPropertiesOutput
+	ToAssociatedTenantPropertiesOutputWithContext(context.Context) AssociatedTenantPropertiesOutput
+}
+
+// An associated tenant.
+type AssociatedTenantPropertiesArgs struct {
+	// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
+	BillingManagementState pulumi.StringPtrInput `pulumi:"billingManagementState"`
+	// The name of the associated tenant.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
+	ProvisioningManagementState pulumi.StringPtrInput `pulumi:"provisioningManagementState"`
+	// The ID that uniquely identifies a tenant.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (AssociatedTenantPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssociatedTenantProperties)(nil)).Elem()
+}
+
+func (i AssociatedTenantPropertiesArgs) ToAssociatedTenantPropertiesOutput() AssociatedTenantPropertiesOutput {
+	return i.ToAssociatedTenantPropertiesOutputWithContext(context.Background())
+}
+
+func (i AssociatedTenantPropertiesArgs) ToAssociatedTenantPropertiesOutputWithContext(ctx context.Context) AssociatedTenantPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssociatedTenantPropertiesOutput)
+}
+
+func (i AssociatedTenantPropertiesArgs) ToAssociatedTenantPropertiesPtrOutput() AssociatedTenantPropertiesPtrOutput {
+	return i.ToAssociatedTenantPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i AssociatedTenantPropertiesArgs) ToAssociatedTenantPropertiesPtrOutputWithContext(ctx context.Context) AssociatedTenantPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssociatedTenantPropertiesOutput).ToAssociatedTenantPropertiesPtrOutputWithContext(ctx)
+}
+
+// AssociatedTenantPropertiesPtrInput is an input type that accepts AssociatedTenantPropertiesArgs, AssociatedTenantPropertiesPtr and AssociatedTenantPropertiesPtrOutput values.
+// You can construct a concrete instance of `AssociatedTenantPropertiesPtrInput` via:
+//
+//	        AssociatedTenantPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssociatedTenantPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToAssociatedTenantPropertiesPtrOutput() AssociatedTenantPropertiesPtrOutput
+	ToAssociatedTenantPropertiesPtrOutputWithContext(context.Context) AssociatedTenantPropertiesPtrOutput
+}
+
+type associatedTenantPropertiesPtrType AssociatedTenantPropertiesArgs
+
+func AssociatedTenantPropertiesPtr(v *AssociatedTenantPropertiesArgs) AssociatedTenantPropertiesPtrInput {
+	return (*associatedTenantPropertiesPtrType)(v)
+}
+
+func (*associatedTenantPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssociatedTenantProperties)(nil)).Elem()
+}
+
+func (i *associatedTenantPropertiesPtrType) ToAssociatedTenantPropertiesPtrOutput() AssociatedTenantPropertiesPtrOutput {
+	return i.ToAssociatedTenantPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *associatedTenantPropertiesPtrType) ToAssociatedTenantPropertiesPtrOutputWithContext(ctx context.Context) AssociatedTenantPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssociatedTenantPropertiesPtrOutput)
+}
+
+// An associated tenant.
+type AssociatedTenantPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AssociatedTenantPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssociatedTenantProperties)(nil)).Elem()
+}
+
+func (o AssociatedTenantPropertiesOutput) ToAssociatedTenantPropertiesOutput() AssociatedTenantPropertiesOutput {
+	return o
+}
+
+func (o AssociatedTenantPropertiesOutput) ToAssociatedTenantPropertiesOutputWithContext(ctx context.Context) AssociatedTenantPropertiesOutput {
+	return o
+}
+
+func (o AssociatedTenantPropertiesOutput) ToAssociatedTenantPropertiesPtrOutput() AssociatedTenantPropertiesPtrOutput {
+	return o.ToAssociatedTenantPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o AssociatedTenantPropertiesOutput) ToAssociatedTenantPropertiesPtrOutputWithContext(ctx context.Context) AssociatedTenantPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssociatedTenantProperties) *AssociatedTenantProperties {
+		return &v
+	}).(AssociatedTenantPropertiesPtrOutput)
+}
+
+// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
+func (o AssociatedTenantPropertiesOutput) BillingManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantProperties) *string { return v.BillingManagementState }).(pulumi.StringPtrOutput)
+}
+
+// The name of the associated tenant.
+func (o AssociatedTenantPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
+func (o AssociatedTenantPropertiesOutput) ProvisioningManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantProperties) *string { return v.ProvisioningManagementState }).(pulumi.StringPtrOutput)
+}
+
+// The ID that uniquely identifies a tenant.
+func (o AssociatedTenantPropertiesOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantProperties) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type AssociatedTenantPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AssociatedTenantPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssociatedTenantProperties)(nil)).Elem()
+}
+
+func (o AssociatedTenantPropertiesPtrOutput) ToAssociatedTenantPropertiesPtrOutput() AssociatedTenantPropertiesPtrOutput {
+	return o
+}
+
+func (o AssociatedTenantPropertiesPtrOutput) ToAssociatedTenantPropertiesPtrOutputWithContext(ctx context.Context) AssociatedTenantPropertiesPtrOutput {
+	return o
+}
+
+func (o AssociatedTenantPropertiesPtrOutput) Elem() AssociatedTenantPropertiesOutput {
+	return o.ApplyT(func(v *AssociatedTenantProperties) AssociatedTenantProperties {
+		if v != nil {
+			return *v
+		}
+		var ret AssociatedTenantProperties
+		return ret
+	}).(AssociatedTenantPropertiesOutput)
+}
+
+// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
+func (o AssociatedTenantPropertiesPtrOutput) BillingManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssociatedTenantProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingManagementState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the associated tenant.
+func (o AssociatedTenantPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssociatedTenantProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
+func (o AssociatedTenantPropertiesPtrOutput) ProvisioningManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssociatedTenantProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningManagementState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID that uniquely identifies a tenant.
+func (o AssociatedTenantPropertiesPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssociatedTenantProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// An associated tenant.
+type AssociatedTenantPropertiesResponse struct {
+	// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
+	BillingManagementState *string `pulumi:"billingManagementState"`
+	// The name of the associated tenant.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier for the billing request that is created when enabling provisioning for an associated tenant.
+	ProvisioningBillingRequestId string `pulumi:"provisioningBillingRequestId"`
+	// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
+	ProvisioningManagementState *string `pulumi:"provisioningManagementState"`
+	// The provisioning state of the resource during a long-running operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The ID that uniquely identifies a tenant.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// An associated tenant.
+type AssociatedTenantPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AssociatedTenantPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssociatedTenantPropertiesResponse)(nil)).Elem()
+}
+
+func (o AssociatedTenantPropertiesResponseOutput) ToAssociatedTenantPropertiesResponseOutput() AssociatedTenantPropertiesResponseOutput {
+	return o
+}
+
+func (o AssociatedTenantPropertiesResponseOutput) ToAssociatedTenantPropertiesResponseOutputWithContext(ctx context.Context) AssociatedTenantPropertiesResponseOutput {
+	return o
+}
+
+// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
+func (o AssociatedTenantPropertiesResponseOutput) BillingManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantPropertiesResponse) *string { return v.BillingManagementState }).(pulumi.StringPtrOutput)
+}
+
+// The name of the associated tenant.
+func (o AssociatedTenantPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the billing request that is created when enabling provisioning for an associated tenant.
+func (o AssociatedTenantPropertiesResponseOutput) ProvisioningBillingRequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v AssociatedTenantPropertiesResponse) string { return v.ProvisioningBillingRequestId }).(pulumi.StringOutput)
+}
+
+// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
+func (o AssociatedTenantPropertiesResponseOutput) ProvisioningManagementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantPropertiesResponse) *string { return v.ProvisioningManagementState }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the resource during a long-running operation.
+func (o AssociatedTenantPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AssociatedTenantPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The ID that uniquely identifies a tenant.
+func (o AssociatedTenantPropertiesResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssociatedTenantPropertiesResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// Details of the Azure plan.
+type AzurePlan struct {
+	// The ID that uniquely identifies a product.
+	ProductId *string `pulumi:"productId"`
+	// The sku description.
+	SkuDescription *string `pulumi:"skuDescription"`
+	// The ID that uniquely identifies a sku.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// AzurePlanInput is an input type that accepts AzurePlanArgs and AzurePlanOutput values.
+// You can construct a concrete instance of `AzurePlanInput` via:
+//
+//	AzurePlanArgs{...}
+type AzurePlanInput interface {
+	pulumi.Input
+
+	ToAzurePlanOutput() AzurePlanOutput
+	ToAzurePlanOutputWithContext(context.Context) AzurePlanOutput
+}
+
+// Details of the Azure plan.
+type AzurePlanArgs struct {
+	// The ID that uniquely identifies a product.
+	ProductId pulumi.StringPtrInput `pulumi:"productId"`
+	// The sku description.
+	SkuDescription pulumi.StringPtrInput `pulumi:"skuDescription"`
+	// The ID that uniquely identifies a sku.
+	SkuId pulumi.StringPtrInput `pulumi:"skuId"`
+}
+
+func (AzurePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePlan)(nil)).Elem()
+}
+
+func (i AzurePlanArgs) ToAzurePlanOutput() AzurePlanOutput {
+	return i.ToAzurePlanOutputWithContext(context.Background())
+}
+
+func (i AzurePlanArgs) ToAzurePlanOutputWithContext(ctx context.Context) AzurePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzurePlanOutput)
+}
+
+// AzurePlanArrayInput is an input type that accepts AzurePlanArray and AzurePlanArrayOutput values.
+// You can construct a concrete instance of `AzurePlanArrayInput` via:
+//
+//	AzurePlanArray{ AzurePlanArgs{...} }
+type AzurePlanArrayInput interface {
+	pulumi.Input
+
+	ToAzurePlanArrayOutput() AzurePlanArrayOutput
+	ToAzurePlanArrayOutputWithContext(context.Context) AzurePlanArrayOutput
+}
+
+type AzurePlanArray []AzurePlanInput
+
+func (AzurePlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzurePlan)(nil)).Elem()
+}
+
+func (i AzurePlanArray) ToAzurePlanArrayOutput() AzurePlanArrayOutput {
+	return i.ToAzurePlanArrayOutputWithContext(context.Background())
+}
+
+func (i AzurePlanArray) ToAzurePlanArrayOutputWithContext(ctx context.Context) AzurePlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzurePlanArrayOutput)
+}
+
+// Details of the Azure plan.
+type AzurePlanOutput struct{ *pulumi.OutputState }
+
+func (AzurePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePlan)(nil)).Elem()
+}
+
+func (o AzurePlanOutput) ToAzurePlanOutput() AzurePlanOutput {
+	return o
+}
+
+func (o AzurePlanOutput) ToAzurePlanOutputWithContext(ctx context.Context) AzurePlanOutput {
+	return o
+}
+
+// The ID that uniquely identifies a product.
+func (o AzurePlanOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzurePlan) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// The sku description.
+func (o AzurePlanOutput) SkuDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzurePlan) *string { return v.SkuDescription }).(pulumi.StringPtrOutput)
+}
+
+// The ID that uniquely identifies a sku.
+func (o AzurePlanOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzurePlan) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type AzurePlanArrayOutput struct{ *pulumi.OutputState }
+
+func (AzurePlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzurePlan)(nil)).Elem()
+}
+
+func (o AzurePlanArrayOutput) ToAzurePlanArrayOutput() AzurePlanArrayOutput {
+	return o
+}
+
+func (o AzurePlanArrayOutput) ToAzurePlanArrayOutputWithContext(ctx context.Context) AzurePlanArrayOutput {
+	return o
+}
+
+func (o AzurePlanArrayOutput) Index(i pulumi.IntInput) AzurePlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzurePlan {
+		return vs[0].([]AzurePlan)[vs[1].(int)]
+	}).(AzurePlanOutput)
+}
+
 // Details of the Azure plan.
 type AzurePlanResponse struct {
+	// The ID that uniquely identifies a product.
+	ProductId *string `pulumi:"productId"`
 	// The sku description.
 	SkuDescription string `pulumi:"skuDescription"`
 	// The sku id.
@@ -34,6 +412,11 @@ func (o AzurePlanResponseOutput) ToAzurePlanResponseOutput() AzurePlanResponseOu
 
 func (o AzurePlanResponseOutput) ToAzurePlanResponseOutputWithContext(ctx context.Context) AzurePlanResponseOutput {
 	return o
+}
+
+// The ID that uniquely identifies a product.
+func (o AzurePlanResponseOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzurePlanResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
 }
 
 // The sku description.
@@ -64,6 +447,3481 @@ func (o AzurePlanResponseArrayOutput) Index(i pulumi.IntInput) AzurePlanResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzurePlanResponse {
 		return vs[0].([]AzurePlanResponse)[vs[1].(int)]
 	}).(AzurePlanResponseOutput)
+}
+
+// A billing profile.
+type BillingProfileProperties struct {
+	// Billing address.
+	BillTo *BillingProfilePropertiesBillTo `pulumi:"billTo"`
+	// The current payment term of the billing profile.
+	CurrentPaymentTerm *BillingProfilePropertiesCurrentPaymentTerm `pulumi:"currentPaymentTerm"`
+	// The name of the billing profile.
+	DisplayName *string `pulumi:"displayName"`
+	// Information about the enabled azure plans.
+	EnabledAzurePlans []AzurePlan `pulumi:"enabledAzurePlans"`
+	// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+	IndirectRelationshipInfo *BillingProfilePropertiesIndirectRelationshipInfo `pulumi:"indirectRelationshipInfo"`
+	// Flag controlling whether the invoices for the billing profile are sent through email.
+	InvoiceEmailOptIn *bool `pulumi:"invoiceEmailOptIn"`
+	// The list of email addresses to receive invoices by email for the billing profile.
+	InvoiceRecipients []string `pulumi:"invoiceRecipients"`
+	// The default purchase order number that will appear on the invoices generated for the billing profile.
+	PoNumber *string `pulumi:"poNumber"`
+	// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+	ShipTo *BillingProfilePropertiesShipTo `pulumi:"shipTo"`
+	// The address of the individual or organization that is responsible for the billing account.
+	SoldTo *BillingProfilePropertiesSoldTo `pulumi:"soldTo"`
+	// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// BillingProfilePropertiesInput is an input type that accepts BillingProfilePropertiesArgs and BillingProfilePropertiesOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesInput` via:
+//
+//	BillingProfilePropertiesArgs{...}
+type BillingProfilePropertiesInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesOutput() BillingProfilePropertiesOutput
+	ToBillingProfilePropertiesOutputWithContext(context.Context) BillingProfilePropertiesOutput
+}
+
+// A billing profile.
+type BillingProfilePropertiesArgs struct {
+	// Billing address.
+	BillTo BillingProfilePropertiesBillToPtrInput `pulumi:"billTo"`
+	// The current payment term of the billing profile.
+	CurrentPaymentTerm BillingProfilePropertiesCurrentPaymentTermPtrInput `pulumi:"currentPaymentTerm"`
+	// The name of the billing profile.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Information about the enabled azure plans.
+	EnabledAzurePlans AzurePlanArrayInput `pulumi:"enabledAzurePlans"`
+	// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+	IndirectRelationshipInfo BillingProfilePropertiesIndirectRelationshipInfoPtrInput `pulumi:"indirectRelationshipInfo"`
+	// Flag controlling whether the invoices for the billing profile are sent through email.
+	InvoiceEmailOptIn pulumi.BoolPtrInput `pulumi:"invoiceEmailOptIn"`
+	// The list of email addresses to receive invoices by email for the billing profile.
+	InvoiceRecipients pulumi.StringArrayInput `pulumi:"invoiceRecipients"`
+	// The default purchase order number that will appear on the invoices generated for the billing profile.
+	PoNumber pulumi.StringPtrInput `pulumi:"poNumber"`
+	// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+	ShipTo BillingProfilePropertiesShipToPtrInput `pulumi:"shipTo"`
+	// The address of the individual or organization that is responsible for the billing account.
+	SoldTo BillingProfilePropertiesSoldToPtrInput `pulumi:"soldTo"`
+	// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (BillingProfilePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfileProperties)(nil)).Elem()
+}
+
+func (i BillingProfilePropertiesArgs) ToBillingProfilePropertiesOutput() BillingProfilePropertiesOutput {
+	return i.ToBillingProfilePropertiesOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesArgs) ToBillingProfilePropertiesOutputWithContext(ctx context.Context) BillingProfilePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesOutput)
+}
+
+func (i BillingProfilePropertiesArgs) ToBillingProfilePropertiesPtrOutput() BillingProfilePropertiesPtrOutput {
+	return i.ToBillingProfilePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesArgs) ToBillingProfilePropertiesPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesOutput).ToBillingProfilePropertiesPtrOutputWithContext(ctx)
+}
+
+// BillingProfilePropertiesPtrInput is an input type that accepts BillingProfilePropertiesArgs, BillingProfilePropertiesPtr and BillingProfilePropertiesPtrOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesPtrInput` via:
+//
+//	        BillingProfilePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingProfilePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesPtrOutput() BillingProfilePropertiesPtrOutput
+	ToBillingProfilePropertiesPtrOutputWithContext(context.Context) BillingProfilePropertiesPtrOutput
+}
+
+type billingProfilePropertiesPtrType BillingProfilePropertiesArgs
+
+func BillingProfilePropertiesPtr(v *BillingProfilePropertiesArgs) BillingProfilePropertiesPtrInput {
+	return (*billingProfilePropertiesPtrType)(v)
+}
+
+func (*billingProfilePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfileProperties)(nil)).Elem()
+}
+
+func (i *billingProfilePropertiesPtrType) ToBillingProfilePropertiesPtrOutput() BillingProfilePropertiesPtrOutput {
+	return i.ToBillingProfilePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *billingProfilePropertiesPtrType) ToBillingProfilePropertiesPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesPtrOutput)
+}
+
+// A billing profile.
+type BillingProfilePropertiesOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfileProperties)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesOutput) ToBillingProfilePropertiesOutput() BillingProfilePropertiesOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesOutput) ToBillingProfilePropertiesOutputWithContext(ctx context.Context) BillingProfilePropertiesOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesOutput) ToBillingProfilePropertiesPtrOutput() BillingProfilePropertiesPtrOutput {
+	return o.ToBillingProfilePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o BillingProfilePropertiesOutput) ToBillingProfilePropertiesPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfileProperties) *BillingProfileProperties {
+		return &v
+	}).(BillingProfilePropertiesPtrOutput)
+}
+
+// Billing address.
+func (o BillingProfilePropertiesOutput) BillTo() BillingProfilePropertiesBillToPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *BillingProfilePropertiesBillTo { return v.BillTo }).(BillingProfilePropertiesBillToPtrOutput)
+}
+
+// The current payment term of the billing profile.
+func (o BillingProfilePropertiesOutput) CurrentPaymentTerm() BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *BillingProfilePropertiesCurrentPaymentTerm {
+		return v.CurrentPaymentTerm
+	}).(BillingProfilePropertiesCurrentPaymentTermPtrOutput)
+}
+
+// The name of the billing profile.
+func (o BillingProfilePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Information about the enabled azure plans.
+func (o BillingProfilePropertiesOutput) EnabledAzurePlans() AzurePlanArrayOutput {
+	return o.ApplyT(func(v BillingProfileProperties) []AzurePlan { return v.EnabledAzurePlans }).(AzurePlanArrayOutput)
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+func (o BillingProfilePropertiesOutput) IndirectRelationshipInfo() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *BillingProfilePropertiesIndirectRelationshipInfo {
+		return v.IndirectRelationshipInfo
+	}).(BillingProfilePropertiesIndirectRelationshipInfoPtrOutput)
+}
+
+// Flag controlling whether the invoices for the billing profile are sent through email.
+func (o BillingProfilePropertiesOutput) InvoiceEmailOptIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *bool { return v.InvoiceEmailOptIn }).(pulumi.BoolPtrOutput)
+}
+
+// The list of email addresses to receive invoices by email for the billing profile.
+func (o BillingProfilePropertiesOutput) InvoiceRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BillingProfileProperties) []string { return v.InvoiceRecipients }).(pulumi.StringArrayOutput)
+}
+
+// The default purchase order number that will appear on the invoices generated for the billing profile.
+func (o BillingProfilePropertiesOutput) PoNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *string { return v.PoNumber }).(pulumi.StringPtrOutput)
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+func (o BillingProfilePropertiesOutput) ShipTo() BillingProfilePropertiesShipToPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *BillingProfilePropertiesShipTo { return v.ShipTo }).(BillingProfilePropertiesShipToPtrOutput)
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+func (o BillingProfilePropertiesOutput) SoldTo() BillingProfilePropertiesSoldToPtrOutput {
+	return o.ApplyT(func(v BillingProfileProperties) *BillingProfilePropertiesSoldTo { return v.SoldTo }).(BillingProfilePropertiesSoldToPtrOutput)
+}
+
+// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o BillingProfilePropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BillingProfileProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type BillingProfilePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfileProperties)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesPtrOutput) ToBillingProfilePropertiesPtrOutput() BillingProfilePropertiesPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesPtrOutput) ToBillingProfilePropertiesPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesPtrOutput) Elem() BillingProfilePropertiesOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) BillingProfileProperties {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfileProperties
+		return ret
+	}).(BillingProfilePropertiesOutput)
+}
+
+// Billing address.
+func (o BillingProfilePropertiesPtrOutput) BillTo() BillingProfilePropertiesBillToPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *BillingProfilePropertiesBillTo {
+		if v == nil {
+			return nil
+		}
+		return v.BillTo
+	}).(BillingProfilePropertiesBillToPtrOutput)
+}
+
+// The current payment term of the billing profile.
+func (o BillingProfilePropertiesPtrOutput) CurrentPaymentTerm() BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *BillingProfilePropertiesCurrentPaymentTerm {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentPaymentTerm
+	}).(BillingProfilePropertiesCurrentPaymentTermPtrOutput)
+}
+
+// The name of the billing profile.
+func (o BillingProfilePropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about the enabled azure plans.
+func (o BillingProfilePropertiesPtrOutput) EnabledAzurePlans() AzurePlanArrayOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) []AzurePlan {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledAzurePlans
+	}).(AzurePlanArrayOutput)
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+func (o BillingProfilePropertiesPtrOutput) IndirectRelationshipInfo() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *BillingProfilePropertiesIndirectRelationshipInfo {
+		if v == nil {
+			return nil
+		}
+		return v.IndirectRelationshipInfo
+	}).(BillingProfilePropertiesIndirectRelationshipInfoPtrOutput)
+}
+
+// Flag controlling whether the invoices for the billing profile are sent through email.
+func (o BillingProfilePropertiesPtrOutput) InvoiceEmailOptIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InvoiceEmailOptIn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of email addresses to receive invoices by email for the billing profile.
+func (o BillingProfilePropertiesPtrOutput) InvoiceRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InvoiceRecipients
+	}).(pulumi.StringArrayOutput)
+}
+
+// The default purchase order number that will appear on the invoices generated for the billing profile.
+func (o BillingProfilePropertiesPtrOutput) PoNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+func (o BillingProfilePropertiesPtrOutput) ShipTo() BillingProfilePropertiesShipToPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *BillingProfilePropertiesShipTo {
+		if v == nil {
+			return nil
+		}
+		return v.ShipTo
+	}).(BillingProfilePropertiesShipToPtrOutput)
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+func (o BillingProfilePropertiesPtrOutput) SoldTo() BillingProfilePropertiesSoldToPtrOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) *BillingProfilePropertiesSoldTo {
+		if v == nil {
+			return nil
+		}
+		return v.SoldTo
+	}).(BillingProfilePropertiesSoldToPtrOutput)
+}
+
+// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o BillingProfilePropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BillingProfileProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Billing address.
+type BillingProfilePropertiesBillTo struct {
+	// Address line 1.
+	AddressLine1 string `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 *string `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 *string `pulumi:"addressLine3"`
+	// Address city.
+	City *string `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName *string `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country string `pulumi:"country"`
+	// Address district.
+	District *string `pulumi:"district"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName *string `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress *bool `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName *string `pulumi:"lastName"`
+	// Middle name.
+	MiddleName *string `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode *string `pulumi:"postalCode"`
+	// Address region.
+	Region *string `pulumi:"region"`
+}
+
+// BillingProfilePropertiesBillToInput is an input type that accepts BillingProfilePropertiesBillToArgs and BillingProfilePropertiesBillToOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesBillToInput` via:
+//
+//	BillingProfilePropertiesBillToArgs{...}
+type BillingProfilePropertiesBillToInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesBillToOutput() BillingProfilePropertiesBillToOutput
+	ToBillingProfilePropertiesBillToOutputWithContext(context.Context) BillingProfilePropertiesBillToOutput
+}
+
+// Billing address.
+type BillingProfilePropertiesBillToArgs struct {
+	// Address line 1.
+	AddressLine1 pulumi.StringInput `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 pulumi.StringPtrInput `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 pulumi.StringPtrInput `pulumi:"addressLine3"`
+	// Address city.
+	City pulumi.StringPtrInput `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName pulumi.StringPtrInput `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country pulumi.StringInput `pulumi:"country"`
+	// Address district.
+	District pulumi.StringPtrInput `pulumi:"district"`
+	// Email address.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress pulumi.BoolPtrInput `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Middle name.
+	MiddleName pulumi.StringPtrInput `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// Address region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (BillingProfilePropertiesBillToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesBillTo)(nil)).Elem()
+}
+
+func (i BillingProfilePropertiesBillToArgs) ToBillingProfilePropertiesBillToOutput() BillingProfilePropertiesBillToOutput {
+	return i.ToBillingProfilePropertiesBillToOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesBillToArgs) ToBillingProfilePropertiesBillToOutputWithContext(ctx context.Context) BillingProfilePropertiesBillToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesBillToOutput)
+}
+
+func (i BillingProfilePropertiesBillToArgs) ToBillingProfilePropertiesBillToPtrOutput() BillingProfilePropertiesBillToPtrOutput {
+	return i.ToBillingProfilePropertiesBillToPtrOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesBillToArgs) ToBillingProfilePropertiesBillToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesBillToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesBillToOutput).ToBillingProfilePropertiesBillToPtrOutputWithContext(ctx)
+}
+
+// BillingProfilePropertiesBillToPtrInput is an input type that accepts BillingProfilePropertiesBillToArgs, BillingProfilePropertiesBillToPtr and BillingProfilePropertiesBillToPtrOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesBillToPtrInput` via:
+//
+//	        BillingProfilePropertiesBillToArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingProfilePropertiesBillToPtrInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesBillToPtrOutput() BillingProfilePropertiesBillToPtrOutput
+	ToBillingProfilePropertiesBillToPtrOutputWithContext(context.Context) BillingProfilePropertiesBillToPtrOutput
+}
+
+type billingProfilePropertiesBillToPtrType BillingProfilePropertiesBillToArgs
+
+func BillingProfilePropertiesBillToPtr(v *BillingProfilePropertiesBillToArgs) BillingProfilePropertiesBillToPtrInput {
+	return (*billingProfilePropertiesBillToPtrType)(v)
+}
+
+func (*billingProfilePropertiesBillToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesBillTo)(nil)).Elem()
+}
+
+func (i *billingProfilePropertiesBillToPtrType) ToBillingProfilePropertiesBillToPtrOutput() BillingProfilePropertiesBillToPtrOutput {
+	return i.ToBillingProfilePropertiesBillToPtrOutputWithContext(context.Background())
+}
+
+func (i *billingProfilePropertiesBillToPtrType) ToBillingProfilePropertiesBillToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesBillToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesBillToPtrOutput)
+}
+
+// Billing address.
+type BillingProfilePropertiesBillToOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesBillToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesBillTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesBillToOutput) ToBillingProfilePropertiesBillToOutput() BillingProfilePropertiesBillToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesBillToOutput) ToBillingProfilePropertiesBillToOutputWithContext(ctx context.Context) BillingProfilePropertiesBillToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesBillToOutput) ToBillingProfilePropertiesBillToPtrOutput() BillingProfilePropertiesBillToPtrOutput {
+	return o.ToBillingProfilePropertiesBillToPtrOutputWithContext(context.Background())
+}
+
+func (o BillingProfilePropertiesBillToOutput) ToBillingProfilePropertiesBillToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesBillToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfilePropertiesBillTo) *BillingProfilePropertiesBillTo {
+		return &v
+	}).(BillingProfilePropertiesBillToPtrOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesBillToOutput) AddressLine1() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) string { return v.AddressLine1 }).(pulumi.StringOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesBillToOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.AddressLine2 }).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesBillToOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.AddressLine3 }).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesBillToOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesBillToOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesBillToOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesBillToOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesBillToOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesBillToOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesBillToOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *bool { return v.IsValidAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesBillToOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesBillToOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.MiddleName }).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesBillToOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesBillToOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesBillToOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesBillTo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesBillToPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesBillToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesBillTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesBillToPtrOutput) ToBillingProfilePropertiesBillToPtrOutput() BillingProfilePropertiesBillToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesBillToPtrOutput) ToBillingProfilePropertiesBillToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesBillToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesBillToPtrOutput) Elem() BillingProfilePropertiesBillToOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) BillingProfilePropertiesBillTo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesBillTo
+		return ret
+	}).(BillingProfilePropertiesBillToOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesBillToPtrOutput) AddressLine1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressLine1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesBillToPtrOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesBillToPtrOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine3
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesBillToPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesBillToPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesBillToPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesBillToPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesBillToPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesBillToPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesBillToPtrOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsValidAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesBillToPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesBillToPtrOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MiddleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesBillToPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesBillToPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesBillToPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The current payment term of the billing profile.
+type BillingProfilePropertiesCurrentPaymentTerm struct {
+	// The date on when the defined 'Payment Term' will end and is always in UTC.
+	EndDate *string `pulumi:"endDate"`
+	// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+	StartDate *string `pulumi:"startDate"`
+	// Represents duration in netXX format. Always in days.
+	Term *string `pulumi:"term"`
+}
+
+// BillingProfilePropertiesCurrentPaymentTermInput is an input type that accepts BillingProfilePropertiesCurrentPaymentTermArgs and BillingProfilePropertiesCurrentPaymentTermOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesCurrentPaymentTermInput` via:
+//
+//	BillingProfilePropertiesCurrentPaymentTermArgs{...}
+type BillingProfilePropertiesCurrentPaymentTermInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesCurrentPaymentTermOutput() BillingProfilePropertiesCurrentPaymentTermOutput
+	ToBillingProfilePropertiesCurrentPaymentTermOutputWithContext(context.Context) BillingProfilePropertiesCurrentPaymentTermOutput
+}
+
+// The current payment term of the billing profile.
+type BillingProfilePropertiesCurrentPaymentTermArgs struct {
+	// The date on when the defined 'Payment Term' will end and is always in UTC.
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+	// Represents duration in netXX format. Always in days.
+	Term pulumi.StringPtrInput `pulumi:"term"`
+}
+
+func (BillingProfilePropertiesCurrentPaymentTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesCurrentPaymentTerm)(nil)).Elem()
+}
+
+func (i BillingProfilePropertiesCurrentPaymentTermArgs) ToBillingProfilePropertiesCurrentPaymentTermOutput() BillingProfilePropertiesCurrentPaymentTermOutput {
+	return i.ToBillingProfilePropertiesCurrentPaymentTermOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesCurrentPaymentTermArgs) ToBillingProfilePropertiesCurrentPaymentTermOutputWithContext(ctx context.Context) BillingProfilePropertiesCurrentPaymentTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesCurrentPaymentTermOutput)
+}
+
+func (i BillingProfilePropertiesCurrentPaymentTermArgs) ToBillingProfilePropertiesCurrentPaymentTermPtrOutput() BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return i.ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesCurrentPaymentTermArgs) ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesCurrentPaymentTermOutput).ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(ctx)
+}
+
+// BillingProfilePropertiesCurrentPaymentTermPtrInput is an input type that accepts BillingProfilePropertiesCurrentPaymentTermArgs, BillingProfilePropertiesCurrentPaymentTermPtr and BillingProfilePropertiesCurrentPaymentTermPtrOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesCurrentPaymentTermPtrInput` via:
+//
+//	        BillingProfilePropertiesCurrentPaymentTermArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingProfilePropertiesCurrentPaymentTermPtrInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesCurrentPaymentTermPtrOutput() BillingProfilePropertiesCurrentPaymentTermPtrOutput
+	ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(context.Context) BillingProfilePropertiesCurrentPaymentTermPtrOutput
+}
+
+type billingProfilePropertiesCurrentPaymentTermPtrType BillingProfilePropertiesCurrentPaymentTermArgs
+
+func BillingProfilePropertiesCurrentPaymentTermPtr(v *BillingProfilePropertiesCurrentPaymentTermArgs) BillingProfilePropertiesCurrentPaymentTermPtrInput {
+	return (*billingProfilePropertiesCurrentPaymentTermPtrType)(v)
+}
+
+func (*billingProfilePropertiesCurrentPaymentTermPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesCurrentPaymentTerm)(nil)).Elem()
+}
+
+func (i *billingProfilePropertiesCurrentPaymentTermPtrType) ToBillingProfilePropertiesCurrentPaymentTermPtrOutput() BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return i.ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(context.Background())
+}
+
+func (i *billingProfilePropertiesCurrentPaymentTermPtrType) ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesCurrentPaymentTermPtrOutput)
+}
+
+// The current payment term of the billing profile.
+type BillingProfilePropertiesCurrentPaymentTermOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesCurrentPaymentTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesCurrentPaymentTerm)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) ToBillingProfilePropertiesCurrentPaymentTermOutput() BillingProfilePropertiesCurrentPaymentTermOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) ToBillingProfilePropertiesCurrentPaymentTermOutputWithContext(ctx context.Context) BillingProfilePropertiesCurrentPaymentTermOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) ToBillingProfilePropertiesCurrentPaymentTermPtrOutput() BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return o.ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(context.Background())
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfilePropertiesCurrentPaymentTerm) *BillingProfilePropertiesCurrentPaymentTerm {
+		return &v
+	}).(BillingProfilePropertiesCurrentPaymentTermPtrOutput)
+}
+
+// The date on when the defined 'Payment Term' will end and is always in UTC.
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesCurrentPaymentTerm) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesCurrentPaymentTerm) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// Represents duration in netXX format. Always in days.
+func (o BillingProfilePropertiesCurrentPaymentTermOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesCurrentPaymentTerm) *string { return v.Term }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesCurrentPaymentTermPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesCurrentPaymentTermPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesCurrentPaymentTerm)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermPtrOutput) ToBillingProfilePropertiesCurrentPaymentTermPtrOutput() BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermPtrOutput) ToBillingProfilePropertiesCurrentPaymentTermPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesCurrentPaymentTermPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesCurrentPaymentTermPtrOutput) Elem() BillingProfilePropertiesCurrentPaymentTermOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesCurrentPaymentTerm) BillingProfilePropertiesCurrentPaymentTerm {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesCurrentPaymentTerm
+		return ret
+	}).(BillingProfilePropertiesCurrentPaymentTermOutput)
+}
+
+// The date on when the defined 'Payment Term' will end and is always in UTC.
+func (o BillingProfilePropertiesCurrentPaymentTermPtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesCurrentPaymentTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+func (o BillingProfilePropertiesCurrentPaymentTermPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesCurrentPaymentTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents duration in netXX format. Always in days.
+func (o BillingProfilePropertiesCurrentPaymentTermPtrOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesCurrentPaymentTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Term
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+type BillingProfilePropertiesIndirectRelationshipInfo struct {
+	// The billing account name of the partner or the customer for an indirect motion.
+	BillingAccountName *string `pulumi:"billingAccountName"`
+	// The billing profile name of the partner or the customer for an indirect motion.
+	BillingProfileName *string `pulumi:"billingProfileName"`
+	// The display name of the partner or customer for an indirect motion.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// BillingProfilePropertiesIndirectRelationshipInfoInput is an input type that accepts BillingProfilePropertiesIndirectRelationshipInfoArgs and BillingProfilePropertiesIndirectRelationshipInfoOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesIndirectRelationshipInfoInput` via:
+//
+//	BillingProfilePropertiesIndirectRelationshipInfoArgs{...}
+type BillingProfilePropertiesIndirectRelationshipInfoInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesIndirectRelationshipInfoOutput() BillingProfilePropertiesIndirectRelationshipInfoOutput
+	ToBillingProfilePropertiesIndirectRelationshipInfoOutputWithContext(context.Context) BillingProfilePropertiesIndirectRelationshipInfoOutput
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+type BillingProfilePropertiesIndirectRelationshipInfoArgs struct {
+	// The billing account name of the partner or the customer for an indirect motion.
+	BillingAccountName pulumi.StringPtrInput `pulumi:"billingAccountName"`
+	// The billing profile name of the partner or the customer for an indirect motion.
+	BillingProfileName pulumi.StringPtrInput `pulumi:"billingProfileName"`
+	// The display name of the partner or customer for an indirect motion.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (BillingProfilePropertiesIndirectRelationshipInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesIndirectRelationshipInfo)(nil)).Elem()
+}
+
+func (i BillingProfilePropertiesIndirectRelationshipInfoArgs) ToBillingProfilePropertiesIndirectRelationshipInfoOutput() BillingProfilePropertiesIndirectRelationshipInfoOutput {
+	return i.ToBillingProfilePropertiesIndirectRelationshipInfoOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesIndirectRelationshipInfoArgs) ToBillingProfilePropertiesIndirectRelationshipInfoOutputWithContext(ctx context.Context) BillingProfilePropertiesIndirectRelationshipInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesIndirectRelationshipInfoOutput)
+}
+
+func (i BillingProfilePropertiesIndirectRelationshipInfoArgs) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutput() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return i.ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesIndirectRelationshipInfoArgs) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesIndirectRelationshipInfoOutput).ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(ctx)
+}
+
+// BillingProfilePropertiesIndirectRelationshipInfoPtrInput is an input type that accepts BillingProfilePropertiesIndirectRelationshipInfoArgs, BillingProfilePropertiesIndirectRelationshipInfoPtr and BillingProfilePropertiesIndirectRelationshipInfoPtrOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesIndirectRelationshipInfoPtrInput` via:
+//
+//	        BillingProfilePropertiesIndirectRelationshipInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingProfilePropertiesIndirectRelationshipInfoPtrInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutput() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput
+	ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(context.Context) BillingProfilePropertiesIndirectRelationshipInfoPtrOutput
+}
+
+type billingProfilePropertiesIndirectRelationshipInfoPtrType BillingProfilePropertiesIndirectRelationshipInfoArgs
+
+func BillingProfilePropertiesIndirectRelationshipInfoPtr(v *BillingProfilePropertiesIndirectRelationshipInfoArgs) BillingProfilePropertiesIndirectRelationshipInfoPtrInput {
+	return (*billingProfilePropertiesIndirectRelationshipInfoPtrType)(v)
+}
+
+func (*billingProfilePropertiesIndirectRelationshipInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesIndirectRelationshipInfo)(nil)).Elem()
+}
+
+func (i *billingProfilePropertiesIndirectRelationshipInfoPtrType) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutput() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return i.ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *billingProfilePropertiesIndirectRelationshipInfoPtrType) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesIndirectRelationshipInfoPtrOutput)
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+type BillingProfilePropertiesIndirectRelationshipInfoOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesIndirectRelationshipInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesIndirectRelationshipInfo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) ToBillingProfilePropertiesIndirectRelationshipInfoOutput() BillingProfilePropertiesIndirectRelationshipInfoOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) ToBillingProfilePropertiesIndirectRelationshipInfoOutputWithContext(ctx context.Context) BillingProfilePropertiesIndirectRelationshipInfoOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutput() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return o.ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(context.Background())
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfilePropertiesIndirectRelationshipInfo) *BillingProfilePropertiesIndirectRelationshipInfo {
+		return &v
+	}).(BillingProfilePropertiesIndirectRelationshipInfoPtrOutput)
+}
+
+// The billing account name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) BillingAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesIndirectRelationshipInfo) *string { return v.BillingAccountName }).(pulumi.StringPtrOutput)
+}
+
+// The billing profile name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) BillingProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesIndirectRelationshipInfo) *string { return v.BillingProfileName }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the partner or customer for an indirect motion.
+func (o BillingProfilePropertiesIndirectRelationshipInfoOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesIndirectRelationshipInfo) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesIndirectRelationshipInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesIndirectRelationshipInfo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutput() BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) ToBillingProfilePropertiesIndirectRelationshipInfoPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesIndirectRelationshipInfoPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) Elem() BillingProfilePropertiesIndirectRelationshipInfoOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesIndirectRelationshipInfo) BillingProfilePropertiesIndirectRelationshipInfo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesIndirectRelationshipInfo
+		return ret
+	}).(BillingProfilePropertiesIndirectRelationshipInfoOutput)
+}
+
+// The billing account name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) BillingAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesIndirectRelationshipInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The billing profile name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) BillingProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesIndirectRelationshipInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingProfileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the partner or customer for an indirect motion.
+func (o BillingProfilePropertiesIndirectRelationshipInfoPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesIndirectRelationshipInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A billing profile.
+type BillingProfilePropertiesResponse struct {
+	// Billing address.
+	BillTo *BillingProfilePropertiesResponseBillTo `pulumi:"billTo"`
+	// Identifies the billing relationship represented by the billing profile. The billing relationship may be between Microsoft, the customer, and/or a third-party.
+	BillingRelationshipType string `pulumi:"billingRelationshipType"`
+	// The currency in which the charges for the billing profile are billed.
+	Currency string `pulumi:"currency"`
+	// The current payment term of the billing profile.
+	CurrentPaymentTerm *BillingProfilePropertiesResponseCurrentPaymentTerm `pulumi:"currentPaymentTerm"`
+	// The name of the billing profile.
+	DisplayName *string `pulumi:"displayName"`
+	// Information about the enabled azure plans.
+	EnabledAzurePlans []AzurePlanResponse `pulumi:"enabledAzurePlans"`
+	// Indicates whether user has read access to the billing profile.
+	HasReadAccess bool `pulumi:"hasReadAccess"`
+	// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+	IndirectRelationshipInfo *BillingProfilePropertiesResponseIndirectRelationshipInfo `pulumi:"indirectRelationshipInfo"`
+	// The day of the month when the invoice for the billing profile is generated.
+	InvoiceDay int `pulumi:"invoiceDay"`
+	// Flag controlling whether the invoices for the billing profile are sent through email.
+	InvoiceEmailOptIn *bool `pulumi:"invoiceEmailOptIn"`
+	// The list of email addresses to receive invoices by email for the billing profile.
+	InvoiceRecipients []string `pulumi:"invoiceRecipients"`
+	// The other payment terms of the billing profile.
+	OtherPaymentTerms []PaymentTermResponse `pulumi:"otherPaymentTerms"`
+	// The default purchase order number that will appear on the invoices generated for the billing profile.
+	PoNumber *string `pulumi:"poNumber"`
+	// The provisioning state of the resource during a long-running operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+	ShipTo *BillingProfilePropertiesResponseShipTo `pulumi:"shipTo"`
+	// The address of the individual or organization that is responsible for the billing account.
+	SoldTo *BillingProfilePropertiesResponseSoldTo `pulumi:"soldTo"`
+	// The billing profile spending limit.
+	SpendingLimit string `pulumi:"spendingLimit"`
+	// The details of billing profile spending limit.
+	SpendingLimitDetails []SpendingLimitDetailsResponse `pulumi:"spendingLimitDetails"`
+	// The status of the billing profile.
+	Status string `pulumi:"status"`
+	// Reason for the specified billing profile status.
+	StatusReasonCode string `pulumi:"statusReasonCode"`
+	// The system generated unique identifier for a billing profile.
+	SystemId string `pulumi:"systemId"`
+	// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags map[string]string `pulumi:"tags"`
+	// Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
+	TargetClouds []string `pulumi:"targetClouds"`
+}
+
+// A billing profile.
+type BillingProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesResponse)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseOutput) ToBillingProfilePropertiesResponseOutput() BillingProfilePropertiesResponseOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseOutput) ToBillingProfilePropertiesResponseOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseOutput {
+	return o
+}
+
+// Billing address.
+func (o BillingProfilePropertiesResponseOutput) BillTo() BillingProfilePropertiesResponseBillToPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *BillingProfilePropertiesResponseBillTo { return v.BillTo }).(BillingProfilePropertiesResponseBillToPtrOutput)
+}
+
+// Identifies the billing relationship represented by the billing profile. The billing relationship may be between Microsoft, the customer, and/or a third-party.
+func (o BillingProfilePropertiesResponseOutput) BillingRelationshipType() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.BillingRelationshipType }).(pulumi.StringOutput)
+}
+
+// The currency in which the charges for the billing profile are billed.
+func (o BillingProfilePropertiesResponseOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+// The current payment term of the billing profile.
+func (o BillingProfilePropertiesResponseOutput) CurrentPaymentTerm() BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *BillingProfilePropertiesResponseCurrentPaymentTerm {
+		return v.CurrentPaymentTerm
+	}).(BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput)
+}
+
+// The name of the billing profile.
+func (o BillingProfilePropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Information about the enabled azure plans.
+func (o BillingProfilePropertiesResponseOutput) EnabledAzurePlans() AzurePlanResponseArrayOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) []AzurePlanResponse { return v.EnabledAzurePlans }).(AzurePlanResponseArrayOutput)
+}
+
+// Indicates whether user has read access to the billing profile.
+func (o BillingProfilePropertiesResponseOutput) HasReadAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) bool { return v.HasReadAccess }).(pulumi.BoolOutput)
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+func (o BillingProfilePropertiesResponseOutput) IndirectRelationshipInfo() BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *BillingProfilePropertiesResponseIndirectRelationshipInfo {
+		return v.IndirectRelationshipInfo
+	}).(BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput)
+}
+
+// The day of the month when the invoice for the billing profile is generated.
+func (o BillingProfilePropertiesResponseOutput) InvoiceDay() pulumi.IntOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) int { return v.InvoiceDay }).(pulumi.IntOutput)
+}
+
+// Flag controlling whether the invoices for the billing profile are sent through email.
+func (o BillingProfilePropertiesResponseOutput) InvoiceEmailOptIn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *bool { return v.InvoiceEmailOptIn }).(pulumi.BoolPtrOutput)
+}
+
+// The list of email addresses to receive invoices by email for the billing profile.
+func (o BillingProfilePropertiesResponseOutput) InvoiceRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) []string { return v.InvoiceRecipients }).(pulumi.StringArrayOutput)
+}
+
+// The other payment terms of the billing profile.
+func (o BillingProfilePropertiesResponseOutput) OtherPaymentTerms() PaymentTermResponseArrayOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) []PaymentTermResponse { return v.OtherPaymentTerms }).(PaymentTermResponseArrayOutput)
+}
+
+// The default purchase order number that will appear on the invoices generated for the billing profile.
+func (o BillingProfilePropertiesResponseOutput) PoNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *string { return v.PoNumber }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the resource during a long-running operation.
+func (o BillingProfilePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+func (o BillingProfilePropertiesResponseOutput) ShipTo() BillingProfilePropertiesResponseShipToPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *BillingProfilePropertiesResponseShipTo { return v.ShipTo }).(BillingProfilePropertiesResponseShipToPtrOutput)
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+func (o BillingProfilePropertiesResponseOutput) SoldTo() BillingProfilePropertiesResponseSoldToPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) *BillingProfilePropertiesResponseSoldTo { return v.SoldTo }).(BillingProfilePropertiesResponseSoldToPtrOutput)
+}
+
+// The billing profile spending limit.
+func (o BillingProfilePropertiesResponseOutput) SpendingLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.SpendingLimit }).(pulumi.StringOutput)
+}
+
+// The details of billing profile spending limit.
+func (o BillingProfilePropertiesResponseOutput) SpendingLimitDetails() SpendingLimitDetailsResponseArrayOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) []SpendingLimitDetailsResponse { return v.SpendingLimitDetails }).(SpendingLimitDetailsResponseArrayOutput)
+}
+
+// The status of the billing profile.
+func (o BillingProfilePropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Reason for the specified billing profile status.
+func (o BillingProfilePropertiesResponseOutput) StatusReasonCode() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.StatusReasonCode }).(pulumi.StringOutput)
+}
+
+// The system generated unique identifier for a billing profile.
+func (o BillingProfilePropertiesResponseOutput) SystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) string { return v.SystemId }).(pulumi.StringOutput)
+}
+
+// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o BillingProfilePropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
+func (o BillingProfilePropertiesResponseOutput) TargetClouds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponse) []string { return v.TargetClouds }).(pulumi.StringArrayOutput)
+}
+
+// Billing address.
+type BillingProfilePropertiesResponseBillTo struct {
+	// Address line 1.
+	AddressLine1 string `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 *string `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 *string `pulumi:"addressLine3"`
+	// Address city.
+	City *string `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName *string `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country string `pulumi:"country"`
+	// Address district.
+	District *string `pulumi:"district"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName *string `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress *bool `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName *string `pulumi:"lastName"`
+	// Middle name.
+	MiddleName *string `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode *string `pulumi:"postalCode"`
+	// Address region.
+	Region *string `pulumi:"region"`
+}
+
+// Billing address.
+type BillingProfilePropertiesResponseBillToOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseBillToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesResponseBillTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseBillToOutput) ToBillingProfilePropertiesResponseBillToOutput() BillingProfilePropertiesResponseBillToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseBillToOutput) ToBillingProfilePropertiesResponseBillToOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseBillToOutput {
+	return o
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesResponseBillToOutput) AddressLine1() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) string { return v.AddressLine1 }).(pulumi.StringOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesResponseBillToOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.AddressLine2 }).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesResponseBillToOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.AddressLine3 }).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesResponseBillToOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesResponseBillToOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesResponseBillToOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesResponseBillToOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesResponseBillToOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseBillToOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesResponseBillToOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *bool { return v.IsValidAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseBillToOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesResponseBillToOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.MiddleName }).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesResponseBillToOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesResponseBillToOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesResponseBillToOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseBillTo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesResponseBillToPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseBillToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesResponseBillTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseBillToPtrOutput) ToBillingProfilePropertiesResponseBillToPtrOutput() BillingProfilePropertiesResponseBillToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseBillToPtrOutput) ToBillingProfilePropertiesResponseBillToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseBillToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseBillToPtrOutput) Elem() BillingProfilePropertiesResponseBillToOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) BillingProfilePropertiesResponseBillTo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesResponseBillTo
+		return ret
+	}).(BillingProfilePropertiesResponseBillToOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) AddressLine1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressLine1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine3
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesResponseBillToPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsValidAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MiddleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesResponseBillToPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseBillTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The current payment term of the billing profile.
+type BillingProfilePropertiesResponseCurrentPaymentTerm struct {
+	// The date on when the defined 'Payment Term' will end and is always in UTC.
+	EndDate *string `pulumi:"endDate"`
+	// Indicates payment term is the standard payment term.
+	IsDefault bool `pulumi:"isDefault"`
+	// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+	StartDate *string `pulumi:"startDate"`
+	// Represents duration in netXX format. Always in days.
+	Term *string `pulumi:"term"`
+}
+
+// The current payment term of the billing profile.
+type BillingProfilePropertiesResponseCurrentPaymentTermOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseCurrentPaymentTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesResponseCurrentPaymentTerm)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseCurrentPaymentTermOutput) ToBillingProfilePropertiesResponseCurrentPaymentTermOutput() BillingProfilePropertiesResponseCurrentPaymentTermOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseCurrentPaymentTermOutput) ToBillingProfilePropertiesResponseCurrentPaymentTermOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseCurrentPaymentTermOutput {
+	return o
+}
+
+// The date on when the defined 'Payment Term' will end and is always in UTC.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseCurrentPaymentTerm) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// Indicates payment term is the standard payment term.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseCurrentPaymentTerm) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseCurrentPaymentTerm) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// Represents duration in netXX format. Always in days.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseCurrentPaymentTerm) *string { return v.Term }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesResponseCurrentPaymentTerm)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) ToBillingProfilePropertiesResponseCurrentPaymentTermPtrOutput() BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) ToBillingProfilePropertiesResponseCurrentPaymentTermPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) Elem() BillingProfilePropertiesResponseCurrentPaymentTermOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseCurrentPaymentTerm) BillingProfilePropertiesResponseCurrentPaymentTerm {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesResponseCurrentPaymentTerm
+		return ret
+	}).(BillingProfilePropertiesResponseCurrentPaymentTermOutput)
+}
+
+// The date on when the defined 'Payment Term' will end and is always in UTC.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseCurrentPaymentTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates payment term is the standard payment term.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseCurrentPaymentTerm) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsDefault
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseCurrentPaymentTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents duration in netXX format. Always in days.
+func (o BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseCurrentPaymentTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Term
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+type BillingProfilePropertiesResponseIndirectRelationshipInfo struct {
+	// The billing account name of the partner or the customer for an indirect motion.
+	BillingAccountName *string `pulumi:"billingAccountName"`
+	// The billing profile name of the partner or the customer for an indirect motion.
+	BillingProfileName *string `pulumi:"billingProfileName"`
+	// The display name of the partner or customer for an indirect motion.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
+type BillingProfilePropertiesResponseIndirectRelationshipInfoOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseIndirectRelationshipInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesResponseIndirectRelationshipInfo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoOutput) ToBillingProfilePropertiesResponseIndirectRelationshipInfoOutput() BillingProfilePropertiesResponseIndirectRelationshipInfoOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoOutput) ToBillingProfilePropertiesResponseIndirectRelationshipInfoOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseIndirectRelationshipInfoOutput {
+	return o
+}
+
+// The billing account name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoOutput) BillingAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseIndirectRelationshipInfo) *string { return v.BillingAccountName }).(pulumi.StringPtrOutput)
+}
+
+// The billing profile name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoOutput) BillingProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseIndirectRelationshipInfo) *string { return v.BillingProfileName }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the partner or customer for an indirect motion.
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseIndirectRelationshipInfo) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesResponseIndirectRelationshipInfo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) ToBillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput() BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) ToBillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) Elem() BillingProfilePropertiesResponseIndirectRelationshipInfoOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseIndirectRelationshipInfo) BillingProfilePropertiesResponseIndirectRelationshipInfo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesResponseIndirectRelationshipInfo
+		return ret
+	}).(BillingProfilePropertiesResponseIndirectRelationshipInfoOutput)
+}
+
+// The billing account name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) BillingAccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseIndirectRelationshipInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingAccountName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The billing profile name of the partner or the customer for an indirect motion.
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) BillingProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseIndirectRelationshipInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingProfileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the partner or customer for an indirect motion.
+func (o BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseIndirectRelationshipInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+type BillingProfilePropertiesResponseShipTo struct {
+	// Address line 1.
+	AddressLine1 string `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 *string `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 *string `pulumi:"addressLine3"`
+	// Address city.
+	City *string `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName *string `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country string `pulumi:"country"`
+	// Address district.
+	District *string `pulumi:"district"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName *string `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress *bool `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName *string `pulumi:"lastName"`
+	// Middle name.
+	MiddleName *string `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode *string `pulumi:"postalCode"`
+	// Address region.
+	Region *string `pulumi:"region"`
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+type BillingProfilePropertiesResponseShipToOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseShipToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesResponseShipTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseShipToOutput) ToBillingProfilePropertiesResponseShipToOutput() BillingProfilePropertiesResponseShipToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseShipToOutput) ToBillingProfilePropertiesResponseShipToOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseShipToOutput {
+	return o
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesResponseShipToOutput) AddressLine1() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) string { return v.AddressLine1 }).(pulumi.StringOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesResponseShipToOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.AddressLine2 }).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesResponseShipToOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.AddressLine3 }).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesResponseShipToOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesResponseShipToOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesResponseShipToOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesResponseShipToOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesResponseShipToOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseShipToOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesResponseShipToOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *bool { return v.IsValidAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseShipToOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesResponseShipToOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.MiddleName }).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesResponseShipToOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesResponseShipToOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesResponseShipToOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseShipTo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesResponseShipToPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseShipToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesResponseShipTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseShipToPtrOutput) ToBillingProfilePropertiesResponseShipToPtrOutput() BillingProfilePropertiesResponseShipToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseShipToPtrOutput) ToBillingProfilePropertiesResponseShipToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseShipToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseShipToPtrOutput) Elem() BillingProfilePropertiesResponseShipToOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) BillingProfilePropertiesResponseShipTo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesResponseShipTo
+		return ret
+	}).(BillingProfilePropertiesResponseShipToOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) AddressLine1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressLine1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine3
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesResponseShipToPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsValidAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MiddleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesResponseShipToPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+type BillingProfilePropertiesResponseSoldTo struct {
+	// Address line 1.
+	AddressLine1 string `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 *string `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 *string `pulumi:"addressLine3"`
+	// Address city.
+	City *string `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName *string `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country string `pulumi:"country"`
+	// Address district.
+	District *string `pulumi:"district"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName *string `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress *bool `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName *string `pulumi:"lastName"`
+	// Middle name.
+	MiddleName *string `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode *string `pulumi:"postalCode"`
+	// Address region.
+	Region *string `pulumi:"region"`
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+type BillingProfilePropertiesResponseSoldToOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseSoldToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesResponseSoldTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseSoldToOutput) ToBillingProfilePropertiesResponseSoldToOutput() BillingProfilePropertiesResponseSoldToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseSoldToOutput) ToBillingProfilePropertiesResponseSoldToOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseSoldToOutput {
+	return o
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesResponseSoldToOutput) AddressLine1() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) string { return v.AddressLine1 }).(pulumi.StringOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesResponseSoldToOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.AddressLine2 }).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesResponseSoldToOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.AddressLine3 }).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesResponseSoldToOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesResponseSoldToOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesResponseSoldToOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesResponseSoldToOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesResponseSoldToOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseSoldToOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesResponseSoldToOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *bool { return v.IsValidAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseSoldToOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesResponseSoldToOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.MiddleName }).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesResponseSoldToOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesResponseSoldToOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesResponseSoldToOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesResponseSoldTo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesResponseSoldToPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesResponseSoldToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesResponseSoldTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) ToBillingProfilePropertiesResponseSoldToPtrOutput() BillingProfilePropertiesResponseSoldToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) ToBillingProfilePropertiesResponseSoldToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesResponseSoldToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) Elem() BillingProfilePropertiesResponseSoldToOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) BillingProfilePropertiesResponseSoldTo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesResponseSoldTo
+		return ret
+	}).(BillingProfilePropertiesResponseSoldToOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) AddressLine1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressLine1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine3
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsValidAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MiddleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesResponseSoldToPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesResponseSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+type BillingProfilePropertiesShipTo struct {
+	// Address line 1.
+	AddressLine1 string `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 *string `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 *string `pulumi:"addressLine3"`
+	// Address city.
+	City *string `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName *string `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country string `pulumi:"country"`
+	// Address district.
+	District *string `pulumi:"district"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName *string `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress *bool `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName *string `pulumi:"lastName"`
+	// Middle name.
+	MiddleName *string `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode *string `pulumi:"postalCode"`
+	// Address region.
+	Region *string `pulumi:"region"`
+}
+
+// BillingProfilePropertiesShipToInput is an input type that accepts BillingProfilePropertiesShipToArgs and BillingProfilePropertiesShipToOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesShipToInput` via:
+//
+//	BillingProfilePropertiesShipToArgs{...}
+type BillingProfilePropertiesShipToInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesShipToOutput() BillingProfilePropertiesShipToOutput
+	ToBillingProfilePropertiesShipToOutputWithContext(context.Context) BillingProfilePropertiesShipToOutput
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+type BillingProfilePropertiesShipToArgs struct {
+	// Address line 1.
+	AddressLine1 pulumi.StringInput `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 pulumi.StringPtrInput `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 pulumi.StringPtrInput `pulumi:"addressLine3"`
+	// Address city.
+	City pulumi.StringPtrInput `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName pulumi.StringPtrInput `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country pulumi.StringInput `pulumi:"country"`
+	// Address district.
+	District pulumi.StringPtrInput `pulumi:"district"`
+	// Email address.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress pulumi.BoolPtrInput `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Middle name.
+	MiddleName pulumi.StringPtrInput `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// Address region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (BillingProfilePropertiesShipToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesShipTo)(nil)).Elem()
+}
+
+func (i BillingProfilePropertiesShipToArgs) ToBillingProfilePropertiesShipToOutput() BillingProfilePropertiesShipToOutput {
+	return i.ToBillingProfilePropertiesShipToOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesShipToArgs) ToBillingProfilePropertiesShipToOutputWithContext(ctx context.Context) BillingProfilePropertiesShipToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesShipToOutput)
+}
+
+func (i BillingProfilePropertiesShipToArgs) ToBillingProfilePropertiesShipToPtrOutput() BillingProfilePropertiesShipToPtrOutput {
+	return i.ToBillingProfilePropertiesShipToPtrOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesShipToArgs) ToBillingProfilePropertiesShipToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesShipToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesShipToOutput).ToBillingProfilePropertiesShipToPtrOutputWithContext(ctx)
+}
+
+// BillingProfilePropertiesShipToPtrInput is an input type that accepts BillingProfilePropertiesShipToArgs, BillingProfilePropertiesShipToPtr and BillingProfilePropertiesShipToPtrOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesShipToPtrInput` via:
+//
+//	        BillingProfilePropertiesShipToArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingProfilePropertiesShipToPtrInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesShipToPtrOutput() BillingProfilePropertiesShipToPtrOutput
+	ToBillingProfilePropertiesShipToPtrOutputWithContext(context.Context) BillingProfilePropertiesShipToPtrOutput
+}
+
+type billingProfilePropertiesShipToPtrType BillingProfilePropertiesShipToArgs
+
+func BillingProfilePropertiesShipToPtr(v *BillingProfilePropertiesShipToArgs) BillingProfilePropertiesShipToPtrInput {
+	return (*billingProfilePropertiesShipToPtrType)(v)
+}
+
+func (*billingProfilePropertiesShipToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesShipTo)(nil)).Elem()
+}
+
+func (i *billingProfilePropertiesShipToPtrType) ToBillingProfilePropertiesShipToPtrOutput() BillingProfilePropertiesShipToPtrOutput {
+	return i.ToBillingProfilePropertiesShipToPtrOutputWithContext(context.Background())
+}
+
+func (i *billingProfilePropertiesShipToPtrType) ToBillingProfilePropertiesShipToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesShipToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesShipToPtrOutput)
+}
+
+// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
+type BillingProfilePropertiesShipToOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesShipToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesShipTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesShipToOutput) ToBillingProfilePropertiesShipToOutput() BillingProfilePropertiesShipToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesShipToOutput) ToBillingProfilePropertiesShipToOutputWithContext(ctx context.Context) BillingProfilePropertiesShipToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesShipToOutput) ToBillingProfilePropertiesShipToPtrOutput() BillingProfilePropertiesShipToPtrOutput {
+	return o.ToBillingProfilePropertiesShipToPtrOutputWithContext(context.Background())
+}
+
+func (o BillingProfilePropertiesShipToOutput) ToBillingProfilePropertiesShipToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesShipToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfilePropertiesShipTo) *BillingProfilePropertiesShipTo {
+		return &v
+	}).(BillingProfilePropertiesShipToPtrOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesShipToOutput) AddressLine1() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) string { return v.AddressLine1 }).(pulumi.StringOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesShipToOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.AddressLine2 }).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesShipToOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.AddressLine3 }).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesShipToOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesShipToOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesShipToOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesShipToOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesShipToOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesShipToOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesShipToOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *bool { return v.IsValidAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesShipToOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesShipToOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.MiddleName }).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesShipToOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesShipToOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesShipToOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesShipTo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesShipToPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesShipToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesShipTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesShipToPtrOutput) ToBillingProfilePropertiesShipToPtrOutput() BillingProfilePropertiesShipToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesShipToPtrOutput) ToBillingProfilePropertiesShipToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesShipToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesShipToPtrOutput) Elem() BillingProfilePropertiesShipToOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) BillingProfilePropertiesShipTo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesShipTo
+		return ret
+	}).(BillingProfilePropertiesShipToOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesShipToPtrOutput) AddressLine1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressLine1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesShipToPtrOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesShipToPtrOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine3
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesShipToPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesShipToPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesShipToPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesShipToPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesShipToPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesShipToPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesShipToPtrOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsValidAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesShipToPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesShipToPtrOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MiddleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesShipToPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesShipToPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesShipToPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesShipTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+type BillingProfilePropertiesSoldTo struct {
+	// Address line 1.
+	AddressLine1 string `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 *string `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 *string `pulumi:"addressLine3"`
+	// Address city.
+	City *string `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName *string `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country string `pulumi:"country"`
+	// Address district.
+	District *string `pulumi:"district"`
+	// Email address.
+	Email *string `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName *string `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress *bool `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName *string `pulumi:"lastName"`
+	// Middle name.
+	MiddleName *string `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode *string `pulumi:"postalCode"`
+	// Address region.
+	Region *string `pulumi:"region"`
+}
+
+// BillingProfilePropertiesSoldToInput is an input type that accepts BillingProfilePropertiesSoldToArgs and BillingProfilePropertiesSoldToOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesSoldToInput` via:
+//
+//	BillingProfilePropertiesSoldToArgs{...}
+type BillingProfilePropertiesSoldToInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesSoldToOutput() BillingProfilePropertiesSoldToOutput
+	ToBillingProfilePropertiesSoldToOutputWithContext(context.Context) BillingProfilePropertiesSoldToOutput
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+type BillingProfilePropertiesSoldToArgs struct {
+	// Address line 1.
+	AddressLine1 pulumi.StringInput `pulumi:"addressLine1"`
+	// Address line 2.
+	AddressLine2 pulumi.StringPtrInput `pulumi:"addressLine2"`
+	// Address line 3.
+	AddressLine3 pulumi.StringPtrInput `pulumi:"addressLine3"`
+	// Address city.
+	City pulumi.StringPtrInput `pulumi:"city"`
+	// Company name. Optional for MCA Individual (Pay-as-you-go).
+	CompanyName pulumi.StringPtrInput `pulumi:"companyName"`
+	// Country code uses ISO 3166-1 Alpha-2 format.
+	Country pulumi.StringInput `pulumi:"country"`
+	// Address district.
+	District pulumi.StringPtrInput `pulumi:"district"`
+	// Email address.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// First name. Optional for MCA Enterprise.
+	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
+	// Indicates if the address is incomplete.
+	IsValidAddress pulumi.BoolPtrInput `pulumi:"isValidAddress"`
+	// Last name. Optional for MCA Enterprise.
+	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Middle name.
+	MiddleName pulumi.StringPtrInput `pulumi:"middleName"`
+	// Phone number.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// Postal code.
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// Address region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (BillingProfilePropertiesSoldToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesSoldTo)(nil)).Elem()
+}
+
+func (i BillingProfilePropertiesSoldToArgs) ToBillingProfilePropertiesSoldToOutput() BillingProfilePropertiesSoldToOutput {
+	return i.ToBillingProfilePropertiesSoldToOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesSoldToArgs) ToBillingProfilePropertiesSoldToOutputWithContext(ctx context.Context) BillingProfilePropertiesSoldToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesSoldToOutput)
+}
+
+func (i BillingProfilePropertiesSoldToArgs) ToBillingProfilePropertiesSoldToPtrOutput() BillingProfilePropertiesSoldToPtrOutput {
+	return i.ToBillingProfilePropertiesSoldToPtrOutputWithContext(context.Background())
+}
+
+func (i BillingProfilePropertiesSoldToArgs) ToBillingProfilePropertiesSoldToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesSoldToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesSoldToOutput).ToBillingProfilePropertiesSoldToPtrOutputWithContext(ctx)
+}
+
+// BillingProfilePropertiesSoldToPtrInput is an input type that accepts BillingProfilePropertiesSoldToArgs, BillingProfilePropertiesSoldToPtr and BillingProfilePropertiesSoldToPtrOutput values.
+// You can construct a concrete instance of `BillingProfilePropertiesSoldToPtrInput` via:
+//
+//	        BillingProfilePropertiesSoldToArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingProfilePropertiesSoldToPtrInput interface {
+	pulumi.Input
+
+	ToBillingProfilePropertiesSoldToPtrOutput() BillingProfilePropertiesSoldToPtrOutput
+	ToBillingProfilePropertiesSoldToPtrOutputWithContext(context.Context) BillingProfilePropertiesSoldToPtrOutput
+}
+
+type billingProfilePropertiesSoldToPtrType BillingProfilePropertiesSoldToArgs
+
+func BillingProfilePropertiesSoldToPtr(v *BillingProfilePropertiesSoldToArgs) BillingProfilePropertiesSoldToPtrInput {
+	return (*billingProfilePropertiesSoldToPtrType)(v)
+}
+
+func (*billingProfilePropertiesSoldToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesSoldTo)(nil)).Elem()
+}
+
+func (i *billingProfilePropertiesSoldToPtrType) ToBillingProfilePropertiesSoldToPtrOutput() BillingProfilePropertiesSoldToPtrOutput {
+	return i.ToBillingProfilePropertiesSoldToPtrOutputWithContext(context.Background())
+}
+
+func (i *billingProfilePropertiesSoldToPtrType) ToBillingProfilePropertiesSoldToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesSoldToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePropertiesSoldToPtrOutput)
+}
+
+// The address of the individual or organization that is responsible for the billing account.
+type BillingProfilePropertiesSoldToOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesSoldToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingProfilePropertiesSoldTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesSoldToOutput) ToBillingProfilePropertiesSoldToOutput() BillingProfilePropertiesSoldToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesSoldToOutput) ToBillingProfilePropertiesSoldToOutputWithContext(ctx context.Context) BillingProfilePropertiesSoldToOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesSoldToOutput) ToBillingProfilePropertiesSoldToPtrOutput() BillingProfilePropertiesSoldToPtrOutput {
+	return o.ToBillingProfilePropertiesSoldToPtrOutputWithContext(context.Background())
+}
+
+func (o BillingProfilePropertiesSoldToOutput) ToBillingProfilePropertiesSoldToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesSoldToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfilePropertiesSoldTo) *BillingProfilePropertiesSoldTo {
+		return &v
+	}).(BillingProfilePropertiesSoldToPtrOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesSoldToOutput) AddressLine1() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) string { return v.AddressLine1 }).(pulumi.StringOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesSoldToOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.AddressLine2 }).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesSoldToOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.AddressLine3 }).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesSoldToOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesSoldToOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesSoldToOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesSoldToOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesSoldToOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesSoldToOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesSoldToOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *bool { return v.IsValidAddress }).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesSoldToOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesSoldToOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.MiddleName }).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesSoldToOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesSoldToOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesSoldToOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingProfilePropertiesSoldTo) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type BillingProfilePropertiesSoldToPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingProfilePropertiesSoldToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingProfilePropertiesSoldTo)(nil)).Elem()
+}
+
+func (o BillingProfilePropertiesSoldToPtrOutput) ToBillingProfilePropertiesSoldToPtrOutput() BillingProfilePropertiesSoldToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesSoldToPtrOutput) ToBillingProfilePropertiesSoldToPtrOutputWithContext(ctx context.Context) BillingProfilePropertiesSoldToPtrOutput {
+	return o
+}
+
+func (o BillingProfilePropertiesSoldToPtrOutput) Elem() BillingProfilePropertiesSoldToOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) BillingProfilePropertiesSoldTo {
+		if v != nil {
+			return *v
+		}
+		var ret BillingProfilePropertiesSoldTo
+		return ret
+	}).(BillingProfilePropertiesSoldToOutput)
+}
+
+// Address line 1.
+func (o BillingProfilePropertiesSoldToPtrOutput) AddressLine1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AddressLine1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 2.
+func (o BillingProfilePropertiesSoldToPtrOutput) AddressLine2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address line 3.
+func (o BillingProfilePropertiesSoldToPtrOutput) AddressLine3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLine3
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address city.
+func (o BillingProfilePropertiesSoldToPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// Company name. Optional for MCA Individual (Pay-as-you-go).
+func (o BillingProfilePropertiesSoldToPtrOutput) CompanyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Country code uses ISO 3166-1 Alpha-2 format.
+func (o BillingProfilePropertiesSoldToPtrOutput) Country() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Country
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address district.
+func (o BillingProfilePropertiesSoldToPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address.
+func (o BillingProfilePropertiesSoldToPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// First name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesSoldToPtrOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirstName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the address is incomplete.
+func (o BillingProfilePropertiesSoldToPtrOutput) IsValidAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsValidAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Last name. Optional for MCA Enterprise.
+func (o BillingProfilePropertiesSoldToPtrOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Middle name.
+func (o BillingProfilePropertiesSoldToPtrOutput) MiddleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MiddleName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number.
+func (o BillingProfilePropertiesSoldToPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Postal code.
+func (o BillingProfilePropertiesSoldToPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address region.
+func (o BillingProfilePropertiesSoldToPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingProfilePropertiesSoldTo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// An invoice section.
+type InvoiceSectionProperties struct {
+	// The name of the invoice section.
+	DisplayName *string `pulumi:"displayName"`
+	// Reason for the specified invoice section status.
+	ReasonCode *string `pulumi:"reasonCode"`
+	// Identifies the status of an invoice section.
+	State *string `pulumi:"state"`
+	// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags map[string]string `pulumi:"tags"`
+	// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
+	TargetCloud *string `pulumi:"targetCloud"`
+}
+
+// InvoiceSectionPropertiesInput is an input type that accepts InvoiceSectionPropertiesArgs and InvoiceSectionPropertiesOutput values.
+// You can construct a concrete instance of `InvoiceSectionPropertiesInput` via:
+//
+//	InvoiceSectionPropertiesArgs{...}
+type InvoiceSectionPropertiesInput interface {
+	pulumi.Input
+
+	ToInvoiceSectionPropertiesOutput() InvoiceSectionPropertiesOutput
+	ToInvoiceSectionPropertiesOutputWithContext(context.Context) InvoiceSectionPropertiesOutput
+}
+
+// An invoice section.
+type InvoiceSectionPropertiesArgs struct {
+	// The name of the invoice section.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Reason for the specified invoice section status.
+	ReasonCode pulumi.StringPtrInput `pulumi:"reasonCode"`
+	// Identifies the status of an invoice section.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
+	TargetCloud pulumi.StringPtrInput `pulumi:"targetCloud"`
+}
+
+func (InvoiceSectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvoiceSectionProperties)(nil)).Elem()
+}
+
+func (i InvoiceSectionPropertiesArgs) ToInvoiceSectionPropertiesOutput() InvoiceSectionPropertiesOutput {
+	return i.ToInvoiceSectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i InvoiceSectionPropertiesArgs) ToInvoiceSectionPropertiesOutputWithContext(ctx context.Context) InvoiceSectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InvoiceSectionPropertiesOutput)
+}
+
+func (i InvoiceSectionPropertiesArgs) ToInvoiceSectionPropertiesPtrOutput() InvoiceSectionPropertiesPtrOutput {
+	return i.ToInvoiceSectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i InvoiceSectionPropertiesArgs) ToInvoiceSectionPropertiesPtrOutputWithContext(ctx context.Context) InvoiceSectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InvoiceSectionPropertiesOutput).ToInvoiceSectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// InvoiceSectionPropertiesPtrInput is an input type that accepts InvoiceSectionPropertiesArgs, InvoiceSectionPropertiesPtr and InvoiceSectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `InvoiceSectionPropertiesPtrInput` via:
+//
+//	        InvoiceSectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InvoiceSectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToInvoiceSectionPropertiesPtrOutput() InvoiceSectionPropertiesPtrOutput
+	ToInvoiceSectionPropertiesPtrOutputWithContext(context.Context) InvoiceSectionPropertiesPtrOutput
+}
+
+type invoiceSectionPropertiesPtrType InvoiceSectionPropertiesArgs
+
+func InvoiceSectionPropertiesPtr(v *InvoiceSectionPropertiesArgs) InvoiceSectionPropertiesPtrInput {
+	return (*invoiceSectionPropertiesPtrType)(v)
+}
+
+func (*invoiceSectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InvoiceSectionProperties)(nil)).Elem()
+}
+
+func (i *invoiceSectionPropertiesPtrType) ToInvoiceSectionPropertiesPtrOutput() InvoiceSectionPropertiesPtrOutput {
+	return i.ToInvoiceSectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *invoiceSectionPropertiesPtrType) ToInvoiceSectionPropertiesPtrOutputWithContext(ctx context.Context) InvoiceSectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InvoiceSectionPropertiesPtrOutput)
+}
+
+// An invoice section.
+type InvoiceSectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (InvoiceSectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvoiceSectionProperties)(nil)).Elem()
+}
+
+func (o InvoiceSectionPropertiesOutput) ToInvoiceSectionPropertiesOutput() InvoiceSectionPropertiesOutput {
+	return o
+}
+
+func (o InvoiceSectionPropertiesOutput) ToInvoiceSectionPropertiesOutputWithContext(ctx context.Context) InvoiceSectionPropertiesOutput {
+	return o
+}
+
+func (o InvoiceSectionPropertiesOutput) ToInvoiceSectionPropertiesPtrOutput() InvoiceSectionPropertiesPtrOutput {
+	return o.ToInvoiceSectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o InvoiceSectionPropertiesOutput) ToInvoiceSectionPropertiesPtrOutputWithContext(ctx context.Context) InvoiceSectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InvoiceSectionProperties) *InvoiceSectionProperties {
+		return &v
+	}).(InvoiceSectionPropertiesPtrOutput)
+}
+
+// The name of the invoice section.
+func (o InvoiceSectionPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Reason for the specified invoice section status.
+func (o InvoiceSectionPropertiesOutput) ReasonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionProperties) *string { return v.ReasonCode }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the status of an invoice section.
+func (o InvoiceSectionPropertiesOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionProperties) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o InvoiceSectionPropertiesOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InvoiceSectionProperties) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
+func (o InvoiceSectionPropertiesOutput) TargetCloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionProperties) *string { return v.TargetCloud }).(pulumi.StringPtrOutput)
+}
+
+type InvoiceSectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (InvoiceSectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InvoiceSectionProperties)(nil)).Elem()
+}
+
+func (o InvoiceSectionPropertiesPtrOutput) ToInvoiceSectionPropertiesPtrOutput() InvoiceSectionPropertiesPtrOutput {
+	return o
+}
+
+func (o InvoiceSectionPropertiesPtrOutput) ToInvoiceSectionPropertiesPtrOutputWithContext(ctx context.Context) InvoiceSectionPropertiesPtrOutput {
+	return o
+}
+
+func (o InvoiceSectionPropertiesPtrOutput) Elem() InvoiceSectionPropertiesOutput {
+	return o.ApplyT(func(v *InvoiceSectionProperties) InvoiceSectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret InvoiceSectionProperties
+		return ret
+	}).(InvoiceSectionPropertiesOutput)
+}
+
+// The name of the invoice section.
+func (o InvoiceSectionPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvoiceSectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reason for the specified invoice section status.
+func (o InvoiceSectionPropertiesPtrOutput) ReasonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvoiceSectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReasonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the status of an invoice section.
+func (o InvoiceSectionPropertiesPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvoiceSectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o InvoiceSectionPropertiesPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InvoiceSectionProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
+func (o InvoiceSectionPropertiesPtrOutput) TargetCloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvoiceSectionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetCloud
+	}).(pulumi.StringPtrOutput)
+}
+
+// An invoice section.
+type InvoiceSectionPropertiesResponse struct {
+	// The name of the invoice section.
+	DisplayName *string `pulumi:"displayName"`
+	// The provisioning state of the resource during a long-running operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Reason for the specified invoice section status.
+	ReasonCode *string `pulumi:"reasonCode"`
+	// Identifies the status of an invoice section.
+	State *string `pulumi:"state"`
+	// The system generated unique identifier for an invoice section.
+	SystemId string `pulumi:"systemId"`
+	// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+	Tags map[string]string `pulumi:"tags"`
+	// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
+	TargetCloud *string `pulumi:"targetCloud"`
+}
+
+// An invoice section.
+type InvoiceSectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (InvoiceSectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvoiceSectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o InvoiceSectionPropertiesResponseOutput) ToInvoiceSectionPropertiesResponseOutput() InvoiceSectionPropertiesResponseOutput {
+	return o
+}
+
+func (o InvoiceSectionPropertiesResponseOutput) ToInvoiceSectionPropertiesResponseOutputWithContext(ctx context.Context) InvoiceSectionPropertiesResponseOutput {
+	return o
+}
+
+// The name of the invoice section.
+func (o InvoiceSectionPropertiesResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the resource during a long-running operation.
+func (o InvoiceSectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Reason for the specified invoice section status.
+func (o InvoiceSectionPropertiesResponseOutput) ReasonCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) *string { return v.ReasonCode }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the status of an invoice section.
+func (o InvoiceSectionPropertiesResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The system generated unique identifier for an invoice section.
+func (o InvoiceSectionPropertiesResponseOutput) SystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) string { return v.SystemId }).(pulumi.StringOutput)
+}
+
+// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
+func (o InvoiceSectionPropertiesResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
+func (o InvoiceSectionPropertiesResponseOutput) TargetCloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvoiceSectionPropertiesResponse) *string { return v.TargetCloud }).(pulumi.StringPtrOutput)
 }
 
 // Invoice section properties with create subscription permission.
@@ -175,9 +4033,254 @@ func (o InvoiceSectionWithCreateSubPermissionResponseArrayOutput) Index(i pulumi
 	}).(InvoiceSectionWithCreateSubPermissionResponseOutput)
 }
 
+// The properties of payment term.
+type PaymentTermResponse struct {
+	// The date on when the defined 'Payment Term' will end and is always in UTC.
+	EndDate *string `pulumi:"endDate"`
+	// Indicates payment term is the standard payment term.
+	IsDefault bool `pulumi:"isDefault"`
+	// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+	StartDate *string `pulumi:"startDate"`
+	// Represents duration in netXX format. Always in days.
+	Term *string `pulumi:"term"`
+}
+
+// The properties of payment term.
+type PaymentTermResponseOutput struct{ *pulumi.OutputState }
+
+func (PaymentTermResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PaymentTermResponse)(nil)).Elem()
+}
+
+func (o PaymentTermResponseOutput) ToPaymentTermResponseOutput() PaymentTermResponseOutput {
+	return o
+}
+
+func (o PaymentTermResponseOutput) ToPaymentTermResponseOutputWithContext(ctx context.Context) PaymentTermResponseOutput {
+	return o
+}
+
+// The date on when the defined 'Payment Term' will end and is always in UTC.
+func (o PaymentTermResponseOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PaymentTermResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// Indicates payment term is the standard payment term.
+func (o PaymentTermResponseOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v PaymentTermResponse) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
+func (o PaymentTermResponseOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PaymentTermResponse) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// Represents duration in netXX format. Always in days.
+func (o PaymentTermResponseOutput) Term() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PaymentTermResponse) *string { return v.Term }).(pulumi.StringPtrOutput)
+}
+
+type PaymentTermResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PaymentTermResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PaymentTermResponse)(nil)).Elem()
+}
+
+func (o PaymentTermResponseArrayOutput) ToPaymentTermResponseArrayOutput() PaymentTermResponseArrayOutput {
+	return o
+}
+
+func (o PaymentTermResponseArrayOutput) ToPaymentTermResponseArrayOutputWithContext(ctx context.Context) PaymentTermResponseArrayOutput {
+	return o
+}
+
+func (o PaymentTermResponseArrayOutput) Index(i pulumi.IntInput) PaymentTermResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PaymentTermResponse {
+		return vs[0].([]PaymentTermResponse)[vs[1].(int)]
+	}).(PaymentTermResponseOutput)
+}
+
+// The billing profile spending limit.
+type SpendingLimitDetailsResponse struct {
+	// The initial amount for the billing profile.
+	Amount *float64 `pulumi:"amount"`
+	// The currency in which the charges for the billing profile are billed.
+	Currency *string `pulumi:"currency"`
+	// The date when this spending limit is no longer in effect.
+	EndDate *string `pulumi:"endDate"`
+	// The date when this spending limit goes into effect.
+	StartDate *string `pulumi:"startDate"`
+	// The status of current spending limit.
+	Status *string `pulumi:"status"`
+	// The type of spending limit.
+	Type *string `pulumi:"type"`
+}
+
+// The billing profile spending limit.
+type SpendingLimitDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (SpendingLimitDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpendingLimitDetailsResponse)(nil)).Elem()
+}
+
+func (o SpendingLimitDetailsResponseOutput) ToSpendingLimitDetailsResponseOutput() SpendingLimitDetailsResponseOutput {
+	return o
+}
+
+func (o SpendingLimitDetailsResponseOutput) ToSpendingLimitDetailsResponseOutputWithContext(ctx context.Context) SpendingLimitDetailsResponseOutput {
+	return o
+}
+
+// The initial amount for the billing profile.
+func (o SpendingLimitDetailsResponseOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SpendingLimitDetailsResponse) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The currency in which the charges for the billing profile are billed.
+func (o SpendingLimitDetailsResponseOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpendingLimitDetailsResponse) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// The date when this spending limit is no longer in effect.
+func (o SpendingLimitDetailsResponseOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpendingLimitDetailsResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The date when this spending limit goes into effect.
+func (o SpendingLimitDetailsResponseOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpendingLimitDetailsResponse) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// The status of current spending limit.
+func (o SpendingLimitDetailsResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpendingLimitDetailsResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The type of spending limit.
+func (o SpendingLimitDetailsResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpendingLimitDetailsResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SpendingLimitDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SpendingLimitDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpendingLimitDetailsResponse)(nil)).Elem()
+}
+
+func (o SpendingLimitDetailsResponseArrayOutput) ToSpendingLimitDetailsResponseArrayOutput() SpendingLimitDetailsResponseArrayOutput {
+	return o
+}
+
+func (o SpendingLimitDetailsResponseArrayOutput) ToSpendingLimitDetailsResponseArrayOutputWithContext(ctx context.Context) SpendingLimitDetailsResponseArrayOutput {
+	return o
+}
+
+func (o SpendingLimitDetailsResponseArrayOutput) Index(i pulumi.IntInput) SpendingLimitDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpendingLimitDetailsResponse {
+		return vs[0].([]SpendingLimitDetailsResponse)[vs[1].(int)]
+	}).(SpendingLimitDetailsResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AssociatedTenantPropertiesOutput{})
+	pulumi.RegisterOutputType(AssociatedTenantPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AssociatedTenantPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AzurePlanOutput{})
+	pulumi.RegisterOutputType(AzurePlanArrayOutput{})
 	pulumi.RegisterOutputType(AzurePlanResponseOutput{})
 	pulumi.RegisterOutputType(AzurePlanResponseArrayOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesBillToOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesBillToPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesCurrentPaymentTermOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesCurrentPaymentTermPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesIndirectRelationshipInfoOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesIndirectRelationshipInfoPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseBillToOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseBillToPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseCurrentPaymentTermOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseCurrentPaymentTermPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseIndirectRelationshipInfoOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseIndirectRelationshipInfoPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseShipToOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseShipToPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseSoldToOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesResponseSoldToPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesShipToOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesShipToPtrOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesSoldToOutput{})
+	pulumi.RegisterOutputType(BillingProfilePropertiesSoldToPtrOutput{})
+	pulumi.RegisterOutputType(InvoiceSectionPropertiesOutput{})
+	pulumi.RegisterOutputType(InvoiceSectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(InvoiceSectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InvoiceSectionWithCreateSubPermissionResponseOutput{})
 	pulumi.RegisterOutputType(InvoiceSectionWithCreateSubPermissionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PaymentTermResponseOutput{})
+	pulumi.RegisterOutputType(PaymentTermResponseArrayOutput{})
+	pulumi.RegisterOutputType(SpendingLimitDetailsResponseOutput{})
+	pulumi.RegisterOutputType(SpendingLimitDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

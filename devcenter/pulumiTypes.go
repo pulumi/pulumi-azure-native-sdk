@@ -760,6 +760,257 @@ func (o HealthStatusDetailResponseArrayOutput) Index(i pulumi.IntInput) HealthSt
 	}).(HealthStatusDetailResponseOutput)
 }
 
+// Image creation error details
+type ImageCreationErrorDetailsResponse struct {
+	// An identifier for the error.
+	Code *string `pulumi:"code"`
+	// A message describing the error.
+	Message *string `pulumi:"message"`
+}
+
+// Image creation error details
+type ImageCreationErrorDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageCreationErrorDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageCreationErrorDetailsResponse)(nil)).Elem()
+}
+
+func (o ImageCreationErrorDetailsResponseOutput) ToImageCreationErrorDetailsResponseOutput() ImageCreationErrorDetailsResponseOutput {
+	return o
+}
+
+func (o ImageCreationErrorDetailsResponseOutput) ToImageCreationErrorDetailsResponseOutputWithContext(ctx context.Context) ImageCreationErrorDetailsResponseOutput {
+	return o
+}
+
+// An identifier for the error.
+func (o ImageCreationErrorDetailsResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageCreationErrorDetailsResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// A message describing the error.
+func (o ImageCreationErrorDetailsResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageCreationErrorDetailsResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// A task group executed during the image definition build.
+type ImageDefinitionBuildTaskGroupResponse struct {
+	// End time of the task group.
+	EndTime string `pulumi:"endTime"`
+	// The name of the task group.
+	Name string `pulumi:"name"`
+	// Start time of the task group.
+	StartTime string `pulumi:"startTime"`
+	// The status of the task group.
+	Status string `pulumi:"status"`
+	// The list of tasks executed during the task group.
+	Tasks []ImageDefinitionBuildTaskResponse `pulumi:"tasks"`
+}
+
+// A task group executed during the image definition build.
+type ImageDefinitionBuildTaskGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageDefinitionBuildTaskGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageDefinitionBuildTaskGroupResponse)(nil)).Elem()
+}
+
+func (o ImageDefinitionBuildTaskGroupResponseOutput) ToImageDefinitionBuildTaskGroupResponseOutput() ImageDefinitionBuildTaskGroupResponseOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskGroupResponseOutput) ToImageDefinitionBuildTaskGroupResponseOutputWithContext(ctx context.Context) ImageDefinitionBuildTaskGroupResponseOutput {
+	return o
+}
+
+// End time of the task group.
+func (o ImageDefinitionBuildTaskGroupResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskGroupResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The name of the task group.
+func (o ImageDefinitionBuildTaskGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Start time of the task group.
+func (o ImageDefinitionBuildTaskGroupResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskGroupResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of the task group.
+func (o ImageDefinitionBuildTaskGroupResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskGroupResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The list of tasks executed during the task group.
+func (o ImageDefinitionBuildTaskGroupResponseOutput) Tasks() ImageDefinitionBuildTaskResponseArrayOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskGroupResponse) []ImageDefinitionBuildTaskResponse { return v.Tasks }).(ImageDefinitionBuildTaskResponseArrayOutput)
+}
+
+type ImageDefinitionBuildTaskGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageDefinitionBuildTaskGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageDefinitionBuildTaskGroupResponse)(nil)).Elem()
+}
+
+func (o ImageDefinitionBuildTaskGroupResponseArrayOutput) ToImageDefinitionBuildTaskGroupResponseArrayOutput() ImageDefinitionBuildTaskGroupResponseArrayOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskGroupResponseArrayOutput) ToImageDefinitionBuildTaskGroupResponseArrayOutputWithContext(ctx context.Context) ImageDefinitionBuildTaskGroupResponseArrayOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskGroupResponseArrayOutput) Index(i pulumi.IntInput) ImageDefinitionBuildTaskGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDefinitionBuildTaskGroupResponse {
+		return vs[0].([]ImageDefinitionBuildTaskGroupResponse)[vs[1].(int)]
+	}).(ImageDefinitionBuildTaskGroupResponseOutput)
+}
+
+// A task executed during the image definition build.
+type ImageDefinitionBuildTaskResponse struct {
+	// Display name to help differentiate multiple instances of the same task.
+	DisplayName *string `pulumi:"displayName"`
+	// End time of the task.
+	EndTime string `pulumi:"endTime"`
+	// ID of the task instance.
+	Id string `pulumi:"id"`
+	// The URI for retrieving logs for the task execution.
+	LogUri string `pulumi:"logUri"`
+	// The name of the task.
+	Name *string `pulumi:"name"`
+	// Parameters for the task.
+	Parameters []ImageDefinitionBuildTaskResponseParameters `pulumi:"parameters"`
+	// Start time of the task.
+	StartTime string `pulumi:"startTime"`
+	// The status of the task.
+	Status string `pulumi:"status"`
+}
+
+// A task executed during the image definition build.
+type ImageDefinitionBuildTaskResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageDefinitionBuildTaskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageDefinitionBuildTaskResponse)(nil)).Elem()
+}
+
+func (o ImageDefinitionBuildTaskResponseOutput) ToImageDefinitionBuildTaskResponseOutput() ImageDefinitionBuildTaskResponseOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseOutput) ToImageDefinitionBuildTaskResponseOutputWithContext(ctx context.Context) ImageDefinitionBuildTaskResponseOutput {
+	return o
+}
+
+// Display name to help differentiate multiple instances of the same task.
+func (o ImageDefinitionBuildTaskResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// End time of the task.
+func (o ImageDefinitionBuildTaskResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// ID of the task instance.
+func (o ImageDefinitionBuildTaskResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The URI for retrieving logs for the task execution.
+func (o ImageDefinitionBuildTaskResponseOutput) LogUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) string { return v.LogUri }).(pulumi.StringOutput)
+}
+
+// The name of the task.
+func (o ImageDefinitionBuildTaskResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parameters for the task.
+func (o ImageDefinitionBuildTaskResponseOutput) Parameters() ImageDefinitionBuildTaskResponseParametersArrayOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) []ImageDefinitionBuildTaskResponseParameters {
+		return v.Parameters
+	}).(ImageDefinitionBuildTaskResponseParametersArrayOutput)
+}
+
+// Start time of the task.
+func (o ImageDefinitionBuildTaskResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of the task.
+func (o ImageDefinitionBuildTaskResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ImageDefinitionBuildTaskResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageDefinitionBuildTaskResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageDefinitionBuildTaskResponse)(nil)).Elem()
+}
+
+func (o ImageDefinitionBuildTaskResponseArrayOutput) ToImageDefinitionBuildTaskResponseArrayOutput() ImageDefinitionBuildTaskResponseArrayOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseArrayOutput) ToImageDefinitionBuildTaskResponseArrayOutputWithContext(ctx context.Context) ImageDefinitionBuildTaskResponseArrayOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseArrayOutput) Index(i pulumi.IntInput) ImageDefinitionBuildTaskResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDefinitionBuildTaskResponse {
+		return vs[0].([]ImageDefinitionBuildTaskResponse)[vs[1].(int)]
+	}).(ImageDefinitionBuildTaskResponseOutput)
+}
+
+type ImageDefinitionBuildTaskResponseParameters struct {
+	Key   string `pulumi:"key"`
+	Value string `pulumi:"value"`
+}
+
+type ImageDefinitionBuildTaskResponseParametersOutput struct{ *pulumi.OutputState }
+
+func (ImageDefinitionBuildTaskResponseParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageDefinitionBuildTaskResponseParameters)(nil)).Elem()
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersOutput) ToImageDefinitionBuildTaskResponseParametersOutput() ImageDefinitionBuildTaskResponseParametersOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersOutput) ToImageDefinitionBuildTaskResponseParametersOutputWithContext(ctx context.Context) ImageDefinitionBuildTaskResponseParametersOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponseParameters) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageDefinitionBuildTaskResponseParameters) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ImageDefinitionBuildTaskResponseParametersArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageDefinitionBuildTaskResponseParametersArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageDefinitionBuildTaskResponseParameters)(nil)).Elem()
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersArrayOutput) ToImageDefinitionBuildTaskResponseParametersArrayOutput() ImageDefinitionBuildTaskResponseParametersArrayOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersArrayOutput) ToImageDefinitionBuildTaskResponseParametersArrayOutputWithContext(ctx context.Context) ImageDefinitionBuildTaskResponseParametersArrayOutput {
+	return o
+}
+
+func (o ImageDefinitionBuildTaskResponseParametersArrayOutput) Index(i pulumi.IntInput) ImageDefinitionBuildTaskResponseParametersOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageDefinitionBuildTaskResponseParameters {
+		return vs[0].([]ImageDefinitionBuildTaskResponseParameters)[vs[1].(int)]
+	}).(ImageDefinitionBuildTaskResponseParametersOutput)
+}
+
 // Image reference information
 type ImageReference struct {
 	// Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
@@ -2309,6 +2560,13 @@ func init() {
 	pulumi.RegisterOutputType(GitCatalogResponsePtrOutput{})
 	pulumi.RegisterOutputType(HealthStatusDetailResponseOutput{})
 	pulumi.RegisterOutputType(HealthStatusDetailResponseArrayOutput{})
+	pulumi.RegisterOutputType(ImageCreationErrorDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ImageDefinitionBuildTaskGroupResponseOutput{})
+	pulumi.RegisterOutputType(ImageDefinitionBuildTaskGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(ImageDefinitionBuildTaskResponseOutput{})
+	pulumi.RegisterOutputType(ImageDefinitionBuildTaskResponseArrayOutput{})
+	pulumi.RegisterOutputType(ImageDefinitionBuildTaskResponseParametersOutput{})
+	pulumi.RegisterOutputType(ImageDefinitionBuildTaskResponseParametersArrayOutput{})
 	pulumi.RegisterOutputType(ImageReferenceOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ImageValidationErrorDetailsResponseOutput{})

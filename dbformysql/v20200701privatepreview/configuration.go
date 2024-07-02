@@ -78,6 +78,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20230630:Configuration"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20231230:Configuration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
