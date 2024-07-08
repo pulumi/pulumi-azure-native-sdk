@@ -33,16 +33,10 @@ type LookupDefenderForStorageArgs struct {
 type LookupDefenderForStorageResult struct {
 	// Resource Id
 	Id string `pulumi:"id"`
-	// Indicates whether Defender for Storage is enabled on this storage account.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// Properties of Malware Scanning.
-	MalwareScanning *MalwareScanningPropertiesResponse `pulumi:"malwareScanning"`
 	// Resource name
 	Name string `pulumi:"name"`
-	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-	OverrideSubscriptionLevelSettings *bool `pulumi:"overrideSubscriptionLevelSettings"`
-	// Properties of Sensitive Data Discovery.
-	SensitiveDataDiscovery *SensitiveDataDiscoveryPropertiesResponse `pulumi:"sensitiveDataDiscovery"`
+	// Defender for Storage resource properties.
+	Properties DefenderForStorageSettingPropertiesResponse `pulumi:"properties"`
 	// Resource type
 	Type string `pulumi:"type"`
 }
@@ -91,31 +85,16 @@ func (o LookupDefenderForStorageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefenderForStorageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates whether Defender for Storage is enabled on this storage account.
-func (o LookupDefenderForStorageResultOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupDefenderForStorageResult) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Properties of Malware Scanning.
-func (o LookupDefenderForStorageResultOutput) MalwareScanning() MalwareScanningPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupDefenderForStorageResult) *MalwareScanningPropertiesResponse { return v.MalwareScanning }).(MalwareScanningPropertiesResponsePtrOutput)
-}
-
 // Resource name
 func (o LookupDefenderForStorageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDefenderForStorageResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-func (o LookupDefenderForStorageResultOutput) OverrideSubscriptionLevelSettings() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupDefenderForStorageResult) *bool { return v.OverrideSubscriptionLevelSettings }).(pulumi.BoolPtrOutput)
-}
-
-// Properties of Sensitive Data Discovery.
-func (o LookupDefenderForStorageResultOutput) SensitiveDataDiscovery() SensitiveDataDiscoveryPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupDefenderForStorageResult) *SensitiveDataDiscoveryPropertiesResponse {
-		return v.SensitiveDataDiscovery
-	}).(SensitiveDataDiscoveryPropertiesResponsePtrOutput)
+// Defender for Storage resource properties.
+func (o LookupDefenderForStorageResultOutput) Properties() DefenderForStorageSettingPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupDefenderForStorageResult) DefenderForStorageSettingPropertiesResponse {
+		return v.Properties
+	}).(DefenderForStorageSettingPropertiesResponseOutput)
 }
 
 // Resource type
