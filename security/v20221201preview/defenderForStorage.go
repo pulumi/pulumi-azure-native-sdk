@@ -16,16 +16,10 @@ import (
 type DefenderForStorage struct {
 	pulumi.CustomResourceState
 
-	// Indicates whether Defender for Storage is enabled on this storage account.
-	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
-	// Properties of Malware Scanning.
-	MalwareScanning MalwareScanningPropertiesResponsePtrOutput `pulumi:"malwareScanning"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-	OverrideSubscriptionLevelSettings pulumi.BoolPtrOutput `pulumi:"overrideSubscriptionLevelSettings"`
-	// Properties of Sensitive Data Discovery.
-	SensitiveDataDiscovery SensitiveDataDiscoveryPropertiesResponsePtrOutput `pulumi:"sensitiveDataDiscovery"`
+	// Defender for Storage resource properties.
+	Properties DefenderForStorageSettingPropertiesResponseOutput `pulumi:"properties"`
 	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -79,32 +73,20 @@ func (DefenderForStorageState) ElementType() reflect.Type {
 }
 
 type defenderForStorageArgs struct {
-	// Indicates whether Defender for Storage is enabled on this storage account.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// Properties of Malware Scanning.
-	MalwareScanning *MalwareScanningProperties `pulumi:"malwareScanning"`
-	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-	OverrideSubscriptionLevelSettings *bool `pulumi:"overrideSubscriptionLevelSettings"`
+	// Defender for Storage resource properties.
+	Properties *DefenderForStorageSettingProperties `pulumi:"properties"`
 	// The identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
-	// Properties of Sensitive Data Discovery.
-	SensitiveDataDiscovery *SensitiveDataDiscoveryProperties `pulumi:"sensitiveDataDiscovery"`
 	// Defender for Storage setting name.
 	SettingName *string `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a DefenderForStorage resource.
 type DefenderForStorageArgs struct {
-	// Indicates whether Defender for Storage is enabled on this storage account.
-	IsEnabled pulumi.BoolPtrInput
-	// Properties of Malware Scanning.
-	MalwareScanning MalwareScanningPropertiesPtrInput
-	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-	OverrideSubscriptionLevelSettings pulumi.BoolPtrInput
+	// Defender for Storage resource properties.
+	Properties DefenderForStorageSettingPropertiesPtrInput
 	// The identifier of the resource.
 	ResourceId pulumi.StringInput
-	// Properties of Sensitive Data Discovery.
-	SensitiveDataDiscovery SensitiveDataDiscoveryPropertiesPtrInput
 	// Defender for Storage setting name.
 	SettingName pulumi.StringPtrInput
 }
@@ -146,31 +128,14 @@ func (o DefenderForStorageOutput) ToDefenderForStorageOutputWithContext(ctx cont
 	return o
 }
 
-// Indicates whether Defender for Storage is enabled on this storage account.
-func (o DefenderForStorageOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DefenderForStorage) pulumi.BoolPtrOutput { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Properties of Malware Scanning.
-func (o DefenderForStorageOutput) MalwareScanning() MalwareScanningPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *DefenderForStorage) MalwareScanningPropertiesResponsePtrOutput { return v.MalwareScanning }).(MalwareScanningPropertiesResponsePtrOutput)
-}
-
 // Resource name
 func (o DefenderForStorageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenderForStorage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-func (o DefenderForStorageOutput) OverrideSubscriptionLevelSettings() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DefenderForStorage) pulumi.BoolPtrOutput { return v.OverrideSubscriptionLevelSettings }).(pulumi.BoolPtrOutput)
-}
-
-// Properties of Sensitive Data Discovery.
-func (o DefenderForStorageOutput) SensitiveDataDiscovery() SensitiveDataDiscoveryPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *DefenderForStorage) SensitiveDataDiscoveryPropertiesResponsePtrOutput {
-		return v.SensitiveDataDiscovery
-	}).(SensitiveDataDiscoveryPropertiesResponsePtrOutput)
+// Defender for Storage resource properties.
+func (o DefenderForStorageOutput) Properties() DefenderForStorageSettingPropertiesResponseOutput {
+	return o.ApplyT(func(v *DefenderForStorage) DefenderForStorageSettingPropertiesResponseOutput { return v.Properties }).(DefenderForStorageSettingPropertiesResponseOutput)
 }
 
 // Resource type

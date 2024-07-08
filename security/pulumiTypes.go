@@ -15875,6 +15875,256 @@ func (o DefenderForServersGcpOfferingVmScannersPtrOutput) Enabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Defender for Storage resource properties.
+type DefenderForStorageSettingProperties struct {
+	// Indicates whether Defender for Storage is enabled on this storage account.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Properties of Malware Scanning.
+	MalwareScanning *MalwareScanningProperties `pulumi:"malwareScanning"`
+	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+	OverrideSubscriptionLevelSettings *bool `pulumi:"overrideSubscriptionLevelSettings"`
+	// Properties of Sensitive Data Discovery.
+	SensitiveDataDiscovery *SensitiveDataDiscoveryProperties `pulumi:"sensitiveDataDiscovery"`
+}
+
+// DefenderForStorageSettingPropertiesInput is an input type that accepts DefenderForStorageSettingPropertiesArgs and DefenderForStorageSettingPropertiesOutput values.
+// You can construct a concrete instance of `DefenderForStorageSettingPropertiesInput` via:
+//
+//	DefenderForStorageSettingPropertiesArgs{...}
+type DefenderForStorageSettingPropertiesInput interface {
+	pulumi.Input
+
+	ToDefenderForStorageSettingPropertiesOutput() DefenderForStorageSettingPropertiesOutput
+	ToDefenderForStorageSettingPropertiesOutputWithContext(context.Context) DefenderForStorageSettingPropertiesOutput
+}
+
+// Defender for Storage resource properties.
+type DefenderForStorageSettingPropertiesArgs struct {
+	// Indicates whether Defender for Storage is enabled on this storage account.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Properties of Malware Scanning.
+	MalwareScanning MalwareScanningPropertiesPtrInput `pulumi:"malwareScanning"`
+	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+	OverrideSubscriptionLevelSettings pulumi.BoolPtrInput `pulumi:"overrideSubscriptionLevelSettings"`
+	// Properties of Sensitive Data Discovery.
+	SensitiveDataDiscovery SensitiveDataDiscoveryPropertiesPtrInput `pulumi:"sensitiveDataDiscovery"`
+}
+
+func (DefenderForStorageSettingPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForStorageSettingProperties)(nil)).Elem()
+}
+
+func (i DefenderForStorageSettingPropertiesArgs) ToDefenderForStorageSettingPropertiesOutput() DefenderForStorageSettingPropertiesOutput {
+	return i.ToDefenderForStorageSettingPropertiesOutputWithContext(context.Background())
+}
+
+func (i DefenderForStorageSettingPropertiesArgs) ToDefenderForStorageSettingPropertiesOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForStorageSettingPropertiesOutput)
+}
+
+func (i DefenderForStorageSettingPropertiesArgs) ToDefenderForStorageSettingPropertiesPtrOutput() DefenderForStorageSettingPropertiesPtrOutput {
+	return i.ToDefenderForStorageSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DefenderForStorageSettingPropertiesArgs) ToDefenderForStorageSettingPropertiesPtrOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForStorageSettingPropertiesOutput).ToDefenderForStorageSettingPropertiesPtrOutputWithContext(ctx)
+}
+
+// DefenderForStorageSettingPropertiesPtrInput is an input type that accepts DefenderForStorageSettingPropertiesArgs, DefenderForStorageSettingPropertiesPtr and DefenderForStorageSettingPropertiesPtrOutput values.
+// You can construct a concrete instance of `DefenderForStorageSettingPropertiesPtrInput` via:
+//
+//	        DefenderForStorageSettingPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenderForStorageSettingPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDefenderForStorageSettingPropertiesPtrOutput() DefenderForStorageSettingPropertiesPtrOutput
+	ToDefenderForStorageSettingPropertiesPtrOutputWithContext(context.Context) DefenderForStorageSettingPropertiesPtrOutput
+}
+
+type defenderForStorageSettingPropertiesPtrType DefenderForStorageSettingPropertiesArgs
+
+func DefenderForStorageSettingPropertiesPtr(v *DefenderForStorageSettingPropertiesArgs) DefenderForStorageSettingPropertiesPtrInput {
+	return (*defenderForStorageSettingPropertiesPtrType)(v)
+}
+
+func (*defenderForStorageSettingPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForStorageSettingProperties)(nil)).Elem()
+}
+
+func (i *defenderForStorageSettingPropertiesPtrType) ToDefenderForStorageSettingPropertiesPtrOutput() DefenderForStorageSettingPropertiesPtrOutput {
+	return i.ToDefenderForStorageSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *defenderForStorageSettingPropertiesPtrType) ToDefenderForStorageSettingPropertiesPtrOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenderForStorageSettingPropertiesPtrOutput)
+}
+
+// Defender for Storage resource properties.
+type DefenderForStorageSettingPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DefenderForStorageSettingPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForStorageSettingProperties)(nil)).Elem()
+}
+
+func (o DefenderForStorageSettingPropertiesOutput) ToDefenderForStorageSettingPropertiesOutput() DefenderForStorageSettingPropertiesOutput {
+	return o
+}
+
+func (o DefenderForStorageSettingPropertiesOutput) ToDefenderForStorageSettingPropertiesOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesOutput {
+	return o
+}
+
+func (o DefenderForStorageSettingPropertiesOutput) ToDefenderForStorageSettingPropertiesPtrOutput() DefenderForStorageSettingPropertiesPtrOutput {
+	return o.ToDefenderForStorageSettingPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DefenderForStorageSettingPropertiesOutput) ToDefenderForStorageSettingPropertiesPtrOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenderForStorageSettingProperties) *DefenderForStorageSettingProperties {
+		return &v
+	}).(DefenderForStorageSettingPropertiesPtrOutput)
+}
+
+// Indicates whether Defender for Storage is enabled on this storage account.
+func (o DefenderForStorageSettingPropertiesOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingProperties) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Properties of Malware Scanning.
+func (o DefenderForStorageSettingPropertiesOutput) MalwareScanning() MalwareScanningPropertiesPtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingProperties) *MalwareScanningProperties { return v.MalwareScanning }).(MalwareScanningPropertiesPtrOutput)
+}
+
+// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+func (o DefenderForStorageSettingPropertiesOutput) OverrideSubscriptionLevelSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingProperties) *bool { return v.OverrideSubscriptionLevelSettings }).(pulumi.BoolPtrOutput)
+}
+
+// Properties of Sensitive Data Discovery.
+func (o DefenderForStorageSettingPropertiesOutput) SensitiveDataDiscovery() SensitiveDataDiscoveryPropertiesPtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingProperties) *SensitiveDataDiscoveryProperties {
+		return v.SensitiveDataDiscovery
+	}).(SensitiveDataDiscoveryPropertiesPtrOutput)
+}
+
+type DefenderForStorageSettingPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenderForStorageSettingPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenderForStorageSettingProperties)(nil)).Elem()
+}
+
+func (o DefenderForStorageSettingPropertiesPtrOutput) ToDefenderForStorageSettingPropertiesPtrOutput() DefenderForStorageSettingPropertiesPtrOutput {
+	return o
+}
+
+func (o DefenderForStorageSettingPropertiesPtrOutput) ToDefenderForStorageSettingPropertiesPtrOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesPtrOutput {
+	return o
+}
+
+func (o DefenderForStorageSettingPropertiesPtrOutput) Elem() DefenderForStorageSettingPropertiesOutput {
+	return o.ApplyT(func(v *DefenderForStorageSettingProperties) DefenderForStorageSettingProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DefenderForStorageSettingProperties
+		return ret
+	}).(DefenderForStorageSettingPropertiesOutput)
+}
+
+// Indicates whether Defender for Storage is enabled on this storage account.
+func (o DefenderForStorageSettingPropertiesPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForStorageSettingProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Properties of Malware Scanning.
+func (o DefenderForStorageSettingPropertiesPtrOutput) MalwareScanning() MalwareScanningPropertiesPtrOutput {
+	return o.ApplyT(func(v *DefenderForStorageSettingProperties) *MalwareScanningProperties {
+		if v == nil {
+			return nil
+		}
+		return v.MalwareScanning
+	}).(MalwareScanningPropertiesPtrOutput)
+}
+
+// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+func (o DefenderForStorageSettingPropertiesPtrOutput) OverrideSubscriptionLevelSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DefenderForStorageSettingProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideSubscriptionLevelSettings
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Properties of Sensitive Data Discovery.
+func (o DefenderForStorageSettingPropertiesPtrOutput) SensitiveDataDiscovery() SensitiveDataDiscoveryPropertiesPtrOutput {
+	return o.ApplyT(func(v *DefenderForStorageSettingProperties) *SensitiveDataDiscoveryProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SensitiveDataDiscovery
+	}).(SensitiveDataDiscoveryPropertiesPtrOutput)
+}
+
+// Defender for Storage resource properties.
+type DefenderForStorageSettingPropertiesResponse struct {
+	// Indicates whether Defender for Storage is enabled on this storage account.
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// Properties of Malware Scanning.
+	MalwareScanning *MalwareScanningPropertiesResponse `pulumi:"malwareScanning"`
+	// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+	OverrideSubscriptionLevelSettings *bool `pulumi:"overrideSubscriptionLevelSettings"`
+	// Properties of Sensitive Data Discovery.
+	SensitiveDataDiscovery *SensitiveDataDiscoveryPropertiesResponse `pulumi:"sensitiveDataDiscovery"`
+}
+
+// Defender for Storage resource properties.
+type DefenderForStorageSettingPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DefenderForStorageSettingPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenderForStorageSettingPropertiesResponse)(nil)).Elem()
+}
+
+func (o DefenderForStorageSettingPropertiesResponseOutput) ToDefenderForStorageSettingPropertiesResponseOutput() DefenderForStorageSettingPropertiesResponseOutput {
+	return o
+}
+
+func (o DefenderForStorageSettingPropertiesResponseOutput) ToDefenderForStorageSettingPropertiesResponseOutputWithContext(ctx context.Context) DefenderForStorageSettingPropertiesResponseOutput {
+	return o
+}
+
+// Indicates whether Defender for Storage is enabled on this storage account.
+func (o DefenderForStorageSettingPropertiesResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingPropertiesResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Properties of Malware Scanning.
+func (o DefenderForStorageSettingPropertiesResponseOutput) MalwareScanning() MalwareScanningPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingPropertiesResponse) *MalwareScanningPropertiesResponse {
+		return v.MalwareScanning
+	}).(MalwareScanningPropertiesResponsePtrOutput)
+}
+
+// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+func (o DefenderForStorageSettingPropertiesResponseOutput) OverrideSubscriptionLevelSettings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingPropertiesResponse) *bool { return v.OverrideSubscriptionLevelSettings }).(pulumi.BoolPtrOutput)
+}
+
+// Properties of Sensitive Data Discovery.
+func (o DefenderForStorageSettingPropertiesResponseOutput) SensitiveDataDiscovery() SensitiveDataDiscoveryPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DefenderForStorageSettingPropertiesResponse) *SensitiveDataDiscoveryPropertiesResponse {
+		return v.SensitiveDataDiscovery
+	}).(SensitiveDataDiscoveryPropertiesResponsePtrOutput)
+}
+
 // A custom alert rule that checks if a value (depends on the custom alert type) is denied.
 type DenylistCustomAlertRule struct {
 	// The values to deny. The format of the values depends on the rule type.
@@ -22612,10 +22862,8 @@ func (o JitNetworkAccessRequestVirtualMachineResponseArrayOutput) Index(i pulumi
 
 // Properties of Malware Scanning.
 type MalwareScanningProperties struct {
-	// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-	CapGBPerMonth *int `pulumi:"capGBPerMonth"`
-	// Indicates whether On Upload malware scanning should be enabled.
-	IsEnabled *bool `pulumi:"isEnabled"`
+	// Properties of On Upload malware scanning.
+	OnUpload *OnUploadProperties `pulumi:"onUpload"`
 	// Optional. Resource id of an Event Grid Topic to send scan results to.
 	ScanResultsEventGridTopicResourceId *string `pulumi:"scanResultsEventGridTopicResourceId"`
 }
@@ -22633,10 +22881,8 @@ type MalwareScanningPropertiesInput interface {
 
 // Properties of Malware Scanning.
 type MalwareScanningPropertiesArgs struct {
-	// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-	CapGBPerMonth pulumi.IntPtrInput `pulumi:"capGBPerMonth"`
-	// Indicates whether On Upload malware scanning should be enabled.
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// Properties of On Upload malware scanning.
+	OnUpload OnUploadPropertiesPtrInput `pulumi:"onUpload"`
 	// Optional. Resource id of an Event Grid Topic to send scan results to.
 	ScanResultsEventGridTopicResourceId pulumi.StringPtrInput `pulumi:"scanResultsEventGridTopicResourceId"`
 }
@@ -22719,14 +22965,9 @@ func (o MalwareScanningPropertiesOutput) ToMalwareScanningPropertiesPtrOutputWit
 	}).(MalwareScanningPropertiesPtrOutput)
 }
 
-// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-func (o MalwareScanningPropertiesOutput) CapGBPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MalwareScanningProperties) *int { return v.CapGBPerMonth }).(pulumi.IntPtrOutput)
-}
-
-// Indicates whether On Upload malware scanning should be enabled.
-func (o MalwareScanningPropertiesOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MalwareScanningProperties) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+// Properties of On Upload malware scanning.
+func (o MalwareScanningPropertiesOutput) OnUpload() OnUploadPropertiesPtrOutput {
+	return o.ApplyT(func(v MalwareScanningProperties) *OnUploadProperties { return v.OnUpload }).(OnUploadPropertiesPtrOutput)
 }
 
 // Optional. Resource id of an Event Grid Topic to send scan results to.
@@ -22758,24 +22999,14 @@ func (o MalwareScanningPropertiesPtrOutput) Elem() MalwareScanningPropertiesOutp
 	}).(MalwareScanningPropertiesOutput)
 }
 
-// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-func (o MalwareScanningPropertiesPtrOutput) CapGBPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MalwareScanningProperties) *int {
+// Properties of On Upload malware scanning.
+func (o MalwareScanningPropertiesPtrOutput) OnUpload() OnUploadPropertiesPtrOutput {
+	return o.ApplyT(func(v *MalwareScanningProperties) *OnUploadProperties {
 		if v == nil {
 			return nil
 		}
-		return v.CapGBPerMonth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates whether On Upload malware scanning should be enabled.
-func (o MalwareScanningPropertiesPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MalwareScanningProperties) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
+		return v.OnUpload
+	}).(OnUploadPropertiesPtrOutput)
 }
 
 // Optional. Resource id of an Event Grid Topic to send scan results to.
@@ -22790,10 +23021,8 @@ func (o MalwareScanningPropertiesPtrOutput) ScanResultsEventGridTopicResourceId(
 
 // Properties of Malware Scanning.
 type MalwareScanningPropertiesResponse struct {
-	// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-	CapGBPerMonth *int `pulumi:"capGBPerMonth"`
-	// Indicates whether On Upload malware scanning should be enabled.
-	IsEnabled *bool `pulumi:"isEnabled"`
+	// Properties of On Upload malware scanning.
+	OnUpload *OnUploadPropertiesResponse `pulumi:"onUpload"`
 	// Upon failure or partial success. Additional data describing Malware Scanning enable/disable operation.
 	OperationStatus OperationStatusResponse `pulumi:"operationStatus"`
 	// Optional. Resource id of an Event Grid Topic to send scan results to.
@@ -22815,14 +23044,9 @@ func (o MalwareScanningPropertiesResponseOutput) ToMalwareScanningPropertiesResp
 	return o
 }
 
-// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-func (o MalwareScanningPropertiesResponseOutput) CapGBPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MalwareScanningPropertiesResponse) *int { return v.CapGBPerMonth }).(pulumi.IntPtrOutput)
-}
-
-// Indicates whether On Upload malware scanning should be enabled.
-func (o MalwareScanningPropertiesResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MalwareScanningPropertiesResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+// Properties of On Upload malware scanning.
+func (o MalwareScanningPropertiesResponseOutput) OnUpload() OnUploadPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v MalwareScanningPropertiesResponse) *OnUploadPropertiesResponse { return v.OnUpload }).(OnUploadPropertiesResponsePtrOutput)
 }
 
 // Upon failure or partial success. Additional data describing Malware Scanning enable/disable operation.
@@ -22859,24 +23083,14 @@ func (o MalwareScanningPropertiesResponsePtrOutput) Elem() MalwareScanningProper
 	}).(MalwareScanningPropertiesResponseOutput)
 }
 
-// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-func (o MalwareScanningPropertiesResponsePtrOutput) CapGBPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MalwareScanningPropertiesResponse) *int {
+// Properties of On Upload malware scanning.
+func (o MalwareScanningPropertiesResponsePtrOutput) OnUpload() OnUploadPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *MalwareScanningPropertiesResponse) *OnUploadPropertiesResponse {
 		if v == nil {
 			return nil
 		}
-		return v.CapGBPerMonth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Indicates whether On Upload malware scanning should be enabled.
-func (o MalwareScanningPropertiesResponsePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MalwareScanningPropertiesResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IsEnabled
-	}).(pulumi.BoolPtrOutput)
+		return v.OnUpload
+	}).(OnUploadPropertiesResponsePtrOutput)
 }
 
 // Upon failure or partial success. Additional data describing Malware Scanning enable/disable operation.
@@ -23229,6 +23443,242 @@ func (o OnPremiseSqlResourceDetailsResponseOutput) Vmuuid() pulumi.StringOutput 
 // Azure resource Id of the workspace the machine is attached to
 func (o OnPremiseSqlResourceDetailsResponseOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v OnPremiseSqlResourceDetailsResponse) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+// Properties of On Upload malware scanning.
+type OnUploadProperties struct {
+	// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+	CapGBPerMonth *int `pulumi:"capGBPerMonth"`
+	// Indicates whether On Upload malware scanning should be enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
+}
+
+// OnUploadPropertiesInput is an input type that accepts OnUploadPropertiesArgs and OnUploadPropertiesOutput values.
+// You can construct a concrete instance of `OnUploadPropertiesInput` via:
+//
+//	OnUploadPropertiesArgs{...}
+type OnUploadPropertiesInput interface {
+	pulumi.Input
+
+	ToOnUploadPropertiesOutput() OnUploadPropertiesOutput
+	ToOnUploadPropertiesOutputWithContext(context.Context) OnUploadPropertiesOutput
+}
+
+// Properties of On Upload malware scanning.
+type OnUploadPropertiesArgs struct {
+	// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+	CapGBPerMonth pulumi.IntPtrInput `pulumi:"capGBPerMonth"`
+	// Indicates whether On Upload malware scanning should be enabled.
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+}
+
+func (OnUploadPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnUploadProperties)(nil)).Elem()
+}
+
+func (i OnUploadPropertiesArgs) ToOnUploadPropertiesOutput() OnUploadPropertiesOutput {
+	return i.ToOnUploadPropertiesOutputWithContext(context.Background())
+}
+
+func (i OnUploadPropertiesArgs) ToOnUploadPropertiesOutputWithContext(ctx context.Context) OnUploadPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnUploadPropertiesOutput)
+}
+
+func (i OnUploadPropertiesArgs) ToOnUploadPropertiesPtrOutput() OnUploadPropertiesPtrOutput {
+	return i.ToOnUploadPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OnUploadPropertiesArgs) ToOnUploadPropertiesPtrOutputWithContext(ctx context.Context) OnUploadPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnUploadPropertiesOutput).ToOnUploadPropertiesPtrOutputWithContext(ctx)
+}
+
+// OnUploadPropertiesPtrInput is an input type that accepts OnUploadPropertiesArgs, OnUploadPropertiesPtr and OnUploadPropertiesPtrOutput values.
+// You can construct a concrete instance of `OnUploadPropertiesPtrInput` via:
+//
+//	        OnUploadPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OnUploadPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOnUploadPropertiesPtrOutput() OnUploadPropertiesPtrOutput
+	ToOnUploadPropertiesPtrOutputWithContext(context.Context) OnUploadPropertiesPtrOutput
+}
+
+type onUploadPropertiesPtrType OnUploadPropertiesArgs
+
+func OnUploadPropertiesPtr(v *OnUploadPropertiesArgs) OnUploadPropertiesPtrInput {
+	return (*onUploadPropertiesPtrType)(v)
+}
+
+func (*onUploadPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnUploadProperties)(nil)).Elem()
+}
+
+func (i *onUploadPropertiesPtrType) ToOnUploadPropertiesPtrOutput() OnUploadPropertiesPtrOutput {
+	return i.ToOnUploadPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *onUploadPropertiesPtrType) ToOnUploadPropertiesPtrOutputWithContext(ctx context.Context) OnUploadPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OnUploadPropertiesPtrOutput)
+}
+
+// Properties of On Upload malware scanning.
+type OnUploadPropertiesOutput struct{ *pulumi.OutputState }
+
+func (OnUploadPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnUploadProperties)(nil)).Elem()
+}
+
+func (o OnUploadPropertiesOutput) ToOnUploadPropertiesOutput() OnUploadPropertiesOutput {
+	return o
+}
+
+func (o OnUploadPropertiesOutput) ToOnUploadPropertiesOutputWithContext(ctx context.Context) OnUploadPropertiesOutput {
+	return o
+}
+
+func (o OnUploadPropertiesOutput) ToOnUploadPropertiesPtrOutput() OnUploadPropertiesPtrOutput {
+	return o.ToOnUploadPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OnUploadPropertiesOutput) ToOnUploadPropertiesPtrOutputWithContext(ctx context.Context) OnUploadPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnUploadProperties) *OnUploadProperties {
+		return &v
+	}).(OnUploadPropertiesPtrOutput)
+}
+
+// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+func (o OnUploadPropertiesOutput) CapGBPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OnUploadProperties) *int { return v.CapGBPerMonth }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether On Upload malware scanning should be enabled.
+func (o OnUploadPropertiesOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OnUploadProperties) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type OnUploadPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OnUploadPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnUploadProperties)(nil)).Elem()
+}
+
+func (o OnUploadPropertiesPtrOutput) ToOnUploadPropertiesPtrOutput() OnUploadPropertiesPtrOutput {
+	return o
+}
+
+func (o OnUploadPropertiesPtrOutput) ToOnUploadPropertiesPtrOutputWithContext(ctx context.Context) OnUploadPropertiesPtrOutput {
+	return o
+}
+
+func (o OnUploadPropertiesPtrOutput) Elem() OnUploadPropertiesOutput {
+	return o.ApplyT(func(v *OnUploadProperties) OnUploadProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OnUploadProperties
+		return ret
+	}).(OnUploadPropertiesOutput)
+}
+
+// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+func (o OnUploadPropertiesPtrOutput) CapGBPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OnUploadProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CapGBPerMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether On Upload malware scanning should be enabled.
+func (o OnUploadPropertiesPtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OnUploadProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Properties of On Upload malware scanning.
+type OnUploadPropertiesResponse struct {
+	// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+	CapGBPerMonth *int `pulumi:"capGBPerMonth"`
+	// Indicates whether On Upload malware scanning should be enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
+}
+
+// Properties of On Upload malware scanning.
+type OnUploadPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OnUploadPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnUploadPropertiesResponse)(nil)).Elem()
+}
+
+func (o OnUploadPropertiesResponseOutput) ToOnUploadPropertiesResponseOutput() OnUploadPropertiesResponseOutput {
+	return o
+}
+
+func (o OnUploadPropertiesResponseOutput) ToOnUploadPropertiesResponseOutputWithContext(ctx context.Context) OnUploadPropertiesResponseOutput {
+	return o
+}
+
+// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+func (o OnUploadPropertiesResponseOutput) CapGBPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OnUploadPropertiesResponse) *int { return v.CapGBPerMonth }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether On Upload malware scanning should be enabled.
+func (o OnUploadPropertiesResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OnUploadPropertiesResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type OnUploadPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OnUploadPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnUploadPropertiesResponse)(nil)).Elem()
+}
+
+func (o OnUploadPropertiesResponsePtrOutput) ToOnUploadPropertiesResponsePtrOutput() OnUploadPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OnUploadPropertiesResponsePtrOutput) ToOnUploadPropertiesResponsePtrOutputWithContext(ctx context.Context) OnUploadPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OnUploadPropertiesResponsePtrOutput) Elem() OnUploadPropertiesResponseOutput {
+	return o.ApplyT(func(v *OnUploadPropertiesResponse) OnUploadPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OnUploadPropertiesResponse
+		return ret
+	}).(OnUploadPropertiesResponseOutput)
+}
+
+// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+func (o OnUploadPropertiesResponsePtrOutput) CapGBPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OnUploadPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CapGBPerMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether On Upload malware scanning should be enabled.
+func (o OnUploadPropertiesResponsePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OnUploadPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A status describing the success/failure of the extension's enablement/disablement operation.
@@ -29047,6 +29497,9 @@ func init() {
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingVaAutoProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingVmScannersOutput{})
 	pulumi.RegisterOutputType(DefenderForServersGcpOfferingVmScannersPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForStorageSettingPropertiesOutput{})
+	pulumi.RegisterOutputType(DefenderForStorageSettingPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DefenderForStorageSettingPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleArrayOutput{})
 	pulumi.RegisterOutputType(DenylistCustomAlertRuleResponseOutput{})
@@ -29157,6 +29610,10 @@ func init() {
 	pulumi.RegisterOutputType(OnPremiseResourceDetailsResponseOutput{})
 	pulumi.RegisterOutputType(OnPremiseSqlResourceDetailsOutput{})
 	pulumi.RegisterOutputType(OnPremiseSqlResourceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(OnUploadPropertiesOutput{})
+	pulumi.RegisterOutputType(OnUploadPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OnUploadPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OnUploadPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(OperationStatusResponseOutput{})
 	pulumi.RegisterOutputType(OperationStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(PathRecommendationOutput{})
