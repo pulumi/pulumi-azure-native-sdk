@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Blob within a Storage Container.
+// Manages a Blob within a Storage Container. For the supported combinations of properties and features please see [here](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-feature-support-in-storage-accounts).
 type Blob struct {
 	pulumi.CustomResourceState
 
-	// The access tier of the storage blob.
-	AccessTier BlobAccessTierOutput `pulumi:"accessTier"`
+	// The access tier of the storage blob. Only supported for standard storage accounts, not premium.
+	AccessTier BlobAccessTierPtrOutput `pulumi:"accessTier"`
 	// The MD5 sum of the blob contents.
 	ContentMd5 pulumi.StringPtrOutput `pulumi:"contentMd5"`
 	// The content type of the storage blob.
@@ -84,7 +84,7 @@ func (BlobState) ElementType() reflect.Type {
 }
 
 type blobArgs struct {
-	// The access tier of the storage blob.
+	// The access tier of the storage blob. Only supported for standard storage accounts, not premium.
 	AccessTier *BlobAccessTier `pulumi:"accessTier"`
 	// Specifies the storage account in which to create the storage container.
 	AccountName string `pulumi:"accountName"`
@@ -108,7 +108,7 @@ type blobArgs struct {
 
 // The set of arguments for constructing a Blob resource.
 type BlobArgs struct {
-	// The access tier of the storage blob.
+	// The access tier of the storage blob. Only supported for standard storage accounts, not premium.
 	AccessTier BlobAccessTierPtrInput
 	// Specifies the storage account in which to create the storage container.
 	AccountName pulumi.StringInput
@@ -167,9 +167,9 @@ func (o BlobOutput) ToBlobOutputWithContext(ctx context.Context) BlobOutput {
 	return o
 }
 
-// The access tier of the storage blob.
-func (o BlobOutput) AccessTier() BlobAccessTierOutput {
-	return o.ApplyT(func(v *Blob) BlobAccessTierOutput { return v.AccessTier }).(BlobAccessTierOutput)
+// The access tier of the storage blob. Only supported for standard storage accounts, not premium.
+func (o BlobOutput) AccessTier() BlobAccessTierPtrOutput {
+	return o.ApplyT(func(v *Blob) BlobAccessTierPtrOutput { return v.AccessTier }).(BlobAccessTierPtrOutput)
 }
 
 // The MD5 sum of the blob contents.
