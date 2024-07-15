@@ -57,6 +57,9 @@ func NewGuestConfigurationAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20210125:GuestConfigurationAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

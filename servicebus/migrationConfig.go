@@ -15,7 +15,7 @@ import (
 // Single item in List or Get Migration Config operation
 // Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
 //
-// Other available API versions: 2022-10-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
 type MigrationConfig struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +79,9 @@ func NewMigrationConfig(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20221001preview:MigrationConfig"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20230101preview:MigrationConfig"),
 		},
 	})
 	opts = append(opts, aliases)

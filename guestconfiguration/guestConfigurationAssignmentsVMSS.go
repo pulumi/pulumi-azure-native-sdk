@@ -14,6 +14,8 @@ import (
 
 // Guest configuration assignment is an association between a machine and guest configuration.
 // Azure REST API version: 2022-01-25.
+//
+// Other available API versions: 2024-04-05.
 type GuestConfigurationAssignmentsVMSS struct {
 	pulumi.CustomResourceState
 
@@ -45,6 +47,9 @@ func NewGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20220125:GuestConfigurationAssignmentsVMSS"),
+		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationAssignmentsVMSS"),
 		},
 	})
 	opts = append(opts, aliases)

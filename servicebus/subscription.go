@@ -15,7 +15,7 @@ import (
 // Description of subscription resource.
 // Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
 //
-// Other available API versions: 2015-08-01, 2022-10-01-preview.
+// Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
 type Subscription struct {
 	pulumi.CustomResourceState
 
@@ -110,6 +110,9 @@ func NewSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicebus/v20221001preview:Subscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20230101preview:Subscription"),
 		},
 	})
 	opts = append(opts, aliases)

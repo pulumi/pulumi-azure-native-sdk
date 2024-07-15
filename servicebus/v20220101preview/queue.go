@@ -111,6 +111,9 @@ func NewQueue(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20221001preview:Queue"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20230101preview:Queue"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

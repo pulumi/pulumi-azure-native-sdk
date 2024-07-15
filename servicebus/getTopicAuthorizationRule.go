@@ -14,7 +14,7 @@ import (
 // Returns the specified authorization rule.
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview.
+// Other available API versions: 2014-09-01, 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
 func LookupTopicAuthorizationRule(ctx *pulumi.Context, args *LookupTopicAuthorizationRuleArgs, opts ...pulumi.InvokeOption) (*LookupTopicAuthorizationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicAuthorizationRuleResult
