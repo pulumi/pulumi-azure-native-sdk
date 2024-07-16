@@ -74,6 +74,9 @@ func NewPrivateRecordSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20200101:PrivateRecordSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240601:PrivateRecordSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

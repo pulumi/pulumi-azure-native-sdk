@@ -8354,7 +8354,7 @@ func (val *MsTeamsChannelProperties) Defaults() *MsTeamsChannelProperties {
 	}
 	tmp := *val
 	if tmp.DeploymentEnvironment == nil {
-		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
+		deploymentEnvironment_ := "CommercialDeployment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
 	if tmp.EnableCalling == nil {
@@ -8398,7 +8398,7 @@ func (val *MsTeamsChannelPropertiesArgs) Defaults() *MsTeamsChannelPropertiesArg
 	}
 	tmp := *val
 	if tmp.DeploymentEnvironment == nil {
-		tmp.DeploymentEnvironment = pulumi.StringPtr("FallbackDeploymentEnvironment")
+		tmp.DeploymentEnvironment = pulumi.StringPtr("CommercialDeployment")
 	}
 	if tmp.EnableCalling == nil {
 		tmp.EnableCalling = pulumi.BoolPtr(false)
@@ -8620,7 +8620,7 @@ func (val *MsTeamsChannelPropertiesResponse) Defaults() *MsTeamsChannelPropertie
 	}
 	tmp := *val
 	if tmp.DeploymentEnvironment == nil {
-		deploymentEnvironment_ := "FallbackDeploymentEnvironment"
+		deploymentEnvironment_ := "CommercialDeployment"
 		tmp.DeploymentEnvironment = &deploymentEnvironment_
 	}
 	if tmp.EnableCalling == nil {

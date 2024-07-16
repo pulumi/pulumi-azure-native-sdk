@@ -48,6 +48,9 @@ func NewGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20200625:GuestConfigurationConnectedVMwarevSphereAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationConnectedVMwarevSphereAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

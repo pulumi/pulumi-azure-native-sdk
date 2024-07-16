@@ -45,6 +45,9 @@ func NewGuestConfigurationAssignmentsVMSS(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:guestconfiguration:GuestConfigurationAssignmentsVMSS"),
 		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationAssignmentsVMSS"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

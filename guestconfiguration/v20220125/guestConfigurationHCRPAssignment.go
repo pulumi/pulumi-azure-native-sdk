@@ -54,6 +54,9 @@ func NewGuestConfigurationHCRPAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:guestconfiguration/v20210125:GuestConfigurationHCRPAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:guestconfiguration/v20240405:GuestConfigurationHCRPAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 // Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 // Azure REST API version: 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview.
 func LookupDisasterRecoveryConfig(ctx *pulumi.Context, args *LookupDisasterRecoveryConfigArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryConfigResult

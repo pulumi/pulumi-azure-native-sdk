@@ -13,6 +13,8 @@ import (
 
 // Get information about a guest configuration assignment
 // Azure REST API version: 2022-01-25.
+//
+// Other available API versions: 2024-04-05.
 func LookupGuestConfigurationConnectedVMwarevSphereAssignment(ctx *pulumi.Context, args *LookupGuestConfigurationConnectedVMwarevSphereAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestConfigurationConnectedVMwarevSphereAssignmentResult
