@@ -15,7 +15,7 @@ import (
 // Backup policy information
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2021-04-01, 2021-04-01-preview, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview.
+// Other available API versions: 2021-04-01, 2021-04-01-preview, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-03-01-preview.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
@@ -137,6 +137,9 @@ func NewBackupPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20231101preview:BackupPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240301preview:BackupPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

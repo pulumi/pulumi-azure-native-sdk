@@ -15,7 +15,7 @@ import (
 // The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
 // Azure REST API version: 2024-03-02-preview.
 //
-// Other available API versions: 2024-04-02-preview.
+// Other available API versions: 2024-04-02-preview, 2024-05-02-preview.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20240402preview:LoadBalancer"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20240502preview:LoadBalancer"),
 		},
 	})
 	opts = append(opts, aliases)

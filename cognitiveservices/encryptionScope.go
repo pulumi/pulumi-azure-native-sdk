@@ -15,7 +15,7 @@ import (
 // Cognitive Services EncryptionScope
 // Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2024-04-01-preview.
+// Other available API versions: 2024-04-01-preview, 2024-06-01-preview.
 type EncryptionScope struct {
 	pulumi.CustomResourceState
 
@@ -55,6 +55,9 @@ func NewEncryptionScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20240401preview:EncryptionScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:EncryptionScope"),
 		},
 	})
 	opts = append(opts, aliases)

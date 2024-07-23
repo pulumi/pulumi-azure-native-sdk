@@ -53,8 +53,12 @@ type LookupFleetResult struct {
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Specifies the time at which the Compute Fleet is created.
+	TimeCreated string `pulumi:"timeCreated"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Specifies the ID which uniquely identifies a Compute Fleet.
+	UniqueId string `pulumi:"uniqueId"`
 	// List of VM sizes supported for Compute Fleet
 	VmSizesProfile []VmSizeProfileResponse `pulumi:"vmSizesProfile"`
 	// Zones in which the Compute Fleet is available
@@ -155,9 +159,19 @@ func (o LookupFleetResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFleetResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// Specifies the time at which the Compute Fleet is created.
+func (o LookupFleetResultOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetResult) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFleetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Specifies the ID which uniquely identifies a Compute Fleet.
+func (o LookupFleetResultOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetResult) string { return v.UniqueId }).(pulumi.StringOutput)
 }
 
 // List of VM sizes supported for Compute Fleet

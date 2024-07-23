@@ -65,7 +65,7 @@ type LookupDatabaseAccountResult struct {
 	EnableAnalyticalStorage *bool `pulumi:"enableAnalyticalStorage"`
 	// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
 	EnableAutomaticFailover *bool `pulumi:"enableAutomaticFailover"`
-	// Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account
+	// Flag to indicate enabling/disabling of Burst Capacity feature on the account
 	EnableBurstCapacity *bool `pulumi:"enableBurstCapacity"`
 	// Enables the cassandra connector on the Cosmos DB C* account
 	EnableCassandraConnector *bool `pulumi:"enableCassandraConnector"`
@@ -270,7 +270,7 @@ func (o LookupDatabaseAccountResultOutput) EnableAutomaticFailover() pulumi.Bool
 	return o.ApplyT(func(v LookupDatabaseAccountResult) *bool { return v.EnableAutomaticFailover }).(pulumi.BoolPtrOutput)
 }
 
-// Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account
+// Flag to indicate enabling/disabling of Burst Capacity feature on the account
 func (o LookupDatabaseAccountResultOutput) EnableBurstCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseAccountResult) *bool { return v.EnableBurstCapacity }).(pulumi.BoolPtrOutput)
 }
