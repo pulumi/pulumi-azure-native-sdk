@@ -179,6 +179,9 @@ func NewPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20231101preview:Pool"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240301preview:Pool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

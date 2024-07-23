@@ -2327,6 +2327,59 @@ func (o RegistrationInfoResponsePtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents a Minimal set of properties for RegistrationToken definition.
+type RegistrationTokenMinimalResponse struct {
+	// Expiration time of registration token.
+	ExpirationTime *string `pulumi:"expirationTime"`
+	// The registration token base64 encoded string.
+	Token *string `pulumi:"token"`
+}
+
+// Represents a Minimal set of properties for RegistrationToken definition.
+type RegistrationTokenMinimalResponseOutput struct{ *pulumi.OutputState }
+
+func (RegistrationTokenMinimalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistrationTokenMinimalResponse)(nil)).Elem()
+}
+
+func (o RegistrationTokenMinimalResponseOutput) ToRegistrationTokenMinimalResponseOutput() RegistrationTokenMinimalResponseOutput {
+	return o
+}
+
+func (o RegistrationTokenMinimalResponseOutput) ToRegistrationTokenMinimalResponseOutputWithContext(ctx context.Context) RegistrationTokenMinimalResponseOutput {
+	return o
+}
+
+// Expiration time of registration token.
+func (o RegistrationTokenMinimalResponseOutput) ExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistrationTokenMinimalResponse) *string { return v.ExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// The registration token base64 encoded string.
+func (o RegistrationTokenMinimalResponseOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegistrationTokenMinimalResponse) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+type RegistrationTokenMinimalResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RegistrationTokenMinimalResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegistrationTokenMinimalResponse)(nil)).Elem()
+}
+
+func (o RegistrationTokenMinimalResponseArrayOutput) ToRegistrationTokenMinimalResponseArrayOutput() RegistrationTokenMinimalResponseArrayOutput {
+	return o
+}
+
+func (o RegistrationTokenMinimalResponseArrayOutput) ToRegistrationTokenMinimalResponseArrayOutputWithContext(ctx context.Context) RegistrationTokenMinimalResponseArrayOutput {
+	return o
+}
+
+func (o RegistrationTokenMinimalResponseArrayOutput) Index(i pulumi.IntInput) RegistrationTokenMinimalResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationTokenMinimalResponse {
+		return vs[0].([]RegistrationTokenMinimalResponse)[vs[1].(int)]
+	}).(RegistrationTokenMinimalResponseOutput)
+}
+
 type ResourceModelWithAllowedPropertySetIdentity struct {
 	// The identity type.
 	Type *ResourceIdentityType `pulumi:"type"`
@@ -4144,6 +4197,8 @@ func init() {
 	pulumi.RegisterOutputType(RegistrationInfoPtrOutput{})
 	pulumi.RegisterOutputType(RegistrationInfoResponseOutput{})
 	pulumi.RegisterOutputType(RegistrationInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(RegistrationTokenMinimalResponseOutput{})
+	pulumi.RegisterOutputType(RegistrationTokenMinimalResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceModelWithAllowedPropertySetIdentityOutput{})
 	pulumi.RegisterOutputType(ResourceModelWithAllowedPropertySetIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceModelWithAllowedPropertySetPlanOutput{})

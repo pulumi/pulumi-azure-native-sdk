@@ -14,7 +14,7 @@ import (
 // Returns a Cognitive Services account specified by the parameters.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview.
+// Other available API versions: 2017-04-18, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview.
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult
