@@ -65,6 +65,9 @@ func NewDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20240401preview:Deployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:Deployment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

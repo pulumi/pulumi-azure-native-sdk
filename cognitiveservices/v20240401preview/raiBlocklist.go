@@ -50,6 +50,9 @@ func NewRaiBlocklist(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20231001preview:RaiBlocklist"),
 		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20240601preview:RaiBlocklist"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

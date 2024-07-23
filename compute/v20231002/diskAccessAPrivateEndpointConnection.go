@@ -75,6 +75,9 @@ func NewDiskAccessAPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230402:DiskAccessAPrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20240302:DiskAccessAPrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

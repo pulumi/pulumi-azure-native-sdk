@@ -81,6 +81,9 @@ func NewDiskAccess(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20231002:DiskAccess"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20240302:DiskAccess"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

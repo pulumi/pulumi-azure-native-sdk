@@ -66,6 +66,9 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:scvmm/v20231007:VirtualNetwork"),
 		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20240601:VirtualNetwork"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

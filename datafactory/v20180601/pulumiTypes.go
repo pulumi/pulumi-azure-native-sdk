@@ -29616,6 +29616,8 @@ type AzureTableStorageLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -29626,6 +29628,8 @@ type AzureTableStorageLinkedService struct {
 	SasToken *AzureKeyVaultSecretReference `pulumi:"sasToken"`
 	// SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri interface{} `pulumi:"sasUri"`
+	// Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+	ServiceEndpoint interface{} `pulumi:"serviceEndpoint"`
 	// Type of linked service.
 	// Expected value is 'AzureTableStorage'.
 	Type string `pulumi:"type"`
@@ -29652,6 +29656,8 @@ type AzureTableStorageLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -29662,6 +29668,8 @@ type AzureTableStorageLinkedServiceArgs struct {
 	SasToken AzureKeyVaultSecretReferencePtrInput `pulumi:"sasToken"`
 	// SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri pulumi.Input `pulumi:"sasUri"`
+	// Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+	ServiceEndpoint pulumi.Input `pulumi:"serviceEndpoint"`
 	// Type of linked service.
 	// Expected value is 'AzureTableStorage'.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -29714,6 +29722,11 @@ func (o AzureTableStorageLinkedServiceOutput) ConnectionString() pulumi.AnyOutpu
 	return o.ApplyT(func(v AzureTableStorageLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The credential reference containing authentication information.
+func (o AzureTableStorageLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v AzureTableStorageLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
+}
+
 // Linked service description.
 func (o AzureTableStorageLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureTableStorageLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -29739,6 +29752,11 @@ func (o AzureTableStorageLinkedServiceOutput) SasUri() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureTableStorageLinkedService) interface{} { return v.SasUri }).(pulumi.AnyOutput)
 }
 
+// Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+func (o AzureTableStorageLinkedServiceOutput) ServiceEndpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureTableStorageLinkedService) interface{} { return v.ServiceEndpoint }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AzureTableStorage'.
 func (o AzureTableStorageLinkedServiceOutput) Type() pulumi.StringOutput {
@@ -29755,6 +29773,8 @@ type AzureTableStorageLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -29765,6 +29785,8 @@ type AzureTableStorageLinkedServiceResponse struct {
 	SasToken *AzureKeyVaultSecretReferenceResponse `pulumi:"sasToken"`
 	// SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri interface{} `pulumi:"sasUri"`
+	// Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+	ServiceEndpoint interface{} `pulumi:"serviceEndpoint"`
 	// Type of linked service.
 	// Expected value is 'AzureTableStorage'.
 	Type string `pulumi:"type"`
@@ -29809,6 +29831,11 @@ func (o AzureTableStorageLinkedServiceResponseOutput) ConnectionString() pulumi.
 	return o.ApplyT(func(v AzureTableStorageLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The credential reference containing authentication information.
+func (o AzureTableStorageLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v AzureTableStorageLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
+}
+
 // Linked service description.
 func (o AzureTableStorageLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureTableStorageLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -29836,6 +29863,11 @@ func (o AzureTableStorageLinkedServiceResponseOutput) SasToken() AzureKeyVaultSe
 // SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o AzureTableStorageLinkedServiceResponseOutput) SasUri() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureTableStorageLinkedServiceResponse) interface{} { return v.SasUri }).(pulumi.AnyOutput)
+}
+
+// Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+func (o AzureTableStorageLinkedServiceResponseOutput) ServiceEndpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureTableStorageLinkedServiceResponse) interface{} { return v.ServiceEndpoint }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
@@ -33422,7 +33454,7 @@ func (o CommonDataServiceForAppsEntityDatasetResponseOutput) Type() pulumi.Strin
 type CommonDataServiceForAppsLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
@@ -33430,6 +33462,8 @@ type CommonDataServiceForAppsLinkedService struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain interface{} `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -33472,7 +33506,7 @@ type CommonDataServiceForAppsLinkedServiceInput interface {
 type CommonDataServiceForAppsLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
@@ -33480,6 +33514,8 @@ type CommonDataServiceForAppsLinkedServiceArgs struct {
 	DeploymentType pulumi.Input `pulumi:"deploymentType"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain pulumi.Input `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -33539,7 +33575,7 @@ func (o CommonDataServiceForAppsLinkedServiceOutput) Annotations() pulumi.ArrayO
 	return o.ApplyT(func(v CommonDataServiceForAppsLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 func (o CommonDataServiceForAppsLinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
 	return o.ApplyT(func(v CommonDataServiceForAppsLinkedService) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
@@ -33557,6 +33593,11 @@ func (o CommonDataServiceForAppsLinkedServiceOutput) DeploymentType() pulumi.Any
 // Linked service description.
 func (o CommonDataServiceForAppsLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CommonDataServiceForAppsLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+func (o CommonDataServiceForAppsLinkedServiceOutput) Domain() pulumi.AnyOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsLinkedService) interface{} { return v.Domain }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -33624,7 +33665,7 @@ func (o CommonDataServiceForAppsLinkedServiceOutput) Username() pulumi.AnyOutput
 type CommonDataServiceForAppsLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
@@ -33632,6 +33673,8 @@ type CommonDataServiceForAppsLinkedServiceResponse struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain interface{} `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -33679,7 +33722,7 @@ func (o CommonDataServiceForAppsLinkedServiceResponseOutput) Annotations() pulum
 	return o.ApplyT(func(v CommonDataServiceForAppsLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 func (o CommonDataServiceForAppsLinkedServiceResponseOutput) AuthenticationType() pulumi.AnyOutput {
 	return o.ApplyT(func(v CommonDataServiceForAppsLinkedServiceResponse) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
@@ -33699,6 +33742,11 @@ func (o CommonDataServiceForAppsLinkedServiceResponseOutput) DeploymentType() pu
 // Linked service description.
 func (o CommonDataServiceForAppsLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CommonDataServiceForAppsLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+func (o CommonDataServiceForAppsLinkedServiceResponseOutput) Domain() pulumi.AnyOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsLinkedServiceResponse) interface{} { return v.Domain }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -49064,7 +49112,7 @@ func (o DynamicsCrmEntityDatasetResponseOutput) Type() pulumi.StringOutput {
 type DynamicsCrmLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
@@ -49074,6 +49122,8 @@ type DynamicsCrmLinkedService struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain interface{} `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics CRM server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -49116,7 +49166,7 @@ type DynamicsCrmLinkedServiceInput interface {
 type DynamicsCrmLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
@@ -49126,6 +49176,8 @@ type DynamicsCrmLinkedServiceArgs struct {
 	DeploymentType pulumi.Input `pulumi:"deploymentType"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain pulumi.Input `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics CRM server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -49185,7 +49237,7 @@ func (o DynamicsCrmLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 func (o DynamicsCrmLinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedService) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
@@ -49208,6 +49260,11 @@ func (o DynamicsCrmLinkedServiceOutput) DeploymentType() pulumi.AnyOutput {
 // Linked service description.
 func (o DynamicsCrmLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+func (o DynamicsCrmLinkedServiceOutput) Domain() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsCrmLinkedService) interface{} { return v.Domain }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -49275,7 +49332,7 @@ func (o DynamicsCrmLinkedServiceOutput) Username() pulumi.AnyOutput {
 type DynamicsCrmLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
@@ -49285,6 +49342,8 @@ type DynamicsCrmLinkedServiceResponse struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain interface{} `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics CRM server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -49332,7 +49391,7 @@ func (o DynamicsCrmLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput
 	return o.ApplyT(func(v DynamicsCrmLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+// The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 func (o DynamicsCrmLinkedServiceResponseOutput) AuthenticationType() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedServiceResponse) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
@@ -49355,6 +49414,11 @@ func (o DynamicsCrmLinkedServiceResponseOutput) DeploymentType() pulumi.AnyOutpu
 // Linked service description.
 func (o DynamicsCrmLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicsCrmLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+func (o DynamicsCrmLinkedServiceResponseOutput) Domain() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsCrmLinkedServiceResponse) interface{} { return v.Domain }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -50050,7 +50114,7 @@ func (o DynamicsEntityDatasetResponseOutput) Type() pulumi.StringOutput {
 type DynamicsLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
@@ -50060,6 +50124,8 @@ type DynamicsLinkedService struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain interface{} `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -50102,7 +50168,7 @@ type DynamicsLinkedServiceInput interface {
 type DynamicsLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
-	// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType pulumi.Input `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
@@ -50112,6 +50178,8 @@ type DynamicsLinkedServiceArgs struct {
 	DeploymentType pulumi.Input `pulumi:"deploymentType"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain pulumi.Input `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -50171,7 +50239,7 @@ func (o DynamicsLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v DynamicsLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 func (o DynamicsLinkedServiceOutput) AuthenticationType() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsLinkedService) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
@@ -50194,6 +50262,11 @@ func (o DynamicsLinkedServiceOutput) DeploymentType() pulumi.AnyOutput {
 // Linked service description.
 func (o DynamicsLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicsLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+func (o DynamicsLinkedServiceOutput) Domain() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsLinkedService) interface{} { return v.Domain }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -50261,7 +50334,7 @@ func (o DynamicsLinkedServiceOutput) Username() pulumi.AnyOutput {
 type DynamicsLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+	// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 	AuthenticationType interface{} `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
@@ -50271,6 +50344,8 @@ type DynamicsLinkedServiceResponse struct {
 	DeploymentType interface{} `pulumi:"deploymentType"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+	Domain interface{} `pulumi:"domain"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// The host name of the on-premises Dynamics server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
@@ -50318,7 +50393,7 @@ func (o DynamicsLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v DynamicsLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
-// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+// The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
 func (o DynamicsLinkedServiceResponseOutput) AuthenticationType() pulumi.AnyOutput {
 	return o.ApplyT(func(v DynamicsLinkedServiceResponse) interface{} { return v.AuthenticationType }).(pulumi.AnyOutput)
 }
@@ -50341,6 +50416,11 @@ func (o DynamicsLinkedServiceResponseOutput) DeploymentType() pulumi.AnyOutput {
 // Linked service description.
 func (o DynamicsLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicsLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+func (o DynamicsLinkedServiceResponseOutput) Domain() pulumi.AnyOutput {
+	return o.ApplyT(func(v DynamicsLinkedServiceResponse) interface{} { return v.Domain }).(pulumi.AnyOutput)
 }
 
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.

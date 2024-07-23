@@ -13,16 +13,22 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+// Specifies additional XML formatted information that can be included in the
+// Unattend.xml file, which is used by Windows Setup. Contents are defined by
+// setting name, component name, and the pass in which the content is applied.
 type AdditionalUnattendContent struct {
-	// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
-	ComponentName *ComponentNames `pulumi:"componentName"`
-	// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
+	// The component name. Currently, the only allowable value is
+	// Microsoft-Windows-Shell-Setup.
+	ComponentName *ComponentName `pulumi:"componentName"`
+	// Specifies the XML formatted content that is added to the unattend.xml file for
+	// the specified path and component. The XML must be less than 4KB and must
+	// include the root element for the setting or feature that is being inserted.
 	Content *string `pulumi:"content"`
 	// The pass name. Currently, the only allowable value is OobeSystem.
-	PassName *PassNames `pulumi:"passName"`
-	// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-	SettingName *SettingNames `pulumi:"settingName"`
+	PassName *PassName `pulumi:"passName"`
+	// Specifies the name of the setting to which the content applies. Possible values
+	// are: FirstLogonCommands and AutoLogon.
+	SettingName *string `pulumi:"settingName"`
 }
 
 // AdditionalUnattendContentInput is an input type that accepts AdditionalUnattendContentArgs and AdditionalUnattendContentOutput values.
@@ -36,16 +42,22 @@ type AdditionalUnattendContentInput interface {
 	ToAdditionalUnattendContentOutputWithContext(context.Context) AdditionalUnattendContentOutput
 }
 
-// Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+// Specifies additional XML formatted information that can be included in the
+// Unattend.xml file, which is used by Windows Setup. Contents are defined by
+// setting name, component name, and the pass in which the content is applied.
 type AdditionalUnattendContentArgs struct {
-	// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
-	ComponentName ComponentNamesPtrInput `pulumi:"componentName"`
-	// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
+	// The component name. Currently, the only allowable value is
+	// Microsoft-Windows-Shell-Setup.
+	ComponentName ComponentNamePtrInput `pulumi:"componentName"`
+	// Specifies the XML formatted content that is added to the unattend.xml file for
+	// the specified path and component. The XML must be less than 4KB and must
+	// include the root element for the setting or feature that is being inserted.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The pass name. Currently, the only allowable value is OobeSystem.
-	PassName PassNamesPtrInput `pulumi:"passName"`
-	// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-	SettingName SettingNamesPtrInput `pulumi:"settingName"`
+	PassName PassNamePtrInput `pulumi:"passName"`
+	// Specifies the name of the setting to which the content applies. Possible values
+	// are: FirstLogonCommands and AutoLogon.
+	SettingName pulumi.StringPtrInput `pulumi:"settingName"`
 }
 
 func (AdditionalUnattendContentArgs) ElementType() reflect.Type {
@@ -85,7 +97,9 @@ func (i AdditionalUnattendContentArray) ToAdditionalUnattendContentArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalUnattendContentArrayOutput)
 }
 
-// Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+// Specifies additional XML formatted information that can be included in the
+// Unattend.xml file, which is used by Windows Setup. Contents are defined by
+// setting name, component name, and the pass in which the content is applied.
 type AdditionalUnattendContentOutput struct{ *pulumi.OutputState }
 
 func (AdditionalUnattendContentOutput) ElementType() reflect.Type {
@@ -100,24 +114,28 @@ func (o AdditionalUnattendContentOutput) ToAdditionalUnattendContentOutputWithCo
 	return o
 }
 
-// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
-func (o AdditionalUnattendContentOutput) ComponentName() ComponentNamesPtrOutput {
-	return o.ApplyT(func(v AdditionalUnattendContent) *ComponentNames { return v.ComponentName }).(ComponentNamesPtrOutput)
+// The component name. Currently, the only allowable value is
+// Microsoft-Windows-Shell-Setup.
+func (o AdditionalUnattendContentOutput) ComponentName() ComponentNamePtrOutput {
+	return o.ApplyT(func(v AdditionalUnattendContent) *ComponentName { return v.ComponentName }).(ComponentNamePtrOutput)
 }
 
-// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
+// Specifies the XML formatted content that is added to the unattend.xml file for
+// the specified path and component. The XML must be less than 4KB and must
+// include the root element for the setting or feature that is being inserted.
 func (o AdditionalUnattendContentOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdditionalUnattendContent) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // The pass name. Currently, the only allowable value is OobeSystem.
-func (o AdditionalUnattendContentOutput) PassName() PassNamesPtrOutput {
-	return o.ApplyT(func(v AdditionalUnattendContent) *PassNames { return v.PassName }).(PassNamesPtrOutput)
+func (o AdditionalUnattendContentOutput) PassName() PassNamePtrOutput {
+	return o.ApplyT(func(v AdditionalUnattendContent) *PassName { return v.PassName }).(PassNamePtrOutput)
 }
 
-// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
-func (o AdditionalUnattendContentOutput) SettingName() SettingNamesPtrOutput {
-	return o.ApplyT(func(v AdditionalUnattendContent) *SettingNames { return v.SettingName }).(SettingNamesPtrOutput)
+// Specifies the name of the setting to which the content applies. Possible values
+// are: FirstLogonCommands and AutoLogon.
+func (o AdditionalUnattendContentOutput) SettingName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AdditionalUnattendContent) *string { return v.SettingName }).(pulumi.StringPtrOutput)
 }
 
 type AdditionalUnattendContentArrayOutput struct{ *pulumi.OutputState }
@@ -140,19 +158,23 @@ func (o AdditionalUnattendContentArrayOutput) Index(i pulumi.IntInput) Additiona
 	}).(AdditionalUnattendContentOutput)
 }
 
-// Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+// Specifies additional XML formatted information that can be included in the
+// Unattend.xml file, which is used by Windows Setup. Contents are defined by
+// setting name, component name, and the pass in which the content is applied.
 type AdditionalUnattendContentResponse struct {
-	// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
+	// The component name. Currently, the only allowable value is
+	// Microsoft-Windows-Shell-Setup.
 	ComponentName *string `pulumi:"componentName"`
-	// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
-	Content *string `pulumi:"content"`
 	// The pass name. Currently, the only allowable value is OobeSystem.
 	PassName *string `pulumi:"passName"`
-	// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
+	// Specifies the name of the setting to which the content applies. Possible values
+	// are: FirstLogonCommands and AutoLogon.
 	SettingName *string `pulumi:"settingName"`
 }
 
-// Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+// Specifies additional XML formatted information that can be included in the
+// Unattend.xml file, which is used by Windows Setup. Contents are defined by
+// setting name, component name, and the pass in which the content is applied.
 type AdditionalUnattendContentResponseOutput struct{ *pulumi.OutputState }
 
 func (AdditionalUnattendContentResponseOutput) ElementType() reflect.Type {
@@ -167,14 +189,10 @@ func (o AdditionalUnattendContentResponseOutput) ToAdditionalUnattendContentResp
 	return o
 }
 
-// The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
+// The component name. Currently, the only allowable value is
+// Microsoft-Windows-Shell-Setup.
 func (o AdditionalUnattendContentResponseOutput) ComponentName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdditionalUnattendContentResponse) *string { return v.ComponentName }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
-func (o AdditionalUnattendContentResponseOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AdditionalUnattendContentResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // The pass name. Currently, the only allowable value is OobeSystem.
@@ -182,7 +200,8 @@ func (o AdditionalUnattendContentResponseOutput) PassName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AdditionalUnattendContentResponse) *string { return v.PassName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
+// Specifies the name of the setting to which the content applies. Possible values
+// are: FirstLogonCommands and AutoLogon.
 func (o AdditionalUnattendContentResponseOutput) SettingName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdditionalUnattendContentResponse) *string { return v.SettingName }).(pulumi.StringPtrOutput)
 }
@@ -209,7 +228,8 @@ func (o AdditionalUnattendContentResponseArrayOutput) Index(i pulumi.IntInput) A
 
 // The API entity reference.
 type ApiEntityReference struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	// The ARM resource id in the form of
+	// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 	Id *string `pulumi:"id"`
 }
 
@@ -226,7 +246,8 @@ type ApiEntityReferenceInput interface {
 
 // The API entity reference.
 type ApiEntityReferenceArgs struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	// The ARM resource id in the form of
+	// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -308,7 +329,8 @@ func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutputWithContext(ctx c
 	}).(ApiEntityReferencePtrOutput)
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+// The ARM resource id in the form of
+// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o ApiEntityReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiEntityReference) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -337,7 +359,8 @@ func (o ApiEntityReferencePtrOutput) Elem() ApiEntityReferenceOutput {
 	}).(ApiEntityReferenceOutput)
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+// The ARM resource id in the form of
+// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o ApiEntityReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiEntityReference) *string {
 		if v == nil {
@@ -349,7 +372,8 @@ func (o ApiEntityReferencePtrOutput) Id() pulumi.StringPtrOutput {
 
 // The API entity reference.
 type ApiEntityReferenceResponse struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	// The ARM resource id in the form of
+	// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 	Id *string `pulumi:"id"`
 }
 
@@ -368,7 +392,8 @@ func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutputWith
 	return o
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+// The ARM resource id in the form of
+// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o ApiEntityReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -397,7 +422,8 @@ func (o ApiEntityReferenceResponsePtrOutput) Elem() ApiEntityReferenceResponseOu
 	}).(ApiEntityReferenceResponseOutput)
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+// The ARM resource id in the form of
+// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o ApiEntityReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiEntityReferenceResponse) *string {
 		if v == nil {
@@ -407,7 +433,8 @@ func (o ApiEntityReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Contains the list of gallery applications that should be made available to the VM/VMSS
+// Contains the list of gallery applications that should be made available to the
+// VM/VMSS
 type ApplicationProfile struct {
 	// Specifies the gallery applications that should be made available to the VM/VMSS
 	GalleryApplications []VMGalleryApplication `pulumi:"galleryApplications"`
@@ -424,7 +451,8 @@ type ApplicationProfileInput interface {
 	ToApplicationProfileOutputWithContext(context.Context) ApplicationProfileOutput
 }
 
-// Contains the list of gallery applications that should be made available to the VM/VMSS
+// Contains the list of gallery applications that should be made available to the
+// VM/VMSS
 type ApplicationProfileArgs struct {
 	// Specifies the gallery applications that should be made available to the VM/VMSS
 	GalleryApplications VMGalleryApplicationArrayInput `pulumi:"galleryApplications"`
@@ -483,7 +511,8 @@ func (i *applicationProfilePtrType) ToApplicationProfilePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationProfilePtrOutput)
 }
 
-// Contains the list of gallery applications that should be made available to the VM/VMSS
+// Contains the list of gallery applications that should be made available to the
+// VM/VMSS
 type ApplicationProfileOutput struct{ *pulumi.OutputState }
 
 func (ApplicationProfileOutput) ElementType() reflect.Type {
@@ -547,13 +576,15 @@ func (o ApplicationProfilePtrOutput) GalleryApplications() VMGalleryApplicationA
 	}).(VMGalleryApplicationArrayOutput)
 }
 
-// Contains the list of gallery applications that should be made available to the VM/VMSS
+// Contains the list of gallery applications that should be made available to the
+// VM/VMSS
 type ApplicationProfileResponse struct {
 	// Specifies the gallery applications that should be made available to the VM/VMSS
 	GalleryApplications []VMGalleryApplicationResponse `pulumi:"galleryApplications"`
 }
 
-// Contains the list of gallery applications that should be made available to the VM/VMSS
+// Contains the list of gallery applications that should be made available to the
+// VM/VMSS
 type ApplicationProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (ApplicationProfileResponseOutput) ElementType() reflect.Type {
@@ -607,211 +638,434 @@ func (o ApplicationProfileResponsePtrOutput) GalleryApplications() VMGalleryAppl
 	}).(VMGalleryApplicationResponseArrayOutput)
 }
 
-// Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
-type BillingProfile struct {
-	// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-	MaxPrice *float64 `pulumi:"maxPrice"`
+// Describes the base virtual machine profile for fleet
+type BaseVirtualMachineProfile struct {
+	// Specifies the gallery applications that should be made available to the VM/VMSS
+	ApplicationProfile *ApplicationProfile `pulumi:"applicationProfile"`
+	// Specifies the capacity reservation related details of a scale set. Minimum
+	// api-version: 2021-04-01.
+	CapacityReservation *CapacityReservationProfile `pulumi:"capacityReservation"`
+	// Specifies the boot diagnostic settings state.
+	DiagnosticsProfile *DiagnosticsProfile `pulumi:"diagnosticsProfile"`
+	// Specifies a collection of settings for extensions installed on virtual machines
+	// in the scale set.
+	ExtensionProfile *VirtualMachineScaleSetExtensionProfile `pulumi:"extensionProfile"`
+	// Specifies the hardware profile related details of a scale set. Minimum
+	// api-version: 2021-11-01.
+	HardwareProfile *VirtualMachineScaleSetHardwareProfile `pulumi:"hardwareProfile"`
+	// Specifies that the image or disk that is being used was licensed on-premises.
+	// <br><br> Possible values for Windows Server operating system are: <br><br>
+	// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+	// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+	// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+	// Windows
+	// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+	// <br><br> [Azure Hybrid Use Benefit for Linux
+	// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+	// <br><br> Minimum api-version: 2015-06-15
+	LicenseType *string `pulumi:"licenseType"`
+	// Specifies properties of the network interfaces of the virtual machines in the
+	// scale set.
+	NetworkProfile *VirtualMachineScaleSetNetworkProfile `pulumi:"networkProfile"`
+	// Specifies the operating system settings for the virtual machines in the scale
+	// set.
+	OsProfile *VirtualMachineScaleSetOSProfile `pulumi:"osProfile"`
+	// Specifies Scheduled Event related configurations.
+	ScheduledEventsProfile *ScheduledEventsProfile `pulumi:"scheduledEventsProfile"`
+	// Specifies the security posture to be used for all virtual machines in the scale
+	// set. Minimum api-version: 2023-03-01
+	SecurityPostureReference *SecurityPostureReference `pulumi:"securityPostureReference"`
+	// Specifies the Security related profile settings for the virtual machines in the
+	// scale set.
+	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
+	// Specifies the service artifact reference id used to set same image version for
+	// all virtual machines in the scale set when using 'latest' image version.
+	// Minimum api-version: 2022-11-01
+	ServiceArtifactReference *ServiceArtifactReference `pulumi:"serviceArtifactReference"`
+	// Specifies the storage settings for the virtual machine disks.
+	StorageProfile *VirtualMachineScaleSetStorageProfile `pulumi:"storageProfile"`
+	// UserData for the virtual machines in the scale set, which must be base-64
+	// encoded. Customer should not pass any secrets in here. Minimum api-version:
+	// 2021-03-01.
+	UserData *string `pulumi:"userData"`
 }
 
-// BillingProfileInput is an input type that accepts BillingProfileArgs and BillingProfileOutput values.
-// You can construct a concrete instance of `BillingProfileInput` via:
+// BaseVirtualMachineProfileInput is an input type that accepts BaseVirtualMachineProfileArgs and BaseVirtualMachineProfileOutput values.
+// You can construct a concrete instance of `BaseVirtualMachineProfileInput` via:
 //
-//	BillingProfileArgs{...}
-type BillingProfileInput interface {
+//	BaseVirtualMachineProfileArgs{...}
+type BaseVirtualMachineProfileInput interface {
 	pulumi.Input
 
-	ToBillingProfileOutput() BillingProfileOutput
-	ToBillingProfileOutputWithContext(context.Context) BillingProfileOutput
+	ToBaseVirtualMachineProfileOutput() BaseVirtualMachineProfileOutput
+	ToBaseVirtualMachineProfileOutputWithContext(context.Context) BaseVirtualMachineProfileOutput
 }
 
-// Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
-type BillingProfileArgs struct {
-	// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-	MaxPrice pulumi.Float64PtrInput `pulumi:"maxPrice"`
+// Describes the base virtual machine profile for fleet
+type BaseVirtualMachineProfileArgs struct {
+	// Specifies the gallery applications that should be made available to the VM/VMSS
+	ApplicationProfile ApplicationProfilePtrInput `pulumi:"applicationProfile"`
+	// Specifies the capacity reservation related details of a scale set. Minimum
+	// api-version: 2021-04-01.
+	CapacityReservation CapacityReservationProfilePtrInput `pulumi:"capacityReservation"`
+	// Specifies the boot diagnostic settings state.
+	DiagnosticsProfile DiagnosticsProfilePtrInput `pulumi:"diagnosticsProfile"`
+	// Specifies a collection of settings for extensions installed on virtual machines
+	// in the scale set.
+	ExtensionProfile VirtualMachineScaleSetExtensionProfilePtrInput `pulumi:"extensionProfile"`
+	// Specifies the hardware profile related details of a scale set. Minimum
+	// api-version: 2021-11-01.
+	HardwareProfile VirtualMachineScaleSetHardwareProfilePtrInput `pulumi:"hardwareProfile"`
+	// Specifies that the image or disk that is being used was licensed on-premises.
+	// <br><br> Possible values for Windows Server operating system are: <br><br>
+	// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+	// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+	// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+	// Windows
+	// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+	// <br><br> [Azure Hybrid Use Benefit for Linux
+	// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+	// <br><br> Minimum api-version: 2015-06-15
+	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
+	// Specifies properties of the network interfaces of the virtual machines in the
+	// scale set.
+	NetworkProfile VirtualMachineScaleSetNetworkProfilePtrInput `pulumi:"networkProfile"`
+	// Specifies the operating system settings for the virtual machines in the scale
+	// set.
+	OsProfile VirtualMachineScaleSetOSProfilePtrInput `pulumi:"osProfile"`
+	// Specifies Scheduled Event related configurations.
+	ScheduledEventsProfile ScheduledEventsProfilePtrInput `pulumi:"scheduledEventsProfile"`
+	// Specifies the security posture to be used for all virtual machines in the scale
+	// set. Minimum api-version: 2023-03-01
+	SecurityPostureReference SecurityPostureReferencePtrInput `pulumi:"securityPostureReference"`
+	// Specifies the Security related profile settings for the virtual machines in the
+	// scale set.
+	SecurityProfile SecurityProfilePtrInput `pulumi:"securityProfile"`
+	// Specifies the service artifact reference id used to set same image version for
+	// all virtual machines in the scale set when using 'latest' image version.
+	// Minimum api-version: 2022-11-01
+	ServiceArtifactReference ServiceArtifactReferencePtrInput `pulumi:"serviceArtifactReference"`
+	// Specifies the storage settings for the virtual machine disks.
+	StorageProfile VirtualMachineScaleSetStorageProfilePtrInput `pulumi:"storageProfile"`
+	// UserData for the virtual machines in the scale set, which must be base-64
+	// encoded. Customer should not pass any secrets in here. Minimum api-version:
+	// 2021-03-01.
+	UserData pulumi.StringPtrInput `pulumi:"userData"`
 }
 
-func (BillingProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingProfile)(nil)).Elem()
+func (BaseVirtualMachineProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseVirtualMachineProfile)(nil)).Elem()
 }
 
-func (i BillingProfileArgs) ToBillingProfileOutput() BillingProfileOutput {
-	return i.ToBillingProfileOutputWithContext(context.Background())
+func (i BaseVirtualMachineProfileArgs) ToBaseVirtualMachineProfileOutput() BaseVirtualMachineProfileOutput {
+	return i.ToBaseVirtualMachineProfileOutputWithContext(context.Background())
 }
 
-func (i BillingProfileArgs) ToBillingProfileOutputWithContext(ctx context.Context) BillingProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingProfileOutput)
+func (i BaseVirtualMachineProfileArgs) ToBaseVirtualMachineProfileOutputWithContext(ctx context.Context) BaseVirtualMachineProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaseVirtualMachineProfileOutput)
 }
 
-func (i BillingProfileArgs) ToBillingProfilePtrOutput() BillingProfilePtrOutput {
-	return i.ToBillingProfilePtrOutputWithContext(context.Background())
+// Describes the base virtual machine profile for fleet
+type BaseVirtualMachineProfileOutput struct{ *pulumi.OutputState }
+
+func (BaseVirtualMachineProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseVirtualMachineProfile)(nil)).Elem()
 }
 
-func (i BillingProfileArgs) ToBillingProfilePtrOutputWithContext(ctx context.Context) BillingProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingProfileOutput).ToBillingProfilePtrOutputWithContext(ctx)
-}
-
-// BillingProfilePtrInput is an input type that accepts BillingProfileArgs, BillingProfilePtr and BillingProfilePtrOutput values.
-// You can construct a concrete instance of `BillingProfilePtrInput` via:
-//
-//	        BillingProfileArgs{...}
-//
-//	or:
-//
-//	        nil
-type BillingProfilePtrInput interface {
-	pulumi.Input
-
-	ToBillingProfilePtrOutput() BillingProfilePtrOutput
-	ToBillingProfilePtrOutputWithContext(context.Context) BillingProfilePtrOutput
-}
-
-type billingProfilePtrType BillingProfileArgs
-
-func BillingProfilePtr(v *BillingProfileArgs) BillingProfilePtrInput {
-	return (*billingProfilePtrType)(v)
-}
-
-func (*billingProfilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingProfile)(nil)).Elem()
-}
-
-func (i *billingProfilePtrType) ToBillingProfilePtrOutput() BillingProfilePtrOutput {
-	return i.ToBillingProfilePtrOutputWithContext(context.Background())
-}
-
-func (i *billingProfilePtrType) ToBillingProfilePtrOutputWithContext(ctx context.Context) BillingProfilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BillingProfilePtrOutput)
-}
-
-// Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
-type BillingProfileOutput struct{ *pulumi.OutputState }
-
-func (BillingProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingProfile)(nil)).Elem()
-}
-
-func (o BillingProfileOutput) ToBillingProfileOutput() BillingProfileOutput {
+func (o BaseVirtualMachineProfileOutput) ToBaseVirtualMachineProfileOutput() BaseVirtualMachineProfileOutput {
 	return o
 }
 
-func (o BillingProfileOutput) ToBillingProfileOutputWithContext(ctx context.Context) BillingProfileOutput {
+func (o BaseVirtualMachineProfileOutput) ToBaseVirtualMachineProfileOutputWithContext(ctx context.Context) BaseVirtualMachineProfileOutput {
 	return o
 }
 
-func (o BillingProfileOutput) ToBillingProfilePtrOutput() BillingProfilePtrOutput {
-	return o.ToBillingProfilePtrOutputWithContext(context.Background())
+// Specifies the gallery applications that should be made available to the VM/VMSS
+func (o BaseVirtualMachineProfileOutput) ApplicationProfile() ApplicationProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *ApplicationProfile { return v.ApplicationProfile }).(ApplicationProfilePtrOutput)
 }
 
-func (o BillingProfileOutput) ToBillingProfilePtrOutputWithContext(ctx context.Context) BillingProfilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingProfile) *BillingProfile {
-		return &v
-	}).(BillingProfilePtrOutput)
+// Specifies the capacity reservation related details of a scale set. Minimum
+// api-version: 2021-04-01.
+func (o BaseVirtualMachineProfileOutput) CapacityReservation() CapacityReservationProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *CapacityReservationProfile { return v.CapacityReservation }).(CapacityReservationProfilePtrOutput)
 }
 
-// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-func (o BillingProfileOutput) MaxPrice() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v BillingProfile) *float64 { return v.MaxPrice }).(pulumi.Float64PtrOutput)
+// Specifies the boot diagnostic settings state.
+func (o BaseVirtualMachineProfileOutput) DiagnosticsProfile() DiagnosticsProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *DiagnosticsProfile { return v.DiagnosticsProfile }).(DiagnosticsProfilePtrOutput)
 }
 
-type BillingProfilePtrOutput struct{ *pulumi.OutputState }
-
-func (BillingProfilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingProfile)(nil)).Elem()
+// Specifies a collection of settings for extensions installed on virtual machines
+// in the scale set.
+func (o BaseVirtualMachineProfileOutput) ExtensionProfile() VirtualMachineScaleSetExtensionProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *VirtualMachineScaleSetExtensionProfile { return v.ExtensionProfile }).(VirtualMachineScaleSetExtensionProfilePtrOutput)
 }
 
-func (o BillingProfilePtrOutput) ToBillingProfilePtrOutput() BillingProfilePtrOutput {
+// Specifies the hardware profile related details of a scale set. Minimum
+// api-version: 2021-11-01.
+func (o BaseVirtualMachineProfileOutput) HardwareProfile() VirtualMachineScaleSetHardwareProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *VirtualMachineScaleSetHardwareProfile { return v.HardwareProfile }).(VirtualMachineScaleSetHardwareProfilePtrOutput)
+}
+
+// Specifies that the image or disk that is being used was licensed on-premises.
+// <br><br> Possible values for Windows Server operating system are: <br><br>
+// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+// Windows
+// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+// <br><br> [Azure Hybrid Use Benefit for Linux
+// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+// <br><br> Minimum api-version: 2015-06-15
+func (o BaseVirtualMachineProfileOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies properties of the network interfaces of the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfileOutput) NetworkProfile() VirtualMachineScaleSetNetworkProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *VirtualMachineScaleSetNetworkProfile { return v.NetworkProfile }).(VirtualMachineScaleSetNetworkProfilePtrOutput)
+}
+
+// Specifies the operating system settings for the virtual machines in the scale
+// set.
+func (o BaseVirtualMachineProfileOutput) OsProfile() VirtualMachineScaleSetOSProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *VirtualMachineScaleSetOSProfile { return v.OsProfile }).(VirtualMachineScaleSetOSProfilePtrOutput)
+}
+
+// Specifies Scheduled Event related configurations.
+func (o BaseVirtualMachineProfileOutput) ScheduledEventsProfile() ScheduledEventsProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *ScheduledEventsProfile { return v.ScheduledEventsProfile }).(ScheduledEventsProfilePtrOutput)
+}
+
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
+func (o BaseVirtualMachineProfileOutput) SecurityPostureReference() SecurityPostureReferencePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *SecurityPostureReference { return v.SecurityPostureReference }).(SecurityPostureReferencePtrOutput)
+}
+
+// Specifies the Security related profile settings for the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfileOutput) SecurityProfile() SecurityProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *SecurityProfile { return v.SecurityProfile }).(SecurityProfilePtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
+func (o BaseVirtualMachineProfileOutput) ServiceArtifactReference() ServiceArtifactReferencePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *ServiceArtifactReference { return v.ServiceArtifactReference }).(ServiceArtifactReferencePtrOutput)
+}
+
+// Specifies the storage settings for the virtual machine disks.
+func (o BaseVirtualMachineProfileOutput) StorageProfile() VirtualMachineScaleSetStorageProfilePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *VirtualMachineScaleSetStorageProfile { return v.StorageProfile }).(VirtualMachineScaleSetStorageProfilePtrOutput)
+}
+
+// UserData for the virtual machines in the scale set, which must be base-64
+// encoded. Customer should not pass any secrets in here. Minimum api-version:
+// 2021-03-01.
+func (o BaseVirtualMachineProfileOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfile) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// Describes the base virtual machine profile for fleet
+type BaseVirtualMachineProfileResponse struct {
+	// Specifies the gallery applications that should be made available to the VM/VMSS
+	ApplicationProfile *ApplicationProfileResponse `pulumi:"applicationProfile"`
+	// Specifies the capacity reservation related details of a scale set. Minimum
+	// api-version: 2021-04-01.
+	CapacityReservation *CapacityReservationProfileResponse `pulumi:"capacityReservation"`
+	// Specifies the boot diagnostic settings state.
+	DiagnosticsProfile *DiagnosticsProfileResponse `pulumi:"diagnosticsProfile"`
+	// Specifies a collection of settings for extensions installed on virtual machines
+	// in the scale set.
+	ExtensionProfile *VirtualMachineScaleSetExtensionProfileResponse `pulumi:"extensionProfile"`
+	// Specifies the hardware profile related details of a scale set. Minimum
+	// api-version: 2021-11-01.
+	HardwareProfile *VirtualMachineScaleSetHardwareProfileResponse `pulumi:"hardwareProfile"`
+	// Specifies that the image or disk that is being used was licensed on-premises.
+	// <br><br> Possible values for Windows Server operating system are: <br><br>
+	// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+	// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+	// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+	// Windows
+	// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+	// <br><br> [Azure Hybrid Use Benefit for Linux
+	// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+	// <br><br> Minimum api-version: 2015-06-15
+	LicenseType *string `pulumi:"licenseType"`
+	// Specifies properties of the network interfaces of the virtual machines in the
+	// scale set.
+	NetworkProfile *VirtualMachineScaleSetNetworkProfileResponse `pulumi:"networkProfile"`
+	// Specifies the operating system settings for the virtual machines in the scale
+	// set.
+	OsProfile *VirtualMachineScaleSetOSProfileResponse `pulumi:"osProfile"`
+	// Specifies Scheduled Event related configurations.
+	ScheduledEventsProfile *ScheduledEventsProfileResponse `pulumi:"scheduledEventsProfile"`
+	// Specifies the security posture to be used for all virtual machines in the scale
+	// set. Minimum api-version: 2023-03-01
+	SecurityPostureReference *SecurityPostureReferenceResponse `pulumi:"securityPostureReference"`
+	// Specifies the Security related profile settings for the virtual machines in the
+	// scale set.
+	SecurityProfile *SecurityProfileResponse `pulumi:"securityProfile"`
+	// Specifies the service artifact reference id used to set same image version for
+	// all virtual machines in the scale set when using 'latest' image version.
+	// Minimum api-version: 2022-11-01
+	ServiceArtifactReference *ServiceArtifactReferenceResponse `pulumi:"serviceArtifactReference"`
+	// Specifies the storage settings for the virtual machine disks.
+	StorageProfile *VirtualMachineScaleSetStorageProfileResponse `pulumi:"storageProfile"`
+	// Specifies the time in which this VM profile for the Virtual Machine Scale Set
+	// was created. Minimum API version for this property is 2023-09-01. This value
+	// will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile
+	// with minimum api-version 2023-09-01. Examples: "2024-07-01T00:00:01.1234567+00:00"
+	TimeCreated string `pulumi:"timeCreated"`
+	// UserData for the virtual machines in the scale set, which must be base-64
+	// encoded. Customer should not pass any secrets in here. Minimum api-version:
+	// 2021-03-01.
+	UserData *string `pulumi:"userData"`
+}
+
+// Describes the base virtual machine profile for fleet
+type BaseVirtualMachineProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (BaseVirtualMachineProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseVirtualMachineProfileResponse)(nil)).Elem()
+}
+
+func (o BaseVirtualMachineProfileResponseOutput) ToBaseVirtualMachineProfileResponseOutput() BaseVirtualMachineProfileResponseOutput {
 	return o
 }
 
-func (o BillingProfilePtrOutput) ToBillingProfilePtrOutputWithContext(ctx context.Context) BillingProfilePtrOutput {
+func (o BaseVirtualMachineProfileResponseOutput) ToBaseVirtualMachineProfileResponseOutputWithContext(ctx context.Context) BaseVirtualMachineProfileResponseOutput {
 	return o
 }
 
-func (o BillingProfilePtrOutput) Elem() BillingProfileOutput {
-	return o.ApplyT(func(v *BillingProfile) BillingProfile {
-		if v != nil {
-			return *v
-		}
-		var ret BillingProfile
-		return ret
-	}).(BillingProfileOutput)
+// Specifies the gallery applications that should be made available to the VM/VMSS
+func (o BaseVirtualMachineProfileResponseOutput) ApplicationProfile() ApplicationProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *ApplicationProfileResponse { return v.ApplicationProfile }).(ApplicationProfileResponsePtrOutput)
 }
 
-// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-func (o BillingProfilePtrOutput) MaxPrice() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *BillingProfile) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MaxPrice
-	}).(pulumi.Float64PtrOutput)
+// Specifies the capacity reservation related details of a scale set. Minimum
+// api-version: 2021-04-01.
+func (o BaseVirtualMachineProfileResponseOutput) CapacityReservation() CapacityReservationProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *CapacityReservationProfileResponse {
+		return v.CapacityReservation
+	}).(CapacityReservationProfileResponsePtrOutput)
 }
 
-// Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
-type BillingProfileResponse struct {
-	// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-	MaxPrice *float64 `pulumi:"maxPrice"`
+// Specifies the boot diagnostic settings state.
+func (o BaseVirtualMachineProfileResponseOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *DiagnosticsProfileResponse { return v.DiagnosticsProfile }).(DiagnosticsProfileResponsePtrOutput)
 }
 
-// Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
-type BillingProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (BillingProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingProfileResponse)(nil)).Elem()
+// Specifies a collection of settings for extensions installed on virtual machines
+// in the scale set.
+func (o BaseVirtualMachineProfileResponseOutput) ExtensionProfile() VirtualMachineScaleSetExtensionProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetExtensionProfileResponse {
+		return v.ExtensionProfile
+	}).(VirtualMachineScaleSetExtensionProfileResponsePtrOutput)
 }
 
-func (o BillingProfileResponseOutput) ToBillingProfileResponseOutput() BillingProfileResponseOutput {
-	return o
+// Specifies the hardware profile related details of a scale set. Minimum
+// api-version: 2021-11-01.
+func (o BaseVirtualMachineProfileResponseOutput) HardwareProfile() VirtualMachineScaleSetHardwareProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetHardwareProfileResponse {
+		return v.HardwareProfile
+	}).(VirtualMachineScaleSetHardwareProfileResponsePtrOutput)
 }
 
-func (o BillingProfileResponseOutput) ToBillingProfileResponseOutputWithContext(ctx context.Context) BillingProfileResponseOutput {
-	return o
+// Specifies that the image or disk that is being used was licensed on-premises.
+// <br><br> Possible values for Windows Server operating system are: <br><br>
+// Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+// Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+// (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+// Windows
+// Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+// <br><br> [Azure Hybrid Use Benefit for Linux
+// Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+// <br><br> Minimum api-version: 2015-06-15
+func (o BaseVirtualMachineProfileResponseOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-func (o BillingProfileResponseOutput) MaxPrice() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v BillingProfileResponse) *float64 { return v.MaxPrice }).(pulumi.Float64PtrOutput)
+// Specifies properties of the network interfaces of the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfileResponseOutput) NetworkProfile() VirtualMachineScaleSetNetworkProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetNetworkProfileResponse {
+		return v.NetworkProfile
+	}).(VirtualMachineScaleSetNetworkProfileResponsePtrOutput)
 }
 
-type BillingProfileResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (BillingProfileResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BillingProfileResponse)(nil)).Elem()
+// Specifies the operating system settings for the virtual machines in the scale
+// set.
+func (o BaseVirtualMachineProfileResponseOutput) OsProfile() VirtualMachineScaleSetOSProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetOSProfileResponse { return v.OsProfile }).(VirtualMachineScaleSetOSProfileResponsePtrOutput)
 }
 
-func (o BillingProfileResponsePtrOutput) ToBillingProfileResponsePtrOutput() BillingProfileResponsePtrOutput {
-	return o
+// Specifies Scheduled Event related configurations.
+func (o BaseVirtualMachineProfileResponseOutput) ScheduledEventsProfile() ScheduledEventsProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *ScheduledEventsProfileResponse {
+		return v.ScheduledEventsProfile
+	}).(ScheduledEventsProfileResponsePtrOutput)
 }
 
-func (o BillingProfileResponsePtrOutput) ToBillingProfileResponsePtrOutputWithContext(ctx context.Context) BillingProfileResponsePtrOutput {
-	return o
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
+func (o BaseVirtualMachineProfileResponseOutput) SecurityPostureReference() SecurityPostureReferenceResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *SecurityPostureReferenceResponse {
+		return v.SecurityPostureReference
+	}).(SecurityPostureReferenceResponsePtrOutput)
 }
 
-func (o BillingProfileResponsePtrOutput) Elem() BillingProfileResponseOutput {
-	return o.ApplyT(func(v *BillingProfileResponse) BillingProfileResponse {
-		if v != nil {
-			return *v
-		}
-		var ret BillingProfileResponse
-		return ret
-	}).(BillingProfileResponseOutput)
+// Specifies the Security related profile settings for the virtual machines in the
+// scale set.
+func (o BaseVirtualMachineProfileResponseOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *SecurityProfileResponse { return v.SecurityProfile }).(SecurityProfileResponsePtrOutput)
 }
 
-// Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
-func (o BillingProfileResponsePtrOutput) MaxPrice() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *BillingProfileResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MaxPrice
-	}).(pulumi.Float64PtrOutput)
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
+func (o BaseVirtualMachineProfileResponseOutput) ServiceArtifactReference() ServiceArtifactReferenceResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *ServiceArtifactReferenceResponse {
+		return v.ServiceArtifactReference
+	}).(ServiceArtifactReferenceResponsePtrOutput)
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Specifies the storage settings for the virtual machine disks.
+func (o BaseVirtualMachineProfileResponseOutput) StorageProfile() VirtualMachineScaleSetStorageProfileResponsePtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *VirtualMachineScaleSetStorageProfileResponse {
+		return v.StorageProfile
+	}).(VirtualMachineScaleSetStorageProfileResponsePtrOutput)
+}
+
+// Specifies the time in which this VM profile for the Virtual Machine Scale Set
+// was created. Minimum API version for this property is 2023-09-01. This value
+// will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile
+// with minimum api-version 2023-09-01. Examples: "2024-07-01T00:00:01.1234567+00:00"
+func (o BaseVirtualMachineProfileResponseOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) string { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// UserData for the virtual machines in the scale set, which must be base-64
+// encoded. Customer should not pass any secrets in here. Minimum api-version:
+// 2021-03-01.
+func (o BaseVirtualMachineProfileResponseOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseVirtualMachineProfileResponse) *string { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. You can easily view the output of your
+// console log. Azure also enables you to see a screenshot of the VM from the
+// hypervisor.
 type BootDiagnostics struct {
 	// Whether boot diagnostics should be enabled on the Virtual Machine.
 	Enabled *bool `pulumi:"enabled"`
-	// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+	// Uri of the storage account to use for placing the console output and
+	// screenshot. If storageUri is not specified while enabling boot diagnostics,
+	// managed storage will be used.
 	StorageUri *string `pulumi:"storageUri"`
 }
 
@@ -826,11 +1080,16 @@ type BootDiagnosticsInput interface {
 	ToBootDiagnosticsOutputWithContext(context.Context) BootDiagnosticsOutput
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. You can easily view the output of your
+// console log. Azure also enables you to see a screenshot of the VM from the
+// hypervisor.
 type BootDiagnosticsArgs struct {
 	// Whether boot diagnostics should be enabled on the Virtual Machine.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+	// Uri of the storage account to use for placing the console output and
+	// screenshot. If storageUri is not specified while enabling boot diagnostics,
+	// managed storage will be used.
 	StorageUri pulumi.StringPtrInput `pulumi:"storageUri"`
 }
 
@@ -887,7 +1146,10 @@ func (i *bootDiagnosticsPtrType) ToBootDiagnosticsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BootDiagnosticsPtrOutput)
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. You can easily view the output of your
+// console log. Azure also enables you to see a screenshot of the VM from the
+// hypervisor.
 type BootDiagnosticsOutput struct{ *pulumi.OutputState }
 
 func (BootDiagnosticsOutput) ElementType() reflect.Type {
@@ -917,7 +1179,9 @@ func (o BootDiagnosticsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BootDiagnostics) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+// Uri of the storage account to use for placing the console output and
+// screenshot. If storageUri is not specified while enabling boot diagnostics,
+// managed storage will be used.
 func (o BootDiagnosticsOutput) StorageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BootDiagnostics) *string { return v.StorageUri }).(pulumi.StringPtrOutput)
 }
@@ -956,7 +1220,9 @@ func (o BootDiagnosticsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+// Uri of the storage account to use for placing the console output and
+// screenshot. If storageUri is not specified while enabling boot diagnostics,
+// managed storage will be used.
 func (o BootDiagnosticsPtrOutput) StorageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BootDiagnostics) *string {
 		if v == nil {
@@ -966,15 +1232,23 @@ func (o BootDiagnosticsPtrOutput) StorageUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. You can easily view the output of your
+// console log. Azure also enables you to see a screenshot of the VM from the
+// hypervisor.
 type BootDiagnosticsResponse struct {
 	// Whether boot diagnostics should be enabled on the Virtual Machine.
 	Enabled *bool `pulumi:"enabled"`
-	// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+	// Uri of the storage account to use for placing the console output and
+	// screenshot. If storageUri is not specified while enabling boot diagnostics,
+	// managed storage will be used.
 	StorageUri *string `pulumi:"storageUri"`
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. You can easily view the output of your
+// console log. Azure also enables you to see a screenshot of the VM from the
+// hypervisor.
 type BootDiagnosticsResponseOutput struct{ *pulumi.OutputState }
 
 func (BootDiagnosticsResponseOutput) ElementType() reflect.Type {
@@ -994,7 +1268,9 @@ func (o BootDiagnosticsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BootDiagnosticsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+// Uri of the storage account to use for placing the console output and
+// screenshot. If storageUri is not specified while enabling boot diagnostics,
+// managed storage will be used.
 func (o BootDiagnosticsResponseOutput) StorageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BootDiagnosticsResponse) *string { return v.StorageUri }).(pulumi.StringPtrOutput)
 }
@@ -1033,7 +1309,9 @@ func (o BootDiagnosticsResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+// Uri of the storage account to use for placing the console output and
+// screenshot. If storageUri is not specified while enabling boot diagnostics,
+// managed storage will be used.
 func (o BootDiagnosticsResponsePtrOutput) StorageUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BootDiagnosticsResponse) *string {
 		if v == nil {
@@ -1045,7 +1323,10 @@ func (o BootDiagnosticsResponsePtrOutput) StorageUri() pulumi.StringPtrOutput {
 
 // The parameters of a capacity reservation Profile.
 type CapacityReservationProfile struct {
-	// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+	// Specifies the capacity reservation group resource id that should be used for
+	// allocating the virtual machine or scaleset vm instances provided enough
+	// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+	// for more details.
 	CapacityReservationGroup *SubResource `pulumi:"capacityReservationGroup"`
 }
 
@@ -1062,7 +1343,10 @@ type CapacityReservationProfileInput interface {
 
 // The parameters of a capacity reservation Profile.
 type CapacityReservationProfileArgs struct {
-	// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+	// Specifies the capacity reservation group resource id that should be used for
+	// allocating the virtual machine or scaleset vm instances provided enough
+	// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+	// for more details.
 	CapacityReservationGroup SubResourcePtrInput `pulumi:"capacityReservationGroup"`
 }
 
@@ -1144,7 +1428,10 @@ func (o CapacityReservationProfileOutput) ToCapacityReservationProfilePtrOutputW
 	}).(CapacityReservationProfilePtrOutput)
 }
 
-// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+// Specifies the capacity reservation group resource id that should be used for
+// allocating the virtual machine or scaleset vm instances provided enough
+// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+// for more details.
 func (o CapacityReservationProfileOutput) CapacityReservationGroup() SubResourcePtrOutput {
 	return o.ApplyT(func(v CapacityReservationProfile) *SubResource { return v.CapacityReservationGroup }).(SubResourcePtrOutput)
 }
@@ -1173,7 +1460,10 @@ func (o CapacityReservationProfilePtrOutput) Elem() CapacityReservationProfileOu
 	}).(CapacityReservationProfileOutput)
 }
 
-// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+// Specifies the capacity reservation group resource id that should be used for
+// allocating the virtual machine or scaleset vm instances provided enough
+// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+// for more details.
 func (o CapacityReservationProfilePtrOutput) CapacityReservationGroup() SubResourcePtrOutput {
 	return o.ApplyT(func(v *CapacityReservationProfile) *SubResource {
 		if v == nil {
@@ -1185,7 +1475,10 @@ func (o CapacityReservationProfilePtrOutput) CapacityReservationGroup() SubResou
 
 // The parameters of a capacity reservation Profile.
 type CapacityReservationProfileResponse struct {
-	// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+	// Specifies the capacity reservation group resource id that should be used for
+	// allocating the virtual machine or scaleset vm instances provided enough
+	// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+	// for more details.
 	CapacityReservationGroup *SubResourceResponse `pulumi:"capacityReservationGroup"`
 }
 
@@ -1204,7 +1497,10 @@ func (o CapacityReservationProfileResponseOutput) ToCapacityReservationProfileRe
 	return o
 }
 
-// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+// Specifies the capacity reservation group resource id that should be used for
+// allocating the virtual machine or scaleset vm instances provided enough
+// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+// for more details.
 func (o CapacityReservationProfileResponseOutput) CapacityReservationGroup() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v CapacityReservationProfileResponse) *SubResourceResponse { return v.CapacityReservationGroup }).(SubResourceResponsePtrOutput)
 }
@@ -1233,7 +1529,10 @@ func (o CapacityReservationProfileResponsePtrOutput) Elem() CapacityReservationP
 	}).(CapacityReservationProfileResponseOutput)
 }
 
-// Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+// Specifies the capacity reservation group resource id that should be used for
+// allocating the virtual machine or scaleset vm instances provided enough
+// capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+// for more details.
 func (o CapacityReservationProfileResponsePtrOutput) CapacityReservationGroup() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v *CapacityReservationProfileResponse) *SubResourceResponse {
 		if v == nil {
@@ -1246,7 +1545,7 @@ func (o CapacityReservationProfileResponsePtrOutput) CapacityReservationGroup() 
 // Compute Profile to use for running user's workloads.
 type ComputeProfile struct {
 	// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
-	BaseVirtualMachineProfile VirtualMachineScaleSetVMProfile `pulumi:"baseVirtualMachineProfile"`
+	BaseVirtualMachineProfile BaseVirtualMachineProfile `pulumi:"baseVirtualMachineProfile"`
 	// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
 	// The default value will be the latest supported computeApiVersion by Compute Fleet.
 	ComputeApiVersion *string `pulumi:"computeApiVersion"`
@@ -1266,7 +1565,7 @@ type ComputeProfileInput interface {
 // Compute Profile to use for running user's workloads.
 type ComputeProfileArgs struct {
 	// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
-	BaseVirtualMachineProfile VirtualMachineScaleSetVMProfileInput `pulumi:"baseVirtualMachineProfile"`
+	BaseVirtualMachineProfile BaseVirtualMachineProfileInput `pulumi:"baseVirtualMachineProfile"`
 	// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
 	// The default value will be the latest supported computeApiVersion by Compute Fleet.
 	ComputeApiVersion pulumi.StringPtrInput `pulumi:"computeApiVersion"`
@@ -1300,8 +1599,8 @@ func (o ComputeProfileOutput) ToComputeProfileOutputWithContext(ctx context.Cont
 }
 
 // Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
-func (o ComputeProfileOutput) BaseVirtualMachineProfile() VirtualMachineScaleSetVMProfileOutput {
-	return o.ApplyT(func(v ComputeProfile) VirtualMachineScaleSetVMProfile { return v.BaseVirtualMachineProfile }).(VirtualMachineScaleSetVMProfileOutput)
+func (o ComputeProfileOutput) BaseVirtualMachineProfile() BaseVirtualMachineProfileOutput {
+	return o.ApplyT(func(v ComputeProfile) BaseVirtualMachineProfile { return v.BaseVirtualMachineProfile }).(BaseVirtualMachineProfileOutput)
 }
 
 // Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
@@ -1313,7 +1612,7 @@ func (o ComputeProfileOutput) ComputeApiVersion() pulumi.StringPtrOutput {
 // Compute Profile to use for running user's workloads.
 type ComputeProfileResponse struct {
 	// Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
-	BaseVirtualMachineProfile VirtualMachineScaleSetVMProfileResponse `pulumi:"baseVirtualMachineProfile"`
+	BaseVirtualMachineProfile BaseVirtualMachineProfileResponse `pulumi:"baseVirtualMachineProfile"`
 	// Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
 	// The default value will be the latest supported computeApiVersion by Compute Fleet.
 	ComputeApiVersion *string `pulumi:"computeApiVersion"`
@@ -1335,10 +1634,8 @@ func (o ComputeProfileResponseOutput) ToComputeProfileResponseOutputWithContext(
 }
 
 // Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
-func (o ComputeProfileResponseOutput) BaseVirtualMachineProfile() VirtualMachineScaleSetVMProfileResponseOutput {
-	return o.ApplyT(func(v ComputeProfileResponse) VirtualMachineScaleSetVMProfileResponse {
-		return v.BaseVirtualMachineProfile
-	}).(VirtualMachineScaleSetVMProfileResponseOutput)
+func (o ComputeProfileResponseOutput) BaseVirtualMachineProfile() BaseVirtualMachineProfileResponseOutput {
+	return o.ApplyT(func(v ComputeProfileResponse) BaseVirtualMachineProfileResponse { return v.BaseVirtualMachineProfile }).(BaseVirtualMachineProfileResponseOutput)
 }
 
 // Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
@@ -1349,7 +1646,11 @@ func (o ComputeProfileResponseOutput) ComputeApiVersion() pulumi.StringPtrOutput
 
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 type DiagnosticsProfile struct {
-	// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+	// Boot Diagnostics is a debugging feature which allows you to view Console Output
+	// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+	// specified then ensure that the storage account is in the same region and
+	// subscription as the VM. You can easily view the output of your console log.
+	// Azure also enables you to see a screenshot of the VM from the hypervisor.
 	BootDiagnostics *BootDiagnostics `pulumi:"bootDiagnostics"`
 }
 
@@ -1366,7 +1667,11 @@ type DiagnosticsProfileInput interface {
 
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 type DiagnosticsProfileArgs struct {
-	// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+	// Boot Diagnostics is a debugging feature which allows you to view Console Output
+	// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+	// specified then ensure that the storage account is in the same region and
+	// subscription as the VM. You can easily view the output of your console log.
+	// Azure also enables you to see a screenshot of the VM from the hypervisor.
 	BootDiagnostics BootDiagnosticsPtrInput `pulumi:"bootDiagnostics"`
 }
 
@@ -1448,7 +1753,11 @@ func (o DiagnosticsProfileOutput) ToDiagnosticsProfilePtrOutputWithContext(ctx c
 	}).(DiagnosticsProfilePtrOutput)
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+// specified then ensure that the storage account is in the same region and
+// subscription as the VM. You can easily view the output of your console log.
+// Azure also enables you to see a screenshot of the VM from the hypervisor.
 func (o DiagnosticsProfileOutput) BootDiagnostics() BootDiagnosticsPtrOutput {
 	return o.ApplyT(func(v DiagnosticsProfile) *BootDiagnostics { return v.BootDiagnostics }).(BootDiagnosticsPtrOutput)
 }
@@ -1477,7 +1786,11 @@ func (o DiagnosticsProfilePtrOutput) Elem() DiagnosticsProfileOutput {
 	}).(DiagnosticsProfileOutput)
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+// specified then ensure that the storage account is in the same region and
+// subscription as the VM. You can easily view the output of your console log.
+// Azure also enables you to see a screenshot of the VM from the hypervisor.
 func (o DiagnosticsProfilePtrOutput) BootDiagnostics() BootDiagnosticsPtrOutput {
 	return o.ApplyT(func(v *DiagnosticsProfile) *BootDiagnostics {
 		if v == nil {
@@ -1489,7 +1802,11 @@ func (o DiagnosticsProfilePtrOutput) BootDiagnostics() BootDiagnosticsPtrOutput 
 
 // Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
 type DiagnosticsProfileResponse struct {
-	// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+	// Boot Diagnostics is a debugging feature which allows you to view Console Output
+	// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+	// specified then ensure that the storage account is in the same region and
+	// subscription as the VM. You can easily view the output of your console log.
+	// Azure also enables you to see a screenshot of the VM from the hypervisor.
 	BootDiagnostics *BootDiagnosticsResponse `pulumi:"bootDiagnostics"`
 }
 
@@ -1508,7 +1825,11 @@ func (o DiagnosticsProfileResponseOutput) ToDiagnosticsProfileResponseOutputWith
 	return o
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+// specified then ensure that the storage account is in the same region and
+// subscription as the VM. You can easily view the output of your console log.
+// Azure also enables you to see a screenshot of the VM from the hypervisor.
 func (o DiagnosticsProfileResponseOutput) BootDiagnostics() BootDiagnosticsResponsePtrOutput {
 	return o.ApplyT(func(v DiagnosticsProfileResponse) *BootDiagnosticsResponse { return v.BootDiagnostics }).(BootDiagnosticsResponsePtrOutput)
 }
@@ -1537,7 +1858,11 @@ func (o DiagnosticsProfileResponsePtrOutput) Elem() DiagnosticsProfileResponseOu
 	}).(DiagnosticsProfileResponseOutput)
 }
 
-// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+// Boot Diagnostics is a debugging feature which allows you to view Console Output
+// and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+// specified then ensure that the storage account is in the same region and
+// subscription as the VM. You can easily view the output of your console log.
+// Azure also enables you to see a screenshot of the VM from the hypervisor.
 func (o DiagnosticsProfileResponsePtrOutput) BootDiagnostics() BootDiagnosticsResponsePtrOutput {
 	return o.ApplyT(func(v *DiagnosticsProfileResponse) *BootDiagnosticsResponse {
 		if v == nil {
@@ -1547,11 +1872,19 @@ func (o DiagnosticsProfileResponsePtrOutput) BootDiagnostics() BootDiagnosticsRe
 	}).(BootDiagnosticsResponsePtrOutput)
 }
 
-// Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+// Describes the parameters of ephemeral disk settings that can be specified for
+// operating system disk. **Note:** The ephemeral disk settings can only be
+// specified for managed disk.
 type DiffDiskSettings struct {
 	// Specifies the ephemeral disk settings for operating system disk.
 	Option *string `pulumi:"option"`
-	// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+	// Specifies the ephemeral disk placement for operating system disk. Possible
+	// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+	// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+	// is used. Refer to the VM size documentation for Windows VM at
+	// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+	// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+	// sizes exposes a cache disk.
 	Placement *string `pulumi:"placement"`
 }
 
@@ -1566,11 +1899,19 @@ type DiffDiskSettingsInput interface {
 	ToDiffDiskSettingsOutputWithContext(context.Context) DiffDiskSettingsOutput
 }
 
-// Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+// Describes the parameters of ephemeral disk settings that can be specified for
+// operating system disk. **Note:** The ephemeral disk settings can only be
+// specified for managed disk.
 type DiffDiskSettingsArgs struct {
 	// Specifies the ephemeral disk settings for operating system disk.
 	Option pulumi.StringPtrInput `pulumi:"option"`
-	// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+	// Specifies the ephemeral disk placement for operating system disk. Possible
+	// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+	// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+	// is used. Refer to the VM size documentation for Windows VM at
+	// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+	// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+	// sizes exposes a cache disk.
 	Placement pulumi.StringPtrInput `pulumi:"placement"`
 }
 
@@ -1627,7 +1968,9 @@ func (i *diffDiskSettingsPtrType) ToDiffDiskSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DiffDiskSettingsPtrOutput)
 }
 
-// Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+// Describes the parameters of ephemeral disk settings that can be specified for
+// operating system disk. **Note:** The ephemeral disk settings can only be
+// specified for managed disk.
 type DiffDiskSettingsOutput struct{ *pulumi.OutputState }
 
 func (DiffDiskSettingsOutput) ElementType() reflect.Type {
@@ -1657,7 +2000,13 @@ func (o DiffDiskSettingsOutput) Option() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettings) *string { return v.Option }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+// Specifies the ephemeral disk placement for operating system disk. Possible
+// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+// is used. Refer to the VM size documentation for Windows VM at
+// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// sizes exposes a cache disk.
 func (o DiffDiskSettingsOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettings) *string { return v.Placement }).(pulumi.StringPtrOutput)
 }
@@ -1696,7 +2045,13 @@ func (o DiffDiskSettingsPtrOutput) Option() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+// Specifies the ephemeral disk placement for operating system disk. Possible
+// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+// is used. Refer to the VM size documentation for Windows VM at
+// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// sizes exposes a cache disk.
 func (o DiffDiskSettingsPtrOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettings) *string {
 		if v == nil {
@@ -1706,15 +2061,25 @@ func (o DiffDiskSettingsPtrOutput) Placement() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+// Describes the parameters of ephemeral disk settings that can be specified for
+// operating system disk. **Note:** The ephemeral disk settings can only be
+// specified for managed disk.
 type DiffDiskSettingsResponse struct {
 	// Specifies the ephemeral disk settings for operating system disk.
 	Option *string `pulumi:"option"`
-	// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+	// Specifies the ephemeral disk placement for operating system disk. Possible
+	// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+	// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+	// is used. Refer to the VM size documentation for Windows VM at
+	// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+	// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+	// sizes exposes a cache disk.
 	Placement *string `pulumi:"placement"`
 }
 
-// Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+// Describes the parameters of ephemeral disk settings that can be specified for
+// operating system disk. **Note:** The ephemeral disk settings can only be
+// specified for managed disk.
 type DiffDiskSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DiffDiskSettingsResponseOutput) ElementType() reflect.Type {
@@ -1734,7 +2099,13 @@ func (o DiffDiskSettingsResponseOutput) Option() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettingsResponse) *string { return v.Option }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+// Specifies the ephemeral disk placement for operating system disk. Possible
+// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+// is used. Refer to the VM size documentation for Windows VM at
+// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// sizes exposes a cache disk.
 func (o DiffDiskSettingsResponseOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettingsResponse) *string { return v.Placement }).(pulumi.StringPtrOutput)
 }
@@ -1773,7 +2144,13 @@ func (o DiffDiskSettingsResponsePtrOutput) Option() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+// Specifies the ephemeral disk placement for operating system disk. Possible
+// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+// is used. Refer to the VM size documentation for Windows VM at
+// https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+// https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+// sizes exposes a cache disk.
 func (o DiffDiskSettingsResponsePtrOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettingsResponse) *string {
 		if v == nil {
@@ -1783,7 +2160,10 @@ func (o DiffDiskSettingsResponsePtrOutput) Placement() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+// Describes the parameter of customer managed disk encryption set resource id
+// that can be specified for disk. **Note:** The disk encryption set resource id
+// can only be specified for managed disk. Please refer
+// https://aka.ms/mdssewithcmkoverview for more details.
 type DiskEncryptionSetParameters struct {
 	// Resource Id
 	Id *string `pulumi:"id"`
@@ -1800,7 +2180,10 @@ type DiskEncryptionSetParametersInput interface {
 	ToDiskEncryptionSetParametersOutputWithContext(context.Context) DiskEncryptionSetParametersOutput
 }
 
-// Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+// Describes the parameter of customer managed disk encryption set resource id
+// that can be specified for disk. **Note:** The disk encryption set resource id
+// can only be specified for managed disk. Please refer
+// https://aka.ms/mdssewithcmkoverview for more details.
 type DiskEncryptionSetParametersArgs struct {
 	// Resource Id
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -1859,7 +2242,10 @@ func (i *diskEncryptionSetParametersPtrType) ToDiskEncryptionSetParametersPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetParametersPtrOutput)
 }
 
-// Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+// Describes the parameter of customer managed disk encryption set resource id
+// that can be specified for disk. **Note:** The disk encryption set resource id
+// can only be specified for managed disk. Please refer
+// https://aka.ms/mdssewithcmkoverview for more details.
 type DiskEncryptionSetParametersOutput struct{ *pulumi.OutputState }
 
 func (DiskEncryptionSetParametersOutput) ElementType() reflect.Type {
@@ -1923,13 +2309,19 @@ func (o DiskEncryptionSetParametersPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+// Describes the parameter of customer managed disk encryption set resource id
+// that can be specified for disk. **Note:** The disk encryption set resource id
+// can only be specified for managed disk. Please refer
+// https://aka.ms/mdssewithcmkoverview for more details.
 type DiskEncryptionSetParametersResponse struct {
 	// Resource Id
 	Id *string `pulumi:"id"`
 }
 
-// Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+// Describes the parameter of customer managed disk encryption set resource id
+// that can be specified for disk. **Note:** The disk encryption set resource id
+// can only be specified for managed disk. Please refer
+// https://aka.ms/mdssewithcmkoverview for more details.
 type DiskEncryptionSetParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (DiskEncryptionSetParametersResponseOutput) ElementType() reflect.Type {
@@ -1983,7 +2375,8 @@ func (o DiskEncryptionSetParametersResponsePtrOutput) Id() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 type EncryptionIdentity struct {
 	// Specifies ARM Resource ID of one of the user identities associated with the VM.
 	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
@@ -2000,7 +2393,8 @@ type EncryptionIdentityInput interface {
 	ToEncryptionIdentityOutputWithContext(context.Context) EncryptionIdentityOutput
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 type EncryptionIdentityArgs struct {
 	// Specifies ARM Resource ID of one of the user identities associated with the VM.
 	UserAssignedIdentityResourceId pulumi.StringPtrInput `pulumi:"userAssignedIdentityResourceId"`
@@ -2059,7 +2453,8 @@ func (i *encryptionIdentityPtrType) ToEncryptionIdentityPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionIdentityPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 type EncryptionIdentityOutput struct{ *pulumi.OutputState }
 
 func (EncryptionIdentityOutput) ElementType() reflect.Type {
@@ -2123,13 +2518,15 @@ func (o EncryptionIdentityPtrOutput) UserAssignedIdentityResourceId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 type EncryptionIdentityResponse struct {
 	// Specifies ARM Resource ID of one of the user identities associated with the VM.
 	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 type EncryptionIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (EncryptionIdentityResponseOutput) ElementType() reflect.Type {
@@ -2183,21 +2580,37 @@ func (o EncryptionIdentityResponsePtrOutput) UserAssignedIdentityResourceId() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations. NOTE: Image
+// reference publisher and offer can only be set when you create the scale set.
 type ImageReference struct {
-	// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+	// Specified the community gallery image unique id for vm deployment. This can be
+	// fetched from community gallery image GET call.
 	CommunityGalleryImageId *string `pulumi:"communityGalleryImageId"`
 	// Resource Id
 	Id *string `pulumi:"id"`
-	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+	// Specifies the offer of the platform image or marketplace image used to create
+	// the virtual machine.
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+	// Specified the shared gallery image unique id for vm deployment. This can be
+	// fetched from shared gallery image GET call.
 	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku *string `pulumi:"sku"`
-	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+	// Specifies the version of the platform image or marketplace image used to create
+	// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+	// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+	// version of an image available at deploy time. Even if you use 'latest', the VM
+	// image will not automatically update after deploy time even if a new version
+	// becomes available. Please do not use field 'version' for gallery image
+	// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+	// version of gallery image, just set
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+	// in the 'id' field without version input.
 	Version *string `pulumi:"version"`
 }
 
@@ -2212,21 +2625,37 @@ type ImageReferenceInput interface {
 	ToImageReferenceOutputWithContext(context.Context) ImageReferenceOutput
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations. NOTE: Image
+// reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceArgs struct {
-	// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+	// Specified the community gallery image unique id for vm deployment. This can be
+	// fetched from community gallery image GET call.
 	CommunityGalleryImageId pulumi.StringPtrInput `pulumi:"communityGalleryImageId"`
 	// Resource Id
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+	// Specifies the offer of the platform image or marketplace image used to create
+	// the virtual machine.
 	Offer pulumi.StringPtrInput `pulumi:"offer"`
 	// The image publisher.
 	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+	// Specified the shared gallery image unique id for vm deployment. This can be
+	// fetched from shared gallery image GET call.
 	SharedGalleryImageId pulumi.StringPtrInput `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku pulumi.StringPtrInput `pulumi:"sku"`
-	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+	// Specifies the version of the platform image or marketplace image used to create
+	// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+	// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+	// version of an image available at deploy time. Even if you use 'latest', the VM
+	// image will not automatically update after deploy time even if a new version
+	// becomes available. Please do not use field 'version' for gallery image
+	// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+	// version of gallery image, just set
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+	// in the 'id' field without version input.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -2283,7 +2712,11 @@ func (i *imageReferencePtrType) ToImageReferencePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ImageReferencePtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations. NOTE: Image
+// reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceOutput struct{ *pulumi.OutputState }
 
 func (ImageReferenceOutput) ElementType() reflect.Type {
@@ -2308,7 +2741,8 @@ func (o ImageReferenceOutput) ToImageReferencePtrOutputWithContext(ctx context.C
 	}).(ImageReferencePtrOutput)
 }
 
-// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+// Specified the community gallery image unique id for vm deployment. This can be
+// fetched from community gallery image GET call.
 func (o ImageReferenceOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
 }
@@ -2318,7 +2752,8 @@ func (o ImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+// Specifies the offer of the platform image or marketplace image used to create
+// the virtual machine.
 func (o ImageReferenceOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Offer }).(pulumi.StringPtrOutput)
 }
@@ -2328,7 +2763,8 @@ func (o ImageReferenceOutput) Publisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Publisher }).(pulumi.StringPtrOutput)
 }
 
-// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+// Specified the shared gallery image unique id for vm deployment. This can be
+// fetched from shared gallery image GET call.
 func (o ImageReferenceOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.SharedGalleryImageId }).(pulumi.StringPtrOutput)
 }
@@ -2338,7 +2774,16 @@ func (o ImageReferenceOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+// Specifies the version of the platform image or marketplace image used to create
+// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+// version of an image available at deploy time. Even if you use 'latest', the VM
+// image will not automatically update after deploy time even if a new version
+// becomes available. Please do not use field 'version' for gallery image
+// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+// version of gallery image, just set
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+// in the 'id' field without version input.
 func (o ImageReferenceOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2367,7 +2812,8 @@ func (o ImageReferencePtrOutput) Elem() ImageReferenceOutput {
 	}).(ImageReferenceOutput)
 }
 
-// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+// Specified the community gallery image unique id for vm deployment. This can be
+// fetched from community gallery image GET call.
 func (o ImageReferencePtrOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
 		if v == nil {
@@ -2387,7 +2833,8 @@ func (o ImageReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+// Specifies the offer of the platform image or marketplace image used to create
+// the virtual machine.
 func (o ImageReferencePtrOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
 		if v == nil {
@@ -2407,7 +2854,8 @@ func (o ImageReferencePtrOutput) Publisher() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+// Specified the shared gallery image unique id for vm deployment. This can be
+// fetched from shared gallery image GET call.
 func (o ImageReferencePtrOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
 		if v == nil {
@@ -2427,7 +2875,16 @@ func (o ImageReferencePtrOutput) Sku() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+// Specifies the version of the platform image or marketplace image used to create
+// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+// version of an image available at deploy time. Even if you use 'latest', the VM
+// image will not automatically update after deploy time even if a new version
+// becomes available. Please do not use field 'version' for gallery image
+// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+// version of gallery image, just set
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+// in the 'id' field without version input.
 func (o ImageReferencePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
 		if v == nil {
@@ -2437,27 +2894,49 @@ func (o ImageReferencePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations. NOTE: Image
+// reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceResponse struct {
-	// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+	// Specified the community gallery image unique id for vm deployment. This can be
+	// fetched from community gallery image GET call.
 	CommunityGalleryImageId *string `pulumi:"communityGalleryImageId"`
-	// Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
+	// Specifies in decimal numbers, the version of platform image or marketplace
+	// image used to create the virtual machine. This readonly field differs from 'version',
+	// only if the value specified in 'version' field is 'latest'.
 	ExactVersion string `pulumi:"exactVersion"`
 	// Resource Id
 	Id *string `pulumi:"id"`
-	// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+	// Specifies the offer of the platform image or marketplace image used to create
+	// the virtual machine.
 	Offer *string `pulumi:"offer"`
 	// The image publisher.
 	Publisher *string `pulumi:"publisher"`
-	// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+	// Specified the shared gallery image unique id for vm deployment. This can be
+	// fetched from shared gallery image GET call.
 	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// The image SKU.
 	Sku *string `pulumi:"sku"`
-	// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+	// Specifies the version of the platform image or marketplace image used to create
+	// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+	// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+	// version of an image available at deploy time. Even if you use 'latest', the VM
+	// image will not automatically update after deploy time even if a new version
+	// becomes available. Please do not use field 'version' for gallery image
+	// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+	// version of gallery image, just set
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+	// in the 'id' field without version input.
 	Version *string `pulumi:"version"`
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations. NOTE: Image
+// reference publisher and offer can only be set when you create the scale set.
 type ImageReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ImageReferenceResponseOutput) ElementType() reflect.Type {
@@ -2472,12 +2951,15 @@ func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutputWithContext(
 	return o
 }
 
-// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+// Specified the community gallery image unique id for vm deployment. This can be
+// fetched from community gallery image GET call.
 func (o ImageReferenceResponseOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
+// Specifies in decimal numbers, the version of platform image or marketplace
+// image used to create the virtual machine. This readonly field differs from 'version',
+// only if the value specified in 'version' field is 'latest'.
 func (o ImageReferenceResponseOutput) ExactVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) string { return v.ExactVersion }).(pulumi.StringOutput)
 }
@@ -2487,7 +2969,8 @@ func (o ImageReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+// Specifies the offer of the platform image or marketplace image used to create
+// the virtual machine.
 func (o ImageReferenceResponseOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Offer }).(pulumi.StringPtrOutput)
 }
@@ -2497,7 +2980,8 @@ func (o ImageReferenceResponseOutput) Publisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
 }
 
-// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+// Specified the shared gallery image unique id for vm deployment. This can be
+// fetched from shared gallery image GET call.
 func (o ImageReferenceResponseOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.SharedGalleryImageId }).(pulumi.StringPtrOutput)
 }
@@ -2507,7 +2991,16 @@ func (o ImageReferenceResponseOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+// Specifies the version of the platform image or marketplace image used to create
+// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+// version of an image available at deploy time. Even if you use 'latest', the VM
+// image will not automatically update after deploy time even if a new version
+// becomes available. Please do not use field 'version' for gallery image
+// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+// version of gallery image, just set
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+// in the 'id' field without version input.
 func (o ImageReferenceResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2536,7 +3029,8 @@ func (o ImageReferenceResponsePtrOutput) Elem() ImageReferenceResponseOutput {
 	}).(ImageReferenceResponseOutput)
 }
 
-// Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+// Specified the community gallery image unique id for vm deployment. This can be
+// fetched from community gallery image GET call.
 func (o ImageReferenceResponsePtrOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -2546,7 +3040,9 @@ func (o ImageReferenceResponsePtrOutput) CommunityGalleryImageId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
+// Specifies in decimal numbers, the version of platform image or marketplace
+// image used to create the virtual machine. This readonly field differs from 'version',
+// only if the value specified in 'version' field is 'latest'.
 func (o ImageReferenceResponsePtrOutput) ExactVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -2566,7 +3062,8 @@ func (o ImageReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+// Specifies the offer of the platform image or marketplace image used to create
+// the virtual machine.
 func (o ImageReferenceResponsePtrOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -2586,7 +3083,8 @@ func (o ImageReferenceResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+// Specified the shared gallery image unique id for vm deployment. This can be
+// fetched from shared gallery image GET call.
 func (o ImageReferenceResponsePtrOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -2606,7 +3104,16 @@ func (o ImageReferenceResponsePtrOutput) Sku() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+// Specifies the version of the platform image or marketplace image used to create
+// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+// version of an image available at deploy time. Even if you use 'latest', the VM
+// image will not automatically update after deploy time even if a new version
+// becomes available. Please do not use field 'version' for gallery image
+// deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+// version of gallery image, just set
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+// in the 'id' field without version input.
 func (o ImageReferenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -2614,216 +3121,6 @@ func (o ImageReferenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
-}
-
-// Instance view status.
-type InstanceViewStatus struct {
-	// The status code.
-	Code *string `pulumi:"code"`
-	// The short localizable label for the status.
-	DisplayStatus *string `pulumi:"displayStatus"`
-	// The level code.
-	Level *StatusLevelTypes `pulumi:"level"`
-	// The detailed status message, including for alerts and error messages.
-	Message *string `pulumi:"message"`
-	// The time of the status.
-	Time *string `pulumi:"time"`
-}
-
-// InstanceViewStatusInput is an input type that accepts InstanceViewStatusArgs and InstanceViewStatusOutput values.
-// You can construct a concrete instance of `InstanceViewStatusInput` via:
-//
-//	InstanceViewStatusArgs{...}
-type InstanceViewStatusInput interface {
-	pulumi.Input
-
-	ToInstanceViewStatusOutput() InstanceViewStatusOutput
-	ToInstanceViewStatusOutputWithContext(context.Context) InstanceViewStatusOutput
-}
-
-// Instance view status.
-type InstanceViewStatusArgs struct {
-	// The status code.
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// The short localizable label for the status.
-	DisplayStatus pulumi.StringPtrInput `pulumi:"displayStatus"`
-	// The level code.
-	Level StatusLevelTypesPtrInput `pulumi:"level"`
-	// The detailed status message, including for alerts and error messages.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// The time of the status.
-	Time pulumi.StringPtrInput `pulumi:"time"`
-}
-
-func (InstanceViewStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceViewStatus)(nil)).Elem()
-}
-
-func (i InstanceViewStatusArgs) ToInstanceViewStatusOutput() InstanceViewStatusOutput {
-	return i.ToInstanceViewStatusOutputWithContext(context.Background())
-}
-
-func (i InstanceViewStatusArgs) ToInstanceViewStatusOutputWithContext(ctx context.Context) InstanceViewStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceViewStatusOutput)
-}
-
-// InstanceViewStatusArrayInput is an input type that accepts InstanceViewStatusArray and InstanceViewStatusArrayOutput values.
-// You can construct a concrete instance of `InstanceViewStatusArrayInput` via:
-//
-//	InstanceViewStatusArray{ InstanceViewStatusArgs{...} }
-type InstanceViewStatusArrayInput interface {
-	pulumi.Input
-
-	ToInstanceViewStatusArrayOutput() InstanceViewStatusArrayOutput
-	ToInstanceViewStatusArrayOutputWithContext(context.Context) InstanceViewStatusArrayOutput
-}
-
-type InstanceViewStatusArray []InstanceViewStatusInput
-
-func (InstanceViewStatusArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceViewStatus)(nil)).Elem()
-}
-
-func (i InstanceViewStatusArray) ToInstanceViewStatusArrayOutput() InstanceViewStatusArrayOutput {
-	return i.ToInstanceViewStatusArrayOutputWithContext(context.Background())
-}
-
-func (i InstanceViewStatusArray) ToInstanceViewStatusArrayOutputWithContext(ctx context.Context) InstanceViewStatusArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceViewStatusArrayOutput)
-}
-
-// Instance view status.
-type InstanceViewStatusOutput struct{ *pulumi.OutputState }
-
-func (InstanceViewStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceViewStatus)(nil)).Elem()
-}
-
-func (o InstanceViewStatusOutput) ToInstanceViewStatusOutput() InstanceViewStatusOutput {
-	return o
-}
-
-func (o InstanceViewStatusOutput) ToInstanceViewStatusOutputWithContext(ctx context.Context) InstanceViewStatusOutput {
-	return o
-}
-
-// The status code.
-func (o InstanceViewStatusOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatus) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// The short localizable label for the status.
-func (o InstanceViewStatusOutput) DisplayStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatus) *string { return v.DisplayStatus }).(pulumi.StringPtrOutput)
-}
-
-// The level code.
-func (o InstanceViewStatusOutput) Level() StatusLevelTypesPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatus) *StatusLevelTypes { return v.Level }).(StatusLevelTypesPtrOutput)
-}
-
-// The detailed status message, including for alerts and error messages.
-func (o InstanceViewStatusOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// The time of the status.
-func (o InstanceViewStatusOutput) Time() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatus) *string { return v.Time }).(pulumi.StringPtrOutput)
-}
-
-type InstanceViewStatusArrayOutput struct{ *pulumi.OutputState }
-
-func (InstanceViewStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceViewStatus)(nil)).Elem()
-}
-
-func (o InstanceViewStatusArrayOutput) ToInstanceViewStatusArrayOutput() InstanceViewStatusArrayOutput {
-	return o
-}
-
-func (o InstanceViewStatusArrayOutput) ToInstanceViewStatusArrayOutputWithContext(ctx context.Context) InstanceViewStatusArrayOutput {
-	return o
-}
-
-func (o InstanceViewStatusArrayOutput) Index(i pulumi.IntInput) InstanceViewStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceViewStatus {
-		return vs[0].([]InstanceViewStatus)[vs[1].(int)]
-	}).(InstanceViewStatusOutput)
-}
-
-// Instance view status.
-type InstanceViewStatusResponse struct {
-	// The status code.
-	Code *string `pulumi:"code"`
-	// The short localizable label for the status.
-	DisplayStatus *string `pulumi:"displayStatus"`
-	// The level code.
-	Level *string `pulumi:"level"`
-	// The detailed status message, including for alerts and error messages.
-	Message *string `pulumi:"message"`
-	// The time of the status.
-	Time *string `pulumi:"time"`
-}
-
-// Instance view status.
-type InstanceViewStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (InstanceViewStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceViewStatusResponse)(nil)).Elem()
-}
-
-func (o InstanceViewStatusResponseOutput) ToInstanceViewStatusResponseOutput() InstanceViewStatusResponseOutput {
-	return o
-}
-
-func (o InstanceViewStatusResponseOutput) ToInstanceViewStatusResponseOutputWithContext(ctx context.Context) InstanceViewStatusResponseOutput {
-	return o
-}
-
-// The status code.
-func (o InstanceViewStatusResponseOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// The short localizable label for the status.
-func (o InstanceViewStatusResponseOutput) DisplayStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.DisplayStatus }).(pulumi.StringPtrOutput)
-}
-
-// The level code.
-func (o InstanceViewStatusResponseOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
-}
-
-// The detailed status message, including for alerts and error messages.
-func (o InstanceViewStatusResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// The time of the status.
-func (o InstanceViewStatusResponseOutput) Time() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Time }).(pulumi.StringPtrOutput)
-}
-
-type InstanceViewStatusResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (InstanceViewStatusResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceViewStatusResponse)(nil)).Elem()
-}
-
-func (o InstanceViewStatusResponseArrayOutput) ToInstanceViewStatusResponseArrayOutput() InstanceViewStatusResponseArrayOutput {
-	return o
-}
-
-func (o InstanceViewStatusResponseArrayOutput) ToInstanceViewStatusResponseArrayOutputWithContext(ctx context.Context) InstanceViewStatusResponseArrayOutput {
-	return o
-}
-
-func (o InstanceViewStatusResponseArrayOutput) Index(i pulumi.IntInput) InstanceViewStatusResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceViewStatusResponse {
-		return vs[0].([]InstanceViewStatusResponse)[vs[1].(int)]
-	}).(InstanceViewStatusResponseOutput)
 }
 
 // Describes a reference to Key Vault Secret
@@ -3062,15 +3359,21 @@ func (o KeyVaultSecretReferenceResponsePtrOutput) SourceVault() SubResourceRespo
 	}).(SubResourceResponsePtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfiguration struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
-	// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+	// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+	// machine. Default value is false.
 	EnableVMAgentPlatformUpdates *bool `pulumi:"enableVMAgentPlatformUpdates"`
 	// [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
 	PatchSettings *LinuxPatchSettings `pulumi:"patchSettings"`
-	// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+	// Indicates whether virtual machine agent should be provisioned on the virtual
+	// machine. When this property is not specified in the request body, default
+	// behavior is to set it to true. This will ensure that VM Agent is installed on
+	// the VM so that extensions can be added to the VM later.
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
 	// Specifies the ssh key configuration for a Linux OS.
 	Ssh *SshConfiguration `pulumi:"ssh"`
@@ -3087,15 +3390,21 @@ type LinuxConfigurationInput interface {
 	ToLinuxConfigurationOutputWithContext(context.Context) LinuxConfigurationOutput
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationArgs struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication pulumi.BoolPtrInput `pulumi:"disablePasswordAuthentication"`
-	// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+	// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+	// machine. Default value is false.
 	EnableVMAgentPlatformUpdates pulumi.BoolPtrInput `pulumi:"enableVMAgentPlatformUpdates"`
 	// [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
 	PatchSettings LinuxPatchSettingsPtrInput `pulumi:"patchSettings"`
-	// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+	// Indicates whether virtual machine agent should be provisioned on the virtual
+	// machine. When this property is not specified in the request body, default
+	// behavior is to set it to true. This will ensure that VM Agent is installed on
+	// the VM so that extensions can be added to the VM later.
 	ProvisionVMAgent pulumi.BoolPtrInput `pulumi:"provisionVMAgent"`
 	// Specifies the ssh key configuration for a Linux OS.
 	Ssh SshConfigurationPtrInput `pulumi:"ssh"`
@@ -3154,7 +3463,9 @@ func (i *linuxConfigurationPtrType) ToLinuxConfigurationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxConfigurationPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationOutput) ElementType() reflect.Type {
@@ -3184,7 +3495,8 @@ func (o LinuxConfigurationOutput) DisablePasswordAuthentication() pulumi.BoolPtr
 	return o.ApplyT(func(v LinuxConfiguration) *bool { return v.DisablePasswordAuthentication }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+// machine. Default value is false.
 func (o LinuxConfigurationOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinuxConfiguration) *bool { return v.EnableVMAgentPlatformUpdates }).(pulumi.BoolPtrOutput)
 }
@@ -3194,7 +3506,10 @@ func (o LinuxConfigurationOutput) PatchSettings() LinuxPatchSettingsPtrOutput {
 	return o.ApplyT(func(v LinuxConfiguration) *LinuxPatchSettings { return v.PatchSettings }).(LinuxPatchSettingsPtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, default
+// behavior is to set it to true. This will ensure that VM Agent is installed on
+// the VM so that extensions can be added to the VM later.
 func (o LinuxConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinuxConfiguration) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
 }
@@ -3238,7 +3553,8 @@ func (o LinuxConfigurationPtrOutput) DisablePasswordAuthentication() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+// machine. Default value is false.
 func (o LinuxConfigurationPtrOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinuxConfiguration) *bool {
 		if v == nil {
@@ -3258,7 +3574,10 @@ func (o LinuxConfigurationPtrOutput) PatchSettings() LinuxPatchSettingsPtrOutput
 	}).(LinuxPatchSettingsPtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, default
+// behavior is to set it to true. This will ensure that VM Agent is installed on
+// the VM so that extensions can be added to the VM later.
 func (o LinuxConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinuxConfiguration) *bool {
 		if v == nil {
@@ -3278,21 +3597,29 @@ func (o LinuxConfigurationPtrOutput) Ssh() SshConfigurationPtrOutput {
 	}).(SshConfigurationPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponse struct {
 	// Specifies whether password authentication should be disabled.
 	DisablePasswordAuthentication *bool `pulumi:"disablePasswordAuthentication"`
-	// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+	// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+	// machine. Default value is false.
 	EnableVMAgentPlatformUpdates *bool `pulumi:"enableVMAgentPlatformUpdates"`
 	// [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
 	PatchSettings *LinuxPatchSettingsResponse `pulumi:"patchSettings"`
-	// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+	// Indicates whether virtual machine agent should be provisioned on the virtual
+	// machine. When this property is not specified in the request body, default
+	// behavior is to set it to true. This will ensure that VM Agent is installed on
+	// the VM so that extensions can be added to the VM later.
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
 	// Specifies the ssh key configuration for a Linux OS.
 	Ssh *SshConfigurationResponse `pulumi:"ssh"`
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 type LinuxConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (LinuxConfigurationResponseOutput) ElementType() reflect.Type {
@@ -3312,7 +3639,8 @@ func (o LinuxConfigurationResponseOutput) DisablePasswordAuthentication() pulumi
 	return o.ApplyT(func(v LinuxConfigurationResponse) *bool { return v.DisablePasswordAuthentication }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+// machine. Default value is false.
 func (o LinuxConfigurationResponseOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinuxConfigurationResponse) *bool { return v.EnableVMAgentPlatformUpdates }).(pulumi.BoolPtrOutput)
 }
@@ -3322,7 +3650,10 @@ func (o LinuxConfigurationResponseOutput) PatchSettings() LinuxPatchSettingsResp
 	return o.ApplyT(func(v LinuxConfigurationResponse) *LinuxPatchSettingsResponse { return v.PatchSettings }).(LinuxPatchSettingsResponsePtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, default
+// behavior is to set it to true. This will ensure that VM Agent is installed on
+// the VM so that extensions can be added to the VM later.
 func (o LinuxConfigurationResponseOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinuxConfigurationResponse) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
 }
@@ -3366,7 +3697,8 @@ func (o LinuxConfigurationResponsePtrOutput) DisablePasswordAuthentication() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+// machine. Default value is false.
 func (o LinuxConfigurationResponsePtrOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinuxConfigurationResponse) *bool {
 		if v == nil {
@@ -3386,7 +3718,10 @@ func (o LinuxConfigurationResponsePtrOutput) PatchSettings() LinuxPatchSettingsR
 	}).(LinuxPatchSettingsResponsePtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, default
+// behavior is to set it to true. This will ensure that VM Agent is installed on
+// the VM so that extensions can be added to the VM later.
 func (o LinuxConfigurationResponsePtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LinuxConfigurationResponse) *bool {
 		if v == nil {
@@ -3408,11 +3743,21 @@ func (o LinuxConfigurationResponsePtrOutput) Ssh() SshConfigurationResponsePtrOu
 
 // Specifies settings related to VM Guest Patching on Linux.
 type LinuxPatchSettings struct {
-	// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+	// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+	// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+	// control the timing of patch assessments on a virtual machine. <br /><br />
+	// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+	// The property provisionVMAgent must be true.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+	// Patching on Linux.
 	AutomaticByPlatformSettings *LinuxVMGuestPatchAutomaticByPlatformSettings `pulumi:"automaticByPlatformSettings"`
-	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+	// machines associated to virtual machine scale set with OrchestrationMode as
+	// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+	// virtual machine's default patching configuration is used. <br /><br />
+	// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+	// the platform. The property provisionVMAgent must be true
 	PatchMode *string `pulumi:"patchMode"`
 }
 
@@ -3429,11 +3774,21 @@ type LinuxPatchSettingsInput interface {
 
 // Specifies settings related to VM Guest Patching on Linux.
 type LinuxPatchSettingsArgs struct {
-	// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+	// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+	// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+	// control the timing of patch assessments on a virtual machine. <br /><br />
+	// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+	// The property provisionVMAgent must be true.
 	AssessmentMode pulumi.StringPtrInput `pulumi:"assessmentMode"`
-	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+	// Patching on Linux.
 	AutomaticByPlatformSettings LinuxVMGuestPatchAutomaticByPlatformSettingsPtrInput `pulumi:"automaticByPlatformSettings"`
-	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+	// machines associated to virtual machine scale set with OrchestrationMode as
+	// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+	// virtual machine's default patching configuration is used. <br /><br />
+	// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+	// the platform. The property provisionVMAgent must be true
 	PatchMode pulumi.StringPtrInput `pulumi:"patchMode"`
 }
 
@@ -3515,19 +3870,29 @@ func (o LinuxPatchSettingsOutput) ToLinuxPatchSettingsPtrOutputWithContext(ctx c
 	}).(LinuxPatchSettingsPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine. <br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o LinuxPatchSettingsOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettings) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Linux.
 func (o LinuxPatchSettingsOutput) AutomaticByPlatformSettings() LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettings) *LinuxVMGuestPatchAutomaticByPlatformSettings {
 		return v.AutomaticByPlatformSettings
 	}).(LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+// virtual machine's default patching configuration is used. <br /><br />
+// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+// the platform. The property provisionVMAgent must be true
 func (o LinuxPatchSettingsOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettings) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
 }
@@ -3556,7 +3921,11 @@ func (o LinuxPatchSettingsPtrOutput) Elem() LinuxPatchSettingsOutput {
 	}).(LinuxPatchSettingsOutput)
 }
 
-// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine. <br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o LinuxPatchSettingsPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LinuxPatchSettings) *string {
 		if v == nil {
@@ -3566,7 +3935,8 @@ func (o LinuxPatchSettingsPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Linux.
 func (o LinuxPatchSettingsPtrOutput) AutomaticByPlatformSettings() LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput {
 	return o.ApplyT(func(v *LinuxPatchSettings) *LinuxVMGuestPatchAutomaticByPlatformSettings {
 		if v == nil {
@@ -3576,7 +3946,12 @@ func (o LinuxPatchSettingsPtrOutput) AutomaticByPlatformSettings() LinuxVMGuestP
 	}).(LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+// virtual machine's default patching configuration is used. <br /><br />
+// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+// the platform. The property provisionVMAgent must be true
 func (o LinuxPatchSettingsPtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LinuxPatchSettings) *string {
 		if v == nil {
@@ -3588,11 +3963,21 @@ func (o LinuxPatchSettingsPtrOutput) PatchMode() pulumi.StringPtrOutput {
 
 // Specifies settings related to VM Guest Patching on Linux.
 type LinuxPatchSettingsResponse struct {
-	// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+	// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+	// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+	// control the timing of patch assessments on a virtual machine. <br /><br />
+	// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+	// The property provisionVMAgent must be true.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+	// Patching on Linux.
 	AutomaticByPlatformSettings *LinuxVMGuestPatchAutomaticByPlatformSettingsResponse `pulumi:"automaticByPlatformSettings"`
-	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+	// machines associated to virtual machine scale set with OrchestrationMode as
+	// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+	// virtual machine's default patching configuration is used. <br /><br />
+	// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+	// the platform. The property provisionVMAgent must be true
 	PatchMode *string `pulumi:"patchMode"`
 }
 
@@ -3611,19 +3996,29 @@ func (o LinuxPatchSettingsResponseOutput) ToLinuxPatchSettingsResponseOutputWith
 	return o
 }
 
-// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine. <br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o LinuxPatchSettingsResponseOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettingsResponse) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Linux.
 func (o LinuxPatchSettingsResponseOutput) AutomaticByPlatformSettings() LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettingsResponse) *LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
 		return v.AutomaticByPlatformSettings
 	}).(LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+// virtual machine's default patching configuration is used. <br /><br />
+// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+// the platform. The property provisionVMAgent must be true
 func (o LinuxPatchSettingsResponseOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettingsResponse) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
 }
@@ -3652,7 +4047,11 @@ func (o LinuxPatchSettingsResponsePtrOutput) Elem() LinuxPatchSettingsResponseOu
 	}).(LinuxPatchSettingsResponseOutput)
 }
 
-// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine. <br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o LinuxPatchSettingsResponsePtrOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LinuxPatchSettingsResponse) *string {
 		if v == nil {
@@ -3662,7 +4061,8 @@ func (o LinuxPatchSettingsResponsePtrOutput) AssessmentMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Linux.
 func (o LinuxPatchSettingsResponsePtrOutput) AutomaticByPlatformSettings() LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *LinuxPatchSettingsResponse) *LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
 		if v == nil {
@@ -3672,7 +4072,12 @@ func (o LinuxPatchSettingsResponsePtrOutput) AutomaticByPlatformSettings() Linux
 	}).(LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+// virtual machine's default patching configuration is used. <br /><br />
+// **AutomaticByPlatform** - The virtual machine will be automatically updated by
+// the platform. The property provisionVMAgent must be true
 func (o LinuxPatchSettingsResponsePtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LinuxPatchSettingsResponse) *string {
 		if v == nil {
@@ -3682,11 +4087,13 @@ func (o LinuxPatchSettingsResponsePtrOutput) PatchMode() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Linux patch settings.
 type LinuxVMGuestPatchAutomaticByPlatformSettings struct {
 	// Enables customer to schedule patching without accidental upgrades
 	BypassPlatformSafetyChecksOnUserSchedule *bool `pulumi:"bypassPlatformSafetyChecksOnUserSchedule"`
-	// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+	// Specifies the reboot setting for all AutomaticByPlatform patch installation
+	// operations.
 	RebootSetting *string `pulumi:"rebootSetting"`
 }
 
@@ -3701,11 +4108,13 @@ type LinuxVMGuestPatchAutomaticByPlatformSettingsInput interface {
 	ToLinuxVMGuestPatchAutomaticByPlatformSettingsOutputWithContext(context.Context) LinuxVMGuestPatchAutomaticByPlatformSettingsOutput
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Linux patch settings.
 type LinuxVMGuestPatchAutomaticByPlatformSettingsArgs struct {
 	// Enables customer to schedule patching without accidental upgrades
 	BypassPlatformSafetyChecksOnUserSchedule pulumi.BoolPtrInput `pulumi:"bypassPlatformSafetyChecksOnUserSchedule"`
-	// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+	// Specifies the reboot setting for all AutomaticByPlatform patch installation
+	// operations.
 	RebootSetting pulumi.StringPtrInput `pulumi:"rebootSetting"`
 }
 
@@ -3762,7 +4171,8 @@ func (i *linuxVMGuestPatchAutomaticByPlatformSettingsPtrType) ToLinuxVMGuestPatc
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput)
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Linux patch settings.
 type LinuxVMGuestPatchAutomaticByPlatformSettingsOutput struct{ *pulumi.OutputState }
 
 func (LinuxVMGuestPatchAutomaticByPlatformSettingsOutput) ElementType() reflect.Type {
@@ -3794,7 +4204,8 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsOutput) BypassPlatformSafety
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxVMGuestPatchAutomaticByPlatformSettings) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
 }
@@ -3833,7 +4244,8 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput) BypassPlatformSaf
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LinuxVMGuestPatchAutomaticByPlatformSettings) *string {
 		if v == nil {
@@ -3843,15 +4255,18 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsPtrOutput) RebootSetting() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Linux patch settings.
 type LinuxVMGuestPatchAutomaticByPlatformSettingsResponse struct {
 	// Enables customer to schedule patching without accidental upgrades
 	BypassPlatformSafetyChecksOnUserSchedule *bool `pulumi:"bypassPlatformSafetyChecksOnUserSchedule"`
-	// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+	// Specifies the reboot setting for all AutomaticByPlatform patch installation
+	// operations.
 	RebootSetting *string `pulumi:"rebootSetting"`
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Linux patch settings.
 type LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput) ElementType() reflect.Type {
@@ -3873,7 +4288,8 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput) BypassPlatfo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxVMGuestPatchAutomaticByPlatformSettingsResponse) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
 }
@@ -3912,7 +4328,8 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) BypassPla
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LinuxVMGuestPatchAutomaticByPlatformSettingsResponse) *string {
 		if v == nil {
@@ -4194,10 +4611,14 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// Specifies OS Image Scheduled Event related configurations.
 type OSImageNotificationProfile struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+	// have to potentially approve the OS Image Scheduled Event before the event is
+	// auto approved (timed out). The configuration is specified in ISO 8601 format,
+	// and the value must not exceed 15 minutes (PT15M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
@@ -4212,10 +4633,14 @@ type OSImageNotificationProfileInput interface {
 	ToOSImageNotificationProfileOutputWithContext(context.Context) OSImageNotificationProfileOutput
 }
 
+// Specifies OS Image Scheduled Event related configurations.
 type OSImageNotificationProfileArgs struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+	// have to potentially approve the OS Image Scheduled Event before the event is
+	// auto approved (timed out). The configuration is specified in ISO 8601 format,
+	// and the value must not exceed 15 minutes (PT15M)
 	NotBeforeTimeout pulumi.StringPtrInput `pulumi:"notBeforeTimeout"`
 }
 
@@ -4272,6 +4697,7 @@ func (i *osimageNotificationProfilePtrType) ToOSImageNotificationProfilePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OSImageNotificationProfilePtrOutput)
 }
 
+// Specifies OS Image Scheduled Event related configurations.
 type OSImageNotificationProfileOutput struct{ *pulumi.OutputState }
 
 func (OSImageNotificationProfileOutput) ElementType() reflect.Type {
@@ -4301,7 +4727,10 @@ func (o OSImageNotificationProfileOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfile) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+// have to potentially approve the OS Image Scheduled Event before the event is
+// auto approved (timed out). The configuration is specified in ISO 8601 format,
+// and the value must not exceed 15 minutes (PT15M)
 func (o OSImageNotificationProfileOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfile) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -4340,7 +4769,10 @@ func (o OSImageNotificationProfilePtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+// have to potentially approve the OS Image Scheduled Event before the event is
+// auto approved (timed out). The configuration is specified in ISO 8601 format,
+// and the value must not exceed 15 minutes (PT15M)
 func (o OSImageNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSImageNotificationProfile) *string {
 		if v == nil {
@@ -4350,13 +4782,18 @@ func (o OSImageNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies OS Image Scheduled Event related configurations.
 type OSImageNotificationProfileResponse struct {
 	// Specifies whether the OS Image Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+	// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+	// have to potentially approve the OS Image Scheduled Event before the event is
+	// auto approved (timed out). The configuration is specified in ISO 8601 format,
+	// and the value must not exceed 15 minutes (PT15M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
+// Specifies OS Image Scheduled Event related configurations.
 type OSImageNotificationProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (OSImageNotificationProfileResponseOutput) ElementType() reflect.Type {
@@ -4376,7 +4813,10 @@ func (o OSImageNotificationProfileResponseOutput) Enable() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v OSImageNotificationProfileResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+// have to potentially approve the OS Image Scheduled Event before the event is
+// auto approved (timed out). The configuration is specified in ISO 8601 format,
+// and the value must not exceed 15 minutes (PT15M)
 func (o OSImageNotificationProfileResponseOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSImageNotificationProfileResponse) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -4415,7 +4855,10 @@ func (o OSImageNotificationProfileResponsePtrOutput) Enable() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+// Length of time a Virtual Machine being reimaged or having its OS upgraded will
+// have to potentially approve the OS Image Scheduled Event before the event is
+// auto approved (timed out). The configuration is specified in ISO 8601 format,
+// and the value must not exceed 15 minutes (PT15M)
 func (o OSImageNotificationProfileResponsePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSImageNotificationProfileResponse) *string {
 		if v == nil {
@@ -4427,13 +4870,30 @@ func (o OSImageNotificationProfileResponsePtrOutput) NotBeforeTimeout() pulumi.S
 
 // Specifies settings related to VM Guest Patching on Windows.
 type PatchSettings struct {
-	// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+	// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+	// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+	// control the timing of patch assessments on a virtual machine.<br /><br />
+	// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+	// The property provisionVMAgent must be true.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+	// Patching on Windows.
 	AutomaticByPlatformSettings *WindowsVMGuestPatchAutomaticByPlatformSettings `pulumi:"automaticByPlatformSettings"`
-	// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+	// Enables customers to patch their Azure VMs without requiring a reboot. For
+	// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+	// must be set to 'AutomaticByPlatform'.
 	EnableHotpatching *bool `pulumi:"enableHotpatching"`
-	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+	// machines associated to virtual machine scale set with OrchestrationMode as
+	// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+	// control the application of patches to a virtual machine. You do this by
+	// applying patches manually inside the VM. In this mode, automatic updates are
+	// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+	// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+	// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+	// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+	// automatically updated by the platform. The properties provisionVMAgent and
+	// WindowsConfiguration.enableAutomaticUpdates must be true
 	PatchMode *string `pulumi:"patchMode"`
 }
 
@@ -4450,13 +4910,30 @@ type PatchSettingsInput interface {
 
 // Specifies settings related to VM Guest Patching on Windows.
 type PatchSettingsArgs struct {
-	// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+	// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+	// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+	// control the timing of patch assessments on a virtual machine.<br /><br />
+	// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+	// The property provisionVMAgent must be true.
 	AssessmentMode pulumi.StringPtrInput `pulumi:"assessmentMode"`
-	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+	// Patching on Windows.
 	AutomaticByPlatformSettings WindowsVMGuestPatchAutomaticByPlatformSettingsPtrInput `pulumi:"automaticByPlatformSettings"`
-	// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+	// Enables customers to patch their Azure VMs without requiring a reboot. For
+	// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+	// must be set to 'AutomaticByPlatform'.
 	EnableHotpatching pulumi.BoolPtrInput `pulumi:"enableHotpatching"`
-	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+	// machines associated to virtual machine scale set with OrchestrationMode as
+	// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+	// control the application of patches to a virtual machine. You do this by
+	// applying patches manually inside the VM. In this mode, automatic updates are
+	// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+	// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+	// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+	// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+	// automatically updated by the platform. The properties provisionVMAgent and
+	// WindowsConfiguration.enableAutomaticUpdates must be true
 	PatchMode pulumi.StringPtrInput `pulumi:"patchMode"`
 }
 
@@ -4538,24 +5015,41 @@ func (o PatchSettingsOutput) ToPatchSettingsPtrOutputWithContext(ctx context.Con
 	}).(PatchSettingsPtrOutput)
 }
 
-// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine.<br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o PatchSettingsOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchSettings) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Windows.
 func (o PatchSettingsOutput) AutomaticByPlatformSettings() WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput {
 	return o.ApplyT(func(v PatchSettings) *WindowsVMGuestPatchAutomaticByPlatformSettings {
 		return v.AutomaticByPlatformSettings
 	}).(WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput)
 }
 
-// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+// Enables customers to patch their Azure VMs without requiring a reboot. For
+// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+// must be set to 'AutomaticByPlatform'.
 func (o PatchSettingsOutput) EnableHotpatching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PatchSettings) *bool { return v.EnableHotpatching }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+// control the application of patches to a virtual machine. You do this by
+// applying patches manually inside the VM. In this mode, automatic updates are
+// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+// automatically updated by the platform. The properties provisionVMAgent and
+// WindowsConfiguration.enableAutomaticUpdates must be true
 func (o PatchSettingsOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchSettings) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
 }
@@ -4584,7 +5078,11 @@ func (o PatchSettingsPtrOutput) Elem() PatchSettingsOutput {
 	}).(PatchSettingsOutput)
 }
 
-// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine.<br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o PatchSettingsPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchSettings) *string {
 		if v == nil {
@@ -4594,7 +5092,8 @@ func (o PatchSettingsPtrOutput) AssessmentMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Windows.
 func (o PatchSettingsPtrOutput) AutomaticByPlatformSettings() WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput {
 	return o.ApplyT(func(v *PatchSettings) *WindowsVMGuestPatchAutomaticByPlatformSettings {
 		if v == nil {
@@ -4604,7 +5103,9 @@ func (o PatchSettingsPtrOutput) AutomaticByPlatformSettings() WindowsVMGuestPatc
 	}).(WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput)
 }
 
-// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+// Enables customers to patch their Azure VMs without requiring a reboot. For
+// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+// must be set to 'AutomaticByPlatform'.
 func (o PatchSettingsPtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PatchSettings) *bool {
 		if v == nil {
@@ -4614,7 +5115,17 @@ func (o PatchSettingsPtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+// control the application of patches to a virtual machine. You do this by
+// applying patches manually inside the VM. In this mode, automatic updates are
+// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+// automatically updated by the platform. The properties provisionVMAgent and
+// WindowsConfiguration.enableAutomaticUpdates must be true
 func (o PatchSettingsPtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchSettings) *string {
 		if v == nil {
@@ -4626,13 +5137,30 @@ func (o PatchSettingsPtrOutput) PatchMode() pulumi.StringPtrOutput {
 
 // Specifies settings related to VM Guest Patching on Windows.
 type PatchSettingsResponse struct {
-	// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+	// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+	// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+	// control the timing of patch assessments on a virtual machine.<br /><br />
+	// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+	// The property provisionVMAgent must be true.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+	// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+	// Patching on Windows.
 	AutomaticByPlatformSettings *WindowsVMGuestPatchAutomaticByPlatformSettingsResponse `pulumi:"automaticByPlatformSettings"`
-	// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+	// Enables customers to patch their Azure VMs without requiring a reboot. For
+	// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+	// must be set to 'AutomaticByPlatform'.
 	EnableHotpatching *bool `pulumi:"enableHotpatching"`
-	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+	// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+	// machines associated to virtual machine scale set with OrchestrationMode as
+	// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+	// control the application of patches to a virtual machine. You do this by
+	// applying patches manually inside the VM. In this mode, automatic updates are
+	// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+	// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+	// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+	// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+	// automatically updated by the platform. The properties provisionVMAgent and
+	// WindowsConfiguration.enableAutomaticUpdates must be true
 	PatchMode *string `pulumi:"patchMode"`
 }
 
@@ -4651,24 +5179,41 @@ func (o PatchSettingsResponseOutput) ToPatchSettingsResponseOutputWithContext(ct
 	return o
 }
 
-// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine.<br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o PatchSettingsResponseOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchSettingsResponse) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Windows.
 func (o PatchSettingsResponseOutput) AutomaticByPlatformSettings() WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput {
 	return o.ApplyT(func(v PatchSettingsResponse) *WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
 		return v.AutomaticByPlatformSettings
 	}).(WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput)
 }
 
-// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+// Enables customers to patch their Azure VMs without requiring a reboot. For
+// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+// must be set to 'AutomaticByPlatform'.
 func (o PatchSettingsResponseOutput) EnableHotpatching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PatchSettingsResponse) *bool { return v.EnableHotpatching }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+// control the application of patches to a virtual machine. You do this by
+// applying patches manually inside the VM. In this mode, automatic updates are
+// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+// automatically updated by the platform. The properties provisionVMAgent and
+// WindowsConfiguration.enableAutomaticUpdates must be true
 func (o PatchSettingsResponseOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchSettingsResponse) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
 }
@@ -4697,7 +5242,11 @@ func (o PatchSettingsResponsePtrOutput) Elem() PatchSettingsResponseOutput {
 	}).(PatchSettingsResponseOutput)
 }
 
-// Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+// Specifies the mode of VM Guest patch assessment for the IaaS virtual
+// machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+// control the timing of patch assessments on a virtual machine.<br /><br />
+// **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+// The property provisionVMAgent must be true.
 func (o PatchSettingsResponsePtrOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchSettingsResponse) *string {
 		if v == nil {
@@ -4707,7 +5256,8 @@ func (o PatchSettingsResponsePtrOutput) AssessmentMode() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+// Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+// Patching on Windows.
 func (o PatchSettingsResponsePtrOutput) AutomaticByPlatformSettings() WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *PatchSettingsResponse) *WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
 		if v == nil {
@@ -4717,7 +5267,9 @@ func (o PatchSettingsResponsePtrOutput) AutomaticByPlatformSettings() WindowsVMG
 	}).(WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput)
 }
 
-// Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+// Enables customers to patch their Azure VMs without requiring a reboot. For
+// enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+// must be set to 'AutomaticByPlatform'.
 func (o PatchSettingsResponsePtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PatchSettingsResponse) *bool {
 		if v == nil {
@@ -4727,7 +5279,17 @@ func (o PatchSettingsResponsePtrOutput) EnableHotpatching() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+// Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+// machines associated to virtual machine scale set with OrchestrationMode as
+// Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+// control the application of patches to a virtual machine. You do this by
+// applying patches manually inside the VM. In this mode, automatic updates are
+// disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+// false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+// updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+// must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+// automatically updated by the platform. The properties provisionVMAgent and
+// WindowsConfiguration.enableAutomaticUpdates must be true
 func (o PatchSettingsResponsePtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchSettingsResponse) *string {
 		if v == nil {
@@ -5081,13 +5643,19 @@ func (o PlanResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 type ProxyAgentSettings struct {
-	// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+	// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+	// or virtual machine scale set.
 	Enabled *bool `pulumi:"enabled"`
-	// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+	// Increase the value of this property allows user to reset the key used for
+	// securing communication channel between guest and host.
 	KeyIncarnationId *int `pulumi:"keyIncarnationId"`
-	// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+	// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+	// ProxyAgent will start to audit or monitor but not enforce access control over
+	// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+	// access control. The default value is Enforce mode.
 	Mode *string `pulumi:"mode"`
 }
 
@@ -5102,13 +5670,19 @@ type ProxyAgentSettingsInput interface {
 	ToProxyAgentSettingsOutputWithContext(context.Context) ProxyAgentSettingsOutput
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 type ProxyAgentSettingsArgs struct {
-	// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+	// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+	// or virtual machine scale set.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+	// Increase the value of this property allows user to reset the key used for
+	// securing communication channel between guest and host.
 	KeyIncarnationId pulumi.IntPtrInput `pulumi:"keyIncarnationId"`
-	// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+	// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+	// ProxyAgent will start to audit or monitor but not enforce access control over
+	// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+	// access control. The default value is Enforce mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
@@ -5165,7 +5739,8 @@ func (i *proxyAgentSettingsPtrType) ToProxyAgentSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ProxyAgentSettingsPtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 type ProxyAgentSettingsOutput struct{ *pulumi.OutputState }
 
 func (ProxyAgentSettingsOutput) ElementType() reflect.Type {
@@ -5190,17 +5765,22 @@ func (o ProxyAgentSettingsOutput) ToProxyAgentSettingsPtrOutputWithContext(ctx c
 	}).(ProxyAgentSettingsPtrOutput)
 }
 
-// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+// or virtual machine scale set.
 func (o ProxyAgentSettingsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProxyAgentSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+// Increase the value of this property allows user to reset the key used for
+// securing communication channel between guest and host.
 func (o ProxyAgentSettingsOutput) KeyIncarnationId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProxyAgentSettings) *int { return v.KeyIncarnationId }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+// ProxyAgent will start to audit or monitor but not enforce access control over
+// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+// access control. The default value is Enforce mode.
 func (o ProxyAgentSettingsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProxyAgentSettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -5229,7 +5809,8 @@ func (o ProxyAgentSettingsPtrOutput) Elem() ProxyAgentSettingsOutput {
 	}).(ProxyAgentSettingsOutput)
 }
 
-// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+// or virtual machine scale set.
 func (o ProxyAgentSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProxyAgentSettings) *bool {
 		if v == nil {
@@ -5239,7 +5820,8 @@ func (o ProxyAgentSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+// Increase the value of this property allows user to reset the key used for
+// securing communication channel between guest and host.
 func (o ProxyAgentSettingsPtrOutput) KeyIncarnationId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProxyAgentSettings) *int {
 		if v == nil {
@@ -5249,7 +5831,10 @@ func (o ProxyAgentSettingsPtrOutput) KeyIncarnationId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+// ProxyAgent will start to audit or monitor but not enforce access control over
+// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+// access control. The default value is Enforce mode.
 func (o ProxyAgentSettingsPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProxyAgentSettings) *string {
 		if v == nil {
@@ -5259,17 +5844,24 @@ func (o ProxyAgentSettingsPtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 type ProxyAgentSettingsResponse struct {
-	// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+	// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+	// or virtual machine scale set.
 	Enabled *bool `pulumi:"enabled"`
-	// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+	// Increase the value of this property allows user to reset the key used for
+	// securing communication channel between guest and host.
 	KeyIncarnationId *int `pulumi:"keyIncarnationId"`
-	// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+	// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+	// ProxyAgent will start to audit or monitor but not enforce access control over
+	// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+	// access control. The default value is Enforce mode.
 	Mode *string `pulumi:"mode"`
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 type ProxyAgentSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (ProxyAgentSettingsResponseOutput) ElementType() reflect.Type {
@@ -5284,17 +5876,22 @@ func (o ProxyAgentSettingsResponseOutput) ToProxyAgentSettingsResponseOutputWith
 	return o
 }
 
-// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+// or virtual machine scale set.
 func (o ProxyAgentSettingsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProxyAgentSettingsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+// Increase the value of this property allows user to reset the key used for
+// securing communication channel between guest and host.
 func (o ProxyAgentSettingsResponseOutput) KeyIncarnationId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProxyAgentSettingsResponse) *int { return v.KeyIncarnationId }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+// ProxyAgent will start to audit or monitor but not enforce access control over
+// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+// access control. The default value is Enforce mode.
 func (o ProxyAgentSettingsResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProxyAgentSettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -5323,7 +5920,8 @@ func (o ProxyAgentSettingsResponsePtrOutput) Elem() ProxyAgentSettingsResponseOu
 	}).(ProxyAgentSettingsResponseOutput)
 }
 
-// Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+// Specifies whether ProxyAgent feature should be enabled on the virtual machine
+// or virtual machine scale set.
 func (o ProxyAgentSettingsResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProxyAgentSettingsResponse) *bool {
 		if v == nil {
@@ -5333,7 +5931,8 @@ func (o ProxyAgentSettingsResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+// Increase the value of this property allows user to reset the key used for
+// securing communication channel between guest and host.
 func (o ProxyAgentSettingsResponsePtrOutput) KeyIncarnationId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ProxyAgentSettingsResponse) *int {
 		if v == nil {
@@ -5343,7 +5942,10 @@ func (o ProxyAgentSettingsResponsePtrOutput) KeyIncarnationId() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+// Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+// ProxyAgent will start to audit or monitor but not enforce access control over
+// requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+// access control. The default value is Enforce mode.
 func (o ProxyAgentSettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProxyAgentSettingsResponse) *string {
 		if v == nil {
@@ -5353,7 +5955,8 @@ func (o ProxyAgentSettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 type PublicIPAddressSku struct {
 	// Specify public IP sku name
 	Name *string `pulumi:"name"`
@@ -5372,7 +5975,8 @@ type PublicIPAddressSkuInput interface {
 	ToPublicIPAddressSkuOutputWithContext(context.Context) PublicIPAddressSkuOutput
 }
 
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 type PublicIPAddressSkuArgs struct {
 	// Specify public IP sku name
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -5433,7 +6037,8 @@ func (i *publicIPAddressSkuPtrType) ToPublicIPAddressSkuPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressSkuPtrOutput)
 }
 
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 type PublicIPAddressSkuOutput struct{ *pulumi.OutputState }
 
 func (PublicIPAddressSkuOutput) ElementType() reflect.Type {
@@ -5512,7 +6117,8 @@ func (o PublicIPAddressSkuPtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 type PublicIPAddressSkuResponse struct {
 	// Specify public IP sku name
 	Name *string `pulumi:"name"`
@@ -5520,7 +6126,8 @@ type PublicIPAddressSkuResponse struct {
 	Tier *string `pulumi:"tier"`
 }
 
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 type PublicIPAddressSkuResponseOutput struct{ *pulumi.OutputState }
 
 func (PublicIPAddressSkuResponseOutput) ElementType() reflect.Type {
@@ -5861,6 +6468,7 @@ func (o RegularPriorityProfileResponsePtrOutput) MinCapacity() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies Scheduled Event related configurations.
 type ScheduledEventsProfile struct {
 	// Specifies OS Image Scheduled Event related configurations.
 	OsImageNotificationProfile *OSImageNotificationProfile `pulumi:"osImageNotificationProfile"`
@@ -5879,6 +6487,7 @@ type ScheduledEventsProfileInput interface {
 	ToScheduledEventsProfileOutputWithContext(context.Context) ScheduledEventsProfileOutput
 }
 
+// Specifies Scheduled Event related configurations.
 type ScheduledEventsProfileArgs struct {
 	// Specifies OS Image Scheduled Event related configurations.
 	OsImageNotificationProfile OSImageNotificationProfilePtrInput `pulumi:"osImageNotificationProfile"`
@@ -5939,6 +6548,7 @@ func (i *scheduledEventsProfilePtrType) ToScheduledEventsProfilePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledEventsProfilePtrOutput)
 }
 
+// Specifies Scheduled Event related configurations.
 type ScheduledEventsProfileOutput struct{ *pulumi.OutputState }
 
 func (ScheduledEventsProfileOutput) ElementType() reflect.Type {
@@ -6017,6 +6627,7 @@ func (o ScheduledEventsProfilePtrOutput) TerminateNotificationProfile() Terminat
 	}).(TerminateNotificationProfilePtrOutput)
 }
 
+// Specifies Scheduled Event related configurations.
 type ScheduledEventsProfileResponse struct {
 	// Specifies OS Image Scheduled Event related configurations.
 	OsImageNotificationProfile *OSImageNotificationProfileResponse `pulumi:"osImageNotificationProfile"`
@@ -6024,6 +6635,7 @@ type ScheduledEventsProfileResponse struct {
 	TerminateNotificationProfile *TerminateNotificationProfileResponse `pulumi:"terminateNotificationProfile"`
 }
 
+// Specifies Scheduled Event related configurations.
 type ScheduledEventsProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (ScheduledEventsProfileResponseOutput) ElementType() reflect.Type {
@@ -6096,12 +6708,17 @@ func (o ScheduledEventsProfileResponsePtrOutput) TerminateNotificationProfile() 
 	}).(TerminateNotificationProfileResponsePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
 type SecurityPostureReference struct {
-	// List of virtual machine extensions to exclude when applying the Security Posture.
-	ExcludeExtensions []VirtualMachineExtension `pulumi:"excludeExtensions"`
-	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+	// List of virtual machine extension names to exclude when applying the security
+	// posture.
+	ExcludeExtensions []string `pulumi:"excludeExtensions"`
+	// The security posture reference id in the form of
+	// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
 	Id *string `pulumi:"id"`
+	// Whether the security posture can be overridden by the user.
+	IsOverridable *bool `pulumi:"isOverridable"`
 }
 
 // SecurityPostureReferenceInput is an input type that accepts SecurityPostureReferenceArgs and SecurityPostureReferenceOutput values.
@@ -6115,12 +6732,17 @@ type SecurityPostureReferenceInput interface {
 	ToSecurityPostureReferenceOutputWithContext(context.Context) SecurityPostureReferenceOutput
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
 type SecurityPostureReferenceArgs struct {
-	// List of virtual machine extensions to exclude when applying the Security Posture.
-	ExcludeExtensions VirtualMachineExtensionArrayInput `pulumi:"excludeExtensions"`
-	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+	// List of virtual machine extension names to exclude when applying the security
+	// posture.
+	ExcludeExtensions pulumi.StringArrayInput `pulumi:"excludeExtensions"`
+	// The security posture reference id in the form of
+	// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether the security posture can be overridden by the user.
+	IsOverridable pulumi.BoolPtrInput `pulumi:"isOverridable"`
 }
 
 func (SecurityPostureReferenceArgs) ElementType() reflect.Type {
@@ -6176,7 +6798,8 @@ func (i *securityPostureReferencePtrType) ToSecurityPostureReferencePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPostureReferencePtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
 type SecurityPostureReferenceOutput struct{ *pulumi.OutputState }
 
 func (SecurityPostureReferenceOutput) ElementType() reflect.Type {
@@ -6201,14 +6824,21 @@ func (o SecurityPostureReferenceOutput) ToSecurityPostureReferencePtrOutputWithC
 	}).(SecurityPostureReferencePtrOutput)
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferenceOutput) ExcludeExtensions() VirtualMachineExtensionArrayOutput {
-	return o.ApplyT(func(v SecurityPostureReference) []VirtualMachineExtension { return v.ExcludeExtensions }).(VirtualMachineExtensionArrayOutput)
+// List of virtual machine extension names to exclude when applying the security
+// posture.
+func (o SecurityPostureReferenceOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPostureReference) []string { return v.ExcludeExtensions }).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+// The security posture reference id in the form of
+// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
 func (o SecurityPostureReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPostureReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferenceOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPostureReference) *bool { return v.IsOverridable }).(pulumi.BoolPtrOutput)
 }
 
 type SecurityPostureReferencePtrOutput struct{ *pulumi.OutputState }
@@ -6235,17 +6865,19 @@ func (o SecurityPostureReferencePtrOutput) Elem() SecurityPostureReferenceOutput
 	}).(SecurityPostureReferenceOutput)
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferencePtrOutput) ExcludeExtensions() VirtualMachineExtensionArrayOutput {
-	return o.ApplyT(func(v *SecurityPostureReference) []VirtualMachineExtension {
+// List of virtual machine extension names to exclude when applying the security
+// posture.
+func (o SecurityPostureReferencePtrOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPostureReference) []string {
 		if v == nil {
 			return nil
 		}
 		return v.ExcludeExtensions
-	}).(VirtualMachineExtensionArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+// The security posture reference id in the form of
+// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
 func (o SecurityPostureReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPostureReference) *string {
 		if v == nil {
@@ -6255,15 +6887,31 @@ func (o SecurityPostureReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-type SecurityPostureReferenceResponse struct {
-	// List of virtual machine extensions to exclude when applying the Security Posture.
-	ExcludeExtensions []VirtualMachineExtensionResponse `pulumi:"excludeExtensions"`
-	// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
-	Id *string `pulumi:"id"`
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferencePtrOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPostureReference) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsOverridable
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
+type SecurityPostureReferenceResponse struct {
+	// List of virtual machine extension names to exclude when applying the security
+	// posture.
+	ExcludeExtensions []string `pulumi:"excludeExtensions"`
+	// The security posture reference id in the form of
+	// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+	Id *string `pulumi:"id"`
+	// Whether the security posture can be overridden by the user.
+	IsOverridable *bool `pulumi:"isOverridable"`
+}
+
+// Specifies the security posture to be used for all virtual machines in the scale
+// set. Minimum api-version: 2023-03-01
 type SecurityPostureReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityPostureReferenceResponseOutput) ElementType() reflect.Type {
@@ -6278,14 +6926,21 @@ func (o SecurityPostureReferenceResponseOutput) ToSecurityPostureReferenceRespon
 	return o
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferenceResponseOutput) ExcludeExtensions() VirtualMachineExtensionResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPostureReferenceResponse) []VirtualMachineExtensionResponse { return v.ExcludeExtensions }).(VirtualMachineExtensionResponseArrayOutput)
+// List of virtual machine extension names to exclude when applying the security
+// posture.
+func (o SecurityPostureReferenceResponseOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPostureReferenceResponse) []string { return v.ExcludeExtensions }).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+// The security posture reference id in the form of
+// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
 func (o SecurityPostureReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPostureReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferenceResponseOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPostureReferenceResponse) *bool { return v.IsOverridable }).(pulumi.BoolPtrOutput)
 }
 
 type SecurityPostureReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -6312,17 +6967,19 @@ func (o SecurityPostureReferenceResponsePtrOutput) Elem() SecurityPostureReferen
 	}).(SecurityPostureReferenceResponseOutput)
 }
 
-// List of virtual machine extensions to exclude when applying the Security Posture.
-func (o SecurityPostureReferenceResponsePtrOutput) ExcludeExtensions() VirtualMachineExtensionResponseArrayOutput {
-	return o.ApplyT(func(v *SecurityPostureReferenceResponse) []VirtualMachineExtensionResponse {
+// List of virtual machine extension names to exclude when applying the security
+// posture.
+func (o SecurityPostureReferenceResponsePtrOutput) ExcludeExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPostureReferenceResponse) []string {
 		if v == nil {
 			return nil
 		}
 		return v.ExcludeExtensions
-	}).(VirtualMachineExtensionResponseArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
-// The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+// The security posture reference id in the form of
+// /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
 func (o SecurityPostureReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPostureReferenceResponse) *string {
 		if v == nil {
@@ -6332,17 +6989,37 @@ func (o SecurityPostureReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+// Whether the security posture can be overridden by the user.
+func (o SecurityPostureReferenceResponsePtrOutput) IsOverridable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPostureReferenceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsOverridable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the Security profile settings for the virtual machine or virtual
+// machine scale set.
 type SecurityProfile struct {
-	// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+	// This property can be used by user in the request to enable or disable the Host
+	// Encryption for the virtual machine or virtual machine scale set. This will
+	// enable the encryption for all the disks including Resource/Temp disk at host
+	// itself. The default behavior is: The Encryption at host will be disabled unless
+	// this property is set to true for the resource.
 	EncryptionAtHost *bool `pulumi:"encryptionAtHost"`
-	// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+	// Specifies the Managed Identity used by ADE to get access token for keyvault
+	// operations.
 	EncryptionIdentity *EncryptionIdentity `pulumi:"encryptionIdentity"`
-	// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+	// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+	// api-version: 2023-09-01.
 	ProxyAgentSettings *ProxyAgentSettings `pulumi:"proxyAgentSettings"`
-	// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+	// Specifies the SecurityType of the virtual machine. It has to be set to any
+	// specified value to enable UefiSettings. The default behavior is: UefiSettings
+	// will not be enabled unless this property is set.
 	SecurityType *string `pulumi:"securityType"`
-	// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies the security settings like secure boot and vTPM used while creating
+	// the virtual machine. Minimum api-version: 2020-12-01.
 	UefiSettings *UefiSettings `pulumi:"uefiSettings"`
 }
 
@@ -6357,17 +7034,27 @@ type SecurityProfileInput interface {
 	ToSecurityProfileOutputWithContext(context.Context) SecurityProfileOutput
 }
 
-// Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+// Specifies the Security profile settings for the virtual machine or virtual
+// machine scale set.
 type SecurityProfileArgs struct {
-	// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+	// This property can be used by user in the request to enable or disable the Host
+	// Encryption for the virtual machine or virtual machine scale set. This will
+	// enable the encryption for all the disks including Resource/Temp disk at host
+	// itself. The default behavior is: The Encryption at host will be disabled unless
+	// this property is set to true for the resource.
 	EncryptionAtHost pulumi.BoolPtrInput `pulumi:"encryptionAtHost"`
-	// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+	// Specifies the Managed Identity used by ADE to get access token for keyvault
+	// operations.
 	EncryptionIdentity EncryptionIdentityPtrInput `pulumi:"encryptionIdentity"`
-	// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+	// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+	// api-version: 2023-09-01.
 	ProxyAgentSettings ProxyAgentSettingsPtrInput `pulumi:"proxyAgentSettings"`
-	// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+	// Specifies the SecurityType of the virtual machine. It has to be set to any
+	// specified value to enable UefiSettings. The default behavior is: UefiSettings
+	// will not be enabled unless this property is set.
 	SecurityType pulumi.StringPtrInput `pulumi:"securityType"`
-	// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies the security settings like secure boot and vTPM used while creating
+	// the virtual machine. Minimum api-version: 2020-12-01.
 	UefiSettings UefiSettingsPtrInput `pulumi:"uefiSettings"`
 }
 
@@ -6424,7 +7111,8 @@ func (i *securityProfilePtrType) ToSecurityProfilePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfilePtrOutput)
 }
 
-// Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+// Specifies the Security profile settings for the virtual machine or virtual
+// machine scale set.
 type SecurityProfileOutput struct{ *pulumi.OutputState }
 
 func (SecurityProfileOutput) ElementType() reflect.Type {
@@ -6449,27 +7137,36 @@ func (o SecurityProfileOutput) ToSecurityProfilePtrOutputWithContext(ctx context
 	}).(SecurityProfilePtrOutput)
 }
 
-// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+// This property can be used by user in the request to enable or disable the Host
+// Encryption for the virtual machine or virtual machine scale set. This will
+// enable the encryption for all the disks including Resource/Temp disk at host
+// itself. The default behavior is: The Encryption at host will be disabled unless
+// this property is set to true for the resource.
 func (o SecurityProfileOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityProfile) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 func (o SecurityProfileOutput) EncryptionIdentity() EncryptionIdentityPtrOutput {
 	return o.ApplyT(func(v SecurityProfile) *EncryptionIdentity { return v.EncryptionIdentity }).(EncryptionIdentityPtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 func (o SecurityProfileOutput) ProxyAgentSettings() ProxyAgentSettingsPtrOutput {
 	return o.ApplyT(func(v SecurityProfile) *ProxyAgentSettings { return v.ProxyAgentSettings }).(ProxyAgentSettingsPtrOutput)
 }
 
-// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+// Specifies the SecurityType of the virtual machine. It has to be set to any
+// specified value to enable UefiSettings. The default behavior is: UefiSettings
+// will not be enabled unless this property is set.
 func (o SecurityProfileOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityProfile) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 func (o SecurityProfileOutput) UefiSettings() UefiSettingsPtrOutput {
 	return o.ApplyT(func(v SecurityProfile) *UefiSettings { return v.UefiSettings }).(UefiSettingsPtrOutput)
 }
@@ -6498,7 +7195,11 @@ func (o SecurityProfilePtrOutput) Elem() SecurityProfileOutput {
 	}).(SecurityProfileOutput)
 }
 
-// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+// This property can be used by user in the request to enable or disable the Host
+// Encryption for the virtual machine or virtual machine scale set. This will
+// enable the encryption for all the disks including Resource/Temp disk at host
+// itself. The default behavior is: The Encryption at host will be disabled unless
+// this property is set to true for the resource.
 func (o SecurityProfilePtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) *bool {
 		if v == nil {
@@ -6508,7 +7209,8 @@ func (o SecurityProfilePtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 func (o SecurityProfilePtrOutput) EncryptionIdentity() EncryptionIdentityPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) *EncryptionIdentity {
 		if v == nil {
@@ -6518,7 +7220,8 @@ func (o SecurityProfilePtrOutput) EncryptionIdentity() EncryptionIdentityPtrOutp
 	}).(EncryptionIdentityPtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 func (o SecurityProfilePtrOutput) ProxyAgentSettings() ProxyAgentSettingsPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) *ProxyAgentSettings {
 		if v == nil {
@@ -6528,7 +7231,9 @@ func (o SecurityProfilePtrOutput) ProxyAgentSettings() ProxyAgentSettingsPtrOutp
 	}).(ProxyAgentSettingsPtrOutput)
 }
 
-// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+// Specifies the SecurityType of the virtual machine. It has to be set to any
+// specified value to enable UefiSettings. The default behavior is: UefiSettings
+// will not be enabled unless this property is set.
 func (o SecurityProfilePtrOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) *string {
 		if v == nil {
@@ -6538,7 +7243,8 @@ func (o SecurityProfilePtrOutput) SecurityType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 func (o SecurityProfilePtrOutput) UefiSettings() UefiSettingsPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) *UefiSettings {
 		if v == nil {
@@ -6548,21 +7254,32 @@ func (o SecurityProfilePtrOutput) UefiSettings() UefiSettingsPtrOutput {
 	}).(UefiSettingsPtrOutput)
 }
 
-// Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+// Specifies the Security profile settings for the virtual machine or virtual
+// machine scale set.
 type SecurityProfileResponse struct {
-	// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+	// This property can be used by user in the request to enable or disable the Host
+	// Encryption for the virtual machine or virtual machine scale set. This will
+	// enable the encryption for all the disks including Resource/Temp disk at host
+	// itself. The default behavior is: The Encryption at host will be disabled unless
+	// this property is set to true for the resource.
 	EncryptionAtHost *bool `pulumi:"encryptionAtHost"`
-	// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+	// Specifies the Managed Identity used by ADE to get access token for keyvault
+	// operations.
 	EncryptionIdentity *EncryptionIdentityResponse `pulumi:"encryptionIdentity"`
-	// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+	// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+	// api-version: 2023-09-01.
 	ProxyAgentSettings *ProxyAgentSettingsResponse `pulumi:"proxyAgentSettings"`
-	// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+	// Specifies the SecurityType of the virtual machine. It has to be set to any
+	// specified value to enable UefiSettings. The default behavior is: UefiSettings
+	// will not be enabled unless this property is set.
 	SecurityType *string `pulumi:"securityType"`
-	// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies the security settings like secure boot and vTPM used while creating
+	// the virtual machine. Minimum api-version: 2020-12-01.
 	UefiSettings *UefiSettingsResponse `pulumi:"uefiSettings"`
 }
 
-// Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+// Specifies the Security profile settings for the virtual machine or virtual
+// machine scale set.
 type SecurityProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (SecurityProfileResponseOutput) ElementType() reflect.Type {
@@ -6577,27 +7294,36 @@ func (o SecurityProfileResponseOutput) ToSecurityProfileResponseOutputWithContex
 	return o
 }
 
-// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+// This property can be used by user in the request to enable or disable the Host
+// Encryption for the virtual machine or virtual machine scale set. This will
+// enable the encryption for all the disks including Resource/Temp disk at host
+// itself. The default behavior is: The Encryption at host will be disabled unless
+// this property is set to true for the resource.
 func (o SecurityProfileResponseOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityProfileResponse) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 func (o SecurityProfileResponseOutput) EncryptionIdentity() EncryptionIdentityResponsePtrOutput {
 	return o.ApplyT(func(v SecurityProfileResponse) *EncryptionIdentityResponse { return v.EncryptionIdentity }).(EncryptionIdentityResponsePtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 func (o SecurityProfileResponseOutput) ProxyAgentSettings() ProxyAgentSettingsResponsePtrOutput {
 	return o.ApplyT(func(v SecurityProfileResponse) *ProxyAgentSettingsResponse { return v.ProxyAgentSettings }).(ProxyAgentSettingsResponsePtrOutput)
 }
 
-// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+// Specifies the SecurityType of the virtual machine. It has to be set to any
+// specified value to enable UefiSettings. The default behavior is: UefiSettings
+// will not be enabled unless this property is set.
 func (o SecurityProfileResponseOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityProfileResponse) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 func (o SecurityProfileResponseOutput) UefiSettings() UefiSettingsResponsePtrOutput {
 	return o.ApplyT(func(v SecurityProfileResponse) *UefiSettingsResponse { return v.UefiSettings }).(UefiSettingsResponsePtrOutput)
 }
@@ -6626,7 +7352,11 @@ func (o SecurityProfileResponsePtrOutput) Elem() SecurityProfileResponseOutput {
 	}).(SecurityProfileResponseOutput)
 }
 
-// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+// This property can be used by user in the request to enable or disable the Host
+// Encryption for the virtual machine or virtual machine scale set. This will
+// enable the encryption for all the disks including Resource/Temp disk at host
+// itself. The default behavior is: The Encryption at host will be disabled unless
+// this property is set to true for the resource.
 func (o SecurityProfileResponsePtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileResponse) *bool {
 		if v == nil {
@@ -6636,7 +7366,8 @@ func (o SecurityProfileResponsePtrOutput) EncryptionAtHost() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+// Specifies the Managed Identity used by ADE to get access token for keyvault
+// operations.
 func (o SecurityProfileResponsePtrOutput) EncryptionIdentity() EncryptionIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityProfileResponse) *EncryptionIdentityResponse {
 		if v == nil {
@@ -6646,7 +7377,8 @@ func (o SecurityProfileResponsePtrOutput) EncryptionIdentity() EncryptionIdentit
 	}).(EncryptionIdentityResponsePtrOutput)
 }
 
-// Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+// Specifies ProxyAgent settings while creating the virtual machine. Minimum
+// api-version: 2023-09-01.
 func (o SecurityProfileResponsePtrOutput) ProxyAgentSettings() ProxyAgentSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityProfileResponse) *ProxyAgentSettingsResponse {
 		if v == nil {
@@ -6656,7 +7388,9 @@ func (o SecurityProfileResponsePtrOutput) ProxyAgentSettings() ProxyAgentSetting
 	}).(ProxyAgentSettingsResponsePtrOutput)
 }
 
-// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+// Specifies the SecurityType of the virtual machine. It has to be set to any
+// specified value to enable UefiSettings. The default behavior is: UefiSettings
+// will not be enabled unless this property is set.
 func (o SecurityProfileResponsePtrOutput) SecurityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfileResponse) *string {
 		if v == nil {
@@ -6666,7 +7400,8 @@ func (o SecurityProfileResponsePtrOutput) SecurityType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 func (o SecurityProfileResponsePtrOutput) UefiSettings() UefiSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityProfileResponse) *UefiSettingsResponse {
 		if v == nil {
@@ -6676,9 +7411,12 @@ func (o SecurityProfileResponsePtrOutput) UefiSettings() UefiSettingsResponsePtr
 	}).(UefiSettingsResponsePtrOutput)
 }
 
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
 type ServiceArtifactReference struct {
-	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	// The service artifact reference id in the form of
+	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 	Id *string `pulumi:"id"`
 }
 
@@ -6693,9 +7431,12 @@ type ServiceArtifactReferenceInput interface {
 	ToServiceArtifactReferenceOutputWithContext(context.Context) ServiceArtifactReferenceOutput
 }
 
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
 type ServiceArtifactReferenceArgs struct {
-	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	// The service artifact reference id in the form of
+	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -6752,7 +7493,9 @@ func (i *serviceArtifactReferencePtrType) ToServiceArtifactReferencePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceArtifactReferencePtrOutput)
 }
 
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
 type ServiceArtifactReferenceOutput struct{ *pulumi.OutputState }
 
 func (ServiceArtifactReferenceOutput) ElementType() reflect.Type {
@@ -6777,7 +7520,8 @@ func (o ServiceArtifactReferenceOutput) ToServiceArtifactReferencePtrOutputWithC
 	}).(ServiceArtifactReferencePtrOutput)
 }
 
-// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+// The service artifact reference id in the form of
+// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 func (o ServiceArtifactReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceArtifactReference) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6806,7 +7550,8 @@ func (o ServiceArtifactReferencePtrOutput) Elem() ServiceArtifactReferenceOutput
 	}).(ServiceArtifactReferenceOutput)
 }
 
-// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+// The service artifact reference id in the form of
+// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 func (o ServiceArtifactReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceArtifactReference) *string {
 		if v == nil {
@@ -6816,13 +7561,18 @@ func (o ServiceArtifactReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
 type ServiceArtifactReferenceResponse struct {
-	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	// The service artifact reference id in the form of
+	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 	Id *string `pulumi:"id"`
 }
 
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+// Specifies the service artifact reference id used to set same image version for
+// all virtual machines in the scale set when using 'latest' image version.
+// Minimum api-version: 2022-11-01
 type ServiceArtifactReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ServiceArtifactReferenceResponseOutput) ElementType() reflect.Type {
@@ -6837,7 +7587,8 @@ func (o ServiceArtifactReferenceResponseOutput) ToServiceArtifactReferenceRespon
 	return o
 }
 
-// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+// The service artifact reference id in the form of
+// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 func (o ServiceArtifactReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceArtifactReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6866,7 +7617,8 @@ func (o ServiceArtifactReferenceResponsePtrOutput) Elem() ServiceArtifactReferen
 	}).(ServiceArtifactReferenceResponseOutput)
 }
 
-// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+// The service artifact reference id in the form of
+// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
 func (o ServiceArtifactReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceArtifactReferenceResponse) *string {
 		if v == nil {
@@ -7420,11 +8172,17 @@ func (o SshConfigurationResponsePtrOutput) PublicKeys() SshPublicKeyResponseArra
 	}).(SshPublicKeyResponseArrayOutput)
 }
 
-// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+// Contains information about SSH certificate public key and the path on the Linux
+// VM where the public key is placed.
 type SshPublicKey struct {
-	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// SSH public key certificate used to authenticate with the VM through ssh. The
+	// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+	// see [Create SSH keys on Linux and Mac for Linux VMs in
+	// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
-	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+	// Specifies the full path on the created VM where ssh public key is stored. If
+	// the file already exists, the specified key is appended to the file. Example:
+	// /home/user/.ssh/authorized_keys
 	Path *string `pulumi:"path"`
 }
 
@@ -7439,11 +8197,17 @@ type SshPublicKeyInput interface {
 	ToSshPublicKeyOutputWithContext(context.Context) SshPublicKeyOutput
 }
 
-// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+// Contains information about SSH certificate public key and the path on the Linux
+// VM where the public key is placed.
 type SshPublicKeyArgs struct {
-	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// SSH public key certificate used to authenticate with the VM through ssh. The
+	// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+	// see [Create SSH keys on Linux and Mac for Linux VMs in
+	// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
-	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+	// Specifies the full path on the created VM where ssh public key is stored. If
+	// the file already exists, the specified key is appended to the file. Example:
+	// /home/user/.ssh/authorized_keys
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -7484,7 +8248,8 @@ func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyArrayOutput)
 }
 
-// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+// Contains information about SSH certificate public key and the path on the Linux
+// VM where the public key is placed.
 type SshPublicKeyOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyOutput) ElementType() reflect.Type {
@@ -7499,12 +8264,17 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// SSH public key certificate used to authenticate with the VM through ssh. The
+// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+// see [Create SSH keys on Linux and Mac for Linux VMs in
+// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+// Specifies the full path on the created VM where ssh public key is stored. If
+// the file already exists, the specified key is appended to the file. Example:
+// /home/user/.ssh/authorized_keys
 func (o SshPublicKeyOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKey) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -7529,15 +8299,22 @@ func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
 	}).(SshPublicKeyOutput)
 }
 
-// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+// Contains information about SSH certificate public key and the path on the Linux
+// VM where the public key is placed.
 type SshPublicKeyResponse struct {
-	// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+	// SSH public key certificate used to authenticate with the VM through ssh. The
+	// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+	// see [Create SSH keys on Linux and Mac for Linux VMs in
+	// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 	KeyData *string `pulumi:"keyData"`
-	// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+	// Specifies the full path on the created VM where ssh public key is stored. If
+	// the file already exists, the specified key is appended to the file. Example:
+	// /home/user/.ssh/authorized_keys
 	Path *string `pulumi:"path"`
 }
 
-// Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+// Contains information about SSH certificate public key and the path on the Linux
+// VM where the public key is placed.
 type SshPublicKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (SshPublicKeyResponseOutput) ElementType() reflect.Type {
@@ -7552,12 +8329,17 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 	return o
 }
 
-// SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+// SSH public key certificate used to authenticate with the VM through ssh. The
+// key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+// see [Create SSH keys on Linux and Mac for Linux VMs in
+// Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+// Specifies the full path on the created VM where ssh public key is stored. If
+// the file already exists, the specified key is appended to the file. Example:
+// /home/user/.ssh/authorized_keys
 func (o SshPublicKeyResponseOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -7582,6 +8364,7 @@ func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyRe
 	}).(SshPublicKeyResponseOutput)
 }
 
+// Describes SubResource
 type SubResource struct {
 	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
@@ -7601,6 +8384,7 @@ type SubResourceInput interface {
 	ToSubResourceOutputWithContext(context.Context) SubResourceOutput
 }
 
+// Describes SubResource
 type SubResourceArgs struct {
 	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
@@ -7687,6 +8471,7 @@ func (i SubResourceArray) ToSubResourceArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceArrayOutput)
 }
 
+// Describes SubResource
 type SubResourceOutput struct{ *pulumi.OutputState }
 
 func (SubResourceOutput) ElementType() reflect.Type {
@@ -7776,11 +8561,13 @@ func (o SubResourceArrayOutput) Index(i pulumi.IntInput) SubResourceOutput {
 	}).(SubResourceOutput)
 }
 
+// Describes SubResource
 type SubResourceResponse struct {
 	// Resource Id
 	Id *string `pulumi:"id"`
 }
 
+// Describes SubResource
 type SubResourceResponseOutput struct{ *pulumi.OutputState }
 
 func (SubResourceResponseOutput) ElementType() reflect.Type {
@@ -7915,10 +8702,14 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Specifies Terminate Scheduled Event related configurations.
 type TerminateNotificationProfile struct {
 	// Specifies whether the Terminate Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+	// Configurable length of time a Virtual Machine being deleted will have to
+	// potentially approve the Terminate Scheduled Event before the event is auto
+	// approved (timed out). The configuration must be specified in ISO 8601 format,
+	// the default value is 5 minutes (PT5M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
@@ -7933,10 +8724,14 @@ type TerminateNotificationProfileInput interface {
 	ToTerminateNotificationProfileOutputWithContext(context.Context) TerminateNotificationProfileOutput
 }
 
+// Specifies Terminate Scheduled Event related configurations.
 type TerminateNotificationProfileArgs struct {
 	// Specifies whether the Terminate Scheduled event is enabled or disabled.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+	// Configurable length of time a Virtual Machine being deleted will have to
+	// potentially approve the Terminate Scheduled Event before the event is auto
+	// approved (timed out). The configuration must be specified in ISO 8601 format,
+	// the default value is 5 minutes (PT5M)
 	NotBeforeTimeout pulumi.StringPtrInput `pulumi:"notBeforeTimeout"`
 }
 
@@ -7993,6 +8788,7 @@ func (i *terminateNotificationProfilePtrType) ToTerminateNotificationProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(TerminateNotificationProfilePtrOutput)
 }
 
+// Specifies Terminate Scheduled Event related configurations.
 type TerminateNotificationProfileOutput struct{ *pulumi.OutputState }
 
 func (TerminateNotificationProfileOutput) ElementType() reflect.Type {
@@ -8022,7 +8818,10 @@ func (o TerminateNotificationProfileOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TerminateNotificationProfile) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+// Configurable length of time a Virtual Machine being deleted will have to
+// potentially approve the Terminate Scheduled Event before the event is auto
+// approved (timed out). The configuration must be specified in ISO 8601 format,
+// the default value is 5 minutes (PT5M)
 func (o TerminateNotificationProfileOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TerminateNotificationProfile) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -8061,7 +8860,10 @@ func (o TerminateNotificationProfilePtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+// Configurable length of time a Virtual Machine being deleted will have to
+// potentially approve the Terminate Scheduled Event before the event is auto
+// approved (timed out). The configuration must be specified in ISO 8601 format,
+// the default value is 5 minutes (PT5M)
 func (o TerminateNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TerminateNotificationProfile) *string {
 		if v == nil {
@@ -8071,13 +8873,18 @@ func (o TerminateNotificationProfilePtrOutput) NotBeforeTimeout() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies Terminate Scheduled Event related configurations.
 type TerminateNotificationProfileResponse struct {
 	// Specifies whether the Terminate Scheduled event is enabled or disabled.
 	Enable *bool `pulumi:"enable"`
-	// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+	// Configurable length of time a Virtual Machine being deleted will have to
+	// potentially approve the Terminate Scheduled Event before the event is auto
+	// approved (timed out). The configuration must be specified in ISO 8601 format,
+	// the default value is 5 minutes (PT5M)
 	NotBeforeTimeout *string `pulumi:"notBeforeTimeout"`
 }
 
+// Specifies Terminate Scheduled Event related configurations.
 type TerminateNotificationProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (TerminateNotificationProfileResponseOutput) ElementType() reflect.Type {
@@ -8097,7 +8904,10 @@ func (o TerminateNotificationProfileResponseOutput) Enable() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v TerminateNotificationProfileResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+// Configurable length of time a Virtual Machine being deleted will have to
+// potentially approve the Terminate Scheduled Event before the event is auto
+// approved (timed out). The configuration must be specified in ISO 8601 format,
+// the default value is 5 minutes (PT5M)
 func (o TerminateNotificationProfileResponseOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TerminateNotificationProfileResponse) *string { return v.NotBeforeTimeout }).(pulumi.StringPtrOutput)
 }
@@ -8136,7 +8946,10 @@ func (o TerminateNotificationProfileResponsePtrOutput) Enable() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+// Configurable length of time a Virtual Machine being deleted will have to
+// potentially approve the Terminate Scheduled Event before the event is auto
+// approved (timed out). The configuration must be specified in ISO 8601 format,
+// the default value is 5 minutes (PT5M)
 func (o TerminateNotificationProfileResponsePtrOutput) NotBeforeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TerminateNotificationProfileResponse) *string {
 		if v == nil {
@@ -8146,11 +8959,14 @@ func (o TerminateNotificationProfileResponsePtrOutput) NotBeforeTimeout() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 type UefiSettings struct {
-	// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+	// api-version: 2020-12-01.
 	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
-	// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+	// api-version: 2020-12-01.
 	VTpmEnabled *bool `pulumi:"vTpmEnabled"`
 }
 
@@ -8165,11 +8981,14 @@ type UefiSettingsInput interface {
 	ToUefiSettingsOutputWithContext(context.Context) UefiSettingsOutput
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 type UefiSettingsArgs struct {
-	// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+	// api-version: 2020-12-01.
 	SecureBootEnabled pulumi.BoolPtrInput `pulumi:"secureBootEnabled"`
-	// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+	// api-version: 2020-12-01.
 	VTpmEnabled pulumi.BoolPtrInput `pulumi:"vTpmEnabled"`
 }
 
@@ -8226,7 +9045,8 @@ func (i *uefiSettingsPtrType) ToUefiSettingsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 type UefiSettingsOutput struct{ *pulumi.OutputState }
 
 func (UefiSettingsOutput) ElementType() reflect.Type {
@@ -8251,12 +9071,14 @@ func (o UefiSettingsOutput) ToUefiSettingsPtrOutputWithContext(ctx context.Conte
 	}).(UefiSettingsPtrOutput)
 }
 
-// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsOutput) VTpmEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UefiSettings) *bool { return v.VTpmEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -8285,7 +9107,8 @@ func (o UefiSettingsPtrOutput) Elem() UefiSettingsOutput {
 	}).(UefiSettingsOutput)
 }
 
-// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UefiSettings) *bool {
 		if v == nil {
@@ -8295,7 +9118,8 @@ func (o UefiSettingsPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsPtrOutput) VTpmEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UefiSettings) *bool {
 		if v == nil {
@@ -8305,15 +9129,19 @@ func (o UefiSettingsPtrOutput) VTpmEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 type UefiSettingsResponse struct {
-	// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+	// api-version: 2020-12-01.
 	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
-	// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+	// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+	// api-version: 2020-12-01.
 	VTpmEnabled *bool `pulumi:"vTpmEnabled"`
 }
 
-// Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies the security settings like secure boot and vTPM used while creating
+// the virtual machine. Minimum api-version: 2020-12-01.
 type UefiSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (UefiSettingsResponseOutput) ElementType() reflect.Type {
@@ -8328,12 +9156,14 @@ func (o UefiSettingsResponseOutput) ToUefiSettingsResponseOutputWithContext(ctx 
 	return o
 }
 
-// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsResponseOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UefiSettingsResponse) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsResponseOutput) VTpmEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UefiSettingsResponse) *bool { return v.VTpmEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -8362,7 +9192,8 @@ func (o UefiSettingsResponsePtrOutput) Elem() UefiSettingsResponseOutput {
 	}).(UefiSettingsResponseOutput)
 }
 
-// Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether secure boot should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsResponsePtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UefiSettingsResponse) *bool {
 		if v == nil {
@@ -8372,7 +9203,8 @@ func (o UefiSettingsResponsePtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+// Specifies whether vTPM should be enabled on the virtual machine. Minimum
+// api-version: 2020-12-01.
 func (o UefiSettingsResponsePtrOutput) VTpmEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UefiSettingsResponse) *bool {
 		if v == nil {
@@ -8435,11 +9267,18 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
-// Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+// Specifies the security profile settings for the managed disk. **Note:** It can
+// only be set for Confidential VMs.
 type VMDiskSecurityProfile struct {
-	// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+	// Specifies the customer managed disk encryption set resource id for the managed
+	// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+	// VMGuest blob.
 	DiskEncryptionSet *DiskEncryptionSetParameters `pulumi:"diskEncryptionSet"`
-	// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+	// Specifies the EncryptionType of the managed disk. It is set to
+	// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+	// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+	// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+	// **Note:** It can be set for only Confidential VMs.
 	SecurityEncryptionType *string `pulumi:"securityEncryptionType"`
 }
 
@@ -8454,11 +9293,18 @@ type VMDiskSecurityProfileInput interface {
 	ToVMDiskSecurityProfileOutputWithContext(context.Context) VMDiskSecurityProfileOutput
 }
 
-// Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+// Specifies the security profile settings for the managed disk. **Note:** It can
+// only be set for Confidential VMs.
 type VMDiskSecurityProfileArgs struct {
-	// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+	// Specifies the customer managed disk encryption set resource id for the managed
+	// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+	// VMGuest blob.
 	DiskEncryptionSet DiskEncryptionSetParametersPtrInput `pulumi:"diskEncryptionSet"`
-	// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+	// Specifies the EncryptionType of the managed disk. It is set to
+	// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+	// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+	// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+	// **Note:** It can be set for only Confidential VMs.
 	SecurityEncryptionType pulumi.StringPtrInput `pulumi:"securityEncryptionType"`
 }
 
@@ -8515,7 +9361,8 @@ func (i *vmdiskSecurityProfilePtrType) ToVMDiskSecurityProfilePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(VMDiskSecurityProfilePtrOutput)
 }
 
-// Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+// Specifies the security profile settings for the managed disk. **Note:** It can
+// only be set for Confidential VMs.
 type VMDiskSecurityProfileOutput struct{ *pulumi.OutputState }
 
 func (VMDiskSecurityProfileOutput) ElementType() reflect.Type {
@@ -8540,12 +9387,18 @@ func (o VMDiskSecurityProfileOutput) ToVMDiskSecurityProfilePtrOutputWithContext
 	}).(VMDiskSecurityProfilePtrOutput)
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+// VMGuest blob.
 func (o VMDiskSecurityProfileOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
 	return o.ApplyT(func(v VMDiskSecurityProfile) *DiskEncryptionSetParameters { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersPtrOutput)
 }
 
-// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+// Specifies the EncryptionType of the managed disk. It is set to
+// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+// **Note:** It can be set for only Confidential VMs.
 func (o VMDiskSecurityProfileOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMDiskSecurityProfile) *string { return v.SecurityEncryptionType }).(pulumi.StringPtrOutput)
 }
@@ -8574,7 +9427,9 @@ func (o VMDiskSecurityProfilePtrOutput) Elem() VMDiskSecurityProfileOutput {
 	}).(VMDiskSecurityProfileOutput)
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+// VMGuest blob.
 func (o VMDiskSecurityProfilePtrOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
 	return o.ApplyT(func(v *VMDiskSecurityProfile) *DiskEncryptionSetParameters {
 		if v == nil {
@@ -8584,7 +9439,11 @@ func (o VMDiskSecurityProfilePtrOutput) DiskEncryptionSet() DiskEncryptionSetPar
 	}).(DiskEncryptionSetParametersPtrOutput)
 }
 
-// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+// Specifies the EncryptionType of the managed disk. It is set to
+// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+// **Note:** It can be set for only Confidential VMs.
 func (o VMDiskSecurityProfilePtrOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMDiskSecurityProfile) *string {
 		if v == nil {
@@ -8594,15 +9453,23 @@ func (o VMDiskSecurityProfilePtrOutput) SecurityEncryptionType() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+// Specifies the security profile settings for the managed disk. **Note:** It can
+// only be set for Confidential VMs.
 type VMDiskSecurityProfileResponse struct {
-	// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+	// Specifies the customer managed disk encryption set resource id for the managed
+	// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+	// VMGuest blob.
 	DiskEncryptionSet *DiskEncryptionSetParametersResponse `pulumi:"diskEncryptionSet"`
-	// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+	// Specifies the EncryptionType of the managed disk. It is set to
+	// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+	// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+	// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+	// **Note:** It can be set for only Confidential VMs.
 	SecurityEncryptionType *string `pulumi:"securityEncryptionType"`
 }
 
-// Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+// Specifies the security profile settings for the managed disk. **Note:** It can
+// only be set for Confidential VMs.
 type VMDiskSecurityProfileResponseOutput struct{ *pulumi.OutputState }
 
 func (VMDiskSecurityProfileResponseOutput) ElementType() reflect.Type {
@@ -8617,12 +9484,18 @@ func (o VMDiskSecurityProfileResponseOutput) ToVMDiskSecurityProfileResponseOutp
 	return o
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+// VMGuest blob.
 func (o VMDiskSecurityProfileResponseOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
 	return o.ApplyT(func(v VMDiskSecurityProfileResponse) *DiskEncryptionSetParametersResponse { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersResponsePtrOutput)
 }
 
-// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+// Specifies the EncryptionType of the managed disk. It is set to
+// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+// **Note:** It can be set for only Confidential VMs.
 func (o VMDiskSecurityProfileResponseOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMDiskSecurityProfileResponse) *string { return v.SecurityEncryptionType }).(pulumi.StringPtrOutput)
 }
@@ -8651,7 +9524,9 @@ func (o VMDiskSecurityProfileResponsePtrOutput) Elem() VMDiskSecurityProfileResp
 	}).(VMDiskSecurityProfileResponseOutput)
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+// VMGuest blob.
 func (o VMDiskSecurityProfileResponsePtrOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
 	return o.ApplyT(func(v *VMDiskSecurityProfileResponse) *DiskEncryptionSetParametersResponse {
 		if v == nil {
@@ -8661,7 +9536,11 @@ func (o VMDiskSecurityProfileResponsePtrOutput) DiskEncryptionSet() DiskEncrypti
 	}).(DiskEncryptionSetParametersResponsePtrOutput)
 }
 
-// Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+// Specifies the EncryptionType of the managed disk. It is set to
+// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+// **Note:** It can be set for only Confidential VMs.
 func (o VMDiskSecurityProfileResponsePtrOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMDiskSecurityProfileResponse) *string {
 		if v == nil {
@@ -8671,19 +9550,24 @@ func (o VMDiskSecurityProfileResponsePtrOutput) SecurityEncryptionType() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the required information to reference a compute gallery application version
+// Specifies the required information to reference a compute gallery application
+// version
 type VMGalleryApplication struct {
-	// Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+	// Optional, Specifies the uri to an azure blob that will replace the default
+	// configuration for the package if provided
 	ConfigurationReference *string `pulumi:"configurationReference"`
-	// If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+	// If set to true, when a new Gallery Application version is available in PIR/SIG,
+	// it will be automatically updated for the VM/VMSS
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// Optional, Specifies the order in which the packages have to be installed
 	Order *int `pulumi:"order"`
-	// Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+	// Specifies the GalleryApplicationVersion resource id on the form of
+	// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
 	PackageReferenceId string `pulumi:"packageReferenceId"`
 	// Optional, Specifies a passthrough value for more generic context.
 	Tags *string `pulumi:"tags"`
-	// Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+	// Optional, If true, any failure for any operation in the VmApplication will fail
+	// the deployment
 	TreatFailureAsDeploymentFailure *bool `pulumi:"treatFailureAsDeploymentFailure"`
 }
 
@@ -8698,19 +9582,24 @@ type VMGalleryApplicationInput interface {
 	ToVMGalleryApplicationOutputWithContext(context.Context) VMGalleryApplicationOutput
 }
 
-// Specifies the required information to reference a compute gallery application version
+// Specifies the required information to reference a compute gallery application
+// version
 type VMGalleryApplicationArgs struct {
-	// Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+	// Optional, Specifies the uri to an azure blob that will replace the default
+	// configuration for the package if provided
 	ConfigurationReference pulumi.StringPtrInput `pulumi:"configurationReference"`
-	// If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+	// If set to true, when a new Gallery Application version is available in PIR/SIG,
+	// it will be automatically updated for the VM/VMSS
 	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
 	// Optional, Specifies the order in which the packages have to be installed
 	Order pulumi.IntPtrInput `pulumi:"order"`
-	// Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+	// Specifies the GalleryApplicationVersion resource id on the form of
+	// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
 	PackageReferenceId pulumi.StringInput `pulumi:"packageReferenceId"`
 	// Optional, Specifies a passthrough value for more generic context.
 	Tags pulumi.StringPtrInput `pulumi:"tags"`
-	// Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+	// Optional, If true, any failure for any operation in the VmApplication will fail
+	// the deployment
 	TreatFailureAsDeploymentFailure pulumi.BoolPtrInput `pulumi:"treatFailureAsDeploymentFailure"`
 }
 
@@ -8751,7 +9640,8 @@ func (i VMGalleryApplicationArray) ToVMGalleryApplicationArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VMGalleryApplicationArrayOutput)
 }
 
-// Specifies the required information to reference a compute gallery application version
+// Specifies the required information to reference a compute gallery application
+// version
 type VMGalleryApplicationOutput struct{ *pulumi.OutputState }
 
 func (VMGalleryApplicationOutput) ElementType() reflect.Type {
@@ -8766,12 +9656,14 @@ func (o VMGalleryApplicationOutput) ToVMGalleryApplicationOutputWithContext(ctx 
 	return o
 }
 
-// Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+// Optional, Specifies the uri to an azure blob that will replace the default
+// configuration for the package if provided
 func (o VMGalleryApplicationOutput) ConfigurationReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplication) *string { return v.ConfigurationReference }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+// If set to true, when a new Gallery Application version is available in PIR/SIG,
+// it will be automatically updated for the VM/VMSS
 func (o VMGalleryApplicationOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplication) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -8781,7 +9673,8 @@ func (o VMGalleryApplicationOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplication) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+// Specifies the GalleryApplicationVersion resource id on the form of
+// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
 func (o VMGalleryApplicationOutput) PackageReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v VMGalleryApplication) string { return v.PackageReferenceId }).(pulumi.StringOutput)
 }
@@ -8791,7 +9684,8 @@ func (o VMGalleryApplicationOutput) Tags() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplication) *string { return v.Tags }).(pulumi.StringPtrOutput)
 }
 
-// Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+// Optional, If true, any failure for any operation in the VmApplication will fail
+// the deployment
 func (o VMGalleryApplicationOutput) TreatFailureAsDeploymentFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplication) *bool { return v.TreatFailureAsDeploymentFailure }).(pulumi.BoolPtrOutput)
 }
@@ -8816,23 +9710,29 @@ func (o VMGalleryApplicationArrayOutput) Index(i pulumi.IntInput) VMGalleryAppli
 	}).(VMGalleryApplicationOutput)
 }
 
-// Specifies the required information to reference a compute gallery application version
+// Specifies the required information to reference a compute gallery application
+// version
 type VMGalleryApplicationResponse struct {
-	// Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+	// Optional, Specifies the uri to an azure blob that will replace the default
+	// configuration for the package if provided
 	ConfigurationReference *string `pulumi:"configurationReference"`
-	// If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+	// If set to true, when a new Gallery Application version is available in PIR/SIG,
+	// it will be automatically updated for the VM/VMSS
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// Optional, Specifies the order in which the packages have to be installed
 	Order *int `pulumi:"order"`
-	// Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+	// Specifies the GalleryApplicationVersion resource id on the form of
+	// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
 	PackageReferenceId string `pulumi:"packageReferenceId"`
 	// Optional, Specifies a passthrough value for more generic context.
 	Tags *string `pulumi:"tags"`
-	// Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+	// Optional, If true, any failure for any operation in the VmApplication will fail
+	// the deployment
 	TreatFailureAsDeploymentFailure *bool `pulumi:"treatFailureAsDeploymentFailure"`
 }
 
-// Specifies the required information to reference a compute gallery application version
+// Specifies the required information to reference a compute gallery application
+// version
 type VMGalleryApplicationResponseOutput struct{ *pulumi.OutputState }
 
 func (VMGalleryApplicationResponseOutput) ElementType() reflect.Type {
@@ -8847,12 +9747,14 @@ func (o VMGalleryApplicationResponseOutput) ToVMGalleryApplicationResponseOutput
 	return o
 }
 
-// Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+// Optional, Specifies the uri to an azure blob that will replace the default
+// configuration for the package if provided
 func (o VMGalleryApplicationResponseOutput) ConfigurationReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplicationResponse) *string { return v.ConfigurationReference }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+// If set to true, when a new Gallery Application version is available in PIR/SIG,
+// it will be automatically updated for the VM/VMSS
 func (o VMGalleryApplicationResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplicationResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
@@ -8862,7 +9764,8 @@ func (o VMGalleryApplicationResponseOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplicationResponse) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+// Specifies the GalleryApplicationVersion resource id on the form of
+// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
 func (o VMGalleryApplicationResponseOutput) PackageReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v VMGalleryApplicationResponse) string { return v.PackageReferenceId }).(pulumi.StringOutput)
 }
@@ -8872,7 +9775,8 @@ func (o VMGalleryApplicationResponseOutput) Tags() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplicationResponse) *string { return v.Tags }).(pulumi.StringPtrOutput)
 }
 
-// Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+// Optional, If true, any failure for any operation in the VmApplication will fail
+// the deployment
 func (o VMGalleryApplicationResponseOutput) TreatFailureAsDeploymentFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMGalleryApplicationResponse) *bool { return v.TreatFailureAsDeploymentFailure }).(pulumi.BoolPtrOutput)
 }
@@ -8899,9 +9803,18 @@ func (o VMGalleryApplicationResponseArrayOutput) Index(i pulumi.IntInput) VMGall
 
 // Specifies VM Size Property settings on the virtual machine.
 type VMSizeProperties struct {
-	// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// Specifies the number of vCPUs available for the VM. When this property is not
+	// specified in the request body the default behavior is to set it to the value of
+	// vCPUs available for that VM size exposed in api response of [List all available
+	// virtual machine sizes in a
+	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	VCPUsAvailable *int `pulumi:"vCPUsAvailable"`
-	// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+	// Specifies the vCPU to physical core ratio. When this property is not specified
+	// in the request body the default behavior is set to the value of vCPUsPerCore
+	// for the VM Size exposed in api response of [List all available virtual machine
+	// sizes in a
+	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// **Setting this property to 1 also means that hyper-threading is disabled.**
 	VCPUsPerCore *int `pulumi:"vCPUsPerCore"`
 }
 
@@ -8918,9 +9831,18 @@ type VMSizePropertiesInput interface {
 
 // Specifies VM Size Property settings on the virtual machine.
 type VMSizePropertiesArgs struct {
-	// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// Specifies the number of vCPUs available for the VM. When this property is not
+	// specified in the request body the default behavior is to set it to the value of
+	// vCPUs available for that VM size exposed in api response of [List all available
+	// virtual machine sizes in a
+	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	VCPUsAvailable pulumi.IntPtrInput `pulumi:"vCPUsAvailable"`
-	// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+	// Specifies the vCPU to physical core ratio. When this property is not specified
+	// in the request body the default behavior is set to the value of vCPUsPerCore
+	// for the VM Size exposed in api response of [List all available virtual machine
+	// sizes in a
+	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// **Setting this property to 1 also means that hyper-threading is disabled.**
 	VCPUsPerCore pulumi.IntPtrInput `pulumi:"vCPUsPerCore"`
 }
 
@@ -9002,12 +9924,21 @@ func (o VMSizePropertiesOutput) ToVMSizePropertiesPtrOutputWithContext(ctx conte
 	}).(VMSizePropertiesPtrOutput)
 }
 
-// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// Specifies the number of vCPUs available for the VM. When this property is not
+// specified in the request body the default behavior is to set it to the value of
+// vCPUs available for that VM size exposed in api response of [List all available
+// virtual machine sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizeProperties) *int { return v.VCPUsAvailable }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+// Specifies the vCPU to physical core ratio. When this property is not specified
+// in the request body the default behavior is set to the value of vCPUsPerCore
+// for the VM Size exposed in api response of [List all available virtual machine
+// sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizeProperties) *int { return v.VCPUsPerCore }).(pulumi.IntPtrOutput)
 }
@@ -9036,7 +9967,11 @@ func (o VMSizePropertiesPtrOutput) Elem() VMSizePropertiesOutput {
 	}).(VMSizePropertiesOutput)
 }
 
-// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// Specifies the number of vCPUs available for the VM. When this property is not
+// specified in the request body the default behavior is to set it to the value of
+// vCPUs available for that VM size exposed in api response of [List all available
+// virtual machine sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesPtrOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizeProperties) *int {
 		if v == nil {
@@ -9046,7 +9981,12 @@ func (o VMSizePropertiesPtrOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+// Specifies the vCPU to physical core ratio. When this property is not specified
+// in the request body the default behavior is set to the value of vCPUsPerCore
+// for the VM Size exposed in api response of [List all available virtual machine
+// sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesPtrOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizeProperties) *int {
 		if v == nil {
@@ -9058,9 +9998,18 @@ func (o VMSizePropertiesPtrOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 
 // Specifies VM Size Property settings on the virtual machine.
 type VMSizePropertiesResponse struct {
-	// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// Specifies the number of vCPUs available for the VM. When this property is not
+	// specified in the request body the default behavior is to set it to the value of
+	// vCPUs available for that VM size exposed in api response of [List all available
+	// virtual machine sizes in a
+	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 	VCPUsAvailable *int `pulumi:"vCPUsAvailable"`
-	// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+	// Specifies the vCPU to physical core ratio. When this property is not specified
+	// in the request body the default behavior is set to the value of vCPUsPerCore
+	// for the VM Size exposed in api response of [List all available virtual machine
+	// sizes in a
+	// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+	// **Setting this property to 1 also means that hyper-threading is disabled.**
 	VCPUsPerCore *int `pulumi:"vCPUsPerCore"`
 }
 
@@ -9079,12 +10028,21 @@ func (o VMSizePropertiesResponseOutput) ToVMSizePropertiesResponseOutputWithCont
 	return o
 }
 
-// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// Specifies the number of vCPUs available for the VM. When this property is not
+// specified in the request body the default behavior is to set it to the value of
+// vCPUs available for that VM size exposed in api response of [List all available
+// virtual machine sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesResponseOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizePropertiesResponse) *int { return v.VCPUsAvailable }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+// Specifies the vCPU to physical core ratio. When this property is not specified
+// in the request body the default behavior is set to the value of vCPUsPerCore
+// for the VM Size exposed in api response of [List all available virtual machine
+// sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesResponseOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizePropertiesResponse) *int { return v.VCPUsPerCore }).(pulumi.IntPtrOutput)
 }
@@ -9113,7 +10071,11 @@ func (o VMSizePropertiesResponsePtrOutput) Elem() VMSizePropertiesResponseOutput
 	}).(VMSizePropertiesResponseOutput)
 }
 
-// Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// Specifies the number of vCPUs available for the VM. When this property is not
+// specified in the request body the default behavior is to set it to the value of
+// vCPUs available for that VM size exposed in api response of [List all available
+// virtual machine sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 func (o VMSizePropertiesResponsePtrOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizePropertiesResponse) *int {
 		if v == nil {
@@ -9123,7 +10085,12 @@ func (o VMSizePropertiesResponsePtrOutput) VCPUsAvailable() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+// Specifies the vCPU to physical core ratio. When this property is not specified
+// in the request body the default behavior is set to the value of vCPUsPerCore
+// for the VM Size exposed in api response of [List all available virtual machine
+// sizes in a
+// region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+// **Setting this property to 1 also means that hyper-threading is disabled.**
 func (o VMSizePropertiesResponsePtrOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VMSizePropertiesResponse) *int {
 		if v == nil {
@@ -9133,11 +10100,30 @@ func (o VMSizePropertiesResponsePtrOutput) VCPUsPerCore() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+// Describes a single certificate reference in a Key Vault, and where the
+// certificate should reside on the VM.
 type VaultCertificate struct {
-	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+	// For Windows VMs, specifies the certificate store on the Virtual Machine to
+	// which the certificate should be added. The specified certificate store is
+	// implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+	// placed under the /var/lib/waagent directory, with the file name
+	// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+	// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+	// formatted.
 	CertificateStore *string `pulumi:"certificateStore"`
-	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// This is the URL of a certificate that has been uploaded to Key Vault as a
+	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+	// key
+	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// In this case, your certificate needs to be It is the Base64 encoding of the
+	// following JSON Object which is encoded in UTF-8: <br><br> {<br>
+	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+	// machine it is recommended to use the [Azure Key Vault virtual machine extension
+	// for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
 }
 
@@ -9152,11 +10138,30 @@ type VaultCertificateInput interface {
 	ToVaultCertificateOutputWithContext(context.Context) VaultCertificateOutput
 }
 
-// Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+// Describes a single certificate reference in a Key Vault, and where the
+// certificate should reside on the VM.
 type VaultCertificateArgs struct {
-	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+	// For Windows VMs, specifies the certificate store on the Virtual Machine to
+	// which the certificate should be added. The specified certificate store is
+	// implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+	// placed under the /var/lib/waagent directory, with the file name
+	// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+	// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+	// formatted.
 	CertificateStore pulumi.StringPtrInput `pulumi:"certificateStore"`
-	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// This is the URL of a certificate that has been uploaded to Key Vault as a
+	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+	// key
+	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// In this case, your certificate needs to be It is the Base64 encoding of the
+	// following JSON Object which is encoded in UTF-8: <br><br> {<br>
+	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+	// machine it is recommended to use the [Azure Key Vault virtual machine extension
+	// for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl pulumi.StringPtrInput `pulumi:"certificateUrl"`
 }
 
@@ -9197,7 +10202,8 @@ func (i VaultCertificateArray) ToVaultCertificateArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VaultCertificateArrayOutput)
 }
 
-// Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+// Describes a single certificate reference in a Key Vault, and where the
+// certificate should reside on the VM.
 type VaultCertificateOutput struct{ *pulumi.OutputState }
 
 func (VaultCertificateOutput) ElementType() reflect.Type {
@@ -9212,12 +10218,30 @@ func (o VaultCertificateOutput) ToVaultCertificateOutputWithContext(ctx context.
 	return o
 }
 
-// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+// For Windows VMs, specifies the certificate store on the Virtual Machine to
+// which the certificate should be added. The specified certificate store is
+// implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+// placed under the /var/lib/waagent directory, with the file name
+// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+// formatted.
 func (o VaultCertificateOutput) CertificateStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificate) *string { return v.CertificateStore }).(pulumi.StringPtrOutput)
 }
 
-// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// This is the URL of a certificate that has been uploaded to Key Vault as a
+// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+// key
+// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// In this case, your certificate needs to be It is the Base64 encoding of the
+// following JSON Object which is encoded in UTF-8: <br><br> {<br>
+// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+// machine it is recommended to use the [Azure Key Vault virtual machine extension
+// for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VaultCertificateOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificate) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
@@ -9242,15 +10266,35 @@ func (o VaultCertificateArrayOutput) Index(i pulumi.IntInput) VaultCertificateOu
 	}).(VaultCertificateOutput)
 }
 
-// Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+// Describes a single certificate reference in a Key Vault, and where the
+// certificate should reside on the VM.
 type VaultCertificateResponse struct {
-	// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+	// For Windows VMs, specifies the certificate store on the Virtual Machine to
+	// which the certificate should be added. The specified certificate store is
+	// implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+	// placed under the /var/lib/waagent directory, with the file name
+	// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+	// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+	// formatted.
 	CertificateStore *string `pulumi:"certificateStore"`
-	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// This is the URL of a certificate that has been uploaded to Key Vault as a
+	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+	// key
+	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// In this case, your certificate needs to be It is the Base64 encoding of the
+	// following JSON Object which is encoded in UTF-8: <br><br> {<br>
+	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+	// machine it is recommended to use the [Azure Key Vault virtual machine extension
+	// for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
 }
 
-// Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+// Describes a single certificate reference in a Key Vault, and where the
+// certificate should reside on the VM.
 type VaultCertificateResponseOutput struct{ *pulumi.OutputState }
 
 func (VaultCertificateResponseOutput) ElementType() reflect.Type {
@@ -9265,12 +10309,30 @@ func (o VaultCertificateResponseOutput) ToVaultCertificateResponseOutputWithCont
 	return o
 }
 
-// For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+// For Windows VMs, specifies the certificate store on the Virtual Machine to
+// which the certificate should be added. The specified certificate store is
+// implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+// placed under the /var/lib/waagent directory, with the file name
+// &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+// &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+// formatted.
 func (o VaultCertificateResponseOutput) CertificateStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificateResponse) *string { return v.CertificateStore }).(pulumi.StringPtrOutput)
 }
 
-// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// This is the URL of a certificate that has been uploaded to Key Vault as a
+// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+// key
+// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// In this case, your certificate needs to be It is the Base64 encoding of the
+// following JSON Object which is encoded in UTF-8: <br><br> {<br>
+// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+// machine it is recommended to use the [Azure Key Vault virtual machine extension
+// for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VaultCertificateResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificateResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
@@ -9297,7 +10359,8 @@ func (o VaultCertificateResponseArrayOutput) Index(i pulumi.IntInput) VaultCerti
 
 // Describes a set of certificates which are all in the same Key Vault.
 type VaultSecretGroup struct {
-	// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+	// The relative URL of the Key Vault containing all of the certificates in
+	// VaultCertificates.
 	SourceVault *SubResource `pulumi:"sourceVault"`
 	// The list of key vault references in SourceVault which contain certificates.
 	VaultCertificates []VaultCertificate `pulumi:"vaultCertificates"`
@@ -9316,7 +10379,8 @@ type VaultSecretGroupInput interface {
 
 // Describes a set of certificates which are all in the same Key Vault.
 type VaultSecretGroupArgs struct {
-	// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+	// The relative URL of the Key Vault containing all of the certificates in
+	// VaultCertificates.
 	SourceVault SubResourcePtrInput `pulumi:"sourceVault"`
 	// The list of key vault references in SourceVault which contain certificates.
 	VaultCertificates VaultCertificateArrayInput `pulumi:"vaultCertificates"`
@@ -9374,7 +10438,8 @@ func (o VaultSecretGroupOutput) ToVaultSecretGroupOutputWithContext(ctx context.
 	return o
 }
 
-// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+// The relative URL of the Key Vault containing all of the certificates in
+// VaultCertificates.
 func (o VaultSecretGroupOutput) SourceVault() SubResourcePtrOutput {
 	return o.ApplyT(func(v VaultSecretGroup) *SubResource { return v.SourceVault }).(SubResourcePtrOutput)
 }
@@ -9406,7 +10471,8 @@ func (o VaultSecretGroupArrayOutput) Index(i pulumi.IntInput) VaultSecretGroupOu
 
 // Describes a set of certificates which are all in the same Key Vault.
 type VaultSecretGroupResponse struct {
-	// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+	// The relative URL of the Key Vault containing all of the certificates in
+	// VaultCertificates.
 	SourceVault *SubResourceResponse `pulumi:"sourceVault"`
 	// The list of key vault references in SourceVault which contain certificates.
 	VaultCertificates []VaultCertificateResponse `pulumi:"vaultCertificates"`
@@ -9427,7 +10493,8 @@ func (o VaultSecretGroupResponseOutput) ToVaultSecretGroupResponseOutputWithCont
 	return o
 }
 
-// The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+// The relative URL of the Key Vault containing all of the certificates in
+// VaultCertificates.
 func (o VaultSecretGroupResponseOutput) SourceVault() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v VaultSecretGroupResponse) *SubResourceResponse { return v.SourceVault }).(SubResourceResponsePtrOutput)
 }
@@ -9657,744 +10724,37 @@ func (o VirtualHardDiskResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtension struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// How the extension handler should be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// The virtual machine extension instance view.
-	InstanceView *VirtualMachineExtensionInstanceView `pulumi:"instanceView"`
-	// Resource location
-	Location *string `pulumi:"location"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings interface{} `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
-	// The name of the extension handler publisher.
-	Publisher *string `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings interface{} `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures *bool `pulumi:"suppressFailures"`
-	// Resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type *string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
-}
-
-// VirtualMachineExtensionInput is an input type that accepts VirtualMachineExtensionArgs and VirtualMachineExtensionOutput values.
-// You can construct a concrete instance of `VirtualMachineExtensionInput` via:
-//
-//	VirtualMachineExtensionArgs{...}
-type VirtualMachineExtensionInput interface {
-	pulumi.Input
-
-	ToVirtualMachineExtensionOutput() VirtualMachineExtensionOutput
-	ToVirtualMachineExtensionOutputWithContext(context.Context) VirtualMachineExtensionOutput
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionArgs struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion pulumi.BoolPtrInput `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
-	// How the extension handler should be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag pulumi.StringPtrInput `pulumi:"forceUpdateTag"`
-	// The virtual machine extension instance view.
-	InstanceView VirtualMachineExtensionInstanceViewPtrInput `pulumi:"instanceView"`
-	// Resource location
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions pulumi.StringArrayInput `pulumi:"provisionAfterExtensions"`
-	// The name of the extension handler publisher.
-	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings pulumi.Input `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures pulumi.BoolPtrInput `pulumi:"suppressFailures"`
-	// Resource tags
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
-}
-
-func (VirtualMachineExtensionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtension)(nil)).Elem()
-}
-
-func (i VirtualMachineExtensionArgs) ToVirtualMachineExtensionOutput() VirtualMachineExtensionOutput {
-	return i.ToVirtualMachineExtensionOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineExtensionArgs) ToVirtualMachineExtensionOutputWithContext(ctx context.Context) VirtualMachineExtensionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionOutput)
-}
-
-// VirtualMachineExtensionArrayInput is an input type that accepts VirtualMachineExtensionArray and VirtualMachineExtensionArrayOutput values.
-// You can construct a concrete instance of `VirtualMachineExtensionArrayInput` via:
-//
-//	VirtualMachineExtensionArray{ VirtualMachineExtensionArgs{...} }
-type VirtualMachineExtensionArrayInput interface {
-	pulumi.Input
-
-	ToVirtualMachineExtensionArrayOutput() VirtualMachineExtensionArrayOutput
-	ToVirtualMachineExtensionArrayOutputWithContext(context.Context) VirtualMachineExtensionArrayOutput
-}
-
-type VirtualMachineExtensionArray []VirtualMachineExtensionInput
-
-func (VirtualMachineExtensionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachineExtension)(nil)).Elem()
-}
-
-func (i VirtualMachineExtensionArray) ToVirtualMachineExtensionArrayOutput() VirtualMachineExtensionArrayOutput {
-	return i.ToVirtualMachineExtensionArrayOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineExtensionArray) ToVirtualMachineExtensionArrayOutputWithContext(ctx context.Context) VirtualMachineExtensionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionArrayOutput)
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtension)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionOutput) ToVirtualMachineExtensionOutput() VirtualMachineExtensionOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionOutput) ToVirtualMachineExtensionOutputWithContext(ctx context.Context) VirtualMachineExtensionOutput {
-	return o
-}
-
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o VirtualMachineExtensionOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-func (o VirtualMachineExtensionOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// How the extension handler should be forced to update even if the extension configuration has not changed.
-func (o VirtualMachineExtensionOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
-// The virtual machine extension instance view.
-func (o VirtualMachineExtensionOutput) InstanceView() VirtualMachineExtensionInstanceViewPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *VirtualMachineExtensionInstanceView { return v.InstanceView }).(VirtualMachineExtensionInstanceViewPtrOutput)
-}
-
-// Resource location
-func (o VirtualMachineExtensionOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o VirtualMachineExtensionOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineExtensionOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferencePtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *KeyVaultSecretReference { return v.ProtectedSettingsFromKeyVault }).(KeyVaultSecretReferencePtrOutput)
-}
-
-// Collection of extension names after which this extension needs to be provisioned.
-func (o VirtualMachineExtensionOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
-}
-
-// The name of the extension handler publisher.
-func (o VirtualMachineExtensionOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o VirtualMachineExtensionOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-func (o VirtualMachineExtensionOutput) SuppressFailures() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
-}
-
-// Resource tags
-func (o VirtualMachineExtensionOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineExtensionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtension) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachineExtensionArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachineExtension)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionArrayOutput) ToVirtualMachineExtensionArrayOutput() VirtualMachineExtensionArrayOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionArrayOutput) ToVirtualMachineExtensionArrayOutputWithContext(ctx context.Context) VirtualMachineExtensionArrayOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionArrayOutput) Index(i pulumi.IntInput) VirtualMachineExtensionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineExtension {
-		return vs[0].([]VirtualMachineExtension)[vs[1].(int)]
-	}).(VirtualMachineExtensionOutput)
-}
-
-// The instance view of a virtual machine extension.
-type VirtualMachineExtensionInstanceView struct {
-	// The virtual machine extension name.
-	Name *string `pulumi:"name"`
-	// The resource status information.
-	Statuses []InstanceViewStatus `pulumi:"statuses"`
-	// The resource status information.
-	Substatuses []InstanceViewStatus `pulumi:"substatuses"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type *string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
-}
-
-// VirtualMachineExtensionInstanceViewInput is an input type that accepts VirtualMachineExtensionInstanceViewArgs and VirtualMachineExtensionInstanceViewOutput values.
-// You can construct a concrete instance of `VirtualMachineExtensionInstanceViewInput` via:
-//
-//	VirtualMachineExtensionInstanceViewArgs{...}
-type VirtualMachineExtensionInstanceViewInput interface {
-	pulumi.Input
-
-	ToVirtualMachineExtensionInstanceViewOutput() VirtualMachineExtensionInstanceViewOutput
-	ToVirtualMachineExtensionInstanceViewOutputWithContext(context.Context) VirtualMachineExtensionInstanceViewOutput
-}
-
-// The instance view of a virtual machine extension.
-type VirtualMachineExtensionInstanceViewArgs struct {
-	// The virtual machine extension name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource status information.
-	Statuses InstanceViewStatusArrayInput `pulumi:"statuses"`
-	// The resource status information.
-	Substatuses InstanceViewStatusArrayInput `pulumi:"substatuses"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
-}
-
-func (VirtualMachineExtensionInstanceViewArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtensionInstanceView)(nil)).Elem()
-}
-
-func (i VirtualMachineExtensionInstanceViewArgs) ToVirtualMachineExtensionInstanceViewOutput() VirtualMachineExtensionInstanceViewOutput {
-	return i.ToVirtualMachineExtensionInstanceViewOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineExtensionInstanceViewArgs) ToVirtualMachineExtensionInstanceViewOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionInstanceViewOutput)
-}
-
-func (i VirtualMachineExtensionInstanceViewArgs) ToVirtualMachineExtensionInstanceViewPtrOutput() VirtualMachineExtensionInstanceViewPtrOutput {
-	return i.ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineExtensionInstanceViewArgs) ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionInstanceViewOutput).ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(ctx)
-}
-
-// VirtualMachineExtensionInstanceViewPtrInput is an input type that accepts VirtualMachineExtensionInstanceViewArgs, VirtualMachineExtensionInstanceViewPtr and VirtualMachineExtensionInstanceViewPtrOutput values.
-// You can construct a concrete instance of `VirtualMachineExtensionInstanceViewPtrInput` via:
-//
-//	        VirtualMachineExtensionInstanceViewArgs{...}
-//
-//	or:
-//
-//	        nil
-type VirtualMachineExtensionInstanceViewPtrInput interface {
-	pulumi.Input
-
-	ToVirtualMachineExtensionInstanceViewPtrOutput() VirtualMachineExtensionInstanceViewPtrOutput
-	ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(context.Context) VirtualMachineExtensionInstanceViewPtrOutput
-}
-
-type virtualMachineExtensionInstanceViewPtrType VirtualMachineExtensionInstanceViewArgs
-
-func VirtualMachineExtensionInstanceViewPtr(v *VirtualMachineExtensionInstanceViewArgs) VirtualMachineExtensionInstanceViewPtrInput {
-	return (*virtualMachineExtensionInstanceViewPtrType)(v)
-}
-
-func (*virtualMachineExtensionInstanceViewPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineExtensionInstanceView)(nil)).Elem()
-}
-
-func (i *virtualMachineExtensionInstanceViewPtrType) ToVirtualMachineExtensionInstanceViewPtrOutput() VirtualMachineExtensionInstanceViewPtrOutput {
-	return i.ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(context.Background())
-}
-
-func (i *virtualMachineExtensionInstanceViewPtrType) ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineExtensionInstanceViewPtrOutput)
-}
-
-// The instance view of a virtual machine extension.
-type VirtualMachineExtensionInstanceViewOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionInstanceViewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtensionInstanceView)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionInstanceViewOutput) ToVirtualMachineExtensionInstanceViewOutput() VirtualMachineExtensionInstanceViewOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewOutput) ToVirtualMachineExtensionInstanceViewOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewOutput) ToVirtualMachineExtensionInstanceViewPtrOutput() VirtualMachineExtensionInstanceViewPtrOutput {
-	return o.ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(context.Background())
-}
-
-func (o VirtualMachineExtensionInstanceViewOutput) ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineExtensionInstanceView) *VirtualMachineExtensionInstanceView {
-		return &v
-	}).(VirtualMachineExtensionInstanceViewPtrOutput)
-}
-
-// The virtual machine extension name.
-func (o VirtualMachineExtensionInstanceViewOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceView) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewOutput) Statuses() InstanceViewStatusArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceView) []InstanceViewStatus { return v.Statuses }).(InstanceViewStatusArrayOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewOutput) Substatuses() InstanceViewStatusArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceView) []InstanceViewStatus { return v.Substatuses }).(InstanceViewStatusArrayOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineExtensionInstanceViewOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceView) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionInstanceViewOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceView) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachineExtensionInstanceViewPtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionInstanceViewPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineExtensionInstanceView)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionInstanceViewPtrOutput) ToVirtualMachineExtensionInstanceViewPtrOutput() VirtualMachineExtensionInstanceViewPtrOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewPtrOutput) ToVirtualMachineExtensionInstanceViewPtrOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewPtrOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewPtrOutput) Elem() VirtualMachineExtensionInstanceViewOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceView) VirtualMachineExtensionInstanceView {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualMachineExtensionInstanceView
-		return ret
-	}).(VirtualMachineExtensionInstanceViewOutput)
-}
-
-// The virtual machine extension name.
-func (o VirtualMachineExtensionInstanceViewPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewPtrOutput) Statuses() InstanceViewStatusArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceView) []InstanceViewStatus {
-		if v == nil {
-			return nil
-		}
-		return v.Statuses
-	}).(InstanceViewStatusArrayOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewPtrOutput) Substatuses() InstanceViewStatusArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceView) []InstanceViewStatus {
-		if v == nil {
-			return nil
-		}
-		return v.Substatuses
-	}).(InstanceViewStatusArrayOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineExtensionInstanceViewPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionInstanceViewPtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TypeHandlerVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// The instance view of a virtual machine extension.
-type VirtualMachineExtensionInstanceViewResponse struct {
-	// The virtual machine extension name.
-	Name *string `pulumi:"name"`
-	// The resource status information.
-	Statuses []InstanceViewStatusResponse `pulumi:"statuses"`
-	// The resource status information.
-	Substatuses []InstanceViewStatusResponse `pulumi:"substatuses"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type *string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
-}
-
-// The instance view of a virtual machine extension.
-type VirtualMachineExtensionInstanceViewResponseOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionInstanceViewResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtensionInstanceViewResponse)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionInstanceViewResponseOutput) ToVirtualMachineExtensionInstanceViewResponseOutput() VirtualMachineExtensionInstanceViewResponseOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewResponseOutput) ToVirtualMachineExtensionInstanceViewResponseOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewResponseOutput {
-	return o
-}
-
-// The virtual machine extension name.
-func (o VirtualMachineExtensionInstanceViewResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceViewResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewResponseOutput) Statuses() InstanceViewStatusResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceViewResponse) []InstanceViewStatusResponse { return v.Statuses }).(InstanceViewStatusResponseArrayOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewResponseOutput) Substatuses() InstanceViewStatusResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceViewResponse) []InstanceViewStatusResponse { return v.Substatuses }).(InstanceViewStatusResponseArrayOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineExtensionInstanceViewResponseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceViewResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionInstanceViewResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionInstanceViewResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachineExtensionInstanceViewResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionInstanceViewResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachineExtensionInstanceViewResponse)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) ToVirtualMachineExtensionInstanceViewResponsePtrOutput() VirtualMachineExtensionInstanceViewResponsePtrOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) ToVirtualMachineExtensionInstanceViewResponsePtrOutputWithContext(ctx context.Context) VirtualMachineExtensionInstanceViewResponsePtrOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) Elem() VirtualMachineExtensionInstanceViewResponseOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceViewResponse) VirtualMachineExtensionInstanceViewResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualMachineExtensionInstanceViewResponse
-		return ret
-	}).(VirtualMachineExtensionInstanceViewResponseOutput)
-}
-
-// The virtual machine extension name.
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) Statuses() InstanceViewStatusResponseArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceViewResponse) []InstanceViewStatusResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Statuses
-	}).(InstanceViewStatusResponseArrayOutput)
-}
-
-// The resource status information.
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) Substatuses() InstanceViewStatusResponseArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceViewResponse) []InstanceViewStatusResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Substatuses
-	}).(InstanceViewStatusResponseArrayOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionInstanceViewResponsePtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineExtensionInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TypeHandlerVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionResponse struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// How the extension handler should be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// Resource Id
-	Id string `pulumi:"id"`
-	// The virtual machine extension instance view.
-	InstanceView *VirtualMachineExtensionInstanceViewResponse `pulumi:"instanceView"`
-	// Resource location
-	Location *string `pulumi:"location"`
-	// Resource name
-	Name string `pulumi:"name"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings interface{} `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault *KeyVaultSecretReferenceResponse `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
-	// The provisioning state, which only appears in the response.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The name of the extension handler publisher.
-	Publisher *string `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings interface{} `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures *bool `pulumi:"suppressFailures"`
-	// Resource tags
-	Tags map[string]string `pulumi:"tags"`
-	// Resource type
-	Type string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
-}
-
-// Describes a Virtual Machine Extension.
-type VirtualMachineExtensionResponseOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineExtensionResponse)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionResponseOutput) ToVirtualMachineExtensionResponseOutput() VirtualMachineExtensionResponseOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionResponseOutput) ToVirtualMachineExtensionResponseOutputWithContext(ctx context.Context) VirtualMachineExtensionResponseOutput {
-	return o
-}
-
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o VirtualMachineExtensionResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-func (o VirtualMachineExtensionResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// How the extension handler should be forced to update even if the extension configuration has not changed.
-func (o VirtualMachineExtensionResponseOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
-// Resource Id
-func (o VirtualMachineExtensionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The virtual machine extension instance view.
-func (o VirtualMachineExtensionResponseOutput) InstanceView() VirtualMachineExtensionInstanceViewResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *VirtualMachineExtensionInstanceViewResponse {
-		return v.InstanceView
-	}).(VirtualMachineExtensionInstanceViewResponsePtrOutput)
-}
-
-// Resource location
-func (o VirtualMachineExtensionResponseOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// Resource name
-func (o VirtualMachineExtensionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o VirtualMachineExtensionResponseOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineExtensionResponseOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *KeyVaultSecretReferenceResponse {
-		return v.ProtectedSettingsFromKeyVault
-	}).(KeyVaultSecretReferenceResponsePtrOutput)
-}
-
-// Collection of extension names after which this extension needs to be provisioned.
-func (o VirtualMachineExtensionResponseOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
-}
-
-// The provisioning state, which only appears in the response.
-func (o VirtualMachineExtensionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of the extension handler publisher.
-func (o VirtualMachineExtensionResponseOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o VirtualMachineExtensionResponseOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-func (o VirtualMachineExtensionResponseOutput) SuppressFailures() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
-}
-
-// Resource tags
-func (o VirtualMachineExtensionResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Resource type
-func (o VirtualMachineExtensionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineExtensionResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineExtensionResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachineExtensionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineExtensionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachineExtensionResponse)(nil)).Elem()
-}
-
-func (o VirtualMachineExtensionResponseArrayOutput) ToVirtualMachineExtensionResponseArrayOutput() VirtualMachineExtensionResponseArrayOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionResponseArrayOutput) ToVirtualMachineExtensionResponseArrayOutputWithContext(ctx context.Context) VirtualMachineExtensionResponseArrayOutput {
-	return o
-}
-
-func (o VirtualMachineExtensionResponseArrayOutput) Index(i pulumi.IntInput) VirtualMachineExtensionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachineExtensionResponse {
-		return vs[0].([]VirtualMachineExtensionResponse)[vs[1].(int)]
-	}).(VirtualMachineExtensionResponseOutput)
-}
-
 // Describes a virtual machine scale set data disk.
 type VirtualMachineScaleSetDataDisk struct {
-	// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-	Caching *CachingTypes `pulumi:"caching"`
+	// Specifies the caching requirements. Possible values are: **None,**
+	// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+	// storage. ReadOnly for Premium storage.**
+	Caching *string `pulumi:"caching"`
 	// The create option.
 	CreateOption string `pulumi:"createOption"`
-	// Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+	// Specifies whether data disk should be deleted or detached upon VMSS Flex
+	// deletion (This feature is available for VMSS with Flexible OrchestrationMode
+	// only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+	// data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+	// this value is used, the data disk is retained after VMSS Flex VM is
+	// deleted.<br><br> The default value is set to **Delete**.
 	DeleteOption *string `pulumi:"deleteOption"`
-	// Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+	// Specifies the Read-Write IOPS for the managed disk. Should be used only when
+	// StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+	// assigned based on diskSizeGB.
 	DiskIOPSReadWrite *float64 `pulumi:"diskIOPSReadWrite"`
-	// Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+	// Specifies the bandwidth in MB per second for the managed disk. Should be used
+	// only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+	// would be assigned based on diskSizeGB.
 	DiskMBpsReadWrite *float64 `pulumi:"diskMBpsReadWrite"`
-	// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+	// Specifies the size of an empty data disk in gigabytes. This element can be used
+	// to overwrite the size of the disk in a virtual machine image. The property
+	// diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+	// larger than 1023.
 	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+	// Specifies the logical unit number of the data disk. This value is used to
+	// identify data disks within the VM and therefore must be unique for each data
+	// disk attached to a VM.
 	Lun int `pulumi:"lun"`
 	// The managed disk parameters.
 	ManagedDisk *VirtualMachineScaleSetManagedDiskParameters `pulumi:"managedDisk"`
@@ -10417,19 +10777,35 @@ type VirtualMachineScaleSetDataDiskInput interface {
 
 // Describes a virtual machine scale set data disk.
 type VirtualMachineScaleSetDataDiskArgs struct {
-	// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-	Caching CachingTypesPtrInput `pulumi:"caching"`
+	// Specifies the caching requirements. Possible values are: **None,**
+	// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+	// storage. ReadOnly for Premium storage.**
+	Caching pulumi.StringPtrInput `pulumi:"caching"`
 	// The create option.
 	CreateOption pulumi.StringInput `pulumi:"createOption"`
-	// Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+	// Specifies whether data disk should be deleted or detached upon VMSS Flex
+	// deletion (This feature is available for VMSS with Flexible OrchestrationMode
+	// only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+	// data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+	// this value is used, the data disk is retained after VMSS Flex VM is
+	// deleted.<br><br> The default value is set to **Delete**.
 	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
-	// Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+	// Specifies the Read-Write IOPS for the managed disk. Should be used only when
+	// StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+	// assigned based on diskSizeGB.
 	DiskIOPSReadWrite pulumi.Float64PtrInput `pulumi:"diskIOPSReadWrite"`
-	// Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+	// Specifies the bandwidth in MB per second for the managed disk. Should be used
+	// only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+	// would be assigned based on diskSizeGB.
 	DiskMBpsReadWrite pulumi.Float64PtrInput `pulumi:"diskMBpsReadWrite"`
-	// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+	// Specifies the size of an empty data disk in gigabytes. This element can be used
+	// to overwrite the size of the disk in a virtual machine image. The property
+	// diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+	// larger than 1023.
 	DiskSizeGB pulumi.IntPtrInput `pulumi:"diskSizeGB"`
-	// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+	// Specifies the logical unit number of the data disk. This value is used to
+	// identify data disks within the VM and therefore must be unique for each data
+	// disk attached to a VM.
 	Lun pulumi.IntInput `pulumi:"lun"`
 	// The managed disk parameters.
 	ManagedDisk VirtualMachineScaleSetManagedDiskParametersPtrInput `pulumi:"managedDisk"`
@@ -10491,9 +10867,11 @@ func (o VirtualMachineScaleSetDataDiskOutput) ToVirtualMachineScaleSetDataDiskOu
 	return o
 }
 
-// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-func (o VirtualMachineScaleSetDataDiskOutput) Caching() CachingTypesPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) *CachingTypes { return v.Caching }).(CachingTypesPtrOutput)
+// Specifies the caching requirements. Possible values are: **None,**
+// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+// storage. ReadOnly for Premium storage.**
+func (o VirtualMachineScaleSetDataDiskOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) *string { return v.Caching }).(pulumi.StringPtrOutput)
 }
 
 // The create option.
@@ -10501,27 +10879,41 @@ func (o VirtualMachineScaleSetDataDiskOutput) CreateOption() pulumi.StringOutput
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) string { return v.CreateOption }).(pulumi.StringOutput)
 }
 
-// Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+// Specifies whether data disk should be deleted or detached upon VMSS Flex
+// deletion (This feature is available for VMSS with Flexible OrchestrationMode
+// only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+// data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+// this value is used, the data disk is retained after VMSS Flex VM is
+// deleted.<br><br> The default value is set to **Delete**.
 func (o VirtualMachineScaleSetDataDiskOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+// Specifies the Read-Write IOPS for the managed disk. Should be used only when
+// StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+// assigned based on diskSizeGB.
 func (o VirtualMachineScaleSetDataDiskOutput) DiskIOPSReadWrite() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) *float64 { return v.DiskIOPSReadWrite }).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+// Specifies the bandwidth in MB per second for the managed disk. Should be used
+// only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+// would be assigned based on diskSizeGB.
 func (o VirtualMachineScaleSetDataDiskOutput) DiskMBpsReadWrite() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) *float64 { return v.DiskMBpsReadWrite }).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+// Specifies the size of an empty data disk in gigabytes. This element can be used
+// to overwrite the size of the disk in a virtual machine image. The property
+// diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+// larger than 1023.
 func (o VirtualMachineScaleSetDataDiskOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+// Specifies the logical unit number of the data disk. This value is used to
+// identify data disks within the VM and therefore must be unique for each data
+// disk attached to a VM.
 func (o VirtualMachineScaleSetDataDiskOutput) Lun() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDisk) int { return v.Lun }).(pulumi.IntOutput)
 }
@@ -10565,19 +10957,35 @@ func (o VirtualMachineScaleSetDataDiskArrayOutput) Index(i pulumi.IntInput) Virt
 
 // Describes a virtual machine scale set data disk.
 type VirtualMachineScaleSetDataDiskResponse struct {
-	// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+	// Specifies the caching requirements. Possible values are: **None,**
+	// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+	// storage. ReadOnly for Premium storage.**
 	Caching *string `pulumi:"caching"`
 	// The create option.
 	CreateOption string `pulumi:"createOption"`
-	// Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+	// Specifies whether data disk should be deleted or detached upon VMSS Flex
+	// deletion (This feature is available for VMSS with Flexible OrchestrationMode
+	// only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+	// data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+	// this value is used, the data disk is retained after VMSS Flex VM is
+	// deleted.<br><br> The default value is set to **Delete**.
 	DeleteOption *string `pulumi:"deleteOption"`
-	// Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+	// Specifies the Read-Write IOPS for the managed disk. Should be used only when
+	// StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+	// assigned based on diskSizeGB.
 	DiskIOPSReadWrite *float64 `pulumi:"diskIOPSReadWrite"`
-	// Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+	// Specifies the bandwidth in MB per second for the managed disk. Should be used
+	// only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+	// would be assigned based on diskSizeGB.
 	DiskMBpsReadWrite *float64 `pulumi:"diskMBpsReadWrite"`
-	// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+	// Specifies the size of an empty data disk in gigabytes. This element can be used
+	// to overwrite the size of the disk in a virtual machine image. The property
+	// diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+	// larger than 1023.
 	DiskSizeGB *int `pulumi:"diskSizeGB"`
-	// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+	// Specifies the logical unit number of the data disk. This value is used to
+	// identify data disks within the VM and therefore must be unique for each data
+	// disk attached to a VM.
 	Lun int `pulumi:"lun"`
 	// The managed disk parameters.
 	ManagedDisk *VirtualMachineScaleSetManagedDiskParametersResponse `pulumi:"managedDisk"`
@@ -10602,7 +11010,9 @@ func (o VirtualMachineScaleSetDataDiskResponseOutput) ToVirtualMachineScaleSetDa
 	return o
 }
 
-// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+// Specifies the caching requirements. Possible values are: **None,**
+// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+// storage. ReadOnly for Premium storage.**
 func (o VirtualMachineScaleSetDataDiskResponseOutput) Caching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
 }
@@ -10612,27 +11022,41 @@ func (o VirtualMachineScaleSetDataDiskResponseOutput) CreateOption() pulumi.Stri
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) string { return v.CreateOption }).(pulumi.StringOutput)
 }
 
-// Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+// Specifies whether data disk should be deleted or detached upon VMSS Flex
+// deletion (This feature is available for VMSS with Flexible OrchestrationMode
+// only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+// data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+// this value is used, the data disk is retained after VMSS Flex VM is
+// deleted.<br><br> The default value is set to **Delete**.
 func (o VirtualMachineScaleSetDataDiskResponseOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+// Specifies the Read-Write IOPS for the managed disk. Should be used only when
+// StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+// assigned based on diskSizeGB.
 func (o VirtualMachineScaleSetDataDiskResponseOutput) DiskIOPSReadWrite() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) *float64 { return v.DiskIOPSReadWrite }).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+// Specifies the bandwidth in MB per second for the managed disk. Should be used
+// only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+// would be assigned based on diskSizeGB.
 func (o VirtualMachineScaleSetDataDiskResponseOutput) DiskMBpsReadWrite() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) *float64 { return v.DiskMBpsReadWrite }).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+// Specifies the size of an empty data disk in gigabytes. This element can be used
+// to overwrite the size of the disk in a virtual machine image. The property
+// diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+// larger than 1023.
 func (o VirtualMachineScaleSetDataDiskResponseOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+// Specifies the logical unit number of the data disk. This value is used to
+// identify data disks within the VM and therefore must be unique for each data
+// disk attached to a VM.
 func (o VirtualMachineScaleSetDataDiskResponseOutput) Lun() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetDataDiskResponse) int { return v.Lun }).(pulumi.IntOutput)
 }
@@ -10676,30 +11100,10 @@ func (o VirtualMachineScaleSetDataDiskResponseArrayOutput) Index(i pulumi.IntInp
 
 // Describes a Virtual Machine Scale Set Extension.
 type VirtualMachineScaleSetExtension struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// The name of the extension.
 	Name *string `pulumi:"name"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings interface{} `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
-	// The name of the extension handler publisher.
-	Publisher *string `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings interface{} `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures *bool `pulumi:"suppressFailures"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type *string `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
+	// Describes the properties of a Virtual Machine Scale Set Extension.
+	Properties *VirtualMachineScaleSetExtensionProperties `pulumi:"properties"`
 }
 
 // VirtualMachineScaleSetExtensionInput is an input type that accepts VirtualMachineScaleSetExtensionArgs and VirtualMachineScaleSetExtensionOutput values.
@@ -10715,30 +11119,10 @@ type VirtualMachineScaleSetExtensionInput interface {
 
 // Describes a Virtual Machine Scale Set Extension.
 type VirtualMachineScaleSetExtensionArgs struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-	AutoUpgradeMinorVersion pulumi.BoolPtrInput `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
-	// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-	ForceUpdateTag pulumi.StringPtrInput `pulumi:"forceUpdateTag"`
 	// The name of the extension.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
-	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions pulumi.StringArrayInput `pulumi:"provisionAfterExtensions"`
-	// The name of the extension handler publisher.
-	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
-	// Json formatted public settings for the extension.
-	Settings pulumi.Input `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-	SuppressFailures pulumi.BoolPtrInput `pulumi:"suppressFailures"`
-	// Specifies the type of the extension; an example is "CustomScriptExtension".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the version of the script handler.
-	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
+	// Describes the properties of a Virtual Machine Scale Set Extension.
+	Properties VirtualMachineScaleSetExtensionPropertiesPtrInput `pulumi:"properties"`
 }
 
 func (VirtualMachineScaleSetExtensionArgs) ElementType() reflect.Type {
@@ -10793,66 +11177,16 @@ func (o VirtualMachineScaleSetExtensionOutput) ToVirtualMachineScaleSetExtension
 	return o
 }
 
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o VirtualMachineScaleSetExtensionOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-func (o VirtualMachineScaleSetExtensionOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-func (o VirtualMachineScaleSetExtensionOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
 // The name of the extension.
 func (o VirtualMachineScaleSetExtensionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o VirtualMachineScaleSetExtensionOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineScaleSetExtensionOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferencePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *KeyVaultSecretReference {
-		return v.ProtectedSettingsFromKeyVault
-	}).(KeyVaultSecretReferencePtrOutput)
-}
-
-// Collection of extension names after which this extension needs to be provisioned.
-func (o VirtualMachineScaleSetExtensionOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
-}
-
-// The name of the extension handler publisher.
-func (o VirtualMachineScaleSetExtensionOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o VirtualMachineScaleSetExtensionOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-func (o VirtualMachineScaleSetExtensionOutput) SuppressFailures() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies the type of the extension; an example is "CustomScriptExtension".
-func (o VirtualMachineScaleSetExtensionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineScaleSetExtensionOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
+// Describes the properties of a Virtual Machine Scale Set Extension.
+func (o VirtualMachineScaleSetExtensionOutput) Properties() VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtension) *VirtualMachineScaleSetExtensionProperties {
+		return v.Properties
+	}).(VirtualMachineScaleSetExtensionPropertiesPtrOutput)
 }
 
 type VirtualMachineScaleSetExtensionArrayOutput struct{ *pulumi.OutputState }
@@ -10879,7 +11213,10 @@ func (o VirtualMachineScaleSetExtensionArrayOutput) Index(i pulumi.IntInput) Vir
 type VirtualMachineScaleSetExtensionProfile struct {
 	// The virtual machine scale set child extension resources.
 	Extensions []VirtualMachineScaleSetExtension `pulumi:"extensions"`
-	// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+	// Specifies the time alloted for all extensions to start. The time duration
+	// should be between 15 minutes and 120 minutes (inclusive) and should be
+	// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+	// Minimum api-version: 2020-06-01.
 	ExtensionsTimeBudget *string `pulumi:"extensionsTimeBudget"`
 }
 
@@ -10898,7 +11235,10 @@ type VirtualMachineScaleSetExtensionProfileInput interface {
 type VirtualMachineScaleSetExtensionProfileArgs struct {
 	// The virtual machine scale set child extension resources.
 	Extensions VirtualMachineScaleSetExtensionArrayInput `pulumi:"extensions"`
-	// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+	// Specifies the time alloted for all extensions to start. The time duration
+	// should be between 15 minutes and 120 minutes (inclusive) and should be
+	// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+	// Minimum api-version: 2020-06-01.
 	ExtensionsTimeBudget pulumi.StringPtrInput `pulumi:"extensionsTimeBudget"`
 }
 
@@ -10985,7 +11325,10 @@ func (o VirtualMachineScaleSetExtensionProfileOutput) Extensions() VirtualMachin
 	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProfile) []VirtualMachineScaleSetExtension { return v.Extensions }).(VirtualMachineScaleSetExtensionArrayOutput)
 }
 
-// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+// Specifies the time alloted for all extensions to start. The time duration
+// should be between 15 minutes and 120 minutes (inclusive) and should be
+// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+// Minimum api-version: 2020-06-01.
 func (o VirtualMachineScaleSetExtensionProfileOutput) ExtensionsTimeBudget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProfile) *string { return v.ExtensionsTimeBudget }).(pulumi.StringPtrOutput)
 }
@@ -11024,7 +11367,10 @@ func (o VirtualMachineScaleSetExtensionProfilePtrOutput) Extensions() VirtualMac
 	}).(VirtualMachineScaleSetExtensionArrayOutput)
 }
 
-// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+// Specifies the time alloted for all extensions to start. The time duration
+// should be between 15 minutes and 120 minutes (inclusive) and should be
+// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+// Minimum api-version: 2020-06-01.
 func (o VirtualMachineScaleSetExtensionProfilePtrOutput) ExtensionsTimeBudget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProfile) *string {
 		if v == nil {
@@ -11038,7 +11384,10 @@ func (o VirtualMachineScaleSetExtensionProfilePtrOutput) ExtensionsTimeBudget() 
 type VirtualMachineScaleSetExtensionProfileResponse struct {
 	// The virtual machine scale set child extension resources.
 	Extensions []VirtualMachineScaleSetExtensionResponse `pulumi:"extensions"`
-	// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+	// Specifies the time alloted for all extensions to start. The time duration
+	// should be between 15 minutes and 120 minutes (inclusive) and should be
+	// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+	// Minimum api-version: 2020-06-01.
 	ExtensionsTimeBudget *string `pulumi:"extensionsTimeBudget"`
 }
 
@@ -11064,7 +11413,10 @@ func (o VirtualMachineScaleSetExtensionProfileResponseOutput) Extensions() Virtu
 	}).(VirtualMachineScaleSetExtensionResponseArrayOutput)
 }
 
-// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+// Specifies the time alloted for all extensions to start. The time duration
+// should be between 15 minutes and 120 minutes (inclusive) and should be
+// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+// Minimum api-version: 2020-06-01.
 func (o VirtualMachineScaleSetExtensionProfileResponseOutput) ExtensionsTimeBudget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProfileResponse) *string { return v.ExtensionsTimeBudget }).(pulumi.StringPtrOutput)
 }
@@ -11103,7 +11455,10 @@ func (o VirtualMachineScaleSetExtensionProfileResponsePtrOutput) Extensions() Vi
 	}).(VirtualMachineScaleSetExtensionResponseArrayOutput)
 }
 
-// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+// Specifies the time alloted for all extensions to start. The time duration
+// should be between 15 minutes and 120 minutes (inclusive) and should be
+// specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+// Minimum api-version: 2020-06-01.
 func (o VirtualMachineScaleSetExtensionProfileResponsePtrOutput) ExtensionsTimeBudget() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProfileResponse) *string {
 		if v == nil {
@@ -11113,23 +11468,396 @@ func (o VirtualMachineScaleSetExtensionProfileResponsePtrOutput) ExtensionsTimeB
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a Virtual Machine Scale Set Extension.
-type VirtualMachineScaleSetExtensionResponse struct {
-	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+// Describes the properties of a Virtual Machine Scale Set Extension.
+type VirtualMachineScaleSetExtensionProperties struct {
+	// Indicates whether the extension should use a newer minor version if one is
+	// available at deployment time. Once deployed, however, the extension will not
+	// upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
-	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+	// Indicates whether the extension should be automatically upgraded by the
+	// platform if there is a newer version of the extension available.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
+	// If a value is provided and is different from the previous value, the extension
+	// handler will be forced to update even if the extension configuration has not
+	// changed.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// Resource Id
-	Id string `pulumi:"id"`
-	// The name of the extension.
-	Name *string `pulumi:"name"`
-	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+	// The extension can contain either protectedSettings or
+	// protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
-	// The extensions protected settings that are passed by reference, and consumed from key vault
+	// The extensions protected settings that are passed by reference, and consumed
+	// from key vault
+	ProtectedSettingsFromKeyVault *KeyVaultSecretReference `pulumi:"protectedSettingsFromKeyVault"`
+	// Collection of extension names after which this extension needs to be
+	// provisioned.
+	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
+	// The name of the extension handler publisher.
+	Publisher *string `pulumi:"publisher"`
+	// Json formatted public settings for the extension.
+	Settings interface{} `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed
+	// (Operational failures such as not connecting to the VM will not be suppressed
+	// regardless of this value). The default is false.
+	SuppressFailures *bool `pulumi:"suppressFailures"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type *string `pulumi:"type"`
+	// Specifies the version of the script handler.
+	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
+}
+
+// VirtualMachineScaleSetExtensionPropertiesInput is an input type that accepts VirtualMachineScaleSetExtensionPropertiesArgs and VirtualMachineScaleSetExtensionPropertiesOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetExtensionPropertiesInput` via:
+//
+//	VirtualMachineScaleSetExtensionPropertiesArgs{...}
+type VirtualMachineScaleSetExtensionPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetExtensionPropertiesOutput() VirtualMachineScaleSetExtensionPropertiesOutput
+	ToVirtualMachineScaleSetExtensionPropertiesOutputWithContext(context.Context) VirtualMachineScaleSetExtensionPropertiesOutput
+}
+
+// Describes the properties of a Virtual Machine Scale Set Extension.
+type VirtualMachineScaleSetExtensionPropertiesArgs struct {
+	// Indicates whether the extension should use a newer minor version if one is
+	// available at deployment time. Once deployed, however, the extension will not
+	// upgrade minor versions unless redeployed, even with this property set to true.
+	AutoUpgradeMinorVersion pulumi.BoolPtrInput `pulumi:"autoUpgradeMinorVersion"`
+	// Indicates whether the extension should be automatically upgraded by the
+	// platform if there is a newer version of the extension available.
+	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
+	// If a value is provided and is different from the previous value, the extension
+	// handler will be forced to update even if the extension configuration has not
+	// changed.
+	ForceUpdateTag pulumi.StringPtrInput `pulumi:"forceUpdateTag"`
+	// The extension can contain either protectedSettings or
+	// protectedSettingsFromKeyVault or no protected settings at all.
+	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
+	// The extensions protected settings that are passed by reference, and consumed
+	// from key vault
+	ProtectedSettingsFromKeyVault KeyVaultSecretReferencePtrInput `pulumi:"protectedSettingsFromKeyVault"`
+	// Collection of extension names after which this extension needs to be
+	// provisioned.
+	ProvisionAfterExtensions pulumi.StringArrayInput `pulumi:"provisionAfterExtensions"`
+	// The name of the extension handler publisher.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// Json formatted public settings for the extension.
+	Settings pulumi.Input `pulumi:"settings"`
+	// Indicates whether failures stemming from the extension will be suppressed
+	// (Operational failures such as not connecting to the VM will not be suppressed
+	// regardless of this value). The default is false.
+	SuppressFailures pulumi.BoolPtrInput `pulumi:"suppressFailures"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Specifies the version of the script handler.
+	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
+}
+
+func (VirtualMachineScaleSetExtensionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetExtensionProperties)(nil)).Elem()
+}
+
+func (i VirtualMachineScaleSetExtensionPropertiesArgs) ToVirtualMachineScaleSetExtensionPropertiesOutput() VirtualMachineScaleSetExtensionPropertiesOutput {
+	return i.ToVirtualMachineScaleSetExtensionPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetExtensionPropertiesArgs) ToVirtualMachineScaleSetExtensionPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionPropertiesOutput)
+}
+
+func (i VirtualMachineScaleSetExtensionPropertiesArgs) ToVirtualMachineScaleSetExtensionPropertiesPtrOutput() VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetExtensionPropertiesArgs) ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionPropertiesOutput).ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineScaleSetExtensionPropertiesPtrInput is an input type that accepts VirtualMachineScaleSetExtensionPropertiesArgs, VirtualMachineScaleSetExtensionPropertiesPtr and VirtualMachineScaleSetExtensionPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetExtensionPropertiesPtrInput` via:
+//
+//	        VirtualMachineScaleSetExtensionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineScaleSetExtensionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetExtensionPropertiesPtrOutput() VirtualMachineScaleSetExtensionPropertiesPtrOutput
+	ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(context.Context) VirtualMachineScaleSetExtensionPropertiesPtrOutput
+}
+
+type virtualMachineScaleSetExtensionPropertiesPtrType VirtualMachineScaleSetExtensionPropertiesArgs
+
+func VirtualMachineScaleSetExtensionPropertiesPtr(v *VirtualMachineScaleSetExtensionPropertiesArgs) VirtualMachineScaleSetExtensionPropertiesPtrInput {
+	return (*virtualMachineScaleSetExtensionPropertiesPtrType)(v)
+}
+
+func (*virtualMachineScaleSetExtensionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetExtensionProperties)(nil)).Elem()
+}
+
+func (i *virtualMachineScaleSetExtensionPropertiesPtrType) ToVirtualMachineScaleSetExtensionPropertiesPtrOutput() VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineScaleSetExtensionPropertiesPtrType) ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetExtensionPropertiesPtrOutput)
+}
+
+// Describes the properties of a Virtual Machine Scale Set Extension.
+type VirtualMachineScaleSetExtensionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetExtensionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetExtensionProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ToVirtualMachineScaleSetExtensionPropertiesOutput() VirtualMachineScaleSetExtensionPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ToVirtualMachineScaleSetExtensionPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ToVirtualMachineScaleSetExtensionPropertiesPtrOutput() VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return o.ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineScaleSetExtensionProperties) *VirtualMachineScaleSetExtensionProperties {
+		return &v
+	}).(VirtualMachineScaleSetExtensionPropertiesPtrOutput)
+}
+
+// Indicates whether the extension should use a newer minor version if one is
+// available at deployment time. Once deployed, however, the extension will not
+// upgrade minor versions unless redeployed, even with this property set to true.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the
+// platform if there is a newer version of the extension available.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// If a value is provided and is different from the previous value, the extension
+// handler will be forced to update even if the extension configuration has not
+// changed.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
+}
+
+// The extension can contain either protectedSettings or
+// protectedSettingsFromKeyVault or no protected settings at all.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ProtectedSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
+}
+
+// The extensions protected settings that are passed by reference, and consumed
+// from key vault
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferencePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *KeyVaultSecretReference {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferencePtrOutput)
+}
+
+// Collection of extension names after which this extension needs to be
+// provisioned.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the extension handler publisher.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed
+// (Operational failures such as not connecting to the VM will not be suppressed
+// regardless of this value). The default is false.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o VirtualMachineScaleSetExtensionPropertiesOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionProperties) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineScaleSetExtensionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetExtensionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetExtensionProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) ToVirtualMachineScaleSetExtensionPropertiesPtrOutput() VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) ToVirtualMachineScaleSetExtensionPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) Elem() VirtualMachineScaleSetExtensionPropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) VirtualMachineScaleSetExtensionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetExtensionProperties
+		return ret
+	}).(VirtualMachineScaleSetExtensionPropertiesOutput)
+}
+
+// Indicates whether the extension should use a newer minor version if one is
+// available at deployment time. Once deployed, however, the extension will not
+// upgrade minor versions unless redeployed, even with this property set to true.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradeMinorVersion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the
+// platform if there is a newer version of the extension available.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a value is provided and is different from the previous value, the extension
+// handler will be forced to update even if the extension configuration has not
+// changed.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForceUpdateTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extension can contain either protectedSettings or
+// protectedSettingsFromKeyVault or no protected settings at all.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) ProtectedSettings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedSettings
+	}).(pulumi.AnyOutput)
+}
+
+// The extensions protected settings that are passed by reference, and consumed
+// from key vault
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferencePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *KeyVaultSecretReference {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferencePtrOutput)
+}
+
+// Collection of extension names after which this extension needs to be
+// provisioned.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionAfterExtensions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the extension handler publisher.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed
+// (Operational failures such as not connecting to the VM will not be suppressed
+// regardless of this value). The default is false.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SuppressFailures
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o VirtualMachineScaleSetExtensionPropertiesPtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TypeHandlerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the properties of a Virtual Machine Scale Set Extension.
+type VirtualMachineScaleSetExtensionPropertiesResponse struct {
+	// Indicates whether the extension should use a newer minor version if one is
+	// available at deployment time. Once deployed, however, the extension will not
+	// upgrade minor versions unless redeployed, even with this property set to true.
+	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// Indicates whether the extension should be automatically upgraded by the
+	// platform if there is a newer version of the extension available.
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
+	// If a value is provided and is different from the previous value, the extension
+	// handler will be forced to update even if the extension configuration has not
+	// changed.
+	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
+	// The extensions protected settings that are passed by reference, and consumed
+	// from key vault
 	ProtectedSettingsFromKeyVault *KeyVaultSecretReferenceResponse `pulumi:"protectedSettingsFromKeyVault"`
-	// Collection of extension names after which this extension needs to be provisioned.
+	// Collection of extension names after which this extension needs to be
+	// provisioned.
 	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -11137,12 +11865,250 @@ type VirtualMachineScaleSetExtensionResponse struct {
 	Publisher *string `pulumi:"publisher"`
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
-	// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+	// Indicates whether failures stemming from the extension will be suppressed
+	// (Operational failures such as not connecting to the VM will not be suppressed
+	// regardless of this value). The default is false.
 	SuppressFailures *bool `pulumi:"suppressFailures"`
-	// Resource type
-	Type string `pulumi:"type"`
+	// Specifies the type of the extension; an example is "CustomScriptExtension".
+	Type *string `pulumi:"type"`
 	// Specifies the version of the script handler.
 	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
+}
+
+// Describes the properties of a Virtual Machine Scale Set Extension.
+type VirtualMachineScaleSetExtensionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetExtensionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetExtensionPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) ToVirtualMachineScaleSetExtensionPropertiesResponseOutput() VirtualMachineScaleSetExtensionPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) ToVirtualMachineScaleSetExtensionPropertiesResponseOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesResponseOutput {
+	return o
+}
+
+// Indicates whether the extension should use a newer minor version if one is
+// available at deployment time. Once deployed, however, the extension will not
+// upgrade minor versions unless redeployed, even with this property set to true.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the
+// platform if there is a newer version of the extension available.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// If a value is provided and is different from the previous value, the extension
+// handler will be forced to update even if the extension configuration has not
+// changed.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
+}
+
+// The extensions protected settings that are passed by reference, and consumed
+// from key vault
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *KeyVaultSecretReferenceResponse {
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Collection of extension names after which this extension needs to be
+// provisioned.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
+}
+
+// The provisioning state, which only appears in the response.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of the extension handler publisher.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed
+// (Operational failures such as not connecting to the VM will not be suppressed
+// regardless of this value). The default is false.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o VirtualMachineScaleSetExtensionPropertiesResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionPropertiesResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetExtensionPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ToVirtualMachineScaleSetExtensionPropertiesResponsePtrOutput() VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ToVirtualMachineScaleSetExtensionPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) Elem() VirtualMachineScaleSetExtensionPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) VirtualMachineScaleSetExtensionPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetExtensionPropertiesResponse
+		return ret
+	}).(VirtualMachineScaleSetExtensionPropertiesResponseOutput)
+}
+
+// Indicates whether the extension should use a newer minor version if one is
+// available at deployment time. Once deployed, however, the extension will not
+// upgrade minor versions unless redeployed, even with this property set to true.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoUpgradeMinorVersion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the extension should be automatically upgraded by the
+// platform if there is a newer version of the extension available.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a value is provided and is different from the previous value, the extension
+// handler will be forced to update even if the extension configuration has not
+// changed.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ForceUpdateTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForceUpdateTag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extensions protected settings that are passed by reference, and consumed
+// from key vault
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *KeyVaultSecretReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectedSettingsFromKeyVault
+	}).(KeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Collection of extension names after which this extension needs to be
+// provisioned.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisionAfterExtensions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The provisioning state, which only appears in the response.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the extension handler publisher.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// Json formatted public settings for the extension.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(pulumi.AnyOutput)
+}
+
+// Indicates whether failures stemming from the extension will be suppressed
+// (Operational failures such as not connecting to the VM will not be suppressed
+// regardless of this value). The default is false.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) SuppressFailures() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SuppressFailures
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the type of the extension; an example is "CustomScriptExtension".
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the version of the script handler.
+func (o VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetExtensionPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TypeHandlerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes a Virtual Machine Scale Set Extension.
+type VirtualMachineScaleSetExtensionResponse struct {
+	// Resource Id
+	Id string `pulumi:"id"`
+	// The name of the extension.
+	Name *string `pulumi:"name"`
+	// Describes the properties of a Virtual Machine Scale Set Extension.
+	Properties *VirtualMachineScaleSetExtensionPropertiesResponse `pulumi:"properties"`
+	// Resource type
+	Type string `pulumi:"type"`
 }
 
 // Describes a Virtual Machine Scale Set Extension.
@@ -11160,21 +12126,6 @@ func (o VirtualMachineScaleSetExtensionResponseOutput) ToVirtualMachineScaleSetE
 	return o
 }
 
-// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-func (o VirtualMachineScaleSetExtensionResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-func (o VirtualMachineScaleSetExtensionResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-func (o VirtualMachineScaleSetExtensionResponseOutput) ForceUpdateTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
-}
-
 // Resource Id
 func (o VirtualMachineScaleSetExtensionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -11185,51 +12136,16 @@ func (o VirtualMachineScaleSetExtensionResponseOutput) Name() pulumi.StringPtrOu
 	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-func (o VirtualMachineScaleSetExtensionResponseOutput) ProtectedSettings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) interface{} { return v.ProtectedSettings }).(pulumi.AnyOutput)
-}
-
-// The extensions protected settings that are passed by reference, and consumed from key vault
-func (o VirtualMachineScaleSetExtensionResponseOutput) ProtectedSettingsFromKeyVault() KeyVaultSecretReferenceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *KeyVaultSecretReferenceResponse {
-		return v.ProtectedSettingsFromKeyVault
-	}).(KeyVaultSecretReferenceResponsePtrOutput)
-}
-
-// Collection of extension names after which this extension needs to be provisioned.
-func (o VirtualMachineScaleSetExtensionResponseOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
-}
-
-// The provisioning state, which only appears in the response.
-func (o VirtualMachineScaleSetExtensionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The name of the extension handler publisher.
-func (o VirtualMachineScaleSetExtensionResponseOutput) Publisher() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
-}
-
-// Json formatted public settings for the extension.
-func (o VirtualMachineScaleSetExtensionResponseOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-func (o VirtualMachineScaleSetExtensionResponseOutput) SuppressFailures() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *bool { return v.SuppressFailures }).(pulumi.BoolPtrOutput)
+// Describes the properties of a Virtual Machine Scale Set Extension.
+func (o VirtualMachineScaleSetExtensionResponseOutput) Properties() VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *VirtualMachineScaleSetExtensionPropertiesResponse {
+		return v.Properties
+	}).(VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput)
 }
 
 // Resource type
 func (o VirtualMachineScaleSetExtensionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Specifies the version of the script handler.
-func (o VirtualMachineScaleSetExtensionResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetExtensionResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
 }
 
 type VirtualMachineScaleSetExtensionResponseArrayOutput struct{ *pulumi.OutputState }
@@ -11254,7 +12170,9 @@ func (o VirtualMachineScaleSetExtensionResponseArrayOutput) Index(i pulumi.IntIn
 
 // Specifies the hardware settings for the virtual machine scale set.
 type VirtualMachineScaleSetHardwareProfile struct {
-	// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+	// Specifies the properties for customizing the size of the virtual machine.
+	// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+	// Customization](https://aka.ms/vmcustomization) for more details.
 	VmSizeProperties *VMSizeProperties `pulumi:"vmSizeProperties"`
 }
 
@@ -11271,7 +12189,9 @@ type VirtualMachineScaleSetHardwareProfileInput interface {
 
 // Specifies the hardware settings for the virtual machine scale set.
 type VirtualMachineScaleSetHardwareProfileArgs struct {
-	// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+	// Specifies the properties for customizing the size of the virtual machine.
+	// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+	// Customization](https://aka.ms/vmcustomization) for more details.
 	VmSizeProperties VMSizePropertiesPtrInput `pulumi:"vmSizeProperties"`
 }
 
@@ -11353,7 +12273,9 @@ func (o VirtualMachineScaleSetHardwareProfileOutput) ToVirtualMachineScaleSetHar
 	}).(VirtualMachineScaleSetHardwareProfilePtrOutput)
 }
 
-// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+// Specifies the properties for customizing the size of the virtual machine.
+// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+// Customization](https://aka.ms/vmcustomization) for more details.
 func (o VirtualMachineScaleSetHardwareProfileOutput) VmSizeProperties() VMSizePropertiesPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetHardwareProfile) *VMSizeProperties { return v.VmSizeProperties }).(VMSizePropertiesPtrOutput)
 }
@@ -11382,7 +12304,9 @@ func (o VirtualMachineScaleSetHardwareProfilePtrOutput) Elem() VirtualMachineSca
 	}).(VirtualMachineScaleSetHardwareProfileOutput)
 }
 
-// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+// Specifies the properties for customizing the size of the virtual machine.
+// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+// Customization](https://aka.ms/vmcustomization) for more details.
 func (o VirtualMachineScaleSetHardwareProfilePtrOutput) VmSizeProperties() VMSizePropertiesPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetHardwareProfile) *VMSizeProperties {
 		if v == nil {
@@ -11394,7 +12318,9 @@ func (o VirtualMachineScaleSetHardwareProfilePtrOutput) VmSizeProperties() VMSiz
 
 // Specifies the hardware settings for the virtual machine scale set.
 type VirtualMachineScaleSetHardwareProfileResponse struct {
-	// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+	// Specifies the properties for customizing the size of the virtual machine.
+	// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+	// Customization](https://aka.ms/vmcustomization) for more details.
 	VmSizeProperties *VMSizePropertiesResponse `pulumi:"vmSizeProperties"`
 }
 
@@ -11413,7 +12339,9 @@ func (o VirtualMachineScaleSetHardwareProfileResponseOutput) ToVirtualMachineSca
 	return o
 }
 
-// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+// Specifies the properties for customizing the size of the virtual machine.
+// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+// Customization](https://aka.ms/vmcustomization) for more details.
 func (o VirtualMachineScaleSetHardwareProfileResponseOutput) VmSizeProperties() VMSizePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetHardwareProfileResponse) *VMSizePropertiesResponse {
 		return v.VmSizeProperties
@@ -11444,7 +12372,9 @@ func (o VirtualMachineScaleSetHardwareProfileResponsePtrOutput) Elem() VirtualMa
 	}).(VirtualMachineScaleSetHardwareProfileResponseOutput)
 }
 
-// Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+// Specifies the properties for customizing the size of the virtual machine.
+// Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+// Customization](https://aka.ms/vmcustomization) for more details.
 func (o VirtualMachineScaleSetHardwareProfileResponsePtrOutput) VmSizeProperties() VMSizePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetHardwareProfileResponse) *VMSizePropertiesResponse {
 		if v == nil {
@@ -11456,24 +12386,11 @@ func (o VirtualMachineScaleSetHardwareProfileResponsePtrOutput) VmSizeProperties
 
 // Describes a virtual machine scale set network profile's IP configuration.
 type VirtualMachineScaleSetIPConfiguration struct {
-	// Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
-	ApplicationGatewayBackendAddressPools []SubResource `pulumi:"applicationGatewayBackendAddressPools"`
-	// Specifies an array of references to application security group.
-	ApplicationSecurityGroups []SubResource `pulumi:"applicationSecurityGroups"`
-	// Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-	LoadBalancerBackendAddressPools []SubResource `pulumi:"loadBalancerBackendAddressPools"`
-	// Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-	LoadBalancerInboundNatPools []SubResource `pulumi:"loadBalancerInboundNatPools"`
 	// The IP configuration name.
 	Name string `pulumi:"name"`
-	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-	Primary *bool `pulumi:"primary"`
-	// Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-	PrivateIPAddressVersion *string `pulumi:"privateIPAddressVersion"`
-	// The publicIPAddressConfiguration.
-	PublicIPAddressConfiguration *VirtualMachineScaleSetPublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
-	// Specifies the identifier of the subnet.
-	Subnet *ApiEntityReference `pulumi:"subnet"`
+	// Describes a virtual machine scale set network profile's IP configuration
+	// properties.
+	Properties *VirtualMachineScaleSetIPConfigurationProperties `pulumi:"properties"`
 }
 
 // VirtualMachineScaleSetIPConfigurationInput is an input type that accepts VirtualMachineScaleSetIPConfigurationArgs and VirtualMachineScaleSetIPConfigurationOutput values.
@@ -11489,24 +12406,11 @@ type VirtualMachineScaleSetIPConfigurationInput interface {
 
 // Describes a virtual machine scale set network profile's IP configuration.
 type VirtualMachineScaleSetIPConfigurationArgs struct {
-	// Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
-	ApplicationGatewayBackendAddressPools SubResourceArrayInput `pulumi:"applicationGatewayBackendAddressPools"`
-	// Specifies an array of references to application security group.
-	ApplicationSecurityGroups SubResourceArrayInput `pulumi:"applicationSecurityGroups"`
-	// Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-	LoadBalancerBackendAddressPools SubResourceArrayInput `pulumi:"loadBalancerBackendAddressPools"`
-	// Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-	LoadBalancerInboundNatPools SubResourceArrayInput `pulumi:"loadBalancerInboundNatPools"`
 	// The IP configuration name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-	Primary pulumi.BoolPtrInput `pulumi:"primary"`
-	// Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-	PrivateIPAddressVersion pulumi.StringPtrInput `pulumi:"privateIPAddressVersion"`
-	// The publicIPAddressConfiguration.
-	PublicIPAddressConfiguration VirtualMachineScaleSetPublicIPAddressConfigurationPtrInput `pulumi:"publicIPAddressConfiguration"`
-	// Specifies the identifier of the subnet.
-	Subnet ApiEntityReferencePtrInput `pulumi:"subnet"`
+	// Describes a virtual machine scale set network profile's IP configuration
+	// properties.
+	Properties VirtualMachineScaleSetIPConfigurationPropertiesPtrInput `pulumi:"properties"`
 }
 
 func (VirtualMachineScaleSetIPConfigurationArgs) ElementType() reflect.Type {
@@ -11561,53 +12465,17 @@ func (o VirtualMachineScaleSetIPConfigurationOutput) ToVirtualMachineScaleSetIPC
 	return o
 }
 
-// Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
-func (o VirtualMachineScaleSetIPConfigurationOutput) ApplicationGatewayBackendAddressPools() SubResourceArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) []SubResource {
-		return v.ApplicationGatewayBackendAddressPools
-	}).(SubResourceArrayOutput)
-}
-
-// Specifies an array of references to application security group.
-func (o VirtualMachineScaleSetIPConfigurationOutput) ApplicationSecurityGroups() SubResourceArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) []SubResource { return v.ApplicationSecurityGroups }).(SubResourceArrayOutput)
-}
-
-// Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-func (o VirtualMachineScaleSetIPConfigurationOutput) LoadBalancerBackendAddressPools() SubResourceArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) []SubResource { return v.LoadBalancerBackendAddressPools }).(SubResourceArrayOutput)
-}
-
-// Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-func (o VirtualMachineScaleSetIPConfigurationOutput) LoadBalancerInboundNatPools() SubResourceArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) []SubResource { return v.LoadBalancerInboundNatPools }).(SubResourceArrayOutput)
-}
-
 // The IP configuration name.
 func (o VirtualMachineScaleSetIPConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-func (o VirtualMachineScaleSetIPConfigurationOutput) Primary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
-}
-
-// Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-func (o VirtualMachineScaleSetIPConfigurationOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) *string { return v.PrivateIPAddressVersion }).(pulumi.StringPtrOutput)
-}
-
-// The publicIPAddressConfiguration.
-func (o VirtualMachineScaleSetIPConfigurationOutput) PublicIPAddressConfiguration() VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) *VirtualMachineScaleSetPublicIPAddressConfiguration {
-		return v.PublicIPAddressConfiguration
-	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput)
-}
-
-// Specifies the identifier of the subnet.
-func (o VirtualMachineScaleSetIPConfigurationOutput) Subnet() ApiEntityReferencePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) *ApiEntityReference { return v.Subnet }).(ApiEntityReferencePtrOutput)
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+func (o VirtualMachineScaleSetIPConfigurationOutput) Properties() VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfiguration) *VirtualMachineScaleSetIPConfigurationProperties {
+		return v.Properties
+	}).(VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput)
 }
 
 type VirtualMachineScaleSetIPConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -11630,26 +12498,564 @@ func (o VirtualMachineScaleSetIPConfigurationArrayOutput) Index(i pulumi.IntInpu
 	}).(VirtualMachineScaleSetIPConfigurationOutput)
 }
 
-// Describes a virtual machine scale set network profile's IP configuration.
-type VirtualMachineScaleSetIPConfigurationResponse struct {
-	// Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+type VirtualMachineScaleSetIPConfigurationProperties struct {
+	// Specifies an array of references to backend address pools of application
+	// gateways. A scale set can reference backend address pools of multiple
+	// application gateways. Multiple scale sets cannot use the same application
+	// gateway.
+	ApplicationGatewayBackendAddressPools []SubResource `pulumi:"applicationGatewayBackendAddressPools"`
+	// Specifies an array of references to application security group.
+	ApplicationSecurityGroups []SubResource `pulumi:"applicationSecurityGroups"`
+	// Specifies an array of references to backend address pools of load balancers. A
+	// scale set can reference backend address pools of one public and one internal
+	// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+	LoadBalancerBackendAddressPools []SubResource `pulumi:"loadBalancerBackendAddressPools"`
+	// Specifies an array of references to inbound Nat pools of the load balancers. A
+	// scale set can reference inbound nat pools of one public and one internal load
+	// balancer. Multiple scale sets cannot use the same basic sku load balancer.
+	LoadBalancerInboundNatPools []SubResource `pulumi:"loadBalancerInboundNatPools"`
+	// Specifies the primary network interface in case the virtual machine has more
+	// than 1 network interface.
+	Primary *bool `pulumi:"primary"`
+	// Available from Api-Version 2017-03-30 onwards, it represents whether the
+	// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+	// values are: 'IPv4' and 'IPv6'.
+	PrivateIPAddressVersion *string `pulumi:"privateIPAddressVersion"`
+	// The publicIPAddressConfiguration.
+	PublicIPAddressConfiguration *VirtualMachineScaleSetPublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
+	// Specifies the identifier of the subnet.
+	Subnet *ApiEntityReference `pulumi:"subnet"`
+}
+
+// VirtualMachineScaleSetIPConfigurationPropertiesInput is an input type that accepts VirtualMachineScaleSetIPConfigurationPropertiesArgs and VirtualMachineScaleSetIPConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetIPConfigurationPropertiesInput` via:
+//
+//	VirtualMachineScaleSetIPConfigurationPropertiesArgs{...}
+type VirtualMachineScaleSetIPConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetIPConfigurationPropertiesOutput() VirtualMachineScaleSetIPConfigurationPropertiesOutput
+	ToVirtualMachineScaleSetIPConfigurationPropertiesOutputWithContext(context.Context) VirtualMachineScaleSetIPConfigurationPropertiesOutput
+}
+
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+type VirtualMachineScaleSetIPConfigurationPropertiesArgs struct {
+	// Specifies an array of references to backend address pools of application
+	// gateways. A scale set can reference backend address pools of multiple
+	// application gateways. Multiple scale sets cannot use the same application
+	// gateway.
+	ApplicationGatewayBackendAddressPools SubResourceArrayInput `pulumi:"applicationGatewayBackendAddressPools"`
+	// Specifies an array of references to application security group.
+	ApplicationSecurityGroups SubResourceArrayInput `pulumi:"applicationSecurityGroups"`
+	// Specifies an array of references to backend address pools of load balancers. A
+	// scale set can reference backend address pools of one public and one internal
+	// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+	LoadBalancerBackendAddressPools SubResourceArrayInput `pulumi:"loadBalancerBackendAddressPools"`
+	// Specifies an array of references to inbound Nat pools of the load balancers. A
+	// scale set can reference inbound nat pools of one public and one internal load
+	// balancer. Multiple scale sets cannot use the same basic sku load balancer.
+	LoadBalancerInboundNatPools SubResourceArrayInput `pulumi:"loadBalancerInboundNatPools"`
+	// Specifies the primary network interface in case the virtual machine has more
+	// than 1 network interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+	// Available from Api-Version 2017-03-30 onwards, it represents whether the
+	// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+	// values are: 'IPv4' and 'IPv6'.
+	PrivateIPAddressVersion pulumi.StringPtrInput `pulumi:"privateIPAddressVersion"`
+	// The publicIPAddressConfiguration.
+	PublicIPAddressConfiguration VirtualMachineScaleSetPublicIPAddressConfigurationPtrInput `pulumi:"publicIPAddressConfiguration"`
+	// Specifies the identifier of the subnet.
+	Subnet ApiEntityReferencePtrInput `pulumi:"subnet"`
+}
+
+func (VirtualMachineScaleSetIPConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetIPConfigurationProperties)(nil)).Elem()
+}
+
+func (i VirtualMachineScaleSetIPConfigurationPropertiesArgs) ToVirtualMachineScaleSetIPConfigurationPropertiesOutput() VirtualMachineScaleSetIPConfigurationPropertiesOutput {
+	return i.ToVirtualMachineScaleSetIPConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetIPConfigurationPropertiesArgs) ToVirtualMachineScaleSetIPConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetIPConfigurationPropertiesOutput)
+}
+
+func (i VirtualMachineScaleSetIPConfigurationPropertiesArgs) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutput() VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetIPConfigurationPropertiesArgs) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetIPConfigurationPropertiesOutput).ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineScaleSetIPConfigurationPropertiesPtrInput is an input type that accepts VirtualMachineScaleSetIPConfigurationPropertiesArgs, VirtualMachineScaleSetIPConfigurationPropertiesPtr and VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetIPConfigurationPropertiesPtrInput` via:
+//
+//	        VirtualMachineScaleSetIPConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineScaleSetIPConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutput() VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput
+	ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(context.Context) VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput
+}
+
+type virtualMachineScaleSetIPConfigurationPropertiesPtrType VirtualMachineScaleSetIPConfigurationPropertiesArgs
+
+func VirtualMachineScaleSetIPConfigurationPropertiesPtr(v *VirtualMachineScaleSetIPConfigurationPropertiesArgs) VirtualMachineScaleSetIPConfigurationPropertiesPtrInput {
+	return (*virtualMachineScaleSetIPConfigurationPropertiesPtrType)(v)
+}
+
+func (*virtualMachineScaleSetIPConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetIPConfigurationProperties)(nil)).Elem()
+}
+
+func (i *virtualMachineScaleSetIPConfigurationPropertiesPtrType) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutput() VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineScaleSetIPConfigurationPropertiesPtrType) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput)
+}
+
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+type VirtualMachineScaleSetIPConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetIPConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetIPConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesOutput() VirtualMachineScaleSetIPConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutput() VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return o.ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineScaleSetIPConfigurationProperties) *VirtualMachineScaleSetIPConfigurationProperties {
+		return &v
+	}).(VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput)
+}
+
+// Specifies an array of references to backend address pools of application
+// gateways. A scale set can reference backend address pools of multiple
+// application gateways. Multiple scale sets cannot use the same application
+// gateway.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) ApplicationGatewayBackendAddressPools() SubResourceArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		return v.ApplicationGatewayBackendAddressPools
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies an array of references to application security group.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) ApplicationSecurityGroups() SubResourceArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		return v.ApplicationSecurityGroups
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies an array of references to backend address pools of load balancers. A
+// scale set can reference backend address pools of one public and one internal
+// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) LoadBalancerBackendAddressPools() SubResourceArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		return v.LoadBalancerBackendAddressPools
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies an array of references to inbound Nat pools of the load balancers. A
+// scale set can reference inbound nat pools of one public and one internal load
+// balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) LoadBalancerInboundNatPools() SubResourceArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		return v.LoadBalancerInboundNatPools
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// Available from Api-Version 2017-03-30 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) *string { return v.PrivateIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+// The publicIPAddressConfiguration.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) PublicIPAddressConfiguration() VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) *VirtualMachineScaleSetPublicIPAddressConfiguration {
+		return v.PublicIPAddressConfiguration
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput)
+}
+
+// Specifies the identifier of the subnet.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesOutput) Subnet() ApiEntityReferencePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationProperties) *ApiEntityReference { return v.Subnet }).(ApiEntityReferencePtrOutput)
+}
+
+type VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetIPConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutput() VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) Elem() VirtualMachineScaleSetIPConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) VirtualMachineScaleSetIPConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetIPConfigurationProperties
+		return ret
+	}).(VirtualMachineScaleSetIPConfigurationPropertiesOutput)
+}
+
+// Specifies an array of references to backend address pools of application
+// gateways. A scale set can reference backend address pools of multiple
+// application gateways. Multiple scale sets cannot use the same application
+// gateway.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) ApplicationGatewayBackendAddressPools() SubResourceArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationGatewayBackendAddressPools
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies an array of references to application security group.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) ApplicationSecurityGroups() SubResourceArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationSecurityGroups
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies an array of references to backend address pools of load balancers. A
+// scale set can reference backend address pools of one public and one internal
+// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) LoadBalancerBackendAddressPools() SubResourceArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerBackendAddressPools
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies an array of references to inbound Nat pools of the load balancers. A
+// scale set can reference inbound nat pools of one public and one internal load
+// balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) LoadBalancerInboundNatPools() SubResourceArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) []SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerInboundNatPools
+	}).(SubResourceArrayOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Available from Api-Version 2017-03-30 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The publicIPAddressConfiguration.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) PublicIPAddressConfiguration() VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) *VirtualMachineScaleSetPublicIPAddressConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressConfiguration
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput)
+}
+
+// Specifies the identifier of the subnet.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput) Subnet() ApiEntityReferencePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationProperties) *ApiEntityReference {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(ApiEntityReferencePtrOutput)
+}
+
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+type VirtualMachineScaleSetIPConfigurationPropertiesResponse struct {
+	// Specifies an array of references to backend address pools of application
+	// gateways. A scale set can reference backend address pools of multiple
+	// application gateways. Multiple scale sets cannot use the same application
+	// gateway.
 	ApplicationGatewayBackendAddressPools []SubResourceResponse `pulumi:"applicationGatewayBackendAddressPools"`
 	// Specifies an array of references to application security group.
 	ApplicationSecurityGroups []SubResourceResponse `pulumi:"applicationSecurityGroups"`
-	// Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+	// Specifies an array of references to backend address pools of load balancers. A
+	// scale set can reference backend address pools of one public and one internal
+	// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
 	LoadBalancerBackendAddressPools []SubResourceResponse `pulumi:"loadBalancerBackendAddressPools"`
-	// Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+	// Specifies an array of references to inbound Nat pools of the load balancers. A
+	// scale set can reference inbound nat pools of one public and one internal load
+	// balancer. Multiple scale sets cannot use the same basic sku load balancer.
 	LoadBalancerInboundNatPools []SubResourceResponse `pulumi:"loadBalancerInboundNatPools"`
-	// The IP configuration name.
-	Name string `pulumi:"name"`
-	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+	// Specifies the primary network interface in case the virtual machine has more
+	// than 1 network interface.
 	Primary *bool `pulumi:"primary"`
-	// Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+	// Available from Api-Version 2017-03-30 onwards, it represents whether the
+	// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+	// values are: 'IPv4' and 'IPv6'.
 	PrivateIPAddressVersion *string `pulumi:"privateIPAddressVersion"`
 	// The publicIPAddressConfiguration.
 	PublicIPAddressConfiguration *VirtualMachineScaleSetPublicIPAddressConfigurationResponse `pulumi:"publicIPAddressConfiguration"`
 	// Specifies the identifier of the subnet.
 	Subnet *ApiEntityReferenceResponse `pulumi:"subnet"`
+}
+
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+type VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetIPConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesResponseOutput() VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesResponseOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// Specifies an array of references to backend address pools of application
+// gateways. A scale set can reference backend address pools of multiple
+// application gateways. Multiple scale sets cannot use the same application
+// gateway.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) ApplicationGatewayBackendAddressPools() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		return v.ApplicationGatewayBackendAddressPools
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies an array of references to application security group.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) ApplicationSecurityGroups() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		return v.ApplicationSecurityGroups
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies an array of references to backend address pools of load balancers. A
+// scale set can reference backend address pools of one public and one internal
+// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) LoadBalancerBackendAddressPools() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		return v.LoadBalancerBackendAddressPools
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies an array of references to inbound Nat pools of the load balancers. A
+// scale set can reference inbound nat pools of one public and one internal load
+// balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) LoadBalancerInboundNatPools() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		return v.LoadBalancerInboundNatPools
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// Available from Api-Version 2017-03-30 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) *string {
+		return v.PrivateIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The publicIPAddressConfiguration.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) PublicIPAddressConfiguration() VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
+		return v.PublicIPAddressConfiguration
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput)
+}
+
+// Specifies the identifier of the subnet.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput) Subnet() ApiEntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationPropertiesResponse) *ApiEntityReferenceResponse {
+		return v.Subnet
+	}).(ApiEntityReferenceResponsePtrOutput)
+}
+
+type VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetIPConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput() VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) ToVirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) Elem() VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) VirtualMachineScaleSetIPConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetIPConfigurationPropertiesResponse
+		return ret
+	}).(VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput)
+}
+
+// Specifies an array of references to backend address pools of application
+// gateways. A scale set can reference backend address pools of multiple
+// application gateways. Multiple scale sets cannot use the same application
+// gateway.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) ApplicationGatewayBackendAddressPools() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationGatewayBackendAddressPools
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies an array of references to application security group.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) ApplicationSecurityGroups() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationSecurityGroups
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies an array of references to backend address pools of load balancers. A
+// scale set can reference backend address pools of one public and one internal
+// load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) LoadBalancerBackendAddressPools() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerBackendAddressPools
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies an array of references to inbound Nat pools of the load balancers. A
+// scale set can reference inbound nat pools of one public and one internal load
+// balancer. Multiple scale sets cannot use the same basic sku load balancer.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) LoadBalancerInboundNatPools() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerInboundNatPools
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Available from Api-Version 2017-03-30 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The publicIPAddressConfiguration.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) PublicIPAddressConfiguration() VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressConfiguration
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput)
+}
+
+// Specifies the identifier of the subnet.
+func (o VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput) Subnet() ApiEntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetIPConfigurationPropertiesResponse) *ApiEntityReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(ApiEntityReferenceResponsePtrOutput)
+}
+
+// Describes a virtual machine scale set network profile's IP configuration.
+type VirtualMachineScaleSetIPConfigurationResponse struct {
+	// The IP configuration name.
+	Name string `pulumi:"name"`
+	// Describes a virtual machine scale set network profile's IP configuration
+	// properties.
+	Properties *VirtualMachineScaleSetIPConfigurationPropertiesResponse `pulumi:"properties"`
 }
 
 // Describes a virtual machine scale set network profile's IP configuration.
@@ -11667,59 +13073,17 @@ func (o VirtualMachineScaleSetIPConfigurationResponseOutput) ToVirtualMachineSca
 	return o
 }
 
-// Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) ApplicationGatewayBackendAddressPools() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) []SubResourceResponse {
-		return v.ApplicationGatewayBackendAddressPools
-	}).(SubResourceResponseArrayOutput)
-}
-
-// Specifies an array of references to application security group.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) ApplicationSecurityGroups() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) []SubResourceResponse {
-		return v.ApplicationSecurityGroups
-	}).(SubResourceResponseArrayOutput)
-}
-
-// Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) LoadBalancerBackendAddressPools() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) []SubResourceResponse {
-		return v.LoadBalancerBackendAddressPools
-	}).(SubResourceResponseArrayOutput)
-}
-
-// Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) LoadBalancerInboundNatPools() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) []SubResourceResponse {
-		return v.LoadBalancerInboundNatPools
-	}).(SubResourceResponseArrayOutput)
-}
-
 // The IP configuration name.
 func (o VirtualMachineScaleSetIPConfigurationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) Primary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
-}
-
-// Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) *string { return v.PrivateIPAddressVersion }).(pulumi.StringPtrOutput)
-}
-
-// The publicIPAddressConfiguration.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) PublicIPAddressConfiguration() VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
-		return v.PublicIPAddressConfiguration
-	}).(VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput)
-}
-
-// Specifies the identifier of the subnet.
-func (o VirtualMachineScaleSetIPConfigurationResponseOutput) Subnet() ApiEntityReferenceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) *ApiEntityReferenceResponse { return v.Subnet }).(ApiEntityReferenceResponsePtrOutput)
+// Describes a virtual machine scale set network profile's IP configuration
+// properties.
+func (o VirtualMachineScaleSetIPConfigurationResponseOutput) Properties() VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetIPConfigurationResponse) *VirtualMachineScaleSetIPConfigurationPropertiesResponse {
+		return v.Properties
+	}).(VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput)
 }
 
 type VirtualMachineScaleSetIPConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
@@ -11906,11 +13270,13 @@ func (o VirtualMachineScaleSetIpTagResponseArrayOutput) Index(i pulumi.IntInput)
 
 // Describes the parameters of a ScaleSet managed disk.
 type VirtualMachineScaleSetManagedDiskParameters struct {
-	// Specifies the customer managed disk encryption set resource id for the managed disk.
+	// Specifies the customer managed disk encryption set resource id for the managed
+	// disk.
 	DiskEncryptionSet *DiskEncryptionSetParameters `pulumi:"diskEncryptionSet"`
 	// Specifies the security profile for the managed disk.
 	SecurityProfile *VMDiskSecurityProfile `pulumi:"securityProfile"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+	// only be used with data disks, it cannot be used with OS Disk.
 	StorageAccountType *string `pulumi:"storageAccountType"`
 }
 
@@ -11927,11 +13293,13 @@ type VirtualMachineScaleSetManagedDiskParametersInput interface {
 
 // Describes the parameters of a ScaleSet managed disk.
 type VirtualMachineScaleSetManagedDiskParametersArgs struct {
-	// Specifies the customer managed disk encryption set resource id for the managed disk.
+	// Specifies the customer managed disk encryption set resource id for the managed
+	// disk.
 	DiskEncryptionSet DiskEncryptionSetParametersPtrInput `pulumi:"diskEncryptionSet"`
 	// Specifies the security profile for the managed disk.
 	SecurityProfile VMDiskSecurityProfilePtrInput `pulumi:"securityProfile"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+	// only be used with data disks, it cannot be used with OS Disk.
 	StorageAccountType pulumi.StringPtrInput `pulumi:"storageAccountType"`
 }
 
@@ -12013,7 +13381,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersOutput) ToVirtualMachineScale
 	}).(VirtualMachineScaleSetManagedDiskParametersPtrOutput)
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk.
 func (o VirtualMachineScaleSetManagedDiskParametersOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetManagedDiskParameters) *DiskEncryptionSetParameters {
 		return v.DiskEncryptionSet
@@ -12025,7 +13394,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersOutput) SecurityProfile() VMD
 	return o.ApplyT(func(v VirtualMachineScaleSetManagedDiskParameters) *VMDiskSecurityProfile { return v.SecurityProfile }).(VMDiskSecurityProfilePtrOutput)
 }
 
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+// only be used with data disks, it cannot be used with OS Disk.
 func (o VirtualMachineScaleSetManagedDiskParametersOutput) StorageAccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetManagedDiskParameters) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
 }
@@ -12054,7 +13424,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersPtrOutput) Elem() VirtualMach
 	}).(VirtualMachineScaleSetManagedDiskParametersOutput)
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk.
 func (o VirtualMachineScaleSetManagedDiskParametersPtrOutput) DiskEncryptionSet() DiskEncryptionSetParametersPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetManagedDiskParameters) *DiskEncryptionSetParameters {
 		if v == nil {
@@ -12074,7 +13445,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersPtrOutput) SecurityProfile() 
 	}).(VMDiskSecurityProfilePtrOutput)
 }
 
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+// only be used with data disks, it cannot be used with OS Disk.
 func (o VirtualMachineScaleSetManagedDiskParametersPtrOutput) StorageAccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetManagedDiskParameters) *string {
 		if v == nil {
@@ -12086,11 +13458,13 @@ func (o VirtualMachineScaleSetManagedDiskParametersPtrOutput) StorageAccountType
 
 // Describes the parameters of a ScaleSet managed disk.
 type VirtualMachineScaleSetManagedDiskParametersResponse struct {
-	// Specifies the customer managed disk encryption set resource id for the managed disk.
+	// Specifies the customer managed disk encryption set resource id for the managed
+	// disk.
 	DiskEncryptionSet *DiskEncryptionSetParametersResponse `pulumi:"diskEncryptionSet"`
 	// Specifies the security profile for the managed disk.
 	SecurityProfile *VMDiskSecurityProfileResponse `pulumi:"securityProfile"`
-	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+	// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+	// only be used with data disks, it cannot be used with OS Disk.
 	StorageAccountType *string `pulumi:"storageAccountType"`
 }
 
@@ -12109,7 +13483,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersResponseOutput) ToVirtualMach
 	return o
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk.
 func (o VirtualMachineScaleSetManagedDiskParametersResponseOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetManagedDiskParametersResponse) *DiskEncryptionSetParametersResponse {
 		return v.DiskEncryptionSet
@@ -12123,7 +13498,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersResponseOutput) SecurityProfi
 	}).(VMDiskSecurityProfileResponsePtrOutput)
 }
 
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+// only be used with data disks, it cannot be used with OS Disk.
 func (o VirtualMachineScaleSetManagedDiskParametersResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetManagedDiskParametersResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
 }
@@ -12152,7 +13528,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersResponsePtrOutput) Elem() Vir
 	}).(VirtualMachineScaleSetManagedDiskParametersResponseOutput)
 }
 
-// Specifies the customer managed disk encryption set resource id for the managed disk.
+// Specifies the customer managed disk encryption set resource id for the managed
+// disk.
 func (o VirtualMachineScaleSetManagedDiskParametersResponsePtrOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetManagedDiskParametersResponse) *DiskEncryptionSetParametersResponse {
 		if v == nil {
@@ -12172,7 +13549,8 @@ func (o VirtualMachineScaleSetManagedDiskParametersResponsePtrOutput) SecurityPr
 	}).(VMDiskSecurityProfileResponsePtrOutput)
 }
 
-// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+// only be used with data disks, it cannot be used with OS Disk.
 func (o VirtualMachineScaleSetManagedDiskParametersResponsePtrOutput) StorageAccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetManagedDiskParametersResponse) *string {
 		if v == nil {
@@ -12184,30 +13562,10 @@ func (o VirtualMachineScaleSetManagedDiskParametersResponsePtrOutput) StorageAcc
 
 // Describes a virtual machine scale set network profile's network configurations.
 type VirtualMachineScaleSetNetworkConfiguration struct {
-	// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
-	AuxiliaryMode *string `pulumi:"auxiliaryMode"`
-	// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-	AuxiliarySku *string `pulumi:"auxiliarySku"`
-	// Specify what happens to the network interface when the VM is deleted
-	DeleteOption *string `pulumi:"deleteOption"`
-	// Specifies whether the network interface is disabled for tcp state tracking.
-	DisableTcpStateTracking *bool `pulumi:"disableTcpStateTracking"`
-	// The dns settings to be applied on the network interfaces.
-	DnsSettings *VirtualMachineScaleSetNetworkConfigurationDnsSettings `pulumi:"dnsSettings"`
-	// Specifies whether the network interface is accelerated networking-enabled.
-	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
-	// Specifies whether the network interface is FPGA networking-enabled.
-	EnableFpga *bool `pulumi:"enableFpga"`
-	// Whether IP forwarding enabled on this NIC.
-	EnableIPForwarding *bool `pulumi:"enableIPForwarding"`
-	// Specifies the IP configurations of the network interface.
-	IpConfigurations []VirtualMachineScaleSetIPConfiguration `pulumi:"ipConfigurations"`
 	// The network configuration name.
 	Name string `pulumi:"name"`
-	// The network security group.
-	NetworkSecurityGroup *SubResource `pulumi:"networkSecurityGroup"`
-	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-	Primary *bool `pulumi:"primary"`
+	// Describes a virtual machine scale set network profile's IP configuration.
+	Properties *VirtualMachineScaleSetNetworkConfigurationProperties `pulumi:"properties"`
 }
 
 // VirtualMachineScaleSetNetworkConfigurationInput is an input type that accepts VirtualMachineScaleSetNetworkConfigurationArgs and VirtualMachineScaleSetNetworkConfigurationOutput values.
@@ -12223,30 +13581,10 @@ type VirtualMachineScaleSetNetworkConfigurationInput interface {
 
 // Describes a virtual machine scale set network profile's network configurations.
 type VirtualMachineScaleSetNetworkConfigurationArgs struct {
-	// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
-	AuxiliaryMode pulumi.StringPtrInput `pulumi:"auxiliaryMode"`
-	// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-	AuxiliarySku pulumi.StringPtrInput `pulumi:"auxiliarySku"`
-	// Specify what happens to the network interface when the VM is deleted
-	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
-	// Specifies whether the network interface is disabled for tcp state tracking.
-	DisableTcpStateTracking pulumi.BoolPtrInput `pulumi:"disableTcpStateTracking"`
-	// The dns settings to be applied on the network interfaces.
-	DnsSettings VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrInput `pulumi:"dnsSettings"`
-	// Specifies whether the network interface is accelerated networking-enabled.
-	EnableAcceleratedNetworking pulumi.BoolPtrInput `pulumi:"enableAcceleratedNetworking"`
-	// Specifies whether the network interface is FPGA networking-enabled.
-	EnableFpga pulumi.BoolPtrInput `pulumi:"enableFpga"`
-	// Whether IP forwarding enabled on this NIC.
-	EnableIPForwarding pulumi.BoolPtrInput `pulumi:"enableIPForwarding"`
-	// Specifies the IP configurations of the network interface.
-	IpConfigurations VirtualMachineScaleSetIPConfigurationArrayInput `pulumi:"ipConfigurations"`
 	// The network configuration name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The network security group.
-	NetworkSecurityGroup SubResourcePtrInput `pulumi:"networkSecurityGroup"`
-	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+	// Describes a virtual machine scale set network profile's IP configuration.
+	Properties VirtualMachineScaleSetNetworkConfigurationPropertiesPtrInput `pulumi:"properties"`
 }
 
 func (VirtualMachineScaleSetNetworkConfigurationArgs) ElementType() reflect.Type {
@@ -12301,68 +13639,16 @@ func (o VirtualMachineScaleSetNetworkConfigurationOutput) ToVirtualMachineScaleS
 	return o
 }
 
-// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) AuxiliaryMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *string { return v.AuxiliaryMode }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) AuxiliarySku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *string { return v.AuxiliarySku }).(pulumi.StringPtrOutput)
-}
-
-// Specify what happens to the network interface when the VM is deleted
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) DeleteOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the network interface is disabled for tcp state tracking.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *bool { return v.DisableTcpStateTracking }).(pulumi.BoolPtrOutput)
-}
-
-// The dns settings to be applied on the network interfaces.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) DnsSettings() VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *VirtualMachineScaleSetNetworkConfigurationDnsSettings {
-		return v.DnsSettings
-	}).(VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput)
-}
-
-// Specifies whether the network interface is accelerated networking-enabled.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies whether the network interface is FPGA networking-enabled.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) EnableFpga() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *bool { return v.EnableFpga }).(pulumi.BoolPtrOutput)
-}
-
-// Whether IP forwarding enabled on this NIC.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) EnableIPForwarding() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *bool { return v.EnableIPForwarding }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies the IP configurations of the network interface.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) IpConfigurations() VirtualMachineScaleSetIPConfigurationArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) []VirtualMachineScaleSetIPConfiguration {
-		return v.IpConfigurations
-	}).(VirtualMachineScaleSetIPConfigurationArrayOutput)
-}
-
 // The network configuration name.
 func (o VirtualMachineScaleSetNetworkConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network security group.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) NetworkSecurityGroup() SubResourcePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *SubResource { return v.NetworkSecurityGroup }).(SubResourcePtrOutput)
-}
-
-// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-func (o VirtualMachineScaleSetNetworkConfigurationOutput) Primary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+// Describes a virtual machine scale set network profile's IP configuration.
+func (o VirtualMachineScaleSetNetworkConfigurationOutput) Properties() VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfiguration) *VirtualMachineScaleSetNetworkConfigurationProperties {
+		return v.Properties
+	}).(VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput)
 }
 
 type VirtualMachineScaleSetNetworkConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -12585,11 +13871,363 @@ func (o VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput) 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Describes a virtual machine scale set network profile's network configurations.
-type VirtualMachineScaleSetNetworkConfigurationResponse struct {
-	// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
+// Describes a virtual machine scale set network profile's IP configuration.
+type VirtualMachineScaleSetNetworkConfigurationProperties struct {
+	// Specifies whether the Auxiliary mode is enabled for the Network Interface
+	// resource.
 	AuxiliaryMode *string `pulumi:"auxiliaryMode"`
-	// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
+	// Specifies whether the Auxiliary sku is enabled for the Network Interface
+	// resource.
+	AuxiliarySku *string `pulumi:"auxiliarySku"`
+	// Specify what happens to the network interface when the VM is deleted
+	DeleteOption *string `pulumi:"deleteOption"`
+	// Specifies whether the network interface is disabled for tcp state tracking.
+	DisableTcpStateTracking *bool `pulumi:"disableTcpStateTracking"`
+	// The dns settings to be applied on the network interfaces.
+	DnsSettings *VirtualMachineScaleSetNetworkConfigurationDnsSettings `pulumi:"dnsSettings"`
+	// Specifies whether the network interface is accelerated networking-enabled.
+	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
+	// Specifies whether the network interface is FPGA networking-enabled.
+	EnableFpga *bool `pulumi:"enableFpga"`
+	// Whether IP forwarding enabled on this NIC.
+	EnableIPForwarding *bool `pulumi:"enableIPForwarding"`
+	// Specifies the IP configurations of the network interface.
+	IpConfigurations []VirtualMachineScaleSetIPConfiguration `pulumi:"ipConfigurations"`
+	// The network security group.
+	NetworkSecurityGroup *SubResource `pulumi:"networkSecurityGroup"`
+	// Specifies the primary network interface in case the virtual machine has more
+	// than 1 network interface.
+	Primary *bool `pulumi:"primary"`
+}
+
+// VirtualMachineScaleSetNetworkConfigurationPropertiesInput is an input type that accepts VirtualMachineScaleSetNetworkConfigurationPropertiesArgs and VirtualMachineScaleSetNetworkConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetNetworkConfigurationPropertiesInput` via:
+//
+//	VirtualMachineScaleSetNetworkConfigurationPropertiesArgs{...}
+type VirtualMachineScaleSetNetworkConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesOutput
+	ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutputWithContext(context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesOutput
+}
+
+// Describes a virtual machine scale set network profile's IP configuration.
+type VirtualMachineScaleSetNetworkConfigurationPropertiesArgs struct {
+	// Specifies whether the Auxiliary mode is enabled for the Network Interface
+	// resource.
+	AuxiliaryMode pulumi.StringPtrInput `pulumi:"auxiliaryMode"`
+	// Specifies whether the Auxiliary sku is enabled for the Network Interface
+	// resource.
+	AuxiliarySku pulumi.StringPtrInput `pulumi:"auxiliarySku"`
+	// Specify what happens to the network interface when the VM is deleted
+	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
+	// Specifies whether the network interface is disabled for tcp state tracking.
+	DisableTcpStateTracking pulumi.BoolPtrInput `pulumi:"disableTcpStateTracking"`
+	// The dns settings to be applied on the network interfaces.
+	DnsSettings VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrInput `pulumi:"dnsSettings"`
+	// Specifies whether the network interface is accelerated networking-enabled.
+	EnableAcceleratedNetworking pulumi.BoolPtrInput `pulumi:"enableAcceleratedNetworking"`
+	// Specifies whether the network interface is FPGA networking-enabled.
+	EnableFpga pulumi.BoolPtrInput `pulumi:"enableFpga"`
+	// Whether IP forwarding enabled on this NIC.
+	EnableIPForwarding pulumi.BoolPtrInput `pulumi:"enableIPForwarding"`
+	// Specifies the IP configurations of the network interface.
+	IpConfigurations VirtualMachineScaleSetIPConfigurationArrayInput `pulumi:"ipConfigurations"`
+	// The network security group.
+	NetworkSecurityGroup SubResourcePtrInput `pulumi:"networkSecurityGroup"`
+	// Specifies the primary network interface in case the virtual machine has more
+	// than 1 network interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (VirtualMachineScaleSetNetworkConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetNetworkConfigurationProperties)(nil)).Elem()
+}
+
+func (i VirtualMachineScaleSetNetworkConfigurationPropertiesArgs) ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesOutput {
+	return i.ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetNetworkConfigurationPropertiesArgs) ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetNetworkConfigurationPropertiesOutput)
+}
+
+func (i VirtualMachineScaleSetNetworkConfigurationPropertiesArgs) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetNetworkConfigurationPropertiesArgs) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetNetworkConfigurationPropertiesOutput).ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineScaleSetNetworkConfigurationPropertiesPtrInput is an input type that accepts VirtualMachineScaleSetNetworkConfigurationPropertiesArgs, VirtualMachineScaleSetNetworkConfigurationPropertiesPtr and VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetNetworkConfigurationPropertiesPtrInput` via:
+//
+//	        VirtualMachineScaleSetNetworkConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineScaleSetNetworkConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput
+	ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput
+}
+
+type virtualMachineScaleSetNetworkConfigurationPropertiesPtrType VirtualMachineScaleSetNetworkConfigurationPropertiesArgs
+
+func VirtualMachineScaleSetNetworkConfigurationPropertiesPtr(v *VirtualMachineScaleSetNetworkConfigurationPropertiesArgs) VirtualMachineScaleSetNetworkConfigurationPropertiesPtrInput {
+	return (*virtualMachineScaleSetNetworkConfigurationPropertiesPtrType)(v)
+}
+
+func (*virtualMachineScaleSetNetworkConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetNetworkConfigurationProperties)(nil)).Elem()
+}
+
+func (i *virtualMachineScaleSetNetworkConfigurationPropertiesPtrType) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineScaleSetNetworkConfigurationPropertiesPtrType) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput)
+}
+
+// Describes a virtual machine scale set network profile's IP configuration.
+type VirtualMachineScaleSetNetworkConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetNetworkConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return o.ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineScaleSetNetworkConfigurationProperties) *VirtualMachineScaleSetNetworkConfigurationProperties {
+		return &v
+	}).(VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput)
+}
+
+// Specifies whether the Auxiliary mode is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) AuxiliaryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *string { return v.AuxiliaryMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Auxiliary sku is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) AuxiliarySku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *string { return v.AuxiliarySku }).(pulumi.StringPtrOutput)
+}
+
+// Specify what happens to the network interface when the VM is deleted
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the network interface is disabled for tcp state tracking.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *bool { return v.DisableTcpStateTracking }).(pulumi.BoolPtrOutput)
+}
+
+// The dns settings to be applied on the network interfaces.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) DnsSettings() VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *VirtualMachineScaleSetNetworkConfigurationDnsSettings {
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput)
+}
+
+// Specifies whether the network interface is accelerated networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *bool {
+		return v.EnableAcceleratedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the network interface is FPGA networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) EnableFpga() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *bool { return v.EnableFpga }).(pulumi.BoolPtrOutput)
+}
+
+// Whether IP forwarding enabled on this NIC.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) EnableIPForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *bool { return v.EnableIPForwarding }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the IP configurations of the network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) IpConfigurations() VirtualMachineScaleSetIPConfigurationArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) []VirtualMachineScaleSetIPConfiguration {
+		return v.IpConfigurations
+	}).(VirtualMachineScaleSetIPConfigurationArrayOutput)
+}
+
+// The network security group.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) NetworkSecurityGroup() SubResourcePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *SubResource {
+		return v.NetworkSecurityGroup
+	}).(SubResourcePtrOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationProperties) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetNetworkConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) Elem() VirtualMachineScaleSetNetworkConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) VirtualMachineScaleSetNetworkConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetNetworkConfigurationProperties
+		return ret
+	}).(VirtualMachineScaleSetNetworkConfigurationPropertiesOutput)
+}
+
+// Specifies whether the Auxiliary mode is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) AuxiliaryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Auxiliary sku is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) AuxiliarySku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliarySku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify what happens to the network interface when the VM is deleted
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the network interface is disabled for tcp state tracking.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTcpStateTracking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The dns settings to be applied on the network interfaces.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) DnsSettings() VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *VirtualMachineScaleSetNetworkConfigurationDnsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput)
+}
+
+// Specifies whether the network interface is accelerated networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAcceleratedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the network interface is FPGA networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) EnableFpga() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFpga
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether IP forwarding enabled on this NIC.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) EnableIPForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIPForwarding
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the IP configurations of the network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) IpConfigurations() VirtualMachineScaleSetIPConfigurationArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) []VirtualMachineScaleSetIPConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(VirtualMachineScaleSetIPConfigurationArrayOutput)
+}
+
+// The network security group.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) NetworkSecurityGroup() SubResourcePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSecurityGroup
+	}).(SubResourcePtrOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Describes a virtual machine scale set network profile's IP configuration.
+type VirtualMachineScaleSetNetworkConfigurationPropertiesResponse struct {
+	// Specifies whether the Auxiliary mode is enabled for the Network Interface
+	// resource.
+	AuxiliaryMode *string `pulumi:"auxiliaryMode"`
+	// Specifies whether the Auxiliary sku is enabled for the Network Interface
+	// resource.
 	AuxiliarySku *string `pulumi:"auxiliarySku"`
 	// Specify what happens to the network interface when the VM is deleted
 	DeleteOption *string `pulumi:"deleteOption"`
@@ -12605,12 +14243,241 @@ type VirtualMachineScaleSetNetworkConfigurationResponse struct {
 	EnableIPForwarding *bool `pulumi:"enableIPForwarding"`
 	// Specifies the IP configurations of the network interface.
 	IpConfigurations []VirtualMachineScaleSetIPConfigurationResponse `pulumi:"ipConfigurations"`
-	// The network configuration name.
-	Name string `pulumi:"name"`
 	// The network security group.
 	NetworkSecurityGroup *SubResourceResponse `pulumi:"networkSecurityGroup"`
-	// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+	// Specifies the primary network interface in case the virtual machine has more
+	// than 1 network interface.
 	Primary *bool `pulumi:"primary"`
+}
+
+// Describes a virtual machine scale set network profile's IP configuration.
+type VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetNetworkConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// Specifies whether the Auxiliary mode is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) AuxiliaryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *string { return v.AuxiliaryMode }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Auxiliary sku is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) AuxiliarySku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *string { return v.AuxiliarySku }).(pulumi.StringPtrOutput)
+}
+
+// Specify what happens to the network interface when the VM is deleted
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the network interface is disabled for tcp state tracking.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		return v.DisableTcpStateTracking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The dns settings to be applied on the network interfaces.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) DnsSettings() VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput)
+}
+
+// Specifies whether the network interface is accelerated networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		return v.EnableAcceleratedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the network interface is FPGA networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) EnableFpga() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool { return v.EnableFpga }).(pulumi.BoolPtrOutput)
+}
+
+// Whether IP forwarding enabled on this NIC.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) EnableIPForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		return v.EnableIPForwarding
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the IP configurations of the network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) IpConfigurations() VirtualMachineScaleSetIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) []VirtualMachineScaleSetIPConfigurationResponse {
+		return v.IpConfigurations
+	}).(VirtualMachineScaleSetIPConfigurationResponseArrayOutput)
+}
+
+// The network security group.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) NetworkSecurityGroup() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *SubResourceResponse {
+		return v.NetworkSecurityGroup
+	}).(SubResourceResponsePtrOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetNetworkConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput() VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) ToVirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) Elem() VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) VirtualMachineScaleSetNetworkConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetNetworkConfigurationPropertiesResponse
+		return ret
+	}).(VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput)
+}
+
+// Specifies whether the Auxiliary mode is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) AuxiliaryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the Auxiliary sku is enabled for the Network Interface
+// resource.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) AuxiliarySku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliarySku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify what happens to the network interface when the VM is deleted
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether the network interface is disabled for tcp state tracking.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTcpStateTracking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The dns settings to be applied on the network interfaces.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) DnsSettings() VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput)
+}
+
+// Specifies whether the network interface is accelerated networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAcceleratedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the network interface is FPGA networking-enabled.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) EnableFpga() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFpga
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether IP forwarding enabled on this NIC.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) EnableIPForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIPForwarding
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the IP configurations of the network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) IpConfigurations() VirtualMachineScaleSetIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) []VirtualMachineScaleSetIPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(VirtualMachineScaleSetIPConfigurationResponseArrayOutput)
+}
+
+// The network security group.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) NetworkSecurityGroup() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSecurityGroup
+	}).(SubResourceResponsePtrOutput)
+}
+
+// Specifies the primary network interface in case the virtual machine has more
+// than 1 network interface.
+func (o VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Describes a virtual machine scale set network profile's network configurations.
+type VirtualMachineScaleSetNetworkConfigurationResponse struct {
+	// The network configuration name.
+	Name string `pulumi:"name"`
+	// Describes a virtual machine scale set network profile's IP configuration.
+	Properties *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse `pulumi:"properties"`
 }
 
 // Describes a virtual machine scale set network profile's network configurations.
@@ -12628,70 +14495,16 @@ func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) ToVirtualMachi
 	return o
 }
 
-// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) AuxiliaryMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *string { return v.AuxiliaryMode }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) AuxiliarySku() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *string { return v.AuxiliarySku }).(pulumi.StringPtrOutput)
-}
-
-// Specify what happens to the network interface when the VM is deleted
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) DeleteOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
-}
-
-// Specifies whether the network interface is disabled for tcp state tracking.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) DisableTcpStateTracking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *bool { return v.DisableTcpStateTracking }).(pulumi.BoolPtrOutput)
-}
-
-// The dns settings to be applied on the network interfaces.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) DnsSettings() VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
-		return v.DnsSettings
-	}).(VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput)
-}
-
-// Specifies whether the network interface is accelerated networking-enabled.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies whether the network interface is FPGA networking-enabled.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) EnableFpga() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *bool { return v.EnableFpga }).(pulumi.BoolPtrOutput)
-}
-
-// Whether IP forwarding enabled on this NIC.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) EnableIPForwarding() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *bool { return v.EnableIPForwarding }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies the IP configurations of the network interface.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) IpConfigurations() VirtualMachineScaleSetIPConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) []VirtualMachineScaleSetIPConfigurationResponse {
-		return v.IpConfigurations
-	}).(VirtualMachineScaleSetIPConfigurationResponseArrayOutput)
-}
-
 // The network configuration name.
 func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network security group.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) NetworkSecurityGroup() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *SubResourceResponse {
-		return v.NetworkSecurityGroup
-	}).(SubResourceResponsePtrOutput)
-}
-
-// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) Primary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+// Describes a virtual machine scale set network profile's IP configuration.
+func (o VirtualMachineScaleSetNetworkConfigurationResponseOutput) Properties() VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetNetworkConfigurationResponse) *VirtualMachineScaleSetNetworkConfigurationPropertiesResponse {
+		return v.Properties
+	}).(VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput)
 }
 
 type VirtualMachineScaleSetNetworkConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
@@ -12716,9 +14529,13 @@ func (o VirtualMachineScaleSetNetworkConfigurationResponseArrayOutput) Index(i p
 
 // Describes a virtual machine scale set network profile.
 type VirtualMachineScaleSetNetworkProfile struct {
-	// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+	// A reference to a load balancer probe used to determine the health of an
+	// instance in the virtual machine scale set. The reference will be in the form:
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 	HealthProbe *ApiEntityReference `pulumi:"healthProbe"`
-	// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+	// specifies the Microsoft.Network API version used when creating networking
+	// resources in the Network Interface Configurations for Virtual Machine Scale Set
+	// with orchestration mode 'Flexible'
 	NetworkApiVersion *string `pulumi:"networkApiVersion"`
 	// The list of network configurations.
 	NetworkInterfaceConfigurations []VirtualMachineScaleSetNetworkConfiguration `pulumi:"networkInterfaceConfigurations"`
@@ -12737,9 +14554,13 @@ type VirtualMachineScaleSetNetworkProfileInput interface {
 
 // Describes a virtual machine scale set network profile.
 type VirtualMachineScaleSetNetworkProfileArgs struct {
-	// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+	// A reference to a load balancer probe used to determine the health of an
+	// instance in the virtual machine scale set. The reference will be in the form:
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 	HealthProbe ApiEntityReferencePtrInput `pulumi:"healthProbe"`
-	// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+	// specifies the Microsoft.Network API version used when creating networking
+	// resources in the Network Interface Configurations for Virtual Machine Scale Set
+	// with orchestration mode 'Flexible'
 	NetworkApiVersion pulumi.StringPtrInput `pulumi:"networkApiVersion"`
 	// The list of network configurations.
 	NetworkInterfaceConfigurations VirtualMachineScaleSetNetworkConfigurationArrayInput `pulumi:"networkInterfaceConfigurations"`
@@ -12823,12 +14644,16 @@ func (o VirtualMachineScaleSetNetworkProfileOutput) ToVirtualMachineScaleSetNetw
 	}).(VirtualMachineScaleSetNetworkProfilePtrOutput)
 }
 
-// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+// A reference to a load balancer probe used to determine the health of an
+// instance in the virtual machine scale set. The reference will be in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 func (o VirtualMachineScaleSetNetworkProfileOutput) HealthProbe() ApiEntityReferencePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetNetworkProfile) *ApiEntityReference { return v.HealthProbe }).(ApiEntityReferencePtrOutput)
 }
 
-// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+// specifies the Microsoft.Network API version used when creating networking
+// resources in the Network Interface Configurations for Virtual Machine Scale Set
+// with orchestration mode 'Flexible'
 func (o VirtualMachineScaleSetNetworkProfileOutput) NetworkApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetNetworkProfile) *string { return v.NetworkApiVersion }).(pulumi.StringPtrOutput)
 }
@@ -12864,7 +14689,9 @@ func (o VirtualMachineScaleSetNetworkProfilePtrOutput) Elem() VirtualMachineScal
 	}).(VirtualMachineScaleSetNetworkProfileOutput)
 }
 
-// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+// A reference to a load balancer probe used to determine the health of an
+// instance in the virtual machine scale set. The reference will be in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 func (o VirtualMachineScaleSetNetworkProfilePtrOutput) HealthProbe() ApiEntityReferencePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkProfile) *ApiEntityReference {
 		if v == nil {
@@ -12874,7 +14701,9 @@ func (o VirtualMachineScaleSetNetworkProfilePtrOutput) HealthProbe() ApiEntityRe
 	}).(ApiEntityReferencePtrOutput)
 }
 
-// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+// specifies the Microsoft.Network API version used when creating networking
+// resources in the Network Interface Configurations for Virtual Machine Scale Set
+// with orchestration mode 'Flexible'
 func (o VirtualMachineScaleSetNetworkProfilePtrOutput) NetworkApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkProfile) *string {
 		if v == nil {
@@ -12896,9 +14725,13 @@ func (o VirtualMachineScaleSetNetworkProfilePtrOutput) NetworkInterfaceConfigura
 
 // Describes a virtual machine scale set network profile.
 type VirtualMachineScaleSetNetworkProfileResponse struct {
-	// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+	// A reference to a load balancer probe used to determine the health of an
+	// instance in the virtual machine scale set. The reference will be in the form:
+	// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 	HealthProbe *ApiEntityReferenceResponse `pulumi:"healthProbe"`
-	// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+	// specifies the Microsoft.Network API version used when creating networking
+	// resources in the Network Interface Configurations for Virtual Machine Scale Set
+	// with orchestration mode 'Flexible'
 	NetworkApiVersion *string `pulumi:"networkApiVersion"`
 	// The list of network configurations.
 	NetworkInterfaceConfigurations []VirtualMachineScaleSetNetworkConfigurationResponse `pulumi:"networkInterfaceConfigurations"`
@@ -12919,12 +14752,16 @@ func (o VirtualMachineScaleSetNetworkProfileResponseOutput) ToVirtualMachineScal
 	return o
 }
 
-// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+// A reference to a load balancer probe used to determine the health of an
+// instance in the virtual machine scale set. The reference will be in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 func (o VirtualMachineScaleSetNetworkProfileResponseOutput) HealthProbe() ApiEntityReferenceResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetNetworkProfileResponse) *ApiEntityReferenceResponse { return v.HealthProbe }).(ApiEntityReferenceResponsePtrOutput)
 }
 
-// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+// specifies the Microsoft.Network API version used when creating networking
+// resources in the Network Interface Configurations for Virtual Machine Scale Set
+// with orchestration mode 'Flexible'
 func (o VirtualMachineScaleSetNetworkProfileResponseOutput) NetworkApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetNetworkProfileResponse) *string { return v.NetworkApiVersion }).(pulumi.StringPtrOutput)
 }
@@ -12960,7 +14797,9 @@ func (o VirtualMachineScaleSetNetworkProfileResponsePtrOutput) Elem() VirtualMac
 	}).(VirtualMachineScaleSetNetworkProfileResponseOutput)
 }
 
-// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+// A reference to a load balancer probe used to determine the health of an
+// instance in the virtual machine scale set. The reference will be in the form:
+// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 func (o VirtualMachineScaleSetNetworkProfileResponsePtrOutput) HealthProbe() ApiEntityReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkProfileResponse) *ApiEntityReferenceResponse {
 		if v == nil {
@@ -12970,7 +14809,9 @@ func (o VirtualMachineScaleSetNetworkProfileResponsePtrOutput) HealthProbe() Api
 	}).(ApiEntityReferenceResponsePtrOutput)
 }
 
-// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+// specifies the Microsoft.Network API version used when creating networking
+// resources in the Network Interface Configurations for Virtual Machine Scale Set
+// with orchestration mode 'Flexible'
 func (o VirtualMachineScaleSetNetworkProfileResponsePtrOutput) NetworkApiVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetNetworkProfileResponse) *string {
 		if v == nil {
@@ -12992,15 +14833,32 @@ func (o VirtualMachineScaleSetNetworkProfileResponsePtrOutput) NetworkInterfaceC
 
 // Describes a virtual machine scale set operating system disk.
 type VirtualMachineScaleSetOSDisk struct {
-	// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-	Caching *CachingTypes `pulumi:"caching"`
-	// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+	// Specifies the caching requirements. Possible values are: **None,**
+	// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+	// storage. ReadOnly for Premium storage.**
+	Caching *string `pulumi:"caching"`
+	// Specifies how the virtual machines in the scale set should be created. The only
+	// allowed value is: **FromImage.** This value is used when you are using an image
+	// to create the virtual machine. If you are using a platform image, you also use
+	// the imageReference element described above. If you are using a marketplace
+	// image, you  also use the plan element previously described.
 	CreateOption string `pulumi:"createOption"`
-	// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+	// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+	// (This feature is available for VMSS with Flexible OrchestrationMode only).
+	// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+	// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+	// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+	// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+	// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+	// Disk.
 	DeleteOption *string `pulumi:"deleteOption"`
-	// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+	// Specifies the ephemeral disk Settings for the operating system disk used by the
+	// virtual machine scale set.
 	DiffDiskSettings *DiffDiskSettings `pulumi:"diffDiskSettings"`
-	// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+	// Specifies the size of an empty data disk in gigabytes. This element can be used
+	// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+	// is the number of bytes x 1024^3 for the disk and the value cannot
+	// be larger than 1023.
 	DiskSizeGB *int `pulumi:"diskSizeGB"`
 	// Specifies information about the unmanaged user image to base the scale set on.
 	Image *VirtualHardDisk `pulumi:"image"`
@@ -13008,9 +14866,12 @@ type VirtualMachineScaleSetOSDisk struct {
 	ManagedDisk *VirtualMachineScaleSetManagedDiskParameters `pulumi:"managedDisk"`
 	// The disk name.
 	Name *string `pulumi:"name"`
-	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
-	OsType *OperatingSystemTypes `pulumi:"osType"`
-	// Specifies the container urls that are used to store operating system disks for the scale set.
+	// This property allows you to specify the type of the OS that is included in the
+	// disk if creating a VM from user-image or a specialized VHD. Possible values
+	// are: **Windows,** **Linux.**
+	OsType *string `pulumi:"osType"`
+	// Specifies the container urls that are used to store operating system disks for
+	// the scale set.
 	VhdContainers []string `pulumi:"vhdContainers"`
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled *bool `pulumi:"writeAcceleratorEnabled"`
@@ -13029,15 +14890,32 @@ type VirtualMachineScaleSetOSDiskInput interface {
 
 // Describes a virtual machine scale set operating system disk.
 type VirtualMachineScaleSetOSDiskArgs struct {
-	// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-	Caching CachingTypesPtrInput `pulumi:"caching"`
-	// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+	// Specifies the caching requirements. Possible values are: **None,**
+	// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+	// storage. ReadOnly for Premium storage.**
+	Caching pulumi.StringPtrInput `pulumi:"caching"`
+	// Specifies how the virtual machines in the scale set should be created. The only
+	// allowed value is: **FromImage.** This value is used when you are using an image
+	// to create the virtual machine. If you are using a platform image, you also use
+	// the imageReference element described above. If you are using a marketplace
+	// image, you  also use the plan element previously described.
 	CreateOption pulumi.StringInput `pulumi:"createOption"`
-	// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+	// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+	// (This feature is available for VMSS with Flexible OrchestrationMode only).
+	// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+	// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+	// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+	// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+	// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+	// Disk.
 	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
-	// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+	// Specifies the ephemeral disk Settings for the operating system disk used by the
+	// virtual machine scale set.
 	DiffDiskSettings DiffDiskSettingsPtrInput `pulumi:"diffDiskSettings"`
-	// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+	// Specifies the size of an empty data disk in gigabytes. This element can be used
+	// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+	// is the number of bytes x 1024^3 for the disk and the value cannot
+	// be larger than 1023.
 	DiskSizeGB pulumi.IntPtrInput `pulumi:"diskSizeGB"`
 	// Specifies information about the unmanaged user image to base the scale set on.
 	Image VirtualHardDiskPtrInput `pulumi:"image"`
@@ -13045,9 +14923,12 @@ type VirtualMachineScaleSetOSDiskArgs struct {
 	ManagedDisk VirtualMachineScaleSetManagedDiskParametersPtrInput `pulumi:"managedDisk"`
 	// The disk name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
-	OsType OperatingSystemTypesPtrInput `pulumi:"osType"`
-	// Specifies the container urls that are used to store operating system disks for the scale set.
+	// This property allows you to specify the type of the OS that is included in the
+	// disk if creating a VM from user-image or a specialized VHD. Possible values
+	// are: **Windows,** **Linux.**
+	OsType pulumi.StringPtrInput `pulumi:"osType"`
+	// Specifies the container urls that are used to store operating system disks for
+	// the scale set.
 	VhdContainers pulumi.StringArrayInput `pulumi:"vhdContainers"`
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled pulumi.BoolPtrInput `pulumi:"writeAcceleratorEnabled"`
@@ -13131,27 +15012,44 @@ func (o VirtualMachineScaleSetOSDiskOutput) ToVirtualMachineScaleSetOSDiskPtrOut
 	}).(VirtualMachineScaleSetOSDiskPtrOutput)
 }
 
-// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-func (o VirtualMachineScaleSetOSDiskOutput) Caching() CachingTypesPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *CachingTypes { return v.Caching }).(CachingTypesPtrOutput)
+// Specifies the caching requirements. Possible values are: **None,**
+// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+// storage. ReadOnly for Premium storage.**
+func (o VirtualMachineScaleSetOSDiskOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *string { return v.Caching }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+// Specifies how the virtual machines in the scale set should be created. The only
+// allowed value is: **FromImage.** This value is used when you are using an image
+// to create the virtual machine. If you are using a platform image, you also use
+// the imageReference element described above. If you are using a marketplace
+// image, you  also use the plan element previously described.
 func (o VirtualMachineScaleSetOSDiskOutput) CreateOption() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) string { return v.CreateOption }).(pulumi.StringOutput)
 }
 
-// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+// (This feature is available for VMSS with Flexible OrchestrationMode only).
+// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+// Disk.
 func (o VirtualMachineScaleSetOSDiskOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+// Specifies the ephemeral disk Settings for the operating system disk used by the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSDiskOutput) DiffDiskSettings() DiffDiskSettingsPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *DiffDiskSettings { return v.DiffDiskSettings }).(DiffDiskSettingsPtrOutput)
 }
 
-// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+// Specifies the size of an empty data disk in gigabytes. This element can be used
+// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+// is the number of bytes x 1024^3 for the disk and the value cannot
+// be larger than 1023.
 func (o VirtualMachineScaleSetOSDiskOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
 }
@@ -13173,12 +15071,15 @@ func (o VirtualMachineScaleSetOSDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
-func (o VirtualMachineScaleSetOSDiskOutput) OsType() OperatingSystemTypesPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *OperatingSystemTypes { return v.OsType }).(OperatingSystemTypesPtrOutput)
+// This property allows you to specify the type of the OS that is included in the
+// disk if creating a VM from user-image or a specialized VHD. Possible values
+// are: **Windows,** **Linux.**
+func (o VirtualMachineScaleSetOSDiskOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the container urls that are used to store operating system disks for the scale set.
+// Specifies the container urls that are used to store operating system disks for
+// the scale set.
 func (o VirtualMachineScaleSetOSDiskOutput) VhdContainers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDisk) []string { return v.VhdContainers }).(pulumi.StringArrayOutput)
 }
@@ -13212,17 +15113,23 @@ func (o VirtualMachineScaleSetOSDiskPtrOutput) Elem() VirtualMachineScaleSetOSDi
 	}).(VirtualMachineScaleSetOSDiskOutput)
 }
 
-// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
-func (o VirtualMachineScaleSetOSDiskPtrOutput) Caching() CachingTypesPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *CachingTypes {
+// Specifies the caching requirements. Possible values are: **None,**
+// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+// storage. ReadOnly for Premium storage.**
+func (o VirtualMachineScaleSetOSDiskPtrOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Caching
-	}).(CachingTypesPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+// Specifies how the virtual machines in the scale set should be created. The only
+// allowed value is: **FromImage.** This value is used when you are using an image
+// to create the virtual machine. If you are using a platform image, you also use
+// the imageReference element described above. If you are using a marketplace
+// image, you  also use the plan element previously described.
 func (o VirtualMachineScaleSetOSDiskPtrOutput) CreateOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *string {
 		if v == nil {
@@ -13232,7 +15139,14 @@ func (o VirtualMachineScaleSetOSDiskPtrOutput) CreateOption() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+// (This feature is available for VMSS with Flexible OrchestrationMode only).
+// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+// Disk.
 func (o VirtualMachineScaleSetOSDiskPtrOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *string {
 		if v == nil {
@@ -13242,7 +15156,8 @@ func (o VirtualMachineScaleSetOSDiskPtrOutput) DeleteOption() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+// Specifies the ephemeral disk Settings for the operating system disk used by the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSDiskPtrOutput) DiffDiskSettings() DiffDiskSettingsPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *DiffDiskSettings {
 		if v == nil {
@@ -13252,7 +15167,10 @@ func (o VirtualMachineScaleSetOSDiskPtrOutput) DiffDiskSettings() DiffDiskSettin
 	}).(DiffDiskSettingsPtrOutput)
 }
 
-// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+// Specifies the size of an empty data disk in gigabytes. This element can be used
+// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+// is the number of bytes x 1024^3 for the disk and the value cannot
+// be larger than 1023.
 func (o VirtualMachineScaleSetOSDiskPtrOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *int {
 		if v == nil {
@@ -13292,17 +15210,20 @@ func (o VirtualMachineScaleSetOSDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
-func (o VirtualMachineScaleSetOSDiskPtrOutput) OsType() OperatingSystemTypesPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *OperatingSystemTypes {
+// This property allows you to specify the type of the OS that is included in the
+// disk if creating a VM from user-image or a specialized VHD. Possible values
+// are: **Windows,** **Linux.**
+func (o VirtualMachineScaleSetOSDiskPtrOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) *string {
 		if v == nil {
 			return nil
 		}
 		return v.OsType
-	}).(OperatingSystemTypesPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the container urls that are used to store operating system disks for the scale set.
+// Specifies the container urls that are used to store operating system disks for
+// the scale set.
 func (o VirtualMachineScaleSetOSDiskPtrOutput) VhdContainers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDisk) []string {
 		if v == nil {
@@ -13324,15 +15245,32 @@ func (o VirtualMachineScaleSetOSDiskPtrOutput) WriteAcceleratorEnabled() pulumi.
 
 // Describes a virtual machine scale set operating system disk.
 type VirtualMachineScaleSetOSDiskResponse struct {
-	// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+	// Specifies the caching requirements. Possible values are: **None,**
+	// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+	// storage. ReadOnly for Premium storage.**
 	Caching *string `pulumi:"caching"`
-	// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+	// Specifies how the virtual machines in the scale set should be created. The only
+	// allowed value is: **FromImage.** This value is used when you are using an image
+	// to create the virtual machine. If you are using a platform image, you also use
+	// the imageReference element described above. If you are using a marketplace
+	// image, you  also use the plan element previously described.
 	CreateOption string `pulumi:"createOption"`
-	// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+	// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+	// (This feature is available for VMSS with Flexible OrchestrationMode only).
+	// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+	// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+	// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+	// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+	// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+	// Disk.
 	DeleteOption *string `pulumi:"deleteOption"`
-	// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+	// Specifies the ephemeral disk Settings for the operating system disk used by the
+	// virtual machine scale set.
 	DiffDiskSettings *DiffDiskSettingsResponse `pulumi:"diffDiskSettings"`
-	// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+	// Specifies the size of an empty data disk in gigabytes. This element can be used
+	// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+	// is the number of bytes x 1024^3 for the disk and the value cannot
+	// be larger than 1023.
 	DiskSizeGB *int `pulumi:"diskSizeGB"`
 	// Specifies information about the unmanaged user image to base the scale set on.
 	Image *VirtualHardDiskResponse `pulumi:"image"`
@@ -13340,9 +15278,12 @@ type VirtualMachineScaleSetOSDiskResponse struct {
 	ManagedDisk *VirtualMachineScaleSetManagedDiskParametersResponse `pulumi:"managedDisk"`
 	// The disk name.
 	Name *string `pulumi:"name"`
-	// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+	// This property allows you to specify the type of the OS that is included in the
+	// disk if creating a VM from user-image or a specialized VHD. Possible values
+	// are: **Windows,** **Linux.**
 	OsType *string `pulumi:"osType"`
-	// Specifies the container urls that are used to store operating system disks for the scale set.
+	// Specifies the container urls that are used to store operating system disks for
+	// the scale set.
 	VhdContainers []string `pulumi:"vhdContainers"`
 	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
 	WriteAcceleratorEnabled *bool `pulumi:"writeAcceleratorEnabled"`
@@ -13363,27 +15304,44 @@ func (o VirtualMachineScaleSetOSDiskResponseOutput) ToVirtualMachineScaleSetOSDi
 	return o
 }
 
-// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+// Specifies the caching requirements. Possible values are: **None,**
+// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+// storage. ReadOnly for Premium storage.**
 func (o VirtualMachineScaleSetOSDiskResponseOutput) Caching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
 }
 
-// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+// Specifies how the virtual machines in the scale set should be created. The only
+// allowed value is: **FromImage.** This value is used when you are using an image
+// to create the virtual machine. If you are using a platform image, you also use
+// the imageReference element described above. If you are using a marketplace
+// image, you  also use the plan element previously described.
 func (o VirtualMachineScaleSetOSDiskResponseOutput) CreateOption() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) string { return v.CreateOption }).(pulumi.StringOutput)
 }
 
-// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+// (This feature is available for VMSS with Flexible OrchestrationMode only).
+// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+// Disk.
 func (o VirtualMachineScaleSetOSDiskResponseOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+// Specifies the ephemeral disk Settings for the operating system disk used by the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSDiskResponseOutput) DiffDiskSettings() DiffDiskSettingsResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) *DiffDiskSettingsResponse { return v.DiffDiskSettings }).(DiffDiskSettingsResponsePtrOutput)
 }
 
-// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+// Specifies the size of an empty data disk in gigabytes. This element can be used
+// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+// is the number of bytes x 1024^3 for the disk and the value cannot
+// be larger than 1023.
 func (o VirtualMachineScaleSetOSDiskResponseOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
 }
@@ -13405,12 +15363,15 @@ func (o VirtualMachineScaleSetOSDiskResponseOutput) Name() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+// This property allows you to specify the type of the OS that is included in the
+// disk if creating a VM from user-image or a specialized VHD. Possible values
+// are: **Windows,** **Linux.**
 func (o VirtualMachineScaleSetOSDiskResponseOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) *string { return v.OsType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the container urls that are used to store operating system disks for the scale set.
+// Specifies the container urls that are used to store operating system disks for
+// the scale set.
 func (o VirtualMachineScaleSetOSDiskResponseOutput) VhdContainers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSDiskResponse) []string { return v.VhdContainers }).(pulumi.StringArrayOutput)
 }
@@ -13444,7 +15405,9 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) Elem() VirtualMachineScal
 	}).(VirtualMachineScaleSetOSDiskResponseOutput)
 }
 
-// Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+// Specifies the caching requirements. Possible values are: **None,**
+// **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+// storage. ReadOnly for Premium storage.**
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) Caching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) *string {
 		if v == nil {
@@ -13454,7 +15417,11 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) Caching() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+// Specifies how the virtual machines in the scale set should be created. The only
+// allowed value is: **FromImage.** This value is used when you are using an image
+// to create the virtual machine. If you are using a platform image, you also use
+// the imageReference element described above. If you are using a marketplace
+// image, you  also use the plan element previously described.
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) CreateOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) *string {
 		if v == nil {
@@ -13464,7 +15431,14 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) CreateOption() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+// Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+// (This feature is available for VMSS with Flexible OrchestrationMode only).
+// <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+// disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+// is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+// default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+// is set to **Delete**. User cannot change the delete option for Ephemeral OS
+// Disk.
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) DeleteOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) *string {
 		if v == nil {
@@ -13474,7 +15448,8 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) DeleteOption() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+// Specifies the ephemeral disk Settings for the operating system disk used by the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) DiffDiskSettings() DiffDiskSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) *DiffDiskSettingsResponse {
 		if v == nil {
@@ -13484,7 +15459,10 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) DiffDiskSettings() DiffDi
 	}).(DiffDiskSettingsResponsePtrOutput)
 }
 
-// Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+// Specifies the size of an empty data disk in gigabytes. This element can be used
+// to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+// is the number of bytes x 1024^3 for the disk and the value cannot
+// be larger than 1023.
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) DiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) *int {
 		if v == nil {
@@ -13524,7 +15502,9 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+// This property allows you to specify the type of the OS that is included in the
+// disk if creating a VM from user-image or a specialized VHD. Possible values
+// are: **Windows,** **Linux.**
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) OsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) *string {
 		if v == nil {
@@ -13534,7 +15514,8 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) OsType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the container urls that are used to store operating system disks for the scale set.
+// Specifies the container urls that are used to store operating system disks for
+// the scale set.
 func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) VhdContainers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSDiskResponse) []string {
 		if v == nil {
@@ -13556,21 +15537,55 @@ func (o VirtualMachineScaleSetOSDiskResponsePtrOutput) WriteAcceleratorEnabled()
 
 // Describes a virtual machine scale set OS profile.
 type VirtualMachineScaleSetOSProfile struct {
-	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Specifies the password of the administrator account. <br><br> **Minimum-length
+	// (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters
+	// <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length
+	// (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4
+	// conditions below need to be fulfilled <br> Has lower characters <br>Has upper
+	// characters <br> Has a digit <br> Has a special character (Regex match [\W_])
+	// <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd",
+	// "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
+	// "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
+	// reset the Remote Desktop service or its login password in a Windows
+	// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+	// <br><br> For resetting root password, see [Manage users, SSH, and check or
+	// repair disks on Azure Linux VMs using the VMAccess
+	// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword *string `pulumi:"adminPassword"`
-	// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+	// Specifies the name of the administrator account. <br><br> **Windows-only
+	// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+	// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+	// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+	// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+	// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+	// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+	// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 	AdminUsername *string `pulumi:"adminUsername"`
-	// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+	// Specifies whether extension operations should be allowed on the virtual machine
+	// scale set. This may only be set to False when no extensions are present on the
+	// virtual machine scale set.
 	AllowExtensionOperations *bool `pulumi:"allowExtensionOperations"`
-	// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+	// Specifies the computer name prefix for all of the virtual machines in the scale
+	// set. Computer name prefixes must be 1 to 15 characters long.
 	ComputerNamePrefix *string `pulumi:"computerNamePrefix"`
-	// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+	// Specifies a base-64 encoded string of custom data. The base-64 encoded string
+	// is decoded to a binary array that is saved as a file on the Virtual Machine.
+	// The maximum length of the binary array is 65535 bytes. For using cloud-init for
+	// your VM, see [Using cloud-init to customize a Linux VM during
+	// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 	CustomData *string `pulumi:"customData"`
-	// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+	// Specifies the Linux operating system settings on the virtual machine. For a
+	// list of supported Linux distributions, see [Linux on Azure-Endorsed
+	// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 	LinuxConfiguration *LinuxConfiguration `pulumi:"linuxConfiguration"`
 	// Optional property which must either be set to True or omitted.
 	RequireGuestProvisionSignal *bool `pulumi:"requireGuestProvisionSignal"`
-	// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Specifies set of certificates that should be installed onto the virtual
+	// machines in the scale set. To install certificates on a virtual machine it is
+	// recommended to use the [Azure Key Vault virtual machine extension for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	Secrets []VaultSecretGroup `pulumi:"secrets"`
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration *WindowsConfiguration `pulumi:"windowsConfiguration"`
@@ -13589,21 +15604,55 @@ type VirtualMachineScaleSetOSProfileInput interface {
 
 // Describes a virtual machine scale set OS profile.
 type VirtualMachineScaleSetOSProfileArgs struct {
-	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+	// Specifies the password of the administrator account. <br><br> **Minimum-length
+	// (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters
+	// <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length
+	// (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4
+	// conditions below need to be fulfilled <br> Has lower characters <br>Has upper
+	// characters <br> Has a digit <br> Has a special character (Regex match [\W_])
+	// <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd",
+	// "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
+	// "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
+	// reset the Remote Desktop service or its login password in a Windows
+	// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+	// <br><br> For resetting root password, see [Manage users, SSH, and check or
+	// repair disks on Azure Linux VMs using the VMAccess
+	// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 	AdminPassword pulumi.StringPtrInput `pulumi:"adminPassword"`
-	// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+	// Specifies the name of the administrator account. <br><br> **Windows-only
+	// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+	// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+	// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+	// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+	// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+	// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+	// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 	AdminUsername pulumi.StringPtrInput `pulumi:"adminUsername"`
-	// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+	// Specifies whether extension operations should be allowed on the virtual machine
+	// scale set. This may only be set to False when no extensions are present on the
+	// virtual machine scale set.
 	AllowExtensionOperations pulumi.BoolPtrInput `pulumi:"allowExtensionOperations"`
-	// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+	// Specifies the computer name prefix for all of the virtual machines in the scale
+	// set. Computer name prefixes must be 1 to 15 characters long.
 	ComputerNamePrefix pulumi.StringPtrInput `pulumi:"computerNamePrefix"`
-	// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+	// Specifies a base-64 encoded string of custom data. The base-64 encoded string
+	// is decoded to a binary array that is saved as a file on the Virtual Machine.
+	// The maximum length of the binary array is 65535 bytes. For using cloud-init for
+	// your VM, see [Using cloud-init to customize a Linux VM during
+	// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 	CustomData pulumi.StringPtrInput `pulumi:"customData"`
-	// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+	// Specifies the Linux operating system settings on the virtual machine. For a
+	// list of supported Linux distributions, see [Linux on Azure-Endorsed
+	// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 	LinuxConfiguration LinuxConfigurationPtrInput `pulumi:"linuxConfiguration"`
 	// Optional property which must either be set to True or omitted.
 	RequireGuestProvisionSignal pulumi.BoolPtrInput `pulumi:"requireGuestProvisionSignal"`
-	// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Specifies set of certificates that should be installed onto the virtual
+	// machines in the scale set. To install certificates on a virtual machine it is
+	// recommended to use the [Azure Key Vault virtual machine extension for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	Secrets VaultSecretGroupArrayInput `pulumi:"secrets"`
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration WindowsConfigurationPtrInput `pulumi:"windowsConfiguration"`
@@ -13687,32 +15736,61 @@ func (o VirtualMachineScaleSetOSProfileOutput) ToVirtualMachineScaleSetOSProfile
 	}).(VirtualMachineScaleSetOSProfilePtrOutput)
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Specifies the password of the administrator account. <br><br> **Minimum-length
+// (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters
+// <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length
+// (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4
+// conditions below need to be fulfilled <br> Has lower characters <br>Has upper
+// characters <br> Has a digit <br> Has a special character (Regex match [\W_])
+// <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd",
+// "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
+// "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
+// reset the Remote Desktop service or its login password in a Windows
+// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+// <br><br> For resetting root password, see [Manage users, SSH, and check or
+// repair disks on Azure Linux VMs using the VMAccess
+// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o VirtualMachineScaleSetOSProfileOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+// Specifies the name of the administrator account. <br><br> **Windows-only
+// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 func (o VirtualMachineScaleSetOSProfileOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+// Specifies whether extension operations should be allowed on the virtual machine
+// scale set. This may only be set to False when no extensions are present on the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSProfileOutput) AllowExtensionOperations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *bool { return v.AllowExtensionOperations }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+// Specifies the computer name prefix for all of the virtual machines in the scale
+// set. Computer name prefixes must be 1 to 15 characters long.
 func (o VirtualMachineScaleSetOSProfileOutput) ComputerNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *string { return v.ComputerNamePrefix }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+// Specifies a base-64 encoded string of custom data. The base-64 encoded string
+// is decoded to a binary array that is saved as a file on the Virtual Machine.
+// The maximum length of the binary array is 65535 bytes. For using cloud-init for
+// your VM, see [Using cloud-init to customize a Linux VM during
+// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 func (o VirtualMachineScaleSetOSProfileOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *string { return v.CustomData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfileOutput) LinuxConfiguration() LinuxConfigurationPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *LinuxConfiguration { return v.LinuxConfiguration }).(LinuxConfigurationPtrOutput)
 }
@@ -13722,7 +15800,12 @@ func (o VirtualMachineScaleSetOSProfileOutput) RequireGuestProvisionSignal() pul
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) *bool { return v.RequireGuestProvisionSignal }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Specifies set of certificates that should be installed onto the virtual
+// machines in the scale set. To install certificates on a virtual machine it is
+// recommended to use the [Azure Key Vault virtual machine extension for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfileOutput) Secrets() VaultSecretGroupArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfile) []VaultSecretGroup { return v.Secrets }).(VaultSecretGroupArrayOutput)
 }
@@ -13756,7 +15839,20 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) Elem() VirtualMachineScaleSetO
 	}).(VirtualMachineScaleSetOSProfileOutput)
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+// Specifies the password of the administrator account. <br><br> **Minimum-length
+// (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters
+// <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length
+// (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4
+// conditions below need to be fulfilled <br> Has lower characters <br>Has upper
+// characters <br> Has a digit <br> Has a special character (Regex match [\W_])
+// <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd",
+// "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
+// "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
+// reset the Remote Desktop service or its login password in a Windows
+// VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+// <br><br> For resetting root password, see [Manage users, SSH, and check or
+// repair disks on Azure Linux VMs using the VMAccess
+// Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o VirtualMachineScaleSetOSProfilePtrOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *string {
 		if v == nil {
@@ -13766,7 +15862,14 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) AdminPassword() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+// Specifies the name of the administrator account. <br><br> **Windows-only
+// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 func (o VirtualMachineScaleSetOSProfilePtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *string {
 		if v == nil {
@@ -13776,7 +15879,9 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) AdminUsername() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+// Specifies whether extension operations should be allowed on the virtual machine
+// scale set. This may only be set to False when no extensions are present on the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSProfilePtrOutput) AllowExtensionOperations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *bool {
 		if v == nil {
@@ -13786,7 +15891,8 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) AllowExtensionOperations() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+// Specifies the computer name prefix for all of the virtual machines in the scale
+// set. Computer name prefixes must be 1 to 15 characters long.
 func (o VirtualMachineScaleSetOSProfilePtrOutput) ComputerNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *string {
 		if v == nil {
@@ -13796,7 +15902,11 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) ComputerNamePrefix() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+// Specifies a base-64 encoded string of custom data. The base-64 encoded string
+// is decoded to a binary array that is saved as a file on the Virtual Machine.
+// The maximum length of the binary array is 65535 bytes. For using cloud-init for
+// your VM, see [Using cloud-init to customize a Linux VM during
+// creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
 func (o VirtualMachineScaleSetOSProfilePtrOutput) CustomData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *string {
 		if v == nil {
@@ -13806,7 +15916,9 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) CustomData() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfilePtrOutput) LinuxConfiguration() LinuxConfigurationPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) *LinuxConfiguration {
 		if v == nil {
@@ -13826,7 +15938,12 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) RequireGuestProvisionSignal() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Specifies set of certificates that should be installed onto the virtual
+// machines in the scale set. To install certificates on a virtual machine it is
+// recommended to use the [Azure Key Vault virtual machine extension for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfilePtrOutput) Secrets() VaultSecretGroupArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfile) []VaultSecretGroup {
 		if v == nil {
@@ -13848,21 +15965,34 @@ func (o VirtualMachineScaleSetOSProfilePtrOutput) WindowsConfiguration() Windows
 
 // Describes a virtual machine scale set OS profile.
 type VirtualMachineScaleSetOSProfileResponse struct {
-	// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
-	AdminPassword *string `pulumi:"adminPassword"`
-	// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+	// Specifies the name of the administrator account. <br><br> **Windows-only
+	// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+	// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+	// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+	// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+	// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+	// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+	// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 	AdminUsername *string `pulumi:"adminUsername"`
-	// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+	// Specifies whether extension operations should be allowed on the virtual machine
+	// scale set. This may only be set to False when no extensions are present on the
+	// virtual machine scale set.
 	AllowExtensionOperations *bool `pulumi:"allowExtensionOperations"`
-	// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+	// Specifies the computer name prefix for all of the virtual machines in the scale
+	// set. Computer name prefixes must be 1 to 15 characters long.
 	ComputerNamePrefix *string `pulumi:"computerNamePrefix"`
-	// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
-	CustomData *string `pulumi:"customData"`
-	// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+	// Specifies the Linux operating system settings on the virtual machine. For a
+	// list of supported Linux distributions, see [Linux on Azure-Endorsed
+	// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 	LinuxConfiguration *LinuxConfigurationResponse `pulumi:"linuxConfiguration"`
 	// Optional property which must either be set to True or omitted.
 	RequireGuestProvisionSignal *bool `pulumi:"requireGuestProvisionSignal"`
-	// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// Specifies set of certificates that should be installed onto the virtual
+	// machines in the scale set. To install certificates on a virtual machine it is
+	// recommended to use the [Azure Key Vault virtual machine extension for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	Secrets []VaultSecretGroupResponse `pulumi:"secrets"`
 	// Specifies Windows operating system settings on the virtual machine.
 	WindowsConfiguration *WindowsConfigurationResponse `pulumi:"windowsConfiguration"`
@@ -13883,32 +16013,34 @@ func (o VirtualMachineScaleSetOSProfileResponseOutput) ToVirtualMachineScaleSetO
 	return o
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
-func (o VirtualMachineScaleSetOSProfileResponseOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+// Specifies the name of the administrator account. <br><br> **Windows-only
+// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 func (o VirtualMachineScaleSetOSProfileResponseOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *string { return v.AdminUsername }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+// Specifies whether extension operations should be allowed on the virtual machine
+// scale set. This may only be set to False when no extensions are present on the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSProfileResponseOutput) AllowExtensionOperations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *bool { return v.AllowExtensionOperations }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+// Specifies the computer name prefix for all of the virtual machines in the scale
+// set. Computer name prefixes must be 1 to 15 characters long.
 func (o VirtualMachineScaleSetOSProfileResponseOutput) ComputerNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *string { return v.ComputerNamePrefix }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
-func (o VirtualMachineScaleSetOSProfileResponseOutput) CustomData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *string { return v.CustomData }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfileResponseOutput) LinuxConfiguration() LinuxConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *LinuxConfigurationResponse {
 		return v.LinuxConfiguration
@@ -13920,7 +16052,12 @@ func (o VirtualMachineScaleSetOSProfileResponseOutput) RequireGuestProvisionSign
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) *bool { return v.RequireGuestProvisionSignal }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Specifies set of certificates that should be installed onto the virtual
+// machines in the scale set. To install certificates on a virtual machine it is
+// recommended to use the [Azure Key Vault virtual machine extension for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfileResponseOutput) Secrets() VaultSecretGroupResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetOSProfileResponse) []VaultSecretGroupResponse { return v.Secrets }).(VaultSecretGroupResponseArrayOutput)
 }
@@ -13956,17 +16093,14 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) Elem() VirtualMachineS
 	}).(VirtualMachineScaleSetOSProfileResponseOutput)
 }
 
-// Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
-func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) AdminPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AdminPassword
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+// Specifies the name of the administrator account. <br><br> **Windows-only
+// restriction:** Cannot end in "." <br><br> **Disallowed values:**
+// "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+// "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+// "console", "david", "guest", "john", "owner", "root", "server", "sql",
+// "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+// <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+// (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) AdminUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *string {
 		if v == nil {
@@ -13976,7 +16110,9 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) AdminUsername() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+// Specifies whether extension operations should be allowed on the virtual machine
+// scale set. This may only be set to False when no extensions are present on the
+// virtual machine scale set.
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) AllowExtensionOperations() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *bool {
 		if v == nil {
@@ -13986,7 +16122,8 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) AllowExtensionOperatio
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+// Specifies the computer name prefix for all of the virtual machines in the scale
+// set. Computer name prefixes must be 1 to 15 characters long.
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) ComputerNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *string {
 		if v == nil {
@@ -13996,17 +16133,9 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) ComputerNamePrefix() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
-func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) CustomData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomData
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+// Specifies the Linux operating system settings on the virtual machine. For a
+// list of supported Linux distributions, see [Linux on Azure-Endorsed
+// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) LinuxConfiguration() LinuxConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) *LinuxConfigurationResponse {
 		if v == nil {
@@ -14026,7 +16155,12 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) RequireGuestProvisionS
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// Specifies set of certificates that should be installed onto the virtual
+// machines in the scale set. To install certificates on a virtual machine it is
+// recommended to use the [Azure Key Vault virtual machine extension for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) Secrets() VaultSecretGroupResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetOSProfileResponse) []VaultSecretGroupResponse {
 		if v == nil {
@@ -14046,23 +16180,16 @@ func (o VirtualMachineScaleSetOSProfileResponsePtrOutput) WindowsConfiguration()
 	}).(WindowsConfigurationResponsePtrOutput)
 }
 
-// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
 type VirtualMachineScaleSetPublicIPAddressConfiguration struct {
-	// Specify what happens to the public IP when the VM is deleted
-	DeleteOption *string `pulumi:"deleteOption"`
-	// The dns settings to be applied on the publicIP addresses .
-	DnsSettings *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings `pulumi:"dnsSettings"`
-	// The idle timeout of the public IP address.
-	IdleTimeoutInMinutes *int `pulumi:"idleTimeoutInMinutes"`
-	// The list of IP tags associated with the public IP address.
-	IpTags []VirtualMachineScaleSetIpTag `pulumi:"ipTags"`
 	// The publicIP address configuration name.
 	Name string `pulumi:"name"`
-	// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
-	// The PublicIPPrefix from which to allocate publicIP addresses.
-	PublicIPPrefix *SubResource `pulumi:"publicIPPrefix"`
-	// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+	// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+	// configuration
+	Properties *VirtualMachineScaleSetPublicIPAddressConfigurationProperties `pulumi:"properties"`
+	// Describes the public IP Sku. It can only be set with OrchestrationMode as
+	// Flexible.
 	Sku *PublicIPAddressSku `pulumi:"sku"`
 }
 
@@ -14077,23 +16204,16 @@ type VirtualMachineScaleSetPublicIPAddressConfigurationInput interface {
 	ToVirtualMachineScaleSetPublicIPAddressConfigurationOutputWithContext(context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationOutput
 }
 
-// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
 type VirtualMachineScaleSetPublicIPAddressConfigurationArgs struct {
-	// Specify what happens to the public IP when the VM is deleted
-	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
-	// The dns settings to be applied on the publicIP addresses .
-	DnsSettings VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrInput `pulumi:"dnsSettings"`
-	// The idle timeout of the public IP address.
-	IdleTimeoutInMinutes pulumi.IntPtrInput `pulumi:"idleTimeoutInMinutes"`
-	// The list of IP tags associated with the public IP address.
-	IpTags VirtualMachineScaleSetIpTagArrayInput `pulumi:"ipTags"`
 	// The publicIP address configuration name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-	PublicIPAddressVersion pulumi.StringPtrInput `pulumi:"publicIPAddressVersion"`
-	// The PublicIPPrefix from which to allocate publicIP addresses.
-	PublicIPPrefix SubResourcePtrInput `pulumi:"publicIPPrefix"`
-	// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+	// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+	// configuration
+	Properties VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrInput `pulumi:"properties"`
+	// Describes the public IP Sku. It can only be set with OrchestrationMode as
+	// Flexible.
 	Sku PublicIPAddressSkuPtrInput `pulumi:"sku"`
 }
 
@@ -14150,7 +16270,8 @@ func (i *virtualMachineScaleSetPublicIPAddressConfigurationPtrType) ToVirtualMac
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput)
 }
 
-// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
 type VirtualMachineScaleSetPublicIPAddressConfigurationOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineScaleSetPublicIPAddressConfigurationOutput) ElementType() reflect.Type {
@@ -14175,46 +16296,21 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) ToVirtualMachi
 	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput)
 }
 
-// Specify what happens to the public IP when the VM is deleted
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) DeleteOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
-}
-
-// The dns settings to be applied on the publicIP addresses .
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
-		return v.DnsSettings
-	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput)
-}
-
-// The idle timeout of the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *int { return v.IdleTimeoutInMinutes }).(pulumi.IntPtrOutput)
-}
-
-// The list of IP tags associated with the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) IpTags() VirtualMachineScaleSetIpTagArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) []VirtualMachineScaleSetIpTag {
-		return v.IpTags
-	}).(VirtualMachineScaleSetIpTagArrayOutput)
-}
-
 // The publicIP address configuration name.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) Properties() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *VirtualMachineScaleSetPublicIPAddressConfigurationProperties {
+		return v.Properties
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput)
 }
 
-// The PublicIPPrefix from which to allocate publicIP addresses.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) PublicIPPrefix() SubResourcePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *SubResource { return v.PublicIPPrefix }).(SubResourcePtrOutput)
-}
-
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationOutput) Sku() PublicIPAddressSkuPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfiguration) *PublicIPAddressSku { return v.Sku }).(PublicIPAddressSkuPtrOutput)
 }
@@ -14243,46 +16339,6 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) Elem() Virt
 	}).(VirtualMachineScaleSetPublicIPAddressConfigurationOutput)
 }
 
-// Specify what happens to the public IP when the VM is deleted
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) DeleteOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeleteOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// The dns settings to be applied on the publicIP addresses .
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
-		if v == nil {
-			return nil
-		}
-		return v.DnsSettings
-	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput)
-}
-
-// The idle timeout of the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IdleTimeoutInMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// The list of IP tags associated with the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) IpTags() VirtualMachineScaleSetIpTagArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) []VirtualMachineScaleSetIpTag {
-		if v == nil {
-			return nil
-		}
-		return v.IpTags
-	}).(VirtualMachineScaleSetIpTagArrayOutput)
-}
-
 // The publicIP address configuration name.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *string {
@@ -14293,27 +16349,19 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) Name() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *string {
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) Properties() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *VirtualMachineScaleSetPublicIPAddressConfigurationProperties {
 		if v == nil {
 			return nil
 		}
-		return v.PublicIPAddressVersion
-	}).(pulumi.StringPtrOutput)
+		return v.Properties
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput)
 }
 
-// The PublicIPPrefix from which to allocate publicIP addresses.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) PublicIPPrefix() SubResourcePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *SubResource {
-		if v == nil {
-			return nil
-		}
-		return v.PublicIPPrefix
-	}).(SubResourcePtrOutput)
-}
-
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) Sku() PublicIPAddressSkuPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfiguration) *PublicIPAddressSku {
 		if v == nil {
@@ -14325,9 +16373,14 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationPtrOutput) Sku() Publi
 
 // Describes a virtual machines scale sets network configuration's DNS settings.
 type VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings struct {
-	// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+	// The Domain name label.The concatenation of the domain name label and vm index
+	// will be the domain name labels of the PublicIPAddress resources that will be
+	// created
 	DomainNameLabel string `pulumi:"domainNameLabel"`
-	// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+	// The Domain name label scope.The concatenation of the hashed domain name label
+	// that generated according to the policy from domain name label scope and vm
+	// index will be the domain name labels of the PublicIPAddress resources that will
+	// be created
 	DomainNameLabelScope *string `pulumi:"domainNameLabelScope"`
 }
 
@@ -14344,9 +16397,14 @@ type VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsInput interfac
 
 // Describes a virtual machines scale sets network configuration's DNS settings.
 type VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsArgs struct {
-	// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+	// The Domain name label.The concatenation of the domain name label and vm index
+	// will be the domain name labels of the PublicIPAddress resources that will be
+	// created
 	DomainNameLabel pulumi.StringInput `pulumi:"domainNameLabel"`
-	// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+	// The Domain name label scope.The concatenation of the hashed domain name label
+	// that generated according to the policy from domain name label scope and vm
+	// index will be the domain name labels of the PublicIPAddress resources that will
+	// be created
 	DomainNameLabelScope pulumi.StringPtrInput `pulumi:"domainNameLabelScope"`
 }
 
@@ -14428,12 +16486,17 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsOutput) ToV
 	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput)
 }
 
-// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label.The concatenation of the domain name label and vm index
+// will be the domain name labels of the PublicIPAddress resources that will be
+// created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsOutput) DomainNameLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings) string { return v.DomainNameLabel }).(pulumi.StringOutput)
 }
 
-// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label scope.The concatenation of the hashed domain name label
+// that generated according to the policy from domain name label scope and vm
+// index will be the domain name labels of the PublicIPAddress resources that will
+// be created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsOutput) DomainNameLabelScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings) *string {
 		return v.DomainNameLabelScope
@@ -14464,7 +16527,9 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput) 
 	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsOutput)
 }
 
-// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label.The concatenation of the domain name label and vm index
+// will be the domain name labels of the PublicIPAddress resources that will be
+// created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput) DomainNameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings) *string {
 		if v == nil {
@@ -14474,7 +16539,10 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label scope.The concatenation of the hashed domain name label
+// that generated according to the policy from domain name label scope and vm
+// index will be the domain name labels of the PublicIPAddress resources that will
+// be created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput) DomainNameLabelScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings) *string {
 		if v == nil {
@@ -14486,9 +16554,14 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput) 
 
 // Describes a virtual machines scale sets network configuration's DNS settings.
 type VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse struct {
-	// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+	// The Domain name label.The concatenation of the domain name label and vm index
+	// will be the domain name labels of the PublicIPAddress resources that will be
+	// created
 	DomainNameLabel string `pulumi:"domainNameLabel"`
-	// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+	// The Domain name label scope.The concatenation of the hashed domain name label
+	// that generated according to the policy from domain name label scope and vm
+	// index will be the domain name labels of the PublicIPAddress resources that will
+	// be created
 	DomainNameLabelScope *string `pulumi:"domainNameLabelScope"`
 }
 
@@ -14507,14 +16580,19 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponseOut
 	return o
 }
 
-// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label.The concatenation of the domain name label and vm index
+// will be the domain name labels of the PublicIPAddress resources that will be
+// created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponseOutput) DomainNameLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse) string {
 		return v.DomainNameLabel
 	}).(pulumi.StringOutput)
 }
 
-// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label scope.The concatenation of the hashed domain name label
+// that generated according to the policy from domain name label scope and vm
+// index will be the domain name labels of the PublicIPAddress resources that will
+// be created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponseOutput) DomainNameLabelScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse) *string {
 		return v.DomainNameLabelScope
@@ -14545,7 +16623,9 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtr
 	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponseOutput)
 }
 
-// The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label.The concatenation of the domain name label and vm index
+// will be the domain name labels of the PublicIPAddress resources that will be
+// created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput) DomainNameLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse) *string {
 		if v == nil {
@@ -14555,7 +16635,10 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+// The Domain name label scope.The concatenation of the hashed domain name label
+// that generated according to the policy from domain name label scope and vm
+// index will be the domain name labels of the PublicIPAddress resources that will
+// be created
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput) DomainNameLabelScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse) *string {
 		if v == nil {
@@ -14565,8 +16648,265 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
-type VirtualMachineScaleSetPublicIPAddressConfigurationResponse struct {
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+type VirtualMachineScaleSetPublicIPAddressConfigurationProperties struct {
+	// Specify what happens to the public IP when the VM is deleted
+	DeleteOption *string `pulumi:"deleteOption"`
+	// The dns settings to be applied on the publicIP addresses .
+	DnsSettings *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings `pulumi:"dnsSettings"`
+	// The idle timeout of the public IP address.
+	IdleTimeoutInMinutes *int `pulumi:"idleTimeoutInMinutes"`
+	// The list of IP tags associated with the public IP address.
+	IpTags []VirtualMachineScaleSetIpTag `pulumi:"ipTags"`
+	// Available from Api-Version 2019-07-01 onwards, it represents whether the
+	// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+	// values are: 'IPv4' and 'IPv6'.
+	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
+	// The PublicIPPrefix from which to allocate publicIP addresses.
+	PublicIPPrefix *SubResource `pulumi:"publicIPPrefix"`
+}
+
+// VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesInput is an input type that accepts VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs and VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesInput` via:
+//
+//	VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs{...}
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput
+	ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutputWithContext(context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput
+}
+
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs struct {
+	// Specify what happens to the public IP when the VM is deleted
+	DeleteOption pulumi.StringPtrInput `pulumi:"deleteOption"`
+	// The dns settings to be applied on the publicIP addresses .
+	DnsSettings VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrInput `pulumi:"dnsSettings"`
+	// The idle timeout of the public IP address.
+	IdleTimeoutInMinutes pulumi.IntPtrInput `pulumi:"idleTimeoutInMinutes"`
+	// The list of IP tags associated with the public IP address.
+	IpTags VirtualMachineScaleSetIpTagArrayInput `pulumi:"ipTags"`
+	// Available from Api-Version 2019-07-01 onwards, it represents whether the
+	// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+	// values are: 'IPv4' and 'IPv6'.
+	PublicIPAddressVersion pulumi.StringPtrInput `pulumi:"publicIPAddressVersion"`
+	// The PublicIPPrefix from which to allocate publicIP addresses.
+	PublicIPPrefix SubResourcePtrInput `pulumi:"publicIPPrefix"`
+}
+
+func (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetPublicIPAddressConfigurationProperties)(nil)).Elem()
+}
+
+func (i VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput {
+	return i.ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput)
+}
+
+func (i VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput).ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrInput is an input type that accepts VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs, VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtr and VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrInput` via:
+//
+//	        VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput
+	ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput
+}
+
+type virtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrType VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs
+
+func VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtr(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrInput {
+	return (*virtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrType)(v)
+}
+
+func (*virtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetPublicIPAddressConfigurationProperties)(nil)).Elem()
+}
+
+func (i *virtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrType) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return i.ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrType) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput)
+}
+
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetPublicIPAddressConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return o.ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *VirtualMachineScaleSetPublicIPAddressConfigurationProperties {
+		return &v
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput)
+}
+
+// Specify what happens to the public IP when the VM is deleted
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
+}
+
+// The dns settings to be applied on the publicIP addresses .
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *int {
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The list of IP tags associated with the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) IpTags() VirtualMachineScaleSetIpTagArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) []VirtualMachineScaleSetIpTag {
+		return v.IpTags
+	}).(VirtualMachineScaleSetIpTagArrayOutput)
+}
+
+// Available from Api-Version 2019-07-01 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *string {
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PublicIPPrefix from which to allocate publicIP addresses.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput) PublicIPPrefix() SubResourcePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *SubResource {
+		return v.PublicIPPrefix
+	}).(SubResourcePtrOutput)
+}
+
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetPublicIPAddressConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) Elem() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) VirtualMachineScaleSetPublicIPAddressConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetPublicIPAddressConfigurationProperties
+		return ret
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput)
+}
+
+// Specify what happens to the public IP when the VM is deleted
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dns settings to be applied on the publicIP addresses .
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The list of IP tags associated with the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) IpTags() VirtualMachineScaleSetIpTagArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) []VirtualMachineScaleSetIpTag {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(VirtualMachineScaleSetIpTagArrayOutput)
+}
+
+// Available from Api-Version 2019-07-01 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PublicIPPrefix from which to allocate publicIP addresses.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput) PublicIPPrefix() SubResourcePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationProperties) *SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPPrefix
+	}).(SubResourcePtrOutput)
+}
+
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse struct {
 	// Specify what happens to the public IP when the VM is deleted
 	DeleteOption *string `pulumi:"deleteOption"`
 	// The dns settings to be applied on the publicIP addresses .
@@ -14575,17 +16915,175 @@ type VirtualMachineScaleSetPublicIPAddressConfigurationResponse struct {
 	IdleTimeoutInMinutes *int `pulumi:"idleTimeoutInMinutes"`
 	// The list of IP tags associated with the public IP address.
 	IpTags []VirtualMachineScaleSetIpTagResponse `pulumi:"ipTags"`
-	// The publicIP address configuration name.
-	Name string `pulumi:"name"`
-	// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
+	// Available from Api-Version 2019-07-01 onwards, it represents whether the
+	// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+	// values are: 'IPv4' and 'IPv6'.
 	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
 	// The PublicIPPrefix from which to allocate publicIP addresses.
 	PublicIPPrefix *SubResourceResponse `pulumi:"publicIPPrefix"`
-	// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+}
+
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// Specify what happens to the public IP when the VM is deleted
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *string {
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dns settings to be applied on the publicIP addresses .
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *int {
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The list of IP tags associated with the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) IpTags() VirtualMachineScaleSetIpTagResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) []VirtualMachineScaleSetIpTagResponse {
+		return v.IpTags
+	}).(VirtualMachineScaleSetIpTagResponseArrayOutput)
+}
+
+// Available from Api-Version 2019-07-01 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *string {
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PublicIPPrefix from which to allocate publicIP addresses.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *SubResourceResponse {
+		return v.PublicIPPrefix
+	}).(SubResourceResponsePtrOutput)
+}
+
+type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) ToVirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) Elem() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse
+		return ret
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput)
+}
+
+// Specify what happens to the public IP when the VM is deleted
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The dns settings to be applied on the publicIP addresses .
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The list of IP tags associated with the public IP address.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) IpTags() VirtualMachineScaleSetIpTagResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) []VirtualMachineScaleSetIpTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(VirtualMachineScaleSetIpTagResponseArrayOutput)
+}
+
+// Available from Api-Version 2019-07-01 onwards, it represents whether the
+// specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+// values are: 'IPv4' and 'IPv6'.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PublicIPPrefix from which to allocate publicIP addresses.
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPPrefix
+	}).(SubResourceResponsePtrOutput)
+}
+
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+type VirtualMachineScaleSetPublicIPAddressConfigurationResponse struct {
+	// The publicIP address configuration name.
+	Name string `pulumi:"name"`
+	// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+	// configuration
+	Properties *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse `pulumi:"properties"`
+	// Describes the public IP Sku. It can only be set with OrchestrationMode as
+	// Flexible.
 	Sku *PublicIPAddressSkuResponse `pulumi:"sku"`
 }
 
-// Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
 type VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) ElementType() reflect.Type {
@@ -14600,50 +17098,21 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) ToVirt
 	return o
 }
 
-// Specify what happens to the public IP when the VM is deleted
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) DeleteOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
-}
-
-// The dns settings to be applied on the publicIP addresses .
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
-		return v.DnsSettings
-	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput)
-}
-
-// The idle timeout of the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *int { return v.IdleTimeoutInMinutes }).(pulumi.IntPtrOutput)
-}
-
-// The list of IP tags associated with the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) IpTags() VirtualMachineScaleSetIpTagResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) []VirtualMachineScaleSetIpTagResponse {
-		return v.IpTags
-	}).(VirtualMachineScaleSetIpTagResponseArrayOutput)
-}
-
 // The publicIP address configuration name.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *string {
-		return v.PublicIPAddressVersion
-	}).(pulumi.StringPtrOutput)
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) Properties() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse {
+		return v.Properties
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput)
 }
 
-// The PublicIPPrefix from which to allocate publicIP addresses.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *SubResourceResponse {
-		return v.PublicIPPrefix
-	}).(SubResourceResponsePtrOutput)
-}
-
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput) Sku() PublicIPAddressSkuResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *PublicIPAddressSkuResponse {
 		return v.Sku
@@ -14674,46 +17143,6 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) Ele
 	}).(VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput)
 }
 
-// Specify what happens to the public IP when the VM is deleted
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) DeleteOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DeleteOption
-	}).(pulumi.StringPtrOutput)
-}
-
-// The dns settings to be applied on the publicIP addresses .
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) DnsSettings() VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.DnsSettings
-	}).(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput)
-}
-
-// The idle timeout of the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.IdleTimeoutInMinutes
-	}).(pulumi.IntPtrOutput)
-}
-
-// The list of IP tags associated with the public IP address.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) IpTags() VirtualMachineScaleSetIpTagResponseArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) []VirtualMachineScaleSetIpTagResponse {
-		if v == nil {
-			return nil
-		}
-		return v.IpTags
-	}).(VirtualMachineScaleSetIpTagResponseArrayOutput)
-}
-
 // The publicIP address configuration name.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *string {
@@ -14724,27 +17153,19 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) Nam
 	}).(pulumi.StringPtrOutput)
 }
 
-// Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *string {
+// Describes a virtual machines scale set IP Configuration's PublicIPAddress
+// configuration
+func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) Properties() VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse {
 		if v == nil {
 			return nil
 		}
-		return v.PublicIPAddressVersion
-	}).(pulumi.StringPtrOutput)
+		return v.Properties
+	}).(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput)
 }
 
-// The PublicIPPrefix from which to allocate publicIP addresses.
-func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *SubResourceResponse {
-		if v == nil {
-			return nil
-		}
-		return v.PublicIPPrefix
-	}).(SubResourceResponsePtrOutput)
-}
-
-// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+// Describes the public IP Sku. It can only be set with OrchestrationMode as
+// Flexible.
 func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) Sku() PublicIPAddressSkuResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetPublicIPAddressConfigurationResponse) *PublicIPAddressSkuResponse {
 		if v == nil {
@@ -14756,12 +17177,22 @@ func (o VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput) Sku
 
 // Describes a virtual machine scale set storage profile.
 type VirtualMachineScaleSetStorageProfile struct {
-	// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	DataDisks          []VirtualMachineScaleSetDataDisk `pulumi:"dataDisks"`
-	DiskControllerType []string                         `pulumi:"diskControllerType"`
-	// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+	// Specifies the parameters that are used to add data disks to the virtual
+	// machines in the scale set. For more information about disks, see [About disks
+	// and VHDs for Azure virtual
+	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	DataDisks []VirtualMachineScaleSetDataDisk `pulumi:"dataDisks"`
+	// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+	DiskControllerType *string `pulumi:"diskControllerType"`
+	// Specifies information about the image to use. You can specify information about
+	// platform images, marketplace images, or virtual machine images. This element is
+	// required when you want to use a platform image, marketplace image, or virtual
+	// machine image, but is not used in other creation operations.
 	ImageReference *ImageReference `pulumi:"imageReference"`
-	// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// Specifies information about the operating system disk used by the virtual
+	// machines in the scale set. For more information about disks, see [About disks
+	// and VHDs for Azure virtual
+	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	OsDisk *VirtualMachineScaleSetOSDisk `pulumi:"osDisk"`
 }
 
@@ -14778,12 +17209,22 @@ type VirtualMachineScaleSetStorageProfileInput interface {
 
 // Describes a virtual machine scale set storage profile.
 type VirtualMachineScaleSetStorageProfileArgs struct {
-	// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	DataDisks          VirtualMachineScaleSetDataDiskArrayInput `pulumi:"dataDisks"`
-	DiskControllerType pulumi.StringArrayInput                  `pulumi:"diskControllerType"`
-	// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+	// Specifies the parameters that are used to add data disks to the virtual
+	// machines in the scale set. For more information about disks, see [About disks
+	// and VHDs for Azure virtual
+	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	DataDisks VirtualMachineScaleSetDataDiskArrayInput `pulumi:"dataDisks"`
+	// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+	DiskControllerType pulumi.StringPtrInput `pulumi:"diskControllerType"`
+	// Specifies information about the image to use. You can specify information about
+	// platform images, marketplace images, or virtual machine images. This element is
+	// required when you want to use a platform image, marketplace image, or virtual
+	// machine image, but is not used in other creation operations.
 	ImageReference ImageReferencePtrInput `pulumi:"imageReference"`
-	// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// Specifies information about the operating system disk used by the virtual
+	// machines in the scale set. For more information about disks, see [About disks
+	// and VHDs for Azure virtual
+	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	OsDisk VirtualMachineScaleSetOSDiskPtrInput `pulumi:"osDisk"`
 }
 
@@ -14865,21 +17306,31 @@ func (o VirtualMachineScaleSetStorageProfileOutput) ToVirtualMachineScaleSetStor
 	}).(VirtualMachineScaleSetStorageProfilePtrOutput)
 }
 
-// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies the parameters that are used to add data disks to the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileOutput) DataDisks() VirtualMachineScaleSetDataDiskArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) []VirtualMachineScaleSetDataDisk { return v.DataDisks }).(VirtualMachineScaleSetDataDiskArrayOutput)
 }
 
-func (o VirtualMachineScaleSetStorageProfileOutput) DiskControllerType() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) []string { return v.DiskControllerType }).(pulumi.StringArrayOutput)
+// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+func (o VirtualMachineScaleSetStorageProfileOutput) DiskControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) *string { return v.DiskControllerType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations.
 func (o VirtualMachineScaleSetStorageProfileOutput) ImageReference() ImageReferencePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) *ImageReference { return v.ImageReference }).(ImageReferencePtrOutput)
 }
 
-// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies information about the operating system disk used by the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileOutput) OsDisk() VirtualMachineScaleSetOSDiskPtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfile) *VirtualMachineScaleSetOSDisk { return v.OsDisk }).(VirtualMachineScaleSetOSDiskPtrOutput)
 }
@@ -14908,7 +17359,10 @@ func (o VirtualMachineScaleSetStorageProfilePtrOutput) Elem() VirtualMachineScal
 	}).(VirtualMachineScaleSetStorageProfileOutput)
 }
 
-// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies the parameters that are used to add data disks to the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfilePtrOutput) DataDisks() VirtualMachineScaleSetDataDiskArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) []VirtualMachineScaleSetDataDisk {
 		if v == nil {
@@ -14918,16 +17372,20 @@ func (o VirtualMachineScaleSetStorageProfilePtrOutput) DataDisks() VirtualMachin
 	}).(VirtualMachineScaleSetDataDiskArrayOutput)
 }
 
-func (o VirtualMachineScaleSetStorageProfilePtrOutput) DiskControllerType() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) []string {
+// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+func (o VirtualMachineScaleSetStorageProfilePtrOutput) DiskControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DiskControllerType
-	}).(pulumi.StringArrayOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations.
 func (o VirtualMachineScaleSetStorageProfilePtrOutput) ImageReference() ImageReferencePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) *ImageReference {
 		if v == nil {
@@ -14937,7 +17395,10 @@ func (o VirtualMachineScaleSetStorageProfilePtrOutput) ImageReference() ImageRef
 	}).(ImageReferencePtrOutput)
 }
 
-// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies information about the operating system disk used by the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfilePtrOutput) OsDisk() VirtualMachineScaleSetOSDiskPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfile) *VirtualMachineScaleSetOSDisk {
 		if v == nil {
@@ -14949,12 +17410,22 @@ func (o VirtualMachineScaleSetStorageProfilePtrOutput) OsDisk() VirtualMachineSc
 
 // Describes a virtual machine scale set storage profile.
 type VirtualMachineScaleSetStorageProfileResponse struct {
-	// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-	DataDisks          []VirtualMachineScaleSetDataDiskResponse `pulumi:"dataDisks"`
-	DiskControllerType []string                                 `pulumi:"diskControllerType"`
-	// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+	// Specifies the parameters that are used to add data disks to the virtual
+	// machines in the scale set. For more information about disks, see [About disks
+	// and VHDs for Azure virtual
+	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	DataDisks []VirtualMachineScaleSetDataDiskResponse `pulumi:"dataDisks"`
+	// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+	DiskControllerType *string `pulumi:"diskControllerType"`
+	// Specifies information about the image to use. You can specify information about
+	// platform images, marketplace images, or virtual machine images. This element is
+	// required when you want to use a platform image, marketplace image, or virtual
+	// machine image, but is not used in other creation operations.
 	ImageReference *ImageReferenceResponse `pulumi:"imageReference"`
-	// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+	// Specifies information about the operating system disk used by the virtual
+	// machines in the scale set. For more information about disks, see [About disks
+	// and VHDs for Azure virtual
+	// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 	OsDisk *VirtualMachineScaleSetOSDiskResponse `pulumi:"osDisk"`
 }
 
@@ -14973,23 +17444,33 @@ func (o VirtualMachineScaleSetStorageProfileResponseOutput) ToVirtualMachineScal
 	return o
 }
 
-// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies the parameters that are used to add data disks to the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponseOutput) DataDisks() VirtualMachineScaleSetDataDiskResponseArrayOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) []VirtualMachineScaleSetDataDiskResponse {
 		return v.DataDisks
 	}).(VirtualMachineScaleSetDataDiskResponseArrayOutput)
 }
 
-func (o VirtualMachineScaleSetStorageProfileResponseOutput) DiskControllerType() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) []string { return v.DiskControllerType }).(pulumi.StringArrayOutput)
+// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+func (o VirtualMachineScaleSetStorageProfileResponseOutput) DiskControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) *string { return v.DiskControllerType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations.
 func (o VirtualMachineScaleSetStorageProfileResponseOutput) ImageReference() ImageReferenceResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) *ImageReferenceResponse { return v.ImageReference }).(ImageReferenceResponsePtrOutput)
 }
 
-// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies information about the operating system disk used by the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponseOutput) OsDisk() VirtualMachineScaleSetOSDiskResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineScaleSetStorageProfileResponse) *VirtualMachineScaleSetOSDiskResponse {
 		return v.OsDisk
@@ -15020,7 +17501,10 @@ func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) Elem() VirtualMac
 	}).(VirtualMachineScaleSetStorageProfileResponseOutput)
 }
 
-// Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies the parameters that are used to add data disks to the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) DataDisks() VirtualMachineScaleSetDataDiskResponseArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) []VirtualMachineScaleSetDataDiskResponse {
 		if v == nil {
@@ -15030,16 +17514,20 @@ func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) DataDisks() Virtu
 	}).(VirtualMachineScaleSetDataDiskResponseArrayOutput)
 }
 
-func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) DiskControllerType() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) []string {
+// Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) DiskControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) *string {
 		if v == nil {
 			return nil
 		}
 		return v.DiskControllerType
-	}).(pulumi.StringArrayOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+// Specifies information about the image to use. You can specify information about
+// platform images, marketplace images, or virtual machine images. This element is
+// required when you want to use a platform image, marketplace image, or virtual
+// machine image, but is not used in other creation operations.
 func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) ImageReference() ImageReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) *ImageReferenceResponse {
 		if v == nil {
@@ -15049,7 +17537,10 @@ func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) ImageReference() 
 	}).(ImageReferenceResponsePtrOutput)
 }
 
-// Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+// Specifies information about the operating system disk used by the virtual
+// machines in the scale set. For more information about disks, see [About disks
+// and VHDs for Azure virtual
+// machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) OsDisk() VirtualMachineScaleSetOSDiskResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSetStorageProfileResponse) *VirtualMachineScaleSetOSDiskResponse {
 		if v == nil {
@@ -15057,376 +17548,6 @@ func (o VirtualMachineScaleSetStorageProfileResponsePtrOutput) OsDisk() VirtualM
 		}
 		return v.OsDisk
 	}).(VirtualMachineScaleSetOSDiskResponsePtrOutput)
-}
-
-// Describes a virtual machine scale set virtual machine profile.
-type VirtualMachineScaleSetVMProfile struct {
-	// Specifies the gallery applications that should be made available to the VM/VMSS
-	ApplicationProfile *ApplicationProfile `pulumi:"applicationProfile"`
-	// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-	BillingProfile *BillingProfile `pulumi:"billingProfile"`
-	// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-	CapacityReservation *CapacityReservationProfile `pulumi:"capacityReservation"`
-	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-	DiagnosticsProfile *DiagnosticsProfile `pulumi:"diagnosticsProfile"`
-	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-	EvictionPolicy *string `pulumi:"evictionPolicy"`
-	// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-	ExtensionProfile *VirtualMachineScaleSetExtensionProfile `pulumi:"extensionProfile"`
-	// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-	HardwareProfile *VirtualMachineScaleSetHardwareProfile `pulumi:"hardwareProfile"`
-	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-	LicenseType *string `pulumi:"licenseType"`
-	// Specifies properties of the network interfaces of the virtual machines in the scale set.
-	NetworkProfile *VirtualMachineScaleSetNetworkProfile `pulumi:"networkProfile"`
-	// Specifies the operating system settings for the virtual machines in the scale set.
-	OsProfile *VirtualMachineScaleSetOSProfile `pulumi:"osProfile"`
-	// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-	Priority *string `pulumi:"priority"`
-	// Specifies Scheduled Event related configurations.
-	ScheduledEventsProfile *ScheduledEventsProfile `pulumi:"scheduledEventsProfile"`
-	// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-	SecurityPostureReference *SecurityPostureReference `pulumi:"securityPostureReference"`
-	// Specifies the Security related profile settings for the virtual machines in the scale set.
-	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
-	// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-	ServiceArtifactReference *ServiceArtifactReference `pulumi:"serviceArtifactReference"`
-	// Specifies the storage settings for the virtual machine disks.
-	StorageProfile *VirtualMachineScaleSetStorageProfile `pulumi:"storageProfile"`
-	// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-	UserData *string `pulumi:"userData"`
-}
-
-// VirtualMachineScaleSetVMProfileInput is an input type that accepts VirtualMachineScaleSetVMProfileArgs and VirtualMachineScaleSetVMProfileOutput values.
-// You can construct a concrete instance of `VirtualMachineScaleSetVMProfileInput` via:
-//
-//	VirtualMachineScaleSetVMProfileArgs{...}
-type VirtualMachineScaleSetVMProfileInput interface {
-	pulumi.Input
-
-	ToVirtualMachineScaleSetVMProfileOutput() VirtualMachineScaleSetVMProfileOutput
-	ToVirtualMachineScaleSetVMProfileOutputWithContext(context.Context) VirtualMachineScaleSetVMProfileOutput
-}
-
-// Describes a virtual machine scale set virtual machine profile.
-type VirtualMachineScaleSetVMProfileArgs struct {
-	// Specifies the gallery applications that should be made available to the VM/VMSS
-	ApplicationProfile ApplicationProfilePtrInput `pulumi:"applicationProfile"`
-	// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-	BillingProfile BillingProfilePtrInput `pulumi:"billingProfile"`
-	// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-	CapacityReservation CapacityReservationProfilePtrInput `pulumi:"capacityReservation"`
-	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-	DiagnosticsProfile DiagnosticsProfilePtrInput `pulumi:"diagnosticsProfile"`
-	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-	EvictionPolicy pulumi.StringPtrInput `pulumi:"evictionPolicy"`
-	// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-	ExtensionProfile VirtualMachineScaleSetExtensionProfilePtrInput `pulumi:"extensionProfile"`
-	// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-	HardwareProfile VirtualMachineScaleSetHardwareProfilePtrInput `pulumi:"hardwareProfile"`
-	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
-	// Specifies properties of the network interfaces of the virtual machines in the scale set.
-	NetworkProfile VirtualMachineScaleSetNetworkProfilePtrInput `pulumi:"networkProfile"`
-	// Specifies the operating system settings for the virtual machines in the scale set.
-	OsProfile VirtualMachineScaleSetOSProfilePtrInput `pulumi:"osProfile"`
-	// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-	Priority pulumi.StringPtrInput `pulumi:"priority"`
-	// Specifies Scheduled Event related configurations.
-	ScheduledEventsProfile ScheduledEventsProfilePtrInput `pulumi:"scheduledEventsProfile"`
-	// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-	SecurityPostureReference SecurityPostureReferencePtrInput `pulumi:"securityPostureReference"`
-	// Specifies the Security related profile settings for the virtual machines in the scale set.
-	SecurityProfile SecurityProfilePtrInput `pulumi:"securityProfile"`
-	// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-	ServiceArtifactReference ServiceArtifactReferencePtrInput `pulumi:"serviceArtifactReference"`
-	// Specifies the storage settings for the virtual machine disks.
-	StorageProfile VirtualMachineScaleSetStorageProfilePtrInput `pulumi:"storageProfile"`
-	// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-	UserData pulumi.StringPtrInput `pulumi:"userData"`
-}
-
-func (VirtualMachineScaleSetVMProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineScaleSetVMProfile)(nil)).Elem()
-}
-
-func (i VirtualMachineScaleSetVMProfileArgs) ToVirtualMachineScaleSetVMProfileOutput() VirtualMachineScaleSetVMProfileOutput {
-	return i.ToVirtualMachineScaleSetVMProfileOutputWithContext(context.Background())
-}
-
-func (i VirtualMachineScaleSetVMProfileArgs) ToVirtualMachineScaleSetVMProfileOutputWithContext(ctx context.Context) VirtualMachineScaleSetVMProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScaleSetVMProfileOutput)
-}
-
-// Describes a virtual machine scale set virtual machine profile.
-type VirtualMachineScaleSetVMProfileOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineScaleSetVMProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineScaleSetVMProfile)(nil)).Elem()
-}
-
-func (o VirtualMachineScaleSetVMProfileOutput) ToVirtualMachineScaleSetVMProfileOutput() VirtualMachineScaleSetVMProfileOutput {
-	return o
-}
-
-func (o VirtualMachineScaleSetVMProfileOutput) ToVirtualMachineScaleSetVMProfileOutputWithContext(ctx context.Context) VirtualMachineScaleSetVMProfileOutput {
-	return o
-}
-
-// Specifies the gallery applications that should be made available to the VM/VMSS
-func (o VirtualMachineScaleSetVMProfileOutput) ApplicationProfile() ApplicationProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *ApplicationProfile { return v.ApplicationProfile }).(ApplicationProfilePtrOutput)
-}
-
-// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-func (o VirtualMachineScaleSetVMProfileOutput) BillingProfile() BillingProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *BillingProfile { return v.BillingProfile }).(BillingProfilePtrOutput)
-}
-
-// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-func (o VirtualMachineScaleSetVMProfileOutput) CapacityReservation() CapacityReservationProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *CapacityReservationProfile { return v.CapacityReservation }).(CapacityReservationProfilePtrOutput)
-}
-
-// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-func (o VirtualMachineScaleSetVMProfileOutput) DiagnosticsProfile() DiagnosticsProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *DiagnosticsProfile { return v.DiagnosticsProfile }).(DiagnosticsProfilePtrOutput)
-}
-
-// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-func (o VirtualMachineScaleSetVMProfileOutput) EvictionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *string { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
-}
-
-// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileOutput) ExtensionProfile() VirtualMachineScaleSetExtensionProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *VirtualMachineScaleSetExtensionProfile {
-		return v.ExtensionProfile
-	}).(VirtualMachineScaleSetExtensionProfilePtrOutput)
-}
-
-// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-func (o VirtualMachineScaleSetVMProfileOutput) HardwareProfile() VirtualMachineScaleSetHardwareProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *VirtualMachineScaleSetHardwareProfile {
-		return v.HardwareProfile
-	}).(VirtualMachineScaleSetHardwareProfilePtrOutput)
-}
-
-// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-func (o VirtualMachineScaleSetVMProfileOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
-}
-
-// Specifies properties of the network interfaces of the virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileOutput) NetworkProfile() VirtualMachineScaleSetNetworkProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *VirtualMachineScaleSetNetworkProfile { return v.NetworkProfile }).(VirtualMachineScaleSetNetworkProfilePtrOutput)
-}
-
-// Specifies the operating system settings for the virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileOutput) OsProfile() VirtualMachineScaleSetOSProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *VirtualMachineScaleSetOSProfile { return v.OsProfile }).(VirtualMachineScaleSetOSProfilePtrOutput)
-}
-
-// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-func (o VirtualMachineScaleSetVMProfileOutput) Priority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *string { return v.Priority }).(pulumi.StringPtrOutput)
-}
-
-// Specifies Scheduled Event related configurations.
-func (o VirtualMachineScaleSetVMProfileOutput) ScheduledEventsProfile() ScheduledEventsProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *ScheduledEventsProfile { return v.ScheduledEventsProfile }).(ScheduledEventsProfilePtrOutput)
-}
-
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-func (o VirtualMachineScaleSetVMProfileOutput) SecurityPostureReference() SecurityPostureReferencePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *SecurityPostureReference { return v.SecurityPostureReference }).(SecurityPostureReferencePtrOutput)
-}
-
-// Specifies the Security related profile settings for the virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileOutput) SecurityProfile() SecurityProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *SecurityProfile { return v.SecurityProfile }).(SecurityProfilePtrOutput)
-}
-
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-func (o VirtualMachineScaleSetVMProfileOutput) ServiceArtifactReference() ServiceArtifactReferencePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *ServiceArtifactReference { return v.ServiceArtifactReference }).(ServiceArtifactReferencePtrOutput)
-}
-
-// Specifies the storage settings for the virtual machine disks.
-func (o VirtualMachineScaleSetVMProfileOutput) StorageProfile() VirtualMachineScaleSetStorageProfilePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *VirtualMachineScaleSetStorageProfile { return v.StorageProfile }).(VirtualMachineScaleSetStorageProfilePtrOutput)
-}
-
-// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-func (o VirtualMachineScaleSetVMProfileOutput) UserData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfile) *string { return v.UserData }).(pulumi.StringPtrOutput)
-}
-
-// Describes a virtual machine scale set virtual machine profile.
-type VirtualMachineScaleSetVMProfileResponse struct {
-	// Specifies the gallery applications that should be made available to the VM/VMSS
-	ApplicationProfile *ApplicationProfileResponse `pulumi:"applicationProfile"`
-	// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-	BillingProfile *BillingProfileResponse `pulumi:"billingProfile"`
-	// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-	CapacityReservation *CapacityReservationProfileResponse `pulumi:"capacityReservation"`
-	// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-	DiagnosticsProfile *DiagnosticsProfileResponse `pulumi:"diagnosticsProfile"`
-	// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-	EvictionPolicy *string `pulumi:"evictionPolicy"`
-	// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-	ExtensionProfile *VirtualMachineScaleSetExtensionProfileResponse `pulumi:"extensionProfile"`
-	// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-	HardwareProfile *VirtualMachineScaleSetHardwareProfileResponse `pulumi:"hardwareProfile"`
-	// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-	LicenseType *string `pulumi:"licenseType"`
-	// Specifies properties of the network interfaces of the virtual machines in the scale set.
-	NetworkProfile *VirtualMachineScaleSetNetworkProfileResponse `pulumi:"networkProfile"`
-	// Specifies the operating system settings for the virtual machines in the scale set.
-	OsProfile *VirtualMachineScaleSetOSProfileResponse `pulumi:"osProfile"`
-	// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-	Priority *string `pulumi:"priority"`
-	// Specifies Scheduled Event related configurations.
-	ScheduledEventsProfile *ScheduledEventsProfileResponse `pulumi:"scheduledEventsProfile"`
-	// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-	SecurityPostureReference *SecurityPostureReferenceResponse `pulumi:"securityPostureReference"`
-	// Specifies the Security related profile settings for the virtual machines in the scale set.
-	SecurityProfile *SecurityProfileResponse `pulumi:"securityProfile"`
-	// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-	ServiceArtifactReference *ServiceArtifactReferenceResponse `pulumi:"serviceArtifactReference"`
-	// Specifies the storage settings for the virtual machine disks.
-	StorageProfile *VirtualMachineScaleSetStorageProfileResponse `pulumi:"storageProfile"`
-	// Specifies the time in which this VM profile for the Virtual Machine Scale Set was created. Minimum API version for this property is 2023-09-01. This value will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile with minimum api-version 2023-09-01.
-	TimeCreated string `pulumi:"timeCreated"`
-	// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-	UserData *string `pulumi:"userData"`
-}
-
-// Describes a virtual machine scale set virtual machine profile.
-type VirtualMachineScaleSetVMProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachineScaleSetVMProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachineScaleSetVMProfileResponse)(nil)).Elem()
-}
-
-func (o VirtualMachineScaleSetVMProfileResponseOutput) ToVirtualMachineScaleSetVMProfileResponseOutput() VirtualMachineScaleSetVMProfileResponseOutput {
-	return o
-}
-
-func (o VirtualMachineScaleSetVMProfileResponseOutput) ToVirtualMachineScaleSetVMProfileResponseOutputWithContext(ctx context.Context) VirtualMachineScaleSetVMProfileResponseOutput {
-	return o
-}
-
-// Specifies the gallery applications that should be made available to the VM/VMSS
-func (o VirtualMachineScaleSetVMProfileResponseOutput) ApplicationProfile() ApplicationProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *ApplicationProfileResponse {
-		return v.ApplicationProfile
-	}).(ApplicationProfileResponsePtrOutput)
-}
-
-// Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) BillingProfile() BillingProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *BillingProfileResponse { return v.BillingProfile }).(BillingProfileResponsePtrOutput)
-}
-
-// Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) CapacityReservation() CapacityReservationProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *CapacityReservationProfileResponse {
-		return v.CapacityReservation
-	}).(CapacityReservationProfileResponsePtrOutput)
-}
-
-// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) DiagnosticsProfile() DiagnosticsProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *DiagnosticsProfileResponse {
-		return v.DiagnosticsProfile
-	}).(DiagnosticsProfileResponsePtrOutput)
-}
-
-// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) EvictionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *string { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
-}
-
-// Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) ExtensionProfile() VirtualMachineScaleSetExtensionProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *VirtualMachineScaleSetExtensionProfileResponse {
-		return v.ExtensionProfile
-	}).(VirtualMachineScaleSetExtensionProfileResponsePtrOutput)
-}
-
-// Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) HardwareProfile() VirtualMachineScaleSetHardwareProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *VirtualMachineScaleSetHardwareProfileResponse {
-		return v.HardwareProfile
-	}).(VirtualMachineScaleSetHardwareProfileResponsePtrOutput)
-}
-
-// Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-func (o VirtualMachineScaleSetVMProfileResponseOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
-}
-
-// Specifies properties of the network interfaces of the virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) NetworkProfile() VirtualMachineScaleSetNetworkProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *VirtualMachineScaleSetNetworkProfileResponse {
-		return v.NetworkProfile
-	}).(VirtualMachineScaleSetNetworkProfileResponsePtrOutput)
-}
-
-// Specifies the operating system settings for the virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) OsProfile() VirtualMachineScaleSetOSProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *VirtualMachineScaleSetOSProfileResponse {
-		return v.OsProfile
-	}).(VirtualMachineScaleSetOSProfileResponsePtrOutput)
-}
-
-// Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) Priority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *string { return v.Priority }).(pulumi.StringPtrOutput)
-}
-
-// Specifies Scheduled Event related configurations.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) ScheduledEventsProfile() ScheduledEventsProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *ScheduledEventsProfileResponse {
-		return v.ScheduledEventsProfile
-	}).(ScheduledEventsProfileResponsePtrOutput)
-}
-
-// Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-func (o VirtualMachineScaleSetVMProfileResponseOutput) SecurityPostureReference() SecurityPostureReferenceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *SecurityPostureReferenceResponse {
-		return v.SecurityPostureReference
-	}).(SecurityPostureReferenceResponsePtrOutput)
-}
-
-// Specifies the Security related profile settings for the virtual machines in the scale set.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *SecurityProfileResponse { return v.SecurityProfile }).(SecurityProfileResponsePtrOutput)
-}
-
-// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-func (o VirtualMachineScaleSetVMProfileResponseOutput) ServiceArtifactReference() ServiceArtifactReferenceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *ServiceArtifactReferenceResponse {
-		return v.ServiceArtifactReference
-	}).(ServiceArtifactReferenceResponsePtrOutput)
-}
-
-// Specifies the storage settings for the virtual machine disks.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) StorageProfile() VirtualMachineScaleSetStorageProfileResponsePtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *VirtualMachineScaleSetStorageProfileResponse {
-		return v.StorageProfile
-	}).(VirtualMachineScaleSetStorageProfileResponsePtrOutput)
-}
-
-// Specifies the time in which this VM profile for the Virtual Machine Scale Set was created. Minimum API version for this property is 2023-09-01. This value will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile with minimum api-version 2023-09-01.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) TimeCreated() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) string { return v.TimeCreated }).(pulumi.StringOutput)
-}
-
-// UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-func (o VirtualMachineScaleSetVMProfileResponseOutput) UserData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineScaleSetVMProfileResponse) *string { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
 // Specifications about a VM Size. This will also contain the corresponding rank and weight in future.
@@ -15777,10 +17898,23 @@ func (o WinRMConfigurationResponsePtrOutput) Listeners() WinRMListenerResponseAr
 
 // Describes Protocol and thumbprint of Windows Remote Management listener
 type WinRMListener struct {
-	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// This is the URL of a certificate that has been uploaded to Key Vault as a
+	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+	// key
+	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// In this case, your certificate needs to be the Base64 encoding of the following
+	// JSON Object which is encoded in UTF-8: <br><br> {<br>
+	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+	// machine it is recommended to use the [Azure Key Vault virtual machine extension
+	// for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
-	// Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
-	Protocol *ProtocolTypes `pulumi:"protocol"`
+	// Specifies the protocol of WinRM listener. Possible values are: **http,**
+	// **https.**
+	Protocol *string `pulumi:"protocol"`
 }
 
 // WinRMListenerInput is an input type that accepts WinRMListenerArgs and WinRMListenerOutput values.
@@ -15796,10 +17930,23 @@ type WinRMListenerInput interface {
 
 // Describes Protocol and thumbprint of Windows Remote Management listener
 type WinRMListenerArgs struct {
-	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// This is the URL of a certificate that has been uploaded to Key Vault as a
+	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+	// key
+	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// In this case, your certificate needs to be the Base64 encoding of the following
+	// JSON Object which is encoded in UTF-8: <br><br> {<br>
+	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+	// machine it is recommended to use the [Azure Key Vault virtual machine extension
+	// for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl pulumi.StringPtrInput `pulumi:"certificateUrl"`
-	// Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
-	Protocol ProtocolTypesPtrInput `pulumi:"protocol"`
+	// Specifies the protocol of WinRM listener. Possible values are: **http,**
+	// **https.**
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
 func (WinRMListenerArgs) ElementType() reflect.Type {
@@ -15854,14 +18001,27 @@ func (o WinRMListenerOutput) ToWinRMListenerOutputWithContext(ctx context.Contex
 	return o
 }
 
-// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// This is the URL of a certificate that has been uploaded to Key Vault as a
+// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+// key
+// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// In this case, your certificate needs to be the Base64 encoding of the following
+// JSON Object which is encoded in UTF-8: <br><br> {<br>
+// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+// machine it is recommended to use the [Azure Key Vault virtual machine extension
+// for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o WinRMListenerOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WinRMListener) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
-func (o WinRMListenerOutput) Protocol() ProtocolTypesPtrOutput {
-	return o.ApplyT(func(v WinRMListener) *ProtocolTypes { return v.Protocol }).(ProtocolTypesPtrOutput)
+// Specifies the protocol of WinRM listener. Possible values are: **http,**
+// **https.**
+func (o WinRMListenerOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WinRMListener) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 type WinRMListenerArrayOutput struct{ *pulumi.OutputState }
@@ -15886,9 +18046,22 @@ func (o WinRMListenerArrayOutput) Index(i pulumi.IntInput) WinRMListenerOutput {
 
 // Describes Protocol and thumbprint of Windows Remote Management listener
 type WinRMListenerResponse struct {
-	// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+	// This is the URL of a certificate that has been uploaded to Key Vault as a
+	// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+	// key
+	// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+	// In this case, your certificate needs to be the Base64 encoding of the following
+	// JSON Object which is encoded in UTF-8: <br><br> {<br>
+	// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+	// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+	// machine it is recommended to use the [Azure Key Vault virtual machine extension
+	// for
+	// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+	// or the [Azure Key Vault virtual machine extension for
+	// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 	CertificateUrl *string `pulumi:"certificateUrl"`
-	// Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
+	// Specifies the protocol of WinRM listener. Possible values are: **http,**
+	// **https.**
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -15907,12 +18080,25 @@ func (o WinRMListenerResponseOutput) ToWinRMListenerResponseOutputWithContext(ct
 	return o
 }
 
-// This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+// This is the URL of a certificate that has been uploaded to Key Vault as a
+// secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+// key
+// vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+// In this case, your certificate needs to be the Base64 encoding of the following
+// JSON Object which is encoded in UTF-8: <br><br> {<br>
+// "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+// "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+// machine it is recommended to use the [Azure Key Vault virtual machine extension
+// for
+// Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+// or the [Azure Key Vault virtual machine extension for
+// Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o WinRMListenerResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WinRMListenerResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
+// Specifies the protocol of WinRM listener. Possible values are: **http,**
+// **https.**
 func (o WinRMListenerResponseOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WinRMListenerResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -15939,19 +18125,31 @@ func (o WinRMListenerResponseArrayOutput) Index(i pulumi.IntInput) WinRMListener
 
 // Specifies Windows operating system settings on the virtual machine.
 type WindowsConfiguration struct {
-	// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+	// Specifies additional base-64 encoded XML formatted information that can be
+	// included in the Unattend.xml file, which is used by Windows Setup.
 	AdditionalUnattendContent []AdditionalUnattendContent `pulumi:"additionalUnattendContent"`
-	// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+	// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+	// Default value is true. For virtual machine scale sets, this property can be
+	// updated and updates will take effect on OS reprovisioning.
 	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
-	// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+	// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+	// machine. Default value is false.
 	EnableVMAgentPlatformUpdates *bool `pulumi:"enableVMAgentPlatformUpdates"`
 	// [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
 	PatchSettings *PatchSettings `pulumi:"patchSettings"`
-	// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+	// Indicates whether virtual machine agent should be provisioned on the virtual
+	// machine. When this property is not specified in the request body, it is set to
+	// true by default. This will ensure that VM Agent is installed on the VM so that
+	// extensions can be added to the VM later.
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
-	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+	// Possible values can be
+	// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+	// value from time zones returned by
+	// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 	TimeZone *string `pulumi:"timeZone"`
-	// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+	// Specifies the Windows Remote Management listeners. This enables remote Windows
+	// PowerShell.
 	WinRM *WinRMConfiguration `pulumi:"winRM"`
 }
 
@@ -15968,19 +18166,31 @@ type WindowsConfigurationInput interface {
 
 // Specifies Windows operating system settings on the virtual machine.
 type WindowsConfigurationArgs struct {
-	// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+	// Specifies additional base-64 encoded XML formatted information that can be
+	// included in the Unattend.xml file, which is used by Windows Setup.
 	AdditionalUnattendContent AdditionalUnattendContentArrayInput `pulumi:"additionalUnattendContent"`
-	// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+	// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+	// Default value is true. For virtual machine scale sets, this property can be
+	// updated and updates will take effect on OS reprovisioning.
 	EnableAutomaticUpdates pulumi.BoolPtrInput `pulumi:"enableAutomaticUpdates"`
-	// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+	// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+	// machine. Default value is false.
 	EnableVMAgentPlatformUpdates pulumi.BoolPtrInput `pulumi:"enableVMAgentPlatformUpdates"`
 	// [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
 	PatchSettings PatchSettingsPtrInput `pulumi:"patchSettings"`
-	// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+	// Indicates whether virtual machine agent should be provisioned on the virtual
+	// machine. When this property is not specified in the request body, it is set to
+	// true by default. This will ensure that VM Agent is installed on the VM so that
+	// extensions can be added to the VM later.
 	ProvisionVMAgent pulumi.BoolPtrInput `pulumi:"provisionVMAgent"`
-	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+	// Possible values can be
+	// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+	// value from time zones returned by
+	// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
-	// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+	// Specifies the Windows Remote Management listeners. This enables remote Windows
+	// PowerShell.
 	WinRM WinRMConfigurationPtrInput `pulumi:"winRM"`
 }
 
@@ -16062,17 +18272,21 @@ func (o WindowsConfigurationOutput) ToWindowsConfigurationPtrOutputWithContext(c
 	}).(WindowsConfigurationPtrOutput)
 }
 
-// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+// Specifies additional base-64 encoded XML formatted information that can be
+// included in the Unattend.xml file, which is used by Windows Setup.
 func (o WindowsConfigurationOutput) AdditionalUnattendContent() AdditionalUnattendContentArrayOutput {
 	return o.ApplyT(func(v WindowsConfiguration) []AdditionalUnattendContent { return v.AdditionalUnattendContent }).(AdditionalUnattendContentArrayOutput)
 }
 
-// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+// Default value is true. For virtual machine scale sets, this property can be
+// updated and updates will take effect on OS reprovisioning.
 func (o WindowsConfigurationOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *bool { return v.EnableAutomaticUpdates }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+// machine. Default value is false.
 func (o WindowsConfigurationOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *bool { return v.EnableVMAgentPlatformUpdates }).(pulumi.BoolPtrOutput)
 }
@@ -16082,17 +18296,25 @@ func (o WindowsConfigurationOutput) PatchSettings() PatchSettingsPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *PatchSettings { return v.PatchSettings }).(PatchSettingsPtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, it is set to
+// true by default. This will ensure that VM Agent is installed on the VM so that
+// extensions can be added to the VM later.
 func (o WindowsConfigurationOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+// Possible values can be
+// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// value from time zones returned by
+// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+// Specifies the Windows Remote Management listeners. This enables remote Windows
+// PowerShell.
 func (o WindowsConfigurationOutput) WinRM() WinRMConfigurationPtrOutput {
 	return o.ApplyT(func(v WindowsConfiguration) *WinRMConfiguration { return v.WinRM }).(WinRMConfigurationPtrOutput)
 }
@@ -16121,7 +18343,8 @@ func (o WindowsConfigurationPtrOutput) Elem() WindowsConfigurationOutput {
 	}).(WindowsConfigurationOutput)
 }
 
-// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+// Specifies additional base-64 encoded XML formatted information that can be
+// included in the Unattend.xml file, which is used by Windows Setup.
 func (o WindowsConfigurationPtrOutput) AdditionalUnattendContent() AdditionalUnattendContentArrayOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) []AdditionalUnattendContent {
 		if v == nil {
@@ -16131,7 +18354,9 @@ func (o WindowsConfigurationPtrOutput) AdditionalUnattendContent() AdditionalUna
 	}).(AdditionalUnattendContentArrayOutput)
 }
 
-// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+// Default value is true. For virtual machine scale sets, this property can be
+// updated and updates will take effect on OS reprovisioning.
 func (o WindowsConfigurationPtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) *bool {
 		if v == nil {
@@ -16141,7 +18366,8 @@ func (o WindowsConfigurationPtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+// machine. Default value is false.
 func (o WindowsConfigurationPtrOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) *bool {
 		if v == nil {
@@ -16161,7 +18387,10 @@ func (o WindowsConfigurationPtrOutput) PatchSettings() PatchSettingsPtrOutput {
 	}).(PatchSettingsPtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, it is set to
+// true by default. This will ensure that VM Agent is installed on the VM so that
+// extensions can be added to the VM later.
 func (o WindowsConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) *bool {
 		if v == nil {
@@ -16171,7 +18400,11 @@ func (o WindowsConfigurationPtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+// Possible values can be
+// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// value from time zones returned by
+// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) *string {
 		if v == nil {
@@ -16181,7 +18414,8 @@ func (o WindowsConfigurationPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+// Specifies the Windows Remote Management listeners. This enables remote Windows
+// PowerShell.
 func (o WindowsConfigurationPtrOutput) WinRM() WinRMConfigurationPtrOutput {
 	return o.ApplyT(func(v *WindowsConfiguration) *WinRMConfiguration {
 		if v == nil {
@@ -16193,19 +18427,31 @@ func (o WindowsConfigurationPtrOutput) WinRM() WinRMConfigurationPtrOutput {
 
 // Specifies Windows operating system settings on the virtual machine.
 type WindowsConfigurationResponse struct {
-	// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+	// Specifies additional base-64 encoded XML formatted information that can be
+	// included in the Unattend.xml file, which is used by Windows Setup.
 	AdditionalUnattendContent []AdditionalUnattendContentResponse `pulumi:"additionalUnattendContent"`
-	// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+	// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+	// Default value is true. For virtual machine scale sets, this property can be
+	// updated and updates will take effect on OS reprovisioning.
 	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
-	// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+	// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+	// machine. Default value is false.
 	EnableVMAgentPlatformUpdates *bool `pulumi:"enableVMAgentPlatformUpdates"`
 	// [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
 	PatchSettings *PatchSettingsResponse `pulumi:"patchSettings"`
-	// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+	// Indicates whether virtual machine agent should be provisioned on the virtual
+	// machine. When this property is not specified in the request body, it is set to
+	// true by default. This will ensure that VM Agent is installed on the VM so that
+	// extensions can be added to the VM later.
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
-	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+	// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+	// Possible values can be
+	// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+	// value from time zones returned by
+	// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 	TimeZone *string `pulumi:"timeZone"`
-	// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+	// Specifies the Windows Remote Management listeners. This enables remote Windows
+	// PowerShell.
 	WinRM *WinRMConfigurationResponse `pulumi:"winRM"`
 }
 
@@ -16224,19 +18470,23 @@ func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutput
 	return o
 }
 
-// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+// Specifies additional base-64 encoded XML formatted information that can be
+// included in the Unattend.xml file, which is used by Windows Setup.
 func (o WindowsConfigurationResponseOutput) AdditionalUnattendContent() AdditionalUnattendContentResponseArrayOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) []AdditionalUnattendContentResponse {
 		return v.AdditionalUnattendContent
 	}).(AdditionalUnattendContentResponseArrayOutput)
 }
 
-// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+// Default value is true. For virtual machine scale sets, this property can be
+// updated and updates will take effect on OS reprovisioning.
 func (o WindowsConfigurationResponseOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) *bool { return v.EnableAutomaticUpdates }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+// machine. Default value is false.
 func (o WindowsConfigurationResponseOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) *bool { return v.EnableVMAgentPlatformUpdates }).(pulumi.BoolPtrOutput)
 }
@@ -16246,17 +18496,25 @@ func (o WindowsConfigurationResponseOutput) PatchSettings() PatchSettingsRespons
 	return o.ApplyT(func(v WindowsConfigurationResponse) *PatchSettingsResponse { return v.PatchSettings }).(PatchSettingsResponsePtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, it is set to
+// true by default. This will ensure that VM Agent is installed on the VM so that
+// extensions can be added to the VM later.
 func (o WindowsConfigurationResponseOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) *bool { return v.ProvisionVMAgent }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+// Possible values can be
+// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// value from time zones returned by
+// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationResponseOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+// Specifies the Windows Remote Management listeners. This enables remote Windows
+// PowerShell.
 func (o WindowsConfigurationResponseOutput) WinRM() WinRMConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v WindowsConfigurationResponse) *WinRMConfigurationResponse { return v.WinRM }).(WinRMConfigurationResponsePtrOutput)
 }
@@ -16285,7 +18543,8 @@ func (o WindowsConfigurationResponsePtrOutput) Elem() WindowsConfigurationRespon
 	}).(WindowsConfigurationResponseOutput)
 }
 
-// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+// Specifies additional base-64 encoded XML formatted information that can be
+// included in the Unattend.xml file, which is used by Windows Setup.
 func (o WindowsConfigurationResponsePtrOutput) AdditionalUnattendContent() AdditionalUnattendContentResponseArrayOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) []AdditionalUnattendContentResponse {
 		if v == nil {
@@ -16295,7 +18554,9 @@ func (o WindowsConfigurationResponsePtrOutput) AdditionalUnattendContent() Addit
 	}).(AdditionalUnattendContentResponseArrayOutput)
 }
 
-// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+// Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+// Default value is true. For virtual machine scale sets, this property can be
+// updated and updates will take effect on OS reprovisioning.
 func (o WindowsConfigurationResponsePtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) *bool {
 		if v == nil {
@@ -16305,7 +18566,8 @@ func (o WindowsConfigurationResponsePtrOutput) EnableAutomaticUpdates() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+// Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+// machine. Default value is false.
 func (o WindowsConfigurationResponsePtrOutput) EnableVMAgentPlatformUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) *bool {
 		if v == nil {
@@ -16325,7 +18587,10 @@ func (o WindowsConfigurationResponsePtrOutput) PatchSettings() PatchSettingsResp
 	}).(PatchSettingsResponsePtrOutput)
 }
 
-// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+// Indicates whether virtual machine agent should be provisioned on the virtual
+// machine. When this property is not specified in the request body, it is set to
+// true by default. This will ensure that VM Agent is installed on the VM so that
+// extensions can be added to the VM later.
 func (o WindowsConfigurationResponsePtrOutput) ProvisionVMAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) *bool {
 		if v == nil {
@@ -16335,7 +18600,11 @@ func (o WindowsConfigurationResponsePtrOutput) ProvisionVMAgent() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+// Possible values can be
+// [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+// value from time zones returned by
+// [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
 func (o WindowsConfigurationResponsePtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) *string {
 		if v == nil {
@@ -16345,7 +18614,8 @@ func (o WindowsConfigurationResponsePtrOutput) TimeZone() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+// Specifies the Windows Remote Management listeners. This enables remote Windows
+// PowerShell.
 func (o WindowsConfigurationResponsePtrOutput) WinRM() WinRMConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *WindowsConfigurationResponse) *WinRMConfigurationResponse {
 		if v == nil {
@@ -16355,11 +18625,13 @@ func (o WindowsConfigurationResponsePtrOutput) WinRM() WinRMConfigurationRespons
 	}).(WinRMConfigurationResponsePtrOutput)
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Windows patch settings.
 type WindowsVMGuestPatchAutomaticByPlatformSettings struct {
 	// Enables customer to schedule patching without accidental upgrades
 	BypassPlatformSafetyChecksOnUserSchedule *bool `pulumi:"bypassPlatformSafetyChecksOnUserSchedule"`
-	// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+	// Specifies the reboot setting for all AutomaticByPlatform patch installation
+	// operations.
 	RebootSetting *string `pulumi:"rebootSetting"`
 }
 
@@ -16374,11 +18646,13 @@ type WindowsVMGuestPatchAutomaticByPlatformSettingsInput interface {
 	ToWindowsVMGuestPatchAutomaticByPlatformSettingsOutputWithContext(context.Context) WindowsVMGuestPatchAutomaticByPlatformSettingsOutput
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Windows patch settings.
 type WindowsVMGuestPatchAutomaticByPlatformSettingsArgs struct {
 	// Enables customer to schedule patching without accidental upgrades
 	BypassPlatformSafetyChecksOnUserSchedule pulumi.BoolPtrInput `pulumi:"bypassPlatformSafetyChecksOnUserSchedule"`
-	// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+	// Specifies the reboot setting for all AutomaticByPlatform patch installation
+	// operations.
 	RebootSetting pulumi.StringPtrInput `pulumi:"rebootSetting"`
 }
 
@@ -16435,7 +18709,8 @@ func (i *windowsVMGuestPatchAutomaticByPlatformSettingsPtrType) ToWindowsVMGuest
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput)
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Windows patch settings.
 type WindowsVMGuestPatchAutomaticByPlatformSettingsOutput struct{ *pulumi.OutputState }
 
 func (WindowsVMGuestPatchAutomaticByPlatformSettingsOutput) ElementType() reflect.Type {
@@ -16467,7 +18742,8 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsOutput) BypassPlatformSafe
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsVMGuestPatchAutomaticByPlatformSettings) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
 }
@@ -16506,7 +18782,8 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput) BypassPlatformS
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsVMGuestPatchAutomaticByPlatformSettings) *string {
 		if v == nil {
@@ -16516,15 +18793,18 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsPtrOutput) RebootSetting()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Windows patch settings.
 type WindowsVMGuestPatchAutomaticByPlatformSettingsResponse struct {
 	// Enables customer to schedule patching without accidental upgrades
 	BypassPlatformSafetyChecksOnUserSchedule *bool `pulumi:"bypassPlatformSafetyChecksOnUserSchedule"`
-	// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+	// Specifies the reboot setting for all AutomaticByPlatform patch installation
+	// operations.
 	RebootSetting *string `pulumi:"rebootSetting"`
 }
 
-// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+// Specifies additional settings to be applied when patch mode AutomaticByPlatform
+// is selected in Windows patch settings.
 type WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput) ElementType() reflect.Type {
@@ -16546,7 +18826,8 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput) BypassPlat
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsVMGuestPatchAutomaticByPlatformSettingsResponse) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
 }
@@ -16585,7 +18866,8 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) BypassP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+// Specifies the reboot setting for all AutomaticByPlatform patch installation
+// operations.
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsVMGuestPatchAutomaticByPlatformSettingsResponse) *string {
 		if v == nil {
@@ -16608,10 +18890,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationProfilePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationProfileResponseOutput{})
 	pulumi.RegisterOutputType(ApplicationProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(BillingProfileOutput{})
-	pulumi.RegisterOutputType(BillingProfilePtrOutput{})
-	pulumi.RegisterOutputType(BillingProfileResponseOutput{})
-	pulumi.RegisterOutputType(BillingProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(BaseVirtualMachineProfileOutput{})
+	pulumi.RegisterOutputType(BaseVirtualMachineProfileResponseOutput{})
 	pulumi.RegisterOutputType(BootDiagnosticsOutput{})
 	pulumi.RegisterOutputType(BootDiagnosticsPtrOutput{})
 	pulumi.RegisterOutputType(BootDiagnosticsResponseOutput{})
@@ -16642,10 +18922,6 @@ func init() {
 	pulumi.RegisterOutputType(ImageReferencePtrOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(InstanceViewStatusOutput{})
-	pulumi.RegisterOutputType(InstanceViewStatusArrayOutput{})
-	pulumi.RegisterOutputType(InstanceViewStatusResponseOutput{})
-	pulumi.RegisterOutputType(InstanceViewStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(KeyVaultSecretReferenceOutput{})
 	pulumi.RegisterOutputType(KeyVaultSecretReferencePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultSecretReferenceResponseOutput{})
@@ -16759,14 +19035,6 @@ func init() {
 	pulumi.RegisterOutputType(VirtualHardDiskPtrOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskResponseOutput{})
 	pulumi.RegisterOutputType(VirtualHardDiskResponsePtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionArrayOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionInstanceViewOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionInstanceViewPtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionInstanceViewResponseOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionInstanceViewResponsePtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionResponseOutput{})
-	pulumi.RegisterOutputType(VirtualMachineExtensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetDataDiskOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetDataDiskResponseOutput{})
@@ -16777,6 +19045,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionProfileResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetExtensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetHardwareProfileOutput{})
@@ -16785,6 +19057,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineScaleSetHardwareProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetIPConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetIpTagOutput{})
@@ -16801,6 +19077,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationDnsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetNetworkProfileOutput{})
@@ -16821,14 +19101,16 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetPublicIPAddressConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetStorageProfileOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetStorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetStorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineScaleSetStorageProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachineScaleSetVMProfileOutput{})
-	pulumi.RegisterOutputType(VirtualMachineScaleSetVMProfileResponseOutput{})
 	pulumi.RegisterOutputType(VmSizeProfileOutput{})
 	pulumi.RegisterOutputType(VmSizeProfileArrayOutput{})
 	pulumi.RegisterOutputType(VmSizeProfileResponseOutput{})

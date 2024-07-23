@@ -3543,6 +3543,87 @@ func (o PlacementKeyValuePairsResponseArrayOutput) Index(i pulumi.IntInput) Plac
 	}).(PlacementKeyValuePairsResponseOutput)
 }
 
+// Quota report record properties
+type QuotaReportResponse struct {
+	// Flag to indicate whether the quota is derived from default quota.
+	IsDerivedQuota *bool `pulumi:"isDerivedQuota"`
+	// Percentage of used size compared to total size.
+	PercentageUsed *float64 `pulumi:"percentageUsed"`
+	// Specifies the total size limit in kibibytes for the user/group quota.
+	QuotaLimitTotalInKiBs *float64 `pulumi:"quotaLimitTotalInKiBs"`
+	// Specifies the current usage in kibibytes for the user/group quota.
+	QuotaLimitUsedInKiBs *float64 `pulumi:"quotaLimitUsedInKiBs"`
+	// UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>
+	QuotaTarget *string `pulumi:"quotaTarget"`
+	// Type of quota
+	QuotaType *string `pulumi:"quotaType"`
+}
+
+// Quota report record properties
+type QuotaReportResponseOutput struct{ *pulumi.OutputState }
+
+func (QuotaReportResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuotaReportResponse)(nil)).Elem()
+}
+
+func (o QuotaReportResponseOutput) ToQuotaReportResponseOutput() QuotaReportResponseOutput {
+	return o
+}
+
+func (o QuotaReportResponseOutput) ToQuotaReportResponseOutputWithContext(ctx context.Context) QuotaReportResponseOutput {
+	return o
+}
+
+// Flag to indicate whether the quota is derived from default quota.
+func (o QuotaReportResponseOutput) IsDerivedQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QuotaReportResponse) *bool { return v.IsDerivedQuota }).(pulumi.BoolPtrOutput)
+}
+
+// Percentage of used size compared to total size.
+func (o QuotaReportResponseOutput) PercentageUsed() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QuotaReportResponse) *float64 { return v.PercentageUsed }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the total size limit in kibibytes for the user/group quota.
+func (o QuotaReportResponseOutput) QuotaLimitTotalInKiBs() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QuotaReportResponse) *float64 { return v.QuotaLimitTotalInKiBs }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the current usage in kibibytes for the user/group quota.
+func (o QuotaReportResponseOutput) QuotaLimitUsedInKiBs() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QuotaReportResponse) *float64 { return v.QuotaLimitUsedInKiBs }).(pulumi.Float64PtrOutput)
+}
+
+// UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>
+func (o QuotaReportResponseOutput) QuotaTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaReportResponse) *string { return v.QuotaTarget }).(pulumi.StringPtrOutput)
+}
+
+// Type of quota
+func (o QuotaReportResponseOutput) QuotaType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuotaReportResponse) *string { return v.QuotaType }).(pulumi.StringPtrOutput)
+}
+
+type QuotaReportResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (QuotaReportResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QuotaReportResponse)(nil)).Elem()
+}
+
+func (o QuotaReportResponseArrayOutput) ToQuotaReportResponseArrayOutput() QuotaReportResponseArrayOutput {
+	return o
+}
+
+func (o QuotaReportResponseArrayOutput) ToQuotaReportResponseArrayOutputWithContext(ctx context.Context) QuotaReportResponseArrayOutput {
+	return o
+}
+
+func (o QuotaReportResponseArrayOutput) Index(i pulumi.IntInput) QuotaReportResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaReportResponse {
+		return vs[0].([]QuotaReportResponse)[vs[1].(int)]
+	}).(QuotaReportResponseOutput)
+}
+
 // Replication properties
 type ReplicationObject struct {
 	// Indicates whether the local volume is the source or destination for the Volume Replication
@@ -7172,6 +7253,8 @@ func init() {
 	pulumi.RegisterOutputType(PlacementKeyValuePairsArrayOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsResponseOutput{})
 	pulumi.RegisterOutputType(PlacementKeyValuePairsResponseArrayOutput{})
+	pulumi.RegisterOutputType(QuotaReportResponseOutput{})
+	pulumi.RegisterOutputType(QuotaReportResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationObjectOutput{})
 	pulumi.RegisterOutputType(ReplicationObjectPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationObjectResponseOutput{})

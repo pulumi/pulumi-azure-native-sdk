@@ -50,7 +50,7 @@ type DatabaseAccount struct {
 	EnableAnalyticalStorage pulumi.BoolPtrOutput `pulumi:"enableAnalyticalStorage"`
 	// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
 	EnableAutomaticFailover pulumi.BoolPtrOutput `pulumi:"enableAutomaticFailover"`
-	// Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account
+	// Flag to indicate enabling/disabling of Burst Capacity feature on the account
 	EnableBurstCapacity pulumi.BoolPtrOutput `pulumi:"enableBurstCapacity"`
 	// Enables the cassandra connector on the Cosmos DB C* account
 	EnableCassandraConnector pulumi.BoolPtrOutput `pulumi:"enableCassandraConnector"`
@@ -322,7 +322,7 @@ type databaseAccountArgs struct {
 	EnableAnalyticalStorage *bool `pulumi:"enableAnalyticalStorage"`
 	// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
 	EnableAutomaticFailover *bool `pulumi:"enableAutomaticFailover"`
-	// Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account
+	// Flag to indicate enabling/disabling of Burst Capacity feature on the account
 	EnableBurstCapacity *bool `pulumi:"enableBurstCapacity"`
 	// Enables the cassandra connector on the Cosmos DB C* account
 	EnableCassandraConnector *bool `pulumi:"enableCassandraConnector"`
@@ -400,7 +400,7 @@ type DatabaseAccountArgs struct {
 	EnableAnalyticalStorage pulumi.BoolPtrInput
 	// Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account.
 	EnableAutomaticFailover pulumi.BoolPtrInput
-	// Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account
+	// Flag to indicate enabling/disabling of Burst Capacity feature on the account
 	EnableBurstCapacity pulumi.BoolPtrInput
 	// Enables the cassandra connector on the Cosmos DB C* account
 	EnableCassandraConnector pulumi.BoolPtrInput
@@ -566,7 +566,7 @@ func (o DatabaseAccountOutput) EnableAutomaticFailover() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.BoolPtrOutput { return v.EnableAutomaticFailover }).(pulumi.BoolPtrOutput)
 }
 
-// Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account
+// Flag to indicate enabling/disabling of Burst Capacity feature on the account
 func (o DatabaseAccountOutput) EnableBurstCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseAccount) pulumi.BoolPtrOutput { return v.EnableBurstCapacity }).(pulumi.BoolPtrOutput)
 }
