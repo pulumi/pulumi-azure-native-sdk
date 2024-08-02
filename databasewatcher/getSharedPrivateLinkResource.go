@@ -13,6 +13,8 @@ import (
 
 // Get a SharedPrivateLinkResource
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-07-19-preview.
 func LookupSharedPrivateLinkResource(ctx *pulumi.Context, args *LookupSharedPrivateLinkResourceArgs, opts ...pulumi.InvokeOption) (*LookupSharedPrivateLinkResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSharedPrivateLinkResourceResult

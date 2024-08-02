@@ -15,7 +15,7 @@ import (
 // Azure Health Bot resource definition
 // Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2020-12-08.
 //
-// Other available API versions: 2020-12-08-preview.
+// Other available API versions: 2020-12-08-preview, 2024-02-01.
 type Bot struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +74,9 @@ func NewBot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:healthbot/v20230501:Bot"),
+		},
+		{
+			Type: pulumi.String("azure-native:healthbot/v20240201:Bot"),
 		},
 	})
 	opts = append(opts, aliases)

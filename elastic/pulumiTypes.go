@@ -2643,7 +2643,7 @@ type OpenAIIntegrationProperties struct {
 	Key *string `pulumi:"key"`
 	// The API endpoint for Open AI resource
 	OpenAIResourceEndpoint *string `pulumi:"openAIResourceEndpoint"`
-	// The resource id of Open AI resource
+	// The resource name of Open AI resource
 	OpenAIResourceId *string `pulumi:"openAIResourceId"`
 }
 
@@ -2664,7 +2664,7 @@ type OpenAIIntegrationPropertiesArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The API endpoint for Open AI resource
 	OpenAIResourceEndpoint pulumi.StringPtrInput `pulumi:"openAIResourceEndpoint"`
-	// The resource id of Open AI resource
+	// The resource name of Open AI resource
 	OpenAIResourceId pulumi.StringPtrInput `pulumi:"openAIResourceId"`
 }
 
@@ -2756,7 +2756,7 @@ func (o OpenAIIntegrationPropertiesOutput) OpenAIResourceEndpoint() pulumi.Strin
 	return o.ApplyT(func(v OpenAIIntegrationProperties) *string { return v.OpenAIResourceEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of Open AI resource
+// The resource name of Open AI resource
 func (o OpenAIIntegrationPropertiesOutput) OpenAIResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenAIIntegrationProperties) *string { return v.OpenAIResourceId }).(pulumi.StringPtrOutput)
 }
@@ -2805,7 +2805,7 @@ func (o OpenAIIntegrationPropertiesPtrOutput) OpenAIResourceEndpoint() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource id of Open AI resource
+// The resource name of Open AI resource
 func (o OpenAIIntegrationPropertiesPtrOutput) OpenAIResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenAIIntegrationProperties) *string {
 		if v == nil {
@@ -2823,7 +2823,7 @@ type OpenAIIntegrationPropertiesResponse struct {
 	LastRefreshAt string `pulumi:"lastRefreshAt"`
 	// The API endpoint for Open AI resource
 	OpenAIResourceEndpoint *string `pulumi:"openAIResourceEndpoint"`
-	// The resource id of Open AI resource
+	// The resource name of Open AI resource
 	OpenAIResourceId *string `pulumi:"openAIResourceId"`
 }
 
@@ -2857,7 +2857,7 @@ func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceEndpoint() pulu
 	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) *string { return v.OpenAIResourceEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of Open AI resource
+// The resource name of Open AI resource
 func (o OpenAIIntegrationPropertiesResponseOutput) OpenAIResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenAIIntegrationPropertiesResponse) *string { return v.OpenAIResourceId }).(pulumi.StringPtrOutput)
 }

@@ -62,6 +62,9 @@ func NewSharedPrivateLinkResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databasewatcher:SharedPrivateLinkResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher/v20240719preview:SharedPrivateLinkResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

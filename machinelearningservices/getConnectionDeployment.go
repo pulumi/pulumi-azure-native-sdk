@@ -12,6 +12,8 @@ import (
 )
 
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-07-01-preview.
 func LookupConnectionDeployment(ctx *pulumi.Context, args *LookupConnectionDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupConnectionDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionDeploymentResult

@@ -15,7 +15,7 @@ import (
 // Represents a Configuration.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2017-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview.
+// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview.
 type Configuration struct {
 	pulumi.CustomResourceState
 
@@ -98,6 +98,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Configuration"),
 		},
 	})
 	opts = append(opts, aliases)

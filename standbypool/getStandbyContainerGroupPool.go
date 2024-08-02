@@ -13,6 +13,8 @@ import (
 
 // Get a StandbyContainerGroupPoolResource
 // Azure REST API version: 2023-12-01-preview.
+//
+// Other available API versions: 2024-03-01-preview.
 func LookupStandbyContainerGroupPool(ctx *pulumi.Context, args *LookupStandbyContainerGroupPoolArgs, opts ...pulumi.InvokeOption) (*LookupStandbyContainerGroupPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStandbyContainerGroupPoolResult

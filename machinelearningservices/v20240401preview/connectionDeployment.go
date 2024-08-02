@@ -48,6 +48,9 @@ func NewConnectionDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices:ConnectionDeployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ConnectionDeployment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

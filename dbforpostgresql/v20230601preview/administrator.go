@@ -61,6 +61,9 @@ func NewAdministrator(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:Administrator"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Administrator"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

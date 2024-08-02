@@ -14,6 +14,8 @@ import (
 
 // Azure OpenAI Content Filters resource.
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-07-01-preview.
 type ConnectionRaiPolicy struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewConnectionRaiPolicy(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:ConnectionRaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ConnectionRaiPolicy"),
 		},
 	})
 	opts = append(opts, aliases)

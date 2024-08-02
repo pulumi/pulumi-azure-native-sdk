@@ -86,6 +86,9 @@ func NewPolicySetDefinitionAtManagementGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:authorization/v20210601:PolicySetDefinitionAtManagementGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20240501:PolicySetDefinitionAtManagementGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

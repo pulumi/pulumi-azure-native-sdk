@@ -27736,6 +27736,529 @@ func (o EndpointDeploymentResourcePropertiesResponseOutput) VersionUpgradeOption
 	return o.ApplyT(func(v EndpointDeploymentResourcePropertiesResponse) *string { return v.VersionUpgradeOption }).(pulumi.StringPtrOutput)
 }
 
+type EndpointModelDeprecationPropertiesResponse struct {
+	// The datetime of deprecation of the fineTune Model.
+	FineTune *string `pulumi:"fineTune"`
+	// The datetime of deprecation of the inference Model.
+	Inference *string `pulumi:"inference"`
+}
+
+type EndpointModelDeprecationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelDeprecationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelDeprecationPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelDeprecationPropertiesResponseOutput) ToEndpointModelDeprecationPropertiesResponseOutput() EndpointModelDeprecationPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelDeprecationPropertiesResponseOutput) ToEndpointModelDeprecationPropertiesResponseOutputWithContext(ctx context.Context) EndpointModelDeprecationPropertiesResponseOutput {
+	return o
+}
+
+// The datetime of deprecation of the fineTune Model.
+func (o EndpointModelDeprecationPropertiesResponseOutput) FineTune() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelDeprecationPropertiesResponse) *string { return v.FineTune }).(pulumi.StringPtrOutput)
+}
+
+// The datetime of deprecation of the inference Model.
+func (o EndpointModelDeprecationPropertiesResponseOutput) Inference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelDeprecationPropertiesResponse) *string { return v.Inference }).(pulumi.StringPtrOutput)
+}
+
+type EndpointModelDeprecationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelDeprecationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointModelDeprecationPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelDeprecationPropertiesResponsePtrOutput) ToEndpointModelDeprecationPropertiesResponsePtrOutput() EndpointModelDeprecationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EndpointModelDeprecationPropertiesResponsePtrOutput) ToEndpointModelDeprecationPropertiesResponsePtrOutputWithContext(ctx context.Context) EndpointModelDeprecationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EndpointModelDeprecationPropertiesResponsePtrOutput) Elem() EndpointModelDeprecationPropertiesResponseOutput {
+	return o.ApplyT(func(v *EndpointModelDeprecationPropertiesResponse) EndpointModelDeprecationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointModelDeprecationPropertiesResponse
+		return ret
+	}).(EndpointModelDeprecationPropertiesResponseOutput)
+}
+
+// The datetime of deprecation of the fineTune Model.
+func (o EndpointModelDeprecationPropertiesResponsePtrOutput) FineTune() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointModelDeprecationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FineTune
+	}).(pulumi.StringPtrOutput)
+}
+
+// The datetime of deprecation of the inference Model.
+func (o EndpointModelDeprecationPropertiesResponsePtrOutput) Inference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointModelDeprecationPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Inference
+	}).(pulumi.StringPtrOutput)
+}
+
+// Endpoint Model properties.
+type EndpointModelPropertiesResponse struct {
+	// The capabilities.
+	Capabilities map[string]string                           `pulumi:"capabilities"`
+	Deprecation  *EndpointModelDeprecationPropertiesResponse `pulumi:"deprecation"`
+	// The capabilities for finetune models.
+	FinetuneCapabilities map[string]string `pulumi:"finetuneCapabilities"`
+	// Deployment model format.
+	Format *string `pulumi:"format"`
+	// If the model is default version.
+	IsDefaultVersion *bool `pulumi:"isDefaultVersion"`
+	// Model lifecycle status.
+	LifecycleStatus *string `pulumi:"lifecycleStatus"`
+	// The max capacity.
+	MaxCapacity *int `pulumi:"maxCapacity"`
+	// Deployment model name.
+	Name *string `pulumi:"name"`
+	// The list of Model Sku.
+	Skus []EndpointModelSkuPropertiesResponse `pulumi:"skus"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+	Version *string `pulumi:"version"`
+}
+
+// Endpoint Model properties.
+type EndpointModelPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelPropertiesResponseOutput) ToEndpointModelPropertiesResponseOutput() EndpointModelPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelPropertiesResponseOutput) ToEndpointModelPropertiesResponseOutputWithContext(ctx context.Context) EndpointModelPropertiesResponseOutput {
+	return o
+}
+
+// The capabilities.
+func (o EndpointModelPropertiesResponseOutput) Capabilities() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) map[string]string { return v.Capabilities }).(pulumi.StringMapOutput)
+}
+
+func (o EndpointModelPropertiesResponseOutput) Deprecation() EndpointModelDeprecationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *EndpointModelDeprecationPropertiesResponse {
+		return v.Deprecation
+	}).(EndpointModelDeprecationPropertiesResponsePtrOutput)
+}
+
+// The capabilities for finetune models.
+func (o EndpointModelPropertiesResponseOutput) FinetuneCapabilities() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) map[string]string { return v.FinetuneCapabilities }).(pulumi.StringMapOutput)
+}
+
+// Deployment model format.
+func (o EndpointModelPropertiesResponseOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// If the model is default version.
+func (o EndpointModelPropertiesResponseOutput) IsDefaultVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *bool { return v.IsDefaultVersion }).(pulumi.BoolPtrOutput)
+}
+
+// Model lifecycle status.
+func (o EndpointModelPropertiesResponseOutput) LifecycleStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *string { return v.LifecycleStatus }).(pulumi.StringPtrOutput)
+}
+
+// The max capacity.
+func (o EndpointModelPropertiesResponseOutput) MaxCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
+}
+
+// Deployment model name.
+func (o EndpointModelPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The list of Model Sku.
+func (o EndpointModelPropertiesResponseOutput) Skus() EndpointModelSkuPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) []EndpointModelSkuPropertiesResponse { return v.Skus }).(EndpointModelSkuPropertiesResponseArrayOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o EndpointModelPropertiesResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+func (o EndpointModelPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type EndpointModelPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointModelPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelPropertiesResponseArrayOutput) ToEndpointModelPropertiesResponseArrayOutput() EndpointModelPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelPropertiesResponseArrayOutput) ToEndpointModelPropertiesResponseArrayOutputWithContext(ctx context.Context) EndpointModelPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelPropertiesResponseArrayOutput) Index(i pulumi.IntInput) EndpointModelPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointModelPropertiesResponse {
+		return vs[0].([]EndpointModelPropertiesResponse)[vs[1].(int)]
+	}).(EndpointModelPropertiesResponseOutput)
+}
+
+type EndpointModelSkuCapacityPropertiesResponse struct {
+	// The default capacity.
+	Default *int `pulumi:"default"`
+	// The maximum capacity.
+	Maximum *int `pulumi:"maximum"`
+}
+
+type EndpointModelSkuCapacityPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuCapacityPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelSkuCapacityPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuCapacityPropertiesResponseOutput) ToEndpointModelSkuCapacityPropertiesResponseOutput() EndpointModelSkuCapacityPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuCapacityPropertiesResponseOutput) ToEndpointModelSkuCapacityPropertiesResponseOutputWithContext(ctx context.Context) EndpointModelSkuCapacityPropertiesResponseOutput {
+	return o
+}
+
+// The default capacity.
+func (o EndpointModelSkuCapacityPropertiesResponseOutput) Default() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuCapacityPropertiesResponse) *int { return v.Default }).(pulumi.IntPtrOutput)
+}
+
+// The maximum capacity.
+func (o EndpointModelSkuCapacityPropertiesResponseOutput) Maximum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuCapacityPropertiesResponse) *int { return v.Maximum }).(pulumi.IntPtrOutput)
+}
+
+type EndpointModelSkuCapacityPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuCapacityPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointModelSkuCapacityPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuCapacityPropertiesResponsePtrOutput) ToEndpointModelSkuCapacityPropertiesResponsePtrOutput() EndpointModelSkuCapacityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EndpointModelSkuCapacityPropertiesResponsePtrOutput) ToEndpointModelSkuCapacityPropertiesResponsePtrOutputWithContext(ctx context.Context) EndpointModelSkuCapacityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EndpointModelSkuCapacityPropertiesResponsePtrOutput) Elem() EndpointModelSkuCapacityPropertiesResponseOutput {
+	return o.ApplyT(func(v *EndpointModelSkuCapacityPropertiesResponse) EndpointModelSkuCapacityPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointModelSkuCapacityPropertiesResponse
+		return ret
+	}).(EndpointModelSkuCapacityPropertiesResponseOutput)
+}
+
+// The default capacity.
+func (o EndpointModelSkuCapacityPropertiesResponsePtrOutput) Default() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointModelSkuCapacityPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum capacity.
+func (o EndpointModelSkuCapacityPropertiesResponsePtrOutput) Maximum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EndpointModelSkuCapacityPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Maximum
+	}).(pulumi.IntPtrOutput)
+}
+
+type EndpointModelSkuPropertiesResponse struct {
+	Capacity *EndpointModelSkuCapacityPropertiesResponse `pulumi:"capacity"`
+	// The list of ARM id for the connection support this SKU.
+	ConnectionIds []string `pulumi:"connectionIds"`
+	// The datetime of deprecation of the model SKU.
+	DeprecationDate *string `pulumi:"deprecationDate"`
+	// The name of the model SKU.
+	Name       *string                                       `pulumi:"name"`
+	RateLimits []EndpointModelSkuRateLimitPropertiesResponse `pulumi:"rateLimits"`
+	// The usage name of the model SKU.
+	UsageName *string `pulumi:"usageName"`
+}
+
+type EndpointModelSkuPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelSkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuPropertiesResponseOutput) ToEndpointModelSkuPropertiesResponseOutput() EndpointModelSkuPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuPropertiesResponseOutput) ToEndpointModelSkuPropertiesResponseOutputWithContext(ctx context.Context) EndpointModelSkuPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuPropertiesResponseOutput) Capacity() EndpointModelSkuCapacityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuPropertiesResponse) *EndpointModelSkuCapacityPropertiesResponse {
+		return v.Capacity
+	}).(EndpointModelSkuCapacityPropertiesResponsePtrOutput)
+}
+
+// The list of ARM id for the connection support this SKU.
+func (o EndpointModelSkuPropertiesResponseOutput) ConnectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EndpointModelSkuPropertiesResponse) []string { return v.ConnectionIds }).(pulumi.StringArrayOutput)
+}
+
+// The datetime of deprecation of the model SKU.
+func (o EndpointModelSkuPropertiesResponseOutput) DeprecationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuPropertiesResponse) *string { return v.DeprecationDate }).(pulumi.StringPtrOutput)
+}
+
+// The name of the model SKU.
+func (o EndpointModelSkuPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointModelSkuPropertiesResponseOutput) RateLimits() EndpointModelSkuRateLimitPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v EndpointModelSkuPropertiesResponse) []EndpointModelSkuRateLimitPropertiesResponse {
+		return v.RateLimits
+	}).(EndpointModelSkuRateLimitPropertiesResponseArrayOutput)
+}
+
+// The usage name of the model SKU.
+func (o EndpointModelSkuPropertiesResponseOutput) UsageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuPropertiesResponse) *string { return v.UsageName }).(pulumi.StringPtrOutput)
+}
+
+type EndpointModelSkuPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointModelSkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuPropertiesResponseArrayOutput) ToEndpointModelSkuPropertiesResponseArrayOutput() EndpointModelSkuPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuPropertiesResponseArrayOutput) ToEndpointModelSkuPropertiesResponseArrayOutputWithContext(ctx context.Context) EndpointModelSkuPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuPropertiesResponseArrayOutput) Index(i pulumi.IntInput) EndpointModelSkuPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointModelSkuPropertiesResponse {
+		return vs[0].([]EndpointModelSkuPropertiesResponse)[vs[1].(int)]
+	}).(EndpointModelSkuPropertiesResponseOutput)
+}
+
+type EndpointModelSkuRateLimitPropertiesResponse struct {
+	// The count value of Call Rate Limit.
+	Count *float64 `pulumi:"count"`
+	// The renewal period in seconds of Call Rate Limit.
+	RenewalPeriod *float64 `pulumi:"renewalPeriod"`
+	// The call rate limit for the model.
+	Rules []EndpointModelSkuRateLimitRulePropertiesResponse `pulumi:"rules"`
+}
+
+type EndpointModelSkuRateLimitPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuRateLimitPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelSkuRateLimitPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuRateLimitPropertiesResponseOutput) ToEndpointModelSkuRateLimitPropertiesResponseOutput() EndpointModelSkuRateLimitPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitPropertiesResponseOutput) ToEndpointModelSkuRateLimitPropertiesResponseOutputWithContext(ctx context.Context) EndpointModelSkuRateLimitPropertiesResponseOutput {
+	return o
+}
+
+// The count value of Call Rate Limit.
+func (o EndpointModelSkuRateLimitPropertiesResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitPropertiesResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// The renewal period in seconds of Call Rate Limit.
+func (o EndpointModelSkuRateLimitPropertiesResponseOutput) RenewalPeriod() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitPropertiesResponse) *float64 { return v.RenewalPeriod }).(pulumi.Float64PtrOutput)
+}
+
+// The call rate limit for the model.
+func (o EndpointModelSkuRateLimitPropertiesResponseOutput) Rules() EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitPropertiesResponse) []EndpointModelSkuRateLimitRulePropertiesResponse {
+		return v.Rules
+	}).(EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput)
+}
+
+type EndpointModelSkuRateLimitPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuRateLimitPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointModelSkuRateLimitPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuRateLimitPropertiesResponseArrayOutput) ToEndpointModelSkuRateLimitPropertiesResponseArrayOutput() EndpointModelSkuRateLimitPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitPropertiesResponseArrayOutput) ToEndpointModelSkuRateLimitPropertiesResponseArrayOutputWithContext(ctx context.Context) EndpointModelSkuRateLimitPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitPropertiesResponseArrayOutput) Index(i pulumi.IntInput) EndpointModelSkuRateLimitPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointModelSkuRateLimitPropertiesResponse {
+		return vs[0].([]EndpointModelSkuRateLimitPropertiesResponse)[vs[1].(int)]
+	}).(EndpointModelSkuRateLimitPropertiesResponseOutput)
+}
+
+type EndpointModelSkuRateLimitRulePatternPropertiesResponse struct {
+	Method *string `pulumi:"method"`
+	Path   *string `pulumi:"path"`
+}
+
+type EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelSkuRateLimitRulePatternPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput) ToEndpointModelSkuRateLimitRulePatternPropertiesResponseOutput() EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput) ToEndpointModelSkuRateLimitRulePatternPropertiesResponseOutputWithContext(ctx context.Context) EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePatternPropertiesResponse) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePatternPropertiesResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointModelSkuRateLimitRulePatternPropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput) ToEndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput() EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput) ToEndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutputWithContext(ctx context.Context) EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput) Index(i pulumi.IntInput) EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointModelSkuRateLimitRulePatternPropertiesResponse {
+		return vs[0].([]EndpointModelSkuRateLimitRulePatternPropertiesResponse)[vs[1].(int)]
+	}).(EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput)
+}
+
+type EndpointModelSkuRateLimitRulePropertiesResponse struct {
+	Count *float64 `pulumi:"count"`
+	// If the dynamic throttling is enabled.
+	DynamicThrottlingEnabled *bool                                                    `pulumi:"dynamicThrottlingEnabled"`
+	Key                      *string                                                  `pulumi:"key"`
+	MatchPatterns            []EndpointModelSkuRateLimitRulePatternPropertiesResponse `pulumi:"matchPatterns"`
+	MinCount                 *float64                                                 `pulumi:"minCount"`
+	RenewalPeriod            *float64                                                 `pulumi:"renewalPeriod"`
+}
+
+type EndpointModelSkuRateLimitRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuRateLimitRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointModelSkuRateLimitRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) ToEndpointModelSkuRateLimitRulePropertiesResponseOutput() EndpointModelSkuRateLimitRulePropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) ToEndpointModelSkuRateLimitRulePropertiesResponseOutputWithContext(ctx context.Context) EndpointModelSkuRateLimitRulePropertiesResponseOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) Count() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePropertiesResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
+}
+
+// If the dynamic throttling is enabled.
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) DynamicThrottlingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePropertiesResponse) *bool { return v.DynamicThrottlingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePropertiesResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) MatchPatterns() EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePropertiesResponse) []EndpointModelSkuRateLimitRulePatternPropertiesResponse {
+		return v.MatchPatterns
+	}).(EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput)
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) MinCount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePropertiesResponse) *float64 { return v.MinCount }).(pulumi.Float64PtrOutput)
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseOutput) RenewalPeriod() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EndpointModelSkuRateLimitRulePropertiesResponse) *float64 { return v.RenewalPeriod }).(pulumi.Float64PtrOutput)
+}
+
+type EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointModelSkuRateLimitRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput) ToEndpointModelSkuRateLimitRulePropertiesResponseArrayOutput() EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput) ToEndpointModelSkuRateLimitRulePropertiesResponseArrayOutputWithContext(ctx context.Context) EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput {
+	return o
+}
+
+func (o EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput) Index(i pulumi.IntInput) EndpointModelSkuRateLimitRulePropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointModelSkuRateLimitRulePropertiesResponse {
+		return vs[0].([]EndpointModelSkuRateLimitRulePropertiesResponse)[vs[1].(int)]
+	}).(EndpointModelSkuRateLimitRulePropertiesResponseOutput)
+}
+
 // Describes the endpoint configuration for the container
 type EndpointResponse struct {
 	// Host IP over which the application is exposed from the container
@@ -66115,804 +66638,6 @@ func (o ServiceTagOutboundRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTagOutboundRule) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagOutboundRuleResponse struct {
-	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category *string `pulumi:"category"`
-	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-	Destination *ServiceTagDestinationResponse `pulumi:"destination"`
-	// Status of a managed network Outbound Rule of a machine learning workspace.
-	Status *string `pulumi:"status"`
-	// Type of a managed network Outbound Rule of a machine learning workspace.
-	// Expected value is 'ServiceTag'.
-	Type string `pulumi:"type"`
-}
-
-// Service Tag Outbound Rule for the managed network of a machine learning workspace.
-type ServiceTagOutboundRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (ServiceTagOutboundRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceTagOutboundRuleResponse)(nil)).Elem()
-}
-
-func (o ServiceTagOutboundRuleResponseOutput) ToServiceTagOutboundRuleResponseOutput() ServiceTagOutboundRuleResponseOutput {
-	return o
-}
-
-func (o ServiceTagOutboundRuleResponseOutput) ToServiceTagOutboundRuleResponseOutputWithContext(ctx context.Context) ServiceTagOutboundRuleResponseOutput {
-	return o
-}
-
-// Category of a managed network Outbound Rule of a machine learning workspace.
-func (o ServiceTagOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinationResponsePtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *ServiceTagDestinationResponse { return v.Destination }).(ServiceTagDestinationResponsePtrOutput)
-}
-
-// Status of a managed network Outbound Rule of a machine learning workspace.
-func (o ServiceTagOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Type of a managed network Outbound Rule of a machine learning workspace.
-// Expected value is 'ServiceTag'.
-func (o ServiceTagOutboundRuleResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScripts struct {
-	// Customized setup scripts
-	Scripts *ScriptsToExecute `pulumi:"scripts"`
-}
-
-// SetupScriptsInput is an input type that accepts SetupScriptsArgs and SetupScriptsOutput values.
-// You can construct a concrete instance of `SetupScriptsInput` via:
-//
-//	SetupScriptsArgs{...}
-type SetupScriptsInput interface {
-	pulumi.Input
-
-	ToSetupScriptsOutput() SetupScriptsOutput
-	ToSetupScriptsOutputWithContext(context.Context) SetupScriptsOutput
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScriptsArgs struct {
-	// Customized setup scripts
-	Scripts ScriptsToExecutePtrInput `pulumi:"scripts"`
-}
-
-func (SetupScriptsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SetupScripts)(nil)).Elem()
-}
-
-func (i SetupScriptsArgs) ToSetupScriptsOutput() SetupScriptsOutput {
-	return i.ToSetupScriptsOutputWithContext(context.Background())
-}
-
-func (i SetupScriptsArgs) ToSetupScriptsOutputWithContext(ctx context.Context) SetupScriptsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsOutput)
-}
-
-func (i SetupScriptsArgs) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
-	return i.ToSetupScriptsPtrOutputWithContext(context.Background())
-}
-
-func (i SetupScriptsArgs) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsOutput).ToSetupScriptsPtrOutputWithContext(ctx)
-}
-
-// SetupScriptsPtrInput is an input type that accepts SetupScriptsArgs, SetupScriptsPtr and SetupScriptsPtrOutput values.
-// You can construct a concrete instance of `SetupScriptsPtrInput` via:
-//
-//	        SetupScriptsArgs{...}
-//
-//	or:
-//
-//	        nil
-type SetupScriptsPtrInput interface {
-	pulumi.Input
-
-	ToSetupScriptsPtrOutput() SetupScriptsPtrOutput
-	ToSetupScriptsPtrOutputWithContext(context.Context) SetupScriptsPtrOutput
-}
-
-type setupScriptsPtrType SetupScriptsArgs
-
-func SetupScriptsPtr(v *SetupScriptsArgs) SetupScriptsPtrInput {
-	return (*setupScriptsPtrType)(v)
-}
-
-func (*setupScriptsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SetupScripts)(nil)).Elem()
-}
-
-func (i *setupScriptsPtrType) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
-	return i.ToSetupScriptsPtrOutputWithContext(context.Background())
-}
-
-func (i *setupScriptsPtrType) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsPtrOutput)
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScriptsOutput struct{ *pulumi.OutputState }
-
-func (SetupScriptsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SetupScripts)(nil)).Elem()
-}
-
-func (o SetupScriptsOutput) ToSetupScriptsOutput() SetupScriptsOutput {
-	return o
-}
-
-func (o SetupScriptsOutput) ToSetupScriptsOutputWithContext(ctx context.Context) SetupScriptsOutput {
-	return o
-}
-
-func (o SetupScriptsOutput) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
-	return o.ToSetupScriptsPtrOutputWithContext(context.Background())
-}
-
-func (o SetupScriptsOutput) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SetupScripts) *SetupScripts {
-		return &v
-	}).(SetupScriptsPtrOutput)
-}
-
-// Customized setup scripts
-func (o SetupScriptsOutput) Scripts() ScriptsToExecutePtrOutput {
-	return o.ApplyT(func(v SetupScripts) *ScriptsToExecute { return v.Scripts }).(ScriptsToExecutePtrOutput)
-}
-
-type SetupScriptsPtrOutput struct{ *pulumi.OutputState }
-
-func (SetupScriptsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SetupScripts)(nil)).Elem()
-}
-
-func (o SetupScriptsPtrOutput) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
-	return o
-}
-
-func (o SetupScriptsPtrOutput) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
-	return o
-}
-
-func (o SetupScriptsPtrOutput) Elem() SetupScriptsOutput {
-	return o.ApplyT(func(v *SetupScripts) SetupScripts {
-		if v != nil {
-			return *v
-		}
-		var ret SetupScripts
-		return ret
-	}).(SetupScriptsOutput)
-}
-
-// Customized setup scripts
-func (o SetupScriptsPtrOutput) Scripts() ScriptsToExecutePtrOutput {
-	return o.ApplyT(func(v *SetupScripts) *ScriptsToExecute {
-		if v == nil {
-			return nil
-		}
-		return v.Scripts
-	}).(ScriptsToExecutePtrOutput)
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScriptsResponse struct {
-	// Customized setup scripts
-	Scripts *ScriptsToExecuteResponse `pulumi:"scripts"`
-}
-
-// Details of customized scripts to execute for setting up the cluster.
-type SetupScriptsResponseOutput struct{ *pulumi.OutputState }
-
-func (SetupScriptsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SetupScriptsResponse)(nil)).Elem()
-}
-
-func (o SetupScriptsResponseOutput) ToSetupScriptsResponseOutput() SetupScriptsResponseOutput {
-	return o
-}
-
-func (o SetupScriptsResponseOutput) ToSetupScriptsResponseOutputWithContext(ctx context.Context) SetupScriptsResponseOutput {
-	return o
-}
-
-// Customized setup scripts
-func (o SetupScriptsResponseOutput) Scripts() ScriptsToExecuteResponsePtrOutput {
-	return o.ApplyT(func(v SetupScriptsResponse) *ScriptsToExecuteResponse { return v.Scripts }).(ScriptsToExecuteResponsePtrOutput)
-}
-
-type SetupScriptsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SetupScriptsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SetupScriptsResponse)(nil)).Elem()
-}
-
-func (o SetupScriptsResponsePtrOutput) ToSetupScriptsResponsePtrOutput() SetupScriptsResponsePtrOutput {
-	return o
-}
-
-func (o SetupScriptsResponsePtrOutput) ToSetupScriptsResponsePtrOutputWithContext(ctx context.Context) SetupScriptsResponsePtrOutput {
-	return o
-}
-
-func (o SetupScriptsResponsePtrOutput) Elem() SetupScriptsResponseOutput {
-	return o.ApplyT(func(v *SetupScriptsResponse) SetupScriptsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SetupScriptsResponse
-		return ret
-	}).(SetupScriptsResponseOutput)
-}
-
-// Customized setup scripts
-func (o SetupScriptsResponsePtrOutput) Scripts() ScriptsToExecuteResponsePtrOutput {
-	return o.ApplyT(func(v *SetupScriptsResponse) *ScriptsToExecuteResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Scripts
-	}).(ScriptsToExecuteResponsePtrOutput)
-}
-
-type SharedPrivateLinkResource struct {
-	// The private link resource group id.
-	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link.
-	Name *string `pulumi:"name"`
-	// The resource id that private link links to.
-	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message.
-	RequestMessage *string `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// SharedPrivateLinkResourceInput is an input type that accepts SharedPrivateLinkResourceArgs and SharedPrivateLinkResourceOutput values.
-// You can construct a concrete instance of `SharedPrivateLinkResourceInput` via:
-//
-//	SharedPrivateLinkResourceArgs{...}
-type SharedPrivateLinkResourceInput interface {
-	pulumi.Input
-
-	ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput
-	ToSharedPrivateLinkResourceOutputWithContext(context.Context) SharedPrivateLinkResourceOutput
-}
-
-type SharedPrivateLinkResourceArgs struct {
-	// The private link resource group id.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Unique name of the private link.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource id that private link links to.
-	PrivateLinkResourceId pulumi.StringPtrInput `pulumi:"privateLinkResourceId"`
-	// Request message.
-	RequestMessage pulumi.StringPtrInput `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (SharedPrivateLinkResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
-	return i.ToSharedPrivateLinkResourceOutputWithContext(context.Background())
-}
-
-func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceOutput)
-}
-
-// SharedPrivateLinkResourceArrayInput is an input type that accepts SharedPrivateLinkResourceArray and SharedPrivateLinkResourceArrayOutput values.
-// You can construct a concrete instance of `SharedPrivateLinkResourceArrayInput` via:
-//
-//	SharedPrivateLinkResourceArray{ SharedPrivateLinkResourceArgs{...} }
-type SharedPrivateLinkResourceArrayInput interface {
-	pulumi.Input
-
-	ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput
-	ToSharedPrivateLinkResourceArrayOutputWithContext(context.Context) SharedPrivateLinkResourceArrayOutput
-}
-
-type SharedPrivateLinkResourceArray []SharedPrivateLinkResourceInput
-
-func (SharedPrivateLinkResourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput {
-	return i.ToSharedPrivateLinkResourceArrayOutputWithContext(context.Background())
-}
-
-func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceArrayOutput)
-}
-
-type SharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
-	return o
-}
-
-// The private link resource group id.
-func (o SharedPrivateLinkResourceOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-// Unique name of the private link.
-func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id that private link links to.
-func (o SharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Request message.
-func (o SharedPrivateLinkResourceOutput) RequestMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o SharedPrivateLinkResourceOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SharedPrivateLinkResourceArrayOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SharedPrivateLinkResource)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResource {
-		return vs[0].([]SharedPrivateLinkResource)[vs[1].(int)]
-	}).(SharedPrivateLinkResourceOutput)
-}
-
-type SharedPrivateLinkResourceResponse struct {
-	// The private link resource group id.
-	GroupId *string `pulumi:"groupId"`
-	// Unique name of the private link.
-	Name *string `pulumi:"name"`
-	// The resource id that private link links to.
-	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
-	// Request message.
-	RequestMessage *string `pulumi:"requestMessage"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-type SharedPrivateLinkResourceResponseOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedPrivateLinkResourceResponse)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutput() SharedPrivateLinkResourceResponseOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseOutput {
-	return o
-}
-
-// The private link resource group id.
-func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
-}
-
-// Unique name of the private link.
-func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id that private link links to.
-func (o SharedPrivateLinkResourceResponseOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
-}
-
-// Request message.
-func (o SharedPrivateLinkResourceResponseOutput) RequestMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type SharedPrivateLinkResourceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SharedPrivateLinkResourceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SharedPrivateLinkResourceResponse)(nil)).Elem()
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutput() SharedPrivateLinkResourceResponseArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseArrayOutput {
-	return o
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResourceResponse {
-		return vs[0].([]SharedPrivateLinkResourceResponse)[vs[1].(int)]
-	}).(SharedPrivateLinkResourceResponseOutput)
-}
-
-// The resource model definition representing SKU
-type Sku struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity *int `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family *string `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
-	Name string `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *SkuTier `pulumi:"tier"`
-}
-
-// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
-// You can construct a concrete instance of `SkuInput` via:
-//
-//	SkuArgs{...}
-type SkuInput interface {
-	pulumi.Input
-
-	ToSkuOutput() SkuOutput
-	ToSkuOutputWithContext(context.Context) SkuOutput
-}
-
-// The resource model definition representing SKU
-type SkuArgs struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
-	Name pulumi.StringInput `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size pulumi.StringPtrInput `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier SkuTierPtrInput `pulumi:"tier"`
-}
-
-func (SkuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (i SkuArgs) ToSkuOutput() SkuOutput {
-	return i.ToSkuOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
-}
-
-func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
-}
-
-// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
-// You can construct a concrete instance of `SkuPtrInput` via:
-//
-//	        SkuArgs{...}
-//
-//	or:
-//
-//	        nil
-type SkuPtrInput interface {
-	pulumi.Input
-
-	ToSkuPtrOutput() SkuPtrOutput
-	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
-}
-
-type skuPtrType SkuArgs
-
-func SkuPtr(v *SkuArgs) SkuPtrInput {
-	return (*skuPtrType)(v)
-}
-
-func (*skuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
-}
-
-// The resource model definition representing SKU
-type SkuOutput struct{ *pulumi.OutputState }
-
-func (SkuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (o SkuOutput) ToSkuOutput() SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
-		return &v
-	}).(SkuPtrOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
-}
-
-type SkuPtrOutput struct{ *pulumi.OutputState }
-
-func (SkuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) Elem() SkuOutput {
-	return o.ApplyT(func(v *Sku) Sku {
-		if v != nil {
-			return *v
-		}
-		var ret Sku
-		return ret
-	}).(SkuOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Sku) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v *Sku) *SkuTier {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(SkuTierPtrOutput)
-}
-
-// The resource model definition representing SKU
-type SkuResponse struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity *int `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family *string `pulumi:"family"`
-	// The name of the SKU. Ex - P3. It is typically a letter+number code
-	Name string `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *string `pulumi:"tier"`
-}
-
-// The resource model definition representing SKU
-type SkuResponseOutput struct{ *pulumi.OutputState }
-
-func (SkuResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
-	return o
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
-	return o
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
-}
-
-type SkuResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SkuResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
-	return o.ApplyT(func(v *SkuResponse) SkuResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SkuResponse
-		return ret
-	}).(SkuResponseOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. Ex - P3. It is typically a letter+number code
-func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -67331,6 +67056,20 @@ func init() {
 	pulumi.RegisterOutputType(EndpointDeploymentModelResponseOutput{})
 	pulumi.RegisterOutputType(EndpointDeploymentResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(EndpointDeploymentResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelDeprecationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelDeprecationPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EndpointModelPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuCapacityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuCapacityPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuRateLimitPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuRateLimitPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuRateLimitRulePatternPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuRateLimitRulePatternPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuRateLimitRulePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EndpointModelSkuRateLimitRulePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(EndpointScheduleActionOutput{})
@@ -67786,19 +67525,6 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTagDestinationResponseOutput{})
 	pulumi.RegisterOutputType(ServiceTagDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTagOutboundRuleOutput{})
-	pulumi.RegisterOutputType(ServiceTagOutboundRuleResponseOutput{})
-	pulumi.RegisterOutputType(SetupScriptsOutput{})
-	pulumi.RegisterOutputType(SetupScriptsPtrOutput{})
-	pulumi.RegisterOutputType(SetupScriptsResponseOutput{})
-	pulumi.RegisterOutputType(SetupScriptsResponsePtrOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceArrayOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseOutput{})
-	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseArrayOutput{})
-	pulumi.RegisterOutputType(SkuOutput{})
-	pulumi.RegisterOutputType(SkuPtrOutput{})
-	pulumi.RegisterOutputType(SkuResponseOutput{})
-	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 }

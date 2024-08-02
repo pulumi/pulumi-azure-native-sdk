@@ -14,7 +14,7 @@ import (
 // Gets information about a virtual endpoint.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview, 2024-03-01-preview.
 func LookupVirtualEndpoint(ctx *pulumi.Context, args *LookupVirtualEndpointArgs, opts ...pulumi.InvokeOption) (*LookupVirtualEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualEndpointResult

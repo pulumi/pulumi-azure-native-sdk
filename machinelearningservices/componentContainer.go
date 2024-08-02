@@ -15,7 +15,7 @@ import (
 // Azure Resource Manager resource envelope.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-02-01-preview.
 //
-// Other available API versions: 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview.
+// Other available API versions: 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
 type ComponentContainer struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +91,9 @@ func NewComponentContainer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:ComponentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ComponentContainer"),
 		},
 	})
 	opts = append(opts, aliases)

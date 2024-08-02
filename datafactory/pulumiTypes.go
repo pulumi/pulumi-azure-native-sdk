@@ -18113,6 +18113,8 @@ type AzureFileStorageLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReference `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -18129,6 +18131,8 @@ type AzureFileStorageLinkedService struct {
 	SasToken *AzureKeyVaultSecretReference `pulumi:"sasToken"`
 	// SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri interface{} `pulumi:"sasUri"`
+	// File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+	ServiceEndpoint interface{} `pulumi:"serviceEndpoint"`
 	// The azure file share snapshot version. Type: string (or Expression with resultType string).
 	Snapshot interface{} `pulumi:"snapshot"`
 	// Type of linked service.
@@ -18159,6 +18163,8 @@ type AzureFileStorageLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential CredentialReferencePtrInput `pulumi:"credential"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -18175,6 +18181,8 @@ type AzureFileStorageLinkedServiceArgs struct {
 	SasToken AzureKeyVaultSecretReferencePtrInput `pulumi:"sasToken"`
 	// SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri pulumi.Input `pulumi:"sasUri"`
+	// File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+	ServiceEndpoint pulumi.Input `pulumi:"serviceEndpoint"`
 	// The azure file share snapshot version. Type: string (or Expression with resultType string).
 	Snapshot pulumi.Input `pulumi:"snapshot"`
 	// Type of linked service.
@@ -18231,6 +18239,11 @@ func (o AzureFileStorageLinkedServiceOutput) ConnectionString() pulumi.AnyOutput
 	return o.ApplyT(func(v AzureFileStorageLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The credential reference containing authentication information.
+func (o AzureFileStorageLinkedServiceOutput) Credential() CredentialReferencePtrOutput {
+	return o.ApplyT(func(v AzureFileStorageLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
+}
+
 // Linked service description.
 func (o AzureFileStorageLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileStorageLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -18271,6 +18284,11 @@ func (o AzureFileStorageLinkedServiceOutput) SasUri() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureFileStorageLinkedService) interface{} { return v.SasUri }).(pulumi.AnyOutput)
 }
 
+// File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+func (o AzureFileStorageLinkedServiceOutput) ServiceEndpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureFileStorageLinkedService) interface{} { return v.ServiceEndpoint }).(pulumi.AnyOutput)
+}
+
 // The azure file share snapshot version. Type: string (or Expression with resultType string).
 func (o AzureFileStorageLinkedServiceOutput) Snapshot() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureFileStorageLinkedService) interface{} { return v.Snapshot }).(pulumi.AnyOutput)
@@ -18297,6 +18315,8 @@ type AzureFileStorageLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// The credential reference containing authentication information.
+	Credential *CredentialReferenceResponse `pulumi:"credential"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
@@ -18313,6 +18333,8 @@ type AzureFileStorageLinkedServiceResponse struct {
 	SasToken *AzureKeyVaultSecretReferenceResponse `pulumi:"sasToken"`
 	// SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 	SasUri interface{} `pulumi:"sasUri"`
+	// File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+	ServiceEndpoint interface{} `pulumi:"serviceEndpoint"`
 	// The azure file share snapshot version. Type: string (or Expression with resultType string).
 	Snapshot interface{} `pulumi:"snapshot"`
 	// Type of linked service.
@@ -18361,6 +18383,11 @@ func (o AzureFileStorageLinkedServiceResponseOutput) ConnectionString() pulumi.A
 	return o.ApplyT(func(v AzureFileStorageLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// The credential reference containing authentication information.
+func (o AzureFileStorageLinkedServiceResponseOutput) Credential() CredentialReferenceResponsePtrOutput {
+	return o.ApplyT(func(v AzureFileStorageLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
+}
+
 // Linked service description.
 func (o AzureFileStorageLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureFileStorageLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -18401,6 +18428,11 @@ func (o AzureFileStorageLinkedServiceResponseOutput) SasToken() AzureKeyVaultSec
 // SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
 func (o AzureFileStorageLinkedServiceResponseOutput) SasUri() pulumi.AnyOutput {
 	return o.ApplyT(func(v AzureFileStorageLinkedServiceResponse) interface{} { return v.SasUri }).(pulumi.AnyOutput)
+}
+
+// File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+func (o AzureFileStorageLinkedServiceResponseOutput) ServiceEndpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureFileStorageLinkedServiceResponse) interface{} { return v.ServiceEndpoint }).(pulumi.AnyOutput)
 }
 
 // The azure file share snapshot version. Type: string (or Expression with resultType string).

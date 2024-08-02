@@ -15,7 +15,7 @@ import (
 // Snapshot policy information
 // Azure REST API version: 2022-11-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-03-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-03-01, 2024-03-01-preview.
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 
@@ -133,6 +133,9 @@ func NewSnapshotPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20231101preview:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20240301:SnapshotPolicy"),
 		},
 		{
 			Type: pulumi.String("azure-native:netapp/v20240301preview:SnapshotPolicy"),

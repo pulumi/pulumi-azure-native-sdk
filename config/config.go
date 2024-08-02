@@ -31,7 +31,7 @@ func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:clientId")
 }
 
-// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
+// The Client Secret which should be used. For use when authenticating as a Service Principal using a Client Secret.
 func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:clientSecret")
 }

@@ -13,6 +13,8 @@ import (
 
 // Azure OpenAI Content Filters resource.
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-07-01-preview.
 func LookupConnectionRaiPolicy(ctx *pulumi.Context, args *LookupConnectionRaiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupConnectionRaiPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionRaiPolicyResult

@@ -14,7 +14,7 @@ import (
 // Get a HealthBot.
 // Azure REST API version: 2023-05-01.
 //
-// Other available API versions: 2020-12-08-preview.
+// Other available API versions: 2020-12-08-preview, 2024-02-01.
 func LookupBot(ctx *pulumi.Context, args *LookupBotArgs, opts ...pulumi.InvokeOption) (*LookupBotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBotResult

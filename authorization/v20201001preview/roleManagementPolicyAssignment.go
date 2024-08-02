@@ -47,6 +47,9 @@ func NewRoleManagementPolicyAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:authorization/v20201001:RoleManagementPolicyAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20240201preview:RoleManagementPolicyAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

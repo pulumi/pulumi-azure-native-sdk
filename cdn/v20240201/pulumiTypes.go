@@ -1392,7 +1392,8 @@ type CacheExpirationActionParameters struct {
 	CacheDuration *string `pulumi:"cacheDuration"`
 	// The level at which the content needs to be cached.
 	CacheType string `pulumi:"cacheType"`
-	TypeName  string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // CacheExpirationActionParametersInput is an input type that accepts CacheExpirationActionParametersArgs and CacheExpirationActionParametersOutput values.
@@ -1414,7 +1415,8 @@ type CacheExpirationActionParametersArgs struct {
 	CacheDuration pulumi.StringPtrInput `pulumi:"cacheDuration"`
 	// The level at which the content needs to be cached.
 	CacheType pulumi.StringInput `pulumi:"cacheType"`
-	TypeName  pulumi.StringInput `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (CacheExpirationActionParametersArgs) ElementType() reflect.Type {
@@ -1459,6 +1461,7 @@ func (o CacheExpirationActionParametersOutput) CacheType() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheExpirationActionParameters) string { return v.CacheType }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
 func (o CacheExpirationActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheExpirationActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1471,7 +1474,8 @@ type CacheExpirationActionParametersResponse struct {
 	CacheDuration *string `pulumi:"cacheDuration"`
 	// The level at which the content needs to be cached.
 	CacheType string `pulumi:"cacheType"`
-	TypeName  string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the cache expiration action.
@@ -1504,6 +1508,7 @@ func (o CacheExpirationActionParametersResponseOutput) CacheType() pulumi.String
 	return o.ApplyT(func(v CacheExpirationActionParametersResponse) string { return v.CacheType }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
 func (o CacheExpirationActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheExpirationActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1514,7 +1519,8 @@ type CacheKeyQueryStringActionParameters struct {
 	QueryParameters *string `pulumi:"queryParameters"`
 	// Caching behavior for the requests
 	QueryStringBehavior string `pulumi:"queryStringBehavior"`
-	TypeName            string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // CacheKeyQueryStringActionParametersInput is an input type that accepts CacheKeyQueryStringActionParametersArgs and CacheKeyQueryStringActionParametersOutput values.
@@ -1534,7 +1540,8 @@ type CacheKeyQueryStringActionParametersArgs struct {
 	QueryParameters pulumi.StringPtrInput `pulumi:"queryParameters"`
 	// Caching behavior for the requests
 	QueryStringBehavior pulumi.StringInput `pulumi:"queryStringBehavior"`
-	TypeName            pulumi.StringInput `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (CacheKeyQueryStringActionParametersArgs) ElementType() reflect.Type {
@@ -1574,6 +1581,7 @@ func (o CacheKeyQueryStringActionParametersOutput) QueryStringBehavior() pulumi.
 	return o.ApplyT(func(v CacheKeyQueryStringActionParameters) string { return v.QueryStringBehavior }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
 func (o CacheKeyQueryStringActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheKeyQueryStringActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1584,7 +1592,8 @@ type CacheKeyQueryStringActionParametersResponse struct {
 	QueryParameters *string `pulumi:"queryParameters"`
 	// Caching behavior for the requests
 	QueryStringBehavior string `pulumi:"queryStringBehavior"`
-	TypeName            string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the cache-key query string action.
@@ -1612,6 +1621,7 @@ func (o CacheKeyQueryStringActionParametersResponseOutput) QueryStringBehavior()
 	return o.ApplyT(func(v CacheKeyQueryStringActionParametersResponse) string { return v.QueryStringBehavior }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.
 func (o CacheKeyQueryStringActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheKeyQueryStringActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1620,7 +1630,8 @@ func (o CacheKeyQueryStringActionParametersResponseOutput) TypeName() pulumi.Str
 type CdnCertificateSourceParametersResponse struct {
 	// Type of certificate used
 	CertificateType string `pulumi:"certificateType"`
-	TypeName        string `pulumi:"typeName"`
+	// Expected value is 'CdnCertificateSourceParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for using CDN managed certificate for securing custom domain.
@@ -1643,6 +1654,7 @@ func (o CdnCertificateSourceParametersResponseOutput) CertificateType() pulumi.S
 	return o.ApplyT(func(v CdnCertificateSourceParametersResponse) string { return v.CertificateType }).(pulumi.StringOutput)
 }
 
+// Expected value is 'CdnCertificateSourceParameters'.
 func (o CdnCertificateSourceParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CdnCertificateSourceParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1681,6 +1693,7 @@ func (o CdnCertificateSourceParametersResponsePtrOutput) CertificateType() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Expected value is 'CdnCertificateSourceParameters'.
 func (o CdnCertificateSourceParametersResponsePtrOutput) TypeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CdnCertificateSourceParametersResponse) *string {
 		if v == nil {
@@ -1862,7 +1875,8 @@ type ClientPortMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleClientPortConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ClientPortMatchConditionParameters
@@ -1899,7 +1913,8 @@ type ClientPortMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleClientPortConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ClientPortMatchConditionParametersArgs
@@ -1960,6 +1975,7 @@ func (o ClientPortMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v ClientPortMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleClientPortConditionParameters'.
 func (o ClientPortMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientPortMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -1974,7 +1990,8 @@ type ClientPortMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleClientPortConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ClientPortMatchConditionParametersResponse
@@ -2025,6 +2042,7 @@ func (o ClientPortMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v ClientPortMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleClientPortConditionParameters'.
 func (o ClientPortMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientPortMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2277,7 +2295,8 @@ type CookiesMatchConditionParameters struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCookiesConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for CookiesMatchConditionParameters
@@ -2316,7 +2335,8 @@ type CookiesMatchConditionParametersArgs struct {
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCookiesConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for CookiesMatchConditionParametersArgs
@@ -2382,6 +2402,7 @@ func (o CookiesMatchConditionParametersOutput) Transforms() pulumi.StringArrayOu
 	return o.ApplyT(func(v CookiesMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleCookiesConditionParameters'.
 func (o CookiesMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CookiesMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -2398,7 +2419,8 @@ type CookiesMatchConditionParametersResponse struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleCookiesConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for CookiesMatchConditionParametersResponse
@@ -2454,6 +2476,7 @@ func (o CookiesMatchConditionParametersResponseOutput) Transforms() pulumi.Strin
 	return o.ApplyT(func(v CookiesMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleCookiesConditionParameters'.
 func (o CookiesMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v CookiesMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -7828,7 +7851,8 @@ type HeaderActionParameters struct {
 	HeaderAction string `pulumi:"headerAction"`
 	// Name of the header to modify
 	HeaderName string `pulumi:"headerName"`
-	TypeName   string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHeaderActionParameters'.
+	TypeName string `pulumi:"typeName"`
 	// Value for the specified action
 	Value *string `pulumi:"value"`
 }
@@ -7850,7 +7874,8 @@ type HeaderActionParametersArgs struct {
 	HeaderAction pulumi.StringInput `pulumi:"headerAction"`
 	// Name of the header to modify
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
-	TypeName   pulumi.StringInput `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHeaderActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 	// Value for the specified action
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -7892,6 +7917,7 @@ func (o HeaderActionParametersOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParameters) string { return v.HeaderName }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleHeaderActionParameters'.
 func (o HeaderActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -7907,7 +7933,8 @@ type HeaderActionParametersResponse struct {
 	HeaderAction string `pulumi:"headerAction"`
 	// Name of the header to modify
 	HeaderName string `pulumi:"headerName"`
-	TypeName   string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHeaderActionParameters'.
+	TypeName string `pulumi:"typeName"`
 	// Value for the specified action
 	Value *string `pulumi:"value"`
 }
@@ -7937,6 +7964,7 @@ func (o HeaderActionParametersResponseOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParametersResponse) string { return v.HeaderName }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleHeaderActionParameters'.
 func (o HeaderActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8264,7 +8292,8 @@ type HostNameMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHostNameConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HostNameMatchConditionParameters
@@ -8301,7 +8330,8 @@ type HostNameMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHostNameConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HostNameMatchConditionParametersArgs
@@ -8362,6 +8392,7 @@ func (o HostNameMatchConditionParametersOutput) Transforms() pulumi.StringArrayO
 	return o.ApplyT(func(v HostNameMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleHostNameConditionParameters'.
 func (o HostNameMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HostNameMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8376,7 +8407,8 @@ type HostNameMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHostNameConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HostNameMatchConditionParametersResponse
@@ -8427,6 +8459,7 @@ func (o HostNameMatchConditionParametersResponseOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v HostNameMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleHostNameConditionParameters'.
 func (o HostNameMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HostNameMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8603,7 +8636,8 @@ type HttpVersionMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HttpVersionMatchConditionParameters
@@ -8640,7 +8674,8 @@ type HttpVersionMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HttpVersionMatchConditionParametersArgs
@@ -8701,6 +8736,7 @@ func (o HttpVersionMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v HttpVersionMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
 func (o HttpVersionMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpVersionMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8715,7 +8751,8 @@ type HttpVersionMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for HttpVersionMatchConditionParametersResponse
@@ -8766,6 +8803,7 @@ func (o HttpVersionMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v HttpVersionMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
 func (o HttpVersionMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpVersionMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8780,7 +8818,8 @@ type IsDeviceMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for IsDeviceMatchConditionParameters
@@ -8817,7 +8856,8 @@ type IsDeviceMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for IsDeviceMatchConditionParametersArgs
@@ -8878,6 +8918,7 @@ func (o IsDeviceMatchConditionParametersOutput) Transforms() pulumi.StringArrayO
 	return o.ApplyT(func(v IsDeviceMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
 func (o IsDeviceMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IsDeviceMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8892,7 +8933,8 @@ type IsDeviceMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for IsDeviceMatchConditionParametersResponse
@@ -8943,6 +8985,7 @@ func (o IsDeviceMatchConditionParametersResponseOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v IsDeviceMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
 func (o IsDeviceMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v IsDeviceMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -8959,7 +9002,8 @@ type KeyVaultCertificateSourceParametersResponse struct {
 	SecretVersion *string `pulumi:"secretVersion"`
 	// Subscription Id of the user's Key Vault containing the SSL certificate
 	SubscriptionId string `pulumi:"subscriptionId"`
-	TypeName       string `pulumi:"typeName"`
+	// Expected value is 'KeyVaultCertificateSourceParameters'.
+	TypeName string `pulumi:"typeName"`
 	// Describes the action that shall be taken when the certificate is updated in Key Vault.
 	UpdateRule string `pulumi:"updateRule"`
 	// The name of the user's Key Vault containing the SSL certificate
@@ -9006,6 +9050,7 @@ func (o KeyVaultCertificateSourceParametersResponseOutput) SubscriptionId() pulu
 	return o.ApplyT(func(v KeyVaultCertificateSourceParametersResponse) string { return v.SubscriptionId }).(pulumi.StringOutput)
 }
 
+// Expected value is 'KeyVaultCertificateSourceParameters'.
 func (o KeyVaultCertificateSourceParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultCertificateSourceParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -9094,6 +9139,7 @@ func (o KeyVaultCertificateSourceParametersResponsePtrOutput) SubscriptionId() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Expected value is 'KeyVaultCertificateSourceParameters'.
 func (o KeyVaultCertificateSourceParametersResponsePtrOutput) TypeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultCertificateSourceParametersResponse) *string {
 		if v == nil {
@@ -11254,7 +11300,8 @@ func (o OriginGroupOverrideActionOutput) Parameters() OriginGroupOverrideActionP
 type OriginGroupOverrideActionParameters struct {
 	// defines the OriginGroup that would override the DefaultOriginGroup.
 	OriginGroup ResourceReference `pulumi:"originGroup"`
-	TypeName    string            `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // OriginGroupOverrideActionParametersInput is an input type that accepts OriginGroupOverrideActionParametersArgs and OriginGroupOverrideActionParametersOutput values.
@@ -11272,7 +11319,8 @@ type OriginGroupOverrideActionParametersInput interface {
 type OriginGroupOverrideActionParametersArgs struct {
 	// defines the OriginGroup that would override the DefaultOriginGroup.
 	OriginGroup ResourceReferenceInput `pulumi:"originGroup"`
-	TypeName    pulumi.StringInput     `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (OriginGroupOverrideActionParametersArgs) ElementType() reflect.Type {
@@ -11307,6 +11355,7 @@ func (o OriginGroupOverrideActionParametersOutput) OriginGroup() ResourceReferen
 	return o.ApplyT(func(v OriginGroupOverrideActionParameters) ResourceReference { return v.OriginGroup }).(ResourceReferenceOutput)
 }
 
+// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
 func (o OriginGroupOverrideActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OriginGroupOverrideActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -11315,7 +11364,8 @@ func (o OriginGroupOverrideActionParametersOutput) TypeName() pulumi.StringOutpu
 type OriginGroupOverrideActionParametersResponse struct {
 	// defines the OriginGroup that would override the DefaultOriginGroup.
 	OriginGroup ResourceReferenceResponse `pulumi:"originGroup"`
-	TypeName    string                    `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the origin group override action.
@@ -11338,6 +11388,7 @@ func (o OriginGroupOverrideActionParametersResponseOutput) OriginGroup() Resourc
 	return o.ApplyT(func(v OriginGroupOverrideActionParametersResponse) ResourceReferenceResponse { return v.OriginGroup }).(ResourceReferenceResponseOutput)
 }
 
+// Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
 func (o OriginGroupOverrideActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v OriginGroupOverrideActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -11812,7 +11863,8 @@ type PostArgsMatchConditionParameters struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRulePostArgsConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for PostArgsMatchConditionParameters
@@ -11851,7 +11903,8 @@ type PostArgsMatchConditionParametersArgs struct {
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRulePostArgsConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for PostArgsMatchConditionParametersArgs
@@ -11917,6 +11970,7 @@ func (o PostArgsMatchConditionParametersOutput) Transforms() pulumi.StringArrayO
 	return o.ApplyT(func(v PostArgsMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRulePostArgsConditionParameters'.
 func (o PostArgsMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v PostArgsMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -11933,7 +11987,8 @@ type PostArgsMatchConditionParametersResponse struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRulePostArgsConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for PostArgsMatchConditionParametersResponse
@@ -11989,6 +12044,7 @@ func (o PostArgsMatchConditionParametersResponseOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v PostArgsMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRulePostArgsConditionParameters'.
 func (o PostArgsMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v PostArgsMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -12433,7 +12489,8 @@ type QueryStringMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for QueryStringMatchConditionParameters
@@ -12470,7 +12527,8 @@ type QueryStringMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for QueryStringMatchConditionParametersArgs
@@ -12531,6 +12589,7 @@ func (o QueryStringMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v QueryStringMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
 func (o QueryStringMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryStringMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -12545,7 +12604,8 @@ type QueryStringMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for QueryStringMatchConditionParametersResponse
@@ -12596,6 +12656,7 @@ func (o QueryStringMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v QueryStringMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleQueryStringConditionParameters'.
 func (o QueryStringMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryStringMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13052,7 +13113,8 @@ type RemoteAddressMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RemoteAddressMatchConditionParameters
@@ -13089,7 +13151,8 @@ type RemoteAddressMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RemoteAddressMatchConditionParametersArgs
@@ -13150,6 +13213,7 @@ func (o RemoteAddressMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RemoteAddressMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
 func (o RemoteAddressMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteAddressMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13164,7 +13228,8 @@ type RemoteAddressMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RemoteAddressMatchConditionParametersResponse
@@ -13215,6 +13280,7 @@ func (o RemoteAddressMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RemoteAddressMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
 func (o RemoteAddressMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteAddressMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13229,7 +13295,8 @@ type RequestBodyMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestBodyMatchConditionParameters
@@ -13266,7 +13333,8 @@ type RequestBodyMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestBodyMatchConditionParametersArgs
@@ -13327,6 +13395,7 @@ func (o RequestBodyMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v RequestBodyMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
 func (o RequestBodyMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestBodyMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13341,7 +13410,8 @@ type RequestBodyMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestBodyMatchConditionParametersResponse
@@ -13392,6 +13462,7 @@ func (o RequestBodyMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v RequestBodyMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestBodyConditionParameters'.
 func (o RequestBodyMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestBodyMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13408,7 +13479,8 @@ type RequestHeaderMatchConditionParameters struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestHeaderMatchConditionParameters
@@ -13447,7 +13519,8 @@ type RequestHeaderMatchConditionParametersArgs struct {
 	Selector pulumi.StringPtrInput `pulumi:"selector"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestHeaderMatchConditionParametersArgs
@@ -13513,6 +13586,7 @@ func (o RequestHeaderMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RequestHeaderMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
 func (o RequestHeaderMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestHeaderMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13529,7 +13603,8 @@ type RequestHeaderMatchConditionParametersResponse struct {
 	Selector *string `pulumi:"selector"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestHeaderMatchConditionParametersResponse
@@ -13585,6 +13660,7 @@ func (o RequestHeaderMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RequestHeaderMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
 func (o RequestHeaderMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestHeaderMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13599,7 +13675,8 @@ type RequestMethodMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestMethodMatchConditionParameters
@@ -13636,7 +13713,8 @@ type RequestMethodMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestMethodMatchConditionParametersArgs
@@ -13697,6 +13775,7 @@ func (o RequestMethodMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RequestMethodMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
 func (o RequestMethodMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestMethodMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13711,7 +13790,8 @@ type RequestMethodMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestMethodMatchConditionParametersResponse
@@ -13762,6 +13842,7 @@ func (o RequestMethodMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RequestMethodMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestMethodConditionParameters'.
 func (o RequestMethodMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestMethodMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13776,7 +13857,8 @@ type RequestSchemeMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestSchemeMatchConditionParameters
@@ -13813,7 +13895,8 @@ type RequestSchemeMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestSchemeMatchConditionParametersArgs
@@ -13874,6 +13957,7 @@ func (o RequestSchemeMatchConditionParametersOutput) Transforms() pulumi.StringA
 	return o.ApplyT(func(v RequestSchemeMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
 func (o RequestSchemeMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestSchemeMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13888,7 +13972,8 @@ type RequestSchemeMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestSchemeMatchConditionParametersResponse
@@ -13939,6 +14024,7 @@ func (o RequestSchemeMatchConditionParametersResponseOutput) Transforms() pulumi
 	return o.ApplyT(func(v RequestSchemeMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
 func (o RequestSchemeMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestSchemeMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -13953,7 +14039,8 @@ type RequestUriMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestUriMatchConditionParameters
@@ -13990,7 +14077,8 @@ type RequestUriMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestUriMatchConditionParametersArgs
@@ -14051,6 +14139,7 @@ func (o RequestUriMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v RequestUriMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
 func (o RequestUriMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestUriMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14065,7 +14154,8 @@ type RequestUriMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for RequestUriMatchConditionParametersResponse
@@ -14116,6 +14206,7 @@ func (o RequestUriMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v RequestUriMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleRequestUriConditionParameters'.
 func (o RequestUriMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RequestUriMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14675,7 +14766,8 @@ type RouteConfigurationOverrideActionParameters struct {
 	CacheConfiguration *CacheConfiguration `pulumi:"cacheConfiguration"`
 	// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
 	OriginGroupOverride *OriginGroupOverride `pulumi:"originGroupOverride"`
-	TypeName            string               `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // RouteConfigurationOverrideActionParametersInput is an input type that accepts RouteConfigurationOverrideActionParametersArgs and RouteConfigurationOverrideActionParametersOutput values.
@@ -14695,7 +14787,8 @@ type RouteConfigurationOverrideActionParametersArgs struct {
 	CacheConfiguration CacheConfigurationPtrInput `pulumi:"cacheConfiguration"`
 	// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
 	OriginGroupOverride OriginGroupOverridePtrInput `pulumi:"originGroupOverride"`
-	TypeName            pulumi.StringInput          `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (RouteConfigurationOverrideActionParametersArgs) ElementType() reflect.Type {
@@ -14735,6 +14828,7 @@ func (o RouteConfigurationOverrideActionParametersOutput) OriginGroupOverride() 
 	return o.ApplyT(func(v RouteConfigurationOverrideActionParameters) *OriginGroupOverride { return v.OriginGroupOverride }).(OriginGroupOverridePtrOutput)
 }
 
+// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
 func (o RouteConfigurationOverrideActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteConfigurationOverrideActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -14745,7 +14839,8 @@ type RouteConfigurationOverrideActionParametersResponse struct {
 	CacheConfiguration *CacheConfigurationResponse `pulumi:"cacheConfiguration"`
 	// A reference to the origin group override configuration. Leave empty to use the default origin group on route.
 	OriginGroupOverride *OriginGroupOverrideResponse `pulumi:"originGroupOverride"`
-	TypeName            string                       `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the route configuration override action.
@@ -14777,6 +14872,7 @@ func (o RouteConfigurationOverrideActionParametersResponseOutput) OriginGroupOve
 	}).(OriginGroupOverrideResponsePtrOutput)
 }
 
+// Expected value is 'DeliveryRuleRouteConfigurationOverrideActionParameters'.
 func (o RouteConfigurationOverrideActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteConfigurationOverrideActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -15240,7 +15336,8 @@ type ServerPortMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleServerPortConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ServerPortMatchConditionParameters
@@ -15277,7 +15374,8 @@ type ServerPortMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleServerPortConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ServerPortMatchConditionParametersArgs
@@ -15338,6 +15436,7 @@ func (o ServerPortMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v ServerPortMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleServerPortConditionParameters'.
 func (o ServerPortMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerPortMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -15352,7 +15451,8 @@ type ServerPortMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleServerPortConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for ServerPortMatchConditionParametersResponse
@@ -15403,6 +15503,7 @@ func (o ServerPortMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v ServerPortMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleServerPortConditionParameters'.
 func (o ServerPortMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerPortMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -15902,7 +16003,8 @@ type SocketAddrMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SocketAddrMatchConditionParameters
@@ -15939,7 +16041,8 @@ type SocketAddrMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SocketAddrMatchConditionParametersArgs
@@ -16000,6 +16103,7 @@ func (o SocketAddrMatchConditionParametersOutput) Transforms() pulumi.StringArra
 	return o.ApplyT(func(v SocketAddrMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
 func (o SocketAddrMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SocketAddrMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16014,7 +16118,8 @@ type SocketAddrMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SocketAddrMatchConditionParametersResponse
@@ -16065,6 +16170,7 @@ func (o SocketAddrMatchConditionParametersResponseOutput) Transforms() pulumi.St
 	return o.ApplyT(func(v SocketAddrMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleSocketAddrConditionParameters'.
 func (o SocketAddrMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SocketAddrMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16079,7 +16185,8 @@ type SslProtocolMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SslProtocolMatchConditionParameters
@@ -16116,7 +16223,8 @@ type SslProtocolMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SslProtocolMatchConditionParametersArgs
@@ -16177,6 +16285,7 @@ func (o SslProtocolMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v SslProtocolMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
 func (o SslProtocolMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SslProtocolMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16191,7 +16300,8 @@ type SslProtocolMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for SslProtocolMatchConditionParametersResponse
@@ -16242,6 +16352,7 @@ func (o SslProtocolMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v SslProtocolMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
 func (o SslProtocolMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v SslProtocolMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16317,7 +16428,8 @@ type UrlFileExtensionMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParameters
@@ -16354,7 +16466,8 @@ type UrlFileExtensionMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersArgs
@@ -16415,6 +16528,7 @@ func (o UrlFileExtensionMatchConditionParametersOutput) Transforms() pulumi.Stri
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
 func (o UrlFileExtensionMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16429,7 +16543,8 @@ type UrlFileExtensionMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileExtensionMatchConditionParametersResponse
@@ -16480,6 +16595,7 @@ func (o UrlFileExtensionMatchConditionParametersResponseOutput) Transforms() pul
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlFileExtensionMatchConditionParameters'.
 func (o UrlFileExtensionMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileExtensionMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16494,7 +16610,8 @@ type UrlFileNameMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileNameMatchConditionParameters
@@ -16531,7 +16648,8 @@ type UrlFileNameMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileNameMatchConditionParametersArgs
@@ -16592,6 +16710,7 @@ func (o UrlFileNameMatchConditionParametersOutput) Transforms() pulumi.StringArr
 	return o.ApplyT(func(v UrlFileNameMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
 func (o UrlFileNameMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileNameMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16606,7 +16725,8 @@ type UrlFileNameMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlFileNameMatchConditionParametersResponse
@@ -16657,6 +16777,7 @@ func (o UrlFileNameMatchConditionParametersResponseOutput) Transforms() pulumi.S
 	return o.ApplyT(func(v UrlFileNameMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
 func (o UrlFileNameMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlFileNameMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16671,7 +16792,8 @@ type UrlPathMatchConditionParameters struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlPathMatchConditionParameters
@@ -16708,7 +16830,8 @@ type UrlPathMatchConditionParametersArgs struct {
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of transforms
 	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-	TypeName   pulumi.StringInput      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlPathMatchConditionParametersArgs
@@ -16769,6 +16892,7 @@ func (o UrlPathMatchConditionParametersOutput) Transforms() pulumi.StringArrayOu
 	return o.ApplyT(func(v UrlPathMatchConditionParameters) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
 func (o UrlPathMatchConditionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlPathMatchConditionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16783,7 +16907,8 @@ type UrlPathMatchConditionParametersResponse struct {
 	Operator string `pulumi:"operator"`
 	// List of transforms
 	Transforms []string `pulumi:"transforms"`
-	TypeName   string   `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defaults sets the appropriate defaults for UrlPathMatchConditionParametersResponse
@@ -16834,6 +16959,7 @@ func (o UrlPathMatchConditionParametersResponseOutput) Transforms() pulumi.Strin
 	return o.ApplyT(func(v UrlPathMatchConditionParametersResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
 func (o UrlPathMatchConditionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlPathMatchConditionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -16919,7 +17045,8 @@ type UrlRedirectActionParameters struct {
 	DestinationProtocol *string `pulumi:"destinationProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType string `pulumi:"redirectType"`
-	TypeName     string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // UrlRedirectActionParametersInput is an input type that accepts UrlRedirectActionParametersArgs and UrlRedirectActionParametersOutput values.
@@ -16947,7 +17074,8 @@ type UrlRedirectActionParametersArgs struct {
 	DestinationProtocol pulumi.StringPtrInput `pulumi:"destinationProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType pulumi.StringInput `pulumi:"redirectType"`
-	TypeName     pulumi.StringInput `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (UrlRedirectActionParametersArgs) ElementType() reflect.Type {
@@ -17007,6 +17135,7 @@ func (o UrlRedirectActionParametersOutput) RedirectType() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRedirectActionParameters) string { return v.RedirectType }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
 func (o UrlRedirectActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRedirectActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17025,7 +17154,8 @@ type UrlRedirectActionParametersResponse struct {
 	DestinationProtocol *string `pulumi:"destinationProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType string `pulumi:"redirectType"`
-	TypeName     string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the url redirect action.
@@ -17073,6 +17203,7 @@ func (o UrlRedirectActionParametersResponseOutput) RedirectType() pulumi.StringO
 	return o.ApplyT(func(v UrlRedirectActionParametersResponse) string { return v.RedirectType }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
 func (o UrlRedirectActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRedirectActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17187,7 +17318,8 @@ type UrlRewriteActionParameters struct {
 	PreserveUnmatchedPath *bool `pulumi:"preserveUnmatchedPath"`
 	// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
 	SourcePattern string `pulumi:"sourcePattern"`
-	TypeName      string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // UrlRewriteActionParametersInput is an input type that accepts UrlRewriteActionParametersArgs and UrlRewriteActionParametersOutput values.
@@ -17209,7 +17341,8 @@ type UrlRewriteActionParametersArgs struct {
 	PreserveUnmatchedPath pulumi.BoolPtrInput `pulumi:"preserveUnmatchedPath"`
 	// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
 	SourcePattern pulumi.StringInput `pulumi:"sourcePattern"`
-	TypeName      pulumi.StringInput `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (UrlRewriteActionParametersArgs) ElementType() reflect.Type {
@@ -17254,6 +17387,7 @@ func (o UrlRewriteActionParametersOutput) SourcePattern() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteActionParameters) string { return v.SourcePattern }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
 func (o UrlRewriteActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17266,7 +17400,8 @@ type UrlRewriteActionParametersResponse struct {
 	PreserveUnmatchedPath *bool `pulumi:"preserveUnmatchedPath"`
 	// define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
 	SourcePattern string `pulumi:"sourcePattern"`
-	TypeName      string `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the url rewrite action.
@@ -17299,6 +17434,7 @@ func (o UrlRewriteActionParametersResponseOutput) SourcePattern() pulumi.StringO
 	return o.ApplyT(func(v UrlRewriteActionParametersResponse) string { return v.SourcePattern }).(pulumi.StringOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
 func (o UrlRewriteActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlRewriteActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17411,7 +17547,8 @@ type UrlSigningActionParameters struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// Defines which query string parameters in the url to be considered for expires, key id etc.
 	ParameterNameOverride []UrlSigningParamIdentifier `pulumi:"parameterNameOverride"`
-	TypeName              string                      `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // UrlSigningActionParametersInput is an input type that accepts UrlSigningActionParametersArgs and UrlSigningActionParametersOutput values.
@@ -17431,7 +17568,8 @@ type UrlSigningActionParametersArgs struct {
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Defines which query string parameters in the url to be considered for expires, key id etc.
 	ParameterNameOverride UrlSigningParamIdentifierArrayInput `pulumi:"parameterNameOverride"`
-	TypeName              pulumi.StringInput                  `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
+	TypeName pulumi.StringInput `pulumi:"typeName"`
 }
 
 func (UrlSigningActionParametersArgs) ElementType() reflect.Type {
@@ -17471,6 +17609,7 @@ func (o UrlSigningActionParametersOutput) ParameterNameOverride() UrlSigningPara
 	return o.ApplyT(func(v UrlSigningActionParameters) []UrlSigningParamIdentifier { return v.ParameterNameOverride }).(UrlSigningParamIdentifierArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
 func (o UrlSigningActionParametersOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlSigningActionParameters) string { return v.TypeName }).(pulumi.StringOutput)
 }
@@ -17481,7 +17620,8 @@ type UrlSigningActionParametersResponse struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// Defines which query string parameters in the url to be considered for expires, key id etc.
 	ParameterNameOverride []UrlSigningParamIdentifierResponse `pulumi:"parameterNameOverride"`
-	TypeName              string                              `pulumi:"typeName"`
+	// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
+	TypeName string `pulumi:"typeName"`
 }
 
 // Defines the parameters for the Url Signing action.
@@ -17511,6 +17651,7 @@ func (o UrlSigningActionParametersResponseOutput) ParameterNameOverride() UrlSig
 	}).(UrlSigningParamIdentifierResponseArrayOutput)
 }
 
+// Expected value is 'DeliveryRuleUrlSigningActionParameters'.
 func (o UrlSigningActionParametersResponseOutput) TypeName() pulumi.StringOutput {
 	return o.ApplyT(func(v UrlSigningActionParametersResponse) string { return v.TypeName }).(pulumi.StringOutput)
 }
