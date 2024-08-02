@@ -59,6 +59,9 @@ func NewApplication(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hdinsight/v20230415preview:Application"),
 		},
+		{
+			Type: pulumi.String("azure-native:hdinsight/v20240801preview:Application"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

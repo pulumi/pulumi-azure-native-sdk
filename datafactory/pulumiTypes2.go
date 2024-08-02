@@ -23977,17 +23977,25 @@ type VerticaLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd *AzureKeyVaultSecretReference `pulumi:"pwd"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
 	// Type of linked service.
 	// Expected value is 'Vertica'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Uid interface{} `pulumi:"uid"`
 }
 
 // VerticaLinkedServiceInput is an input type that accepts VerticaLinkedServiceArgs and VerticaLinkedServiceOutput values.
@@ -24009,17 +24017,25 @@ type VerticaLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database pulumi.Input `pulumi:"database"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The port for the connection. Type: integer.
+	Port pulumi.Input `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd AzureKeyVaultSecretReferencePtrInput `pulumi:"pwd"`
+	// Server name for connection. Type: string.
+	Server pulumi.Input `pulumi:"server"`
 	// Type of linked service.
 	// Expected value is 'Vertica'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Uid pulumi.Input `pulumi:"uid"`
 }
 
 func (VerticaLinkedServiceArgs) ElementType() reflect.Type {
@@ -24064,6 +24080,11 @@ func (o VerticaLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v VerticaLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// Database name for connection. Type: string.
+func (o VerticaLinkedServiceOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedService) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o VerticaLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerticaLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -24079,15 +24100,30 @@ func (o VerticaLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput
 	return o.ApplyT(func(v VerticaLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
 }
 
+// The port for the connection. Type: integer.
+func (o VerticaLinkedServiceOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedService) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
 // The Azure key vault secret reference of password in connection string.
 func (o VerticaLinkedServiceOutput) Pwd() AzureKeyVaultSecretReferencePtrOutput {
 	return o.ApplyT(func(v VerticaLinkedService) *AzureKeyVaultSecretReference { return v.Pwd }).(AzureKeyVaultSecretReferencePtrOutput)
+}
+
+// Server name for connection. Type: string.
+func (o VerticaLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
 // Expected value is 'Vertica'.
 func (o VerticaLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VerticaLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o VerticaLinkedServiceOutput) Uid() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedService) interface{} { return v.Uid }).(pulumi.AnyOutput)
 }
 
 // Vertica linked service.
@@ -24098,17 +24134,25 @@ type VerticaLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Database name for connection. Type: string.
+	Database interface{} `pulumi:"database"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The port for the connection. Type: integer.
+	Port interface{} `pulumi:"port"`
 	// The Azure key vault secret reference of password in connection string.
 	Pwd *AzureKeyVaultSecretReferenceResponse `pulumi:"pwd"`
+	// Server name for connection. Type: string.
+	Server interface{} `pulumi:"server"`
 	// Type of linked service.
 	// Expected value is 'Vertica'.
 	Type string `pulumi:"type"`
+	// Username for authentication. Type: string.
+	Uid interface{} `pulumi:"uid"`
 }
 
 // Vertica linked service.
@@ -24141,6 +24185,11 @@ func (o VerticaLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput 
 	return o.ApplyT(func(v VerticaLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
 }
 
+// Database name for connection. Type: string.
+func (o VerticaLinkedServiceResponseOutput) Database() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedServiceResponse) interface{} { return v.Database }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o VerticaLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VerticaLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -24156,15 +24205,30 @@ func (o VerticaLinkedServiceResponseOutput) Parameters() ParameterSpecificationR
 	return o.ApplyT(func(v VerticaLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
 }
 
+// The port for the connection. Type: integer.
+func (o VerticaLinkedServiceResponseOutput) Port() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedServiceResponse) interface{} { return v.Port }).(pulumi.AnyOutput)
+}
+
 // The Azure key vault secret reference of password in connection string.
 func (o VerticaLinkedServiceResponseOutput) Pwd() AzureKeyVaultSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v VerticaLinkedServiceResponse) *AzureKeyVaultSecretReferenceResponse { return v.Pwd }).(AzureKeyVaultSecretReferenceResponsePtrOutput)
+}
+
+// Server name for connection. Type: string.
+func (o VerticaLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
 }
 
 // Type of linked service.
 // Expected value is 'Vertica'.
 func (o VerticaLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VerticaLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for authentication. Type: string.
+func (o VerticaLinkedServiceResponseOutput) Uid() pulumi.AnyOutput {
+	return o.ApplyT(func(v VerticaLinkedServiceResponse) interface{} { return v.Uid }).(pulumi.AnyOutput)
 }
 
 // A copy activity Vertica source.

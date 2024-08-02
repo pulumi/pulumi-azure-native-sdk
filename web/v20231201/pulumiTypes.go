@@ -11513,7 +11513,7 @@ func (o FunctionAppConfigResponsePtrOutput) ScaleAndConcurrency() FunctionsScale
 // Sets the number of 'Always Ready' instances for a function group or a specific function.
 type FunctionsAlwaysReadyConfig struct {
 	// Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
-	InstanceCount *float64 `pulumi:"instanceCount"`
+	InstanceCount *int `pulumi:"instanceCount"`
 	// Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 	Name *string `pulumi:"name"`
 }
@@ -11532,7 +11532,7 @@ type FunctionsAlwaysReadyConfigInput interface {
 // Sets the number of 'Always Ready' instances for a function group or a specific function.
 type FunctionsAlwaysReadyConfigArgs struct {
 	// Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
-	InstanceCount pulumi.Float64PtrInput `pulumi:"instanceCount"`
+	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
 	// Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -11590,8 +11590,8 @@ func (o FunctionsAlwaysReadyConfigOutput) ToFunctionsAlwaysReadyConfigOutputWith
 }
 
 // Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
-func (o FunctionsAlwaysReadyConfigOutput) InstanceCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsAlwaysReadyConfig) *float64 { return v.InstanceCount }).(pulumi.Float64PtrOutput)
+func (o FunctionsAlwaysReadyConfigOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsAlwaysReadyConfig) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
 // Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
@@ -11622,7 +11622,7 @@ func (o FunctionsAlwaysReadyConfigArrayOutput) Index(i pulumi.IntInput) Function
 // Sets the number of 'Always Ready' instances for a function group or a specific function.
 type FunctionsAlwaysReadyConfigResponse struct {
 	// Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
-	InstanceCount *float64 `pulumi:"instanceCount"`
+	InstanceCount *int `pulumi:"instanceCount"`
 	// Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
 	Name *string `pulumi:"name"`
 }
@@ -11643,8 +11643,8 @@ func (o FunctionsAlwaysReadyConfigResponseOutput) ToFunctionsAlwaysReadyConfigRe
 }
 
 // Sets the number of 'Always Ready' instances for a given function group or a specific function. For additional information see https://aka.ms/flexconsumption/alwaysready.
-func (o FunctionsAlwaysReadyConfigResponseOutput) InstanceCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsAlwaysReadyConfigResponse) *float64 { return v.InstanceCount }).(pulumi.Float64PtrOutput)
+func (o FunctionsAlwaysReadyConfigResponseOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsAlwaysReadyConfigResponse) *int { return v.InstanceCount }).(pulumi.IntPtrOutput)
 }
 
 // Either a function group or a function name is required. For additional information see https://aka.ms/flexconsumption/alwaysready.
@@ -12659,9 +12659,9 @@ type FunctionsScaleAndConcurrency struct {
 	// 'Always Ready' configuration for the function app.
 	AlwaysReady []FunctionsAlwaysReadyConfig `pulumi:"alwaysReady"`
 	// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-	InstanceMemoryMB *float64 `pulumi:"instanceMemoryMB"`
+	InstanceMemoryMB *int `pulumi:"instanceMemoryMB"`
 	// The maximum number of instances for the function app.
-	MaximumInstanceCount *float64 `pulumi:"maximumInstanceCount"`
+	MaximumInstanceCount *int `pulumi:"maximumInstanceCount"`
 	// Scale and concurrency settings for the function app triggers.
 	Triggers *FunctionsScaleAndConcurrencyTriggers `pulumi:"triggers"`
 }
@@ -12682,9 +12682,9 @@ type FunctionsScaleAndConcurrencyArgs struct {
 	// 'Always Ready' configuration for the function app.
 	AlwaysReady FunctionsAlwaysReadyConfigArrayInput `pulumi:"alwaysReady"`
 	// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-	InstanceMemoryMB pulumi.Float64PtrInput `pulumi:"instanceMemoryMB"`
+	InstanceMemoryMB pulumi.IntPtrInput `pulumi:"instanceMemoryMB"`
 	// The maximum number of instances for the function app.
-	MaximumInstanceCount pulumi.Float64PtrInput `pulumi:"maximumInstanceCount"`
+	MaximumInstanceCount pulumi.IntPtrInput `pulumi:"maximumInstanceCount"`
 	// Scale and concurrency settings for the function app triggers.
 	Triggers FunctionsScaleAndConcurrencyTriggersPtrInput `pulumi:"triggers"`
 }
@@ -12773,13 +12773,13 @@ func (o FunctionsScaleAndConcurrencyOutput) AlwaysReady() FunctionsAlwaysReadyCo
 }
 
 // Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-func (o FunctionsScaleAndConcurrencyOutput) InstanceMemoryMB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsScaleAndConcurrency) *float64 { return v.InstanceMemoryMB }).(pulumi.Float64PtrOutput)
+func (o FunctionsScaleAndConcurrencyOutput) InstanceMemoryMB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsScaleAndConcurrency) *int { return v.InstanceMemoryMB }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of instances for the function app.
-func (o FunctionsScaleAndConcurrencyOutput) MaximumInstanceCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsScaleAndConcurrency) *float64 { return v.MaximumInstanceCount }).(pulumi.Float64PtrOutput)
+func (o FunctionsScaleAndConcurrencyOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsScaleAndConcurrency) *int { return v.MaximumInstanceCount }).(pulumi.IntPtrOutput)
 }
 
 // Scale and concurrency settings for the function app triggers.
@@ -12822,23 +12822,23 @@ func (o FunctionsScaleAndConcurrencyPtrOutput) AlwaysReady() FunctionsAlwaysRead
 }
 
 // Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-func (o FunctionsScaleAndConcurrencyPtrOutput) InstanceMemoryMB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FunctionsScaleAndConcurrency) *float64 {
+func (o FunctionsScaleAndConcurrencyPtrOutput) InstanceMemoryMB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionsScaleAndConcurrency) *int {
 		if v == nil {
 			return nil
 		}
 		return v.InstanceMemoryMB
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of instances for the function app.
-func (o FunctionsScaleAndConcurrencyPtrOutput) MaximumInstanceCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FunctionsScaleAndConcurrency) *float64 {
+func (o FunctionsScaleAndConcurrencyPtrOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionsScaleAndConcurrency) *int {
 		if v == nil {
 			return nil
 		}
 		return v.MaximumInstanceCount
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Scale and concurrency settings for the function app triggers.
@@ -12854,7 +12854,7 @@ func (o FunctionsScaleAndConcurrencyPtrOutput) Triggers() FunctionsScaleAndConcu
 // Scale and concurrency settings for the HTTP trigger.
 type FunctionsScaleAndConcurrencyHttp struct {
 	// The maximum number of concurrent HTTP trigger invocations per instance.
-	PerInstanceConcurrency *float64 `pulumi:"perInstanceConcurrency"`
+	PerInstanceConcurrency *int `pulumi:"perInstanceConcurrency"`
 }
 
 // FunctionsScaleAndConcurrencyHttpInput is an input type that accepts FunctionsScaleAndConcurrencyHttpArgs and FunctionsScaleAndConcurrencyHttpOutput values.
@@ -12871,7 +12871,7 @@ type FunctionsScaleAndConcurrencyHttpInput interface {
 // Scale and concurrency settings for the HTTP trigger.
 type FunctionsScaleAndConcurrencyHttpArgs struct {
 	// The maximum number of concurrent HTTP trigger invocations per instance.
-	PerInstanceConcurrency pulumi.Float64PtrInput `pulumi:"perInstanceConcurrency"`
+	PerInstanceConcurrency pulumi.IntPtrInput `pulumi:"perInstanceConcurrency"`
 }
 
 func (FunctionsScaleAndConcurrencyHttpArgs) ElementType() reflect.Type {
@@ -12953,8 +12953,8 @@ func (o FunctionsScaleAndConcurrencyHttpOutput) ToFunctionsScaleAndConcurrencyHt
 }
 
 // The maximum number of concurrent HTTP trigger invocations per instance.
-func (o FunctionsScaleAndConcurrencyHttpOutput) PerInstanceConcurrency() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsScaleAndConcurrencyHttp) *float64 { return v.PerInstanceConcurrency }).(pulumi.Float64PtrOutput)
+func (o FunctionsScaleAndConcurrencyHttpOutput) PerInstanceConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsScaleAndConcurrencyHttp) *int { return v.PerInstanceConcurrency }).(pulumi.IntPtrOutput)
 }
 
 type FunctionsScaleAndConcurrencyHttpPtrOutput struct{ *pulumi.OutputState }
@@ -12982,13 +12982,13 @@ func (o FunctionsScaleAndConcurrencyHttpPtrOutput) Elem() FunctionsScaleAndConcu
 }
 
 // The maximum number of concurrent HTTP trigger invocations per instance.
-func (o FunctionsScaleAndConcurrencyHttpPtrOutput) PerInstanceConcurrency() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyHttp) *float64 {
+func (o FunctionsScaleAndConcurrencyHttpPtrOutput) PerInstanceConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyHttp) *int {
 		if v == nil {
 			return nil
 		}
 		return v.PerInstanceConcurrency
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Scale and concurrency settings for the function app.
@@ -12996,9 +12996,9 @@ type FunctionsScaleAndConcurrencyResponse struct {
 	// 'Always Ready' configuration for the function app.
 	AlwaysReady []FunctionsAlwaysReadyConfigResponse `pulumi:"alwaysReady"`
 	// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-	InstanceMemoryMB *float64 `pulumi:"instanceMemoryMB"`
+	InstanceMemoryMB *int `pulumi:"instanceMemoryMB"`
 	// The maximum number of instances for the function app.
-	MaximumInstanceCount *float64 `pulumi:"maximumInstanceCount"`
+	MaximumInstanceCount *int `pulumi:"maximumInstanceCount"`
 	// Scale and concurrency settings for the function app triggers.
 	Triggers *FunctionsScaleAndConcurrencyResponseTriggers `pulumi:"triggers"`
 }
@@ -13026,13 +13026,13 @@ func (o FunctionsScaleAndConcurrencyResponseOutput) AlwaysReady() FunctionsAlway
 }
 
 // Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-func (o FunctionsScaleAndConcurrencyResponseOutput) InstanceMemoryMB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponse) *float64 { return v.InstanceMemoryMB }).(pulumi.Float64PtrOutput)
+func (o FunctionsScaleAndConcurrencyResponseOutput) InstanceMemoryMB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponse) *int { return v.InstanceMemoryMB }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of instances for the function app.
-func (o FunctionsScaleAndConcurrencyResponseOutput) MaximumInstanceCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponse) *float64 { return v.MaximumInstanceCount }).(pulumi.Float64PtrOutput)
+func (o FunctionsScaleAndConcurrencyResponseOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponse) *int { return v.MaximumInstanceCount }).(pulumi.IntPtrOutput)
 }
 
 // Scale and concurrency settings for the function app triggers.
@@ -13077,23 +13077,23 @@ func (o FunctionsScaleAndConcurrencyResponsePtrOutput) AlwaysReady() FunctionsAl
 }
 
 // Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
-func (o FunctionsScaleAndConcurrencyResponsePtrOutput) InstanceMemoryMB() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponse) *float64 {
+func (o FunctionsScaleAndConcurrencyResponsePtrOutput) InstanceMemoryMB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponse) *int {
 		if v == nil {
 			return nil
 		}
 		return v.InstanceMemoryMB
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of instances for the function app.
-func (o FunctionsScaleAndConcurrencyResponsePtrOutput) MaximumInstanceCount() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponse) *float64 {
+func (o FunctionsScaleAndConcurrencyResponsePtrOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponse) *int {
 		if v == nil {
 			return nil
 		}
 		return v.MaximumInstanceCount
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Scale and concurrency settings for the function app triggers.
@@ -13109,7 +13109,7 @@ func (o FunctionsScaleAndConcurrencyResponsePtrOutput) Triggers() FunctionsScale
 // Scale and concurrency settings for the HTTP trigger.
 type FunctionsScaleAndConcurrencyResponseHttp struct {
 	// The maximum number of concurrent HTTP trigger invocations per instance.
-	PerInstanceConcurrency *float64 `pulumi:"perInstanceConcurrency"`
+	PerInstanceConcurrency *int `pulumi:"perInstanceConcurrency"`
 }
 
 // Scale and concurrency settings for the HTTP trigger.
@@ -13128,8 +13128,8 @@ func (o FunctionsScaleAndConcurrencyResponseHttpOutput) ToFunctionsScaleAndConcu
 }
 
 // The maximum number of concurrent HTTP trigger invocations per instance.
-func (o FunctionsScaleAndConcurrencyResponseHttpOutput) PerInstanceConcurrency() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponseHttp) *float64 { return v.PerInstanceConcurrency }).(pulumi.Float64PtrOutput)
+func (o FunctionsScaleAndConcurrencyResponseHttpOutput) PerInstanceConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponseHttp) *int { return v.PerInstanceConcurrency }).(pulumi.IntPtrOutput)
 }
 
 type FunctionsScaleAndConcurrencyResponseHttpPtrOutput struct{ *pulumi.OutputState }
@@ -13157,13 +13157,13 @@ func (o FunctionsScaleAndConcurrencyResponseHttpPtrOutput) Elem() FunctionsScale
 }
 
 // The maximum number of concurrent HTTP trigger invocations per instance.
-func (o FunctionsScaleAndConcurrencyResponseHttpPtrOutput) PerInstanceConcurrency() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponseHttp) *float64 {
+func (o FunctionsScaleAndConcurrencyResponseHttpPtrOutput) PerInstanceConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponseHttp) *int {
 		if v == nil {
 			return nil
 		}
 		return v.PerInstanceConcurrency
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Scale and concurrency settings for the function app triggers.

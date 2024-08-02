@@ -71,6 +71,9 @@ func NewFeaturestoreEntityVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401:FeaturestoreEntityVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:FeaturestoreEntityVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

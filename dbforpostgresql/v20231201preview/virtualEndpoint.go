@@ -50,6 +50,9 @@ func NewVirtualEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20230601preview:VirtualEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:VirtualEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

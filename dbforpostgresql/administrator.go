@@ -15,7 +15,7 @@ import (
 // Represents an Active Directory administrator.
 // Azure REST API version: 2022-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview.
 type Administrator struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:Administrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Administrator"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -48,6 +48,9 @@ func NewConnectionRaiBlocklistItem(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices:ConnectionRaiBlocklistItem"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:ConnectionRaiBlocklistItem"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

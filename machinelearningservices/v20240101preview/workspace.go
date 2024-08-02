@@ -216,6 +216,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

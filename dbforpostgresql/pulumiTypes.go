@@ -493,15 +493,15 @@ func (o AuthConfigResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
 }
 
 // Backup properties of a server
-type Backup struct {
+type BackupType struct {
 	// Backup retention days for the server.
 	BackupRetentionDays *int `pulumi:"backupRetentionDays"`
 	// A value indicating whether Geo-Redundant backup is enabled on the server.
 	GeoRedundantBackup *string `pulumi:"geoRedundantBackup"`
 }
 
-// Defaults sets the appropriate defaults for Backup
-func (val *Backup) Defaults() *Backup {
+// Defaults sets the appropriate defaults for BackupType
+func (val *BackupType) Defaults() *BackupType {
 	if val == nil {
 		return nil
 	}
@@ -517,27 +517,27 @@ func (val *Backup) Defaults() *Backup {
 	return &tmp
 }
 
-// BackupInput is an input type that accepts BackupArgs and BackupOutput values.
-// You can construct a concrete instance of `BackupInput` via:
+// BackupTypeInput is an input type that accepts BackupTypeArgs and BackupTypeOutput values.
+// You can construct a concrete instance of `BackupTypeInput` via:
 //
-//	BackupArgs{...}
-type BackupInput interface {
+//	BackupTypeArgs{...}
+type BackupTypeInput interface {
 	pulumi.Input
 
-	ToBackupOutput() BackupOutput
-	ToBackupOutputWithContext(context.Context) BackupOutput
+	ToBackupTypeOutput() BackupTypeOutput
+	ToBackupTypeOutputWithContext(context.Context) BackupTypeOutput
 }
 
 // Backup properties of a server
-type BackupArgs struct {
+type BackupTypeArgs struct {
 	// Backup retention days for the server.
 	BackupRetentionDays pulumi.IntPtrInput `pulumi:"backupRetentionDays"`
 	// A value indicating whether Geo-Redundant backup is enabled on the server.
 	GeoRedundantBackup pulumi.StringPtrInput `pulumi:"geoRedundantBackup"`
 }
 
-// Defaults sets the appropriate defaults for BackupArgs
-func (val *BackupArgs) Defaults() *BackupArgs {
+// Defaults sets the appropriate defaults for BackupTypeArgs
+func (val *BackupTypeArgs) Defaults() *BackupTypeArgs {
 	if val == nil {
 		return nil
 	}
@@ -550,121 +550,121 @@ func (val *BackupArgs) Defaults() *BackupArgs {
 	}
 	return &tmp
 }
-func (BackupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Backup)(nil)).Elem()
+func (BackupTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupType)(nil)).Elem()
 }
 
-func (i BackupArgs) ToBackupOutput() BackupOutput {
-	return i.ToBackupOutputWithContext(context.Background())
+func (i BackupTypeArgs) ToBackupTypeOutput() BackupTypeOutput {
+	return i.ToBackupTypeOutputWithContext(context.Background())
 }
 
-func (i BackupArgs) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupOutput)
+func (i BackupTypeArgs) ToBackupTypeOutputWithContext(ctx context.Context) BackupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupTypeOutput)
 }
 
-func (i BackupArgs) ToBackupPtrOutput() BackupPtrOutput {
-	return i.ToBackupPtrOutputWithContext(context.Background())
+func (i BackupTypeArgs) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return i.ToBackupTypePtrOutputWithContext(context.Background())
 }
 
-func (i BackupArgs) ToBackupPtrOutputWithContext(ctx context.Context) BackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupOutput).ToBackupPtrOutputWithContext(ctx)
+func (i BackupTypeArgs) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupTypeOutput).ToBackupTypePtrOutputWithContext(ctx)
 }
 
-// BackupPtrInput is an input type that accepts BackupArgs, BackupPtr and BackupPtrOutput values.
-// You can construct a concrete instance of `BackupPtrInput` via:
+// BackupTypePtrInput is an input type that accepts BackupTypeArgs, BackupTypePtr and BackupTypePtrOutput values.
+// You can construct a concrete instance of `BackupTypePtrInput` via:
 //
-//	        BackupArgs{...}
+//	        BackupTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type BackupPtrInput interface {
+type BackupTypePtrInput interface {
 	pulumi.Input
 
-	ToBackupPtrOutput() BackupPtrOutput
-	ToBackupPtrOutputWithContext(context.Context) BackupPtrOutput
+	ToBackupTypePtrOutput() BackupTypePtrOutput
+	ToBackupTypePtrOutputWithContext(context.Context) BackupTypePtrOutput
 }
 
-type backupPtrType BackupArgs
+type backupTypePtrType BackupTypeArgs
 
-func BackupPtr(v *BackupArgs) BackupPtrInput {
-	return (*backupPtrType)(v)
+func BackupTypePtr(v *BackupTypeArgs) BackupTypePtrInput {
+	return (*backupTypePtrType)(v)
 }
 
-func (*backupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Backup)(nil)).Elem()
+func (*backupTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupType)(nil)).Elem()
 }
 
-func (i *backupPtrType) ToBackupPtrOutput() BackupPtrOutput {
-	return i.ToBackupPtrOutputWithContext(context.Background())
+func (i *backupTypePtrType) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return i.ToBackupTypePtrOutputWithContext(context.Background())
 }
 
-func (i *backupPtrType) ToBackupPtrOutputWithContext(ctx context.Context) BackupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BackupPtrOutput)
+func (i *backupTypePtrType) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupTypePtrOutput)
 }
 
 // Backup properties of a server
-type BackupOutput struct{ *pulumi.OutputState }
+type BackupTypeOutput struct{ *pulumi.OutputState }
 
-func (BackupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Backup)(nil)).Elem()
+func (BackupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupType)(nil)).Elem()
 }
 
-func (o BackupOutput) ToBackupOutput() BackupOutput {
+func (o BackupTypeOutput) ToBackupTypeOutput() BackupTypeOutput {
 	return o
 }
 
-func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutput {
+func (o BackupTypeOutput) ToBackupTypeOutputWithContext(ctx context.Context) BackupTypeOutput {
 	return o
 }
 
-func (o BackupOutput) ToBackupPtrOutput() BackupPtrOutput {
-	return o.ToBackupPtrOutputWithContext(context.Background())
+func (o BackupTypeOutput) ToBackupTypePtrOutput() BackupTypePtrOutput {
+	return o.ToBackupTypePtrOutputWithContext(context.Background())
 }
 
-func (o BackupOutput) ToBackupPtrOutputWithContext(ctx context.Context) BackupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Backup) *Backup {
+func (o BackupTypeOutput) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupType) *BackupType {
 		return &v
-	}).(BackupPtrOutput)
+	}).(BackupTypePtrOutput)
 }
 
 // Backup retention days for the server.
-func (o BackupOutput) BackupRetentionDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Backup) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
+func (o BackupTypeOutput) BackupRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupType) *int { return v.BackupRetentionDays }).(pulumi.IntPtrOutput)
 }
 
 // A value indicating whether Geo-Redundant backup is enabled on the server.
-func (o BackupOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Backup) *string { return v.GeoRedundantBackup }).(pulumi.StringPtrOutput)
+func (o BackupTypeOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupType) *string { return v.GeoRedundantBackup }).(pulumi.StringPtrOutput)
 }
 
-type BackupPtrOutput struct{ *pulumi.OutputState }
+type BackupTypePtrOutput struct{ *pulumi.OutputState }
 
-func (BackupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Backup)(nil)).Elem()
+func (BackupTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupType)(nil)).Elem()
 }
 
-func (o BackupPtrOutput) ToBackupPtrOutput() BackupPtrOutput {
+func (o BackupTypePtrOutput) ToBackupTypePtrOutput() BackupTypePtrOutput {
 	return o
 }
 
-func (o BackupPtrOutput) ToBackupPtrOutputWithContext(ctx context.Context) BackupPtrOutput {
+func (o BackupTypePtrOutput) ToBackupTypePtrOutputWithContext(ctx context.Context) BackupTypePtrOutput {
 	return o
 }
 
-func (o BackupPtrOutput) Elem() BackupOutput {
-	return o.ApplyT(func(v *Backup) Backup {
+func (o BackupTypePtrOutput) Elem() BackupTypeOutput {
+	return o.ApplyT(func(v *BackupType) BackupType {
 		if v != nil {
 			return *v
 		}
-		var ret Backup
+		var ret BackupType
 		return ret
-	}).(BackupOutput)
+	}).(BackupTypeOutput)
 }
 
 // Backup retention days for the server.
-func (o BackupPtrOutput) BackupRetentionDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Backup) *int {
+func (o BackupTypePtrOutput) BackupRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupType) *int {
 		if v == nil {
 			return nil
 		}
@@ -673,8 +673,8 @@ func (o BackupPtrOutput) BackupRetentionDays() pulumi.IntPtrOutput {
 }
 
 // A value indicating whether Geo-Redundant backup is enabled on the server.
-func (o BackupPtrOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Backup) *string {
+func (o BackupTypePtrOutput) GeoRedundantBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupType) *string {
 		if v == nil {
 			return nil
 		}
@@ -3716,8 +3716,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuthConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuthConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(BackupOutput{})
-	pulumi.RegisterOutputType(BackupPtrOutput{})
+	pulumi.RegisterOutputType(BackupTypeOutput{})
+	pulumi.RegisterOutputType(BackupTypePtrOutput{})
 	pulumi.RegisterOutputType(BackupResponseOutput{})
 	pulumi.RegisterOutputType(BackupResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataEncryptionOutput{})

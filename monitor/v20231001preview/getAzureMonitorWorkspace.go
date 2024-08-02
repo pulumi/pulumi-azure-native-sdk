@@ -35,6 +35,8 @@ type LookupAzureMonitorWorkspaceResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings IngestionSettingsResponse `pulumi:"defaultIngestionSettings"`
+	// Resource entity tag (ETag)
+	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -104,6 +106,11 @@ func (o LookupAzureMonitorWorkspaceResultOutput) AccountId() pulumi.StringOutput
 // The Data Collection Rule and Endpoint used for ingestion by default.
 func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() IngestionSettingsResponseOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) IngestionSettingsResponse { return v.DefaultIngestionSettings }).(IngestionSettingsResponseOutput)
+}
+
+// Resource entity tag (ETag)
+func (o LookupAzureMonitorWorkspaceResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

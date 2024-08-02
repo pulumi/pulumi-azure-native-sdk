@@ -20,6 +20,8 @@ type AzureMonitorWorkspace struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings IngestionSettingsResponseOutput `pulumi:"defaultIngestionSettings"`
+	// Resource entity tag (ETag)
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Information about metrics for the Azure Monitor workspace
@@ -162,6 +164,11 @@ func (o AzureMonitorWorkspaceOutput) AccountId() pulumi.StringOutput {
 // The Data Collection Rule and Endpoint used for ingestion by default.
 func (o AzureMonitorWorkspaceOutput) DefaultIngestionSettings() IngestionSettingsResponseOutput {
 	return o.ApplyT(func(v *AzureMonitorWorkspace) IngestionSettingsResponseOutput { return v.DefaultIngestionSettings }).(IngestionSettingsResponseOutput)
+}
+
+// Resource entity tag (ETag)
+func (o AzureMonitorWorkspaceOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureMonitorWorkspace) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

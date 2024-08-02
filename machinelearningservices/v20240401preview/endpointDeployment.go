@@ -51,6 +51,9 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240101preview:EndpointDeployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:EndpointDeployment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

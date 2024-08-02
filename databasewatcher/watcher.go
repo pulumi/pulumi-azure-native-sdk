@@ -14,6 +14,8 @@ import (
 
 // The DatabaseWatcherProviderHub resource.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-07-19-preview.
 type Watcher struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewWatcher(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:databasewatcher/v20230901preview:Watcher"),
+		},
+		{
+			Type: pulumi.String("azure-native:databasewatcher/v20240719preview:Watcher"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -138,6 +138,9 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:PrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:PrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

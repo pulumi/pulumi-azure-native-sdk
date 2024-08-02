@@ -95,6 +95,9 @@ func NewEnvironmentSpecificationVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:EnvironmentSpecificationVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:EnvironmentSpecificationVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -10,6 +10,174 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The properties with which the alert rule resource was created.
+type AlertRuleCreationProperties string
+
+const (
+	// The alert rule was created with an action group.
+	AlertRuleCreationPropertiesCreatedWithActionGroup = AlertRuleCreationProperties("CreatedWithActionGroup")
+	// The alert rule was created with no properties.
+	AlertRuleCreationPropertiesNone = AlertRuleCreationProperties("None")
+)
+
+func (AlertRuleCreationProperties) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleCreationProperties)(nil)).Elem()
+}
+
+func (e AlertRuleCreationProperties) ToAlertRuleCreationPropertiesOutput() AlertRuleCreationPropertiesOutput {
+	return pulumi.ToOutput(e).(AlertRuleCreationPropertiesOutput)
+}
+
+func (e AlertRuleCreationProperties) ToAlertRuleCreationPropertiesOutputWithContext(ctx context.Context) AlertRuleCreationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AlertRuleCreationPropertiesOutput)
+}
+
+func (e AlertRuleCreationProperties) ToAlertRuleCreationPropertiesPtrOutput() AlertRuleCreationPropertiesPtrOutput {
+	return e.ToAlertRuleCreationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (e AlertRuleCreationProperties) ToAlertRuleCreationPropertiesPtrOutputWithContext(ctx context.Context) AlertRuleCreationPropertiesPtrOutput {
+	return AlertRuleCreationProperties(e).ToAlertRuleCreationPropertiesOutputWithContext(ctx).ToAlertRuleCreationPropertiesPtrOutputWithContext(ctx)
+}
+
+func (e AlertRuleCreationProperties) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlertRuleCreationProperties) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AlertRuleCreationProperties) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AlertRuleCreationProperties) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AlertRuleCreationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleCreationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRuleCreationProperties)(nil)).Elem()
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToAlertRuleCreationPropertiesOutput() AlertRuleCreationPropertiesOutput {
+	return o
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToAlertRuleCreationPropertiesOutputWithContext(ctx context.Context) AlertRuleCreationPropertiesOutput {
+	return o
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToAlertRuleCreationPropertiesPtrOutput() AlertRuleCreationPropertiesPtrOutput {
+	return o.ToAlertRuleCreationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToAlertRuleCreationPropertiesPtrOutputWithContext(ctx context.Context) AlertRuleCreationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRuleCreationProperties) *AlertRuleCreationProperties {
+		return &v
+	}).(AlertRuleCreationPropertiesPtrOutput)
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertRuleCreationProperties) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleCreationPropertiesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertRuleCreationProperties) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertRuleCreationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRuleCreationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRuleCreationProperties)(nil)).Elem()
+}
+
+func (o AlertRuleCreationPropertiesPtrOutput) ToAlertRuleCreationPropertiesPtrOutput() AlertRuleCreationPropertiesPtrOutput {
+	return o
+}
+
+func (o AlertRuleCreationPropertiesPtrOutput) ToAlertRuleCreationPropertiesPtrOutputWithContext(ctx context.Context) AlertRuleCreationPropertiesPtrOutput {
+	return o
+}
+
+func (o AlertRuleCreationPropertiesPtrOutput) Elem() AlertRuleCreationPropertiesOutput {
+	return o.ApplyT(func(v *AlertRuleCreationProperties) AlertRuleCreationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRuleCreationProperties
+		return ret
+	}).(AlertRuleCreationPropertiesOutput)
+}
+
+func (o AlertRuleCreationPropertiesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRuleCreationPropertiesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AlertRuleCreationProperties) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AlertRuleCreationPropertiesInput is an input type that accepts values of the AlertRuleCreationProperties enum
+// A concrete instance of `AlertRuleCreationPropertiesInput` can be one of the following:
+//
+//	AlertRuleCreationPropertiesCreatedWithActionGroup
+//	AlertRuleCreationPropertiesNone
+type AlertRuleCreationPropertiesInput interface {
+	pulumi.Input
+
+	ToAlertRuleCreationPropertiesOutput() AlertRuleCreationPropertiesOutput
+	ToAlertRuleCreationPropertiesOutputWithContext(context.Context) AlertRuleCreationPropertiesOutput
+}
+
+var alertRuleCreationPropertiesPtrType = reflect.TypeOf((**AlertRuleCreationProperties)(nil)).Elem()
+
+type AlertRuleCreationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToAlertRuleCreationPropertiesPtrOutput() AlertRuleCreationPropertiesPtrOutput
+	ToAlertRuleCreationPropertiesPtrOutputWithContext(context.Context) AlertRuleCreationPropertiesPtrOutput
+}
+
+type alertRuleCreationPropertiesPtr string
+
+func AlertRuleCreationPropertiesPtr(v string) AlertRuleCreationPropertiesPtrInput {
+	return (*alertRuleCreationPropertiesPtr)(&v)
+}
+
+func (*alertRuleCreationPropertiesPtr) ElementType() reflect.Type {
+	return alertRuleCreationPropertiesPtrType
+}
+
+func (in *alertRuleCreationPropertiesPtr) ToAlertRuleCreationPropertiesPtrOutput() AlertRuleCreationPropertiesPtrOutput {
+	return pulumi.ToOutput(in).(AlertRuleCreationPropertiesPtrOutput)
+}
+
+func (in *alertRuleCreationPropertiesPtr) ToAlertRuleCreationPropertiesPtrOutputWithContext(ctx context.Context) AlertRuleCreationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AlertRuleCreationPropertiesPtrOutput)
+}
+
 // The type of a Kusto offering.
 type KustoOfferingType string
 
@@ -520,6 +688,8 @@ func (in *targetAuthenticationTypePtr) ToTargetAuthenticationTypePtrOutputWithCo
 }
 
 func init() {
+	pulumi.RegisterOutputType(AlertRuleCreationPropertiesOutput{})
+	pulumi.RegisterOutputType(AlertRuleCreationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KustoOfferingTypeOutput{})
 	pulumi.RegisterOutputType(KustoOfferingTypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})

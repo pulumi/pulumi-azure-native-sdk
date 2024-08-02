@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:dbforpostgresql:Administrator":
 		r = &Administrator{}
+	case "azure-native:dbforpostgresql:Backup":
+		r = &Backup{}
 	case "azure-native:dbforpostgresql:Cluster":
 		r = &Cluster{}
 	case "azure-native:dbforpostgresql:Configuration":

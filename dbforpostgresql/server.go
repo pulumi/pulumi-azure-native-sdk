@@ -15,7 +15,7 @@ import (
 // Represents a server.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2017-12-01.
 //
-// Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview.
+// Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview.
 type Server struct {
 	pulumi.CustomResourceState
 
@@ -84,7 +84,7 @@ func NewServer(ctx *pulumi.Context,
 		args.AvailabilityZone = pulumi.StringPtr("")
 	}
 	if args.Backup != nil {
-		args.Backup = args.Backup.ToBackupPtrOutput().ApplyT(func(v *Backup) *Backup { return v.Defaults() }).(BackupPtrOutput)
+		args.Backup = args.Backup.ToBackupTypePtrOutput().ApplyT(func(v *BackupType) *BackupType { return v.Defaults() }).(BackupTypePtrOutput)
 	}
 	if args.HighAvailability != nil {
 		args.HighAvailability = args.HighAvailability.ToHighAvailabilityPtrOutput().ApplyT(func(v *HighAvailability) *HighAvailability { return v.Defaults() }).(HighAvailabilityPtrOutput)
@@ -128,6 +128,9 @@ func NewServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:Server"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -173,7 +176,7 @@ type serverArgs struct {
 	// availability zone information of the server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Backup properties of a server.
-	Backup *Backup `pulumi:"backup"`
+	Backup *BackupType `pulumi:"backup"`
 	// The mode to create a new PostgreSQL server.
 	CreateMode *string `pulumi:"createMode"`
 	// Data encryption properties of a server.
@@ -219,7 +222,7 @@ type ServerArgs struct {
 	// availability zone information of the server.
 	AvailabilityZone pulumi.StringPtrInput
 	// Backup properties of a server.
-	Backup BackupPtrInput
+	Backup BackupTypePtrInput
 	// The mode to create a new PostgreSQL server.
 	CreateMode pulumi.StringPtrInput
 	// Data encryption properties of a server.

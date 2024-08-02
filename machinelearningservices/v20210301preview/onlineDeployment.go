@@ -101,6 +101,9 @@ func NewOnlineDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20240401preview:OnlineDeployment"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20240701preview:OnlineDeployment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

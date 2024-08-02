@@ -15,7 +15,7 @@ import (
 // Represents a virtual endpoint for a server.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview, 2024-03-01-preview.
 type VirtualEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewVirtualEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20231201preview:VirtualEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20240301preview:VirtualEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)

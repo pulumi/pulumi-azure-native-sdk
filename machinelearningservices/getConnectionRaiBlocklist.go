@@ -12,6 +12,8 @@ import (
 )
 
 // Azure REST API version: 2024-04-01-preview.
+//
+// Other available API versions: 2024-07-01-preview.
 func LookupConnectionRaiBlocklist(ctx *pulumi.Context, args *LookupConnectionRaiBlocklistArgs, opts ...pulumi.InvokeOption) (*LookupConnectionRaiBlocklistResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectionRaiBlocklistResult

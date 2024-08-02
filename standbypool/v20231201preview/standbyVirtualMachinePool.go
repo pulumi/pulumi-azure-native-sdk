@@ -53,6 +53,9 @@ func NewStandbyVirtualMachinePool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:standbypool:StandbyVirtualMachinePool"),
 		},
+		{
+			Type: pulumi.String("azure-native:standbypool/v20240301preview:StandbyVirtualMachinePool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

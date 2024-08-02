@@ -13,6 +13,804 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleResponse struct {
+	// Category of a managed network Outbound Rule of a machine learning workspace.
+	Category *string `pulumi:"category"`
+	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+	Destination *ServiceTagDestinationResponse `pulumi:"destination"`
+	// Status of a managed network Outbound Rule of a machine learning workspace.
+	Status *string `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'ServiceTag'.
+	Type string `pulumi:"type"`
+}
+
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagOutboundRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagOutboundRuleResponse)(nil)).Elem()
+}
+
+func (o ServiceTagOutboundRuleResponseOutput) ToServiceTagOutboundRuleResponseOutput() ServiceTagOutboundRuleResponseOutput {
+	return o
+}
+
+func (o ServiceTagOutboundRuleResponseOutput) ToServiceTagOutboundRuleResponseOutputWithContext(ctx context.Context) ServiceTagOutboundRuleResponseOutput {
+	return o
+}
+
+// Category of a managed network Outbound Rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinationResponsePtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *ServiceTagDestinationResponse { return v.Destination }).(ServiceTagDestinationResponsePtrOutput)
+}
+
+// Status of a managed network Outbound Rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+// Expected value is 'ServiceTag'.
+func (o ServiceTagOutboundRuleResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScripts struct {
+	// Customized setup scripts
+	Scripts *ScriptsToExecute `pulumi:"scripts"`
+}
+
+// SetupScriptsInput is an input type that accepts SetupScriptsArgs and SetupScriptsOutput values.
+// You can construct a concrete instance of `SetupScriptsInput` via:
+//
+//	SetupScriptsArgs{...}
+type SetupScriptsInput interface {
+	pulumi.Input
+
+	ToSetupScriptsOutput() SetupScriptsOutput
+	ToSetupScriptsOutputWithContext(context.Context) SetupScriptsOutput
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsArgs struct {
+	// Customized setup scripts
+	Scripts ScriptsToExecutePtrInput `pulumi:"scripts"`
+}
+
+func (SetupScriptsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetupScripts)(nil)).Elem()
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsOutput() SetupScriptsOutput {
+	return i.ToSetupScriptsOutputWithContext(context.Background())
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsOutputWithContext(ctx context.Context) SetupScriptsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsOutput)
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return i.ToSetupScriptsPtrOutputWithContext(context.Background())
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsOutput).ToSetupScriptsPtrOutputWithContext(ctx)
+}
+
+// SetupScriptsPtrInput is an input type that accepts SetupScriptsArgs, SetupScriptsPtr and SetupScriptsPtrOutput values.
+// You can construct a concrete instance of `SetupScriptsPtrInput` via:
+//
+//	        SetupScriptsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SetupScriptsPtrInput interface {
+	pulumi.Input
+
+	ToSetupScriptsPtrOutput() SetupScriptsPtrOutput
+	ToSetupScriptsPtrOutputWithContext(context.Context) SetupScriptsPtrOutput
+}
+
+type setupScriptsPtrType SetupScriptsArgs
+
+func SetupScriptsPtr(v *SetupScriptsArgs) SetupScriptsPtrInput {
+	return (*setupScriptsPtrType)(v)
+}
+
+func (*setupScriptsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetupScripts)(nil)).Elem()
+}
+
+func (i *setupScriptsPtrType) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return i.ToSetupScriptsPtrOutputWithContext(context.Background())
+}
+
+func (i *setupScriptsPtrType) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsPtrOutput)
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetupScripts)(nil)).Elem()
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsOutput() SetupScriptsOutput {
+	return o
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsOutputWithContext(ctx context.Context) SetupScriptsOutput {
+	return o
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return o.ToSetupScriptsPtrOutputWithContext(context.Background())
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SetupScripts) *SetupScripts {
+		return &v
+	}).(SetupScriptsPtrOutput)
+}
+
+// Customized setup scripts
+func (o SetupScriptsOutput) Scripts() ScriptsToExecutePtrOutput {
+	return o.ApplyT(func(v SetupScripts) *ScriptsToExecute { return v.Scripts }).(ScriptsToExecutePtrOutput)
+}
+
+type SetupScriptsPtrOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetupScripts)(nil)).Elem()
+}
+
+func (o SetupScriptsPtrOutput) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return o
+}
+
+func (o SetupScriptsPtrOutput) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return o
+}
+
+func (o SetupScriptsPtrOutput) Elem() SetupScriptsOutput {
+	return o.ApplyT(func(v *SetupScripts) SetupScripts {
+		if v != nil {
+			return *v
+		}
+		var ret SetupScripts
+		return ret
+	}).(SetupScriptsOutput)
+}
+
+// Customized setup scripts
+func (o SetupScriptsPtrOutput) Scripts() ScriptsToExecutePtrOutput {
+	return o.ApplyT(func(v *SetupScripts) *ScriptsToExecute {
+		if v == nil {
+			return nil
+		}
+		return v.Scripts
+	}).(ScriptsToExecutePtrOutput)
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsResponse struct {
+	// Customized setup scripts
+	Scripts *ScriptsToExecuteResponse `pulumi:"scripts"`
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsResponseOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetupScriptsResponse)(nil)).Elem()
+}
+
+func (o SetupScriptsResponseOutput) ToSetupScriptsResponseOutput() SetupScriptsResponseOutput {
+	return o
+}
+
+func (o SetupScriptsResponseOutput) ToSetupScriptsResponseOutputWithContext(ctx context.Context) SetupScriptsResponseOutput {
+	return o
+}
+
+// Customized setup scripts
+func (o SetupScriptsResponseOutput) Scripts() ScriptsToExecuteResponsePtrOutput {
+	return o.ApplyT(func(v SetupScriptsResponse) *ScriptsToExecuteResponse { return v.Scripts }).(ScriptsToExecuteResponsePtrOutput)
+}
+
+type SetupScriptsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetupScriptsResponse)(nil)).Elem()
+}
+
+func (o SetupScriptsResponsePtrOutput) ToSetupScriptsResponsePtrOutput() SetupScriptsResponsePtrOutput {
+	return o
+}
+
+func (o SetupScriptsResponsePtrOutput) ToSetupScriptsResponsePtrOutputWithContext(ctx context.Context) SetupScriptsResponsePtrOutput {
+	return o
+}
+
+func (o SetupScriptsResponsePtrOutput) Elem() SetupScriptsResponseOutput {
+	return o.ApplyT(func(v *SetupScriptsResponse) SetupScriptsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SetupScriptsResponse
+		return ret
+	}).(SetupScriptsResponseOutput)
+}
+
+// Customized setup scripts
+func (o SetupScriptsResponsePtrOutput) Scripts() ScriptsToExecuteResponsePtrOutput {
+	return o.ApplyT(func(v *SetupScriptsResponse) *ScriptsToExecuteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Scripts
+	}).(ScriptsToExecuteResponsePtrOutput)
+}
+
+type SharedPrivateLinkResource struct {
+	// The private link resource group id.
+	GroupId *string `pulumi:"groupId"`
+	// Unique name of the private link.
+	Name *string `pulumi:"name"`
+	// The resource id that private link links to.
+	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
+	// Request message.
+	RequestMessage *string `pulumi:"requestMessage"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+// SharedPrivateLinkResourceInput is an input type that accepts SharedPrivateLinkResourceArgs and SharedPrivateLinkResourceOutput values.
+// You can construct a concrete instance of `SharedPrivateLinkResourceInput` via:
+//
+//	SharedPrivateLinkResourceArgs{...}
+type SharedPrivateLinkResourceInput interface {
+	pulumi.Input
+
+	ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput
+	ToSharedPrivateLinkResourceOutputWithContext(context.Context) SharedPrivateLinkResourceOutput
+}
+
+type SharedPrivateLinkResourceArgs struct {
+	// The private link resource group id.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Unique name of the private link.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The resource id that private link links to.
+	PrivateLinkResourceId pulumi.StringPtrInput `pulumi:"privateLinkResourceId"`
+	// Request message.
+	RequestMessage pulumi.StringPtrInput `pulumi:"requestMessage"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (SharedPrivateLinkResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
+}
+
+func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
+	return i.ToSharedPrivateLinkResourceOutputWithContext(context.Background())
+}
+
+func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceOutput)
+}
+
+// SharedPrivateLinkResourceArrayInput is an input type that accepts SharedPrivateLinkResourceArray and SharedPrivateLinkResourceArrayOutput values.
+// You can construct a concrete instance of `SharedPrivateLinkResourceArrayInput` via:
+//
+//	SharedPrivateLinkResourceArray{ SharedPrivateLinkResourceArgs{...} }
+type SharedPrivateLinkResourceArrayInput interface {
+	pulumi.Input
+
+	ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput
+	ToSharedPrivateLinkResourceArrayOutputWithContext(context.Context) SharedPrivateLinkResourceArrayOutput
+}
+
+type SharedPrivateLinkResourceArray []SharedPrivateLinkResourceInput
+
+func (SharedPrivateLinkResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedPrivateLinkResource)(nil)).Elem()
+}
+
+func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput {
+	return i.ToSharedPrivateLinkResourceArrayOutputWithContext(context.Background())
+}
+
+func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceArrayOutput)
+}
+
+type SharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
+
+func (SharedPrivateLinkResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedPrivateLinkResource)(nil)).Elem()
+}
+
+func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutput() SharedPrivateLinkResourceOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
+	return o
+}
+
+// The private link resource group id.
+func (o SharedPrivateLinkResourceOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of the private link.
+func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The resource id that private link links to.
+func (o SharedPrivateLinkResourceOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Request message.
+func (o SharedPrivateLinkResourceOutput) RequestMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o SharedPrivateLinkResourceOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResource) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SharedPrivateLinkResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedPrivateLinkResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedPrivateLinkResource)(nil)).Elem()
+}
+
+func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOutput() SharedPrivateLinkResourceArrayOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceArrayOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResource {
+		return vs[0].([]SharedPrivateLinkResource)[vs[1].(int)]
+	}).(SharedPrivateLinkResourceOutput)
+}
+
+type SharedPrivateLinkResourceResponse struct {
+	// The private link resource group id.
+	GroupId *string `pulumi:"groupId"`
+	// Unique name of the private link.
+	Name *string `pulumi:"name"`
+	// The resource id that private link links to.
+	PrivateLinkResourceId *string `pulumi:"privateLinkResourceId"`
+	// Request message.
+	RequestMessage *string `pulumi:"requestMessage"`
+	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+	Status *string `pulumi:"status"`
+}
+
+type SharedPrivateLinkResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (SharedPrivateLinkResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedPrivateLinkResourceResponse)(nil)).Elem()
+}
+
+func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutput() SharedPrivateLinkResourceResponseOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseOutput {
+	return o
+}
+
+// The private link resource group id.
+func (o SharedPrivateLinkResourceResponseOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique name of the private link.
+func (o SharedPrivateLinkResourceResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The resource id that private link links to.
+func (o SharedPrivateLinkResourceResponseOutput) PrivateLinkResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.PrivateLinkResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Request message.
+func (o SharedPrivateLinkResourceResponseOutput) RequestMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.RequestMessage }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o SharedPrivateLinkResourceResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SharedPrivateLinkResourceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SharedPrivateLinkResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedPrivateLinkResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedPrivateLinkResourceResponse)(nil)).Elem()
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutput() SharedPrivateLinkResourceResponseArrayOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseArrayOutput {
+	return o
+}
+
+func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResourceResponse {
+		return vs[0].([]SharedPrivateLinkResourceResponse)[vs[1].(int)]
+	}).(SharedPrivateLinkResourceResponseOutput)
+}
+
+// The resource model definition representing SKU
+type Sku struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *SkuTier `pulumi:"tier"`
+}
+
+// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
+// You can construct a concrete instance of `SkuInput` via:
+//
+//	SkuArgs{...}
+type SkuInput interface {
+	pulumi.Input
+
+	ToSkuOutput() SkuOutput
+	ToSkuOutputWithContext(context.Context) SkuOutput
+}
+
+// The resource model definition representing SKU
+type SkuArgs struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name pulumi.StringInput `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier SkuTierPtrInput `pulumi:"tier"`
+}
+
+func (SkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (i SkuArgs) ToSkuOutput() SkuOutput {
+	return i.ToSkuOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
+}
+
+func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
+}
+
+// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
+// You can construct a concrete instance of `SkuPtrInput` via:
+//
+//	        SkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkuPtrInput interface {
+	pulumi.Input
+
+	ToSkuPtrOutput() SkuPtrOutput
+	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
+}
+
+type skuPtrType SkuArgs
+
+func SkuPtr(v *SkuArgs) SkuPtrInput {
+	return (*skuPtrType)(v)
+}
+
+func (*skuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuOutput struct{ *pulumi.OutputState }
+
+func (SkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (o SkuOutput) ToSkuOutput() SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
+		return &v
+	}).(SkuPtrOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
+}
+
+type SkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) Elem() SkuOutput {
+	return o.ApplyT(func(v *Sku) Sku {
+		if v != nil {
+			return *v
+		}
+		var ret Sku
+		return ret
+	}).(SkuOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Sku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v *Sku) *SkuTier {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(SkuTierPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuResponse struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *string `pulumi:"tier"`
+}
+
+// The resource model definition representing SKU
+type SkuResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
+	return o
+}
+
+func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
+	return o
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type SkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
+	return o.ApplyT(func(v *SkuResponse) SkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuResponse
+		return ret
+	}).(SkuResponseOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpeechEndpointDeploymentResourceProperties struct {
 	// The failure reason if the creation failed.
 	FailureReason *string `pulumi:"failureReason"`
@@ -12377,6 +13175,19 @@ func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Username() pulumi.
 }
 
 func init() {
+	pulumi.RegisterOutputType(ServiceTagOutboundRuleResponseOutput{})
+	pulumi.RegisterOutputType(SetupScriptsOutput{})
+	pulumi.RegisterOutputType(SetupScriptsPtrOutput{})
+	pulumi.RegisterOutputType(SetupScriptsResponseOutput{})
+	pulumi.RegisterOutputType(SetupScriptsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SharedPrivateLinkResourceOutput{})
+	pulumi.RegisterOutputType(SharedPrivateLinkResourceArrayOutput{})
+	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseOutput{})
+	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(SkuOutput{})
+	pulumi.RegisterOutputType(SkuPtrOutput{})
+	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SpeechEndpointDeploymentResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SslConfigurationOutput{})
