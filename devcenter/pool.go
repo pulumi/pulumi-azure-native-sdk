@@ -15,7 +15,7 @@ import (
 // A pool of Virtual Machines.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview.
+// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
 type Pool struct {
 	pulumi.CustomResourceState
 
@@ -108,6 +108,9 @@ func NewPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240701preview:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240801preview:Pool"),
 		},
 	})
 	opts = append(opts, aliases)

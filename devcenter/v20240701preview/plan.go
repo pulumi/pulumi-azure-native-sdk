@@ -52,6 +52,9 @@ func NewPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240601preview:Plan"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240801preview:Plan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

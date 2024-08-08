@@ -14,7 +14,7 @@ import (
 // Gets Customization Task error details
 // Azure REST API version: 2023-08-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
 func GetCustomizationTaskErrorDetails(ctx *pulumi.Context, args *GetCustomizationTaskErrorDetailsArgs, opts ...pulumi.InvokeOption) (*GetCustomizationTaskErrorDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomizationTaskErrorDetailsResult
