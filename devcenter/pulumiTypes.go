@@ -1632,6 +1632,168 @@ func (o ProjectNetworkSettingsResponseOutput) MicrosoftHostedNetworkEnableStatus
 	return o.ApplyT(func(v ProjectNetworkSettingsResponse) string { return v.MicrosoftHostedNetworkEnableStatus }).(pulumi.StringOutput)
 }
 
+// A resource policy.
+type ResourcePolicy struct {
+	// Optional. When specified, this expression is used to filter the resources.
+	Filter *string `pulumi:"filter"`
+	// Resources that are included and shared as a part of a curation profile.
+	Resources *string `pulumi:"resources"`
+}
+
+// ResourcePolicyInput is an input type that accepts ResourcePolicyArgs and ResourcePolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyInput` via:
+//
+//	ResourcePolicyArgs{...}
+type ResourcePolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyOutput() ResourcePolicyOutput
+	ToResourcePolicyOutputWithContext(context.Context) ResourcePolicyOutput
+}
+
+// A resource policy.
+type ResourcePolicyArgs struct {
+	// Optional. When specified, this expression is used to filter the resources.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Resources that are included and shared as a part of a curation profile.
+	Resources pulumi.StringPtrInput `pulumi:"resources"`
+}
+
+func (ResourcePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyArgs) ToResourcePolicyOutput() ResourcePolicyOutput {
+	return i.ToResourcePolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyArgs) ToResourcePolicyOutputWithContext(ctx context.Context) ResourcePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyOutput)
+}
+
+// ResourcePolicyArrayInput is an input type that accepts ResourcePolicyArray and ResourcePolicyArrayOutput values.
+// You can construct a concrete instance of `ResourcePolicyArrayInput` via:
+//
+//	ResourcePolicyArray{ ResourcePolicyArgs{...} }
+type ResourcePolicyArrayInput interface {
+	pulumi.Input
+
+	ToResourcePolicyArrayOutput() ResourcePolicyArrayOutput
+	ToResourcePolicyArrayOutputWithContext(context.Context) ResourcePolicyArrayOutput
+}
+
+type ResourcePolicyArray []ResourcePolicyInput
+
+func (ResourcePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourcePolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyArray) ToResourcePolicyArrayOutput() ResourcePolicyArrayOutput {
+	return i.ToResourcePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyArray) ToResourcePolicyArrayOutputWithContext(ctx context.Context) ResourcePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyArrayOutput)
+}
+
+// A resource policy.
+type ResourcePolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyOutput) ToResourcePolicyOutput() ResourcePolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyOutput) ToResourcePolicyOutputWithContext(ctx context.Context) ResourcePolicyOutput {
+	return o
+}
+
+// Optional. When specified, this expression is used to filter the resources.
+func (o ResourcePolicyOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicy) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Resources that are included and shared as a part of a curation profile.
+func (o ResourcePolicyOutput) Resources() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicy) *string { return v.Resources }).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourcePolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyArrayOutput) ToResourcePolicyArrayOutput() ResourcePolicyArrayOutput {
+	return o
+}
+
+func (o ResourcePolicyArrayOutput) ToResourcePolicyArrayOutputWithContext(ctx context.Context) ResourcePolicyArrayOutput {
+	return o
+}
+
+func (o ResourcePolicyArrayOutput) Index(i pulumi.IntInput) ResourcePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcePolicy {
+		return vs[0].([]ResourcePolicy)[vs[1].(int)]
+	}).(ResourcePolicyOutput)
+}
+
+// A resource policy.
+type ResourcePolicyResponse struct {
+	// Optional. When specified, this expression is used to filter the resources.
+	Filter *string `pulumi:"filter"`
+	// Resources that are included and shared as a part of a curation profile.
+	Resources *string `pulumi:"resources"`
+}
+
+// A resource policy.
+type ResourcePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyResponse)(nil)).Elem()
+}
+
+func (o ResourcePolicyResponseOutput) ToResourcePolicyResponseOutput() ResourcePolicyResponseOutput {
+	return o
+}
+
+func (o ResourcePolicyResponseOutput) ToResourcePolicyResponseOutputWithContext(ctx context.Context) ResourcePolicyResponseOutput {
+	return o
+}
+
+// Optional. When specified, this expression is used to filter the resources.
+func (o ResourcePolicyResponseOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResponse) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Resources that are included and shared as a part of a curation profile.
+func (o ResourcePolicyResponseOutput) Resources() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyResponse) *string { return v.Resources }).(pulumi.StringPtrOutput)
+}
+
+type ResourcePolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourcePolicyResponse)(nil)).Elem()
+}
+
+func (o ResourcePolicyResponseArrayOutput) ToResourcePolicyResponseArrayOutput() ResourcePolicyResponseArrayOutput {
+	return o
+}
+
+func (o ResourcePolicyResponseArrayOutput) ToResourcePolicyResponseArrayOutputWithContext(ctx context.Context) ResourcePolicyResponseArrayOutput {
+	return o
+}
+
+func (o ResourcePolicyResponseArrayOutput) Index(i pulumi.IntInput) ResourcePolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourcePolicyResponse {
+		return vs[0].([]ResourcePolicyResponse)[vs[1].(int)]
+	}).(ResourcePolicyResponseOutput)
+}
+
 // The resource model definition representing SKU
 type Sku struct {
 	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -2579,6 +2741,10 @@ func init() {
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(ProjectNetworkSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyArrayOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyResponseOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})

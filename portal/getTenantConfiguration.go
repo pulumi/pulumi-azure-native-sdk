@@ -24,18 +24,20 @@ func LookupTenantConfiguration(ctx *pulumi.Context, args *LookupTenantConfigurat
 }
 
 type LookupTenantConfigurationArgs struct {
-	// The configuration name. Value must be 'default'
+	// The name of the Configuration
 	ConfigurationName string `pulumi:"configurationName"`
 }
 
-// Tenant configuration.
+// The tenant configuration resource definition.
 type LookupTenantConfigurationResult struct {
-	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-	EnforcePrivateMarkdownStorage *bool `pulumi:"enforcePrivateMarkdownStorage"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The resource-specific properties for this resource.
+	Properties ConfigurationPropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -54,7 +56,7 @@ func LookupTenantConfigurationOutput(ctx *pulumi.Context, args LookupTenantConfi
 }
 
 type LookupTenantConfigurationOutputArgs struct {
-	// The configuration name. Value must be 'default'
+	// The name of the Configuration
 	ConfigurationName pulumi.StringInput `pulumi:"configurationName"`
 }
 
@@ -62,7 +64,7 @@ func (LookupTenantConfigurationOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupTenantConfigurationArgs)(nil)).Elem()
 }
 
-// Tenant configuration.
+// The tenant configuration resource definition.
 type LookupTenantConfigurationResultOutput struct{ *pulumi.OutputState }
 
 func (LookupTenantConfigurationResultOutput) ElementType() reflect.Type {
@@ -77,12 +79,7 @@ func (o LookupTenantConfigurationResultOutput) ToLookupTenantConfigurationResult
 	return o
 }
 
-// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-func (o LookupTenantConfigurationResultOutput) EnforcePrivateMarkdownStorage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupTenantConfigurationResult) *bool { return v.EnforcePrivateMarkdownStorage }).(pulumi.BoolPtrOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTenantConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -90,6 +87,16 @@ func (o LookupTenantConfigurationResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupTenantConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource-specific properties for this resource.
+func (o LookupTenantConfigurationResultOutput) Properties() ConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupTenantConfigurationResult) ConfigurationPropertiesResponse { return v.Properties }).(ConfigurationPropertiesResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupTenantConfigurationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTenantConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -55,6 +55,9 @@ func NewPlanMember(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240701preview:PlanMember"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240801preview:PlanMember"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
