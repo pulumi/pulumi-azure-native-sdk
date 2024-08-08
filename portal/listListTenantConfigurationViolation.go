@@ -28,9 +28,9 @@ type ListListTenantConfigurationViolationArgs struct {
 
 // List of list of items that violate tenant's configuration.
 type ListListTenantConfigurationViolationResult struct {
-	// The URL to use for getting the next set of results.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// The array of violations.
+	// The Violation items on this page
 	Value []ViolationResponse `pulumi:"value"`
 }
 
@@ -69,12 +69,12 @@ func (o ListListTenantConfigurationViolationResultOutput) ToListListTenantConfig
 	return o
 }
 
-// The URL to use for getting the next set of results.
+// The link to the next page of items
 func (o ListListTenantConfigurationViolationResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListListTenantConfigurationViolationResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// The array of violations.
+// The Violation items on this page
 func (o ListListTenantConfigurationViolationResultOutput) Value() ViolationResponseArrayOutput {
 	return o.ApplyT(func(v ListListTenantConfigurationViolationResult) []ViolationResponse { return v.Value }).(ViolationResponseArrayOutput)
 }

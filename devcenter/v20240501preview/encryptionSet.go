@@ -59,6 +59,9 @@ func NewEncryptionSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240701preview:EncryptionSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240801preview:EncryptionSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

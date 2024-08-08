@@ -11,15 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Tenant configuration.
+// The tenant configuration resource definition.
 // Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview.
 type TenantConfiguration struct {
 	pulumi.CustomResourceState
 
-	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-	EnforcePrivateMarkdownStorage pulumi.BoolPtrOutput `pulumi:"enforcePrivateMarkdownStorage"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The resource-specific properties for this resource.
+	Properties ConfigurationPropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -73,18 +75,18 @@ func (TenantConfigurationState) ElementType() reflect.Type {
 }
 
 type tenantConfigurationArgs struct {
-	// The configuration name. Value must be 'default'
+	// The name of the Configuration
 	ConfigurationName *string `pulumi:"configurationName"`
-	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-	EnforcePrivateMarkdownStorage *bool `pulumi:"enforcePrivateMarkdownStorage"`
+	// The resource-specific properties for this resource.
+	Properties *ConfigurationProperties `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a TenantConfiguration resource.
 type TenantConfigurationArgs struct {
-	// The configuration name. Value must be 'default'
+	// The name of the Configuration
 	ConfigurationName pulumi.StringPtrInput
-	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-	EnforcePrivateMarkdownStorage pulumi.BoolPtrInput
+	// The resource-specific properties for this resource.
+	Properties ConfigurationPropertiesPtrInput
 }
 
 func (TenantConfigurationArgs) ElementType() reflect.Type {
@@ -124,14 +126,19 @@ func (o TenantConfigurationOutput) ToTenantConfigurationOutputWithContext(ctx co
 	return o
 }
 
-// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-func (o TenantConfigurationOutput) EnforcePrivateMarkdownStorage() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TenantConfiguration) pulumi.BoolPtrOutput { return v.EnforcePrivateMarkdownStorage }).(pulumi.BoolPtrOutput)
-}
-
 // The name of the resource
 func (o TenantConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource-specific properties for this resource.
+func (o TenantConfigurationOutput) Properties() ConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *TenantConfiguration) ConfigurationPropertiesResponseOutput { return v.Properties }).(ConfigurationPropertiesResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o TenantConfigurationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *TenantConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

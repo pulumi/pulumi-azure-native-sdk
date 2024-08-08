@@ -14,7 +14,7 @@ import (
 // Gets a devcenter encryption set.
 // Azure REST API version: 2024-05-01-preview.
 //
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview.
+// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
 func LookupEncryptionSet(ctx *pulumi.Context, args *LookupEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEncryptionSetResult
