@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AttachedNetworkByDevCenter{}
 	case "azure-native:devcenter:Catalog":
 		r = &Catalog{}
+	case "azure-native:devcenter:CurationProfile":
+		r = &CurationProfile{}
 	case "azure-native:devcenter:DevBoxDefinition":
 		r = &DevBoxDefinition{}
 	case "azure-native:devcenter:DevCenter":

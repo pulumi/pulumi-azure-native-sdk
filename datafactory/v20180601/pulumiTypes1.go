@@ -48,6 +48,8 @@ type HBaseLinkedService struct {
 	Type string `pulumi:"type"`
 	// The user name used to connect to the HBase instance.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HBaseLinkedServiceInput is an input type that accepts HBaseLinkedServiceArgs and HBaseLinkedServiceOutput values.
@@ -96,6 +98,8 @@ type HBaseLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user name used to connect to the HBase instance.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (HBaseLinkedServiceArgs) ElementType() reflect.Type {
@@ -206,6 +210,11 @@ func (o HBaseLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v HBaseLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o HBaseLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HBaseLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // HBase server linked service.
 type HBaseLinkedServiceResponse struct {
 	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -241,6 +250,8 @@ type HBaseLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// The user name used to connect to the HBase instance.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HBase server linked service.
@@ -337,6 +348,11 @@ func (o HBaseLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // The user name used to connect to the HBase instance.
 func (o HBaseLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v HBaseLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o HBaseLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HBaseLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // HBase server dataset.
@@ -1122,6 +1138,8 @@ type HDInsightLinkedService struct {
 	Type string `pulumi:"type"`
 	// HDInsight cluster user name. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HDInsightLinkedServiceInput is an input type that accepts HDInsightLinkedServiceArgs and HDInsightLinkedServiceOutput values.
@@ -1164,6 +1182,8 @@ type HDInsightLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// HDInsight cluster user name. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (HDInsightLinkedServiceArgs) ElementType() reflect.Type {
@@ -1259,6 +1279,11 @@ func (o HDInsightLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v HDInsightLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o HDInsightLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // HDInsight linked service.
 type HDInsightLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -1288,6 +1313,8 @@ type HDInsightLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// HDInsight cluster user name. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HDInsight linked service.
@@ -1371,6 +1398,11 @@ func (o HDInsightLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // HDInsight cluster user name. Type: string (or Expression with resultType string).
 func (o HDInsightLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v HDInsightLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o HDInsightLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HDInsightLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // HDInsight MapReduce activity type.
@@ -1790,8 +1822,8 @@ type HDInsightOnDemandLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'HDInsightOnDemand'.
 	Type string `pulumi:"type"`
-	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-	Version interface{} `pulumi:"version"`
+	// Version of the linked service.
+	Version string `pulumi:"version"`
 	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
 	VirtualNetworkId interface{} `pulumi:"virtualNetworkId"`
 	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
@@ -1884,8 +1916,8 @@ type HDInsightOnDemandLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'HDInsightOnDemand'.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-	Version pulumi.Input `pulumi:"version"`
+	// Version of the linked service.
+	Version pulumi.StringInput `pulumi:"version"`
 	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
 	VirtualNetworkId pulumi.Input `pulumi:"virtualNetworkId"`
 	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
@@ -2097,9 +2129,9 @@ func (o HDInsightOnDemandLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v HDInsightOnDemandLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-func (o HDInsightOnDemandLinkedServiceOutput) Version() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightOnDemandLinkedService) interface{} { return v.Version }).(pulumi.AnyOutput)
+// Version of the linked service.
+func (o HDInsightOnDemandLinkedServiceOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightOnDemandLinkedService) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
@@ -2190,8 +2222,8 @@ type HDInsightOnDemandLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'HDInsightOnDemand'.
 	Type string `pulumi:"type"`
-	// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-	Version interface{} `pulumi:"version"`
+	// Version of the linked service.
+	Version string `pulumi:"version"`
 	// The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
 	VirtualNetworkId interface{} `pulumi:"virtualNetworkId"`
 	// Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
@@ -2401,9 +2433,9 @@ func (o HDInsightOnDemandLinkedServiceResponseOutput) Type() pulumi.StringOutput
 	return o.ApplyT(func(v HDInsightOnDemandLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
-func (o HDInsightOnDemandLinkedServiceResponseOutput) Version() pulumi.AnyOutput {
-	return o.ApplyT(func(v HDInsightOnDemandLinkedServiceResponse) interface{} { return v.Version }).(pulumi.AnyOutput)
+// Version of the linked service.
+func (o HDInsightOnDemandLinkedServiceResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v HDInsightOnDemandLinkedServiceResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
@@ -3504,6 +3536,8 @@ type HdfsLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// User name for Windows authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HdfsLinkedServiceInput is an input type that accepts HdfsLinkedServiceArgs and HdfsLinkedServiceOutput values.
@@ -3540,6 +3574,8 @@ type HdfsLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// User name for Windows authentication. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (HdfsLinkedServiceArgs) ElementType() reflect.Type {
@@ -3620,6 +3656,11 @@ func (o HdfsLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v HdfsLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o HdfsLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HdfsLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Hadoop Distributed File System (HDFS) linked service.
 type HdfsLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -3643,6 +3684,8 @@ type HdfsLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// User name for Windows authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Hadoop Distributed File System (HDFS) linked service.
@@ -3709,6 +3752,11 @@ func (o HdfsLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // User name for Windows authentication. Type: string (or Expression with resultType string).
 func (o HdfsLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v HdfsLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o HdfsLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HdfsLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The location of HDFS.
@@ -4695,6 +4743,8 @@ type HiveLinkedService struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name that you use to access Hive Server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 	// The namespace on ZooKeeper under which Hive Server 2 nodes are added.
 	ZooKeeperNameSpace interface{} `pulumi:"zooKeeperNameSpace"`
 }
@@ -4755,6 +4805,8 @@ type HiveLinkedServiceArgs struct {
 	UseSystemTrustStore pulumi.Input `pulumi:"useSystemTrustStore"`
 	// The user name that you use to access Hive Server.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 	// The namespace on ZooKeeper under which Hive Server 2 nodes are added.
 	ZooKeeperNameSpace pulumi.Input `pulumi:"zooKeeperNameSpace"`
 }
@@ -4892,6 +4944,11 @@ func (o HiveLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v HiveLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o HiveLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // The namespace on ZooKeeper under which Hive Server 2 nodes are added.
 func (o HiveLinkedServiceOutput) ZooKeeperNameSpace() pulumi.AnyOutput {
 	return o.ApplyT(func(v HiveLinkedService) interface{} { return v.ZooKeeperNameSpace }).(pulumi.AnyOutput)
@@ -4942,6 +4999,8 @@ type HiveLinkedServiceResponse struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name that you use to access Hive Server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 	// The namespace on ZooKeeper under which Hive Server 2 nodes are added.
 	ZooKeeperNameSpace interface{} `pulumi:"zooKeeperNameSpace"`
 }
@@ -5065,6 +5124,11 @@ func (o HiveLinkedServiceResponseOutput) UseSystemTrustStore() pulumi.AnyOutput 
 // The user name that you use to access Hive Server.
 func (o HiveLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v HiveLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o HiveLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The namespace on ZooKeeper under which Hive Server 2 nodes are added.
@@ -5835,6 +5899,8 @@ type HttpLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HttpLinkedServiceInput is an input type that accepts HttpLinkedServiceArgs and HttpLinkedServiceOutput values.
@@ -5879,6 +5945,8 @@ type HttpLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (HttpLinkedServiceArgs) ElementType() reflect.Type {
@@ -5979,6 +6047,11 @@ func (o HttpLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v HttpLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o HttpLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for an HTTP source.
 type HttpLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -6010,6 +6083,8 @@ type HttpLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for an HTTP source.
@@ -6096,6 +6171,11 @@ func (o HttpLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
 func (o HttpLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v HttpLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o HttpLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Http read settings.
@@ -6886,6 +6966,8 @@ type HubspotLinkedService struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // HubspotLinkedServiceInput is an input type that accepts HubspotLinkedServiceArgs and HubspotLinkedServiceOutput values.
@@ -6928,6 +7010,8 @@ type HubspotLinkedServiceArgs struct {
 	UseHostVerification pulumi.Input `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (HubspotLinkedServiceArgs) ElementType() reflect.Type {
@@ -7023,6 +7107,11 @@ func (o HubspotLinkedServiceOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v HubspotLinkedService) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o HubspotLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HubspotLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Hubspot Service linked service.
 type HubspotLinkedServiceResponse struct {
 	// The access token obtained when initially authenticating your OAuth integration.
@@ -7052,6 +7141,8 @@ type HubspotLinkedServiceResponse struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Hubspot Service linked service.
@@ -7133,6 +7224,11 @@ func (o HubspotLinkedServiceResponseOutput) UseHostVerification() pulumi.AnyOutp
 // Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 func (o HubspotLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v HubspotLinkedServiceResponse) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o HubspotLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HubspotLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Hubspot Service dataset.
@@ -7812,6 +7908,8 @@ type ImpalaLinkedService struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // ImpalaLinkedServiceInput is an input type that accepts ImpalaLinkedServiceArgs and ImpalaLinkedServiceOutput values.
@@ -7860,6 +7958,8 @@ type ImpalaLinkedServiceArgs struct {
 	UseSystemTrustStore pulumi.Input `pulumi:"useSystemTrustStore"`
 	// The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ImpalaLinkedServiceArgs) ElementType() reflect.Type {
@@ -7970,6 +8070,11 @@ func (o ImpalaLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v ImpalaLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o ImpalaLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImpalaLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Impala server linked service.
 type ImpalaLinkedServiceResponse struct {
 	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -8005,6 +8110,8 @@ type ImpalaLinkedServiceResponse struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Impala server linked service.
@@ -8101,6 +8208,11 @@ func (o ImpalaLinkedServiceResponseOutput) UseSystemTrustStore() pulumi.AnyOutpu
 // The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
 func (o ImpalaLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v ImpalaLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o ImpalaLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImpalaLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Impala server dataset.
@@ -8556,6 +8668,8 @@ type InformixLinkedService struct {
 	Type string `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // InformixLinkedServiceInput is an input type that accepts InformixLinkedServiceArgs and InformixLinkedServiceOutput values.
@@ -8594,6 +8708,8 @@ type InformixLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (InformixLinkedServiceArgs) ElementType() reflect.Type {
@@ -8679,6 +8795,11 @@ func (o InformixLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v InformixLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o InformixLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InformixLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Informix linked service.
 type InformixLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -8704,6 +8825,8 @@ type InformixLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Informix linked service.
@@ -8775,6 +8898,11 @@ func (o InformixLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // User name for Basic authentication. Type: string (or Expression with resultType string).
 func (o InformixLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v InformixLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o InformixLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InformixLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity Informix sink.
@@ -12483,6 +12611,8 @@ type JiraLinkedService struct {
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
 	// The user name that you use to access Jira Service.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // JiraLinkedServiceInput is an input type that accepts JiraLinkedServiceArgs and JiraLinkedServiceOutput values.
@@ -12525,6 +12655,8 @@ type JiraLinkedServiceArgs struct {
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
 	// The user name that you use to access Jira Service.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (JiraLinkedServiceArgs) ElementType() reflect.Type {
@@ -12620,6 +12752,11 @@ func (o JiraLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v JiraLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o JiraLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JiraLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Jira Service linked service.
 type JiraLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -12649,6 +12786,8 @@ type JiraLinkedServiceResponse struct {
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
 	// The user name that you use to access Jira Service.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Jira Service linked service.
@@ -12730,6 +12869,11 @@ func (o JiraLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput 
 // The user name that you use to access Jira Service.
 func (o JiraLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v JiraLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o JiraLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JiraLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Jira Service dataset.
@@ -14774,6 +14918,8 @@ type LakeHouseLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'LakeHouse'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
 	WorkspaceId interface{} `pulumi:"workspaceId"`
 }
@@ -14816,6 +14962,8 @@ type LakeHouseLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'LakeHouse'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
 	WorkspaceId pulumi.Input `pulumi:"workspaceId"`
 }
@@ -14908,6 +15056,11 @@ func (o LakeHouseLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o LakeHouseLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeHouseLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
 func (o LakeHouseLinkedServiceOutput) WorkspaceId() pulumi.AnyOutput {
 	return o.ApplyT(func(v LakeHouseLinkedService) interface{} { return v.WorkspaceId }).(pulumi.AnyOutput)
@@ -14940,6 +15093,8 @@ type LakeHouseLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'LakeHouse'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 	// The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
 	WorkspaceId interface{} `pulumi:"workspaceId"`
 }
@@ -15018,6 +15173,11 @@ func (o LakeHouseLinkedServiceResponseOutput) Tenant() pulumi.AnyOutput {
 // Expected value is 'LakeHouse'.
 func (o LakeHouseLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o LakeHouseLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeHouseLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
@@ -18777,6 +18937,8 @@ type MagentoLinkedService struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MagentoLinkedServiceInput is an input type that accepts MagentoLinkedServiceArgs and MagentoLinkedServiceOutput values.
@@ -18815,6 +18977,8 @@ type MagentoLinkedServiceArgs struct {
 	UseHostVerification pulumi.Input `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MagentoLinkedServiceArgs) ElementType() reflect.Type {
@@ -18900,6 +19064,11 @@ func (o MagentoLinkedServiceOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v MagentoLinkedService) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o MagentoLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagentoLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Magento server linked service.
 type MagentoLinkedServiceResponse struct {
 	// The access token from Magento.
@@ -18925,6 +19094,8 @@ type MagentoLinkedServiceResponse struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Magento server linked service.
@@ -18996,6 +19167,11 @@ func (o MagentoLinkedServiceResponseOutput) UseHostVerification() pulumi.AnyOutp
 // Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 func (o MagentoLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v MagentoLinkedServiceResponse) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o MagentoLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagentoLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Magento server dataset.
@@ -23146,6 +23322,8 @@ type MariaDBLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username for authentication. Type: string.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MariaDBLinkedServiceInput is an input type that accepts MariaDBLinkedServiceArgs and MariaDBLinkedServiceOutput values.
@@ -23188,6 +23366,8 @@ type MariaDBLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username for authentication. Type: string.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MariaDBLinkedServiceArgs) ElementType() reflect.Type {
@@ -23283,6 +23463,11 @@ func (o MariaDBLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v MariaDBLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o MariaDBLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MariaDBLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // MariaDB server linked service.
 type MariaDBLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -23312,6 +23497,8 @@ type MariaDBLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username for authentication. Type: string.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MariaDB server linked service.
@@ -23393,6 +23580,11 @@ func (o MariaDBLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username for authentication. Type: string.
 func (o MariaDBLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v MariaDBLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o MariaDBLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MariaDBLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity MariaDB server source.
@@ -23834,6 +24026,8 @@ type MarketoLinkedService struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MarketoLinkedServiceInput is an input type that accepts MarketoLinkedServiceArgs and MarketoLinkedServiceOutput values.
@@ -23874,6 +24068,8 @@ type MarketoLinkedServiceArgs struct {
 	UseHostVerification pulumi.Input `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MarketoLinkedServiceArgs) ElementType() reflect.Type {
@@ -23964,6 +24160,11 @@ func (o MarketoLinkedServiceOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v MarketoLinkedService) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o MarketoLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketoLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Marketo server linked service.
 type MarketoLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -23991,6 +24192,8 @@ type MarketoLinkedServiceResponse struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Marketo server linked service.
@@ -24067,6 +24270,11 @@ func (o MarketoLinkedServiceResponseOutput) UseHostVerification() pulumi.AnyOutp
 // Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 func (o MarketoLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v MarketoLinkedServiceResponse) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o MarketoLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketoLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Marketo server dataset.
@@ -24668,6 +24876,8 @@ type MicrosoftAccessLinkedService struct {
 	Type string `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MicrosoftAccessLinkedServiceInput is an input type that accepts MicrosoftAccessLinkedServiceArgs and MicrosoftAccessLinkedServiceOutput values.
@@ -24706,6 +24916,8 @@ type MicrosoftAccessLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MicrosoftAccessLinkedServiceArgs) ElementType() reflect.Type {
@@ -24791,6 +25003,11 @@ func (o MicrosoftAccessLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v MicrosoftAccessLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o MicrosoftAccessLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrosoftAccessLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Microsoft Access linked service.
 type MicrosoftAccessLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -24816,6 +25033,8 @@ type MicrosoftAccessLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Microsoft Access linked service.
@@ -24889,6 +25108,11 @@ func (o MicrosoftAccessLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // User name for Basic authentication. Type: string (or Expression with resultType string).
 func (o MicrosoftAccessLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v MicrosoftAccessLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o MicrosoftAccessLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MicrosoftAccessLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity Microsoft Access sink.
@@ -25724,6 +25948,8 @@ type MongoDbAtlasLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'MongoDbAtlas'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MongoDbAtlasLinkedServiceInput is an input type that accepts MongoDbAtlasLinkedServiceArgs and MongoDbAtlasLinkedServiceOutput values.
@@ -25756,6 +25982,8 @@ type MongoDbAtlasLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'MongoDbAtlas'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MongoDbAtlasLinkedServiceArgs) ElementType() reflect.Type {
@@ -25826,6 +26054,11 @@ func (o MongoDbAtlasLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MongoDbAtlasLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o MongoDbAtlasLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbAtlasLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for MongoDB Atlas data source.
 type MongoDbAtlasLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -25845,6 +26078,8 @@ type MongoDbAtlasLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'MongoDbAtlas'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for MongoDB Atlas data source.
@@ -25903,6 +26138,11 @@ func (o MongoDbAtlasLinkedServiceResponseOutput) Parameters() ParameterSpecifica
 // Expected value is 'MongoDbAtlas'.
 func (o MongoDbAtlasLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MongoDbAtlasLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o MongoDbAtlasLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbAtlasLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity MongoDB Atlas sink.
@@ -26890,6 +27130,8 @@ type MongoDbLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username for authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MongoDbLinkedServiceInput is an input type that accepts MongoDbLinkedServiceArgs and MongoDbLinkedServiceOutput values.
@@ -26936,6 +27178,8 @@ type MongoDbLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username for authentication. Type: string (or Expression with resultType string).
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MongoDbLinkedServiceArgs) ElementType() reflect.Type {
@@ -27041,6 +27285,11 @@ func (o MongoDbLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v MongoDbLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o MongoDbLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for MongoDb data source.
 type MongoDbLinkedServiceResponse struct {
 	// Specifies whether to allow self-signed certificates from the server. The default value is false. Type: boolean (or Expression with resultType boolean).
@@ -27074,6 +27323,8 @@ type MongoDbLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username for authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for MongoDb data source.
@@ -27165,6 +27416,11 @@ func (o MongoDbLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username for authentication. Type: string (or Expression with resultType string).
 func (o MongoDbLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v MongoDbLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o MongoDbLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity source for a MongoDB database.
@@ -27582,6 +27838,8 @@ type MongoDbV2LinkedService struct {
 	// Type of linked service.
 	// Expected value is 'MongoDbV2'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MongoDbV2LinkedServiceInput is an input type that accepts MongoDbV2LinkedServiceArgs and MongoDbV2LinkedServiceOutput values.
@@ -27612,6 +27870,8 @@ type MongoDbV2LinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'MongoDbV2'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MongoDbV2LinkedServiceArgs) ElementType() reflect.Type {
@@ -27677,6 +27937,11 @@ func (o MongoDbV2LinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MongoDbV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o MongoDbV2LinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbV2LinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for MongoDB data source.
 type MongoDbV2LinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -27694,6 +27959,8 @@ type MongoDbV2LinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'MongoDbV2'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for MongoDB data source.
@@ -27745,6 +28012,11 @@ func (o MongoDbV2LinkedServiceResponseOutput) Parameters() ParameterSpecificatio
 // Expected value is 'MongoDbV2'.
 func (o MongoDbV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MongoDbV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o MongoDbV2LinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoDbV2LinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity MongoDB sink.
@@ -28349,6 +28621,8 @@ type MySqlLinkedService struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// Username for authentication. Type: string.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // MySqlLinkedServiceInput is an input type that accepts MySqlLinkedServiceArgs and MySqlLinkedServiceOutput values.
@@ -28395,6 +28669,8 @@ type MySqlLinkedServiceArgs struct {
 	UseSystemTrustStore pulumi.Input `pulumi:"useSystemTrustStore"`
 	// Username for authentication. Type: string.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (MySqlLinkedServiceArgs) ElementType() reflect.Type {
@@ -28500,6 +28776,11 @@ func (o MySqlLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o MySqlLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for MySQL data source.
 type MySqlLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -28533,6 +28814,8 @@ type MySqlLinkedServiceResponse struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// Username for authentication. Type: string.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for MySQL data source.
@@ -28624,6 +28907,11 @@ func (o MySqlLinkedServiceResponseOutput) UseSystemTrustStore() pulumi.AnyOutput
 // Username for authentication. Type: string.
 func (o MySqlLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v MySqlLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o MySqlLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MySqlLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity source for MySQL databases.
@@ -29057,6 +29345,8 @@ type NetezzaLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'Netezza'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // NetezzaLinkedServiceInput is an input type that accepts NetezzaLinkedServiceArgs and NetezzaLinkedServiceOutput values.
@@ -29089,6 +29379,8 @@ type NetezzaLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'Netezza'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (NetezzaLinkedServiceArgs) ElementType() reflect.Type {
@@ -29159,6 +29451,11 @@ func (o NetezzaLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NetezzaLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o NetezzaLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetezzaLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Netezza linked service.
 type NetezzaLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -29178,6 +29475,8 @@ type NetezzaLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'Netezza'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Netezza linked service.
@@ -29234,6 +29533,11 @@ func (o NetezzaLinkedServiceResponseOutput) Pwd() AzureKeyVaultSecretReferenceRe
 // Expected value is 'Netezza'.
 func (o NetezzaLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NetezzaLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o NetezzaLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetezzaLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The settings that will be leveraged for Netezza source partitioning.
@@ -30171,6 +30475,8 @@ type ODataLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// User name of the OData service. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // ODataLinkedServiceInput is an input type that accepts ODataLinkedServiceArgs and ODataLinkedServiceOutput values.
@@ -30225,6 +30531,8 @@ type ODataLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// User name of the OData service. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ODataLinkedServiceArgs) ElementType() reflect.Type {
@@ -30350,6 +30658,11 @@ func (o ODataLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v ODataLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o ODataLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ODataLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Open Data Protocol (OData) linked service.
 type ODataLinkedServiceResponse struct {
 	// Specify the resource you are requesting authorization to use Directory. Type: string (or Expression with resultType string).
@@ -30391,6 +30704,8 @@ type ODataLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// User name of the OData service. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Open Data Protocol (OData) linked service.
@@ -30502,6 +30817,11 @@ func (o ODataLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // User name of the OData service. Type: string (or Expression with resultType string).
 func (o ODataLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v ODataLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o ODataLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ODataLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The Open Data Protocol (OData) resource dataset.
@@ -30941,6 +31261,8 @@ type OdbcLinkedService struct {
 	Type string `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // OdbcLinkedServiceInput is an input type that accepts OdbcLinkedServiceArgs and OdbcLinkedServiceOutput values.
@@ -30979,6 +31301,8 @@ type OdbcLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (OdbcLinkedServiceArgs) ElementType() reflect.Type {
@@ -31064,6 +31388,11 @@ func (o OdbcLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v OdbcLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o OdbcLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OdbcLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Open Database Connectivity (ODBC) linked service.
 type OdbcLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -31089,6 +31418,8 @@ type OdbcLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// User name for Basic authentication. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Open Database Connectivity (ODBC) linked service.
@@ -31160,6 +31491,11 @@ func (o OdbcLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // User name for Basic authentication. Type: string (or Expression with resultType string).
 func (o OdbcLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v OdbcLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o OdbcLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OdbcLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity ODBC sink.
@@ -32025,6 +32361,8 @@ type Office365LinkedService struct {
 	// Type of linked service.
 	// Expected value is 'Office365'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Office365LinkedServiceInput is an input type that accepts Office365LinkedServiceArgs and Office365LinkedServiceOutput values.
@@ -32061,6 +32399,8 @@ type Office365LinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'Office365'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (Office365LinkedServiceArgs) ElementType() reflect.Type {
@@ -32141,6 +32481,11 @@ func (o Office365LinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v Office365LinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o Office365LinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Office365LinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Office365 linked service.
 type Office365LinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -32164,6 +32509,8 @@ type Office365LinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'Office365'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Office365 linked service.
@@ -32230,6 +32577,11 @@ func (o Office365LinkedServiceResponseOutput) ServicePrincipalTenantId() pulumi.
 // Expected value is 'Office365'.
 func (o Office365LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v Office365LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o Office365LinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Office365LinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity source for an Office 365 service.
@@ -32499,6 +32851,8 @@ type OracleCloudStorageLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'OracleCloudStorage'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // OracleCloudStorageLinkedServiceInput is an input type that accepts OracleCloudStorageLinkedServiceArgs and OracleCloudStorageLinkedServiceOutput values.
@@ -32533,6 +32887,8 @@ type OracleCloudStorageLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'OracleCloudStorage'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (OracleCloudStorageLinkedServiceArgs) ElementType() reflect.Type {
@@ -32608,6 +32964,11 @@ func (o OracleCloudStorageLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleCloudStorageLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o OracleCloudStorageLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleCloudStorageLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Oracle Cloud Storage.
 type OracleCloudStorageLinkedServiceResponse struct {
 	// The access key identifier of the Oracle Cloud Storage Identity and Access Management (IAM) user. Type: string (or Expression with resultType string).
@@ -32629,6 +32990,8 @@ type OracleCloudStorageLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'OracleCloudStorage'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for Oracle Cloud Storage.
@@ -32694,6 +33057,11 @@ func (o OracleCloudStorageLinkedServiceResponseOutput) ServiceUrl() pulumi.AnyOu
 // Expected value is 'OracleCloudStorage'.
 func (o OracleCloudStorageLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleCloudStorageLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o OracleCloudStorageLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleCloudStorageLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The location of Oracle Cloud Storage dataset.
@@ -33504,6 +33872,8 @@ type OracleLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'Oracle'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // OracleLinkedServiceInput is an input type that accepts OracleLinkedServiceArgs and OracleLinkedServiceOutput values.
@@ -33536,6 +33906,8 @@ type OracleLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'Oracle'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (OracleLinkedServiceArgs) ElementType() reflect.Type {
@@ -33606,6 +33978,11 @@ func (o OracleLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o OracleLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Oracle database.
 type OracleLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -33625,6 +34002,8 @@ type OracleLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'Oracle'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Oracle database.
@@ -33681,6 +34060,11 @@ func (o OracleLinkedServiceResponseOutput) Password() AzureKeyVaultSecretReferen
 // Expected value is 'Oracle'.
 func (o OracleLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v OracleLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o OracleLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The settings that will be leveraged for Oracle source partitioning.
@@ -34018,6 +34402,8 @@ type OracleServiceCloudLinkedService struct {
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
 	// The user name that you use to access Oracle Service Cloud server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // OracleServiceCloudLinkedServiceInput is an input type that accepts OracleServiceCloudLinkedServiceArgs and OracleServiceCloudLinkedServiceOutput values.
@@ -34058,6 +34444,8 @@ type OracleServiceCloudLinkedServiceArgs struct {
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
 	// The user name that you use to access Oracle Service Cloud server.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (OracleServiceCloudLinkedServiceArgs) ElementType() reflect.Type {
@@ -34148,6 +34536,11 @@ func (o OracleServiceCloudLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleServiceCloudLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o OracleServiceCloudLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleServiceCloudLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Oracle Service Cloud linked service.
 type OracleServiceCloudLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -34175,6 +34568,8 @@ type OracleServiceCloudLinkedServiceResponse struct {
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
 	// The user name that you use to access Oracle Service Cloud server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Oracle Service Cloud linked service.
@@ -34255,6 +34650,11 @@ func (o OracleServiceCloudLinkedServiceResponseOutput) UsePeerVerification() pul
 // The user name that you use to access Oracle Service Cloud server.
 func (o OracleServiceCloudLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v OracleServiceCloudLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o OracleServiceCloudLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OracleServiceCloudLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Oracle Service Cloud dataset.
@@ -38309,6 +38709,8 @@ type PaypalLinkedService struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // PaypalLinkedServiceInput is an input type that accepts PaypalLinkedServiceArgs and PaypalLinkedServiceOutput values.
@@ -38349,6 +38751,8 @@ type PaypalLinkedServiceArgs struct {
 	UseHostVerification pulumi.Input `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (PaypalLinkedServiceArgs) ElementType() reflect.Type {
@@ -38439,6 +38843,11 @@ func (o PaypalLinkedServiceOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v PaypalLinkedService) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o PaypalLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PaypalLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Paypal Service linked service.
 type PaypalLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -38466,6 +38875,8 @@ type PaypalLinkedServiceResponse struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Paypal Service linked service.
@@ -38542,6 +38953,11 @@ func (o PaypalLinkedServiceResponseOutput) UseHostVerification() pulumi.AnyOutpu
 // Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
 func (o PaypalLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v PaypalLinkedServiceResponse) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o PaypalLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PaypalLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Paypal Service dataset.
@@ -38993,6 +39409,8 @@ type PhoenixLinkedService struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Phoenix server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // PhoenixLinkedServiceInput is an input type that accepts PhoenixLinkedServiceArgs and PhoenixLinkedServiceOutput values.
@@ -39043,6 +39461,8 @@ type PhoenixLinkedServiceArgs struct {
 	UseSystemTrustStore pulumi.Input `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Phoenix server.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (PhoenixLinkedServiceArgs) ElementType() reflect.Type {
@@ -39158,6 +39578,11 @@ func (o PhoenixLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v PhoenixLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o PhoenixLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoenixLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Phoenix server linked service.
 type PhoenixLinkedServiceResponse struct {
 	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -39195,6 +39620,8 @@ type PhoenixLinkedServiceResponse struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Phoenix server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Phoenix server linked service.
@@ -39296,6 +39723,11 @@ func (o PhoenixLinkedServiceResponseOutput) UseSystemTrustStore() pulumi.AnyOutp
 // The user name used to connect to the Phoenix server.
 func (o PhoenixLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v PhoenixLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o PhoenixLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PhoenixLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Phoenix server dataset.
@@ -41262,6 +41694,8 @@ type PostgreSqlLinkedService struct {
 	// Type of linked service.
 	// Expected value is 'PostgreSql'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // PostgreSqlLinkedServiceInput is an input type that accepts PostgreSqlLinkedServiceArgs and PostgreSqlLinkedServiceOutput values.
@@ -41294,6 +41728,8 @@ type PostgreSqlLinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'PostgreSql'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (PostgreSqlLinkedServiceArgs) ElementType() reflect.Type {
@@ -41364,6 +41800,11 @@ func (o PostgreSqlLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlLinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o PostgreSqlLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for PostgreSQL data source.
 type PostgreSqlLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -41383,6 +41824,8 @@ type PostgreSqlLinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'PostgreSql'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for PostgreSQL data source.
@@ -41439,6 +41882,11 @@ func (o PostgreSqlLinkedServiceResponseOutput) Password() AzureKeyVaultSecretRef
 // Expected value is 'PostgreSql'.
 func (o PostgreSqlLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o PostgreSqlLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity source for PostgreSQL databases.
@@ -41920,6 +42368,8 @@ type PostgreSqlV2LinkedService struct {
 	Type string `pulumi:"type"`
 	// Username for authentication. Type: string.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // PostgreSqlV2LinkedServiceInput is an input type that accepts PostgreSqlV2LinkedServiceArgs and PostgreSqlV2LinkedServiceOutput values.
@@ -41984,6 +42434,8 @@ type PostgreSqlV2LinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username for authentication. Type: string.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (PostgreSqlV2LinkedServiceArgs) ElementType() reflect.Type {
@@ -42134,6 +42586,11 @@ func (o PostgreSqlV2LinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v PostgreSqlV2LinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o PostgreSqlV2LinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for PostgreSQLV2 data source.
 type PostgreSqlV2LinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -42185,6 +42642,8 @@ type PostgreSqlV2LinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username for authentication. Type: string.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for PostgreSQLV2 data source.
@@ -42323,6 +42782,11 @@ func (o PostgreSqlV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username for authentication. Type: string.
 func (o PostgreSqlV2LinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o PostgreSqlV2LinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgreSqlV2LinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity source for PostgreSQL databases.
@@ -43507,6 +43971,8 @@ type PrestoLinkedService struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Presto server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // PrestoLinkedServiceInput is an input type that accepts PrestoLinkedServiceArgs and PrestoLinkedServiceOutput values.
@@ -43561,6 +44027,8 @@ type PrestoLinkedServiceArgs struct {
 	UseSystemTrustStore pulumi.Input `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Presto server.
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (PrestoLinkedServiceArgs) ElementType() reflect.Type {
@@ -43686,6 +44154,11 @@ func (o PrestoLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o PrestoLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrestoLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Presto server linked service.
 type PrestoLinkedServiceResponse struct {
 	// Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -43727,6 +44200,8 @@ type PrestoLinkedServiceResponse struct {
 	UseSystemTrustStore interface{} `pulumi:"useSystemTrustStore"`
 	// The user name used to connect to the Presto server.
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Presto server linked service.
@@ -43838,6 +44313,11 @@ func (o PrestoLinkedServiceResponseOutput) UseSystemTrustStore() pulumi.AnyOutpu
 // The user name used to connect to the Presto server.
 func (o PrestoLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v PrestoLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o PrestoLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrestoLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Presto server dataset.
@@ -45072,6 +45552,8 @@ type QuickBooksLinkedService struct {
 	Type string `pulumi:"type"`
 	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
 	UseEncryptedEndpoints interface{} `pulumi:"useEncryptedEndpoints"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // QuickBooksLinkedServiceInput is an input type that accepts QuickBooksLinkedServiceArgs and QuickBooksLinkedServiceOutput values.
@@ -45116,6 +45598,8 @@ type QuickBooksLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
 	UseEncryptedEndpoints pulumi.Input `pulumi:"useEncryptedEndpoints"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (QuickBooksLinkedServiceArgs) ElementType() reflect.Type {
@@ -45216,6 +45700,11 @@ func (o QuickBooksLinkedServiceOutput) UseEncryptedEndpoints() pulumi.AnyOutput 
 	return o.ApplyT(func(v QuickBooksLinkedService) interface{} { return v.UseEncryptedEndpoints }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o QuickBooksLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuickBooksLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // QuickBooks server linked service.
 type QuickBooksLinkedServiceResponse struct {
 	// The access token for OAuth 1.0 authentication.
@@ -45247,6 +45736,8 @@ type QuickBooksLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
 	UseEncryptedEndpoints interface{} `pulumi:"useEncryptedEndpoints"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // QuickBooks server linked service.
@@ -45333,6 +45824,11 @@ func (o QuickBooksLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
 func (o QuickBooksLinkedServiceResponseOutput) UseEncryptedEndpoints() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) interface{} { return v.UseEncryptedEndpoints }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o QuickBooksLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuickBooksLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // QuickBooks server dataset.
@@ -45766,6 +46262,8 @@ type QuickbaseLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// The user token for the Quickbase source.
 	UserToken interface{} `pulumi:"userToken"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // QuickbaseLinkedServiceInput is an input type that accepts QuickbaseLinkedServiceArgs and QuickbaseLinkedServiceOutput values.
@@ -45798,6 +46296,8 @@ type QuickbaseLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// The user token for the Quickbase source.
 	UserToken pulumi.Input `pulumi:"userToken"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (QuickbaseLinkedServiceArgs) ElementType() reflect.Type {
@@ -45868,6 +46368,11 @@ func (o QuickbaseLinkedServiceOutput) UserToken() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickbaseLinkedService) interface{} { return v.UserToken }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o QuickbaseLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuickbaseLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Quickbase.
 type QuickbaseLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -45887,6 +46392,8 @@ type QuickbaseLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// The user token for the Quickbase source.
 	UserToken interface{} `pulumi:"userToken"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for Quickbase.
@@ -45943,6 +46450,11 @@ func (o QuickbaseLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // The user token for the Quickbase source.
 func (o QuickbaseLinkedServiceResponseOutput) UserToken() pulumi.AnyOutput {
 	return o.ApplyT(func(v QuickbaseLinkedServiceResponse) interface{} { return v.UserToken }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o QuickbaseLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QuickbaseLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The recurrence schedule.
@@ -47575,6 +48087,8 @@ type ResponsysLinkedService struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // ResponsysLinkedServiceInput is an input type that accepts ResponsysLinkedServiceArgs and ResponsysLinkedServiceOutput values.
@@ -47615,6 +48129,8 @@ type ResponsysLinkedServiceArgs struct {
 	UseHostVerification pulumi.Input `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ResponsysLinkedServiceArgs) ElementType() reflect.Type {
@@ -47705,6 +48221,11 @@ func (o ResponsysLinkedServiceOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v ResponsysLinkedService) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o ResponsysLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResponsysLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Responsys linked service.
 type ResponsysLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -47732,6 +48253,8 @@ type ResponsysLinkedServiceResponse struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Responsys linked service.
@@ -47808,6 +48331,11 @@ func (o ResponsysLinkedServiceResponseOutput) UseHostVerification() pulumi.AnyOu
 // Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 func (o ResponsysLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v ResponsysLinkedServiceResponse) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o ResponsysLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResponsysLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Responsys dataset.
@@ -48549,6 +49077,8 @@ type RestServiceLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// The user name used in Basic authentication type. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // RestServiceLinkedServiceInput is an input type that accepts RestServiceLinkedServiceArgs and RestServiceLinkedServiceOutput values.
@@ -48611,6 +49141,8 @@ type RestServiceLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// The user name used in Basic authentication type. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (RestServiceLinkedServiceArgs) ElementType() reflect.Type {
@@ -48756,6 +49288,11 @@ func (o RestServiceLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v RestServiceLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o RestServiceLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestServiceLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Rest Service linked service.
 type RestServiceLinkedServiceResponse struct {
 	// The resource you are requesting authorization to use. Type: string (or Expression with resultType string).
@@ -48805,6 +49342,8 @@ type RestServiceLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// The user name used in Basic authentication type. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Rest Service linked service.
@@ -48938,6 +49477,11 @@ func (o RestServiceLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // The user name used in Basic authentication type. Type: string (or Expression with resultType string).
 func (o RestServiceLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v RestServiceLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o RestServiceLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RestServiceLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity Rest service Sink.
@@ -51306,6 +51850,8 @@ type SalesforceLinkedService struct {
 	Type string `pulumi:"type"`
 	// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SalesforceLinkedServiceInput is an input type that accepts SalesforceLinkedServiceArgs and SalesforceLinkedServiceOutput values.
@@ -51344,6 +51890,8 @@ type SalesforceLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SalesforceLinkedServiceArgs) ElementType() reflect.Type {
@@ -51429,6 +51977,11 @@ func (o SalesforceLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SalesforceLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Salesforce.
 type SalesforceLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -51454,6 +52007,8 @@ type SalesforceLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for Salesforce.
@@ -51527,6 +52082,11 @@ func (o SalesforceLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SalesforceLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Salesforce Marketing Cloud linked service.
 type SalesforceMarketingCloudLinkedService struct {
 	// List of tags that can be used for describing the linked service.
@@ -51554,6 +52114,8 @@ type SalesforceMarketingCloudLinkedService struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SalesforceMarketingCloudLinkedServiceInput is an input type that accepts SalesforceMarketingCloudLinkedServiceArgs and SalesforceMarketingCloudLinkedServiceOutput values.
@@ -51594,6 +52156,8 @@ type SalesforceMarketingCloudLinkedServiceArgs struct {
 	UseHostVerification pulumi.Input `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 	UsePeerVerification pulumi.Input `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SalesforceMarketingCloudLinkedServiceArgs) ElementType() reflect.Type {
@@ -51684,6 +52248,11 @@ func (o SalesforceMarketingCloudLinkedServiceOutput) UsePeerVerification() pulum
 	return o.ApplyT(func(v SalesforceMarketingCloudLinkedService) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SalesforceMarketingCloudLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceMarketingCloudLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Salesforce Marketing Cloud linked service.
 type SalesforceMarketingCloudLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -51711,6 +52280,8 @@ type SalesforceMarketingCloudLinkedServiceResponse struct {
 	UseHostVerification interface{} `pulumi:"useHostVerification"`
 	// Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 	UsePeerVerification interface{} `pulumi:"usePeerVerification"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Salesforce Marketing Cloud linked service.
@@ -51791,6 +52362,11 @@ func (o SalesforceMarketingCloudLinkedServiceResponseOutput) UseHostVerification
 // Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
 func (o SalesforceMarketingCloudLinkedServiceResponseOutput) UsePeerVerification() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceMarketingCloudLinkedServiceResponse) interface{} { return v.UsePeerVerification }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SalesforceMarketingCloudLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceMarketingCloudLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // Salesforce Marketing Cloud dataset.
@@ -52450,6 +53026,8 @@ type SalesforceServiceCloudLinkedService struct {
 	Type string `pulumi:"type"`
 	// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SalesforceServiceCloudLinkedServiceInput is an input type that accepts SalesforceServiceCloudLinkedServiceArgs and SalesforceServiceCloudLinkedServiceOutput values.
@@ -52490,6 +53068,8 @@ type SalesforceServiceCloudLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SalesforceServiceCloudLinkedServiceArgs) ElementType() reflect.Type {
@@ -52580,6 +53160,11 @@ func (o SalesforceServiceCloudLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SalesforceServiceCloudLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Salesforce Service Cloud.
 type SalesforceServiceCloudLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -52607,6 +53192,8 @@ type SalesforceServiceCloudLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for Salesforce Service Cloud.
@@ -52687,6 +53274,11 @@ func (o SalesforceServiceCloudLinkedServiceResponseOutput) Type() pulumi.StringO
 // The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
 func (o SalesforceServiceCloudLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SalesforceServiceCloudLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The Salesforce Service Cloud object dataset.
@@ -53360,6 +53952,8 @@ type SalesforceServiceCloudV2LinkedService struct {
 	// Type of linked service.
 	// Expected value is 'SalesforceServiceCloudV2'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SalesforceServiceCloudV2LinkedServiceInput is an input type that accepts SalesforceServiceCloudV2LinkedServiceArgs and SalesforceServiceCloudV2LinkedServiceOutput values.
@@ -53398,6 +53992,8 @@ type SalesforceServiceCloudV2LinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'SalesforceServiceCloudV2'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SalesforceServiceCloudV2LinkedServiceArgs) ElementType() reflect.Type {
@@ -53483,6 +54079,11 @@ func (o SalesforceServiceCloudV2LinkedServiceOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o SalesforceServiceCloudV2LinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Salesforce Service Cloud V2.
 type SalesforceServiceCloudV2LinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -53508,6 +54109,8 @@ type SalesforceServiceCloudV2LinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'SalesforceServiceCloudV2'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for Salesforce Service Cloud V2.
@@ -53583,6 +54186,11 @@ func (o SalesforceServiceCloudV2LinkedServiceResponseOutput) Parameters() Parame
 // Expected value is 'SalesforceServiceCloudV2'.
 func (o SalesforceServiceCloudV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o SalesforceServiceCloudV2LinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceServiceCloudV2LinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The Salesforce Service Cloud V2 object dataset.
@@ -54732,6 +55340,8 @@ type SalesforceV2LinkedService struct {
 	// Type of linked service.
 	// Expected value is 'SalesforceV2'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SalesforceV2LinkedServiceInput is an input type that accepts SalesforceV2LinkedServiceArgs and SalesforceV2LinkedServiceOutput values.
@@ -54770,6 +55380,8 @@ type SalesforceV2LinkedServiceArgs struct {
 	// Type of linked service.
 	// Expected value is 'SalesforceV2'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SalesforceV2LinkedServiceArgs) ElementType() reflect.Type {
@@ -54855,6 +55467,11 @@ func (o SalesforceV2LinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SalesforceV2LinkedService) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Version of the linked service.
+func (o SalesforceV2LinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceV2LinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for Salesforce V2.
 type SalesforceV2LinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -54880,6 +55497,8 @@ type SalesforceV2LinkedServiceResponse struct {
 	// Type of linked service.
 	// Expected value is 'SalesforceV2'.
 	Type string `pulumi:"type"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for Salesforce V2.
@@ -54953,6 +55572,11 @@ func (o SalesforceV2LinkedServiceResponseOutput) Parameters() ParameterSpecifica
 // Expected value is 'SalesforceV2'.
 func (o SalesforceV2LinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SalesforceV2LinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the linked service.
+func (o SalesforceV2LinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SalesforceV2LinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The Salesforce V2 object dataset.
@@ -55672,6 +56296,8 @@ type SapBWLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP BW server. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SapBWLinkedServiceInput is an input type that accepts SapBWLinkedServiceArgs and SapBWLinkedServiceOutput values.
@@ -55710,6 +56336,8 @@ type SapBWLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username to access the SAP BW server. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SapBWLinkedServiceArgs) ElementType() reflect.Type {
@@ -55795,6 +56423,11 @@ func (o SapBWLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapBWLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapBWLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapBWLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // SAP Business Warehouse Linked Service.
 type SapBWLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -55820,6 +56453,8 @@ type SapBWLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP BW server. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SAP Business Warehouse Linked Service.
@@ -55891,6 +56526,11 @@ func (o SapBWLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username to access the SAP BW server. Type: string (or Expression with resultType string).
 func (o SapBWLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapBWLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapBWLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapBWLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The SAP BW cube dataset.
@@ -56310,6 +56950,8 @@ type SapCloudForCustomerLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// The username for Basic authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SapCloudForCustomerLinkedServiceInput is an input type that accepts SapCloudForCustomerLinkedServiceArgs and SapCloudForCustomerLinkedServiceOutput values.
@@ -56344,6 +56986,8 @@ type SapCloudForCustomerLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// The username for Basic authentication. Type: string (or Expression with resultType string).
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SapCloudForCustomerLinkedServiceArgs) ElementType() reflect.Type {
@@ -56419,6 +57063,11 @@ func (o SapCloudForCustomerLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapCloudForCustomerLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapCloudForCustomerLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapCloudForCustomerLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for SAP Cloud for Customer.
 type SapCloudForCustomerLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -56440,6 +57089,8 @@ type SapCloudForCustomerLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// The username for Basic authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for SAP Cloud for Customer.
@@ -56505,6 +57156,11 @@ func (o SapCloudForCustomerLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // The username for Basic authentication. Type: string (or Expression with resultType string).
 func (o SapCloudForCustomerLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapCloudForCustomerLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapCloudForCustomerLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapCloudForCustomerLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The path of the SAP Cloud for Customer OData entity.
@@ -57174,6 +57830,8 @@ type SapEccLinkedService struct {
 	Url interface{} `pulumi:"url"`
 	// The username for Basic authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SapEccLinkedServiceInput is an input type that accepts SapEccLinkedServiceArgs and SapEccLinkedServiceOutput values.
@@ -57208,6 +57866,8 @@ type SapEccLinkedServiceArgs struct {
 	Url pulumi.Input `pulumi:"url"`
 	// The username for Basic authentication. Type: string (or Expression with resultType string).
 	Username pulumi.Input `pulumi:"username"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SapEccLinkedServiceArgs) ElementType() reflect.Type {
@@ -57283,6 +57943,11 @@ func (o SapEccLinkedServiceOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapEccLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapEccLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapEccLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // Linked service for SAP ERP Central Component(SAP ECC).
 type SapEccLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -57304,6 +57969,8 @@ type SapEccLinkedServiceResponse struct {
 	Url interface{} `pulumi:"url"`
 	// The username for Basic authentication. Type: string (or Expression with resultType string).
 	Username interface{} `pulumi:"username"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // Linked service for SAP ERP Central Component(SAP ECC).
@@ -57365,6 +58032,11 @@ func (o SapEccLinkedServiceResponseOutput) Url() pulumi.AnyOutput {
 // The username for Basic authentication. Type: string (or Expression with resultType string).
 func (o SapEccLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapEccLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapEccLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapEccLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The path of the SAP ECC OData entity.
@@ -57820,6 +58492,8 @@ type SapHanaLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP HANA server. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SapHanaLinkedServiceInput is an input type that accepts SapHanaLinkedServiceArgs and SapHanaLinkedServiceOutput values.
@@ -57858,6 +58532,8 @@ type SapHanaLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username to access the SAP HANA server. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SapHanaLinkedServiceArgs) ElementType() reflect.Type {
@@ -57943,6 +58619,11 @@ func (o SapHanaLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapHanaLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapHanaLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapHanaLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // SAP HANA Linked Service.
 type SapHanaLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -57968,6 +58649,8 @@ type SapHanaLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP HANA server. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SAP HANA Linked Service.
@@ -58039,6 +58722,11 @@ func (o SapHanaLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username to access the SAP HANA server. Type: string (or Expression with resultType string).
 func (o SapHanaLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapHanaLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapHanaLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapHanaLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The settings that will be leveraged for SAP HANA source partitioning.
@@ -58748,6 +59436,8 @@ type SapOdpLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 	// SNC X509 certificate file path. Type: string (or Expression with resultType string).
 	X509CertificatePath interface{} `pulumi:"x509CertificatePath"`
 }
@@ -58810,6 +59500,8 @@ type SapOdpLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 	// SNC X509 certificate file path. Type: string (or Expression with resultType string).
 	X509CertificatePath pulumi.Input `pulumi:"x509CertificatePath"`
 }
@@ -58952,6 +59644,11 @@ func (o SapOdpLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapOdpLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOdpLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // SNC X509 certificate file path. Type: string (or Expression with resultType string).
 func (o SapOdpLinkedServiceOutput) X509CertificatePath() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedService) interface{} { return v.X509CertificatePath }).(pulumi.AnyOutput)
@@ -59004,6 +59701,8 @@ type SapOdpLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 	// SNC X509 certificate file path. Type: string (or Expression with resultType string).
 	X509CertificatePath interface{} `pulumi:"x509CertificatePath"`
 }
@@ -59132,6 +59831,11 @@ func (o SapOdpLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 func (o SapOdpLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOdpLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapOdpLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOdpLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // SNC X509 certificate file path. Type: string (or Expression with resultType string).
@@ -59650,6 +60354,8 @@ type SapOpenHubLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SapOpenHubLinkedServiceInput is an input type that accepts SapOpenHubLinkedServiceArgs and SapOpenHubLinkedServiceOutput values.
@@ -59698,6 +60404,8 @@ type SapOpenHubLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SapOpenHubLinkedServiceArgs) ElementType() reflect.Type {
@@ -59808,6 +60516,11 @@ func (o SapOpenHubLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOpenHubLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapOpenHubLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // SAP Business Warehouse Open Hub Destination Linked Service.
 type SapOpenHubLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -59843,6 +60556,8 @@ type SapOpenHubLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SAP Business Warehouse Open Hub Destination Linked Service.
@@ -59939,6 +60654,11 @@ func (o SapOpenHubLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
 func (o SapOpenHubLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapOpenHubLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapOpenHubLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // A copy activity source for SAP Business Warehouse Open Hub Destination source.
@@ -60478,6 +61198,8 @@ type SapTableLinkedService struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SapTableLinkedServiceInput is an input type that accepts SapTableLinkedServiceArgs and SapTableLinkedServiceOutput values.
@@ -60536,6 +61258,8 @@ type SapTableLinkedServiceArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (SapTableLinkedServiceArgs) ElementType() reflect.Type {
@@ -60671,6 +61395,11 @@ func (o SapTableLinkedServiceOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
 }
 
+// Version of the linked service.
+func (o SapTableLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 // SAP Table Linked Service.
 type SapTableLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
@@ -60716,6 +61445,8 @@ type SapTableLinkedServiceResponse struct {
 	Type string `pulumi:"type"`
 	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
 }
 
 // SAP Table Linked Service.
@@ -60837,6 +61568,11 @@ func (o SapTableLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 // Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
 func (o SapTableLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
 	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapTableLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 // The settings that will be leveraged for SAP table source partitioning.
