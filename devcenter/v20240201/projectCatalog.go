@@ -70,6 +70,9 @@ func NewProjectCatalog(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20240701preview:ProjectCatalog"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20240801preview:ProjectCatalog"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

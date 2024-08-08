@@ -13,10 +13,183 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Tenant Configuration Properties with Provisioning state
+type ConfigurationProperties struct {
+	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+	EnforcePrivateMarkdownStorage *bool `pulumi:"enforcePrivateMarkdownStorage"`
+}
+
+// ConfigurationPropertiesInput is an input type that accepts ConfigurationPropertiesArgs and ConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `ConfigurationPropertiesInput` via:
+//
+//	ConfigurationPropertiesArgs{...}
+type ConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToConfigurationPropertiesOutput() ConfigurationPropertiesOutput
+	ToConfigurationPropertiesOutputWithContext(context.Context) ConfigurationPropertiesOutput
+}
+
+// Tenant Configuration Properties with Provisioning state
+type ConfigurationPropertiesArgs struct {
+	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+	EnforcePrivateMarkdownStorage pulumi.BoolPtrInput `pulumi:"enforcePrivateMarkdownStorage"`
+}
+
+func (ConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationProperties)(nil)).Elem()
+}
+
+func (i ConfigurationPropertiesArgs) ToConfigurationPropertiesOutput() ConfigurationPropertiesOutput {
+	return i.ToConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i ConfigurationPropertiesArgs) ToConfigurationPropertiesOutputWithContext(ctx context.Context) ConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationPropertiesOutput)
+}
+
+func (i ConfigurationPropertiesArgs) ToConfigurationPropertiesPtrOutput() ConfigurationPropertiesPtrOutput {
+	return i.ToConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationPropertiesArgs) ToConfigurationPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationPropertiesOutput).ToConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// ConfigurationPropertiesPtrInput is an input type that accepts ConfigurationPropertiesArgs, ConfigurationPropertiesPtr and ConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `ConfigurationPropertiesPtrInput` via:
+//
+//	        ConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationPropertiesPtrOutput() ConfigurationPropertiesPtrOutput
+	ToConfigurationPropertiesPtrOutputWithContext(context.Context) ConfigurationPropertiesPtrOutput
+}
+
+type configurationPropertiesPtrType ConfigurationPropertiesArgs
+
+func ConfigurationPropertiesPtr(v *ConfigurationPropertiesArgs) ConfigurationPropertiesPtrInput {
+	return (*configurationPropertiesPtrType)(v)
+}
+
+func (*configurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationProperties)(nil)).Elem()
+}
+
+func (i *configurationPropertiesPtrType) ToConfigurationPropertiesPtrOutput() ConfigurationPropertiesPtrOutput {
+	return i.ToConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *configurationPropertiesPtrType) ToConfigurationPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationPropertiesPtrOutput)
+}
+
+// Tenant Configuration Properties with Provisioning state
+type ConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationProperties)(nil)).Elem()
+}
+
+func (o ConfigurationPropertiesOutput) ToConfigurationPropertiesOutput() ConfigurationPropertiesOutput {
+	return o
+}
+
+func (o ConfigurationPropertiesOutput) ToConfigurationPropertiesOutputWithContext(ctx context.Context) ConfigurationPropertiesOutput {
+	return o
+}
+
+func (o ConfigurationPropertiesOutput) ToConfigurationPropertiesPtrOutput() ConfigurationPropertiesPtrOutput {
+	return o.ToConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationPropertiesOutput) ToConfigurationPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationProperties) *ConfigurationProperties {
+		return &v
+	}).(ConfigurationPropertiesPtrOutput)
+}
+
+// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+func (o ConfigurationPropertiesOutput) EnforcePrivateMarkdownStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigurationProperties) *bool { return v.EnforcePrivateMarkdownStorage }).(pulumi.BoolPtrOutput)
+}
+
+type ConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationProperties)(nil)).Elem()
+}
+
+func (o ConfigurationPropertiesPtrOutput) ToConfigurationPropertiesPtrOutput() ConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o ConfigurationPropertiesPtrOutput) ToConfigurationPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o ConfigurationPropertiesPtrOutput) Elem() ConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *ConfigurationProperties) ConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationProperties
+		return ret
+	}).(ConfigurationPropertiesOutput)
+}
+
+// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+func (o ConfigurationPropertiesPtrOutput) EnforcePrivateMarkdownStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcePrivateMarkdownStorage
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Tenant Configuration Properties with Provisioning state
+type ConfigurationPropertiesResponse struct {
+	// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+	EnforcePrivateMarkdownStorage *bool `pulumi:"enforcePrivateMarkdownStorage"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Tenant Configuration Properties with Provisioning state
+type ConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o ConfigurationPropertiesResponseOutput) ToConfigurationPropertiesResponseOutput() ConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o ConfigurationPropertiesResponseOutput) ToConfigurationPropertiesResponseOutputWithContext(ctx context.Context) ConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+func (o ConfigurationPropertiesResponseOutput) EnforcePrivateMarkdownStorage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigurationPropertiesResponse) *bool { return v.EnforcePrivateMarkdownStorage }).(pulumi.BoolPtrOutput)
+}
+
+// The status of the last operation.
+func (o ConfigurationPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigurationPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // A dashboard lens.
 type DashboardLens struct {
 	// The dashboard len's metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata interface{} `pulumi:"metadata"`
 	// The lens order.
 	Order int `pulumi:"order"`
 	// The dashboard parts.
@@ -37,7 +210,7 @@ type DashboardLensInput interface {
 // A dashboard lens.
 type DashboardLensArgs struct {
 	// The dashboard len's metadata.
-	Metadata pulumi.MapInput `pulumi:"metadata"`
+	Metadata pulumi.Input `pulumi:"metadata"`
 	// The lens order.
 	Order pulumi.IntInput `pulumi:"order"`
 	// The dashboard parts.
@@ -97,8 +270,8 @@ func (o DashboardLensOutput) ToDashboardLensOutputWithContext(ctx context.Contex
 }
 
 // The dashboard len's metadata.
-func (o DashboardLensOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v DashboardLens) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o DashboardLensOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v DashboardLens) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The lens order.
@@ -134,7 +307,7 @@ func (o DashboardLensArrayOutput) Index(i pulumi.IntInput) DashboardLensOutput {
 // A dashboard lens.
 type DashboardLensResponse struct {
 	// The dashboard len's metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata interface{} `pulumi:"metadata"`
 	// The lens order.
 	Order int `pulumi:"order"`
 	// The dashboard parts.
@@ -157,8 +330,8 @@ func (o DashboardLensResponseOutput) ToDashboardLensResponseOutputWithContext(ct
 }
 
 // The dashboard len's metadata.
-func (o DashboardLensResponseOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v DashboardLensResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o DashboardLensResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v DashboardLensResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The lens order.
@@ -305,7 +478,7 @@ type DashboardPartsPosition struct {
 	// The dashboard's part column span.
 	ColSpan int `pulumi:"colSpan"`
 	// The dashboard part's metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
+	Metadata interface{} `pulumi:"metadata"`
 	// The dashboard's part row span.
 	RowSpan int `pulumi:"rowSpan"`
 	// The dashboard's part x coordinate.
@@ -330,7 +503,7 @@ type DashboardPartsPositionArgs struct {
 	// The dashboard's part column span.
 	ColSpan pulumi.IntInput `pulumi:"colSpan"`
 	// The dashboard part's metadata.
-	Metadata pulumi.MapInput `pulumi:"metadata"`
+	Metadata pulumi.Input `pulumi:"metadata"`
 	// The dashboard's part row span.
 	RowSpan pulumi.IntInput `pulumi:"rowSpan"`
 	// The dashboard's part x coordinate.
@@ -372,8 +545,8 @@ func (o DashboardPartsPositionOutput) ColSpan() pulumi.IntOutput {
 }
 
 // The dashboard part's metadata.
-func (o DashboardPartsPositionOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v DashboardPartsPosition) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o DashboardPartsPositionOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v DashboardPartsPosition) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
 // The dashboard's part row span.
@@ -391,12 +564,66 @@ func (o DashboardPartsPositionOutput) Y() pulumi.IntOutput {
 	return o.ApplyT(func(v DashboardPartsPosition) int { return v.Y }).(pulumi.IntOutput)
 }
 
+// The dashboard's part position.
+type DashboardPartsPositionResponse struct {
+	// The dashboard's part column span.
+	ColSpan int `pulumi:"colSpan"`
+	// The dashboard part's metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// The dashboard's part row span.
+	RowSpan int `pulumi:"rowSpan"`
+	// The dashboard's part x coordinate.
+	X int `pulumi:"x"`
+	// The dashboard's part y coordinate.
+	Y int `pulumi:"y"`
+}
+
+// The dashboard's part position.
+type DashboardPartsPositionResponseOutput struct{ *pulumi.OutputState }
+
+func (DashboardPartsPositionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPartsPositionResponse)(nil)).Elem()
+}
+
+func (o DashboardPartsPositionResponseOutput) ToDashboardPartsPositionResponseOutput() DashboardPartsPositionResponseOutput {
+	return o
+}
+
+func (o DashboardPartsPositionResponseOutput) ToDashboardPartsPositionResponseOutputWithContext(ctx context.Context) DashboardPartsPositionResponseOutput {
+	return o
+}
+
+// The dashboard's part column span.
+func (o DashboardPartsPositionResponseOutput) ColSpan() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardPartsPositionResponse) int { return v.ColSpan }).(pulumi.IntOutput)
+}
+
+// The dashboard part's metadata.
+func (o DashboardPartsPositionResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v DashboardPartsPositionResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+// The dashboard's part row span.
+func (o DashboardPartsPositionResponseOutput) RowSpan() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardPartsPositionResponse) int { return v.RowSpan }).(pulumi.IntOutput)
+}
+
+// The dashboard's part x coordinate.
+func (o DashboardPartsPositionResponseOutput) X() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardPartsPositionResponse) int { return v.X }).(pulumi.IntOutput)
+}
+
+// The dashboard's part y coordinate.
+func (o DashboardPartsPositionResponseOutput) Y() pulumi.IntOutput {
+	return o.ApplyT(func(v DashboardPartsPositionResponse) int { return v.Y }).(pulumi.IntOutput)
+}
+
 // A dashboard part.
 type DashboardPartsResponse struct {
 	// The dashboard part's metadata.
 	Metadata *MarkdownPartMetadataResponse `pulumi:"metadata"`
 	// The dashboard's part position.
-	Position DashboardPartsResponsePosition `pulumi:"position"`
+	Position DashboardPartsPositionResponse `pulumi:"position"`
 }
 
 // A dashboard part.
@@ -420,8 +647,8 @@ func (o DashboardPartsResponseOutput) Metadata() MarkdownPartMetadataResponsePtr
 }
 
 // The dashboard's part position.
-func (o DashboardPartsResponseOutput) Position() DashboardPartsResponsePositionOutput {
-	return o.ApplyT(func(v DashboardPartsResponse) DashboardPartsResponsePosition { return v.Position }).(DashboardPartsResponsePositionOutput)
+func (o DashboardPartsResponseOutput) Position() DashboardPartsPositionResponseOutput {
+	return o.ApplyT(func(v DashboardPartsResponse) DashboardPartsPositionResponse { return v.Position }).(DashboardPartsPositionResponseOutput)
 }
 
 type DashboardPartsResponseArrayOutput struct{ *pulumi.OutputState }
@@ -444,58 +671,203 @@ func (o DashboardPartsResponseArrayOutput) Index(i pulumi.IntInput) DashboardPar
 	}).(DashboardPartsResponseOutput)
 }
 
-// The dashboard's part position.
-type DashboardPartsResponsePosition struct {
-	// The dashboard's part column span.
-	ColSpan int `pulumi:"colSpan"`
-	// The dashboard part's metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
-	// The dashboard's part row span.
-	RowSpan int `pulumi:"rowSpan"`
-	// The dashboard's part x coordinate.
-	X int `pulumi:"x"`
-	// The dashboard's part y coordinate.
-	Y int `pulumi:"y"`
+// Dashboard Properties with Provisioning state
+type DashboardPropertiesWithProvisioningState struct {
+	// The dashboard lenses.
+	Lenses []DashboardLens `pulumi:"lenses"`
+	// The dashboard metadata.
+	Metadata interface{} `pulumi:"metadata"`
 }
 
-// The dashboard's part position.
-type DashboardPartsResponsePositionOutput struct{ *pulumi.OutputState }
+// DashboardPropertiesWithProvisioningStateInput is an input type that accepts DashboardPropertiesWithProvisioningStateArgs and DashboardPropertiesWithProvisioningStateOutput values.
+// You can construct a concrete instance of `DashboardPropertiesWithProvisioningStateInput` via:
+//
+//	DashboardPropertiesWithProvisioningStateArgs{...}
+type DashboardPropertiesWithProvisioningStateInput interface {
+	pulumi.Input
 
-func (DashboardPartsResponsePositionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardPartsResponsePosition)(nil)).Elem()
+	ToDashboardPropertiesWithProvisioningStateOutput() DashboardPropertiesWithProvisioningStateOutput
+	ToDashboardPropertiesWithProvisioningStateOutputWithContext(context.Context) DashboardPropertiesWithProvisioningStateOutput
 }
 
-func (o DashboardPartsResponsePositionOutput) ToDashboardPartsResponsePositionOutput() DashboardPartsResponsePositionOutput {
+// Dashboard Properties with Provisioning state
+type DashboardPropertiesWithProvisioningStateArgs struct {
+	// The dashboard lenses.
+	Lenses DashboardLensArrayInput `pulumi:"lenses"`
+	// The dashboard metadata.
+	Metadata pulumi.Input `pulumi:"metadata"`
+}
+
+func (DashboardPropertiesWithProvisioningStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPropertiesWithProvisioningState)(nil)).Elem()
+}
+
+func (i DashboardPropertiesWithProvisioningStateArgs) ToDashboardPropertiesWithProvisioningStateOutput() DashboardPropertiesWithProvisioningStateOutput {
+	return i.ToDashboardPropertiesWithProvisioningStateOutputWithContext(context.Background())
+}
+
+func (i DashboardPropertiesWithProvisioningStateArgs) ToDashboardPropertiesWithProvisioningStateOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPropertiesWithProvisioningStateOutput)
+}
+
+func (i DashboardPropertiesWithProvisioningStateArgs) ToDashboardPropertiesWithProvisioningStatePtrOutput() DashboardPropertiesWithProvisioningStatePtrOutput {
+	return i.ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (i DashboardPropertiesWithProvisioningStateArgs) ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPropertiesWithProvisioningStateOutput).ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(ctx)
+}
+
+// DashboardPropertiesWithProvisioningStatePtrInput is an input type that accepts DashboardPropertiesWithProvisioningStateArgs, DashboardPropertiesWithProvisioningStatePtr and DashboardPropertiesWithProvisioningStatePtrOutput values.
+// You can construct a concrete instance of `DashboardPropertiesWithProvisioningStatePtrInput` via:
+//
+//	        DashboardPropertiesWithProvisioningStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type DashboardPropertiesWithProvisioningStatePtrInput interface {
+	pulumi.Input
+
+	ToDashboardPropertiesWithProvisioningStatePtrOutput() DashboardPropertiesWithProvisioningStatePtrOutput
+	ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(context.Context) DashboardPropertiesWithProvisioningStatePtrOutput
+}
+
+type dashboardPropertiesWithProvisioningStatePtrType DashboardPropertiesWithProvisioningStateArgs
+
+func DashboardPropertiesWithProvisioningStatePtr(v *DashboardPropertiesWithProvisioningStateArgs) DashboardPropertiesWithProvisioningStatePtrInput {
+	return (*dashboardPropertiesWithProvisioningStatePtrType)(v)
+}
+
+func (*dashboardPropertiesWithProvisioningStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardPropertiesWithProvisioningState)(nil)).Elem()
+}
+
+func (i *dashboardPropertiesWithProvisioningStatePtrType) ToDashboardPropertiesWithProvisioningStatePtrOutput() DashboardPropertiesWithProvisioningStatePtrOutput {
+	return i.ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (i *dashboardPropertiesWithProvisioningStatePtrType) ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPropertiesWithProvisioningStatePtrOutput)
+}
+
+// Dashboard Properties with Provisioning state
+type DashboardPropertiesWithProvisioningStateOutput struct{ *pulumi.OutputState }
+
+func (DashboardPropertiesWithProvisioningStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPropertiesWithProvisioningState)(nil)).Elem()
+}
+
+func (o DashboardPropertiesWithProvisioningStateOutput) ToDashboardPropertiesWithProvisioningStateOutput() DashboardPropertiesWithProvisioningStateOutput {
 	return o
 }
 
-func (o DashboardPartsResponsePositionOutput) ToDashboardPartsResponsePositionOutputWithContext(ctx context.Context) DashboardPartsResponsePositionOutput {
+func (o DashboardPropertiesWithProvisioningStateOutput) ToDashboardPropertiesWithProvisioningStateOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStateOutput {
 	return o
 }
 
-// The dashboard's part column span.
-func (o DashboardPartsResponsePositionOutput) ColSpan() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPartsResponsePosition) int { return v.ColSpan }).(pulumi.IntOutput)
+func (o DashboardPropertiesWithProvisioningStateOutput) ToDashboardPropertiesWithProvisioningStatePtrOutput() DashboardPropertiesWithProvisioningStatePtrOutput {
+	return o.ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(context.Background())
 }
 
-// The dashboard part's metadata.
-func (o DashboardPartsResponsePositionOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v DashboardPartsResponsePosition) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
+func (o DashboardPropertiesWithProvisioningStateOutput) ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPropertiesWithProvisioningState) *DashboardPropertiesWithProvisioningState {
+		return &v
+	}).(DashboardPropertiesWithProvisioningStatePtrOutput)
 }
 
-// The dashboard's part row span.
-func (o DashboardPartsResponsePositionOutput) RowSpan() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPartsResponsePosition) int { return v.RowSpan }).(pulumi.IntOutput)
+// The dashboard lenses.
+func (o DashboardPropertiesWithProvisioningStateOutput) Lenses() DashboardLensArrayOutput {
+	return o.ApplyT(func(v DashboardPropertiesWithProvisioningState) []DashboardLens { return v.Lenses }).(DashboardLensArrayOutput)
 }
 
-// The dashboard's part x coordinate.
-func (o DashboardPartsResponsePositionOutput) X() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPartsResponsePosition) int { return v.X }).(pulumi.IntOutput)
+// The dashboard metadata.
+func (o DashboardPropertiesWithProvisioningStateOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v DashboardPropertiesWithProvisioningState) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
-// The dashboard's part y coordinate.
-func (o DashboardPartsResponsePositionOutput) Y() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPartsResponsePosition) int { return v.Y }).(pulumi.IntOutput)
+type DashboardPropertiesWithProvisioningStatePtrOutput struct{ *pulumi.OutputState }
+
+func (DashboardPropertiesWithProvisioningStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardPropertiesWithProvisioningState)(nil)).Elem()
+}
+
+func (o DashboardPropertiesWithProvisioningStatePtrOutput) ToDashboardPropertiesWithProvisioningStatePtrOutput() DashboardPropertiesWithProvisioningStatePtrOutput {
+	return o
+}
+
+func (o DashboardPropertiesWithProvisioningStatePtrOutput) ToDashboardPropertiesWithProvisioningStatePtrOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStatePtrOutput {
+	return o
+}
+
+func (o DashboardPropertiesWithProvisioningStatePtrOutput) Elem() DashboardPropertiesWithProvisioningStateOutput {
+	return o.ApplyT(func(v *DashboardPropertiesWithProvisioningState) DashboardPropertiesWithProvisioningState {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPropertiesWithProvisioningState
+		return ret
+	}).(DashboardPropertiesWithProvisioningStateOutput)
+}
+
+// The dashboard lenses.
+func (o DashboardPropertiesWithProvisioningStatePtrOutput) Lenses() DashboardLensArrayOutput {
+	return o.ApplyT(func(v *DashboardPropertiesWithProvisioningState) []DashboardLens {
+		if v == nil {
+			return nil
+		}
+		return v.Lenses
+	}).(DashboardLensArrayOutput)
+}
+
+// The dashboard metadata.
+func (o DashboardPropertiesWithProvisioningStatePtrOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DashboardPropertiesWithProvisioningState) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.AnyOutput)
+}
+
+// Dashboard Properties with Provisioning state
+type DashboardPropertiesWithProvisioningStateResponse struct {
+	// The dashboard lenses.
+	Lenses []DashboardLensResponse `pulumi:"lenses"`
+	// The dashboard metadata.
+	Metadata interface{} `pulumi:"metadata"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Dashboard Properties with Provisioning state
+type DashboardPropertiesWithProvisioningStateResponseOutput struct{ *pulumi.OutputState }
+
+func (DashboardPropertiesWithProvisioningStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPropertiesWithProvisioningStateResponse)(nil)).Elem()
+}
+
+func (o DashboardPropertiesWithProvisioningStateResponseOutput) ToDashboardPropertiesWithProvisioningStateResponseOutput() DashboardPropertiesWithProvisioningStateResponseOutput {
+	return o
+}
+
+func (o DashboardPropertiesWithProvisioningStateResponseOutput) ToDashboardPropertiesWithProvisioningStateResponseOutputWithContext(ctx context.Context) DashboardPropertiesWithProvisioningStateResponseOutput {
+	return o
+}
+
+// The dashboard lenses.
+func (o DashboardPropertiesWithProvisioningStateResponseOutput) Lenses() DashboardLensResponseArrayOutput {
+	return o.ApplyT(func(v DashboardPropertiesWithProvisioningStateResponse) []DashboardLensResponse { return v.Lenses }).(DashboardLensResponseArrayOutput)
+}
+
+// The dashboard metadata.
+func (o DashboardPropertiesWithProvisioningStateResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v DashboardPropertiesWithProvisioningStateResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+// The status of the last operation.
+func (o DashboardPropertiesWithProvisioningStateResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardPropertiesWithProvisioningStateResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Markdown part metadata.
@@ -504,7 +876,7 @@ type MarkdownPartMetadata struct {
 	Inputs []interface{} `pulumi:"inputs"`
 	// Markdown part settings.
 	Settings *MarkdownPartMetadataSettings `pulumi:"settings"`
-	// The type of dashboard part.
+	// The dashboard part metadata type.
 	// Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 	Type string `pulumi:"type"`
 }
@@ -526,7 +898,7 @@ type MarkdownPartMetadataArgs struct {
 	Inputs pulumi.ArrayInput `pulumi:"inputs"`
 	// Markdown part settings.
 	Settings MarkdownPartMetadataSettingsPtrInput `pulumi:"settings"`
-	// The type of dashboard part.
+	// The dashboard part metadata type.
 	// Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -619,7 +991,7 @@ func (o MarkdownPartMetadataOutput) Settings() MarkdownPartMetadataSettingsPtrOu
 	return o.ApplyT(func(v MarkdownPartMetadata) *MarkdownPartMetadataSettings { return v.Settings }).(MarkdownPartMetadataSettingsPtrOutput)
 }
 
-// The type of dashboard part.
+// The dashboard part metadata type.
 // Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 func (o MarkdownPartMetadataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MarkdownPartMetadata) string { return v.Type }).(pulumi.StringOutput)
@@ -669,7 +1041,7 @@ func (o MarkdownPartMetadataPtrOutput) Settings() MarkdownPartMetadataSettingsPt
 	}).(MarkdownPartMetadataSettingsPtrOutput)
 }
 
-// The type of dashboard part.
+// The dashboard part metadata type.
 // Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 func (o MarkdownPartMetadataPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MarkdownPartMetadata) *string {
@@ -680,153 +1052,13 @@ func (o MarkdownPartMetadataPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The content of markdown part.
-type MarkdownPartMetadataContent struct {
-	// The setting of the content of markdown part.
-	Settings *MarkdownPartMetadataSettingsSettings `pulumi:"settings"`
-}
-
-// MarkdownPartMetadataContentInput is an input type that accepts MarkdownPartMetadataContentArgs and MarkdownPartMetadataContentOutput values.
-// You can construct a concrete instance of `MarkdownPartMetadataContentInput` via:
-//
-//	MarkdownPartMetadataContentArgs{...}
-type MarkdownPartMetadataContentInput interface {
-	pulumi.Input
-
-	ToMarkdownPartMetadataContentOutput() MarkdownPartMetadataContentOutput
-	ToMarkdownPartMetadataContentOutputWithContext(context.Context) MarkdownPartMetadataContentOutput
-}
-
-// The content of markdown part.
-type MarkdownPartMetadataContentArgs struct {
-	// The setting of the content of markdown part.
-	Settings MarkdownPartMetadataSettingsSettingsPtrInput `pulumi:"settings"`
-}
-
-func (MarkdownPartMetadataContentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataContent)(nil)).Elem()
-}
-
-func (i MarkdownPartMetadataContentArgs) ToMarkdownPartMetadataContentOutput() MarkdownPartMetadataContentOutput {
-	return i.ToMarkdownPartMetadataContentOutputWithContext(context.Background())
-}
-
-func (i MarkdownPartMetadataContentArgs) ToMarkdownPartMetadataContentOutputWithContext(ctx context.Context) MarkdownPartMetadataContentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataContentOutput)
-}
-
-func (i MarkdownPartMetadataContentArgs) ToMarkdownPartMetadataContentPtrOutput() MarkdownPartMetadataContentPtrOutput {
-	return i.ToMarkdownPartMetadataContentPtrOutputWithContext(context.Background())
-}
-
-func (i MarkdownPartMetadataContentArgs) ToMarkdownPartMetadataContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataContentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataContentOutput).ToMarkdownPartMetadataContentPtrOutputWithContext(ctx)
-}
-
-// MarkdownPartMetadataContentPtrInput is an input type that accepts MarkdownPartMetadataContentArgs, MarkdownPartMetadataContentPtr and MarkdownPartMetadataContentPtrOutput values.
-// You can construct a concrete instance of `MarkdownPartMetadataContentPtrInput` via:
-//
-//	        MarkdownPartMetadataContentArgs{...}
-//
-//	or:
-//
-//	        nil
-type MarkdownPartMetadataContentPtrInput interface {
-	pulumi.Input
-
-	ToMarkdownPartMetadataContentPtrOutput() MarkdownPartMetadataContentPtrOutput
-	ToMarkdownPartMetadataContentPtrOutputWithContext(context.Context) MarkdownPartMetadataContentPtrOutput
-}
-
-type markdownPartMetadataContentPtrType MarkdownPartMetadataContentArgs
-
-func MarkdownPartMetadataContentPtr(v *MarkdownPartMetadataContentArgs) MarkdownPartMetadataContentPtrInput {
-	return (*markdownPartMetadataContentPtrType)(v)
-}
-
-func (*markdownPartMetadataContentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataContent)(nil)).Elem()
-}
-
-func (i *markdownPartMetadataContentPtrType) ToMarkdownPartMetadataContentPtrOutput() MarkdownPartMetadataContentPtrOutput {
-	return i.ToMarkdownPartMetadataContentPtrOutputWithContext(context.Background())
-}
-
-func (i *markdownPartMetadataContentPtrType) ToMarkdownPartMetadataContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataContentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataContentPtrOutput)
-}
-
-// The content of markdown part.
-type MarkdownPartMetadataContentOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataContentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataContent)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataContentOutput) ToMarkdownPartMetadataContentOutput() MarkdownPartMetadataContentOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataContentOutput) ToMarkdownPartMetadataContentOutputWithContext(ctx context.Context) MarkdownPartMetadataContentOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataContentOutput) ToMarkdownPartMetadataContentPtrOutput() MarkdownPartMetadataContentPtrOutput {
-	return o.ToMarkdownPartMetadataContentPtrOutputWithContext(context.Background())
-}
-
-func (o MarkdownPartMetadataContentOutput) ToMarkdownPartMetadataContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataContentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarkdownPartMetadataContent) *MarkdownPartMetadataContent {
-		return &v
-	}).(MarkdownPartMetadataContentPtrOutput)
-}
-
-// The setting of the content of markdown part.
-func (o MarkdownPartMetadataContentOutput) Settings() MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataContent) *MarkdownPartMetadataSettingsSettings { return v.Settings }).(MarkdownPartMetadataSettingsSettingsPtrOutput)
-}
-
-type MarkdownPartMetadataContentPtrOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataContentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataContent)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataContentPtrOutput) ToMarkdownPartMetadataContentPtrOutput() MarkdownPartMetadataContentPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataContentPtrOutput) ToMarkdownPartMetadataContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataContentPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataContentPtrOutput) Elem() MarkdownPartMetadataContentOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataContent) MarkdownPartMetadataContent {
-		if v != nil {
-			return *v
-		}
-		var ret MarkdownPartMetadataContent
-		return ret
-	}).(MarkdownPartMetadataContentOutput)
-}
-
-// The setting of the content of markdown part.
-func (o MarkdownPartMetadataContentPtrOutput) Settings() MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataContent) *MarkdownPartMetadataSettingsSettings {
-		if v == nil {
-			return nil
-		}
-		return v.Settings
-	}).(MarkdownPartMetadataSettingsSettingsPtrOutput)
-}
-
 // Markdown part metadata.
 type MarkdownPartMetadataResponse struct {
 	// Input to dashboard part.
 	Inputs []interface{} `pulumi:"inputs"`
 	// Markdown part settings.
-	Settings *MarkdownPartMetadataResponseSettings `pulumi:"settings"`
-	// The type of dashboard part.
+	Settings *MarkdownPartMetadataSettingsResponse `pulumi:"settings"`
+	// The dashboard part metadata type.
 	// Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 	Type string `pulumi:"type"`
 }
@@ -852,11 +1084,11 @@ func (o MarkdownPartMetadataResponseOutput) Inputs() pulumi.ArrayOutput {
 }
 
 // Markdown part settings.
-func (o MarkdownPartMetadataResponseOutput) Settings() MarkdownPartMetadataResponseSettingsPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponse) *MarkdownPartMetadataResponseSettings { return v.Settings }).(MarkdownPartMetadataResponseSettingsPtrOutput)
+func (o MarkdownPartMetadataResponseOutput) Settings() MarkdownPartMetadataSettingsResponsePtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataResponse) *MarkdownPartMetadataSettingsResponse { return v.Settings }).(MarkdownPartMetadataSettingsResponsePtrOutput)
 }
 
-// The type of dashboard part.
+// The dashboard part metadata type.
 // Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 func (o MarkdownPartMetadataResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -897,16 +1129,16 @@ func (o MarkdownPartMetadataResponsePtrOutput) Inputs() pulumi.ArrayOutput {
 }
 
 // Markdown part settings.
-func (o MarkdownPartMetadataResponsePtrOutput) Settings() MarkdownPartMetadataResponseSettingsPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponse) *MarkdownPartMetadataResponseSettings {
+func (o MarkdownPartMetadataResponsePtrOutput) Settings() MarkdownPartMetadataSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataResponse) *MarkdownPartMetadataSettingsResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Settings
-	}).(MarkdownPartMetadataResponseSettingsPtrOutput)
+	}).(MarkdownPartMetadataSettingsResponsePtrOutput)
 }
 
-// The type of dashboard part.
+// The dashboard part metadata type.
 // Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
 func (o MarkdownPartMetadataResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MarkdownPartMetadataResponse) *string {
@@ -917,260 +1149,10 @@ func (o MarkdownPartMetadataResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The content of markdown part.
-type MarkdownPartMetadataResponseContent struct {
-	// The setting of the content of markdown part.
-	Settings *MarkdownPartMetadataResponseSettingsSettings `pulumi:"settings"`
-}
-
-// The content of markdown part.
-type MarkdownPartMetadataResponseContentOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataResponseContentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataResponseContent)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataResponseContentOutput) ToMarkdownPartMetadataResponseContentOutput() MarkdownPartMetadataResponseContentOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseContentOutput) ToMarkdownPartMetadataResponseContentOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseContentOutput {
-	return o
-}
-
-// The setting of the content of markdown part.
-func (o MarkdownPartMetadataResponseContentOutput) Settings() MarkdownPartMetadataResponseSettingsSettingsPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseContent) *MarkdownPartMetadataResponseSettingsSettings {
-		return v.Settings
-	}).(MarkdownPartMetadataResponseSettingsSettingsPtrOutput)
-}
-
-type MarkdownPartMetadataResponseContentPtrOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataResponseContentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataResponseContent)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataResponseContentPtrOutput) ToMarkdownPartMetadataResponseContentPtrOutput() MarkdownPartMetadataResponseContentPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseContentPtrOutput) ToMarkdownPartMetadataResponseContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseContentPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseContentPtrOutput) Elem() MarkdownPartMetadataResponseContentOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseContent) MarkdownPartMetadataResponseContent {
-		if v != nil {
-			return *v
-		}
-		var ret MarkdownPartMetadataResponseContent
-		return ret
-	}).(MarkdownPartMetadataResponseContentOutput)
-}
-
-// The setting of the content of markdown part.
-func (o MarkdownPartMetadataResponseContentPtrOutput) Settings() MarkdownPartMetadataResponseSettingsSettingsPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseContent) *MarkdownPartMetadataResponseSettingsSettings {
-		if v == nil {
-			return nil
-		}
-		return v.Settings
-	}).(MarkdownPartMetadataResponseSettingsSettingsPtrOutput)
-}
-
-// Markdown part settings.
-type MarkdownPartMetadataResponseSettings struct {
-	// The content of markdown part.
-	Content *MarkdownPartMetadataResponseContent `pulumi:"content"`
-}
-
-// Markdown part settings.
-type MarkdownPartMetadataResponseSettingsOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataResponseSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataResponseSettings)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataResponseSettingsOutput) ToMarkdownPartMetadataResponseSettingsOutput() MarkdownPartMetadataResponseSettingsOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsOutput) ToMarkdownPartMetadataResponseSettingsOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseSettingsOutput {
-	return o
-}
-
-// The content of markdown part.
-func (o MarkdownPartMetadataResponseSettingsOutput) Content() MarkdownPartMetadataResponseContentPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseSettings) *MarkdownPartMetadataResponseContent { return v.Content }).(MarkdownPartMetadataResponseContentPtrOutput)
-}
-
-type MarkdownPartMetadataResponseSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataResponseSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataResponseSettings)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataResponseSettingsPtrOutput) ToMarkdownPartMetadataResponseSettingsPtrOutput() MarkdownPartMetadataResponseSettingsPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsPtrOutput) ToMarkdownPartMetadataResponseSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseSettingsPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsPtrOutput) Elem() MarkdownPartMetadataResponseSettingsOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettings) MarkdownPartMetadataResponseSettings {
-		if v != nil {
-			return *v
-		}
-		var ret MarkdownPartMetadataResponseSettings
-		return ret
-	}).(MarkdownPartMetadataResponseSettingsOutput)
-}
-
-// The content of markdown part.
-func (o MarkdownPartMetadataResponseSettingsPtrOutput) Content() MarkdownPartMetadataResponseContentPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettings) *MarkdownPartMetadataResponseContent {
-		if v == nil {
-			return nil
-		}
-		return v.Content
-	}).(MarkdownPartMetadataResponseContentPtrOutput)
-}
-
-// The setting of the content of markdown part.
-type MarkdownPartMetadataResponseSettingsSettings struct {
-	// The content of the markdown part.
-	Content *string `pulumi:"content"`
-	// The source of the content of the markdown part.
-	MarkdownSource *int `pulumi:"markdownSource"`
-	// The uri of markdown content.
-	MarkdownUri *string `pulumi:"markdownUri"`
-	// The subtitle of the markdown part.
-	Subtitle *string `pulumi:"subtitle"`
-	// The title of the markdown part.
-	Title *string `pulumi:"title"`
-}
-
-// The setting of the content of markdown part.
-type MarkdownPartMetadataResponseSettingsSettingsOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataResponseSettingsSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataResponseSettingsSettings)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) ToMarkdownPartMetadataResponseSettingsSettingsOutput() MarkdownPartMetadataResponseSettingsSettingsOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) ToMarkdownPartMetadataResponseSettingsSettingsOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseSettingsSettingsOutput {
-	return o
-}
-
-// The content of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseSettingsSettings) *string { return v.Content }).(pulumi.StringPtrOutput)
-}
-
-// The source of the content of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) MarkdownSource() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseSettingsSettings) *int { return v.MarkdownSource }).(pulumi.IntPtrOutput)
-}
-
-// The uri of markdown content.
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) MarkdownUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseSettingsSettings) *string { return v.MarkdownUri }).(pulumi.StringPtrOutput)
-}
-
-// The subtitle of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) Subtitle() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseSettingsSettings) *string { return v.Subtitle }).(pulumi.StringPtrOutput)
-}
-
-// The title of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataResponseSettingsSettings) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-type MarkdownPartMetadataResponseSettingsSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (MarkdownPartMetadataResponseSettingsSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataResponseSettingsSettings)(nil)).Elem()
-}
-
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) ToMarkdownPartMetadataResponseSettingsSettingsPtrOutput() MarkdownPartMetadataResponseSettingsSettingsPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) ToMarkdownPartMetadataResponseSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseSettingsSettingsPtrOutput {
-	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) Elem() MarkdownPartMetadataResponseSettingsSettingsOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettingsSettings) MarkdownPartMetadataResponseSettingsSettings {
-		if v != nil {
-			return *v
-		}
-		var ret MarkdownPartMetadataResponseSettingsSettings
-		return ret
-	}).(MarkdownPartMetadataResponseSettingsSettingsOutput)
-}
-
-// The content of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettingsSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Content
-	}).(pulumi.StringPtrOutput)
-}
-
-// The source of the content of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) MarkdownSource() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettingsSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MarkdownSource
-	}).(pulumi.IntPtrOutput)
-}
-
-// The uri of markdown content.
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) MarkdownUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettingsSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MarkdownUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The subtitle of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) Subtitle() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettingsSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Subtitle
-	}).(pulumi.StringPtrOutput)
-}
-
-// The title of the markdown part.
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataResponseSettingsSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
 // Markdown part settings.
 type MarkdownPartMetadataSettings struct {
 	// The content of markdown part.
-	Content *MarkdownPartMetadataContent `pulumi:"content"`
+	Content *MarkdownPartMetadataSettingsContent `pulumi:"content"`
 }
 
 // MarkdownPartMetadataSettingsInput is an input type that accepts MarkdownPartMetadataSettingsArgs and MarkdownPartMetadataSettingsOutput values.
@@ -1187,7 +1169,7 @@ type MarkdownPartMetadataSettingsInput interface {
 // Markdown part settings.
 type MarkdownPartMetadataSettingsArgs struct {
 	// The content of markdown part.
-	Content MarkdownPartMetadataContentPtrInput `pulumi:"content"`
+	Content MarkdownPartMetadataSettingsContentPtrInput `pulumi:"content"`
 }
 
 func (MarkdownPartMetadataSettingsArgs) ElementType() reflect.Type {
@@ -1269,8 +1251,8 @@ func (o MarkdownPartMetadataSettingsOutput) ToMarkdownPartMetadataSettingsPtrOut
 }
 
 // The content of markdown part.
-func (o MarkdownPartMetadataSettingsOutput) Content() MarkdownPartMetadataContentPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataSettings) *MarkdownPartMetadataContent { return v.Content }).(MarkdownPartMetadataContentPtrOutput)
+func (o MarkdownPartMetadataSettingsOutput) Content() MarkdownPartMetadataSettingsContentPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettings) *MarkdownPartMetadataSettingsContent { return v.Content }).(MarkdownPartMetadataSettingsContentPtrOutput)
 }
 
 type MarkdownPartMetadataSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -1298,17 +1280,221 @@ func (o MarkdownPartMetadataSettingsPtrOutput) Elem() MarkdownPartMetadataSettin
 }
 
 // The content of markdown part.
-func (o MarkdownPartMetadataSettingsPtrOutput) Content() MarkdownPartMetadataContentPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettings) *MarkdownPartMetadataContent {
+func (o MarkdownPartMetadataSettingsPtrOutput) Content() MarkdownPartMetadataSettingsContentPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettings) *MarkdownPartMetadataSettingsContent {
 		if v == nil {
 			return nil
 		}
 		return v.Content
-	}).(MarkdownPartMetadataContentPtrOutput)
+	}).(MarkdownPartMetadataSettingsContentPtrOutput)
+}
+
+// The content of markdown part.
+type MarkdownPartMetadataSettingsContent struct {
+	// The setting of the content of markdown part.
+	Settings *MarkdownPartMetadataSettingsContentSettings `pulumi:"settings"`
+}
+
+// MarkdownPartMetadataSettingsContentInput is an input type that accepts MarkdownPartMetadataSettingsContentArgs and MarkdownPartMetadataSettingsContentOutput values.
+// You can construct a concrete instance of `MarkdownPartMetadataSettingsContentInput` via:
+//
+//	MarkdownPartMetadataSettingsContentArgs{...}
+type MarkdownPartMetadataSettingsContentInput interface {
+	pulumi.Input
+
+	ToMarkdownPartMetadataSettingsContentOutput() MarkdownPartMetadataSettingsContentOutput
+	ToMarkdownPartMetadataSettingsContentOutputWithContext(context.Context) MarkdownPartMetadataSettingsContentOutput
+}
+
+// The content of markdown part.
+type MarkdownPartMetadataSettingsContentArgs struct {
+	// The setting of the content of markdown part.
+	Settings MarkdownPartMetadataSettingsContentSettingsPtrInput `pulumi:"settings"`
+}
+
+func (MarkdownPartMetadataSettingsContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsContent)(nil)).Elem()
+}
+
+func (i MarkdownPartMetadataSettingsContentArgs) ToMarkdownPartMetadataSettingsContentOutput() MarkdownPartMetadataSettingsContentOutput {
+	return i.ToMarkdownPartMetadataSettingsContentOutputWithContext(context.Background())
+}
+
+func (i MarkdownPartMetadataSettingsContentArgs) ToMarkdownPartMetadataSettingsContentOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsContentOutput)
+}
+
+func (i MarkdownPartMetadataSettingsContentArgs) ToMarkdownPartMetadataSettingsContentPtrOutput() MarkdownPartMetadataSettingsContentPtrOutput {
+	return i.ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(context.Background())
+}
+
+func (i MarkdownPartMetadataSettingsContentArgs) ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsContentOutput).ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(ctx)
+}
+
+// MarkdownPartMetadataSettingsContentPtrInput is an input type that accepts MarkdownPartMetadataSettingsContentArgs, MarkdownPartMetadataSettingsContentPtr and MarkdownPartMetadataSettingsContentPtrOutput values.
+// You can construct a concrete instance of `MarkdownPartMetadataSettingsContentPtrInput` via:
+//
+//	        MarkdownPartMetadataSettingsContentArgs{...}
+//
+//	or:
+//
+//	        nil
+type MarkdownPartMetadataSettingsContentPtrInput interface {
+	pulumi.Input
+
+	ToMarkdownPartMetadataSettingsContentPtrOutput() MarkdownPartMetadataSettingsContentPtrOutput
+	ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(context.Context) MarkdownPartMetadataSettingsContentPtrOutput
+}
+
+type markdownPartMetadataSettingsContentPtrType MarkdownPartMetadataSettingsContentArgs
+
+func MarkdownPartMetadataSettingsContentPtr(v *MarkdownPartMetadataSettingsContentArgs) MarkdownPartMetadataSettingsContentPtrInput {
+	return (*markdownPartMetadataSettingsContentPtrType)(v)
+}
+
+func (*markdownPartMetadataSettingsContentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsContent)(nil)).Elem()
+}
+
+func (i *markdownPartMetadataSettingsContentPtrType) ToMarkdownPartMetadataSettingsContentPtrOutput() MarkdownPartMetadataSettingsContentPtrOutput {
+	return i.ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(context.Background())
+}
+
+func (i *markdownPartMetadataSettingsContentPtrType) ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsContentPtrOutput)
+}
+
+// The content of markdown part.
+type MarkdownPartMetadataSettingsContentOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsContent)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsContentOutput) ToMarkdownPartMetadataSettingsContentOutput() MarkdownPartMetadataSettingsContentOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentOutput) ToMarkdownPartMetadataSettingsContentOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentOutput) ToMarkdownPartMetadataSettingsContentPtrOutput() MarkdownPartMetadataSettingsContentPtrOutput {
+	return o.ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(context.Background())
+}
+
+func (o MarkdownPartMetadataSettingsContentOutput) ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarkdownPartMetadataSettingsContent) *MarkdownPartMetadataSettingsContent {
+		return &v
+	}).(MarkdownPartMetadataSettingsContentPtrOutput)
 }
 
 // The setting of the content of markdown part.
-type MarkdownPartMetadataSettingsSettings struct {
+func (o MarkdownPartMetadataSettingsContentOutput) Settings() MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContent) *MarkdownPartMetadataSettingsContentSettings {
+		return v.Settings
+	}).(MarkdownPartMetadataSettingsContentSettingsPtrOutput)
+}
+
+type MarkdownPartMetadataSettingsContentPtrOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsContentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsContent)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsContentPtrOutput) ToMarkdownPartMetadataSettingsContentPtrOutput() MarkdownPartMetadataSettingsContentPtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentPtrOutput) ToMarkdownPartMetadataSettingsContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentPtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentPtrOutput) Elem() MarkdownPartMetadataSettingsContentOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContent) MarkdownPartMetadataSettingsContent {
+		if v != nil {
+			return *v
+		}
+		var ret MarkdownPartMetadataSettingsContent
+		return ret
+	}).(MarkdownPartMetadataSettingsContentOutput)
+}
+
+// The setting of the content of markdown part.
+func (o MarkdownPartMetadataSettingsContentPtrOutput) Settings() MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContent) *MarkdownPartMetadataSettingsContentSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(MarkdownPartMetadataSettingsContentSettingsPtrOutput)
+}
+
+// The content of markdown part.
+type MarkdownPartMetadataSettingsContentResponse struct {
+	// The setting of the content of markdown part.
+	Settings *MarkdownPartMetadataSettingsContentSettingsResponse `pulumi:"settings"`
+}
+
+// The content of markdown part.
+type MarkdownPartMetadataSettingsContentResponseOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsContentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsContentResponse)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsContentResponseOutput) ToMarkdownPartMetadataSettingsContentResponseOutput() MarkdownPartMetadataSettingsContentResponseOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentResponseOutput) ToMarkdownPartMetadataSettingsContentResponseOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentResponseOutput {
+	return o
+}
+
+// The setting of the content of markdown part.
+func (o MarkdownPartMetadataSettingsContentResponseOutput) Settings() MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentResponse) *MarkdownPartMetadataSettingsContentSettingsResponse {
+		return v.Settings
+	}).(MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput)
+}
+
+type MarkdownPartMetadataSettingsContentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsContentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsContentResponse)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsContentResponsePtrOutput) ToMarkdownPartMetadataSettingsContentResponsePtrOutput() MarkdownPartMetadataSettingsContentResponsePtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentResponsePtrOutput) ToMarkdownPartMetadataSettingsContentResponsePtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentResponsePtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentResponsePtrOutput) Elem() MarkdownPartMetadataSettingsContentResponseOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentResponse) MarkdownPartMetadataSettingsContentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MarkdownPartMetadataSettingsContentResponse
+		return ret
+	}).(MarkdownPartMetadataSettingsContentResponseOutput)
+}
+
+// The setting of the content of markdown part.
+func (o MarkdownPartMetadataSettingsContentResponsePtrOutput) Settings() MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentResponse) *MarkdownPartMetadataSettingsContentSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput)
+}
+
+// The setting of the content of markdown part.
+type MarkdownPartMetadataSettingsContentSettings struct {
 	// The content of the markdown part.
 	Content *string `pulumi:"content"`
 	// The source of the content of the markdown part.
@@ -1321,19 +1507,19 @@ type MarkdownPartMetadataSettingsSettings struct {
 	Title *string `pulumi:"title"`
 }
 
-// MarkdownPartMetadataSettingsSettingsInput is an input type that accepts MarkdownPartMetadataSettingsSettingsArgs and MarkdownPartMetadataSettingsSettingsOutput values.
-// You can construct a concrete instance of `MarkdownPartMetadataSettingsSettingsInput` via:
+// MarkdownPartMetadataSettingsContentSettingsInput is an input type that accepts MarkdownPartMetadataSettingsContentSettingsArgs and MarkdownPartMetadataSettingsContentSettingsOutput values.
+// You can construct a concrete instance of `MarkdownPartMetadataSettingsContentSettingsInput` via:
 //
-//	MarkdownPartMetadataSettingsSettingsArgs{...}
-type MarkdownPartMetadataSettingsSettingsInput interface {
+//	MarkdownPartMetadataSettingsContentSettingsArgs{...}
+type MarkdownPartMetadataSettingsContentSettingsInput interface {
 	pulumi.Input
 
-	ToMarkdownPartMetadataSettingsSettingsOutput() MarkdownPartMetadataSettingsSettingsOutput
-	ToMarkdownPartMetadataSettingsSettingsOutputWithContext(context.Context) MarkdownPartMetadataSettingsSettingsOutput
+	ToMarkdownPartMetadataSettingsContentSettingsOutput() MarkdownPartMetadataSettingsContentSettingsOutput
+	ToMarkdownPartMetadataSettingsContentSettingsOutputWithContext(context.Context) MarkdownPartMetadataSettingsContentSettingsOutput
 }
 
 // The setting of the content of markdown part.
-type MarkdownPartMetadataSettingsSettingsArgs struct {
+type MarkdownPartMetadataSettingsContentSettingsArgs struct {
 	// The content of the markdown part.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The source of the content of the markdown part.
@@ -1346,136 +1532,136 @@ type MarkdownPartMetadataSettingsSettingsArgs struct {
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
-func (MarkdownPartMetadataSettingsSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataSettingsSettings)(nil)).Elem()
+func (MarkdownPartMetadataSettingsContentSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsContentSettings)(nil)).Elem()
 }
 
-func (i MarkdownPartMetadataSettingsSettingsArgs) ToMarkdownPartMetadataSettingsSettingsOutput() MarkdownPartMetadataSettingsSettingsOutput {
-	return i.ToMarkdownPartMetadataSettingsSettingsOutputWithContext(context.Background())
+func (i MarkdownPartMetadataSettingsContentSettingsArgs) ToMarkdownPartMetadataSettingsContentSettingsOutput() MarkdownPartMetadataSettingsContentSettingsOutput {
+	return i.ToMarkdownPartMetadataSettingsContentSettingsOutputWithContext(context.Background())
 }
 
-func (i MarkdownPartMetadataSettingsSettingsArgs) ToMarkdownPartMetadataSettingsSettingsOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsSettingsOutput)
+func (i MarkdownPartMetadataSettingsContentSettingsArgs) ToMarkdownPartMetadataSettingsContentSettingsOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsContentSettingsOutput)
 }
 
-func (i MarkdownPartMetadataSettingsSettingsArgs) ToMarkdownPartMetadataSettingsSettingsPtrOutput() MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return i.ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(context.Background())
+func (i MarkdownPartMetadataSettingsContentSettingsArgs) ToMarkdownPartMetadataSettingsContentSettingsPtrOutput() MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return i.ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i MarkdownPartMetadataSettingsSettingsArgs) ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsSettingsOutput).ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx)
+func (i MarkdownPartMetadataSettingsContentSettingsArgs) ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsContentSettingsOutput).ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(ctx)
 }
 
-// MarkdownPartMetadataSettingsSettingsPtrInput is an input type that accepts MarkdownPartMetadataSettingsSettingsArgs, MarkdownPartMetadataSettingsSettingsPtr and MarkdownPartMetadataSettingsSettingsPtrOutput values.
-// You can construct a concrete instance of `MarkdownPartMetadataSettingsSettingsPtrInput` via:
+// MarkdownPartMetadataSettingsContentSettingsPtrInput is an input type that accepts MarkdownPartMetadataSettingsContentSettingsArgs, MarkdownPartMetadataSettingsContentSettingsPtr and MarkdownPartMetadataSettingsContentSettingsPtrOutput values.
+// You can construct a concrete instance of `MarkdownPartMetadataSettingsContentSettingsPtrInput` via:
 //
-//	        MarkdownPartMetadataSettingsSettingsArgs{...}
+//	        MarkdownPartMetadataSettingsContentSettingsArgs{...}
 //
 //	or:
 //
 //	        nil
-type MarkdownPartMetadataSettingsSettingsPtrInput interface {
+type MarkdownPartMetadataSettingsContentSettingsPtrInput interface {
 	pulumi.Input
 
-	ToMarkdownPartMetadataSettingsSettingsPtrOutput() MarkdownPartMetadataSettingsSettingsPtrOutput
-	ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(context.Context) MarkdownPartMetadataSettingsSettingsPtrOutput
+	ToMarkdownPartMetadataSettingsContentSettingsPtrOutput() MarkdownPartMetadataSettingsContentSettingsPtrOutput
+	ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(context.Context) MarkdownPartMetadataSettingsContentSettingsPtrOutput
 }
 
-type markdownPartMetadataSettingsSettingsPtrType MarkdownPartMetadataSettingsSettingsArgs
+type markdownPartMetadataSettingsContentSettingsPtrType MarkdownPartMetadataSettingsContentSettingsArgs
 
-func MarkdownPartMetadataSettingsSettingsPtr(v *MarkdownPartMetadataSettingsSettingsArgs) MarkdownPartMetadataSettingsSettingsPtrInput {
-	return (*markdownPartMetadataSettingsSettingsPtrType)(v)
+func MarkdownPartMetadataSettingsContentSettingsPtr(v *MarkdownPartMetadataSettingsContentSettingsArgs) MarkdownPartMetadataSettingsContentSettingsPtrInput {
+	return (*markdownPartMetadataSettingsContentSettingsPtrType)(v)
 }
 
-func (*markdownPartMetadataSettingsSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataSettingsSettings)(nil)).Elem()
+func (*markdownPartMetadataSettingsContentSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsContentSettings)(nil)).Elem()
 }
 
-func (i *markdownPartMetadataSettingsSettingsPtrType) ToMarkdownPartMetadataSettingsSettingsPtrOutput() MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return i.ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(context.Background())
+func (i *markdownPartMetadataSettingsContentSettingsPtrType) ToMarkdownPartMetadataSettingsContentSettingsPtrOutput() MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return i.ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i *markdownPartMetadataSettingsSettingsPtrType) ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsSettingsPtrOutput)
+func (i *markdownPartMetadataSettingsContentSettingsPtrType) ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsContentSettingsPtrOutput)
 }
 
 // The setting of the content of markdown part.
-type MarkdownPartMetadataSettingsSettingsOutput struct{ *pulumi.OutputState }
+type MarkdownPartMetadataSettingsContentSettingsOutput struct{ *pulumi.OutputState }
 
-func (MarkdownPartMetadataSettingsSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MarkdownPartMetadataSettingsSettings)(nil)).Elem()
+func (MarkdownPartMetadataSettingsContentSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsContentSettings)(nil)).Elem()
 }
 
-func (o MarkdownPartMetadataSettingsSettingsOutput) ToMarkdownPartMetadataSettingsSettingsOutput() MarkdownPartMetadataSettingsSettingsOutput {
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) ToMarkdownPartMetadataSettingsContentSettingsOutput() MarkdownPartMetadataSettingsContentSettingsOutput {
 	return o
 }
 
-func (o MarkdownPartMetadataSettingsSettingsOutput) ToMarkdownPartMetadataSettingsSettingsOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsOutput {
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) ToMarkdownPartMetadataSettingsContentSettingsOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsOutput {
 	return o
 }
 
-func (o MarkdownPartMetadataSettingsSettingsOutput) ToMarkdownPartMetadataSettingsSettingsPtrOutput() MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return o.ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(context.Background())
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) ToMarkdownPartMetadataSettingsContentSettingsPtrOutput() MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return o.ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o MarkdownPartMetadataSettingsSettingsOutput) ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarkdownPartMetadataSettingsSettings) *MarkdownPartMetadataSettingsSettings {
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarkdownPartMetadataSettingsContentSettings) *MarkdownPartMetadataSettingsContentSettings {
 		return &v
-	}).(MarkdownPartMetadataSettingsSettingsPtrOutput)
+	}).(MarkdownPartMetadataSettingsContentSettingsPtrOutput)
 }
 
 // The content of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataSettingsSettings) *string { return v.Content }).(pulumi.StringPtrOutput)
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettings) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // The source of the content of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsOutput) MarkdownSource() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataSettingsSettings) *int { return v.MarkdownSource }).(pulumi.IntPtrOutput)
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) MarkdownSource() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettings) *int { return v.MarkdownSource }).(pulumi.IntPtrOutput)
 }
 
 // The uri of markdown content.
-func (o MarkdownPartMetadataSettingsSettingsOutput) MarkdownUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataSettingsSettings) *string { return v.MarkdownUri }).(pulumi.StringPtrOutput)
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) MarkdownUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettings) *string { return v.MarkdownUri }).(pulumi.StringPtrOutput)
 }
 
 // The subtitle of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsOutput) Subtitle() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataSettingsSettings) *string { return v.Subtitle }).(pulumi.StringPtrOutput)
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) Subtitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettings) *string { return v.Subtitle }).(pulumi.StringPtrOutput)
 }
 
 // The title of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MarkdownPartMetadataSettingsSettings) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o MarkdownPartMetadataSettingsContentSettingsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettings) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-type MarkdownPartMetadataSettingsSettingsPtrOutput struct{ *pulumi.OutputState }
+type MarkdownPartMetadataSettingsContentSettingsPtrOutput struct{ *pulumi.OutputState }
 
-func (MarkdownPartMetadataSettingsSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MarkdownPartMetadataSettingsSettings)(nil)).Elem()
+func (MarkdownPartMetadataSettingsContentSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsContentSettings)(nil)).Elem()
 }
 
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) ToMarkdownPartMetadataSettingsSettingsPtrOutput() MarkdownPartMetadataSettingsSettingsPtrOutput {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) ToMarkdownPartMetadataSettingsContentSettingsPtrOutput() MarkdownPartMetadataSettingsContentSettingsPtrOutput {
 	return o
 }
 
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsPtrOutput {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) ToMarkdownPartMetadataSettingsContentSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsPtrOutput {
 	return o
 }
 
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Elem() MarkdownPartMetadataSettingsSettingsOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettingsSettings) MarkdownPartMetadataSettingsSettings {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) Elem() MarkdownPartMetadataSettingsContentSettingsOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettings) MarkdownPartMetadataSettingsContentSettings {
 		if v != nil {
 			return *v
 		}
-		var ret MarkdownPartMetadataSettingsSettings
+		var ret MarkdownPartMetadataSettingsContentSettings
 		return ret
-	}).(MarkdownPartMetadataSettingsSettingsOutput)
+	}).(MarkdownPartMetadataSettingsContentSettingsOutput)
 }
 
 // The content of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettingsSettings) *string {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettings) *string {
 		if v == nil {
 			return nil
 		}
@@ -1484,8 +1670,8 @@ func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Content() pulumi.StringPt
 }
 
 // The source of the content of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) MarkdownSource() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettingsSettings) *int {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) MarkdownSource() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettings) *int {
 		if v == nil {
 			return nil
 		}
@@ -1494,8 +1680,8 @@ func (o MarkdownPartMetadataSettingsSettingsPtrOutput) MarkdownSource() pulumi.I
 }
 
 // The uri of markdown content.
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) MarkdownUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettingsSettings) *string {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) MarkdownUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettings) *string {
 		if v == nil {
 			return nil
 		}
@@ -1504,8 +1690,8 @@ func (o MarkdownPartMetadataSettingsSettingsPtrOutput) MarkdownUri() pulumi.Stri
 }
 
 // The subtitle of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Subtitle() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettingsSettings) *string {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) Subtitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettings) *string {
 		if v == nil {
 			return nil
 		}
@@ -1514,13 +1700,264 @@ func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Subtitle() pulumi.StringP
 }
 
 // The title of the markdown part.
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MarkdownPartMetadataSettingsSettings) *string {
+func (o MarkdownPartMetadataSettingsContentSettingsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettings) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+// The setting of the content of markdown part.
+type MarkdownPartMetadataSettingsContentSettingsResponse struct {
+	// The content of the markdown part.
+	Content *string `pulumi:"content"`
+	// The source of the content of the markdown part.
+	MarkdownSource *int `pulumi:"markdownSource"`
+	// The uri of markdown content.
+	MarkdownUri *string `pulumi:"markdownUri"`
+	// The subtitle of the markdown part.
+	Subtitle *string `pulumi:"subtitle"`
+	// The title of the markdown part.
+	Title *string `pulumi:"title"`
+}
+
+// The setting of the content of markdown part.
+type MarkdownPartMetadataSettingsContentSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsContentSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsContentSettingsResponse)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) ToMarkdownPartMetadataSettingsContentSettingsResponseOutput() MarkdownPartMetadataSettingsContentSettingsResponseOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) ToMarkdownPartMetadataSettingsContentSettingsResponseOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsResponseOutput {
+	return o
+}
+
+// The content of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettingsResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The source of the content of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) MarkdownSource() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettingsResponse) *int { return v.MarkdownSource }).(pulumi.IntPtrOutput)
+}
+
+// The uri of markdown content.
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) MarkdownUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettingsResponse) *string { return v.MarkdownUri }).(pulumi.StringPtrOutput)
+}
+
+// The subtitle of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) Subtitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettingsResponse) *string { return v.Subtitle }).(pulumi.StringPtrOutput)
+}
+
+// The title of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponseOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsContentSettingsResponse) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsContentSettingsResponse)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) ToMarkdownPartMetadataSettingsContentSettingsResponsePtrOutput() MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) ToMarkdownPartMetadataSettingsContentSettingsResponsePtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) Elem() MarkdownPartMetadataSettingsContentSettingsResponseOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettingsResponse) MarkdownPartMetadataSettingsContentSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MarkdownPartMetadataSettingsContentSettingsResponse
+		return ret
+	}).(MarkdownPartMetadataSettingsContentSettingsResponseOutput)
+}
+
+// The content of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The source of the content of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) MarkdownSource() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MarkdownSource
+	}).(pulumi.IntPtrOutput)
+}
+
+// The uri of markdown content.
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) MarkdownUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarkdownUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subtitle of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) Subtitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subtitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the markdown part.
+func (o MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsContentSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// Markdown part settings.
+type MarkdownPartMetadataSettingsResponse struct {
+	// The content of markdown part.
+	Content *MarkdownPartMetadataSettingsContentResponse `pulumi:"content"`
+}
+
+// Markdown part settings.
+type MarkdownPartMetadataSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarkdownPartMetadataSettingsResponse)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsResponseOutput) ToMarkdownPartMetadataSettingsResponseOutput() MarkdownPartMetadataSettingsResponseOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsResponseOutput) ToMarkdownPartMetadataSettingsResponseOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsResponseOutput {
+	return o
+}
+
+// The content of markdown part.
+func (o MarkdownPartMetadataSettingsResponseOutput) Content() MarkdownPartMetadataSettingsContentResponsePtrOutput {
+	return o.ApplyT(func(v MarkdownPartMetadataSettingsResponse) *MarkdownPartMetadataSettingsContentResponse {
+		return v.Content
+	}).(MarkdownPartMetadataSettingsContentResponsePtrOutput)
+}
+
+type MarkdownPartMetadataSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MarkdownPartMetadataSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MarkdownPartMetadataSettingsResponse)(nil)).Elem()
+}
+
+func (o MarkdownPartMetadataSettingsResponsePtrOutput) ToMarkdownPartMetadataSettingsResponsePtrOutput() MarkdownPartMetadataSettingsResponsePtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsResponsePtrOutput) ToMarkdownPartMetadataSettingsResponsePtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsResponsePtrOutput {
+	return o
+}
+
+func (o MarkdownPartMetadataSettingsResponsePtrOutput) Elem() MarkdownPartMetadataSettingsResponseOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsResponse) MarkdownPartMetadataSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MarkdownPartMetadataSettingsResponse
+		return ret
+	}).(MarkdownPartMetadataSettingsResponseOutput)
+}
+
+// The content of markdown part.
+func (o MarkdownPartMetadataSettingsResponsePtrOutput) Content() MarkdownPartMetadataSettingsContentResponsePtrOutput {
+	return o.ApplyT(func(v *MarkdownPartMetadataSettingsResponse) *MarkdownPartMetadataSettingsContentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(MarkdownPartMetadataSettingsContentResponsePtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // Violation information.
@@ -1584,6 +2021,9 @@ func (o ViolationResponseArrayOutput) Index(i pulumi.IntInput) ViolationResponse
 }
 
 func init() {
+	pulumi.RegisterOutputType(ConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(ConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DashboardLensOutput{})
 	pulumi.RegisterOutputType(DashboardLensArrayOutput{})
 	pulumi.RegisterOutputType(DashboardLensResponseOutput{})
@@ -1591,25 +2031,29 @@ func init() {
 	pulumi.RegisterOutputType(DashboardPartsOutput{})
 	pulumi.RegisterOutputType(DashboardPartsArrayOutput{})
 	pulumi.RegisterOutputType(DashboardPartsPositionOutput{})
+	pulumi.RegisterOutputType(DashboardPartsPositionResponseOutput{})
 	pulumi.RegisterOutputType(DashboardPartsResponseOutput{})
 	pulumi.RegisterOutputType(DashboardPartsResponseArrayOutput{})
-	pulumi.RegisterOutputType(DashboardPartsResponsePositionOutput{})
+	pulumi.RegisterOutputType(DashboardPropertiesWithProvisioningStateOutput{})
+	pulumi.RegisterOutputType(DashboardPropertiesWithProvisioningStatePtrOutput{})
+	pulumi.RegisterOutputType(DashboardPropertiesWithProvisioningStateResponseOutput{})
 	pulumi.RegisterOutputType(MarkdownPartMetadataOutput{})
 	pulumi.RegisterOutputType(MarkdownPartMetadataPtrOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataContentOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataContentPtrOutput{})
 	pulumi.RegisterOutputType(MarkdownPartMetadataResponseOutput{})
 	pulumi.RegisterOutputType(MarkdownPartMetadataResponsePtrOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataResponseContentOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataResponseContentPtrOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataResponseSettingsOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataResponseSettingsPtrOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataResponseSettingsSettingsOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataResponseSettingsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsOutput{})
 	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsPtrOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsSettingsOutput{})
-	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentPtrOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentResponseOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentSettingsOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentSettingsPtrOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentSettingsResponseOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsContentSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsResponseOutput{})
+	pulumi.RegisterOutputType(MarkdownPartMetadataSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(ViolationResponseOutput{})
 	pulumi.RegisterOutputType(ViolationResponseArrayOutput{})
 }

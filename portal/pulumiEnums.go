@@ -10,6 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The dashboard part metadata type.
+type DashboardPartMetadataType string
+
+const (
+	// The markdown part type.
+	DashboardPartMetadataTypeMarkdown = DashboardPartMetadataType("Extension/HubsExtension/PartType/MarkdownPart")
+)
+
 // Size of terminal font.
 type FontSize string
 

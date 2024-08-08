@@ -19,17 +19,17 @@ import (
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	// The dashboard lenses.
-	Lenses DashboardLensResponseArrayOutput `pulumi:"lenses"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The dashboard metadata.
-	Metadata pulumi.MapOutput `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource tags
+	// The resource-specific properties for this resource.
+	Properties DashboardPropertiesWithProvisioningStateResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -93,15 +93,13 @@ func (DashboardState) ElementType() reflect.Type {
 type dashboardArgs struct {
 	// The name of the dashboard.
 	DashboardName *string `pulumi:"dashboardName"`
-	// The dashboard lenses.
-	Lenses []DashboardLens `pulumi:"lenses"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The dashboard metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
-	// The name of the resource group.
+	// The resource-specific properties for this resource.
+	Properties *DashboardPropertiesWithProvisioningState `pulumi:"properties"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -109,15 +107,13 @@ type dashboardArgs struct {
 type DashboardArgs struct {
 	// The name of the dashboard.
 	DashboardName pulumi.StringPtrInput
-	// The dashboard lenses.
-	Lenses DashboardLensArrayInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The dashboard metadata.
-	Metadata pulumi.MapInput
-	// The name of the resource group.
+	// The resource-specific properties for this resource.
+	Properties DashboardPropertiesWithProvisioningStatePtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -158,32 +154,32 @@ func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) Dashb
 	return o
 }
 
-// The dashboard lenses.
-func (o DashboardOutput) Lenses() DashboardLensResponseArrayOutput {
-	return o.ApplyT(func(v *Dashboard) DashboardLensResponseArrayOutput { return v.Lenses }).(DashboardLensResponseArrayOutput)
-}
-
-// Resource location
+// The geo-location where the resource lives
 func (o DashboardOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The dashboard metadata.
-func (o DashboardOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v *Dashboard) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
-}
-
-// Resource name
+// The name of the resource
 func (o DashboardOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// The resource-specific properties for this resource.
+func (o DashboardOutput) Properties() DashboardPropertiesWithProvisioningStateResponseOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardPropertiesWithProvisioningStateResponseOutput { return v.Properties }).(DashboardPropertiesWithProvisioningStateResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o DashboardOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Dashboard) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o DashboardOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DashboardOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

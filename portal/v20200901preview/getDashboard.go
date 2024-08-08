@@ -25,25 +25,25 @@ func LookupDashboard(ctx *pulumi.Context, args *LookupDashboardArgs, opts ...pul
 type LookupDashboardArgs struct {
 	// The name of the dashboard.
 	DashboardName string `pulumi:"dashboardName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The shared dashboard resource definition.
 type LookupDashboardResult struct {
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The dashboard lenses.
-	Lenses []DashboardLensResponse `pulumi:"lenses"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// The dashboard metadata.
-	Metadata map[string]interface{} `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource tags
+	// The resource-specific properties for this resource.
+	Properties DashboardPropertiesWithProvisioningStateResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -63,7 +63,7 @@ func LookupDashboardOutput(ctx *pulumi.Context, args LookupDashboardOutputArgs, 
 type LookupDashboardOutputArgs struct {
 	// The name of the dashboard.
 	DashboardName pulumi.StringInput `pulumi:"dashboardName"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -86,37 +86,37 @@ func (o LookupDashboardResultOutput) ToLookupDashboardResultOutputWithContext(ct
 	return o
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDashboardResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The dashboard lenses.
-func (o LookupDashboardResultOutput) Lenses() DashboardLensResponseArrayOutput {
-	return o.ApplyT(func(v LookupDashboardResult) []DashboardLensResponse { return v.Lenses }).(DashboardLensResponseArrayOutput)
-}
-
-// Resource location
+// The geo-location where the resource lives
 func (o LookupDashboardResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The dashboard metadata.
-func (o LookupDashboardResultOutput) Metadata() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupDashboardResult) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
-}
-
-// Resource name
+// The name of the resource
 func (o LookupDashboardResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource tags
+// The resource-specific properties for this resource.
+func (o LookupDashboardResultOutput) Properties() DashboardPropertiesWithProvisioningStateResponseOutput {
+	return o.ApplyT(func(v LookupDashboardResult) DashboardPropertiesWithProvisioningStateResponse { return v.Properties }).(DashboardPropertiesWithProvisioningStateResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupDashboardResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDashboardResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupDashboardResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDashboardResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDashboardResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardResult) string { return v.Type }).(pulumi.StringOutput)
 }
