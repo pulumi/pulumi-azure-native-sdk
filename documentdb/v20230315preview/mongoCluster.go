@@ -74,6 +74,9 @@ func NewMongoCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240301preview:MongoCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240601preview:MongoCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

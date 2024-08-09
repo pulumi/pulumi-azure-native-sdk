@@ -20,7 +20,7 @@ type PipelineGroup struct {
 	// The exporters specified for a pipeline group instance.
 	Exporters ExporterResponseArrayOutput `pulumi:"exporters"`
 	// The extended location for given pipeline group.
-	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -109,7 +109,7 @@ type pipelineGroupArgs struct {
 	// The exporters specified for a pipeline group instance.
 	Exporters []Exporter `pulumi:"exporters"`
 	// The extended location for given pipeline group.
-	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
+	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocation `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Networking configurations for the pipeline group instance.
@@ -135,7 +135,7 @@ type PipelineGroupArgs struct {
 	// The exporters specified for a pipeline group instance.
 	Exporters ExporterArrayInput
 	// The extended location for given pipeline group.
-	ExtendedLocation ExtendedLocationPtrInput
+	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Networking configurations for the pipeline group instance.
@@ -199,8 +199,10 @@ func (o PipelineGroupOutput) Exporters() ExporterResponseArrayOutput {
 }
 
 // The extended location for given pipeline group.
-func (o PipelineGroupOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v *PipelineGroup) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+func (o PipelineGroupOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *PipelineGroup) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
+		return v.ExtendedLocation
+	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

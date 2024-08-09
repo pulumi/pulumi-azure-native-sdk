@@ -15,7 +15,7 @@ import (
 // Represents a mongo cluster resource.
 // Azure REST API version: 2023-03-15-preview.
 //
-// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview.
+// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview.
 type MongoCluster struct {
 	pulumi.CustomResourceState
 
@@ -76,6 +76,9 @@ func NewMongoCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240301preview:MongoCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240601preview:MongoCluster"),
 		},
 	})
 	opts = append(opts, aliases)

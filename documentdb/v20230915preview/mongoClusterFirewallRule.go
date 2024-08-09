@@ -68,6 +68,9 @@ func NewMongoClusterFirewallRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240301preview:MongoClusterFirewallRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240601preview:MongoClusterFirewallRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

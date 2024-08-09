@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppBackupConfiguration{}
 	case "azure-native:web/v20160801:WebAppBackupConfigurationSlot":
 		r = &WebAppBackupConfigurationSlot{}
+	case "azure-native:web/v20160801:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20160801:WebAppFunction":
 		r = &WebAppFunction{}
 	case "azure-native:web/v20160801:WebAppInstanceFunctionSlot":

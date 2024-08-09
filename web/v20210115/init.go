@@ -23,10 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:web/v20210115:AppServiceEnvironment":
 		r = &AppServiceEnvironment{}
+	case "azure-native:web/v20210115:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20210115:WebAppFtpAllowed":
 		r = &WebAppFtpAllowed{}
+	case "azure-native:web/v20210115:WebAppFtpAllowedSlot":
+		r = &WebAppFtpAllowedSlot{}
 	case "azure-native:web/v20210115:WebAppScmAllowed":
 		r = &WebAppScmAllowed{}
+	case "azure-native:web/v20210115:WebAppScmAllowedSlot":
+		r = &WebAppScmAllowedSlot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

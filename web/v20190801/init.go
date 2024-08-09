@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:web/v20190801:AppServiceEnvironment":
 		r = &AppServiceEnvironment{}
+	case "azure-native:web/v20190801:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20190801:WebAppFtpAllowed":
 		r = &WebAppFtpAllowed{}
 	case "azure-native:web/v20190801:WebAppScmAllowed":

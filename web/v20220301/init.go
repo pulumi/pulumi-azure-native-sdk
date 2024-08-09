@@ -21,10 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:web/v20220301:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20220301:WebAppFtpAllowed":
 		r = &WebAppFtpAllowed{}
+	case "azure-native:web/v20220301:WebAppFtpAllowedSlot":
+		r = &WebAppFtpAllowedSlot{}
 	case "azure-native:web/v20220301:WebAppScmAllowed":
 		r = &WebAppScmAllowed{}
+	case "azure-native:web/v20220301:WebAppScmAllowedSlot":
+		r = &WebAppScmAllowedSlot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

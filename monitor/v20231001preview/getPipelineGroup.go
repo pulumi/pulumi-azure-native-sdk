@@ -34,7 +34,7 @@ type LookupPipelineGroupResult struct {
 	// The exporters specified for a pipeline group instance.
 	Exporters []ExporterResponse `pulumi:"exporters"`
 	// The extended location for given pipeline group.
-	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -106,8 +106,10 @@ func (o LookupPipelineGroupResultOutput) Exporters() ExporterResponseArrayOutput
 }
 
 // The extended location for given pipeline group.
-func (o LookupPipelineGroupResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v LookupPipelineGroupResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+func (o LookupPipelineGroupResultOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v LookupPipelineGroupResult) *AzureResourceManagerCommonTypesExtendedLocationResponse {
+		return v.ExtendedLocation
+	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

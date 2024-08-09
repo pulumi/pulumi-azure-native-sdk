@@ -178,11 +178,13 @@ func (in *exporterTypePtr) ToExporterTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ExporterTypePtrOutput)
 }
 
-// The type of extended location.
+// The type of the extended location.
 type ExtendedLocationType string
 
 const (
-	// Custom location.
+	// Azure Edge Zones location type
+	ExtendedLocationTypeEdgeZone = ExtendedLocationType("EdgeZone")
+	// Azure Custom Locations type
 	ExtendedLocationTypeCustomLocation = ExtendedLocationType("CustomLocation")
 )
 
@@ -308,6 +310,7 @@ func (o ExtendedLocationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // ExtendedLocationTypeInput is an input type that accepts values of the ExtendedLocationType enum
 // A concrete instance of `ExtendedLocationTypeInput` can be one of the following:
 //
+//	ExtendedLocationTypeEdgeZone
 //	ExtendedLocationTypeCustomLocation
 type ExtendedLocationTypeInput interface {
 	pulumi.Input

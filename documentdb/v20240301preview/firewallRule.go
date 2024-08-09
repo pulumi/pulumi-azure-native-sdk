@@ -68,6 +68,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240215preview:FirewallRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240601preview:FirewallRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

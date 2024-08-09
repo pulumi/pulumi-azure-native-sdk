@@ -34024,8 +34024,9 @@ func (o FqdnOutboundRuleOutput) Type() pulumi.StringOutput {
 // FQDN Outbound Rule for the managed network of a machine learning workspace.
 type FqdnOutboundRuleResponse struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category    *string `pulumi:"category"`
-	Destination *string `pulumi:"destination"`
+	Category        *string  `pulumi:"category"`
+	Destination     *string  `pulumi:"destination"`
+	ParentRuleNames []string `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -34055,6 +34056,10 @@ func (o FqdnOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
 
 func (o FqdnOutboundRuleResponseOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FqdnOutboundRuleResponse) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+func (o FqdnOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.
@@ -58057,8 +58062,8 @@ type PrivateEndpointOutboundRule struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
 	Category *string `pulumi:"category"`
 	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination     *PrivateEndpointDestination `pulumi:"destination"`
-	ParentRuleNames []string                    `pulumi:"parentRuleNames"`
+	Destination *PrivateEndpointDestination `pulumi:"destination"`
+	Fqdns       []string                    `pulumi:"fqdns"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -58082,8 +58087,8 @@ type PrivateEndpointOutboundRuleArgs struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination     PrivateEndpointDestinationPtrInput `pulumi:"destination"`
-	ParentRuleNames pulumi.StringArrayInput            `pulumi:"parentRuleNames"`
+	Destination PrivateEndpointDestinationPtrInput `pulumi:"destination"`
+	Fqdns       pulumi.StringArrayInput            `pulumi:"fqdns"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -58128,8 +58133,8 @@ func (o PrivateEndpointOutboundRuleOutput) Destination() PrivateEndpointDestinat
 	return o.ApplyT(func(v PrivateEndpointOutboundRule) *PrivateEndpointDestination { return v.Destination }).(PrivateEndpointDestinationPtrOutput)
 }
 
-func (o PrivateEndpointOutboundRuleOutput) ParentRuleNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRule) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
+func (o PrivateEndpointOutboundRuleOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRule) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.
@@ -58148,10 +58153,9 @@ type PrivateEndpointOutboundRuleResponse struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
 	Category *string `pulumi:"category"`
 	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination *PrivateEndpointDestinationResponse `pulumi:"destination"`
-	// The dependency rule name.
-	ParentRuleName  string   `pulumi:"parentRuleName"`
-	ParentRuleNames []string `pulumi:"parentRuleNames"`
+	Destination     *PrivateEndpointDestinationResponse `pulumi:"destination"`
+	Fqdns           []string                            `pulumi:"fqdns"`
+	ParentRuleNames []string                            `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -58184,9 +58188,8 @@ func (o PrivateEndpointOutboundRuleResponseOutput) Destination() PrivateEndpoint
 	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *PrivateEndpointDestinationResponse { return v.Destination }).(PrivateEndpointDestinationResponsePtrOutput)
 }
 
-// The dependency rule name.
-func (o PrivateEndpointOutboundRuleResponseOutput) ParentRuleName() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.ParentRuleName }).(pulumi.StringOutput)
+func (o PrivateEndpointOutboundRuleResponseOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
 }
 
 func (o PrivateEndpointOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {

@@ -1263,9 +1263,8 @@ type PrivateEndpointOutboundRuleResponse struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
 	Category *string `pulumi:"category"`
 	// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-	Destination *PrivateEndpointDestinationResponse `pulumi:"destination"`
-	// The dependency rule name.
-	ParentRuleName string `pulumi:"parentRuleName"`
+	Destination     *PrivateEndpointDestinationResponse `pulumi:"destination"`
+	ParentRuleNames []string                            `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -1298,9 +1297,8 @@ func (o PrivateEndpointOutboundRuleResponseOutput) Destination() PrivateEndpoint
 	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) *PrivateEndpointDestinationResponse { return v.Destination }).(PrivateEndpointDestinationResponsePtrOutput)
 }
 
-// The dependency rule name.
-func (o PrivateEndpointOutboundRuleResponseOutput) ParentRuleName() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) string { return v.ParentRuleName }).(pulumi.StringOutput)
+func (o PrivateEndpointOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.
@@ -12646,7 +12644,8 @@ type ServiceTagOutboundRuleResponse struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
 	Category *string `pulumi:"category"`
 	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
-	Destination *ServiceTagDestinationResponse `pulumi:"destination"`
+	Destination     *ServiceTagDestinationResponse `pulumi:"destination"`
+	ParentRuleNames []string                       `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -12677,6 +12676,10 @@ func (o ServiceTagOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput 
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinationResponsePtrOutput {
 	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *ServiceTagDestinationResponse { return v.Destination }).(ServiceTagDestinationResponsePtrOutput)
+}
+
+func (o ServiceTagOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.
