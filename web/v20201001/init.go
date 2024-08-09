@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppDeploymentSlot{}
 	case "azure-native:web/v20201001:WebAppDiagnosticLogsConfiguration":
 		r = &WebAppDiagnosticLogsConfiguration{}
+	case "azure-native:web/v20201001:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20201001:WebAppDomainOwnershipIdentifier":
 		r = &WebAppDomainOwnershipIdentifier{}
 	case "azure-native:web/v20201001:WebAppDomainOwnershipIdentifierSlot":

@@ -36540,8 +36540,9 @@ func (o FqdnOutboundRuleOutput) Type() pulumi.StringOutput {
 // FQDN Outbound Rule for the managed network of a machine learning workspace.
 type FqdnOutboundRuleResponse struct {
 	// Category of a managed network Outbound Rule of a machine learning workspace.
-	Category    *string `pulumi:"category"`
-	Destination *string `pulumi:"destination"`
+	Category        *string  `pulumi:"category"`
+	Destination     *string  `pulumi:"destination"`
+	ParentRuleNames []string `pulumi:"parentRuleNames"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
 	Status *string `pulumi:"status"`
 	// Type of a managed network Outbound Rule of a machine learning workspace.
@@ -36571,6 +36572,10 @@ func (o FqdnOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
 
 func (o FqdnOutboundRuleResponseOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FqdnOutboundRuleResponse) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+func (o FqdnOutboundRuleResponseOutput) ParentRuleNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FqdnOutboundRuleResponse) []string { return v.ParentRuleNames }).(pulumi.StringArrayOutput)
 }
 
 // Type of a managed network Outbound Rule of a machine learning workspace.

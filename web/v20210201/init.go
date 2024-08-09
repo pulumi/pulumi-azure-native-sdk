@@ -27,10 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppAuthSettingsV2{}
 	case "azure-native:web/v20210201:WebAppAuthSettingsV2Slot":
 		r = &WebAppAuthSettingsV2Slot{}
+	case "azure-native:web/v20210201:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20210201:WebAppFtpAllowed":
 		r = &WebAppFtpAllowed{}
+	case "azure-native:web/v20210201:WebAppFtpAllowedSlot":
+		r = &WebAppFtpAllowedSlot{}
 	case "azure-native:web/v20210201:WebAppScmAllowed":
 		r = &WebAppScmAllowed{}
+	case "azure-native:web/v20210201:WebAppScmAllowedSlot":
+		r = &WebAppScmAllowedSlot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

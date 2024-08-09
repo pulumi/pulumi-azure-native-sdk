@@ -83,12 +83,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppDeploymentSlot{}
 	case "azure-native:web/v20231201:WebAppDiagnosticLogsConfiguration":
 		r = &WebAppDiagnosticLogsConfiguration{}
+	case "azure-native:web/v20231201:WebAppDiagnosticLogsConfigurationSlot":
+		r = &WebAppDiagnosticLogsConfigurationSlot{}
 	case "azure-native:web/v20231201:WebAppDomainOwnershipIdentifier":
 		r = &WebAppDomainOwnershipIdentifier{}
 	case "azure-native:web/v20231201:WebAppDomainOwnershipIdentifierSlot":
 		r = &WebAppDomainOwnershipIdentifierSlot{}
 	case "azure-native:web/v20231201:WebAppFtpAllowed":
 		r = &WebAppFtpAllowed{}
+	case "azure-native:web/v20231201:WebAppFtpAllowedSlot":
+		r = &WebAppFtpAllowedSlot{}
 	case "azure-native:web/v20231201:WebAppFunction":
 		r = &WebAppFunction{}
 	case "azure-native:web/v20231201:WebAppHostNameBinding":
@@ -123,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAppRelayServiceConnectionSlot{}
 	case "azure-native:web/v20231201:WebAppScmAllowed":
 		r = &WebAppScmAllowed{}
+	case "azure-native:web/v20231201:WebAppScmAllowedSlot":
+		r = &WebAppScmAllowedSlot{}
 	case "azure-native:web/v20231201:WebAppSiteContainer":
 		r = &WebAppSiteContainer{}
 	case "azure-native:web/v20231201:WebAppSiteContainerSlot":
