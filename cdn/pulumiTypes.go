@@ -15877,6 +15877,168 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// TargetEndpoint object that forms a traffic endpoint.
+type TargetEndpoint struct {
+	// The Ports to be allowed for the FQDN.
+	Ports []int `pulumi:"ports"`
+	// The FQDN for traffic endpoint.
+	TargetFqdn *string `pulumi:"targetFqdn"`
+}
+
+// TargetEndpointInput is an input type that accepts TargetEndpointArgs and TargetEndpointOutput values.
+// You can construct a concrete instance of `TargetEndpointInput` via:
+//
+//	TargetEndpointArgs{...}
+type TargetEndpointInput interface {
+	pulumi.Input
+
+	ToTargetEndpointOutput() TargetEndpointOutput
+	ToTargetEndpointOutputWithContext(context.Context) TargetEndpointOutput
+}
+
+// TargetEndpoint object that forms a traffic endpoint.
+type TargetEndpointArgs struct {
+	// The Ports to be allowed for the FQDN.
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
+	// The FQDN for traffic endpoint.
+	TargetFqdn pulumi.StringPtrInput `pulumi:"targetFqdn"`
+}
+
+func (TargetEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetEndpoint)(nil)).Elem()
+}
+
+func (i TargetEndpointArgs) ToTargetEndpointOutput() TargetEndpointOutput {
+	return i.ToTargetEndpointOutputWithContext(context.Background())
+}
+
+func (i TargetEndpointArgs) ToTargetEndpointOutputWithContext(ctx context.Context) TargetEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetEndpointOutput)
+}
+
+// TargetEndpointArrayInput is an input type that accepts TargetEndpointArray and TargetEndpointArrayOutput values.
+// You can construct a concrete instance of `TargetEndpointArrayInput` via:
+//
+//	TargetEndpointArray{ TargetEndpointArgs{...} }
+type TargetEndpointArrayInput interface {
+	pulumi.Input
+
+	ToTargetEndpointArrayOutput() TargetEndpointArrayOutput
+	ToTargetEndpointArrayOutputWithContext(context.Context) TargetEndpointArrayOutput
+}
+
+type TargetEndpointArray []TargetEndpointInput
+
+func (TargetEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetEndpoint)(nil)).Elem()
+}
+
+func (i TargetEndpointArray) ToTargetEndpointArrayOutput() TargetEndpointArrayOutput {
+	return i.ToTargetEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i TargetEndpointArray) ToTargetEndpointArrayOutputWithContext(ctx context.Context) TargetEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetEndpointArrayOutput)
+}
+
+// TargetEndpoint object that forms a traffic endpoint.
+type TargetEndpointOutput struct{ *pulumi.OutputState }
+
+func (TargetEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetEndpoint)(nil)).Elem()
+}
+
+func (o TargetEndpointOutput) ToTargetEndpointOutput() TargetEndpointOutput {
+	return o
+}
+
+func (o TargetEndpointOutput) ToTargetEndpointOutputWithContext(ctx context.Context) TargetEndpointOutput {
+	return o
+}
+
+// The Ports to be allowed for the FQDN.
+func (o TargetEndpointOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TargetEndpoint) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+// The FQDN for traffic endpoint.
+func (o TargetEndpointOutput) TargetFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetEndpoint) *string { return v.TargetFqdn }).(pulumi.StringPtrOutput)
+}
+
+type TargetEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetEndpoint)(nil)).Elem()
+}
+
+func (o TargetEndpointArrayOutput) ToTargetEndpointArrayOutput() TargetEndpointArrayOutput {
+	return o
+}
+
+func (o TargetEndpointArrayOutput) ToTargetEndpointArrayOutputWithContext(ctx context.Context) TargetEndpointArrayOutput {
+	return o
+}
+
+func (o TargetEndpointArrayOutput) Index(i pulumi.IntInput) TargetEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetEndpoint {
+		return vs[0].([]TargetEndpoint)[vs[1].(int)]
+	}).(TargetEndpointOutput)
+}
+
+// TargetEndpoint object that forms a traffic endpoint.
+type TargetEndpointResponse struct {
+	// The Ports to be allowed for the FQDN.
+	Ports []int `pulumi:"ports"`
+	// The FQDN for traffic endpoint.
+	TargetFqdn *string `pulumi:"targetFqdn"`
+}
+
+// TargetEndpoint object that forms a traffic endpoint.
+type TargetEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetEndpointResponse)(nil)).Elem()
+}
+
+func (o TargetEndpointResponseOutput) ToTargetEndpointResponseOutput() TargetEndpointResponseOutput {
+	return o
+}
+
+func (o TargetEndpointResponseOutput) ToTargetEndpointResponseOutputWithContext(ctx context.Context) TargetEndpointResponseOutput {
+	return o
+}
+
+// The Ports to be allowed for the FQDN.
+func (o TargetEndpointResponseOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TargetEndpointResponse) []int { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+// The FQDN for traffic endpoint.
+func (o TargetEndpointResponseOutput) TargetFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetEndpointResponse) *string { return v.TargetFqdn }).(pulumi.StringPtrOutput)
+}
+
+type TargetEndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetEndpointResponse)(nil)).Elem()
+}
+
+func (o TargetEndpointResponseArrayOutput) ToTargetEndpointResponseArrayOutput() TargetEndpointResponseArrayOutput {
+	return o
+}
+
+func (o TargetEndpointResponseArrayOutput) ToTargetEndpointResponseArrayOutputWithContext(ctx context.Context) TargetEndpointResponseArrayOutput {
+	return o
+}
+
+func (o TargetEndpointResponseArrayOutput) Index(i pulumi.IntInput) TargetEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetEndpointResponse {
+		return vs[0].([]TargetEndpointResponse)[vs[1].(int)]
+	}).(TargetEndpointResponseOutput)
+}
+
 // Defines the parameters for UrlFileExtension match conditions
 type UrlFileExtensionMatchConditionParameters struct {
 	// The match value for the condition of the delivery rule
@@ -18175,6 +18337,10 @@ func init() {
 	pulumi.RegisterOutputType(SslProtocolMatchConditionParametersOutput{})
 	pulumi.RegisterOutputType(SslProtocolMatchConditionParametersResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TargetEndpointOutput{})
+	pulumi.RegisterOutputType(TargetEndpointArrayOutput{})
+	pulumi.RegisterOutputType(TargetEndpointResponseOutput{})
+	pulumi.RegisterOutputType(TargetEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(UrlFileExtensionMatchConditionParametersOutput{})
 	pulumi.RegisterOutputType(UrlFileExtensionMatchConditionParametersResponseOutput{})
 	pulumi.RegisterOutputType(UrlFileNameMatchConditionParametersOutput{})

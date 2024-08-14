@@ -9289,6 +9289,170 @@ func (in *transformTypePtr) ToTransformTypePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(TransformTypePtrOutput)
 }
 
+// Protocol this tunnel will use for allowing traffic to backends.
+type TunnelType string
+
+const (
+	TunnelTypeHttpConnect = TunnelType("HttpConnect")
+)
+
+func (TunnelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelType)(nil)).Elem()
+}
+
+func (e TunnelType) ToTunnelTypeOutput() TunnelTypeOutput {
+	return pulumi.ToOutput(e).(TunnelTypeOutput)
+}
+
+func (e TunnelType) ToTunnelTypeOutputWithContext(ctx context.Context) TunnelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TunnelTypeOutput)
+}
+
+func (e TunnelType) ToTunnelTypePtrOutput() TunnelTypePtrOutput {
+	return e.ToTunnelTypePtrOutputWithContext(context.Background())
+}
+
+func (e TunnelType) ToTunnelTypePtrOutputWithContext(ctx context.Context) TunnelTypePtrOutput {
+	return TunnelType(e).ToTunnelTypeOutputWithContext(ctx).ToTunnelTypePtrOutputWithContext(ctx)
+}
+
+func (e TunnelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TunnelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TunnelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TunnelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TunnelTypeOutput struct{ *pulumi.OutputState }
+
+func (TunnelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelType)(nil)).Elem()
+}
+
+func (o TunnelTypeOutput) ToTunnelTypeOutput() TunnelTypeOutput {
+	return o
+}
+
+func (o TunnelTypeOutput) ToTunnelTypeOutputWithContext(ctx context.Context) TunnelTypeOutput {
+	return o
+}
+
+func (o TunnelTypeOutput) ToTunnelTypePtrOutput() TunnelTypePtrOutput {
+	return o.ToTunnelTypePtrOutputWithContext(context.Background())
+}
+
+func (o TunnelTypeOutput) ToTunnelTypePtrOutputWithContext(ctx context.Context) TunnelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelType) *TunnelType {
+		return &v
+	}).(TunnelTypePtrOutput)
+}
+
+func (o TunnelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TunnelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TunnelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TunnelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TunnelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TunnelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TunnelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelType)(nil)).Elem()
+}
+
+func (o TunnelTypePtrOutput) ToTunnelTypePtrOutput() TunnelTypePtrOutput {
+	return o
+}
+
+func (o TunnelTypePtrOutput) ToTunnelTypePtrOutputWithContext(ctx context.Context) TunnelTypePtrOutput {
+	return o
+}
+
+func (o TunnelTypePtrOutput) Elem() TunnelTypeOutput {
+	return o.ApplyT(func(v *TunnelType) TunnelType {
+		if v != nil {
+			return *v
+		}
+		var ret TunnelType
+		return ret
+	}).(TunnelTypeOutput)
+}
+
+func (o TunnelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TunnelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TunnelTypeInput is an input type that accepts values of the TunnelType enum
+// A concrete instance of `TunnelTypeInput` can be one of the following:
+//
+//	TunnelTypeHttpConnect
+type TunnelTypeInput interface {
+	pulumi.Input
+
+	ToTunnelTypeOutput() TunnelTypeOutput
+	ToTunnelTypeOutputWithContext(context.Context) TunnelTypeOutput
+}
+
+var tunnelTypePtrType = reflect.TypeOf((**TunnelType)(nil)).Elem()
+
+type TunnelTypePtrInput interface {
+	pulumi.Input
+
+	ToTunnelTypePtrOutput() TunnelTypePtrOutput
+	ToTunnelTypePtrOutputWithContext(context.Context) TunnelTypePtrOutput
+}
+
+type tunnelTypePtr string
+
+func TunnelTypePtr(v string) TunnelTypePtrInput {
+	return (*tunnelTypePtr)(&v)
+}
+
+func (*tunnelTypePtr) ElementType() reflect.Type {
+	return tunnelTypePtrType
+}
+
+func (in *tunnelTypePtr) ToTunnelTypePtrOutput() TunnelTypePtrOutput {
+	return pulumi.ToOutput(in).(TunnelTypePtrOutput)
+}
+
+func (in *tunnelTypePtr) ToTunnelTypePtrOutputWithContext(ctx context.Context) TunnelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TunnelTypePtrOutput)
+}
+
 // Describes operator to be matched
 type UrlFileExtensionOperator string
 
@@ -10126,6 +10290,8 @@ func init() {
 	pulumi.RegisterOutputType(TransformPtrOutput{})
 	pulumi.RegisterOutputType(TransformTypeOutput{})
 	pulumi.RegisterOutputType(TransformTypePtrOutput{})
+	pulumi.RegisterOutputType(TunnelTypeOutput{})
+	pulumi.RegisterOutputType(TunnelTypePtrOutput{})
 	pulumi.RegisterOutputType(UrlFileExtensionOperatorOutput{})
 	pulumi.RegisterOutputType(UrlFileExtensionOperatorPtrOutput{})
 	pulumi.RegisterOutputType(UrlFileNameOperatorOutput{})

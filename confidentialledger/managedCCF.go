@@ -15,7 +15,7 @@ import (
 // Managed CCF. Contains the properties of Managed CCF Resource.
 // Azure REST API version: 2023-01-26-preview.
 //
-// Other available API versions: 2023-06-28-preview.
+// Other available API versions: 2023-06-28-preview, 2024-07-09-preview.
 type ManagedCCF struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewManagedCCF(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20230628preview:ManagedCCF"),
+		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20240709preview:ManagedCCF"),
 		},
 	})
 	opts = append(opts, aliases)

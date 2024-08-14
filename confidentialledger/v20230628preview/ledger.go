@@ -59,6 +59,9 @@ func NewLedger(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20230126preview:Ledger"),
 		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20240709preview:Ledger"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

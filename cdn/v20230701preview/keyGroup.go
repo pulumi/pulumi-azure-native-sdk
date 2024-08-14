@@ -49,6 +49,9 @@ func NewKeyGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240501preview:KeyGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240601preview:KeyGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -67,6 +67,9 @@ func NewRuleSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240501preview:RuleSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240601preview:RuleSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

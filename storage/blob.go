@@ -88,7 +88,7 @@ type blobArgs struct {
 	AccessTier *BlobAccessTier `pulumi:"accessTier"`
 	// Specifies the storage account in which to create the storage container.
 	AccountName string `pulumi:"accountName"`
-	// The name of the storage blob. Must be unique within the storage container the blob is located.
+	// The name of the storage blob. Must be unique within the storage container the blob is located. If this property is not specified it will be set to the name of the resource.
 	BlobName *string `pulumi:"blobName"`
 	// The name of the storage container in which this blob should be created.
 	ContainerName string `pulumi:"containerName"`
@@ -112,7 +112,7 @@ type BlobArgs struct {
 	AccessTier BlobAccessTierPtrInput
 	// Specifies the storage account in which to create the storage container.
 	AccountName pulumi.StringInput
-	// The name of the storage blob. Must be unique within the storage container the blob is located.
+	// The name of the storage blob. Must be unique within the storage container the blob is located. If this property is not specified it will be set to the name of the resource.
 	BlobName pulumi.StringPtrInput
 	// The name of the storage container in which this blob should be created.
 	ContainerName pulumi.StringInput
