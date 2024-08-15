@@ -77,6 +77,9 @@ func NewAFDEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240501preview:AFDEndpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20240601preview:AFDEndpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AFDOrigin{}
 	case "azure-native:cdn:AFDOriginGroup":
 		r = &AFDOriginGroup{}
+	case "azure-native:cdn:AFDTargetGroup":
+		r = &AFDTargetGroup{}
 	case "azure-native:cdn:CustomDomain":
 		r = &CustomDomain{}
 	case "azure-native:cdn:Endpoint":
@@ -53,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Secret{}
 	case "azure-native:cdn:SecurityPolicy":
 		r = &SecurityPolicy{}
+	case "azure-native:cdn:TunnelPolicy":
+		r = &TunnelPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

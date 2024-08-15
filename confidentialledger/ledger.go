@@ -15,7 +15,7 @@ import (
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
 // Azure REST API version: 2022-05-13. Prior API version in Azure Native 1.x: 2020-12-01-preview.
 //
-// Other available API versions: 2023-01-26-preview, 2023-06-28-preview.
+// Other available API versions: 2023-01-26-preview, 2023-06-28-preview, 2024-07-09-preview.
 type Ledger struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewLedger(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:confidentialledger/v20230628preview:Ledger"),
+		},
+		{
+			Type: pulumi.String("azure-native:confidentialledger/v20240709preview:Ledger"),
 		},
 	})
 	opts = append(opts, aliases)
