@@ -14,7 +14,7 @@ import (
 // Gets information about a mongo cluster firewall rule.
 // Azure REST API version: 2024-03-01-preview.
 //
-// Other available API versions: 2024-06-01-preview.
+// Other available API versions: 2024-06-01-preview, 2024-07-01.
 func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallRuleResult
@@ -36,16 +36,12 @@ type LookupFirewallRuleArgs struct {
 
 // Represents a mongo cluster firewall rule.
 type LookupFirewallRuleResult struct {
-	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	EndIpAddress string `pulumi:"endIpAddress"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The provisioning state of the firewall rule.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	StartIpAddress string `pulumi:"startIpAddress"`
+	// The resource-specific properties for this resource.
+	Properties FirewallRulePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -93,11 +89,6 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithCont
 	return o
 }
 
-// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
-func (o LookupFirewallRuleResultOutput) EndIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.EndIpAddress }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFirewallRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -108,14 +99,9 @@ func (o LookupFirewallRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the firewall rule.
-func (o LookupFirewallRuleResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-func (o LookupFirewallRuleResultOutput) StartIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.StartIpAddress }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o LookupFirewallRuleResultOutput) Properties() FirewallRulePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupFirewallRuleResult) FirewallRulePropertiesResponse { return v.Properties }).(FirewallRulePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

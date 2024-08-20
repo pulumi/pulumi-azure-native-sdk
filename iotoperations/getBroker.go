@@ -13,6 +13,8 @@ import (
 
 // Get a BrokerResource
 // Azure REST API version: 2024-07-01-preview.
+//
+// Other available API versions: 2024-08-15-preview.
 func LookupBroker(ctx *pulumi.Context, args *LookupBrokerArgs, opts ...pulumi.InvokeOption) (*LookupBrokerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBrokerResult

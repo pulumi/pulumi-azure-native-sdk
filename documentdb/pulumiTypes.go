@@ -7781,6 +7781,205 @@ func (o FailoverPolicyResponseArrayOutput) Index(i pulumi.IntInput) FailoverPoli
 	}).(FailoverPolicyResponseOutput)
 }
 
+// The properties of a mongo cluster firewall rule.
+type FirewallRuleProperties struct {
+	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	EndIpAddress string `pulumi:"endIpAddress"`
+	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	StartIpAddress string `pulumi:"startIpAddress"`
+}
+
+// FirewallRulePropertiesInput is an input type that accepts FirewallRulePropertiesArgs and FirewallRulePropertiesOutput values.
+// You can construct a concrete instance of `FirewallRulePropertiesInput` via:
+//
+//	FirewallRulePropertiesArgs{...}
+type FirewallRulePropertiesInput interface {
+	pulumi.Input
+
+	ToFirewallRulePropertiesOutput() FirewallRulePropertiesOutput
+	ToFirewallRulePropertiesOutputWithContext(context.Context) FirewallRulePropertiesOutput
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesArgs struct {
+	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	EndIpAddress pulumi.StringInput `pulumi:"endIpAddress"`
+	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	StartIpAddress pulumi.StringInput `pulumi:"startIpAddress"`
+}
+
+func (FirewallRulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleProperties)(nil)).Elem()
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesOutput() FirewallRulePropertiesOutput {
+	return i.ToFirewallRulePropertiesOutputWithContext(context.Background())
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesOutputWithContext(ctx context.Context) FirewallRulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePropertiesOutput)
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return i.ToFirewallRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePropertiesOutput).ToFirewallRulePropertiesPtrOutputWithContext(ctx)
+}
+
+// FirewallRulePropertiesPtrInput is an input type that accepts FirewallRulePropertiesArgs, FirewallRulePropertiesPtr and FirewallRulePropertiesPtrOutput values.
+// You can construct a concrete instance of `FirewallRulePropertiesPtrInput` via:
+//
+//	        FirewallRulePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallRulePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput
+	ToFirewallRulePropertiesPtrOutputWithContext(context.Context) FirewallRulePropertiesPtrOutput
+}
+
+type firewallRulePropertiesPtrType FirewallRulePropertiesArgs
+
+func FirewallRulePropertiesPtr(v *FirewallRulePropertiesArgs) FirewallRulePropertiesPtrInput {
+	return (*firewallRulePropertiesPtrType)(v)
+}
+
+func (*firewallRulePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRuleProperties)(nil)).Elem()
+}
+
+func (i *firewallRulePropertiesPtrType) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return i.ToFirewallRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallRulePropertiesPtrType) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePropertiesPtrOutput)
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleProperties)(nil)).Elem()
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesOutput() FirewallRulePropertiesOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesOutputWithContext(ctx context.Context) FirewallRulePropertiesOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return o.ToFirewallRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallRuleProperties) *FirewallRuleProperties {
+		return &v
+	}).(FirewallRulePropertiesPtrOutput)
+}
+
+// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesOutput) EndIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRuleProperties) string { return v.EndIpAddress }).(pulumi.StringOutput)
+}
+
+// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesOutput) StartIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRuleProperties) string { return v.StartIpAddress }).(pulumi.StringOutput)
+}
+
+type FirewallRulePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRuleProperties)(nil)).Elem()
+}
+
+func (o FirewallRulePropertiesPtrOutput) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesPtrOutput) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesPtrOutput) Elem() FirewallRulePropertiesOutput {
+	return o.ApplyT(func(v *FirewallRuleProperties) FirewallRuleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallRuleProperties
+		return ret
+	}).(FirewallRulePropertiesOutput)
+}
+
+// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesPtrOutput) EndIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesPtrOutput) StartIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesResponse struct {
+	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	EndIpAddress string `pulumi:"endIpAddress"`
+	// The provisioning state of the firewall rule.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	StartIpAddress string `pulumi:"startIpAddress"`
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o FirewallRulePropertiesResponseOutput) ToFirewallRulePropertiesResponseOutput() FirewallRulePropertiesResponseOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesResponseOutput) ToFirewallRulePropertiesResponseOutputWithContext(ctx context.Context) FirewallRulePropertiesResponseOutput {
+	return o
+}
+
+// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesResponseOutput) EndIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRulePropertiesResponse) string { return v.EndIpAddress }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the firewall rule.
+func (o FirewallRulePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRulePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesResponseOutput) StartIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRulePropertiesResponse) string { return v.StartIpAddress }).(pulumi.StringOutput)
+}
+
 // Resource for a regional service location.
 type GraphAPIComputeRegionalServiceResourceResponse struct {
 	// The regional endpoint for GraphAPICompute.
@@ -17439,6 +17638,9 @@ func init() {
 	pulumi.RegisterOutputType(ExcludedPathResponseArrayOutput{})
 	pulumi.RegisterOutputType(FailoverPolicyResponseOutput{})
 	pulumi.RegisterOutputType(FailoverPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(FirewallRulePropertiesOutput{})
+	pulumi.RegisterOutputType(FirewallRulePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FirewallRulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeRegionalServiceResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GraphAPIComputeServiceResourcePropertiesResponseOutput{})

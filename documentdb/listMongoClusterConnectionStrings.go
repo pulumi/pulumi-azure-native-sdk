@@ -14,7 +14,7 @@ import (
 // List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
 // Azure REST API version: 2023-03-15-preview.
 //
-// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview.
+// Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview, 2024-03-01-preview, 2024-06-01-preview, 2024-07-01.
 func ListMongoClusterConnectionStrings(ctx *pulumi.Context, args *ListMongoClusterConnectionStringsArgs, opts ...pulumi.InvokeOption) (*ListMongoClusterConnectionStringsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListMongoClusterConnectionStringsResult

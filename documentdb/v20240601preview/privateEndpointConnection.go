@@ -16,16 +16,10 @@ import (
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
-	// The group ids for the private endpoint resource.
-	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The private endpoint resource.
-	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The resource-specific properties for this resource.
+	Properties PrivateEndpointConnectionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -42,15 +36,15 @@ func NewPrivateEndpointConnection(ctx *pulumi.Context,
 	if args.MongoClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'MongoClusterName'")
 	}
-	if args.PrivateLinkServiceConnectionState == nil {
-		return nil, errors.New("invalid value for required argument 'PrivateLinkServiceConnectionState'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240301preview:PrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240701:PrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -91,8 +85,8 @@ type privateEndpointConnectionArgs struct {
 	MongoClusterName string `pulumi:"mongoClusterName"`
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	// The resource-specific properties for this resource.
+	Properties *PrivateEndpointConnectionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -103,8 +97,8 @@ type PrivateEndpointConnectionArgs struct {
 	MongoClusterName pulumi.StringInput
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
+	// The resource-specific properties for this resource.
+	Properties PrivateEndpointConnectionPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -146,31 +140,16 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithCo
 	return o
 }
 
-// The group ids for the private endpoint resource.
-func (o PrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
 // The name of the resource
 func (o PrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private endpoint resource.
-func (o PrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) PrivateEndpointResponsePtrOutput { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) PrivateLinkServiceConnectionStateResponseOutput {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o PrivateEndpointConnectionOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) PrivateEndpointConnectionPropertiesResponseOutput {
+		return v.Properties
+	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

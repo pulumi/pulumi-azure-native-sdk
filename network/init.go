@@ -109,6 +109,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpAllocation{}
 	case "azure-native:network:IpGroup":
 		r = &IpGroup{}
+	case "azure-native:network:IpamPool":
+		r = &IpamPool{}
 	case "azure-native:network:LoadBalancer":
 		r = &LoadBalancer{}
 	case "azure-native:network:LoadBalancerBackendAddressPool":
@@ -179,6 +181,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PublicIPAddress{}
 	case "azure-native:network:PublicIPPrefix":
 		r = &PublicIPPrefix{}
+	case "azure-native:network:ReachabilityAnalysisIntent":
+		r = &ReachabilityAnalysisIntent{}
+	case "azure-native:network:ReachabilityAnalysisRun":
+		r = &ReachabilityAnalysisRun{}
 	case "azure-native:network:RecordSet":
 		r = &RecordSet{}
 	case "azure-native:network:Route":
@@ -209,6 +215,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceEndpointPolicy{}
 	case "azure-native:network:ServiceEndpointPolicyDefinition":
 		r = &ServiceEndpointPolicyDefinition{}
+	case "azure-native:network:StaticCidr":
+		r = &StaticCidr{}
 	case "azure-native:network:StaticMember":
 		r = &StaticMember{}
 	case "azure-native:network:Subnet":
@@ -221,6 +229,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &UserRule{}
 	case "azure-native:network:UserRuleCollection":
 		r = &UserRuleCollection{}
+	case "azure-native:network:VerifierWorkspace":
+		r = &VerifierWorkspace{}
 	case "azure-native:network:VirtualApplianceSite":
 		r = &VirtualApplianceSite{}
 	case "azure-native:network:VirtualHub":

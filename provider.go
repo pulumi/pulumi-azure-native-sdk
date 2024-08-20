@@ -26,12 +26,6 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Environment == nil {
 		args.Environment = pulumi.StringPtr("public")
 	}
-	if args.UseMsi == nil {
-		args.UseMsi = pulumi.BoolPtr(false)
-	}
-	if args.UseOidc == nil {
-		args.UseOidc = pulumi.BoolPtr(false)
-	}
 	if args.ClientCertificatePassword != nil {
 		args.ClientCertificatePassword = pulumi.ToSecret(args.ClientCertificatePassword).(pulumi.StringPtrInput)
 	}

@@ -100,6 +100,9 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20240520preview:PrivateLinkScope"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20240710:PrivateLinkScope"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

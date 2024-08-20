@@ -14,6 +14,8 @@ import (
 
 // Instance broker resource
 // Azure REST API version: 2024-07-01-preview.
+//
+// Other available API versions: 2024-08-15-preview.
 type BrokerListener struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +56,9 @@ func NewBrokerListener(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:BrokerListener"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240815preview:BrokerListener"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -49062,6 +49062,12 @@ type RestServiceLinkedService struct {
 	Resource interface{} `pulumi:"resource"`
 	// The scope of the access required. It describes what kind of access will be requested. Type: string (or Expression with resultType string).
 	Scope interface{} `pulumi:"scope"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert interface{} `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword interface{} `pulumi:"servicePrincipalEmbeddedCertPassword"`
 	// The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The application's key used in AadServicePrincipal authentication type.
@@ -49126,6 +49132,12 @@ type RestServiceLinkedServiceArgs struct {
 	Resource pulumi.Input `pulumi:"resource"`
 	// The scope of the access required. It describes what kind of access will be requested. Type: string (or Expression with resultType string).
 	Scope pulumi.Input `pulumi:"scope"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert pulumi.Input `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword pulumi.Input `pulumi:"servicePrincipalEmbeddedCertPassword"`
 	// The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).
 	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
 	// The application's key used in AadServicePrincipal authentication type.
@@ -49252,6 +49264,21 @@ func (o RestServiceLinkedServiceOutput) Scope() pulumi.AnyOutput {
 	return o.ApplyT(func(v RestServiceLinkedService) interface{} { return v.Scope }).(pulumi.AnyOutput)
 }
 
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o RestServiceLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v RestServiceLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+func (o RestServiceLinkedServiceOutput) ServicePrincipalEmbeddedCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v RestServiceLinkedService) interface{} { return v.ServicePrincipalEmbeddedCert }).(pulumi.AnyOutput)
+}
+
+// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+func (o RestServiceLinkedServiceOutput) ServicePrincipalEmbeddedCertPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v RestServiceLinkedService) interface{} { return v.ServicePrincipalEmbeddedCertPassword }).(pulumi.AnyOutput)
+}
+
 // The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).
 func (o RestServiceLinkedServiceOutput) ServicePrincipalId() pulumi.AnyOutput {
 	return o.ApplyT(func(v RestServiceLinkedService) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
@@ -49327,6 +49354,12 @@ type RestServiceLinkedServiceResponse struct {
 	Resource interface{} `pulumi:"resource"`
 	// The scope of the access required. It describes what kind of access will be requested. Type: string (or Expression with resultType string).
 	Scope interface{} `pulumi:"scope"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert interface{} `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword interface{} `pulumi:"servicePrincipalEmbeddedCertPassword"`
 	// The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The application's key used in AadServicePrincipal authentication type.
@@ -49441,6 +49474,21 @@ func (o RestServiceLinkedServiceResponseOutput) Resource() pulumi.AnyOutput {
 // The scope of the access required. It describes what kind of access will be requested. Type: string (or Expression with resultType string).
 func (o RestServiceLinkedServiceResponseOutput) Scope() pulumi.AnyOutput {
 	return o.ApplyT(func(v RestServiceLinkedServiceResponse) interface{} { return v.Scope }).(pulumi.AnyOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o RestServiceLinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v RestServiceLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+func (o RestServiceLinkedServiceResponseOutput) ServicePrincipalEmbeddedCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v RestServiceLinkedServiceResponse) interface{} { return v.ServicePrincipalEmbeddedCert }).(pulumi.AnyOutput)
+}
+
+// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+func (o RestServiceLinkedServiceResponseOutput) ServicePrincipalEmbeddedCertPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v RestServiceLinkedServiceResponse) interface{} { return v.ServicePrincipalEmbeddedCertPassword }).(pulumi.AnyOutput)
 }
 
 // The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).

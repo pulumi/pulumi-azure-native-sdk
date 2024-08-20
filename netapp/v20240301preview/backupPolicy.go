@@ -139,6 +139,9 @@ func NewBackupPolicy(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:netapp/v20231101preview:BackupPolicy"),
 		},
 		{
+			Type: pulumi.String("azure-native:netapp/v20240101:BackupPolicy"),
+		},
+		{
 			Type: pulumi.String("azure-native:netapp/v20240301:BackupPolicy"),
 		},
 	})

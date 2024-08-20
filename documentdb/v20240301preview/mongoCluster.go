@@ -16,28 +16,12 @@ import (
 type MongoCluster struct {
 	pulumi.CustomResourceState
 
-	// The administrator's login for the mongo cluster.
-	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
-	// The status of the mongo cluster.
-	ClusterStatus pulumi.StringOutput `pulumi:"clusterStatus"`
-	// The default mongo connection string for the cluster.
-	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
-	// Earliest restore timestamp in UTC ISO8601 format.
-	EarliestRestoreTime pulumi.StringOutput `pulumi:"earliestRestoreTime"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of node group specs in the cluster.
-	NodeGroupSpecs NodeGroupSpecResponseArrayOutput `pulumi:"nodeGroupSpecs"`
-	// List of private endpoint connections.
-	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
-	// The provisioning state of the mongo cluster.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Whether or not public endpoint access is allowed for this mongo cluster.
-	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// The Mongo DB server version. Defaults to the latest available version if not specified.
-	ServerVersion pulumi.StringPtrOutput `pulumi:"serverVersion"`
+	// The resource-specific properties for this resource.
+	Properties MongoClusterPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -78,6 +62,9 @@ func NewMongoCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240601preview:MongoCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240701:MongoCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -113,52 +100,28 @@ func (MongoClusterState) ElementType() reflect.Type {
 }
 
 type mongoClusterArgs struct {
-	// The administrator's login for the mongo cluster.
-	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// The password of the administrator login.
-	AdministratorLoginPassword *string `pulumi:"administratorLoginPassword"`
-	// The mode to create a mongo cluster.
-	CreateMode *string `pulumi:"createMode"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the mongo cluster.
 	MongoClusterName *string `pulumi:"mongoClusterName"`
-	// The list of node group specs in the cluster.
-	NodeGroupSpecs []NodeGroupSpec `pulumi:"nodeGroupSpecs"`
-	// Whether or not public endpoint access is allowed for this mongo cluster.
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// The resource-specific properties for this resource.
+	Properties *MongoClusterProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The parameters to create a point-in-time restore mongo cluster.
-	RestoreParameters *MongoClusterRestoreParameters `pulumi:"restoreParameters"`
-	// The Mongo DB server version. Defaults to the latest available version if not specified.
-	ServerVersion *string `pulumi:"serverVersion"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a MongoCluster resource.
 type MongoClusterArgs struct {
-	// The administrator's login for the mongo cluster.
-	AdministratorLogin pulumi.StringPtrInput
-	// The password of the administrator login.
-	AdministratorLoginPassword pulumi.StringPtrInput
-	// The mode to create a mongo cluster.
-	CreateMode pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the mongo cluster.
 	MongoClusterName pulumi.StringPtrInput
-	// The list of node group specs in the cluster.
-	NodeGroupSpecs NodeGroupSpecArrayInput
-	// Whether or not public endpoint access is allowed for this mongo cluster.
-	PublicNetworkAccess pulumi.StringPtrInput
+	// The resource-specific properties for this resource.
+	Properties MongoClusterPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The parameters to create a point-in-time restore mongo cluster.
-	RestoreParameters MongoClusterRestoreParametersPtrInput
-	// The Mongo DB server version. Defaults to the latest available version if not specified.
-	ServerVersion pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -200,26 +163,6 @@ func (o MongoClusterOutput) ToMongoClusterOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The administrator's login for the mongo cluster.
-func (o MongoClusterOutput) AdministratorLogin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringPtrOutput { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
-}
-
-// The status of the mongo cluster.
-func (o MongoClusterOutput) ClusterStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringOutput { return v.ClusterStatus }).(pulumi.StringOutput)
-}
-
-// The default mongo connection string for the cluster.
-func (o MongoClusterOutput) ConnectionString() pulumi.StringOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
-}
-
-// Earliest restore timestamp in UTC ISO8601 format.
-func (o MongoClusterOutput) EarliestRestoreTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringOutput { return v.EarliestRestoreTime }).(pulumi.StringOutput)
-}
-
 // The geo-location where the resource lives
 func (o MongoClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -230,31 +173,9 @@ func (o MongoClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongoCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of node group specs in the cluster.
-func (o MongoClusterOutput) NodeGroupSpecs() NodeGroupSpecResponseArrayOutput {
-	return o.ApplyT(func(v *MongoCluster) NodeGroupSpecResponseArrayOutput { return v.NodeGroupSpecs }).(NodeGroupSpecResponseArrayOutput)
-}
-
-// List of private endpoint connections.
-func (o MongoClusterOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *MongoCluster) PrivateEndpointConnectionResponseArrayOutput {
-		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
-}
-
-// The provisioning state of the mongo cluster.
-func (o MongoClusterOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Whether or not public endpoint access is allowed for this mongo cluster.
-func (o MongoClusterOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// The Mongo DB server version. Defaults to the latest available version if not specified.
-func (o MongoClusterOutput) ServerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MongoCluster) pulumi.StringPtrOutput { return v.ServerVersion }).(pulumi.StringPtrOutput)
+// The resource-specific properties for this resource.
+func (o MongoClusterOutput) Properties() MongoClusterPropertiesResponseOutput {
+	return o.ApplyT(func(v *MongoCluster) MongoClusterPropertiesResponseOutput { return v.Properties }).(MongoClusterPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

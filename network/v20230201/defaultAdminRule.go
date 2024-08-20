@@ -125,6 +125,9 @@ func NewDefaultAdminRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20240101:DefaultAdminRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20240101preview:DefaultAdminRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

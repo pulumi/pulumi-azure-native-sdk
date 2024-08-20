@@ -16,14 +16,10 @@ import (
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
-	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	EndIpAddress pulumi.StringOutput `pulumi:"endIpAddress"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The provisioning state of the firewall rule.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	StartIpAddress pulumi.StringOutput `pulumi:"startIpAddress"`
+	// The resource-specific properties for this resource.
+	Properties FirewallRulePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -37,17 +33,11 @@ func NewFirewallRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EndIpAddress == nil {
-		return nil, errors.New("invalid value for required argument 'EndIpAddress'")
-	}
 	if args.MongoClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'MongoClusterName'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.StartIpAddress == nil {
-		return nil, errors.New("invalid value for required argument 'StartIpAddress'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -70,6 +60,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:documentdb/v20240301preview:FirewallRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20240701:FirewallRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -106,30 +99,26 @@ func (FirewallRuleState) ElementType() reflect.Type {
 }
 
 type firewallRuleArgs struct {
-	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	EndIpAddress string `pulumi:"endIpAddress"`
 	// The name of the mongo cluster firewall rule.
 	FirewallRuleName *string `pulumi:"firewallRuleName"`
 	// The name of the mongo cluster.
 	MongoClusterName string `pulumi:"mongoClusterName"`
+	// The resource-specific properties for this resource.
+	Properties *FirewallRuleProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	StartIpAddress string `pulumi:"startIpAddress"`
 }
 
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
-	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	EndIpAddress pulumi.StringInput
 	// The name of the mongo cluster firewall rule.
 	FirewallRuleName pulumi.StringPtrInput
 	// The name of the mongo cluster.
 	MongoClusterName pulumi.StringInput
+	// The resource-specific properties for this resource.
+	Properties FirewallRulePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-	StartIpAddress pulumi.StringInput
 }
 
 func (FirewallRuleArgs) ElementType() reflect.Type {
@@ -169,24 +158,14 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
-func (o FirewallRuleOutput) EndIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.EndIpAddress }).(pulumi.StringOutput)
-}
-
 // The name of the resource
 func (o FirewallRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the firewall rule.
-func (o FirewallRuleOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-func (o FirewallRuleOutput) StartIpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.StartIpAddress }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o FirewallRuleOutput) Properties() FirewallRulePropertiesResponseOutput {
+	return o.ApplyT(func(v *FirewallRule) FirewallRulePropertiesResponseOutput { return v.Properties }).(FirewallRulePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

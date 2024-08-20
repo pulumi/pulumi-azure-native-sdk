@@ -57,6 +57,9 @@ func NewStandbyContainerGroupPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:standbypool/v20231201preview:StandbyContainerGroupPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:standbypool/v20240301:StandbyContainerGroupPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
