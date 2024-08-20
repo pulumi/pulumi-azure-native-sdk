@@ -54,6 +54,9 @@ func NewStandbyVirtualMachinePool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:standbypool:StandbyVirtualMachinePool"),
 		},
 		{
+			Type: pulumi.String("azure-native:standbypool/v20240301:StandbyVirtualMachinePool"),
+		},
+		{
 			Type: pulumi.String("azure-native:standbypool/v20240301preview:StandbyVirtualMachinePool"),
 		},
 	})

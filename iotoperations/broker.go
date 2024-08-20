@@ -14,6 +14,8 @@ import (
 
 // Instance broker resource
 // Azure REST API version: 2024-07-01-preview.
+//
+// Other available API versions: 2024-08-15-preview.
 type Broker struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewBroker(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:Broker"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240815preview:Broker"),
 		},
 	})
 	opts = append(opts, aliases)

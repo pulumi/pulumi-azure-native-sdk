@@ -6196,6 +6196,12 @@ type SharePointOnlineListLinkedService struct {
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert interface{} `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword interface{} `pulumi:"servicePrincipalEmbeddedCertPassword"`
 	// The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The client secret of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
@@ -6234,6 +6240,12 @@ type SharePointOnlineListLinkedServiceArgs struct {
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType pulumi.Input `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert pulumi.Input `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword pulumi.Input `pulumi:"servicePrincipalEmbeddedCertPassword"`
 	// The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
 	ServicePrincipalId pulumi.Input `pulumi:"servicePrincipalId"`
 	// The client secret of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
@@ -6301,6 +6313,21 @@ func (o SharePointOnlineListLinkedServiceOutput) Parameters() ParameterSpecifica
 	return o.ApplyT(func(v SharePointOnlineListLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
 }
 
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o SharePointOnlineListLinkedServiceOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v SharePointOnlineListLinkedService) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+func (o SharePointOnlineListLinkedServiceOutput) ServicePrincipalEmbeddedCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v SharePointOnlineListLinkedService) interface{} { return v.ServicePrincipalEmbeddedCert }).(pulumi.AnyOutput)
+}
+
+// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+func (o SharePointOnlineListLinkedServiceOutput) ServicePrincipalEmbeddedCertPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v SharePointOnlineListLinkedService) interface{} { return v.ServicePrincipalEmbeddedCertPassword }).(pulumi.AnyOutput)
+}
+
 // The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
 func (o SharePointOnlineListLinkedServiceOutput) ServicePrincipalId() pulumi.AnyOutput {
 	return o.ApplyT(func(v SharePointOnlineListLinkedService) interface{} { return v.ServicePrincipalId }).(pulumi.AnyOutput)
@@ -6344,6 +6371,12 @@ type SharePointOnlineListLinkedServiceResponse struct {
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+	ServicePrincipalCredentialType interface{} `pulumi:"servicePrincipalCredentialType"`
+	// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCert interface{} `pulumi:"servicePrincipalEmbeddedCert"`
+	// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+	ServicePrincipalEmbeddedCertPassword interface{} `pulumi:"servicePrincipalEmbeddedCertPassword"`
 	// The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
 	ServicePrincipalId interface{} `pulumi:"servicePrincipalId"`
 	// The client secret of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
@@ -6401,6 +6434,23 @@ func (o SharePointOnlineListLinkedServiceResponseOutput) Parameters() ParameterS
 	return o.ApplyT(func(v SharePointOnlineListLinkedServiceResponse) map[string]ParameterSpecificationResponse {
 		return v.Parameters
 	}).(ParameterSpecificationResponseMapOutput)
+}
+
+// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+func (o SharePointOnlineListLinkedServiceResponseOutput) ServicePrincipalCredentialType() pulumi.AnyOutput {
+	return o.ApplyT(func(v SharePointOnlineListLinkedServiceResponse) interface{} { return v.ServicePrincipalCredentialType }).(pulumi.AnyOutput)
+}
+
+// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+func (o SharePointOnlineListLinkedServiceResponseOutput) ServicePrincipalEmbeddedCert() pulumi.AnyOutput {
+	return o.ApplyT(func(v SharePointOnlineListLinkedServiceResponse) interface{} { return v.ServicePrincipalEmbeddedCert }).(pulumi.AnyOutput)
+}
+
+// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+func (o SharePointOnlineListLinkedServiceResponseOutput) ServicePrincipalEmbeddedCertPassword() pulumi.AnyOutput {
+	return o.ApplyT(func(v SharePointOnlineListLinkedServiceResponse) interface{} {
+		return v.ServicePrincipalEmbeddedCertPassword
+	}).(pulumi.AnyOutput)
 }
 
 // The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).

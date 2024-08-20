@@ -14,7 +14,7 @@ import (
 // Subscription Information with the alias.
 // Azure REST API version: 2021-10-01. Prior API version in Azure Native 1.x: 2020-09-01.
 //
-// Other available API versions: 2020-09-01.
+// Other available API versions: 2020-09-01, 2024-08-01-preview.
 type Alias struct {
 	pulumi.CustomResourceState
 
@@ -44,6 +44,9 @@ func NewAlias(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:subscription/v20211001:Alias"),
+		},
+		{
+			Type: pulumi.String("azure-native:subscription/v20240801preview:Alias"),
 		},
 	})
 	opts = append(opts, aliases)

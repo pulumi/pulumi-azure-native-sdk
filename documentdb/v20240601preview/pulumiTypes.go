@@ -66,6 +66,602 @@ func (o ConnectionStringResponseArrayOutput) Index(i pulumi.IntInput) Connection
 	}).(ConnectionStringResponseOutput)
 }
 
+// The properties of a mongo cluster firewall rule.
+type FirewallRuleProperties struct {
+	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	EndIpAddress string `pulumi:"endIpAddress"`
+	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	StartIpAddress string `pulumi:"startIpAddress"`
+}
+
+// FirewallRulePropertiesInput is an input type that accepts FirewallRulePropertiesArgs and FirewallRulePropertiesOutput values.
+// You can construct a concrete instance of `FirewallRulePropertiesInput` via:
+//
+//	FirewallRulePropertiesArgs{...}
+type FirewallRulePropertiesInput interface {
+	pulumi.Input
+
+	ToFirewallRulePropertiesOutput() FirewallRulePropertiesOutput
+	ToFirewallRulePropertiesOutputWithContext(context.Context) FirewallRulePropertiesOutput
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesArgs struct {
+	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	EndIpAddress pulumi.StringInput `pulumi:"endIpAddress"`
+	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	StartIpAddress pulumi.StringInput `pulumi:"startIpAddress"`
+}
+
+func (FirewallRulePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleProperties)(nil)).Elem()
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesOutput() FirewallRulePropertiesOutput {
+	return i.ToFirewallRulePropertiesOutputWithContext(context.Background())
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesOutputWithContext(ctx context.Context) FirewallRulePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePropertiesOutput)
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return i.ToFirewallRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallRulePropertiesArgs) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePropertiesOutput).ToFirewallRulePropertiesPtrOutputWithContext(ctx)
+}
+
+// FirewallRulePropertiesPtrInput is an input type that accepts FirewallRulePropertiesArgs, FirewallRulePropertiesPtr and FirewallRulePropertiesPtrOutput values.
+// You can construct a concrete instance of `FirewallRulePropertiesPtrInput` via:
+//
+//	        FirewallRulePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallRulePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput
+	ToFirewallRulePropertiesPtrOutputWithContext(context.Context) FirewallRulePropertiesPtrOutput
+}
+
+type firewallRulePropertiesPtrType FirewallRulePropertiesArgs
+
+func FirewallRulePropertiesPtr(v *FirewallRulePropertiesArgs) FirewallRulePropertiesPtrInput {
+	return (*firewallRulePropertiesPtrType)(v)
+}
+
+func (*firewallRulePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRuleProperties)(nil)).Elem()
+}
+
+func (i *firewallRulePropertiesPtrType) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return i.ToFirewallRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallRulePropertiesPtrType) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePropertiesPtrOutput)
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleProperties)(nil)).Elem()
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesOutput() FirewallRulePropertiesOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesOutputWithContext(ctx context.Context) FirewallRulePropertiesOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return o.ToFirewallRulePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallRulePropertiesOutput) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallRuleProperties) *FirewallRuleProperties {
+		return &v
+	}).(FirewallRulePropertiesPtrOutput)
+}
+
+// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesOutput) EndIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRuleProperties) string { return v.EndIpAddress }).(pulumi.StringOutput)
+}
+
+// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesOutput) StartIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRuleProperties) string { return v.StartIpAddress }).(pulumi.StringOutput)
+}
+
+type FirewallRulePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRuleProperties)(nil)).Elem()
+}
+
+func (o FirewallRulePropertiesPtrOutput) ToFirewallRulePropertiesPtrOutput() FirewallRulePropertiesPtrOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesPtrOutput) ToFirewallRulePropertiesPtrOutputWithContext(ctx context.Context) FirewallRulePropertiesPtrOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesPtrOutput) Elem() FirewallRulePropertiesOutput {
+	return o.ApplyT(func(v *FirewallRuleProperties) FirewallRuleProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallRuleProperties
+		return ret
+	}).(FirewallRulePropertiesOutput)
+}
+
+// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesPtrOutput) EndIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesPtrOutput) StartIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRuleProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartIpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesResponse struct {
+	// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	EndIpAddress string `pulumi:"endIpAddress"`
+	// The provisioning state of the firewall rule.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+	StartIpAddress string `pulumi:"startIpAddress"`
+}
+
+// The properties of a mongo cluster firewall rule.
+type FirewallRulePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FirewallRulePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRulePropertiesResponse)(nil)).Elem()
+}
+
+func (o FirewallRulePropertiesResponseOutput) ToFirewallRulePropertiesResponseOutput() FirewallRulePropertiesResponseOutput {
+	return o
+}
+
+func (o FirewallRulePropertiesResponseOutput) ToFirewallRulePropertiesResponseOutputWithContext(ctx context.Context) FirewallRulePropertiesResponseOutput {
+	return o
+}
+
+// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesResponseOutput) EndIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRulePropertiesResponse) string { return v.EndIpAddress }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the firewall rule.
+func (o FirewallRulePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRulePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+func (o FirewallRulePropertiesResponseOutput) StartIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallRulePropertiesResponse) string { return v.StartIpAddress }).(pulumi.StringOutput)
+}
+
+// The properties of a mongo cluster.
+type MongoClusterProperties struct {
+	// The administrator's login for the mongo cluster.
+	AdministratorLogin *string `pulumi:"administratorLogin"`
+	// The password of the administrator login.
+	AdministratorLoginPassword *string `pulumi:"administratorLoginPassword"`
+	// The mode to create a mongo cluster.
+	CreateMode *string `pulumi:"createMode"`
+	// The list of node group specs in the cluster.
+	NodeGroupSpecs []NodeGroupSpec `pulumi:"nodeGroupSpecs"`
+	// List of private endpoint connections.
+	PreviewFeatures []string `pulumi:"previewFeatures"`
+	// Whether or not public endpoint access is allowed for this mongo cluster.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// The parameters to create a replica mongo cluster.
+	ReplicaParameters *MongoClusterReplicaParameters `pulumi:"replicaParameters"`
+	// The parameters to create a point-in-time restore mongo cluster.
+	RestoreParameters *MongoClusterRestoreParameters `pulumi:"restoreParameters"`
+	// The Mongo DB server version. Defaults to the latest available version if not specified.
+	ServerVersion *string `pulumi:"serverVersion"`
+}
+
+// MongoClusterPropertiesInput is an input type that accepts MongoClusterPropertiesArgs and MongoClusterPropertiesOutput values.
+// You can construct a concrete instance of `MongoClusterPropertiesInput` via:
+//
+//	MongoClusterPropertiesArgs{...}
+type MongoClusterPropertiesInput interface {
+	pulumi.Input
+
+	ToMongoClusterPropertiesOutput() MongoClusterPropertiesOutput
+	ToMongoClusterPropertiesOutputWithContext(context.Context) MongoClusterPropertiesOutput
+}
+
+// The properties of a mongo cluster.
+type MongoClusterPropertiesArgs struct {
+	// The administrator's login for the mongo cluster.
+	AdministratorLogin pulumi.StringPtrInput `pulumi:"administratorLogin"`
+	// The password of the administrator login.
+	AdministratorLoginPassword pulumi.StringPtrInput `pulumi:"administratorLoginPassword"`
+	// The mode to create a mongo cluster.
+	CreateMode pulumi.StringPtrInput `pulumi:"createMode"`
+	// The list of node group specs in the cluster.
+	NodeGroupSpecs NodeGroupSpecArrayInput `pulumi:"nodeGroupSpecs"`
+	// List of private endpoint connections.
+	PreviewFeatures pulumi.StringArrayInput `pulumi:"previewFeatures"`
+	// Whether or not public endpoint access is allowed for this mongo cluster.
+	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
+	// The parameters to create a replica mongo cluster.
+	ReplicaParameters MongoClusterReplicaParametersPtrInput `pulumi:"replicaParameters"`
+	// The parameters to create a point-in-time restore mongo cluster.
+	RestoreParameters MongoClusterRestoreParametersPtrInput `pulumi:"restoreParameters"`
+	// The Mongo DB server version. Defaults to the latest available version if not specified.
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
+}
+
+func (MongoClusterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoClusterProperties)(nil)).Elem()
+}
+
+func (i MongoClusterPropertiesArgs) ToMongoClusterPropertiesOutput() MongoClusterPropertiesOutput {
+	return i.ToMongoClusterPropertiesOutputWithContext(context.Background())
+}
+
+func (i MongoClusterPropertiesArgs) ToMongoClusterPropertiesOutputWithContext(ctx context.Context) MongoClusterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoClusterPropertiesOutput)
+}
+
+func (i MongoClusterPropertiesArgs) ToMongoClusterPropertiesPtrOutput() MongoClusterPropertiesPtrOutput {
+	return i.ToMongoClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MongoClusterPropertiesArgs) ToMongoClusterPropertiesPtrOutputWithContext(ctx context.Context) MongoClusterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoClusterPropertiesOutput).ToMongoClusterPropertiesPtrOutputWithContext(ctx)
+}
+
+// MongoClusterPropertiesPtrInput is an input type that accepts MongoClusterPropertiesArgs, MongoClusterPropertiesPtr and MongoClusterPropertiesPtrOutput values.
+// You can construct a concrete instance of `MongoClusterPropertiesPtrInput` via:
+//
+//	        MongoClusterPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MongoClusterPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMongoClusterPropertiesPtrOutput() MongoClusterPropertiesPtrOutput
+	ToMongoClusterPropertiesPtrOutputWithContext(context.Context) MongoClusterPropertiesPtrOutput
+}
+
+type mongoClusterPropertiesPtrType MongoClusterPropertiesArgs
+
+func MongoClusterPropertiesPtr(v *MongoClusterPropertiesArgs) MongoClusterPropertiesPtrInput {
+	return (*mongoClusterPropertiesPtrType)(v)
+}
+
+func (*mongoClusterPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoClusterProperties)(nil)).Elem()
+}
+
+func (i *mongoClusterPropertiesPtrType) ToMongoClusterPropertiesPtrOutput() MongoClusterPropertiesPtrOutput {
+	return i.ToMongoClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *mongoClusterPropertiesPtrType) ToMongoClusterPropertiesPtrOutputWithContext(ctx context.Context) MongoClusterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoClusterPropertiesPtrOutput)
+}
+
+// The properties of a mongo cluster.
+type MongoClusterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MongoClusterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoClusterProperties)(nil)).Elem()
+}
+
+func (o MongoClusterPropertiesOutput) ToMongoClusterPropertiesOutput() MongoClusterPropertiesOutput {
+	return o
+}
+
+func (o MongoClusterPropertiesOutput) ToMongoClusterPropertiesOutputWithContext(ctx context.Context) MongoClusterPropertiesOutput {
+	return o
+}
+
+func (o MongoClusterPropertiesOutput) ToMongoClusterPropertiesPtrOutput() MongoClusterPropertiesPtrOutput {
+	return o.ToMongoClusterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MongoClusterPropertiesOutput) ToMongoClusterPropertiesPtrOutputWithContext(ctx context.Context) MongoClusterPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MongoClusterProperties) *MongoClusterProperties {
+		return &v
+	}).(MongoClusterPropertiesPtrOutput)
+}
+
+// The administrator's login for the mongo cluster.
+func (o MongoClusterPropertiesOutput) AdministratorLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
+}
+
+// The password of the administrator login.
+func (o MongoClusterPropertiesOutput) AdministratorLoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *string { return v.AdministratorLoginPassword }).(pulumi.StringPtrOutput)
+}
+
+// The mode to create a mongo cluster.
+func (o MongoClusterPropertiesOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *string { return v.CreateMode }).(pulumi.StringPtrOutput)
+}
+
+// The list of node group specs in the cluster.
+func (o MongoClusterPropertiesOutput) NodeGroupSpecs() NodeGroupSpecArrayOutput {
+	return o.ApplyT(func(v MongoClusterProperties) []NodeGroupSpec { return v.NodeGroupSpecs }).(NodeGroupSpecArrayOutput)
+}
+
+// List of private endpoint connections.
+func (o MongoClusterPropertiesOutput) PreviewFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MongoClusterProperties) []string { return v.PreviewFeatures }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not public endpoint access is allowed for this mongo cluster.
+func (o MongoClusterPropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// The parameters to create a replica mongo cluster.
+func (o MongoClusterPropertiesOutput) ReplicaParameters() MongoClusterReplicaParametersPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *MongoClusterReplicaParameters { return v.ReplicaParameters }).(MongoClusterReplicaParametersPtrOutput)
+}
+
+// The parameters to create a point-in-time restore mongo cluster.
+func (o MongoClusterPropertiesOutput) RestoreParameters() MongoClusterRestoreParametersPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *MongoClusterRestoreParameters { return v.RestoreParameters }).(MongoClusterRestoreParametersPtrOutput)
+}
+
+// The Mongo DB server version. Defaults to the latest available version if not specified.
+func (o MongoClusterPropertiesOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterProperties) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+type MongoClusterPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MongoClusterPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoClusterProperties)(nil)).Elem()
+}
+
+func (o MongoClusterPropertiesPtrOutput) ToMongoClusterPropertiesPtrOutput() MongoClusterPropertiesPtrOutput {
+	return o
+}
+
+func (o MongoClusterPropertiesPtrOutput) ToMongoClusterPropertiesPtrOutputWithContext(ctx context.Context) MongoClusterPropertiesPtrOutput {
+	return o
+}
+
+func (o MongoClusterPropertiesPtrOutput) Elem() MongoClusterPropertiesOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) MongoClusterProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MongoClusterProperties
+		return ret
+	}).(MongoClusterPropertiesOutput)
+}
+
+// The administrator's login for the mongo cluster.
+func (o MongoClusterPropertiesPtrOutput) AdministratorLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdministratorLogin
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password of the administrator login.
+func (o MongoClusterPropertiesPtrOutput) AdministratorLoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdministratorLoginPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mode to create a mongo cluster.
+func (o MongoClusterPropertiesPtrOutput) CreateMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of node group specs in the cluster.
+func (o MongoClusterPropertiesPtrOutput) NodeGroupSpecs() NodeGroupSpecArrayOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) []NodeGroupSpec {
+		if v == nil {
+			return nil
+		}
+		return v.NodeGroupSpecs
+	}).(NodeGroupSpecArrayOutput)
+}
+
+// List of private endpoint connections.
+func (o MongoClusterPropertiesPtrOutput) PreviewFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreviewFeatures
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether or not public endpoint access is allowed for this mongo cluster.
+func (o MongoClusterPropertiesPtrOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicNetworkAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// The parameters to create a replica mongo cluster.
+func (o MongoClusterPropertiesPtrOutput) ReplicaParameters() MongoClusterReplicaParametersPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *MongoClusterReplicaParameters {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaParameters
+	}).(MongoClusterReplicaParametersPtrOutput)
+}
+
+// The parameters to create a point-in-time restore mongo cluster.
+func (o MongoClusterPropertiesPtrOutput) RestoreParameters() MongoClusterRestoreParametersPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *MongoClusterRestoreParameters {
+		if v == nil {
+			return nil
+		}
+		return v.RestoreParameters
+	}).(MongoClusterRestoreParametersPtrOutput)
+}
+
+// The Mongo DB server version. Defaults to the latest available version if not specified.
+func (o MongoClusterPropertiesPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of a mongo cluster.
+type MongoClusterPropertiesResponse struct {
+	// The administrator's login for the mongo cluster.
+	AdministratorLogin *string `pulumi:"administratorLogin"`
+	// The status of the mongo cluster.
+	ClusterStatus string `pulumi:"clusterStatus"`
+	// The default mongo connection string for the cluster.
+	ConnectionString string `pulumi:"connectionString"`
+	// Earliest restore timestamp in UTC ISO8601 format.
+	EarliestRestoreTime string `pulumi:"earliestRestoreTime"`
+	// The infrastructure version the cluster is provisioned on.
+	InfrastructureVersion string `pulumi:"infrastructureVersion"`
+	// The list of node group specs in the cluster.
+	NodeGroupSpecs []NodeGroupSpecResponse `pulumi:"nodeGroupSpecs"`
+	// List of private endpoint connections.
+	PreviewFeatures []string `pulumi:"previewFeatures"`
+	// List of private endpoint connections.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// The provisioning state of the mongo cluster.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Whether or not public endpoint access is allowed for this mongo cluster.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// The replication properties for the mongo cluster
+	Replica ReplicationPropertiesResponse `pulumi:"replica"`
+	// The Mongo DB server version. Defaults to the latest available version if not specified.
+	ServerVersion *string `pulumi:"serverVersion"`
+}
+
+// The properties of a mongo cluster.
+type MongoClusterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MongoClusterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoClusterPropertiesResponse)(nil)).Elem()
+}
+
+func (o MongoClusterPropertiesResponseOutput) ToMongoClusterPropertiesResponseOutput() MongoClusterPropertiesResponseOutput {
+	return o
+}
+
+func (o MongoClusterPropertiesResponseOutput) ToMongoClusterPropertiesResponseOutputWithContext(ctx context.Context) MongoClusterPropertiesResponseOutput {
+	return o
+}
+
+// The administrator's login for the mongo cluster.
+func (o MongoClusterPropertiesResponseOutput) AdministratorLogin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
+}
+
+// The status of the mongo cluster.
+func (o MongoClusterPropertiesResponseOutput) ClusterStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) string { return v.ClusterStatus }).(pulumi.StringOutput)
+}
+
+// The default mongo connection string for the cluster.
+func (o MongoClusterPropertiesResponseOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) string { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
+// Earliest restore timestamp in UTC ISO8601 format.
+func (o MongoClusterPropertiesResponseOutput) EarliestRestoreTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) string { return v.EarliestRestoreTime }).(pulumi.StringOutput)
+}
+
+// The infrastructure version the cluster is provisioned on.
+func (o MongoClusterPropertiesResponseOutput) InfrastructureVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) string { return v.InfrastructureVersion }).(pulumi.StringOutput)
+}
+
+// The list of node group specs in the cluster.
+func (o MongoClusterPropertiesResponseOutput) NodeGroupSpecs() NodeGroupSpecResponseArrayOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) []NodeGroupSpecResponse { return v.NodeGroupSpecs }).(NodeGroupSpecResponseArrayOutput)
+}
+
+// List of private endpoint connections.
+func (o MongoClusterPropertiesResponseOutput) PreviewFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) []string { return v.PreviewFeatures }).(pulumi.StringArrayOutput)
+}
+
+// List of private endpoint connections.
+func (o MongoClusterPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the mongo cluster.
+func (o MongoClusterPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Whether or not public endpoint access is allowed for this mongo cluster.
+func (o MongoClusterPropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// The replication properties for the mongo cluster
+func (o MongoClusterPropertiesResponseOutput) Replica() ReplicationPropertiesResponseOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) ReplicationPropertiesResponse { return v.Replica }).(ReplicationPropertiesResponseOutput)
+}
+
+// The Mongo DB server version. Defaults to the latest available version if not specified.
+func (o MongoClusterPropertiesResponseOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoClusterPropertiesResponse) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
 // Parameters used for replica operations.
 type MongoClusterReplicaParameters struct {
 	// The location of the source cluster
@@ -594,6 +1190,197 @@ func (o NodeGroupSpecResponseArrayOutput) Index(i pulumi.IntInput) NodeGroupSpec
 	}).(NodeGroupSpecResponseOutput)
 }
 
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionProperties struct {
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+}
+
+// PrivateEndpointConnectionPropertiesInput is an input type that accepts PrivateEndpointConnectionPropertiesArgs and PrivateEndpointConnectionPropertiesOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionPropertiesInput` via:
+//
+//	PrivateEndpointConnectionPropertiesArgs{...}
+type PrivateEndpointConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionPropertiesOutput() PrivateEndpointConnectionPropertiesOutput
+	ToPrivateEndpointConnectionPropertiesOutputWithContext(context.Context) PrivateEndpointConnectionPropertiesOutput
+}
+
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionPropertiesArgs struct {
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
+}
+
+func (PrivateEndpointConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionProperties)(nil)).Elem()
+}
+
+func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesOutput() PrivateEndpointConnectionPropertiesOutput {
+	return i.ToPrivateEndpointConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
+}
+
+func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput {
+	return i.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput).ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx)
+}
+
+// PrivateEndpointConnectionPropertiesPtrInput is an input type that accepts PrivateEndpointConnectionPropertiesArgs, PrivateEndpointConnectionPropertiesPtr and PrivateEndpointConnectionPropertiesPtrOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionPropertiesPtrInput` via:
+//
+//	        PrivateEndpointConnectionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateEndpointConnectionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput
+	ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Context) PrivateEndpointConnectionPropertiesPtrOutput
+}
+
+type privateEndpointConnectionPropertiesPtrType PrivateEndpointConnectionPropertiesArgs
+
+func PrivateEndpointConnectionPropertiesPtr(v *PrivateEndpointConnectionPropertiesArgs) PrivateEndpointConnectionPropertiesPtrInput {
+	return (*privateEndpointConnectionPropertiesPtrType)(v)
+}
+
+func (*privateEndpointConnectionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionProperties)(nil)).Elem()
+}
+
+func (i *privateEndpointConnectionPropertiesPtrType) ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput {
+	return i.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *privateEndpointConnectionPropertiesPtrType) ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPtrOutput)
+}
+
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionProperties)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesOutput() PrivateEndpointConnectionPropertiesOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput {
+	return o.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointConnectionProperties) *PrivateEndpointConnectionProperties {
+		return &v
+	}).(PrivateEndpointConnectionPropertiesPtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProperties) PrivateLinkServiceConnectionState {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateOutput)
+}
+
+type PrivateEndpointConnectionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionProperties)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesPtrOutput) ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPtrOutput) ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesPtrOutput) Elem() PrivateEndpointConnectionPropertiesOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProperties) PrivateEndpointConnectionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointConnectionProperties
+		return ret
+	}).(PrivateEndpointConnectionPropertiesOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionPropertiesPtrOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProperties) *PrivateLinkServiceConnectionState {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionPropertiesResponse struct {
+	// The group ids for the private endpoint resource.
+	GroupIds []string `pulumi:"groupIds"`
+	// The private endpoint resource.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Properties of the private endpoint connection.
+type PrivateEndpointConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutput() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponseOutput {
+	return o
+}
+
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The private endpoint resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // The private endpoint connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// The group ids for the private endpoint resource.
@@ -794,6 +1581,47 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput).ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
+}
+
+// PrivateLinkServiceConnectionStatePtrInput is an input type that accepts PrivateLinkServiceConnectionStateArgs, PrivateLinkServiceConnectionStatePtr and PrivateLinkServiceConnectionStatePtrOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePtrInput` via:
+//
+//	        PrivateLinkServiceConnectionStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateLinkServiceConnectionStatePtrInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput
+	ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePtrOutput
+}
+
+type privateLinkServiceConnectionStatePtrType PrivateLinkServiceConnectionStateArgs
+
+func PrivateLinkServiceConnectionStatePtr(v *PrivateLinkServiceConnectionStateArgs) PrivateLinkServiceConnectionStatePtrInput {
+	return (*privateLinkServiceConnectionStatePtrType)(v)
+}
+
+func (*privateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -809,6 +1637,16 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 	return o
 }
 
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
+		return &v
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -822,6 +1660,60 @@ func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrO
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) PrivateLinkServiceConnectionState {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionState
+		return ret
+	}).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// A message indicating if changes on the service provider require any updates on the consumer.
+func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reason for approval/rejection of the connection.
+func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
@@ -968,6 +1860,12 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(ConnectionStringResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStringResponseArrayOutput{})
+	pulumi.RegisterOutputType(FirewallRulePropertiesOutput{})
+	pulumi.RegisterOutputType(FirewallRulePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FirewallRulePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MongoClusterPropertiesOutput{})
+	pulumi.RegisterOutputType(MongoClusterPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MongoClusterPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MongoClusterReplicaParametersOutput{})
 	pulumi.RegisterOutputType(MongoClusterReplicaParametersPtrOutput{})
 	pulumi.RegisterOutputType(MongoClusterRestoreParametersOutput{})
@@ -976,11 +1874,15 @@ func init() {
 	pulumi.RegisterOutputType(NodeGroupSpecArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupSpecResponseOutput{})
 	pulumi.RegisterOutputType(NodeGroupSpecResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})

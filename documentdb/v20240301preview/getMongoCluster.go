@@ -31,30 +31,14 @@ type LookupMongoClusterArgs struct {
 
 // Represents a mongo cluster resource.
 type LookupMongoClusterResult struct {
-	// The administrator's login for the mongo cluster.
-	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// The status of the mongo cluster.
-	ClusterStatus string `pulumi:"clusterStatus"`
-	// The default mongo connection string for the cluster.
-	ConnectionString string `pulumi:"connectionString"`
-	// Earliest restore timestamp in UTC ISO8601 format.
-	EarliestRestoreTime string `pulumi:"earliestRestoreTime"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The list of node group specs in the cluster.
-	NodeGroupSpecs []NodeGroupSpecResponse `pulumi:"nodeGroupSpecs"`
-	// List of private endpoint connections.
-	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	// The provisioning state of the mongo cluster.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Whether or not public endpoint access is allowed for this mongo cluster.
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// The Mongo DB server version. Defaults to the latest available version if not specified.
-	ServerVersion *string `pulumi:"serverVersion"`
+	// The resource-specific properties for this resource.
+	Properties MongoClusterPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
@@ -102,26 +86,6 @@ func (o LookupMongoClusterResultOutput) ToLookupMongoClusterResultOutputWithCont
 	return o
 }
 
-// The administrator's login for the mongo cluster.
-func (o LookupMongoClusterResultOutput) AdministratorLogin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
-}
-
-// The status of the mongo cluster.
-func (o LookupMongoClusterResultOutput) ClusterStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) string { return v.ClusterStatus }).(pulumi.StringOutput)
-}
-
-// The default mongo connection string for the cluster.
-func (o LookupMongoClusterResultOutput) ConnectionString() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) string { return v.ConnectionString }).(pulumi.StringOutput)
-}
-
-// Earliest restore timestamp in UTC ISO8601 format.
-func (o LookupMongoClusterResultOutput) EarliestRestoreTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) string { return v.EarliestRestoreTime }).(pulumi.StringOutput)
-}
-
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMongoClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoClusterResult) string { return v.Id }).(pulumi.StringOutput)
@@ -137,31 +101,9 @@ func (o LookupMongoClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongoClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of node group specs in the cluster.
-func (o LookupMongoClusterResultOutput) NodeGroupSpecs() NodeGroupSpecResponseArrayOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) []NodeGroupSpecResponse { return v.NodeGroupSpecs }).(NodeGroupSpecResponseArrayOutput)
-}
-
-// List of private endpoint connections.
-func (o LookupMongoClusterResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) []PrivateEndpointConnectionResponse {
-		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
-}
-
-// The provisioning state of the mongo cluster.
-func (o LookupMongoClusterResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Whether or not public endpoint access is allowed for this mongo cluster.
-func (o LookupMongoClusterResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// The Mongo DB server version. Defaults to the latest available version if not specified.
-func (o LookupMongoClusterResultOutput) ServerVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMongoClusterResult) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+// The resource-specific properties for this resource.
+func (o LookupMongoClusterResultOutput) Properties() MongoClusterPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupMongoClusterResult) MongoClusterPropertiesResponse { return v.Properties }).(MongoClusterPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

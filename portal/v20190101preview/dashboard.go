@@ -53,6 +53,9 @@ func NewDashboard(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:portal/v20200901preview:Dashboard"),
 		},
+		{
+			Type: pulumi.String("azure-native:portal/v20221201preview:Dashboard"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

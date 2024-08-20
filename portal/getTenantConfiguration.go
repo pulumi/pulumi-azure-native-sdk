@@ -13,6 +13,8 @@ import (
 
 // Gets the tenant configuration.
 // Azure REST API version: 2020-09-01-preview.
+//
+// Other available API versions: 2022-12-01-preview.
 func LookupTenantConfiguration(ctx *pulumi.Context, args *LookupTenantConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupTenantConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTenantConfigurationResult

@@ -15,7 +15,7 @@ import (
 // A StandbyContainerGroupPoolResource.
 // Azure REST API version: 2023-12-01-preview.
 //
-// Other available API versions: 2024-03-01-preview.
+// Other available API versions: 2024-03-01, 2024-03-01-preview.
 type StandbyContainerGroupPool struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +56,9 @@ func NewStandbyContainerGroupPool(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:standbypool/v20231201preview:StandbyContainerGroupPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:standbypool/v20240301:StandbyContainerGroupPool"),
 		},
 		{
 			Type: pulumi.String("azure-native:standbypool/v20240301preview:StandbyContainerGroupPool"),

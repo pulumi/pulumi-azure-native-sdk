@@ -39,6 +39,9 @@ func NewTenantConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:portal/v20190101preview:TenantConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:portal/v20221201preview:TenantConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

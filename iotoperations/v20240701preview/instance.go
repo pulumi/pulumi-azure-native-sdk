@@ -49,6 +49,9 @@ func NewInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:iotoperations:Instance"),
 		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240815preview:Instance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

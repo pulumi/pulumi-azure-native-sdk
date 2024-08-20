@@ -20791,6 +20791,176 @@ func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceNicTypePtrOutput)
 }
 
+// Network protocol this resource applies to.
+type NetworkProtocol string
+
+const (
+	NetworkProtocolAny  = NetworkProtocol("Any")
+	NetworkProtocolTCP  = NetworkProtocol("TCP")
+	NetworkProtocolUDP  = NetworkProtocol("UDP")
+	NetworkProtocolICMP = NetworkProtocol("ICMP")
+)
+
+func (NetworkProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProtocol)(nil)).Elem()
+}
+
+func (e NetworkProtocol) ToNetworkProtocolOutput() NetworkProtocolOutput {
+	return pulumi.ToOutput(e).(NetworkProtocolOutput)
+}
+
+func (e NetworkProtocol) ToNetworkProtocolOutputWithContext(ctx context.Context) NetworkProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkProtocolOutput)
+}
+
+func (e NetworkProtocol) ToNetworkProtocolPtrOutput() NetworkProtocolPtrOutput {
+	return e.ToNetworkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkProtocol) ToNetworkProtocolPtrOutputWithContext(ctx context.Context) NetworkProtocolPtrOutput {
+	return NetworkProtocol(e).ToNetworkProtocolOutputWithContext(ctx).ToNetworkProtocolPtrOutputWithContext(ctx)
+}
+
+func (e NetworkProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkProtocolOutput struct{ *pulumi.OutputState }
+
+func (NetworkProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkProtocol)(nil)).Elem()
+}
+
+func (o NetworkProtocolOutput) ToNetworkProtocolOutput() NetworkProtocolOutput {
+	return o
+}
+
+func (o NetworkProtocolOutput) ToNetworkProtocolOutputWithContext(ctx context.Context) NetworkProtocolOutput {
+	return o
+}
+
+func (o NetworkProtocolOutput) ToNetworkProtocolPtrOutput() NetworkProtocolPtrOutput {
+	return o.ToNetworkProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkProtocolOutput) ToNetworkProtocolPtrOutputWithContext(ctx context.Context) NetworkProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProtocol) *NetworkProtocol {
+		return &v
+	}).(NetworkProtocolPtrOutput)
+}
+
+func (o NetworkProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkProtocol)(nil)).Elem()
+}
+
+func (o NetworkProtocolPtrOutput) ToNetworkProtocolPtrOutput() NetworkProtocolPtrOutput {
+	return o
+}
+
+func (o NetworkProtocolPtrOutput) ToNetworkProtocolPtrOutputWithContext(ctx context.Context) NetworkProtocolPtrOutput {
+	return o
+}
+
+func (o NetworkProtocolPtrOutput) Elem() NetworkProtocolOutput {
+	return o.ApplyT(func(v *NetworkProtocol) NetworkProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkProtocol
+		return ret
+	}).(NetworkProtocolOutput)
+}
+
+func (o NetworkProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkProtocolInput is an input type that accepts values of the NetworkProtocol enum
+// A concrete instance of `NetworkProtocolInput` can be one of the following:
+//
+//	NetworkProtocolAny
+//	NetworkProtocolTCP
+//	NetworkProtocolUDP
+//	NetworkProtocolICMP
+type NetworkProtocolInput interface {
+	pulumi.Input
+
+	ToNetworkProtocolOutput() NetworkProtocolOutput
+	ToNetworkProtocolOutputWithContext(context.Context) NetworkProtocolOutput
+}
+
+var networkProtocolPtrType = reflect.TypeOf((**NetworkProtocol)(nil)).Elem()
+
+type NetworkProtocolPtrInput interface {
+	pulumi.Input
+
+	ToNetworkProtocolPtrOutput() NetworkProtocolPtrOutput
+	ToNetworkProtocolPtrOutputWithContext(context.Context) NetworkProtocolPtrOutput
+}
+
+type networkProtocolPtr string
+
+func NetworkProtocolPtr(v string) NetworkProtocolPtrInput {
+	return (*networkProtocolPtr)(&v)
+}
+
+func (*networkProtocolPtr) ElementType() reflect.Type {
+	return networkProtocolPtrType
+}
+
+func (in *networkProtocolPtr) ToNetworkProtocolPtrOutput() NetworkProtocolPtrOutput {
+	return pulumi.ToOutput(in).(NetworkProtocolPtrOutput)
+}
+
+func (in *networkProtocolPtr) ToNetworkProtocolPtrOutputWithContext(ctx context.Context) NetworkProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkProtocolPtrOutput)
+}
+
 // Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
 type NextStep string
 
@@ -35160,6 +35330,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceMigrationPhasePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypeOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypePtrOutput{})
+	pulumi.RegisterOutputType(NetworkProtocolOutput{})
+	pulumi.RegisterOutputType(NetworkProtocolPtrOutput{})
 	pulumi.RegisterOutputType(NextStepOutput{})
 	pulumi.RegisterOutputType(NextStepPtrOutput{})
 	pulumi.RegisterOutputType(OperatorOutput{})

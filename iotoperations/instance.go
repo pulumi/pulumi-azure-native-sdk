@@ -14,6 +14,8 @@ import (
 
 // A Instance resource is a logical container for a set of child resources.
 // Azure REST API version: 2024-07-01-preview.
+//
+// Other available API versions: 2024-08-15-preview.
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -49,6 +51,9 @@ func NewInstance(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20240701preview:Instance"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20240815preview:Instance"),
 		},
 	})
 	opts = append(opts, aliases)
