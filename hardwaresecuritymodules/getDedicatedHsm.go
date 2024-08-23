@@ -13,6 +13,8 @@ import (
 
 // Gets the specified Azure dedicated HSM.
 // Azure REST API version: 2021-11-30.
+//
+// Other available API versions: 2024-06-30-preview.
 func LookupDedicatedHsm(ctx *pulumi.Context, args *LookupDedicatedHsmArgs, opts ...pulumi.InvokeOption) (*LookupDedicatedHsmResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDedicatedHsmResult

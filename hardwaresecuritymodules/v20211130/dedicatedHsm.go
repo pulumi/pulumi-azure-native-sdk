@@ -62,6 +62,9 @@ func NewDedicatedHsm(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20181031preview:DedicatedHsm"),
 		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:DedicatedHsm"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -59,6 +59,9 @@ func NewCloudHsmCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20231210preview:CloudHsmCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:CloudHsmCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

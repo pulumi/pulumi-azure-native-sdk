@@ -15,7 +15,7 @@ import (
 // The private endpoint connection resource.
 // Azure REST API version: 2022-08-31-preview.
 //
-// Other available API versions: 2023-12-10-preview.
+// Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
 type CloudHsmClusterPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20231210preview:CloudHsmClusterPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:CloudHsmClusterPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -57,6 +57,9 @@ func NewCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20231210preview:CloudHsmClusterPrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:CloudHsmClusterPrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
