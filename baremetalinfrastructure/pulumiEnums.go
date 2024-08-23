@@ -10,6 +10,598 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Name of the hardware type (vendor and/or their product name)
+type AzureBareMetalHardwareTypeNamesEnum string
+
+const (
+	AzureBareMetalHardwareTypeNamesEnum_Cisco_UCS = AzureBareMetalHardwareTypeNamesEnum("Cisco_UCS")
+	AzureBareMetalHardwareTypeNamesEnumHPE        = AzureBareMetalHardwareTypeNamesEnum("HPE")
+	AzureBareMetalHardwareTypeNamesEnumSDFLEX     = AzureBareMetalHardwareTypeNamesEnum("SDFLEX")
+)
+
+func (AzureBareMetalHardwareTypeNamesEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalHardwareTypeNamesEnum)(nil)).Elem()
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToAzureBareMetalHardwareTypeNamesEnumOutput() AzureBareMetalHardwareTypeNamesEnumOutput {
+	return pulumi.ToOutput(e).(AzureBareMetalHardwareTypeNamesEnumOutput)
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToAzureBareMetalHardwareTypeNamesEnumOutputWithContext(ctx context.Context) AzureBareMetalHardwareTypeNamesEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureBareMetalHardwareTypeNamesEnumOutput)
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToAzureBareMetalHardwareTypeNamesEnumPtrOutput() AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return e.ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(context.Background())
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return AzureBareMetalHardwareTypeNamesEnum(e).ToAzureBareMetalHardwareTypeNamesEnumOutputWithContext(ctx).ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(ctx)
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureBareMetalHardwareTypeNamesEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureBareMetalHardwareTypeNamesEnumOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalHardwareTypeNamesEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalHardwareTypeNamesEnum)(nil)).Elem()
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToAzureBareMetalHardwareTypeNamesEnumOutput() AzureBareMetalHardwareTypeNamesEnumOutput {
+	return o
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToAzureBareMetalHardwareTypeNamesEnumOutputWithContext(ctx context.Context) AzureBareMetalHardwareTypeNamesEnumOutput {
+	return o
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToAzureBareMetalHardwareTypeNamesEnumPtrOutput() AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return o.ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBareMetalHardwareTypeNamesEnum) *AzureBareMetalHardwareTypeNamesEnum {
+		return &v
+	}).(AzureBareMetalHardwareTypeNamesEnumPtrOutput)
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureBareMetalHardwareTypeNamesEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureBareMetalHardwareTypeNamesEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureBareMetalHardwareTypeNamesEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalHardwareTypeNamesEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBareMetalHardwareTypeNamesEnum)(nil)).Elem()
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumPtrOutput) ToAzureBareMetalHardwareTypeNamesEnumPtrOutput() AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumPtrOutput) ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumPtrOutput) Elem() AzureBareMetalHardwareTypeNamesEnumOutput {
+	return o.ApplyT(func(v *AzureBareMetalHardwareTypeNamesEnum) AzureBareMetalHardwareTypeNamesEnum {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBareMetalHardwareTypeNamesEnum
+		return ret
+	}).(AzureBareMetalHardwareTypeNamesEnumOutput)
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalHardwareTypeNamesEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureBareMetalHardwareTypeNamesEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureBareMetalHardwareTypeNamesEnumInput is an input type that accepts values of the AzureBareMetalHardwareTypeNamesEnum enum
+// A concrete instance of `AzureBareMetalHardwareTypeNamesEnumInput` can be one of the following:
+//
+//	AzureBareMetalHardwareTypeNamesEnum_Cisco_UCS
+//	AzureBareMetalHardwareTypeNamesEnumHPE
+//	AzureBareMetalHardwareTypeNamesEnumSDFLEX
+type AzureBareMetalHardwareTypeNamesEnumInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalHardwareTypeNamesEnumOutput() AzureBareMetalHardwareTypeNamesEnumOutput
+	ToAzureBareMetalHardwareTypeNamesEnumOutputWithContext(context.Context) AzureBareMetalHardwareTypeNamesEnumOutput
+}
+
+var azureBareMetalHardwareTypeNamesEnumPtrType = reflect.TypeOf((**AzureBareMetalHardwareTypeNamesEnum)(nil)).Elem()
+
+type AzureBareMetalHardwareTypeNamesEnumPtrInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalHardwareTypeNamesEnumPtrOutput() AzureBareMetalHardwareTypeNamesEnumPtrOutput
+	ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(context.Context) AzureBareMetalHardwareTypeNamesEnumPtrOutput
+}
+
+type azureBareMetalHardwareTypeNamesEnumPtr string
+
+func AzureBareMetalHardwareTypeNamesEnumPtr(v string) AzureBareMetalHardwareTypeNamesEnumPtrInput {
+	return (*azureBareMetalHardwareTypeNamesEnumPtr)(&v)
+}
+
+func (*azureBareMetalHardwareTypeNamesEnumPtr) ElementType() reflect.Type {
+	return azureBareMetalHardwareTypeNamesEnumPtrType
+}
+
+func (in *azureBareMetalHardwareTypeNamesEnumPtr) ToAzureBareMetalHardwareTypeNamesEnumPtrOutput() AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return pulumi.ToOutput(in).(AzureBareMetalHardwareTypeNamesEnumPtrOutput)
+}
+
+func (in *azureBareMetalHardwareTypeNamesEnumPtr) ToAzureBareMetalHardwareTypeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalHardwareTypeNamesEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureBareMetalHardwareTypeNamesEnumPtrOutput)
+}
+
+// Resource power state
+type AzureBareMetalInstancePowerStateEnum string
+
+const (
+	AzureBareMetalInstancePowerStateEnumStarting   = AzureBareMetalInstancePowerStateEnum("starting")
+	AzureBareMetalInstancePowerStateEnumStarted    = AzureBareMetalInstancePowerStateEnum("started")
+	AzureBareMetalInstancePowerStateEnumStopping   = AzureBareMetalInstancePowerStateEnum("stopping")
+	AzureBareMetalInstancePowerStateEnumStopped    = AzureBareMetalInstancePowerStateEnum("stopped")
+	AzureBareMetalInstancePowerStateEnumRestarting = AzureBareMetalInstancePowerStateEnum("restarting")
+	AzureBareMetalInstancePowerStateEnumUnknown    = AzureBareMetalInstancePowerStateEnum("unknown")
+)
+
+func (AzureBareMetalInstancePowerStateEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalInstancePowerStateEnum)(nil)).Elem()
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToAzureBareMetalInstancePowerStateEnumOutput() AzureBareMetalInstancePowerStateEnumOutput {
+	return pulumi.ToOutput(e).(AzureBareMetalInstancePowerStateEnumOutput)
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToAzureBareMetalInstancePowerStateEnumOutputWithContext(ctx context.Context) AzureBareMetalInstancePowerStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureBareMetalInstancePowerStateEnumOutput)
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToAzureBareMetalInstancePowerStateEnumPtrOutput() AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return e.ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return AzureBareMetalInstancePowerStateEnum(e).ToAzureBareMetalInstancePowerStateEnumOutputWithContext(ctx).ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(ctx)
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureBareMetalInstancePowerStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureBareMetalInstancePowerStateEnumOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalInstancePowerStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalInstancePowerStateEnum)(nil)).Elem()
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToAzureBareMetalInstancePowerStateEnumOutput() AzureBareMetalInstancePowerStateEnumOutput {
+	return o
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToAzureBareMetalInstancePowerStateEnumOutputWithContext(ctx context.Context) AzureBareMetalInstancePowerStateEnumOutput {
+	return o
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToAzureBareMetalInstancePowerStateEnumPtrOutput() AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return o.ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBareMetalInstancePowerStateEnum) *AzureBareMetalInstancePowerStateEnum {
+		return &v
+	}).(AzureBareMetalInstancePowerStateEnumPtrOutput)
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureBareMetalInstancePowerStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstancePowerStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureBareMetalInstancePowerStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureBareMetalInstancePowerStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalInstancePowerStateEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBareMetalInstancePowerStateEnum)(nil)).Elem()
+}
+
+func (o AzureBareMetalInstancePowerStateEnumPtrOutput) ToAzureBareMetalInstancePowerStateEnumPtrOutput() AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalInstancePowerStateEnumPtrOutput) ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalInstancePowerStateEnumPtrOutput) Elem() AzureBareMetalInstancePowerStateEnumOutput {
+	return o.ApplyT(func(v *AzureBareMetalInstancePowerStateEnum) AzureBareMetalInstancePowerStateEnum {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBareMetalInstancePowerStateEnum
+		return ret
+	}).(AzureBareMetalInstancePowerStateEnumOutput)
+}
+
+func (o AzureBareMetalInstancePowerStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstancePowerStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureBareMetalInstancePowerStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureBareMetalInstancePowerStateEnumInput is an input type that accepts values of the AzureBareMetalInstancePowerStateEnum enum
+// A concrete instance of `AzureBareMetalInstancePowerStateEnumInput` can be one of the following:
+//
+//	AzureBareMetalInstancePowerStateEnumStarting
+//	AzureBareMetalInstancePowerStateEnumStarted
+//	AzureBareMetalInstancePowerStateEnumStopping
+//	AzureBareMetalInstancePowerStateEnumStopped
+//	AzureBareMetalInstancePowerStateEnumRestarting
+//	AzureBareMetalInstancePowerStateEnumUnknown
+type AzureBareMetalInstancePowerStateEnumInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalInstancePowerStateEnumOutput() AzureBareMetalInstancePowerStateEnumOutput
+	ToAzureBareMetalInstancePowerStateEnumOutputWithContext(context.Context) AzureBareMetalInstancePowerStateEnumOutput
+}
+
+var azureBareMetalInstancePowerStateEnumPtrType = reflect.TypeOf((**AzureBareMetalInstancePowerStateEnum)(nil)).Elem()
+
+type AzureBareMetalInstancePowerStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalInstancePowerStateEnumPtrOutput() AzureBareMetalInstancePowerStateEnumPtrOutput
+	ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(context.Context) AzureBareMetalInstancePowerStateEnumPtrOutput
+}
+
+type azureBareMetalInstancePowerStateEnumPtr string
+
+func AzureBareMetalInstancePowerStateEnumPtr(v string) AzureBareMetalInstancePowerStateEnumPtrInput {
+	return (*azureBareMetalInstancePowerStateEnumPtr)(&v)
+}
+
+func (*azureBareMetalInstancePowerStateEnumPtr) ElementType() reflect.Type {
+	return azureBareMetalInstancePowerStateEnumPtrType
+}
+
+func (in *azureBareMetalInstancePowerStateEnumPtr) ToAzureBareMetalInstancePowerStateEnumPtrOutput() AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(AzureBareMetalInstancePowerStateEnumPtrOutput)
+}
+
+func (in *azureBareMetalInstancePowerStateEnumPtr) ToAzureBareMetalInstancePowerStateEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstancePowerStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureBareMetalInstancePowerStateEnumPtrOutput)
+}
+
+// Specifies the Azure Bare Metal Instance SKU.
+type AzureBareMetalInstanceSizeNamesEnum string
+
+const (
+	AzureBareMetalInstanceSizeNamesEnumS72m    = AzureBareMetalInstanceSizeNamesEnum("S72m")
+	AzureBareMetalInstanceSizeNamesEnumS144m   = AzureBareMetalInstanceSizeNamesEnum("S144m")
+	AzureBareMetalInstanceSizeNamesEnumS72     = AzureBareMetalInstanceSizeNamesEnum("S72")
+	AzureBareMetalInstanceSizeNamesEnumS144    = AzureBareMetalInstanceSizeNamesEnum("S144")
+	AzureBareMetalInstanceSizeNamesEnumS192    = AzureBareMetalInstanceSizeNamesEnum("S192")
+	AzureBareMetalInstanceSizeNamesEnumS192m   = AzureBareMetalInstanceSizeNamesEnum("S192m")
+	AzureBareMetalInstanceSizeNamesEnumS192xm  = AzureBareMetalInstanceSizeNamesEnum("S192xm")
+	AzureBareMetalInstanceSizeNamesEnumS96     = AzureBareMetalInstanceSizeNamesEnum("S96")
+	AzureBareMetalInstanceSizeNamesEnumS112    = AzureBareMetalInstanceSizeNamesEnum("S112")
+	AzureBareMetalInstanceSizeNamesEnumS224    = AzureBareMetalInstanceSizeNamesEnum("S224")
+	AzureBareMetalInstanceSizeNamesEnumS224m   = AzureBareMetalInstanceSizeNamesEnum("S224m")
+	AzureBareMetalInstanceSizeNamesEnumS224om  = AzureBareMetalInstanceSizeNamesEnum("S224om")
+	AzureBareMetalInstanceSizeNamesEnumS224oo  = AzureBareMetalInstanceSizeNamesEnum("S224oo")
+	AzureBareMetalInstanceSizeNamesEnumS224oom = AzureBareMetalInstanceSizeNamesEnum("S224oom")
+	AzureBareMetalInstanceSizeNamesEnumS224ooo = AzureBareMetalInstanceSizeNamesEnum("S224ooo")
+	AzureBareMetalInstanceSizeNamesEnumS384    = AzureBareMetalInstanceSizeNamesEnum("S384")
+	AzureBareMetalInstanceSizeNamesEnumS384m   = AzureBareMetalInstanceSizeNamesEnum("S384m")
+	AzureBareMetalInstanceSizeNamesEnumS384xm  = AzureBareMetalInstanceSizeNamesEnum("S384xm")
+	AzureBareMetalInstanceSizeNamesEnumS384xxm = AzureBareMetalInstanceSizeNamesEnum("S384xxm")
+	AzureBareMetalInstanceSizeNamesEnumS448    = AzureBareMetalInstanceSizeNamesEnum("S448")
+	AzureBareMetalInstanceSizeNamesEnumS448m   = AzureBareMetalInstanceSizeNamesEnum("S448m")
+	AzureBareMetalInstanceSizeNamesEnumS448om  = AzureBareMetalInstanceSizeNamesEnum("S448om")
+	AzureBareMetalInstanceSizeNamesEnumS448oo  = AzureBareMetalInstanceSizeNamesEnum("S448oo")
+	AzureBareMetalInstanceSizeNamesEnumS448oom = AzureBareMetalInstanceSizeNamesEnum("S448oom")
+	AzureBareMetalInstanceSizeNamesEnumS448ooo = AzureBareMetalInstanceSizeNamesEnum("S448ooo")
+	AzureBareMetalInstanceSizeNamesEnumS448se  = AzureBareMetalInstanceSizeNamesEnum("S448se")
+	AzureBareMetalInstanceSizeNamesEnumS576m   = AzureBareMetalInstanceSizeNamesEnum("S576m")
+	AzureBareMetalInstanceSizeNamesEnumS576xm  = AzureBareMetalInstanceSizeNamesEnum("S576xm")
+	AzureBareMetalInstanceSizeNamesEnumS672    = AzureBareMetalInstanceSizeNamesEnum("S672")
+	AzureBareMetalInstanceSizeNamesEnumS672m   = AzureBareMetalInstanceSizeNamesEnum("S672m")
+	AzureBareMetalInstanceSizeNamesEnumS672om  = AzureBareMetalInstanceSizeNamesEnum("S672om")
+	AzureBareMetalInstanceSizeNamesEnumS672oo  = AzureBareMetalInstanceSizeNamesEnum("S672oo")
+	AzureBareMetalInstanceSizeNamesEnumS672oom = AzureBareMetalInstanceSizeNamesEnum("S672oom")
+	AzureBareMetalInstanceSizeNamesEnumS672ooo = AzureBareMetalInstanceSizeNamesEnum("S672ooo")
+	AzureBareMetalInstanceSizeNamesEnumS768    = AzureBareMetalInstanceSizeNamesEnum("S768")
+	AzureBareMetalInstanceSizeNamesEnumS768m   = AzureBareMetalInstanceSizeNamesEnum("S768m")
+	AzureBareMetalInstanceSizeNamesEnumS768xm  = AzureBareMetalInstanceSizeNamesEnum("S768xm")
+	AzureBareMetalInstanceSizeNamesEnumS896    = AzureBareMetalInstanceSizeNamesEnum("S896")
+	AzureBareMetalInstanceSizeNamesEnumS896m   = AzureBareMetalInstanceSizeNamesEnum("S896m")
+	AzureBareMetalInstanceSizeNamesEnumS896om  = AzureBareMetalInstanceSizeNamesEnum("S896om")
+	AzureBareMetalInstanceSizeNamesEnumS896oo  = AzureBareMetalInstanceSizeNamesEnum("S896oo")
+	AzureBareMetalInstanceSizeNamesEnumS896oom = AzureBareMetalInstanceSizeNamesEnum("S896oom")
+	AzureBareMetalInstanceSizeNamesEnumS896ooo = AzureBareMetalInstanceSizeNamesEnum("S896ooo")
+	AzureBareMetalInstanceSizeNamesEnumS960m   = AzureBareMetalInstanceSizeNamesEnum("S960m")
+)
+
+func (AzureBareMetalInstanceSizeNamesEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalInstanceSizeNamesEnum)(nil)).Elem()
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToAzureBareMetalInstanceSizeNamesEnumOutput() AzureBareMetalInstanceSizeNamesEnumOutput {
+	return pulumi.ToOutput(e).(AzureBareMetalInstanceSizeNamesEnumOutput)
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToAzureBareMetalInstanceSizeNamesEnumOutputWithContext(ctx context.Context) AzureBareMetalInstanceSizeNamesEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AzureBareMetalInstanceSizeNamesEnumOutput)
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToAzureBareMetalInstanceSizeNamesEnumPtrOutput() AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return e.ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(context.Background())
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return AzureBareMetalInstanceSizeNamesEnum(e).ToAzureBareMetalInstanceSizeNamesEnumOutputWithContext(ctx).ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(ctx)
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AzureBareMetalInstanceSizeNamesEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AzureBareMetalInstanceSizeNamesEnumOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalInstanceSizeNamesEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalInstanceSizeNamesEnum)(nil)).Elem()
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToAzureBareMetalInstanceSizeNamesEnumOutput() AzureBareMetalInstanceSizeNamesEnumOutput {
+	return o
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToAzureBareMetalInstanceSizeNamesEnumOutputWithContext(ctx context.Context) AzureBareMetalInstanceSizeNamesEnumOutput {
+	return o
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToAzureBareMetalInstanceSizeNamesEnumPtrOutput() AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return o.ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBareMetalInstanceSizeNamesEnum) *AzureBareMetalInstanceSizeNamesEnum {
+		return &v
+	}).(AzureBareMetalInstanceSizeNamesEnumPtrOutput)
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureBareMetalInstanceSizeNamesEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AzureBareMetalInstanceSizeNamesEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AzureBareMetalInstanceSizeNamesEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalInstanceSizeNamesEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBareMetalInstanceSizeNamesEnum)(nil)).Elem()
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumPtrOutput) ToAzureBareMetalInstanceSizeNamesEnumPtrOutput() AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumPtrOutput) ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumPtrOutput) Elem() AzureBareMetalInstanceSizeNamesEnumOutput {
+	return o.ApplyT(func(v *AzureBareMetalInstanceSizeNamesEnum) AzureBareMetalInstanceSizeNamesEnum {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBareMetalInstanceSizeNamesEnum
+		return ret
+	}).(AzureBareMetalInstanceSizeNamesEnumOutput)
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalInstanceSizeNamesEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AzureBareMetalInstanceSizeNamesEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AzureBareMetalInstanceSizeNamesEnumInput is an input type that accepts values of the AzureBareMetalInstanceSizeNamesEnum enum
+// A concrete instance of `AzureBareMetalInstanceSizeNamesEnumInput` can be one of the following:
+//
+//	AzureBareMetalInstanceSizeNamesEnumS72m
+//	AzureBareMetalInstanceSizeNamesEnumS144m
+//	AzureBareMetalInstanceSizeNamesEnumS72
+//	AzureBareMetalInstanceSizeNamesEnumS144
+//	AzureBareMetalInstanceSizeNamesEnumS192
+//	AzureBareMetalInstanceSizeNamesEnumS192m
+//	AzureBareMetalInstanceSizeNamesEnumS192xm
+//	AzureBareMetalInstanceSizeNamesEnumS96
+//	AzureBareMetalInstanceSizeNamesEnumS112
+//	AzureBareMetalInstanceSizeNamesEnumS224
+//	AzureBareMetalInstanceSizeNamesEnumS224m
+//	AzureBareMetalInstanceSizeNamesEnumS224om
+//	AzureBareMetalInstanceSizeNamesEnumS224oo
+//	AzureBareMetalInstanceSizeNamesEnumS224oom
+//	AzureBareMetalInstanceSizeNamesEnumS224ooo
+//	AzureBareMetalInstanceSizeNamesEnumS384
+//	AzureBareMetalInstanceSizeNamesEnumS384m
+//	AzureBareMetalInstanceSizeNamesEnumS384xm
+//	AzureBareMetalInstanceSizeNamesEnumS384xxm
+//	AzureBareMetalInstanceSizeNamesEnumS448
+//	AzureBareMetalInstanceSizeNamesEnumS448m
+//	AzureBareMetalInstanceSizeNamesEnumS448om
+//	AzureBareMetalInstanceSizeNamesEnumS448oo
+//	AzureBareMetalInstanceSizeNamesEnumS448oom
+//	AzureBareMetalInstanceSizeNamesEnumS448ooo
+//	AzureBareMetalInstanceSizeNamesEnumS448se
+//	AzureBareMetalInstanceSizeNamesEnumS576m
+//	AzureBareMetalInstanceSizeNamesEnumS576xm
+//	AzureBareMetalInstanceSizeNamesEnumS672
+//	AzureBareMetalInstanceSizeNamesEnumS672m
+//	AzureBareMetalInstanceSizeNamesEnumS672om
+//	AzureBareMetalInstanceSizeNamesEnumS672oo
+//	AzureBareMetalInstanceSizeNamesEnumS672oom
+//	AzureBareMetalInstanceSizeNamesEnumS672ooo
+//	AzureBareMetalInstanceSizeNamesEnumS768
+//	AzureBareMetalInstanceSizeNamesEnumS768m
+//	AzureBareMetalInstanceSizeNamesEnumS768xm
+//	AzureBareMetalInstanceSizeNamesEnumS896
+//	AzureBareMetalInstanceSizeNamesEnumS896m
+//	AzureBareMetalInstanceSizeNamesEnumS896om
+//	AzureBareMetalInstanceSizeNamesEnumS896oo
+//	AzureBareMetalInstanceSizeNamesEnumS896oom
+//	AzureBareMetalInstanceSizeNamesEnumS896ooo
+//	AzureBareMetalInstanceSizeNamesEnumS960m
+type AzureBareMetalInstanceSizeNamesEnumInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalInstanceSizeNamesEnumOutput() AzureBareMetalInstanceSizeNamesEnumOutput
+	ToAzureBareMetalInstanceSizeNamesEnumOutputWithContext(context.Context) AzureBareMetalInstanceSizeNamesEnumOutput
+}
+
+var azureBareMetalInstanceSizeNamesEnumPtrType = reflect.TypeOf((**AzureBareMetalInstanceSizeNamesEnum)(nil)).Elem()
+
+type AzureBareMetalInstanceSizeNamesEnumPtrInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalInstanceSizeNamesEnumPtrOutput() AzureBareMetalInstanceSizeNamesEnumPtrOutput
+	ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(context.Context) AzureBareMetalInstanceSizeNamesEnumPtrOutput
+}
+
+type azureBareMetalInstanceSizeNamesEnumPtr string
+
+func AzureBareMetalInstanceSizeNamesEnumPtr(v string) AzureBareMetalInstanceSizeNamesEnumPtrInput {
+	return (*azureBareMetalInstanceSizeNamesEnumPtr)(&v)
+}
+
+func (*azureBareMetalInstanceSizeNamesEnumPtr) ElementType() reflect.Type {
+	return azureBareMetalInstanceSizeNamesEnumPtrType
+}
+
+func (in *azureBareMetalInstanceSizeNamesEnumPtr) ToAzureBareMetalInstanceSizeNamesEnumPtrOutput() AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return pulumi.ToOutput(in).(AzureBareMetalInstanceSizeNamesEnumPtrOutput)
+}
+
+func (in *azureBareMetalInstanceSizeNamesEnumPtr) ToAzureBareMetalInstanceSizeNamesEnumPtrOutputWithContext(ctx context.Context) AzureBareMetalInstanceSizeNamesEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AzureBareMetalInstanceSizeNamesEnumPtrOutput)
+}
+
 // State of provisioning of the AzureBareMetalStorageInstance
 type ProvisioningState string
 
@@ -189,6 +781,12 @@ func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzureBareMetalHardwareTypeNamesEnumOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalHardwareTypeNamesEnumPtrOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalInstancePowerStateEnumOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalInstancePowerStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalInstanceSizeNamesEnumOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalInstanceSizeNamesEnumPtrOutput{})
 	pulumi.RegisterOutputType(ProvisioningStateOutput{})
 	pulumi.RegisterOutputType(ProvisioningStatePtrOutput{})
 }

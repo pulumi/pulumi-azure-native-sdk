@@ -14,6 +14,8 @@ import (
 
 // Resource information with extended details.
 // Azure REST API version: 2021-11-30. Prior API version in Azure Native 1.x: 2018-10-31-preview.
+//
+// Other available API versions: 2024-06-30-preview.
 type DedicatedHsm struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +64,9 @@ func NewDedicatedHsm(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20211130:DedicatedHsm"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:DedicatedHsm"),
 		},
 	})
 	opts = append(opts, aliases)
