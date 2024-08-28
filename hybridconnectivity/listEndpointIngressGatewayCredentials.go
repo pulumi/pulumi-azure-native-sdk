@@ -13,6 +13,8 @@ import (
 
 // Gets the ingress gateway endpoint credentials
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2024-12-01.
 func ListEndpointIngressGatewayCredentials(ctx *pulumi.Context, args *ListEndpointIngressGatewayCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointIngressGatewayCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointIngressGatewayCredentialsResult

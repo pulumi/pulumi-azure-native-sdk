@@ -58,6 +58,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20220501preview:Endpoint"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20241201:Endpoint"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

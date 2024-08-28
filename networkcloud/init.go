@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Console{}
 	case "azure-native:networkcloud:KubernetesCluster":
 		r = &KubernetesCluster{}
+	case "azure-native:networkcloud:KubernetesClusterFeature":
+		r = &KubernetesClusterFeature{}
 	case "azure-native:networkcloud:L2Network":
 		r = &L2Network{}
 	case "azure-native:networkcloud:L3Network":

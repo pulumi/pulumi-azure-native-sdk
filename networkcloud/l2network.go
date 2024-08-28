@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-10-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2024-06-01-preview.
 type L2Network struct {
 	pulumi.CustomResourceState
 
@@ -77,6 +77,9 @@ func NewL2Network(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20231001preview:L2Network"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20240601preview:L2Network"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -102,6 +102,9 @@ func NewBudget(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:consumption/v20230501:Budget"),
 		},
+		{
+			Type: pulumi.String("azure-native:consumption/v20240801:Budget"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

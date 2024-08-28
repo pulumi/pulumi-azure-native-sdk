@@ -14,7 +14,7 @@ import (
 // Gets the endpoint access credentials to the resource.
 // Azure REST API version: 2023-03-15.
 //
-// Other available API versions: 2022-05-01-preview.
+// Other available API versions: 2022-05-01-preview, 2024-12-01.
 func ListEndpointCredentials(ctx *pulumi.Context, args *ListEndpointCredentialsArgs, opts ...pulumi.InvokeOption) (*ListEndpointCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointCredentialsResult
