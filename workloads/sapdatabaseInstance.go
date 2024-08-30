@@ -75,6 +75,9 @@ func NewSAPDatabaseInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:workloads/v20231001preview:SAPDatabaseInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:workloads/v20240901:SAPDatabaseInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

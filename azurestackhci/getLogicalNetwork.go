@@ -14,7 +14,7 @@ import (
 // The logical network resource definition.
 // Azure REST API version: 2023-09-01-preview.
 //
-// Other available API versions: 2024-01-01, 2024-02-01-preview.
+// Other available API versions: 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
 func LookupLogicalNetwork(ctx *pulumi.Context, args *LookupLogicalNetworkArgs, opts ...pulumi.InvokeOption) (*LookupLogicalNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLogicalNetworkResult

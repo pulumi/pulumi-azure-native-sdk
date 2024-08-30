@@ -2768,7 +2768,7 @@ type NetworkApiVersion string
 
 const (
 	// Initial version supported. Later versions are supported as well.
-	NetworkApiVersion_2020_11_01 = NetworkApiVersion("2020-11-01")
+	NetworkApiVersion_V2020_11_01 = NetworkApiVersion("2020-11-01")
 )
 
 func (NetworkApiVersion) ElementType() reflect.Type {
@@ -2893,7 +2893,7 @@ func (o NetworkApiVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // NetworkApiVersionInput is an input type that accepts values of the NetworkApiVersion enum
 // A concrete instance of `NetworkApiVersionInput` can be one of the following:
 //
-//	NetworkApiVersion_2020_11_01
+//	NetworkApiVersion_V2020_11_01
 type NetworkApiVersionInput interface {
 	pulumi.Input
 

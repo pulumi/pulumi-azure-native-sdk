@@ -90,6 +90,12 @@ func NewStoragecontainerRetrieve(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240201preview:storagecontainerRetrieve"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:StoragecontainerRetrieve"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:storagecontainerRetrieve"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

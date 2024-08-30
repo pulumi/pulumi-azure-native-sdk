@@ -13,6 +13,8 @@ import (
 
 // Gets the specified network security group.
 // Azure REST API version: 2024-02-01-preview.
+//
+// Other available API versions: 2024-05-01-preview.
 func LookupNetworkSecurityGroup(ctx *pulumi.Context, args *LookupNetworkSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkSecurityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkSecurityGroupResult

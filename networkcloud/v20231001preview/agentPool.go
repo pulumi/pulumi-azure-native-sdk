@@ -92,6 +92,9 @@ func NewAgentPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:AgentPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20240601preview:AgentPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

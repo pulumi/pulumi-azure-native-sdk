@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &APICollection{}
 	case "azure-native:security:APICollectionByAzureApiManagementService":
 		r = &APICollectionByAzureApiManagementService{}
-	case "azure-native:security:AdaptiveApplicationControl":
-		r = &AdaptiveApplicationControl{}
 	case "azure-native:security:AdvancedThreatProtection":
 		r = &AdvancedThreatProtection{}
 	case "azure-native:security:AlertsSuppressionRule":

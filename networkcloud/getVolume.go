@@ -14,7 +14,7 @@ import (
 // Get properties of the provided volume.
 // Azure REST API version: 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2024-06-01-preview.
 func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.InvokeOption) (*LookupVolumeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeResult

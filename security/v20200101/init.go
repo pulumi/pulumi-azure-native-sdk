@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "azure-native:security/v20200101:AdaptiveApplicationControl":
-		r = &AdaptiveApplicationControl{}
 	case "azure-native:security/v20200101:Assessment":
 		r = &Assessment{}
 	case "azure-native:security/v20200101:JitNetworkAccessPolicy":
