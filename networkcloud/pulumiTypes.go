@@ -8382,6 +8382,163 @@ func (o StorageProfileResponseOutput) VolumeAttachments() pulumi.StringArrayOutp
 	return o.ApplyT(func(v StorageProfileResponse) []string { return v.VolumeAttachments }).(pulumi.StringArrayOutput)
 }
 
+type StringKeyValuePair struct {
+	// The key to the mapped value.
+	Key string `pulumi:"key"`
+	// The value of the mapping key.
+	Value string `pulumi:"value"`
+}
+
+// StringKeyValuePairInput is an input type that accepts StringKeyValuePairArgs and StringKeyValuePairOutput values.
+// You can construct a concrete instance of `StringKeyValuePairInput` via:
+//
+//	StringKeyValuePairArgs{...}
+type StringKeyValuePairInput interface {
+	pulumi.Input
+
+	ToStringKeyValuePairOutput() StringKeyValuePairOutput
+	ToStringKeyValuePairOutputWithContext(context.Context) StringKeyValuePairOutput
+}
+
+type StringKeyValuePairArgs struct {
+	// The key to the mapped value.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the mapping key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (StringKeyValuePairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringKeyValuePair)(nil)).Elem()
+}
+
+func (i StringKeyValuePairArgs) ToStringKeyValuePairOutput() StringKeyValuePairOutput {
+	return i.ToStringKeyValuePairOutputWithContext(context.Background())
+}
+
+func (i StringKeyValuePairArgs) ToStringKeyValuePairOutputWithContext(ctx context.Context) StringKeyValuePairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringKeyValuePairOutput)
+}
+
+// StringKeyValuePairArrayInput is an input type that accepts StringKeyValuePairArray and StringKeyValuePairArrayOutput values.
+// You can construct a concrete instance of `StringKeyValuePairArrayInput` via:
+//
+//	StringKeyValuePairArray{ StringKeyValuePairArgs{...} }
+type StringKeyValuePairArrayInput interface {
+	pulumi.Input
+
+	ToStringKeyValuePairArrayOutput() StringKeyValuePairArrayOutput
+	ToStringKeyValuePairArrayOutputWithContext(context.Context) StringKeyValuePairArrayOutput
+}
+
+type StringKeyValuePairArray []StringKeyValuePairInput
+
+func (StringKeyValuePairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StringKeyValuePair)(nil)).Elem()
+}
+
+func (i StringKeyValuePairArray) ToStringKeyValuePairArrayOutput() StringKeyValuePairArrayOutput {
+	return i.ToStringKeyValuePairArrayOutputWithContext(context.Background())
+}
+
+func (i StringKeyValuePairArray) ToStringKeyValuePairArrayOutputWithContext(ctx context.Context) StringKeyValuePairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringKeyValuePairArrayOutput)
+}
+
+type StringKeyValuePairOutput struct{ *pulumi.OutputState }
+
+func (StringKeyValuePairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringKeyValuePair)(nil)).Elem()
+}
+
+func (o StringKeyValuePairOutput) ToStringKeyValuePairOutput() StringKeyValuePairOutput {
+	return o
+}
+
+func (o StringKeyValuePairOutput) ToStringKeyValuePairOutputWithContext(ctx context.Context) StringKeyValuePairOutput {
+	return o
+}
+
+// The key to the mapped value.
+func (o StringKeyValuePairOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v StringKeyValuePair) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the mapping key.
+func (o StringKeyValuePairOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v StringKeyValuePair) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type StringKeyValuePairArrayOutput struct{ *pulumi.OutputState }
+
+func (StringKeyValuePairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StringKeyValuePair)(nil)).Elem()
+}
+
+func (o StringKeyValuePairArrayOutput) ToStringKeyValuePairArrayOutput() StringKeyValuePairArrayOutput {
+	return o
+}
+
+func (o StringKeyValuePairArrayOutput) ToStringKeyValuePairArrayOutputWithContext(ctx context.Context) StringKeyValuePairArrayOutput {
+	return o
+}
+
+func (o StringKeyValuePairArrayOutput) Index(i pulumi.IntInput) StringKeyValuePairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StringKeyValuePair {
+		return vs[0].([]StringKeyValuePair)[vs[1].(int)]
+	}).(StringKeyValuePairOutput)
+}
+
+type StringKeyValuePairResponse struct {
+	// The key to the mapped value.
+	Key string `pulumi:"key"`
+	// The value of the mapping key.
+	Value string `pulumi:"value"`
+}
+
+type StringKeyValuePairResponseOutput struct{ *pulumi.OutputState }
+
+func (StringKeyValuePairResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringKeyValuePairResponse)(nil)).Elem()
+}
+
+func (o StringKeyValuePairResponseOutput) ToStringKeyValuePairResponseOutput() StringKeyValuePairResponseOutput {
+	return o
+}
+
+func (o StringKeyValuePairResponseOutput) ToStringKeyValuePairResponseOutputWithContext(ctx context.Context) StringKeyValuePairResponseOutput {
+	return o
+}
+
+// The key to the mapped value.
+func (o StringKeyValuePairResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v StringKeyValuePairResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the mapping key.
+func (o StringKeyValuePairResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v StringKeyValuePairResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type StringKeyValuePairResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StringKeyValuePairResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StringKeyValuePairResponse)(nil)).Elem()
+}
+
+func (o StringKeyValuePairResponseArrayOutput) ToStringKeyValuePairResponseArrayOutput() StringKeyValuePairResponseArrayOutput {
+	return o
+}
+
+func (o StringKeyValuePairResponseArrayOutput) ToStringKeyValuePairResponseArrayOutputWithContext(ctx context.Context) StringKeyValuePairResponseArrayOutput {
+	return o
+}
+
+func (o StringKeyValuePairResponseArrayOutput) Index(i pulumi.IntInput) StringKeyValuePairResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StringKeyValuePairResponse {
+		return vs[0].([]StringKeyValuePairResponse)[vs[1].(int)]
+	}).(StringKeyValuePairResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -9237,6 +9394,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageApplianceConfigurationDataResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageProfileOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
+	pulumi.RegisterOutputType(StringKeyValuePairOutput{})
+	pulumi.RegisterOutputType(StringKeyValuePairArrayOutput{})
+	pulumi.RegisterOutputType(StringKeyValuePairResponseOutput{})
+	pulumi.RegisterOutputType(StringKeyValuePairResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationOutput{})
 	pulumi.RegisterOutputType(TrunkedNetworkAttachmentConfigurationArrayOutput{})

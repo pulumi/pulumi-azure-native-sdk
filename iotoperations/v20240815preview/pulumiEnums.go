@@ -3101,8 +3101,8 @@ const (
 	MqttAuthMethodSystemAssignedManagedIdentity = MqttAuthMethod("SystemAssignedManagedIdentity")
 	// UserAssignedManagedIdentity type
 	MqttAuthMethodUserAssignedManagedIdentity = MqttAuthMethod("UserAssignedManagedIdentity")
-	// Sasl Option
-	MqttAuthMethodSasl = MqttAuthMethod("Sasl")
+	// ServiceAccountToken Option
+	MqttAuthMethodServiceAccountToken = MqttAuthMethod("ServiceAccountToken")
 	// x509Certificate Option
 	MqttAuthMethodX509Certificate = MqttAuthMethod("X509Certificate")
 	// Anonymous Option
@@ -3233,7 +3233,7 @@ func (o MqttAuthMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 //
 //	MqttAuthMethodSystemAssignedManagedIdentity
 //	MqttAuthMethodUserAssignedManagedIdentity
-//	MqttAuthMethodSasl
+//	MqttAuthMethodServiceAccountToken
 //	MqttAuthMethodX509Certificate
 //	MqttAuthMethodAnonymous
 type MqttAuthMethodInput interface {

@@ -75,6 +75,9 @@ func NewSecurityRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci:SecurityRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:SecurityRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
