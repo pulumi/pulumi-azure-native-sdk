@@ -15,7 +15,7 @@ import (
 // The virtual hard disk resource definition.
 // Azure REST API version: 2022-12-15-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2024-01-01, 2024-02-01-preview, 2024-05-01-preview.
 type VirtualHardDisk struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +81,9 @@ func NewVirtualHardDisk(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240201preview:VirtualHardDisk"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:VirtualHardDisk"),
 		},
 	})
 	opts = append(opts, aliases)

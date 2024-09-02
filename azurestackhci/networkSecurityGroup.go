@@ -14,6 +14,8 @@ import (
 
 // NetworkSecurityGroup resource.
 // Azure REST API version: 2024-02-01-preview.
+//
+// Other available API versions: 2024-05-01-preview.
 type NetworkSecurityGroup struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewNetworkSecurityGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240201preview:NetworkSecurityGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:NetworkSecurityGroup"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -64,6 +64,9 @@ func NewServiceConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity:ServiceConfiguration"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20241201:ServiceConfiguration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

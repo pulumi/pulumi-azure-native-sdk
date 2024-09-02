@@ -14,6 +14,8 @@ import (
 
 // The service configuration details associated with the target resource.
 // Azure REST API version: 2023-03-15.
+//
+// Other available API versions: 2024-12-01.
 type ServiceConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +66,9 @@ func NewServiceConfiguration(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:ServiceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20241201:ServiceConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -11843,7 +11843,7 @@ type DataflowEndpointKafka struct {
 	// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
 	CopyMqttProperties *string `pulumi:"copyMqttProperties"`
 	// Kafka endpoint host.
-	Host *string `pulumi:"host"`
+	Host string `pulumi:"host"`
 	// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
 	KafkaAcks *string `pulumi:"kafkaAcks"`
 	// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
@@ -11907,7 +11907,7 @@ type DataflowEndpointKafkaArgs struct {
 	// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
 	CopyMqttProperties pulumi.StringPtrInput `pulumi:"copyMqttProperties"`
 	// Kafka endpoint host.
-	Host pulumi.StringPtrInput `pulumi:"host"`
+	Host pulumi.StringInput `pulumi:"host"`
 	// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
 	KafkaAcks pulumi.StringPtrInput `pulumi:"kafkaAcks"`
 	// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
@@ -12047,8 +12047,8 @@ func (o DataflowEndpointKafkaOutput) CopyMqttProperties() pulumi.StringPtrOutput
 }
 
 // Kafka endpoint host.
-func (o DataflowEndpointKafkaOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataflowEndpointKafka) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointKafka) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
@@ -12156,7 +12156,7 @@ func (o DataflowEndpointKafkaPtrOutput) Host() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Host
+		return &v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12941,7 +12941,7 @@ type DataflowEndpointKafkaResponse struct {
 	// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
 	CopyMqttProperties *string `pulumi:"copyMqttProperties"`
 	// Kafka endpoint host.
-	Host *string `pulumi:"host"`
+	Host string `pulumi:"host"`
 	// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
 	KafkaAcks *string `pulumi:"kafkaAcks"`
 	// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
@@ -13027,8 +13027,8 @@ func (o DataflowEndpointKafkaResponseOutput) CopyMqttProperties() pulumi.StringP
 }
 
 // Kafka endpoint host.
-func (o DataflowEndpointKafkaResponseOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataflowEndpointKafkaResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DataflowEndpointKafkaResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DataflowEndpointKafkaResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
@@ -13136,7 +13136,7 @@ func (o DataflowEndpointKafkaResponsePtrOutput) Host() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Host
+		return &v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13402,10 +13402,6 @@ func (val *DataflowEndpointMqtt) Defaults() *DataflowEndpointMqtt {
 		return nil
 	}
 	tmp := *val
-	if tmp.Host == nil {
-		host_ := "aio-mq-dmqtt-frontend:8883"
-		tmp.Host = &host_
-	}
 	if tmp.KeepAliveSeconds == nil {
 		keepAliveSeconds_ := 60
 		tmp.KeepAliveSeconds = &keepAliveSeconds_
@@ -13478,9 +13474,6 @@ func (val *DataflowEndpointMqttArgs) Defaults() *DataflowEndpointMqttArgs {
 		return nil
 	}
 	tmp := *val
-	if tmp.Host == nil {
-		tmp.Host = pulumi.StringPtr("aio-mq-dmqtt-frontend:8883")
-	}
 	if tmp.KeepAliveSeconds == nil {
 		tmp.KeepAliveSeconds = pulumi.IntPtr(60)
 	}
@@ -14161,10 +14154,6 @@ func (val *DataflowEndpointMqttResponse) Defaults() *DataflowEndpointMqttRespons
 		return nil
 	}
 	tmp := *val
-	if tmp.Host == nil {
-		host_ := "aio-mq-dmqtt-frontend:8883"
-		tmp.Host = &host_
-	}
 	if tmp.KeepAliveSeconds == nil {
 		keepAliveSeconds_ := 60
 		tmp.KeepAliveSeconds = &keepAliveSeconds_

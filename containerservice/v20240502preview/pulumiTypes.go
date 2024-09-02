@@ -26631,7 +26631,7 @@ func (o SafeguardsProfileResponsePtrOutput) Version() pulumi.StringPtrOutput {
 type ScaleProfile struct {
 	// Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Currently, at most one AutoScaleProfile is allowed.
 	Autoscale []AutoScaleProfile `pulumi:"autoscale"`
-	// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+	// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 	Manual []ManualScaleProfile `pulumi:"manual"`
 }
 
@@ -26650,7 +26650,7 @@ type ScaleProfileInput interface {
 type ScaleProfileArgs struct {
 	// Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Currently, at most one AutoScaleProfile is allowed.
 	Autoscale AutoScaleProfileArrayInput `pulumi:"autoscale"`
-	// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+	// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 	Manual ManualScaleProfileArrayInput `pulumi:"manual"`
 }
 
@@ -26737,7 +26737,7 @@ func (o ScaleProfileOutput) Autoscale() AutoScaleProfileArrayOutput {
 	return o.ApplyT(func(v ScaleProfile) []AutoScaleProfile { return v.Autoscale }).(AutoScaleProfileArrayOutput)
 }
 
-// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 func (o ScaleProfileOutput) Manual() ManualScaleProfileArrayOutput {
 	return o.ApplyT(func(v ScaleProfile) []ManualScaleProfile { return v.Manual }).(ManualScaleProfileArrayOutput)
 }
@@ -26776,7 +26776,7 @@ func (o ScaleProfilePtrOutput) Autoscale() AutoScaleProfileArrayOutput {
 	}).(AutoScaleProfileArrayOutput)
 }
 
-// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 func (o ScaleProfilePtrOutput) Manual() ManualScaleProfileArrayOutput {
 	return o.ApplyT(func(v *ScaleProfile) []ManualScaleProfile {
 		if v == nil {
@@ -26790,7 +26790,7 @@ func (o ScaleProfilePtrOutput) Manual() ManualScaleProfileArrayOutput {
 type ScaleProfileResponse struct {
 	// Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Currently, at most one AutoScaleProfile is allowed.
 	Autoscale []AutoScaleProfileResponse `pulumi:"autoscale"`
-	// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+	// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 	Manual []ManualScaleProfileResponse `pulumi:"manual"`
 }
 
@@ -26814,7 +26814,7 @@ func (o ScaleProfileResponseOutput) Autoscale() AutoScaleProfileResponseArrayOut
 	return o.ApplyT(func(v ScaleProfileResponse) []AutoScaleProfileResponse { return v.Autoscale }).(AutoScaleProfileResponseArrayOutput)
 }
 
-// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 func (o ScaleProfileResponseOutput) Manual() ManualScaleProfileResponseArrayOutput {
 	return o.ApplyT(func(v ScaleProfileResponse) []ManualScaleProfileResponse { return v.Manual }).(ManualScaleProfileResponseArrayOutput)
 }
@@ -26853,7 +26853,7 @@ func (o ScaleProfileResponsePtrOutput) Autoscale() AutoScaleProfileResponseArray
 	}).(AutoScaleProfileResponseArrayOutput)
 }
 
-// Specifications on how to scale the VirtualMachines agent pool to a fixed size. Currently, at most one ManualScaleProfile is allowed.
+// Specifications on how to scale the VirtualMachines agent pool to a fixed size.
 func (o ScaleProfileResponsePtrOutput) Manual() ManualScaleProfileResponseArrayOutput {
 	return o.ApplyT(func(v *ScaleProfileResponse) []ManualScaleProfileResponse {
 		if v == nil {

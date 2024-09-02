@@ -15,7 +15,7 @@ import (
 // The endpoint for the target resource.
 // Azure REST API version: 2023-03-15. Prior API version in Azure Native 1.x: 2022-05-01-preview.
 //
-// Other available API versions: 2022-05-01-preview.
+// Other available API versions: 2022-05-01-preview, 2024-12-01.
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,9 @@ func NewEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridconnectivity/v20230315:Endpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridconnectivity/v20241201:Endpoint"),
 		},
 	})
 	opts = append(opts, aliases)

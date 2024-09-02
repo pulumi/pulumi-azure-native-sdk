@@ -74,6 +74,9 @@ func NewNetworkInterface(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20240101:NetworkInterface"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20240501preview:NetworkInterface"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -112,6 +112,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:databricks/v20230915preview:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20240901preview:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
