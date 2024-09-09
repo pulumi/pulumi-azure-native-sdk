@@ -13,6 +13,8 @@ import (
 
 // Gets the details of the Diagnostic specified by its identifier.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-05-01.
 func LookupWorkspaceDiagnostic(ctx *pulumi.Context, args *LookupWorkspaceDiagnosticArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceDiagnosticResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceDiagnosticResult

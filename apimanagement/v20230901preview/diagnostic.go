@@ -113,6 +113,9 @@ func NewDiagnostic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:Diagnostic"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:Diagnostic"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -627,6 +627,212 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Properties of subscription Request for Changed Target Directory.
+type TargetDirectoryRequestProperties struct {
+	// The destination OwnerId, can be object id or email address
+	DestinationOwnerId *string `pulumi:"destinationOwnerId"`
+	// The destination Tenant id where subscription needs to be accepted
+	DestinationTenantId *string `pulumi:"destinationTenantId"`
+}
+
+// TargetDirectoryRequestPropertiesInput is an input type that accepts TargetDirectoryRequestPropertiesArgs and TargetDirectoryRequestPropertiesOutput values.
+// You can construct a concrete instance of `TargetDirectoryRequestPropertiesInput` via:
+//
+//	TargetDirectoryRequestPropertiesArgs{...}
+type TargetDirectoryRequestPropertiesInput interface {
+	pulumi.Input
+
+	ToTargetDirectoryRequestPropertiesOutput() TargetDirectoryRequestPropertiesOutput
+	ToTargetDirectoryRequestPropertiesOutputWithContext(context.Context) TargetDirectoryRequestPropertiesOutput
+}
+
+// Properties of subscription Request for Changed Target Directory.
+type TargetDirectoryRequestPropertiesArgs struct {
+	// The destination OwnerId, can be object id or email address
+	DestinationOwnerId pulumi.StringPtrInput `pulumi:"destinationOwnerId"`
+	// The destination Tenant id where subscription needs to be accepted
+	DestinationTenantId pulumi.StringPtrInput `pulumi:"destinationTenantId"`
+}
+
+func (TargetDirectoryRequestPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetDirectoryRequestProperties)(nil)).Elem()
+}
+
+func (i TargetDirectoryRequestPropertiesArgs) ToTargetDirectoryRequestPropertiesOutput() TargetDirectoryRequestPropertiesOutput {
+	return i.ToTargetDirectoryRequestPropertiesOutputWithContext(context.Background())
+}
+
+func (i TargetDirectoryRequestPropertiesArgs) ToTargetDirectoryRequestPropertiesOutputWithContext(ctx context.Context) TargetDirectoryRequestPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetDirectoryRequestPropertiesOutput)
+}
+
+func (i TargetDirectoryRequestPropertiesArgs) ToTargetDirectoryRequestPropertiesPtrOutput() TargetDirectoryRequestPropertiesPtrOutput {
+	return i.ToTargetDirectoryRequestPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i TargetDirectoryRequestPropertiesArgs) ToTargetDirectoryRequestPropertiesPtrOutputWithContext(ctx context.Context) TargetDirectoryRequestPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetDirectoryRequestPropertiesOutput).ToTargetDirectoryRequestPropertiesPtrOutputWithContext(ctx)
+}
+
+// TargetDirectoryRequestPropertiesPtrInput is an input type that accepts TargetDirectoryRequestPropertiesArgs, TargetDirectoryRequestPropertiesPtr and TargetDirectoryRequestPropertiesPtrOutput values.
+// You can construct a concrete instance of `TargetDirectoryRequestPropertiesPtrInput` via:
+//
+//	        TargetDirectoryRequestPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetDirectoryRequestPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToTargetDirectoryRequestPropertiesPtrOutput() TargetDirectoryRequestPropertiesPtrOutput
+	ToTargetDirectoryRequestPropertiesPtrOutputWithContext(context.Context) TargetDirectoryRequestPropertiesPtrOutput
+}
+
+type targetDirectoryRequestPropertiesPtrType TargetDirectoryRequestPropertiesArgs
+
+func TargetDirectoryRequestPropertiesPtr(v *TargetDirectoryRequestPropertiesArgs) TargetDirectoryRequestPropertiesPtrInput {
+	return (*targetDirectoryRequestPropertiesPtrType)(v)
+}
+
+func (*targetDirectoryRequestPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetDirectoryRequestProperties)(nil)).Elem()
+}
+
+func (i *targetDirectoryRequestPropertiesPtrType) ToTargetDirectoryRequestPropertiesPtrOutput() TargetDirectoryRequestPropertiesPtrOutput {
+	return i.ToTargetDirectoryRequestPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *targetDirectoryRequestPropertiesPtrType) ToTargetDirectoryRequestPropertiesPtrOutputWithContext(ctx context.Context) TargetDirectoryRequestPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetDirectoryRequestPropertiesPtrOutput)
+}
+
+// Properties of subscription Request for Changed Target Directory.
+type TargetDirectoryRequestPropertiesOutput struct{ *pulumi.OutputState }
+
+func (TargetDirectoryRequestPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetDirectoryRequestProperties)(nil)).Elem()
+}
+
+func (o TargetDirectoryRequestPropertiesOutput) ToTargetDirectoryRequestPropertiesOutput() TargetDirectoryRequestPropertiesOutput {
+	return o
+}
+
+func (o TargetDirectoryRequestPropertiesOutput) ToTargetDirectoryRequestPropertiesOutputWithContext(ctx context.Context) TargetDirectoryRequestPropertiesOutput {
+	return o
+}
+
+func (o TargetDirectoryRequestPropertiesOutput) ToTargetDirectoryRequestPropertiesPtrOutput() TargetDirectoryRequestPropertiesPtrOutput {
+	return o.ToTargetDirectoryRequestPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o TargetDirectoryRequestPropertiesOutput) ToTargetDirectoryRequestPropertiesPtrOutputWithContext(ctx context.Context) TargetDirectoryRequestPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetDirectoryRequestProperties) *TargetDirectoryRequestProperties {
+		return &v
+	}).(TargetDirectoryRequestPropertiesPtrOutput)
+}
+
+// The destination OwnerId, can be object id or email address
+func (o TargetDirectoryRequestPropertiesOutput) DestinationOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetDirectoryRequestProperties) *string { return v.DestinationOwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The destination Tenant id where subscription needs to be accepted
+func (o TargetDirectoryRequestPropertiesOutput) DestinationTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetDirectoryRequestProperties) *string { return v.DestinationTenantId }).(pulumi.StringPtrOutput)
+}
+
+type TargetDirectoryRequestPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetDirectoryRequestPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetDirectoryRequestProperties)(nil)).Elem()
+}
+
+func (o TargetDirectoryRequestPropertiesPtrOutput) ToTargetDirectoryRequestPropertiesPtrOutput() TargetDirectoryRequestPropertiesPtrOutput {
+	return o
+}
+
+func (o TargetDirectoryRequestPropertiesPtrOutput) ToTargetDirectoryRequestPropertiesPtrOutputWithContext(ctx context.Context) TargetDirectoryRequestPropertiesPtrOutput {
+	return o
+}
+
+func (o TargetDirectoryRequestPropertiesPtrOutput) Elem() TargetDirectoryRequestPropertiesOutput {
+	return o.ApplyT(func(v *TargetDirectoryRequestProperties) TargetDirectoryRequestProperties {
+		if v != nil {
+			return *v
+		}
+		var ret TargetDirectoryRequestProperties
+		return ret
+	}).(TargetDirectoryRequestPropertiesOutput)
+}
+
+// The destination OwnerId, can be object id or email address
+func (o TargetDirectoryRequestPropertiesPtrOutput) DestinationOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetDirectoryRequestProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationOwnerId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The destination Tenant id where subscription needs to be accepted
+func (o TargetDirectoryRequestPropertiesPtrOutput) DestinationTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetDirectoryRequestProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of subscription Response for Changed Target Directory.
+type TargetDirectoryResultPropertiesResponse struct {
+	// Destination Owner Id where Subscription will be accepted.
+	DestinationOwnerId string `pulumi:"destinationOwnerId"`
+	// Destination Tenant Id where Subscription will be accepted.
+	DestinationTenantId string `pulumi:"destinationTenantId"`
+	// Subscription Initiate Request Expiry time
+	ExpiresOn string `pulumi:"expiresOn"`
+	// Subscription Status.
+	Status string `pulumi:"status"`
+}
+
+// Properties of subscription Response for Changed Target Directory.
+type TargetDirectoryResultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetDirectoryResultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetDirectoryResultPropertiesResponse)(nil)).Elem()
+}
+
+func (o TargetDirectoryResultPropertiesResponseOutput) ToTargetDirectoryResultPropertiesResponseOutput() TargetDirectoryResultPropertiesResponseOutput {
+	return o
+}
+
+func (o TargetDirectoryResultPropertiesResponseOutput) ToTargetDirectoryResultPropertiesResponseOutputWithContext(ctx context.Context) TargetDirectoryResultPropertiesResponseOutput {
+	return o
+}
+
+// Destination Owner Id where Subscription will be accepted.
+func (o TargetDirectoryResultPropertiesResponseOutput) DestinationOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetDirectoryResultPropertiesResponse) string { return v.DestinationOwnerId }).(pulumi.StringOutput)
+}
+
+// Destination Tenant Id where Subscription will be accepted.
+func (o TargetDirectoryResultPropertiesResponseOutput) DestinationTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetDirectoryResultPropertiesResponse) string { return v.DestinationTenantId }).(pulumi.StringOutput)
+}
+
+// Subscription Initiate Request Expiry time
+func (o TargetDirectoryResultPropertiesResponseOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetDirectoryResultPropertiesResponse) string { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// Subscription Status.
+func (o TargetDirectoryResultPropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetDirectoryResultPropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PutAliasRequestAdditionalPropertiesOutput{})
 	pulumi.RegisterOutputType(PutAliasRequestAdditionalPropertiesPtrOutput{})
@@ -634,4 +840,7 @@ func init() {
 	pulumi.RegisterOutputType(PutAliasRequestPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionAliasResponsePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TargetDirectoryRequestPropertiesOutput{})
+	pulumi.RegisterOutputType(TargetDirectoryRequestPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(TargetDirectoryResultPropertiesResponseOutput{})
 }

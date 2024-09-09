@@ -15,7 +15,7 @@ import (
 // Product-group link details.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
 type ProductGroupLink struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewProductGroupLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ProductGroupLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:ProductGroupLink"),
 		},
 	})
 	opts = append(opts, aliases)

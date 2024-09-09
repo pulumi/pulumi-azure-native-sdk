@@ -191,6 +191,8 @@ func (o B2CTenantResourcePropertiesResponseBillingConfigPtrOutput) EffectiveStar
 type CIAMResourceSKU struct {
 	// The name of the SKU for the tenant.
 	Name string `pulumi:"name"`
+	// The tier of the tenant.
+	Tier string `pulumi:"tier"`
 }
 
 // CIAMResourceSKUInput is an input type that accepts CIAMResourceSKUArgs and CIAMResourceSKUOutput values.
@@ -208,6 +210,8 @@ type CIAMResourceSKUInput interface {
 type CIAMResourceSKUArgs struct {
 	// The name of the SKU for the tenant.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The tier of the tenant.
+	Tier pulumi.StringInput `pulumi:"tier"`
 }
 
 func (CIAMResourceSKUArgs) ElementType() reflect.Type {
@@ -242,10 +246,17 @@ func (o CIAMResourceSKUOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CIAMResourceSKU) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The tier of the tenant.
+func (o CIAMResourceSKUOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v CIAMResourceSKU) string { return v.Tier }).(pulumi.StringOutput)
+}
+
 // SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
 type CIAMResourceSKUResponse struct {
 	// The name of the SKU for the tenant.
 	Name string `pulumi:"name"`
+	// The tier of the tenant.
+	Tier string `pulumi:"tier"`
 }
 
 // SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
@@ -266,6 +277,11 @@ func (o CIAMResourceSKUResponseOutput) ToCIAMResourceSKUResponseOutputWithContex
 // The name of the SKU for the tenant.
 func (o CIAMResourceSKUResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CIAMResourceSKUResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The tier of the tenant.
+func (o CIAMResourceSKUResponseOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v CIAMResourceSKUResponse) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 // These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.

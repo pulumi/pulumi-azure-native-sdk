@@ -14,7 +14,7 @@ import (
 // Returns the details of an API release.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
 func LookupWorkspaceApiRelease(ctx *pulumi.Context, args *LookupWorkspaceApiReleaseArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceApiReleaseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceApiReleaseResult

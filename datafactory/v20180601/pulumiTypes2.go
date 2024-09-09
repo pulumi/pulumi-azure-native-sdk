@@ -13,6 +13,950 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// SAP Table Linked Service.
+type SapTableLinkedService struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+	ClientId interface{} `pulumi:"clientId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
+	Language interface{} `pulumi:"language"`
+	// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+	LogonGroup interface{} `pulumi:"logonGroup"`
+	// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+	MessageServer interface{} `pulumi:"messageServer"`
+	// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+	MessageServerService interface{} `pulumi:"messageServerService"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Password to access the SAP server where the table is located.
+	Password interface{} `pulumi:"password"`
+	// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncLibraryPath interface{} `pulumi:"sncLibraryPath"`
+	// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+	SncMode interface{} `pulumi:"sncMode"`
+	// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncMyName interface{} `pulumi:"sncMyName"`
+	// Communication partner's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncPartnerName interface{} `pulumi:"sncPartnerName"`
+	// SNC Quality of Protection. Allowed value include: 1, 2, 3, 8, 9. Type: string (or Expression with resultType string).
+	SncQop interface{} `pulumi:"sncQop"`
+	// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+	SystemId interface{} `pulumi:"systemId"`
+	// System number of the SAP system where the table is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+	SystemNumber interface{} `pulumi:"systemNumber"`
+	// Type of linked service.
+	// Expected value is 'SapTable'.
+	Type string `pulumi:"type"`
+	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
+}
+
+// SapTableLinkedServiceInput is an input type that accepts SapTableLinkedServiceArgs and SapTableLinkedServiceOutput values.
+// You can construct a concrete instance of `SapTableLinkedServiceInput` via:
+//
+//	SapTableLinkedServiceArgs{...}
+type SapTableLinkedServiceInput interface {
+	pulumi.Input
+
+	ToSapTableLinkedServiceOutput() SapTableLinkedServiceOutput
+	ToSapTableLinkedServiceOutputWithContext(context.Context) SapTableLinkedServiceOutput
+}
+
+// SAP Table Linked Service.
+type SapTableLinkedServiceArgs struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+	ClientId pulumi.Input `pulumi:"clientId"`
+	// The integration runtime reference.
+	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
+	// Linked service description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
+	Language pulumi.Input `pulumi:"language"`
+	// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+	LogonGroup pulumi.Input `pulumi:"logonGroup"`
+	// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+	MessageServer pulumi.Input `pulumi:"messageServer"`
+	// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+	MessageServerService pulumi.Input `pulumi:"messageServerService"`
+	// Parameters for linked service.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Password to access the SAP server where the table is located.
+	Password pulumi.Input `pulumi:"password"`
+	// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
+	Server pulumi.Input `pulumi:"server"`
+	// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncLibraryPath pulumi.Input `pulumi:"sncLibraryPath"`
+	// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+	SncMode pulumi.Input `pulumi:"sncMode"`
+	// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncMyName pulumi.Input `pulumi:"sncMyName"`
+	// Communication partner's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncPartnerName pulumi.Input `pulumi:"sncPartnerName"`
+	// SNC Quality of Protection. Allowed value include: 1, 2, 3, 8, 9. Type: string (or Expression with resultType string).
+	SncQop pulumi.Input `pulumi:"sncQop"`
+	// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+	SystemId pulumi.Input `pulumi:"systemId"`
+	// System number of the SAP system where the table is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+	SystemNumber pulumi.Input `pulumi:"systemNumber"`
+	// Type of linked service.
+	// Expected value is 'SapTable'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	UserName pulumi.Input `pulumi:"userName"`
+	// Version of the linked service.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SapTableLinkedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableLinkedService)(nil)).Elem()
+}
+
+func (i SapTableLinkedServiceArgs) ToSapTableLinkedServiceOutput() SapTableLinkedServiceOutput {
+	return i.ToSapTableLinkedServiceOutputWithContext(context.Background())
+}
+
+func (i SapTableLinkedServiceArgs) ToSapTableLinkedServiceOutputWithContext(ctx context.Context) SapTableLinkedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapTableLinkedServiceOutput)
+}
+
+// SAP Table Linked Service.
+type SapTableLinkedServiceOutput struct{ *pulumi.OutputState }
+
+func (SapTableLinkedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableLinkedService)(nil)).Elem()
+}
+
+func (o SapTableLinkedServiceOutput) ToSapTableLinkedServiceOutput() SapTableLinkedServiceOutput {
+	return o
+}
+
+func (o SapTableLinkedServiceOutput) ToSapTableLinkedServiceOutputWithContext(ctx context.Context) SapTableLinkedServiceOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o SapTableLinkedServiceOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapTableLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o SapTableLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
+	return o.ApplyT(func(v SapTableLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
+}
+
+// Linked service description.
+func (o SapTableLinkedServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o SapTableLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) Language() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.Language }).(pulumi.AnyOutput)
+}
+
+// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) LogonGroup() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.LogonGroup }).(pulumi.AnyOutput)
+}
+
+// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) MessageServer() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.MessageServer }).(pulumi.AnyOutput)
+}
+
+// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) MessageServerService() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.MessageServerService }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o SapTableLinkedServiceOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v SapTableLinkedService) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Password to access the SAP server where the table is located.
+func (o SapTableLinkedServiceOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SncLibraryPath() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SncLibraryPath }).(pulumi.AnyOutput)
+}
+
+// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SncMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SncMode }).(pulumi.AnyOutput)
+}
+
+// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SncMyName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SncMyName }).(pulumi.AnyOutput)
+}
+
+// Communication partner's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SncPartnerName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SncPartnerName }).(pulumi.AnyOutput)
+}
+
+// SNC Quality of Protection. Allowed value include: 1, 2, 3, 8, 9. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SncQop() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SncQop }).(pulumi.AnyOutput)
+}
+
+// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SystemId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SystemId }).(pulumi.AnyOutput)
+}
+
+// System number of the SAP system where the table is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) SystemNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.SystemNumber }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'SapTable'.
+func (o SapTableLinkedServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapTableLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedService) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapTableLinkedServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// SAP Table Linked Service.
+type SapTableLinkedServiceResponse struct {
+	// List of tags that can be used for describing the linked service.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+	ClientId interface{} `pulumi:"clientId"`
+	// The integration runtime reference.
+	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
+	// Linked service description.
+	Description *string `pulumi:"description"`
+	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
+	Language interface{} `pulumi:"language"`
+	// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+	LogonGroup interface{} `pulumi:"logonGroup"`
+	// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+	MessageServer interface{} `pulumi:"messageServer"`
+	// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+	MessageServerService interface{} `pulumi:"messageServerService"`
+	// Parameters for linked service.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Password to access the SAP server where the table is located.
+	Password interface{} `pulumi:"password"`
+	// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
+	Server interface{} `pulumi:"server"`
+	// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncLibraryPath interface{} `pulumi:"sncLibraryPath"`
+	// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+	SncMode interface{} `pulumi:"sncMode"`
+	// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncMyName interface{} `pulumi:"sncMyName"`
+	// Communication partner's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	SncPartnerName interface{} `pulumi:"sncPartnerName"`
+	// SNC Quality of Protection. Allowed value include: 1, 2, 3, 8, 9. Type: string (or Expression with resultType string).
+	SncQop interface{} `pulumi:"sncQop"`
+	// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+	SystemId interface{} `pulumi:"systemId"`
+	// System number of the SAP system where the table is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+	SystemNumber interface{} `pulumi:"systemNumber"`
+	// Type of linked service.
+	// Expected value is 'SapTable'.
+	Type string `pulumi:"type"`
+	// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+	UserName interface{} `pulumi:"userName"`
+	// Version of the linked service.
+	Version *string `pulumi:"version"`
+}
+
+// SAP Table Linked Service.
+type SapTableLinkedServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (SapTableLinkedServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableLinkedServiceResponse)(nil)).Elem()
+}
+
+func (o SapTableLinkedServiceResponseOutput) ToSapTableLinkedServiceResponseOutput() SapTableLinkedServiceResponseOutput {
+	return o
+}
+
+func (o SapTableLinkedServiceResponseOutput) ToSapTableLinkedServiceResponseOutputWithContext(ctx context.Context) SapTableLinkedServiceResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the linked service.
+func (o SapTableLinkedServiceResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Client ID of the client on the SAP system where the table is located. (Usually a three-digit decimal number represented as a string) Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) ClientId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.ClientId }).(pulumi.AnyOutput)
+}
+
+// The integration runtime reference.
+func (o SapTableLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) *IntegrationRuntimeReferenceResponse { return v.ConnectVia }).(IntegrationRuntimeReferenceResponsePtrOutput)
+}
+
+// Linked service description.
+func (o SapTableLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+func (o SapTableLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Language of the SAP system where the table is located. The default value is EN. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) Language() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.Language }).(pulumi.AnyOutput)
+}
+
+// The Logon Group for the SAP System. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) LogonGroup() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.LogonGroup }).(pulumi.AnyOutput)
+}
+
+// The hostname of the SAP Message Server. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) MessageServer() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.MessageServer }).(pulumi.AnyOutput)
+}
+
+// The service name or port number of the Message Server. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) MessageServerService() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.MessageServerService }).(pulumi.AnyOutput)
+}
+
+// Parameters for linked service.
+func (o SapTableLinkedServiceResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Password to access the SAP server where the table is located.
+func (o SapTableLinkedServiceResponseOutput) Password() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
+}
+
+// Host name of the SAP instance where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// External security product's library to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SncLibraryPath() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SncLibraryPath }).(pulumi.AnyOutput)
+}
+
+// SNC activation indicator to access the SAP server where the table is located. Must be either 0 (off) or 1 (on). Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SncMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SncMode }).(pulumi.AnyOutput)
+}
+
+// Initiator's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SncMyName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SncMyName }).(pulumi.AnyOutput)
+}
+
+// Communication partner's SNC name to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SncPartnerName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SncPartnerName }).(pulumi.AnyOutput)
+}
+
+// SNC Quality of Protection. Allowed value include: 1, 2, 3, 8, 9. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SncQop() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SncQop }).(pulumi.AnyOutput)
+}
+
+// SystemID of the SAP system where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SystemId() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SystemId }).(pulumi.AnyOutput)
+}
+
+// System number of the SAP system where the table is located. (Usually a two-digit decimal number represented as a string.) Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) SystemNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.SystemNumber }).(pulumi.AnyOutput)
+}
+
+// Type of linked service.
+// Expected value is 'SapTable'.
+func (o SapTableLinkedServiceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
+func (o SapTableLinkedServiceResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
+// Version of the linked service.
+func (o SapTableLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+type SapTablePartitionSettings struct {
+	// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+	MaxPartitionsNumber interface{} `pulumi:"maxPartitionsNumber"`
+	// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionColumnName interface{} `pulumi:"partitionColumnName"`
+	// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionLowerBound interface{} `pulumi:"partitionLowerBound"`
+	// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionUpperBound interface{} `pulumi:"partitionUpperBound"`
+}
+
+// SapTablePartitionSettingsInput is an input type that accepts SapTablePartitionSettingsArgs and SapTablePartitionSettingsOutput values.
+// You can construct a concrete instance of `SapTablePartitionSettingsInput` via:
+//
+//	SapTablePartitionSettingsArgs{...}
+type SapTablePartitionSettingsInput interface {
+	pulumi.Input
+
+	ToSapTablePartitionSettingsOutput() SapTablePartitionSettingsOutput
+	ToSapTablePartitionSettingsOutputWithContext(context.Context) SapTablePartitionSettingsOutput
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+type SapTablePartitionSettingsArgs struct {
+	// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+	MaxPartitionsNumber pulumi.Input `pulumi:"maxPartitionsNumber"`
+	// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionColumnName pulumi.Input `pulumi:"partitionColumnName"`
+	// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionLowerBound pulumi.Input `pulumi:"partitionLowerBound"`
+	// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionUpperBound pulumi.Input `pulumi:"partitionUpperBound"`
+}
+
+func (SapTablePartitionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTablePartitionSettings)(nil)).Elem()
+}
+
+func (i SapTablePartitionSettingsArgs) ToSapTablePartitionSettingsOutput() SapTablePartitionSettingsOutput {
+	return i.ToSapTablePartitionSettingsOutputWithContext(context.Background())
+}
+
+func (i SapTablePartitionSettingsArgs) ToSapTablePartitionSettingsOutputWithContext(ctx context.Context) SapTablePartitionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapTablePartitionSettingsOutput)
+}
+
+func (i SapTablePartitionSettingsArgs) ToSapTablePartitionSettingsPtrOutput() SapTablePartitionSettingsPtrOutput {
+	return i.ToSapTablePartitionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SapTablePartitionSettingsArgs) ToSapTablePartitionSettingsPtrOutputWithContext(ctx context.Context) SapTablePartitionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapTablePartitionSettingsOutput).ToSapTablePartitionSettingsPtrOutputWithContext(ctx)
+}
+
+// SapTablePartitionSettingsPtrInput is an input type that accepts SapTablePartitionSettingsArgs, SapTablePartitionSettingsPtr and SapTablePartitionSettingsPtrOutput values.
+// You can construct a concrete instance of `SapTablePartitionSettingsPtrInput` via:
+//
+//	        SapTablePartitionSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SapTablePartitionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSapTablePartitionSettingsPtrOutput() SapTablePartitionSettingsPtrOutput
+	ToSapTablePartitionSettingsPtrOutputWithContext(context.Context) SapTablePartitionSettingsPtrOutput
+}
+
+type sapTablePartitionSettingsPtrType SapTablePartitionSettingsArgs
+
+func SapTablePartitionSettingsPtr(v *SapTablePartitionSettingsArgs) SapTablePartitionSettingsPtrInput {
+	return (*sapTablePartitionSettingsPtrType)(v)
+}
+
+func (*sapTablePartitionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapTablePartitionSettings)(nil)).Elem()
+}
+
+func (i *sapTablePartitionSettingsPtrType) ToSapTablePartitionSettingsPtrOutput() SapTablePartitionSettingsPtrOutput {
+	return i.ToSapTablePartitionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *sapTablePartitionSettingsPtrType) ToSapTablePartitionSettingsPtrOutputWithContext(ctx context.Context) SapTablePartitionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapTablePartitionSettingsPtrOutput)
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+type SapTablePartitionSettingsOutput struct{ *pulumi.OutputState }
+
+func (SapTablePartitionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTablePartitionSettings)(nil)).Elem()
+}
+
+func (o SapTablePartitionSettingsOutput) ToSapTablePartitionSettingsOutput() SapTablePartitionSettingsOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsOutput) ToSapTablePartitionSettingsOutputWithContext(ctx context.Context) SapTablePartitionSettingsOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsOutput) ToSapTablePartitionSettingsPtrOutput() SapTablePartitionSettingsPtrOutput {
+	return o.ToSapTablePartitionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SapTablePartitionSettingsOutput) ToSapTablePartitionSettingsPtrOutputWithContext(ctx context.Context) SapTablePartitionSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SapTablePartitionSettings) *SapTablePartitionSettings {
+		return &v
+	}).(SapTablePartitionSettingsPtrOutput)
+}
+
+// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+func (o SapTablePartitionSettingsOutput) MaxPartitionsNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettings) interface{} { return v.MaxPartitionsNumber }).(pulumi.AnyOutput)
+}
+
+// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsOutput) PartitionColumnName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettings) interface{} { return v.PartitionColumnName }).(pulumi.AnyOutput)
+}
+
+// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsOutput) PartitionLowerBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettings) interface{} { return v.PartitionLowerBound }).(pulumi.AnyOutput)
+}
+
+// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsOutput) PartitionUpperBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettings) interface{} { return v.PartitionUpperBound }).(pulumi.AnyOutput)
+}
+
+type SapTablePartitionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SapTablePartitionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapTablePartitionSettings)(nil)).Elem()
+}
+
+func (o SapTablePartitionSettingsPtrOutput) ToSapTablePartitionSettingsPtrOutput() SapTablePartitionSettingsPtrOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsPtrOutput) ToSapTablePartitionSettingsPtrOutputWithContext(ctx context.Context) SapTablePartitionSettingsPtrOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsPtrOutput) Elem() SapTablePartitionSettingsOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettings) SapTablePartitionSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SapTablePartitionSettings
+		return ret
+	}).(SapTablePartitionSettingsOutput)
+}
+
+// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+func (o SapTablePartitionSettingsPtrOutput) MaxPartitionsNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPartitionsNumber
+	}).(pulumi.AnyOutput)
+}
+
+// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsPtrOutput) PartitionColumnName() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionColumnName
+	}).(pulumi.AnyOutput)
+}
+
+// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsPtrOutput) PartitionLowerBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionLowerBound
+	}).(pulumi.AnyOutput)
+}
+
+// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsPtrOutput) PartitionUpperBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionUpperBound
+	}).(pulumi.AnyOutput)
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+type SapTablePartitionSettingsResponse struct {
+	// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+	MaxPartitionsNumber interface{} `pulumi:"maxPartitionsNumber"`
+	// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionColumnName interface{} `pulumi:"partitionColumnName"`
+	// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionLowerBound interface{} `pulumi:"partitionLowerBound"`
+	// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+	PartitionUpperBound interface{} `pulumi:"partitionUpperBound"`
+}
+
+// The settings that will be leveraged for SAP table source partitioning.
+type SapTablePartitionSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SapTablePartitionSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTablePartitionSettingsResponse)(nil)).Elem()
+}
+
+func (o SapTablePartitionSettingsResponseOutput) ToSapTablePartitionSettingsResponseOutput() SapTablePartitionSettingsResponseOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsResponseOutput) ToSapTablePartitionSettingsResponseOutputWithContext(ctx context.Context) SapTablePartitionSettingsResponseOutput {
+	return o
+}
+
+// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponseOutput) MaxPartitionsNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettingsResponse) interface{} { return v.MaxPartitionsNumber }).(pulumi.AnyOutput)
+}
+
+// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponseOutput) PartitionColumnName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettingsResponse) interface{} { return v.PartitionColumnName }).(pulumi.AnyOutput)
+}
+
+// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponseOutput) PartitionLowerBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettingsResponse) interface{} { return v.PartitionLowerBound }).(pulumi.AnyOutput)
+}
+
+// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponseOutput) PartitionUpperBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTablePartitionSettingsResponse) interface{} { return v.PartitionUpperBound }).(pulumi.AnyOutput)
+}
+
+type SapTablePartitionSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SapTablePartitionSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SapTablePartitionSettingsResponse)(nil)).Elem()
+}
+
+func (o SapTablePartitionSettingsResponsePtrOutput) ToSapTablePartitionSettingsResponsePtrOutput() SapTablePartitionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsResponsePtrOutput) ToSapTablePartitionSettingsResponsePtrOutputWithContext(ctx context.Context) SapTablePartitionSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SapTablePartitionSettingsResponsePtrOutput) Elem() SapTablePartitionSettingsResponseOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettingsResponse) SapTablePartitionSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SapTablePartitionSettingsResponse
+		return ret
+	}).(SapTablePartitionSettingsResponseOutput)
+}
+
+// The maximum value of partitions the table will be split into. Type: integer (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponsePtrOutput) MaxPartitionsNumber() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPartitionsNumber
+	}).(pulumi.AnyOutput)
+}
+
+// The name of the column that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponsePtrOutput) PartitionColumnName() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionColumnName
+	}).(pulumi.AnyOutput)
+}
+
+// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponsePtrOutput) PartitionLowerBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionLowerBound
+	}).(pulumi.AnyOutput)
+}
+
+// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
+func (o SapTablePartitionSettingsResponsePtrOutput) PartitionUpperBound() pulumi.AnyOutput {
+	return o.ApplyT(func(v *SapTablePartitionSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionUpperBound
+	}).(pulumi.AnyOutput)
+}
+
+// SAP Table Resource properties.
+type SapTableResourceDataset struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The name of the SAP Table. Type: string (or Expression with resultType string).
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'SapTableResource'.
+	Type string `pulumi:"type"`
+}
+
+// SapTableResourceDatasetInput is an input type that accepts SapTableResourceDatasetArgs and SapTableResourceDatasetOutput values.
+// You can construct a concrete instance of `SapTableResourceDatasetInput` via:
+//
+//	SapTableResourceDatasetArgs{...}
+type SapTableResourceDatasetInput interface {
+	pulumi.Input
+
+	ToSapTableResourceDatasetOutput() SapTableResourceDatasetOutput
+	ToSapTableResourceDatasetOutputWithContext(context.Context) SapTableResourceDatasetOutput
+}
+
+// SAP Table Resource properties.
+type SapTableResourceDatasetArgs struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Dataset description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder DatasetFolderPtrInput `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceInput `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema pulumi.Input `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure pulumi.Input `pulumi:"structure"`
+	// The name of the SAP Table. Type: string (or Expression with resultType string).
+	TableName pulumi.Input `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'SapTableResource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SapTableResourceDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableResourceDataset)(nil)).Elem()
+}
+
+func (i SapTableResourceDatasetArgs) ToSapTableResourceDatasetOutput() SapTableResourceDatasetOutput {
+	return i.ToSapTableResourceDatasetOutputWithContext(context.Background())
+}
+
+func (i SapTableResourceDatasetArgs) ToSapTableResourceDatasetOutputWithContext(ctx context.Context) SapTableResourceDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SapTableResourceDatasetOutput)
+}
+
+// SAP Table Resource properties.
+type SapTableResourceDatasetOutput struct{ *pulumi.OutputState }
+
+func (SapTableResourceDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableResourceDataset)(nil)).Elem()
+}
+
+func (o SapTableResourceDatasetOutput) ToSapTableResourceDatasetOutput() SapTableResourceDatasetOutput {
+	return o
+}
+
+func (o SapTableResourceDatasetOutput) ToSapTableResourceDatasetOutputWithContext(ctx context.Context) SapTableResourceDatasetOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o SapTableResourceDatasetOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o SapTableResourceDatasetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o SapTableResourceDatasetOutput) Folder() DatasetFolderPtrOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) *DatasetFolder { return v.Folder }).(DatasetFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o SapTableResourceDatasetOutput) LinkedServiceName() LinkedServiceReferenceOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferenceOutput)
+}
+
+// Parameters for dataset.
+func (o SapTableResourceDatasetOutput) Parameters() ParameterSpecificationMapOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) map[string]ParameterSpecification { return v.Parameters }).(ParameterSpecificationMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o SapTableResourceDatasetOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o SapTableResourceDatasetOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The name of the SAP Table. Type: string (or Expression with resultType string).
+func (o SapTableResourceDatasetOutput) TableName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) interface{} { return v.TableName }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'SapTableResource'.
+func (o SapTableResourceDatasetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapTableResourceDataset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// SAP Table Resource properties.
+type SapTableResourceDatasetResponse struct {
+	// List of tags that can be used for describing the Dataset.
+	Annotations []interface{} `pulumi:"annotations"`
+	// Dataset description.
+	Description *string `pulumi:"description"`
+	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+	Folder *DatasetResponseFolder `pulumi:"folder"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Parameters for dataset.
+	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
+	// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+	Schema interface{} `pulumi:"schema"`
+	// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+	Structure interface{} `pulumi:"structure"`
+	// The name of the SAP Table. Type: string (or Expression with resultType string).
+	TableName interface{} `pulumi:"tableName"`
+	// Type of dataset.
+	// Expected value is 'SapTableResource'.
+	Type string `pulumi:"type"`
+}
+
+// SAP Table Resource properties.
+type SapTableResourceDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (SapTableResourceDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SapTableResourceDatasetResponse)(nil)).Elem()
+}
+
+func (o SapTableResourceDatasetResponseOutput) ToSapTableResourceDatasetResponseOutput() SapTableResourceDatasetResponseOutput {
+	return o
+}
+
+func (o SapTableResourceDatasetResponseOutput) ToSapTableResourceDatasetResponseOutputWithContext(ctx context.Context) SapTableResourceDatasetResponseOutput {
+	return o
+}
+
+// List of tags that can be used for describing the Dataset.
+func (o SapTableResourceDatasetResponseOutput) Annotations() pulumi.ArrayOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
+}
+
+// Dataset description.
+func (o SapTableResourceDatasetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+func (o SapTableResourceDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+}
+
+// Linked service reference.
+func (o SapTableResourceDatasetResponseOutput) LinkedServiceName() LinkedServiceReferenceResponseOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponseOutput)
+}
+
+// Parameters for dataset.
+func (o SapTableResourceDatasetResponseOutput) Parameters() ParameterSpecificationResponseMapOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) map[string]ParameterSpecificationResponse { return v.Parameters }).(ParameterSpecificationResponseMapOutput)
+}
+
+// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+func (o SapTableResourceDatasetResponseOutput) Schema() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) interface{} { return v.Schema }).(pulumi.AnyOutput)
+}
+
+// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+func (o SapTableResourceDatasetResponseOutput) Structure() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) interface{} { return v.Structure }).(pulumi.AnyOutput)
+}
+
+// The name of the SAP Table. Type: string (or Expression with resultType string).
+func (o SapTableResourceDatasetResponseOutput) TableName() pulumi.AnyOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) interface{} { return v.TableName }).(pulumi.AnyOutput)
+}
+
+// Type of dataset.
+// Expected value is 'SapTableResource'.
+func (o SapTableResourceDatasetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SapTableResourceDatasetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // A copy activity source for SAP Table source.
 type SapTableSource struct {
 	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
@@ -31227,6 +32171,14 @@ func (o ZohoSourceResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(SapTableLinkedServiceOutput{})
+	pulumi.RegisterOutputType(SapTableLinkedServiceResponseOutput{})
+	pulumi.RegisterOutputType(SapTablePartitionSettingsOutput{})
+	pulumi.RegisterOutputType(SapTablePartitionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SapTablePartitionSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SapTablePartitionSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SapTableResourceDatasetOutput{})
+	pulumi.RegisterOutputType(SapTableResourceDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SapTableSourceOutput{})
 	pulumi.RegisterOutputType(SapTableSourceResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleTriggerOutput{})

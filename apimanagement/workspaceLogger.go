@@ -14,6 +14,8 @@ import (
 
 // Logger details.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-05-01.
 type WorkspaceLogger struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +58,9 @@ func NewWorkspaceLogger(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceLogger"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceLogger"),
 		},
 	})
 	opts = append(opts, aliases)

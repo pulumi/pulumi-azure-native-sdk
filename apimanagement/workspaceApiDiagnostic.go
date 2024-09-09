@@ -14,6 +14,8 @@ import (
 
 // Diagnostic details.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-05-01.
 type WorkspaceApiDiagnostic struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +70,9 @@ func NewWorkspaceApiDiagnostic(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceApiDiagnostic"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceApiDiagnostic"),
 		},
 	})
 	opts = append(opts, aliases)
