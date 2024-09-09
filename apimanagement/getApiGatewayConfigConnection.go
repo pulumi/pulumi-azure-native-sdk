@@ -13,6 +13,8 @@ import (
 
 // Gets an API Management gateway config connection resource description.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-05-01.
 func LookupApiGatewayConfigConnection(ctx *pulumi.Context, args *LookupApiGatewayConfigConnectionArgs, opts ...pulumi.InvokeOption) (*LookupApiGatewayConfigConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiGatewayConfigConnectionResult

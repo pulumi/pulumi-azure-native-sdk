@@ -128,6 +128,9 @@ func NewSubscription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:Subscription"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:Subscription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -71,6 +71,9 @@ func NewPolicyFragment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:PolicyFragment"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:PolicyFragment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

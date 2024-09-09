@@ -124,6 +124,9 @@ func NewUser(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:User"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:User"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

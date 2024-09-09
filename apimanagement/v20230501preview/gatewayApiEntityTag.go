@@ -125,6 +125,9 @@ func NewGatewayApiEntityTag(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:GatewayApiEntityTag"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:GatewayApiEntityTag"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

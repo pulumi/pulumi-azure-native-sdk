@@ -514,6 +514,171 @@ func (in *ciamresourceSKUNamePtr) ToCIAMResourceSKUNamePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(CIAMResourceSKUNamePtrOutput)
 }
 
+// The tier of the tenant.
+type CIAMResourceSKUTier string
+
+const (
+	// The SKU tier used for all Azure AD for customers tenants.
+	CIAMResourceSKUTierA0 = CIAMResourceSKUTier("A0")
+)
+
+func (CIAMResourceSKUTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIAMResourceSKUTier)(nil)).Elem()
+}
+
+func (e CIAMResourceSKUTier) ToCIAMResourceSKUTierOutput() CIAMResourceSKUTierOutput {
+	return pulumi.ToOutput(e).(CIAMResourceSKUTierOutput)
+}
+
+func (e CIAMResourceSKUTier) ToCIAMResourceSKUTierOutputWithContext(ctx context.Context) CIAMResourceSKUTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CIAMResourceSKUTierOutput)
+}
+
+func (e CIAMResourceSKUTier) ToCIAMResourceSKUTierPtrOutput() CIAMResourceSKUTierPtrOutput {
+	return e.ToCIAMResourceSKUTierPtrOutputWithContext(context.Background())
+}
+
+func (e CIAMResourceSKUTier) ToCIAMResourceSKUTierPtrOutputWithContext(ctx context.Context) CIAMResourceSKUTierPtrOutput {
+	return CIAMResourceSKUTier(e).ToCIAMResourceSKUTierOutputWithContext(ctx).ToCIAMResourceSKUTierPtrOutputWithContext(ctx)
+}
+
+func (e CIAMResourceSKUTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CIAMResourceSKUTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CIAMResourceSKUTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CIAMResourceSKUTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CIAMResourceSKUTierOutput struct{ *pulumi.OutputState }
+
+func (CIAMResourceSKUTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIAMResourceSKUTier)(nil)).Elem()
+}
+
+func (o CIAMResourceSKUTierOutput) ToCIAMResourceSKUTierOutput() CIAMResourceSKUTierOutput {
+	return o
+}
+
+func (o CIAMResourceSKUTierOutput) ToCIAMResourceSKUTierOutputWithContext(ctx context.Context) CIAMResourceSKUTierOutput {
+	return o
+}
+
+func (o CIAMResourceSKUTierOutput) ToCIAMResourceSKUTierPtrOutput() CIAMResourceSKUTierPtrOutput {
+	return o.ToCIAMResourceSKUTierPtrOutputWithContext(context.Background())
+}
+
+func (o CIAMResourceSKUTierOutput) ToCIAMResourceSKUTierPtrOutputWithContext(ctx context.Context) CIAMResourceSKUTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CIAMResourceSKUTier) *CIAMResourceSKUTier {
+		return &v
+	}).(CIAMResourceSKUTierPtrOutput)
+}
+
+func (o CIAMResourceSKUTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CIAMResourceSKUTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CIAMResourceSKUTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CIAMResourceSKUTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CIAMResourceSKUTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CIAMResourceSKUTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CIAMResourceSKUTierPtrOutput struct{ *pulumi.OutputState }
+
+func (CIAMResourceSKUTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CIAMResourceSKUTier)(nil)).Elem()
+}
+
+func (o CIAMResourceSKUTierPtrOutput) ToCIAMResourceSKUTierPtrOutput() CIAMResourceSKUTierPtrOutput {
+	return o
+}
+
+func (o CIAMResourceSKUTierPtrOutput) ToCIAMResourceSKUTierPtrOutputWithContext(ctx context.Context) CIAMResourceSKUTierPtrOutput {
+	return o
+}
+
+func (o CIAMResourceSKUTierPtrOutput) Elem() CIAMResourceSKUTierOutput {
+	return o.ApplyT(func(v *CIAMResourceSKUTier) CIAMResourceSKUTier {
+		if v != nil {
+			return *v
+		}
+		var ret CIAMResourceSKUTier
+		return ret
+	}).(CIAMResourceSKUTierOutput)
+}
+
+func (o CIAMResourceSKUTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CIAMResourceSKUTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CIAMResourceSKUTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIAMResourceSKUTierInput is an input type that accepts values of the CIAMResourceSKUTier enum
+// A concrete instance of `CIAMResourceSKUTierInput` can be one of the following:
+//
+//	CIAMResourceSKUTierA0
+type CIAMResourceSKUTierInput interface {
+	pulumi.Input
+
+	ToCIAMResourceSKUTierOutput() CIAMResourceSKUTierOutput
+	ToCIAMResourceSKUTierOutputWithContext(context.Context) CIAMResourceSKUTierOutput
+}
+
+var ciamresourceSKUTierPtrType = reflect.TypeOf((**CIAMResourceSKUTier)(nil)).Elem()
+
+type CIAMResourceSKUTierPtrInput interface {
+	pulumi.Input
+
+	ToCIAMResourceSKUTierPtrOutput() CIAMResourceSKUTierPtrOutput
+	ToCIAMResourceSKUTierPtrOutputWithContext(context.Context) CIAMResourceSKUTierPtrOutput
+}
+
+type ciamresourceSKUTierPtr string
+
+func CIAMResourceSKUTierPtr(v string) CIAMResourceSKUTierPtrInput {
+	return (*ciamresourceSKUTierPtr)(&v)
+}
+
+func (*ciamresourceSKUTierPtr) ElementType() reflect.Type {
+	return ciamresourceSKUTierPtrType
+}
+
+func (in *ciamresourceSKUTierPtr) ToCIAMResourceSKUTierPtrOutput() CIAMResourceSKUTierPtrOutput {
+	return pulumi.ToOutput(in).(CIAMResourceSKUTierPtrOutput)
+}
+
+func (in *ciamresourceSKUTierPtr) ToCIAMResourceSKUTierPtrOutputWithContext(ctx context.Context) CIAMResourceSKUTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CIAMResourceSKUTierPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(B2CResourceSKUNameOutput{})
 	pulumi.RegisterOutputType(B2CResourceSKUNamePtrOutput{})
@@ -521,4 +686,6 @@ func init() {
 	pulumi.RegisterOutputType(B2CResourceSKUTierPtrOutput{})
 	pulumi.RegisterOutputType(CIAMResourceSKUNameOutput{})
 	pulumi.RegisterOutputType(CIAMResourceSKUNamePtrOutput{})
+	pulumi.RegisterOutputType(CIAMResourceSKUTierOutput{})
+	pulumi.RegisterOutputType(CIAMResourceSKUTierPtrOutput{})
 }

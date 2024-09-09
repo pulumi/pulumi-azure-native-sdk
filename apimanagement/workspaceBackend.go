@@ -14,6 +14,8 @@ import (
 
 // Backend details.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-05-01.
 type WorkspaceBackend struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +74,9 @@ func NewWorkspaceBackend(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceBackend"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceBackend"),
 		},
 	})
 	opts = append(opts, aliases)

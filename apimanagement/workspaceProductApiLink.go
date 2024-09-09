@@ -15,7 +15,7 @@ import (
 // Product-API link details.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
 type WorkspaceProductApiLink struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewWorkspaceProductApiLink(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceProductApiLink"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceProductApiLink"),
 		},
 	})
 	opts = append(opts, aliases)

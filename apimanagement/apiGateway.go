@@ -14,6 +14,8 @@ import (
 
 // A single API Management gateway resource in List or Get response.
 // Azure REST API version: 2023-09-01-preview.
+//
+// Other available API versions: 2024-05-01.
 type ApiGateway struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +65,9 @@ func NewApiGateway(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:ApiGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:ApiGateway"),
 		},
 	})
 	opts = append(opts, aliases)

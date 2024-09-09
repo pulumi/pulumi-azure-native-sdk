@@ -66,6 +66,9 @@ func NewAuthorizationAccessPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:AuthorizationAccessPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:AuthorizationAccessPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

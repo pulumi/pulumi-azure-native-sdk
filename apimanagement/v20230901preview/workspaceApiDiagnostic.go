@@ -68,6 +68,9 @@ func NewWorkspaceApiDiagnostic(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement:WorkspaceApiDiagnostic"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceApiDiagnostic"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
