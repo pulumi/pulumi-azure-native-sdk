@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:hybridconnectivity/v20241201:Endpoint":
 		r = &Endpoint{}
+	case "azure-native:hybridconnectivity/v20241201:PublicCloudConnector":
+		r = &PublicCloudConnector{}
 	case "azure-native:hybridconnectivity/v20241201:ServiceConfiguration":
 		r = &ServiceConfiguration{}
+	case "azure-native:hybridconnectivity/v20241201:SolutionConfiguration":
+		r = &SolutionConfiguration{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

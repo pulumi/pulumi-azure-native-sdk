@@ -56,6 +56,9 @@ func NewWorkspaceNotificationRecipientUser(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceNotificationRecipientUser"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceNotificationRecipientUser"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -72,6 +72,9 @@ func NewWorkspaceBackend(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement:WorkspaceBackend"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceBackend"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

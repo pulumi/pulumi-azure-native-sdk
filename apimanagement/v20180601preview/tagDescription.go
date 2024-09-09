@@ -101,6 +101,9 @@ func NewTagDescription(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:TagDescription"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:TagDescription"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

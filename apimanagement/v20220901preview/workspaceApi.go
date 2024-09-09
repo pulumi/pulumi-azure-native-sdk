@@ -96,6 +96,9 @@ func NewWorkspaceApi(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:WorkspaceApi"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceApi"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

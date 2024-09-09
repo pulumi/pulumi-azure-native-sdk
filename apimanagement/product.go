@@ -15,7 +15,7 @@ import (
 // Product details.
 // Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2020-12-01.
 //
-// Other available API versions: 2016-07-07, 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
+// Other available API versions: 2016-07-07, 2016-10-10, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01.
 type Product struct {
 	pulumi.CustomResourceState
 
@@ -115,6 +115,9 @@ func NewProduct(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230901preview:Product"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:Product"),
 		},
 	})
 	opts = append(opts, aliases)

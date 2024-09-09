@@ -50,6 +50,9 @@ func NewWorkspaceCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement:WorkspaceCertificate"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceCertificate"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

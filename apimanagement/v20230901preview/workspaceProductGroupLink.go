@@ -59,6 +59,9 @@ func NewWorkspaceProductGroupLink(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceProductGroupLink"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20240501:WorkspaceProductGroupLink"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
