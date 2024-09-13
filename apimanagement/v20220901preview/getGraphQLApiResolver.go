@@ -51,14 +51,20 @@ type LookupGraphQLApiResolverResult struct {
 
 func LookupGraphQLApiResolverOutput(ctx *pulumi.Context, args LookupGraphQLApiResolverOutputArgs, opts ...pulumi.InvokeOption) LookupGraphQLApiResolverResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGraphQLApiResolverResult, error) {
+		ApplyT(func(v interface{}) (LookupGraphQLApiResolverResultOutput, error) {
 			args := v.(LookupGraphQLApiResolverArgs)
-			r, err := LookupGraphQLApiResolver(ctx, &args, opts...)
-			var s LookupGraphQLApiResolverResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGraphQLApiResolverResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getGraphQLApiResolver", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGraphQLApiResolverResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGraphQLApiResolverResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGraphQLApiResolverResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGraphQLApiResolverResultOutput)
 }
 

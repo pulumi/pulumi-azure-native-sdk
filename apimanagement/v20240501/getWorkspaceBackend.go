@@ -77,14 +77,20 @@ func (val *LookupWorkspaceBackendResult) Defaults() *LookupWorkspaceBackendResul
 
 func LookupWorkspaceBackendOutput(ctx *pulumi.Context, args LookupWorkspaceBackendOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceBackendResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceBackendResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceBackendResultOutput, error) {
 			args := v.(LookupWorkspaceBackendArgs)
-			r, err := LookupWorkspaceBackend(ctx, &args, opts...)
-			var s LookupWorkspaceBackendResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceBackendResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:getWorkspaceBackend", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceBackendResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceBackendResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceBackendResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceBackendResultOutput)
 }
 

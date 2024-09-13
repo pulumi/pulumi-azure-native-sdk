@@ -39,14 +39,20 @@ type ListIdentityProviderSecretsResult struct {
 
 func ListIdentityProviderSecretsOutput(ctx *pulumi.Context, args ListIdentityProviderSecretsOutputArgs, opts ...pulumi.InvokeOption) ListIdentityProviderSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListIdentityProviderSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListIdentityProviderSecretsResultOutput, error) {
 			args := v.(ListIdentityProviderSecretsArgs)
-			r, err := ListIdentityProviderSecrets(ctx, &args, opts...)
-			var s ListIdentityProviderSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListIdentityProviderSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:listIdentityProviderSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListIdentityProviderSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListIdentityProviderSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListIdentityProviderSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListIdentityProviderSecretsResultOutput)
 }
 

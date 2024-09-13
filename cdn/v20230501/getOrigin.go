@@ -75,14 +75,20 @@ type LookupOriginResult struct {
 
 func LookupOriginOutput(ctx *pulumi.Context, args LookupOriginOutputArgs, opts ...pulumi.InvokeOption) LookupOriginResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOriginResult, error) {
+		ApplyT(func(v interface{}) (LookupOriginResultOutput, error) {
 			args := v.(LookupOriginArgs)
-			r, err := LookupOrigin(ctx, &args, opts...)
-			var s LookupOriginResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOriginResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20230501:getOrigin", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOriginResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOriginResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOriginResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOriginResultOutput)
 }
 

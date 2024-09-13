@@ -62,14 +62,20 @@ type LookupAutomationRuleResult struct {
 
 func LookupAutomationRuleOutput(ctx *pulumi.Context, args LookupAutomationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAutomationRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAutomationRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupAutomationRuleResultOutput, error) {
 			args := v.(LookupAutomationRuleArgs)
-			r, err := LookupAutomationRule(ctx, &args, opts...)
-			var s LookupAutomationRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAutomationRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230701preview:getAutomationRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAutomationRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAutomationRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAutomationRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAutomationRuleResultOutput)
 }
 

@@ -73,14 +73,20 @@ type LookupExpressRouteCrossConnectionPeeringResult struct {
 
 func LookupExpressRouteCrossConnectionPeeringOutput(ctx *pulumi.Context, args LookupExpressRouteCrossConnectionPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupExpressRouteCrossConnectionPeeringResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExpressRouteCrossConnectionPeeringResult, error) {
+		ApplyT(func(v interface{}) (LookupExpressRouteCrossConnectionPeeringResultOutput, error) {
 			args := v.(LookupExpressRouteCrossConnectionPeeringArgs)
-			r, err := LookupExpressRouteCrossConnectionPeering(ctx, &args, opts...)
-			var s LookupExpressRouteCrossConnectionPeeringResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupExpressRouteCrossConnectionPeeringResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20190801:getExpressRouteCrossConnectionPeering", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExpressRouteCrossConnectionPeeringResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExpressRouteCrossConnectionPeeringResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExpressRouteCrossConnectionPeeringResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExpressRouteCrossConnectionPeeringResultOutput)
 }
 

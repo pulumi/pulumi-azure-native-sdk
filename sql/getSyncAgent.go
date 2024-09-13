@@ -58,14 +58,20 @@ type LookupSyncAgentResult struct {
 
 func LookupSyncAgentOutput(ctx *pulumi.Context, args LookupSyncAgentOutputArgs, opts ...pulumi.InvokeOption) LookupSyncAgentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSyncAgentResult, error) {
+		ApplyT(func(v interface{}) (LookupSyncAgentResultOutput, error) {
 			args := v.(LookupSyncAgentArgs)
-			r, err := LookupSyncAgent(ctx, &args, opts...)
-			var s LookupSyncAgentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSyncAgentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql:getSyncAgent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSyncAgentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSyncAgentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSyncAgentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSyncAgentResultOutput)
 }
 

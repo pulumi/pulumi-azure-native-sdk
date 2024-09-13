@@ -47,14 +47,20 @@ type LookupAzureServersSettingResult struct {
 
 func LookupAzureServersSettingOutput(ctx *pulumi.Context, args LookupAzureServersSettingOutputArgs, opts ...pulumi.InvokeOption) LookupAzureServersSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureServersSettingResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureServersSettingResultOutput, error) {
 			args := v.(LookupAzureServersSettingArgs)
-			r, err := LookupAzureServersSetting(ctx, &args, opts...)
-			var s LookupAzureServersSettingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureServersSettingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security:getAzureServersSetting", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureServersSettingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureServersSettingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureServersSettingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureServersSettingResultOutput)
 }
 

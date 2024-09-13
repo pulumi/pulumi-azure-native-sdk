@@ -39,14 +39,20 @@ type GetProjectInheritedSettingsResult struct {
 
 func GetProjectInheritedSettingsOutput(ctx *pulumi.Context, args GetProjectInheritedSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectInheritedSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProjectInheritedSettingsResult, error) {
+		ApplyT(func(v interface{}) (GetProjectInheritedSettingsResultOutput, error) {
 			args := v.(GetProjectInheritedSettingsArgs)
-			r, err := GetProjectInheritedSettings(ctx, &args, opts...)
-			var s GetProjectInheritedSettingsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetProjectInheritedSettingsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240501preview:getProjectInheritedSettings", args, &rv, "", opts...)
+			if err != nil {
+				return GetProjectInheritedSettingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProjectInheritedSettingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProjectInheritedSettingsResultOutput), nil
+			}
+			return output, nil
 		}).(GetProjectInheritedSettingsResultOutput)
 }
 

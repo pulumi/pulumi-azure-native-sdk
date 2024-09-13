@@ -60,14 +60,20 @@ type LookupManagementGroupDiagnosticSettingResult struct {
 
 func LookupManagementGroupDiagnosticSettingOutput(ctx *pulumi.Context, args LookupManagementGroupDiagnosticSettingOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupDiagnosticSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagementGroupDiagnosticSettingResult, error) {
+		ApplyT(func(v interface{}) (LookupManagementGroupDiagnosticSettingResultOutput, error) {
 			args := v.(LookupManagementGroupDiagnosticSettingArgs)
-			r, err := LookupManagementGroupDiagnosticSetting(ctx, &args, opts...)
-			var s LookupManagementGroupDiagnosticSettingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagementGroupDiagnosticSettingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights:getManagementGroupDiagnosticSetting", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagementGroupDiagnosticSettingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagementGroupDiagnosticSettingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagementGroupDiagnosticSettingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagementGroupDiagnosticSettingResultOutput)
 }
 

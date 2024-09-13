@@ -54,14 +54,20 @@ type LookupConfigurationAssignmentsForResourceGroupResult struct {
 
 func LookupConfigurationAssignmentsForResourceGroupOutput(ctx *pulumi.Context, args LookupConfigurationAssignmentsForResourceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationAssignmentsForResourceGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationAssignmentsForResourceGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationAssignmentsForResourceGroupResultOutput, error) {
 			args := v.(LookupConfigurationAssignmentsForResourceGroupArgs)
-			r, err := LookupConfigurationAssignmentsForResourceGroup(ctx, &args, opts...)
-			var s LookupConfigurationAssignmentsForResourceGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationAssignmentsForResourceGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:maintenance:getConfigurationAssignmentsForResourceGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationAssignmentsForResourceGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationAssignmentsForResourceGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationAssignmentsForResourceGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationAssignmentsForResourceGroupResultOutput)
 }
 

@@ -49,14 +49,20 @@ type LookupWebAppSlotConfigurationNamesResult struct {
 
 func LookupWebAppSlotConfigurationNamesOutput(ctx *pulumi.Context, args LookupWebAppSlotConfigurationNamesOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppSlotConfigurationNamesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppSlotConfigurationNamesResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppSlotConfigurationNamesResultOutput, error) {
 			args := v.(LookupWebAppSlotConfigurationNamesArgs)
-			r, err := LookupWebAppSlotConfigurationNames(ctx, &args, opts...)
-			var s LookupWebAppSlotConfigurationNamesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppSlotConfigurationNamesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebAppSlotConfigurationNames", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppSlotConfigurationNamesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppSlotConfigurationNamesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppSlotConfigurationNamesResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppSlotConfigurationNamesResultOutput)
 }
 

@@ -52,14 +52,20 @@ type LookupMqResult struct {
 
 func LookupMqOutput(ctx *pulumi.Context, args LookupMqOutputArgs, opts ...pulumi.InvokeOption) LookupMqResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMqResult, error) {
+		ApplyT(func(v interface{}) (LookupMqResultOutput, error) {
 			args := v.(LookupMqArgs)
-			r, err := LookupMq(ctx, &args, opts...)
-			var s LookupMqResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMqResult
+			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq:getMq", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMqResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMqResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMqResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMqResultOutput)
 }
 

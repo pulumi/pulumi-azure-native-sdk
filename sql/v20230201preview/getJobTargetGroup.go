@@ -47,14 +47,20 @@ type LookupJobTargetGroupResult struct {
 
 func LookupJobTargetGroupOutput(ctx *pulumi.Context, args LookupJobTargetGroupOutputArgs, opts ...pulumi.InvokeOption) LookupJobTargetGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJobTargetGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupJobTargetGroupResultOutput, error) {
 			args := v.(LookupJobTargetGroupArgs)
-			r, err := LookupJobTargetGroup(ctx, &args, opts...)
-			var s LookupJobTargetGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupJobTargetGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230201preview:getJobTargetGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJobTargetGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJobTargetGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJobTargetGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJobTargetGroupResultOutput)
 }
 

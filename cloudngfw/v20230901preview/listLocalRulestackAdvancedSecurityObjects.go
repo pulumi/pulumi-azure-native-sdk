@@ -42,14 +42,20 @@ type ListLocalRulestackAdvancedSecurityObjectsResult struct {
 
 func ListLocalRulestackAdvancedSecurityObjectsOutput(ctx *pulumi.Context, args ListLocalRulestackAdvancedSecurityObjectsOutputArgs, opts ...pulumi.InvokeOption) ListLocalRulestackAdvancedSecurityObjectsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListLocalRulestackAdvancedSecurityObjectsResult, error) {
+		ApplyT(func(v interface{}) (ListLocalRulestackAdvancedSecurityObjectsResultOutput, error) {
 			args := v.(ListLocalRulestackAdvancedSecurityObjectsArgs)
-			r, err := ListLocalRulestackAdvancedSecurityObjects(ctx, &args, opts...)
-			var s ListLocalRulestackAdvancedSecurityObjectsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListLocalRulestackAdvancedSecurityObjectsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901preview:listLocalRulestackAdvancedSecurityObjects", args, &rv, "", opts...)
+			if err != nil {
+				return ListLocalRulestackAdvancedSecurityObjectsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListLocalRulestackAdvancedSecurityObjectsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListLocalRulestackAdvancedSecurityObjectsResultOutput), nil
+			}
+			return output, nil
 		}).(ListLocalRulestackAdvancedSecurityObjectsResultOutput)
 }
 

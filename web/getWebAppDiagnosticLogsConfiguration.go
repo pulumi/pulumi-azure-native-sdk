@@ -65,14 +65,20 @@ func (val *LookupWebAppDiagnosticLogsConfigurationResult) Defaults() *LookupWebA
 
 func LookupWebAppDiagnosticLogsConfigurationOutput(ctx *pulumi.Context, args LookupWebAppDiagnosticLogsConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDiagnosticLogsConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppDiagnosticLogsConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppDiagnosticLogsConfigurationResultOutput, error) {
 			args := v.(LookupWebAppDiagnosticLogsConfigurationArgs)
-			r, err := LookupWebAppDiagnosticLogsConfiguration(ctx, &args, opts...)
-			var s LookupWebAppDiagnosticLogsConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppDiagnosticLogsConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web:getWebAppDiagnosticLogsConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppDiagnosticLogsConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppDiagnosticLogsConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppDiagnosticLogsConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppDiagnosticLogsConfigurationResultOutput)
 }
 

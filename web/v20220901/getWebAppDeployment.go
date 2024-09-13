@@ -63,14 +63,20 @@ type LookupWebAppDeploymentResult struct {
 
 func LookupWebAppDeploymentOutput(ctx *pulumi.Context, args LookupWebAppDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDeploymentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppDeploymentResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppDeploymentResultOutput, error) {
 			args := v.(LookupWebAppDeploymentArgs)
-			r, err := LookupWebAppDeployment(ctx, &args, opts...)
-			var s LookupWebAppDeploymentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppDeploymentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getWebAppDeployment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppDeploymentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppDeploymentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppDeploymentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppDeploymentResultOutput)
 }
 

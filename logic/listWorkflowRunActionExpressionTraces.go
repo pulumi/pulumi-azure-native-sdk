@@ -43,14 +43,20 @@ type ListWorkflowRunActionExpressionTracesResult struct {
 
 func ListWorkflowRunActionExpressionTracesOutput(ctx *pulumi.Context, args ListWorkflowRunActionExpressionTracesOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowRunActionExpressionTracesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkflowRunActionExpressionTracesResult, error) {
+		ApplyT(func(v interface{}) (ListWorkflowRunActionExpressionTracesResultOutput, error) {
 			args := v.(ListWorkflowRunActionExpressionTracesArgs)
-			r, err := ListWorkflowRunActionExpressionTraces(ctx, &args, opts...)
-			var s ListWorkflowRunActionExpressionTracesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkflowRunActionExpressionTracesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic:listWorkflowRunActionExpressionTraces", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkflowRunActionExpressionTracesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkflowRunActionExpressionTracesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkflowRunActionExpressionTracesResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkflowRunActionExpressionTracesResultOutput)
 }
 

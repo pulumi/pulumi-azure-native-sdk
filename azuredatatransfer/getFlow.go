@@ -58,14 +58,20 @@ type LookupFlowResult struct {
 
 func LookupFlowOutput(ctx *pulumi.Context, args LookupFlowOutputArgs, opts ...pulumi.InvokeOption) LookupFlowResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFlowResult, error) {
+		ApplyT(func(v interface{}) (LookupFlowResultOutput, error) {
 			args := v.(LookupFlowArgs)
-			r, err := LookupFlow(ctx, &args, opts...)
-			var s LookupFlowResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFlowResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azuredatatransfer:getFlow", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFlowResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFlowResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFlowResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFlowResultOutput)
 }
 

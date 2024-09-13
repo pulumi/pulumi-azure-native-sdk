@@ -37,14 +37,20 @@ type ListGlobalRulestackFirewallsResult struct {
 
 func ListGlobalRulestackFirewallsOutput(ctx *pulumi.Context, args ListGlobalRulestackFirewallsOutputArgs, opts ...pulumi.InvokeOption) ListGlobalRulestackFirewallsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGlobalRulestackFirewallsResult, error) {
+		ApplyT(func(v interface{}) (ListGlobalRulestackFirewallsResultOutput, error) {
 			args := v.(ListGlobalRulestackFirewallsArgs)
-			r, err := ListGlobalRulestackFirewalls(ctx, &args, opts...)
-			var s ListGlobalRulestackFirewallsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGlobalRulestackFirewallsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20231010preview:listGlobalRulestackFirewalls", args, &rv, "", opts...)
+			if err != nil {
+				return ListGlobalRulestackFirewallsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGlobalRulestackFirewallsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGlobalRulestackFirewallsResultOutput), nil
+			}
+			return output, nil
 		}).(ListGlobalRulestackFirewallsResultOutput)
 }
 

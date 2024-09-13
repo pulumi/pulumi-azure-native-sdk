@@ -41,14 +41,20 @@ type LookupProviderRegistrationResult struct {
 
 func LookupProviderRegistrationOutput(ctx *pulumi.Context, args LookupProviderRegistrationOutputArgs, opts ...pulumi.InvokeOption) LookupProviderRegistrationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProviderRegistrationResult, error) {
+		ApplyT(func(v interface{}) (LookupProviderRegistrationResultOutput, error) {
 			args := v.(LookupProviderRegistrationArgs)
-			r, err := LookupProviderRegistration(ctx, &args, opts...)
-			var s LookupProviderRegistrationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupProviderRegistrationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:providerhub/v20210901preview:getProviderRegistration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProviderRegistrationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProviderRegistrationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProviderRegistrationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProviderRegistrationResultOutput)
 }
 

@@ -39,14 +39,20 @@ type GetActiveSessionsResult struct {
 
 func GetActiveSessionsOutput(ctx *pulumi.Context, args GetActiveSessionsOutputArgs, opts ...pulumi.InvokeOption) GetActiveSessionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetActiveSessionsResult, error) {
+		ApplyT(func(v interface{}) (GetActiveSessionsResultOutput, error) {
 			args := v.(GetActiveSessionsArgs)
-			r, err := GetActiveSessions(ctx, &args, opts...)
-			var s GetActiveSessionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetActiveSessionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230501:getActiveSessions", args, &rv, "", opts...)
+			if err != nil {
+				return GetActiveSessionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetActiveSessionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetActiveSessionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetActiveSessionsResultOutput)
 }
 

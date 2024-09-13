@@ -39,14 +39,20 @@ type GetmanagedAzResiliencyStatusResult struct {
 
 func GetmanagedAzResiliencyStatusOutput(ctx *pulumi.Context, args GetmanagedAzResiliencyStatusOutputArgs, opts ...pulumi.InvokeOption) GetmanagedAzResiliencyStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetmanagedAzResiliencyStatusResult, error) {
+		ApplyT(func(v interface{}) (GetmanagedAzResiliencyStatusResultOutput, error) {
 			args := v.(GetmanagedAzResiliencyStatusArgs)
-			r, err := GetmanagedAzResiliencyStatus(ctx, &args, opts...)
-			var s GetmanagedAzResiliencyStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetmanagedAzResiliencyStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20230701preview:getmanagedAzResiliencyStatus", args, &rv, "", opts...)
+			if err != nil {
+				return GetmanagedAzResiliencyStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetmanagedAzResiliencyStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetmanagedAzResiliencyStatusResultOutput), nil
+			}
+			return output, nil
 		}).(GetmanagedAzResiliencyStatusResultOutput)
 }
 

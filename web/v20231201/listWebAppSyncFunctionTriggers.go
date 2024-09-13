@@ -39,14 +39,20 @@ type ListWebAppSyncFunctionTriggersResult struct {
 
 func ListWebAppSyncFunctionTriggersOutput(ctx *pulumi.Context, args ListWebAppSyncFunctionTriggersOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSyncFunctionTriggersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppSyncFunctionTriggersResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppSyncFunctionTriggersResultOutput, error) {
 			args := v.(ListWebAppSyncFunctionTriggersArgs)
-			r, err := ListWebAppSyncFunctionTriggers(ctx, &args, opts...)
-			var s ListWebAppSyncFunctionTriggersResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppSyncFunctionTriggersResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:listWebAppSyncFunctionTriggers", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppSyncFunctionTriggersResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppSyncFunctionTriggersResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppSyncFunctionTriggersResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppSyncFunctionTriggersResultOutput)
 }
 

@@ -46,14 +46,20 @@ type LookupDefaultRolloutResult struct {
 
 func LookupDefaultRolloutOutput(ctx *pulumi.Context, args LookupDefaultRolloutOutputArgs, opts ...pulumi.InvokeOption) LookupDefaultRolloutResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDefaultRolloutResult, error) {
+		ApplyT(func(v interface{}) (LookupDefaultRolloutResultOutput, error) {
 			args := v.(LookupDefaultRolloutArgs)
-			r, err := LookupDefaultRollout(ctx, &args, opts...)
-			var s LookupDefaultRolloutResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDefaultRolloutResult
+			secret, err := ctx.InvokePackageRaw("azure-native:providerhub:getDefaultRollout", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDefaultRolloutResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDefaultRolloutResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDefaultRolloutResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDefaultRolloutResultOutput)
 }
 

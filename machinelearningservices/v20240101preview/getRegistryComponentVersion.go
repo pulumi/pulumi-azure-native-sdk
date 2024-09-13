@@ -60,14 +60,20 @@ func (val *LookupRegistryComponentVersionResult) Defaults() *LookupRegistryCompo
 
 func LookupRegistryComponentVersionOutput(ctx *pulumi.Context, args LookupRegistryComponentVersionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryComponentVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRegistryComponentVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupRegistryComponentVersionResultOutput, error) {
 			args := v.(LookupRegistryComponentVersionArgs)
-			r, err := LookupRegistryComponentVersion(ctx, &args, opts...)
-			var s LookupRegistryComponentVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRegistryComponentVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240101preview:getRegistryComponentVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRegistryComponentVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRegistryComponentVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRegistryComponentVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRegistryComponentVersionResultOutput)
 }
 

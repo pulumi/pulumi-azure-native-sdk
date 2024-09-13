@@ -54,14 +54,20 @@ type LookupAuthorizationAccessPolicyResult struct {
 
 func LookupAuthorizationAccessPolicyOutput(ctx *pulumi.Context, args LookupAuthorizationAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationAccessPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizationAccessPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAuthorizationAccessPolicyResultOutput, error) {
 			args := v.(LookupAuthorizationAccessPolicyArgs)
-			r, err := LookupAuthorizationAccessPolicy(ctx, &args, opts...)
-			var s LookupAuthorizationAccessPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAuthorizationAccessPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:getAuthorizationAccessPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAuthorizationAccessPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAuthorizationAccessPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAuthorizationAccessPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAuthorizationAccessPolicyResultOutput)
 }
 

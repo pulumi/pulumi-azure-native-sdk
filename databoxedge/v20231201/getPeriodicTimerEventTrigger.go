@@ -54,14 +54,20 @@ type LookupPeriodicTimerEventTriggerResult struct {
 
 func LookupPeriodicTimerEventTriggerOutput(ctx *pulumi.Context, args LookupPeriodicTimerEventTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupPeriodicTimerEventTriggerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPeriodicTimerEventTriggerResult, error) {
+		ApplyT(func(v interface{}) (LookupPeriodicTimerEventTriggerResultOutput, error) {
 			args := v.(LookupPeriodicTimerEventTriggerArgs)
-			r, err := LookupPeriodicTimerEventTrigger(ctx, &args, opts...)
-			var s LookupPeriodicTimerEventTriggerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPeriodicTimerEventTriggerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20231201:getPeriodicTimerEventTrigger", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPeriodicTimerEventTriggerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPeriodicTimerEventTriggerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPeriodicTimerEventTriggerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPeriodicTimerEventTriggerResultOutput)
 }
 

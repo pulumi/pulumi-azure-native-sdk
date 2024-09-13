@@ -60,14 +60,20 @@ type LookupChangeDataCaptureResult struct {
 
 func LookupChangeDataCaptureOutput(ctx *pulumi.Context, args LookupChangeDataCaptureOutputArgs, opts ...pulumi.InvokeOption) LookupChangeDataCaptureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupChangeDataCaptureResult, error) {
+		ApplyT(func(v interface{}) (LookupChangeDataCaptureResultOutput, error) {
 			args := v.(LookupChangeDataCaptureArgs)
-			r, err := LookupChangeDataCapture(ctx, &args, opts...)
-			var s LookupChangeDataCaptureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupChangeDataCaptureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory:getChangeDataCapture", args, &rv, "", opts...)
+			if err != nil {
+				return LookupChangeDataCaptureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupChangeDataCaptureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupChangeDataCaptureResultOutput), nil
+			}
+			return output, nil
 		}).(LookupChangeDataCaptureResultOutput)
 }
 

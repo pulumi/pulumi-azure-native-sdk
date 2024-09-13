@@ -52,14 +52,20 @@ type LookupReplicationRecoveryServicesProviderResult struct {
 
 func LookupReplicationRecoveryServicesProviderOutput(ctx *pulumi.Context, args LookupReplicationRecoveryServicesProviderOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationRecoveryServicesProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicationRecoveryServicesProviderResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicationRecoveryServicesProviderResultOutput, error) {
 			args := v.(LookupReplicationRecoveryServicesProviderArgs)
-			r, err := LookupReplicationRecoveryServicesProvider(ctx, &args, opts...)
-			var s LookupReplicationRecoveryServicesProviderResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicationRecoveryServicesProviderResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices:getReplicationRecoveryServicesProvider", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicationRecoveryServicesProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicationRecoveryServicesProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicationRecoveryServicesProviderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicationRecoveryServicesProviderResultOutput)
 }
 

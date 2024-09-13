@@ -39,14 +39,20 @@ type ListAzureDevOpsOrgAvailableResult struct {
 
 func ListAzureDevOpsOrgAvailableOutput(ctx *pulumi.Context, args ListAzureDevOpsOrgAvailableOutputArgs, opts ...pulumi.InvokeOption) ListAzureDevOpsOrgAvailableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAzureDevOpsOrgAvailableResult, error) {
+		ApplyT(func(v interface{}) (ListAzureDevOpsOrgAvailableResultOutput, error) {
 			args := v.(ListAzureDevOpsOrgAvailableArgs)
-			r, err := ListAzureDevOpsOrgAvailable(ctx, &args, opts...)
-			var s ListAzureDevOpsOrgAvailableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAzureDevOpsOrgAvailableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20240401:listAzureDevOpsOrgAvailable", args, &rv, "", opts...)
+			if err != nil {
+				return ListAzureDevOpsOrgAvailableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAzureDevOpsOrgAvailableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAzureDevOpsOrgAvailableResultOutput), nil
+			}
+			return output, nil
 		}).(ListAzureDevOpsOrgAvailableResultOutput)
 }
 

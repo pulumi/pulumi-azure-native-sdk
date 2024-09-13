@@ -58,14 +58,20 @@ type LookupAzureTrafficCollectorResult struct {
 
 func LookupAzureTrafficCollectorOutput(ctx *pulumi.Context, args LookupAzureTrafficCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureTrafficCollectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureTrafficCollectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureTrafficCollectorResultOutput, error) {
 			args := v.(LookupAzureTrafficCollectorArgs)
-			r, err := LookupAzureTrafficCollector(ctx, &args, opts...)
-			var s LookupAzureTrafficCollectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureTrafficCollectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkfunction:getAzureTrafficCollector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureTrafficCollectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureTrafficCollectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureTrafficCollectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureTrafficCollectorResultOutput)
 }
 

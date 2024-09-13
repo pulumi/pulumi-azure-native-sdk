@@ -39,14 +39,20 @@ type ListMonitorVMHostsResult struct {
 
 func ListMonitorVMHostsOutput(ctx *pulumi.Context, args ListMonitorVMHostsOutputArgs, opts ...pulumi.InvokeOption) ListMonitorVMHostsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListMonitorVMHostsResult, error) {
+		ApplyT(func(v interface{}) (ListMonitorVMHostsResultOutput, error) {
 			args := v.(ListMonitorVMHostsArgs)
-			r, err := ListMonitorVMHosts(ctx, &args, opts...)
-			var s ListMonitorVMHostsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListMonitorVMHostsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logz/v20220101preview:listMonitorVMHosts", args, &rv, "", opts...)
+			if err != nil {
+				return ListMonitorVMHostsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListMonitorVMHostsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListMonitorVMHostsResultOutput), nil
+			}
+			return output, nil
 		}).(ListMonitorVMHostsResultOutput)
 }
 

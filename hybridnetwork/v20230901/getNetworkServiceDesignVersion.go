@@ -53,14 +53,20 @@ type LookupNetworkServiceDesignVersionResult struct {
 
 func LookupNetworkServiceDesignVersionOutput(ctx *pulumi.Context, args LookupNetworkServiceDesignVersionOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkServiceDesignVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkServiceDesignVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkServiceDesignVersionResultOutput, error) {
 			args := v.(LookupNetworkServiceDesignVersionArgs)
-			r, err := LookupNetworkServiceDesignVersion(ctx, &args, opts...)
-			var s LookupNetworkServiceDesignVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkServiceDesignVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork/v20230901:getNetworkServiceDesignVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkServiceDesignVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkServiceDesignVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkServiceDesignVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkServiceDesignVersionResultOutput)
 }
 

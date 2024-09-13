@@ -33,14 +33,20 @@ type GetApiManagementServiceDomainOwnershipIdentifierResult struct {
 
 func GetApiManagementServiceDomainOwnershipIdentifierOutput(ctx *pulumi.Context, args GetApiManagementServiceDomainOwnershipIdentifierOutputArgs, opts ...pulumi.InvokeOption) GetApiManagementServiceDomainOwnershipIdentifierResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApiManagementServiceDomainOwnershipIdentifierResult, error) {
+		ApplyT(func(v interface{}) (GetApiManagementServiceDomainOwnershipIdentifierResultOutput, error) {
 			args := v.(GetApiManagementServiceDomainOwnershipIdentifierArgs)
-			r, err := GetApiManagementServiceDomainOwnershipIdentifier(ctx, &args, opts...)
-			var s GetApiManagementServiceDomainOwnershipIdentifierResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetApiManagementServiceDomainOwnershipIdentifierResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230301preview:getApiManagementServiceDomainOwnershipIdentifier", args, &rv, "", opts...)
+			if err != nil {
+				return GetApiManagementServiceDomainOwnershipIdentifierResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput), nil
+			}
+			return output, nil
 		}).(GetApiManagementServiceDomainOwnershipIdentifierResultOutput)
 }
 

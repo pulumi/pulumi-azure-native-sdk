@@ -64,14 +64,20 @@ type LookupAvailabilityGroupListenerResult struct {
 
 func LookupAvailabilityGroupListenerOutput(ctx *pulumi.Context, args LookupAvailabilityGroupListenerOutputArgs, opts ...pulumi.InvokeOption) LookupAvailabilityGroupListenerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAvailabilityGroupListenerResult, error) {
+		ApplyT(func(v interface{}) (LookupAvailabilityGroupListenerResultOutput, error) {
 			args := v.(LookupAvailabilityGroupListenerArgs)
-			r, err := LookupAvailabilityGroupListener(ctx, &args, opts...)
-			var s LookupAvailabilityGroupListenerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAvailabilityGroupListenerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sqlvirtualmachine:getAvailabilityGroupListener", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAvailabilityGroupListenerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAvailabilityGroupListenerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAvailabilityGroupListenerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAvailabilityGroupListenerResultOutput)
 }
 

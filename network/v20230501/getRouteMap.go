@@ -53,14 +53,20 @@ type LookupRouteMapResult struct {
 
 func LookupRouteMapOutput(ctx *pulumi.Context, args LookupRouteMapOutputArgs, opts ...pulumi.InvokeOption) LookupRouteMapResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRouteMapResult, error) {
+		ApplyT(func(v interface{}) (LookupRouteMapResultOutput, error) {
 			args := v.(LookupRouteMapArgs)
-			r, err := LookupRouteMap(ctx, &args, opts...)
-			var s LookupRouteMapResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRouteMapResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230501:getRouteMap", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRouteMapResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRouteMapResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRouteMapResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRouteMapResultOutput)
 }
 

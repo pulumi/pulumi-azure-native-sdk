@@ -48,14 +48,20 @@ type LookupBillingProfileResult struct {
 
 func LookupBillingProfileOutput(ctx *pulumi.Context, args LookupBillingProfileOutputArgs, opts ...pulumi.InvokeOption) LookupBillingProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBillingProfileResult, error) {
+		ApplyT(func(v interface{}) (LookupBillingProfileResultOutput, error) {
 			args := v.(LookupBillingProfileArgs)
-			r, err := LookupBillingProfile(ctx, &args, opts...)
-			var s LookupBillingProfileResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBillingProfileResult
+			secret, err := ctx.InvokePackageRaw("azure-native:billing:getBillingProfile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBillingProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBillingProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBillingProfileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBillingProfileResultOutput)
 }
 

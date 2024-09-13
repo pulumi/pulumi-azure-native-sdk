@@ -63,14 +63,20 @@ type LookupVNetPeeringResult struct {
 
 func LookupVNetPeeringOutput(ctx *pulumi.Context, args LookupVNetPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupVNetPeeringResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVNetPeeringResult, error) {
+		ApplyT(func(v interface{}) (LookupVNetPeeringResultOutput, error) {
 			args := v.(LookupVNetPeeringArgs)
-			r, err := LookupVNetPeering(ctx, &args, opts...)
-			var s LookupVNetPeeringResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVNetPeeringResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databricks/v20240901preview:getVNetPeering", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVNetPeeringResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVNetPeeringResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVNetPeeringResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVNetPeeringResultOutput)
 }
 

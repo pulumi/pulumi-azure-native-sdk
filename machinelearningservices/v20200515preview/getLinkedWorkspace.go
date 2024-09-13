@@ -45,14 +45,20 @@ type LookupLinkedWorkspaceResult struct {
 
 func LookupLinkedWorkspaceOutput(ctx *pulumi.Context, args LookupLinkedWorkspaceOutputArgs, opts ...pulumi.InvokeOption) LookupLinkedWorkspaceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLinkedWorkspaceResult, error) {
+		ApplyT(func(v interface{}) (LookupLinkedWorkspaceResultOutput, error) {
 			args := v.(LookupLinkedWorkspaceArgs)
-			r, err := LookupLinkedWorkspace(ctx, &args, opts...)
-			var s LookupLinkedWorkspaceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLinkedWorkspaceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20200515preview:getLinkedWorkspace", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLinkedWorkspaceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLinkedWorkspaceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLinkedWorkspaceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLinkedWorkspaceResultOutput)
 }
 

@@ -60,14 +60,20 @@ type LookupAssessmentResult struct {
 
 func LookupAssessmentOutput(ctx *pulumi.Context, args LookupAssessmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssessmentResult, error) {
+		ApplyT(func(v interface{}) (LookupAssessmentResultOutput, error) {
 			args := v.(LookupAssessmentArgs)
-			r, err := LookupAssessment(ctx, &args, opts...)
-			var s LookupAssessmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssessmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security:getAssessment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssessmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssessmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssessmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssessmentResultOutput)
 }
 

@@ -49,14 +49,20 @@ type LookupEmployeeResult struct {
 
 func LookupEmployeeOutput(ctx *pulumi.Context, args LookupEmployeeOutputArgs, opts ...pulumi.InvokeOption) LookupEmployeeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEmployeeResult, error) {
+		ApplyT(func(v interface{}) (LookupEmployeeResultOutput, error) {
 			args := v.(LookupEmployeeArgs)
-			r, err := LookupEmployee(ctx, &args, opts...)
-			var s LookupEmployeeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEmployeeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:contoso/v20211001preview:getEmployee", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEmployeeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEmployeeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEmployeeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEmployeeResultOutput)
 }
 

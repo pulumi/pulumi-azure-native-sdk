@@ -59,14 +59,20 @@ type GetEntityResult struct {
 
 func GetEntityOutput(ctx *pulumi.Context, args GetEntityOutputArgs, opts ...pulumi.InvokeOption) GetEntityResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEntityResult, error) {
+		ApplyT(func(v interface{}) (GetEntityResultOutput, error) {
 			args := v.(GetEntityArgs)
-			r, err := GetEntity(ctx, &args, opts...)
-			var s GetEntityResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetEntityResult
+			secret, err := ctx.InvokePackageRaw("azure-native:management/v20200501:getEntity", args, &rv, "", opts...)
+			if err != nil {
+				return GetEntityResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEntityResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEntityResultOutput), nil
+			}
+			return output, nil
 		}).(GetEntityResultOutput)
 }
 

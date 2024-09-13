@@ -46,14 +46,20 @@ type LookupAzureADMetricResult struct {
 
 func LookupAzureADMetricOutput(ctx *pulumi.Context, args LookupAzureADMetricOutputArgs, opts ...pulumi.InvokeOption) LookupAzureADMetricResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAzureADMetricResult, error) {
+		ApplyT(func(v interface{}) (LookupAzureADMetricResultOutput, error) {
 			args := v.(LookupAzureADMetricArgs)
-			r, err := LookupAzureADMetric(ctx, &args, opts...)
-			var s LookupAzureADMetricResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAzureADMetricResult
+			secret, err := ctx.InvokePackageRaw("azure-native:aadiam/v20200701preview:getAzureADMetric", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAzureADMetricResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAzureADMetricResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAzureADMetricResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAzureADMetricResultOutput)
 }
 

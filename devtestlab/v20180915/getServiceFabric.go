@@ -72,14 +72,20 @@ func (val *LookupServiceFabricResult) Defaults() *LookupServiceFabricResult {
 
 func LookupServiceFabricOutput(ctx *pulumi.Context, args LookupServiceFabricOutputArgs, opts ...pulumi.InvokeOption) LookupServiceFabricResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServiceFabricResult, error) {
+		ApplyT(func(v interface{}) (LookupServiceFabricResultOutput, error) {
 			args := v.(LookupServiceFabricArgs)
-			r, err := LookupServiceFabric(ctx, &args, opts...)
-			var s LookupServiceFabricResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServiceFabricResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:getServiceFabric", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServiceFabricResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServiceFabricResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServiceFabricResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServiceFabricResultOutput)
 }
 

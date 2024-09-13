@@ -68,14 +68,20 @@ func (val *LookupBotConnectionResult) Defaults() *LookupBotConnectionResult {
 
 func LookupBotConnectionOutput(ctx *pulumi.Context, args LookupBotConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupBotConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBotConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupBotConnectionResultOutput, error) {
 			args := v.(LookupBotConnectionArgs)
-			r, err := LookupBotConnection(ctx, &args, opts...)
-			var s LookupBotConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBotConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:botservice/v20230915preview:getBotConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBotConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBotConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBotConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBotConnectionResultOutput)
 }
 

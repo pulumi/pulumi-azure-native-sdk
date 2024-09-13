@@ -39,14 +39,20 @@ type GetManagerDevicePublicEncryptionKeyResult struct {
 
 func GetManagerDevicePublicEncryptionKeyOutput(ctx *pulumi.Context, args GetManagerDevicePublicEncryptionKeyOutputArgs, opts ...pulumi.InvokeOption) GetManagerDevicePublicEncryptionKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetManagerDevicePublicEncryptionKeyResult, error) {
+		ApplyT(func(v interface{}) (GetManagerDevicePublicEncryptionKeyResultOutput, error) {
 			args := v.(GetManagerDevicePublicEncryptionKeyArgs)
-			r, err := GetManagerDevicePublicEncryptionKey(ctx, &args, opts...)
-			var s GetManagerDevicePublicEncryptionKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetManagerDevicePublicEncryptionKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:getManagerDevicePublicEncryptionKey", args, &rv, "", opts...)
+			if err != nil {
+				return GetManagerDevicePublicEncryptionKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetManagerDevicePublicEncryptionKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetManagerDevicePublicEncryptionKeyResultOutput), nil
+			}
+			return output, nil
 		}).(GetManagerDevicePublicEncryptionKeyResultOutput)
 }
 

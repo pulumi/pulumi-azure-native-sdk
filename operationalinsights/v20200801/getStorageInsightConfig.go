@@ -55,14 +55,20 @@ type LookupStorageInsightConfigResult struct {
 
 func LookupStorageInsightConfigOutput(ctx *pulumi.Context, args LookupStorageInsightConfigOutputArgs, opts ...pulumi.InvokeOption) LookupStorageInsightConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStorageInsightConfigResult, error) {
+		ApplyT(func(v interface{}) (LookupStorageInsightConfigResultOutput, error) {
 			args := v.(LookupStorageInsightConfigArgs)
-			r, err := LookupStorageInsightConfig(ctx, &args, opts...)
-			var s LookupStorageInsightConfigResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStorageInsightConfigResult
+			secret, err := ctx.InvokePackageRaw("azure-native:operationalinsights/v20200801:getStorageInsightConfig", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStorageInsightConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStorageInsightConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStorageInsightConfigResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStorageInsightConfigResultOutput)
 }
 

@@ -70,14 +70,20 @@ type LookupFusionAlertRuleResult struct {
 
 func LookupFusionAlertRuleOutput(ctx *pulumi.Context, args LookupFusionAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupFusionAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFusionAlertRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupFusionAlertRuleResultOutput, error) {
 			args := v.(LookupFusionAlertRuleArgs)
-			r, err := LookupFusionAlertRule(ctx, &args, opts...)
-			var s LookupFusionAlertRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFusionAlertRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getFusionAlertRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFusionAlertRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFusionAlertRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFusionAlertRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFusionAlertRuleResultOutput)
 }
 

@@ -50,14 +50,20 @@ type ListLogicAppWorkflowsConnectionsResult struct {
 
 func ListLogicAppWorkflowsConnectionsOutput(ctx *pulumi.Context, args ListLogicAppWorkflowsConnectionsOutputArgs, opts ...pulumi.InvokeOption) ListLogicAppWorkflowsConnectionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListLogicAppWorkflowsConnectionsResult, error) {
+		ApplyT(func(v interface{}) (ListLogicAppWorkflowsConnectionsResultOutput, error) {
 			args := v.(ListLogicAppWorkflowsConnectionsArgs)
-			r, err := ListLogicAppWorkflowsConnections(ctx, &args, opts...)
-			var s ListLogicAppWorkflowsConnectionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListLogicAppWorkflowsConnectionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app:listLogicAppWorkflowsConnections", args, &rv, "", opts...)
+			if err != nil {
+				return ListLogicAppWorkflowsConnectionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListLogicAppWorkflowsConnectionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListLogicAppWorkflowsConnectionsResultOutput), nil
+			}
+			return output, nil
 		}).(ListLogicAppWorkflowsConnectionsResultOutput)
 }
 

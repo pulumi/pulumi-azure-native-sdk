@@ -51,14 +51,20 @@ type LookupMachineExtensionResult struct {
 
 func LookupMachineExtensionOutput(ctx *pulumi.Context, args LookupMachineExtensionOutputArgs, opts ...pulumi.InvokeOption) LookupMachineExtensionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachineExtensionResult, error) {
+		ApplyT(func(v interface{}) (LookupMachineExtensionResultOutput, error) {
 			args := v.(LookupMachineExtensionArgs)
-			r, err := LookupMachineExtension(ctx, &args, opts...)
-			var s LookupMachineExtensionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachineExtensionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcompute/v20240331preview:getMachineExtension", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachineExtensionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachineExtensionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachineExtensionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachineExtensionResultOutput)
 }
 

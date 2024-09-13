@@ -43,14 +43,20 @@ type ListConnectedClusterUserCredentialResult struct {
 
 func ListConnectedClusterUserCredentialOutput(ctx *pulumi.Context, args ListConnectedClusterUserCredentialOutputArgs, opts ...pulumi.InvokeOption) ListConnectedClusterUserCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConnectedClusterUserCredentialResult, error) {
+		ApplyT(func(v interface{}) (ListConnectedClusterUserCredentialResultOutput, error) {
 			args := v.(ListConnectedClusterUserCredentialArgs)
-			r, err := ListConnectedClusterUserCredential(ctx, &args, opts...)
-			var s ListConnectedClusterUserCredentialResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConnectedClusterUserCredentialResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kubernetes/v20240601preview:listConnectedClusterUserCredential", args, &rv, "", opts...)
+			if err != nil {
+				return ListConnectedClusterUserCredentialResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConnectedClusterUserCredentialResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConnectedClusterUserCredentialResultOutput), nil
+			}
+			return output, nil
 		}).(ListConnectedClusterUserCredentialResultOutput)
 }
 

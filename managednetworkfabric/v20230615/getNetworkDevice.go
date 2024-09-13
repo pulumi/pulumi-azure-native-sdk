@@ -71,14 +71,20 @@ type LookupNetworkDeviceResult struct {
 
 func LookupNetworkDeviceOutput(ctx *pulumi.Context, args LookupNetworkDeviceOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkDeviceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkDeviceResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkDeviceResultOutput, error) {
 			args := v.(LookupNetworkDeviceArgs)
-			r, err := LookupNetworkDevice(ctx, &args, opts...)
-			var s LookupNetworkDeviceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkDeviceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230615:getNetworkDevice", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkDeviceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkDeviceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkDeviceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkDeviceResultOutput)
 }
 

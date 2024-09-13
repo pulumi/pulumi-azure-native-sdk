@@ -74,14 +74,20 @@ type ListGeodataByIpResult struct {
 
 func ListGeodataByIpOutput(ctx *pulumi.Context, args ListGeodataByIpOutputArgs, opts ...pulumi.InvokeOption) ListGeodataByIpResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGeodataByIpResult, error) {
+		ApplyT(func(v interface{}) (ListGeodataByIpResultOutput, error) {
 			args := v.(ListGeodataByIpArgs)
-			r, err := ListGeodataByIp(ctx, &args, opts...)
-			var s ListGeodataByIpResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGeodataByIpResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights:listGeodataByIp", args, &rv, "", opts...)
+			if err != nil {
+				return ListGeodataByIpResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGeodataByIpResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGeodataByIpResultOutput), nil
+			}
+			return output, nil
 		}).(ListGeodataByIpResultOutput)
 }
 

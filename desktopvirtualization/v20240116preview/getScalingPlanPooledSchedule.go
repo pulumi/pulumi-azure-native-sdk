@@ -79,14 +79,20 @@ type LookupScalingPlanPooledScheduleResult struct {
 
 func LookupScalingPlanPooledScheduleOutput(ctx *pulumi.Context, args LookupScalingPlanPooledScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupScalingPlanPooledScheduleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScalingPlanPooledScheduleResult, error) {
+		ApplyT(func(v interface{}) (LookupScalingPlanPooledScheduleResultOutput, error) {
 			args := v.(LookupScalingPlanPooledScheduleArgs)
-			r, err := LookupScalingPlanPooledSchedule(ctx, &args, opts...)
-			var s LookupScalingPlanPooledScheduleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupScalingPlanPooledScheduleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20240116preview:getScalingPlanPooledSchedule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupScalingPlanPooledScheduleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupScalingPlanPooledScheduleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupScalingPlanPooledScheduleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupScalingPlanPooledScheduleResultOutput)
 }
 

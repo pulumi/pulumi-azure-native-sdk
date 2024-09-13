@@ -42,14 +42,20 @@ type ListGroundStationL2ConnectionsResult struct {
 
 func ListGroundStationL2ConnectionsOutput(ctx *pulumi.Context, args ListGroundStationL2ConnectionsOutputArgs, opts ...pulumi.InvokeOption) ListGroundStationL2ConnectionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGroundStationL2ConnectionsResult, error) {
+		ApplyT(func(v interface{}) (ListGroundStationL2ConnectionsResultOutput, error) {
 			args := v.(ListGroundStationL2ConnectionsArgs)
-			r, err := ListGroundStationL2Connections(ctx, &args, opts...)
-			var s ListGroundStationL2ConnectionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGroundStationL2ConnectionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:orbital:listGroundStationL2Connections", args, &rv, "", opts...)
+			if err != nil {
+				return ListGroundStationL2ConnectionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGroundStationL2ConnectionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGroundStationL2ConnectionsResultOutput), nil
+			}
+			return output, nil
 		}).(ListGroundStationL2ConnectionsResultOutput)
 }
 

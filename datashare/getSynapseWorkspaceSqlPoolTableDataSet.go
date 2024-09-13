@@ -55,14 +55,20 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetResult struct {
 
 func LookupSynapseWorkspaceSqlPoolTableDataSetOutput(ctx *pulumi.Context, args LookupSynapseWorkspaceSqlPoolTableDataSetOutputArgs, opts ...pulumi.InvokeOption) LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSynapseWorkspaceSqlPoolTableDataSetResult, error) {
+		ApplyT(func(v interface{}) (LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput, error) {
 			args := v.(LookupSynapseWorkspaceSqlPoolTableDataSetArgs)
-			r, err := LookupSynapseWorkspaceSqlPoolTableDataSet(ctx, &args, opts...)
-			var s LookupSynapseWorkspaceSqlPoolTableDataSetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSynapseWorkspaceSqlPoolTableDataSetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datashare:getSynapseWorkspaceSqlPoolTableDataSet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput)
 }
 

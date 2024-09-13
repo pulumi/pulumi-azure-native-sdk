@@ -68,14 +68,20 @@ type LookupBmcKeySetResult struct {
 
 func LookupBmcKeySetOutput(ctx *pulumi.Context, args LookupBmcKeySetOutputArgs, opts ...pulumi.InvokeOption) LookupBmcKeySetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBmcKeySetResult, error) {
+		ApplyT(func(v interface{}) (LookupBmcKeySetResultOutput, error) {
 			args := v.(LookupBmcKeySetArgs)
-			r, err := LookupBmcKeySet(ctx, &args, opts...)
-			var s LookupBmcKeySetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBmcKeySetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20231001preview:getBmcKeySet", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBmcKeySetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBmcKeySetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBmcKeySetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBmcKeySetResultOutput)
 }
 

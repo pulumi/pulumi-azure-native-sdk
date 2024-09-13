@@ -47,14 +47,20 @@ type GetSapVirtualInstanceSapSupportedSkuResult struct {
 
 func GetSapVirtualInstanceSapSupportedSkuOutput(ctx *pulumi.Context, args GetSapVirtualInstanceSapSupportedSkuOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceSapSupportedSkuResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceSapSupportedSkuResult, error) {
+		ApplyT(func(v interface{}) (GetSapVirtualInstanceSapSupportedSkuResultOutput, error) {
 			args := v.(GetSapVirtualInstanceSapSupportedSkuArgs)
-			r, err := GetSapVirtualInstanceSapSupportedSku(ctx, &args, opts...)
-			var s GetSapVirtualInstanceSapSupportedSkuResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSapVirtualInstanceSapSupportedSkuResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapVirtualInstanceSapSupportedSku", args, &rv, "", opts...)
+			if err != nil {
+				return GetSapVirtualInstanceSapSupportedSkuResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSapVirtualInstanceSapSupportedSkuResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSapVirtualInstanceSapSupportedSkuResultOutput), nil
+			}
+			return output, nil
 		}).(GetSapVirtualInstanceSapSupportedSkuResultOutput)
 }
 

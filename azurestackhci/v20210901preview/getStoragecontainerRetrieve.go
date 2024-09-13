@@ -58,14 +58,20 @@ type LookupStoragecontainerRetrieveResult struct {
 
 func LookupStoragecontainerRetrieveOutput(ctx *pulumi.Context, args LookupStoragecontainerRetrieveOutputArgs, opts ...pulumi.InvokeOption) LookupStoragecontainerRetrieveResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStoragecontainerRetrieveResult, error) {
+		ApplyT(func(v interface{}) (LookupStoragecontainerRetrieveResultOutput, error) {
 			args := v.(LookupStoragecontainerRetrieveArgs)
-			r, err := LookupStoragecontainerRetrieve(ctx, &args, opts...)
-			var s LookupStoragecontainerRetrieveResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStoragecontainerRetrieveResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20210901preview:getStoragecontainerRetrieve", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStoragecontainerRetrieveResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStoragecontainerRetrieveResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStoragecontainerRetrieveResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStoragecontainerRetrieveResultOutput)
 }
 

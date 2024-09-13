@@ -55,14 +55,20 @@ type LookupImportSitesControllerResult struct {
 
 func LookupImportSitesControllerOutput(ctx *pulumi.Context, args LookupImportSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupImportSitesControllerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupImportSitesControllerResult, error) {
+		ApplyT(func(v interface{}) (LookupImportSitesControllerResultOutput, error) {
 			args := v.(LookupImportSitesControllerArgs)
-			r, err := LookupImportSitesController(ctx, &args, opts...)
-			var s LookupImportSitesControllerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupImportSitesControllerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20230606:getImportSitesController", args, &rv, "", opts...)
+			if err != nil {
+				return LookupImportSitesControllerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupImportSitesControllerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupImportSitesControllerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupImportSitesControllerResultOutput)
 }
 

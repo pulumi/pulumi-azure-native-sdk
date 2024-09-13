@@ -41,14 +41,20 @@ type GetExposureControlFeatureValueResult struct {
 
 func GetExposureControlFeatureValueOutput(ctx *pulumi.Context, args GetExposureControlFeatureValueOutputArgs, opts ...pulumi.InvokeOption) GetExposureControlFeatureValueResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetExposureControlFeatureValueResult, error) {
+		ApplyT(func(v interface{}) (GetExposureControlFeatureValueResultOutput, error) {
 			args := v.(GetExposureControlFeatureValueArgs)
-			r, err := GetExposureControlFeatureValue(ctx, &args, opts...)
-			var s GetExposureControlFeatureValueResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetExposureControlFeatureValueResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory/v20180601:getExposureControlFeatureValue", args, &rv, "", opts...)
+			if err != nil {
+				return GetExposureControlFeatureValueResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetExposureControlFeatureValueResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetExposureControlFeatureValueResultOutput), nil
+			}
+			return output, nil
 		}).(GetExposureControlFeatureValueResultOutput)
 }
 

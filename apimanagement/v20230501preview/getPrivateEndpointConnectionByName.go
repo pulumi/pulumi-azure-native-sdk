@@ -49,14 +49,20 @@ type LookupPrivateEndpointConnectionByNameResult struct {
 
 func LookupPrivateEndpointConnectionByNameOutput(ctx *pulumi.Context, args LookupPrivateEndpointConnectionByNameOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateEndpointConnectionByNameResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByNameResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateEndpointConnectionByNameResultOutput, error) {
 			args := v.(LookupPrivateEndpointConnectionByNameArgs)
-			r, err := LookupPrivateEndpointConnectionByName(ctx, &args, opts...)
-			var s LookupPrivateEndpointConnectionByNameResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateEndpointConnectionByNameResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getPrivateEndpointConnectionByName", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateEndpointConnectionByNameResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateEndpointConnectionByNameResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateEndpointConnectionByNameResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateEndpointConnectionByNameResultOutput)
 }
 

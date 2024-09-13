@@ -89,14 +89,20 @@ type LookupMigrationResult struct {
 
 func LookupMigrationOutput(ctx *pulumi.Context, args LookupMigrationOutputArgs, opts ...pulumi.InvokeOption) LookupMigrationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMigrationResult, error) {
+		ApplyT(func(v interface{}) (LookupMigrationResultOutput, error) {
 			args := v.(LookupMigrationArgs)
-			r, err := LookupMigration(ctx, &args, opts...)
-			var s LookupMigrationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMigrationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20230301preview:getMigration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMigrationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMigrationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMigrationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMigrationResultOutput)
 }
 

@@ -37,14 +37,20 @@ type GetProfileSupportedOptimizationTypesResult struct {
 
 func GetProfileSupportedOptimizationTypesOutput(ctx *pulumi.Context, args GetProfileSupportedOptimizationTypesOutputArgs, opts ...pulumi.InvokeOption) GetProfileSupportedOptimizationTypesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProfileSupportedOptimizationTypesResult, error) {
+		ApplyT(func(v interface{}) (GetProfileSupportedOptimizationTypesResultOutput, error) {
 			args := v.(GetProfileSupportedOptimizationTypesArgs)
-			r, err := GetProfileSupportedOptimizationTypes(ctx, &args, opts...)
-			var s GetProfileSupportedOptimizationTypesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetProfileSupportedOptimizationTypesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20240201:getProfileSupportedOptimizationTypes", args, &rv, "", opts...)
+			if err != nil {
+				return GetProfileSupportedOptimizationTypesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProfileSupportedOptimizationTypesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProfileSupportedOptimizationTypesResultOutput), nil
+			}
+			return output, nil
 		}).(GetProfileSupportedOptimizationTypesResultOutput)
 }
 

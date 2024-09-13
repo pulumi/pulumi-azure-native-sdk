@@ -65,14 +65,20 @@ type LookupDistributedAvailabilityGroupResult struct {
 
 func LookupDistributedAvailabilityGroupOutput(ctx *pulumi.Context, args LookupDistributedAvailabilityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupDistributedAvailabilityGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDistributedAvailabilityGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupDistributedAvailabilityGroupResultOutput, error) {
 			args := v.(LookupDistributedAvailabilityGroupArgs)
-			r, err := LookupDistributedAvailabilityGroup(ctx, &args, opts...)
-			var s LookupDistributedAvailabilityGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDistributedAvailabilityGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230501preview:getDistributedAvailabilityGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDistributedAvailabilityGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDistributedAvailabilityGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDistributedAvailabilityGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDistributedAvailabilityGroupResultOutput)
 }
 

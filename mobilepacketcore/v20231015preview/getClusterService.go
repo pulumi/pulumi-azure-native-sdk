@@ -59,14 +59,20 @@ type LookupClusterServiceResult struct {
 
 func LookupClusterServiceOutput(ctx *pulumi.Context, args LookupClusterServiceOutputArgs, opts ...pulumi.InvokeOption) LookupClusterServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupClusterServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupClusterServiceResultOutput, error) {
 			args := v.(LookupClusterServiceArgs)
-			r, err := LookupClusterService(ctx, &args, opts...)
-			var s LookupClusterServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupClusterServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilepacketcore/v20231015preview:getClusterService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupClusterServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupClusterServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupClusterServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupClusterServiceResultOutput)
 }
 

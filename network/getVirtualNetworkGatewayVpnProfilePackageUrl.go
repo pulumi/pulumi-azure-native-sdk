@@ -38,14 +38,20 @@ type GetVirtualNetworkGatewayVpnProfilePackageUrlResult struct {
 
 func GetVirtualNetworkGatewayVpnProfilePackageUrlOutput(ctx *pulumi.Context, args GetVirtualNetworkGatewayVpnProfilePackageUrlOutputArgs, opts ...pulumi.InvokeOption) GetVirtualNetworkGatewayVpnProfilePackageUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVirtualNetworkGatewayVpnProfilePackageUrlResult, error) {
+		ApplyT(func(v interface{}) (GetVirtualNetworkGatewayVpnProfilePackageUrlResultOutput, error) {
 			args := v.(GetVirtualNetworkGatewayVpnProfilePackageUrlArgs)
-			r, err := GetVirtualNetworkGatewayVpnProfilePackageUrl(ctx, &args, opts...)
-			var s GetVirtualNetworkGatewayVpnProfilePackageUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetVirtualNetworkGatewayVpnProfilePackageUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network:getVirtualNetworkGatewayVpnProfilePackageUrl", args, &rv, "", opts...)
+			if err != nil {
+				return GetVirtualNetworkGatewayVpnProfilePackageUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVirtualNetworkGatewayVpnProfilePackageUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVirtualNetworkGatewayVpnProfilePackageUrlResultOutput), nil
+			}
+			return output, nil
 		}).(GetVirtualNetworkGatewayVpnProfilePackageUrlResultOutput)
 }
 

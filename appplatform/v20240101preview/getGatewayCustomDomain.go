@@ -49,14 +49,20 @@ type LookupGatewayCustomDomainResult struct {
 
 func LookupGatewayCustomDomainOutput(ctx *pulumi.Context, args LookupGatewayCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayCustomDomainResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGatewayCustomDomainResult, error) {
+		ApplyT(func(v interface{}) (LookupGatewayCustomDomainResultOutput, error) {
 			args := v.(LookupGatewayCustomDomainArgs)
-			r, err := LookupGatewayCustomDomain(ctx, &args, opts...)
-			var s LookupGatewayCustomDomainResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGatewayCustomDomainResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20240101preview:getGatewayCustomDomain", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGatewayCustomDomainResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGatewayCustomDomainResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGatewayCustomDomainResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGatewayCustomDomainResultOutput)
 }
 

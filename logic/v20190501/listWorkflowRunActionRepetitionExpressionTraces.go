@@ -42,14 +42,20 @@ type ListWorkflowRunActionRepetitionExpressionTracesResult struct {
 
 func ListWorkflowRunActionRepetitionExpressionTracesOutput(ctx *pulumi.Context, args ListWorkflowRunActionRepetitionExpressionTracesOutputArgs, opts ...pulumi.InvokeOption) ListWorkflowRunActionRepetitionExpressionTracesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkflowRunActionRepetitionExpressionTracesResult, error) {
+		ApplyT(func(v interface{}) (ListWorkflowRunActionRepetitionExpressionTracesResultOutput, error) {
 			args := v.(ListWorkflowRunActionRepetitionExpressionTracesArgs)
-			r, err := ListWorkflowRunActionRepetitionExpressionTraces(ctx, &args, opts...)
-			var s ListWorkflowRunActionRepetitionExpressionTracesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkflowRunActionRepetitionExpressionTracesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:listWorkflowRunActionRepetitionExpressionTraces", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkflowRunActionRepetitionExpressionTracesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkflowRunActionRepetitionExpressionTracesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkflowRunActionRepetitionExpressionTracesResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkflowRunActionRepetitionExpressionTracesResultOutput)
 }
 

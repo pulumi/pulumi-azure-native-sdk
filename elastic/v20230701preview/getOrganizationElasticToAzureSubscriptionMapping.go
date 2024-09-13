@@ -33,14 +33,20 @@ type GetOrganizationElasticToAzureSubscriptionMappingResult struct {
 
 func GetOrganizationElasticToAzureSubscriptionMappingOutput(ctx *pulumi.Context, args GetOrganizationElasticToAzureSubscriptionMappingOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationElasticToAzureSubscriptionMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOrganizationElasticToAzureSubscriptionMappingResult, error) {
+		ApplyT(func(v interface{}) (GetOrganizationElasticToAzureSubscriptionMappingResultOutput, error) {
 			args := v.(GetOrganizationElasticToAzureSubscriptionMappingArgs)
-			r, err := GetOrganizationElasticToAzureSubscriptionMapping(ctx, &args, opts...)
-			var s GetOrganizationElasticToAzureSubscriptionMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetOrganizationElasticToAzureSubscriptionMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20230701preview:getOrganizationElasticToAzureSubscriptionMapping", args, &rv, "", opts...)
+			if err != nil {
+				return GetOrganizationElasticToAzureSubscriptionMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput), nil
+			}
+			return output, nil
 		}).(GetOrganizationElasticToAzureSubscriptionMappingResultOutput)
 }
 

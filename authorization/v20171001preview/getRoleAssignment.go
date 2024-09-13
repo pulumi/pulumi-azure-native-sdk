@@ -49,14 +49,20 @@ type LookupRoleAssignmentResult struct {
 
 func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRoleAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupRoleAssignmentResultOutput, error) {
 			args := v.(LookupRoleAssignmentArgs)
-			r, err := LookupRoleAssignment(ctx, &args, opts...)
-			var s LookupRoleAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRoleAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:authorization/v20171001preview:getRoleAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRoleAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRoleAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRoleAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRoleAssignmentResultOutput)
 }
 

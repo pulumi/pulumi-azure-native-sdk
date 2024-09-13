@@ -97,14 +97,20 @@ func (val *LookupLocalRuleResult) Defaults() *LookupLocalRuleResult {
 
 func LookupLocalRuleOutput(ctx *pulumi.Context, args LookupLocalRuleOutputArgs, opts ...pulumi.InvokeOption) LookupLocalRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLocalRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupLocalRuleResultOutput, error) {
 			args := v.(LookupLocalRuleArgs)
-			r, err := LookupLocalRule(ctx, &args, opts...)
-			var s LookupLocalRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLocalRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20240119preview:getLocalRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLocalRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLocalRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLocalRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLocalRuleResultOutput)
 }
 

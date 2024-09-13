@@ -57,14 +57,20 @@ type LookupAKSServiceResult struct {
 
 func LookupAKSServiceOutput(ctx *pulumi.Context, args LookupAKSServiceOutputArgs, opts ...pulumi.InvokeOption) LookupAKSServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAKSServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupAKSServiceResultOutput, error) {
 			args := v.(LookupAKSServiceArgs)
-			r, err := LookupAKSService(ctx, &args, opts...)
-			var s LookupAKSServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAKSServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20210401:getAKSService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAKSServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAKSServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAKSServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAKSServiceResultOutput)
 }
 

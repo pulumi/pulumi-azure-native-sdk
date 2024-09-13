@@ -57,14 +57,20 @@ type LookupInferenceEndpointResult struct {
 
 func LookupInferenceEndpointOutput(ctx *pulumi.Context, args LookupInferenceEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupInferenceEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInferenceEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupInferenceEndpointResultOutput, error) {
 			args := v.(LookupInferenceEndpointArgs)
-			r, err := LookupInferenceEndpoint(ctx, &args, opts...)
-			var s LookupInferenceEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupInferenceEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401preview:getInferenceEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInferenceEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInferenceEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInferenceEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInferenceEndpointResultOutput)
 }
 

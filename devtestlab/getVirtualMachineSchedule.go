@@ -91,14 +91,20 @@ func (val *LookupVirtualMachineScheduleResult) Defaults() *LookupVirtualMachineS
 
 func LookupVirtualMachineScheduleOutput(ctx *pulumi.Context, args LookupVirtualMachineScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineScheduleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineScheduleResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualMachineScheduleResultOutput, error) {
 			args := v.(LookupVirtualMachineScheduleArgs)
-			r, err := LookupVirtualMachineSchedule(ctx, &args, opts...)
-			var s LookupVirtualMachineScheduleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualMachineScheduleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab:getVirtualMachineSchedule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualMachineScheduleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualMachineScheduleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualMachineScheduleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualMachineScheduleResultOutput)
 }
 

@@ -53,14 +53,20 @@ type ListConnectionKeysResult struct {
 
 func ListConnectionKeysOutput(ctx *pulumi.Context, args ListConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) ListConnectionKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConnectionKeysResult, error) {
+		ApplyT(func(v interface{}) (ListConnectionKeysResultOutput, error) {
 			args := v.(ListConnectionKeysArgs)
-			r, err := ListConnectionKeys(ctx, &args, opts...)
-			var s ListConnectionKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConnectionKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web:listConnectionKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListConnectionKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConnectionKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConnectionKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListConnectionKeysResultOutput)
 }
 

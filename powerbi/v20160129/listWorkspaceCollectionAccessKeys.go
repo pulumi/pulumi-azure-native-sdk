@@ -38,14 +38,20 @@ type ListWorkspaceCollectionAccessKeysResult struct {
 
 func ListWorkspaceCollectionAccessKeysOutput(ctx *pulumi.Context, args ListWorkspaceCollectionAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceCollectionAccessKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceCollectionAccessKeysResult, error) {
+		ApplyT(func(v interface{}) (ListWorkspaceCollectionAccessKeysResultOutput, error) {
 			args := v.(ListWorkspaceCollectionAccessKeysArgs)
-			r, err := ListWorkspaceCollectionAccessKeys(ctx, &args, opts...)
-			var s ListWorkspaceCollectionAccessKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkspaceCollectionAccessKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:powerbi/v20160129:listWorkspaceCollectionAccessKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkspaceCollectionAccessKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkspaceCollectionAccessKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkspaceCollectionAccessKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkspaceCollectionAccessKeysResultOutput)
 }
 

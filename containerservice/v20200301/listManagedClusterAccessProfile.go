@@ -49,14 +49,20 @@ type ListManagedClusterAccessProfileResult struct {
 
 func ListManagedClusterAccessProfileOutput(ctx *pulumi.Context, args ListManagedClusterAccessProfileOutputArgs, opts ...pulumi.InvokeOption) ListManagedClusterAccessProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListManagedClusterAccessProfileResult, error) {
+		ApplyT(func(v interface{}) (ListManagedClusterAccessProfileResultOutput, error) {
 			args := v.(ListManagedClusterAccessProfileArgs)
-			r, err := ListManagedClusterAccessProfile(ctx, &args, opts...)
-			var s ListManagedClusterAccessProfileResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListManagedClusterAccessProfileResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerservice/v20200301:listManagedClusterAccessProfile", args, &rv, "", opts...)
+			if err != nil {
+				return ListManagedClusterAccessProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListManagedClusterAccessProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListManagedClusterAccessProfileResultOutput), nil
+			}
+			return output, nil
 		}).(ListManagedClusterAccessProfileResultOutput)
 }
 

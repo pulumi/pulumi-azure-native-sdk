@@ -54,14 +54,20 @@ type LookupOfficeIRMDataConnectorResult struct {
 
 func LookupOfficeIRMDataConnectorOutput(ctx *pulumi.Context, args LookupOfficeIRMDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupOfficeIRMDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOfficeIRMDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupOfficeIRMDataConnectorResultOutput, error) {
 			args := v.(LookupOfficeIRMDataConnectorArgs)
-			r, err := LookupOfficeIRMDataConnector(ctx, &args, opts...)
-			var s LookupOfficeIRMDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOfficeIRMDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getOfficeIRMDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOfficeIRMDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOfficeIRMDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOfficeIRMDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOfficeIRMDataConnectorResultOutput)
 }
 

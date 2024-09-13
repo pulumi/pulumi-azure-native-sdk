@@ -39,14 +39,20 @@ type GetDomainEventSubscriptionFullUrlResult struct {
 
 func GetDomainEventSubscriptionFullUrlOutput(ctx *pulumi.Context, args GetDomainEventSubscriptionFullUrlOutputArgs, opts ...pulumi.InvokeOption) GetDomainEventSubscriptionFullUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDomainEventSubscriptionFullUrlResult, error) {
+		ApplyT(func(v interface{}) (GetDomainEventSubscriptionFullUrlResultOutput, error) {
 			args := v.(GetDomainEventSubscriptionFullUrlArgs)
-			r, err := GetDomainEventSubscriptionFullUrl(ctx, &args, opts...)
-			var s GetDomainEventSubscriptionFullUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetDomainEventSubscriptionFullUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20230601preview:getDomainEventSubscriptionFullUrl", args, &rv, "", opts...)
+			if err != nil {
+				return GetDomainEventSubscriptionFullUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDomainEventSubscriptionFullUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDomainEventSubscriptionFullUrlResultOutput), nil
+			}
+			return output, nil
 		}).(GetDomainEventSubscriptionFullUrlResultOutput)
 }
 

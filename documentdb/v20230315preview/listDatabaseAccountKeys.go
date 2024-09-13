@@ -43,14 +43,20 @@ type ListDatabaseAccountKeysResult struct {
 
 func ListDatabaseAccountKeysOutput(ctx *pulumi.Context, args ListDatabaseAccountKeysOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseAccountKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDatabaseAccountKeysResult, error) {
+		ApplyT(func(v interface{}) (ListDatabaseAccountKeysResultOutput, error) {
 			args := v.(ListDatabaseAccountKeysArgs)
-			r, err := ListDatabaseAccountKeys(ctx, &args, opts...)
-			var s ListDatabaseAccountKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDatabaseAccountKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230315preview:listDatabaseAccountKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListDatabaseAccountKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDatabaseAccountKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDatabaseAccountKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListDatabaseAccountKeysResultOutput)
 }
 

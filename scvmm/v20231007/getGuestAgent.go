@@ -55,14 +55,20 @@ type LookupGuestAgentResult struct {
 
 func LookupGuestAgentOutput(ctx *pulumi.Context, args LookupGuestAgentOutputArgs, opts ...pulumi.InvokeOption) LookupGuestAgentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGuestAgentResult, error) {
+		ApplyT(func(v interface{}) (LookupGuestAgentResultOutput, error) {
 			args := v.(LookupGuestAgentArgs)
-			r, err := LookupGuestAgent(ctx, &args, opts...)
-			var s LookupGuestAgentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGuestAgentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:scvmm/v20231007:getGuestAgent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGuestAgentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGuestAgentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGuestAgentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGuestAgentResultOutput)
 }
 

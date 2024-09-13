@@ -59,14 +59,20 @@ type LookupDataTypeResult struct {
 
 func LookupDataTypeOutput(ctx *pulumi.Context, args LookupDataTypeOutputArgs, opts ...pulumi.InvokeOption) LookupDataTypeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataTypeResult, error) {
+		ApplyT(func(v interface{}) (LookupDataTypeResultOutput, error) {
 			args := v.(LookupDataTypeArgs)
-			r, err := LookupDataType(ctx, &args, opts...)
-			var s LookupDataTypeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataTypeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkanalytics/v20231115:getDataType", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataTypeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataTypeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataTypeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataTypeResultOutput)
 }
 

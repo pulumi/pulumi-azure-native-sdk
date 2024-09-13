@@ -56,14 +56,20 @@ type ListWebAppPublishingCredentialsResult struct {
 
 func ListWebAppPublishingCredentialsOutput(ctx *pulumi.Context, args ListWebAppPublishingCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppPublishingCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppPublishingCredentialsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppPublishingCredentialsResultOutput, error) {
 			args := v.(ListWebAppPublishingCredentialsArgs)
-			r, err := ListWebAppPublishingCredentials(ctx, &args, opts...)
-			var s ListWebAppPublishingCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppPublishingCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web:listWebAppPublishingCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppPublishingCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppPublishingCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppPublishingCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppPublishingCredentialsResultOutput)
 }
 

@@ -55,14 +55,20 @@ type LookupTunnelPolicyResult struct {
 
 func LookupTunnelPolicyOutput(ctx *pulumi.Context, args LookupTunnelPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTunnelPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupTunnelPolicyResultOutput, error) {
 			args := v.(LookupTunnelPolicyArgs)
-			r, err := LookupTunnelPolicy(ctx, &args, opts...)
-			var s LookupTunnelPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTunnelPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn:getTunnelPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTunnelPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTunnelPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTunnelPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTunnelPolicyResultOutput)
 }
 

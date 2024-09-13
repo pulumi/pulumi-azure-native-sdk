@@ -65,14 +65,20 @@ func (val *LookupEncryptionScopeResult) Defaults() *LookupEncryptionScopeResult 
 
 func LookupEncryptionScopeOutput(ctx *pulumi.Context, args LookupEncryptionScopeOutputArgs, opts ...pulumi.InvokeOption) LookupEncryptionScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEncryptionScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupEncryptionScopeResultOutput, error) {
 			args := v.(LookupEncryptionScopeArgs)
-			r, err := LookupEncryptionScope(ctx, &args, opts...)
-			var s LookupEncryptionScopeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEncryptionScopeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cognitiveservices:getEncryptionScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEncryptionScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEncryptionScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEncryptionScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEncryptionScopeResultOutput)
 }
 

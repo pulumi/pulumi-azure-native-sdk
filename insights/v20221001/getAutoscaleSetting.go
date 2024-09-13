@@ -72,14 +72,20 @@ func (val *LookupAutoscaleSettingResult) Defaults() *LookupAutoscaleSettingResul
 
 func LookupAutoscaleSettingOutput(ctx *pulumi.Context, args LookupAutoscaleSettingOutputArgs, opts ...pulumi.InvokeOption) LookupAutoscaleSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAutoscaleSettingResult, error) {
+		ApplyT(func(v interface{}) (LookupAutoscaleSettingResultOutput, error) {
 			args := v.(LookupAutoscaleSettingArgs)
-			r, err := LookupAutoscaleSetting(ctx, &args, opts...)
-			var s LookupAutoscaleSettingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAutoscaleSettingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20221001:getAutoscaleSetting", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAutoscaleSettingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAutoscaleSettingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAutoscaleSettingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAutoscaleSettingResultOutput)
 }
 

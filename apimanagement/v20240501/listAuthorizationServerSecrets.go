@@ -43,14 +43,20 @@ type ListAuthorizationServerSecretsResult struct {
 
 func ListAuthorizationServerSecretsOutput(ctx *pulumi.Context, args ListAuthorizationServerSecretsOutputArgs, opts ...pulumi.InvokeOption) ListAuthorizationServerSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAuthorizationServerSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListAuthorizationServerSecretsResultOutput, error) {
 			args := v.(ListAuthorizationServerSecretsArgs)
-			r, err := ListAuthorizationServerSecrets(ctx, &args, opts...)
-			var s ListAuthorizationServerSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAuthorizationServerSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:listAuthorizationServerSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListAuthorizationServerSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAuthorizationServerSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAuthorizationServerSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListAuthorizationServerSecretsResultOutput)
 }
 

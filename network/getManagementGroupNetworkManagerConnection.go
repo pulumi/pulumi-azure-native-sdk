@@ -52,14 +52,20 @@ type LookupManagementGroupNetworkManagerConnectionResult struct {
 
 func LookupManagementGroupNetworkManagerConnectionOutput(ctx *pulumi.Context, args LookupManagementGroupNetworkManagerConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupNetworkManagerConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagementGroupNetworkManagerConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupManagementGroupNetworkManagerConnectionResultOutput, error) {
 			args := v.(LookupManagementGroupNetworkManagerConnectionArgs)
-			r, err := LookupManagementGroupNetworkManagerConnection(ctx, &args, opts...)
-			var s LookupManagementGroupNetworkManagerConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagementGroupNetworkManagerConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network:getManagementGroupNetworkManagerConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagementGroupNetworkManagerConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagementGroupNetworkManagerConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagementGroupNetworkManagerConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagementGroupNetworkManagerConnectionResultOutput)
 }
 

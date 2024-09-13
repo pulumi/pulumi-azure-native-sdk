@@ -49,14 +49,20 @@ type ListFirewallPolicyIdpsSignatureResult struct {
 
 func ListFirewallPolicyIdpsSignatureOutput(ctx *pulumi.Context, args ListFirewallPolicyIdpsSignatureOutputArgs, opts ...pulumi.InvokeOption) ListFirewallPolicyIdpsSignatureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListFirewallPolicyIdpsSignatureResult, error) {
+		ApplyT(func(v interface{}) (ListFirewallPolicyIdpsSignatureResultOutput, error) {
 			args := v.(ListFirewallPolicyIdpsSignatureArgs)
-			r, err := ListFirewallPolicyIdpsSignature(ctx, &args, opts...)
-			var s ListFirewallPolicyIdpsSignatureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListFirewallPolicyIdpsSignatureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230201:listFirewallPolicyIdpsSignature", args, &rv, "", opts...)
+			if err != nil {
+				return ListFirewallPolicyIdpsSignatureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListFirewallPolicyIdpsSignatureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListFirewallPolicyIdpsSignatureResultOutput), nil
+			}
+			return output, nil
 		}).(ListFirewallPolicyIdpsSignatureResultOutput)
 }
 

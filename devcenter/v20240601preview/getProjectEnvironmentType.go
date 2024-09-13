@@ -65,14 +65,20 @@ type LookupProjectEnvironmentTypeResult struct {
 
 func LookupProjectEnvironmentTypeOutput(ctx *pulumi.Context, args LookupProjectEnvironmentTypeOutputArgs, opts ...pulumi.InvokeOption) LookupProjectEnvironmentTypeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProjectEnvironmentTypeResult, error) {
+		ApplyT(func(v interface{}) (LookupProjectEnvironmentTypeResultOutput, error) {
 			args := v.(LookupProjectEnvironmentTypeArgs)
-			r, err := LookupProjectEnvironmentType(ctx, &args, opts...)
-			var s LookupProjectEnvironmentTypeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupProjectEnvironmentTypeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240601preview:getProjectEnvironmentType", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProjectEnvironmentTypeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProjectEnvironmentTypeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProjectEnvironmentTypeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProjectEnvironmentTypeResultOutput)
 }
 

@@ -68,14 +68,20 @@ type LookupStorageTargetResult struct {
 
 func LookupStorageTargetOutput(ctx *pulumi.Context, args LookupStorageTargetOutputArgs, opts ...pulumi.InvokeOption) LookupStorageTargetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStorageTargetResult, error) {
+		ApplyT(func(v interface{}) (LookupStorageTargetResultOutput, error) {
 			args := v.(LookupStorageTargetArgs)
-			r, err := LookupStorageTarget(ctx, &args, opts...)
-			var s LookupStorageTargetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStorageTargetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storagecache:getStorageTarget", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStorageTargetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStorageTargetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStorageTargetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStorageTargetResultOutput)
 }
 

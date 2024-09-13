@@ -49,14 +49,20 @@ type LookupManagedPrivateEndpointResult struct {
 
 func LookupManagedPrivateEndpointOutput(ctx *pulumi.Context, args LookupManagedPrivateEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupManagedPrivateEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedPrivateEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedPrivateEndpointResultOutput, error) {
 			args := v.(LookupManagedPrivateEndpointArgs)
-			r, err := LookupManagedPrivateEndpoint(ctx, &args, opts...)
-			var s LookupManagedPrivateEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedPrivateEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory/v20180601:getManagedPrivateEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedPrivateEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedPrivateEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedPrivateEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedPrivateEndpointResultOutput)
 }
 

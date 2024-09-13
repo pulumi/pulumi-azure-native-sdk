@@ -74,14 +74,20 @@ type LookupArtifactSourceResult struct {
 
 func LookupArtifactSourceOutput(ctx *pulumi.Context, args LookupArtifactSourceOutputArgs, opts ...pulumi.InvokeOption) LookupArtifactSourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupArtifactSourceResult, error) {
+		ApplyT(func(v interface{}) (LookupArtifactSourceResultOutput, error) {
 			args := v.(LookupArtifactSourceArgs)
-			r, err := LookupArtifactSource(ctx, &args, opts...)
-			var s LookupArtifactSourceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupArtifactSourceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab:getArtifactSource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupArtifactSourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupArtifactSourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupArtifactSourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupArtifactSourceResultOutput)
 }
 

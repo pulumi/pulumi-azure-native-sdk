@@ -83,14 +83,20 @@ func (val *LookupMqttBridgeConnectorResult) Defaults() *LookupMqttBridgeConnecto
 
 func LookupMqttBridgeConnectorOutput(ctx *pulumi.Context, args LookupMqttBridgeConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupMqttBridgeConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMqttBridgeConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupMqttBridgeConnectorResultOutput, error) {
 			args := v.(LookupMqttBridgeConnectorArgs)
-			r, err := LookupMqttBridgeConnector(ctx, &args, opts...)
-			var s LookupMqttBridgeConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMqttBridgeConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq:getMqttBridgeConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMqttBridgeConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMqttBridgeConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMqttBridgeConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMqttBridgeConnectorResultOutput)
 }
 

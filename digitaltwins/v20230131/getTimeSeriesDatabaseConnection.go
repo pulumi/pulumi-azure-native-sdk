@@ -58,14 +58,20 @@ func (val *LookupTimeSeriesDatabaseConnectionResult) Defaults() *LookupTimeSerie
 
 func LookupTimeSeriesDatabaseConnectionOutput(ctx *pulumi.Context, args LookupTimeSeriesDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupTimeSeriesDatabaseConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTimeSeriesDatabaseConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupTimeSeriesDatabaseConnectionResultOutput, error) {
 			args := v.(LookupTimeSeriesDatabaseConnectionArgs)
-			r, err := LookupTimeSeriesDatabaseConnection(ctx, &args, opts...)
-			var s LookupTimeSeriesDatabaseConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTimeSeriesDatabaseConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:digitaltwins/v20230131:getTimeSeriesDatabaseConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTimeSeriesDatabaseConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTimeSeriesDatabaseConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTimeSeriesDatabaseConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTimeSeriesDatabaseConnectionResultOutput)
 }
 

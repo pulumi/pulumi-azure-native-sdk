@@ -40,14 +40,20 @@ type LookupComponentCurrentBillingFeatureResult struct {
 
 func LookupComponentCurrentBillingFeatureOutput(ctx *pulumi.Context, args LookupComponentCurrentBillingFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupComponentCurrentBillingFeatureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupComponentCurrentBillingFeatureResult, error) {
+		ApplyT(func(v interface{}) (LookupComponentCurrentBillingFeatureResultOutput, error) {
 			args := v.(LookupComponentCurrentBillingFeatureArgs)
-			r, err := LookupComponentCurrentBillingFeature(ctx, &args, opts...)
-			var s LookupComponentCurrentBillingFeatureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupComponentCurrentBillingFeatureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights:getComponentCurrentBillingFeature", args, &rv, "", opts...)
+			if err != nil {
+				return LookupComponentCurrentBillingFeatureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupComponentCurrentBillingFeatureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupComponentCurrentBillingFeatureResultOutput), nil
+			}
+			return output, nil
 		}).(LookupComponentCurrentBillingFeatureResultOutput)
 }
 

@@ -48,14 +48,20 @@ type LookupConfigurationProfilePreferenceResult struct {
 
 func LookupConfigurationProfilePreferenceOutput(ctx *pulumi.Context, args LookupConfigurationProfilePreferenceOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfilePreferenceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationProfilePreferenceResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationProfilePreferenceResultOutput, error) {
 			args := v.(LookupConfigurationProfilePreferenceArgs)
-			r, err := LookupConfigurationProfilePreference(ctx, &args, opts...)
-			var s LookupConfigurationProfilePreferenceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationProfilePreferenceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automanage:getConfigurationProfilePreference", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationProfilePreferenceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationProfilePreferenceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationProfilePreferenceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationProfilePreferenceResultOutput)
 }
 

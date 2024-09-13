@@ -52,14 +52,20 @@ type LookupNetworkServiceDesignGroupResult struct {
 
 func LookupNetworkServiceDesignGroupOutput(ctx *pulumi.Context, args LookupNetworkServiceDesignGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkServiceDesignGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkServiceDesignGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkServiceDesignGroupResultOutput, error) {
 			args := v.(LookupNetworkServiceDesignGroupArgs)
-			r, err := LookupNetworkServiceDesignGroup(ctx, &args, opts...)
-			var s LookupNetworkServiceDesignGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkServiceDesignGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork:getNetworkServiceDesignGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkServiceDesignGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkServiceDesignGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkServiceDesignGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkServiceDesignGroupResultOutput)
 }
 

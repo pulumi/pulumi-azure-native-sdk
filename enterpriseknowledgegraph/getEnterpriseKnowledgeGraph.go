@@ -50,14 +50,20 @@ type LookupEnterpriseKnowledgeGraphResult struct {
 
 func LookupEnterpriseKnowledgeGraphOutput(ctx *pulumi.Context, args LookupEnterpriseKnowledgeGraphOutputArgs, opts ...pulumi.InvokeOption) LookupEnterpriseKnowledgeGraphResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnterpriseKnowledgeGraphResult, error) {
+		ApplyT(func(v interface{}) (LookupEnterpriseKnowledgeGraphResultOutput, error) {
 			args := v.(LookupEnterpriseKnowledgeGraphArgs)
-			r, err := LookupEnterpriseKnowledgeGraph(ctx, &args, opts...)
-			var s LookupEnterpriseKnowledgeGraphResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnterpriseKnowledgeGraphResult
+			secret, err := ctx.InvokePackageRaw("azure-native:enterpriseknowledgegraph:getEnterpriseKnowledgeGraph", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnterpriseKnowledgeGraphResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnterpriseKnowledgeGraphResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnterpriseKnowledgeGraphResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnterpriseKnowledgeGraphResultOutput)
 }
 

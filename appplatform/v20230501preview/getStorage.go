@@ -47,14 +47,20 @@ type LookupStorageResult struct {
 
 func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts ...pulumi.InvokeOption) LookupStorageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStorageResult, error) {
+		ApplyT(func(v interface{}) (LookupStorageResultOutput, error) {
 			args := v.(LookupStorageArgs)
-			r, err := LookupStorage(ctx, &args, opts...)
-			var s LookupStorageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStorageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230501preview:getStorage", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStorageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStorageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStorageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStorageResultOutput)
 }
 

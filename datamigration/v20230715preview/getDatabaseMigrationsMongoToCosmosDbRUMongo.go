@@ -71,14 +71,20 @@ type LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult struct {
 
 func LookupDatabaseMigrationsMongoToCosmosDbRUMongoOutput(ctx *pulumi.Context, args LookupDatabaseMigrationsMongoToCosmosDbRUMongoOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput, error) {
 			args := v.(LookupDatabaseMigrationsMongoToCosmosDbRUMongoArgs)
-			r, err := LookupDatabaseMigrationsMongoToCosmosDbRUMongo(ctx, &args, opts...)
-			var s LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datamigration/v20230715preview:getDatabaseMigrationsMongoToCosmosDbRUMongo", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput)
 }
 

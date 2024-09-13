@@ -45,14 +45,20 @@ type LookupGroupQuotaResult struct {
 
 func LookupGroupQuotaOutput(ctx *pulumi.Context, args LookupGroupQuotaOutputArgs, opts ...pulumi.InvokeOption) LookupGroupQuotaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGroupQuotaResult, error) {
+		ApplyT(func(v interface{}) (LookupGroupQuotaResultOutput, error) {
 			args := v.(LookupGroupQuotaArgs)
-			r, err := LookupGroupQuota(ctx, &args, opts...)
-			var s LookupGroupQuotaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGroupQuotaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:quota/v20230601preview:getGroupQuota", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGroupQuotaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGroupQuotaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGroupQuotaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGroupQuotaResultOutput)
 }
 

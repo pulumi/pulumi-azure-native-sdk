@@ -50,14 +50,20 @@ type LookupAFDTargetGroupResult struct {
 
 func LookupAFDTargetGroupOutput(ctx *pulumi.Context, args LookupAFDTargetGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAFDTargetGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAFDTargetGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupAFDTargetGroupResultOutput, error) {
 			args := v.(LookupAFDTargetGroupArgs)
-			r, err := LookupAFDTargetGroup(ctx, &args, opts...)
-			var s LookupAFDTargetGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAFDTargetGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20240601preview:getAFDTargetGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAFDTargetGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAFDTargetGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAFDTargetGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAFDTargetGroupResultOutput)
 }
 

@@ -51,14 +51,20 @@ type LookupReplicationProtectionContainerMappingResult struct {
 
 func LookupReplicationProtectionContainerMappingOutput(ctx *pulumi.Context, args LookupReplicationProtectionContainerMappingOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationProtectionContainerMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicationProtectionContainerMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicationProtectionContainerMappingResultOutput, error) {
 			args := v.(LookupReplicationProtectionContainerMappingArgs)
-			r, err := LookupReplicationProtectionContainerMapping(ctx, &args, opts...)
-			var s LookupReplicationProtectionContainerMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicationProtectionContainerMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20230601:getReplicationProtectionContainerMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicationProtectionContainerMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicationProtectionContainerMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicationProtectionContainerMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicationProtectionContainerMappingResultOutput)
 }
 

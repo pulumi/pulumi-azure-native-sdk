@@ -37,14 +37,20 @@ type ListContainerAppSecretsResult struct {
 
 func ListContainerAppSecretsOutput(ctx *pulumi.Context, args ListContainerAppSecretsOutputArgs, opts ...pulumi.InvokeOption) ListContainerAppSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListContainerAppSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListContainerAppSecretsResultOutput, error) {
 			args := v.(ListContainerAppSecretsArgs)
-			r, err := ListContainerAppSecrets(ctx, &args, opts...)
-			var s ListContainerAppSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListContainerAppSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app/v20220101preview:listContainerAppSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListContainerAppSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListContainerAppSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListContainerAppSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListContainerAppSecretsResultOutput)
 }
 

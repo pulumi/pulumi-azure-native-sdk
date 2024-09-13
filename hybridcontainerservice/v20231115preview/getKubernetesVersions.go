@@ -44,14 +44,20 @@ type LookupKubernetesVersionsResult struct {
 
 func LookupKubernetesVersionsOutput(ctx *pulumi.Context, args LookupKubernetesVersionsOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesVersionsResult, error) {
+		ApplyT(func(v interface{}) (LookupKubernetesVersionsResultOutput, error) {
 			args := v.(LookupKubernetesVersionsArgs)
-			r, err := LookupKubernetesVersions(ctx, &args, opts...)
-			var s LookupKubernetesVersionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKubernetesVersionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice/v20231115preview:getKubernetesVersions", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKubernetesVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKubernetesVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKubernetesVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKubernetesVersionsResultOutput)
 }
 

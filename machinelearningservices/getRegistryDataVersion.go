@@ -52,14 +52,20 @@ type LookupRegistryDataVersionResult struct {
 
 func LookupRegistryDataVersionOutput(ctx *pulumi.Context, args LookupRegistryDataVersionOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryDataVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRegistryDataVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupRegistryDataVersionResultOutput, error) {
 			args := v.(LookupRegistryDataVersionArgs)
-			r, err := LookupRegistryDataVersion(ctx, &args, opts...)
-			var s LookupRegistryDataVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRegistryDataVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getRegistryDataVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRegistryDataVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRegistryDataVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRegistryDataVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRegistryDataVersionResultOutput)
 }
 

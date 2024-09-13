@@ -53,14 +53,20 @@ type LookupSecurityUserConfigurationResult struct {
 
 func LookupSecurityUserConfigurationOutput(ctx *pulumi.Context, args LookupSecurityUserConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityUserConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecurityUserConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupSecurityUserConfigurationResultOutput, error) {
 			args := v.(LookupSecurityUserConfigurationArgs)
-			r, err := LookupSecurityUserConfiguration(ctx, &args, opts...)
-			var s LookupSecurityUserConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecurityUserConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20220401preview:getSecurityUserConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecurityUserConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecurityUserConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecurityUserConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecurityUserConfigurationResultOutput)
 }
 

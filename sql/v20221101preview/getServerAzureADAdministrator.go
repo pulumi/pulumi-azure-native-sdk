@@ -53,14 +53,20 @@ type LookupServerAzureADAdministratorResult struct {
 
 func LookupServerAzureADAdministratorOutput(ctx *pulumi.Context, args LookupServerAzureADAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupServerAzureADAdministratorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerAzureADAdministratorResult, error) {
+		ApplyT(func(v interface{}) (LookupServerAzureADAdministratorResultOutput, error) {
 			args := v.(LookupServerAzureADAdministratorArgs)
-			r, err := LookupServerAzureADAdministrator(ctx, &args, opts...)
-			var s LookupServerAzureADAdministratorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerAzureADAdministratorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20221101preview:getServerAzureADAdministrator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerAzureADAdministratorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerAzureADAdministratorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerAzureADAdministratorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerAzureADAdministratorResultOutput)
 }
 

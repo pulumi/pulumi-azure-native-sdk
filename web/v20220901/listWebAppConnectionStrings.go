@@ -45,14 +45,20 @@ type ListWebAppConnectionStringsResult struct {
 
 func ListWebAppConnectionStringsOutput(ctx *pulumi.Context, args ListWebAppConnectionStringsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppConnectionStringsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppConnectionStringsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppConnectionStringsResultOutput, error) {
 			args := v.(ListWebAppConnectionStringsArgs)
-			r, err := ListWebAppConnectionStrings(ctx, &args, opts...)
-			var s ListWebAppConnectionStringsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppConnectionStringsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:listWebAppConnectionStrings", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppConnectionStringsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppConnectionStringsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppConnectionStringsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppConnectionStringsResultOutput)
 }
 

@@ -51,14 +51,20 @@ type LookupServerKeyResult struct {
 
 func LookupServerKeyOutput(ctx *pulumi.Context, args LookupServerKeyOutputArgs, opts ...pulumi.InvokeOption) LookupServerKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerKeyResult, error) {
+		ApplyT(func(v interface{}) (LookupServerKeyResultOutput, error) {
 			args := v.(LookupServerKeyArgs)
-			r, err := LookupServerKey(ctx, &args, opts...)
-			var s LookupServerKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20200214privatepreview:getServerKey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerKeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerKeyResultOutput)
 }
 

@@ -52,14 +52,20 @@ type LookupPeerAsnResult struct {
 
 func LookupPeerAsnOutput(ctx *pulumi.Context, args LookupPeerAsnOutputArgs, opts ...pulumi.InvokeOption) LookupPeerAsnResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPeerAsnResult, error) {
+		ApplyT(func(v interface{}) (LookupPeerAsnResultOutput, error) {
 			args := v.(LookupPeerAsnArgs)
-			r, err := LookupPeerAsn(ctx, &args, opts...)
-			var s LookupPeerAsnResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPeerAsnResult
+			secret, err := ctx.InvokePackageRaw("azure-native:peering:getPeerAsn", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPeerAsnResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPeerAsnResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPeerAsnResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPeerAsnResultOutput)
 }
 

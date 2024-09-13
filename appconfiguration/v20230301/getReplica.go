@@ -51,14 +51,20 @@ type LookupReplicaResult struct {
 
 func LookupReplicaOutput(ctx *pulumi.Context, args LookupReplicaOutputArgs, opts ...pulumi.InvokeOption) LookupReplicaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicaResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicaResultOutput, error) {
 			args := v.(LookupReplicaArgs)
-			r, err := LookupReplica(ctx, &args, opts...)
-			var s LookupReplicaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration/v20230301:getReplica", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicaResultOutput)
 }
 

@@ -55,14 +55,20 @@ type LookupPrivateLinkForAzureAdResult struct {
 
 func LookupPrivateLinkForAzureAdOutput(ctx *pulumi.Context, args LookupPrivateLinkForAzureAdOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkForAzureAdResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkForAzureAdResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateLinkForAzureAdResultOutput, error) {
 			args := v.(LookupPrivateLinkForAzureAdArgs)
-			r, err := LookupPrivateLinkForAzureAd(ctx, &args, opts...)
-			var s LookupPrivateLinkForAzureAdResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateLinkForAzureAdResult
+			secret, err := ctx.InvokePackageRaw("azure-native:aadiam/v20200301preview:getPrivateLinkForAzureAd", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateLinkForAzureAdResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateLinkForAzureAdResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateLinkForAzureAdResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateLinkForAzureAdResultOutput)
 }
 

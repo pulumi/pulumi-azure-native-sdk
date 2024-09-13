@@ -90,14 +90,20 @@ func (val *LookupDomainTopicEventSubscriptionResult) Defaults() *LookupDomainTop
 
 func LookupDomainTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupDomainTopicEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupDomainTopicEventSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDomainTopicEventSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupDomainTopicEventSubscriptionResultOutput, error) {
 			args := v.(LookupDomainTopicEventSubscriptionArgs)
-			r, err := LookupDomainTopicEventSubscription(ctx, &args, opts...)
-			var s LookupDomainTopicEventSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDomainTopicEventSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20220615:getDomainTopicEventSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDomainTopicEventSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDomainTopicEventSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDomainTopicEventSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDomainTopicEventSubscriptionResultOutput)
 }
 

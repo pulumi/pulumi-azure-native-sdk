@@ -48,14 +48,20 @@ type GetContentKeyPolicyPropertiesWithSecretsResult struct {
 
 func GetContentKeyPolicyPropertiesWithSecretsOutput(ctx *pulumi.Context, args GetContentKeyPolicyPropertiesWithSecretsOutputArgs, opts ...pulumi.InvokeOption) GetContentKeyPolicyPropertiesWithSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetContentKeyPolicyPropertiesWithSecretsResult, error) {
+		ApplyT(func(v interface{}) (GetContentKeyPolicyPropertiesWithSecretsResultOutput, error) {
 			args := v.(GetContentKeyPolicyPropertiesWithSecretsArgs)
-			r, err := GetContentKeyPolicyPropertiesWithSecrets(ctx, &args, opts...)
-			var s GetContentKeyPolicyPropertiesWithSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetContentKeyPolicyPropertiesWithSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media:getContentKeyPolicyPropertiesWithSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return GetContentKeyPolicyPropertiesWithSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetContentKeyPolicyPropertiesWithSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetContentKeyPolicyPropertiesWithSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(GetContentKeyPolicyPropertiesWithSecretsResultOutput)
 }
 

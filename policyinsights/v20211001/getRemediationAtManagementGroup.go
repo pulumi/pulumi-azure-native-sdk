@@ -71,14 +71,20 @@ type LookupRemediationAtManagementGroupResult struct {
 
 func LookupRemediationAtManagementGroupOutput(ctx *pulumi.Context, args LookupRemediationAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRemediationAtManagementGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRemediationAtManagementGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupRemediationAtManagementGroupResultOutput, error) {
 			args := v.(LookupRemediationAtManagementGroupArgs)
-			r, err := LookupRemediationAtManagementGroup(ctx, &args, opts...)
-			var s LookupRemediationAtManagementGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRemediationAtManagementGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:policyinsights/v20211001:getRemediationAtManagementGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRemediationAtManagementGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRemediationAtManagementGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRemediationAtManagementGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRemediationAtManagementGroupResultOutput)
 }
 

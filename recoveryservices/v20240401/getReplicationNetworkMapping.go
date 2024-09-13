@@ -51,14 +51,20 @@ type LookupReplicationNetworkMappingResult struct {
 
 func LookupReplicationNetworkMappingOutput(ctx *pulumi.Context, args LookupReplicationNetworkMappingOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationNetworkMappingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicationNetworkMappingResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicationNetworkMappingResultOutput, error) {
 			args := v.(LookupReplicationNetworkMappingArgs)
-			r, err := LookupReplicationNetworkMapping(ctx, &args, opts...)
-			var s LookupReplicationNetworkMappingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicationNetworkMappingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20240401:getReplicationNetworkMapping", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicationNetworkMappingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicationNetworkMappingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicationNetworkMappingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicationNetworkMappingResultOutput)
 }
 

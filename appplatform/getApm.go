@@ -50,14 +50,20 @@ type LookupApmResult struct {
 
 func LookupApmOutput(ctx *pulumi.Context, args LookupApmOutputArgs, opts ...pulumi.InvokeOption) LookupApmResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApmResult, error) {
+		ApplyT(func(v interface{}) (LookupApmResultOutput, error) {
 			args := v.(LookupApmArgs)
-			r, err := LookupApm(ctx, &args, opts...)
-			var s LookupApmResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApmResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform:getApm", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApmResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApmResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApmResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApmResultOutput)
 }
 

@@ -52,14 +52,20 @@ type LookupSqlResourceSqlTriggerResult struct {
 
 func LookupSqlResourceSqlTriggerOutput(ctx *pulumi.Context, args LookupSqlResourceSqlTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlTriggerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlTriggerResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlTriggerResultOutput, error) {
 			args := v.(LookupSqlResourceSqlTriggerArgs)
-			r, err := LookupSqlResourceSqlTrigger(ctx, &args, opts...)
-			var s LookupSqlResourceSqlTriggerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlTriggerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230415:getSqlResourceSqlTrigger", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlTriggerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlTriggerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlTriggerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlTriggerResultOutput)
 }
 

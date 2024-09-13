@@ -50,14 +50,20 @@ type LookupKeyGroupResult struct {
 
 func LookupKeyGroupOutput(ctx *pulumi.Context, args LookupKeyGroupOutputArgs, opts ...pulumi.InvokeOption) LookupKeyGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKeyGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupKeyGroupResultOutput, error) {
 			args := v.(LookupKeyGroupArgs)
-			r, err := LookupKeyGroup(ctx, &args, opts...)
-			var s LookupKeyGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKeyGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20230701preview:getKeyGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKeyGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKeyGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKeyGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKeyGroupResultOutput)
 }
 

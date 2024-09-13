@@ -58,14 +58,20 @@ type LookupAttachedNetworkByDevCenterResult struct {
 
 func LookupAttachedNetworkByDevCenterOutput(ctx *pulumi.Context, args LookupAttachedNetworkByDevCenterOutputArgs, opts ...pulumi.InvokeOption) LookupAttachedNetworkByDevCenterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAttachedNetworkByDevCenterResult, error) {
+		ApplyT(func(v interface{}) (LookupAttachedNetworkByDevCenterResultOutput, error) {
 			args := v.(LookupAttachedNetworkByDevCenterArgs)
-			r, err := LookupAttachedNetworkByDevCenter(ctx, &args, opts...)
-			var s LookupAttachedNetworkByDevCenterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAttachedNetworkByDevCenterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:getAttachedNetworkByDevCenter", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAttachedNetworkByDevCenterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAttachedNetworkByDevCenterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAttachedNetworkByDevCenterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAttachedNetworkByDevCenterResultOutput)
 }
 

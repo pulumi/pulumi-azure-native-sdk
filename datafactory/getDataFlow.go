@@ -48,14 +48,20 @@ type LookupDataFlowResult struct {
 
 func LookupDataFlowOutput(ctx *pulumi.Context, args LookupDataFlowOutputArgs, opts ...pulumi.InvokeOption) LookupDataFlowResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataFlowResult, error) {
+		ApplyT(func(v interface{}) (LookupDataFlowResultOutput, error) {
 			args := v.(LookupDataFlowArgs)
-			r, err := LookupDataFlow(ctx, &args, opts...)
-			var s LookupDataFlowResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataFlowResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datafactory:getDataFlow", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataFlowResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataFlowResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataFlowResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataFlowResultOutput)
 }
 

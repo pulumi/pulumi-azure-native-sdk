@@ -51,14 +51,20 @@ type GetSqlServerAvailabilityGroupDetailViewResult struct {
 
 func GetSqlServerAvailabilityGroupDetailViewOutput(ctx *pulumi.Context, args GetSqlServerAvailabilityGroupDetailViewOutputArgs, opts ...pulumi.InvokeOption) GetSqlServerAvailabilityGroupDetailViewResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSqlServerAvailabilityGroupDetailViewResult, error) {
+		ApplyT(func(v interface{}) (GetSqlServerAvailabilityGroupDetailViewResultOutput, error) {
 			args := v.(GetSqlServerAvailabilityGroupDetailViewArgs)
-			r, err := GetSqlServerAvailabilityGroupDetailView(ctx, &args, opts...)
-			var s GetSqlServerAvailabilityGroupDetailViewResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSqlServerAvailabilityGroupDetailViewResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurearcdata/v20240101:getSqlServerAvailabilityGroupDetailView", args, &rv, "", opts...)
+			if err != nil {
+				return GetSqlServerAvailabilityGroupDetailViewResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSqlServerAvailabilityGroupDetailViewResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSqlServerAvailabilityGroupDetailViewResultOutput), nil
+			}
+			return output, nil
 		}).(GetSqlServerAvailabilityGroupDetailViewResultOutput)
 }
 

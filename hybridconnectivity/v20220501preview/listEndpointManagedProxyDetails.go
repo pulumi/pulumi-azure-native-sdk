@@ -43,14 +43,20 @@ type ListEndpointManagedProxyDetailsResult struct {
 
 func ListEndpointManagedProxyDetailsOutput(ctx *pulumi.Context, args ListEndpointManagedProxyDetailsOutputArgs, opts ...pulumi.InvokeOption) ListEndpointManagedProxyDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListEndpointManagedProxyDetailsResult, error) {
+		ApplyT(func(v interface{}) (ListEndpointManagedProxyDetailsResultOutput, error) {
 			args := v.(ListEndpointManagedProxyDetailsArgs)
-			r, err := ListEndpointManagedProxyDetails(ctx, &args, opts...)
-			var s ListEndpointManagedProxyDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListEndpointManagedProxyDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridconnectivity/v20220501preview:listEndpointManagedProxyDetails", args, &rv, "", opts...)
+			if err != nil {
+				return ListEndpointManagedProxyDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListEndpointManagedProxyDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListEndpointManagedProxyDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(ListEndpointManagedProxyDetailsResultOutput)
 }
 

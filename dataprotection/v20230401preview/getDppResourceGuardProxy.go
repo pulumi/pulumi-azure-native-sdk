@@ -47,14 +47,20 @@ type LookupDppResourceGuardProxyResult struct {
 
 func LookupDppResourceGuardProxyOutput(ctx *pulumi.Context, args LookupDppResourceGuardProxyOutputArgs, opts ...pulumi.InvokeOption) LookupDppResourceGuardProxyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDppResourceGuardProxyResult, error) {
+		ApplyT(func(v interface{}) (LookupDppResourceGuardProxyResultOutput, error) {
 			args := v.(LookupDppResourceGuardProxyArgs)
-			r, err := LookupDppResourceGuardProxy(ctx, &args, opts...)
-			var s LookupDppResourceGuardProxyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDppResourceGuardProxyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dataprotection/v20230401preview:getDppResourceGuardProxy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDppResourceGuardProxyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDppResourceGuardProxyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDppResourceGuardProxyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDppResourceGuardProxyResultOutput)
 }
 

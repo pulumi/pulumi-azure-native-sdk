@@ -73,14 +73,20 @@ type LookupViewByScopeResult struct {
 
 func LookupViewByScopeOutput(ctx *pulumi.Context, args LookupViewByScopeOutputArgs, opts ...pulumi.InvokeOption) LookupViewByScopeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupViewByScopeResult, error) {
+		ApplyT(func(v interface{}) (LookupViewByScopeResultOutput, error) {
 			args := v.(LookupViewByScopeArgs)
-			r, err := LookupViewByScope(ctx, &args, opts...)
-			var s LookupViewByScopeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupViewByScopeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20221001:getViewByScope", args, &rv, "", opts...)
+			if err != nil {
+				return LookupViewByScopeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupViewByScopeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupViewByScopeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupViewByScopeResultOutput)
 }
 

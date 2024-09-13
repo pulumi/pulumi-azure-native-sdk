@@ -148,14 +148,20 @@ func (val *LookupManagedClusterResult) Defaults() *LookupManagedClusterResult {
 
 func LookupManagedClusterOutput(ctx *pulumi.Context, args LookupManagedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupManagedClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedClusterResultOutput, error) {
 			args := v.(LookupManagedClusterArgs)
-			r, err := LookupManagedCluster(ctx, &args, opts...)
-			var s LookupManagedClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicefabric/v20231101preview:getManagedCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedClusterResultOutput)
 }
 

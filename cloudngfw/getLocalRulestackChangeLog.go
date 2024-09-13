@@ -44,14 +44,20 @@ type GetLocalRulestackChangeLogResult struct {
 
 func GetLocalRulestackChangeLogOutput(ctx *pulumi.Context, args GetLocalRulestackChangeLogOutputArgs, opts ...pulumi.InvokeOption) GetLocalRulestackChangeLogResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLocalRulestackChangeLogResult, error) {
+		ApplyT(func(v interface{}) (GetLocalRulestackChangeLogResultOutput, error) {
 			args := v.(GetLocalRulestackChangeLogArgs)
-			r, err := GetLocalRulestackChangeLog(ctx, &args, opts...)
-			var s GetLocalRulestackChangeLogResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetLocalRulestackChangeLogResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw:getLocalRulestackChangeLog", args, &rv, "", opts...)
+			if err != nil {
+				return GetLocalRulestackChangeLogResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLocalRulestackChangeLogResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLocalRulestackChangeLogResultOutput), nil
+			}
+			return output, nil
 		}).(GetLocalRulestackChangeLogResultOutput)
 }
 

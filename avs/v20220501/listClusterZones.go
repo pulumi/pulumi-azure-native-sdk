@@ -39,14 +39,20 @@ type ListClusterZonesResult struct {
 
 func ListClusterZonesOutput(ctx *pulumi.Context, args ListClusterZonesOutputArgs, opts ...pulumi.InvokeOption) ListClusterZonesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListClusterZonesResult, error) {
+		ApplyT(func(v interface{}) (ListClusterZonesResultOutput, error) {
 			args := v.(ListClusterZonesArgs)
-			r, err := ListClusterZones(ctx, &args, opts...)
-			var s ListClusterZonesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListClusterZonesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:avs/v20220501:listClusterZones", args, &rv, "", opts...)
+			if err != nil {
+				return ListClusterZonesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListClusterZonesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListClusterZonesResultOutput), nil
+			}
+			return output, nil
 		}).(ListClusterZonesResultOutput)
 }
 

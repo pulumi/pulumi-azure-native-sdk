@@ -74,14 +74,20 @@ func (val *LookupMultipleActivationKeyResult) Defaults() *LookupMultipleActivati
 
 func LookupMultipleActivationKeyOutput(ctx *pulumi.Context, args LookupMultipleActivationKeyOutputArgs, opts ...pulumi.InvokeOption) LookupMultipleActivationKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMultipleActivationKeyResult, error) {
+		ApplyT(func(v interface{}) (LookupMultipleActivationKeyResultOutput, error) {
 			args := v.(LookupMultipleActivationKeyArgs)
-			r, err := LookupMultipleActivationKey(ctx, &args, opts...)
-			var s LookupMultipleActivationKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMultipleActivationKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:windowsesu:getMultipleActivationKey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMultipleActivationKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMultipleActivationKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMultipleActivationKeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMultipleActivationKeyResultOutput)
 }
 

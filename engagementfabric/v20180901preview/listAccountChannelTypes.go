@@ -37,14 +37,20 @@ type ListAccountChannelTypesResult struct {
 
 func ListAccountChannelTypesOutput(ctx *pulumi.Context, args ListAccountChannelTypesOutputArgs, opts ...pulumi.InvokeOption) ListAccountChannelTypesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAccountChannelTypesResult, error) {
+		ApplyT(func(v interface{}) (ListAccountChannelTypesResultOutput, error) {
 			args := v.(ListAccountChannelTypesArgs)
-			r, err := ListAccountChannelTypes(ctx, &args, opts...)
-			var s ListAccountChannelTypesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAccountChannelTypesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:engagementfabric/v20180901preview:listAccountChannelTypes", args, &rv, "", opts...)
+			if err != nil {
+				return ListAccountChannelTypesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAccountChannelTypesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAccountChannelTypesResultOutput), nil
+			}
+			return output, nil
 		}).(ListAccountChannelTypesResultOutput)
 }
 

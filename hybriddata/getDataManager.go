@@ -53,14 +53,20 @@ type LookupDataManagerResult struct {
 
 func LookupDataManagerOutput(ctx *pulumi.Context, args LookupDataManagerOutputArgs, opts ...pulumi.InvokeOption) LookupDataManagerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataManagerResult, error) {
+		ApplyT(func(v interface{}) (LookupDataManagerResultOutput, error) {
 			args := v.(LookupDataManagerArgs)
-			r, err := LookupDataManager(ctx, &args, opts...)
-			var s LookupDataManagerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataManagerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybriddata:getDataManager", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataManagerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataManagerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataManagerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataManagerResultOutput)
 }
 

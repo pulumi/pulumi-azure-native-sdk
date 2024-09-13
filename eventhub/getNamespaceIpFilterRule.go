@@ -50,14 +50,20 @@ type LookupNamespaceIpFilterRuleResult struct {
 
 func LookupNamespaceIpFilterRuleOutput(ctx *pulumi.Context, args LookupNamespaceIpFilterRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceIpFilterRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceIpFilterRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupNamespaceIpFilterRuleResultOutput, error) {
 			args := v.(LookupNamespaceIpFilterRuleArgs)
-			r, err := LookupNamespaceIpFilterRule(ctx, &args, opts...)
-			var s LookupNamespaceIpFilterRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNamespaceIpFilterRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventhub:getNamespaceIpFilterRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNamespaceIpFilterRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNamespaceIpFilterRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNamespaceIpFilterRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNamespaceIpFilterRuleResultOutput)
 }
 

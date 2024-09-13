@@ -37,14 +37,20 @@ type GetGlobalUserOperationBatchStatusResult struct {
 
 func GetGlobalUserOperationBatchStatusOutput(ctx *pulumi.Context, args GetGlobalUserOperationBatchStatusOutputArgs, opts ...pulumi.InvokeOption) GetGlobalUserOperationBatchStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGlobalUserOperationBatchStatusResult, error) {
+		ApplyT(func(v interface{}) (GetGlobalUserOperationBatchStatusResultOutput, error) {
 			args := v.(GetGlobalUserOperationBatchStatusArgs)
-			r, err := GetGlobalUserOperationBatchStatus(ctx, &args, opts...)
-			var s GetGlobalUserOperationBatchStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetGlobalUserOperationBatchStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:labservices/v20181015:getGlobalUserOperationBatchStatus", args, &rv, "", opts...)
+			if err != nil {
+				return GetGlobalUserOperationBatchStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGlobalUserOperationBatchStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGlobalUserOperationBatchStatusResultOutput), nil
+			}
+			return output, nil
 		}).(GetGlobalUserOperationBatchStatusResultOutput)
 }
 

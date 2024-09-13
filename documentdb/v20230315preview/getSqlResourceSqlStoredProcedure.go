@@ -54,14 +54,20 @@ type LookupSqlResourceSqlStoredProcedureResult struct {
 
 func LookupSqlResourceSqlStoredProcedureOutput(ctx *pulumi.Context, args LookupSqlResourceSqlStoredProcedureOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlStoredProcedureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlStoredProcedureResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlStoredProcedureResultOutput, error) {
 			args := v.(LookupSqlResourceSqlStoredProcedureArgs)
-			r, err := LookupSqlResourceSqlStoredProcedure(ctx, &args, opts...)
-			var s LookupSqlResourceSqlStoredProcedureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlStoredProcedureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230315preview:getSqlResourceSqlStoredProcedure", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlStoredProcedureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlStoredProcedureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlStoredProcedureResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlStoredProcedureResultOutput)
 }
 

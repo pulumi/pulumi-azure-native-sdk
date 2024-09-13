@@ -39,14 +39,20 @@ type ListQueryKeyBySearchServiceResult struct {
 
 func ListQueryKeyBySearchServiceOutput(ctx *pulumi.Context, args ListQueryKeyBySearchServiceOutputArgs, opts ...pulumi.InvokeOption) ListQueryKeyBySearchServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListQueryKeyBySearchServiceResult, error) {
+		ApplyT(func(v interface{}) (ListQueryKeyBySearchServiceResultOutput, error) {
 			args := v.(ListQueryKeyBySearchServiceArgs)
-			r, err := ListQueryKeyBySearchService(ctx, &args, opts...)
-			var s ListQueryKeyBySearchServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListQueryKeyBySearchServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:search/v20220901:listQueryKeyBySearchService", args, &rv, "", opts...)
+			if err != nil {
+				return ListQueryKeyBySearchServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListQueryKeyBySearchServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListQueryKeyBySearchServiceResultOutput), nil
+			}
+			return output, nil
 		}).(ListQueryKeyBySearchServiceResultOutput)
 }
 

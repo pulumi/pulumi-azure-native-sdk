@@ -63,14 +63,20 @@ type LookupHypervSitesControllerResult struct {
 
 func LookupHypervSitesControllerOutput(ctx *pulumi.Context, args LookupHypervSitesControllerOutputArgs, opts ...pulumi.InvokeOption) LookupHypervSitesControllerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHypervSitesControllerResult, error) {
+		ApplyT(func(v interface{}) (LookupHypervSitesControllerResultOutput, error) {
 			args := v.(LookupHypervSitesControllerArgs)
-			r, err := LookupHypervSitesController(ctx, &args, opts...)
-			var s LookupHypervSitesControllerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHypervSitesControllerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:offazure/v20230606:getHypervSitesController", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHypervSitesControllerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHypervSitesControllerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHypervSitesControllerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHypervSitesControllerResultOutput)
 }
 

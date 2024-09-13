@@ -65,14 +65,20 @@ type LookupApiDiagnosticResult struct {
 
 func LookupApiDiagnosticOutput(ctx *pulumi.Context, args LookupApiDiagnosticOutputArgs, opts ...pulumi.InvokeOption) LookupApiDiagnosticResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiDiagnosticResult, error) {
+		ApplyT(func(v interface{}) (LookupApiDiagnosticResultOutput, error) {
 			args := v.(LookupApiDiagnosticArgs)
-			r, err := LookupApiDiagnostic(ctx, &args, opts...)
-			var s LookupApiDiagnosticResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiDiagnosticResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:getApiDiagnostic", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiDiagnosticResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiDiagnosticResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiDiagnosticResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiDiagnosticResultOutput)
 }
 

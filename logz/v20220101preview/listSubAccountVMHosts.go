@@ -41,14 +41,20 @@ type ListSubAccountVMHostsResult struct {
 
 func ListSubAccountVMHostsOutput(ctx *pulumi.Context, args ListSubAccountVMHostsOutputArgs, opts ...pulumi.InvokeOption) ListSubAccountVMHostsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSubAccountVMHostsResult, error) {
+		ApplyT(func(v interface{}) (ListSubAccountVMHostsResultOutput, error) {
 			args := v.(ListSubAccountVMHostsArgs)
-			r, err := ListSubAccountVMHosts(ctx, &args, opts...)
-			var s ListSubAccountVMHostsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSubAccountVMHostsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logz/v20220101preview:listSubAccountVMHosts", args, &rv, "", opts...)
+			if err != nil {
+				return ListSubAccountVMHostsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSubAccountVMHostsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSubAccountVMHostsResultOutput), nil
+			}
+			return output, nil
 		}).(ListSubAccountVMHostsResultOutput)
 }
 

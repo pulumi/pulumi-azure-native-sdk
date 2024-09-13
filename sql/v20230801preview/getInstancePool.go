@@ -57,14 +57,20 @@ type LookupInstancePoolResult struct {
 
 func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInstancePoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInstancePoolResult, error) {
+		ApplyT(func(v interface{}) (LookupInstancePoolResultOutput, error) {
 			args := v.(LookupInstancePoolArgs)
-			r, err := LookupInstancePool(ctx, &args, opts...)
-			var s LookupInstancePoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupInstancePoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230801preview:getInstancePool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInstancePoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInstancePoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInstancePoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInstancePoolResultOutput)
 }
 

@@ -44,14 +44,20 @@ type ListWebAppFunctionSecretsResult struct {
 
 func ListWebAppFunctionSecretsOutput(ctx *pulumi.Context, args ListWebAppFunctionSecretsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppFunctionSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppFunctionSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppFunctionSecretsResultOutput, error) {
 			args := v.(ListWebAppFunctionSecretsArgs)
-			r, err := ListWebAppFunctionSecrets(ctx, &args, opts...)
-			var s ListWebAppFunctionSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppFunctionSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web:listWebAppFunctionSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppFunctionSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppFunctionSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppFunctionSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppFunctionSecretsResultOutput)
 }
 

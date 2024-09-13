@@ -48,14 +48,20 @@ type LookupSubAccountTagRuleResult struct {
 
 func LookupSubAccountTagRuleOutput(ctx *pulumi.Context, args LookupSubAccountTagRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSubAccountTagRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubAccountTagRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupSubAccountTagRuleResultOutput, error) {
 			args := v.(LookupSubAccountTagRuleArgs)
-			r, err := LookupSubAccountTagRule(ctx, &args, opts...)
-			var s LookupSubAccountTagRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubAccountTagRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logz/v20220101preview:getSubAccountTagRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubAccountTagRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubAccountTagRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubAccountTagRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubAccountTagRuleResultOutput)
 }
 

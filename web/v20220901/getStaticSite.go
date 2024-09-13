@@ -87,14 +87,20 @@ type LookupStaticSiteResult struct {
 
 func LookupStaticSiteOutput(ctx *pulumi.Context, args LookupStaticSiteOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStaticSiteResult, error) {
+		ApplyT(func(v interface{}) (LookupStaticSiteResultOutput, error) {
 			args := v.(LookupStaticSiteArgs)
-			r, err := LookupStaticSite(ctx, &args, opts...)
-			var s LookupStaticSiteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStaticSiteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getStaticSite", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStaticSiteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStaticSiteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStaticSiteResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStaticSiteResultOutput)
 }
 

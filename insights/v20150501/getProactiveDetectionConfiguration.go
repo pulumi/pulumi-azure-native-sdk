@@ -49,14 +49,20 @@ type LookupProactiveDetectionConfigurationResult struct {
 
 func LookupProactiveDetectionConfigurationOutput(ctx *pulumi.Context, args LookupProactiveDetectionConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupProactiveDetectionConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProactiveDetectionConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupProactiveDetectionConfigurationResultOutput, error) {
 			args := v.(LookupProactiveDetectionConfigurationArgs)
-			r, err := LookupProactiveDetectionConfiguration(ctx, &args, opts...)
-			var s LookupProactiveDetectionConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupProactiveDetectionConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20150501:getProactiveDetectionConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProactiveDetectionConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProactiveDetectionConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProactiveDetectionConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProactiveDetectionConfigurationResultOutput)
 }
 

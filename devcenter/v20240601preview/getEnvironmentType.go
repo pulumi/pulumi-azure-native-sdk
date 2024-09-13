@@ -51,14 +51,20 @@ type LookupEnvironmentTypeResult struct {
 
 func LookupEnvironmentTypeOutput(ctx *pulumi.Context, args LookupEnvironmentTypeOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentTypeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentTypeResult, error) {
+		ApplyT(func(v interface{}) (LookupEnvironmentTypeResultOutput, error) {
 			args := v.(LookupEnvironmentTypeArgs)
-			r, err := LookupEnvironmentType(ctx, &args, opts...)
-			var s LookupEnvironmentTypeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnvironmentTypeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter/v20240601preview:getEnvironmentType", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnvironmentTypeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnvironmentTypeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnvironmentTypeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnvironmentTypeResultOutput)
 }
 

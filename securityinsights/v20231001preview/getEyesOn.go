@@ -52,14 +52,20 @@ type LookupEyesOnResult struct {
 
 func LookupEyesOnOutput(ctx *pulumi.Context, args LookupEyesOnOutputArgs, opts ...pulumi.InvokeOption) LookupEyesOnResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEyesOnResult, error) {
+		ApplyT(func(v interface{}) (LookupEyesOnResultOutput, error) {
 			args := v.(LookupEyesOnArgs)
-			r, err := LookupEyesOn(ctx, &args, opts...)
-			var s LookupEyesOnResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEyesOnResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231001preview:getEyesOn", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEyesOnResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEyesOnResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEyesOnResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEyesOnResultOutput)
 }
 

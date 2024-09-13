@@ -47,14 +47,20 @@ type LookupTagRuleResult struct {
 
 func LookupTagRuleOutput(ctx *pulumi.Context, args LookupTagRuleOutputArgs, opts ...pulumi.InvokeOption) LookupTagRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTagRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupTagRuleResultOutput, error) {
 			args := v.(LookupTagRuleArgs)
-			r, err := LookupTagRule(ctx, &args, opts...)
-			var s LookupTagRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTagRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20231101preview:getTagRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTagRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTagRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTagRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTagRuleResultOutput)
 }
 

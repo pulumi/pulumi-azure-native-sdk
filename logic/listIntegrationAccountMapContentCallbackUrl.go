@@ -54,14 +54,20 @@ type ListIntegrationAccountMapContentCallbackUrlResult struct {
 
 func ListIntegrationAccountMapContentCallbackUrlOutput(ctx *pulumi.Context, args ListIntegrationAccountMapContentCallbackUrlOutputArgs, opts ...pulumi.InvokeOption) ListIntegrationAccountMapContentCallbackUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListIntegrationAccountMapContentCallbackUrlResult, error) {
+		ApplyT(func(v interface{}) (ListIntegrationAccountMapContentCallbackUrlResultOutput, error) {
 			args := v.(ListIntegrationAccountMapContentCallbackUrlArgs)
-			r, err := ListIntegrationAccountMapContentCallbackUrl(ctx, &args, opts...)
-			var s ListIntegrationAccountMapContentCallbackUrlResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListIntegrationAccountMapContentCallbackUrlResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic:listIntegrationAccountMapContentCallbackUrl", args, &rv, "", opts...)
+			if err != nil {
+				return ListIntegrationAccountMapContentCallbackUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListIntegrationAccountMapContentCallbackUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListIntegrationAccountMapContentCallbackUrlResultOutput), nil
+			}
+			return output, nil
 		}).(ListIntegrationAccountMapContentCallbackUrlResultOutput)
 }
 

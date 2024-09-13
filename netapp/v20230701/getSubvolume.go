@@ -57,14 +57,20 @@ type LookupSubvolumeResult struct {
 
 func LookupSubvolumeOutput(ctx *pulumi.Context, args LookupSubvolumeOutputArgs, opts ...pulumi.InvokeOption) LookupSubvolumeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubvolumeResult, error) {
+		ApplyT(func(v interface{}) (LookupSubvolumeResultOutput, error) {
 			args := v.(LookupSubvolumeArgs)
-			r, err := LookupSubvolume(ctx, &args, opts...)
-			var s LookupSubvolumeResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubvolumeResult
+			secret, err := ctx.InvokePackageRaw("azure-native:netapp/v20230701:getSubvolume", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubvolumeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubvolumeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubvolumeResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubvolumeResultOutput)
 }
 

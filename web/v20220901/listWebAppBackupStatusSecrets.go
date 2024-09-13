@@ -94,14 +94,20 @@ type ListWebAppBackupStatusSecretsResult struct {
 
 func ListWebAppBackupStatusSecretsOutput(ctx *pulumi.Context, args ListWebAppBackupStatusSecretsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppBackupStatusSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppBackupStatusSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppBackupStatusSecretsResultOutput, error) {
 			args := v.(ListWebAppBackupStatusSecretsArgs)
-			r, err := ListWebAppBackupStatusSecrets(ctx, &args, opts...)
-			var s ListWebAppBackupStatusSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppBackupStatusSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:listWebAppBackupStatusSecrets", args.Defaults(), &rv, "", opts...)
+			if err != nil {
+				return ListWebAppBackupStatusSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppBackupStatusSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppBackupStatusSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppBackupStatusSecretsResultOutput)
 }
 

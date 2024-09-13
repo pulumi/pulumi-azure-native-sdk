@@ -60,14 +60,20 @@ type LookupAFDEndpointResult struct {
 
 func LookupAFDEndpointOutput(ctx *pulumi.Context, args LookupAFDEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupAFDEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAFDEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupAFDEndpointResultOutput, error) {
 			args := v.(LookupAFDEndpointArgs)
-			r, err := LookupAFDEndpoint(ctx, &args, opts...)
-			var s LookupAFDEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAFDEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn/v20240201:getAFDEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAFDEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAFDEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAFDEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAFDEndpointResultOutput)
 }
 

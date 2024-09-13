@@ -49,14 +49,20 @@ type LookupManagementGroupSubscriptionResult struct {
 
 func LookupManagementGroupSubscriptionOutput(ctx *pulumi.Context, args LookupManagementGroupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupManagementGroupSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagementGroupSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupManagementGroupSubscriptionResultOutput, error) {
 			args := v.(LookupManagementGroupSubscriptionArgs)
-			r, err := LookupManagementGroupSubscription(ctx, &args, opts...)
-			var s LookupManagementGroupSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagementGroupSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:management/v20230401:getManagementGroupSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagementGroupSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagementGroupSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagementGroupSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagementGroupSubscriptionResultOutput)
 }
 

@@ -96,14 +96,20 @@ func (val *LookupVirtualMachineScaleSetVMRunCommandResult) Defaults() *LookupVir
 
 func LookupVirtualMachineScaleSetVMRunCommandOutput(ctx *pulumi.Context, args LookupVirtualMachineScaleSetVMRunCommandOutputArgs, opts ...pulumi.InvokeOption) LookupVirtualMachineScaleSetVMRunCommandResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVirtualMachineScaleSetVMRunCommandResult, error) {
+		ApplyT(func(v interface{}) (LookupVirtualMachineScaleSetVMRunCommandResultOutput, error) {
 			args := v.(LookupVirtualMachineScaleSetVMRunCommandArgs)
-			r, err := LookupVirtualMachineScaleSetVMRunCommand(ctx, &args, opts...)
-			var s LookupVirtualMachineScaleSetVMRunCommandResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVirtualMachineScaleSetVMRunCommandResult
+			secret, err := ctx.InvokePackageRaw("azure-native:compute/v20230301:getVirtualMachineScaleSetVMRunCommand", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVirtualMachineScaleSetVMRunCommandResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVirtualMachineScaleSetVMRunCommandResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVirtualMachineScaleSetVMRunCommandResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVirtualMachineScaleSetVMRunCommandResultOutput)
 }
 

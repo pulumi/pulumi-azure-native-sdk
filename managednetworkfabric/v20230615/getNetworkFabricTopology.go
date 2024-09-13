@@ -41,14 +41,20 @@ type GetNetworkFabricTopologyResult struct {
 
 func GetNetworkFabricTopologyOutput(ctx *pulumi.Context, args GetNetworkFabricTopologyOutputArgs, opts ...pulumi.InvokeOption) GetNetworkFabricTopologyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNetworkFabricTopologyResult, error) {
+		ApplyT(func(v interface{}) (GetNetworkFabricTopologyResultOutput, error) {
 			args := v.(GetNetworkFabricTopologyArgs)
-			r, err := GetNetworkFabricTopology(ctx, &args, opts...)
-			var s GetNetworkFabricTopologyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetNetworkFabricTopologyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230615:getNetworkFabricTopology", args, &rv, "", opts...)
+			if err != nil {
+				return GetNetworkFabricTopologyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNetworkFabricTopologyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNetworkFabricTopologyResultOutput), nil
+			}
+			return output, nil
 		}).(GetNetworkFabricTopologyResultOutput)
 }
 

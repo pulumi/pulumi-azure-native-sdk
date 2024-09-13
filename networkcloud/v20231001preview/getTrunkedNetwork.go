@@ -83,14 +83,20 @@ func (val *LookupTrunkedNetworkResult) Defaults() *LookupTrunkedNetworkResult {
 
 func LookupTrunkedNetworkOutput(ctx *pulumi.Context, args LookupTrunkedNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupTrunkedNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTrunkedNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupTrunkedNetworkResultOutput, error) {
 			args := v.(LookupTrunkedNetworkArgs)
-			r, err := LookupTrunkedNetwork(ctx, &args, opts...)
-			var s LookupTrunkedNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTrunkedNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:networkcloud/v20231001preview:getTrunkedNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTrunkedNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTrunkedNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTrunkedNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTrunkedNetworkResultOutput)
 }
 

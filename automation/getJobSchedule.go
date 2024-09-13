@@ -56,14 +56,20 @@ type LookupJobScheduleResult struct {
 
 func LookupJobScheduleOutput(ctx *pulumi.Context, args LookupJobScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupJobScheduleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJobScheduleResult, error) {
+		ApplyT(func(v interface{}) (LookupJobScheduleResultOutput, error) {
 			args := v.(LookupJobScheduleArgs)
-			r, err := LookupJobSchedule(ctx, &args, opts...)
-			var s LookupJobScheduleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupJobScheduleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automation:getJobSchedule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJobScheduleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJobScheduleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJobScheduleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJobScheduleResultOutput)
 }
 

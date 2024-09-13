@@ -41,14 +41,20 @@ type ListNetworkManagerEffectiveConnectivityConfigurationsResult struct {
 
 func ListNetworkManagerEffectiveConnectivityConfigurationsOutput(ctx *pulumi.Context, args ListNetworkManagerEffectiveConnectivityConfigurationsOutputArgs, opts ...pulumi.InvokeOption) ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListNetworkManagerEffectiveConnectivityConfigurationsResult, error) {
+		ApplyT(func(v interface{}) (ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput, error) {
 			args := v.(ListNetworkManagerEffectiveConnectivityConfigurationsArgs)
-			r, err := ListNetworkManagerEffectiveConnectivityConfigurations(ctx, &args, opts...)
-			var s ListNetworkManagerEffectiveConnectivityConfigurationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListNetworkManagerEffectiveConnectivityConfigurationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20210501preview:listNetworkManagerEffectiveConnectivityConfigurations", args, &rv, "", opts...)
+			if err != nil {
+				return ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput), nil
+			}
+			return output, nil
 		}).(ListNetworkManagerEffectiveConnectivityConfigurationsResultOutput)
 }
 

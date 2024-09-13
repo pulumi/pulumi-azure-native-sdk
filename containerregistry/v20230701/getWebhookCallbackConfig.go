@@ -41,14 +41,20 @@ type GetWebhookCallbackConfigResult struct {
 
 func GetWebhookCallbackConfigOutput(ctx *pulumi.Context, args GetWebhookCallbackConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebhookCallbackConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetWebhookCallbackConfigResult, error) {
+		ApplyT(func(v interface{}) (GetWebhookCallbackConfigResultOutput, error) {
 			args := v.(GetWebhookCallbackConfigArgs)
-			r, err := GetWebhookCallbackConfig(ctx, &args, opts...)
-			var s GetWebhookCallbackConfigResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetWebhookCallbackConfigResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20230701:getWebhookCallbackConfig", args, &rv, "", opts...)
+			if err != nil {
+				return GetWebhookCallbackConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetWebhookCallbackConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetWebhookCallbackConfigResultOutput), nil
+			}
+			return output, nil
 		}).(GetWebhookCallbackConfigResultOutput)
 }
 

@@ -46,14 +46,20 @@ type ListQnAMakerEndpointKeyResult struct {
 
 func ListQnAMakerEndpointKeyOutput(ctx *pulumi.Context, args ListQnAMakerEndpointKeyOutputArgs, opts ...pulumi.InvokeOption) ListQnAMakerEndpointKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListQnAMakerEndpointKeyResult, error) {
+		ApplyT(func(v interface{}) (ListQnAMakerEndpointKeyResultOutput, error) {
 			args := v.(ListQnAMakerEndpointKeyArgs)
-			r, err := ListQnAMakerEndpointKey(ctx, &args, opts...)
-			var s ListQnAMakerEndpointKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListQnAMakerEndpointKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:botservice:listQnAMakerEndpointKey", args, &rv, "", opts...)
+			if err != nil {
+				return ListQnAMakerEndpointKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListQnAMakerEndpointKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListQnAMakerEndpointKeyResultOutput), nil
+			}
+			return output, nil
 		}).(ListQnAMakerEndpointKeyResultOutput)
 }
 

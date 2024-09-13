@@ -36,14 +36,20 @@ type ListKeyByAutomationAccountResult struct {
 
 func ListKeyByAutomationAccountOutput(ctx *pulumi.Context, args ListKeyByAutomationAccountOutputArgs, opts ...pulumi.InvokeOption) ListKeyByAutomationAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListKeyByAutomationAccountResult, error) {
+		ApplyT(func(v interface{}) (ListKeyByAutomationAccountResultOutput, error) {
 			args := v.(ListKeyByAutomationAccountArgs)
-			r, err := ListKeyByAutomationAccount(ctx, &args, opts...)
-			var s ListKeyByAutomationAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListKeyByAutomationAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20230515preview:listKeyByAutomationAccount", args, &rv, "", opts...)
+			if err != nil {
+				return ListKeyByAutomationAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListKeyByAutomationAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListKeyByAutomationAccountResultOutput), nil
+			}
+			return output, nil
 		}).(ListKeyByAutomationAccountResultOutput)
 }
 

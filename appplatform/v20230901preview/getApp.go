@@ -64,14 +64,20 @@ func (val *LookupAppResult) Defaults() *LookupAppResult {
 
 func LookupAppOutput(ctx *pulumi.Context, args LookupAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppResult, error) {
+		ApplyT(func(v interface{}) (LookupAppResultOutput, error) {
 			args := v.(LookupAppArgs)
-			r, err := LookupApp(ctx, &args, opts...)
-			var s LookupAppResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAppResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230901preview:getApp", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAppResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAppResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAppResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAppResultOutput)
 }
 

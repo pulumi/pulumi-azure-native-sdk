@@ -92,14 +92,20 @@ func (val *LookupConnectionMonitorResult) Defaults() *LookupConnectionMonitorRes
 
 func LookupConnectionMonitorOutput(ctx *pulumi.Context, args LookupConnectionMonitorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionMonitorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionMonitorResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionMonitorResultOutput, error) {
 			args := v.(LookupConnectionMonitorArgs)
-			r, err := LookupConnectionMonitor(ctx, &args, opts...)
-			var s LookupConnectionMonitorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionMonitorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230901:getConnectionMonitor", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionMonitorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionMonitorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionMonitorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionMonitorResultOutput)
 }
 

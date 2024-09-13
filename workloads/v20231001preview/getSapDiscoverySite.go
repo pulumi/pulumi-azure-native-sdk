@@ -57,14 +57,20 @@ type LookupSapDiscoverySiteResult struct {
 
 func LookupSapDiscoverySiteOutput(ctx *pulumi.Context, args LookupSapDiscoverySiteOutputArgs, opts ...pulumi.InvokeOption) LookupSapDiscoverySiteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSapDiscoverySiteResult, error) {
+		ApplyT(func(v interface{}) (LookupSapDiscoverySiteResultOutput, error) {
 			args := v.(LookupSapDiscoverySiteArgs)
-			r, err := LookupSapDiscoverySite(ctx, &args, opts...)
-			var s LookupSapDiscoverySiteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSapDiscoverySiteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20231001preview:getSapDiscoverySite", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSapDiscoverySiteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSapDiscoverySiteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSapDiscoverySiteResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSapDiscoverySiteResultOutput)
 }
 

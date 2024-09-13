@@ -38,14 +38,20 @@ type GetMarketplaceImageSasTokenSASTokenResult struct {
 
 func GetMarketplaceImageSasTokenSASTokenOutput(ctx *pulumi.Context, args GetMarketplaceImageSasTokenSASTokenOutputArgs, opts ...pulumi.InvokeOption) GetMarketplaceImageSasTokenSASTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMarketplaceImageSasTokenSASTokenResult, error) {
+		ApplyT(func(v interface{}) (GetMarketplaceImageSasTokenSASTokenResultOutput, error) {
 			args := v.(GetMarketplaceImageSasTokenSASTokenArgs)
-			r, err := GetMarketplaceImageSasTokenSASToken(ctx, &args, opts...)
-			var s GetMarketplaceImageSasTokenSASTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetMarketplaceImageSasTokenSASTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databoxedge/v20230101preview:getMarketplaceImageSasTokenSASToken", args, &rv, "", opts...)
+			if err != nil {
+				return GetMarketplaceImageSasTokenSASTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMarketplaceImageSasTokenSASTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMarketplaceImageSasTokenSASTokenResultOutput), nil
+			}
+			return output, nil
 		}).(GetMarketplaceImageSasTokenSASTokenResultOutput)
 }
 

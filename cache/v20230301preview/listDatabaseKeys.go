@@ -41,14 +41,20 @@ type ListDatabaseKeysResult struct {
 
 func ListDatabaseKeysOutput(ctx *pulumi.Context, args ListDatabaseKeysOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDatabaseKeysResult, error) {
+		ApplyT(func(v interface{}) (ListDatabaseKeysResultOutput, error) {
 			args := v.(ListDatabaseKeysArgs)
-			r, err := ListDatabaseKeys(ctx, &args, opts...)
-			var s ListDatabaseKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDatabaseKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cache/v20230301preview:listDatabaseKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListDatabaseKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDatabaseKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDatabaseKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListDatabaseKeysResultOutput)
 }
 

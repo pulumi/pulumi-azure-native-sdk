@@ -122,14 +122,20 @@ func (val *LookupScalingPlanPersonalScheduleResult) Defaults() *LookupScalingPla
 
 func LookupScalingPlanPersonalScheduleOutput(ctx *pulumi.Context, args LookupScalingPlanPersonalScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupScalingPlanPersonalScheduleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupScalingPlanPersonalScheduleResult, error) {
+		ApplyT(func(v interface{}) (LookupScalingPlanPersonalScheduleResultOutput, error) {
 			args := v.(LookupScalingPlanPersonalScheduleArgs)
-			r, err := LookupScalingPlanPersonalSchedule(ctx, &args, opts...)
-			var s LookupScalingPlanPersonalScheduleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupScalingPlanPersonalScheduleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:desktopvirtualization/v20230707preview:getScalingPlanPersonalSchedule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupScalingPlanPersonalScheduleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupScalingPlanPersonalScheduleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupScalingPlanPersonalScheduleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupScalingPlanPersonalScheduleResultOutput)
 }
 

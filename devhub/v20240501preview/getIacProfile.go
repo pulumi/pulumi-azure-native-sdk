@@ -73,14 +73,20 @@ type LookupIacProfileResult struct {
 
 func LookupIacProfileOutput(ctx *pulumi.Context, args LookupIacProfileOutputArgs, opts ...pulumi.InvokeOption) LookupIacProfileResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIacProfileResult, error) {
+		ApplyT(func(v interface{}) (LookupIacProfileResultOutput, error) {
 			args := v.(LookupIacProfileArgs)
-			r, err := LookupIacProfile(ctx, &args, opts...)
-			var s LookupIacProfileResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIacProfileResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devhub/v20240501preview:getIacProfile", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIacProfileResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIacProfileResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIacProfileResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIacProfileResultOutput)
 }
 

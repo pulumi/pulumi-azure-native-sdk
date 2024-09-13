@@ -66,14 +66,20 @@ func (val *LookupOnlineEndpointResult) Defaults() *LookupOnlineEndpointResult {
 
 func LookupOnlineEndpointOutput(ctx *pulumi.Context, args LookupOnlineEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupOnlineEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOnlineEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupOnlineEndpointResultOutput, error) {
 			args := v.(LookupOnlineEndpointArgs)
-			r, err := LookupOnlineEndpoint(ctx, &args, opts...)
-			var s LookupOnlineEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOnlineEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20231001:getOnlineEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOnlineEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOnlineEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOnlineEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOnlineEndpointResultOutput)
 }
 

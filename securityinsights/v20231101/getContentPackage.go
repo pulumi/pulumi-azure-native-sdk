@@ -93,14 +93,20 @@ type LookupContentPackageResult struct {
 
 func LookupContentPackageOutput(ctx *pulumi.Context, args LookupContentPackageOutputArgs, opts ...pulumi.InvokeOption) LookupContentPackageResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupContentPackageResult, error) {
+		ApplyT(func(v interface{}) (LookupContentPackageResultOutput, error) {
 			args := v.(LookupContentPackageArgs)
-			r, err := LookupContentPackage(ctx, &args, opts...)
-			var s LookupContentPackageResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupContentPackageResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20231101:getContentPackage", args, &rv, "", opts...)
+			if err != nil {
+				return LookupContentPackageResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupContentPackageResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupContentPackageResultOutput), nil
+			}
+			return output, nil
 		}).(LookupContentPackageResultOutput)
 }
 

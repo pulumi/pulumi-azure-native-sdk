@@ -62,14 +62,20 @@ func (val *LookupApiPortalResult) Defaults() *LookupApiPortalResult {
 
 func LookupApiPortalOutput(ctx *pulumi.Context, args LookupApiPortalOutputArgs, opts ...pulumi.InvokeOption) LookupApiPortalResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiPortalResult, error) {
+		ApplyT(func(v interface{}) (LookupApiPortalResultOutput, error) {
 			args := v.(LookupApiPortalArgs)
-			r, err := LookupApiPortal(ctx, &args, opts...)
-			var s LookupApiPortalResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiPortalResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20240501preview:getApiPortal", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiPortalResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiPortalResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiPortalResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiPortalResultOutput)
 }
 

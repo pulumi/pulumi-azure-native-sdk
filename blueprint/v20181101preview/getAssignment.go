@@ -63,14 +63,20 @@ type LookupAssignmentResult struct {
 
 func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupAssignmentResultOutput, error) {
 			args := v.(LookupAssignmentArgs)
-			r, err := LookupAssignment(ctx, &args, opts...)
-			var s LookupAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:blueprint/v20181101preview:getAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssignmentResultOutput)
 }
 

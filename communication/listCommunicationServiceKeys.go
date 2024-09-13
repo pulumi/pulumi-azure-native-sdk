@@ -46,14 +46,20 @@ type ListCommunicationServiceKeysResult struct {
 
 func ListCommunicationServiceKeysOutput(ctx *pulumi.Context, args ListCommunicationServiceKeysOutputArgs, opts ...pulumi.InvokeOption) ListCommunicationServiceKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListCommunicationServiceKeysResult, error) {
+		ApplyT(func(v interface{}) (ListCommunicationServiceKeysResultOutput, error) {
 			args := v.(ListCommunicationServiceKeysArgs)
-			r, err := ListCommunicationServiceKeys(ctx, &args, opts...)
-			var s ListCommunicationServiceKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListCommunicationServiceKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:communication:listCommunicationServiceKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListCommunicationServiceKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListCommunicationServiceKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListCommunicationServiceKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListCommunicationServiceKeysResultOutput)
 }
 

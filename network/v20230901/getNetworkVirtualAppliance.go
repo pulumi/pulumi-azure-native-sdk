@@ -87,14 +87,20 @@ type LookupNetworkVirtualApplianceResult struct {
 
 func LookupNetworkVirtualApplianceOutput(ctx *pulumi.Context, args LookupNetworkVirtualApplianceOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkVirtualApplianceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkVirtualApplianceResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkVirtualApplianceResultOutput, error) {
 			args := v.(LookupNetworkVirtualApplianceArgs)
-			r, err := LookupNetworkVirtualAppliance(ctx, &args, opts...)
-			var s LookupNetworkVirtualApplianceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkVirtualApplianceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:network/v20230901:getNetworkVirtualAppliance", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkVirtualApplianceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkVirtualApplianceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkVirtualApplianceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkVirtualApplianceResultOutput)
 }
 

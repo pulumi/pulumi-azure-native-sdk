@@ -81,14 +81,20 @@ type LookupPhpWorkloadResult struct {
 
 func LookupPhpWorkloadOutput(ctx *pulumi.Context, args LookupPhpWorkloadOutputArgs, opts ...pulumi.InvokeOption) LookupPhpWorkloadResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPhpWorkloadResult, error) {
+		ApplyT(func(v interface{}) (LookupPhpWorkloadResultOutput, error) {
 			args := v.(LookupPhpWorkloadArgs)
-			r, err := LookupPhpWorkload(ctx, &args, opts...)
-			var s LookupPhpWorkloadResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPhpWorkloadResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20211201preview:getPhpWorkload", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPhpWorkloadResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPhpWorkloadResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPhpWorkloadResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPhpWorkloadResultOutput)
 }
 

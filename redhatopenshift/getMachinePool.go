@@ -49,14 +49,20 @@ type LookupMachinePoolResult struct {
 
 func LookupMachinePoolOutput(ctx *pulumi.Context, args LookupMachinePoolOutputArgs, opts ...pulumi.InvokeOption) LookupMachinePoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachinePoolResult, error) {
+		ApplyT(func(v interface{}) (LookupMachinePoolResultOutput, error) {
 			args := v.(LookupMachinePoolArgs)
-			r, err := LookupMachinePool(ctx, &args, opts...)
-			var s LookupMachinePoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachinePoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift:getMachinePool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachinePoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachinePoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachinePoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachinePoolResultOutput)
 }
 

@@ -53,14 +53,20 @@ type LookupRaiBlocklistItemResult struct {
 
 func LookupRaiBlocklistItemOutput(ctx *pulumi.Context, args LookupRaiBlocklistItemOutputArgs, opts ...pulumi.InvokeOption) LookupRaiBlocklistItemResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRaiBlocklistItemResult, error) {
+		ApplyT(func(v interface{}) (LookupRaiBlocklistItemResultOutput, error) {
 			args := v.(LookupRaiBlocklistItemArgs)
-			r, err := LookupRaiBlocklistItem(ctx, &args, opts...)
-			var s LookupRaiBlocklistItemResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRaiBlocklistItemResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cognitiveservices/v20240601preview:getRaiBlocklistItem", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRaiBlocklistItemResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRaiBlocklistItemResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRaiBlocklistItemResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRaiBlocklistItemResultOutput)
 }
 

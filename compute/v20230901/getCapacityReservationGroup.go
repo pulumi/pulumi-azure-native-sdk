@@ -57,14 +57,20 @@ type LookupCapacityReservationGroupResult struct {
 
 func LookupCapacityReservationGroupOutput(ctx *pulumi.Context, args LookupCapacityReservationGroupOutputArgs, opts ...pulumi.InvokeOption) LookupCapacityReservationGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCapacityReservationGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupCapacityReservationGroupResultOutput, error) {
 			args := v.(LookupCapacityReservationGroupArgs)
-			r, err := LookupCapacityReservationGroup(ctx, &args, opts...)
-			var s LookupCapacityReservationGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCapacityReservationGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:compute/v20230901:getCapacityReservationGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCapacityReservationGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCapacityReservationGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCapacityReservationGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCapacityReservationGroupResultOutput)
 }
 

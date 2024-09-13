@@ -63,14 +63,20 @@ type LookupEventHubResult struct {
 
 func LookupEventHubOutput(ctx *pulumi.Context, args LookupEventHubOutputArgs, opts ...pulumi.InvokeOption) LookupEventHubResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEventHubResult, error) {
+		ApplyT(func(v interface{}) (LookupEventHubResultOutput, error) {
 			args := v.(LookupEventHubArgs)
-			r, err := LookupEventHub(ctx, &args, opts...)
-			var s LookupEventHubResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEventHubResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventhub/v20221001preview:getEventHub", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEventHubResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEventHubResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEventHubResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEventHubResultOutput)
 }
 

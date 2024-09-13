@@ -74,14 +74,20 @@ func (val *LookupReplicationResult) Defaults() *LookupReplicationResult {
 
 func LookupReplicationOutput(ctx *pulumi.Context, args LookupReplicationOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicationResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicationResultOutput, error) {
 			args := v.(LookupReplicationArgs)
-			r, err := LookupReplication(ctx, &args, opts...)
-			var s LookupReplicationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20221201:getReplication", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicationResultOutput)
 }
 

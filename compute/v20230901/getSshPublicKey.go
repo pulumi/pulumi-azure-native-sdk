@@ -47,14 +47,20 @@ type LookupSshPublicKeyResult struct {
 
 func LookupSshPublicKeyOutput(ctx *pulumi.Context, args LookupSshPublicKeyOutputArgs, opts ...pulumi.InvokeOption) LookupSshPublicKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSshPublicKeyResult, error) {
+		ApplyT(func(v interface{}) (LookupSshPublicKeyResultOutput, error) {
 			args := v.(LookupSshPublicKeyArgs)
-			r, err := LookupSshPublicKey(ctx, &args, opts...)
-			var s LookupSshPublicKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSshPublicKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:compute/v20230901:getSshPublicKey", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSshPublicKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSshPublicKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSshPublicKeyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSshPublicKeyResultOutput)
 }
 

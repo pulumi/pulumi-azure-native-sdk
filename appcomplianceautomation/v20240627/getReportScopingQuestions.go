@@ -35,14 +35,20 @@ type GetReportScopingQuestionsResult struct {
 
 func GetReportScopingQuestionsOutput(ctx *pulumi.Context, args GetReportScopingQuestionsOutputArgs, opts ...pulumi.InvokeOption) GetReportScopingQuestionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetReportScopingQuestionsResult, error) {
+		ApplyT(func(v interface{}) (GetReportScopingQuestionsResultOutput, error) {
 			args := v.(GetReportScopingQuestionsArgs)
-			r, err := GetReportScopingQuestions(ctx, &args, opts...)
-			var s GetReportScopingQuestionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetReportScopingQuestionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appcomplianceautomation/v20240627:getReportScopingQuestions", args, &rv, "", opts...)
+			if err != nil {
+				return GetReportScopingQuestionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetReportScopingQuestionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetReportScopingQuestionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetReportScopingQuestionsResultOutput)
 }
 

@@ -65,14 +65,20 @@ func (val *LookupSqlResourceSqlContainerResult) Defaults() *LookupSqlResourceSql
 
 func LookupSqlResourceSqlContainerOutput(ctx *pulumi.Context, args LookupSqlResourceSqlContainerOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlContainerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlContainerResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlContainerResultOutput, error) {
 			args := v.(LookupSqlResourceSqlContainerArgs)
-			r, err := LookupSqlResourceSqlContainer(ctx, &args, opts...)
-			var s LookupSqlResourceSqlContainerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlContainerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getSqlResourceSqlContainer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlContainerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlContainerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlContainerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlContainerResultOutput)
 }
 

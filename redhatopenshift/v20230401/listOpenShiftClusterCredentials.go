@@ -39,14 +39,20 @@ type ListOpenShiftClusterCredentialsResult struct {
 
 func ListOpenShiftClusterCredentialsOutput(ctx *pulumi.Context, args ListOpenShiftClusterCredentialsOutputArgs, opts ...pulumi.InvokeOption) ListOpenShiftClusterCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListOpenShiftClusterCredentialsResult, error) {
+		ApplyT(func(v interface{}) (ListOpenShiftClusterCredentialsResultOutput, error) {
 			args := v.(ListOpenShiftClusterCredentialsArgs)
-			r, err := ListOpenShiftClusterCredentials(ctx, &args, opts...)
-			var s ListOpenShiftClusterCredentialsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListOpenShiftClusterCredentialsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift/v20230401:listOpenShiftClusterCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return ListOpenShiftClusterCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListOpenShiftClusterCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListOpenShiftClusterCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(ListOpenShiftClusterCredentialsResultOutput)
 }
 

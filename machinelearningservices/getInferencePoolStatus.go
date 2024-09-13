@@ -71,14 +71,20 @@ func (val *GetInferencePoolStatusResult) Defaults() *GetInferencePoolStatusResul
 
 func GetInferencePoolStatusOutput(ctx *pulumi.Context, args GetInferencePoolStatusOutputArgs, opts ...pulumi.InvokeOption) GetInferencePoolStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInferencePoolStatusResult, error) {
+		ApplyT(func(v interface{}) (GetInferencePoolStatusResultOutput, error) {
 			args := v.(GetInferencePoolStatusArgs)
-			r, err := GetInferencePoolStatus(ctx, &args, opts...)
-			var s GetInferencePoolStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetInferencePoolStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getInferencePoolStatus", args, &rv, "", opts...)
+			if err != nil {
+				return GetInferencePoolStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInferencePoolStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInferencePoolStatusResultOutput), nil
+			}
+			return output, nil
 		}).(GetInferencePoolStatusResultOutput)
 }
 

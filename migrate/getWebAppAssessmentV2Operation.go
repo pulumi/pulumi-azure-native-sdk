@@ -108,14 +108,20 @@ type LookupWebAppAssessmentV2OperationResult struct {
 
 func LookupWebAppAssessmentV2OperationOutput(ctx *pulumi.Context, args LookupWebAppAssessmentV2OperationOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppAssessmentV2OperationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppAssessmentV2OperationResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppAssessmentV2OperationResultOutput, error) {
 			args := v.(LookupWebAppAssessmentV2OperationArgs)
-			r, err := LookupWebAppAssessmentV2Operation(ctx, &args, opts...)
-			var s LookupWebAppAssessmentV2OperationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppAssessmentV2OperationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate:getWebAppAssessmentV2Operation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppAssessmentV2OperationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppAssessmentV2OperationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppAssessmentV2OperationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppAssessmentV2OperationResultOutput)
 }
 

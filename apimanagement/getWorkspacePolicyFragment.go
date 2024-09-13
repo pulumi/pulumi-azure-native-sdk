@@ -69,14 +69,20 @@ func (val *LookupWorkspacePolicyFragmentResult) Defaults() *LookupWorkspacePolic
 
 func LookupWorkspacePolicyFragmentOutput(ctx *pulumi.Context, args LookupWorkspacePolicyFragmentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspacePolicyFragmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspacePolicyFragmentResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspacePolicyFragmentResultOutput, error) {
 			args := v.(LookupWorkspacePolicyFragmentArgs)
-			r, err := LookupWorkspacePolicyFragment(ctx, &args, opts...)
-			var s LookupWorkspacePolicyFragmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspacePolicyFragmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:getWorkspacePolicyFragment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspacePolicyFragmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspacePolicyFragmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspacePolicyFragmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspacePolicyFragmentResultOutput)
 }
 

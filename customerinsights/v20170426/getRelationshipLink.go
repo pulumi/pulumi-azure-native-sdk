@@ -65,14 +65,20 @@ type LookupRelationshipLinkResult struct {
 
 func LookupRelationshipLinkOutput(ctx *pulumi.Context, args LookupRelationshipLinkOutputArgs, opts ...pulumi.InvokeOption) LookupRelationshipLinkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRelationshipLinkResult, error) {
+		ApplyT(func(v interface{}) (LookupRelationshipLinkResultOutput, error) {
 			args := v.(LookupRelationshipLinkArgs)
-			r, err := LookupRelationshipLink(ctx, &args, opts...)
-			var s LookupRelationshipLinkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRelationshipLinkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights/v20170426:getRelationshipLink", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRelationshipLinkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRelationshipLinkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRelationshipLinkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRelationshipLinkResultOutput)
 }
 

@@ -39,14 +39,20 @@ type ListSourceControlRepositoriesResult struct {
 
 func ListSourceControlRepositoriesOutput(ctx *pulumi.Context, args ListSourceControlRepositoriesOutputArgs, opts ...pulumi.InvokeOption) ListSourceControlRepositoriesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSourceControlRepositoriesResult, error) {
+		ApplyT(func(v interface{}) (ListSourceControlRepositoriesResultOutput, error) {
 			args := v.(ListSourceControlRepositoriesArgs)
-			r, err := ListSourceControlRepositories(ctx, &args, opts...)
-			var s ListSourceControlRepositoriesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSourceControlRepositoriesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230201preview:listSourceControlRepositories", args, &rv, "", opts...)
+			if err != nil {
+				return ListSourceControlRepositoriesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSourceControlRepositoriesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSourceControlRepositoriesResultOutput), nil
+			}
+			return output, nil
 		}).(ListSourceControlRepositoriesResultOutput)
 }
 

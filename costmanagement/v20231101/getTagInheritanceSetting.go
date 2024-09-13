@@ -46,14 +46,20 @@ type LookupTagInheritanceSettingResult struct {
 
 func LookupTagInheritanceSettingOutput(ctx *pulumi.Context, args LookupTagInheritanceSettingOutputArgs, opts ...pulumi.InvokeOption) LookupTagInheritanceSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTagInheritanceSettingResult, error) {
+		ApplyT(func(v interface{}) (LookupTagInheritanceSettingResultOutput, error) {
 			args := v.(LookupTagInheritanceSettingArgs)
-			r, err := LookupTagInheritanceSetting(ctx, &args, opts...)
-			var s LookupTagInheritanceSettingResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTagInheritanceSettingResult
+			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20231101:getTagInheritanceSetting", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTagInheritanceSettingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTagInheritanceSettingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTagInheritanceSettingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTagInheritanceSettingResultOutput)
 }
 

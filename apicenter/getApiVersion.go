@@ -56,14 +56,20 @@ type LookupApiVersionResult struct {
 
 func LookupApiVersionOutput(ctx *pulumi.Context, args LookupApiVersionOutputArgs, opts ...pulumi.InvokeOption) LookupApiVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupApiVersionResultOutput, error) {
 			args := v.(LookupApiVersionArgs)
-			r, err := LookupApiVersion(ctx, &args, opts...)
-			var s LookupApiVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apicenter:getApiVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiVersionResultOutput)
 }
 

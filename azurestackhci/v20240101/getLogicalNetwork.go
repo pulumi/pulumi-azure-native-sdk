@@ -59,14 +59,20 @@ type LookupLogicalNetworkResult struct {
 
 func LookupLogicalNetworkOutput(ctx *pulumi.Context, args LookupLogicalNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupLogicalNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLogicalNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupLogicalNetworkResultOutput, error) {
 			args := v.(LookupLogicalNetworkArgs)
-			r, err := LookupLogicalNetwork(ctx, &args, opts...)
-			var s LookupLogicalNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLogicalNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20240101:getLogicalNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLogicalNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLogicalNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLogicalNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLogicalNetworkResultOutput)
 }
 

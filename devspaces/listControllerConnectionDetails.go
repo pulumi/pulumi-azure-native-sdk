@@ -39,14 +39,20 @@ type ListControllerConnectionDetailsResult struct {
 
 func ListControllerConnectionDetailsOutput(ctx *pulumi.Context, args ListControllerConnectionDetailsOutputArgs, opts ...pulumi.InvokeOption) ListControllerConnectionDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListControllerConnectionDetailsResult, error) {
+		ApplyT(func(v interface{}) (ListControllerConnectionDetailsResultOutput, error) {
 			args := v.(ListControllerConnectionDetailsArgs)
-			r, err := ListControllerConnectionDetails(ctx, &args, opts...)
-			var s ListControllerConnectionDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListControllerConnectionDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devspaces:listControllerConnectionDetails", args, &rv, "", opts...)
+			if err != nil {
+				return ListControllerConnectionDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListControllerConnectionDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListControllerConnectionDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(ListControllerConnectionDetailsResultOutput)
 }
 

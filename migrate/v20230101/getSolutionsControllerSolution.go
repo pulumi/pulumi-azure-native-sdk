@@ -47,14 +47,20 @@ type LookupSolutionsControllerSolutionResult struct {
 
 func LookupSolutionsControllerSolutionOutput(ctx *pulumi.Context, args LookupSolutionsControllerSolutionOutputArgs, opts ...pulumi.InvokeOption) LookupSolutionsControllerSolutionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSolutionsControllerSolutionResult, error) {
+		ApplyT(func(v interface{}) (LookupSolutionsControllerSolutionResultOutput, error) {
 			args := v.(LookupSolutionsControllerSolutionArgs)
-			r, err := LookupSolutionsControllerSolution(ctx, &args, opts...)
-			var s LookupSolutionsControllerSolutionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSolutionsControllerSolutionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230101:getSolutionsControllerSolution", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSolutionsControllerSolutionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSolutionsControllerSolutionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSolutionsControllerSolutionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSolutionsControllerSolutionResultOutput)
 }
 

@@ -39,14 +39,20 @@ type ListGitHubOwnerAvailableResult struct {
 
 func ListGitHubOwnerAvailableOutput(ctx *pulumi.Context, args ListGitHubOwnerAvailableOutputArgs, opts ...pulumi.InvokeOption) ListGitHubOwnerAvailableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGitHubOwnerAvailableResult, error) {
+		ApplyT(func(v interface{}) (ListGitHubOwnerAvailableResultOutput, error) {
 			args := v.(ListGitHubOwnerAvailableArgs)
-			r, err := ListGitHubOwnerAvailable(ctx, &args, opts...)
-			var s ListGitHubOwnerAvailableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGitHubOwnerAvailableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20240401:listGitHubOwnerAvailable", args, &rv, "", opts...)
+			if err != nil {
+				return ListGitHubOwnerAvailableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGitHubOwnerAvailableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGitHubOwnerAvailableResultOutput), nil
+			}
+			return output, nil
 		}).(ListGitHubOwnerAvailableResultOutput)
 }
 

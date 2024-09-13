@@ -43,14 +43,20 @@ type ListWebAppHostKeysSlotResult struct {
 
 func ListWebAppHostKeysSlotOutput(ctx *pulumi.Context, args ListWebAppHostKeysSlotOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHostKeysSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppHostKeysSlotResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppHostKeysSlotResultOutput, error) {
 			args := v.(ListWebAppHostKeysSlotArgs)
-			r, err := ListWebAppHostKeysSlot(ctx, &args, opts...)
-			var s ListWebAppHostKeysSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppHostKeysSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20201001:listWebAppHostKeysSlot", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppHostKeysSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppHostKeysSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppHostKeysSlotResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppHostKeysSlotResultOutput)
 }
 

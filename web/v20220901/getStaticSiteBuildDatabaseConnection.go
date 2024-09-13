@@ -57,14 +57,20 @@ type LookupStaticSiteBuildDatabaseConnectionResult struct {
 
 func LookupStaticSiteBuildDatabaseConnectionOutput(ctx *pulumi.Context, args LookupStaticSiteBuildDatabaseConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteBuildDatabaseConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStaticSiteBuildDatabaseConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupStaticSiteBuildDatabaseConnectionResultOutput, error) {
 			args := v.(LookupStaticSiteBuildDatabaseConnectionArgs)
-			r, err := LookupStaticSiteBuildDatabaseConnection(ctx, &args, opts...)
-			var s LookupStaticSiteBuildDatabaseConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStaticSiteBuildDatabaseConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getStaticSiteBuildDatabaseConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStaticSiteBuildDatabaseConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStaticSiteBuildDatabaseConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStaticSiteBuildDatabaseConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStaticSiteBuildDatabaseConnectionResultOutput)
 }
 

@@ -63,14 +63,20 @@ type LookupWCFRelayResult struct {
 
 func LookupWCFRelayOutput(ctx *pulumi.Context, args LookupWCFRelayOutputArgs, opts ...pulumi.InvokeOption) LookupWCFRelayResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWCFRelayResult, error) {
+		ApplyT(func(v interface{}) (LookupWCFRelayResultOutput, error) {
 			args := v.(LookupWCFRelayArgs)
-			r, err := LookupWCFRelay(ctx, &args, opts...)
-			var s LookupWCFRelayResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWCFRelayResult
+			secret, err := ctx.InvokePackageRaw("azure-native:relay/v20211101:getWCFRelay", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWCFRelayResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWCFRelayResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWCFRelayResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWCFRelayResultOutput)
 }
 

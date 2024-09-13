@@ -53,14 +53,20 @@ type LookupRoutePolicyResult struct {
 
 func LookupRoutePolicyOutput(ctx *pulumi.Context, args LookupRoutePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRoutePolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRoutePolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupRoutePolicyResultOutput, error) {
 			args := v.(LookupRoutePolicyArgs)
-			r, err := LookupRoutePolicy(ctx, &args, opts...)
-			var s LookupRoutePolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRoutePolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getRoutePolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRoutePolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRoutePolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRoutePolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRoutePolicyResultOutput)
 }
 

@@ -55,14 +55,20 @@ type LookupVaultResult struct {
 
 func LookupVaultOutput(ctx *pulumi.Context, args LookupVaultOutputArgs, opts ...pulumi.InvokeOption) LookupVaultResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVaultResult, error) {
+		ApplyT(func(v interface{}) (LookupVaultResultOutput, error) {
 			args := v.(LookupVaultArgs)
-			r, err := LookupVault(ctx, &args, opts...)
-			var s LookupVaultResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVaultResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20240201:getVault", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVaultResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVaultResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVaultResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVaultResultOutput)
 }
 

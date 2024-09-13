@@ -49,14 +49,20 @@ type LookupConfigurationProfileAssignmentResult struct {
 
 func LookupConfigurationProfileAssignmentOutput(ctx *pulumi.Context, args LookupConfigurationProfileAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationProfileAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationProfileAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationProfileAssignmentResultOutput, error) {
 			args := v.(LookupConfigurationProfileAssignmentArgs)
-			r, err := LookupConfigurationProfileAssignment(ctx, &args, opts...)
-			var s LookupConfigurationProfileAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationProfileAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automanage/v20220504:getConfigurationProfileAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationProfileAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationProfileAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationProfileAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationProfileAssignmentResultOutput)
 }
 

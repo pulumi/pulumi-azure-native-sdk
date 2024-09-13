@@ -39,14 +39,20 @@ type ListGitLabGroupAvailableResult struct {
 
 func ListGitLabGroupAvailableOutput(ctx *pulumi.Context, args ListGitLabGroupAvailableOutputArgs, opts ...pulumi.InvokeOption) ListGitLabGroupAvailableResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGitLabGroupAvailableResult, error) {
+		ApplyT(func(v interface{}) (ListGitLabGroupAvailableResultOutput, error) {
 			args := v.(ListGitLabGroupAvailableArgs)
-			r, err := ListGitLabGroupAvailable(ctx, &args, opts...)
-			var s ListGitLabGroupAvailableResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGitLabGroupAvailableResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20240401:listGitLabGroupAvailable", args, &rv, "", opts...)
+			if err != nil {
+				return ListGitLabGroupAvailableResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGitLabGroupAvailableResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGitLabGroupAvailableResultOutput), nil
+			}
+			return output, nil
 		}).(ListGitLabGroupAvailableResultOutput)
 }
 

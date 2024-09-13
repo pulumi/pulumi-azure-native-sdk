@@ -87,14 +87,20 @@ type LookupManagedEnvironmentResult struct {
 
 func LookupManagedEnvironmentOutput(ctx *pulumi.Context, args LookupManagedEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupManagedEnvironmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedEnvironmentResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedEnvironmentResultOutput, error) {
 			args := v.(LookupManagedEnvironmentArgs)
-			r, err := LookupManagedEnvironment(ctx, &args, opts...)
-			var s LookupManagedEnvironmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedEnvironmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app/v20230801preview:getManagedEnvironment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedEnvironmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedEnvironmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedEnvironmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedEnvironmentResultOutput)
 }
 

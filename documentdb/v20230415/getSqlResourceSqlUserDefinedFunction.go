@@ -52,14 +52,20 @@ type LookupSqlResourceSqlUserDefinedFunctionResult struct {
 
 func LookupSqlResourceSqlUserDefinedFunctionOutput(ctx *pulumi.Context, args LookupSqlResourceSqlUserDefinedFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupSqlResourceSqlUserDefinedFunctionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSqlResourceSqlUserDefinedFunctionResult, error) {
+		ApplyT(func(v interface{}) (LookupSqlResourceSqlUserDefinedFunctionResultOutput, error) {
 			args := v.(LookupSqlResourceSqlUserDefinedFunctionArgs)
-			r, err := LookupSqlResourceSqlUserDefinedFunction(ctx, &args, opts...)
-			var s LookupSqlResourceSqlUserDefinedFunctionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSqlResourceSqlUserDefinedFunctionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20230415:getSqlResourceSqlUserDefinedFunction", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSqlResourceSqlUserDefinedFunctionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSqlResourceSqlUserDefinedFunctionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSqlResourceSqlUserDefinedFunctionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSqlResourceSqlUserDefinedFunctionResultOutput)
 }
 

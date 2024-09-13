@@ -39,14 +39,20 @@ type ListIotDpsResourceKeysResult struct {
 
 func ListIotDpsResourceKeysOutput(ctx *pulumi.Context, args ListIotDpsResourceKeysOutputArgs, opts ...pulumi.InvokeOption) ListIotDpsResourceKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListIotDpsResourceKeysResult, error) {
+		ApplyT(func(v interface{}) (ListIotDpsResourceKeysResultOutput, error) {
 			args := v.(ListIotDpsResourceKeysArgs)
-			r, err := ListIotDpsResourceKeys(ctx, &args, opts...)
-			var s ListIotDpsResourceKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListIotDpsResourceKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devices/v20200901preview:listIotDpsResourceKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListIotDpsResourceKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListIotDpsResourceKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListIotDpsResourceKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListIotDpsResourceKeysResultOutput)
 }
 

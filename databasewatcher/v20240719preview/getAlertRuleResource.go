@@ -57,14 +57,20 @@ type LookupAlertRuleResourceResult struct {
 
 func LookupAlertRuleResourceOutput(ctx *pulumi.Context, args LookupAlertRuleResourceOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRuleResourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAlertRuleResourceResult, error) {
+		ApplyT(func(v interface{}) (LookupAlertRuleResourceResultOutput, error) {
 			args := v.(LookupAlertRuleResourceArgs)
-			r, err := LookupAlertRuleResource(ctx, &args, opts...)
-			var s LookupAlertRuleResourceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAlertRuleResourceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:databasewatcher/v20240719preview:getAlertRuleResource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAlertRuleResourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAlertRuleResourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAlertRuleResourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAlertRuleResourceResultOutput)
 }
 

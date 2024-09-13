@@ -43,14 +43,20 @@ type ListWorkspaceSubscriptionSecretsResult struct {
 
 func ListWorkspaceSubscriptionSecretsOutput(ctx *pulumi.Context, args ListWorkspaceSubscriptionSecretsOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceSubscriptionSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceSubscriptionSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListWorkspaceSubscriptionSecretsResultOutput, error) {
 			args := v.(ListWorkspaceSubscriptionSecretsArgs)
-			r, err := ListWorkspaceSubscriptionSecrets(ctx, &args, opts...)
-			var s ListWorkspaceSubscriptionSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkspaceSubscriptionSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20240501:listWorkspaceSubscriptionSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkspaceSubscriptionSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkspaceSubscriptionSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkspaceSubscriptionSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkspaceSubscriptionSecretsResultOutput)
 }
 

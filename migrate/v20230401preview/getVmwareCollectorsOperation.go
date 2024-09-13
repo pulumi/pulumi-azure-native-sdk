@@ -55,14 +55,20 @@ type LookupVmwareCollectorsOperationResult struct {
 
 func LookupVmwareCollectorsOperationOutput(ctx *pulumi.Context, args LookupVmwareCollectorsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupVmwareCollectorsOperationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVmwareCollectorsOperationResult, error) {
+		ApplyT(func(v interface{}) (LookupVmwareCollectorsOperationResultOutput, error) {
 			args := v.(LookupVmwareCollectorsOperationArgs)
-			r, err := LookupVmwareCollectorsOperation(ctx, &args, opts...)
-			var s LookupVmwareCollectorsOperationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVmwareCollectorsOperationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20230401preview:getVmwareCollectorsOperation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVmwareCollectorsOperationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVmwareCollectorsOperationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVmwareCollectorsOperationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVmwareCollectorsOperationResultOutput)
 }
 

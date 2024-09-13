@@ -51,14 +51,20 @@ type ListWebAppHybridConnectionKeysResult struct {
 
 func ListWebAppHybridConnectionKeysOutput(ctx *pulumi.Context, args ListWebAppHybridConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppHybridConnectionKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppHybridConnectionKeysResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppHybridConnectionKeysResultOutput, error) {
 			args := v.(ListWebAppHybridConnectionKeysArgs)
-			r, err := ListWebAppHybridConnectionKeys(ctx, &args, opts...)
-			var s ListWebAppHybridConnectionKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppHybridConnectionKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20181101:listWebAppHybridConnectionKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppHybridConnectionKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppHybridConnectionKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppHybridConnectionKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppHybridConnectionKeysResultOutput)
 }
 

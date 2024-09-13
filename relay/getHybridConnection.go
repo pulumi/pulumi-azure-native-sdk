@@ -58,14 +58,20 @@ type LookupHybridConnectionResult struct {
 
 func LookupHybridConnectionOutput(ctx *pulumi.Context, args LookupHybridConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupHybridConnectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHybridConnectionResult, error) {
+		ApplyT(func(v interface{}) (LookupHybridConnectionResultOutput, error) {
 			args := v.(LookupHybridConnectionArgs)
-			r, err := LookupHybridConnection(ctx, &args, opts...)
-			var s LookupHybridConnectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHybridConnectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:relay:getHybridConnection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHybridConnectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHybridConnectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHybridConnectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHybridConnectionResultOutput)
 }
 

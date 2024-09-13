@@ -39,14 +39,20 @@ type GetTopicEventSubscriptionDeliveryAttributesResult struct {
 
 func GetTopicEventSubscriptionDeliveryAttributesOutput(ctx *pulumi.Context, args GetTopicEventSubscriptionDeliveryAttributesOutputArgs, opts ...pulumi.InvokeOption) GetTopicEventSubscriptionDeliveryAttributesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTopicEventSubscriptionDeliveryAttributesResult, error) {
+		ApplyT(func(v interface{}) (GetTopicEventSubscriptionDeliveryAttributesResultOutput, error) {
 			args := v.(GetTopicEventSubscriptionDeliveryAttributesArgs)
-			r, err := GetTopicEventSubscriptionDeliveryAttributes(ctx, &args, opts...)
-			var s GetTopicEventSubscriptionDeliveryAttributesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetTopicEventSubscriptionDeliveryAttributesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20240601preview:getTopicEventSubscriptionDeliveryAttributes", args, &rv, "", opts...)
+			if err != nil {
+				return GetTopicEventSubscriptionDeliveryAttributesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTopicEventSubscriptionDeliveryAttributesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTopicEventSubscriptionDeliveryAttributesResultOutput), nil
+			}
+			return output, nil
 		}).(GetTopicEventSubscriptionDeliveryAttributesResultOutput)
 }
 

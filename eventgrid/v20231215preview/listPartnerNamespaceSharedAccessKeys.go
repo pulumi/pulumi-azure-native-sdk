@@ -39,14 +39,20 @@ type ListPartnerNamespaceSharedAccessKeysResult struct {
 
 func ListPartnerNamespaceSharedAccessKeysOutput(ctx *pulumi.Context, args ListPartnerNamespaceSharedAccessKeysOutputArgs, opts ...pulumi.InvokeOption) ListPartnerNamespaceSharedAccessKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListPartnerNamespaceSharedAccessKeysResult, error) {
+		ApplyT(func(v interface{}) (ListPartnerNamespaceSharedAccessKeysResultOutput, error) {
 			args := v.(ListPartnerNamespaceSharedAccessKeysArgs)
-			r, err := ListPartnerNamespaceSharedAccessKeys(ctx, &args, opts...)
-			var s ListPartnerNamespaceSharedAccessKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListPartnerNamespaceSharedAccessKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:listPartnerNamespaceSharedAccessKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListPartnerNamespaceSharedAccessKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListPartnerNamespaceSharedAccessKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListPartnerNamespaceSharedAccessKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListPartnerNamespaceSharedAccessKeysResultOutput)
 }
 

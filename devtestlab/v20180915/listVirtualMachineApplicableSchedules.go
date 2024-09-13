@@ -64,14 +64,20 @@ func (val *ListVirtualMachineApplicableSchedulesResult) Defaults() *ListVirtualM
 
 func ListVirtualMachineApplicableSchedulesOutput(ctx *pulumi.Context, args ListVirtualMachineApplicableSchedulesOutputArgs, opts ...pulumi.InvokeOption) ListVirtualMachineApplicableSchedulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListVirtualMachineApplicableSchedulesResult, error) {
+		ApplyT(func(v interface{}) (ListVirtualMachineApplicableSchedulesResultOutput, error) {
 			args := v.(ListVirtualMachineApplicableSchedulesArgs)
-			r, err := ListVirtualMachineApplicableSchedules(ctx, &args, opts...)
-			var s ListVirtualMachineApplicableSchedulesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListVirtualMachineApplicableSchedulesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:listVirtualMachineApplicableSchedules", args, &rv, "", opts...)
+			if err != nil {
+				return ListVirtualMachineApplicableSchedulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListVirtualMachineApplicableSchedulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListVirtualMachineApplicableSchedulesResultOutput), nil
+			}
+			return output, nil
 		}).(ListVirtualMachineApplicableSchedulesResultOutput)
 }
 

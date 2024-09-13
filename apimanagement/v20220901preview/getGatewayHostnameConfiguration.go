@@ -57,14 +57,20 @@ type LookupGatewayHostnameConfigurationResult struct {
 
 func LookupGatewayHostnameConfigurationOutput(ctx *pulumi.Context, args LookupGatewayHostnameConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayHostnameConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGatewayHostnameConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupGatewayHostnameConfigurationResultOutput, error) {
 			args := v.(LookupGatewayHostnameConfigurationArgs)
-			r, err := LookupGatewayHostnameConfiguration(ctx, &args, opts...)
-			var s LookupGatewayHostnameConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGatewayHostnameConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getGatewayHostnameConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGatewayHostnameConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGatewayHostnameConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGatewayHostnameConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGatewayHostnameConfigurationResultOutput)
 }
 

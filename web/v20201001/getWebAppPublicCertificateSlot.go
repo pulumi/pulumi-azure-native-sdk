@@ -55,14 +55,20 @@ type LookupWebAppPublicCertificateSlotResult struct {
 
 func LookupWebAppPublicCertificateSlotOutput(ctx *pulumi.Context, args LookupWebAppPublicCertificateSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppPublicCertificateSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppPublicCertificateSlotResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppPublicCertificateSlotResultOutput, error) {
 			args := v.(LookupWebAppPublicCertificateSlotArgs)
-			r, err := LookupWebAppPublicCertificateSlot(ctx, &args, opts...)
-			var s LookupWebAppPublicCertificateSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppPublicCertificateSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20201001:getWebAppPublicCertificateSlot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppPublicCertificateSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppPublicCertificateSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppPublicCertificateSlotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppPublicCertificateSlotResultOutput)
 }
 

@@ -62,14 +62,20 @@ type ListProductDetailsResult struct {
 
 func ListProductDetailsOutput(ctx *pulumi.Context, args ListProductDetailsOutputArgs, opts ...pulumi.InvokeOption) ListProductDetailsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListProductDetailsResult, error) {
+		ApplyT(func(v interface{}) (ListProductDetailsResultOutput, error) {
 			args := v.(ListProductDetailsArgs)
-			r, err := ListProductDetails(ctx, &args, opts...)
-			var s ListProductDetailsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListProductDetailsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestack:listProductDetails", args, &rv, "", opts...)
+			if err != nil {
+				return ListProductDetailsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListProductDetailsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListProductDetailsResultOutput), nil
+			}
+			return output, nil
 		}).(ListProductDetailsResultOutput)
 }
 

@@ -41,14 +41,20 @@ type ListBuildServiceBuilderDeploymentsResult struct {
 
 func ListBuildServiceBuilderDeploymentsOutput(ctx *pulumi.Context, args ListBuildServiceBuilderDeploymentsOutputArgs, opts ...pulumi.InvokeOption) ListBuildServiceBuilderDeploymentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListBuildServiceBuilderDeploymentsResult, error) {
+		ApplyT(func(v interface{}) (ListBuildServiceBuilderDeploymentsResultOutput, error) {
 			args := v.(ListBuildServiceBuilderDeploymentsArgs)
-			r, err := ListBuildServiceBuilderDeployments(ctx, &args, opts...)
-			var s ListBuildServiceBuilderDeploymentsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListBuildServiceBuilderDeploymentsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20231101preview:listBuildServiceBuilderDeployments", args, &rv, "", opts...)
+			if err != nil {
+				return ListBuildServiceBuilderDeploymentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListBuildServiceBuilderDeploymentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListBuildServiceBuilderDeploymentsResultOutput), nil
+			}
+			return output, nil
 		}).(ListBuildServiceBuilderDeploymentsResultOutput)
 }
 

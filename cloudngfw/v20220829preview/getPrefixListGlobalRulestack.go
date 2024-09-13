@@ -53,14 +53,20 @@ type LookupPrefixListGlobalRulestackResult struct {
 
 func LookupPrefixListGlobalRulestackOutput(ctx *pulumi.Context, args LookupPrefixListGlobalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupPrefixListGlobalRulestackResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrefixListGlobalRulestackResult, error) {
+		ApplyT(func(v interface{}) (LookupPrefixListGlobalRulestackResultOutput, error) {
 			args := v.(LookupPrefixListGlobalRulestackArgs)
-			r, err := LookupPrefixListGlobalRulestack(ctx, &args, opts...)
-			var s LookupPrefixListGlobalRulestackResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrefixListGlobalRulestackResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20220829preview:getPrefixListGlobalRulestack", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrefixListGlobalRulestackResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrefixListGlobalRulestackResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrefixListGlobalRulestackResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrefixListGlobalRulestackResultOutput)
 }
 

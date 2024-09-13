@@ -54,14 +54,20 @@ type LookupAwsCloudTrailDataConnectorResult struct {
 
 func LookupAwsCloudTrailDataConnectorOutput(ctx *pulumi.Context, args LookupAwsCloudTrailDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsCloudTrailDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAwsCloudTrailDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAwsCloudTrailDataConnectorResultOutput, error) {
 			args := v.(LookupAwsCloudTrailDataConnectorArgs)
-			r, err := LookupAwsCloudTrailDataConnector(ctx, &args, opts...)
-			var s LookupAwsCloudTrailDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAwsCloudTrailDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230201:getAwsCloudTrailDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAwsCloudTrailDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAwsCloudTrailDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAwsCloudTrailDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAwsCloudTrailDataConnectorResultOutput)
 }
 

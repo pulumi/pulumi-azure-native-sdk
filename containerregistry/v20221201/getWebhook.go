@@ -57,14 +57,20 @@ type LookupWebhookResult struct {
 
 func LookupWebhookOutput(ctx *pulumi.Context, args LookupWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupWebhookResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebhookResult, error) {
+		ApplyT(func(v interface{}) (LookupWebhookResultOutput, error) {
 			args := v.(LookupWebhookArgs)
-			r, err := LookupWebhook(ctx, &args, opts...)
-			var s LookupWebhookResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebhookResult
+			secret, err := ctx.InvokePackageRaw("azure-native:containerregistry/v20221201:getWebhook", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebhookResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebhookResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebhookResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebhookResultOutput)
 }
 

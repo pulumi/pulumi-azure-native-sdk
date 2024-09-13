@@ -62,14 +62,20 @@ func (val *GetFeaturesetVersionFeatureResult) Defaults() *GetFeaturesetVersionFe
 
 func GetFeaturesetVersionFeatureOutput(ctx *pulumi.Context, args GetFeaturesetVersionFeatureOutputArgs, opts ...pulumi.InvokeOption) GetFeaturesetVersionFeatureResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetFeaturesetVersionFeatureResult, error) {
+		ApplyT(func(v interface{}) (GetFeaturesetVersionFeatureResultOutput, error) {
 			args := v.(GetFeaturesetVersionFeatureArgs)
-			r, err := GetFeaturesetVersionFeature(ctx, &args, opts...)
-			var s GetFeaturesetVersionFeatureResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetFeaturesetVersionFeatureResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230201preview:getFeaturesetVersionFeature", args, &rv, "", opts...)
+			if err != nil {
+				return GetFeaturesetVersionFeatureResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetFeaturesetVersionFeatureResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetFeaturesetVersionFeatureResultOutput), nil
+			}
+			return output, nil
 		}).(GetFeaturesetVersionFeatureResultOutput)
 }
 

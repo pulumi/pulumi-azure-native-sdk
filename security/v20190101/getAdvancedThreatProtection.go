@@ -43,14 +43,20 @@ type LookupAdvancedThreatProtectionResult struct {
 
 func LookupAdvancedThreatProtectionOutput(ctx *pulumi.Context, args LookupAdvancedThreatProtectionOutputArgs, opts ...pulumi.InvokeOption) LookupAdvancedThreatProtectionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAdvancedThreatProtectionResult, error) {
+		ApplyT(func(v interface{}) (LookupAdvancedThreatProtectionResultOutput, error) {
 			args := v.(LookupAdvancedThreatProtectionArgs)
-			r, err := LookupAdvancedThreatProtection(ctx, &args, opts...)
-			var s LookupAdvancedThreatProtectionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAdvancedThreatProtectionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20190101:getAdvancedThreatProtection", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAdvancedThreatProtectionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAdvancedThreatProtectionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAdvancedThreatProtectionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAdvancedThreatProtectionResultOutput)
 }
 

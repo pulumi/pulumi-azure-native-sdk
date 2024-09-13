@@ -47,14 +47,20 @@ type ListWebAppWorkflowsConnectionsResult struct {
 
 func ListWebAppWorkflowsConnectionsOutput(ctx *pulumi.Context, args ListWebAppWorkflowsConnectionsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppWorkflowsConnectionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppWorkflowsConnectionsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppWorkflowsConnectionsResultOutput, error) {
 			args := v.(ListWebAppWorkflowsConnectionsArgs)
-			r, err := ListWebAppWorkflowsConnections(ctx, &args, opts...)
-			var s ListWebAppWorkflowsConnectionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppWorkflowsConnectionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:listWebAppWorkflowsConnections", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppWorkflowsConnectionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppWorkflowsConnectionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppWorkflowsConnectionsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppWorkflowsConnectionsResultOutput)
 }
 

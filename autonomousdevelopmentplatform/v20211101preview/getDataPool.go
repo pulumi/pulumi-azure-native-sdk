@@ -53,14 +53,20 @@ type LookupDataPoolResult struct {
 
 func LookupDataPoolOutput(ctx *pulumi.Context, args LookupDataPoolOutputArgs, opts ...pulumi.InvokeOption) LookupDataPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupDataPoolResultOutput, error) {
 			args := v.(LookupDataPoolArgs)
-			r, err := LookupDataPool(ctx, &args, opts...)
-			var s LookupDataPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:autonomousdevelopmentplatform/v20211101preview:getDataPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataPoolResultOutput)
 }
 

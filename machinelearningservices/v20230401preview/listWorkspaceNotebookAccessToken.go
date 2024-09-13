@@ -42,14 +42,20 @@ type ListWorkspaceNotebookAccessTokenResult struct {
 
 func ListWorkspaceNotebookAccessTokenOutput(ctx *pulumi.Context, args ListWorkspaceNotebookAccessTokenOutputArgs, opts ...pulumi.InvokeOption) ListWorkspaceNotebookAccessTokenResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWorkspaceNotebookAccessTokenResult, error) {
+		ApplyT(func(v interface{}) (ListWorkspaceNotebookAccessTokenResultOutput, error) {
 			args := v.(ListWorkspaceNotebookAccessTokenArgs)
-			r, err := ListWorkspaceNotebookAccessToken(ctx, &args, opts...)
-			var s ListWorkspaceNotebookAccessTokenResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWorkspaceNotebookAccessTokenResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230401preview:listWorkspaceNotebookAccessToken", args, &rv, "", opts...)
+			if err != nil {
+				return ListWorkspaceNotebookAccessTokenResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWorkspaceNotebookAccessTokenResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWorkspaceNotebookAccessTokenResultOutput), nil
+			}
+			return output, nil
 		}).(ListWorkspaceNotebookAccessTokenResultOutput)
 }
 

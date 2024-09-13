@@ -74,14 +74,20 @@ func (val *LookupTenantActivityLogAlertResult) Defaults() *LookupTenantActivityL
 
 func LookupTenantActivityLogAlertOutput(ctx *pulumi.Context, args LookupTenantActivityLogAlertOutputArgs, opts ...pulumi.InvokeOption) LookupTenantActivityLogAlertResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTenantActivityLogAlertResult, error) {
+		ApplyT(func(v interface{}) (LookupTenantActivityLogAlertResultOutput, error) {
 			args := v.(LookupTenantActivityLogAlertArgs)
-			r, err := LookupTenantActivityLogAlert(ctx, &args, opts...)
-			var s LookupTenantActivityLogAlertResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTenantActivityLogAlertResult
+			secret, err := ctx.InvokePackageRaw("azure-native:alertsmanagement/v20230401preview:getTenantActivityLogAlert", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTenantActivityLogAlertResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTenantActivityLogAlertResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTenantActivityLogAlertResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTenantActivityLogAlertResultOutput)
 }
 

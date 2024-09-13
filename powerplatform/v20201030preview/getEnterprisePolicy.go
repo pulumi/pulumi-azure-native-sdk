@@ -61,14 +61,20 @@ type LookupEnterprisePolicyResult struct {
 
 func LookupEnterprisePolicyOutput(ctx *pulumi.Context, args LookupEnterprisePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupEnterprisePolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnterprisePolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupEnterprisePolicyResultOutput, error) {
 			args := v.(LookupEnterprisePolicyArgs)
-			r, err := LookupEnterprisePolicy(ctx, &args, opts...)
-			var s LookupEnterprisePolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnterprisePolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:powerplatform/v20201030preview:getEnterprisePolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnterprisePolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnterprisePolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnterprisePolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnterprisePolicyResultOutput)
 }
 

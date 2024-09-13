@@ -62,14 +62,20 @@ func (val *LookupManagedHsmResult) Defaults() *LookupManagedHsmResult {
 
 func LookupManagedHsmOutput(ctx *pulumi.Context, args LookupManagedHsmOutputArgs, opts ...pulumi.InvokeOption) LookupManagedHsmResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedHsmResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedHsmResultOutput, error) {
 			args := v.(LookupManagedHsmArgs)
-			r, err := LookupManagedHsm(ctx, &args, opts...)
-			var s LookupManagedHsmResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedHsmResult
+			secret, err := ctx.InvokePackageRaw("azure-native:keyvault/v20230201:getManagedHsm", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedHsmResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedHsmResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedHsmResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedHsmResultOutput)
 }
 

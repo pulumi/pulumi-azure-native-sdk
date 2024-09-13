@@ -73,14 +73,20 @@ type LookupIntegrationServiceEnvironmentManagedApiResult struct {
 
 func LookupIntegrationServiceEnvironmentManagedApiOutput(ctx *pulumi.Context, args LookupIntegrationServiceEnvironmentManagedApiOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationServiceEnvironmentManagedApiResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIntegrationServiceEnvironmentManagedApiResult, error) {
+		ApplyT(func(v interface{}) (LookupIntegrationServiceEnvironmentManagedApiResultOutput, error) {
 			args := v.(LookupIntegrationServiceEnvironmentManagedApiArgs)
-			r, err := LookupIntegrationServiceEnvironmentManagedApi(ctx, &args, opts...)
-			var s LookupIntegrationServiceEnvironmentManagedApiResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIntegrationServiceEnvironmentManagedApiResult
+			secret, err := ctx.InvokePackageRaw("azure-native:logic/v20190501:getIntegrationServiceEnvironmentManagedApi", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIntegrationServiceEnvironmentManagedApiResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIntegrationServiceEnvironmentManagedApiResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIntegrationServiceEnvironmentManagedApiResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIntegrationServiceEnvironmentManagedApiResultOutput)
 }
 

@@ -78,14 +78,20 @@ func (val *LookupClusterPoolResult) Defaults() *LookupClusterPoolResult {
 
 func LookupClusterPoolOutput(ctx *pulumi.Context, args LookupClusterPoolOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupClusterPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupClusterPoolResultOutput, error) {
 			args := v.(LookupClusterPoolArgs)
-			r, err := LookupClusterPool(ctx, &args, opts...)
-			var s LookupClusterPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupClusterPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hdinsight/v20231101preview:getClusterPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupClusterPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupClusterPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupClusterPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupClusterPoolResultOutput)
 }
 

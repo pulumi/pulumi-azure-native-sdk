@@ -67,14 +67,20 @@ func (val *LookupNamespaceTopicResult) Defaults() *LookupNamespaceTopicResult {
 
 func LookupNamespaceTopicOutput(ctx *pulumi.Context, args LookupNamespaceTopicOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceTopicResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNamespaceTopicResult, error) {
+		ApplyT(func(v interface{}) (LookupNamespaceTopicResultOutput, error) {
 			args := v.(LookupNamespaceTopicArgs)
-			r, err := LookupNamespaceTopic(ctx, &args, opts...)
-			var s LookupNamespaceTopicResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupNamespaceTopicResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20231215preview:getNamespaceTopic", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNamespaceTopicResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNamespaceTopicResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNamespaceTopicResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNamespaceTopicResultOutput)
 }
 

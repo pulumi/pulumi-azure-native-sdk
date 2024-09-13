@@ -45,14 +45,20 @@ type LookupConfigServerResult struct {
 
 func LookupConfigServerOutput(ctx *pulumi.Context, args LookupConfigServerOutputArgs, opts ...pulumi.InvokeOption) LookupConfigServerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigServerResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigServerResultOutput, error) {
 			args := v.(LookupConfigServerArgs)
-			r, err := LookupConfigServer(ctx, &args, opts...)
-			var s LookupConfigServerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigServerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appplatform/v20230901preview:getConfigServer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigServerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigServerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigServerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigServerResultOutput)
 }
 

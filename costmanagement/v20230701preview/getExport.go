@@ -71,14 +71,20 @@ type LookupExportResult struct {
 
 func LookupExportOutput(ctx *pulumi.Context, args LookupExportOutputArgs, opts ...pulumi.InvokeOption) LookupExportResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExportResult, error) {
+		ApplyT(func(v interface{}) (LookupExportResultOutput, error) {
 			args := v.(LookupExportArgs)
-			r, err := LookupExport(ctx, &args, opts...)
-			var s LookupExportResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupExportResult
+			secret, err := ctx.InvokePackageRaw("azure-native:costmanagement/v20230701preview:getExport", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExportResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExportResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExportResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExportResultOutput)
 }
 

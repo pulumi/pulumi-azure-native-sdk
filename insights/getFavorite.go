@@ -60,14 +60,20 @@ type LookupFavoriteResult struct {
 
 func LookupFavoriteOutput(ctx *pulumi.Context, args LookupFavoriteOutputArgs, opts ...pulumi.InvokeOption) LookupFavoriteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFavoriteResult, error) {
+		ApplyT(func(v interface{}) (LookupFavoriteResultOutput, error) {
 			args := v.(LookupFavoriteArgs)
-			r, err := LookupFavorite(ctx, &args, opts...)
-			var s LookupFavoriteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFavoriteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights:getFavorite", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFavoriteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFavoriteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFavoriteResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFavoriteResultOutput)
 }
 

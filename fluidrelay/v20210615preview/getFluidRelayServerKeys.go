@@ -39,14 +39,20 @@ type GetFluidRelayServerKeysResult struct {
 
 func GetFluidRelayServerKeysOutput(ctx *pulumi.Context, args GetFluidRelayServerKeysOutputArgs, opts ...pulumi.InvokeOption) GetFluidRelayServerKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetFluidRelayServerKeysResult, error) {
+		ApplyT(func(v interface{}) (GetFluidRelayServerKeysResultOutput, error) {
 			args := v.(GetFluidRelayServerKeysArgs)
-			r, err := GetFluidRelayServerKeys(ctx, &args, opts...)
-			var s GetFluidRelayServerKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetFluidRelayServerKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:fluidrelay/v20210615preview:getFluidRelayServerKeys", args, &rv, "", opts...)
+			if err != nil {
+				return GetFluidRelayServerKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetFluidRelayServerKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetFluidRelayServerKeysResultOutput), nil
+			}
+			return output, nil
 		}).(GetFluidRelayServerKeysResultOutput)
 }
 

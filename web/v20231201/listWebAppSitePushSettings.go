@@ -54,14 +54,20 @@ type ListWebAppSitePushSettingsResult struct {
 
 func ListWebAppSitePushSettingsOutput(ctx *pulumi.Context, args ListWebAppSitePushSettingsOutputArgs, opts ...pulumi.InvokeOption) ListWebAppSitePushSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppSitePushSettingsResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppSitePushSettingsResultOutput, error) {
 			args := v.(ListWebAppSitePushSettingsArgs)
-			r, err := ListWebAppSitePushSettings(ctx, &args, opts...)
-			var s ListWebAppSitePushSettingsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppSitePushSettingsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:listWebAppSitePushSettings", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppSitePushSettingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppSitePushSettingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppSitePushSettingsResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppSitePushSettingsResultOutput)
 }
 

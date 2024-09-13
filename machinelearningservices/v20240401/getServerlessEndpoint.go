@@ -55,14 +55,20 @@ type LookupServerlessEndpointResult struct {
 
 func LookupServerlessEndpointOutput(ctx *pulumi.Context, args LookupServerlessEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServerlessEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupServerlessEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupServerlessEndpointResultOutput, error) {
 			args := v.(LookupServerlessEndpointArgs)
-			r, err := LookupServerlessEndpoint(ctx, &args, opts...)
-			var s LookupServerlessEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupServerlessEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401:getServerlessEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupServerlessEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupServerlessEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupServerlessEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupServerlessEndpointResultOutput)
 }
 

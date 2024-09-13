@@ -45,14 +45,20 @@ type LookupMonitoredSubscriptionResult struct {
 
 func LookupMonitoredSubscriptionOutput(ctx *pulumi.Context, args LookupMonitoredSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoredSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMonitoredSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupMonitoredSubscriptionResultOutput, error) {
 			args := v.(LookupMonitoredSubscriptionArgs)
-			r, err := LookupMonitoredSubscription(ctx, &args, opts...)
-			var s LookupMonitoredSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMonitoredSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datadog/v20230101:getMonitoredSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMonitoredSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMonitoredSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMonitoredSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMonitoredSubscriptionResultOutput)
 }
 

@@ -63,14 +63,20 @@ type LookupCommunicationServiceResult struct {
 
 func LookupCommunicationServiceOutput(ctx *pulumi.Context, args LookupCommunicationServiceOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupCommunicationServiceResultOutput, error) {
 			args := v.(LookupCommunicationServiceArgs)
-			r, err := LookupCommunicationService(ctx, &args, opts...)
-			var s LookupCommunicationServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCommunicationServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:communication/v20230401:getCommunicationService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCommunicationServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCommunicationServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCommunicationServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCommunicationServiceResultOutput)
 }
 

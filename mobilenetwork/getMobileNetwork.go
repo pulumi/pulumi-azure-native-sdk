@@ -56,14 +56,20 @@ type LookupMobileNetworkResult struct {
 
 func LookupMobileNetworkOutput(ctx *pulumi.Context, args LookupMobileNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupMobileNetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMobileNetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupMobileNetworkResultOutput, error) {
 			args := v.(LookupMobileNetworkArgs)
-			r, err := LookupMobileNetwork(ctx, &args, opts...)
-			var s LookupMobileNetworkResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMobileNetworkResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mobilenetwork:getMobileNetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMobileNetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMobileNetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMobileNetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMobileNetworkResultOutput)
 }
 

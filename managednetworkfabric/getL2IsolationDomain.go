@@ -64,14 +64,20 @@ type LookupL2IsolationDomainResult struct {
 
 func LookupL2IsolationDomainOutput(ctx *pulumi.Context, args LookupL2IsolationDomainOutputArgs, opts ...pulumi.InvokeOption) LookupL2IsolationDomainResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupL2IsolationDomainResult, error) {
+		ApplyT(func(v interface{}) (LookupL2IsolationDomainResultOutput, error) {
 			args := v.(LookupL2IsolationDomainArgs)
-			r, err := LookupL2IsolationDomain(ctx, &args, opts...)
-			var s LookupL2IsolationDomainResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupL2IsolationDomainResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric:getL2IsolationDomain", args, &rv, "", opts...)
+			if err != nil {
+				return LookupL2IsolationDomainResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupL2IsolationDomainResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupL2IsolationDomainResultOutput), nil
+			}
+			return output, nil
 		}).(LookupL2IsolationDomainResultOutput)
 }
 

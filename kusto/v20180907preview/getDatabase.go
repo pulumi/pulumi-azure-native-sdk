@@ -57,14 +57,20 @@ type LookupDatabaseResult struct {
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseResultOutput, error) {
 			args := v.(LookupDatabaseArgs)
-			r, err := LookupDatabase(ctx, &args, opts...)
-			var s LookupDatabaseResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20180907preview:getDatabase", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseResultOutput)
 }
 

@@ -64,14 +64,20 @@ func (val *LookupWebAppDiagnosticLogsConfigurationSlotResult) Defaults() *Lookup
 
 func LookupWebAppDiagnosticLogsConfigurationSlotOutput(ctx *pulumi.Context, args LookupWebAppDiagnosticLogsConfigurationSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppDiagnosticLogsConfigurationSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppDiagnosticLogsConfigurationSlotResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppDiagnosticLogsConfigurationSlotResultOutput, error) {
 			args := v.(LookupWebAppDiagnosticLogsConfigurationSlotArgs)
-			r, err := LookupWebAppDiagnosticLogsConfigurationSlot(ctx, &args, opts...)
-			var s LookupWebAppDiagnosticLogsConfigurationSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppDiagnosticLogsConfigurationSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220301:getWebAppDiagnosticLogsConfigurationSlot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppDiagnosticLogsConfigurationSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppDiagnosticLogsConfigurationSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppDiagnosticLogsConfigurationSlotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppDiagnosticLogsConfigurationSlotResultOutput)
 }
 

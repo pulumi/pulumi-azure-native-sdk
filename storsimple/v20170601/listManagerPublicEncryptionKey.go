@@ -41,14 +41,20 @@ type ListManagerPublicEncryptionKeyResult struct {
 
 func ListManagerPublicEncryptionKeyOutput(ctx *pulumi.Context, args ListManagerPublicEncryptionKeyOutputArgs, opts ...pulumi.InvokeOption) ListManagerPublicEncryptionKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListManagerPublicEncryptionKeyResult, error) {
+		ApplyT(func(v interface{}) (ListManagerPublicEncryptionKeyResultOutput, error) {
 			args := v.(ListManagerPublicEncryptionKeyArgs)
-			r, err := ListManagerPublicEncryptionKey(ctx, &args, opts...)
-			var s ListManagerPublicEncryptionKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListManagerPublicEncryptionKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storsimple/v20170601:listManagerPublicEncryptionKey", args, &rv, "", opts...)
+			if err != nil {
+				return ListManagerPublicEncryptionKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListManagerPublicEncryptionKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListManagerPublicEncryptionKeyResultOutput), nil
+			}
+			return output, nil
 		}).(ListManagerPublicEncryptionKeyResultOutput)
 }
 

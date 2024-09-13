@@ -50,14 +50,20 @@ type ListCatalogDeploymentsResult struct {
 
 func ListCatalogDeploymentsOutput(ctx *pulumi.Context, args ListCatalogDeploymentsOutputArgs, opts ...pulumi.InvokeOption) ListCatalogDeploymentsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListCatalogDeploymentsResult, error) {
+		ApplyT(func(v interface{}) (ListCatalogDeploymentsResultOutput, error) {
 			args := v.(ListCatalogDeploymentsArgs)
-			r, err := ListCatalogDeployments(ctx, &args, opts...)
-			var s ListCatalogDeploymentsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListCatalogDeploymentsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azuresphere:listCatalogDeployments", args, &rv, "", opts...)
+			if err != nil {
+				return ListCatalogDeploymentsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListCatalogDeploymentsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListCatalogDeploymentsResultOutput), nil
+			}
+			return output, nil
 		}).(ListCatalogDeploymentsResultOutput)
 }
 

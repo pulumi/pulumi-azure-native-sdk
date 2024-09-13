@@ -49,14 +49,20 @@ type ListNotificationHubKeysResult struct {
 
 func ListNotificationHubKeysOutput(ctx *pulumi.Context, args ListNotificationHubKeysOutputArgs, opts ...pulumi.InvokeOption) ListNotificationHubKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListNotificationHubKeysResult, error) {
+		ApplyT(func(v interface{}) (ListNotificationHubKeysResultOutput, error) {
 			args := v.(ListNotificationHubKeysArgs)
-			r, err := ListNotificationHubKeys(ctx, &args, opts...)
-			var s ListNotificationHubKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListNotificationHubKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:notificationhubs/v20170401:listNotificationHubKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListNotificationHubKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListNotificationHubKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListNotificationHubKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListNotificationHubKeysResultOutput)
 }
 

@@ -84,14 +84,20 @@ type LookupApplicationDefinitionResult struct {
 
 func LookupApplicationDefinitionOutput(ctx *pulumi.Context, args LookupApplicationDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApplicationDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupApplicationDefinitionResultOutput, error) {
 			args := v.(LookupApplicationDefinitionArgs)
-			r, err := LookupApplicationDefinition(ctx, &args, opts...)
-			var s LookupApplicationDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApplicationDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:solutions:getApplicationDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApplicationDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApplicationDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApplicationDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApplicationDefinitionResultOutput)
 }
 

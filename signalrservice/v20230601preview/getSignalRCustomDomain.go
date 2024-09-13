@@ -51,14 +51,20 @@ type LookupSignalRCustomDomainResult struct {
 
 func LookupSignalRCustomDomainOutput(ctx *pulumi.Context, args LookupSignalRCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupSignalRCustomDomainResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSignalRCustomDomainResult, error) {
+		ApplyT(func(v interface{}) (LookupSignalRCustomDomainResultOutput, error) {
 			args := v.(LookupSignalRCustomDomainArgs)
-			r, err := LookupSignalRCustomDomain(ctx, &args, opts...)
-			var s LookupSignalRCustomDomainResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSignalRCustomDomainResult
+			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20230601preview:getSignalRCustomDomain", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSignalRCustomDomainResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSignalRCustomDomainResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSignalRCustomDomainResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSignalRCustomDomainResultOutput)
 }
 

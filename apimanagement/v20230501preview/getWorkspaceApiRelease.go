@@ -55,14 +55,20 @@ type LookupWorkspaceApiReleaseResult struct {
 
 func LookupWorkspaceApiReleaseOutput(ctx *pulumi.Context, args LookupWorkspaceApiReleaseOutputArgs, opts ...pulumi.InvokeOption) LookupWorkspaceApiReleaseResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWorkspaceApiReleaseResult, error) {
+		ApplyT(func(v interface{}) (LookupWorkspaceApiReleaseResultOutput, error) {
 			args := v.(LookupWorkspaceApiReleaseArgs)
-			r, err := LookupWorkspaceApiRelease(ctx, &args, opts...)
-			var s LookupWorkspaceApiReleaseResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWorkspaceApiReleaseResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230501preview:getWorkspaceApiRelease", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWorkspaceApiReleaseResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWorkspaceApiReleaseResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWorkspaceApiReleaseResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWorkspaceApiReleaseResultOutput)
 }
 

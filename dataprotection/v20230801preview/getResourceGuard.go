@@ -49,14 +49,20 @@ type LookupResourceGuardResult struct {
 
 func LookupResourceGuardOutput(ctx *pulumi.Context, args LookupResourceGuardOutputArgs, opts ...pulumi.InvokeOption) LookupResourceGuardResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupResourceGuardResult, error) {
+		ApplyT(func(v interface{}) (LookupResourceGuardResultOutput, error) {
 			args := v.(LookupResourceGuardArgs)
-			r, err := LookupResourceGuard(ctx, &args, opts...)
-			var s LookupResourceGuardResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupResourceGuardResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dataprotection/v20230801preview:getResourceGuard", args, &rv, "", opts...)
+			if err != nil {
+				return LookupResourceGuardResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupResourceGuardResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupResourceGuardResultOutput), nil
+			}
+			return output, nil
 		}).(LookupResourceGuardResultOutput)
 }
 

@@ -41,14 +41,20 @@ type LookupImportCollectorResult struct {
 
 func LookupImportCollectorOutput(ctx *pulumi.Context, args LookupImportCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupImportCollectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupImportCollectorResult, error) {
+		ApplyT(func(v interface{}) (LookupImportCollectorResultOutput, error) {
 			args := v.(LookupImportCollectorArgs)
-			r, err := LookupImportCollector(ctx, &args, opts...)
-			var s LookupImportCollectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupImportCollectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20191001:getImportCollector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupImportCollectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupImportCollectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupImportCollectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupImportCollectorResultOutput)
 }
 

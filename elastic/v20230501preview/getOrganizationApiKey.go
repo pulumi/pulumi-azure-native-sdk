@@ -34,14 +34,20 @@ type GetOrganizationApiKeyResult struct {
 
 func GetOrganizationApiKeyOutput(ctx *pulumi.Context, args GetOrganizationApiKeyOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationApiKeyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOrganizationApiKeyResult, error) {
+		ApplyT(func(v interface{}) (GetOrganizationApiKeyResultOutput, error) {
 			args := v.(GetOrganizationApiKeyArgs)
-			r, err := GetOrganizationApiKey(ctx, &args, opts...)
-			var s GetOrganizationApiKeyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetOrganizationApiKeyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20230501preview:getOrganizationApiKey", args, &rv, "", opts...)
+			if err != nil {
+				return GetOrganizationApiKeyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOrganizationApiKeyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOrganizationApiKeyResultOutput), nil
+			}
+			return output, nil
 		}).(GetOrganizationApiKeyResultOutput)
 }
 

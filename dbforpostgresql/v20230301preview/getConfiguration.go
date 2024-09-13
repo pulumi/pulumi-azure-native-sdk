@@ -67,14 +67,20 @@ type LookupConfigurationResult struct {
 
 func LookupConfigurationOutput(ctx *pulumi.Context, args LookupConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigurationResultOutput, error) {
 			args := v.(LookupConfigurationArgs)
-			r, err := LookupConfiguration(ctx, &args, opts...)
-			var s LookupConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20230301preview:getConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigurationResultOutput)
 }
 

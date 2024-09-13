@@ -77,14 +77,20 @@ type LookupPredictionResult struct {
 
 func LookupPredictionOutput(ctx *pulumi.Context, args LookupPredictionOutputArgs, opts ...pulumi.InvokeOption) LookupPredictionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPredictionResult, error) {
+		ApplyT(func(v interface{}) (LookupPredictionResultOutput, error) {
 			args := v.(LookupPredictionArgs)
-			r, err := LookupPrediction(ctx, &args, opts...)
-			var s LookupPredictionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPredictionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:customerinsights/v20170426:getPrediction", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPredictionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPredictionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPredictionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPredictionResultOutput)
 }
 

@@ -53,14 +53,20 @@ type LookupSiteNetworkServiceResult struct {
 
 func LookupSiteNetworkServiceOutput(ctx *pulumi.Context, args LookupSiteNetworkServiceOutputArgs, opts ...pulumi.InvokeOption) LookupSiteNetworkServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSiteNetworkServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupSiteNetworkServiceResultOutput, error) {
 			args := v.(LookupSiteNetworkServiceArgs)
-			r, err := LookupSiteNetworkService(ctx, &args, opts...)
-			var s LookupSiteNetworkServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSiteNetworkServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridnetwork/v20230901:getSiteNetworkService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSiteNetworkServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSiteNetworkServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSiteNetworkServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSiteNetworkServiceResultOutput)
 }
 

@@ -81,14 +81,20 @@ type LookupUpdateResult struct {
 
 func LookupUpdateOutput(ctx *pulumi.Context, args LookupUpdateOutputArgs, opts ...pulumi.InvokeOption) LookupUpdateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupUpdateResult, error) {
+		ApplyT(func(v interface{}) (LookupUpdateResultOutput, error) {
 			args := v.(LookupUpdateArgs)
-			r, err := LookupUpdate(ctx, &args, opts...)
-			var s LookupUpdateResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupUpdateResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azurestackhci/v20230801:getUpdate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupUpdateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupUpdateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupUpdateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupUpdateResultOutput)
 }
 

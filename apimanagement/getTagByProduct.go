@@ -50,14 +50,20 @@ type LookupTagByProductResult struct {
 
 func LookupTagByProductOutput(ctx *pulumi.Context, args LookupTagByProductOutputArgs, opts ...pulumi.InvokeOption) LookupTagByProductResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTagByProductResult, error) {
+		ApplyT(func(v interface{}) (LookupTagByProductResultOutput, error) {
 			args := v.(LookupTagByProductArgs)
-			r, err := LookupTagByProduct(ctx, &args, opts...)
-			var s LookupTagByProductResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupTagByProductResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement:getTagByProduct", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTagByProductResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTagByProductResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTagByProductResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTagByProductResultOutput)
 }
 

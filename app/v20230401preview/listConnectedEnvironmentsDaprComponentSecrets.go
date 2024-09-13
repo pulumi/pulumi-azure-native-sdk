@@ -39,14 +39,20 @@ type ListConnectedEnvironmentsDaprComponentSecretsResult struct {
 
 func ListConnectedEnvironmentsDaprComponentSecretsOutput(ctx *pulumi.Context, args ListConnectedEnvironmentsDaprComponentSecretsOutputArgs, opts ...pulumi.InvokeOption) ListConnectedEnvironmentsDaprComponentSecretsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConnectedEnvironmentsDaprComponentSecretsResult, error) {
+		ApplyT(func(v interface{}) (ListConnectedEnvironmentsDaprComponentSecretsResultOutput, error) {
 			args := v.(ListConnectedEnvironmentsDaprComponentSecretsArgs)
-			r, err := ListConnectedEnvironmentsDaprComponentSecrets(ctx, &args, opts...)
-			var s ListConnectedEnvironmentsDaprComponentSecretsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConnectedEnvironmentsDaprComponentSecretsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app/v20230401preview:listConnectedEnvironmentsDaprComponentSecrets", args, &rv, "", opts...)
+			if err != nil {
+				return ListConnectedEnvironmentsDaprComponentSecretsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConnectedEnvironmentsDaprComponentSecretsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConnectedEnvironmentsDaprComponentSecretsResultOutput), nil
+			}
+			return output, nil
 		}).(ListConnectedEnvironmentsDaprComponentSecretsResultOutput)
 }
 

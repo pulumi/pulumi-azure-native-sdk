@@ -43,14 +43,20 @@ type ListProductsAndConfigurationProductFamiliesResult struct {
 
 func ListProductsAndConfigurationProductFamiliesOutput(ctx *pulumi.Context, args ListProductsAndConfigurationProductFamiliesOutputArgs, opts ...pulumi.InvokeOption) ListProductsAndConfigurationProductFamiliesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListProductsAndConfigurationProductFamiliesResult, error) {
+		ApplyT(func(v interface{}) (ListProductsAndConfigurationProductFamiliesResultOutput, error) {
 			args := v.(ListProductsAndConfigurationProductFamiliesArgs)
-			r, err := ListProductsAndConfigurationProductFamilies(ctx, &args, opts...)
-			var s ListProductsAndConfigurationProductFamiliesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListProductsAndConfigurationProductFamiliesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:edgeorder/v20220501preview:listProductsAndConfigurationProductFamilies", args, &rv, "", opts...)
+			if err != nil {
+				return ListProductsAndConfigurationProductFamiliesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListProductsAndConfigurationProductFamiliesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListProductsAndConfigurationProductFamiliesResultOutput), nil
+			}
+			return output, nil
 		}).(ListProductsAndConfigurationProductFamiliesResultOutput)
 }
 

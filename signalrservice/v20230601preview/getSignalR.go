@@ -131,14 +131,20 @@ func (val *LookupSignalRResult) Defaults() *LookupSignalRResult {
 
 func LookupSignalROutput(ctx *pulumi.Context, args LookupSignalROutputArgs, opts ...pulumi.InvokeOption) LookupSignalRResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSignalRResult, error) {
+		ApplyT(func(v interface{}) (LookupSignalRResultOutput, error) {
 			args := v.(LookupSignalRArgs)
-			r, err := LookupSignalR(ctx, &args, opts...)
-			var s LookupSignalRResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSignalRResult
+			secret, err := ctx.InvokePackageRaw("azure-native:signalrservice/v20230601preview:getSignalR", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSignalRResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSignalRResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSignalRResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSignalRResultOutput)
 }
 

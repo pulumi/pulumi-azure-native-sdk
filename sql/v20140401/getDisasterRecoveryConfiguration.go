@@ -59,14 +59,20 @@ type LookupDisasterRecoveryConfigurationResult struct {
 
 func LookupDisasterRecoveryConfigurationOutput(ctx *pulumi.Context, args LookupDisasterRecoveryConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDisasterRecoveryConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDisasterRecoveryConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupDisasterRecoveryConfigurationResultOutput, error) {
 			args := v.(LookupDisasterRecoveryConfigurationArgs)
-			r, err := LookupDisasterRecoveryConfiguration(ctx, &args, opts...)
-			var s LookupDisasterRecoveryConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDisasterRecoveryConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20140401:getDisasterRecoveryConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDisasterRecoveryConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDisasterRecoveryConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDisasterRecoveryConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDisasterRecoveryConfigurationResultOutput)
 }
 

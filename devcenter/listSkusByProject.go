@@ -42,14 +42,20 @@ type ListSkusByProjectResult struct {
 
 func ListSkusByProjectOutput(ctx *pulumi.Context, args ListSkusByProjectOutputArgs, opts ...pulumi.InvokeOption) ListSkusByProjectResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSkusByProjectResult, error) {
+		ApplyT(func(v interface{}) (ListSkusByProjectResultOutput, error) {
 			args := v.(ListSkusByProjectArgs)
-			r, err := ListSkusByProject(ctx, &args, opts...)
-			var s ListSkusByProjectResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSkusByProjectResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:listSkusByProject", args, &rv, "", opts...)
+			if err != nil {
+				return ListSkusByProjectResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSkusByProjectResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSkusByProjectResultOutput), nil
+			}
+			return output, nil
 		}).(ListSkusByProjectResultOutput)
 }
 

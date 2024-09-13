@@ -78,14 +78,20 @@ func (val *LookupLabPlanResult) Defaults() *LookupLabPlanResult {
 
 func LookupLabPlanOutput(ctx *pulumi.Context, args LookupLabPlanOutputArgs, opts ...pulumi.InvokeOption) LookupLabPlanResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLabPlanResult, error) {
+		ApplyT(func(v interface{}) (LookupLabPlanResultOutput, error) {
 			args := v.(LookupLabPlanArgs)
-			r, err := LookupLabPlan(ctx, &args, opts...)
-			var s LookupLabPlanResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLabPlanResult
+			secret, err := ctx.InvokePackageRaw("azure-native:labservices/v20220801:getLabPlan", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLabPlanResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLabPlanResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLabPlanResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLabPlanResultOutput)
 }
 

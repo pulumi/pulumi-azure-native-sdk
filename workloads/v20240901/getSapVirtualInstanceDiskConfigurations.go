@@ -47,14 +47,20 @@ type GetSapVirtualInstanceDiskConfigurationsResult struct {
 
 func GetSapVirtualInstanceDiskConfigurationsOutput(ctx *pulumi.Context, args GetSapVirtualInstanceDiskConfigurationsOutputArgs, opts ...pulumi.InvokeOption) GetSapVirtualInstanceDiskConfigurationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSapVirtualInstanceDiskConfigurationsResult, error) {
+		ApplyT(func(v interface{}) (GetSapVirtualInstanceDiskConfigurationsResultOutput, error) {
 			args := v.(GetSapVirtualInstanceDiskConfigurationsArgs)
-			r, err := GetSapVirtualInstanceDiskConfigurations(ctx, &args, opts...)
-			var s GetSapVirtualInstanceDiskConfigurationsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetSapVirtualInstanceDiskConfigurationsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:workloads/v20240901:getSapVirtualInstanceDiskConfigurations", args, &rv, "", opts...)
+			if err != nil {
+				return GetSapVirtualInstanceDiskConfigurationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSapVirtualInstanceDiskConfigurationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSapVirtualInstanceDiskConfigurationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSapVirtualInstanceDiskConfigurationsResultOutput)
 }
 

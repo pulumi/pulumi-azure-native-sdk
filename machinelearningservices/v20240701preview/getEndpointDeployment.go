@@ -46,14 +46,20 @@ type LookupEndpointDeploymentResult struct {
 
 func LookupEndpointDeploymentOutput(ctx *pulumi.Context, args LookupEndpointDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointDeploymentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEndpointDeploymentResult, error) {
+		ApplyT(func(v interface{}) (LookupEndpointDeploymentResultOutput, error) {
 			args := v.(LookupEndpointDeploymentArgs)
-			r, err := LookupEndpointDeployment(ctx, &args, opts...)
-			var s LookupEndpointDeploymentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEndpointDeploymentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240701preview:getEndpointDeployment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEndpointDeploymentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEndpointDeploymentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEndpointDeploymentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEndpointDeploymentResultOutput)
 }
 

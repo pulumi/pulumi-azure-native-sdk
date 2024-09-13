@@ -123,14 +123,20 @@ func (val *LookupIoMAMPolicyByNameResult) Defaults() *LookupIoMAMPolicyByNameRes
 
 func LookupIoMAMPolicyByNameOutput(ctx *pulumi.Context, args LookupIoMAMPolicyByNameOutputArgs, opts ...pulumi.InvokeOption) LookupIoMAMPolicyByNameResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIoMAMPolicyByNameResult, error) {
+		ApplyT(func(v interface{}) (LookupIoMAMPolicyByNameResultOutput, error) {
 			args := v.(LookupIoMAMPolicyByNameArgs)
-			r, err := LookupIoMAMPolicyByName(ctx, &args, opts...)
-			var s LookupIoMAMPolicyByNameResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIoMAMPolicyByNameResult
+			secret, err := ctx.InvokePackageRaw("azure-native:intune/v20150114privatepreview:getIoMAMPolicyByName", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIoMAMPolicyByNameResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIoMAMPolicyByNameResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIoMAMPolicyByNameResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIoMAMPolicyByNameResultOutput)
 }
 

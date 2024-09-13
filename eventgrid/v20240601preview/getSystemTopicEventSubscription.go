@@ -88,14 +88,20 @@ func (val *LookupSystemTopicEventSubscriptionResult) Defaults() *LookupSystemTop
 
 func LookupSystemTopicEventSubscriptionOutput(ctx *pulumi.Context, args LookupSystemTopicEventSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSystemTopicEventSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSystemTopicEventSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupSystemTopicEventSubscriptionResultOutput, error) {
 			args := v.(LookupSystemTopicEventSubscriptionArgs)
-			r, err := LookupSystemTopicEventSubscription(ctx, &args, opts...)
-			var s LookupSystemTopicEventSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSystemTopicEventSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:eventgrid/v20240601preview:getSystemTopicEventSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSystemTopicEventSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSystemTopicEventSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSystemTopicEventSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSystemTopicEventSubscriptionResultOutput)
 }
 

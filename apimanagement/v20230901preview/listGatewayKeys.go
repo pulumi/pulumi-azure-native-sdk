@@ -41,14 +41,20 @@ type ListGatewayKeysResult struct {
 
 func ListGatewayKeysOutput(ctx *pulumi.Context, args ListGatewayKeysOutputArgs, opts ...pulumi.InvokeOption) ListGatewayKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGatewayKeysResult, error) {
+		ApplyT(func(v interface{}) (ListGatewayKeysResultOutput, error) {
 			args := v.(ListGatewayKeysArgs)
-			r, err := ListGatewayKeys(ctx, &args, opts...)
-			var s ListGatewayKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGatewayKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20230901preview:listGatewayKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListGatewayKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGatewayKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGatewayKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListGatewayKeysResultOutput)
 }
 

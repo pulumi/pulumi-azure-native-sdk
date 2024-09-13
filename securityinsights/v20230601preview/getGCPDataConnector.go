@@ -58,14 +58,20 @@ type LookupGCPDataConnectorResult struct {
 
 func LookupGCPDataConnectorOutput(ctx *pulumi.Context, args LookupGCPDataConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGCPDataConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGCPDataConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupGCPDataConnectorResultOutput, error) {
 			args := v.(LookupGCPDataConnectorArgs)
-			r, err := LookupGCPDataConnector(ctx, &args, opts...)
-			var s LookupGCPDataConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupGCPDataConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20230601preview:getGCPDataConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGCPDataConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGCPDataConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGCPDataConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGCPDataConnectorResultOutput)
 }
 

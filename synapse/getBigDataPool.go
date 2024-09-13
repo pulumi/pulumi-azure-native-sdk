@@ -88,14 +88,20 @@ type LookupBigDataPoolResult struct {
 
 func LookupBigDataPoolOutput(ctx *pulumi.Context, args LookupBigDataPoolOutputArgs, opts ...pulumi.InvokeOption) LookupBigDataPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBigDataPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupBigDataPoolResultOutput, error) {
 			args := v.(LookupBigDataPoolArgs)
-			r, err := LookupBigDataPool(ctx, &args, opts...)
-			var s LookupBigDataPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBigDataPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse:getBigDataPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBigDataPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBigDataPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBigDataPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBigDataPoolResultOutput)
 }
 

@@ -49,14 +49,20 @@ type LookupProductResult struct {
 
 func LookupProductOutput(ctx *pulumi.Context, args LookupProductOutputArgs, opts ...pulumi.InvokeOption) LookupProductResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProductResult, error) {
+		ApplyT(func(v interface{}) (LookupProductResultOutput, error) {
 			args := v.(LookupProductArgs)
-			r, err := LookupProduct(ctx, &args, opts...)
-			var s LookupProductResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupProductResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azuresphere/v20220901preview:getProduct", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProductResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProductResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProductResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProductResultOutput)
 }
 

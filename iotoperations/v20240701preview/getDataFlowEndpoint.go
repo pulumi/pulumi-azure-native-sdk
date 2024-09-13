@@ -60,14 +60,20 @@ func (val *LookupDataFlowEndpointResult) Defaults() *LookupDataFlowEndpointResul
 
 func LookupDataFlowEndpointOutput(ctx *pulumi.Context, args LookupDataFlowEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupDataFlowEndpointResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataFlowEndpointResult, error) {
+		ApplyT(func(v interface{}) (LookupDataFlowEndpointResultOutput, error) {
 			args := v.(LookupDataFlowEndpointArgs)
-			r, err := LookupDataFlowEndpoint(ctx, &args, opts...)
-			var s LookupDataFlowEndpointResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataFlowEndpointResult
+			secret, err := ctx.InvokePackageRaw("azure-native:iotoperations/v20240701preview:getDataFlowEndpoint", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataFlowEndpointResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataFlowEndpointResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataFlowEndpointResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataFlowEndpointResultOutput)
 }
 

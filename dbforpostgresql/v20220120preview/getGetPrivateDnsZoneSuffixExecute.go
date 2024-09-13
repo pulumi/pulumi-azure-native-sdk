@@ -32,14 +32,20 @@ type GetGetPrivateDnsZoneSuffixExecuteResult struct {
 
 func GetGetPrivateDnsZoneSuffixExecuteOutput(ctx *pulumi.Context, args GetGetPrivateDnsZoneSuffixExecuteOutputArgs, opts ...pulumi.InvokeOption) GetGetPrivateDnsZoneSuffixExecuteResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGetPrivateDnsZoneSuffixExecuteResult, error) {
+		ApplyT(func(v interface{}) (GetGetPrivateDnsZoneSuffixExecuteResultOutput, error) {
 			args := v.(GetGetPrivateDnsZoneSuffixExecuteArgs)
-			r, err := GetGetPrivateDnsZoneSuffixExecute(ctx, &args, opts...)
-			var s GetGetPrivateDnsZoneSuffixExecuteResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetGetPrivateDnsZoneSuffixExecuteResult
+			secret, err := ctx.InvokePackageRaw("azure-native:dbforpostgresql/v20220120preview:getGetPrivateDnsZoneSuffixExecute", args, &rv, "", opts...)
+			if err != nil {
+				return GetGetPrivateDnsZoneSuffixExecuteResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGetPrivateDnsZoneSuffixExecuteResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGetPrivateDnsZoneSuffixExecuteResultOutput), nil
+			}
+			return output, nil
 		}).(GetGetPrivateDnsZoneSuffixExecuteResultOutput)
 }
 

@@ -41,14 +41,20 @@ type ListApplicationTokensResult struct {
 
 func ListApplicationTokensOutput(ctx *pulumi.Context, args ListApplicationTokensOutputArgs, opts ...pulumi.InvokeOption) ListApplicationTokensResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListApplicationTokensResult, error) {
+		ApplyT(func(v interface{}) (ListApplicationTokensResultOutput, error) {
 			args := v.(ListApplicationTokensArgs)
-			r, err := ListApplicationTokens(ctx, &args, opts...)
-			var s ListApplicationTokensResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListApplicationTokensResult
+			secret, err := ctx.InvokePackageRaw("azure-native:solutions/v20210701:listApplicationTokens", args, &rv, "", opts...)
+			if err != nil {
+				return ListApplicationTokensResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListApplicationTokensResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListApplicationTokensResultOutput), nil
+			}
+			return output, nil
 		}).(ListApplicationTokensResultOutput)
 }
 

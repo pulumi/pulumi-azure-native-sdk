@@ -79,14 +79,20 @@ func (val *LookupFormulaResult) Defaults() *LookupFormulaResult {
 
 func LookupFormulaOutput(ctx *pulumi.Context, args LookupFormulaOutputArgs, opts ...pulumi.InvokeOption) LookupFormulaResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFormulaResult, error) {
+		ApplyT(func(v interface{}) (LookupFormulaResultOutput, error) {
 			args := v.(LookupFormulaArgs)
-			r, err := LookupFormula(ctx, &args, opts...)
-			var s LookupFormulaResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupFormulaResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab:getFormula", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFormulaResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFormulaResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFormulaResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFormulaResultOutput)
 }
 

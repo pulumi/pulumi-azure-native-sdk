@@ -65,14 +65,20 @@ type LookupAssessmentMetadataInSubscriptionResult struct {
 
 func LookupAssessmentMetadataInSubscriptionOutput(ctx *pulumi.Context, args LookupAssessmentMetadataInSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentMetadataInSubscriptionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssessmentMetadataInSubscriptionResult, error) {
+		ApplyT(func(v interface{}) (LookupAssessmentMetadataInSubscriptionResultOutput, error) {
 			args := v.(LookupAssessmentMetadataInSubscriptionArgs)
-			r, err := LookupAssessmentMetadataInSubscription(ctx, &args, opts...)
-			var s LookupAssessmentMetadataInSubscriptionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssessmentMetadataInSubscriptionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20210601:getAssessmentMetadataInSubscription", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssessmentMetadataInSubscriptionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssessmentMetadataInSubscriptionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssessmentMetadataInSubscriptionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssessmentMetadataInSubscriptionResultOutput)
 }
 

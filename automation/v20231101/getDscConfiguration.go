@@ -69,14 +69,20 @@ type LookupDscConfigurationResult struct {
 
 func LookupDscConfigurationOutput(ctx *pulumi.Context, args LookupDscConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupDscConfigurationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDscConfigurationResult, error) {
+		ApplyT(func(v interface{}) (LookupDscConfigurationResultOutput, error) {
 			args := v.(LookupDscConfigurationArgs)
-			r, err := LookupDscConfiguration(ctx, &args, opts...)
-			var s LookupDscConfigurationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDscConfigurationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:automation/v20231101:getDscConfiguration", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDscConfigurationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDscConfigurationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDscConfigurationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDscConfigurationResultOutput)
 }
 

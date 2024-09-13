@@ -54,14 +54,20 @@ type LookupMongoClusterFirewallRuleResult struct {
 
 func LookupMongoClusterFirewallRuleOutput(ctx *pulumi.Context, args LookupMongoClusterFirewallRuleOutputArgs, opts ...pulumi.InvokeOption) LookupMongoClusterFirewallRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMongoClusterFirewallRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupMongoClusterFirewallRuleResultOutput, error) {
 			args := v.(LookupMongoClusterFirewallRuleArgs)
-			r, err := LookupMongoClusterFirewallRule(ctx, &args, opts...)
-			var s LookupMongoClusterFirewallRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMongoClusterFirewallRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:getMongoClusterFirewallRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMongoClusterFirewallRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMongoClusterFirewallRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMongoClusterFirewallRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMongoClusterFirewallRuleResultOutput)
 }
 

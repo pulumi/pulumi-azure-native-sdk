@@ -66,14 +66,20 @@ type LookupCustomLocationResult struct {
 
 func LookupCustomLocationOutput(ctx *pulumi.Context, args LookupCustomLocationOutputArgs, opts ...pulumi.InvokeOption) LookupCustomLocationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomLocationResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomLocationResultOutput, error) {
 			args := v.(LookupCustomLocationArgs)
-			r, err := LookupCustomLocation(ctx, &args, opts...)
-			var s LookupCustomLocationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomLocationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:extendedlocation:getCustomLocation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomLocationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomLocationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomLocationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomLocationResultOutput)
 }
 

@@ -52,14 +52,20 @@ type LookupJitNetworkAccessPolicyResult struct {
 
 func LookupJitNetworkAccessPolicyOutput(ctx *pulumi.Context, args LookupJitNetworkAccessPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupJitNetworkAccessPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJitNetworkAccessPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupJitNetworkAccessPolicyResultOutput, error) {
 			args := v.(LookupJitNetworkAccessPolicyArgs)
-			r, err := LookupJitNetworkAccessPolicy(ctx, &args, opts...)
-			var s LookupJitNetworkAccessPolicyResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupJitNetworkAccessPolicyResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security:getJitNetworkAccessPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJitNetworkAccessPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJitNetworkAccessPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJitNetworkAccessPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJitNetworkAccessPolicyResultOutput)
 }
 

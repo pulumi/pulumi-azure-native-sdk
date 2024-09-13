@@ -61,14 +61,20 @@ type LookupApiOperationResult struct {
 
 func LookupApiOperationOutput(ctx *pulumi.Context, args LookupApiOperationOutputArgs, opts ...pulumi.InvokeOption) LookupApiOperationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApiOperationResult, error) {
+		ApplyT(func(v interface{}) (LookupApiOperationResultOutput, error) {
 			args := v.(LookupApiOperationArgs)
-			r, err := LookupApiOperation(ctx, &args, opts...)
-			var s LookupApiOperationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupApiOperationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:apimanagement/v20220901preview:getApiOperation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApiOperationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApiOperationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApiOperationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApiOperationResultOutput)
 }
 

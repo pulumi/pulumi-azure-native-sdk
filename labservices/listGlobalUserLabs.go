@@ -36,14 +36,20 @@ type ListGlobalUserLabsResult struct {
 
 func ListGlobalUserLabsOutput(ctx *pulumi.Context, args ListGlobalUserLabsOutputArgs, opts ...pulumi.InvokeOption) ListGlobalUserLabsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListGlobalUserLabsResult, error) {
+		ApplyT(func(v interface{}) (ListGlobalUserLabsResultOutput, error) {
 			args := v.(ListGlobalUserLabsArgs)
-			r, err := ListGlobalUserLabs(ctx, &args, opts...)
-			var s ListGlobalUserLabsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListGlobalUserLabsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:labservices:listGlobalUserLabs", args, &rv, "", opts...)
+			if err != nil {
+				return ListGlobalUserLabsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListGlobalUserLabsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListGlobalUserLabsResultOutput), nil
+			}
+			return output, nil
 		}).(ListGlobalUserLabsResultOutput)
 }
 

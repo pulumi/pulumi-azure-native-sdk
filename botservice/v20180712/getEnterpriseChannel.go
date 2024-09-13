@@ -53,14 +53,20 @@ type LookupEnterpriseChannelResult struct {
 
 func LookupEnterpriseChannelOutput(ctx *pulumi.Context, args LookupEnterpriseChannelOutputArgs, opts ...pulumi.InvokeOption) LookupEnterpriseChannelResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEnterpriseChannelResult, error) {
+		ApplyT(func(v interface{}) (LookupEnterpriseChannelResultOutput, error) {
 			args := v.(LookupEnterpriseChannelArgs)
-			r, err := LookupEnterpriseChannel(ctx, &args, opts...)
-			var s LookupEnterpriseChannelResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupEnterpriseChannelResult
+			secret, err := ctx.InvokePackageRaw("azure-native:botservice/v20180712:getEnterpriseChannel", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEnterpriseChannelResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEnterpriseChannelResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEnterpriseChannelResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEnterpriseChannelResultOutput)
 }
 

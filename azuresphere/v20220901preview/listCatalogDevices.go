@@ -47,14 +47,20 @@ type ListCatalogDevicesResult struct {
 
 func ListCatalogDevicesOutput(ctx *pulumi.Context, args ListCatalogDevicesOutputArgs, opts ...pulumi.InvokeOption) ListCatalogDevicesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListCatalogDevicesResult, error) {
+		ApplyT(func(v interface{}) (ListCatalogDevicesResultOutput, error) {
 			args := v.(ListCatalogDevicesArgs)
-			r, err := ListCatalogDevices(ctx, &args, opts...)
-			var s ListCatalogDevicesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListCatalogDevicesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:azuresphere/v20220901preview:listCatalogDevices", args, &rv, "", opts...)
+			if err != nil {
+				return ListCatalogDevicesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListCatalogDevicesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListCatalogDevicesResultOutput), nil
+			}
+			return output, nil
 		}).(ListCatalogDevicesResultOutput)
 }
 

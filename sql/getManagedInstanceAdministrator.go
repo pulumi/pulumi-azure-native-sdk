@@ -53,14 +53,20 @@ type LookupManagedInstanceAdministratorResult struct {
 
 func LookupManagedInstanceAdministratorOutput(ctx *pulumi.Context, args LookupManagedInstanceAdministratorOutputArgs, opts ...pulumi.InvokeOption) LookupManagedInstanceAdministratorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedInstanceAdministratorResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedInstanceAdministratorResultOutput, error) {
 			args := v.(LookupManagedInstanceAdministratorArgs)
-			r, err := LookupManagedInstanceAdministrator(ctx, &args, opts...)
-			var s LookupManagedInstanceAdministratorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedInstanceAdministratorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql:getManagedInstanceAdministrator", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedInstanceAdministratorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedInstanceAdministratorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedInstanceAdministratorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedInstanceAdministratorResultOutput)
 }
 

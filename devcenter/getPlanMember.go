@@ -56,14 +56,20 @@ type LookupPlanMemberResult struct {
 
 func LookupPlanMemberOutput(ctx *pulumi.Context, args LookupPlanMemberOutputArgs, opts ...pulumi.InvokeOption) LookupPlanMemberResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPlanMemberResult, error) {
+		ApplyT(func(v interface{}) (LookupPlanMemberResultOutput, error) {
 			args := v.(LookupPlanMemberArgs)
-			r, err := LookupPlanMember(ctx, &args, opts...)
-			var s LookupPlanMemberResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPlanMemberResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devcenter:getPlanMember", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPlanMemberResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPlanMemberResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPlanMemberResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPlanMemberResultOutput)
 }
 

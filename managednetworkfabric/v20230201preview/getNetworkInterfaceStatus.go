@@ -47,14 +47,20 @@ type GetNetworkInterfaceStatusResult struct {
 
 func GetNetworkInterfaceStatusOutput(ctx *pulumi.Context, args GetNetworkInterfaceStatusOutputArgs, opts ...pulumi.InvokeOption) GetNetworkInterfaceStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNetworkInterfaceStatusResult, error) {
+		ApplyT(func(v interface{}) (GetNetworkInterfaceStatusResultOutput, error) {
 			args := v.(GetNetworkInterfaceStatusArgs)
-			r, err := GetNetworkInterfaceStatus(ctx, &args, opts...)
-			var s GetNetworkInterfaceStatusResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv GetNetworkInterfaceStatusResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getNetworkInterfaceStatus", args, &rv, "", opts...)
+			if err != nil {
+				return GetNetworkInterfaceStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNetworkInterfaceStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNetworkInterfaceStatusResultOutput), nil
+			}
+			return output, nil
 		}).(GetNetworkInterfaceStatusResultOutput)
 }
 

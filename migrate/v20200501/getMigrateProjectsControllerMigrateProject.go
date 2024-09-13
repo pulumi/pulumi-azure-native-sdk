@@ -49,14 +49,20 @@ type LookupMigrateProjectsControllerMigrateProjectResult struct {
 
 func LookupMigrateProjectsControllerMigrateProjectOutput(ctx *pulumi.Context, args LookupMigrateProjectsControllerMigrateProjectOutputArgs, opts ...pulumi.InvokeOption) LookupMigrateProjectsControllerMigrateProjectResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMigrateProjectsControllerMigrateProjectResult, error) {
+		ApplyT(func(v interface{}) (LookupMigrateProjectsControllerMigrateProjectResultOutput, error) {
 			args := v.(LookupMigrateProjectsControllerMigrateProjectArgs)
-			r, err := LookupMigrateProjectsControllerMigrateProject(ctx, &args, opts...)
-			var s LookupMigrateProjectsControllerMigrateProjectResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMigrateProjectsControllerMigrateProjectResult
+			secret, err := ctx.InvokePackageRaw("azure-native:migrate/v20200501:getMigrateProjectsControllerMigrateProject", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMigrateProjectsControllerMigrateProjectResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMigrateProjectsControllerMigrateProjectResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMigrateProjectsControllerMigrateProjectResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMigrateProjectsControllerMigrateProjectResultOutput)
 }
 

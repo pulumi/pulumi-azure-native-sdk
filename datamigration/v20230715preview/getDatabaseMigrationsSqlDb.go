@@ -47,14 +47,20 @@ type LookupDatabaseMigrationsSqlDbResult struct {
 
 func LookupDatabaseMigrationsSqlDbOutput(ctx *pulumi.Context, args LookupDatabaseMigrationsSqlDbOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMigrationsSqlDbResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMigrationsSqlDbResult, error) {
+		ApplyT(func(v interface{}) (LookupDatabaseMigrationsSqlDbResultOutput, error) {
 			args := v.(LookupDatabaseMigrationsSqlDbArgs)
-			r, err := LookupDatabaseMigrationsSqlDb(ctx, &args, opts...)
-			var s LookupDatabaseMigrationsSqlDbResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatabaseMigrationsSqlDbResult
+			secret, err := ctx.InvokePackageRaw("azure-native:datamigration/v20230715preview:getDatabaseMigrationsSqlDb", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatabaseMigrationsSqlDbResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatabaseMigrationsSqlDbResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatabaseMigrationsSqlDbResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatabaseMigrationsSqlDbResultOutput)
 }
 

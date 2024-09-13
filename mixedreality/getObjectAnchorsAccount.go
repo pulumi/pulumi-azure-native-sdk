@@ -61,14 +61,20 @@ type LookupObjectAnchorsAccountResult struct {
 
 func LookupObjectAnchorsAccountOutput(ctx *pulumi.Context, args LookupObjectAnchorsAccountOutputArgs, opts ...pulumi.InvokeOption) LookupObjectAnchorsAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupObjectAnchorsAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupObjectAnchorsAccountResultOutput, error) {
 			args := v.(LookupObjectAnchorsAccountArgs)
-			r, err := LookupObjectAnchorsAccount(ctx, &args, opts...)
-			var s LookupObjectAnchorsAccountResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupObjectAnchorsAccountResult
+			secret, err := ctx.InvokePackageRaw("azure-native:mixedreality:getObjectAnchorsAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupObjectAnchorsAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupObjectAnchorsAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupObjectAnchorsAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupObjectAnchorsAccountResultOutput)
 }
 

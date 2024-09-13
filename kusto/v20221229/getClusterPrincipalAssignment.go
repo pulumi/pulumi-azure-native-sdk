@@ -59,14 +59,20 @@ type LookupClusterPrincipalAssignmentResult struct {
 
 func LookupClusterPrincipalAssignmentOutput(ctx *pulumi.Context, args LookupClusterPrincipalAssignmentOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPrincipalAssignmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupClusterPrincipalAssignmentResult, error) {
+		ApplyT(func(v interface{}) (LookupClusterPrincipalAssignmentResultOutput, error) {
 			args := v.(LookupClusterPrincipalAssignmentArgs)
-			r, err := LookupClusterPrincipalAssignment(ctx, &args, opts...)
-			var s LookupClusterPrincipalAssignmentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupClusterPrincipalAssignmentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:kusto/v20221229:getClusterPrincipalAssignment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupClusterPrincipalAssignmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupClusterPrincipalAssignmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupClusterPrincipalAssignmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupClusterPrincipalAssignmentResultOutput)
 }
 

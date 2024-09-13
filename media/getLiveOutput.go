@@ -70,14 +70,20 @@ type LookupLiveOutputResult struct {
 
 func LookupLiveOutputOutput(ctx *pulumi.Context, args LookupLiveOutputOutputArgs, opts ...pulumi.InvokeOption) LookupLiveOutputResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupLiveOutputResult, error) {
+		ApplyT(func(v interface{}) (LookupLiveOutputResultOutput, error) {
 			args := v.(LookupLiveOutputArgs)
-			r, err := LookupLiveOutput(ctx, &args, opts...)
-			var s LookupLiveOutputResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupLiveOutputResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media:getLiveOutput", args, &rv, "", opts...)
+			if err != nil {
+				return LookupLiveOutputResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupLiveOutputResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupLiveOutputResultOutput), nil
+			}
+			return output, nil
 		}).(LookupLiveOutputResultOutput)
 }
 

@@ -55,14 +55,20 @@ type LookupCertificateObjectGlobalRulestackResult struct {
 
 func LookupCertificateObjectGlobalRulestackOutput(ctx *pulumi.Context, args LookupCertificateObjectGlobalRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateObjectGlobalRulestackResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCertificateObjectGlobalRulestackResult, error) {
+		ApplyT(func(v interface{}) (LookupCertificateObjectGlobalRulestackResultOutput, error) {
 			args := v.(LookupCertificateObjectGlobalRulestackArgs)
-			r, err := LookupCertificateObjectGlobalRulestack(ctx, &args, opts...)
-			var s LookupCertificateObjectGlobalRulestackResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCertificateObjectGlobalRulestackResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cloudngfw/v20230901:getCertificateObjectGlobalRulestack", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCertificateObjectGlobalRulestackResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCertificateObjectGlobalRulestackResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCertificateObjectGlobalRulestackResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCertificateObjectGlobalRulestackResultOutput)
 }
 

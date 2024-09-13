@@ -37,14 +37,20 @@ type ListConnectionModelsResult struct {
 
 func ListConnectionModelsOutput(ctx *pulumi.Context, args ListConnectionModelsOutputArgs, opts ...pulumi.InvokeOption) ListConnectionModelsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConnectionModelsResult, error) {
+		ApplyT(func(v interface{}) (ListConnectionModelsResultOutput, error) {
 			args := v.(ListConnectionModelsArgs)
-			r, err := ListConnectionModels(ctx, &args, opts...)
-			var s ListConnectionModelsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConnectionModelsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240701preview:listConnectionModels", args, &rv, "", opts...)
+			if err != nil {
+				return ListConnectionModelsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConnectionModelsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConnectionModelsResultOutput), nil
+			}
+			return output, nil
 		}).(ListConnectionModelsResultOutput)
 }
 

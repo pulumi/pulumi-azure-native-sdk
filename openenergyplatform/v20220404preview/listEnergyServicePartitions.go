@@ -37,14 +37,20 @@ type ListEnergyServicePartitionsResult struct {
 
 func ListEnergyServicePartitionsOutput(ctx *pulumi.Context, args ListEnergyServicePartitionsOutputArgs, opts ...pulumi.InvokeOption) ListEnergyServicePartitionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListEnergyServicePartitionsResult, error) {
+		ApplyT(func(v interface{}) (ListEnergyServicePartitionsResultOutput, error) {
 			args := v.(ListEnergyServicePartitionsArgs)
-			r, err := ListEnergyServicePartitions(ctx, &args, opts...)
-			var s ListEnergyServicePartitionsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListEnergyServicePartitionsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:openenergyplatform/v20220404preview:listEnergyServicePartitions", args, &rv, "", opts...)
+			if err != nil {
+				return ListEnergyServicePartitionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListEnergyServicePartitionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListEnergyServicePartitionsResultOutput), nil
+			}
+			return output, nil
 		}).(ListEnergyServicePartitionsResultOutput)
 }
 

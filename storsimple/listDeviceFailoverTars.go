@@ -42,14 +42,20 @@ type ListDeviceFailoverTarsResult struct {
 
 func ListDeviceFailoverTarsOutput(ctx *pulumi.Context, args ListDeviceFailoverTarsOutputArgs, opts ...pulumi.InvokeOption) ListDeviceFailoverTarsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDeviceFailoverTarsResult, error) {
+		ApplyT(func(v interface{}) (ListDeviceFailoverTarsResultOutput, error) {
 			args := v.(ListDeviceFailoverTarsArgs)
-			r, err := ListDeviceFailoverTars(ctx, &args, opts...)
-			var s ListDeviceFailoverTarsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDeviceFailoverTarsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:storsimple:listDeviceFailoverTars", args, &rv, "", opts...)
+			if err != nil {
+				return ListDeviceFailoverTarsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDeviceFailoverTarsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDeviceFailoverTarsResultOutput), nil
+			}
+			return output, nil
 		}).(ListDeviceFailoverTarsResultOutput)
 }
 

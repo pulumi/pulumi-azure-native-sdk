@@ -77,14 +77,20 @@ func (val *LookupJobDefinitionResult) Defaults() *LookupJobDefinitionResult {
 
 func LookupJobDefinitionOutput(ctx *pulumi.Context, args LookupJobDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupJobDefinitionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJobDefinitionResult, error) {
+		ApplyT(func(v interface{}) (LookupJobDefinitionResultOutput, error) {
 			args := v.(LookupJobDefinitionArgs)
-			r, err := LookupJobDefinition(ctx, &args, opts...)
-			var s LookupJobDefinitionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupJobDefinitionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybriddata:getJobDefinition", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJobDefinitionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJobDefinitionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJobDefinitionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJobDefinitionResultOutput)
 }
 

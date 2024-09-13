@@ -59,14 +59,20 @@ type LookupIotDpsResourceResult struct {
 
 func LookupIotDpsResourceOutput(ctx *pulumi.Context, args LookupIotDpsResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIotDpsResourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIotDpsResourceResult, error) {
+		ApplyT(func(v interface{}) (LookupIotDpsResourceResultOutput, error) {
 			args := v.(LookupIotDpsResourceArgs)
-			r, err := LookupIotDpsResource(ctx, &args, opts...)
-			var s LookupIotDpsResourceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIotDpsResourceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devices/v20230301preview:getIotDpsResource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIotDpsResourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIotDpsResourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIotDpsResourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIotDpsResourceResultOutput)
 }
 

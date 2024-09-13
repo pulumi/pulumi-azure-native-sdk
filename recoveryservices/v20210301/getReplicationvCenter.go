@@ -49,14 +49,20 @@ type LookupReplicationvCenterResult struct {
 
 func LookupReplicationvCenterOutput(ctx *pulumi.Context, args LookupReplicationvCenterOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationvCenterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReplicationvCenterResult, error) {
+		ApplyT(func(v interface{}) (LookupReplicationvCenterResultOutput, error) {
 			args := v.(LookupReplicationvCenterArgs)
-			r, err := LookupReplicationvCenter(ctx, &args, opts...)
-			var s LookupReplicationvCenterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupReplicationvCenterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:recoveryservices/v20210301:getReplicationvCenter", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReplicationvCenterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReplicationvCenterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReplicationvCenterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReplicationvCenterResultOutput)
 }
 

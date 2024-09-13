@@ -64,14 +64,20 @@ func (val *LookupMachineLearningDatastoreResult) Defaults() *LookupMachineLearni
 
 func LookupMachineLearningDatastoreOutput(ctx *pulumi.Context, args LookupMachineLearningDatastoreOutputArgs, opts ...pulumi.InvokeOption) LookupMachineLearningDatastoreResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachineLearningDatastoreResult, error) {
+		ApplyT(func(v interface{}) (LookupMachineLearningDatastoreResultOutput, error) {
 			args := v.(LookupMachineLearningDatastoreArgs)
-			r, err := LookupMachineLearningDatastore(ctx, &args, opts...)
-			var s LookupMachineLearningDatastoreResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachineLearningDatastoreResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20200501preview:getMachineLearningDatastore", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachineLearningDatastoreResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachineLearningDatastoreResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachineLearningDatastoreResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachineLearningDatastoreResultOutput)
 }
 

@@ -51,14 +51,20 @@ type LookupIPSyncerResult struct {
 
 func LookupIPSyncerOutput(ctx *pulumi.Context, args LookupIPSyncerOutputArgs, opts ...pulumi.InvokeOption) LookupIPSyncerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIPSyncerResult, error) {
+		ApplyT(func(v interface{}) (LookupIPSyncerResultOutput, error) {
 			args := v.(LookupIPSyncerArgs)
-			r, err := LookupIPSyncer(ctx, &args, opts...)
-			var s LookupIPSyncerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIPSyncerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:securityinsights/v20190101preview:getIPSyncer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIPSyncerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIPSyncerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIPSyncerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIPSyncerResultOutput)
 }
 

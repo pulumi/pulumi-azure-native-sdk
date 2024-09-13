@@ -49,14 +49,20 @@ type ListDeploymentInfoResult struct {
 
 func ListDeploymentInfoOutput(ctx *pulumi.Context, args ListDeploymentInfoOutputArgs, opts ...pulumi.InvokeOption) ListDeploymentInfoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDeploymentInfoResult, error) {
+		ApplyT(func(v interface{}) (ListDeploymentInfoResultOutput, error) {
 			args := v.(ListDeploymentInfoArgs)
-			r, err := ListDeploymentInfo(ctx, &args, opts...)
-			var s ListDeploymentInfoResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDeploymentInfoResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20240101preview:listDeploymentInfo", args, &rv, "", opts...)
+			if err != nil {
+				return ListDeploymentInfoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDeploymentInfoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDeploymentInfoResultOutput), nil
+			}
+			return output, nil
 		}).(ListDeploymentInfoResultOutput)
 }
 

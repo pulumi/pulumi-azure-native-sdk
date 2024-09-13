@@ -78,14 +78,20 @@ func (val *ListChannelWithKeysResult) Defaults() *ListChannelWithKeysResult {
 
 func ListChannelWithKeysOutput(ctx *pulumi.Context, args ListChannelWithKeysOutputArgs, opts ...pulumi.InvokeOption) ListChannelWithKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListChannelWithKeysResult, error) {
+		ApplyT(func(v interface{}) (ListChannelWithKeysResultOutput, error) {
 			args := v.(ListChannelWithKeysArgs)
-			r, err := ListChannelWithKeys(ctx, &args, opts...)
-			var s ListChannelWithKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListChannelWithKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:botservice/v20220915:listChannelWithKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListChannelWithKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListChannelWithKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListChannelWithKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListChannelWithKeysResultOutput)
 }
 

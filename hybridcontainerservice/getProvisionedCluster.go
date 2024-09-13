@@ -65,14 +65,20 @@ func (val *LookupProvisionedClusterResult) Defaults() *LookupProvisionedClusterR
 
 func LookupProvisionedClusterOutput(ctx *pulumi.Context, args LookupProvisionedClusterOutputArgs, opts ...pulumi.InvokeOption) LookupProvisionedClusterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProvisionedClusterResult, error) {
+		ApplyT(func(v interface{}) (LookupProvisionedClusterResultOutput, error) {
 			args := v.(LookupProvisionedClusterArgs)
-			r, err := LookupProvisionedCluster(ctx, &args, opts...)
-			var s LookupProvisionedClusterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupProvisionedClusterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:hybridcontainerservice:getProvisionedCluster", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProvisionedClusterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProvisionedClusterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProvisionedClusterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProvisionedClusterResultOutput)
 }
 

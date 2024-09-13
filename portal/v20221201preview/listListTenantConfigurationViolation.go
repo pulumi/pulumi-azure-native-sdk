@@ -35,14 +35,20 @@ type ListListTenantConfigurationViolationResult struct {
 
 func ListListTenantConfigurationViolationOutput(ctx *pulumi.Context, args ListListTenantConfigurationViolationOutputArgs, opts ...pulumi.InvokeOption) ListListTenantConfigurationViolationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListListTenantConfigurationViolationResult, error) {
+		ApplyT(func(v interface{}) (ListListTenantConfigurationViolationResultOutput, error) {
 			args := v.(ListListTenantConfigurationViolationArgs)
-			r, err := ListListTenantConfigurationViolation(ctx, &args, opts...)
-			var s ListListTenantConfigurationViolationResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListListTenantConfigurationViolationResult
+			secret, err := ctx.InvokePackageRaw("azure-native:portal/v20221201preview:listListTenantConfigurationViolation", args, &rv, "", opts...)
+			if err != nil {
+				return ListListTenantConfigurationViolationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListListTenantConfigurationViolationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListListTenantConfigurationViolationResultOutput), nil
+			}
+			return output, nil
 		}).(ListListTenantConfigurationViolationResultOutput)
 }
 

@@ -63,14 +63,20 @@ type LookupAssetResult struct {
 
 func LookupAssetOutput(ctx *pulumi.Context, args LookupAssetOutputArgs, opts ...pulumi.InvokeOption) LookupAssetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAssetResult, error) {
+		ApplyT(func(v interface{}) (LookupAssetResultOutput, error) {
 			args := v.(LookupAssetArgs)
-			r, err := LookupAsset(ctx, &args, opts...)
-			var s LookupAssetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAssetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:media/v20230101:getAsset", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAssetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAssetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAssetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAssetResultOutput)
 }
 

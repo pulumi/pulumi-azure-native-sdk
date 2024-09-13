@@ -40,14 +40,20 @@ type ListMongoClusterConnectionStringsResult struct {
 
 func ListMongoClusterConnectionStringsOutput(ctx *pulumi.Context, args ListMongoClusterConnectionStringsOutputArgs, opts ...pulumi.InvokeOption) ListMongoClusterConnectionStringsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListMongoClusterConnectionStringsResult, error) {
+		ApplyT(func(v interface{}) (ListMongoClusterConnectionStringsResultOutput, error) {
 			args := v.(ListMongoClusterConnectionStringsArgs)
-			r, err := ListMongoClusterConnectionStrings(ctx, &args, opts...)
-			var s ListMongoClusterConnectionStringsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListMongoClusterConnectionStringsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb:listMongoClusterConnectionStrings", args, &rv, "", opts...)
+			if err != nil {
+				return ListMongoClusterConnectionStringsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListMongoClusterConnectionStringsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListMongoClusterConnectionStringsResultOutput), nil
+			}
+			return output, nil
 		}).(ListMongoClusterConnectionStringsResultOutput)
 }
 

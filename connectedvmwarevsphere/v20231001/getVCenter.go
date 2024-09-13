@@ -71,14 +71,20 @@ type LookupVCenterResult struct {
 
 func LookupVCenterOutput(ctx *pulumi.Context, args LookupVCenterOutputArgs, opts ...pulumi.InvokeOption) LookupVCenterResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupVCenterResult, error) {
+		ApplyT(func(v interface{}) (LookupVCenterResultOutput, error) {
 			args := v.(LookupVCenterArgs)
-			r, err := LookupVCenter(ctx, &args, opts...)
-			var s LookupVCenterResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupVCenterResult
+			secret, err := ctx.InvokePackageRaw("azure-native:connectedvmwarevsphere/v20231001:getVCenter", args, &rv, "", opts...)
+			if err != nil {
+				return LookupVCenterResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupVCenterResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupVCenterResultOutput), nil
+			}
+			return output, nil
 		}).(LookupVCenterResultOutput)
 }
 

@@ -60,14 +60,20 @@ type LookupAlertRuleResult struct {
 
 func LookupAlertRuleOutput(ctx *pulumi.Context, args LookupAlertRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAlertRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupAlertRuleResultOutput, error) {
 			args := v.(LookupAlertRuleArgs)
-			r, err := LookupAlertRule(ctx, &args, opts...)
-			var s LookupAlertRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAlertRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights:getAlertRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAlertRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAlertRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAlertRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAlertRuleResultOutput)
 }
 

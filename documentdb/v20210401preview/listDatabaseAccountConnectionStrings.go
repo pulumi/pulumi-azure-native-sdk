@@ -37,14 +37,20 @@ type ListDatabaseAccountConnectionStringsResult struct {
 
 func ListDatabaseAccountConnectionStringsOutput(ctx *pulumi.Context, args ListDatabaseAccountConnectionStringsOutputArgs, opts ...pulumi.InvokeOption) ListDatabaseAccountConnectionStringsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListDatabaseAccountConnectionStringsResult, error) {
+		ApplyT(func(v interface{}) (ListDatabaseAccountConnectionStringsResultOutput, error) {
 			args := v.(ListDatabaseAccountConnectionStringsArgs)
-			r, err := ListDatabaseAccountConnectionStrings(ctx, &args, opts...)
-			var s ListDatabaseAccountConnectionStringsResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListDatabaseAccountConnectionStringsResult
+			secret, err := ctx.InvokePackageRaw("azure-native:documentdb/v20210401preview:listDatabaseAccountConnectionStrings", args, &rv, "", opts...)
+			if err != nil {
+				return ListDatabaseAccountConnectionStringsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListDatabaseAccountConnectionStringsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListDatabaseAccountConnectionStringsResultOutput), nil
+			}
+			return output, nil
 		}).(ListDatabaseAccountConnectionStringsResultOutput)
 }
 

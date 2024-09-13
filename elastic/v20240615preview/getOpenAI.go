@@ -45,14 +45,20 @@ type LookupOpenAIResult struct {
 
 func LookupOpenAIOutput(ctx *pulumi.Context, args LookupOpenAIOutputArgs, opts ...pulumi.InvokeOption) LookupOpenAIResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOpenAIResult, error) {
+		ApplyT(func(v interface{}) (LookupOpenAIResultOutput, error) {
 			args := v.(LookupOpenAIArgs)
-			r, err := LookupOpenAI(ctx, &args, opts...)
-			var s LookupOpenAIResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupOpenAIResult
+			secret, err := ctx.InvokePackageRaw("azure-native:elastic/v20240615preview:getOpenAI", args, &rv, "", opts...)
+			if err != nil {
+				return LookupOpenAIResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupOpenAIResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupOpenAIResultOutput), nil
+			}
+			return output, nil
 		}).(LookupOpenAIResultOutput)
 }
 

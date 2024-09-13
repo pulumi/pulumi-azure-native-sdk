@@ -51,14 +51,20 @@ type LookupWCFRelayAuthorizationRuleResult struct {
 
 func LookupWCFRelayAuthorizationRuleOutput(ctx *pulumi.Context, args LookupWCFRelayAuthorizationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupWCFRelayAuthorizationRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWCFRelayAuthorizationRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupWCFRelayAuthorizationRuleResultOutput, error) {
 			args := v.(LookupWCFRelayAuthorizationRuleArgs)
-			r, err := LookupWCFRelayAuthorizationRule(ctx, &args, opts...)
-			var s LookupWCFRelayAuthorizationRuleResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWCFRelayAuthorizationRuleResult
+			secret, err := ctx.InvokePackageRaw("azure-native:relay/v20211101:getWCFRelayAuthorizationRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWCFRelayAuthorizationRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWCFRelayAuthorizationRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWCFRelayAuthorizationRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWCFRelayAuthorizationRuleResultOutput)
 }
 

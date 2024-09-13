@@ -54,14 +54,20 @@ type LookupAddressByNameResult struct {
 
 func LookupAddressByNameOutput(ctx *pulumi.Context, args LookupAddressByNameOutputArgs, opts ...pulumi.InvokeOption) LookupAddressByNameResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAddressByNameResult, error) {
+		ApplyT(func(v interface{}) (LookupAddressByNameResultOutput, error) {
 			args := v.(LookupAddressByNameArgs)
-			r, err := LookupAddressByName(ctx, &args, opts...)
-			var s LookupAddressByNameResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAddressByNameResult
+			secret, err := ctx.InvokePackageRaw("azure-native:edgeorder:getAddressByName", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAddressByNameResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAddressByNameResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAddressByNameResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAddressByNameResultOutput)
 }
 

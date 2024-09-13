@@ -58,14 +58,20 @@ func (val *LookupRegistryDataContainerResult) Defaults() *LookupRegistryDataCont
 
 func LookupRegistryDataContainerOutput(ctx *pulumi.Context, args LookupRegistryDataContainerOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryDataContainerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRegistryDataContainerResult, error) {
+		ApplyT(func(v interface{}) (LookupRegistryDataContainerResultOutput, error) {
 			args := v.(LookupRegistryDataContainerArgs)
-			r, err := LookupRegistryDataContainer(ctx, &args, opts...)
-			var s LookupRegistryDataContainerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupRegistryDataContainerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230801preview:getRegistryDataContainer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRegistryDataContainerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRegistryDataContainerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRegistryDataContainerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRegistryDataContainerResultOutput)
 }
 

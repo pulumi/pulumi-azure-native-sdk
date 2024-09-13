@@ -73,14 +73,20 @@ type LookupWebAppInstanceFunctionSlotResult struct {
 
 func LookupWebAppInstanceFunctionSlotOutput(ctx *pulumi.Context, args LookupWebAppInstanceFunctionSlotOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppInstanceFunctionSlotResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebAppInstanceFunctionSlotResult, error) {
+		ApplyT(func(v interface{}) (LookupWebAppInstanceFunctionSlotResultOutput, error) {
 			args := v.(LookupWebAppInstanceFunctionSlotArgs)
-			r, err := LookupWebAppInstanceFunctionSlot(ctx, &args, opts...)
-			var s LookupWebAppInstanceFunctionSlotResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebAppInstanceFunctionSlotResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20231201:getWebAppInstanceFunctionSlot", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebAppInstanceFunctionSlotResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebAppInstanceFunctionSlotResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebAppInstanceFunctionSlotResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebAppInstanceFunctionSlotResultOutput)
 }
 

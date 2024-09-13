@@ -65,14 +65,20 @@ type ListAccountSasResult struct {
 
 func ListAccountSasOutput(ctx *pulumi.Context, args ListAccountSasOutputArgs, opts ...pulumi.InvokeOption) ListAccountSasResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListAccountSasResult, error) {
+		ApplyT(func(v interface{}) (ListAccountSasResultOutput, error) {
 			args := v.(ListAccountSasArgs)
-			r, err := ListAccountSas(ctx, &args, opts...)
-			var s ListAccountSasResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListAccountSasResult
+			secret, err := ctx.InvokePackageRaw("azure-native:maps/v20230801preview:listAccountSas", args.Defaults(), &rv, "", opts...)
+			if err != nil {
+				return ListAccountSasResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListAccountSasResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListAccountSasResultOutput), nil
+			}
+			return output, nil
 		}).(ListAccountSasResultOutput)
 }
 

@@ -67,14 +67,20 @@ type LookupKustoPoolResult struct {
 
 func LookupKustoPoolOutput(ctx *pulumi.Context, args LookupKustoPoolOutputArgs, opts ...pulumi.InvokeOption) LookupKustoPoolResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupKustoPoolResult, error) {
+		ApplyT(func(v interface{}) (LookupKustoPoolResultOutput, error) {
 			args := v.(LookupKustoPoolArgs)
-			r, err := LookupKustoPool(ctx, &args, opts...)
-			var s LookupKustoPoolResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupKustoPoolResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210401preview:getKustoPool", args, &rv, "", opts...)
+			if err != nil {
+				return LookupKustoPoolResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupKustoPoolResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupKustoPoolResultOutput), nil
+			}
+			return output, nil
 		}).(LookupKustoPoolResultOutput)
 }
 

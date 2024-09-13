@@ -50,14 +50,20 @@ type ListWebAppFunctionKeysResult struct {
 
 func ListWebAppFunctionKeysOutput(ctx *pulumi.Context, args ListWebAppFunctionKeysOutputArgs, opts ...pulumi.InvokeOption) ListWebAppFunctionKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListWebAppFunctionKeysResult, error) {
+		ApplyT(func(v interface{}) (ListWebAppFunctionKeysResultOutput, error) {
 			args := v.(ListWebAppFunctionKeysArgs)
-			r, err := ListWebAppFunctionKeys(ctx, &args, opts...)
-			var s ListWebAppFunctionKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListWebAppFunctionKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web:listWebAppFunctionKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListWebAppFunctionKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListWebAppFunctionKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListWebAppFunctionKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListWebAppFunctionKeysResultOutput)
 }
 

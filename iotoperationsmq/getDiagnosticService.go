@@ -103,14 +103,20 @@ func (val *LookupDiagnosticServiceResult) Defaults() *LookupDiagnosticServiceRes
 
 func LookupDiagnosticServiceOutput(ctx *pulumi.Context, args LookupDiagnosticServiceOutputArgs, opts ...pulumi.InvokeOption) LookupDiagnosticServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDiagnosticServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupDiagnosticServiceResultOutput, error) {
 			args := v.(LookupDiagnosticServiceArgs)
-			r, err := LookupDiagnosticService(ctx, &args, opts...)
-			var s LookupDiagnosticServiceResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDiagnosticServiceResult
+			secret, err := ctx.InvokePackageRaw("azure-native:iotoperationsmq:getDiagnosticService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDiagnosticServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDiagnosticServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDiagnosticServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDiagnosticServiceResultOutput)
 }
 

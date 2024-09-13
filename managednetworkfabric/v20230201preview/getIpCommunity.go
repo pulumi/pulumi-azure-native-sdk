@@ -57,14 +57,20 @@ type LookupIpCommunityResult struct {
 
 func LookupIpCommunityOutput(ctx *pulumi.Context, args LookupIpCommunityOutputArgs, opts ...pulumi.InvokeOption) LookupIpCommunityResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIpCommunityResult, error) {
+		ApplyT(func(v interface{}) (LookupIpCommunityResultOutput, error) {
 			args := v.(LookupIpCommunityArgs)
-			r, err := LookupIpCommunity(ctx, &args, opts...)
-			var s LookupIpCommunityResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupIpCommunityResult
+			secret, err := ctx.InvokePackageRaw("azure-native:managednetworkfabric/v20230201preview:getIpCommunity", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIpCommunityResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIpCommunityResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIpCommunityResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIpCommunityResultOutput)
 }
 

@@ -64,14 +64,20 @@ type LookupCustomDomainResult struct {
 
 func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCustomDomainResult, error) {
+		ApplyT(func(v interface{}) (LookupCustomDomainResultOutput, error) {
 			args := v.(LookupCustomDomainArgs)
-			r, err := LookupCustomDomain(ctx, &args, opts...)
-			var s LookupCustomDomainResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupCustomDomainResult
+			secret, err := ctx.InvokePackageRaw("azure-native:cdn:getCustomDomain", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCustomDomainResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCustomDomainResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCustomDomainResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCustomDomainResultOutput)
 }
 

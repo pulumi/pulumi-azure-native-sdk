@@ -55,14 +55,20 @@ type LookupStaticSiteLinkedBackendForBuildResult struct {
 
 func LookupStaticSiteLinkedBackendForBuildOutput(ctx *pulumi.Context, args LookupStaticSiteLinkedBackendForBuildOutputArgs, opts ...pulumi.InvokeOption) LookupStaticSiteLinkedBackendForBuildResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStaticSiteLinkedBackendForBuildResult, error) {
+		ApplyT(func(v interface{}) (LookupStaticSiteLinkedBackendForBuildResultOutput, error) {
 			args := v.(LookupStaticSiteLinkedBackendForBuildArgs)
-			r, err := LookupStaticSiteLinkedBackendForBuild(ctx, &args, opts...)
-			var s LookupStaticSiteLinkedBackendForBuildResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupStaticSiteLinkedBackendForBuildResult
+			secret, err := ctx.InvokePackageRaw("azure-native:web/v20220901:getStaticSiteLinkedBackendForBuild", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStaticSiteLinkedBackendForBuildResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStaticSiteLinkedBackendForBuildResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStaticSiteLinkedBackendForBuildResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStaticSiteLinkedBackendForBuildResultOutput)
 }
 

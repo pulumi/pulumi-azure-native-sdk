@@ -46,14 +46,20 @@ type LookupSyncIdentityProviderResult struct {
 
 func LookupSyncIdentityProviderOutput(ctx *pulumi.Context, args LookupSyncIdentityProviderOutputArgs, opts ...pulumi.InvokeOption) LookupSyncIdentityProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSyncIdentityProviderResult, error) {
+		ApplyT(func(v interface{}) (LookupSyncIdentityProviderResultOutput, error) {
 			args := v.(LookupSyncIdentityProviderArgs)
-			r, err := LookupSyncIdentityProvider(ctx, &args, opts...)
-			var s LookupSyncIdentityProviderResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSyncIdentityProviderResult
+			secret, err := ctx.InvokePackageRaw("azure-native:redhatopenshift/v20220904:getSyncIdentityProvider", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSyncIdentityProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSyncIdentityProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSyncIdentityProviderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSyncIdentityProviderResultOutput)
 }
 

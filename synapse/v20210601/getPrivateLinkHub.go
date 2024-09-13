@@ -49,14 +49,20 @@ type LookupPrivateLinkHubResult struct {
 
 func LookupPrivateLinkHubOutput(ctx *pulumi.Context, args LookupPrivateLinkHubOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkHubResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateLinkHubResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateLinkHubResultOutput, error) {
 			args := v.(LookupPrivateLinkHubArgs)
-			r, err := LookupPrivateLinkHub(ctx, &args, opts...)
-			var s LookupPrivateLinkHubResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateLinkHubResult
+			secret, err := ctx.InvokePackageRaw("azure-native:synapse/v20210601:getPrivateLinkHub", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateLinkHubResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateLinkHubResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateLinkHubResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateLinkHubResultOutput)
 }
 

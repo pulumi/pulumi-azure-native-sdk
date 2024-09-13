@@ -66,14 +66,20 @@ func (val *ListServiceFabricApplicableSchedulesResult) Defaults() *ListServiceFa
 
 func ListServiceFabricApplicableSchedulesOutput(ctx *pulumi.Context, args ListServiceFabricApplicableSchedulesOutputArgs, opts ...pulumi.InvokeOption) ListServiceFabricApplicableSchedulesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListServiceFabricApplicableSchedulesResult, error) {
+		ApplyT(func(v interface{}) (ListServiceFabricApplicableSchedulesResultOutput, error) {
 			args := v.(ListServiceFabricApplicableSchedulesArgs)
-			r, err := ListServiceFabricApplicableSchedules(ctx, &args, opts...)
-			var s ListServiceFabricApplicableSchedulesResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListServiceFabricApplicableSchedulesResult
+			secret, err := ctx.InvokePackageRaw("azure-native:devtestlab/v20180915:listServiceFabricApplicableSchedules", args, &rv, "", opts...)
+			if err != nil {
+				return ListServiceFabricApplicableSchedulesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListServiceFabricApplicableSchedulesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListServiceFabricApplicableSchedulesResultOutput), nil
+			}
+			return output, nil
 		}).(ListServiceFabricApplicableSchedulesResultOutput)
 }
 

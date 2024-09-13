@@ -53,14 +53,20 @@ type LookupHybridIdentityMetadataResult struct {
 
 func LookupHybridIdentityMetadataOutput(ctx *pulumi.Context, args LookupHybridIdentityMetadataOutputArgs, opts ...pulumi.InvokeOption) LookupHybridIdentityMetadataResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHybridIdentityMetadataResult, error) {
+		ApplyT(func(v interface{}) (LookupHybridIdentityMetadataResultOutput, error) {
 			args := v.(LookupHybridIdentityMetadataArgs)
-			r, err := LookupHybridIdentityMetadata(ctx, &args, opts...)
-			var s LookupHybridIdentityMetadataResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupHybridIdentityMetadataResult
+			secret, err := ctx.InvokePackageRaw("azure-native:scvmm/v20220521preview:getHybridIdentityMetadata", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHybridIdentityMetadataResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHybridIdentityMetadataResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHybridIdentityMetadataResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHybridIdentityMetadataResultOutput)
 }
 

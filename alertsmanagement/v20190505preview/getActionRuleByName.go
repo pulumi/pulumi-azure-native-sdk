@@ -47,14 +47,20 @@ type LookupActionRuleByNameResult struct {
 
 func LookupActionRuleByNameOutput(ctx *pulumi.Context, args LookupActionRuleByNameOutputArgs, opts ...pulumi.InvokeOption) LookupActionRuleByNameResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupActionRuleByNameResult, error) {
+		ApplyT(func(v interface{}) (LookupActionRuleByNameResultOutput, error) {
 			args := v.(LookupActionRuleByNameArgs)
-			r, err := LookupActionRuleByName(ctx, &args, opts...)
-			var s LookupActionRuleByNameResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupActionRuleByNameResult
+			secret, err := ctx.InvokePackageRaw("azure-native:alertsmanagement/v20190505preview:getActionRuleByName", args, &rv, "", opts...)
+			if err != nil {
+				return LookupActionRuleByNameResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupActionRuleByNameResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupActionRuleByNameResultOutput), nil
+			}
+			return output, nil
 		}).(LookupActionRuleByNameResultOutput)
 }
 

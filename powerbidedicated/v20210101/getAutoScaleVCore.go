@@ -55,14 +55,20 @@ type LookupAutoScaleVCoreResult struct {
 
 func LookupAutoScaleVCoreOutput(ctx *pulumi.Context, args LookupAutoScaleVCoreOutputArgs, opts ...pulumi.InvokeOption) LookupAutoScaleVCoreResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAutoScaleVCoreResult, error) {
+		ApplyT(func(v interface{}) (LookupAutoScaleVCoreResultOutput, error) {
 			args := v.(LookupAutoScaleVCoreArgs)
-			r, err := LookupAutoScaleVCore(ctx, &args, opts...)
-			var s LookupAutoScaleVCoreResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAutoScaleVCoreResult
+			secret, err := ctx.InvokePackageRaw("azure-native:powerbidedicated/v20210101:getAutoScaleVCore", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAutoScaleVCoreResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAutoScaleVCoreResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAutoScaleVCoreResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAutoScaleVCoreResultOutput)
 }
 

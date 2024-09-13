@@ -61,14 +61,20 @@ type LookupSecurityConnectorResult struct {
 
 func LookupSecurityConnectorOutput(ctx *pulumi.Context, args LookupSecurityConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSecurityConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupSecurityConnectorResultOutput, error) {
 			args := v.(LookupSecurityConnectorArgs)
-			r, err := LookupSecurityConnector(ctx, &args, opts...)
-			var s LookupSecurityConnectorResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupSecurityConnectorResult
+			secret, err := ctx.InvokePackageRaw("azure-native:security/v20231001preview:getSecurityConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSecurityConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSecurityConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSecurityConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSecurityConnectorResultOutput)
 }
 

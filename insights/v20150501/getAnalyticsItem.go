@@ -59,14 +59,20 @@ type LookupAnalyticsItemResult struct {
 
 func LookupAnalyticsItemOutput(ctx *pulumi.Context, args LookupAnalyticsItemOutputArgs, opts ...pulumi.InvokeOption) LookupAnalyticsItemResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAnalyticsItemResult, error) {
+		ApplyT(func(v interface{}) (LookupAnalyticsItemResultOutput, error) {
 			args := v.(LookupAnalyticsItemArgs)
-			r, err := LookupAnalyticsItem(ctx, &args, opts...)
-			var s LookupAnalyticsItemResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupAnalyticsItemResult
+			secret, err := ctx.InvokePackageRaw("azure-native:insights/v20150501:getAnalyticsItem", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAnalyticsItemResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAnalyticsItemResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAnalyticsItemResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAnalyticsItemResultOutput)
 }
 

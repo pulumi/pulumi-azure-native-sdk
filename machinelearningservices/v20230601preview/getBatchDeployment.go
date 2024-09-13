@@ -68,14 +68,20 @@ func (val *LookupBatchDeploymentResult) Defaults() *LookupBatchDeploymentResult 
 
 func LookupBatchDeploymentOutput(ctx *pulumi.Context, args LookupBatchDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupBatchDeploymentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBatchDeploymentResult, error) {
+		ApplyT(func(v interface{}) (LookupBatchDeploymentResultOutput, error) {
 			args := v.(LookupBatchDeploymentArgs)
-			r, err := LookupBatchDeployment(ctx, &args, opts...)
-			var s LookupBatchDeploymentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupBatchDeploymentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20230601preview:getBatchDeployment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBatchDeploymentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBatchDeploymentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBatchDeploymentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBatchDeploymentResultOutput)
 }
 

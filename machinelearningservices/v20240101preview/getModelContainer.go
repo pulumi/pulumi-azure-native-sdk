@@ -58,14 +58,20 @@ func (val *LookupModelContainerResult) Defaults() *LookupModelContainerResult {
 
 func LookupModelContainerOutput(ctx *pulumi.Context, args LookupModelContainerOutputArgs, opts ...pulumi.InvokeOption) LookupModelContainerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupModelContainerResult, error) {
+		ApplyT(func(v interface{}) (LookupModelContainerResultOutput, error) {
 			args := v.(LookupModelContainerArgs)
-			r, err := LookupModelContainer(ctx, &args, opts...)
-			var s LookupModelContainerResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupModelContainerResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240101preview:getModelContainer", args, &rv, "", opts...)
+			if err != nil {
+				return LookupModelContainerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupModelContainerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupModelContainerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupModelContainerResultOutput)
 }
 

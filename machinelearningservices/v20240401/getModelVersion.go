@@ -60,14 +60,20 @@ func (val *LookupModelVersionResult) Defaults() *LookupModelVersionResult {
 
 func LookupModelVersionOutput(ctx *pulumi.Context, args LookupModelVersionOutputArgs, opts ...pulumi.InvokeOption) LookupModelVersionResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupModelVersionResult, error) {
+		ApplyT(func(v interface{}) (LookupModelVersionResultOutput, error) {
 			args := v.(LookupModelVersionArgs)
-			r, err := LookupModelVersion(ctx, &args, opts...)
-			var s LookupModelVersionResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupModelVersionResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices/v20240401:getModelVersion", args, &rv, "", opts...)
+			if err != nil {
+				return LookupModelVersionResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupModelVersionResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupModelVersionResultOutput), nil
+			}
+			return output, nil
 		}).(LookupModelVersionResultOutput)
 }
 

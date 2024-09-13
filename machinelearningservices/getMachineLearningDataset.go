@@ -54,14 +54,20 @@ type LookupMachineLearningDatasetResult struct {
 
 func LookupMachineLearningDatasetOutput(ctx *pulumi.Context, args LookupMachineLearningDatasetOutputArgs, opts ...pulumi.InvokeOption) LookupMachineLearningDatasetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMachineLearningDatasetResult, error) {
+		ApplyT(func(v interface{}) (LookupMachineLearningDatasetResultOutput, error) {
 			args := v.(LookupMachineLearningDatasetArgs)
-			r, err := LookupMachineLearningDataset(ctx, &args, opts...)
-			var s LookupMachineLearningDatasetResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupMachineLearningDatasetResult
+			secret, err := ctx.InvokePackageRaw("azure-native:machinelearningservices:getMachineLearningDataset", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMachineLearningDatasetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMachineLearningDatasetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMachineLearningDatasetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMachineLearningDatasetResultOutput)
 }
 

@@ -39,14 +39,20 @@ type ListSecretValueResult struct {
 
 func ListSecretValueOutput(ctx *pulumi.Context, args ListSecretValueOutputArgs, opts ...pulumi.InvokeOption) ListSecretValueResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListSecretValueResult, error) {
+		ApplyT(func(v interface{}) (ListSecretValueResultOutput, error) {
 			args := v.(ListSecretValueArgs)
-			r, err := ListSecretValue(ctx, &args, opts...)
-			var s ListSecretValueResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListSecretValueResult
+			secret, err := ctx.InvokePackageRaw("azure-native:servicefabricmesh/v20180901preview:listSecretValue", args, &rv, "", opts...)
+			if err != nil {
+				return ListSecretValueResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListSecretValueResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListSecretValueResultOutput), nil
+			}
+			return output, nil
 		}).(ListSecretValueResultOutput)
 }
 

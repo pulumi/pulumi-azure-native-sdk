@@ -41,14 +41,20 @@ type ListConfigurationStoreKeysResult struct {
 
 func ListConfigurationStoreKeysOutput(ctx *pulumi.Context, args ListConfigurationStoreKeysOutputArgs, opts ...pulumi.InvokeOption) ListConfigurationStoreKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (ListConfigurationStoreKeysResult, error) {
+		ApplyT(func(v interface{}) (ListConfigurationStoreKeysResultOutput, error) {
 			args := v.(ListConfigurationStoreKeysArgs)
-			r, err := ListConfigurationStoreKeys(ctx, &args, opts...)
-			var s ListConfigurationStoreKeysResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv ListConfigurationStoreKeysResult
+			secret, err := ctx.InvokePackageRaw("azure-native:appconfiguration/v20230301:listConfigurationStoreKeys", args, &rv, "", opts...)
+			if err != nil {
+				return ListConfigurationStoreKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(ListConfigurationStoreKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(ListConfigurationStoreKeysResultOutput), nil
+			}
+			return output, nil
 		}).(ListConfigurationStoreKeysResultOutput)
 }
 

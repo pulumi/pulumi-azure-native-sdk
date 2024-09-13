@@ -56,14 +56,20 @@ type LookupDotNetComponentResult struct {
 
 func LookupDotNetComponentOutput(ctx *pulumi.Context, args LookupDotNetComponentOutputArgs, opts ...pulumi.InvokeOption) LookupDotNetComponentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDotNetComponentResult, error) {
+		ApplyT(func(v interface{}) (LookupDotNetComponentResultOutput, error) {
 			args := v.(LookupDotNetComponentArgs)
-			r, err := LookupDotNetComponent(ctx, &args, opts...)
-			var s LookupDotNetComponentResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupDotNetComponentResult
+			secret, err := ctx.InvokePackageRaw("azure-native:app:getDotNetComponent", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDotNetComponentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDotNetComponentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDotNetComponentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDotNetComponentResultOutput)
 }
 

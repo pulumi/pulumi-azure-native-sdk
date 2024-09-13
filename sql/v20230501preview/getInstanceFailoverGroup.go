@@ -57,14 +57,20 @@ type LookupInstanceFailoverGroupResult struct {
 
 func LookupInstanceFailoverGroupOutput(ctx *pulumi.Context, args LookupInstanceFailoverGroupOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceFailoverGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInstanceFailoverGroupResult, error) {
+		ApplyT(func(v interface{}) (LookupInstanceFailoverGroupResultOutput, error) {
 			args := v.(LookupInstanceFailoverGroupArgs)
-			r, err := LookupInstanceFailoverGroup(ctx, &args, opts...)
-			var s LookupInstanceFailoverGroupResult
-			if r != nil {
-				s = *r
+			opts = utilities.PkgInvokeDefaultOpts(opts)
+			var rv LookupInstanceFailoverGroupResult
+			secret, err := ctx.InvokePackageRaw("azure-native:sql/v20230501preview:getInstanceFailoverGroup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInstanceFailoverGroupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInstanceFailoverGroupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInstanceFailoverGroupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInstanceFailoverGroupResultOutput)
 }
 
